@@ -1,0 +1,12 @@
+[
+{
+"UserType":"Reviewer",
+"PossitiveRemarks":"Approved from reviewer",
+"NegativeRemarks":"Rejected from reviewer"
+},
+{
+"UserType":"Checker",
+"PossitiveRemarks":"Approved from checker",
+"NegativeRemarks":"Rejected from checker"
+}
+]

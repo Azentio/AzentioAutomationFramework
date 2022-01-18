@@ -1,0 +1,50 @@
+[
+	{
+		"UserName": "maker",
+		"BudgetCode": "BUDG509",
+		"BudgetType": "HALFYEARLY",
+		"WarningPecentage": "20",
+		"BudgetName": "Test",
+		"Remark": "Ok",
+		"UpdatedBudgetCode": "BUDC4037",
+		"UpdatedBudgetType": "QUARTERLY",
+		"UpdatedWarningPecentage": "20",
+		"HistoryBudgetCode":"BUDG450",
+		"UpdatedBudgetName": "Office Expense",
+		"UpdatedRemark": "Budget Code Updated",
+		"BudgetCodeToBeSearch": "BUDC4030",
+		"ExistingBudgetCode": "BUD001",
+		"WrongWarningPercentage": "120",
+		"UATYearlyBudgetType": "capital budgets",
+		"UATMonthlyBudgetType": "financial plan",
+		"UATHalfYearlyBudgetType": "departments",
+		"UATQuarterlyBudgetType": "Revenue budget",
+		
+		"BudgetCode1": "BDG5600",
+		"BudgetType1": "YEARLY",
+		"WarningPecentage1": "23",
+		"BudgetName1": "Home budget",
+		 
+	     "BudgetCode2": "BDG1200",
+		"BudgetType2": "Monthly",
+		"WarningPecentage2": "25",
+		"BudgetName2": "Education",
+		
+		"BudgetCode3": "BDG7300",
+		"BudgetType3": "HalfYearly",
+		"WarningPecentage3": "50",
+		"BudgetName3": "Business",
+		
+		"BudgetCode4": "BDG7239",
+		"BudgetType4": "Quaterly",
+		"WarningPecentage4": "70",
+		"BudgetName4": "Loan",
+		
+	    "BudgetCode5": "BDG1400",
+		"BudgetType5": "YEARLY",
+		"WarningPecentage5": "10",
+		"BudgetName5": "Traveling"
+		
+	
+	}
+]

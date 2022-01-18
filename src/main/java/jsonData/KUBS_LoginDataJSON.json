@@ -1,0 +1,30 @@
+[
+{
+"UserType":"Maker",
+"UserName":"1002435",
+"PassWord":"Admin@@11",
+"UATPassword":"admin",
+"UserNameUAT":"1002435",
+"PassWordUAT":"admin" ,
+"Arshth need to make changes in code":0
+},
+{
+"UserType":"Reviewer",
+"UserName":"12345",
+"PassWord":"Admin@@11",
+"UserName2":"1993",
+"PassWord2":"Admin@@11",
+"UserName3":"1992",
+"PassWord3":"ADmin@@12345"
+
+},
+{
+"UserType":"Checker",
+"UserName":"1002437",
+"PassWord":"admin"
+}
+
+]
+
+
+
