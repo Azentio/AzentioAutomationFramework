@@ -1,0 +1,71 @@
+[
+	{
+		"User": "Maker",
+		"BudgetCode": "AR1234",
+		"BudgetYear": "2021-2022",
+		"BudgetBranchName": "AZENT-MAIN",
+		"Currency": "RUP",
+		"BudgetComments": "ok",
+		"BudgetApportionAmt": "1000.00",
+		"ReviewerRemark": "Approved by Reviewer",
+		"CheckerRemark": "Approved by Checker",
+		
+		
+		"BudgetCodeM": "QC2BUD3",
+		"BudgetNameM": "Monthly",
+		"BudgetYearM": "2021-2022",
+		"BudgetBranchNameM": "AZENT-MAIN",
+		"CurrencyM": "RUP",
+		"BudgetTypeM": "Monthly",
+		"TotalAmountM": "60000",
+		"AuthStatusM": "A",
+		
+		
+		"BudgetCodeMon": "QC2BUD3",
+		"BudgetNameMon": "Monthly",
+		"BudgetYearMon": "2022-2023",
+		"BudgetBranchNameMon": "MUW",
+		"CurrencyMon": "RUP",
+		"BudgetTypeMon": "MONTHLY",
+		"TotalAmountMon": "2415100.00",
+		"AuthStatusMon": "A",
+		
+		
+		
+		"BudgetCodeA": "BDG01",
+		"BudgetNameA": "Head Office And Branch Renovation/Development Expeense",
+		"BudgetYearA": "2022-2023",
+		"BudgetBranchNameA": "AZENT-MAIN",
+		"CurrencyA": "RUP",
+		"SupplymentaryApportionAmtA": "500.00",
+		"MakerRemarkY": "OK",
+		"BudgetTypeA": "YEARLY",
+		"AuthStatusA": "Approved",
+		"AuthStatusB": "Return",
+	
+		
+			
+			"CheckerReturnRemark" : "Returned by checker",
+			"BudgetCodeForQuarterly"		  :	"BDG02",
+  			"BudgetYearForQuarterly"		  : "2022-2023",
+  			"BudgetBranchNameForQuarterly" 	  : "CO",
+  			"CurrencyForQuarterly"			  :"RUP",
+  			"BudgetCommentsForQuarterly" 	  : "ok",
+  			"BudgetQuarter3Amount"			  : "10.00",
+  			
+  			"BudgetCodeForBiannually"			:"BCD_HYR_1",
+  			"BudgetYearForBiannually"			:"2022-2023",
+  			"BudgetBranchNameForBiannually"		:"AZENT-MAIN",
+  			"CurrencyForBiannuallyy"			:"RUP",
+  			"BudgetCommentsForBiannuallyy"		:"ok",
+  			"BudgetAmountFor1stHalfyear"		:"10.00",
+  			"RemarkByMaker"						:"submit by maker",
+  			 			
+  			"BudgetCodeForyearly"				:"AR12345",
+			"BudgetYearForyearly"				:"2022-2023",
+			"BudgetBranchNameForyearly"			:"CO1",
+	 		"CurrencyForyearly"					:"RUP",
+	 		"BudgetCommentsForyearly"			:"ok"
+			
+	}
+]

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2022-01-17T22:58:11 PST" name="Default suite" finished-at="2022-01-17T22:58:48 PST" duration-ms="37226">
+    <groups>
+      <group name="cucumber">
+        <method signature="AbstractTestNGCucumberTests.runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:Runner.TestApplication@3ba987b8]" name="runScenario" class="io.cucumber.testng.AbstractTestNGCucumberTests"/>
+      </group> <!-- cucumber -->
+    </groups>
+    <test started-at="2022-01-17T22:58:11 PST" name="Default test" finished-at="2022-01-17T22:58:48 PST" duration-ms="37226">
+      <class name="Runner.TestApplication">
+        <test-method is-config="true" signature="beforeExecution()[pri:0, instance:Runner.TestApplication@3ba987b8]" started-at="2022-01-17T22:58:11 PST" name="beforeExecution" finished-at="2022-01-17T22:58:11 PST" duration-ms="5" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeExecution -->
+        <test-method is-config="true" signature="setUpClass()[pri:0, instance:Runner.TestApplication@3ba987b8]" started-at="2022-01-17T22:58:11 PST" name="setUpClass" finished-at="2022-01-17T22:58:12 PST" duration-ms="646" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUpClass -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:Runner.TestApplication@3ba987b8]" started-at="2022-01-17T22:58:12 PST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2022-01-17T22:58:45 PST" duration-ms="33260" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["BP_SB_01_02 If all the mandatory data is captured and user clicks on save button"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Optional[Checking the Supplementary Budget functionality]"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method is-config="true" signature="tearDownClass()[pri:0, instance:Runner.TestApplication@3ba987b8]" started-at="2022-01-17T22:58:45 PST" name="tearDownClass" finished-at="2022-01-17T22:58:48 PST" duration-ms="3292" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDownClass -->
+        <test-method is-config="true" signature="afterExecution()[pri:0, instance:Runner.TestApplication@3ba987b8]" started-at="2022-01-17T22:58:48 PST" name="afterExecution" finished-at="2022-01-17T22:58:48 PST" duration-ms="58" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterExecution -->
+      </class> <!-- Runner.TestApplication -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>
