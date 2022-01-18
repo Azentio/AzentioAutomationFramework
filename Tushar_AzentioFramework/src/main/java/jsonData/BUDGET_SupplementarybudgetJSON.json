@@ -1,0 +1,38 @@
+[
+	
+		{
+			"User"				  : "Maker",
+			"BudgetCode"		  :	"AR12345",
+			"BudgetYear"		  : "2021-2022",
+			"BudgetBranchName" 	  : "AZENT-MAIN",
+			"BudgetType"		  : "YEARLY",
+			"Currency"			  :"RUP",
+			"BudgetComments" 	  : "ok",
+			"BudgetApportionAmt"  : "100.00",
+			"ReviewerRemark"      : "Approved by Reviewer",
+			"CheckerRemark"		  : "Approved by Checker",
+			"CheckerReturnRemark" : "Returned by checker",
+			"BudgetCodeForQuarterly"		  :	"BDG02",
+  			"BudgetYearForQuarterly"		  : "2022-2023",
+  			"BudgetBranchNameForQuarterly" 	  : "CO",
+  			"CurrencyForQuarterly"			  :"RUP",
+  			"BudgetCommentsForQuarterly" 	  : "ok",
+  			"BudgetQuarter3Amount"			  : "10.00",
+  			
+  			"BudgetCodeForBiannually"			:"BCD_HYR_1",
+  			"BudgetYearForBiannually"			:"2022-2023",
+  			"BudgetBranchNameForBiannually"		:"AZENT-MAIN",
+  			"CurrencyForBiannuallyy"			:"RUP",
+  			"BudgetCommentsForBiannuallyy"		:"ok",
+  			"BudgetAmountFor1stHalfyear"		:"10.00",
+  			"RemarkByMaker"						:"submit by maker",
+  			 			
+  			"BudgetCodeForyearly"				:"AR12345",
+			"BudgetYearForyearly"				:"2022-2023",
+			"BudgetBranchNameForyearly"			:"CO1",
+	 		"CurrencyForyearly"					:"RUP",
+	 		"BudgetCommentsForyearly"			:"ok"
+			
+			}
+  		
+]		

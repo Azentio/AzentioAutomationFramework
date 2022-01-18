@@ -1,0 +1,23 @@
+[
+	{
+		
+		"User": "Maker",
+		"BudgetCode": "AR12345",
+		"BudgetName":"SAM",
+		"BudgetYear":"2022-2023",
+		"Branch": "CO1",
+		"TransferToBudgetCode": "QC2 BUD1",
+		"Currency":"RUP",
+		"ApportionedAmountA": "100.00",
+		"ApportionedAmountB": "100.00",
+		"ApportionedAmountAExcessive":"1000000001",
+		"Status":"Active",
+		"InvalidBranch":"CO",
+		
+"InvalidTransferToBudgetCode":"BDG02",
+		
+		"Remark":"ok"
+	}
+]
+
+
