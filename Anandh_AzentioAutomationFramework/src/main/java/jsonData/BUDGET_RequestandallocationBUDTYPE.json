@@ -1,0 +1,10 @@
+[
+	{
+		"BudgetPeriod": "YEARLY",
+		"BudgetAmounT": "1000000"
+	},
+	{
+		"BudgetPeriod": "MONTHLY",
+		"BudgetAmounT": "1000000"
+	}
+]
