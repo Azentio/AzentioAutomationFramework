@@ -1,0 +1,20 @@
+[
+	{
+		"User": "Maker"
+	},
+	{
+		"BudgetCode": "AR12345"
+	},
+	{
+		"Branch": "AZENT-MAIN"
+	},
+	{
+		"TransferToBudgetCode": "BCD_HYR_1"
+	},
+	{
+		"ApportionedAmountA": "1000000"
+	},
+	{
+		"ApportionedAmountB": "1000000"
+	}
+]

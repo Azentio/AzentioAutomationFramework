@@ -1,0 +1,10 @@
+[
+	{
+		"UserName": "maker",
+		"BudgetCode": "BGD9501",
+		"BudgetType": "YEARLY",
+		"WarningPecentage": "20",
+		"BudgetName": "Test",
+		"Remark": "Ok"
+	}
+]
