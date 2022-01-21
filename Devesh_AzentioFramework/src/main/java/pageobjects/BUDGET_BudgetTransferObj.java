@@ -258,4 +258,141 @@ public class BUDGET_BudgetTransferObj {
 	public WebElement budget_BudgetTransfer_VerifyStatusField() {
 		return budget_BudgetTransfer_VerifyStatusField;
 	}
+
+	@FindBy(xpath = "//ion-segment/ion-segment-button[2]")
+	private WebElement budget_BudgetTransfer_DirectionIcon;
+
+	public WebElement budget_BudgetTransfer_DirectionIcon() {
+		return budget_BudgetTransfer_DirectionIcon;
+	}
+
+	@FindBy(xpath = "document.querySelector('ion-toast').shadowRoot.querySelector(\"div[class='toast-message']\")")
+	private WebElement budget_BudgetTransfer_Excessive_Amount_Toast;
+
+	public WebElement budget_BudgetTransfer_Excessive_Amount_Toast() {
+		return budget_BudgetTransfer_Excessive_Amount_Toast;
+
+	}
+
+//Pencil
+	@FindBy(xpath = "//app-inbox//datatable-row-wrapper[1]//datatable-body-row//div[2]//datatable-body-cell//div//ion-buttons//ion-button")
+	private WebElement budget_BudgetTransfer_Pencil;
+
+	public WebElement budget_BudgetTransfer_Pencil() {
+		return budget_BudgetTransfer_Pencil;
+
+	}
+
+//Submit
+//		@FindBy(xpath="//span[contains(text(),'Submit')]")
+//		private WebElement budget_BudgetTransfer_Submit;
+//		public WebElement budget_BudgetTransfer_Submit()
+//		{
+//			return budget_BudgetTransfer_Submit;
+//			
+//		}
+//Submit by maker remark
+	@FindBy(xpath = "//ion-button[contains(text(),'Submit')]")
+	private WebElement budget_BudgetTransfer_SubmitByMaker;
+
+	public WebElement budget_BudgetTransfer_SubmitByMaker() {
+		return budget_BudgetTransfer_SubmitByMaker;
+
+	}
+
+//search 
+	@FindBy(xpath = "//ion-button[@ng-reflect-router-link=\"/tabs/list/datagrid/39\"]")
+	private WebElement budget_BudgetTransfer_NoteIcon;
+
+	public WebElement budget_BudgetTransfer_NoteIcon() {
+		return budget_BudgetTransfer_NoteIcon;
+
+	}
+
+	@FindBy(xpath = "//ion-icon[@title='Enable Search']")
+	private WebElement budget_BudgetTransfer_SearchIcon;
+
+	public WebElement budget_BudgetTransfer_SearchIcon() {
+		return budget_BudgetTransfer_SearchIcon;
+
+	}
+
+	@FindBy(xpath = "//ion-input[@id='col0']//input")
+	private WebElement budget_BudgetTransfer_SearchBudgetCode;
+
+	public WebElement budget_BudgetTransfer_SearchBudgetCode() {
+		return budget_BudgetTransfer_SearchBudgetCode;
+
+	}
+
+	@FindBy(xpath = "//ion-input[@id='col1']//input")
+	private WebElement budget_BudgetTransfer_SearchBudgetName;
+
+	public WebElement budget_BudgetTransfer_SearchBudgetName() {
+		return budget_BudgetTransfer_SearchBudgetName;
+
+	}
+
+	@FindBy(xpath = "//ion-input[@id='col2']//input")
+	private WebElement budget_BudgetTransfer_SearchBudgetYear;
+
+	public WebElement budget_BudgetTransfer_SearchBudgetYear() {
+		return budget_BudgetTransfer_SearchBudgetYear;
+
+	}
+
+	@FindBy(xpath = "//ion-input[@id='col3']//input")
+	private WebElement budget_BudgetTransfer_SearchTransferFrom;
+
+	public WebElement budget_BudgetTransfer_SearchTransferFrom() {
+		return budget_BudgetTransfer_SearchTransferFrom;
+
+	}
+
+	@FindBy(xpath = "//ion-input[@id='col4']//input")
+	private WebElement budget_BudgetTransfer_SearchTransferTo;
+
+	public WebElement budget_BudgetTransfer_SearchTransferTo() {
+		return budget_BudgetTransfer_SearchTransferTo;
+
+	}
+
+	@FindBy(xpath = "//ion-input[@id='col5']//input")
+	private WebElement budget_BudgetTransfer_SearchTransferAmount;
+
+	public WebElement budget_BudgetTransfer_SearchTransferAmount() {
+		return budget_BudgetTransfer_SearchTransferAmount;
+
+	}
+
+	@FindBy(xpath = "//ion-input[@id='col6']//input")
+	private WebElement budget_BudgetTransfer_SearchStatus;
+
+	public WebElement budget_BudgetTransfer_SearchStatus() {
+		return budget_BudgetTransfer_SearchStatus;
+
+	}
+
+	@FindBy(xpath = "//datatable-body/datatable-selection[1]/datatable-scroller[1]/datatable-row-wrapper[1]")
+	private WebElement budget_BudgetTransfer_SearchRecord;
+
+	public WebElement budget_BudgetTransfer_SearchRecord() {
+		return budget_BudgetTransfer_SearchRecord;
+
+	}
+
+	@FindBy(xpath = "//span/ion-button[1]")
+	private WebElement maker_Approve_button;
+
+	public WebElement maker_Approve_button() {
+
+		return maker_Approve_button;
+	}
+
+	@FindBy(xpath = "//ion-header/ion-toolbar[1]/ion-buttons[2]/ion-button[2]")
+	private WebElement budget_BudgetTransfer_NotificationIcon;
+
+	public WebElement budget_BudgetTransfer_NotificationIcon() {
+		return budget_BudgetTransfer_NotificationIcon;
+}
 }

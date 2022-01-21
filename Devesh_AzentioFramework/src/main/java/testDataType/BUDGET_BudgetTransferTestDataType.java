@@ -1,6 +1,7 @@
 package testDataType;
 
 public class BUDGET_BudgetTransferTestDataType {
+	public String UserName;
 	public String User;
 	public String BudgetCodeInitial;
 	public String BudgetCode;
@@ -20,4 +21,9 @@ public class BUDGET_BudgetTransferTestDataType {
 	public String RejectedByChecker;
 	public String ReturnedByChecker;
 	public String ReturnedByReviewer;
+	public String ApportionedAmountAExcessive;
+	public String BudgetName;
+	public String InvalidBranch;
+	public String InvalidTransferToBudgetCode;
+	public String CheckerRemark;
 }

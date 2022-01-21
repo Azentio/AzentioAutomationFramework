@@ -1,13 +1,13 @@
 [
 	{
 		"UserName"					: "Maker",
-		"BudgetCodeInitial"			: "AR",
+		"User"						: "Maker",
 		"BudgetCode"				: "AR12345",
 		"BudgetType"				: "YEARLY",
 		"BudgetYear"				: "2022-2023",
-		"Branch"					: "CO1",
+		"Branch"					: "AZENT-MAIN",
 		"Currency"					: "RUP",
-		"TransferToBudgetCode"		: "QC2 BUD1",
+		"TransferToBudgetCode"		: "BDG01",
 		"ApportionedAmountA"		: "100.00",
 		"ApportionedAmountB"		: "100.00",
 		"Comment"					: "ok",
@@ -17,6 +17,13 @@
 		"ApprovedByChecker"			: "Approved by checker",
 		"RejectedByChecker"			: "Rejected by checker",
 		"ReturnedByChecker"			: "Returned by checker",
-		"ReturnedByReviewer"		: "Returned by Reviewer"
+		"ReturnedByReviewer"		: "Returned by Reviewer",
+        "BudgetName"				:"SAM",
+        "ApportionedAmountAExcessive":"1000000001",
+		"Status"					:"Active",
+		"InvalidBranch"				:"CO",
+		"InvalidTransferToBudgetCode":"BDG02",
+		"Remark"					:"ok",
+		"CheckerRemark"             : "Approved by checker"
 	}
 ]

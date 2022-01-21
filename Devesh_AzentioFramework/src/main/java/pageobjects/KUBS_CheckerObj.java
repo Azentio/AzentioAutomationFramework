@@ -113,4 +113,32 @@ public class KUBS_CheckerObj {
 		return checker_alert_submit_button;
 	}
 
+	@FindBy(xpath = "//div[@id='toast-container']//button")
+	private WebElement checkerAlertClose;
+
+	public WebElement checkerAlertClose() {
+		return checkerAlertClose;
+	}
+
+	@FindBy(xpath = "//datatable-pager[1]/ul[1]/li[8]/a[1]/i[1]")
+	private WebElement checker_notification_next_button;
+
+	public WebElement checker_notification_next_button() {
+		return checker_notification_next_button;
+	}
+
+	@FindBy(xpath = "//div[@id='toast-container']/div/div[@role='alertdialog']")
+	private WebElement checker_right_corner_green_toast;
+
+	public WebElement checker_right_corner_green_toast() {
+		return checker_right_corner_green_toast;
+	}
+
+	@FindBy(xpath = "//div[@aria-label='Record REJECTED Successfully']")
+	private WebElement checker_right_corner_reject_toast;
+
+	public WebElement checker_right_corner_reject_toast() {
+		return checker_right_corner_reject_toast;
+	}
+
 }

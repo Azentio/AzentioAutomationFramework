@@ -92,4 +92,11 @@ public class KUBS_ReviewerObj {
 		return reviewer_alert_submit_button;
 	}
 
+	@FindBy(xpath = "//div[contains(text(),'Record REJECTED Successfully')]")
+	private WebElement reviewer_reject_toast;
+
+	public WebElement reviewer_reject_toast() {
+		return reviewer_reject_toast;
+	}
+
 }
