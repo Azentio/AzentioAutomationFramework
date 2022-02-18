@@ -1,0 +1,17 @@
+[
+	{
+		"usertType": "Maker",
+		"warningPecentage": "28",
+		"remark": "Ok",
+		"uatYearlyBudgetCode": "BUDG0150",
+		"uatMonthlyBudgetCode": "BUDG0151",
+		"uatHalfYearlyBudgetCode": "BUDG0152",
+		"uatQuarterlyBudgetCode": "BUDG0153",
+		"uatYearlyBudgetType": "Capital Budgets",
+		"uatMonthlyBudgetType": "Financial Plan",
+		"uatHalfYearlyBudgetType": "Departments",
+		"uatQuarterlyBudgetType": "Revenue Budget",
+		"approvalCommentsFromReviewer": "Approved from Reviewer",
+		"approvalCommentsFromChecker": "Approved from Checker"
+	}
+]

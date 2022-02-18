@@ -1,0 +1,14 @@
+[
+	{
+		"UserType": "Maker",
+		"BudgetCode": "Test0011",
+		"BudgetName": "xxx",
+		"BudgetType": "xxx",
+		"BudgetYear": "2021-2022",
+		"Branch": "CO",
+		"BudgetAmount": "100000",
+		"Currency": "RUP",
+		"Remark": "OK"
+	}
+
+]
