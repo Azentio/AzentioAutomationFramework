@@ -1,0 +1,27 @@
+[
+{
+"User":"Maker",
+"BranchCode":"AZENTMAIN",
+"AssetCode":"MACHINARY-GENERATOR-UPS",
+"BillReferenceNo":"INV-105-22022",
+"Remark":"OK",
+
+
+"AssetItemNumber" : "12312",
+"AssetItemDescription":"UPS-arters-5000KW",
+"AssetValue":"10000",
+"HSNCode":"83034090- Lockers",
+
+"AssetReferenceNumber":"01-001-adjustable table_AZENTMAIN_4432",
+"ItemNumber":"33333",
+"EmployeeID":"anant",
+
+
+	"GlYear":"2022",
+	"GlDay":"1",
+	"GlToMonth":"Oct",
+	"GlFullToMonth":"October",
+	"GlToDate":"20"
+
+}
+]
