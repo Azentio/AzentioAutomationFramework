@@ -61,7 +61,7 @@ import utilities.ExtentTestManager;
 
 public class Budget_BudgetSupplementary_BP_SB extends BaseClass {
 	WebDriver driver = BaseClass.driver;
-	KUBS_Login login;
+	AzentioLogin login;
 	ConfigFileReader config = new ConfigFileReader();
 	KUBS_ReviewerObj reviewer;
 	KUBS_CheckerObj checker;
@@ -90,7 +90,7 @@ public class Budget_BudgetSupplementary_BP_SB extends BaseClass {
 	// --------------------------------------COMMON------------------------//
 	@Given("^Navigate to kubs url and login as maker user$")
 	public void navigate_to_kubs_url_and_login_as_maker_user() throws InterruptedException {
-		login = new KUBS_Login(driver);
+		login = new AzentioLogin(driver);
 		driver.get(config.getApplicationUrl());
 		login.loginToAzentioApp("Maker");
 	}
@@ -221,7 +221,7 @@ public class Budget_BudgetSupplementary_BP_SB extends BaseClass {
 
 	@Then("^Navigate  to URL and login to Checker1$")
 	public void navigate_to_url_and_login_to_checker1() throws Throwable {
-		login = new KUBS_Login(driver);
+		login = new AzentioLogin(driver);
 		driver.get(config.getApplicationUrl());
 		login.loginToAzentioAppAsChecker("Checker");
 	}

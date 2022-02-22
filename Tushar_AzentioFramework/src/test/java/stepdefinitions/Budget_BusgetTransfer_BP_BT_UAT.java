@@ -5,6 +5,8 @@ import org.openqa.selenium.WebDriver;
 
 import dataProvider.ConfigFileReader;
 import dataProvider.JsonConfig;
+import helper.BrowserHelper;
+import helper.ClicksAndActionsHelper;
 import helper.DropDownHelper;
 import helper.JavascriptHelper;
 import helper.WaitHelper;
@@ -12,10 +14,13 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import pageobjects.BUDGET_BudgetTransferObj;
+import pageobjects.KUBS_ReviewerObj;
 import resources.BaseClass;
+import resources.JsonDataReaderWriter;
+import testDataType.BUDGET_BudgetCreationTestDataType;
 import testDataType.BUDGET_BudgetTransferTestDataType;
 
-public class Budget_BusgetTransfer_BP_BT_UAT_006_001 {
+public class Budget_BusgetTransfer_BP_BT_UAT {
 	WebDriver driver = BaseClass.driver;
 	JsonConfig jsonReader = new JsonConfig();
 	ConfigFileReader configFileReader = new ConfigFileReader();
@@ -24,12 +29,27 @@ public class Budget_BusgetTransfer_BP_BT_UAT_006_001 {
 	JavascriptHelper javahelper = new JavascriptHelper();
 	BUDGET_BudgetTransferObj budgetTransferObj;
 	BUDGET_BudgetTransferTestDataType budgetTransferTestDataType;
-	KUBS_Login login;
+	AzentioLogin login; 
+	 
+	ConfigFileReader config=new ConfigFileReader();
+	KUBS_ReviewerObj reviewer;
+	 
+	BrowserHelper browserHelper;	 
+	BUDGET_BudgetCreationTestDataType budgetdata;
+	JsonConfig jsonconfig=new JsonConfig();
+	//--------------------------------------common-------------------------------------------
+	 
+	JsonDataReaderWriter reader = new JsonDataReaderWriter();
+	JsonDataReaderWriter jsonWriter = new JsonDataReaderWriter();
+	JavascriptHelper javascripthelper = new JavascriptHelper();
+	String user = "Maker";
+	String referance_id;
+	ClicksAndActionsHelper clicksAndActionHelper = new ClicksAndActionsHelper(driver);
 
-
+//-----------Budget_BusgetTransfer_BP_BT_UAT_006_001--------
     @When("^User login to maker$")
     public void user_login_to_maker() throws InterruptedException  {
-    	login = new KUBS_Login(driver);
+    	login = new AzentioLogin(driver);
 		driver.get(configFileReader.getApplicationUrl());
 		login.loginToAzentioApp("Maker");
     }
@@ -134,7 +154,11 @@ public class Budget_BusgetTransfer_BP_BT_UAT_006_001 {
         
     }
 
+ 
+    
+   
 
+   
     
 
     

@@ -46,7 +46,7 @@ import resources.JsonDataReaderWriter;
 import testDataType.BUDGET_BudgetCreationTestDataType;
 import utilities.ExtentTestManager;
 
-public class Budget_BudgetTransfer_BP_BT extends BaseClass {
+/*public class Budget_BudgetTransfer_BP_BT extends BaseClass {
 		WebDriver driver=BaseClass.driver;
 		 
 		ConfigFileReader config=new ConfigFileReader();
@@ -64,7 +64,7 @@ public class Budget_BudgetTransfer_BP_BT extends BaseClass {
 		JavascriptHelper javahelper = new JavascriptHelper();
 		BUDGET_BudgetTransferObj budgetTransferObj;
 		BUDGET_BudgetTransferTestDataType budgetTransferTestDataType;
-		KUBS_Login login;
+		AzentioLogin login;
 		JsonDataReaderWriter reader = new JsonDataReaderWriter();
 		JsonDataReaderWriter jsonWriter = new JsonDataReaderWriter();
 		JavascriptHelper javascripthelper = new JavascriptHelper();
@@ -75,7 +75,7 @@ public class Budget_BudgetTransfer_BP_BT extends BaseClass {
 		  //---------------------------------Create record maker------------------------------------//
 		 @Given("^Maker login$")
 		    public void maker_login() throws InterruptedException  {
-			 login = new KUBS_Login(driver);
+			 login = new AzentioLogin(driver);
 				driver.get(configFileReader.getApplicationUrl());
 				login.loginToAzentioApp("Maker");
 		    }
@@ -260,7 +260,7 @@ public class Budget_BudgetTransfer_BP_BT extends BaseClass {
 		    @Then("^Navigate to Url and login as a reviewer$")
 		    public void navigate_to_url_and_login_as_a_reviewer() throws Throwable, Throwable {
 		    	reader=new JsonDataReaderWriter();
-				login = new KUBS_Login(driver);
+				login = new AzentioLogin(driver);
 				driver.get(config.getApplicationUrl());
 				 login.logintoAzentioappReviewer("Reviewer", reader.readdata());
 				 ExtentTestManager.getTest().info("User Navigated to required url & login as checker1");
@@ -332,7 +332,7 @@ public class Budget_BudgetTransfer_BP_BT extends BaseClass {
     @Then("^Navigate to Url and login as a reviewer1$")
     public void navigate_to_url_and_login_as_a_reviewer1() throws IOException, Throwable  {
     	reader=new JsonDataReaderWriter();
-		login = new KUBS_Login(driver);
+		login = new AzentioLogin(driver);
 		driver.get(config.getApplicationUrl());
 		 login.logintoAzentioappReviewer("Reviewer", reader.readdata());
 		 ExtentTestManager.getTest().info("User Navigated to required url & login as reviewer1");
@@ -414,7 +414,7 @@ public class Budget_BudgetTransfer_BP_BT extends BaseClass {
 	  @Then("^user login to checker1$")
 	    public void user_login_to_checker1() throws Throwable, Throwable {
 		  reader=new JsonDataReaderWriter();
-			login = new KUBS_Login(driver);
+			login = new AzentioLogin(driver);
 			driver.get(config.getApplicationUrl());
 			 login.logintoAzentioappReviewer("Reviewer", reader.readdata());
 			 ExtentTestManager.getTest().info("User Navigated to required url & login as checker1");
@@ -476,7 +476,7 @@ public class Budget_BudgetTransfer_BP_BT extends BaseClass {
 	    }
 	    @Then("^User should login to checker2$")
 	    public void user_should_login_to_checker2() throws InterruptedException  {
-	    	login = new KUBS_Login(driver);
+	    	login = new AzentioLogin(driver);
 			driver.get(config.getApplicationUrl());
 			login.loginToAzentioAppAsChecker("Checker");
 	    	ExtentTestManager.getTest().info("User Navigated to required url & login as reviewer1");
@@ -761,7 +761,11 @@ public class Budget_BudgetTransfer_BP_BT extends BaseClass {
 				}
 				Assert.assertTrue(res);
 	}
-
-	  	    
+		  //-----------Budget_BusgetTransfer_BP_BT_UAT_006_001--------
+		    
+		    
+		    
+		    //----------------------------------BudgetTransfer_UAT_006_007----------------------------//
+		   
     
-}
+}*/

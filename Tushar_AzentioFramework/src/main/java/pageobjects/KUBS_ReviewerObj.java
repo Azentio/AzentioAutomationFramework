@@ -78,7 +78,7 @@ public class KUBS_ReviewerObj {
 		return reviewer_budget_status;
 	}
 
-	@FindBy(xpath = "//textarea[@name='remarks']")
+	@FindBy(xpath = "//ion-row[1]/ion-col/ion-item/ion-textarea/div/textarea")
 	private WebElement reviewer_alert_remarks;
 
 	public WebElement reviewerAlertRemarks() {

@@ -13,9 +13,9 @@ import pageobjects.KUBS_CheckerObj;
 import resources.BaseClass;
 import resources.JsonDataReaderWriter;
 
-public class KUBS_checker extends BaseClass {
+public class Azentiochecker extends BaseClass {
 	WebDriver driver = BaseClass.driver;
-	KUBS_Login login;
+	AzentioLogin login;
 	ConfigFileReader config = new ConfigFileReader();
 	KUBS_CheckerObj kubschecker;
 	WaitHelper waithelper;
@@ -24,7 +24,7 @@ public class KUBS_checker extends BaseClass {
 
 	@Given("^Navigate to Url and login as a Checker..$")
 	public void navigate_to_url_and_login_as_a_checker() throws Throwable {
-		login = new KUBS_Login(driver);
+		login = new AzentioLogin(driver);
 		driver.get(config.getApplicationUrl());
 		login.loginToAzentioAppAsChecker("Checker");
 

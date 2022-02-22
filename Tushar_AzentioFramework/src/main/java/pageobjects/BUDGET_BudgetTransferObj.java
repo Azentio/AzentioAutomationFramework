@@ -193,7 +193,7 @@ public class BUDGET_BudgetTransferObj {
 			
 		}
 		//Remark
-		@FindBy(xpath="//ion-textarea/div/textarea[@name='remarks']")
+		@FindBy(xpath="//ion-content[1]/ion-infinite-scroll[1]/ion-row[1]/ion-col[1]/ion-item[1]/ion-textarea[1]/div[1]/textarea[1]")
 		private WebElement budget_BudgetTransfer_RemarkField;
 		public WebElement budget_BudgetTransfer_RemarkField()
 		{

@@ -7,11 +7,12 @@ import org.testng.Assert;
 import dataProvider.JsonConfig;
 import helper.DropDownHelper;
 import helper.WaitHelper;
+import pageobjects.BUDGET_BudgetTransferObj;
 import pageobjects.KUBS_LoginObj;
 import pageobjects.KUBS_MakerObj;
 import testDataType.KUBS_LoginTestDataType;
 
-public class KUBS_Login {
+public class AzentioLogin {
 
 	WebDriver driver;
 	WaitHelper waithelper;
@@ -21,7 +22,7 @@ public class KUBS_Login {
 	JsonConfig reader = new JsonConfig();
 	KUBS_LoginObj login;
 
-	public KUBS_Login(WebDriver driver) {
+	public AzentioLogin(WebDriver driver) {
 		this.driver = driver;
 	}
 
@@ -40,11 +41,13 @@ public class KUBS_Login {
 		login.Login_signIn().click();
 		waithelper.waitForElement(driver, 2000, login.Login_loginStatus());
 		Assert.assertTrue(login.Login_loginStatus().isDisplayed());
-	    waithelper.waitForElement(driver, 2000, makerobj.kubsFinaceOption());
+		waithelper = new WaitHelper(driver);
+		BUDGET_BudgetTransferObj budgetTransferObj = new BUDGET_BudgetTransferObj(driver);
+		waithelper.waitForElement(driver, 2000, makerobj.kubsFinaceOption());
 	    makerobj.kubsFinaceOption().click();
 	    waithelper.waitForElement(driver, 2000, makerobj.FinanceOption());
 	    makerobj.FinanceOption().click();
-		
+		Thread.sleep(1000);
 	}
 	public void  logintoAzentioappReviewer(String user,String id)
 	{
@@ -97,7 +100,7 @@ public class KUBS_Login {
 			waithelper.waitForElement(driver, 2000, login.Login_loginStatus());
 			Assert.assertTrue(login.Login_loginStatus().isDisplayed());
 		}
-		else if(id.equals("in001")) {
+		else if(id.equals("1002436")) {
 			waithelper=new WaitHelper(driver);
 			dropdownhelper=new DropDownHelper(driver);
 			makerobj=new KUBS_MakerObj(driver);
@@ -109,6 +112,22 @@ public class KUBS_Login {
 			login.Login_passWord().sendKeys(logindata.PassWord3);
 			String otp = login.Login_getOtp().getText();
 			driver.findElement(By.xpath("//ng-otp-input/div/input[1]")).sendKeys(otp.substring(7));
+			login.Login_signIn().click();
+			waithelper.waitForElement(driver, 2000, login.Login_loginStatus());
+			Assert.assertTrue(login.Login_loginStatus().isDisplayed());
+		}
+		else if(id.equals("in00027")) {
+			waithelper=new WaitHelper(driver);
+			dropdownhelper=new DropDownHelper(driver);
+			makerobj=new KUBS_MakerObj(driver);
+			
+			login = new KUBS_LoginObj(driver);
+			login.Login_userName().sendKeys(logindata.UserName4);
+			login.Login_goButton().click();
+			waithelper.waitForElement(driver, 2000, login.Login_passWord());
+			login.Login_passWord().sendKeys(logindata.PassWord4);
+			//String otp = login.Login_getOtp().getText();
+			//driver.findElement(By.xpath("//ng-otp-input/div/input[1]")).sendKeys(otp.substring(7));
 			login.Login_signIn().click();
 			waithelper.waitForElement(driver, 2000, login.Login_loginStatus());
 			Assert.assertTrue(login.Login_loginStatus().isDisplayed());

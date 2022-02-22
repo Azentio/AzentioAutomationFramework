@@ -11,11 +11,14 @@ import java.util.List;
 import com.google.gson.Gson;
 import com.google.gson.stream.JsonReader;
 
+import testDataType.ArApTestDataType;
 import testDataType.BUDGET_BudgetCreationTestDataType;
 import testDataType.BUDGET_BudgetTransferTestDataType;
 import testDataType.BUDGET_RequestAndAllocationTestDataType;
 import testDataType.BUDGET_RequestandallocationBUDTYPEDATA;
 import testDataType.BUDGET_SupplementarybudgetTestDataType;
+import testDataType.FixedAssetTestDataType;
+import testDataType.InventoryManagementTestDataType;
 import testDataType.KUBS_LoginTestDataType;
 import testDataType.Logindata;
 import testDataType.RegisterData;
@@ -58,9 +61,15 @@ private final String BudtypeFilepath = configFileReader.getJsonPath() + "BUDGET_
 	//Budget_BudgetTransfer
 	private final String BudgetTransferFilePath = configFileReader.getJsonPath() + "BUDGET_BudgetTransferJSON.json";
 	private List<BUDGET_BudgetTransferTestDataType> BudgetTransferList;
-
-
-
+	//InventoryManagement
+		private final String InventoryManagementFilePath = configFileReader.getJsonPath() + "InventoryManagementJSON.json";
+		private List<InventoryManagementTestDataType>InventoryManagementList;
+//Fixed asset
+		private final String FixedAssetFilePath = configFileReader.getJsonPath() + "FixedAssetJSON.json";
+		private List<FixedAssetTestDataType>FixedAssetList;
+		//AR AP
+				private final String ArApFilePath = configFileReader.getJsonPath() + "ArapJSON.json";
+				private List<ArApTestDataType>ArApList;
 
 	public JsonConfig() {
 		/*RegisterList = getRegisterData();
@@ -75,52 +84,56 @@ private final String BudtypeFilepath = configFileReader.getJsonPath() + "BUDGET_
 		SupplementaryBudgetList = getSupplementaryBudgetList();
 		
 		BudgetTransferList=getBudgetTransferData();
-
-
+		InventoryManagementList =getInventoryManagementList();
+		FixedAssetList= getFixedAssetList();
+		ArApList= getArApList();
 	}
 	
 
-	/*private List<RegisterData> getRegisterData() {
-		 Gson gson = new Gson();
-		 JsonReader reader = new JsonReader(new StringReader(RegisterFilePath));
-		 reader.setLenient(true);
+	
 
 
+	private List<ArApTestDataType> getArApList() {
+		Gson gson = new Gson();
 		BufferedReader bufferReader = null;
 		try {
-			bufferReader = new BufferedReader(new FileReader(RegisterFilePath));
-			RegisterData[] registers = gson.fromJson(bufferReader, RegisterData[].class);
-			return Arrays.asList(registers);
-		} catch (FileNotFoundException e) {
-			throw new RuntimeException("Json file not found at path : " + RegisterFilePath);
-		} finally {
-			try {
-				if (bufferReader != null)
-					bufferReader.close();
-			} catch (IOException ignore) {
-			}
+			bufferReader = new BufferedReader(new FileReader(ArApFilePath));
+			ArApTestDataType[] ArAp = gson.fromJson(bufferReader, ArApTestDataType[].class);
+			return Arrays.asList(ArAp);
+		}catch(FileNotFoundException e) {
+			throw new RuntimeException("Json file not found at path : " + ArApFilePath);
+		}finally {
+			try { if(bufferReader != null) bufferReader.close();}
+			catch (IOException ignore) {}
 		}
 	}
 
-	private List<Logindata> getLoginList() {
-		 Gson gson = new Gson();
-		 JsonReader reader = new JsonReader(new StringReader(LoginFilePath));
-		 reader.setLenient(true);
-		BufferedReader bufferReader = null;
+
+ 
+
+private List<FixedAssetTestDataType> getFixedAssetList() {
+	 Gson gson = new Gson();
+	 JsonReader reader = new JsonReader(new StringReader(FixedAssetFilePath));
+	 reader.setLenient(true);
+	BufferedReader bufferReader = null;
+	try {
+		bufferReader = new BufferedReader(new FileReader(FixedAssetFilePath));
+		FixedAssetTestDataType[] FixedAsset = gson.fromJson(bufferReader, FixedAssetTestDataType[].class);
+		return Arrays.asList(FixedAsset);
+	} catch (FileNotFoundException e) {
+		throw new RuntimeException("Json file not found at path : " + FixedAssetFilePath);
+	} finally {
 		try {
-			bufferReader = new BufferedReader(new FileReader(LoginFilePath));
-			Logindata[] login = gson.fromJson(bufferReader, Logindata[].class);
-			return Arrays.asList(login);
-		} catch (FileNotFoundException e) {
-			throw new RuntimeException("Json file not found at path : " + RegisterFilePath);
-		} finally {
-			try {
-				if (bufferReader != null)
-					bufferReader.close();
-			} catch (IOException ignore) {
-			}
+			if (bufferReader != null)
+				bufferReader.close();
+		} catch (IOException ignore) {
 		}
-	}*/
+	}
+	}
+
+
+
+
 
 private List<BUDGET_RequestAndAllocationTestDataType> getAllocationList() {
 		 Gson gson = new Gson();
@@ -240,8 +253,21 @@ private List<BUDGET_RequestAndAllocationTestDataType> getAllocationList() {
 					catch (IOException ignore) {}
 				}
 			}
-
-
+//InventoryManagement
+			private List<InventoryManagementTestDataType> getInventoryManagementList() {
+				Gson gson = new Gson();
+				BufferedReader bufferReader = null;
+				try {
+					bufferReader = new BufferedReader(new FileReader(InventoryManagementFilePath));
+					InventoryManagementTestDataType[] InventoryManagement = gson.fromJson(bufferReader, InventoryManagementTestDataType[].class);
+					return Arrays.asList(InventoryManagement);
+				}catch(FileNotFoundException e) {
+					throw new RuntimeException("Json file not found at path : " + InventoryManagementFilePath);
+				}finally {
+					try { if(bufferReader != null) bufferReader.close();}
+					catch (IOException ignore) {}
+				}
+			}
 
 	/*public final RegisterData getRegisterByName(String customerName) {
 		return RegisterList.stream().filter(x -> x.FirstName.equalsIgnoreCase(customerName)).findAny().get();
@@ -278,7 +304,14 @@ private List<BUDGET_RequestAndAllocationTestDataType> getAllocationList() {
 	public final BUDGET_BudgetTransferTestDataType getBudgetTransferdata(String UserName){
 		 return BudgetTransferList.stream().filter(x->x.User.equalsIgnoreCase(UserName)).findAny().get();
 }
-
-
+	public final InventoryManagementTestDataType getInventoryManagementByName(String UserName){
+		 return InventoryManagementList.stream().filter(x->x.User.equalsIgnoreCase(UserName)).findAny().get();
+}
+	public final FixedAssetTestDataType getFixedAssetByName(String UserName){
+		 return FixedAssetList.stream().filter(x->x.User.equalsIgnoreCase(UserName)).findAny().get();
+}
+	public final ArApTestDataType getArApByName(String UserName){
+		 return ArApList.stream().filter(x->x.User.equalsIgnoreCase(UserName)).findAny().get();
+}
 
 }

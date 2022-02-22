@@ -26,7 +26,7 @@ public class BUDGET_BudgetCreation {
 		WebDriver driver = BaseClass.driver;
 		JsonConfig json = new JsonConfig();
 		ConfigFileReader config = new ConfigFileReader();
-		KUBS_Login login = new KUBS_Login(driver);
+		AzentioLogin login = new AzentioLogin(driver);
 		DropDownHelper dropDownHelper;
 		BUDGET_BudgetCreationObj budgetCreationObj;
 		KUBS_MakerObj kubsMakerObj;
@@ -40,7 +40,7 @@ public class BUDGET_BudgetCreation {
 		// VerificationHelper vhelper;
 		@Given("^navigate to the url and user should login as a maker$")
 		public void navigate_to_the_url_and_user_should_login_as_a_maker() throws InterruptedException {
-			login = new KUBS_Login(driver);
+			login = new AzentioLogin(driver);
 			driver.get(config.getApplicationUrl());
 			 login.loginToAzentioApp("Maker");
 		}

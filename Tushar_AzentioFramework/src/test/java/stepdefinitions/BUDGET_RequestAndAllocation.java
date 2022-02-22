@@ -21,7 +21,7 @@ import testDataType.BUDGET_RequestAndAllocationTestDataType;
 import testDataType.BUDGET_RequestandallocationBUDTYPEDATA;
 import pageobjects.BUDGET_RequestAndAllocationObj;
 
-public class BUDGET_RequestAndAllocation extends BaseClass {
+/*public class BUDGET_RequestAndAllocation extends BaseClass {
 
 	WebDriver driver = BaseClass.driver;
 	JsonConfig jsonReader = new JsonConfig();
@@ -30,13 +30,13 @@ public class BUDGET_RequestAndAllocation extends BaseClass {
 	BUDGET_RequestAndAllocationTestDataType RequestAndAllocationTestData;
 	BUDGET_RequestandallocationBUDTYPEDATA requestandallocationbudtype;
 	ConfigFileReader configFileReader = new ConfigFileReader();
-	KUBS_Login login;
+	AzentioLogin login;
 	WaitHelper waithelper;
 	JavascriptHelper javahelper = new JavascriptHelper();
 
 	@Given("^Open Azentio login$")
 	public void Open_Azentio_login() throws InterruptedException {
-		login = new KUBS_Login(driver);
+		login = new AzentioLogin(driver);
 		driver.get(configFileReader.getApplicationUrl());
 		login.loginToAzentioApp("Maker");
 
@@ -185,4 +185,4 @@ public class BUDGET_RequestAndAllocation extends BaseClass {
 		requestAndAllocation.budget_requestAndAllocation_BudgetSubmit().click();
 	}
 
-}
+}*/

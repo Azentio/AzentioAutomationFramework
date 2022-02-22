@@ -66,7 +66,7 @@ public class KUBS_CheckerObj {
 		return checker_reject_button;
 	}
 
-	@FindBy(xpath = "//span/ion-button[1]")
+	@FindBy(xpath = "//span[contains(text(),'Approve')]")
 	private WebElement checker_approve_button;
 
 	public WebElement checkerApproveButton() {
