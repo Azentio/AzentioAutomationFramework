@@ -1,0 +1,14 @@
+[
+	{
+		"User" : "Maker",
+		"AssetReferenceNumber" : "FIXTURESANDFITTINGS1-TABLESANDCHAIRS01-stairs_AZENTMAIN_18",
+		"ItemNumber" : "Stair",
+		"SaleValue" : "3000000.00",
+		"SaleValueInLoss" : "30000.00",
+		"Currency" : "INR",
+		"ActionableBy" : "anant",
+		"Remark" : "ok",
+		"RemarkByMaker" : "submit by maker",
+		"CheckerRemark" : "approved by checker"
+	}
+]

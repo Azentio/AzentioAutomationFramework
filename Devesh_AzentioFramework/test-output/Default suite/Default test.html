@@ -55,11 +55,11 @@ function toggleAllBoxes() {
 <body>
 <h2 align='center'>Default test</h2><table border='1' align="center">
 <tr>
-<td>Tests passed/Failed/Skipped:</td><td>1/1/0</td>
+<td>Tests passed/Failed/Skipped:</td><td>0/1/0</td>
 </tr><tr>
-<td>Started on:</td><td>Mon Dec 20 23:44:50 IST 2021</td>
+<td>Started on:</td><td>Tue Feb 22 02:26:55 PST 2022</td>
 </tr>
-<tr><td>Total time:</td><td>86 seconds (86448 ms)</td>
+<tr><td>Total time:</td><td>261 seconds (261422 ms)</td>
 </tr><tr>
 <td>Included groups:</td><td></td>
 </tr><tr>
@@ -75,18 +75,17 @@ function toggleAllBoxes() {
 <td><b>Instance</b></td>
 </tr>
 <tr>
-<td title='Runner.TestApplication.runScenario()'><b>runScenario</b><br>Test class: Runner.TestApplication<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Login with valid credentials", "Optional[Application Login]"</td>
-<td><div><pre>org.openqa.selenium.WebDriverException: unknown error: cannot determine loading status
-from disconnected: received Inspector.detached event
-  (Session info: chrome=96.0.4664.110)
+<td title='Runner.TestApplication.runScenario()'><b>runScenario</b><br>Test class: Runner.TestApplication<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Create Bill against PO & GRN for above vendor", "Optional[AR/AP Module]"</td>
+<td><div><pre>org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {&quot;method&quot;:&quot;xpath&quot;,&quot;selector&quot;:&quot;//owl-date-time-calendar/div/button[2]&quot;}
+  (Session info: chrome=96.0.4664.45)
+For documentation on this error, please visit: https://selenium.dev/exceptions/#no_such_element
 Build info: version: &apos;4.0.0-rc-1&apos;, revision: &apos;bc5511cbda&apos;
-System info: host: &apos;Z51&apos;, ip: &apos;192.168.42.19&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;16.0.2&apos;
+System info: host: &apos;PG00X8KU&apos;, ip: &apos;10.1.47.121&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;17.0.1&apos;
 Driver info: org.openqa.selenium.chrome.ChromeDriver
-Command: [c1db5440ce98b54162336685ed4bc1da, get {url=http://10.1.56.122:8680/kubs/}]
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 96.0.4664.110, chrome: {chromedriverVersion: 96.0.4664.45 (76e4c1bb2ab46..., userDataDir: C:\Users\DHARSH~1.431\AppDa...}, goog:chromeOptions: {debuggerAddress: localhost:49432}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), se:cdp: ws://localhost:49432/devtoo..., se:cdpVersion: 96.0.4664.110, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
-Session ID: c1db5440ce98b54162336685ed4bc1da
-	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
-	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:78)
+Command: [a0c281f139802a3a470189bccde26d82, findElement {using=xpath, value=//owl-date-time-calendar/div/button[2]}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 96.0.4664.45, chrome: {chromedriverVersion: 96.0.4664.45 (76e4c1bb2ab46..., userDataDir: C:\Users\ININDC~1\AppData\L...}, goog:chromeOptions: {debuggerAddress: localhost:57184}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), se:cdp: ws://localhost:57184/devtoo..., se:cdpVersion: 96.0.4664.45, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
+Session ID: a0c281f139802a3a470189bccde26d82
+	at jdk.internal.reflect.GeneratedConstructorAccessor22.newInstance(Unknown Source)
 	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
 	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499)
 	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:480)
@@ -97,21 +96,26 @@ Session ID: c1db5440ce98b54162336685ed4bc1da
 	at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:164)
 	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:139)
 	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:547)
-	at org.openqa.selenium.remote.RemoteWebDriver.get(RemoteWebDriver.java:326)
-	at stepdefinitions.login.navigate_to_login_page(login.java:40)
-	at ✽.Navigate to Login page(file:///C:/Users/dharshini.4312/git/Repo/AzentioAutomationFramework/AzentioAutomationFramework/src/test/java/features/LoginIntoApplication.feature:3)
-</pre></div><a href='#' onClick='toggleBox("stack-trace353761154", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
-<div class='stack-trace' id='stack-trace353761154'><pre>org.openqa.selenium.WebDriverException: unknown error: cannot determine loading status
-from disconnected: received Inspector.detached event
-  (Session info: chrome=96.0.4664.110)
+	at org.openqa.selenium.remote.ElementLocation$ElementFinder$2.findElement(ElementLocation.java:162)
+	at org.openqa.selenium.remote.ElementLocation.findElement(ElementLocation.java:60)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:381)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:373)
+	at org.openqa.selenium.support.pagefactory.DefaultElementLocator.findElement(DefaultElementLocator.java:70)
+	at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:39)
+	at jdk.proxy2/jdk.proxy2.$Proxy46.click(Unknown Source)
+	at stepdefinitions.ACCOUNTSPAYABLE_InvoiceBooking.fill_the_required_fields_for_invoice_booking(ACCOUNTSPAYABLE_InvoiceBooking.java:307)
+	at ?.Fill the required fields for invoice booking(file:///C:/Users/inindc00091/git/repository/Devesh_AzentioFramework/src/test/java/features/ArAp_InvoiceBooking.feature:10)
+</pre></div><a href='#' onClick='toggleBox("stack-trace1898827952", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1898827952'><pre>org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {&quot;method&quot;:&quot;xpath&quot;,&quot;selector&quot;:&quot;//owl-date-time-calendar/div/button[2]&quot;}
+  (Session info: chrome=96.0.4664.45)
+For documentation on this error, please visit: https://selenium.dev/exceptions/#no_such_element
 Build info: version: &apos;4.0.0-rc-1&apos;, revision: &apos;bc5511cbda&apos;
-System info: host: &apos;Z51&apos;, ip: &apos;192.168.42.19&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;16.0.2&apos;
+System info: host: &apos;PG00X8KU&apos;, ip: &apos;10.1.47.121&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;17.0.1&apos;
 Driver info: org.openqa.selenium.chrome.ChromeDriver
-Command: [c1db5440ce98b54162336685ed4bc1da, get {url=http://10.1.56.122:8680/kubs/}]
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 96.0.4664.110, chrome: {chromedriverVersion: 96.0.4664.45 (76e4c1bb2ab46..., userDataDir: C:\Users\DHARSH~1.431\AppDa...}, goog:chromeOptions: {debuggerAddress: localhost:49432}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), se:cdp: ws://localhost:49432/devtoo..., se:cdpVersion: 96.0.4664.110, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
-Session ID: c1db5440ce98b54162336685ed4bc1da
-	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
-	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:78)
+Command: [a0c281f139802a3a470189bccde26d82, findElement {using=xpath, value=//owl-date-time-calendar/div/button[2]}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 96.0.4664.45, chrome: {chromedriverVersion: 96.0.4664.45 (76e4c1bb2ab46..., userDataDir: C:\Users\ININDC~1\AppData\L...}, goog:chromeOptions: {debuggerAddress: localhost:57184}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), se:cdp: ws://localhost:57184/devtoo..., se:cdpVersion: 96.0.4664.45, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
+Session ID: a0c281f139802a3a470189bccde26d82
+	at jdk.internal.reflect.GeneratedConstructorAccessor22.newInstance(Unknown Source)
 	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
 	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499)
 	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:480)
@@ -122,25 +126,18 @@ Session ID: c1db5440ce98b54162336685ed4bc1da
 	at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:164)
 	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:139)
 	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:547)
-	at org.openqa.selenium.remote.RemoteWebDriver.get(RemoteWebDriver.java:326)
-	at stepdefinitions.login.navigate_to_login_page(login.java:40)
-	at ✽.Navigate to Login page(file:///C:/Users/dharshini.4312/git/Repo/AzentioAutomationFramework/AzentioAutomationFramework/src/test/java/features/LoginIntoApplication.feature:3)
+	at org.openqa.selenium.remote.ElementLocation$ElementFinder$2.findElement(ElementLocation.java:162)
+	at org.openqa.selenium.remote.ElementLocation.findElement(ElementLocation.java:60)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:381)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:373)
+	at org.openqa.selenium.support.pagefactory.DefaultElementLocator.findElement(DefaultElementLocator.java:70)
+	at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:39)
+	at jdk.proxy2/jdk.proxy2.$Proxy46.click(Unknown Source)
+	at stepdefinitions.ACCOUNTSPAYABLE_InvoiceBooking.fill_the_required_fields_for_invoice_booking(ACCOUNTSPAYABLE_InvoiceBooking.java:307)
+	at ?.Fill the required fields for invoice booking(file:///C:/Users/inindc00091/git/repository/Devesh_AzentioFramework/src/test/java/features/ArAp_InvoiceBooking.feature:10)
 </pre></div></td>
-<td>61</td>
-<td>Runner.TestApplication@6bbe85a8</td></tr>
-</table><p>
-<table width='100%' border='1' class='invocation-passed'>
-<tr><td colspan='4' align='center'><b>PASSED TESTS</b></td></tr>
-<tr><td><b>Test method</b></td>
-<td width="30%"><b>Exception</b></td>
-<td width="10%"><b>Time (seconds)</b></td>
-<td><b>Instance</b></td>
-</tr>
-<tr>
-<td title='Runner.TestApplication.runScenario()'><b>runScenario</b><br>Test class: Runner.TestApplication<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Register an account with valid details", "Optional[Registratio Tests]"</td>
-<td></td>
-<td>16</td>
-<td>Runner.TestApplication@6bbe85a8</td></tr>
+<td>227</td>
+<td>Runner.TestApplication@5032714f</td></tr>
 </table><p>
 </body>
 </html>

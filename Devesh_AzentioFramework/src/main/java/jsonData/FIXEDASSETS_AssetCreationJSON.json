@@ -1,0 +1,25 @@
+[	
+	{
+		"User" : "Maker",
+		"BranchCode" : "AZENTMAIN",
+		"AssetCode" : "stair",
+		"GRN_ReferenceNumber" : "GRN-null-85-1722022",
+		"BillReferenceNumber" : "INV-34-122021",
+		"ExternalReferenceNumber" : "3",
+		"AssetLifeUnit" : "Year",
+		"AssetItemNumber" : "Stair-01",
+		"AssetItemDescription" : "Stair-01",
+		"AssetValue" : "2000000",
+		"SalvagePercentage" : "5",
+		"AssetLife" : "1",
+		"SalvageValue" : "1000",
+		"PO_Creation" : "3-null-PO-2",
+		"CheckerRemark" : "Approved",
+		"CapitalizationMonth" : "Oct",
+		"CapitalizationFullMonth" : "October",
+		"CapitalizationDate" : "21",
+		"CapitalizationYear" : "2022",
+		"RemarkByMaker" : "Submit By Maker"
+		
+	}
+]
