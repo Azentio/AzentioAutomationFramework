@@ -30,13 +30,13 @@ WebDriver driver = BaseClass.driver;
 	BUDGET_RequestAndAllocationTestDataType RequestAndAllocationTestData;
 	BUDGET_RequestandallocationBUDTYPEDATA requestandallocationbudtype;
 	ConfigFileReader configFileReader = new ConfigFileReader();
-	KUBS_Login login;
+	AzentioLogin login;
 	WaitHelper waithelper;
 	JavascriptHelper javahelper = new JavascriptHelper();
 
 	@Given("^Open Azentio login$")
 	public void Open_Azentio_login() throws InterruptedException {
-		login = new KUBS_Login(driver);
+		login = new AzentioLogin(driver);
 		driver.get(configFileReader.getApplicationUrl());
 		login.loginToAzentioApp("Maker");
 

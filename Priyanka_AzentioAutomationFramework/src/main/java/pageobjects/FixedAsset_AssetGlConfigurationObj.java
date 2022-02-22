@@ -1,0 +1,89 @@
+package pageobjects;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+
+public class FixedAsset_AssetGlConfigurationObj {
+	
+	WebDriver driver;
+
+	public FixedAsset_AssetGlConfigurationObj(WebDriver driver) {
+		this.driver = driver;
+		PageFactory.initElements(driver, this);
+
+	}
+	
+	//EyeIcon
+	@FindBy(xpath = "//ion-button[@ng-reflect-router-link='/tabs/list/datagrid-view/93']")
+	private WebElement fixedAsset_AssetGlConfiguration_EyeIcon;
+	public WebElement fixedAsset_AssetGlConfiguration_EyeIcon() {
+		return fixedAsset_AssetGlConfiguration_EyeIcon;
+	}
+	
+	
+	//AssetCode
+	@FindBy(xpath = "//ion-col[2]/app-kub-lov[1]/span[1]/ng-select[1]/div[1]/div[1]/div[2]/input")
+	private WebElement fixedAsset_AssetGlConfiguration_AssetCode;
+	public WebElement fixedAsset_AssetGlConfiguration_AssetCode() {
+		return fixedAsset_AssetGlConfiguration_AssetCode;
+	}
+	
+	//FixedAssetGL
+	@FindBy(xpath = "//ion-col[3]/app-kub-lov[1]/span[1]/ng-select[1]/div[1]/div[1]//input")
+	private WebElement fixedAsset_AssetGlConfiguration_FixedAssetGL;
+	public WebElement fixedAsset_AssetGlConfiguration_FixedAssetGL() {
+		return fixedAsset_AssetGlConfiguration_FixedAssetGL;
+	}
+	
+	//AccumulatedDepreciationGL
+	@FindBy(xpath = "//ion-col[4]/app-kub-lov[1]/span[1]/ng-select[1]/div[1]/div[1]//input")
+	private WebElement fixedAsset_AssetGlConfiguration_AccumulatedDepreciationGL;
+	public WebElement fixedAsset_AssetGlConfiguration_AccumulatedDepreciationGL() {
+		return fixedAsset_AssetGlConfiguration_AccumulatedDepreciationGL;
+	}
+	//DepreciationGL
+	@FindBy(xpath = "//ion-col[5]/app-kub-lov[1]/span[1]/ng-select[1]/div[1]/div[1]//input")
+	private WebElement fixedAsset_AssetGlConfiguration_DepreciationGL;
+	public WebElement fixedAsset_AssetGlConfiguration_DepreciationGL() {
+		return fixedAsset_AssetGlConfiguration_DepreciationGL;
+	}
+	//ProfitOnSaleGL
+	@FindBy(xpath = "//ion-col[6]/app-kub-lov[1]/span[1]/ng-select[1]/div[1]/div[1]//input")
+	private WebElement fixedAsset_AssetGlConfiguration_ProfitOnSaleGL;
+	public WebElement fixedAsset_AssetGlConfiguration_ProfitOnSaleGL() {
+		return fixedAsset_AssetGlConfiguration_ProfitOnSaleGL;
+	}
+	//lossOnSaleGL
+	@FindBy(xpath = "//ion-col[7]/app-kub-lov[1]/span[1]/ng-select[1]/div[1]/div[1]//input")
+	private WebElement fixedAsset_AssetGlConfiguration_lossOnSaleGL;
+	public WebElement fixedAsset_AssetGlConfiguration_lossOnSaleGL() {
+		return fixedAsset_AssetGlConfiguration_lossOnSaleGL;
+	}
+	//WriteOffGL
+	@FindBy(xpath = "//ion-col[8]/app-kub-lov[1]/span[1]/ng-select[1]/div[1]/div[1]//input")
+	private WebElement fixedAsset_AssetGlConfiguration_WriteOffGL;
+	public WebElement fixedAsset_AssetGlConfiguration_WriteOffGL() {
+		return fixedAsset_AssetGlConfiguration_WriteOffGL;
+	}
+	//ImpairmentLossGL
+	@FindBy(xpath = "//ion-col[9]/app-kub-lov[1]/span[1]/ng-select[1]/div[1]/div[1]//input")
+	private WebElement fixedAsset_AssetGlConfiguration_ImpairmentLossGL;
+	public WebElement fixedAsset_AssetGlConfiguration_ImpairmentLossGL() {
+		return fixedAsset_AssetGlConfiguration_ImpairmentLossGL;
+	}
+	//AccumulatedImpairmentLossGL
+	@FindBy(xpath = "//ion-col[10]/app-kub-lov[1]/span[1]/ng-select[1]/div[1]/div[1]//input")
+	private WebElement fixedAsset_AssetGlConfiguration_AccumulatedImpairmentLossGL;
+	public WebElement fixedAsset_AssetGlConfiguration_AccumulatedImpairmentLossGL() {
+		return fixedAsset_AssetGlConfiguration_AccumulatedImpairmentLossGL;
+	}
+	//RevaluationSurplusGL
+	@FindBy(xpath = "//ion-col[11]/app-kub-lov[1]/span[1]/ng-select[1]/div[1]/div[1]//input")
+	private WebElement fixedAsset_AssetGlConfiguration_RevaluationSurplusGL;
+	public WebElement fixedAsset_AssetGlConfiguration_RevaluationSurplusGL() {
+		return fixedAsset_AssetGlConfiguration_RevaluationSurplusGL;
+	}
+
+}

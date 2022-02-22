@@ -1,0 +1,44 @@
+[
+{
+		"User"					: "Maker",
+		"AssetCategory"			: "Furnitures & Fixtures",
+		"AssetSubCategory"		: "Table & Chair",
+		"AssetItemCategory"		:	"woodply1",
+		"AssetDescription"		:	"woodply1",
+		"Remark"				:	"ok",
+		
+		
+		
+		
+		"AssetCode"						: "01-001-woodply1",
+		"AccountingModel"				: "Cost Model",
+		"AssetLifeUnit" 				: "Year",
+		"AssetLife"						: "2",
+		"BasisForDeperciation"  		: "ASSET COST",
+		"DeperciationMethod"			: "SLM",
+		"DeperciationRoundingMethod"	: "Bank",
+		
+		
+		
+		"FixedAssetGL"					: "Non-Financial Inventories",
+		"AccumulatedDepreciationGL"		: "Non-Financial Inventories",
+		"DepreciationGL"				: "Non-Financial Inventories",
+		"ProfitOnSaleGL"				: "Non-Financial Inventories",
+		"lossOnSaleGL"					: "Non-Financial Inventories",
+		"WriteOffGL"					: "Non-Financial Inventories",
+		"ImpairmentLossGL"				: "Non-Financial Inventories",
+		"AccumulatedImpairmentLossGL"	: "Non-Financial Inventories",
+		"RevaluationSurplusGL"			: "Non-Financial Inventories",
+		
+		
+		
+		"StartSerialNumber"				: "1111"
+		
+		
+		
+		
+		
+		
+		
+}
+]

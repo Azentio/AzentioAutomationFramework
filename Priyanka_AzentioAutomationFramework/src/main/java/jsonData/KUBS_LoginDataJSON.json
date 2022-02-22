@@ -2,7 +2,7 @@
 {
 "UserType":"Maker",
 "UserName":"1002435",
-"PassWord":"Admin@@11"
+"PassWord":"admin"
 },
 {
 "UserType":"Reviewer",
@@ -14,12 +14,19 @@
 "PassWord2":"Admin@@11",
 
 "UserName3":"in001",
-"PassWord3":"ADmin@@12345"
+"PassWord3":"ADmin@@12345",
+
+"UserName4":"1002436",
+"PassWord4":"admin",
+
+"UserName5":"in00027",
+"PassWord5":"admin"
+
 },
 {
 "UserType":"Checker",
 "UserName":"1002437",
-"PassWord":"admin"
+"PassWord":"Admin@1"
 }
 
 ]

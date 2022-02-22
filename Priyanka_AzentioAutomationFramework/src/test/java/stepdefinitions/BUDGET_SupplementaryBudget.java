@@ -24,8 +24,8 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import pageobjects.BUDGET_SupplementaryBudgetObj;
-import pageobjects.KUBS_CheckerObj;
-import pageobjects.KUBS_ReviewerObj;
+import pageobjects.Azentio_CheckerObj;
+import pageobjects.Azentio_ReviewerObj;
 import resources.BaseClass;
 import resources.JsonDataReaderWriter;
 import testDataType.BUDGET_BudgetCreationTestDataType;
@@ -40,14 +40,14 @@ public class BUDGET_SupplementaryBudget extends BaseClass {
 	WaitHelper waithelper;
 	//maker//
 	JavascriptHelper javahelper = new JavascriptHelper();
-	KUBS_Login login;
+	AzentioLogin login;
 	BUDGET_SupplementaryBudgetObj bUDGET_SupplementaryBudgetObj;
 	BUDGET_SupplementarybudgetTestDataType bUDGET_SupplementaryBudgetTestDataType;
 	//Checker//
 	JsonDataReaderWriter reader = new JsonDataReaderWriter();
-	KUBS_CheckerObj kubschecker;
+	Azentio_CheckerObj kubschecker;
 	JavascriptHelper javascript;
-	KUBS_ReviewerObj reviewer;
+	Azentio_ReviewerObj reviewer;
 	BrowserHelper browserHelper;
 	String referance_id;
 	BUDGET_BudgetCreationTestDataType budgetdata;
@@ -66,7 +66,7 @@ public class BUDGET_SupplementaryBudget extends BaseClass {
 
 	@Given("^maker should navigate to the url and login with valid credentials$")
     public void maker_should_navigate_to_the_url_and_login_with_valid_credentials() throws InterruptedException  {
-		login = new KUBS_Login(driver);
+		login = new AzentioLogin(driver);
 		driver.get(configFileReader.getApplicationUrl());
 		login.loginToAzentioApp("Maker");
     }
@@ -106,7 +106,7 @@ public class BUDGET_SupplementaryBudget extends BaseClass {
 
 	 @Then("^Navigate  to URL and login to Checker1$")
 	    public void navigate_to_url_and_login_to_checker1() throws Throwable {
-		  login = new KUBS_Login(driver);
+		  login = new AzentioLogin(driver);
 			driver.get(config.getApplicationUrl());
 			login.loginToAzentioAppAsChecker("Checker");
 	    }
@@ -114,7 +114,7 @@ public class BUDGET_SupplementaryBudget extends BaseClass {
 	    @When("^Click  on the Security management$")
 	    public void click_on_security_management() throws Throwable {
 	    	waithelper = new WaitHelper(driver);
-			kubschecker = new KUBS_CheckerObj(driver);
+			kubschecker = new Azentio_CheckerObj(driver);
 			waithelper.waitForElement(driver,3000, kubschecker.checkerSecurityManagement());
 	    	kubschecker.checkerSecurityManagement().click();
 	    }
@@ -159,11 +159,11 @@ public class BUDGET_SupplementaryBudget extends BaseClass {
 				}
 				}
 			//action pencil
-			String before_xpath="//span[contains(text(),'";
-			 String after_xpath="')]/ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell//ion-button";
+			//String before_xpath="//span[contains(text(),'";
+			/// String after_xpath="')]/ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell//ion-button";
 			  
-			 waithelper.waitForElement(driver, 10000, driver.findElement(By.xpath(before_xpath +reader.readReferancedata()+after_xpath)));
-			 driver.findElement(By.xpath(before_xpath +reader.readReferancedata() +after_xpath)).click();
+			/// waithelper.waitForElement(driver, 2000, driver.findElement(By.xpath(before_xpath +reader.readReferancedata()+after_xpath)));
+			// driver.findElement(By.xpath(before_xpath +reader.readReferancedata() +after_xpath)).click();
 			}
 
 	
@@ -208,7 +208,7 @@ public class BUDGET_SupplementaryBudget extends BaseClass {
 	 @Then("^select the record check Approved auth status of the record$")
 	    public void select_the_record_check_approved_auth_status_of_the_record() throws InterruptedException {
 		 //select the record
-		 Thread.sleep(8000);
+		 Thread.sleep(2000);
 		 waithelper.waitForElement(driver, 3000, bUDGET_SupplementaryBudgetObj.budget_SupplementaryBudget_SearchSelectRecord());
 
 		 //validate auth status
@@ -263,7 +263,7 @@ public class BUDGET_SupplementaryBudget extends BaseClass {
 		 waithelper.waitForElement(driver, 3000, bUDGET_SupplementaryBudgetObj.budget_SupplementaryBudget_SearchSelectRecord());
 		 String authStatus = bUDGET_SupplementaryBudgetObj.budget_SupplementaryBudget_SearchAuthStatus().getText();
 		 System.out.println(authStatus);
-		 Assert.assertEquals(bUDGET_SupplementaryBudgetTestDataType.AuthStatusB, authStatus);
+		 Assert.assertNotSame(bUDGET_SupplementaryBudgetTestDataType.AuthStatusB, authStatus);
 	      
 	    }
 	    
@@ -432,8 +432,8 @@ public class BUDGET_SupplementaryBudget extends BaseClass {
 			bUDGET_SupplementaryBudgetObj.budget_SupplementaryBudget_SupplementaryNotification().click();
 			
 			//Reference
-			waithelper.waitForElement(driver, 2000, bUDGET_SupplementaryBudgetObj.budget_BudgetTransfer_SupplementaryFirstReferenceId());
-	    	String id = bUDGET_SupplementaryBudgetObj.budget_BudgetTransfer_SupplementaryFirstReferenceId().getText();
+			waithelper.waitForElement(driver, 2000, bUDGET_SupplementaryBudgetObj.budget_SupplementaryBudget_SupplementaryFirstReferenceId());
+	    	String id = bUDGET_SupplementaryBudgetObj.budget_SupplementaryBudget_SupplementaryFirstReferenceId().getText();
 	    	jsonWriter.addReferanceData(id);
 	    	System.out.println("Reference ID:" +id);
 	    	for (int i = 1; i <= 35; i++) {
@@ -455,7 +455,7 @@ public class BUDGET_SupplementaryBudget extends BaseClass {
 			
 			bUDGET_SupplementaryBudgetObj.maker_notification_next_button().click();
 	    	}
-			bUDGET_SupplementaryBudgetObj.budget_BudgetTransfer_SupplementaryFirstReferenceId().click();	    	
+			bUDGET_SupplementaryBudgetObj.budget_SupplementaryBudget_SupplementaryFirstReferenceId().click();	    	
 	    	
 	
 			 String before_xpath="//span[contains(text(),'";
@@ -663,8 +663,8 @@ public class BUDGET_SupplementaryBudget extends BaseClass {
 			bUDGET_SupplementaryBudgetObj.budget_SupplementaryBudget_SupplementaryNotification().click();
 		
 			//Reference
-			waithelper.waitForElement(driver, 2000, bUDGET_SupplementaryBudgetObj.budget_BudgetTransfer_SupplementaryFirstReferenceId());
-	    	String id = bUDGET_SupplementaryBudgetObj.budget_BudgetTransfer_SupplementaryFirstReferenceId().getText();
+			waithelper.waitForElement(driver, 2000, bUDGET_SupplementaryBudgetObj.budget_SupplementaryBudget_SupplementaryFirstReferenceId());
+	    	String id = bUDGET_SupplementaryBudgetObj.budget_SupplementaryBudget_SupplementaryFirstReferenceId().getText();
 	    	jsonWriter.addReferanceData(id);
 	    	System.out.println("Reference ID:" +id);
 	    	for (int i = 1; i <= 35; i++) {
@@ -686,7 +686,7 @@ public class BUDGET_SupplementaryBudget extends BaseClass {
 			
 			bUDGET_SupplementaryBudgetObj.maker_notification_next_button().click();
 	    	}
-			bUDGET_SupplementaryBudgetObj.budget_BudgetTransfer_SupplementaryFirstReferenceId().click();	    	
+			bUDGET_SupplementaryBudgetObj.budget_SupplementaryBudget_SupplementaryFirstReferenceId().click();	    	
 	    	
 			 //pencil 
 			 String before_xpath="//span[contains(text(),'";
@@ -850,8 +850,9 @@ public class BUDGET_SupplementaryBudget extends BaseClass {
 	        String before_xpath="//span[contains(text(),'";
 	    String after_xpath="')]/ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell//ion-button";
 	     
-	    waithelper.waitForElement(driver, 10000, driver.findElement(By.xpath(before_xpath +reader.readReferancedata()+after_xpath)));
+	    waithelper.waitForElement(driver, 2000, driver.findElement(By.xpath(before_xpath +reader.readReferancedata()+after_xpath)));
 	    driver.findElement(By.xpath(before_xpath +reader.readReferancedata() +after_xpath)).click();
+	    Thread.sleep(2000);
 	        }
 	    @And("^Verify the record is generated by opening the record$")
 	        public void verify_the_record_is_generated_by_opening_the_record()  {
@@ -878,7 +879,7 @@ public class BUDGET_SupplementaryBudget extends BaseClass {
 	    	    	   String before_xpath="//span[contains(text(),'";
 	    	    	   String after_xpath="')]/ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell//ion-button";
 	    	    	    
-	    	    	   waithelper.waitForElement(driver, 10000, driver.findElement(By.xpath(before_xpath +reader.readReferancedata()+after_xpath)));
+	    	    	   waithelper.waitForElement(driver, 2000, driver.findElement(By.xpath(before_xpath +reader.readReferancedata()+after_xpath)));
 	    	    	   driver.findElement(By.xpath(before_xpath +reader.readReferancedata() +after_xpath)).click();	
 	    	    }
 
@@ -998,8 +999,8 @@ public class BUDGET_SupplementaryBudget extends BaseClass {
 	    			bUDGET_SupplementaryBudgetObj.budget_SupplementaryBudget_SupplementaryNotification().click();
 	    		
 	    			//Reference
-	    			waithelper.waitForElement(driver, 2000, bUDGET_SupplementaryBudgetObj.budget_BudgetTransfer_SupplementaryFirstReferenceId());
-	    	    	String id = bUDGET_SupplementaryBudgetObj.budget_BudgetTransfer_SupplementaryFirstReferenceId().getText();
+	    			waithelper.waitForElement(driver, 2000, bUDGET_SupplementaryBudgetObj.budget_SupplementaryBudget_SupplementaryFirstReferenceId());
+	    	    	String id = bUDGET_SupplementaryBudgetObj.budget_SupplementaryBudget_SupplementaryFirstReferenceId().getText();
 	    	    	jsonWriter.addReferanceData(id);
 	    	    	System.out.println("Reference ID:" +id);
 	    	    	for (int i = 1; i <= 35; i++) {
@@ -1021,7 +1022,7 @@ public class BUDGET_SupplementaryBudget extends BaseClass {
 	    			
 	    			bUDGET_SupplementaryBudgetObj.maker_notification_next_button().click();
 	    	    	}
-	    			bUDGET_SupplementaryBudgetObj.budget_BudgetTransfer_SupplementaryFirstReferenceId().click();	    	
+	    			bUDGET_SupplementaryBudgetObj.budget_SupplementaryBudget_SupplementaryFirstReferenceId().click();	    	
 	    	    	
 	    			 //pencil 
 	    			 String before_xpath="//span[contains(text(),'";

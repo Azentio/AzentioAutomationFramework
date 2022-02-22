@@ -12,9 +12,9 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import pageobjects.BUDGET_BudgetCreationObj;
-import pageobjects.KUBS_CheckerObj;
-import pageobjects.KUBS_MakerObj;
-import pageobjects.KUBS_ReviewerObj;
+import pageobjects.Azentio_CheckerObj;
+import pageobjects.Azentio_MakerObj;
+import pageobjects.Azentio_ReviewerObj;
 
 import resources.BaseClass;
 import testDataType.BUDGET_BudgetCreationTestDataType;
@@ -26,21 +26,21 @@ public class BUDGET_BudgetCreation {
 		WebDriver driver = BaseClass.driver;
 		JsonConfig json = new JsonConfig();
 		ConfigFileReader config = new ConfigFileReader();
-		KUBS_Login login = new KUBS_Login(driver);
+		AzentioLogin login = new AzentioLogin(driver);
 		DropDownHelper dropDownHelper;
 		BUDGET_BudgetCreationObj budgetCreationObj;
-		KUBS_MakerObj kubsMakerObj;
+		Azentio_MakerObj kubsMakerObj;
 		BUDGET_BudgetCreationTestDataType budgdata;
 		String reviwerId;
-		KUBS_ReviewerObj kubsReviewerObj;
+		Azentio_ReviewerObj kubsReviewerObj;
 		String reference_id;
 		BrowserHelper browserHelper;
-		KUBS_CheckerObj kubsCheckerObj;
+		Azentio_CheckerObj kubsCheckerObj;
 
 		// VerificationHelper vhelper;
 		@Given("^navigate to the url and user should login as a maker$")
 		public void navigate_to_the_url_and_user_should_login_as_a_maker() throws InterruptedException {
-			login = new KUBS_Login(driver);
+			login = new AzentioLogin(driver);
 			driver.get(config.getApplicationUrl());
 			 login.loginToAzentioApp("Maker");
 		}
@@ -50,7 +50,7 @@ public class BUDGET_BudgetCreation {
 			budgdata = json.getBudgetdataByName("Maker");
 			dropDownHelper = new DropDownHelper(driver);
 			budgetCreationObj = new BUDGET_BudgetCreationObj(driver);
-			kubsMakerObj = new KUBS_MakerObj(driver);
+			kubsMakerObj = new Azentio_MakerObj(driver);
 			dropDownHelper.SelectUsingVisibleText(kubsMakerObj.kubsFinaceOption(), "Finance");
 		}*/
 
@@ -115,7 +115,7 @@ public class BUDGET_BudgetCreation {
 			browserHelper = new BrowserHelper(driver);
 			String before_xpath = "//datatable-row-wrapper[";
 			String after_xpath = "]/datatable-body-row/div/datatable-body-cell[2]/div/span";
-			kubsReviewerObj = new KUBS_ReviewerObj(driver);
+			kubsReviewerObj = new Azentio_ReviewerObj(driver);
 			kubsReviewerObj.reviewerNotidicationIcon().click();
 			for (int i = 0; i < 10; i++) {
 				reference_id = driver.findElement(By.xpath(before_xpath + i + after_xpath)).getText();
@@ -138,7 +138,7 @@ public class BUDGET_BudgetCreation {
 		@Then("^logout from the reviewer and login from checker$")
 		public void logout_from_the_reviewer_and_login_from_checker() throws InterruptedException {
 			login.loginToAzentioApp("Checker");
-			kubsCheckerObj = new KUBS_CheckerObj(driver);
+			kubsCheckerObj = new Azentio_CheckerObj(driver);
 			kubsCheckerObj.checkerSecurityManagement().click();
 			kubsCheckerObj.checkerActionIcon().click();
 			;

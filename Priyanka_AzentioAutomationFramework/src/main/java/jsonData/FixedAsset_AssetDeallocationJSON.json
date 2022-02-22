@@ -1,0 +1,26 @@
+[
+	{
+		"User": "Maker",
+		"AssetReferenceNumber": "FIXTURESANDFITTINGS1-TABLESANDCHAIRS01-stairs_AZENTMAIN_20",
+		"ItemNumber"			: "8888",
+		
+		"AssetReferenceNumberTransfer": "01-001-adjustable table_BOB667_4435",
+		"ItemNumberTransfer": "33333",
+		
+		"AssetReferenceNumberSold": "01-001-adjustable table_BOB667_4435",
+		"ItemNumberSold": "33333",
+		
+		"AssetReferenceNumberImpaired": "01-001-adjustable table_BOB667_4435",
+		"ItemNumberImpaired": "33333",
+		
+		"AssetReferenceNumberRevalued": "01-001-adjustable table_BOB667_4435",
+		"ItemNumberRevalued": "33333",
+		
+		"AssetReferenceNumberAmended": "01-001-adjustable table_BOB667_4435",
+		"ItemNumberAmended": "33333",
+	
+		
+		"AssetReferenceNumberReplaced": "01-001-adjustable table_BOB667_4435",
+		"ItemNumberReplaced": "33333"
+	}
+]

@@ -21,8 +21,8 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import pageobjects.BUDGET_BudgetTransferObj;
-import pageobjects.KUBS_CheckerObj;
-import pageobjects.KUBS_ReviewerObj;
+import pageobjects.Azentio_CheckerObj;
+import pageobjects.Azentio_ReviewerObj;
 import resources.BaseClass;
 import resources.JsonDataReaderWriter;
 import testDataType.BUDGET_BudgetCreationTestDataType;
@@ -38,7 +38,7 @@ public class BUDGET_BudgetTransfer extends BaseClass {
 	JavascriptHelper javahelper = new JavascriptHelper();
 	BUDGET_BudgetTransferObj budgetTransferObj;
 	BUDGET_BudgetTransferTestDataType budgetTransferTestDataType;
-	KUBS_Login login;
+	AzentioLogin login;
 	JsonDataReaderWriter jsonWriter = new JsonDataReaderWriter();
 	JavascriptHelper javascripthelper = new JavascriptHelper();
 	String user = "Maker";
@@ -48,7 +48,7 @@ public class BUDGET_BudgetTransfer extends BaseClass {
 
 	 
 	ConfigFileReader config=new ConfigFileReader();
-	KUBS_ReviewerObj reviewer;
+	Azentio_ReviewerObj reviewer;
 	 
 	BrowserHelper browserHelper;	 
 	
@@ -66,7 +66,7 @@ public class BUDGET_BudgetTransfer extends BaseClass {
 //---------------------------------Create record maker------------------------------------//
 	 @Given("^Maker login$")
 	    public void maker_login() throws InterruptedException  {
-		 login = new KUBS_Login(driver);
+		 login = new AzentioLogin(driver);
 			driver.get(configFileReader.getApplicationUrl());
 			login.loginToAzentioApp("Maker");
 	    }
@@ -247,13 +247,13 @@ public class BUDGET_BudgetTransfer extends BaseClass {
 				jsonWriter.addData(reviewerId);
 	    }
 				
-				KUBS_CheckerObj kubschecker;
+				Azentio_CheckerObj kubschecker;
 				JavascriptHelper javascript;
 				
 				  @Then("^user login to checker1$")
 				    public void user_login_to_checker1() throws Throwable, Throwable {
 					  reader=new JsonDataReaderWriter();
-						login = new KUBS_Login(driver);
+						login = new AzentioLogin(driver);
 						driver.get(config.getApplicationUrl());
 						 login.logintoAzentioappReviewer("Reviewer", reader.readdata());
 						 ExtentTestManager.getTest().info("User Navigated to required url & login as checker1");
@@ -261,7 +261,7 @@ public class BUDGET_BudgetTransfer extends BaseClass {
 				  @And("^click on notification icon$")
 				    public void click_on_notification_icon()  {
 					  waithelper=new WaitHelper(driver);
-				    	reviewer=new KUBS_ReviewerObj(driver);
+				    	reviewer=new Azentio_ReviewerObj(driver);
 				    	waithelper.waitForElement(driver, 2000, reviewer.reviewerNotidicationIcon());
 				    	reviewer.reviewerNotidicationIcon().click();
 				    	 ExtentTestManager.getTest().info("User clicks on notification icon");
@@ -315,7 +315,7 @@ public class BUDGET_BudgetTransfer extends BaseClass {
 				    }
 				    @Then("^User should login to checker2$")
 				    public void user_should_login_to_checker2() throws InterruptedException  {
-				    	login = new KUBS_Login(driver);
+				    	login = new AzentioLogin(driver);
 						driver.get(config.getApplicationUrl());
 						login.loginToAzentioAppAsChecker("Checker");
 				    	ExtentTestManager.getTest().info("User Navigated to required url & login as reviewer1");
@@ -324,7 +324,7 @@ public class BUDGET_BudgetTransfer extends BaseClass {
 				    @Then("^click on open pool$")
 				    public void click_on_open_pool()  {
 				    	waithelper = new WaitHelper(driver);
-						kubschecker = new KUBS_CheckerObj(driver);
+						kubschecker = new Azentio_CheckerObj(driver);
 						waithelper.waitForElement(driver,3000, kubschecker.checkerSecurityManagement());
 				    	kubschecker.checkerSecurityManagement().click();
 				    	 	

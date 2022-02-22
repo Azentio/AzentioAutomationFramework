@@ -9,13 +9,13 @@ import helper.WaitHelper;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
-import pageobjects.KUBS_LoginObj;
+import pageobjects.Azentio_LoginObj;
 import resources.BaseClass;
 import testDataType.KUBS_LoginTestDataType;
 
 public class LoginTest extends BaseClass {
 	WebDriver driver=BaseClass.driver;
-	KUBS_LoginObj login;
+	Azentio_LoginObj login;
 	WaitHelper waithelper;
 	JsonConfig json;
 
@@ -27,7 +27,7 @@ public class LoginTest extends BaseClass {
 
 	@And("^Enter the login creditintials$")
 	public void enter_the_login_creditintials() throws Throwable {
-		login = new KUBS_LoginObj(driver);
+		login = new Azentio_LoginObj(driver);
 		waithelper = new WaitHelper(driver);
 		json=new JsonConfig();
 		KUBS_LoginTestDataType kubslogindata=json.getLoginCredentialsByName("Maker");

@@ -11,14 +11,20 @@ import java.util.List;
 import com.google.gson.Gson;
 import com.google.gson.stream.JsonReader;
 
+import testDataType.AccountPayable_VendorPurchaseOrderTestDataType;
 import testDataType.BUDGET_BudgetCreationTestDataType;
 import testDataType.BUDGET_BudgetTransferTestDataType;
 import testDataType.BUDGET_RequestAndAllocationTestDataType;
 import testDataType.BUDGET_RequestandallocationBUDTYPEDATA;
 import testDataType.BUDGET_SupplementarybudgetTestDataType;
+import testDataType.FixedAsset_AssetAllocationTestDataType;
+import testDataType.FixedAsset_AssetCategoryTestDataType;
+import testDataType.FixedAsset_AssetCreationTestDataType;
+import testDataType.FixedAsset_AssetDeallocationTestDataType;
+import testDataType.INVENTORY_EnquiryGLTestDataType;
+import testDataType.InventoryMaintenanceTestDataType;
+import testDataType.InventoryManagement_InventoryStockReceiptTestDataType;
 import testDataType.KUBS_LoginTestDataType;
-import testDataType.Logindata;
-import testDataType.RegisterData;
 
 public class JsonConfig {
 	ConfigFileReader configFileReader = new ConfigFileReader();
@@ -59,8 +65,41 @@ private final String BudtypeFilepath = configFileReader.getJsonPath() + "BUDGET_
 	private final String BudgetTransferFilePath = configFileReader.getJsonPath() + "BUDGET_BudgetTransferJSON.json";
 	private List<BUDGET_BudgetTransferTestDataType> BudgetTransferList;
 	
+	//AccountPayable_VendorPurchaseOrder
+	private final String VendorPurchaseOrderFilePath = configFileReader.getJsonPath() + "AccountPayable_VendorPurchaseOrderJson.json";
+	private List<AccountPayable_VendorPurchaseOrderTestDataType> VendorPurchaseOrderList;
+	
+	//InventoryMaintenance
+	private final String InventoryMaintenanceFilePath = configFileReader.getJsonPath() + "InventoryMaintenanceJson.json";
+	private List<InventoryMaintenanceTestDataType> InventoryMaintenanceList;
 
 
+	//InventoryManagement_InventoryStockReceipt
+	private final String InventoryStockReceiptFilePath = configFileReader.getJsonPath() + "InventoryManagement_InventoryStockReceiptJSON.json";
+	private List<InventoryManagement_InventoryStockReceiptTestDataType> InventoryStockReceiptList;
+	
+	//Inventory_EnquiryGL
+		private final String InventoryEnquiryGLFilePath = configFileReader.getJsonPath() + "INVENTORY_EnquiryGLJSON.json";
+		private List<INVENTORY_EnquiryGLTestDataType> InventoryEnquiryGLList;
+		
+	//FixedAsset_AssetCategory
+		private final String AssetCategoryFilePath = configFileReader.getJsonPath() + "FixedAsset_AssetCategoryJSON.json";
+		private List<FixedAsset_AssetCategoryTestDataType> AssetCategoryList;
+		
+		// FixedAsset_AssetDeallocation
+		private final String AssetDeallocationFilePath = configFileReader.getJsonPath()
+				+ "FixedAsset_AssetDeallocationJSON.json";
+		private List<FixedAsset_AssetDeallocationTestDataType> AssetDeallocationList;
+
+		// FixedAsset_AssetAllocation
+		private final String AssetAllocationFilePath = configFileReader.getJsonPath()
+				+ "FixedAsset_AssetAllocationJSON.json";
+		private List<FixedAsset_AssetAllocationTestDataType> AssetAllocationList;
+		// FixedAsset_AssetCreation
+
+		private final String AssetCreationFilePath = configFileReader.getJsonPath()
+				+ "FixedAsset_AssetCreationJSON.json";
+		private List<FixedAsset_AssetCreationTestDataType> AssetCreationList;
 
 	public JsonConfig() {
 		/*RegisterList = getRegisterData();
@@ -75,10 +114,22 @@ private final String BudtypeFilepath = configFileReader.getJsonPath() + "BUDGET_
 		SupplementaryBudgetList = getSupplementaryBudgetData();
 		
 		BudgetTransferList=getBudgetTransferData();
-
-
+		
+	    VendorPurchaseOrderList = getVendorPurchaseOrderData();
+		
+	    InventoryMaintenanceList =  getInventoryMaintenanceListData();
+	    InventoryStockReceiptList = getInventoryStockReceiptListData();
+	    InventoryEnquiryGLList = getInventoryEnquiryGLListData();
+	    
+	    AssetCategoryList = getAssetCategoryListData();
+	    
+	    AssetDeallocationList =  getAssetDeallocationListData();
+	    AssetCreationList = getAssetCreationListData();
+	    AssetAllocationList =  getAssetAllocationListData();
 	}
-	
+
+
+
 
 
 
@@ -242,6 +293,138 @@ private List<BUDGET_RequestAndAllocationTestDataType> getAllocationList() {
 					catch (IOException ignore) {}
 				}
 			}
+			
+	//AccountPayable_VendorPurchaseOrder		
+	private List<AccountPayable_VendorPurchaseOrderTestDataType> getVendorPurchaseOrderData() {
+		Gson gson = new Gson();
+		BufferedReader bufferReader = null;
+		try {
+			bufferReader = new BufferedReader(new FileReader(VendorPurchaseOrderFilePath));
+			AccountPayable_VendorPurchaseOrderTestDataType[] VendorPurchaseOrder = gson.fromJson(bufferReader, AccountPayable_VendorPurchaseOrderTestDataType[].class);
+			return Arrays.asList(VendorPurchaseOrder);
+			}catch(FileNotFoundException e) {
+				throw new RuntimeException("Json file not found at path : " + VendorPurchaseOrderFilePath );
+			}finally {
+				try { if(bufferReader != null) bufferReader.close();}
+				catch (IOException ignore) {}
+			}
+		}
+	//InventoryMaintenance
+	private List<InventoryMaintenanceTestDataType> getInventoryMaintenanceListData() {
+		Gson gson = new Gson();
+		BufferedReader bufferReader = null;
+		try {
+			bufferReader = new BufferedReader(new FileReader(InventoryMaintenanceFilePath));
+			InventoryMaintenanceTestDataType[] InventoryMaintenance = gson.fromJson(bufferReader, InventoryMaintenanceTestDataType[].class);
+			return Arrays.asList(InventoryMaintenance);
+			}catch(FileNotFoundException e) {
+				throw new RuntimeException("Json file not found at path : " + InventoryMaintenanceFilePath );
+			}finally {
+				try { if(bufferReader != null) bufferReader.close();}
+				catch (IOException ignore) {}
+			}
+		
+	}
+
+	private List<InventoryManagement_InventoryStockReceiptTestDataType> getInventoryStockReceiptListData() {
+		Gson gson = new Gson();
+		BufferedReader bufferReader = null;
+		try {
+			bufferReader = new BufferedReader(new FileReader(InventoryStockReceiptFilePath));
+			InventoryManagement_InventoryStockReceiptTestDataType[] InventoryStockReceipt = gson.fromJson(bufferReader, InventoryManagement_InventoryStockReceiptTestDataType[].class);
+			return Arrays.asList(InventoryStockReceipt);
+			}catch(FileNotFoundException e) {
+				throw new RuntimeException("Json file not found at path : " + InventoryStockReceiptFilePath );
+			}finally {
+				try { if(bufferReader != null) bufferReader.close();}
+				catch (IOException ignore) {}
+			}
+	}
+	
+	
+	private List<INVENTORY_EnquiryGLTestDataType> getInventoryEnquiryGLListData() {
+		Gson gson = new Gson();
+		BufferedReader bufferReader = null;
+		try {
+			bufferReader = new BufferedReader(new FileReader(InventoryEnquiryGLFilePath));
+			INVENTORY_EnquiryGLTestDataType[] InventoryEnquiryGL = gson.fromJson(bufferReader, INVENTORY_EnquiryGLTestDataType[].class);
+			return Arrays.asList(InventoryEnquiryGL);
+			}catch(FileNotFoundException e) {
+				throw new RuntimeException("Json file not found at path : " + InventoryEnquiryGLFilePath );
+			}finally {
+				try { if(bufferReader != null) bufferReader.close();}
+				catch (IOException ignore) {}
+			}
+		
+	}
+	
+	private List<FixedAsset_AssetCategoryTestDataType> getAssetCategoryListData() {
+		Gson gson = new Gson();
+		BufferedReader bufferReader = null;
+		try {
+			bufferReader = new BufferedReader(new FileReader(AssetCategoryFilePath));
+			FixedAsset_AssetCategoryTestDataType[] AssetCategory = gson.fromJson(bufferReader, FixedAsset_AssetCategoryTestDataType[].class);
+			return Arrays.asList(AssetCategory);
+			}catch(FileNotFoundException e) {
+				throw new RuntimeException("Json file not found at path : " + AssetCategoryFilePath );
+			}finally {
+				try { if(bufferReader != null) bufferReader.close();}
+				catch (IOException ignore) {}
+			}
+		
+	}
+	
+	
+	
+	private List<FixedAsset_AssetDeallocationTestDataType> getAssetDeallocationListData() {
+		Gson gson = new Gson();
+		BufferedReader bufferReader = null;
+		try {
+			bufferReader = new BufferedReader(new FileReader(AssetDeallocationFilePath));
+			FixedAsset_AssetDeallocationTestDataType[] AssetDeallocation = gson.fromJson(bufferReader, FixedAsset_AssetDeallocationTestDataType[].class);
+			return Arrays.asList(AssetDeallocation);
+			}catch(FileNotFoundException e) {
+				throw new RuntimeException("Json file not found at path : " + AssetDeallocationFilePath );
+			}finally {
+				try { if(bufferReader != null) bufferReader.close();}
+				catch (IOException ignore) {}
+			}
+		
+	}
+	
+
+	private List<FixedAsset_AssetCreationTestDataType> getAssetCreationListData() {
+		Gson gson = new Gson();
+		BufferedReader bufferReader = null;
+		try {
+			bufferReader = new BufferedReader(new FileReader(AssetCreationFilePath));
+			FixedAsset_AssetCreationTestDataType[] AssetCreation = gson.fromJson(bufferReader, FixedAsset_AssetCreationTestDataType[].class);
+			return Arrays.asList(AssetCreation);
+			}catch(FileNotFoundException e) {
+				throw new RuntimeException("Json file not found at path : " + AssetCreationFilePath );
+			}finally {
+				try { if(bufferReader != null) bufferReader.close();}
+				catch (IOException ignore) {}
+			}
+		
+	}
+	
+
+	private List<FixedAsset_AssetAllocationTestDataType> getAssetAllocationListData() {
+			Gson gson = new Gson();
+			BufferedReader bufferReader = null;
+			try {
+				bufferReader = new BufferedReader(new FileReader(AssetAllocationFilePath));
+				FixedAsset_AssetAllocationTestDataType[] AssetAllocation = gson.fromJson(bufferReader, FixedAsset_AssetAllocationTestDataType[].class);
+				return Arrays.asList(AssetAllocation);
+				}catch(FileNotFoundException e) {
+					throw new RuntimeException("Json file not found at path : " + AssetAllocationFilePath );
+				}finally {
+					try { if(bufferReader != null) bufferReader.close();}
+					catch (IOException ignore) {}
+				}
+			
+	}
 
 
 
@@ -280,7 +463,42 @@ private List<BUDGET_RequestAndAllocationTestDataType> getAllocationList() {
 	public final BUDGET_BudgetTransferTestDataType getBudgetTransferdata(String UserName){
 		 return BudgetTransferList.stream().filter(x->x.User.equalsIgnoreCase(UserName)).findAny().get();
 }
+	//AccountPayable_VendorPurchaseOrder
+	public final AccountPayable_VendorPurchaseOrderTestDataType getVendorPurchaseOrderyByName(String UserName){
+		 return VendorPurchaseOrderList.stream().filter(x->x.User.equalsIgnoreCase(UserName)).findAny().get();
+}
 
+	//InventoryMaintenance
+	public final InventoryMaintenanceTestDataType getInventoryMaintenanceByName(String UserName){
+		 return InventoryMaintenanceList.stream().filter(x->x.User.equalsIgnoreCase(UserName)).findAny().get();
+}
+	//InventoryManagement
+		public final InventoryManagement_InventoryStockReceiptTestDataType getInventoryStockReceiptByName(String UserName){
+			 return InventoryStockReceiptList.stream().filter(x->x.User.equalsIgnoreCase(UserName)).findAny().get();
+}
+		
+ //InventoryManagement
+public final INVENTORY_EnquiryGLTestDataType getInventoryEnquiryGLByName(String UserName){
+	return InventoryEnquiryGLList.stream().filter(x->x.User.equalsIgnoreCase(UserName)).findAny().get();
+}
+		
+//FixedAsset_AssetCategory   
+public final FixedAsset_AssetCategoryTestDataType getAssetCategoryByName(String UserName){
+	return AssetCategoryList.stream().filter(x->x.User.equalsIgnoreCase(UserName)).findAny().get();
+}
+		
+//FixedAsset_AssetDeallocation  
+public final FixedAsset_AssetDeallocationTestDataType getAssetDeallocationByName(String UserName){
+	return AssetDeallocationList.stream().filter(x->x.User.equalsIgnoreCase(UserName)).findAny().get();
+}
+//FixedAsset_AssetCreation	
 
+public final FixedAsset_AssetCreationTestDataType getAssetCreationByName(String UserName){
+	return AssetCreationList.stream().filter(x->x.User.equalsIgnoreCase(UserName)).findAny().get();
+}
 
+//FixedAsset_AssetAllocation  
+public final FixedAsset_AssetAllocationTestDataType getAssetAllocationByName(String UserName){
+	return AssetAllocationList.stream().filter(x->x.User.equalsIgnoreCase(UserName)).findAny().get();
+}
 }

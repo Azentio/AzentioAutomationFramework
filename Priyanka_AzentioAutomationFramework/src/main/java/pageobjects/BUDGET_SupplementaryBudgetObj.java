@@ -137,10 +137,10 @@ public class BUDGET_SupplementaryBudgetObj {
 	}
 	//reference id
 		@FindBy(xpath="//app-inbox//datatable-row-wrapper[1]/datatable-body-row/div/datatable-body-cell[2]//span")
-		private WebElement  budget_BudgetTransfer_SupplementaryFirstReferenceId;
-		public WebElement budget_BudgetTransfer_SupplementaryFirstReferenceId()
+		private WebElement  budget_SupplementaryBudget_SupplementaryFirstReferenceId;
+		public WebElement budget_SupplementaryBudget_SupplementaryFirstReferenceId()
 		{
-			return  budget_BudgetTransfer_SupplementaryFirstReferenceId;
+			return  budget_SupplementaryBudget_SupplementaryFirstReferenceId;
 			
 		}
 	
@@ -510,7 +510,6 @@ public class BUDGET_SupplementaryBudgetObj {
 		
 		return maker_Approve_button;
 	}
-
 	
 
 	

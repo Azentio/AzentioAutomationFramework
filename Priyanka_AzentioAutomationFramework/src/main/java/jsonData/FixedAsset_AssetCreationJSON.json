@@ -1,0 +1,19 @@
+[
+	{
+		"User"					: "Maker",
+		"BranchCode"			: "AZENTMAIN",
+		"AssetCode"				: "01-ASTSBCTGRY001-WOOD BOX",
+		"BillReferenceNo"		: "INV-103-22022",
+		"Remark"				: "OK",
+		"AssetItemNumber"		: "7610",
+		"AssetItemDescription"	: "Wood box for Parcel",
+		"AssetValue"			: "10000",
+		"SalvageValue"			: "500",
+		
+		"GlYear"				: "2022",
+		"GlDay"					: "20",
+		"GlToMonth"				: "Oct",
+		"GlFullToMonth"			: "October",
+		"GlToDate"				: "20"
+	}
+]

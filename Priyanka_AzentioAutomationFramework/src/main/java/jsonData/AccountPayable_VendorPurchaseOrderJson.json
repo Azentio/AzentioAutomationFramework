@@ -1,0 +1,25 @@
+[
+	{
+		"User": "Maker",
+		"EntityBranch": "Azentio Main Branch",
+		"BpName": "Bonton Agency",
+		"ReferenceType": "Contract",
+		"Contract": "Contract for TOOLS",
+		"PoQuantity": "2",
+		
+		"PoSubType": "PO For Asset Purchase",
+		"PoNumber": "Azentio_PO",
+		"CostCenter": "FINANCE",
+		"Remark": "ok",
+		
+		"Month"					: "Oct",
+		"Year"					: "2022",
+		"Day"					: "2",
+		"FullMonth"				:"October",
+		
+		"ShippedFromLocation"	:"INDIA - Punjab",
+		"DeliveryLocation"		: "Azentio Main Branch"
+		
+		
+	}
+]
