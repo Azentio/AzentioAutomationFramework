@@ -1,0 +1,55 @@
+[
+	{
+		"userName": "Maker",
+		"budgetCode": "BUDG8010",
+		"budgetType": "YEARLY",
+		"warningPecentage": "30",
+		"budgetName": "Capital budget",
+		"remark": "Ok",
+		"updatedBudgetCode": "BUD9098",
+		"updatedBudgetType": "YEARLY",
+		"updatedWarningPecentage": "35",
+		"historyBudgetCode":"BUDG0082",
+		"updatedBudgetName": "Office Expense",
+		"updatedRemark": "Budget Code Updated",
+		"budgetCodeToBeSearch": "BUD9099",
+		"existingBudgetCode": "BUD001",
+		"wrongWarningPercentage": "120",
+		"uatYearlyBudgetCode":"BUDG7071",
+		"uatMonthlyBudgetCode":"BUDG7072",
+		"uatHalfYearlyBudgetCode":"BUDG7073",
+	    "uatQuarterlyBudgetCode":"BUDG7074",
+		"uatYearlyBudgetType":"Capital Budgets",
+		"uatMonthlyBudgetType": "Financial Plan",
+		"uatHalfYearlyBudgetType": "Departments",
+		"uatQuarterlyBudgetType": "Revenue Budget",
+		"approvalCommentsFromReviewer":"Approved from Reviewer",
+		"approvalCommentsFromChecker":"Approved from Checker",
+		"budgetCode1": "BDG5609",
+		"budgetType1": "YEARLY",
+		"warningPecentage1": "23",
+		"budgetName1": "Home budget",
+		 
+	    "budgetCode2": "BDG1209",
+		"budgetType2": "Monthly",
+		"warningPecentage2": "25",
+		"budgetName2": "Education",
+		
+		"budgetCode3": "BDG7309",
+		"budgetType3": "HalfYearly",
+		"warningPecentage3": "50",
+		"budgetName3": "Business",
+		
+		"budgetCode4": "BDG7239",
+		"budgetType4": "Quaterly",
+		"warningPecentage4": "70",
+		"budgetName4": "Loan",
+		
+	    "budgetCode5": "BDG1400",
+		"budgetType5": "YEARLY",
+		"warningPecentage5": "10",
+		"budgetName5": "Traveling"
+		
+	
+	}
+]

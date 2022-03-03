@@ -1,0 +1,26 @@
+[
+{
+"UserType":"Maker",
+"InvoiceStatus":"Cancelled",
+"canceledInvoiceNumber":"INV-89-12022",
+"PaymentOption":"Business Partner wise",
+"PaymentOptionForCancelledAdvance":"Business Partner wise",
+"FullMonth":"October",
+"Day":"19",
+"Year":"2022",
+"MonthYear":"Oct 2022",
+"BusinessPartnerName":"Bonton Agency",
+"SuplierName":"SUP-289",
+"FlatDiscount":"0",
+"FlatDiscountPercent":"12",
+"ModeOfPayment":"Pay Order",
+"PoNumber":"Azentio_Soft-Agency-8-PO-13",
+"RatePerUnit":"3",
+"InvoiceQuantity":"200",
+"InvoiceRatePerUnitQuantity":"100",
+"Remark":"Ok",
+"CreditAmmount":"1000",
+"AdjustementItemType":"AR Advances",
+"InvoiceBookingStatus":"Cancelled"
+}
+]

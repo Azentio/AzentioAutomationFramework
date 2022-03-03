@@ -1,0 +1,10 @@
+[
+{
+"UserType":"Maker",
+"DeleveryLocation":"East Zone",
+"InvoiceNo":"INV-700250",
+"ItemQuantity":"10",
+"poStatus":"Cancelled",
+"ApprovedPo":"Active"
+}
+]

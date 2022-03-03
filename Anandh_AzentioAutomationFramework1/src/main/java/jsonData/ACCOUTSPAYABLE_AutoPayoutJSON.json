@@ -1,0 +1,20 @@
+[
+{
+"UserType":"Maker",
+"ContractType":"Purchases Contract",
+"BusinessPartnerName":"Bonton Agency",
+"HSNCode":"999459- Cleaning Ser",
+"PaymentAmmount":"50000",
+"CreditPeriod":"2",
+"VendorContractQuantity":"100",
+"ContractName":"Purchace Contract73",
+"PaymentTerm":"Advance",
+"PaymentTermPercentage":"3",
+"RatePerUnit":"100",
+"PaymentMode":"Pay Order",
+"GRNItemDetails":"2",
+"FlatDiscount":"200000",
+"SuplierReferenceNumber":"SUP-100514",
+"Remark":"Ok"
+}
+]
