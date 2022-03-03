@@ -553,6 +553,54 @@ public class ACCOUNTSPAYABLE_InvoiceBookingObj {
 		return accountPayable_InvoiceBooking_TaxAmount;
 	}
 	
+	// Tax Amount for SGST
+	@FindBy(xpath = "//datatable-row-wrapper[1]/datatable-body-row/div[2]/datatable-body-cell[6]/div/input")
+	private WebElement accountPayable_InvoiceBooking_TaxAmountSGST;
+	
+	public WebElement accountPayable_InvoiceBooking_TaxAmountSGST() {
+		return accountPayable_InvoiceBooking_TaxAmountSGST;
+	}
+	
+	// Tax Amount for CGST
+	@FindBy(xpath = "//datatable-row-wrapper[2]/datatable-body-row/div[2]/datatable-body-cell[6]/div/input")
+	private WebElement accountPayable_InvoiceBooking_TaxAmountCGST;
+	
+	public WebElement accountPayable_InvoiceBooking_TaxAmountCGST() {
+		return accountPayable_InvoiceBooking_TaxAmountCGST;
+	}
+	
+//	// Tax percent for taxtype SGST
+//	@FindBy(xpath = "//datatable-row-wrapper[1]/datatable-body-row/div[2]/datatable-body-cell[4]/div/input")
+//	private WebElement accountPayable_InvoiceBooking_TaxPercentSGST;
+//	
+//	public WebElement accountPayable_InvoiceBooking_TaxPercentSGST() {
+//		return accountPayable_InvoiceBooking_TaxPercentSGST;
+//	}
+//	
+//	// Tax percent for taxtype CGST
+//	@FindBy(xpath = "//datatable-row-wrapper[2]/datatable-body-row/div[2]/datatable-body-cell[4]/div/input")
+//	private WebElement accountPayable_InvoiceBooking_TaxPercentCGST;
+//	
+//	public WebElement accountPayable_InvoiceBooking_TaxPercentCGST() {
+//		return accountPayable_InvoiceBooking_TaxPercentCGST;
+//	}
+//	
+//	// Invoice Amount for SGST
+//	@FindBy(xpath = "(//datatable-row-wrapper[1]/datatable-body-row/div[2]/datatable-body-cell[5]/div/input)[2]")
+//	private WebElement accountPayable_InvoiceBooking_InvoiceAmountSGST;
+//	
+//	public WebElement accountPayable_InvoiceBooking_InvoiceAmountSGST() {
+//		return accountPayable_InvoiceBooking_InvoiceAmountSGST;
+//	}
+//	
+//	// Invoice Amount for CGST
+//	@FindBy(xpath = "//datatable-row-wrapper[2]/datatable-body-row/div[2]/datatable-body-cell[5]/div/input")
+//	private WebElement accountPayable_InvoiceBooking_InvoiceAmountCGST;
+//	
+//	public WebElement accountPayable_InvoiceBooking_InvoiceAmountCGST() {
+//		return accountPayable_InvoiceBooking_InvoiceAmountCGST;
+//	}
+	
 	
 	// Tax Details SaveButton
 	@FindBy(xpath = "//page-tax-details-po-update/ion-header/ion-toolbar/ion-buttons/ion-button[1]")
@@ -560,6 +608,15 @@ public class ACCOUNTSPAYABLE_InvoiceBookingObj {
 	
 	public WebElement accountPayable_InvoiceBooking_TaxDetailsSaveButton() {
 		return accountPayable_InvoiceBooking_TaxDetailsSaveButton;
+	}
+	
+	// Tax Details CloseButton
+	@FindBy(xpath = "//page-tax-details-po-update/ion-header/ion-toolbar/ion-buttons/ion-button[2]")
+//	@FindBy(xpath = "(//ion-toolbar/ion-buttons/ion-button[2])[2]")
+	private WebElement accountPayable_InvoiceBooking_TaxDetailsCloseButton;
+	
+	public WebElement accountPayable_InvoiceBooking_TaxDetailsCloseButton() {
+		return accountPayable_InvoiceBooking_TaxDetailsCloseButton;
 	}
 	
 	// Cost Center button
@@ -632,6 +689,23 @@ public class ACCOUNTSPAYABLE_InvoiceBookingObj {
 
 	public WebElement accountPayable_InvoiceBooking_BusinessPartnerSearch() {
 		return accountPayable_InvoiceBooking_BusinessPartnerSearch;
+	}
+	
+	// Tax details Search via InvoiceNumber
+	@FindBy(xpath = "//datatable-header-cell[3]/div/ion-input/input")
+	private WebElement accountPayable_InvoiceBooking_InvoiceNumberSearch;
+	
+	public WebElement accountPayable_InvoiceBooking_InvoiceNumberSearch() {
+		return accountPayable_InvoiceBooking_InvoiceNumberSearch;
+	}
+	
+
+	// First eye button [Invoice Booking]
+	@FindBy(xpath = "//datatable-row-wrapper[1]/datatable-body-row[1]/div[2]/datatable-body-cell[1]/div/ion-buttons/ion-button[1]")
+	private WebElement accountPayable_InvoiceBooking_FirstEyeButton;
+	
+	public WebElement accountPayable_InvoiceBooking_FirstEyeButton() {
+		return accountPayable_InvoiceBooking_FirstEyeButton;
 	}
 
 	// Contract Status

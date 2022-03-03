@@ -20,7 +20,7 @@ import utilities.ExtentTestManager;
 //		         tags = "@KUBS_FAT_UAT_004_001"
 //		         tags = "@KUBS_FAT_UAT_005_Creation"
 //		         tags = "@KUBS_BP_UAT_006_002"
-		         tags = "@KUBS_AR/AP_UAT_001_001_TC_009"
+		         tags = "@KUBS_AR/AP_UAT_005_001_TC_03"
 				 
 
 )

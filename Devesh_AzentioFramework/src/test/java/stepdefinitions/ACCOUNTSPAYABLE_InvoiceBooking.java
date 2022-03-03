@@ -275,7 +275,8 @@ public class ACCOUNTSPAYABLE_InvoiceBooking {
 				waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_EarlyPaymentDiscountPercentBasisAgainstPO());
 				aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_EarlyPaymentDiscountPercentBasisAgainstPO().sendKeys(aCCOUNTSPAYABLE_InvoiceBookingTestDataType.EarlyPaymentDiscountPercent);
 				//flat discount amount&days method bcoz xpath is same
-				aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_EarlyPaymentFlatDiscountAmount().click();
+				waithelper.waitForElement(driver, 3000, aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_EarlyPaymentFlatDiscountAmount());
+				aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_EarlyPaymentFlatDiscountAmount().sendKeys(aCCOUNTSPAYABLE_InvoiceBookingTestDataType.EarlyPaymentDiscountAmount);
 				aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_EarlyPaymentFlatDiscountDays().sendKeys(aCCOUNTSPAYABLE_InvoiceBookingTestDataType.EarlyPaymentDiscountDays);
 
 				waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_ModeOfPaymentForFlat());
@@ -318,6 +319,8 @@ public class ACCOUNTSPAYABLE_InvoiceBooking {
 				Thread.sleep(1000);
 				waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_Remarks());
 				aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_Remarks().sendKeys(aCCOUNTSPAYABLE_InvoiceBookingTestDataType.Remarks);
+				waithelper.waitForElement(driver, 3000, aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_EarlyPaymentFlatDiscountAmount());
+				aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_EarlyPaymentFlatDiscountAmount().sendKeys(aCCOUNTSPAYABLE_InvoiceBookingTestDataType.EarlyPaymentDiscountAmount);
 				waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_SaveButton());
 				aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_SaveButton().click();
 			} else {
@@ -651,11 +654,53 @@ public class ACCOUNTSPAYABLE_InvoiceBooking {
     
     @Then("^Get the invoice status$")
     public void get_the_invoice_status()  {
+    	
+    	waithelper.waitForElement(driver, 3000, aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_Search());
     	aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_Search().click();
-    	aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_BusinessPartnerSearch().sendKeys(null);
+    	waithelper.waitForElement(driver, 3000, aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_BusinessPartnerSearch());
+    	aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_BusinessPartnerSearch().sendKeys(aCCOUNTSPAYABLE_InvoiceBookingTestDataType.BP_Name);
     	System.out.println("Invoice Status is - " +aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_ContractStatus().getText());
        
     }
     
-
+    @Then("^Get the tax details and check$")
+    public void get_the_tax_details_and_check() throws InterruptedException  {
+    	javascripthelper.JavaScriptHelper(driver);
+    	waithelper.waitForElement(driver, 3000, aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_Search());
+    	aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_Search().click();
+    	waithelper.waitForElement(driver, 3000, aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_InvoiceNumberSearch());
+    	aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_InvoiceNumberSearch().sendKeys(aCCOUNTSPAYABLE_InvoiceBookingTestDataType.InvoiceNumber);
+    	waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_FirstEyeButton());
+    	aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_FirstEyeButton().click();
+    	waithelper.waitForElement(driver, 3000, aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_APInvoiceAgainstExpense());
+    	aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_APInvoiceAgainstExpense().click();
+    	Thread.sleep(2000);
+    	javascripthelper.scrollIntoViewAndClick(aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_TaxDetails());
+    	Thread.sleep(2000);
+    	aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_TaxDetailsCloseButton().click();
+    	
+    	double taxSGST = Double.parseDouble(javascripthelper.executeScript("return document.getElementsByTagName('input')[24].value").toString());
+    	int invoiceamountSGST = Integer.parseInt(javascripthelper.executeScript("return document.getElementsByTagName('input')[25].value").toString());
+    	double taxamountSGST = Double.parseDouble(javascripthelper.executeScript("return document.getElementsByTagName('input')[26].value").toString());
+    	
+    	double taxCGST = Double.parseDouble(javascripthelper.executeScript("return document.getElementsByTagName('input')[29].value").toString());
+    	int invoiceamountCGST = Integer.parseInt(javascripthelper.executeScript("return document.getElementsByTagName('input')[30].value").toString());
+    	double taxamountCGST = Double.parseDouble(javascripthelper.executeScript("return document.getElementsByTagName('input')[31].value").toString());
+    	   
+//    	double taxamtSGST = Double.valueOf((taxSGST)/100 * invoiceamountSGST);
+//    	double taxamtCGST = Double.valueOf((taxCGST)/100 * invoiceamountCGST);
+//      double taxamt = Double.valueOf(Double.parseDouble(taxSGST)/100 * Integer.parseInt(invoiceamountSGST));
+//    	System.out.println("Calculated SGST tax amount is : " +taxamtSGST);
+//    	System.out.println("Calculated CGST tax amount is : " +taxamtCGST);
+    	if(Double.valueOf((taxSGST)/100 * invoiceamountSGST).equals(taxamountSGST))
+    	{
+    		System.out.println("SGST Tax details are correctly displayed");
+    	}else System.out.println("Tax details are not correctly displayed");
+    	
+    	if(Double.valueOf((taxCGST)/100 * invoiceamountCGST).equals(taxamountCGST))
+    	{
+    		System.out.println("CGST Tax details are correctly displayed");
+    	}else System.out.println("Tax details are not correctly displayed");
+    }
+    
 }

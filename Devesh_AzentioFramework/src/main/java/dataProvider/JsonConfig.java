@@ -7,12 +7,13 @@ import java.io.IOException;
 import java.io.StringReader;
 import java.util.Arrays;
 import java.util.List;
-
 import com.google.gson.Gson;
 import com.google.gson.stream.JsonReader;
-
 import testDataType.ACCOUNTSPAYABLE_InvoiceBookingTestDataType;
+import testDataType.ACCOUNTSPAYABLE_ManualPayoutTestDataType;
+import testDataType.ACCOUNTSPAYABLE_PaymentSettlementCancellationTestDataType;
 import testDataType.ACCOUNTSPAYABLE_VendorContractsTestDataType;
+import testDataType.AccountsReceivable_ReceiptsReversalsTestDataType;
 import testDataType.BUDGET_BudgetCreationTestDataType;
 import testDataType.BUDGET_BudgetTransferTestDataType;
 import testDataType.BUDGET_RequestAndAllocationTestDataType;
@@ -104,23 +105,30 @@ public class JsonConfig {
 	// FIXEDASSETS_AssetRevaluation
 	private final String AssetRevaluationPath = configFileReader.getJsonPath() + "FIXEDASSETS_AssetRevaluationJSON.json";
 	private List<FIXEDASSETS_AssetRevaluationTestDataType>  AssetRevaluationList;
+	
+	// ACCOUNTSPAYABLE_ManualPayout
+	private final String ManualPayoutPath = configFileReader.getJsonPath() + "ACCOUNTSPAYABLE_ManualPayoutJSON.json";
+	private List<ACCOUNTSPAYABLE_ManualPayoutTestDataType>  ManualPayoutList;
+	
+	// ACCOUNTSPAYABLE_PaymentSettlementCancellation
+	private final String PaymentSettlementCancellationPath = configFileReader.getJsonPath() + "ACCOUNTSPAYABLE_PaymentSettlementCancellationJSON.json";
+	private List<ACCOUNTSPAYABLE_PaymentSettlementCancellationTestDataType>  PaymentSettlementCancellationList;
+	
+	// AccountsReceivable_ReceiptsReversals
+	private final String ReceiptsReversalsPath = configFileReader.getJsonPath() + "AccountsReceivable_ReceiptsReversalsJSON.json";
+	private List<AccountsReceivable_ReceiptsReversalsTestDataType>  ReceiptsReversalsList;
 
 	
 	public JsonConfig() {
 		/*
 		 * RegisterList = getRegisterData(); LoginList = getLoginList();
 		 */
-
 		AllocationList = getAllocationList();
 		BudtypeList = getBudtypeList();
-
 		BudgetCreationList = getBudgetList();
 		credentialslist = getAzentioCredentialsList();
-
 		SupplementaryBudgetList = getSupplementaryBudgetList();
-
 		BudgetTransferList = getBudgetTransferData();
-
 		VendorContractsList = getVendorContractList();
 		InvoiceBookingList = getInvoiceBookingList();
 		DenominationMasterList = getDenominationMasterList();
@@ -131,6 +139,9 @@ public class JsonConfig {
 		 AssetCreationList = getAssetCreationList();
 		 AssetImpairementList = getAssetImpairementList();
 		 AssetRevaluationList = getAssetRevaluationList();
+		 ManualPayoutList = getManualPayoutList();
+		 PaymentSettlementCancellationList = getPaymentSettlementCancellationList();
+		 ReceiptsReversalsList = getReceiptsReversalsList();
 	}
 
 	/*
@@ -491,6 +502,69 @@ public class JsonConfig {
 			}
 		}
 	}
+	
+	private List<ACCOUNTSPAYABLE_ManualPayoutTestDataType> getManualPayoutList() {
+		Gson gson = new Gson();
+		JsonReader reader = new JsonReader(new StringReader(ManualPayoutPath));
+		reader.setLenient(true);
+		BufferedReader bufferReader = null;
+		try {
+			bufferReader = new BufferedReader(new FileReader (ManualPayoutPath));
+			ACCOUNTSPAYABLE_ManualPayoutTestDataType[] login = gson.fromJson(bufferReader,
+					ACCOUNTSPAYABLE_ManualPayoutTestDataType[].class);
+			return Arrays.asList(login);
+		} catch (FileNotFoundException e) {
+			throw new RuntimeException("Json file not found at path : " + ManualPayoutPath);
+		} finally {
+			try {
+				if (bufferReader != null)
+					bufferReader.close();
+			} catch (IOException ignore) {
+			}
+		}
+	}
+	
+	private List<ACCOUNTSPAYABLE_PaymentSettlementCancellationTestDataType> getPaymentSettlementCancellationList() {
+		Gson gson = new Gson();
+		JsonReader reader = new JsonReader(new StringReader(PaymentSettlementCancellationPath));
+		reader.setLenient(true);
+		BufferedReader bufferReader = null;
+		try {
+			bufferReader = new BufferedReader(new FileReader (PaymentSettlementCancellationPath));
+			ACCOUNTSPAYABLE_PaymentSettlementCancellationTestDataType[] login = gson.fromJson(bufferReader,
+					ACCOUNTSPAYABLE_PaymentSettlementCancellationTestDataType[].class);
+			return Arrays.asList(login);
+		} catch (FileNotFoundException e) {
+			throw new RuntimeException("Json file not found at path : " + PaymentSettlementCancellationPath);
+		} finally {
+			try {
+				if (bufferReader != null)
+					bufferReader.close();
+			} catch (IOException ignore) {
+			}
+		}
+	}
+	
+	private List<AccountsReceivable_ReceiptsReversalsTestDataType> getReceiptsReversalsList() {
+		Gson gson = new Gson();
+		JsonReader reader = new JsonReader(new StringReader(ReceiptsReversalsPath));
+		reader.setLenient(true);
+		BufferedReader bufferReader = null;
+		try {
+			bufferReader = new BufferedReader(new FileReader (ReceiptsReversalsPath));
+			AccountsReceivable_ReceiptsReversalsTestDataType[] login = gson.fromJson(bufferReader,
+					AccountsReceivable_ReceiptsReversalsTestDataType[].class);
+			return Arrays.asList(login);
+		} catch (FileNotFoundException e) {
+			throw new RuntimeException("Json file not found at path : " + ReceiptsReversalsPath);
+		} finally {
+			try {
+				if (bufferReader != null)
+					bufferReader.close();
+			} catch (IOException ignore) {
+			}
+		}
+	}
 
 	/*
 	 * public final RegisterData getRegisterByName(String customerName) { return
@@ -566,4 +640,17 @@ public class JsonConfig {
 	public final FIXEDASSETS_AssetRevaluationTestDataType getAssetRevaluationdata(String UserName) {
 		return AssetRevaluationList.stream().filter(x -> x.User.equalsIgnoreCase(UserName)).findAny().get();
 	}
+	
+	public final ACCOUNTSPAYABLE_ManualPayoutTestDataType getManualPayoutdata(String UserName) {
+		return ManualPayoutList.stream().filter(x -> x.User.equalsIgnoreCase(UserName)).findAny().get();
+	}
+	
+	public final ACCOUNTSPAYABLE_PaymentSettlementCancellationTestDataType getPaymentSettlementCancellationdata(String UserName) {
+		return PaymentSettlementCancellationList.stream().filter(x -> x.User.equalsIgnoreCase(UserName)).findAny().get();
+	}
+	
+	public final AccountsReceivable_ReceiptsReversalsTestDataType getReceiptsReversalsdata(String UserName) {
+		return ReceiptsReversalsList.stream().filter(x -> x.User.equalsIgnoreCase(UserName)).findAny().get();
+	}
+	
 }

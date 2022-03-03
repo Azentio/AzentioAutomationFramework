@@ -38,5 +38,6 @@ public class ACCOUNTSPAYABLE_InvoiceBookingTestDataType {
 	public String PaymentMonth;
 	public String PaymentFullMonth;
 	public String PaymentYear;
+	public String InvoiceNumber;
 
 }

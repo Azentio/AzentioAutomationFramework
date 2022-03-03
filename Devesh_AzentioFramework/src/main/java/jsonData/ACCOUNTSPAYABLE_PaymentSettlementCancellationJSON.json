@@ -1,0 +1,18 @@
+[
+	{
+		"User" : "Maker",
+		"EntityBranch" : "Azentio Main Branch",
+		"PaymentTxnNumber" : "PAN-2",
+		"PayoutApprovedPaymentTxnNumber" : "PAN-23-2021-12-23",
+		"ValueDate" : "24",
+		"ValueMonth" : "Feb",
+		"ValueFullMonth" : "February",
+		"ValueYear" : "2022",
+		"CancellationReasonCode" : "Incorrectly Approved",
+		"CAncellationRemark" : "Cancel",
+		"Remarks" : "ok",
+		"RemarkByMaker" : "Submit By Maker",
+		"ApprovedByReviewer" : "Approved By Reviewer",
+		"ApprovedByChecker" : "Approved By Checker"
+	}
+]
