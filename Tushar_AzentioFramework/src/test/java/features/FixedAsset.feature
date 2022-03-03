@@ -16,12 +16,12 @@ Then Save the filled form
 Then Click on the Notification
 Then Select the record which we saved
 Then Submit record
-Then Open the Reviewer account
-Then Click on the Notification
-Then Approve the record which we submitted from maker
-Then Go to Checker login
-Then Clam record
-Then Click on the notification and approve the record
+Then Open Reviewer account
+And Click on notification
+Then Approve the record which we submitted from maker stage
+Then Go to Checker account
+And Clam the record
+Then Click on notification and approve the record
 
 
 @KUBS_FAT_UAT_001_004	
@@ -46,12 +46,12 @@ Then Click on GRN item save button
 Then Click on the Notification
 Then Select the record which we saved
 Then Submit record
-Then Open the Reviewer account
-Then Click on the Notification
-Then Approve the record which we submitted from maker
-Then Go to Checker login
-Then Clam record
-Then Click on the notification and approve the record
+Then Open Reviewer account
+And Click on notification
+Then Approve the record which we submitted from maker stage
+Then Go to Checker account
+And Clam the record
+Then Click on notification and approve the record
 
 @KUBS_FAT_UAT_002_006
 Scenario: Creation of registered asset with minimum details
@@ -68,12 +68,12 @@ Then Save the filled form
 Then Click on the Notification
 Then Select the record which we saved
 Then Submit record
-Then Open the Reviewer account
-Then Click on the Notification
-Then Approve the record which we submitted from maker
-Then Go to Checker login
-Then Clam record
-Then Click on the notification and approve the record
+Then Open Reviewer account
+And Click on notification
+Then Approve the record which we submitted from maker stage
+Then Go to Checker account
+And Clam the record
+Then Click on notification and approve the record
 
 @KUBS_FAT_UAT_002_007
 Scenario: Creation of the registered asset with full details
@@ -97,12 +97,12 @@ Then Click on save button of item details
 Then Click on the Notification
 Then Select the record which we saved
 Then Submit record
-Then Open the Reviewer account
-Then Click on the Notification
-Then Approve the record which we submitted from maker
-Then Go to Checker login
-Then Clam record
-Then Click on the notification and approve the record
+Then Open Reviewer account
+And Click on notification
+Then Approve the record which we submitted from maker stage
+Then Go to Checker account
+And Clam the record
+Then Click on notification and approve the record
 
 @KUBS_FAT_UAT_006_001
 Scenario: Check if any unused asset can be allocated to a specific resource in the branch
@@ -122,12 +122,12 @@ Then Save the filled Allocation
 Then Click on the Notification
 Then Select the record which we saved
 Then Submit record
-Then Open the Reviewer account
-Then Click on the Notification
-Then Approve the record which we submitted from maker
-Then Go to Checker login
-Then Clam record
-Then Click on the notification and approve the record
+Then Open Reviewer account
+And Click on notification
+Then Approve the record which we submitted from maker stage
+Then Go to Checker account
+And Clam the record
+Then Click on notification and approve the record
 
 @KUBS_FAT_UAT_006_002
 Scenario: Check if any used asset can be allocated to a specific resource in the branch
@@ -147,12 +147,12 @@ Then Save the filled Allocation
 Then Click on the Notification
 Then Select the record which we saved
 Then Submit record
-Then Open the Reviewer account
-Then Click on the Notification
-Then Approve the record which we submitted from maker
-Then Go to Checker login
-Then Clam record
-Then Click on the notification and approve the record
+Then Open Reviewer account
+And Click on notification
+Then Approve the record which we submitted from maker stage
+Then Go to Checker account
+And Clam the record
+Then Click on notification and approve the record
 
 @KUBS_FAT_UAT_006_003
 Scenario: Check if any impaired asset can be allocated to a specific resource in the branch
@@ -172,12 +172,12 @@ Then Save the filled Allocation
 Then Click on the Notification
 Then Select the record which we saved
 Then Submit record
-Then Open the Reviewer account
-Then Click on the Notification
-Then Approve the record which we submitted from maker
-Then Go to Checker login
-Then Clam record
-Then Click on the notification and approve the record
+Then Open Reviewer account
+And Click on notification
+Then Approve the record which we submitted from maker stage
+Then Go to Checker account
+And Clam the record
+Then Click on notification and approve the record
 @KUBS_FAT_UAT_006_004
 Scenario: Check if any re-valued asset can be allocated to a specific resource in the branch
 
@@ -196,12 +196,12 @@ Then Save the filled Allocation
 Then Click on the Notification
 Then Select the record which we saved
 Then Submit record
-Then Open the Reviewer account
-Then Click on the Notification
-Then Approve the record which we submitted from maker
-Then Go to Checker login
-Then Clam record
-Then Click on the notification and approve the record
+Then Open Reviewer account
+And Click on notification
+Then Approve the record which we submitted from maker stage
+Then Go to Checker account
+And Clam the record
+Then Click on notification and approve the record
 
 @KUBS_FAT_UAT_002_008
 Scenario: Running batch job for the fixed asset

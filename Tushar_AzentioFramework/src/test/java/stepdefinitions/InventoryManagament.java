@@ -19,6 +19,7 @@ import helper.WaitHelper;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 import pageobjects.BUDGET_BudgetTransferObj;
 import pageobjects.InventoryManagamentObj;
 import pageobjects.KUBS_CheckerObj;
@@ -46,6 +47,7 @@ public class InventoryManagament extends BaseClass {
 	BUDGET_BudgetTransferTestDataType budgetTransferTestDataType;
 	JsonDataReaderWriter reader = new JsonDataReaderWriter();
 	JsonDataReaderWriter jsonWriter = new JsonDataReaderWriter();
+	JsonDataReaderWriter readerData =new JsonDataReaderWriter();
 	InventoryManagementTestDataType inventoryManagementTestDataType = new InventoryManagementTestDataType();
 	InventoryManagamentObj inventoryManagamentObj = new InventoryManagamentObj(driver);
 	ConfigFileReader configFileReader = new ConfigFileReader();
@@ -54,7 +56,8 @@ public class InventoryManagament extends BaseClass {
 	String referance_id;
 	KUBS_CheckerObj kubschecker;
 	JavascriptHelper javascript;
-
+	String reviwerId;
+	String RefNo;
 	// ----KUBS_INV_MGMT_UAT_001_001-----
 
 	@Given("^Navigate to URL and user should login as a maker$")
@@ -656,6 +659,561 @@ public class InventoryManagament extends BaseClass {
 				
 		    	inventoryManagamentObj.accountPayable_GRNNotificationSubmitButton().click();
 		    } 
+		    
+		    
+		    
+		//-----------priyankaaa-----------------
+		 
+
+			@Then("^click on report segment button$")
+			public void click_on_report_segment_button() throws Throwable {
+				waithelper.waitForElement(driver, 3000, inventoryManagamentObj.inventoryReportIcon());
+				inventoryManagamentObj.inventoryReportIcon().click();
+				waithelper.waitForElement(driver, 3000, inventoryManagamentObj.inventoryEnquiryMenu());
+				Assert.assertTrue(inventoryManagamentObj.inventoryEnquiryMenu().isDisplayed());
+				
+			}
+
+			@And("^click on equiry menu$")
+			public void click_on_equiry_menu() throws Throwable {
+				waithelper.waitForElement(driver, 3000,inventoryManagamentObj.inventoryEnquiryMenu());
+
+				inventoryManagamentObj.inventoryEnquiryMenu().click();
+				waithelper.waitForElement(driver, 3000, inventoryManagamentObj.inventoryFinancialTransactionIcon());
+				Assert.assertTrue(inventoryManagamentObj.inventoryFinancialTransactionIcon().isDisplayed());
+				
+			}
+
+			@Then("^click on edit icon near by fiancial transaction menu$")
+			public void click_on_edit_icon_near_by_fiancial_transaction_menu() throws Throwable {
+				inventoryManagamentObj.inventoryFinancialTransactionIcon().click();
+
+			}
+
+			@And("^choose branch code$")
+			public void choose_branch_code() throws Throwable {
+				inventoryManagementTestDataType = jsonReader.getInventoryManagementByName("Maker");
+				inventoryManagamentObj.inventoryBranchCode().sendKeys(inventoryManagementTestDataType.BranchCode);
+				inventoryManagamentObj.inventoryBranchCode().sendKeys(Keys.ENTER);
+			}
+
+			@And("^choose Gl code$")
+			public void choose_gl_code() throws Throwable {
+				inventoryManagementTestDataType = jsonReader.getInventoryManagementByName("Maker");
+				inventoryManagamentObj.inventoryGlCode().sendKeys(inventoryManagementTestDataType.gLCode);
+				inventoryManagamentObj.inventoryGlCode().sendKeys(Keys.ENTER);
+			}
+
+			@And("^click on transaction from date calender icon$")
+			public void click_on_transaction_from_date_calender_icon() throws Throwable {
+				inventoryManagamentObj.inventoryFromDate().click();
+
+			}
+
+			@Then("^choose the from date$")
+			public void choose_the_from_date() throws Throwable {
+				inventoryManagementTestDataType = jsonReader.getInventoryManagementByName("Maker");
+				javascripthelper.JavaScriptHelper(driver);
+				while(true)
+		        {
+				try
+				{
+				
+					waithelper.waitForElement(driver, 3000, driver.findElement(By.xpath("//span[contains(text(),'"+inventoryManagementTestDataType.GlMonth+" "+inventoryManagementTestDataType.GlYear+"')]")));
+					WebElement monthAndYear=driver.findElement(By.xpath("//span[contains(text(),'"+inventoryManagementTestDataType.GlMonth+" "+inventoryManagementTestDataType.GlYear+"')]"));
+				    break;
+				}
+				
+				catch(NoSuchElementException nosuchElement)
+				{
+					inventoryManagamentObj.inventoryNextMonth().click();
+				}
+				}
+				WebElement FinalDay=driver.findElement(By.xpath("//td[@aria-label='"+inventoryManagementTestDataType.GlFullMonth+" "+inventoryManagementTestDataType.GlDay+", "+inventoryManagementTestDataType.GlYear+"']/span"));
+				clicksAndActionHelper.doubleClick(FinalDay);
+			}
+
+			@And("^click on the transaction to date calender icon$")
+			public void click_on_the_transaction_to_date_calender_icon() throws Throwable {
+
+				waithelper.waitForElement(driver, 3000, inventoryManagamentObj.inventoryToDate());
+				inventoryManagamentObj.inventoryToDate().click();
+			
+			}
+
+			@Then("^choose the to date$")
+			public void choose_the_to_date() throws Throwable {
+				inventoryManagementTestDataType = jsonReader.getInventoryManagementByName("Maker");
+				while(true)
+		        {
+				try
+				{
+				
+					waithelper.waitForElement(driver, 3000, driver.findElement(By.xpath("//span[contains(text(),'"+inventoryManagementTestDataType.GlToMonth+" "+inventoryManagementTestDataType.GlYear+"')]")));
+					WebElement monthAndYear=driver.findElement(By.xpath("//span[contains(text(),'"+inventoryManagementTestDataType.GlToMonth+" "+inventoryManagementTestDataType.GlYear+"')]"));
+				    break;
+				}
+				
+				catch(NoSuchElementException nosuchElement)
+				{
+					inventoryManagamentObj.inventoryNextMonth().click();
+				}
+				}
+				WebElement FinalDay=driver.findElement(By.xpath("//td[@aria-label='"+inventoryManagementTestDataType.GlFullToMonth+" "+inventoryManagementTestDataType.GlToDate+", "+inventoryManagementTestDataType.GlYear+"']/span"));
+				clicksAndActionHelper.doubleClick(FinalDay);
+			}
+
+			@And("^click on view button$")
+			public void click_on_view_button() throws Throwable {
+				waithelper.waitForElement(driver, 3000, inventoryManagamentObj.inventoryViewButton());
+				inventoryManagamentObj.inventoryViewButton().click();
+				Thread.sleep(3000);
+			}
+		    
+		    
+	//-------arshat KUBS_INV_MGMT_UAT_005_001----
+			
+		    
+			@Then("^Click on Second icon page$")
+			public void click_on_second_icon_page() throws Throwable {
+
+				// ---------TO VIEW THE TRANFER AMOUNT BUDGET----------//
+				waithelper.waitForElement(driver, 2000, inventoryManagamentObj.inventoryTransfericon());
+				inventoryManagamentObj.inventoryTransfericon().click();
+			}
+
+			@And("^Click Inventory Management module$")
+			public void click_inventory_management_module() throws Throwable {
+
+				// ---------TO VIEW THE Inventory Management----------//
+				javascripthelper.JavaScriptHelper(driver);
+				waithelper.waitForElement(driver, 2000, inventoryManagamentObj.inventoryManagement());
+				inventoryManagamentObj.inventoryManagement().click();
+				javascripthelper.scrollIntoView(inventoryManagamentObj.inventoryStockReturnBranchEye());
+			}
+
+			@And("^Click on stock return from branch SubModule Eye icon$")
+			public void click_on_stock_return_from_branch_submodule_eye_icon() throws Throwable {
+
+				// ---------TO VIEW THE stock return from branch Eye icon----------//
+				waithelper.waitForElement(driver, 2000, inventoryManagamentObj.inventoryStockReturnBranchEye());
+				inventoryManagamentObj.inventoryStockReturnBranchEye().click();
+			}
+
+			@Then("^Click on stock return from branch Add icon$")
+			public void click_on_stock_return_from_branch_add_icon() throws Throwable {
+
+				// ---------TO VIEW THE stock return from branch Add icon----------//
+				waithelper.waitForElement(driver, 2000, inventoryManagamentObj.inventoryStockReturnBranchAdd());
+				inventoryManagamentObj.inventoryStockReturnBranchAdd().click();
+			}
+
+			@And("^Click on Request Referance No code$")
+			public void click_on_request_referance_no_code() throws Throwable {
+
+				// ---------TO Enter Request Referance No code----------//
+				inventoryManagementTestDataType = jsonReader.getInventoryManagementByName("Maker");
+				waithelper.waitForElement(driver, 2000, inventoryManagamentObj.inventoryRequestReferanceNumber());
+				inventoryManagamentObj.inventoryRequestReferanceNumber().click();
+				inventoryManagamentObj.inventoryRequestReferanceNumber().sendKeys(inventoryManagementTestDataType.requestReferanceNo);
+				inventoryManagamentObj.inventoryRequestReferanceNumber().sendKeys(Keys.ENTER);
+			}
+
+			@Then("^Click on Issue Referance No code$")
+			public void click_on_issue_referance_no_code() throws Throwable {
+
+				// ---------TO VIEW THE Issue Referance No code----------//
+				inventoryManagementTestDataType = jsonReader.getInventoryManagementByName("Maker");
+				waithelper.waitForElement(driver, 2000, inventoryManagamentObj.inventoryIssueReferanceNo());
+				inventoryManagamentObj.inventoryIssueReferanceNo().click();
+				inventoryManagamentObj.inventoryIssueReferanceNo().sendKeys(Keys.DOWN);
+				inventoryManagamentObj.inventoryIssueReferanceNo().sendKeys(Keys.ENTER);
+			}
+
+			@And("^Click on item code$")
+			public void click_on_item_code() throws Throwable {
+				inventoryManagementTestDataType = jsonReader.getInventoryManagementByName("Maker");
+				// ---------TO VIEW THE item code----------//
+				waithelper.waitForElement(driver, 2000, inventoryManagamentObj.inventoryItemCode());
+				inventoryManagamentObj.inventoryItemCode().click();
+				inventoryManagamentObj.inventoryItemCode().sendKeys(Keys.DOWN);
+				inventoryManagamentObj.inventoryItemCode().sendKeys(Keys.ENTER);
+				
+			}
+
+			@And("^Enter Return Quantity Stock value$")
+			public void enter_return_quantity_stock_value() throws Throwable {
+				inventoryManagementTestDataType = jsonReader.getInventoryManagementByName("Maker");
+				// ---------TO VIEW THE Return Quantity----------//
+				waithelper.waitForElement(driver, 2000, inventoryManagamentObj.inventoryReturnQuantity());
+				inventoryManagamentObj.inventoryReturnQuantity().click();
+				inventoryManagamentObj.inventoryReturnQuantity().sendKeys(inventoryManagementTestDataType.returnQuantity);
+			}
+
+
+		    
+			@Then("^Click on Return Type and Choose Type$")
+			public void click_on_return_type_and_choose_type() throws Throwable {
+				inventoryManagementTestDataType = jsonReader.getInventoryManagementByName("Maker");
+				// ---------TO VIEW THE Return Type----------//
+				waithelper.waitForElement(driver, 5000, inventoryManagamentObj.inventory_ReturnType());
+				inventoryManagamentObj.inventory_ReturnType().click();
+				inventoryManagamentObj.inventory_ReturnType().sendKeys(inventoryManagementTestDataType.returnType);
+				inventoryManagamentObj.inventory_ReturnType().sendKeys(Keys.ENTER);
+			}
+
+			@And("^Click on Return Reason and Choose Type$")
+			public void click_on_return_reason_and_choose_type() throws Throwable {
+				inventoryManagementTestDataType = jsonReader.getInventoryManagementByName("Maker");
+				// ---------TO VIEW THE Return Reason----------//
+				waithelper.waitForElement(driver, 5000, inventoryManagamentObj.inventory_ReturnReason());
+				inventoryManagamentObj.inventory_ReturnReason().click();
+				inventoryManagamentObj.inventory_ReturnReason().sendKeys(inventoryManagementTestDataType.returnReason);
+				inventoryManagamentObj.inventory_ReturnReason().sendKeys(Keys.ENTER);
+			}
+
+			@Then("^Save the Inventory Stock Record$")
+			public void save_the_inventory_stock_record() throws Throwable {
+
+				// -----------SAVE THE RECORD----------------//
+				waithelper.waitForElement(driver, 2000, inventoryManagamentObj.inventory_Save());
+				inventoryManagamentObj.inventory_Save().click();
+				Thread.sleep(3000);
+			}
+
+			@And("^goto the maker Notification icon$")
+			public void goto_the_maker_notification_icon() throws Throwable {
+
+				// ------------Maker Notification icon---------//
+				waithelper.waitForElement(driver, 2000, inventoryManagamentObj.inventory_MakerNotification());
+				inventoryManagamentObj.inventory_MakerNotification().click();
+				waithelper.waitForElement(driver, 2000, inventoryManagamentObj.inventory_ReferanceId());
+				String Referance_id = inventoryManagamentObj.inventory_ReferanceId().getText();
+				//JsonDataReaderWriter readerData;
+				readerData.addReferanceData(Referance_id);
+				waithelper.waitForElement(driver, 2000, inventoryManagamentObj.inventory_ActionButton());
+				inventoryManagamentObj.inventory_ActionButton().click();
+
+			}
+
+			@Then("^Click Submit icon to Inventory Record$")
+			public void click_submit_icon_to_inventory_record() throws Throwable {
+
+				// -----------Submit Icon Inventory-----------//
+				waithelper.waitForElement(driver, 2000, inventoryManagamentObj.inventory_Submit());
+				inventoryManagamentObj.inventory_Submit().click();
+			}
+
+			@And("^Give Remark and submit Inventory field$")
+			public void give_remark_and_submit_inventory_field() throws Throwable {
+
+				// ----------ENTER THE REMARK AND SUBMIT THE RECORD-------------//
+				inventoryManagementTestDataType = jsonReader.getInventoryManagementByName("Maker");
+				waithelper.waitForElement(driver, 2000, inventoryManagamentObj.inventory_Remark());
+				inventoryManagamentObj.inventory_Remark().click();
+				waithelper.waitForElement(driver, 5000, inventoryManagamentObj.inventory_Remark());
+				inventoryManagamentObj.inventory_Remark().sendKeys(inventoryManagementTestDataType.RemarkApprove);
+				waithelper.waitForElement(driver, 2000, inventoryManagamentObj.inventory_RemarkSubmit());
+				inventoryManagamentObj.inventory_RemarkSubmit().click();
+				waithelper.waitForElement(driver, 2000, inventoryManagamentObj.inventory_ReviewerId());
+				String reviwerId = inventoryManagamentObj.inventory_ReviewerId().getText();
+				String ReviewerID = reviwerId.substring(85);
+				StringBuffer sb = new StringBuffer(ReviewerID);
+				StringBuffer bufferedString = sb.deleteCharAt(ReviewerID.length() - 1);
+				String filanReviewerID = bufferedString.toString();
+				//JsonDataReaderWriter readerData;
+				readerData.addData(filanReviewerID);
+				System.out.println(reviwerId);
+
+			}
+  
+		    
+			@Then("^Click on Inventory Maintance module$")
+		    public void click_on_inventory_maintance_module() throws Throwable {
+				waithelper.waitForElement(driver, 2000, inventoryManagamentObj.inventory_InventoryMaintenance());
+				inventoryManagamentObj.inventory_InventoryMaintenance().click();
+		    }
+
+		    @And("^click on Master Item eye icon$")
+		    public void click_on_master_item_eye_icon() throws Throwable {
+		    	waithelper.waitForElement(driver, 2000, inventoryManagamentObj.inventory_MasterItemEye());
+		    	inventoryManagamentObj.inventory_MasterItemEye().click();
+		    }
+		    
+		    @Then("^click on search icon$")
+		    public void click_on_search_icon() throws Throwable {
+		    	waithelper.waitForElement(driver, 2000, inventoryManagamentObj.inventory_SearchIcon());
+		    	inventoryManagamentObj.inventory_SearchIcon().click();
+		    }
+
+		    @And("^Give Item description value and Click Edit icon$")
+		    public void give_item_description_value_and_click_edit_icon() throws Throwable {
+		    	waithelper.waitForElement(driver, 2000, inventoryManagamentObj.inventory_Itemvalue());
+		    	inventoryManagamentObj.inventory_Itemvalue().click();
+		    	inventoryManagamentObj.inventory_Itemvalue().sendKeys("STAPLERS");
+		    }
+		    
+		    @When("^validate the quantity of the Item$")
+		    public void validate_the_quantity_of_the_item() throws Throwable {
+		    	waithelper.waitForElement(driver, 2000, inventoryManagamentObj.inventory_CurrentQuantity());
+		    	String Quantity = inventoryManagamentObj.inventory_CurrentQuantity().getText();
+		    	System.out.println("The Branch Available Quantity is: "+Quantity);
+		    }  
+		    
+		    //---------------KUBS_INV_MGMT_UAT_004_StockConfirm
+		    
+		    
+		    @Then("^Inventory Second direction icon$")
+			public void inventory_second_direction_icon() throws Throwable {
+
+				// ---------TO VIEW THE TRANFER AMOUNT BUDGET----------//
+				waithelper.waitForElement(driver, 2000, inventoryManagamentObj.inventoryTransfericon());
+				inventoryManagamentObj.inventoryTransfericon().click();
+			}
+
+			@And("^Inventory Management Module$")
+			public void inventory_management_module() throws Throwable {
+
+				// ---------TO VIEW THE Inventory Management----------//
+				javascripthelper.JavaScriptHelper(driver);
+				waithelper.waitForElement(driver, 2000, inventoryManagamentObj.inventoryManagement());
+				inventoryManagamentObj.inventoryManagement().click();
+				javascripthelper.scrollIntoView(inventoryManagamentObj.inventoryStockReturnBranchEye());
+			}
+			
+		    @Then("^Click on Stock issue eye icon$")
+		    public void click_on_stock_issue_eye_icon() throws Throwable {
+		    	waithelper.waitForElement(driver, 2000, inventoryManagamentObj.inventory_StockissueEye());
+		    	inventoryManagamentObj.inventory_StockissueEye().click();
+		 
+		    }
+
+		    @And("^Click on First record eye icon$")
+		    public void click_on_first_record_eye_icon() throws Throwable {
+		       	waithelper.waitForElement(driver, 2000, inventoryManagamentObj.inventory_StockissueGridEye());
+		    	inventoryManagamentObj.inventory_StockissueGridEye().click();
+		    }
+		    
+		    @Then("^Get the New Request Referance No$")
+		    public void get_the_new_request_referance_no() throws Throwable {
+		         RefNo = inventoryManagamentObj.inventory_StockissueRefNo().getText();
+		        System.out.println("Request Referance No =" +RefNo);
+		    }
+		    
+			@Then("^Click on Inventory stock confirmation eye icon$")
+			public void click_on_inventory_stock_confirmation_eye_icon() throws Throwable {
+
+				// ---------TO VIEW THE stock return from branch Eye icon----------//
+				waithelper.waitForElement(driver, 2000, inventoryManagamentObj.inventory_StockConfirmEye());
+				inventoryManagamentObj.inventory_StockConfirmEye().click();
+			}
+
+			@And("^Sub module Inventory stock confirmation click Add icon$")
+			public void sub_module_inventory_stock_confirmation_click_add_icon() throws Throwable {
+
+				// ---------TO VIEW THE stock return from branch Add icon----------//
+				waithelper.waitForElement(driver, 2000, inventoryManagamentObj.inventoryStockConfirmAdd());
+				inventoryManagamentObj.inventoryStockConfirmAdd().click();
+			}
+
+			@Then("^Enter Request Referance Number$")
+			public void enter_request_referance_number() throws Throwable {
+				
+				// -----------ENTER THE REQUEST REFERANCE NUMBER---------//
+				inventoryManagementTestDataType = jsonReader.getInventoryManagementByName("Maker");
+				waithelper.waitForElement(driver, 2000, inventoryManagamentObj.StockConfirm_RequestReferanceNumber());
+				inventoryManagamentObj.StockConfirm_RequestReferanceNumber().click();
+				inventoryManagamentObj.StockConfirm_RequestReferanceNumber().sendKeys(RefNo);
+				inventoryManagamentObj.StockConfirm_RequestReferanceNumber().sendKeys(Keys.ENTER);
+			}
+
+			@And("^Enter Item code Number$")
+			public void enter_item_code_number() throws Throwable {
+				
+				// ---------ENTER THE ITEM CODE--------//
+				waithelper.waitForElement(driver, 2000, inventoryManagamentObj.StockConfirm_ItemCode());
+				inventoryManagamentObj.StockConfirm_ItemCode().click();
+				inventoryManagamentObj.StockConfirm_ItemCode().sendKeys(Keys.DOWN);
+				inventoryManagamentObj.StockConfirm_ItemCode().sendKeys(Keys.ENTER);
+			
+			}
+
+			@Then("^Accept the status in checkbox$")
+			public void accept_the_status_in_checkbox() throws Throwable {
+
+				// ----------ACCEPT THE STATUS----------//
+				waithelper.waitForElement(driver, 2000, inventoryManagamentObj.StockConfirm_AcceptCheckBox());
+				inventoryManagamentObj.StockConfirm_AcceptCheckBox().click();
+			}
+
+			@And("^click the save icon for StockConfirm$")
+			public void click_the_save_icon_for_stockconfirm() throws Throwable {
+
+				// ----------SAVE THE RECORD----------//
+				waithelper.waitForElement(driver, 2000, inventoryManagamentObj.StockConfirm_Save());
+				inventoryManagamentObj.StockConfirm_Save().click();
+				Thread.sleep(2000);
+				inventoryManagamentObj.StockConfirm_Notification_Close().click();
+			}
+
+			@And("^goto maker Notification icon$")
+			public void goto_maker_notification_icon() throws Throwable {
+				// ------------Maker Notification icon---------//
+				waithelper.waitForElement(driver, 2000, inventoryManagamentObj.StockConfirm_MakerNotification());
+				inventoryManagamentObj.StockConfirm_MakerNotification().click();
+				waithelper.waitForElement(driver, 2000, inventoryManagamentObj.StockConfirm_ReferanceId());
+				String Referance_id = inventoryManagamentObj.StockConfirm_ReferanceId().getText();
+				readerData.addReferanceData(Referance_id);
+				waithelper.waitForElement(driver, 2000, inventoryManagamentObj.StockConfirm_ActionButton());
+				inventoryManagamentObj.StockConfirm_ActionButton().click();
+			}
+
+			@Then("^Click Submit button to Inventory Record$")
+			public void click_submit_button_to_inventory_record() throws Throwable {
+				// -----------Submit Icon Inventory-----------//
+				waithelper.waitForElement(driver, 2000, inventoryManagamentObj.StockConfirm_Submit());
+				inventoryManagamentObj.StockConfirm_Submit().click();
+			}
+
+			@And("^Give Remark and submit to reviewer$")
+			public void give_remark_and_submit_to_reviewer() throws Throwable {
+				// ----------ENTER THE REMARK AND SUBMIT THE RECORD-------------//
+				inventoryManagementTestDataType = jsonReader.getInventoryManagementByName("Maker");
+				waithelper.waitForElement(driver, 2000, inventoryManagamentObj.StockConfirm_Remark());
+				inventoryManagamentObj.StockConfirm_Remark().click();
+				waithelper.waitForElement(driver, 5000, inventoryManagamentObj.StockConfirm_Remark());
+				inventoryManagamentObj.StockConfirm_Remark().sendKeys(inventoryManagementTestDataType.RemarkApprove);
+				waithelper.waitForElement(driver, 2000, inventoryManagamentObj.StockConfirm_RemarkSubmit());
+				inventoryManagamentObj.StockConfirm_RemarkSubmit().click();
+				waithelper.waitForElement(driver, 2000, inventoryManagamentObj.StockConfirm_ReviewerId());
+				reviwerId = inventoryManagamentObj.StockConfirm_ReviewerId().getText();
+				String ReviewerID = reviwerId.substring(85);
+				StringBuffer sb = new StringBuffer(ReviewerID);
+				StringBuffer bufferedString = sb.deleteCharAt(ReviewerID.length() - 1);
+				String filanReviewerID = bufferedString.toString();
+				readerData.addData(filanReviewerID);
+				System.out.println(reviwerId);
+			}
+		    
+		 //---------------------KUBS_INV_MGMT_UAT_004_GL-------------
+			
+		    
+			@Then("^click on report button$")
+			public void click_on_report_button() throws Throwable {
+				//-----------CLICK ON REPORT ICON----------------//
+				waithelper.waitForElement(driver, 3000, inventoryManagamentObj.inventoryReportIcon());
+				inventoryManagamentObj.inventoryReportIcon().click();
+				waithelper.waitForElement(driver, 3000, inventoryManagamentObj.inventoryEnquiryMenu());
+				Assert.assertTrue(inventoryManagamentObj.inventoryEnquiryMenu().isDisplayed());
+
+			}
+
+			@And("^click Enquiry menu$")
+			public void click_Enquiry_menu() throws Throwable {
+				//------------CLICK ON ENQUIRY ICON--------------//
+				waithelper.waitForElement(driver, 3000, inventoryManagamentObj.inventoryEnquiryMenu());
+				inventoryManagamentObj.inventoryEnquiryMenu().click();
+				waithelper.waitForElement(driver, 3000, inventoryManagamentObj.inventoryFinancialTransactionIcon());
+				Assert.assertTrue(inventoryManagamentObj.inventoryFinancialTransactionIcon().isDisplayed());
+
+			}
+
+			@Then("^click on Edit icon near by financial transaction$")
+			public void click_on_edit_icon_near_by_financial_transaction() throws Throwable {
+				//-----------CLICK ON FINANCIAL EDIT------------//
+				inventoryManagamentObj.inventoryFinancialTransactionIcon().click();
+
+			}
+
+			@And("^choose branch code Id$")
+			public void choose_branch_code_id() throws Throwable {
+				inventoryManagementTestDataType = jsonReader.getInventoryManagementByName("Maker");
+				//-----------CLICK ON BRANCH CODE------------//
+				inventoryManagamentObj.inventoryBranchCode().sendKeys(inventoryManagementTestDataType.BranchCode);
+				inventoryManagamentObj.inventoryBranchCode().sendKeys(Keys.ENTER);
+			}
+
+			@And("^choose Gl code Id$")
+			public void choose_gl_code_id() throws Throwable {
+				inventoryManagementTestDataType = jsonReader.getInventoryManagementByName("Maker");
+				//-----------CLICK ON GL CODE--------------//
+				inventoryManagamentObj.inventoryGlCode().sendKeys(inventoryManagementTestDataType.gLCode);
+				inventoryManagamentObj.inventoryGlCode().sendKeys(Keys.ENTER);
+			}
+
+			@And("^click on transaction from date in calender icon$")
+			public void click_on_transaction_from_date_calender_in_calender_icon() throws Throwable {
+				//-----------CLICK ON CALANDER--------------//
+				inventoryManagamentObj.inventoryFromDate().click();
+			}
+
+			@Then("^choose from date in calender$")
+			public void choose_from_date_in_calender() throws Throwable {
+				inventoryManagementTestDataType = jsonReader.getInventoryManagementByName("Maker");
+				//----------CLICK ON FROM DATE--------------//
+				javascripthelper.JavaScriptHelper(driver);
+				while (true) {
+					try {
+
+						waithelper.waitForElement(driver, 3000, driver.findElement(By.xpath("//span[contains(text(),'"
+								+ inventoryManagementTestDataType.GlMonth + " " + inventoryManagementTestDataType.GlYear + "')]")));
+						WebElement monthAndYear = driver.findElement(By.xpath("//span[contains(text(),'"
+								+ inventoryManagementTestDataType.GlMonth + " " + inventoryManagementTestDataType.GlYear + "')]"));
+						break;
+					}
+
+					catch (NoSuchElementException nosuchElement) {
+						inventoryManagamentObj.inventoryNextMonth().click();
+					}
+				}
+				WebElement FinalDay = driver.findElement(By.xpath("//td[@aria-label='" + inventoryManagementTestDataType.GlFullMonth + " "
+						+ inventoryManagementTestDataType.GlDay + ", " + inventoryManagementTestDataType.GlYear + "']/span"));
+				clicksAndActionHelper.doubleClick(FinalDay);
+			}
+
+			@And("^click on the transaction to date in calender icon$")
+			public void click_on_the_transaction_to_date_calender_in_calender_icon() throws Throwable {
+				//----------CLICK ON TRANSACTION TO DATE--------//
+				waithelper.waitForElement(driver, 3000, inventoryManagamentObj.inventoryToDate());
+				inventoryManagamentObj.inventoryToDate().click();
+
+			}
+
+			@Then("^choose the To date in calender$")
+			public void choose_the_to_date_in_calender() throws Throwable {
+				inventoryManagementTestDataType = jsonReader.getInventoryManagementByName("Maker");
+				while (true) {
+					try {
+
+						waithelper.waitForElement(driver, 3000, driver.findElement(By.xpath("//span[contains(text(),'"
+								+ inventoryManagementTestDataType.GlToMonth + " " + inventoryManagementTestDataType.GlYear + "')]")));
+						WebElement monthAndYear = driver.findElement(By.xpath("//span[contains(text(),'"
+								+ inventoryManagementTestDataType.GlToMonth + " " + inventoryManagementTestDataType.GlYear + "')]"));
+						break;
+					}
+
+					catch (NoSuchElementException nosuchElement) {
+						inventoryManagamentObj.inventoryNextMonth().click();
+					}
+				}
+				WebElement FinalDay = driver.findElement(By.xpath("//td[@aria-label='" + inventoryManagementTestDataType.GlFullToMonth
+						+ " " + inventoryManagementTestDataType.GlToDate + ", " + inventoryManagementTestDataType.GlYear + "']/span"));
+				clicksAndActionHelper.doubleClick(FinalDay);
+			}
+
+			@And("^click on view button to see the Record$")
+			public void click_on_view_button_to_see_the_record() throws Throwable {
+				//----------CLICK ON VIEW BUTTON----------//
+				inventoryManagamentObj.inventoryViewButton().click();
+				Thread.sleep(2000);
+
+			}
+	    
+		    
+		    
+		    
+		    
+		    
 		    
 		    
 	}

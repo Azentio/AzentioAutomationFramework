@@ -378,6 +378,7 @@ public class FixedAsset {
 			Thread.sleep(2000);
 			waithelper.waitForElement(driver, 2000, reviewer.reviewerAlertRemarks());
 			javahelper.JSEClick(reviewer.reviewerAlertRemarks());
+			Thread.sleep(2000);
 			reviewer.reviewerAlertRemarks().sendKeys("ok");
 			Thread.sleep(3000);
 			waithelper.waitForElement(driver, 2000, reviewer.reviewerAlertSubmitButton());
