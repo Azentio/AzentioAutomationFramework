@@ -2,43 +2,43 @@
 <testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2022-01-19T08:27:02 GMT" name="Default suite" finished-at="2022-01-19T08:27:33 GMT" duration-ms="31030">
+  <suite started-at="2022-03-03T20:24:24 IST" name="Default suite" finished-at="2022-03-03T20:25:24 IST" duration-ms="60063">
     <groups>
       <group name="cucumber">
         <method signature="AbstractTestNGCucumberTests.runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:Runner.TestApplication@72cc7e6f]" name="runScenario" class="io.cucumber.testng.AbstractTestNGCucumberTests"/>
       </group> <!-- cucumber -->
     </groups>
-    <test started-at="2022-01-19T08:27:02 GMT" name="Default test" finished-at="2022-01-19T08:27:33 GMT" duration-ms="31030">
+    <test started-at="2022-03-03T20:24:24 IST" name="Default test" finished-at="2022-03-03T20:25:24 IST" duration-ms="60063">
       <class name="Runner.TestApplication">
-        <test-method is-config="true" signature="beforeExecution()[pri:0, instance:Runner.TestApplication@72cc7e6f]" started-at="2022-01-19T08:27:02 GMT" name="beforeExecution" finished-at="2022-01-19T08:27:02 GMT" duration-ms="11" status="PASS">
+        <test-method is-config="true" signature="beforeExecution()[pri:0, instance:Runner.TestApplication@72cc7e6f]" started-at="2022-03-03T20:24:24 IST" name="beforeExecution" finished-at="2022-03-03T20:24:24 IST" duration-ms="6" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeExecution -->
-        <test-method is-config="true" signature="setUpClass()[pri:0, instance:Runner.TestApplication@72cc7e6f]" started-at="2022-01-19T08:27:02 GMT" name="setUpClass" finished-at="2022-01-19T08:27:03 GMT" duration-ms="946" status="PASS">
+        <test-method is-config="true" signature="setUpClass()[pri:0, instance:Runner.TestApplication@72cc7e6f]" started-at="2022-03-03T20:24:24 IST" name="setUpClass" finished-at="2022-03-03T20:24:25 IST" duration-ms="1084" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUpClass -->
-        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:Runner.TestApplication@72cc7e6f]" started-at="2022-01-19T08:27:03 GMT" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2022-01-19T08:27:28 GMT" duration-ms="24659" status="PASS">
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:Runner.TestApplication@72cc7e6f]" started-at="2022-03-03T20:24:25 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2022-03-03T20:25:18 IST" duration-ms="53074" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA["budget for Budgetcode  type yearly"]]>
+                <![CDATA["Verify accounting entries post receipt recording"]]>
               </value>
             </param>
             <param index="1">
               <value>
-                <![CDATA["Optional[Check The Azentio UAT functionaliy]"]]>
+                <![CDATA["Optional[Check the Functionality of AR/AP Module]"]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- runScenario -->
-        <test-method is-config="true" signature="tearDownClass()[pri:0, instance:Runner.TestApplication@72cc7e6f]" started-at="2022-01-19T08:27:28 GMT" name="tearDownClass" finished-at="2022-01-19T08:27:33 GMT" duration-ms="5368" status="PASS">
+        <test-method is-config="true" signature="tearDownClass()[pri:0, instance:Runner.TestApplication@72cc7e6f]" started-at="2022-03-03T20:25:18 IST" name="tearDownClass" finished-at="2022-03-03T20:25:24 IST" duration-ms="5857" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDownClass -->
-        <test-method is-config="true" signature="afterExecution()[pri:0, instance:Runner.TestApplication@72cc7e6f]" started-at="2022-01-19T08:27:33 GMT" name="afterExecution" finished-at="2022-01-19T08:27:33 GMT" duration-ms="86" status="PASS">
+        <test-method is-config="true" signature="afterExecution()[pri:0, instance:Runner.TestApplication@72cc7e6f]" started-at="2022-03-03T20:25:24 IST" name="afterExecution" finished-at="2022-03-03T20:25:24 IST" duration-ms="146" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterExecution -->

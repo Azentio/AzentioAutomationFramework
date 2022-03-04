@@ -4,6 +4,7 @@ import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 
 import dataProvider.ConfigFileReader;
@@ -125,7 +126,7 @@ public class BUDGET_BudgetRequestandAllocation extends BaseClass {
 		// ------------TO SAVE THE RECORD--------------------//
 		waitHelper.waitForElement(driver, 3000, requestAndAllocation.budget_requestAndAllocation_AllowSave());
 		requestAndAllocation.budget_requestAndAllocation_AllowSave().click();
-
+		Thread.sleep(2000);
 	}
 
 	@Then("^Click on Branch$")
@@ -148,15 +149,24 @@ public class BUDGET_BudgetRequestandAllocation extends BaseClass {
 	public void click_on_maker_notification_button() throws Throwable {
 
 		// ---------------------------TO CLICK THE MAKER NOTIFICATION------------------------//
+		while(true){
+			try {
+		requestAndAllocation = new BUDGET_RequestAndAllocationObj(driver);
+		javaHelper.JavaScriptHelper(driver);
 		waitHelper.waitForElement(driver, 2000, requestAndAllocation.makerNotificationIcon());
-		requestAndAllocation.makerNotificationIcon().click();
-		waitHelper.waitForElement(driver, 2000, requestAndAllocation.maker_Referance_id());
+		javaHelper.JSEClick(requestAndAllocation.makerNotificationIcon());
+		waitHelper.waitForElement(driver, 3000, requestAndAllocation.maker_Referance_id());
 		String Referance_id = requestAndAllocation.maker_Referance_id().getText();
 		json.addReferanceData(Referance_id);
-		waitHelper.waitForElement(driver, 2000, requestAndAllocation.maker_Action_icon());
+		waitHelper.waitForElement(driver, 3000, requestAndAllocation.maker_Action_icon());
 		requestAndAllocation.maker_Action_icon().click();
-
-	}
+		break;
+		}
+			catch(StaleElementReferenceException staleElement) {
+				System.out.println(staleElement.getMessage());
+			}
+			}
+		}
 
 	@And("^Click on Record submit$")
 	public void click_on_record_submit() throws Throwable {
@@ -227,8 +237,8 @@ public class BUDGET_BudgetRequestandAllocation extends BaseClass {
 	public void select_one_branch() throws Throwable {
 
 		// ---------------------TO SELECT ONE BRANCH CHECKBOX-----------------------//
-		waitHelper.waitForElement(driver, 2000, requestAndAllocation.requestAndAllocation_branch_type1());
-		requestAndAllocation.requestAndAllocation_branch_type1().click();
+		waitHelper.waitForElement(driver, 2000, requestAndAllocation.requestAndAllocation_branch_type());
+		requestAndAllocation.requestAndAllocation_branch_type().click();
 	}
 
 
@@ -785,8 +795,8 @@ public class BUDGET_BudgetRequestandAllocation extends BaseClass {
 
 	@And("^choose one Branch$")
 	public void choose_one_Branch() throws Throwable {
-		waitHelper.waitForElement(driver, 2000, requestAndAllocation.requestAndAllocation_branch_type1());
-		requestAndAllocation.requestAndAllocation_branch_type1().click();
+		waitHelper.waitForElement(driver, 2000, requestAndAllocation.requestAndAllocation_branch_type2());
+		requestAndAllocation.requestAndAllocation_branch_type2().click();
 	}
 
 	@Then("^choose one currency$")
@@ -1022,8 +1032,8 @@ public class BUDGET_BudgetRequestandAllocation extends BaseClass {
 
 	@And("^Select on one Branch$")
 	public void select_on_one_branch() throws Throwable {
-		waitHelper.waitForElement(driver, 2000, requestAndAllocation.requestAndAllocation_branch_type1());
-		requestAndAllocation.requestAndAllocation_branch_type1().click();
+		waitHelper.waitForElement(driver, 2000, requestAndAllocation.requestAndAllocation_branch_type3());
+		requestAndAllocation.requestAndAllocation_branch_type3().click();
 	}
 
 	@Then("^Select currency we need$")
@@ -1260,8 +1270,8 @@ public class BUDGET_BudgetRequestandAllocation extends BaseClass {
 
 	@And("^Choose one branch in field$")
 	public void Choose_one_branch_in_field() throws Throwable {
-		waitHelper.waitForElement(driver, 2000, requestAndAllocation.requestAndAllocation_branch_type1());
-		requestAndAllocation.requestAndAllocation_branch_type1().click();
+		waitHelper.waitForElement(driver, 2000, requestAndAllocation.requestAndAllocation_branch_type4());
+		requestAndAllocation.requestAndAllocation_branch_type4().click();
 	}
 
 	@Then("^Choose currency type$")
@@ -1539,8 +1549,8 @@ public class BUDGET_BudgetRequestandAllocation extends BaseClass {
 
 	@And("^Choose one Branch in branch field$")
 	public void Choose_one_Branch_in_branch_field() throws Throwable {
-		waitHelper.waitForElement(driver, 2000, requestAndAllocation.requestAndAllocation_branch_type1());
-		requestAndAllocation.requestAndAllocation_branch_type1().click();
+		waitHelper.waitForElement(driver, 2000, requestAndAllocation.requestAndAllocation_branch_type6());
+		requestAndAllocation.requestAndAllocation_branch_type6().click();
 	}
 
 	@Then("^Choose Need currency$")
@@ -1824,8 +1834,8 @@ public class BUDGET_BudgetRequestandAllocation extends BaseClass {
 
 	@And("^Select one Branch in branch field$")
 	public void selectOneBranchInBranchField() throws Throwable {
-		waitHelper.waitForElement(driver, 2000, requestAndAllocation.requestAndAllocation_branch_type1());
-		requestAndAllocation.requestAndAllocation_branch_type1().click();
+		waitHelper.waitForElement(driver, 2000, requestAndAllocation.requestAndAllocation_branch_type7());
+		requestAndAllocation.requestAndAllocation_branch_type7().click();
 	}
 
 	@Then("^Select Need currency$")
@@ -2110,8 +2120,8 @@ public class BUDGET_BudgetRequestandAllocation extends BaseClass {
 
 	@And("^Choose Branch branch field$")
 	public void choose_branch_branch_field() throws Throwable {
-		waitHelper.waitForElement(driver, 2000, requestAndAllocation.requestAndAllocation_branch_type1());
-		requestAndAllocation.requestAndAllocation_branch_type1().click();
+		waitHelper.waitForElement(driver, 2000, requestAndAllocation.requestAndAllocation_branch_type8());
+		requestAndAllocation.requestAndAllocation_branch_type8().click();
 	}
 
 	@And("^Enter Amount for Budget Type Show in Budget type field$")
@@ -2401,8 +2411,8 @@ public class BUDGET_BudgetRequestandAllocation extends BaseClass {
 
 	@And("^Onclick one Branch in branch field$")
 	public void Onclick_one_Branch_in_branch_field() throws Throwable {
-		waitHelper.waitForElement(driver, 2000, requestAndAllocation.requestAndAllocation_branch_type());
-		requestAndAllocation.requestAndAllocation_branch_type().click();
+		waitHelper.waitForElement(driver, 2000, requestAndAllocation.requestAndAllocation_branch_type9());
+		requestAndAllocation.requestAndAllocation_branch_type9().click();
 	}
 
 	@Then("^Choose we Need currency$")

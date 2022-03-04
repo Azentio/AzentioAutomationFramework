@@ -14,53 +14,58 @@ public class BUDGET_RequestAndAllocationObj {
 		this.driver = driver;
 		PageFactory.initElements(driver, this);
 	}
+
 	// Fields - Objects
-		@FindBy(xpath="//label[@for='col0']")
-		private WebElement budget_code_field;
+	@FindBy(xpath = "//label[@for='col0']")
+	private WebElement budget_code_field;
 
-		public WebElement budget_requestAndAllocation_budget_code_field() {
-			return budget_code_field;
-		} 
-		@FindBy(xpath="//label[@for='col1']")
-		private WebElement budget_Name_field;
+	public WebElement budget_requestAndAllocation_budget_code_field() {
+		return budget_code_field;
+	}
 
-		public WebElement budget_requestAndAllocation_budget_Name_field() {
-			return budget_Name_field;
-		} 
-		@FindBy(xpath="//label[@for='col2']")
-		private WebElement budget_Year_field;
+	@FindBy(xpath = "//label[@for='col1']")
+	private WebElement budget_Name_field;
 
-		public WebElement budget_requestAndAllocation_budget_Year_field() {
-			return budget_Year_field;
-		} 
-		@FindBy(xpath="//label[@for='col3']")
-		private WebElement budget_Type_field;
+	public WebElement budget_requestAndAllocation_budget_Name_field() {
+		return budget_Name_field;
+	}
 
-		public WebElement budget_requestAndAllocation_budget_Type_field() {
-			return budget_Type_field;
-		} 
-		@FindBy(xpath="//label[@for='col4']")
-		private WebElement budget_Transfer_Amount_field;
+	@FindBy(xpath = "//label[@for='col2']")
+	private WebElement budget_Year_field;
 
-		public WebElement budget_requestAndAllocation_budget_Transfer_Amount_field() {
-			return budget_Transfer_Amount_field;
-		} 
-		@FindBy(xpath="//label[@for='col5']")
-		private WebElement budget_Status_field;
+	public WebElement budget_requestAndAllocation_budget_Year_field() {
+		return budget_Year_field;
+	}
 
-		public WebElement budget_requestAndAllocation_budget_Status_field() {
-			return budget_Status_field;
-		} 
-	
-		@FindBy(xpath = "//ion-button[@ng-reflect-router-link='/inbox']")
-		private WebElement maker_notification_icon;
+	@FindBy(xpath = "//label[@for='col3']")
+	private WebElement budget_Type_field;
 
-		public WebElement makerNotificationIcon() {
-			return maker_notification_icon;
-		}
-	
-	
-	//MAIN - OBJECTS
+	public WebElement budget_requestAndAllocation_budget_Type_field() {
+		return budget_Type_field;
+	}
+
+	@FindBy(xpath = "//label[@for='col4']")
+	private WebElement budget_Transfer_Amount_field;
+
+	public WebElement budget_requestAndAllocation_budget_Transfer_Amount_field() {
+		return budget_Transfer_Amount_field;
+	}
+
+	@FindBy(xpath = "//label[@for='col5']")
+	private WebElement budget_Status_field;
+
+	public WebElement budget_requestAndAllocation_budget_Status_field() {
+		return budget_Status_field;
+	}
+
+	@FindBy(xpath = "//ion-button[@ng-reflect-router-link='/inbox']")
+	private WebElement maker_notification_icon;
+
+	public WebElement makerNotificationIcon() {
+		return maker_notification_icon;
+	}
+
+	// MAIN - OBJECTS
 	@FindBy(xpath = "//ion-select[@class='datagrid-lov ng-valid md hydrated ng-touched ng-dirty ion-valid ion-touched ion-dirty']")
 	private WebElement requestAndAllocation_FinanceOption;
 
@@ -152,7 +157,7 @@ public class BUDGET_RequestAndAllocationObj {
 
 	public WebElement budget_requestAndAllocation_Budgetyear() {
 		return requestAndAllocation_Budgetyear;
-	} 
+	}
 
 	@FindBy(xpath = "//option[@class='ng-star-inserted'][1]")
 	private WebElement requestAndAllocation_Budgetyear1;
@@ -160,13 +165,14 @@ public class BUDGET_RequestAndAllocationObj {
 	public WebElement budget_requestAndAllocation_Budgetyear1() {
 		return requestAndAllocation_Budgetyear1;
 	}
-	
+
 	@FindBy(xpath = "//option[@class='ng-star-inserted'][2]")
 	private WebElement requestAndAllocation_Budgetyear2;
 
 	public WebElement budget_requestAndAllocation_Budgetyear2() {
 		return requestAndAllocation_Budgetyear2;
 	}
+
 	@FindBy(xpath = "//ion-col[6]//ion-select[@ng-reflect-name='branch']")
 	private WebElement requestAndAllocation_Budgetbranch;
 
@@ -174,43 +180,85 @@ public class BUDGET_RequestAndAllocationObj {
 		return requestAndAllocation_Budgetbranch;
 	}
 
-	@FindBy(xpath = "//ion-alert[1]/div/div[3]/button[1]") // ion-alert[1]/div/div[3]/button[4] -- //
-															// //ion-alert[1]/div/div[3]/button[5]
+	@FindBy(xpath = "//ion-alert[1]/div/div[3]/button[1]")
 	private WebElement requestAndAllocation_branch_type1;
 
 	public WebElement requestAndAllocation_branch_type1() {
 		return requestAndAllocation_branch_type1;
 	}
 
-	@FindBy(xpath = "//ion-alert[1]/div/div[3]/button[2]") // ion-alert[1]/div/div[3]/button[4] -- //
-															// //ion-alert[1]/div/div[3]/button[5]
+	@FindBy(xpath = "//ion-alert[1]/div/div[3]/button[2]")
 	private WebElement requestAndAllocation_branch_type2;
 
 	public WebElement requestAndAllocation_branch_type2() {
 		return requestAndAllocation_branch_type2;
 	}
 
-	@FindBy(xpath = "//ion-alert[1]/div/div[3]/button[3]") // ion-alert[1]/div/div[3]/button[4] -- //
-															// //ion-alert[1]/div/div[3]/button[5]
+	@FindBy(xpath = "//ion-alert[1]/div/div[3]/button[3]")
 	private WebElement requestAndAllocation_branch_type3;
 
 	public WebElement requestAndAllocation_branch_type3() {
 		return requestAndAllocation_branch_type3;
 	}
 
-	@FindBy(xpath = "//ion-alert[1]/div/div[3]/button[4]") // ion-alert[1]/div/div[3]/button[4] -- //
-															// //ion-alert[1]/div/div[3]/button[5]
+	@FindBy(xpath = "//ion-alert[1]/div/div[3]/button[4]")
 	private WebElement requestAndAllocation_branch_type4;
 
 	public WebElement requestAndAllocation_branch_type4() {
 		return requestAndAllocation_branch_type4;
 	}
-	@FindBy(xpath = "//ion-alert[1]/div/div[3]/button[5]") // ion-alert[1]/div/div[3]/button[4] -- //
-															// //ion-alert[1]/div/div[3]/button[5]
+
+	@FindBy(xpath = "//ion-alert[1]/div/div[3]/button[5]")
 	private WebElement requestAndAllocation_branch_type;
 
 	public WebElement requestAndAllocation_branch_type() {
 		return requestAndAllocation_branch_type;
+	}
+
+	@FindBy(xpath = "//ion-alert[1]/div/div[3]/button[6]")
+	private WebElement requestAndAllocation_branch_type6;
+
+	public WebElement requestAndAllocation_branch_type6() {
+		return requestAndAllocation_branch_type6;
+	}
+
+	@FindBy(xpath = "//ion-alert[1]/div/div[3]/button[7]")
+	private WebElement requestAndAllocation_branch_type7;
+
+	public WebElement requestAndAllocation_branch_type7() {
+		return requestAndAllocation_branch_type7;
+	}
+
+	@FindBy(xpath = "//ion-alert[1]/div/div[3]/button[8]") // ion-alert[1]/div/div[3]/button[4] -- //
+// //ion-alert[1]/div/div[3]/button[5]
+	private WebElement requestAndAllocation_branch_type8;
+
+	public WebElement requestAndAllocation_branch_type8() {
+		return requestAndAllocation_branch_type8;
+	}
+
+	@FindBy(xpath = "//ion-alert[1]/div/div[3]/button[9]") // ion-alert[1]/div/div[3]/button[4] -- //
+// //ion-alert[1]/div/div[3]/button[5]
+	private WebElement requestAndAllocation_branch_type9;
+
+	public WebElement requestAndAllocation_branch_type9() {
+		return requestAndAllocation_branch_type9;
+	}
+
+	@FindBy(xpath = "//ion-alert[1]/div/div[3]/button[10]") // ion-alert[1]/div/div[3]/button[4] -- //
+// //ion-alert[1]/div/div[3]/button[5]
+	private WebElement requestAndAllocation_branch_type10;
+
+	public WebElement requestAndAllocation_branch_type10() {
+		return requestAndAllocation_branch_type10;
+	}
+
+	@FindBy(xpath = "//ion-alert[1]/div/div[3]/button[11]") // ion-alert[1]/div/div[3]/button[4] -- //
+// //ion-alert[1]/div/div[3]/button[5]
+	private WebElement requestAndAllocation_branch_type11;
+
+	public WebElement requestAndAllocation_branch_type11() {
+		return requestAndAllocation_branch_type11;
 	}
 
 	@FindBy(xpath = "//ion-alert[1]/div/div[4]/button[2]")
@@ -276,6 +324,29 @@ public class BUDGET_RequestAndAllocationObj {
 		return requestAndAllocation_reviewer_id;
 	}
 
+	@FindBy(xpath = "//button[@aria-label='Close']")
+	private WebElement requestAndAllocation_notificationClose;
+
+	public WebElement requestAndAllocation_notificationClose() {
+		return requestAndAllocation_notificationClose;
+	}
+
+	@FindBy(xpath = "//ion-button/ion-icon[@name='person-circle']")
+	private WebElement requestAndAllocation_MakerLogo;
+
+	public WebElement requestAndAllocation_MakerLogo() {
+
+		return requestAndAllocation_MakerLogo;
+	}
+
+	@FindBy(xpath = "//ion-content[1]/div[1]/ion-list[1]/ion-item[3]/ion-icon[1]")
+	private WebElement requestAndAllocation_MakerLogout;
+
+	public WebElement requestAndAllocation_MakerLogout() {
+
+		return requestAndAllocation_MakerLogout;
+	}
+
 	// Budget Type Yearly
 	@FindBy(xpath = "//datatable-body-cell[2]/div/app-kub-currency[@id='0']/input")
 	private WebElement requestAndAllocation_Budgetyearly;
@@ -297,21 +368,22 @@ public class BUDGET_RequestAndAllocationObj {
 
 	public WebElement budget_requestAndAllocation_Budgetaction() {
 		return requestAndAllocation_Budgetaction;
-	} 
+	}
+
 	@FindBy(xpath = "//app-inbox//datatable-row-wrapper[1]/datatable-body-row/div/datatable-body-cell[2]//span")
 	private WebElement maker_Referance_id;
 
 	public WebElement maker_Referance_id() {
 		return maker_Referance_id;
 	}
-	
+
 	@FindBy(xpath = "//app-inbox//datatable-row-wrapper[1]/datatable-body-row/div/datatable-body-cell[1]//ion-button")
 	private WebElement maker_Action_icon;
 
 	public WebElement maker_Action_icon() {
 		return maker_Action_icon;
 	}
-	
+
 	@FindBy(xpath = "//span[contains(text(),'ViewSummary')]")
 	private WebElement requestAndAllocation_viewsummary;
 
@@ -609,4 +681,91 @@ public class BUDGET_RequestAndAllocationObj {
 	public WebElement Popup_status() {
 		return Popup_status;
 	}
+
+	// CAPTURE THE MONTH
+
+	@FindBy(xpath = "//div[contains(text(),'April')]")
+	private WebElement month_April;
+
+	public WebElement april_Month() {
+		return month_April;
+	}
+
+	@FindBy(xpath = "//div[contains(text(),'May')]")
+	private WebElement month_May;
+
+	public WebElement may_Month() {
+		return month_May;
+	}
+
+	@FindBy(xpath = "//div[contains(text(),'June')]")
+	private WebElement month_June;
+
+	public WebElement june_Month() {
+		return month_June;
+	}
+
+	@FindBy(xpath = "//div[contains(text(),'July')]")
+	private WebElement month_July;
+
+	public WebElement july_Month() {
+		return month_July;
+	}
+
+	@FindBy(xpath = "//div[contains(text(),'August')]")
+	private WebElement month_August;
+
+	public WebElement august_Month() {
+		return month_August;
+	}
+
+	@FindBy(xpath = "//div[contains(text(),'September')]")
+	private WebElement month_September;
+
+	public WebElement september_Month() {
+		return month_September;
+	}
+
+	@FindBy(xpath = "//div[contains(text(),'October')]")
+	private WebElement month_October;
+
+	public WebElement october_Month() {
+		return month_October;
+	}
+
+	@FindBy(xpath = "//div[contains(text(),'November')]")
+	private WebElement month_November;
+
+	public WebElement november_Month() {
+		return month_November;
+	}
+
+	@FindBy(xpath = "//div[contains(text(),'December')]")
+	private WebElement month_December;
+
+	public WebElement december_Month() {
+		return month_December;
+	}
+
+	@FindBy(xpath = "//div[contains(text(),'January')]")
+	private WebElement month_January;
+
+	public WebElement january_Month() {
+		return month_January;
+	}
+
+	@FindBy(xpath = "//div[contains(text(),'February')]")
+	private WebElement month_February;
+
+	public WebElement february_Month() {
+		return month_February;
+	}
+
+	@FindBy(xpath = "//div[contains(text(),'March')]")
+	private WebElement month_March;
+
+	public WebElement march_Month() {
+		return month_March;
+	}
+
 }

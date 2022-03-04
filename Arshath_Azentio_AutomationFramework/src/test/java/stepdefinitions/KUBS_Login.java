@@ -63,7 +63,7 @@ public class KUBS_Login {
 		waithelper.waitForElement(driver, 2000, login.Login_loginStatus());
 		Assert.assertTrue(login.Login_loginStatus().isDisplayed());
 		}
-		else if(id.equals("1992"))
+		else if(id.equals("1002436"))
 		{
 			login.Login_userName().sendKeys(logindata.UserName1);
 			login.Login_goButton().click();
@@ -90,6 +90,18 @@ public class KUBS_Login {
 			waithelper.waitForElement(driver, 2000, login.Login_loginStatus());
 			Assert.assertTrue(login.Login_loginStatus().isDisplayed());
 	
+		}
+		else if(id.equals("in00027"))
+		{
+			login.Login_userName().sendKeys(logindata.UserName3);
+			login.Login_goButton().click();
+			waithelper.waitForElement(driver, 2000, login.Login_passWord());
+			login.Login_passWord().sendKeys(logindata.PassWord3);
+			waithelper.waitForElement(driver, 2000, login.Login_signIn());
+			login.Login_signIn().click();
+			waithelper.waitForElement(driver, 2000, login.Login_loginStatus());
+			Assert.assertTrue(login.Login_loginStatus().isDisplayed());
+		
 		}
 	}
 	public void loginToAzentioAppAsChecker(String user) throws InterruptedException {

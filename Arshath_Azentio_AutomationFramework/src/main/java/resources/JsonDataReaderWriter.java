@@ -12,6 +12,7 @@ import org.json.simple.parser.ParseException;
 public class JsonDataReaderWriter {
 	String path = System.getProperty("user.dir") + "\\src\\main\\java\\resources\\Reader.json";
 	String path2 = System.getProperty("user.dir") + "\\src\\main\\java\\resources\\Referance.json";
+	String path3 = System.getProperty("user.dir") + "\\src\\main\\java\\resources\\RequestNo.json";
 	JSONObject jsonobject = new JSONObject();
 	FileWriter filewriter;
 
@@ -44,5 +45,21 @@ public class JsonDataReaderWriter {
         jsonobject=(JSONObject) obj;
        String reviewerID= (String) jsonobject.get("Referance");
 	return reviewerID;
+    }
+    
+	public void addRequestNoData(String data) throws IOException {
+		jsonobject.put("RequestNo", data);
+		filewriter = new FileWriter(path3);
+		filewriter.write(jsonobject.toJSONString());
+		filewriter.close();
+	}
+    public String readRequestNodata() throws IOException, ParseException
+    {
+    	JSONParser jsonparser=new JSONParser();
+    	FileReader filereader=new FileReader(path3);
+        Object obj=jsonparser.parse(filereader);
+        jsonobject=(JSONObject) obj;
+       String RequestNumber= (String) jsonobject.get("RequestNo");
+	return RequestNumber;
     }
 }

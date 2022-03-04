@@ -11,11 +11,14 @@ import java.util.List;
 import com.google.gson.Gson;
 import com.google.gson.stream.JsonReader;
 
+import testDataType.ARAP_ARandAPData;
 import testDataType.BUDGET_BudgetCreationTestDataType;
 import testDataType.BUDGET_BudgetTransferTestDataType;
 import testDataType.BUDGET_RequestAndAllocationTestDataType;
 import testDataType.BUDGET_RequestandallocationBUDTYPEDATA;
 import testDataType.BUDGET_SupplementarybudgetTestDataType;
+import testDataType.FIXEDASSET_AssetAmendmentData;
+import testDataType.INVENTORY_InventoryManagement_DataType;
 import testDataType.KUBS_LoginTestDataType;
 import testDataType.Logindata;
 import testDataType.RegisterData;
@@ -55,7 +58,19 @@ public class JsonConfig {
 	// Budget_BudgetTransfer
 	private final String BudgetTransferFilePath = configFileReader.getJsonPath() + "BUDGET_BudgetTransferJSON.json";
 	private List<BUDGET_BudgetTransferTestDataType> BudgetTransferList;
-
+	
+	// Inventory_StockReturnBranch
+	private final String StockReturnBranchFilePath = configFileReader.getJsonPath() + "INVENTORY_InventoryManagement.json";
+	private List<INVENTORY_InventoryManagement_DataType> StockReturnBranchList;
+	
+	// FixedAsset_Amendment
+	private final String AssetAmendmentFilePath = configFileReader.getJsonPath() + "FIXEDASSET_AssetAmendment.json";
+	private List<FIXEDASSET_AssetAmendmentData> AssetAmendmentList;
+	
+	// ARAP_ARandAP
+	private final String ARandAPFilePath = configFileReader.getJsonPath() + "ARAP_ARandAP.json";
+	private List<ARAP_ARandAPData> ARAPList;
+	
 	public JsonConfig() {
 		/*
 		 * RegisterList = getRegisterData(); LoginList = getLoginList();
@@ -70,7 +85,15 @@ public class JsonConfig {
 		SupplementaryBudgetList = getSupplementaryBudgetList();
 
 		BudgetTransferList = getBudgetTransferData();
-
+		
+		// Inventory - StockReturn
+		StockReturnBranchList = getStockReturnBranchList();
+		
+		// FixedAsset_Amendment
+		AssetAmendmentList = getAssetAmendmentList();
+		
+		// ARAP_ARandAP
+		ARAPList = getARAPList();
 	}
 
 	/*
@@ -221,7 +244,66 @@ public class JsonConfig {
 			}
 		}
 	}
+	
+	// Inventory - StockReturnBranch 
+	private List<INVENTORY_InventoryManagement_DataType> getStockReturnBranchList() {
+		Gson gson = new Gson();
+		BufferedReader bufferReader = null;
+		try {
+			bufferReader = new BufferedReader(new FileReader(StockReturnBranchFilePath));
+			INVENTORY_InventoryManagement_DataType[] StockReturn = gson.fromJson(bufferReader,
+					INVENTORY_InventoryManagement_DataType[].class);
+			return Arrays.asList(StockReturn);
+		} catch (FileNotFoundException e) {
+			throw new RuntimeException("Json file not found at path : " + StockReturnBranchFilePath);
+		} finally {
+			try {
+				if (bufferReader != null)
+					bufferReader.close();
+			} catch (IOException ignore) {
+			}
+		}
+	}
 
+	// FixedAsset_Amendment
+	private List<FIXEDASSET_AssetAmendmentData> getAssetAmendmentList() {
+		Gson gson = new Gson();
+		BufferedReader bufferReader = null;
+		try {
+			bufferReader = new BufferedReader(new FileReader(AssetAmendmentFilePath));
+			FIXEDASSET_AssetAmendmentData[] fixedasset = gson.fromJson(bufferReader,
+					FIXEDASSET_AssetAmendmentData[].class);
+			return Arrays.asList(fixedasset);
+		} catch (FileNotFoundException e) {
+			throw new RuntimeException("Json file not found at path : " + AssetAmendmentFilePath);
+		} finally {
+			try {
+				if (bufferReader != null)
+					bufferReader.close();
+			} catch (IOException ignore) {
+			}
+		}
+	}
+	
+	// ARAP_ARandAP
+	private List<ARAP_ARandAPData> getARAPList() {
+		Gson gson = new Gson();
+		BufferedReader bufferReader = null;
+		try {
+			bufferReader = new BufferedReader(new FileReader(ARandAPFilePath));
+			ARAP_ARandAPData[] arap = gson.fromJson(bufferReader,
+					ARAP_ARandAPData[].class);
+			return Arrays.asList(arap);
+		} catch (FileNotFoundException e) {
+			throw new RuntimeException("Json file not found at path : " + ARandAPFilePath);
+		} finally {
+			try {
+				if (bufferReader != null)
+					bufferReader.close();
+			} catch (IOException ignore) {
+			}
+		}
+	}
 	/*
 	 * public final RegisterData getRegisterByName(String customerName) { return
 	 * RegisterList.stream().filter(x ->
@@ -257,4 +339,18 @@ public class JsonConfig {
 		return BudgetTransferList.stream().filter(x -> x.User.equalsIgnoreCase(UserName)).findAny().get();
 	}
 
+	//Inventory - StockReturnBranch
+	public final INVENTORY_InventoryManagement_DataType getStockReturnBranchByName(String user) {
+		return StockReturnBranchList.stream().filter(x -> x.Usertype.equalsIgnoreCase(user)).findAny().get();
+	}
+	
+	//Fixed_Asset
+	public final FIXEDASSET_AssetAmendmentData getAssetAmendmentByName(String Assetuser) {
+		return AssetAmendmentList.stream().filter(x -> x.Usertype.equalsIgnoreCase(Assetuser)).findAny().get();
+	}
+	
+	//ARAP_ARandAP
+	public final ARAP_ARandAPData getARAPByName(String ARAP) {
+		return ARAPList.stream().filter(x -> x.User.equalsIgnoreCase(ARAP)).findAny().get();
+	}
 }

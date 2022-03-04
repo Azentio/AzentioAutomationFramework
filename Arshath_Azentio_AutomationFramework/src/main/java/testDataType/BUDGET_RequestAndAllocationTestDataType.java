@@ -20,6 +20,9 @@ public class BUDGET_RequestAndAllocationTestDataType {
 	public String Quarterly;
 	public String Halfyearly;
 	public String Yearly;
-	
+	public String Budgetcancel;
+	public String BudgetAllocate;
+	public String BudgetCodeUat;
+	public String BudgetApprove;
 
 }

@@ -1,0 +1,65 @@
+[
+	{
+		"User"				: "ARAP",
+		"BusinesPartner"	: "DELUXE 001",
+		"GRNStatus"			: "ACTIVE",
+		"GRNStatus1"        : "CANCELLED",
+		"InvoiceType"		: "Invoice Against PO",
+		"InvoicesubType"	: "Regular Expense",
+		"CostCenter"		: "FINANCE",
+		"SupplyRefNo"		: "SRN0005",
+		"Discount"			: "500000",
+		"ModeofPayment"		: "Cheque",
+		"Remark"			: "Approved",
+		"GRN" 				: "GRN-null-111-2622022",
+		"InvoiceNo"			: "INV-130-22022",
+		"AdjustmentType"	: "Goods Received Notes",
+		"CancelAmount"		: "5000",
+		
+		// GL DATA
+		"branchCode"			: "AZENTMAIN",
+		"gLCode"				: "IFRS-LIAB-LI3000003 - Accounts Payable",
+		"GlMonth"				: "Apr",
+		"GlFullMonth"			: "April",
+		"GlYear"				: "2022",
+		"GlDay"					: "3",
+		"GlToMonth"				: "Oct",
+		"GlFullToMonth"			: "October",
+		"GlToDate"				: "19",
+		
+		"PaymentOption"		: "Business Partner wise",
+		"Partner"			: "Bonton Agency",
+		"DebitType"			: "AR Debit Note",
+		"AdvanceType"		: "AR Advances",
+		
+		"RecivableName"			: "Advance Against PO",
+		"RecivableName1"		: "Advance To Employee",
+		"Partner1"				: "Swapnil Gore",
+		"Description" 			: "Advance",
+		"PONumber" 				: "3-Agency-15-PO-2",
+		"Amount"				: "5865400",
+		
+		"BankAcc" 			: "ICICIBANK-JAIPUR BRANCH-ICICI883298348348394-INR",
+		"Receiptpayer"		: "SRK",
+		"ReceiptRefNo"      : "RRN2802202214",
+		"ReceiptType"		: "Cheque",
+		"ReceiptType1"		: "Wire",
+		
+		
+		"ContractType"			:"Purchases Contract",
+		"BusinessPartnerName"	:"Bonton Agency",
+		"HSNCode"				:"999459- Cleaning Ser",
+		"PaymentAmmount"		:"50000",
+		"CreditPeriod"			:"2",
+		"VendorContractQuantity":"100",
+		"ContractName"			:"Purchace Contract73",
+		"PaymentTerm"			:"Advance",
+		"PaymentTermPercentage"	:"3",
+		"RatePerUnit"			:"100",
+		"PaymentMode"			:"Pay Order",
+		"GRNItemDetails"		:"2",
+		"FlatDiscount"			:"0",
+		"SuplierReferenceNumber":"SUP-100512"
+		
+	}
+]

@@ -1,0 +1,32 @@
+[
+	{
+		"Usertype"              : "Maker",
+		"requestReferanceNo"    : "TRN_IR_82_20211228092903",
+		"returnQuantity"        : "2",
+		"returnType"			: "Return to inventory",
+		"returnType1"			: "Found",
+		"returnType2"			: "Lost/Misplaced",
+		"returnReason2"			: "Excess Stock",
+		"returnReason1"			: "Mismatch between requested & received",
+		"returnReason"			: "Other Reasons",
+		"RemarkApprove"			: "Approved",
+		"RemarkRejected"		: "Rejected",
+		
+		// StockConfirm
+		"requestRefNumber"		: "TRN_IR_128_20220207171025",
+		"itemCode"				: "MARKER-White boad Marker",
+		"issuerefnumber"		: "TRN_SI_22_20220204152730",
+		"Item Description"		: "Term Deposit Certificate",
+		
+		// GL DATA
+		"branchCode"			: "AZENTMAIN",
+		"gLCode"				: "IFRS-LIAB-LI3000003 - Accounts Payable",
+		"GlMonth"				: "Oct",
+		"GlFullMonth"			: "October",
+		"GlYear"				: "2022",
+		"GlDay"					: "1",
+		"GlToMonth"				: "Oct",
+		"GlFullToMonth"			: "October",
+		"GlToDate"				: "19"
+	}
+]
