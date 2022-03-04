@@ -20,8 +20,25 @@ public class AccountPayable_VendorPurchaseOrderTestDataType {
 	public String ShippedFromLocation;
 	public String DeliveryLocation;
 	
+	public String PoQuantityGreater;
 	
+	public String PoTypeSerivce;
+	public String PoSubTypeService;
+	public String CostCenterService;
 	
+	//PO type service Item deatails
+	public String HSNcodeService;
+	public String ExpensecodeService;
+	public String QuantityService;
+	public String UnitService;
+	public String RatePerUnit;
+	public String ShippedLocationService;
+	public String DeliveryLocationService;
+	public String AutoGenerateBill;
+	
+	public String ModeOfPayement;
+	public String AutoPayout;
+	public String CreditPeriod;
 	
 	
 	

@@ -99,19 +99,7 @@ public class AccountPayable_VendorPurchaseOrderObj {
 		return accountsPayable_VendorPurchaseOrder_PurchaseRequisition;
 	}
 	
-	//Select PO Type
-	@FindBy(xpath = "//ion-col[6]/app-kub-lov[1]/span[1]/ng-select[1]/div[1]/div[1]/div[2]//input")	
-	private WebElement accountsPayable_VendorPurchaseOrder_POType;
-	public WebElement accountsPayable_VendorPurchaseOrder_POType() {
-		return accountsPayable_VendorPurchaseOrder_POType;
-	}	
 	
-	//Select PO Sub Type
-	@FindBy(xpath = "//ion-col[7]/app-kub-lov[1]/span[1]/ng-select[1]/div[1]/div[1]/div[2]/input")	
-	private WebElement accountsPayable_VendorPurchaseOrder_POSubType;
-	public WebElement accountsPayable_VendorPurchaseOrder_POSubType() {
-		return accountsPayable_VendorPurchaseOrder_POSubType;
-	}	
 	
 	//Select PO Number
 		@FindBy(xpath = "//ion-col[9]/ion-item[1]/ion-input[1]/input")	
@@ -141,6 +129,7 @@ public class AccountPayable_VendorPurchaseOrderObj {
 	public WebElement accountsPayable_VendorPurchaseOrder_CostCenter() {
 		return accountsPayable_VendorPurchaseOrder_CostCenter;
 	}
+	//ion-row[1]/ion-col[12]/app-kub-lov[1]/span[1]/ng-select[1]/div[1]/div[1]/div[2]/input
 	
 	//Remark
 	@FindBy(xpath = "//ion-col[19]/ion-item[1]/ion-input[1]/input")	
@@ -149,7 +138,8 @@ public class AccountPayable_VendorPurchaseOrderObj {
 		return accountsPayable_VendorPurchaseOrder_Remark;
 	}
 	
-	//Save
+	
+	//Save //ion-header/ion-toolbar[1]/ion-buttons[1]/ion-button[1]
 	@FindBy(xpath = "(//ion-toolbar[1]/ion-buttons[2]/ion-button[1])[2]")	
 	private WebElement accountsPayable_VendorPurchaseOrder_Save;
 	public WebElement accountsPayable_VendorPurchaseOrder_Save() {
@@ -251,4 +241,141 @@ public class AccountPayable_VendorPurchaseOrderObj {
 		return accountsPayable_VendorPurchaseOrder_DeliveryLocation;
 	}
 
+	//VaildationMsg
+	@FindBy(xpath = "//body/div/div/div/div[1]")
+	private WebElement accountPayable_VendorPurchaseOrder_VaildationMsg;
+
+	public WebElement accountPayable_VendorPurchaseOrder_VaildationMsg() {
+		return accountPayable_VendorPurchaseOrder_VaildationMsg;
+	}
+	//PO TYPE -service
+	
+	// Select PO Type
+	@FindBy(xpath = "//ion-row[1]/ion-col[5]/app-kub-lov[1]/span[1]/ng-select[1]/div[1]/div[1]/div[2]/input")
+	private WebElement accountsPayable_VendorPurchaseOrder_POType;
+
+	public WebElement accountsPayable_VendorPurchaseOrder_POType() {
+		return accountsPayable_VendorPurchaseOrder_POType;
+	}
+
+	// Select PO Sub Type
+	@FindBy(xpath = "//ion-row[1]/ion-col[6]/app-kub-lov[1]/span[1]/ng-select[1]/div[1]/div[1]/div[2]/input")
+	private WebElement accountsPayable_VendorPurchaseOrder_POSubType;
+
+	public WebElement accountsPayable_VendorPurchaseOrder_POSubType() {
+		return accountsPayable_VendorPurchaseOrder_POSubType;
+	}	
+	
+	//Cost Center Service
+	@FindBy(xpath = "//ion-row[1]/ion-col[12]/app-kub-lov[1]/span[1]/ng-select[1]/div[1]/div[1]/div[2]/input")	
+	private WebElement accountsPayable_VendorPurchaseOrder_CostCenterService;
+	public WebElement accountsPayable_VendorPurchaseOrder_CostCenterService() {
+		return accountsPayable_VendorPurchaseOrder_CostCenterService;
+	}
+	
+	//HSNcodeService
+	@FindBy(xpath = "//ion-row[1]/ion-col[2]/app-kub-lov[1]/span[1]/ng-select[1]/div[1]/div[1]/div[2]/input")	
+	private WebElement accountsPayable_VendorPurchaseOrder_HSNcodeService;
+	public WebElement accountsPayable_VendorPurchaseOrder_HSNcodeService() {
+		return accountsPayable_VendorPurchaseOrder_HSNcodeService;
+	}
+	
+	// ExpensecodeService
+	@FindBy(xpath = "//ion-row[1]/ion-col[3]/app-kub-lov[1]/span[1]/ng-select[1]/div[1]/div[1]/div[2]/input")
+	private WebElement accountsPayable_VendorPurchaseOrder_ExpensecodeService;
+
+	public WebElement accountsPayable_VendorPurchaseOrder_ExpensecodeService() {
+		return accountsPayable_VendorPurchaseOrder_ExpensecodeService;
+	}
+	
+	// QuantityService
+	@FindBy(xpath = "//ion-row[1]/ion-col[4]/ion-item[1]/ion-input[1]/input")
+	private WebElement accountsPayable_VendorPurchaseOrder_QuantityService;
+
+	public WebElement accountsPayable_VendorPurchaseOrder_QuantityService() {
+		return accountsPayable_VendorPurchaseOrder_QuantityService;
+	}
+	
+	// UnitService
+	@FindBy(xpath = "//ion-row[1]/ion-col[5]/app-kub-lov[1]/span[1]/ng-select[1]/div[1]/div[1]/div[2]/input")
+	private WebElement accountsPayable_VendorPurchaseOrder_UnitService;
+
+	public WebElement accountsPayable_VendorPurchaseOrder_UnitService() {
+		return accountsPayable_VendorPurchaseOrder_UnitService;
+	}
+	
+	// RatePerUnit
+	@FindBy(xpath = "//ion-grid[1]/ion-row[1]/ion-col[6]/ion-item[1]/ion-input[1]/input[1]")
+	private WebElement accountsPayable_VendorPurchaseOrder_RatePerUnitService;
+
+	public WebElement accountsPayable_VendorPurchaseOrder_RatePerUnitService() {
+		return accountsPayable_VendorPurchaseOrder_RatePerUnitService;
+	}
+		
+	// Shipped location
+	@FindBy(xpath = "//ion-row[1]/ion-col[9]/app-kub-lov[1]/span[1]/ng-select[1]/div[1]/div[1]/div[2]/input[1]")
+	private WebElement accountsPayable_VendorPurchaseOrder_ShippedLocationService;
+
+	public WebElement accountsPayable_VendorPurchaseOrder_ShippedLocationService() {
+		return accountsPayable_VendorPurchaseOrder_ShippedLocationService;
+	}
+	
+	// Delivery location
+	@FindBy(xpath = "//ion-row[1]/ion-col[10]/app-kub-lov[1]/span[1]/ng-select[1]/div[1]/div[1]/div[2]/input[1]")
+	private WebElement accountsPayable_VendorPurchaseOrder_DeliveryLocationService;
+
+	public WebElement accountsPayable_VendorPurchaseOrder_DeliveryLocationService() {
+		return accountsPayable_VendorPurchaseOrder_DeliveryLocationService;
+	}
+	
+	//AutoGenerateBill
+	@FindBy(xpath = "//ion-row[1]/ion-col[11]/app-kub-lov[1]/span[1]/ng-select[1]/div[1]/div[1]/div[2]/input[1]")
+	private WebElement accountsPayable_VendorPurchaseOrder_AutoGenerateBill;
+
+	public WebElement accountsPayable_VendorPurchaseOrder_AutoGenerateBill() {
+		return accountsPayable_VendorPurchaseOrder_AutoGenerateBill;
+	}
+	
+	//----Beneficiary deatails-----//
+	
+	//ModeOfPayement
+	@FindBy(xpath = "//ion-grid[1]/ion-row[1]/ion-col[2]/app-kub-lov[1]/span[1]/ng-select[1]/div[1]/div[1]/div[2]/input")
+	private WebElement accountsPayable_VendorPurchaseOrder_ModeOfPayement;
+
+	public WebElement accountsPayable_VendorPurchaseOrder_ModeOfPayement() {
+		return accountsPayable_VendorPurchaseOrder_ModeOfPayement;
+	}
+		
+	// AutoPayout
+	@FindBy(xpath = "//ion-grid[1]/ion-row[1]/ion-col[6]/app-kub-lov[1]/span[1]/ng-select[1]/div[1]/div[1]/div[2]/input")
+	private WebElement accountsPayable_VendorPurchaseOrder_AutoPayout;
+
+	public WebElement accountsPayable_VendorPurchaseOrder_AutoPayout() {
+		return accountsPayable_VendorPurchaseOrder_AutoPayout;
+	}	
+
+	// CreditPeriod
+	@FindBy(xpath = "//ion-grid[1]/ion-row[1]/ion-col[7]/ion-item[1]/ion-input[1]/input")
+	private WebElement accountsPayable_VendorPurchaseOrder_CreditPeriod;
+
+	public WebElement accountsPayable_VendorPurchaseOrder_CreditPeriod() {
+		return accountsPayable_VendorPurchaseOrder_CreditPeriod;
+	}
+
+	// BeneficiarySave
+	@FindBy(xpath = "//ion-header/ion-toolbar[1]/ion-buttons[1]/ion-button[1]")
+	private WebElement accountsPayable_VendorPurchaseOrder_BeneficiarySave;
+
+	public WebElement accountsPayable_VendorPurchaseOrder_BeneficiarySave() {
+		return accountsPayable_VendorPurchaseOrder_BeneficiarySave;
+	}
+
+	// MakerSubmitFinal
+	@FindBy(xpath = "//ion-header/ion-toolbar[1]/ion-buttons[2]/app-kub-decision-button[1]/div[1]/span[1]/ion-button[1]/span[1]")
+	private WebElement accountsPayable_VendorPurchaseOrder_MakerSubmitFinal;
+
+	public WebElement accountsPayable_VendorPurchaseOrder_MakerSubmitFinal() {
+		return accountsPayable_VendorPurchaseOrder_MakerSubmitFinal;
+	}
+	
 }

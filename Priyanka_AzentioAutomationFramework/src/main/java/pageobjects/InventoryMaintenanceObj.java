@@ -178,7 +178,7 @@ public class InventoryMaintenanceObj {
 			return inventoryMaintenance_InventoryItem_SubmitButton;
 		}
 
-		//Remark field
+		//Remark field//ion-textarea/div/textarea[@name='remarks']
 		@FindBy(xpath = "//ion-textarea/div/textarea[@name='remarks']")
 		private WebElement inventoryMaintenance_InventoryItem_RemarkField;
 		public WebElement inventoryMaintenance_InventoryItem_RemarkField() {

@@ -11,7 +11,14 @@ import java.util.List;
 import com.google.gson.Gson;
 import com.google.gson.stream.JsonReader;
 
+import testDataType.AccountPayable_GrnTestDataType;
+import testDataType.AccountPayable_InvoiceBookingTestDataType;
 import testDataType.AccountPayable_VendorPurchaseOrderTestDataType;
+import testDataType.AccountReceivable_AccountReceivableAdvancesTestDataType;
+import testDataType.AccountReceivable_AppropriationTestDataType;
+import testDataType.AccountReceivable_UpdateDepositedChequeTestDataType;
+import testDataType.AccountsPayable_ManualPayoutTestDataType;
+import testDataType.ArAp_BalanceSheetReportTestDataType;
 import testDataType.BUDGET_BudgetCreationTestDataType;
 import testDataType.BUDGET_BudgetTransferTestDataType;
 import testDataType.BUDGET_RequestAndAllocationTestDataType;
@@ -101,32 +108,79 @@ private final String BudtypeFilepath = configFileReader.getJsonPath() + "BUDGET_
 				+ "FixedAsset_AssetCreationJSON.json";
 		private List<FixedAsset_AssetCreationTestDataType> AssetCreationList;
 
+		//AccountPayable_Grn
+		private final String GrnFilePath = configFileReader.getJsonPath() + "AccountPayable_GrnJSON.json";
+		private List<AccountPayable_GrnTestDataType> GrnList;
+		
+		//AccountReceivable_AccountReceivableAdvances
+		private final String AccountReceivableAdvancesFilePath = configFileReader.getJsonPath() + "AccountReceivable_AccountReceivableAdvancesJSON.json";
+		private List<AccountReceivable_AccountReceivableAdvancesTestDataType> AccountReceivableAdvancesList;
+		
+		//AccountsPayable_ManualPayout
+		private final String ManualPayoutFilePath = configFileReader.getJsonPath() + "AccountsPayable_ManualPayoutJSON.json";
+		private List<AccountsPayable_ManualPayoutTestDataType> ManualPayoutList;
+		
+		//AccountReceivable_UpdateDepositedCheque
+		private final String UpdateDepositedChequeFilePath = configFileReader.getJsonPath() + "AccountReceivable_UpdateDepositedChequeJSON.json";
+		private List<AccountReceivable_UpdateDepositedChequeTestDataType>UpdateDepositedChequeList;
+		
+		//AccountReceivable_Appropriation
+		private final String AppropriationFilePath = configFileReader.getJsonPath() + "AccountReceivable_AppropriationJSON.json";
+		private List<AccountReceivable_AppropriationTestDataType>AppropriationList;
+		
+		//ArAp_BalanceSheetReport
+		private final String BalanceSheetReportFilePath = configFileReader.getJsonPath() + "ArAp_BalanceSheetReportJSON.json";
+		private List<ArAp_BalanceSheetReportTestDataType>BalanceSheetReportList;
+		
+		//AccountPayable_InvoiceBooking
+		private final String InvoiceBookingFilePath = configFileReader.getJsonPath() + "AccountPayable_InvoiceBookingJSON.json";
+		private List<AccountPayable_InvoiceBookingTestDataType> InvoiceBookingList;
+		
+		
+		
 	public JsonConfig() {
 		/*RegisterList = getRegisterData();
 		LoginList = getLoginList();*/
 
-		AllocationList = getAllocationList();		
+		AllocationList = getAllocationList();
 		BudtypeList = getBudtypeList();
 
 		BudgetCreationList = getBudgetList();
 		credentialslist = getAzentioCredentialsList();
-		
+
 		SupplementaryBudgetList = getSupplementaryBudgetData();
+
+		BudgetTransferList = getBudgetTransferData();
+
+		VendorPurchaseOrderList = getVendorPurchaseOrderData();
+
+		InventoryMaintenanceList = getInventoryMaintenanceListData();
+		InventoryStockReceiptList = getInventoryStockReceiptListData();
+		InventoryEnquiryGLList = getInventoryEnquiryGLListData();
+
+		AssetCategoryList = getAssetCategoryListData();
+
+		AssetDeallocationList = getAssetDeallocationListData();
+		AssetCreationList = getAssetCreationListData();
+		AssetAllocationList = getAssetAllocationListData();
+		GrnList = getGrnData();
+		AccountReceivableAdvancesList = getAccountReceivableAdvancesData();
+		ManualPayoutList = getManualPayoutData();
+		UpdateDepositedChequeList = getUpdateDepositedChequeListData();
+		AppropriationList = getAppropriationListData();
 		
-		BudgetTransferList=getBudgetTransferData();
+		BalanceSheetReportList= getBalanceSheetReportListData();
 		
-	    VendorPurchaseOrderList = getVendorPurchaseOrderData();
-		
-	    InventoryMaintenanceList =  getInventoryMaintenanceListData();
-	    InventoryStockReceiptList = getInventoryStockReceiptListData();
-	    InventoryEnquiryGLList = getInventoryEnquiryGLListData();
-	    
-	    AssetCategoryList = getAssetCategoryListData();
-	    
-	    AssetDeallocationList =  getAssetDeallocationListData();
-	    AssetCreationList = getAssetCreationListData();
-	    AssetAllocationList =  getAssetAllocationListData();
+		InvoiceBookingList = getInvoiceBookingListData();
 	}
+
+	
+
+	
+
+
+
+
 
 
 
@@ -426,6 +480,117 @@ private List<BUDGET_RequestAndAllocationTestDataType> getAllocationList() {
 			
 	}
 
+	private List<AccountPayable_GrnTestDataType> getGrnData() {
+		Gson gson = new Gson();
+		BufferedReader bufferReader = null;
+		try {
+			bufferReader = new BufferedReader(new FileReader(GrnFilePath));
+			AccountPayable_GrnTestDataType[] Grn = gson.fromJson(bufferReader, AccountPayable_GrnTestDataType[].class);
+			return Arrays.asList(Grn);
+			}catch(FileNotFoundException e) {
+				throw new RuntimeException("Json file not found at path : " + GrnFilePath );
+			}finally {
+				try { if(bufferReader != null) bufferReader.close();}
+				catch (IOException ignore) {}
+			}
+	}
+//AccountReceivableAdvances
+private List<AccountReceivable_AccountReceivableAdvancesTestDataType> getAccountReceivableAdvancesData() {
+	Gson gson = new Gson();
+	BufferedReader bufferReader = null;
+	try {
+		bufferReader = new BufferedReader(new FileReader(AccountReceivableAdvancesFilePath));
+		AccountReceivable_AccountReceivableAdvancesTestDataType[] AccountReceivableAdvances = gson.fromJson(bufferReader, AccountReceivable_AccountReceivableAdvancesTestDataType[].class);
+		return Arrays.asList(AccountReceivableAdvances);
+		}catch(FileNotFoundException e) {
+			throw new RuntimeException("Json file not found at path : " + AccountReceivableAdvancesFilePath );
+		}finally {
+			try { if(bufferReader != null) bufferReader.close();}
+			catch (IOException ignore) {}
+		}
+	}
+//AccountsPayable_ManualPayout
+
+private List<AccountsPayable_ManualPayoutTestDataType> getManualPayoutData() {
+	Gson gson = new Gson();
+	BufferedReader bufferReader = null;
+	try {
+		bufferReader = new BufferedReader(new FileReader(ManualPayoutFilePath));
+		AccountsPayable_ManualPayoutTestDataType[] ManualPayout = gson.fromJson(bufferReader,AccountsPayable_ManualPayoutTestDataType[].class);
+		return Arrays.asList(ManualPayout);
+		}catch(FileNotFoundException e) {
+			throw new RuntimeException("Json file not found at path : " + ManualPayoutFilePath );
+		}finally {
+			try { if(bufferReader != null) bufferReader.close();}
+			catch (IOException ignore) {}
+		}
+	
+}
+
+//AccountReceivable_UpdateDepositedCheque
+private List<AccountReceivable_UpdateDepositedChequeTestDataType> getUpdateDepositedChequeListData() {
+	Gson gson = new Gson();
+	BufferedReader bufferReader = null;
+	try {
+		bufferReader = new BufferedReader(new FileReader(UpdateDepositedChequeFilePath));
+		AccountReceivable_UpdateDepositedChequeTestDataType[] UpdateDepositedCheque = gson.fromJson(bufferReader,AccountReceivable_UpdateDepositedChequeTestDataType[].class);
+		return Arrays.asList(UpdateDepositedCheque);
+		}catch(FileNotFoundException e) {
+			throw new RuntimeException("Json file not found at path : " + UpdateDepositedChequeFilePath );
+		}finally {
+			try { if(bufferReader != null) bufferReader.close();}
+			catch (IOException ignore) {}
+		}
+}
+//AccountReceivable_Appropriation
+
+private List<AccountReceivable_AppropriationTestDataType> getAppropriationListData() {
+	Gson gson = new Gson();
+	BufferedReader bufferReader = null;
+	try {
+		bufferReader = new BufferedReader(new FileReader(AppropriationFilePath));
+		AccountReceivable_AppropriationTestDataType[] appropriation = gson.fromJson(bufferReader, AccountReceivable_AppropriationTestDataType[].class);
+		return Arrays.asList(appropriation);
+		}catch(FileNotFoundException e) {
+			throw new RuntimeException("Json file not found at path : " + AppropriationFilePath );
+		}finally {
+			try { if(bufferReader != null) bufferReader.close();}
+			catch (IOException ignore) {}
+		}	
+}
+//ArAp_BalanceSheetReport
+private List<ArAp_BalanceSheetReportTestDataType> getBalanceSheetReportListData() {
+	Gson gson = new Gson();
+	BufferedReader bufferReader = null;
+	try {
+		bufferReader = new BufferedReader(new FileReader(BalanceSheetReportFilePath));
+		ArAp_BalanceSheetReportTestDataType[] balanceSheetReport = gson.fromJson(bufferReader, ArAp_BalanceSheetReportTestDataType[].class);
+		return Arrays.asList(balanceSheetReport);
+		}catch(FileNotFoundException e) {
+			throw new RuntimeException("Json file not found at path : " + BalanceSheetReportFilePath );
+		}finally {
+			try { if(bufferReader != null) bufferReader.close();}
+			catch (IOException ignore) {}
+		}	
+}
+
+//AccountPayable_InvoiceBooking
+
+private List<AccountPayable_InvoiceBookingTestDataType> getInvoiceBookingListData() {
+	Gson gson = new Gson();
+	BufferedReader bufferReader = null;
+	try {
+		bufferReader = new BufferedReader(new FileReader(InvoiceBookingFilePath));
+		AccountPayable_InvoiceBookingTestDataType[] InvoiceBooking = gson.fromJson(bufferReader, AccountPayable_InvoiceBookingTestDataType[].class);
+		return Arrays.asList(InvoiceBooking);
+		}catch(FileNotFoundException e) {
+			throw new RuntimeException("Json file not found at path : " + InvoiceBookingFilePath );
+		}finally {
+			try { if(bufferReader != null) bufferReader.close();}
+			catch (IOException ignore) {}
+		}
+}
+
 
 
 	/*public final RegisterData getRegisterByName(String customerName) {
@@ -500,5 +665,38 @@ public final FixedAsset_AssetCreationTestDataType getAssetCreationByName(String 
 //FixedAsset_AssetAllocation  
 public final FixedAsset_AssetAllocationTestDataType getAssetAllocationByName(String UserName){
 	return AssetAllocationList.stream().filter(x->x.User.equalsIgnoreCase(UserName)).findAny().get();
+}
+
+
+//AccountPayable_Grn
+public final AccountPayable_GrnTestDataType getGrnByName(String UserName){
+	return GrnList.stream().filter(x->x.User.equalsIgnoreCase(UserName)).findAny().get();
+}
+
+//AccountReceivable_AccountReceivableAdvances
+public final AccountReceivable_AccountReceivableAdvancesTestDataType getAccountReceivableAdvancesByName(String UserName){
+	return AccountReceivableAdvancesList.stream().filter(x->x.User.equalsIgnoreCase(UserName)).findAny().get();
+}
+//AccountsPayable_ManualPayout
+public final AccountsPayable_ManualPayoutTestDataType getManualPayoutByName(String UserName){
+	return ManualPayoutList.stream().filter(x->x.User.equalsIgnoreCase(UserName)).findAny().get();
+}
+//AccountReceivable_UpdateDepositedCheque
+public final AccountReceivable_UpdateDepositedChequeTestDataType getUpdateDepositedChequeByName(String UserName){
+	return UpdateDepositedChequeList.stream().filter(x->x.User.equalsIgnoreCase(UserName)).findAny().get();
+}
+//AccountReceivable_Appropriation
+public final AccountReceivable_AppropriationTestDataType getAppropriationByName(String UserName){
+	return AppropriationList.stream().filter(x->x.User.equalsIgnoreCase(UserName)).findAny().get();
+}
+
+//ArAp_BalanceSheetReport
+public final ArAp_BalanceSheetReportTestDataType getBalanceSheetReportByName(String UserName){
+	return BalanceSheetReportList.stream().filter(x->x.User.equalsIgnoreCase(UserName)).findAny().get();
+}
+
+//AccountsPayable_InvoiceBooking
+public final AccountPayable_InvoiceBookingTestDataType getInvoiceBookingByName(String UserName){
+	return InvoiceBookingList.stream().filter(x->x.User.equalsIgnoreCase(UserName)).findAny().get();
 }
 }
