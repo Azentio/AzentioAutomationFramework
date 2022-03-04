@@ -29,7 +29,7 @@ import resources.JsonDataReaderWriter;
 import testDataType.ACCOUNTSPAYABLE_PaymentSettlementTestDataType;
 import testDataType.ARAP_GRNCreationTestDataType;
 
-public class ARAP_BGRNCreation extends BaseClass {
+public class ACCOUNTSPAYABLE_GRNCreation extends BaseClass {
 	WebDriver driver=BaseClass.driver;
 	ARAP_GRNCreationPageObject grnObject=new ARAP_GRNCreationPageObject(driver);
 	ARAP_PoCreationObj poCreationObj=new ARAP_PoCreationObj(driver);

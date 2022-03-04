@@ -1,6 +1,7 @@
 Feature: To check BudgetDefinition moduel feature
 Background: 
 Given Navigate to KUBS URL and login with maker credentials
+@KUBS_AR/AP_UAT_004_008_TC_01
 Scenario: Verify on payment date (As per Bill), settlement for the bill is auto approved.
 And click on accounts Payable module
 And goto vendor contract module

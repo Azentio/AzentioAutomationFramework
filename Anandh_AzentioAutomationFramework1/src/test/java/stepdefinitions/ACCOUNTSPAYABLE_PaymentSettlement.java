@@ -29,7 +29,7 @@ import resources.BaseClass;
 import testDataType.ACCOUNTSPAYABLE_PaymentSettlementTestDataType;
 import testDataType.ACCOUNTSRECEIVABLE_AccountsReceivableAdvanceTestDataType;
 
-public class ARAP_PaymentSettlement extends BaseClass {
+public class ACCOUNTSPAYABLE_PaymentSettlement extends BaseClass {
 	WebDriver driver = BaseClass.driver;
 	KUBS_MakerObj makerObj = new KUBS_MakerObj(driver);
 	JsonConfig jsonConfig = new JsonConfig();
