@@ -1,0 +1,18 @@
+[
+{
+"UserType":"Maker",
+"BuisnessPartnerName":"Gangeeta",
+"contractstatus":"CANCELLED",
+"BuisnessPartnerName1":"F Name",
+"BuisnessPartnerName2":"suvarana Pvt Ltd",
+"PaymentSettlementDescription":"ok",
+"Contractstatusfordebitnote":"Active",
+"Contractstatusforcancellationofcontract":"CLOSED",
+"Cancellationtype":"Contract"
+},
+{
+"UserType":"Checker",
+"PossitiveRemarks":"Approved from checker",
+"NegativeRemarks":"Rejected from checker"
+}
+]
