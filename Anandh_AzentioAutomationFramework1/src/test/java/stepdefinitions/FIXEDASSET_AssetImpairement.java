@@ -284,7 +284,7 @@ public class FIXEDASSET_AssetImpairement extends BaseClass {
 		fixedAssetObj.fixedAssetSearchRefNo().sendKeys(fixedAssetImairementTestData.allocatedAssetRefRevalued);
 		for (int i = 0; i < 3; i++) {
 			try {
-				boolean result = driver.findElement(By.xpath(
+				 driver.findElement(By.xpath(
 						"//span[contains(text(),'" + fixedAssetImairementTestData.allocatedAssetRefRevalued + "')]"))
 						.isDisplayed();
 			} catch (NoSuchElementException e) {
