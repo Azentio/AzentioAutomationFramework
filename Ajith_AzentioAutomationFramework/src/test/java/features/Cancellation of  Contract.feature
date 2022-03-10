@@ -1,5 +1,37 @@
 
-Feature: Testing the AR/AP Module-Cancellation of Contract
+Feature: Testing the AR/AP Module
+@KUBS_AR/AP_UAT_001_002TC_02
+Scenario: Verify Accounting entries post Bill is approved
+   Given user navigate to azentio url and login as maker for verify post bill is approved in Accounting Entries
+   When click the account payable main module for verify post bill is approved in Accounting Entries
+   And click the eye icon of invoice bill booking for verify post bill is approved in Accounting Entries
+   And click the search icon in list view for verify post bill is approved in Accounting Entries
+   And search invoice type as expense for verify post bill is approved in Accounting Entries
+   And click the first eye icon in the list view of Active invoice bill
+   And get the invoice number from the Active  bill viewed 
+   And click the notes option in top for verify post bill is approved
+   And click the enquiry module for verify post bill is approved
+   And click the financial transaction edit icon for verify post bill is approved in Accounting Entries
+   And select the branch code as azentio main branch for verify post bill is approved in Accounting Entries
+   And select the transaction from date  for verify post bill is approved in Accounting Entries
+   And select the transaction to date for verify post bill is approved in Accounting Entries
+   And click the view option for verify post bill is approved in Accounting Entries
+   Then verify that the invoice number get from Active bill matches with voucher id in report
+ @KUBS_AR/AP_UAT_003_001TC_01
+  Scenario: verify contract report should display the correct info for logged in branch
+  Given user login as azentio maker for contract report verification
+  When user click Accounts Payable for contract report verification
+  And user click Vendor Contracts eye icon for contract report verification
+   And click the first eye icon in the list for contract report verification
+   And get buisness partner name,get contract end date and get contract acccount code,get contract status
+   And click the notes option for contract report verification 
+   And click the Reports Sub Module
+   And click the contract report edit icon
+   And select the vendor name according to contract
+   And select the contract status based on we get from list
+   And select the date based on contract end date
+   And click the view icon
+   Then verify the contract code in contract report
   @KUBS_AR/AP_UAT_003_001TC_02
   Scenario: Verify creating po against cancelled order is not allowed
     Given user navigate to the url and login as a maker
@@ -32,6 +64,24 @@ Feature: Testing the AR/AP Module-Cancellation of Contract
    And select adjustment item type as contract
    And select adjustment reference as we get in contract account code
    Then verify that cancellation of contract is not allowed when po created for contract
+   @KUBS_AR/AP_UAT_003_004TC_01
+   Scenario: verify accounting entries post bill is cancelled
+   Given user navigate to azentio url and login as maker
+   When click the account payable main module 
+   And click the eye icon of invoice bill booking
+   And click the search icon in list view
+   And search invoice type as expense
+   And search invoice status as cancelled
+   And click the first eye icon in the list view of cancelled invoice bill
+   And get the invoice number from the bill viewed
+   And click the notes option in top
+   And click the enquiry module
+   And click the financial transaction edit icon
+   And select the branch code as azentio main branch
+   And select the transaction from date 
+   And select the transaction to date
+   And click the view option
+   Then verify that the invoice number get from bill matches with voucher id in report
    @KUBS_AR/AP_UAT_003_004TC_05
    Scenario: verify cancelled bill is not allowed for payment settlement
    When click the invoice eye icon in accounts payable
@@ -43,6 +93,21 @@ Feature: Testing the AR/AP Module-Cancellation of Contract
    And select payment option as buisness partnerwise
    And select buisness partner in payment settlement
    Then verify that no bill is available for payment settlement
+   @KUBS_AR/AP_UAT_003_007TC_01
+   Scenario: Verify Accounting entries post Credit Note is cancelled
+   Given user login as Azentio Maker
+   When click the Account Receivable Main Module for verify Accounting entries
+   And click the credit note eye icon
+   And click the search icon in the list view of credit 
+   And search the cancelled credit note and click the first list
+   And store the credit note number
+   And click the Notes Option In Top
+   And click The Enquiry Module for Accounting Entries
+   And Click the Edit icon in Financial Transaction
+   And Select Branch code as Azentio Manin Branch
+   And Choose the Transaction from date
+   And choose the Transaction To date and click view option
+   Then Verify the Credit note nuber in Voucher Id and verify transactipon type
    @KUBS_AR/AP_UAT_003_007TC_04
   Scenario: verify credit cancelled is not available in payment settlement
    Given login azentio as maker

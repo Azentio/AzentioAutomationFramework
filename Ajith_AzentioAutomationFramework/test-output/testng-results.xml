@@ -2,27 +2,27 @@
 <testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2022-03-03T19:48:15 IST" name="Default suite" finished-at="2022-03-03T19:48:48 IST" duration-ms="33198">
+  <suite started-at="2022-03-09T19:21:31 IST" name="Default suite" finished-at="2022-03-09T19:22:35 IST" duration-ms="63695">
     <groups>
       <group name="cucumber">
         <method signature="AbstractTestNGCucumberTests.runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:Runner.TestApplication@3e08ff24]" name="runScenario" class="io.cucumber.testng.AbstractTestNGCucumberTests"/>
       </group> <!-- cucumber -->
     </groups>
-    <test started-at="2022-03-03T19:48:15 IST" name="Default test" finished-at="2022-03-03T19:48:48 IST" duration-ms="33198">
+    <test started-at="2022-03-09T19:21:31 IST" name="Default test" finished-at="2022-03-09T19:22:35 IST" duration-ms="63695">
       <class name="Runner.TestApplication">
-        <test-method is-config="true" signature="beforeExecution()[pri:0, instance:Runner.TestApplication@3e08ff24]" started-at="2022-03-03T19:48:15 IST" name="beforeExecution" finished-at="2022-03-03T19:48:15 IST" duration-ms="6" status="PASS">
+        <test-method is-config="true" signature="beforeExecution()[pri:0, instance:Runner.TestApplication@3e08ff24]" started-at="2022-03-09T19:21:31 IST" name="beforeExecution" finished-at="2022-03-09T19:21:31 IST" duration-ms="6" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeExecution -->
-        <test-method is-config="true" signature="setUpClass()[pri:0, instance:Runner.TestApplication@3e08ff24]" started-at="2022-03-03T19:48:15 IST" name="setUpClass" finished-at="2022-03-03T19:48:16 IST" duration-ms="668" status="PASS">
+        <test-method is-config="true" signature="setUpClass()[pri:0, instance:Runner.TestApplication@3e08ff24]" started-at="2022-03-09T19:21:31 IST" name="setUpClass" finished-at="2022-03-09T19:21:32 IST" duration-ms="801" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUpClass -->
-        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:Runner.TestApplication@3e08ff24]" started-at="2022-03-03T19:48:16 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2022-03-03T19:48:41 IST" duration-ms="25651" status="PASS">
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:Runner.TestApplication@3e08ff24]" started-at="2022-03-09T19:21:32 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2022-03-09T19:22:29 IST" duration-ms="56795" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA["verify cancelled bill is not allowed for payment settlement"]]>
+                <![CDATA["verify accounting entries post bill is cancelled"]]>
               </value>
             </param>
             <param index="1">
@@ -34,11 +34,11 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- runScenario -->
-        <test-method is-config="true" signature="tearDownClass()[pri:0, instance:Runner.TestApplication@3e08ff24]" started-at="2022-03-03T19:48:41 IST" name="tearDownClass" finished-at="2022-03-03T19:48:48 IST" duration-ms="6844" status="PASS">
+        <test-method is-config="true" signature="tearDownClass()[pri:0, instance:Runner.TestApplication@3e08ff24]" started-at="2022-03-09T19:22:29 IST" name="tearDownClass" finished-at="2022-03-09T19:22:35 IST" duration-ms="6064" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDownClass -->
-        <test-method is-config="true" signature="afterExecution()[pri:0, instance:Runner.TestApplication@3e08ff24]" started-at="2022-03-03T19:48:48 IST" name="afterExecution" finished-at="2022-03-03T19:48:48 IST" duration-ms="75" status="PASS">
+        <test-method is-config="true" signature="afterExecution()[pri:0, instance:Runner.TestApplication@3e08ff24]" started-at="2022-03-09T19:22:35 IST" name="afterExecution" finished-at="2022-03-09T19:22:35 IST" duration-ms="68" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterExecution -->

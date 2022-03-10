@@ -1,0 +1,21 @@
+[
+{
+"UserType":"Maker",
+"branchCode": "Azentio Main Branch",
+"gLCode": "Hdfc",
+"CurrencyType":"INR",
+"PaymentBank":"HDFC BANK",
+"GlMonth": "Apr",
+"GlFullMonth": "April",
+"GlYear": "2022",
+"GlDay"	: "1",
+"GlToMonth": "Oct",
+"GlFullToMonth": "October",
+"GlToDate": "19"
+},
+{
+"UserType":"Checker",
+"PossitiveRemarks":"Approved from checker",
+"NegativeRemarks":"Rejected from checker"
+}
+]

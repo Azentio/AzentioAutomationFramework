@@ -12,6 +12,7 @@ import com.google.gson.Gson;
 import com.google.gson.stream.JsonReader;
 
 import testDataType.Cancellationofcontractdatatype;
+import testDataType.GlModuleDataType;
 import testDataType.KUBS_LoginTestDataType;
 import testDataType.Logindata;
 import testDataType.RegisterData;
@@ -23,13 +24,39 @@ public class JsonConfig {
 	private List<KUBS_LoginTestDataType> credentialslist;
 	private final String cancellationofcontractpath = configFileReader.getJsonPath() + "cancellationofcontract.json";
 	private List<Cancellationofcontractdatatype> cancellationlist;
+	private final String GlModulepath=configFileReader.getJsonPath()+"Gl_Module.json";
+	private List<GlModuleDataType> glmodulelist;
 
 	public JsonConfig() {
 
 		credentialslist = getAzentioCredentialsList();
 		cancellationlist = getCancellationlist();
+        glmodulelist=getGlModulelist();
+	}
+	private List<GlModuleDataType> getGlModulelist() {
+		Gson gson = new Gson();
+		JsonReader reader = new JsonReader(new StringReader(GlModulepath));
+		reader.setLenient(true);
+		BufferedReader bufferReader = null;
+		try {
+			bufferReader = new BufferedReader(new FileReader(GlModulepath));
+			GlModuleDataType[] glmodulelist = gson.fromJson(bufferReader,
+					GlModuleDataType[].class);
+			return Arrays.asList(glmodulelist);
+		} catch (FileNotFoundException e) {
+			throw new RuntimeException("Json file not found at path : " + GlModulepath);
+		} finally {
+			try {
+				if (bufferReader != null)
+					bufferReader.close();
+			} catch (IOException ignore) {
+			}
+		}
 
 	}
+
+	
+	
 
 	private List<Cancellationofcontractdatatype> getCancellationlist() {
 		Gson gson = new Gson();
@@ -78,6 +105,9 @@ public class JsonConfig {
 	}
 	public final Cancellationofcontractdatatype getCancelcontractByName(String contractstatus) {
 		return cancellationlist.stream().filter(x -> x.UserType.equalsIgnoreCase(contractstatus)).findAny().get();
+	}
+	public final GlModuleDataType getGlModulelist(String UserName) {
+		return glmodulelist.stream().filter(x -> x.UserType.equalsIgnoreCase(UserName)).findAny().get();
 	}
 
 }

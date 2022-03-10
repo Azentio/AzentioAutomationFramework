@@ -38,8 +38,10 @@ public class ArAp_Cancellation_of_vendorObj {
 	private WebElement vendorposearch;
 	@FindBy(xpath="//ion-input[@ng-reflect-placeholder='Search Business Partner']/input")
 	private WebElement vendorposearchbpname;
+	@FindBy(xpath="(//datatable-body-cell[1]/div/ion-buttons/ion-button[1])[1]")
+	private WebElement clickFirstEyeiconInListView;
 	@FindBy(xpath="(//datatable-body-cell[1]/div/ion-buttons/ion-button[1])[2]")
-	private WebElement clickEyeiconInListView;
+	private WebElement clickSecondEyeiconInListView;
 	@FindBy(xpath="//datatable-row-wrapper[1]/datatable-body-row/div/datatable-body-cell[1]//ion-button[1]")
 	private WebElement pocontracteyeicon;
 	@FindBy(xpath="//ng-select[@ng-reflect-model='89001']")
@@ -47,11 +49,14 @@ public class ArAp_Cancellation_of_vendorObj {
 	@FindBy(xpath="//ng-select[@ng-reflect-model=\"35668\"]")
 	private WebElement postatus;
 	
+	public WebElement getClickFirstEyeiconInListView() {
+		return clickFirstEyeiconInListView;
+	}
 	public WebElement getBuisnessPartnerNameinContract() {
 		return buisnessPartnerNameinContract;
 	}
-	public WebElement getClickEyeiconInListView() {
-		return clickEyeiconInListView;
+	public WebElement getClickSecondEyeiconInListView() {
+		return clickSecondEyeiconInListView;
 	}
 	public WebElement getOptionicon() {
 		return optionicon;

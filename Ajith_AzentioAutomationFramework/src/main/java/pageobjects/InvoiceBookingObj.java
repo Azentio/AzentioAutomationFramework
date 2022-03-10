@@ -34,10 +34,15 @@ public class InvoiceBookingObj {
 	public WebElement searchInvoiceStatus() {
 		return searchInvoiceStatus;
 	}
-	@FindBy(xpath="//ion-col[3]/app-kub-lov[1]/span[1]/ng-select[1]/div[1]/div[1]/div[2]")
-	private WebElement getBuisnessPartnerInvoiceBill;
-	public WebElement getBuisnessPartnerInvoiceBill() {
-		return getBuisnessPartnerInvoiceBill;
+	@FindBy(xpath="//datatable-header-cell[4]/div/ion-input/input")
+	private WebElement searchInvoiceType;
+	public WebElement searchInvoiceType() {
+		return searchInvoiceType;
+	}
+	@FindBy(xpath="//ion-col[4]/app-kub-lov[1]/span[1]/ng-select[1]/div[1]/div[1]/div[2]")
+	private WebElement getBuisnessPartnerFromInvoiceBill;
+	public WebElement getBuisnessPartnerFromInvoiceBill() {
+		return getBuisnessPartnerFromInvoiceBill;
 	}
 	@FindBy(xpath="//ion-col[5]/ion-item/ion-input/input[@class=\"native-input sc-ion-input-md\"]")
 	private WebElement getInvoiceNumber;

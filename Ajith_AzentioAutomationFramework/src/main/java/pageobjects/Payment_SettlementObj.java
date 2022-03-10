@@ -38,7 +38,7 @@ public class Payment_SettlementObj {
     @FindBy(xpath="(//span[@class='input-calendar'])[2]")
     private WebElement calenderInPaymentSettlement;
     // change daily date in xpath
-    @FindBy(xpath="//span[text()='28']")
+    @FindBy(xpath="//span[text()='4']")
     private WebElement date;
     @FindBy(xpath="//ion-col[9]/ion-item/ion-input/input[@name='paymentDesc']")
     private WebElement description;
