@@ -45,5 +45,10 @@ public class FIXEDASSET_AssetReplacementObj {
 	}
 	
 	//@FindBy(xpath="//page-asset-replacement-update//ion-toolbar[1]//ion-buttons[2]//ion-button[1]")
-	
+@FindBy(xpath="//page-asset-replacement-update//ion-buttons[2]//ion-button")
+private WebElement fixedAssetAssetReplacementSaveButton;
+public WebElement fixedAssetReplacementSaveButton()
+{
+	return fixedAssetAssetReplacementSaveButton;
+}
 }

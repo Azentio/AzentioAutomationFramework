@@ -195,4 +195,23 @@ WebDriver driver;
 	{
 		return vendorContract_ApprovedContractNumber;
 	}
+	@FindBy(xpath="//input[@placeholder='Search Contract Status']")
+	private WebElement vendorContract_SearchContractStatus;
+	public WebElement vendorContractSearchContractStatus()
+	{
+		return vendorContract_SearchContractStatus;
+	}
+	
+	@FindBy(xpath="//datatable-row-wrapper[1]//datatable-body-cell[6]//span")
+	private WebElement vendorContract_ApprovedBpName;
+	public WebElement vendorContractApprovedBpName()
+	{
+		return vendorContract_ApprovedBpName;
+	}
+	@FindBy(xpath="//datatable-row-wrapper[1]//datatable-body-cell[1]//ion-button[1]")
+	private WebElement vendorContract_approvedViewButton;
+	public WebElement vendorContractApprovedViewButton()
+	{
+		return vendorContract_approvedViewButton;
+	}
 }

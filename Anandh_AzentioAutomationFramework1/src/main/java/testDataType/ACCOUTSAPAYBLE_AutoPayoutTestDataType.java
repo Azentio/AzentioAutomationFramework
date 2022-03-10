@@ -6,6 +6,7 @@ public class ACCOUTSAPAYBLE_AutoPayoutTestDataType {
 	public String HSNCode;
 	public String PaymentAmmount;
 	public String CreditPeriod;
+	//public String PaymentTerm;
 	public String VendorContractQuantity;
 	public String ContractName;
 	public String ContractType;

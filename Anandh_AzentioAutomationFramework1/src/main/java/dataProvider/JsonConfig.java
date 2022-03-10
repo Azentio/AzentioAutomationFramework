@@ -11,6 +11,7 @@ import java.util.List;
 import com.google.gson.Gson;
 import com.google.gson.stream.JsonReader;
 
+import testDataType.ACCOUNTSPAYABLE_ContractReportTestData;
 import testDataType.ACCOUNTSPAYABLE_PaymentSettlementTestDataType;
 import testDataType.ACCOUNTSRECEIVABLE_AccountsReceivableAdvanceTestDataType;
 import testDataType.ACCOUNTSRECEIVABLE_ReceiptTestData;
@@ -82,7 +83,9 @@ public class JsonConfig {
 	//AutoPayout
 	private final String AccountsPayableAutoPayoutFilePath = configFileReader.getJsonPath() + "ACCOUTSPAYABLE_AutoPayoutJSON.json";
 	private List<ACCOUTSAPAYBLE_AutoPayoutTestDataType> accountsAutoPayoutTestData ;
-	
+	//ContractReport
+	private final String AccountsPayableContractReportFilePath = configFileReader.getJsonPath() + "ACCOUNTSPAYABLE_ContractReportJSON.json";
+	private List<ACCOUNTSPAYABLE_ContractReportTestData> accountspayableContractReportTestData;
 	public JsonConfig() {
 
 		AllocationList = getAllocationList();
@@ -101,7 +104,29 @@ public class JsonConfig {
 		accountsReceivableAdvanceTestData=getAccounteReceivableAdvanceTestData();
 		accountsReceivableReceiptTestData=getAccounteReceivableReceiptTestData();
 		accountsAutoPayoutTestData=getAccountsPayableAutoPayoutTestData();
+		accountspayableContractReportTestData= getAccountsPayableContractReportTestData();
 		
+	}
+	//ContractReport
+	private List<ACCOUNTSPAYABLE_ContractReportTestData> getAccountsPayableContractReportTestData() {
+		Gson gson = new Gson();
+		JsonReader reader = new JsonReader(new StringReader(AccountsPayableContractReportFilePath));
+		reader.setLenient(true);
+		BufferedReader bufferReader = null;
+		try {
+			bufferReader = new BufferedReader(new FileReader(AccountsPayableContractReportFilePath));
+			ACCOUNTSPAYABLE_ContractReportTestData[] accountsPayableContractReportTestData = gson.fromJson(bufferReader,
+					ACCOUNTSPAYABLE_ContractReportTestData[].class);
+			return Arrays.asList(accountsPayableContractReportTestData);
+		} catch (FileNotFoundException e) {
+			throw new RuntimeException("Json file not found at path : " + AccountsPayableContractReportFilePath);
+		} finally {
+			try {
+				if (bufferReader != null)
+					bufferReader.close();
+			} catch (IOException ignore) {
+			}
+		}
 	}
 	//AutoPayout
 		private List<ACCOUTSAPAYBLE_AutoPayoutTestDataType> getAccountsPayableAutoPayoutTestData() {
@@ -508,8 +533,10 @@ public class JsonConfig {
 		public final ACCOUTSAPAYBLE_AutoPayoutTestDataType getAccountsPayableAutoPayoutTestDataByName(String UserName){
 			return accountsAutoPayoutTestData.stream().filter(x->x.UserType.equalsIgnoreCase(UserName)).findAny().get();
 	}
-	
-	
+	//ACCOUNTSPAYABLE_ContractReportTestData> accountspayableContractReportTestData
+		public final ACCOUNTSPAYABLE_ContractReportTestData getAccountsPayableContractReportTestDataByName(String UserName){
+			return accountspayableContractReportTestData.stream().filter(x->x.UserType.equalsIgnoreCase(UserName)).findAny().get();
+	}
 	
 	
 }

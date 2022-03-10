@@ -507,12 +507,23 @@ public class BUDGET_UAT_BudgetDefinition extends BaseClass {
 		/*
 		 * Then we have to logout from reviewer and start with checker approval
 		 */
+		while(true)
+		{
+		try
+		{
 		javascriptHelper.JavaScriptHelper(driver);
 		kubsReviewerObj.reviewerAlertClose().click();
 		kubsReviewerObj.reviewerUserName().click();
 		waitHelper.waitForElement(driver, 3000, kubsReviewerObj.reviewerLogoutButton());
 		javascriptHelper.JSEClick(kubsReviewerObj.reviewerLogoutButton());
-	}
+		break;
+		}
+		catch(StaleElementReferenceException e)
+		{
+			
+		}
+		}
+		}
 
 	/* *** checker steps ***** */
 
@@ -708,6 +719,7 @@ public class BUDGET_UAT_BudgetDefinition extends BaseClass {
 		kubsCheckerObj.checkerAlertClose().click();
 		waitHelper.waitForElementVisible(kubsCheckerObj.checkerUserName(), 1000, 100);
 		kubsCheckerObj.checkerUserName().click();
+		Thread.sleep(1000);
 		for (int i = 0; i < 3; i++) {
 			try {
 				waitHelper.waitForElementVisible(kubsCheckerObj.checkerLogoutButton(), 1000, 100);

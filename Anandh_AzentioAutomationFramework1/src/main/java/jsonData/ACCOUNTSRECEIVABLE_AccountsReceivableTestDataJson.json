@@ -2,6 +2,7 @@
 {
 "UserType":"Maker",
 "RecevableName":"Advance To Employee",
+"ADVStatus":"Active",
 "BusinessPartnerNAme":"Swapnil Gore",
 "PaymentMode":"Pay Order",
 "Ammount":"100000",

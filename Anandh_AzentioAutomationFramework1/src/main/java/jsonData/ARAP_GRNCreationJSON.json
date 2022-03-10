@@ -1,10 +1,12 @@
 [
-{
-"UserType":"Maker",
-"DeleveryLocation":"East Zone",
-"InvoiceNo":"INV-700250",
-"ItemQuantity":"10",
-"poStatus":"Cancelled",
-"ApprovedPo":"Active"
-}
+	{
+		"UserType": "Maker",
+		"DeleveryLocation": "East Zone",
+		"InvoiceNo": "INVC-0903202212",
+		"ItemQuantity": "10",
+		"poStatus": "Cancelled",
+		"Quantity": "1",
+		"ApprovedPo": "Active",
+		"GRNStatus": "Active"
+	}
 ]

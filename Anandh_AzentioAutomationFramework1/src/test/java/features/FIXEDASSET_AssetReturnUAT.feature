@@ -269,7 +269,7 @@ And click on view button nearby asset return module
 Then check the approved record is displayed in list view of returned asset
 
 @deAllocatedAssetReturn 
-Scenario: Check if the impaired asset can be returned to its vendor
+Scenario: Check if the deallocated asset can be returned to its vendor
 Then Click on fixed asset deallocaion  Direction icon
 Then Click on Fixed assets field
 Then Click on asset deallocaion Eye button

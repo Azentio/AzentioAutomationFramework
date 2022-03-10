@@ -45,6 +45,13 @@ public class ACCOUNTSPAYABLE_AutoPayout extends BaseClass {
     ACCOUNTSPAYABLE_AutoPayoutObj accoutsPayableAutoPayoutObj=new ACCOUNTSPAYABLE_AutoPayoutObj(driver);
     INVENTORY_EnquiryGlObject inventoryEnquiryGlObj=new INVENTORY_EnquiryGlObject(driver);
     ACCOUTSAPAYBLE_AutoPayoutTestDataType autoPayoutTestData= jsonConfig.getAccountsPayableAutoPayoutTestDataByName("Maker");
+    
+    
+    
+           /********************   VENDOR CONTRACT ****************************/
+    
+    
+    
 	@And("^goto vendor contract module$")
     public void goto_vendor_contract_module() throws Throwable {
 		waitHelper.waitForElementVisible(vendorContractObj.vendorContractEyeIcon(), 2000, 100);
@@ -125,7 +132,7 @@ public class ACCOUNTSPAYABLE_AutoPayout extends BaseClass {
          vendorContractObj.vendorContractAddButton().click();
          waitHelper.waitForElementVisible(vendorContractObj.paymentTermPaymentTerm(), 2000, 100);
          vendorContractObj.paymentTermPaymentTerm().click();
-         vendorContractObj.paymentTermPaymentTerm().sendKeys("Advance");
+         vendorContractObj.paymentTermPaymentTerm().sendKeys(autoPayoutTestData.PaymentTerm);
          vendorContractObj.paymentTermPaymentTermPercentage().click();
          vendorContractObj.paymentTermPaymentTermPercentage().sendKeys(autoPayoutTestData.PaymentTermPercentage);
          vendorContractObj.paymentTermPaymentTermType().click();
@@ -162,6 +169,9 @@ public class ACCOUNTSPAYABLE_AutoPayout extends BaseClass {
       String approvedContractNumber=vendorContractObj.vendorContractApprovedContractNumber().getText();
       autoPayout.put("approvedContractNumber", approvedContractNumber);
     }
+ 
+    
+    /********************   PO CREATION ****************************/
     
     @And("^goto po creation module$")
     public void goto_po_creation_module() throws Throwable {
@@ -214,6 +224,7 @@ public class ACCOUNTSPAYABLE_AutoPayout extends BaseClass {
     
     waitHelper.waitForElementVisible(poCreationObj.accountsPayable_VendorPurchaseOrder_POSubType(), 2000, 100);
     poCreationObj.accountsPayable_VendorPurchaseOrder_POSubType().click();
+    poCreationObj.accountsPayable_VendorPurchaseOrder_POSubType().sendKeys(Keys.DOWN);
     poCreationObj.accountsPayable_VendorPurchaseOrder_POSubType().sendKeys(Keys.ENTER);
     //waitHelper.waitForElementVisible(poCreationObj.accountsPayable_VendorPurchaseOrder_CostCenter(), 2000, 100);
     while(true)
@@ -271,7 +282,7 @@ public class ACCOUNTSPAYABLE_AutoPayout extends BaseClass {
     	
         
     }
-    
+    /*
     @And("^fill the mendatory field for GRN$")
     public void fill_the_mendatory_field_for_grn() throws Throwable {
     	waitHelper.waitForElementVisible(grnObject.accountPayable_GrnBpName(), 2000, 100);
@@ -289,8 +300,9 @@ public class ACCOUNTSPAYABLE_AutoPayout extends BaseClass {
     	
     	
     	
-    }
+    }*/
 
+    /********************   GRN ****************************/    
     @And("^save the GRN record$")
     public void save_the_grn_record() throws Throwable {
     	clickAndActionHelper.doubleClick(grnObject.accountPayable_GrnSaveButton());
@@ -303,7 +315,7 @@ public class ACCOUNTSPAYABLE_AutoPayout extends BaseClass {
     	waitHelper.waitForElementVisible(invoiceBookingObj.accountPayable_InvoiceBooking_EyeButton(), 2000, 100);
     	invoiceBookingObj.accountPayable_InvoiceBooking_EyeButton().click();
     }
-    @And("^add item details for grn$")
+ /*   @And("^add item details for grn$")
     public void add_item_details_for_grn() throws Throwable {
     	waitHelper.waitForElementVisible(grnObject.inventoryManagament_GRNItemDetails(), 2000, 100);
     	grnObject.inventoryManagament_GRNItemDetails().click();
@@ -335,13 +347,13 @@ public class ACCOUNTSPAYABLE_AutoPayout extends BaseClass {
     			
     		}
     	}
-    }
+    }*/
 
     @And("^save and submit the record$")
     public void save_and_submit_the_record() throws Throwable {
      //   throw new PendingException();
     }
-    
+    /********************   INVOICE BILL BOOKING  ****************************/    
     @And("^fill the invoice booking record$")
     public void fill_the_invoice_booking_record() throws Throwable {
     	waitHelper.waitForElementVisible(invoiceBookingObj.accountPayable_InvoiceBooking_InvoiceType(), 2000, 100);
@@ -395,6 +407,7 @@ public class ACCOUNTSPAYABLE_AutoPayout extends BaseClass {
     	invoiceBookingObj.accountPayable_InvoiceBooking_PONumber().click();
     	invoiceBookingObj.accountPayable_InvoiceBooking_PONumber().sendKeys(autoPayout.get("poNumber"));
     	invoiceBookingObj.accountPayable_InvoiceBooking_PONumber().sendKeys(Keys.ENTER);
+    	{
     	waitHelper.waitForElementVisible(invoiceBookingObj.accountPayable_InvoiceBooking_GRN_Number(), 2000, 100);
     	invoiceBookingObj.accountPayable_InvoiceBooking_GRN_Number().click();
     	waitHelper.waitForElementVisible(invoiceBookingObj.invoiceBookingSelectGRNRecord(), 2000, 100);
@@ -402,6 +415,7 @@ public class ACCOUNTSPAYABLE_AutoPayout extends BaseClass {
     	waitHelper.waitForElementVisible(invoiceBookingObj.invoiceBooingOkButton(), 2000, 100);
     	invoiceBookingObj.invoiceBooingOkButton().click();
     	break;
+    	}
     	}
     	catch(StaleElementReferenceException e)
     	{
@@ -411,14 +425,17 @@ public class ACCOUNTSPAYABLE_AutoPayout extends BaseClass {
     	invoiceBookingObj.accountPayable_InvoiceBooking_SaveExpense().click();
     	waitHelper.waitForElementVisible(poCreationObj.checkerAlertClose(), 2000, 100);
     	poCreationObj.checkerAlertClose().click();
+    	}
     	
-    }
+    
     @And("^get the approved invoice from table$")
     public void get_the_approved_invoice_from_table() throws Throwable {
     	waitHelper.waitForElementVisible(invoiceBookingObj.billBookingApprovedInvoiceNumber(), 2000, 100);
     	String approvedInvoiceNumber=invoiceBookingObj.billBookingApprovedInvoiceNumber().getText();
     	autoPayout.put("approvedInvoiceNumber", approvedInvoiceNumber);
     }
+    /********************  PAYMENT SETTLEMENT ****************************/
+    
     @And("^fill the mendatory field for settle the payment$")
     public void fill_the_mendatory_field_for_settle_the_payment() throws Throwable {
     	javascriptHelper.JavaScriptHelper(driver);
@@ -540,7 +557,7 @@ public class ACCOUNTSPAYABLE_AutoPayout extends BaseClass {
     }
     }
     
-    
+    /********************   AUTO PAYOUT ****************************/    
 
     @And("^go to auto payout module$")
     public void go_to_auto_payout_module() throws Throwable {

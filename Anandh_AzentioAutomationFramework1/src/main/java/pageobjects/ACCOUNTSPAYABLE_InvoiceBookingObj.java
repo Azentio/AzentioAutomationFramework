@@ -828,4 +828,10 @@ public class ACCOUNTSPAYABLE_InvoiceBookingObj {
 	{
 		return invoiceBooking_cancelledSTatus;
 	}
+	@FindBy(xpath="//input[@placeholder='Search Invoice Number']")
+	private WebElement serachInvoiceNumber;
+	public WebElement invoiceBookingSearchInvoiceNumber()
+	{
+		return serachInvoiceNumber;
+	}
 }

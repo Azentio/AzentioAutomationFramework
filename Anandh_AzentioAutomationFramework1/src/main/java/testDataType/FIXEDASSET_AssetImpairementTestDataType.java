@@ -15,4 +15,10 @@ public class FIXEDASSET_AssetImpairementTestDataType {
 	public String writeOffImpairedAssetReferenceNumber;
 	public String writeOffRevaluedAssetReferenceNumber;
 	public String writeOffAmmendentAssetReferenceNumber;
+	public String writeOffReplacementAssetReferenceNumber;
+	public String WriteOffNewAssetItemNumber;
+	public String WriteOffNewAssetDescription;
+	public String writeOffAllocatedAssetReferenceNumber;
+	public String writeOffUnderTakingdAssetReferenceNumber;
+	public String AllocationEmployeeName;
 }

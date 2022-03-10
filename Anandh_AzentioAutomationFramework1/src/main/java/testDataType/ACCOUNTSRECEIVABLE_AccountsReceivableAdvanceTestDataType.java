@@ -7,4 +7,5 @@ public class ACCOUNTSRECEIVABLE_AccountsReceivableAdvanceTestDataType {
 	public String PaymentMode;
 	public String Description;
 	public String Ammount;
+	public String ADVStatus;
 }

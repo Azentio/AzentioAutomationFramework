@@ -137,6 +137,30 @@ public class KUBS_Login {
 					System.out.println(exception.getMessage());
 				}
 			}
+			}
+			else if (id.equals("in00100")) {
+
+				login.Login_userName().sendKeys(logindata.UserName6);
+				login.Login_goButton().click();
+				waithelper.waitForElement(driver, 2000, login.Login_passWord());
+				login.Login_passWord().sendKeys(logindata.PassWord6);
+				waithelper.waitForElement(driver, 2000, login.Login_signIn());
+				login.Login_signIn().click();
+				Thread.sleep(1000);
+				//waithelper.waitForElement(driver, 2000, login.Login_loginStatus());
+				for(int i=1;i<3;i++)
+				{
+					try
+					{
+					//waithelper.waitForElement(driver, 2000, login.Login_loginStatus());
+					Assert.assertTrue(login.Login_loginStatus().isDisplayed());	
+					break;
+					}
+					catch(Exception exception)
+					{
+						System.out.println(exception.getMessage());
+					}
+				}
 		
 		} else if (id.equals("1993")) {
 			System.out.println("Username : " + logindata.UserName2);
@@ -188,6 +212,31 @@ public class KUBS_Login {
 			}
 
 		}
+		else if (id.equals("le4checker")) {
+			login.Login_userName().sendKeys(logindata.UserName8);
+			login.Login_goButton().click();
+			waithelper.waitForElement(driver, 2000, login.Login_passWord());
+			login.Login_passWord().sendKeys(logindata.PassWord8);
+			String otp = login.Login_getOtp().getText();
+			driver.findElement(By.xpath("//ng-otp-input/div/input[1]")).sendKeys(otp.substring(7));
+			waithelper.waitForElement(driver, 2000, login.Login_signIn());
+			login.Login_signIn().click();
+			
+			for(int i=1;i<3;i++)
+			{
+				try
+				{
+				waithelper.waitForElement(driver, 2000, login.Login_loginStatus());
+				Assert.assertTrue(login.Login_loginStatus().isDisplayed());	
+				break;
+				}
+				catch(Exception exception)
+				{
+					System.out.println(exception.getMessage());
+				}
+			}
+
+		}
 		if (id.equals("1002436")) {
 			
 
@@ -217,9 +266,39 @@ public class KUBS_Login {
 			}
 
 	}
+if (id.equals("in100245")) {
+			
+
+			login.Login_userName().sendKeys(logindata.UserName7);
+			login.Login_goButton().click();
+			waithelper.waitForElement(driver, 2000, login.Login_passWord());
+			login.Login_passWord().sendKeys(logindata.PassWord7);
+			String otp = login.Login_getOtp().getText();
+			driver.findElement(By.xpath("//ng-otp-input/div/input[1]")).sendKeys(otp.substring(7));
+			waithelper.waitForElement(driver, 2000, login.Login_signIn());
+			login.Login_signIn().click();
+			Thread.sleep(2000);
+			//waithelper.waitForElement(driver, 2000, login.Login_loginStatus());
+			for(int i=1;i<3;i++)
+			{
+				try
+				{
+				
+				waithelper.waitForElement(driver, 2000, login.Login_loginStatus());
+				Assert.assertTrue(login.Login_loginStatus().isDisplayed());	
+				break;
+				}
+				catch(Exception exception)
+				{
+					System.out.println(exception.getMessage());
+				}
+			}
+
+	}
 	}
 
 	public void loginToAzentioAppAsChecker(String user) throws InterruptedException {
+		Thread.sleep(2000);
 		waithelper = new WaitHelper(driver);
 		dropdownhelper = new DropDownHelper(driver);
 		makerobj = new KUBS_MakerObj(driver);
@@ -231,7 +310,7 @@ public class KUBS_Login {
 		login.Login_passWord().sendKeys(logindata.PassWord);
 		String otp = login.Login_getOtp().getText();
 		driver.findElement(By.xpath("//ng-otp-input/div/input[1]")).sendKeys(otp.substring(7));
-		Thread.sleep(2000);
+		//Thread.sleep(2000);
 		login.Login_signIn().click();
 		Thread.sleep(1000);
 

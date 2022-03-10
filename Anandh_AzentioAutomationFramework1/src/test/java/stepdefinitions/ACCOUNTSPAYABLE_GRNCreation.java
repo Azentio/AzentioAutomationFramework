@@ -47,6 +47,8 @@ public class ACCOUNTSPAYABLE_GRNCreation extends BaseClass {
 	ACCOUNTSPAYABLE_InvoiceBookingObj invoiceBookingObj=new ACCOUNTSPAYABLE_InvoiceBookingObj(driver);
 	ACCOUNTSPAYABLE_PaymentSettlementTestDataType CreditNoteTestData=jsonConfig.getPayementSettlementTestDataByName("Maker");
 	Map<String,String> settlementTestData=new HashMap<>();
+	Map<String,String> testData=new HashMap<>();
+	//INVENTORY_EnquiryGlObject enquiryAccountingObj=new INVENTORY_EnquiryGlObject(driver);
     @And("^click on accounts Payable module$")
     public void click_on_accounts_payable_module() throws Throwable {
     	makerObj.kubsDirectionIcon().click();
@@ -71,6 +73,7 @@ public class ACCOUNTSPAYABLE_GRNCreation extends BaseClass {
     public void search_for_cancelled_po() throws Throwable {
     	javascriptHelper.JavaScriptHelper(driver);
     	poCreationObj.poCreationSearchIcon().click();
+    	Thread.sleep(1000);
     	//waitHelper.waitForElementVisible(poCreationObj.poStatus(), 1000, 100);
     	javascriptHelper.scrollIntoView(poCreationObj.poStatus());
     	poCreationObj.poStatus().click();
@@ -155,8 +158,9 @@ public class ACCOUNTSPAYABLE_GRNCreation extends BaseClass {
     		}
     	}
     	//javascriptHelper.JavaScriptHelper(driver);
-    	Thread.sleep(2000);
-    	clickAndActions.clickOnElement(grnObject.ItemDetailsSaveButton());
+    	Thread.sleep(1000);
+    	grnObject.ItemDetailsSaveButton().click();
+    	//clickAndActions.clickOnElement(grnObject.ItemDetailsSaveButton());
     	//Thread.sleep(2000);
     	
     	
@@ -296,7 +300,66 @@ public class ACCOUNTSPAYABLE_GRNCreation extends BaseClass {
     	}
     }
     
-
+/***********  KUBS_AR_AP_UAT_001_004_TC_01  *****************************/
    
+    @And("^search and get the active GRN code$")
+    public void search_and_get_the_active_grn_code() throws Throwable {
+    	waitHelper.waitForElementVisible(grnObject.grnSearchGRNStatus(), 2000, 200);
+    	grnObject.grnSearchGRNStatus().click();
+    	grnObject.grnSearchGRNStatus().sendKeys(grnTestData.GRNStatus);
+    	String aprovedGRNNumber=grnObject.getApprovedGRNNumber().getText();
+    	System.out.println("Approved GRN number"+aprovedGRNNumber);
+    	testData.put("approvedGRNNumber", aprovedGRNNumber);
+    	
+    }
+    @And("^verify the accounting entries of GRn is appeared in the accounting entry screen$")
+    public void verify_the_accounting_entries_of_grn_is_appeared_in_the_accounting_entry_screen() throws Throwable {
+    	Thread.sleep(1000);
+		javascriptHelper.JavaScriptHelper(driver);
+		//boolean pageStatus = true;
+		// javascriptHelper.scrollDownByPixel();
+		for(int i=0;i<299;i++)
+    	{
+    		try
+    		{
+    			waitHelper.waitForElementVisible(driver.findElement(By.xpath("//datatable-body-cell[1]//span[contains(text(),'"+testData.get("approvedGRNNumber")+"')]")), 2000, 100);
+    			driver.findElement(By.xpath("//datatable-body-cell[1]//span[contains(text(),'"+testData.get("approvedGRNNumber")+"')]")).isDisplayed();
+			break;
+    		} catch (NoSuchElementException e) {
+				// waitHelper.waitForElementVisible(paymentSettlementObj.accountsPayablePayementSettlementNextRecord(),
+				// 1000, 100);
+				
+				javascriptHelper.scrollIntoView(glObj.nextRecord());
 
+				glObj.nextRecord().click();
+				}
+			
+			
+		if(i==299)
+		{
+			Assert.fail("InvoiceNumber not availabe : "+testData.get("approvedGRNNumber"));
+		}
+		}
+		
+    
+	for(int j=0;j<2;j++)
+	{
+		try
+		{
+			String creditAmount=driver.findElement(By.xpath("//span[contains(text(),'"+testData.get("approvedGRNNumber")+"')]/ancestor::datatable-body-cell/following-sibling::datatable-body-cell[5]//span[contains(text(),'Credit')]/ancestor::datatable-body-cell/following-sibling::datatable-body-cell[1]//span")).getText();
+		    String debitNote=driver.findElement(By.xpath("//span[contains(text(),'"+testData.get("approvedGRNNumber")+"')]/ancestor::datatable-body-cell/following-sibling::datatable-body-cell[5]//span[contains(text(),'Debit')]/ancestor::datatable-body-cell/following-sibling::datatable-body-cell[1]//span")).getText();
+		System.out.println("Credit amount is "+creditAmount);
+		System.out.println("Credit amount is "+debitNote);
+		break;
+		}
+		catch(NoSuchElementException e2)
+		{
+			javascriptHelper.scrollIntoView(glObj.nextRecord());
+
+			glObj.nextRecord().click();	
+		}
+	}
+    }
+    
+    /***********  KUBS_AR_AP_UAT_001_004_TC_01  *****************************/
 }

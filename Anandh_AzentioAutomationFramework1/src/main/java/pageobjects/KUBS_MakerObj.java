@@ -26,6 +26,19 @@ public class KUBS_MakerObj {
 		return finance_option;
 
     }
+    @FindBy(xpath="//ion-item[1]/ion-radio")
+    private WebElement configuration_Menu;
+    public WebElement configurationMenu()
+    {
+    	return configuration_Menu;
+    }
+    @FindBy(xpath="//ion-label[contains(text(),'Entity maintenance')]")
+    private WebElement config_EntityMaintenence;
+    public WebElement configEntityMaintenece()
+    {
+    	return config_EntityMaintenence;
+    }
+   
 	@FindBy(xpath = "//ion-segment/ion-segment-button[1]")
 	private WebElement maker_tool_icon;
 

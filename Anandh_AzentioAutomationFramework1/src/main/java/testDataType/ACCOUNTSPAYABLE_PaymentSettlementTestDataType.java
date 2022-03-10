@@ -10,6 +10,9 @@ public class ACCOUNTSPAYABLE_PaymentSettlementTestDataType {
     public String Day;
     public String Year;
     public String BusinessPartnerName;
+    public String ApprovedExpenceInvoice;
+    public String InventoryPurchaseInvoiceNumber;
+    
     public String SuplierName;
     public String FlatDiscount;
     public String FlatDiscountPercent;
@@ -22,5 +25,6 @@ public class ACCOUNTSPAYABLE_PaymentSettlementTestDataType {
     public String AdjustementItemType;
     public String CreditAmmount;
     public String MonthYear;
+    public String AdvStatus;
     public String InvoiceBookingStatus;
 }

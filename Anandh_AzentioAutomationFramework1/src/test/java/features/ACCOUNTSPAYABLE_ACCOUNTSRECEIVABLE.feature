@@ -1,7 +1,92 @@
-Feature: Checking GRN module
+Feature: Checking accountsPayable and accounts Receivable module
 Background: 
 Given Navigate to KUBS URL and login with maker credentials
-@PoCancelledGRN
+@KUBS_AR_AP_UAT_001_002_TC_02
+Scenario: Verify Accounting entries post Bill is approved
+#And click on accounts Payable module
+And Go to invoice bill booking module
+Then click on search
+And search the expence bill is appreared in the list view 
+Then click on report segment button
+And click on equiry menu
+Then click on edit icon near by fiancial transaction menu
+And choose branch code
+And click on transaction from date calender icon 
+Then choose the from date
+And click on the transaction to date calender icon
+Then choose the to date
+And click on view button
+Then verify the expence invoice number is available in the accounting entries tab
+
+@KUBS_AR_AP_UAT_001_002_TC_05
+Scenario: Verify Accounts Payable Report post bill is approved.
+And Go to invoice bill booking module
+Then click on search
+And search the expence bill is appreared in the list view 
+And get the business partner name 
+Then click on report segment button
+And click on report main menu
+And click on temp view near by accounts Payable 
+And enter business partner name 
+And click on date icon
+And give date in accountspayable report
+And give payable status 
+And click on the view button
+@KUBS_AR_AP_UAT_001_004_TC_01
+Scenario: Verify Accounting entries post approval of GRN
+And click on accounts Payable module
+Then go to GRN module
+Then click on search
+And search and get the active GRN code
+Then click on report segment button
+And click on equiry menu
+Then click on edit icon near by fiancial transaction menu
+And choose branch code
+And click on transaction from date calender icon 
+Then choose the from date
+And click on the transaction to date calender icon
+Then choose the to date
+And click on view button
+And verify the accounting entries of GRn is appeared in the accounting entry screen
+
+@KUBS_AR_AP_UAT_003_001_TC_01
+Scenario: Check Contract Report
+And click on accounts Payable module
+And goto vendor contract module
+Then click on search
+And select the active contract number and business partner name from the approved grid view
+And click on view button for open the record
+And get the contract amount
+And click on the item details
+Then click on report segment button
+And click on report main menu
+And click the temp near by contract report 
+And enter bp Name
+And click on calender 
+And give date for the calendar
+And enter contract status
+And click on the view button
+Then verify the contract reference number is available in the report content
+
+@KUBS_AR_AP_UAT_001_005_TC_06
+Scenario: Verify Accounting entries post Bill is approved
+And Go to invoice bill booking module
+Then click on search
+
+And search the invoice number which is created inventory purchase
+Then click on report segment button
+And click on equiry menu
+Then click on edit icon near by fiancial transaction menu
+And choose branch code
+And click on transaction from date calender icon 
+Then choose the from date
+And click on the transaction to date calender icon
+Then choose the to date
+And click on view button
+And verify the inventory requested invoice number is availabe in the accounting entries
+
+
+@KUBS_AR/AP_UAT_003_002_TC_03
 Scenario: Check creating GRN against cancelled PO is not allowed
 And click on accounts Payable module
 Then click on po creation module 
@@ -12,7 +97,9 @@ And check GRN can be created for that perticular po
 And click notification button
 Then choose first record in the notification record
 Then go to Item details and enter po number
-@GRNforApprovalPo
+
+
+@KUBS_AR_AP_UAT_003_002_TC_05
 Scenario: Check PO cancellation is not allowed if GRN has been approved against that PO
 And click on accounts Payable module
 Then click on po creation module
@@ -548,7 +635,7 @@ And verify the record got approved from checker
 Then logout from checker 
 And login with Maker ID
 
-
+And goto accouts Receivable module
 And goto cheque deposite module
 And click on Add Icon
 And enter the bank account number
