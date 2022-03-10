@@ -1,51 +1,59 @@
 [
 	{
-		"User"				: "ARAP",
-		"BusinesPartner"	: "DELUXE 001",
-		"GRNStatus"			: "ACTIVE",
-		"GRNStatus1"        : "CANCELLED",
-		"InvoiceType"		: "Invoice Against PO",
-		"InvoicesubType"	: "Regular Expense",
-		"CostCenter"		: "FINANCE",
-		"SupplyRefNo"		: "SRN0005",
-		"Discount"			: "500000",
-		"ModeofPayment"		: "Cheque",
-		"Remark"			: "Approved",
-		"GRN" 				: "GRN-null-111-2622022",
-		"InvoiceNo"			: "INV-130-22022",
-		"AdjustmentType"	: "Goods Received Notes",
-		"CancelAmount"		: "5000",
+		"User"					: "ARAP",
+		"BusinesPartner"		: "Bonton Agency",
+		"GRNStatus"				: "ACTIVE",
+		"GRNStatus1"      		: "CANCELLED",
+		"InvoiceType"			: "Invoice Against PO",
+		"InvoicesubType"		: "Regular Expense",
+		"CostCenter"			: "FINANCE",
+		"SupplyRefNo"			: "SRN0006",
+		"Discount"				: "500000",
+		"ModeofPayment"			: "Cheque",
+		"Remark"				: "Approved",
+		"GRN" 					: "GRN-null-111-2622022",
+		"InvoiceNo"				: "INV-130-22022",
+		"AdjustmentType"		: "Goods Received Notes",
+		"CancelAmount"			: "5000",
 		
 		// GL DATA
 		"branchCode"			: "AZENTMAIN",
 		"gLCode"				: "IFRS-LIAB-LI3000003 - Accounts Payable",
-		"GlMonth"				: "Apr",
-		"GlFullMonth"			: "April",
+		"GlMonth"				: "Oct",
+		"GlFullMonth"			: "October",
 		"GlYear"				: "2022",
-		"GlDay"					: "3",
+		"GlDay"					: "19",
 		"GlToMonth"				: "Oct",
 		"GlFullToMonth"			: "October",
-		"GlToDate"				: "19",
+		"GlToDate"				: "23",
+		"Month"					: "Apr",
+		"FullMonth"				: "April",
+		"Year"					: "2022",
+		"Day"					: "1",
 		
-		"PaymentOption"		: "Business Partner wise",
-		"Partner"			: "Bonton Agency",
-		"DebitType"			: "AR Debit Note",
-		"AdvanceType"		: "AR Advances",
+		// ADJUSTMENTS
+		"PaymentOption"			: "Business Partner wise",
+		"Partner"				: "Bonton Agency",
+		"DebitType"				: "AR Debit Note",
+		"AdvanceType"			: "AR Advances",
 		
+		// ADVANCES
 		"RecivableName"			: "Advance Against PO",
 		"RecivableName1"		: "Advance To Employee",
 		"Partner1"				: "Swapnil Gore",
 		"Description" 			: "Advance",
 		"PONumber" 				: "3-Agency-15-PO-2",
-		"Amount"				: "5865400",
+		"Amount"				: "10000",
 		
-		"BankAcc" 			: "ICICIBANK-JAIPUR BRANCH-ICICI883298348348394-INR",
-		"Receiptpayer"		: "SRK",
-		"ReceiptRefNo"      : "RRN2802202214",
-		"ReceiptType"		: "Cheque",
-		"ReceiptType1"		: "Wire",
+		// RECEIPT
+		"BankAcc" 				: "ICICIBANK-JAIPUR BRANCH-ICICI883298348348394-INR",
+		"Receiptpayer"			: "SRK",
+		"ReceiptRefNo"     	 	: "RRN2802202214",
+		"ReceiptType"			: "Cheque",
+		"ReceiptType1"			: "Wire",
 		
 		
+		// ACCOUNTS PAYABLE AND PAYMENT SETTLEMENT
 		"ContractType"			:"Purchases Contract",
 		"BusinessPartnerName"	:"Bonton Agency",
 		"HSNCode"				:"999459- Cleaning Ser",
@@ -59,7 +67,15 @@
 		"PaymentMode"			:"Pay Order",
 		"GRNItemDetails"		:"2",
 		"FlatDiscount"			:"0",
-		"SuplierReferenceNumber":"SUP-100512"
+		"SuplierReferenceNumber":"SUP-100512",
+		"PanNo"					:"PAN-66-2022-02-25",
+		"PanNo1"				:"PAN-107-2022-03-07",
+		"AdvNo"					:"ADV_59_2422022",
+		
+		// INVOICE BILL
+		"InvoiceNoBill"			: "INV-235-32022",
+		"InvoiceNoAuto"			: "INV-240-32022",
+		"PanNoReport"			: "PAN-118-2022-03-09"
 		
 	}
 ]

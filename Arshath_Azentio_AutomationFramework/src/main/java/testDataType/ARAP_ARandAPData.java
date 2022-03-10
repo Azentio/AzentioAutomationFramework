@@ -19,6 +19,10 @@ public class ARAP_ARandAPData {
 	public String CancelAmount;
 	public String branchCode;
 	public String gLCode;
+	public String Month;
+	public String FullMonth;
+	public String Year;
+	public String Day;
 	public String GlMonth;
 	public String GlFullMonth;
 	public String GlYear;
@@ -42,7 +46,9 @@ public class ARAP_ARandAPData {
 	public String ReceiptType;
 	public String ReceiptType1;
 	
-	
+	public String InvoiceNoBill;
+	public String InvoiceNoAuto;
+	public String PanNoReport;
 	public String ContractType;
 	public String BusinessPartnerName;
 	public String HSNCode;
@@ -57,6 +63,8 @@ public class ARAP_ARandAPData {
 	public String GRNItemDetails;
 	public String FlatDiscount;
 	public String SuplierReferenceNumber;
-	
+	public String PanNo;
+	public String PanNo1;
+	public String AdvNo;
 	
 }

@@ -2,7 +2,6 @@ package stepdefinitions;
 
 import org.junit.Assert;
 import org.openqa.selenium.By;
-import org.openqa.selenium.ElementClickInterceptedException;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
@@ -153,7 +152,7 @@ public class FIXEDASSET_AssetAmendment extends BaseClass {
 
 				waitHelper.waitForElement(driver, 5000, driver.findElement(By.xpath("//span[contains(text(),'"
 						+ assetAmendmentData.Month + " " + assetAmendmentData.Year + "')]")));
-				WebElement monthAndYear = driver.findElement(By.xpath(
+				driver.findElement(By.xpath(
 						"//span[contains(text(),'" + assetAmendmentData.Month + " " + assetAmendmentData.Year + "')]"));
 				break;
 			}
@@ -167,9 +166,10 @@ public class FIXEDASSET_AssetAmendment extends BaseClass {
 						+ assetAmendmentData.Day + ", " + assetAmendmentData.Year + "']/span")));
 		WebElement Click = driver.findElement(By.xpath("//td[@aria-label='" + assetAmendmentData.FullMonth + " "
 				+ assetAmendmentData.Day + ", " + assetAmendmentData.Year + "']/span"));
-
+		
 		clickAndActionHelper.doubleClick(Click);
 		clickAndActionHelper.clickOnElement(Click);
+		
 	}
 
 	@Then("^Save the Asset Record$")

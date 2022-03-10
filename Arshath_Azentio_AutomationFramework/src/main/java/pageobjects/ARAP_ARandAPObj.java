@@ -818,6 +818,14 @@ public class ARAP_ARandAPObj {
 		return accountReceviableReceipt_Receipt_SearchRefNo;
 	}
 	
+	@FindBy(xpath = "//datatable-header[1]/div[1]/div[2]/datatable-header-cell[5]/div[1]/ion-input[1]/input[1]")
+	private WebElement accountReceviableReceipt_ReceiptType;
+
+	public WebElement accountReceviableReceipt_ReceiptType() {
+
+		return accountReceviableReceipt_ReceiptType;
+	}
+	
 	// GL OBJECTS
 	
 	@FindBy(xpath = "//datatable-row-wrapper[1]/datatable-body-row/div/datatable-body-cell[2]/div[1]")

@@ -1,4 +1,124 @@
 Feature: Check the Functionality of AR/AP Module
+@KUBS_AR_AP_UAT_001_001_TC_012
+Scenario: Verify Accounting entries post Bill is approved
+Given Navigate The Azentio Url
+Then Choose the second Tab Segment
+And Click On Main module Accounts payable
+Then Open Invoice Bill Booking Eye icon
+And Click On Search Icon
+Then Give the Invoice Number for Puchase Bill
+Then Click on Table Row First Eye Icon
+Then Third Segment report Icon
+And Choose Enquiry Module
+Then Click Note iCon near by financial transction
+And choose branch code
+And click on transaction from date in calender
+Then Select from date in calender
+And click on transaction to date in calender icon
+Then Select To date in calender
+And Click View HyperLink
+Then Verify Accounting entries post Bill is approved
+
+@KUBS_AR_AP_UAT_001_001_TC_014
+Scenario: Verify Accounts Payable Report post bill is approved.
+Given Navigate The Azentio Url
+Then Choose the second Tab Segment
+And Click On Main module Accounts payable
+Then Click sub module Payment settlement Eye Icon
+And Click On Search Icon
+Then Give Pan Number in Payment settlement
+Then Click on Table Row First Eye Icon
+And Get Business Partner name in Payment settlement
+Then Third Segment report Icon
+And Click main module Reports
+Then Click sub module Accounts Payable Report
+And Give Getted Business Partner Name
+Then Give Current business Date
+And Give Accounts Payable Status
+Then Click on View button
+And Verify the Accounts Payable Report is correctly displayed
+
+@KUBS_AR_AP_UAT_001_006_TC_03
+Scenario: Accounting entries post Bill is approved
+Given Navigate The Azentio Url
+Then Choose the second Tab Segment
+And Click On Main module Accounts payable
+Then Open Invoice Bill Booking Eye icon
+And Click On Search Icon
+Then Give the Invoice Number for against PO for Expenses with Auto generate bills
+Then Click on Table Row First Eye Icon
+Then Third Segment report Icon
+And Choose Enquiry Module
+Then Click Note iCon near by financial transction
+And choose branch code
+And click on transaction from date in calender
+Then Select from date in calender
+And click on transaction to date in calender icon
+Then Select To date in calender
+And Click View HyperLink
+Then Verify Accounting entries post Bill is approved Auto generate bills
+
+@KUBS_AR_AP_UAT_002_001_TC_02
+Scenario: Verify Accounting entries post Debit note is approved
+Given Navigate The Azentio Url
+Then Choose the second Tab Segment
+And Click On Main module Accounts Receivable
+Then Click on Accounts Receivable Debit Note Eye Icon
+And Click On Search Icon
+Then Enter Active Value In Debit Not Status
+Then Click on Table Row First Eye Icon
+And Get The Bp Name and Debit Number Store It
+Then Third Segment report Icon
+And Choose Enquiry Module
+Then Click Note iCon near by financial transction
+And choose branch code
+And click on transaction from date in calender
+Then Select from date in calender
+And click on transaction to date in calender icon
+Then Select To date in calender
+And Click View HyperLink
+Then Verify Accounting entries post Debit Note is approved
+
+@KUBS_AR_AP_UAT_002_004_TC_02
+Scenario: Verify No accounting entry is generated on approval of advances against PO
+Given Navigate The Azentio Url
+Then Choose the second Tab Segment
+And Click On Main module Accounts Receivable
+Then Click on Accounts Receive Advances Eye Icon
+And Click On Search Icon
+Then Enter Active Value In Advance Status
+Then Click on Table Row First Eye Icon
+And Get The Business Partner and Advance Number
+Then Third Segment report Icon
+And Choose Enquiry Module
+Then Click Note iCon near by financial transction
+And choose branch code
+And click on transaction from date in calender
+Then Select from date in calender
+And click on transaction to date in calender icon
+Then Select To date in calender
+And Click View HyperLink
+Then Verify No accounting entry is generated on Active advances against PO
+
+@KUBS_AR_AP_UAT_003_003_TC_01
+Scenario: Check GRN Report
+Given Navigate The Azentio Url
+Then Choose the second Tab Segment
+And Click On Main module Accounts payable
+Then Click On GRN Eye Icon
+And Click On Search Icon
+#Then Enter the GRN status cancel
+Then Enter the GRN status Active
+And Get BP Name and GRN Number
+Then Third Segment report Icon
+And Click main module Reports
+Then Click sub module GRN Report
+And Give Getted Business Partner Name
+Then Give Current business Date
+And Give GRN Status
+Then Click on View button
+And Verify the GRN Report is correctly displayed
+
 @KUBS_AR_AP_UAT_003_003_TC_02
 Scenario: Verify Accounting entries post GRN is cancelled
 Given Navigate The Azentio Url
@@ -18,6 +138,28 @@ And click on transaction to date in calender icon
 Then Select To date in calender
 And Click View HyperLink
 Then Verify Accounting entries post GRN is cancelled
+
+@KUBS_AR_AP_UAT_003_003_TC_04
+Scenario: Check PO Report
+Given Navigate The Azentio Url
+Then Choose the second Tab Segment
+And Click On Main module Accounts payable
+Then Click On GRN Eye Icon
+And Click On Search Icon
+#Then Enter the GRN status cancel
+Then Enter the GRN status Active
+And Get BP Name and GRN Number
+Then Click on Table Row First Eye Icon
+Then Click on Item Details
+And Get PO Number
+Then Third Segment report Icon
+And Click main module Reports
+Then Click sub module Po Report
+And Give Getted Business Partner Name
+Then Give Current business Date
+And Give GRN Status
+Then Click on View button
+And Verify the PO Report is correctly displayed
 
 @KUBS_AR_AP_UAT_003_003_TC_05
 Scenario: Check creating Bill against cancelled GRN is not allowed
@@ -67,7 +209,7 @@ And Give The Adjustment Type
 Then Enter the Adjustment Item Type
 And Enter the Adjustment Ref No and Validate
 
-@KUBS_AR_AP_UAT_003_006_TC_02
+@KUBS_AR_AP_UAT_003_006_TC_01
 Scenario: Verify Accounting entries post Debit Note is cancelled
 Given Navigate The Azentio Url
 Then Choose the second Tab Segment
@@ -96,13 +238,13 @@ And Click On Main module Accounts Receivable
 Then Click on Accounts Receivable Debit Note Eye Icon
 And Click On Search Icon
 Then Enter Cancelled Value In Debit Not Status
-Then Click on Table Row First Edit Icon
+Then Click on Table Row First Eye Icon
 And Store The Business partner and Invoice Number
 And Click On Main module Accounts payable
 Then Click sub module Payment settlement Eye Icon
 And Click Add icon button
 Then Enter payment option
-And Enter Business partner
+And Give Business partner Name
 Then Choose value date as System current date
 And find the invoice reference number for cancelled DebitNote is availabe at the billing queue
 
@@ -256,7 +398,25 @@ And Give stored Business partner Name
 Then Choose value date as System current date
 And find the Advance reference number for Active Advances is availabe at the billing queue
 
-
+@KUBS_AR_AP_UAT_004_003_TC_02
+Scenario: Verify No accounting entries are posted post payment settlement approval
+Given Navigate The Azentio Url
+Then Choose the second Tab Segment
+And Click On Main module Accounts payable
+Then Click sub module Payment settlement Eye Icon
+And Click On Search Icon
+Then Enter Txn Number in payment Settlement
+Then Click on Table Row First Eye Icon
+Then Third Segment report Icon
+And Choose Enquiry Module
+Then Click Note iCon near by financial transction
+And choose branch code
+And click on transaction from date in calender
+Then Select from date in calender
+And click on transaction to date in calender icon
+Then Select To date in calender
+And Click View HyperLink
+Then Verify No Accounting entries are posted post payment settlement approval
 
 @KUBS_AR_AP_UAT_004_006_TC_01
 Scenario: Verify Advance against PO is adjusted against the selected bill and Net Adjusted Value is correctly displayed
@@ -347,6 +507,26 @@ And find the Advance reference number and Net Adjustable value in the billing qu
 Then Click the Checkbox As Tick
 And Verify the Net payable amount is correctly calculated & displayed
 
+@KUBS_AR_AP_UAT_004_006_TC_04
+Scenario: Verify accounting entries post payment settlement approval
+Given Navigate The Azentio Url
+Then Choose the second Tab Segment
+And Click On Main module Accounts payable
+Then Click sub module Payment settlement Eye Icon
+And Click On Search Icon
+Then Enter Advance Against PO and Active Value In Advance Status
+And Enter Advance Against Po Pan Number
+Then Click on Table Row First Eye Icon
+Then Third Segment report Icon
+And Choose Enquiry Module
+Then Click Note iCon near by financial transction
+And choose branch code
+And click on transaction from date in calender
+Then Select from date in calender
+And click on transaction to date in calender icon
+Then Select To date in calender
+And Click View HyperLink
+Then Verify Accounting entries post payment settlement approval
 
 @KUBS_AR_AP_UAT_004_007_TC_01
 Scenario: Verify Advance to employee is adjusted against the selected bill and Net Adjusted Value is correctly displayed
@@ -437,6 +617,27 @@ And find the Advance reference number and Net Adjustable value in the billing qu
 Then Click the Checkbox As Tick
 And Verify the Net payable amount is correctly calculated & displayed
 
+@KUBS_AR_AP_UAT_004_007_TC_04
+Scenario: Verify accounting entries post payment settlement approval
+Given Navigate The Azentio Url
+Then Choose the second Tab Segment
+And Click On Main module Accounts payable
+Then Click sub module Payment settlement Eye Icon
+And Click On Search Icon
+Then Enter Advance to employee and Active Value In Advance Status
+And Enter Advance to employee Pan Number
+Then Click on Table Row First Eye Icon
+Then Third Segment report Icon
+And Choose Enquiry Module
+Then Click Note iCon near by financial transction
+And choose branch code
+And click on transaction from date in calender
+Then Select from date in calender
+And click on transaction to date in calender icon
+Then Select To date in calender
+And Click View HyperLink
+Then Verify Accounting entries post payment settlement approval fo Advance to Employee
+
 @KUBS_AR_AP_UAT_010_001_TC_01
 Scenario: Record a receipt through cheque mode
 Given Navigate The Azentio Url
@@ -519,7 +720,8 @@ Given Navigate The Azentio Url
 Then Choose the second Tab Segment
 And Click On Main module Accounts Receivable
 Then Click on the Receipt Eye Icon
-#And Click On Search Icon
+And Click On Search Icon
+Then Enter Receipt type as Wire
 Then Click on Table Row First Eye Icon
 And Get The Txn Receipt Number
 Then Third Segment report Icon
@@ -532,4 +734,20 @@ And click on transaction to date in calender icon
 Then Select To date in calender
 And Click View HyperLink
 Then Verify Accounting entries post receipt recording
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
