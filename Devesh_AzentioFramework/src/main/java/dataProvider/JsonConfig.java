@@ -14,6 +14,7 @@ import testDataType.ACCOUNTSPAYABLE_ManualPayoutTestDataType;
 import testDataType.ACCOUNTSPAYABLE_PaymentSettlementCancellationTestDataType;
 import testDataType.ACCOUNTSPAYABLE_VendorContractsTestDataType;
 import testDataType.AccountsReceivable_ReceiptsReversalsTestDataType;
+import testDataType.AccountsReceivable_UpdateChequeStatusTestDataType;
 import testDataType.BUDGET_BudgetCreationTestDataType;
 import testDataType.BUDGET_BudgetTransferTestDataType;
 import testDataType.BUDGET_RequestAndAllocationTestDataType;
@@ -25,6 +26,9 @@ import testDataType.FIXEDASSETS_AssetImpairementTestDataType;
 import testDataType.FIXEDASSETS_AssetRevaluationTestDataType;
 import testDataType.FIXEDASSETS_AssetSaleTestDataType;
 import testDataType.FIXEDASSETS_AssetUndertakingTestDataType;
+import testDataType.FinancialReporting_GLBalancesReportTestDataType;
+import testDataType.FinancialReporting_TrialBalanceReportTestDataType;
+import testDataType.GeneralLedger2_JournalVoucherTestDataType;
 import testDataType.INVENTORY_MAINTENANCE_DenominationMasterTestDataType;
 import testDataType.INVENTORY_MANAGEMENT_PurchaseRequisitionConfirmationTestDataType;
 import testDataType.KUBS_LoginTestDataType;
@@ -117,6 +121,22 @@ public class JsonConfig {
 	// AccountsReceivable_ReceiptsReversals
 	private final String ReceiptsReversalsPath = configFileReader.getJsonPath() + "AccountsReceivable_ReceiptsReversalsJSON.json";
 	private List<AccountsReceivable_ReceiptsReversalsTestDataType>  ReceiptsReversalsList;
+	
+	// AccountsReceivable_UpdateChequeStatus
+	private final String UpdateChequeStatusPath = configFileReader.getJsonPath() + "AccountsReceivable_UpdateChequeStatusJSON.json";
+	private List<AccountsReceivable_UpdateChequeStatusTestDataType>  UpdateChequeStatusList;
+	
+	// GeneralLedger2_JournalVoucher
+	private final String JournalVoucherPath = configFileReader.getJsonPath() + "GeneralLedger2_JournalVoucherJSON.json";
+	private List<GeneralLedger2_JournalVoucherTestDataType>  JournalVoucherList;
+	
+	// FinancialReporting_GLBalancesReport
+	private final String GLBalancesReportPath = configFileReader.getJsonPath() + "FinancialReporting_GLBalancesReportJSON.json";
+	private List<FinancialReporting_GLBalancesReportTestDataType>  GLBalancesReportList;
+	
+	// FinancialReporting_TrialBalanceReport
+	private final String TrialBalanceReportPath = configFileReader.getJsonPath() + "FinancialReporting_TrialBalanceReportJSON.json";
+	private List<FinancialReporting_TrialBalanceReportTestDataType>  TrialBalanceReportList;
 
 	
 	public JsonConfig() {
@@ -142,6 +162,10 @@ public class JsonConfig {
 		 ManualPayoutList = getManualPayoutList();
 		 PaymentSettlementCancellationList = getPaymentSettlementCancellationList();
 		 ReceiptsReversalsList = getReceiptsReversalsList();
+		 UpdateChequeStatusList = getUpdateChequeStatusList();
+		 JournalVoucherList = getJournalVoucherList();
+		 GLBalancesReportList = getGLBalancesReportList();
+		 TrialBalanceReportList = getTrialBalanceReportList();
 	}
 
 	/*
@@ -565,6 +589,90 @@ public class JsonConfig {
 			}
 		}
 	}
+	
+	private List<AccountsReceivable_UpdateChequeStatusTestDataType> getUpdateChequeStatusList() {
+		Gson gson = new Gson();
+		JsonReader reader = new JsonReader(new StringReader(UpdateChequeStatusPath));
+		reader.setLenient(true);
+		BufferedReader bufferReader = null;
+		try {
+			bufferReader = new BufferedReader(new FileReader (UpdateChequeStatusPath));
+			AccountsReceivable_UpdateChequeStatusTestDataType[] login = gson.fromJson(bufferReader,
+					AccountsReceivable_UpdateChequeStatusTestDataType[].class);
+			return Arrays.asList(login);
+		} catch (FileNotFoundException e) {
+			throw new RuntimeException("Json file not found at path : " + UpdateChequeStatusPath);
+		} finally {
+			try {
+				if (bufferReader != null)
+					bufferReader.close();
+			} catch (IOException ignore) {
+			}
+		}
+	}
+	
+	private List<GeneralLedger2_JournalVoucherTestDataType> getJournalVoucherList() {
+		Gson gson = new Gson();
+		JsonReader reader = new JsonReader(new StringReader(JournalVoucherPath));
+		reader.setLenient(true);
+		BufferedReader bufferReader = null;
+		try {
+			bufferReader = new BufferedReader(new FileReader (JournalVoucherPath));
+			GeneralLedger2_JournalVoucherTestDataType[] login = gson.fromJson(bufferReader,
+					GeneralLedger2_JournalVoucherTestDataType[].class);
+			return Arrays.asList(login);
+		} catch (FileNotFoundException e) {
+			throw new RuntimeException("Json file not found at path : " + JournalVoucherPath);
+		} finally {
+			try {
+				if (bufferReader != null)
+					bufferReader.close();
+			} catch (IOException ignore) {
+			}
+		}
+	}
+	
+	private List<FinancialReporting_GLBalancesReportTestDataType> getGLBalancesReportList() {
+		Gson gson = new Gson();
+		JsonReader reader = new JsonReader(new StringReader(GLBalancesReportPath));
+		reader.setLenient(true);
+		BufferedReader bufferReader = null;
+		try {
+			bufferReader = new BufferedReader(new FileReader (GLBalancesReportPath));
+			FinancialReporting_GLBalancesReportTestDataType[] login = gson.fromJson(bufferReader,
+					FinancialReporting_GLBalancesReportTestDataType[].class);
+			return Arrays.asList(login);
+		} catch (FileNotFoundException e) {
+			throw new RuntimeException("Json file not found at path : " + GLBalancesReportPath);
+		} finally {
+			try {
+				if (bufferReader != null)
+					bufferReader.close();
+			} catch (IOException ignore) {
+			}
+		}
+	}
+	
+	private List<FinancialReporting_TrialBalanceReportTestDataType> getTrialBalanceReportList() {
+		Gson gson = new Gson();
+		JsonReader reader = new JsonReader(new StringReader(TrialBalanceReportPath));
+		reader.setLenient(true);
+		BufferedReader bufferReader = null;
+		try {
+			bufferReader = new BufferedReader(new FileReader (TrialBalanceReportPath));
+			FinancialReporting_TrialBalanceReportTestDataType[] login = gson.fromJson(bufferReader,
+					FinancialReporting_TrialBalanceReportTestDataType[].class);
+			return Arrays.asList(login);
+		} catch (FileNotFoundException e) {
+			throw new RuntimeException("Json file not found at path : " + TrialBalanceReportPath);
+		} finally {
+			try {
+				if (bufferReader != null)
+					bufferReader.close();
+			} catch (IOException ignore) {
+			}
+		}
+	}
 
 	/*
 	 * public final RegisterData getRegisterByName(String customerName) { return
@@ -651,6 +759,22 @@ public class JsonConfig {
 	
 	public final AccountsReceivable_ReceiptsReversalsTestDataType getReceiptsReversalsdata(String UserName) {
 		return ReceiptsReversalsList.stream().filter(x -> x.User.equalsIgnoreCase(UserName)).findAny().get();
+	}
+	
+	public final AccountsReceivable_UpdateChequeStatusTestDataType getUpdateChequeStatusdata(String UserName) {
+		return UpdateChequeStatusList.stream().filter(x -> x.User.equalsIgnoreCase(UserName)).findAny().get();
+	}
+	
+	public final GeneralLedger2_JournalVoucherTestDataType getJournalVoucherdata(String UserName) {
+		return JournalVoucherList.stream().filter(x -> x.User.equalsIgnoreCase(UserName)).findAny().get();
+	}
+	
+	public final FinancialReporting_GLBalancesReportTestDataType getGLBalancesReportdata(String UserName) {
+		return GLBalancesReportList.stream().filter(x -> x.User.equalsIgnoreCase(UserName)).findAny().get();
+	}
+	
+	public final FinancialReporting_TrialBalanceReportTestDataType getTrialBalanceReportdata(String UserName) {
+		return TrialBalanceReportList.stream().filter(x -> x.User.equalsIgnoreCase(UserName)).findAny().get();
 	}
 	
 }

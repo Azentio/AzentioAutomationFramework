@@ -23,7 +23,6 @@ import pageobjects.ACCOUNTSPAYABLE_VendorContractsObj;
 import pageobjects.KUBS_CheckerObj;
 import resources.BaseClass;
 import resources.JsonDataReaderWriter;
-import testDataType.ACCOUNTSPAYABLE_ManualPayoutTestDataType;
 import testDataType.ACCOUNTSPAYABLE_PaymentSettlementCancellationTestDataType;
 import testDataType.ACCOUNTSPAYABLE_VendorContractsTestDataType;
 

@@ -456,6 +456,14 @@ public class ACCOUNTSPAYABLE_InvoiceBookingObj {
 		return accountPayable_InvoiceBooking_ExpenseCodeForLaptop;
 	}
 	
+	// Expense New Code radio button
+	@FindBy(xpath = "//ion-item[20]/ion-radio")
+	private WebElement accountPayable_InvoiceBooking_ExpenseNewCode;
+	
+	public WebElement accountPayable_InvoiceBooking_ExpenseNewCode() {
+		return accountPayable_InvoiceBooking_ExpenseNewCode;
+	}
+	
 	// Invoice Qty
 	@FindBy(xpath = "//datatable-body-cell[5]/div/input")
 	private WebElement accountPayable_InvoiceBooking_InvoiceQuantity;
@@ -526,6 +534,22 @@ public class ACCOUNTSPAYABLE_InvoiceBookingObj {
 	
 	public WebElement accountPayable_InvoiceBooking_DeliveryLocationMulund() {
 		return accountPayable_InvoiceBooking_DeliveryLocationMulund;
+	}
+	
+	// Delivery Location Azentio Main Branch
+	@FindBy(xpath = "//ion-item[11]/ion-radio")
+	private WebElement accountPayable_InvoiceBooking_DeliveryLocationAzentioMain;
+	
+	public WebElement accountPayable_InvoiceBooking_DeliveryLocationAzentioMain() {
+		return accountPayable_InvoiceBooking_DeliveryLocationAzentioMain;
+	}
+	
+	// Delivery Location Azentio Main Branch Selection
+	@FindBy(xpath = "//datatable-body-cell[11]/div/app-kub-lov/ion-select")
+	private WebElement accountPayable_InvoiceBooking_DeliveryLocationAzentioMainView;
+	
+	public WebElement accountPayable_InvoiceBooking_DeliveryLocationAzentioMainView() {
+		return accountPayable_InvoiceBooking_DeliveryLocationAzentioMainView;
 	}
 	
 	// page billing expense update save button

@@ -141,18 +141,10 @@ public class FIXEDASSETS_AssetSale {
     	String message = fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_RecordStatus().getText();
     	System.out.println(message);
     	fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_RecordStatus().click();
-    	String t = "";
+    	String emptystring = "";
 		String ar[] = message.split(" ");
-		for (int i = ar.length - 1; i >= 0; i--) {
-			t = ar[ar.length - 1];
-		}
-		String reviewerId = "";
-		for (int i = 0; i < t.length() - 1; i++) {
-			if (t.charAt(i) == '.') {
-			} else {
-				reviewerId = reviewerId + t.charAt(i);
-			}
-		}
+		emptystring=ar[ar.length-1];
+		String reviewerId=emptystring.replaceAll("[/.]", "");
 		System.out.println(reviewerId);
 		jsonWriter=new JsonDataReaderWriter();
 		jsonWriter.addData(reviewerId);
@@ -205,20 +197,19 @@ public class FIXEDASSETS_AssetSale {
     	waithelper.waitForElement(driver, 3000, fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_LossOnSaleGL());
     	fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_LossOnSaleGL().click();
     	
-		String bookvalue = javascripthelper.executeScript("return document.getElementsByClassName('form__field ng-pristine ng-valid ng-touched')[0].value").toString();
-//		System.out.println("Book value is: " +bookvalue);
+		String bv = javascripthelper.executeScript("return document.getElementsByClassName('form__field ng-pristine ng-valid ng-touched')[0].value").toString();
+		Double bookvalue = Double.valueOf(bv.replaceAll("[^0-9/.]", ""));
+		System.out.println("Book value is: " +bookvalue);
     	
-		String salevalue = javascripthelper.executeScript("return document.getElementsByClassName('form__field ng-pristine ng-valid ng-touched')[1].value").toString();
-//		System.out.println("Sale value is: " +salevalue);
+		String sv = javascripthelper.executeScript("return document.getElementsByClassName('form__field ng-pristine ng-valid ng-touched')[1].value").toString();
+		Double salevalue = Double.parseDouble(sv.replaceAll("[^0-9/.]", ""));
+		System.out.println("Sale value is: " +salevalue);
 		
-		String profit = javascripthelper.executeScript("return document.getElementsByClassName('form__field ng-pristine ng-valid ng-touched')[2].value").toString();
-//		System.out.println("Profit Earned is: " +profit);
+		String  pft= javascripthelper.executeScript("return document.getElementsByClassName('form__field ng-pristine ng-valid ng-touched')[2].value").toString();
+		Double profit = Double.parseDouble(pft.replaceAll("[^0-9/.]", ""));
 		
-//		int bv = Integer.parseInt(bookvalue.replaceAll("[^0-9/.]", ""));
-//		int sv = Integer.parseInt(salevalue.replaceAll("[^0-9/.]", ""));
-//		int pft = Integer.parseInt(profit.replaceAll("[^0-9/.]", ""));
-//		pft=bv-sv;
-//		System.out.println("Profit earned is : "+pft);
+		profit=salevalue-bookvalue;
+		System.out.println("Profit earned is : "+profit);
 		
 //    	String loss = javascripthelper.executeScript("return document.getElementsByTagName('input')[17].value").toString();
 //    	System.out.println("Loss accrued is: " +loss);
@@ -243,18 +234,20 @@ public class FIXEDASSETS_AssetSale {
     	waithelper.waitForElement(driver, 3000, fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_LossOnSaleGL());
     	fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_LossOnSaleGL().click();
     	
-		String bookvalue = javascripthelper.executeScript("return document.getElementsByClassName('form__field ng-pristine ng-valid ng-touched')[0].value").toString();
-		System.out.println("Book value is: " +bookvalue);
+    	String bv = javascripthelper.executeScript("return document.getElementsByClassName('form__field ng-pristine ng-valid ng-touched')[0].value").toString();
+    	Double bookvalue = Double.valueOf(bv.replaceAll("[^0-9/.]", ""));
+    	System.out.println("Book value is: " +bookvalue);
     	
-		String salevalue = javascripthelper.executeScript("return document.getElementsByClassName('form__field ng-pristine ng-valid ng-touched')[1].value").toString();
+		String sv = javascripthelper.executeScript("return document.getElementsByClassName('form__field ng-pristine ng-valid ng-touched')[1].value").toString();
+		Double salevalue = Double.valueOf(sv.replaceAll("[^0-9/.]", ""));
 		System.out.println("Sale value is: " +salevalue);
 		
-		String loss = javascripthelper.executeScript("return document.getElementsByTagName('input')[17].value").toString();
+		String loss1 = javascripthelper.executeScript("return document.getElementsByTagName('input')[17].value").toString();
+		Double loss = Double.valueOf(loss1.replaceAll("[^0-9/.]", ""));
+		
+		loss=bookvalue-salevalue;
 		System.out.println("Loss accrued is: " +loss);
-		
-//		String profit = javascripthelper.executeScript("return document.getElementsByClassName('form__field ng-pristine ng-valid ng-touched')[2].value").toString();
-//		System.out.println("Profit Earned is: " +profit);
-		
+				
     }
 
 

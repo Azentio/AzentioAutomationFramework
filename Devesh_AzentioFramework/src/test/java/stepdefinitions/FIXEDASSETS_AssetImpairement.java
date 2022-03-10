@@ -9,7 +9,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import dataProvider.ConfigFileReader;
 import dataProvider.JsonConfig;
-import helper.BrowserHelper;
 import helper.ClicksAndActionsHelper;
 import helper.JavascriptHelper;
 import helper.WaitHelper;
@@ -22,7 +21,6 @@ import pageobjects.FIXEDASSETS_AssetUndertakingObj;
 import pageobjects.KUBS_CheckerObj;
 import resources.BaseClass;
 import resources.JsonDataReaderWriter;
-import testDataType.FIXEDASSETS_AssetCreationTestDataType;
 import testDataType.FIXEDASSETS_AssetImpairementTestDataType;
 
 public class FIXEDASSETS_AssetImpairement {
@@ -39,7 +37,6 @@ public class FIXEDASSETS_AssetImpairement {
 	JsonDataReaderWriter jsonWriter = new JsonDataReaderWriter();
 	ClicksAndActionsHelper clicksAndActionHelper = new ClicksAndActionsHelper(driver);
 	JsonDataReaderWriter reader;
-	BrowserHelper browserHelper;
 	KUBS_CheckerObj kubschecker = new KUBS_CheckerObj(driver);
 	
 	@When("^click on eye button of asset impairement$")
@@ -134,18 +131,22 @@ public class FIXEDASSETS_AssetImpairement {
     	String message = fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_RecordStatus().getText();
     	System.out.println(message);
     	fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_RecordStatus().click();
-    	String t = "";
+//    	String t = "";
+//		String ar[] = message.split(" ");
+//		for (int i = ar.length - 1; i >= 0; i--) {
+//			t = ar[ar.length - 1];
+//		}
+//		String reviewerId = "";
+//		for (int i = 0; i < t.length() - 1; i++) {
+//			if (t.charAt(i) == '.') {
+//			} else {
+//				reviewerId = reviewerId + t.charAt(i);
+//			}
+//		}
+    	String emptystring = "";
 		String ar[] = message.split(" ");
-		for (int i = ar.length - 1; i >= 0; i--) {
-			t = ar[ar.length - 1];
-		}
-		String reviewerId = "";
-		for (int i = 0; i < t.length() - 1; i++) {
-			if (t.charAt(i) == '.') {
-			} else {
-				reviewerId = reviewerId + t.charAt(i);
-			}
-		}
+		emptystring=ar[ar.length-1];
+		String reviewerId=emptystring.replaceAll("[/.]", "");
 		System.out.println(reviewerId);
 		jsonWriter=new JsonDataReaderWriter();
 		jsonWriter.addData(reviewerId);

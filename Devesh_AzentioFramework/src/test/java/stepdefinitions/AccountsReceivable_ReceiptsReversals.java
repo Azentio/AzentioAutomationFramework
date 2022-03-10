@@ -192,10 +192,10 @@ public class AccountsReceivable_ReceiptsReversals {
 //				reviewerId = reviewerId + t.charAt(i);
 //			}
 //		}
-    	String t = "";
+    	String emptystring = "";
 		String ar[] = message.split(" ");
-		t=ar[ar.length-1];
-		String reviewerId=t.replaceAll("[/.]", "");
+		emptystring=ar[ar.length-1];
+		String reviewerId=emptystring.replaceAll("[/.]", "");
 		System.out.println(reviewerId);
 		jsonWriter=new JsonDataReaderWriter();
 		jsonWriter.addData(reviewerId);

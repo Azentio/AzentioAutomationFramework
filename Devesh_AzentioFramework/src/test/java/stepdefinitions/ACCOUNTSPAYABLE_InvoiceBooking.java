@@ -422,9 +422,9 @@ public class ACCOUNTSPAYABLE_InvoiceBooking {
     	String invoicetype1= aCCOUNTSPAYABLE_InvoiceBookingTestDataType.InvoiceType;
     	System.out.println(invoicetype1);
 		if (invoicetype1.equals("Expense")) {
-    	waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_AdvanceNumber());
-    	aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_AdvanceNumber().sendKeys(aCCOUNTSPAYABLE_InvoiceBookingTestDataType.AdvanceNumber);
-    	aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_AdvanceNumber().sendKeys(Keys.ENTER);
+//    	waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_AdvanceNumber());
+//    	aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_AdvanceNumber().sendKeys(aCCOUNTSPAYABLE_InvoiceBookingTestDataType.AdvanceNumber);
+//    	aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_AdvanceNumber().sendKeys(Keys.ENTER);
     	
     	aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_ExpenseCode().click();
     	
@@ -703,4 +703,311 @@ public class ACCOUNTSPAYABLE_InvoiceBooking {
     	}else System.out.println("Tax details are not correctly displayed");
     }
     
+    @And("^Fill the required fields for invoice booking with exceeded amount$")
+    public void fill_the_required_fields_for_invoice_booking_with_exceeded_amount() throws InterruptedException, IOException, ParseException  {
+    	javascripthelper.JavaScriptHelper(driver);
+    	waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_EntityBranch());
+    	aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_EntityBranch().sendKeys(aCCOUNTSPAYABLE_InvoiceBookingTestDataType.EntityBranch);
+    	aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_EntityBranch().sendKeys(Keys.ENTER);
+    	
+		waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_InvoiceType());
+		aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_InvoiceType().sendKeys(aCCOUNTSPAYABLE_InvoiceBookingTestDataType.InvoiceType);
+		aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_InvoiceType().sendKeys(Keys.ENTER);
+
+		waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_InvoiceSubType());
+		aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_InvoiceSubType().sendKeys(aCCOUNTSPAYABLE_InvoiceBookingTestDataType.InvoiceSubType);
+		aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_InvoiceSubType().sendKeys(Keys.ENTER);
+
+		waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_BP_Name());
+		aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_BP_Name().sendKeys(aCCOUNTSPAYABLE_InvoiceBookingTestDataType.BP_Name);
+		aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_BP_Name().sendKeys(Keys.ENTER);
+
+		waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_CostCenter());
+		aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_CostCenter().sendKeys(aCCOUNTSPAYABLE_InvoiceBookingTestDataType.CostCenter);
+		aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_CostCenter().sendKeys(Keys.ENTER);
+
+		waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_SupplierReferenceNumber());
+		aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_SupplierReferenceNumber().sendKeys(aCCOUNTSPAYABLE_InvoiceBookingTestDataType.SupplierReferenceNumber);
+
+		waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_InvoiceDate());
+		aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_InvoiceDate().click();
+
+		while (true) {
+			try {
+
+				waithelper.waitForElement(driver, 3000, driver.findElement(By.xpath(
+						"//span[contains(text(),'" + aCCOUNTSPAYABLE_InvoiceBookingTestDataType.InvoiceBillingMonth + " " + aCCOUNTSPAYABLE_InvoiceBookingTestDataType.InvoiceBillingYear + "')]")));
+				WebElement monthAndYear = driver.findElement(By.xpath(
+						"//span[contains(text(),'" + aCCOUNTSPAYABLE_InvoiceBookingTestDataType.InvoiceBillingMonth + " " + aCCOUNTSPAYABLE_InvoiceBookingTestDataType.InvoiceBillingYear + "')]"));
+				break;
+			}
+
+			catch (NoSuchElementException nosuchElement) {
+				aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_ClickOnNextMonth().click();
+			}
+		}
+		WebElement InvoiceBillingDate = driver.findElement(By.xpath("//td[@aria-label='" + aCCOUNTSPAYABLE_InvoiceBookingTestDataType.InvoiceBillingFullMonth + " "
+				+ aCCOUNTSPAYABLE_InvoiceBookingTestDataType.InvoiceBillingDate + ", " + aCCOUNTSPAYABLE_InvoiceBookingTestDataType.InvoiceBillingYear + "']/span"));
+		clicksAndActionHelper.doubleClick(InvoiceBillingDate);
+
+		waithelper.waitForElement(driver, 3000, aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_FlatDiscount());
+		aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_FlatDiscount().sendKeys(aCCOUNTSPAYABLE_InvoiceBookingTestDataType.FlatDiscountOnInvoice);
+
+		String discounttype = aCCOUNTSPAYABLE_InvoiceBookingTestDataType.EarlyPaymentDiscountType;
+		if (discounttype.equals("% Basis")) {
+			waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_EarlyPaymentDiscountType());
+			aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_EarlyPaymentDiscountType().sendKeys(aCCOUNTSPAYABLE_InvoiceBookingTestDataType.EarlyPaymentDiscountType);
+			aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_EarlyPaymentDiscountType().sendKeys(Keys.ENTER);
+
+			waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_EarlyPaymentDiscountPercentBasis());
+			aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_EarlyPaymentDiscountPercentBasis().sendKeys(aCCOUNTSPAYABLE_InvoiceBookingTestDataType.EarlyPaymentDiscountPercent);
+
+			aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_EarlyPaymentDiscountAmount().click();
+			aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_EarlyPaymentDiscountDays().sendKeys(aCCOUNTSPAYABLE_InvoiceBookingTestDataType.EarlyPaymentDiscountDays);
+
+			waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_ModeOfPayment());
+			aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_ModeOfPayment().sendKeys(aCCOUNTSPAYABLE_InvoiceBookingTestDataType.ModeOfPayment);
+			aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_ModeOfPayment().sendKeys(Keys.ENTER);
+
+			waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_InvoiceCurrency());
+			aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_InvoiceCurrency().sendKeys(aCCOUNTSPAYABLE_InvoiceBookingTestDataType.InvoiceCurrency);
+			aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_InvoiceCurrency().sendKeys(Keys.ENTER);
+
+			waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_InvoicePaymentCurrency());
+			aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_InvoicePaymentCurrency().sendKeys(aCCOUNTSPAYABLE_InvoiceBookingTestDataType.InvoicePaymentCurrency);
+			aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_InvoicePaymentCurrency().sendKeys(Keys.ENTER);
+
+			aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_PaymentDate().click();
+
+			while (true) {
+				try {
+
+					waithelper.waitForElement(driver, 3000, driver.findElement(
+							By.xpath("//span[contains(text(),'" + aCCOUNTSPAYABLE_InvoiceBookingTestDataType.PaymentMonth + " " + aCCOUNTSPAYABLE_InvoiceBookingTestDataType.PaymentYear + "')]")));
+					WebElement monthAndYear = driver.findElement(
+							By.xpath("//span[contains(text(),'" + aCCOUNTSPAYABLE_InvoiceBookingTestDataType.PaymentMonth + " " + aCCOUNTSPAYABLE_InvoiceBookingTestDataType.PaymentYear + "')]"));
+					break;
+				}
+
+				catch (NoSuchElementException nosuchElement) {
+					aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_ClickOnNextMonth().click();
+				}
+			}
+			WebElement paymentDate = driver.findElement(By.xpath("//td[@aria-label='" + aCCOUNTSPAYABLE_InvoiceBookingTestDataType.PaymentFullMonth + " "
+					+ aCCOUNTSPAYABLE_InvoiceBookingTestDataType.PaymentDate + ", " + aCCOUNTSPAYABLE_InvoiceBookingTestDataType.PaymentYear + "']/span"));
+			clicksAndActionHelper.doubleClick(paymentDate);
+
+			aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_RoundingAdjustment().sendKeys(aCCOUNTSPAYABLE_InvoiceBookingTestDataType.RoundingAdjustment);
+			javascripthelper.scrollIntoViewAndClick(aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_Remarks());
+			Thread.sleep(2000);
+			waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_Remarks());
+			aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_Remarks().sendKeys(aCCOUNTSPAYABLE_InvoiceBookingTestDataType.Remarks);
+			waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_SaveButton());
+			aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_SaveButton().click();
+		} else {
+			waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_EarlyPaymentDiscountType());
+			aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_EarlyPaymentDiscountType().sendKeys(aCCOUNTSPAYABLE_InvoiceBookingTestDataType.EarlyPaymentDiscountType);
+			aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_EarlyPaymentDiscountType().sendKeys(Keys.ENTER);
+
+			aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_EarlyPaymentFlatDiscountAmount().sendKeys(aCCOUNTSPAYABLE_InvoiceBookingTestDataType.EarlyPaymentDiscountAmountFlat);
+			aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_EarlyPaymentFlatDiscountDays().sendKeys(aCCOUNTSPAYABLE_InvoiceBookingTestDataType.EarlyPaymentDiscountDays);
+
+			waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_ModeOfPaymentForFlat());
+			aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_ModeOfPaymentForFlat().sendKeys(aCCOUNTSPAYABLE_InvoiceBookingTestDataType.ModeOfPayment);
+			aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_ModeOfPaymentForFlat().sendKeys(Keys.ENTER);
+
+			waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_InvoiceCurrencyFlat());
+			aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_InvoiceCurrencyFlat().sendKeys(aCCOUNTSPAYABLE_InvoiceBookingTestDataType.InvoiceCurrency);
+			aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_InvoiceCurrencyFlat().sendKeys(Keys.ENTER);
+
+			waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_InvoicePaymentCurrencyFlat());
+			aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_InvoicePaymentCurrencyFlat().sendKeys(aCCOUNTSPAYABLE_InvoiceBookingTestDataType.InvoicePaymentCurrency);
+			aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_InvoicePaymentCurrencyFlat().sendKeys(Keys.ENTER);
+
+			aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_PaymentDateFlat().click();
+
+			while (true) {
+				try {
+
+					waithelper.waitForElement(driver, 3000, driver.findElement(
+							By.xpath("//span[contains(text(),'" + aCCOUNTSPAYABLE_InvoiceBookingTestDataType.PaymentMonth + " " + aCCOUNTSPAYABLE_InvoiceBookingTestDataType.PaymentYear + "')]")));
+					WebElement monthAndYear = driver.findElement(
+							By.xpath("//span[contains(text(),'" + aCCOUNTSPAYABLE_InvoiceBookingTestDataType.PaymentMonth + " " + aCCOUNTSPAYABLE_InvoiceBookingTestDataType.PaymentYear + "')]"));
+					break;
+				}
+
+				catch (NoSuchElementException nosuchElement) {
+					aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_ClickOnNextMonth().click();
+				}
+			}
+			WebElement paymentDate = driver.findElement(By.xpath("//td[@aria-label='" + aCCOUNTSPAYABLE_InvoiceBookingTestDataType.PaymentFullMonth + " "
+					+ aCCOUNTSPAYABLE_InvoiceBookingTestDataType.PaymentDate + ", " + aCCOUNTSPAYABLE_InvoiceBookingTestDataType.PaymentYear + "']/span"));
+			clicksAndActionHelper.doubleClick(paymentDate);
+
+			aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_RoundingAdjustmentFlat().sendKeys(aCCOUNTSPAYABLE_InvoiceBookingTestDataType.RoundingAdjustment);
+			javascripthelper.scrollIntoViewAndClick(aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_Remarks());
+			Thread.sleep(1000);
+			waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_Remarks());
+			aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_Remarks().sendKeys(aCCOUNTSPAYABLE_InvoiceBookingTestDataType.Remarks);
+			waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_SaveButton());
+			aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_SaveButton().click();
+
+		}
+
+    	Thread.sleep(2000);
+		String str = javascripthelper.executeScript(
+				"return document.querySelector(\"ion-toast\").shadowRoot.querySelector(\"div[class='toast-message']\").innerText")
+				.toString();
+		System.out.println("Message:" + str);
+		
+		waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_NotificationButton());
+		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_NotificationButton().click();
+		
+		waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_FirstReferenceId());
+		String id=aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_FirstReferenceId().getText();
+		jsonWriter.addReferanceData(id);
+		System.out.println("Reference ID:" +id);
+    	for (int i = 1; i <= 35; i++) {
+			try {
+		    	waithelper.waitForElement(driver, 3000,driver.findElement(By.xpath("//span[contains(text(),'" +jsonWriter.readReferancedata()+ "')]")));	
+				WebElement referanceID = driver.findElement(By.xpath("//span[contains(text(),'" +  jsonWriter.readReferancedata() + "')]"));	
+				waithelper.waitForElement(driver, i, referanceID);
+				referanceID.click();
+		    	System.out.println(referanceID);
+//				Assert.assertTrue(referanceID.isDisplayed());
+				break;
+			} catch (NoSuchElementException e) {
+				waithelper.waitForElement(driver,4000,aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_NotificationNextButton());
+				aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_NotificationNextButton().click();
+			}
+		}
+    	String before_xpath="//span[contains(text(),'";
+    	String after_xpath="')]/ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell//ion-button"; 
+    	waithelper.waitForElement(driver, 10000, driver.findElement(By.xpath(before_xpath +jsonWriter.readReferancedata()+after_xpath)));
+    	driver.findElement(By.xpath(before_xpath +jsonWriter.readReferancedata() +after_xpath)).click();
+    	
+    	Thread.sleep(2000);
+    	waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_APInvoiceAgainstExpense());
+    	aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_APInvoiceAgainstExpense().click();
+    	
+    	Thread.sleep(2000);
+    	
+    	waithelper.waitForElement(driver, 5000, aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_ExpenseCode());
+    	aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_ExpenseCode().click();
+    	
+    	waithelper.waitForElement(driver, 3000, aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_ExpenseNewCode());
+    	aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_ExpenseNewCode().click();
+    	
+    	aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_InvoiceQuantity().sendKeys(aCCOUNTSPAYABLE_InvoiceBookingTestDataType.InvoiceQuantity);
+    	
+    	waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_Unit());
+    	aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_Unit().click();
+    	Thread.sleep(1000);
+    	waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_UnitBoxes());
+    	aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_UnitBoxes().click();
+    	
+    	aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_RatePerUnit().sendKeys(aCCOUNTSPAYABLE_InvoiceBookingTestDataType.RatePerUnit);
+    	
+    	aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_Currency();
+    	javascripthelper.scrollIntoView(aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_CostCenterButton());
+    	
+    	waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_ShippedFromLocation());
+    	aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_ShippedFromLocation().click();
+    	waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_ShippedFromMaharastra());
+    	aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_ShippedFromMaharastra().click();
+    	
+//    	String azentmain=aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_DeliveryLocationAzentioMainView().getText();
+//    	if(azentmain=="Azentio Main Branch")
+//    	{
+//  
+//    	}else {
+//    		aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_DeliveryLocation().click();
+//    		waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_DeliveryLocationAzentioMain());
+//    		aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_DeliveryLocationAzentioMain().click();
+//    	}
+    	
+//    	waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_TaxDetails());
+//    	aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_TaxDetails().click();
+//    	waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_TaxAmount());
+//    	aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_TaxAmount().sendKeys(aCCOUNTSPAYABLE_InvoiceBookingTestDataType.TaxAmount);
+//    	
+//    	aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_TaxDetailsSaveButton().click();
+//    	
+//    	waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_CostCenterButton());
+//    	aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_CostCenterButton().click();
+//    	
+//    	waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_CostCenterTypeDetail());
+//    	aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_CostCenterTypeDetail().click();
+//    	
+//    	waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_CostCenterTypeFinance());
+//    	aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_CostCenterTypeFinance().click();
+//    	
+//    	aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_AmountToBeAllocated().sendKeys(aCCOUNTSPAYABLE_InvoiceBookingTestDataType.AmountToBeAllocated);
+//    	
+//    	waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_AddCostCenter());
+//    	aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_AddCostCenter().click();
+//    	
+//    	waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_CostCenterDetailsSaveButton());
+//    	aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_CostCenterDetailsSaveButton().click();
+		
+    }
+    
+    @Then("^Save and submit the invoice billing with exceeded amount$")
+    public void save_and_submit_the_invoice_billing_with_exceeded_amount() throws IOException, ParseException, InterruptedException  {
+    	waithelper.waitForElement(driver, 5000, aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_SaveExpense());
+    	aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_SaveExpense().click();
+    	Thread.sleep(2000);
+		
+    	javascripthelper.JavaScriptHelper(driver);
+    	
+		String str = javascripthelper.executeScript(
+				"return document.querySelector(\"ion-toast\").shadowRoot.querySelector(\"div[class='toast-message']\").innerText")
+				.toString();
+		System.out.println("Message:" + str);
+		
+		waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_NotificationButton());
+		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_NotificationButton().click();
+		
+		waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_FirstReferenceId());
+		String id=aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_FirstReferenceId().getText();
+		jsonWriter.addReferanceData(id);
+		System.out.println("Reference ID:" +id);
+    	for (int i = 1; i <= 35; i++) {
+			try {
+		    	waithelper.waitForElement(driver, 3000,driver.findElement(By.xpath("//span[contains(text(),'" +jsonWriter.readReferancedata()+ "')]")));	
+				WebElement referanceID = driver.findElement(By.xpath("//span[contains(text(),'" +  jsonWriter.readReferancedata() + "')]"));	
+				waithelper.waitForElement(driver, i, referanceID);
+				referanceID.click();
+		    	System.out.println(referanceID);
+//				Assert.assertTrue(referanceID.isDisplayed());
+				break;
+			} catch (NoSuchElementException e) {
+				waithelper.waitForElement(driver,4000,aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_NotificationNextButton());
+				aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_NotificationNextButton().click();
+			}
+		}
+    	String before_xpath="//span[contains(text(),'";
+    	String after_xpath="')]/ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell//ion-button"; 
+    	waithelper.waitForElement(driver, 10000, driver.findElement(By.xpath(before_xpath +jsonWriter.readReferancedata()+after_xpath)));
+    	driver.findElement(By.xpath(before_xpath +jsonWriter.readReferancedata() +after_xpath)).click();
+    	
+    	waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_SubmitButton());
+    	aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_SubmitButton().click();
+    	Thread.sleep(1000);
+    	waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_RemarksByMaker());
+    	javascripthelper.JSEClick(aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_RemarksByMaker());
+    	aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_RemarksByMaker().sendKeys(aCCOUNTSPAYABLE_InvoiceBookingTestDataType.RemarkByMaker);
+		
+    	waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_Submit());
+    	aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_Submit().click();
+    	
+    	waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_RecordStatus());
+    	WebElement recordstatus = aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_RecordStatus();
+    	clicksAndActionHelper.moveToElement(recordstatus);
+    	
+    	String message = aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_RecordStatus().getText();
+    	System.out.println(message);
+    	aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_RecordStatus().click();
+    	
+    }
 }

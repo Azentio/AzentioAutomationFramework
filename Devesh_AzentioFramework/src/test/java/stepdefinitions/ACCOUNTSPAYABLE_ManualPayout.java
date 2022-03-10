@@ -67,27 +67,34 @@ public class ACCOUNTSPAYABLE_ManualPayout {
     @And("^Fill the required fields for manual payout$")
     public void fill_the_required_fields_for_manual_payout() throws InterruptedException, IOException, ParseException  {
 		javascripthelper.JavaScriptHelper(driver);
+		
+		//Entity Branch name
 		waithelper.waitForElement(driver, 2000,aCCOUNTSPAYABLE_ManualPayoutObj.accountPayable_ManualPayout_EntityBranch());
 		aCCOUNTSPAYABLE_ManualPayoutObj.accountPayable_ManualPayout_EntityBranch().sendKeys(aCCOUNTSPAYABLE_ManualPayoutTestDataType.EntityBranch);
 		aCCOUNTSPAYABLE_ManualPayoutObj.accountPayable_ManualPayout_EntityBranch().sendKeys(Keys.ENTER);
-
+		
+		//bp name
 		waithelper.waitForElement(driver, 2000,aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_BP_Name());
 		aCCOUNTSPAYABLE_ManualPayoutObj.accountPayable_ManualPayout_BP_Name().sendKeys(aCCOUNTSPAYABLE_ManualPayoutTestDataType.BP_Name);
 		aCCOUNTSPAYABLE_ManualPayoutObj.accountPayable_ManualPayout_BP_Name().sendKeys(Keys.ENTER);
 		
+		//benificiary name
 		aCCOUNTSPAYABLE_ManualPayoutObj.accountPayable_ManualPayout_BeneficiaryName().click();
 		waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_ManualPayoutObj.accountPayable_ManualPayout_BeneficiaryName());
 		aCCOUNTSPAYABLE_ManualPayoutObj.accountPayable_ManualPayout_BeneficiaryName().sendKeys(aCCOUNTSPAYABLE_ManualPayoutTestDataType.BeneficiaryName);
 		aCCOUNTSPAYABLE_ManualPayoutObj.accountPayable_ManualPayout_BeneficiaryName().sendKeys(Keys.ENTER);
 		
+		//currency
 		waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_ManualPayoutObj.accountPayable_ManualPayout_Currency());
 		aCCOUNTSPAYABLE_ManualPayoutObj.accountPayable_ManualPayout_Currency().sendKeys(aCCOUNTSPAYABLE_ManualPayoutTestDataType.Currency);
 		aCCOUNTSPAYABLE_ManualPayoutObj.accountPayable_ManualPayout_Currency().sendKeys(Keys.ENTER);
 		
+//		payment bank
 		waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_ManualPayoutObj.accountPayable_ManualPayout_PaymentBank());
 		aCCOUNTSPAYABLE_ManualPayoutObj.accountPayable_ManualPayout_PaymentBank().sendKeys(aCCOUNTSPAYABLE_ManualPayoutTestDataType.PaymentBank);
 		aCCOUNTSPAYABLE_ManualPayoutObj.accountPayable_ManualPayout_PaymentBank().sendKeys(Keys.ENTER);
 		
+		//bank account number
 		aCCOUNTSPAYABLE_ManualPayoutObj.accountPayable_ManualPayout_BankAccountNumber().click();
 		waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_ManualPayoutObj.accountPayable_ManualPayout_BankAccountNumber());
 		aCCOUNTSPAYABLE_ManualPayoutObj.accountPayable_ManualPayout_BankAccountNumber().sendKeys(aCCOUNTSPAYABLE_ManualPayoutTestDataType.BankAccountNumber);
@@ -97,9 +104,11 @@ public class ACCOUNTSPAYABLE_ManualPayout {
 		aCCOUNTSPAYABLE_ManualPayoutObj.accountPayable_ManualPayout_PaymentMode().sendKeys(aCCOUNTSPAYABLE_ManualPayoutTestDataType.PaymentMode);
 		aCCOUNTSPAYABLE_ManualPayoutObj.accountPayable_ManualPayout_PaymentMode().sendKeys(Keys.ENTER);
 		
+		//reference number
 		waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_ManualPayoutObj.accountPayable_ManualPayout_ReferenceNumber());
 		aCCOUNTSPAYABLE_ManualPayoutObj.accountPayable_ManualPayout_ReferenceNumber().sendKeys(aCCOUNTSPAYABLE_ManualPayoutTestDataType.ReferenceNumber);
 		
+		//cheque number
 		waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_ManualPayoutObj.accountPayable_ManualPayout_ChequeNumber());
 		aCCOUNTSPAYABLE_ManualPayoutObj.accountPayable_ManualPayout_ChequeNumber().sendKeys(aCCOUNTSPAYABLE_ManualPayoutTestDataType.ChequeNumber);
 		
@@ -169,25 +178,17 @@ public class ACCOUNTSPAYABLE_ManualPayout {
     	String message = aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_RecordStatus().getText();
     	System.out.println(message);
     	aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_RecordStatus().click();
-    	String t = "";
+    	String emptystring = "";
 		String ar[] = message.split(" ");
-		for (int i = ar.length - 1; i >= 0; i--) {
-			t = ar[ar.length - 1];
-		}
-		String reviewerId = "";
-		for (int i = 0; i < t.length() - 1; i++) {
-			if (t.charAt(i) == '.') {
-			} else {
-				reviewerId = reviewerId + t.charAt(i);
-			}
-		}
+		emptystring=ar[ar.length-1];
+		String reviewerId=emptystring.replaceAll("[/.]", "");
 		System.out.println(reviewerId);
 		jsonWriter=new JsonDataReaderWriter();
 		jsonWriter.addData(reviewerId);
     }
     
 //    @And("^approve the record by the reviewer user$")
-//	public void approve_the_record_by_the_reviewer_user() throws InterruptedException, IOException {
+//		public void approve_the_record_by_the_reviewer_user() throws InterruptedException, IOException {
 //		browserHelper = new BrowserHelper(driver);
 //		String before_xpath = "//datatable-row-wrapper[";
 //		String after_xpath = "]/datatable-body-row/div/datatable-body-cell[2]";
