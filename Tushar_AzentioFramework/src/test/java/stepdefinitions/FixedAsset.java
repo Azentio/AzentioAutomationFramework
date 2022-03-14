@@ -618,10 +618,57 @@ public class FixedAsset {
 				login.loginToAzentioApp("Maker"); 
 	    }
 	
-	
-	
-	
-	
+	//------------------KUBS_FAT_UAT_013_007-------
+	    @Then("^Click on Asset Creation Common Edit Grid$")
+	    public void click_on_asset_creation_common_edit_grid() throws Throwable {
+	    	javascripthelper.JavaScriptHelper(driver);
+	    	javascripthelper.scrollIntoView(fixedAssetObj.Report_report_AssetCreationCommon_editButton());
+	    	waithelper.waitForElement(driver, 2000,fixedAssetObj.Report_report_AssetCreationCommon_editButton());
+	    	fixedAssetObj.Report_report_AssetCreationCommon_editButton().click();    
+			
+	    }
+
+	    @Then("^Fill the form$")
+	    public void fill_the_form() throws Throwable {
+	    	fixedAssetTestDataType= jsonReader.getFixedAssetByName("Maker");
+	    	waithelper.waitForElement(driver, 2000,fixedAssetObj.Report_report_AssetCreationCommon_AssetLifeUnit());
+	    	fixedAssetObj.Report_report_AssetCreationCommon_AssetLifeUnit().click(); 
+	    	
+	    	fixedAssetObj.Report_report_AssetCreationCommon_AssetLifeUnit().sendKeys(fixedAssetTestDataType.AssetLife);
+	    	fixedAssetObj.Report_report_AssetCreationCommon_AssetLifeUnit().sendKeys(Keys.ENTER);
+			
+	    	
+	    	
+	    	waithelper.waitForElement(driver, 2000,fixedAssetObj.Report_report_AssetCreationCommon_Calendar());
+	    	fixedAssetObj.Report_report_AssetCreationCommon_Calendar().click(); 
+	    	
+	    	inventoryManagementTestDataType = jsonReader.getInventoryManagementByName("Maker");
+			while(true)
+	        {
+			try
+			{
+			
+				waithelper.waitForElement(driver, 3000, driver.findElement(By.xpath("//span[contains(text(),'"+inventoryManagementTestDataType.GlToMonth+" "+inventoryManagementTestDataType.GlYear+"')]")));
+				WebElement monthAndYear=driver.findElement(By.xpath("//span[contains(text(),'"+inventoryManagementTestDataType.GlToMonth+" "+inventoryManagementTestDataType.GlYear+"')]"));
+			    break;
+			}
+			
+			catch(NoSuchElementException nosuchElement)
+			{
+				inventoryManagamentObj.inventoryNextMonth().click();
+			}
+			}
+			WebElement FinalDay=driver.findElement(By.xpath("//td[@aria-label='"+inventoryManagementTestDataType.GlFullToMonth+" "+inventoryManagementTestDataType.GlToDate+", "+inventoryManagementTestDataType.GlYear+"']/span"));
+			clicksAndActionHelper.doubleClick(FinalDay);
+	    }
+
+	    @Then("^Click on view button to see Asset Creation report$")
+	    public void click_on_view_button_to_see_asset_creation_report() throws Throwable {
+	    	waithelper.waitForElement(driver, 2000,fixedAssetObj.Report_report_AssetCreationCommon_ViewButton());
+	    	fixedAssetObj.Report_report_AssetCreationCommon_ViewButton().click(); 
+	    	
+	    }
+
 	
 	
 	

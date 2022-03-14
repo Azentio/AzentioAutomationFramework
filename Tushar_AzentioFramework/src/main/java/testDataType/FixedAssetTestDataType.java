@@ -21,4 +21,6 @@ public class FixedAssetTestDataType {
 	public String GlToMonth;
 	public String GlFullToMonth;
 	public String GlToDate;
+	
+	public String AssetLife;
 }

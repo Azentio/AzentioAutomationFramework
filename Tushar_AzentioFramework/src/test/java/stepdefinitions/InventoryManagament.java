@@ -5,6 +5,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.ElementNotInteractableException;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -1208,13 +1209,608 @@ public class InventoryManagament extends BaseClass {
 				Thread.sleep(2000);
 
 			}
+			
+			 @Then("^validate voucher number$")
+			    public void validate_voucher_number() throws Throwable {
+				 Thread.sleep(3000);
+
+				    while(true) {
+				    	try{
+
+				waithelper.waitForElement(driver, 3000,driver.findElement(By.xpath("//span[contains(text(),'"+inventoryManagementTestDataType.Voucher+"')]")));
+
+
+				WebElement VoucherNum =driver.findElement(By.xpath("//span[contains(text(),'"+inventoryManagementTestDataType.Voucher+"')]"));
+				break;
+
+
+				}
+
+
+				catch(NoSuchElementException nosuchElement)
+
+				{
+					javascripthelper.JavaScriptHelper(driver);
+			    	javascripthelper.scrollIntoView(inventoryManagamentObj.inventory_Next());
+			    	
+
+					inventoryManagamentObj.inventory_Next().click();
+
+				}
+
+
+				 }
+
+				System.out.println("Record is present in the list");
+
+				  
+
+				 }
+			    
 	    
+		//-----------KUBS_INV_MGMT_UAT_007_005-----
+
+		    @Then("^Click on Stock Confirmation edit button$")
+		    public void click_on_stock_confirmation_edit_button() throws Throwable {
+		    	javascripthelper.JavaScriptHelper(driver);
+		    	javascripthelper.scrollIntoView(inventoryManagamentObj.Report_report_StockConfirmationReport());
+		    	waithelper.waitForElement(driver, 2000,inventoryManagamentObj.Report_report_StockConfirmationReport());
+				inventoryManagamentObj.Report_report_StockConfirmationReport().click();    
+				 
+		    }
+
+		    @Then("^Fill the details of stock confirmation$")
+		    public void fill_the_details_of_stock_confirmation() throws Throwable {
+		    	
+		    	waithelper.waitForElement(driver, 2000,inventoryManagamentObj.Report_report_StockConfirmationReport_acceptStatus());
+				inventoryManagamentObj.Report_report_StockConfirmationReport_acceptStatus().click();  
+				inventoryManagementTestDataType = jsonReader.getInventoryManagementByName("Maker");
+				inventoryManagamentObj.Report_report_StockConfirmationReport_acceptStatus().sendKeys(inventoryManagementTestDataType.AcceptStatus);
+				inventoryManagamentObj.Report_report_StockConfirmationReport_acceptStatus().sendKeys(Keys.ENTER);
+		    }
+		    
+		    //----------------KUBS_FAT_UAT_004_002
+		   
 		    
 		    
+		    //------------------KUBS_INV_MGMT_UAT_007_001-----
+		    @Then("^Click on Inventory access detail report edit grid$")
+		    public void click_on_inventory_access_detail_report_edit_grid() throws Throwable {
+		    	javascripthelper.JavaScriptHelper(driver);
+				//waithelper.waitForElement(driver, 2000, inventoryManagamentObj.report_inventoryItemDetail_EditButton());
+				
+				javascripthelper.scrollIntoView(inventoryManagamentObj.report_inventoryItemDetail_EditButton());
+				inventoryManagamentObj.report_inventoryItemDetail_EditButton().click();
+		    }
+
+		    @Then("^Fill the form for  Inventory access detail report$")
+		    public void fill_the_form_for_inventory_access_detail_report() throws Throwable {
+		    	   
+		    	
+		    	inventoryManagementTestDataType = jsonReader.getInventoryManagementByName("Maker");
+
+				waithelper.waitForElement(driver, 2000,inventoryManagamentObj.report_inventoryItemDetail_ItemDescription());
+				inventoryManagamentObj.report_inventoryItemDetail_ItemDescription().click();
+				inventoryManagamentObj.report_inventoryItemDetail_ItemDescription().sendKeys(inventoryManagementTestDataType.ItemDescriptionForInvtItemDetails);
+				inventoryManagamentObj.report_inventoryItemDetail_ItemDescription().sendKeys(Keys.ENTER);
+				//Calendar
+				Thread.sleep(2000);
+				waithelper.waitForElement(driver, 2000,inventoryManagamentObj.inventoryItemCalandar_report());
+				inventoryManagamentObj.inventoryItemCalandar_report().click();
+				//waithelper.waitForElement(driver, 3000, inventoryManagamentObj.inventoryToDate());
+				//inventoryManagamentObj.inventoryToDate().click();
+				 
+				inventoryManagementTestDataType = jsonReader.getInventoryManagementByName("Maker");
+				while(true)
+		        {
+				try
+				{
+				
+					waithelper.waitForElement(driver, 3000, driver.findElement(By.xpath("//span[contains(text(),'"+inventoryManagementTestDataType.GlToMonth+" "+inventoryManagementTestDataType.GlYear+"')]")));
+					WebElement monthAndYear=driver.findElement(By.xpath("//span[contains(text(),'"+inventoryManagementTestDataType.GlToMonth+" "+inventoryManagementTestDataType.GlYear+"')]"));
+				    break;
+				}
+				
+				catch(NoSuchElementException nosuchElement)
+				{
+					inventoryManagamentObj.inventoryNextMonth().click();
+				}
+				}
+				WebElement FinalDay=driver.findElement(By.xpath("//td[@aria-label='"+inventoryManagementTestDataType.GlFullToMonth+" "+inventoryManagementTestDataType.GlToDate+", "+inventoryManagementTestDataType.GlYear+"']/span"));
+				clicksAndActionHelper.doubleClick(FinalDay);
+			}
+			
+		    
+
+		    @And("^click on view button to view report$")
+		    public void click_on_view_button_to_view_report() throws Throwable {
+		    	waithelper.waitForElement(driver, 3000, inventoryManagamentObj.report_viewButton());
+				inventoryManagamentObj.report_viewButton().click();
+				Thread.sleep(3000); 
+		    }
+		    
+	//---------KUBS_INV_MGMT_UAT_007_002-	    
 		    
 		    
+		    @Then("^Click on Inventory Request report edit grid$")
+		    public void click_on_inventory_request_report_edit_grid() throws Throwable {
+		    	javascripthelper.JavaScriptHelper(driver);
+				//waithelper.waitForElement(driver, 2000, inventoryManagamentObj.report_inventoryItemDetail_EditButton());
+				
+				javascripthelper.scrollIntoView(inventoryManagamentObj.report_inventoryRequest_Editbutton());
+				inventoryManagamentObj.report_inventoryRequest_Editbutton().click();  
+		    }
+
+		    @Then("^Fill the form for Inventory Request report$")
+		    public void fill_the_form_for_inventory_request_report() throws Throwable {
+		    	inventoryManagementTestDataType = jsonReader.getInventoryManagementByName("Maker");
+
+				waithelper.waitForElement(driver, 2000,inventoryManagamentObj.report_inventoryRequest_RequestReferenceNo());
+				inventoryManagamentObj.report_inventoryRequest_RequestReferenceNo().click();
+				inventoryManagamentObj.report_inventoryRequest_RequestReferenceNo().sendKeys(inventoryManagementTestDataType.RequestReferenceNumber);
+				inventoryManagamentObj.report_inventoryRequest_RequestReferenceNo().sendKeys(Keys.ENTER);
+				//Calendar
+				Thread.sleep(2000);
+				waithelper.waitForElement(driver, 2000,inventoryManagamentObj.report_inventoryRequest_calanderbutton());
+				inventoryManagamentObj.report_inventoryRequest_calanderbutton().click();
+			 
+				 
+				inventoryManagementTestDataType = jsonReader.getInventoryManagementByName("Maker");
+				while(true)
+		        {
+				try
+				{
+				
+					waithelper.waitForElement(driver, 3000, driver.findElement(By.xpath("//span[contains(text(),'"+inventoryManagementTestDataType.GlToMonth+" "+inventoryManagementTestDataType.GlYear+"')]")));
+					WebElement monthAndYear=driver.findElement(By.xpath("//span[contains(text(),'"+inventoryManagementTestDataType.GlToMonth+" "+inventoryManagementTestDataType.GlYear+"')]"));
+				    break;
+				}
+				
+				catch(NoSuchElementException nosuchElement)
+				{
+					inventoryManagamentObj.inventoryNextMonth().click();
+				}
+				}
+				WebElement FinalDay=driver.findElement(By.xpath("//td[@aria-label='"+inventoryManagementTestDataType.GlFullToMonth+" "+inventoryManagementTestDataType.GlToDate+", "+inventoryManagementTestDataType.GlYear+"']/span"));
+				clicksAndActionHelper.doubleClick(FinalDay);
+			}
+			  
+		    	    
 		    
+@And("^click on view button to view report of inventory request$")
+public void click_on_view_button_to_view_report_of_inventory_request() throws Throwable {
+   
+	waithelper.waitForElement(driver, 3000, inventoryManagamentObj.report_inventoryRequest_viewbutton());
+	inventoryManagamentObj.report_inventoryRequest_viewbutton().click();
+	Thread.sleep(3000); 
+	
+	
+	
+}
+	//----------------	    KUBS_INV_MGMT_UAT_007_003--------
 		    
-		    
+@Then("^Click on Purchase requisition report edit grid$")
+public void click_on_purchase_requisition_report_edit_grid() throws Throwable {
+	javascripthelper.JavaScriptHelper(driver);
+	//waithelper.waitForElement(driver, 2000, inventoryManagamentObj.report_inventoryItemDetail_EditButton());
+	
+	javascripthelper.scrollIntoView(inventoryManagamentObj.report_PurchaseRequsition_editbutton());
+	waithelper.waitForElement(driver, 3000, inventoryManagamentObj.report_PurchaseRequsition_editbutton());
+	inventoryManagamentObj.report_PurchaseRequsition_editbutton().click();
+}
+
+@Then("^Fill the form for Purchase requisition report$")
+public void fill_the_form_for_purchase_requisition_report() throws Throwable {
+	inventoryManagementTestDataType = jsonReader.getInventoryManagementByName("Maker");
+
+	waithelper.waitForElement(driver, 2000,inventoryManagamentObj.report_PurchaseRequsition_IndentReferenceNo());
+	inventoryManagamentObj.report_PurchaseRequsition_IndentReferenceNo().click();
+	inventoryManagamentObj.report_PurchaseRequsition_IndentReferenceNo().sendKeys(inventoryManagementTestDataType.IndentReferenceNo);
+	inventoryManagamentObj.report_PurchaseRequsition_IndentReferenceNo().sendKeys(Keys.ENTER);
+	//Calendar
+	Thread.sleep(2000);
+	waithelper.waitForElement(driver, 2000,inventoryManagamentObj.report_PurchaseRequsition_calanderbutton());
+	inventoryManagamentObj.report_PurchaseRequsition_calanderbutton().click();
+	Thread.sleep(2000);
+	 
+	inventoryManagementTestDataType = jsonReader.getInventoryManagementByName("Maker");
+	while(true)
+    {
+	try
+	{
+	
+		waithelper.waitForElement(driver, 3000, driver.findElement(By.xpath("//span[contains(text(),'"+inventoryManagementTestDataType.GlToMonth+" "+inventoryManagementTestDataType.GlYear+"')]")));
+		WebElement monthAndYear=driver.findElement(By.xpath("//span[contains(text(),'"+inventoryManagementTestDataType.GlToMonth+" "+inventoryManagementTestDataType.GlYear+"')]"));
+	    break;
 	}
+	
+	catch(NoSuchElementException nosuchElement)
+	{
+		inventoryManagamentObj.inventoryNextMonth().click();
+	}
+	}
+	WebElement FinalDay=driver.findElement(By.xpath("//td[@aria-label='"+inventoryManagementTestDataType.GlFullToMonth+" "+inventoryManagementTestDataType.GlToDate+", "+inventoryManagementTestDataType.GlYear+"']/span"));
+	clicksAndActionHelper.doubleClick(FinalDay);
+}
+
+@And("^Click on view button to view report of Purchase requisition report$")
+public void click_on_view_button_to_view_report_of_purchase_requisition_report() throws Throwable {
+	waithelper.waitForElement(driver, 3000, inventoryManagamentObj.report_PurchaseRequsition_viewbutton());
+	inventoryManagamentObj.report_PurchaseRequsition_viewbutton().click();
+	Thread.sleep(3000); 
+}
+
+//----------  KUBS_INV_MGMT_UAT_007_004---------
+
+
+@Then("^Click on stock issuance report edit grid$")
+public void click_on_stock_issuance_report_edit_grid() throws Throwable {
+	javascripthelper.JavaScriptHelper(driver);
+	//waithelper.waitForElement(driver, 2000, inventoryManagamentObj.report_inventoryItemDetail_EditButton());
+	
+	javascripthelper.scrollIntoView(inventoryManagamentObj.report_StockIssuance_editbutton());
+	waithelper.waitForElement(driver, 3000, inventoryManagamentObj.report_StockIssuance_editbutton());
+	inventoryManagamentObj.report_StockIssuance_editbutton().click();
+}
+
+@Then("^Fill the form for stock issuance report$")
+public void fill_the_form_for_stock_issuance_report() throws Throwable {
+	inventoryManagementTestDataType = jsonReader.getInventoryManagementByName("Maker");
+
+	waithelper.waitForElement(driver, 2000,inventoryManagamentObj.report_StockIssuance_IssuanceReffrenceNo());
+	inventoryManagamentObj.report_StockIssuance_IssuanceReffrenceNo().click();
+	inventoryManagamentObj.report_StockIssuance_IssuanceReffrenceNo().sendKeys(inventoryManagementTestDataType.IssueReferenceNo);
+	inventoryManagamentObj.report_StockIssuance_IssuanceReffrenceNo().sendKeys(Keys.ENTER);
+	//Calendar
+	Thread.sleep(2000);
+	waithelper.waitForElement(driver, 2000,inventoryManagamentObj.report_PurchaseRequsition_calanderbutton());
+	inventoryManagamentObj.report_PurchaseRequsition_calanderbutton().click();
+	Thread.sleep(2000);
+	 
+	inventoryManagementTestDataType = jsonReader.getInventoryManagementByName("Maker");
+	while(true)
+    {
+	try
+	{
+	
+		waithelper.waitForElement(driver, 3000, driver.findElement(By.xpath("//span[contains(text(),'"+inventoryManagementTestDataType.GlToMonth+" "+inventoryManagementTestDataType.GlYear+"')]")));
+		WebElement monthAndYear=driver.findElement(By.xpath("//span[contains(text(),'"+inventoryManagementTestDataType.GlToMonth+" "+inventoryManagementTestDataType.GlYear+"')]"));
+	    break;
+	}
+	
+	catch(NoSuchElementException nosuchElement)
+	{
+		inventoryManagamentObj.inventoryNextMonth().click();
+	}
+	}
+	WebElement FinalDay=driver.findElement(By.xpath("//td[@aria-label='"+inventoryManagementTestDataType.GlFullToMonth+" "+inventoryManagementTestDataType.GlToDate+", "+inventoryManagementTestDataType.GlYear+"']/span"));
+	clicksAndActionHelper.doubleClick(FinalDay);
+}
+
+@And("^Click on view button to view report of stock issuance report$")
+public void click_on_view_button_to_view_report_of_stock_issuance_report() throws Throwable {
+	waithelper.waitForElement(driver, 3000, inventoryManagamentObj.report_StockIssuance_ViewButton());
+	inventoryManagamentObj.report_StockIssuance_ViewButton().click();
+	Thread.sleep(3000); 
+}
+
+
+//----------KUBS_INV_MGMT_UAT_007_006-------
+@Then("^Click on stock return report edit grid$")
+public void click_on_stock_return_report_edit_grid() throws Throwable {
+	javascripthelper.JavaScriptHelper(driver);
+	//waithelper.waitForElement(driver, 2000, inventoryManagamentObj.report_inventoryItemDetail_EditButton());
+	
+	javascripthelper.scrollIntoView(inventoryManagamentObj.report_StockReturn_EditButton());
+	waithelper.waitForElement(driver, 3000, inventoryManagamentObj.report_StockReturn_EditButton());
+	inventoryManagamentObj.report_StockReturn_EditButton().click();
+}
+
+@Then("^Fill the form for stock return report$")
+public void fill_the_form_for_stock_return_report() throws Throwable {
+	inventoryManagementTestDataType = jsonReader.getInventoryManagementByName("Maker");
+
+	waithelper.waitForElement(driver, 2000,inventoryManagamentObj.report_StockReturn_returntype_Textbox());
+	inventoryManagamentObj.report_StockReturn_returntype_Textbox().click();
+	inventoryManagamentObj.report_StockReturn_returntype_Textbox().sendKeys(inventoryManagementTestDataType.ReturnType);
+	inventoryManagamentObj.report_StockReturn_returntype_Textbox().sendKeys(Keys.ENTER);
+	
+	
+	
+	//Calendar
+		Thread.sleep(2000);
+		waithelper.waitForElement(driver, 2000,inventoryManagamentObj.report_PurchaseRequsition_calanderbutton());
+		inventoryManagamentObj.report_PurchaseRequsition_calanderbutton().click();
+		Thread.sleep(2000);
+		 
+		inventoryManagementTestDataType = jsonReader.getInventoryManagementByName("Maker");
+		while(true)
+	    {
+		try
+		{
+		
+			waithelper.waitForElement(driver, 3000, driver.findElement(By.xpath("//span[contains(text(),'"+inventoryManagementTestDataType.GlToMonth+" "+inventoryManagementTestDataType.GlYear+"')]")));
+			WebElement monthAndYear=driver.findElement(By.xpath("//span[contains(text(),'"+inventoryManagementTestDataType.GlToMonth+" "+inventoryManagementTestDataType.GlYear+"')]"));
+		    break;
+		}
+		
+		catch(NoSuchElementException nosuchElement)
+		{
+			inventoryManagamentObj.inventoryNextMonth().click();
+		}
+		}
+		WebElement FinalDay=driver.findElement(By.xpath("//td[@aria-label='"+inventoryManagementTestDataType.GlFullToMonth+" "+inventoryManagementTestDataType.GlToDate+", "+inventoryManagementTestDataType.GlYear+"']/span"));
+		clicksAndActionHelper.doubleClick(FinalDay);
+}
+
+@And("^Click on view button to view report of stock return report$")
+public void click_on_view_button_to_view_report_of_stock_return_report() throws Throwable {
+	waithelper.waitForElement(driver, 2000,inventoryManagamentObj.report_inventoryStockReceipt_ViewButton());
+	inventoryManagamentObj.report_inventoryStockReceipt_ViewButton().click(); 
+}
+@Then("^verify the approved record is available in the report$")
+public void verify_the_approved_record_is_available_in_the_report() throws Throwable {
+	System.out.println("Approved invoice number "+inventoryManagementTestDataType.Voucher);
+	javascripthelper.JavaScriptHelper(driver);
+
+	browserHelper.SwitchToWindow(1);
+	Thread.sleep(1500);
+	while(true)
+	{
+	try
+	{
+	javascripthelper.scrollIntoView(driver.findElement(By.xpath("//div[contains(text(),'"+inventoryManagementTestDataType.Voucher+"')]")));
+	driver.findElement(By.xpath("//div[contains(text(),'"+inventoryManagementTestDataType.Voucher+"')]")).isDisplayed();
+	break;
+	}
+	catch(NoSuchElementException e)
+	{
+		inventoryManagamentObj.Report_report_NextButton().click();
+	}
+	catch(StaleElementReferenceException e1)
+	{
+	}
+	}
+	browserHelper.switchToParentWithChildClose();
+	}
+
+
+//-----------KUBS_INV_MGMT_UAT_007_008-----
+@Then("^Click on Fund Requisition Report edit grid$")
+public void click_on_fund_requisition_report_edit_grid() throws Throwable {
+	javascripthelper.JavaScriptHelper(driver);
+	//waithelper.waitForElement(driver, 2000, inventoryManagamentObj.report_inventoryItemDetail_EditButton());
+	
+	javascripthelper.scrollIntoView(inventoryManagamentObj.report_FundRequsitionReport_EditButton());
+	waithelper.waitForElement(driver, 3000, inventoryManagamentObj.report_FundRequsitionReport_EditButton());
+	inventoryManagamentObj.report_FundRequsitionReport_EditButton().click();
+}
+
+@Then("^Fill the form for Fund Requisition Report$")
+public void fill_the_form_for_fund_requisition_report() throws Throwable {
+	inventoryManagementTestDataType = jsonReader.getInventoryManagementByName("Maker");
+
+	
+	
+	
+	
+	//Calendar
+		Thread.sleep(2000);
+		waithelper.waitForElement(driver, 2000,inventoryManagamentObj.report_FundRequsitionReport_CalendarButton());
+		inventoryManagamentObj.report_FundRequsitionReport_CalendarButton().click();
+		Thread.sleep(2000);
+		 
+		inventoryManagementTestDataType = jsonReader.getInventoryManagementByName("Maker");
+		while(true)
+	    {
+		try
+		{
+		
+			waithelper.waitForElement(driver, 3000, driver.findElement(By.xpath("//span[contains(text(),'"+inventoryManagementTestDataType.GlToMonth+" "+inventoryManagementTestDataType.GlYear+"')]")));
+			WebElement monthAndYear=driver.findElement(By.xpath("//span[contains(text(),'"+inventoryManagementTestDataType.GlToMonth+" "+inventoryManagementTestDataType.GlYear+"')]"));
+		    break;
+		}
+		
+		catch(NoSuchElementException nosuchElement)
+		{
+			inventoryManagamentObj.inventoryNextMonth().click();
+		}
+		}
+		WebElement FinalDay=driver.findElement(By.xpath("//td[@aria-label='"+inventoryManagementTestDataType.GlFullToMonth+" "+inventoryManagementTestDataType.GlToDate+", "+inventoryManagementTestDataType.GlYear+"']/span"));
+		clicksAndActionHelper.doubleClick(FinalDay);
+}
+
+@And("^Click on view button to view report of Fund Requisition Report$")
+public void click_on_view_button_to_view_report_of_fund_requisition_report() throws Throwable {
+	waithelper.waitForElement(driver, 2000,inventoryManagamentObj.report_inventoryStockReceipt_ViewButton());
+	inventoryManagamentObj.report_inventoryStockReceipt_ViewButton().click();
+}
+
+//-------------KUBS_INV_MGMT_UAT_007_009-------------
+
+
+@Then("^Click on inventory item details Report edit grid$")
+public void click_on_inventory_item_details_report_edit_grid() throws Throwable {
+	javascripthelper.JavaScriptHelper(driver);
+	 
+	
+	javascripthelper.scrollIntoView(inventoryManagamentObj.report_InventoryItemDetails_EditButton());
+	waithelper.waitForElement(driver, 3000, inventoryManagamentObj.report_InventoryItemDetails_EditButton());
+	inventoryManagamentObj.report_InventoryItemDetails_EditButton().click(); 
+}
+
+@Then("^Fill the form for inventory item details Report$")
+public void fill_the_form_for_inventory_item_details_report() throws Throwable {
+	
+	inventoryManagementTestDataType = jsonReader.getInventoryManagementByName("Maker");
+
+	waithelper.waitForElement(driver, 2000,inventoryManagamentObj.report_InventoryItemDetails_ItemDescription_textbox());
+	inventoryManagamentObj.report_InventoryItemDetails_ItemDescription_textbox().click();
+	inventoryManagamentObj.report_InventoryItemDetails_ItemDescription_textbox().sendKeys(inventoryManagementTestDataType.Itemdescription);
+	inventoryManagamentObj.report_InventoryItemDetails_ItemDescription_textbox().sendKeys(Keys.ENTER);
+	
+	
+	
+	//Calendar
+		Thread.sleep(2000);
+		waithelper.waitForElement(driver, 2000,inventoryManagamentObj.report_PurchaseRequsition_calanderbutton());
+		inventoryManagamentObj.report_PurchaseRequsition_calanderbutton().click();
+		Thread.sleep(2000);
+		 
+		inventoryManagementTestDataType = jsonReader.getInventoryManagementByName("Maker");
+		while(true)
+	    {
+		try
+		{
+		
+			waithelper.waitForElement(driver, 3000, driver.findElement(By.xpath("//span[contains(text(),'"+inventoryManagementTestDataType.GlToMonth+" "+inventoryManagementTestDataType.GlYear+"')]")));
+			WebElement monthAndYear=driver.findElement(By.xpath("//span[contains(text(),'"+inventoryManagementTestDataType.GlToMonth+" "+inventoryManagementTestDataType.GlYear+"')]"));
+		    break;
+		}
+		
+		catch(NoSuchElementException nosuchElement)
+		{
+			inventoryManagamentObj.inventoryNextMonth().click();
+		}
+		}
+		WebElement FinalDay=driver.findElement(By.xpath("//td[@aria-label='"+inventoryManagementTestDataType.GlFullToMonth+" "+inventoryManagementTestDataType.GlToDate+", "+inventoryManagementTestDataType.GlYear+"']/span"));
+		clicksAndActionHelper.doubleClick(FinalDay);
+}
+
+@And("^Click on view button to view report of inventory item details Report$")
+public void click_on_view_button_to_view_report_of_inventory_item_details_report() throws Throwable {
+	waithelper.waitForElement(driver, 2000,inventoryManagamentObj.report_InventoryItemDetails_ViewButton());
+	inventoryManagamentObj.report_InventoryItemDetails_ViewButton().click();    
+}
+//----------------------KUBS_INV_MGMT_UAT_007_010------------
+
+
+@Then("^Click on inventory stock receipt Report edit grid$")
+public void click_on_inventory_stock_receipt_report_edit_grid() throws Throwable {
+	javascripthelper.JavaScriptHelper(driver);
+	//waithelper.waitForElement(driver, 2000, inventoryManagamentObj.report_inventoryItemDetail_EditButton());
+	
+	javascripthelper.scrollIntoView(inventoryManagamentObj.report_inventoryStockReceipt_EditButton());
+	
+	waithelper.waitForElement(driver, 2000,inventoryManagamentObj.report_inventoryStockReceipt_EditButton());
+	inventoryManagamentObj.report_inventoryStockReceipt_EditButton().click();
+}
+
+@Then("^Fill the form for inventory stock receipt Report$")
+public void fill_the_form_for_inventory_stock_receipt_report() throws Throwable {
+	inventoryManagementTestDataType = jsonReader.getInventoryManagementByName("Maker");
+	waithelper.waitForElement(driver, 2000,inventoryManagamentObj.report_inventoryStockReceipt_POReferenceTextbox());
+	inventoryManagamentObj.report_inventoryStockReceipt_POReferenceTextbox().click();
+	inventoryManagamentObj.report_inventoryStockReceipt_POReferenceTextbox().sendKeys(inventoryManagementTestDataType.POReference);
+	inventoryManagamentObj.report_inventoryStockReceipt_POReferenceTextbox().sendKeys(Keys.ENTER);
+	
+	
+	
+	//Calendar
+		Thread.sleep(2000);
+		waithelper.waitForElement(driver, 2000,inventoryManagamentObj.report_PurchaseRequsition_calanderbutton());
+		inventoryManagamentObj.report_PurchaseRequsition_calanderbutton().click();
+		Thread.sleep(2000);
+		 
+		inventoryManagementTestDataType = jsonReader.getInventoryManagementByName("Maker");
+		while(true)
+	    {
+		try
+		{
+		
+			waithelper.waitForElement(driver, 3000, driver.findElement(By.xpath("//span[contains(text(),'"+inventoryManagementTestDataType.GlToMonth+" "+inventoryManagementTestDataType.GlYear+"')]")));
+			WebElement monthAndYear=driver.findElement(By.xpath("//span[contains(text(),'"+inventoryManagementTestDataType.GlToMonth+" "+inventoryManagementTestDataType.GlYear+"')]"));
+		    break;
+		}
+		
+		catch(NoSuchElementException nosuchElement)
+		{
+			inventoryManagamentObj.inventoryNextMonth().click();
+		}
+		}
+		WebElement FinalDay=driver.findElement(By.xpath("//td[@aria-label='"+inventoryManagementTestDataType.GlFullToMonth+" "+inventoryManagementTestDataType.GlToDate+", "+inventoryManagementTestDataType.GlYear+"']/span"));
+		clicksAndActionHelper.doubleClick(FinalDay);
+}
+
+@And("^Click on view button to view report of inventory stock receipt Report$")
+public void click_on_view_button_to_view_report_of_inventory_stock_receipt_report() throws Throwable {
+	waithelper.waitForElement(driver, 2000,inventoryManagamentObj.report_inventoryStockReceipt_ViewButton());
+	inventoryManagamentObj.report_inventoryStockReceipt_ViewButton().click();
+	   
+}
+
+
+
+//-------------KUBS_INV_MGMT_UAT_006_001-----------
+@Then("^Fill the form for stock return report for return the inventories$")
+public void fill_the_form_for_stock_return_report_for_return_the_inventories() throws Throwable {
+	inventoryManagementTestDataType = jsonReader.getInventoryManagementByName("Maker");
+
+	waithelper.waitForElement(driver, 2000,inventoryManagamentObj.report_StockReturn_returntype_Textbox());
+	inventoryManagamentObj.report_StockReturn_returntype_Textbox().click();
+	inventoryManagamentObj.report_StockReturn_returntype_Textbox().sendKeys(inventoryManagementTestDataType.ReturnTypeInventory);
+	inventoryManagamentObj.report_StockReturn_returntype_Textbox().sendKeys(Keys.ENTER);
+	
+	
+	
+	//Calendar
+		Thread.sleep(2000);
+		waithelper.waitForElement(driver, 2000,inventoryManagamentObj.report_PurchaseRequsition_calanderbutton());
+		inventoryManagamentObj.report_PurchaseRequsition_calanderbutton().click();
+		Thread.sleep(2000);
+		 
+		inventoryManagementTestDataType = jsonReader.getInventoryManagementByName("Maker");
+		while(true)
+	    {
+		try
+		{
+		
+			waithelper.waitForElement(driver, 3000, driver.findElement(By.xpath("//span[contains(text(),'"+inventoryManagementTestDataType.GlToMonth+" "+inventoryManagementTestDataType.GlYear+"')]")));
+			WebElement monthAndYear=driver.findElement(By.xpath("//span[contains(text(),'"+inventoryManagementTestDataType.GlToMonth+" "+inventoryManagementTestDataType.GlYear+"')]"));
+		    break;
+		}
+		
+		catch(NoSuchElementException nosuchElement)
+		{
+			inventoryManagamentObj.inventoryNextMonth().click();
+		}
+		}
+		WebElement FinalDay=driver.findElement(By.xpath("//td[@aria-label='"+inventoryManagementTestDataType.GlFullToMonth+" "+inventoryManagementTestDataType.GlToDate+", "+inventoryManagementTestDataType.GlYear+"']/span"));
+		clicksAndActionHelper.doubleClick(FinalDay);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}	    
+		    
+		    
+		    
+		    
+		    
+		    
+		    
+		    
+		    
+		    
+		    
+		    
+		    
+		    
+		    
+		    
+	
 

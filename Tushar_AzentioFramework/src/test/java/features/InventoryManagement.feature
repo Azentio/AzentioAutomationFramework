@@ -269,3 +269,150 @@ And click on the transaction to date in calender icon
 Then choose the To date in calender
 And click on view button to see the Record
 
+@KUBS_INV_MGMT_UAT_007_005
+Scenario: Check stock confirmation report
+
+Given Navigate to URL and user should login as a maker
+Then click on report button
+Then Click on Report Tab
+
+Then Click on Stock Confirmation edit button
+Then Fill the details of stock confirmation
+
+And click on transaction from date calender icon
+Then choose the from date
+
+Then Click on View button
+Then verify the approved record is available in the report
+@KUBS_INV_MGMT_UAT_007_001
+Scenario: Check inventory access details report
+
+
+Given Navigate to URL and user should login as a maker
+Then click on report button
+Then Click on Report Tab
+
+Then Click on Inventory access detail report edit grid
+Then Fill the form for  Inventory access detail report
+
+And click on view button to view report
+Then verify the approved record is available in the report
+
+@KUBS_INV_MGMT_UAT_007_002
+Scenario: Check inventory request report
+
+Given Navigate to URL and user should login as a maker
+Then click on report button
+Then Click on Report Tab
+
+Then Click on Inventory Request report edit grid
+Then Fill the form for Inventory Request report
+
+And click on view button to view report of inventory request
+Then verify the approved record is available in the report
+@KUBS_INV_MGMT_UAT_007_003
+
+Scenario: Check Purchase requisition report
+
+Given Navigate to URL and user should login as a maker
+Then click on report button
+Then Click on Report Tab
+
+Then Click on Purchase requisition report edit grid
+Then Fill the form for Purchase requisition report
+
+And Click on view button to view report of Purchase requisition report
+Then verify the approved record is available in the report
+@KUBS_INV_MGMT_UAT_007_004
+Scenario: Check stock issuance report
+
+
+Given Navigate to URL and user should login as a maker
+Then click on report button
+Then Click on Report Tab
+
+Then Click on stock issuance report edit grid
+Then Fill the form for stock issuance report
+
+And Click on view button to view report of stock issuance report
+Then verify the approved record is available in the report
+
+@KUBS_INV_MGMT_UAT_007_006
+Scenario: System should able to show the stock Return history for the inventory item
+
+Given Navigate to URL and user should login as a maker
+Then click on report button
+Then Click on Report Tab
+
+Then Click on stock return report edit grid
+Then Fill the form for stock return report
+
+And Click on view button to view report of stock return report
+Then verify the approved record is available in the report
+ @KUBS_INV_MGMT_UAT_007_008
+Scenario: Check denomination details report
+
+Given Navigate to URL and user should login as a maker
+Then click on report button
+Then Click on Report Tab
+
+Then Click on Fund Requisition Report edit grid
+Then Fill the form for Fund Requisition Report
+
+And Click on view button to view report of Fund Requisition Report
+Then verify the approved record is available in the report
+@KUBS_INV_MGMT_UAT_007_009
+Scenario: Check inventory item details report
+
+Given Navigate to URL and user should login as a maker
+Then click on report button
+Then Click on Report Tab
+
+Then Click on inventory item details Report edit grid
+Then Fill the form for inventory item details Report
+
+And Click on view button to view report of inventory item details Report
+Then verify the approved record is available in the report
+@KUBS_INV_MGMT_UAT_007_010
+Scenario: Check inventory stock receipt report
+
+Given Navigate to URL and user should login as a maker
+Then click on report button
+Then Click on Report Tab
+
+Then Click on inventory stock receipt Report edit grid
+Then Fill the form for inventory stock receipt Report
+
+And Click on view button to view report of inventory stock receipt Report
+Then verify the approved record is available in the report
+@KUBS_INV_MGMT_UAT_006_001
+Scenario: Check stock return to vendors
+
+Given Navigate to URL and user should login as a maker
+Then click on report button
+Then Click on Report Tab
+
+Then Click on stock return report edit grid
+Then Fill the form for stock return report for return the inventories
+
+And Click on view button to view report of stock return report
+Then verify the approved record is available in the report
+@KUBS_INV_MGMT_UAT_006_002
+Scenario: Check accounting entries
+
+Given Navigate to URL and user should login as a maker
+Then click on report button
+And click Enquiry menu
+Then click on Edit icon near by financial transaction
+And choose branch code Id
+
+And click on transaction from date in calender icon
+Then choose from date in calender
+And click on the transaction to date in calender icon
+Then choose the To date in calender
+And click on view button to see the Record
+
+Then validate voucher number
+
+
+

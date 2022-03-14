@@ -154,8 +154,39 @@ private WebElement fixedAsset_AssetCreation_FixedAssetItems;
 
 public WebElement fixedAsset_AssetCreation_FixedAssetItems() {
 return fixedAsset_AssetCreation_FixedAssetItems;
+				}
+//Report_report_AssetCreationCommon
+@FindBy(xpath = "//ion-list[1]/div[1]/ion-menu-toggle[9]/ion-item[1]/ion-buttons[1]/ion-button[1]")
+private WebElement Report_report_AssetCreationCommon_editButton;
+
+public WebElement Report_report_AssetCreationCommon_editButton() {
+return Report_report_AssetCreationCommon_editButton;
+				}
+@FindBy(xpath = "//ion-row[1]/ion-col[1]/app-kub-lov[1]/span[1]/ng-select[1]/div[1]/div[1]/div[2]/input[1]")
+private WebElement Report_report_AssetCreationCommon_AssetLifeUnit;
+
+public WebElement Report_report_AssetCreationCommon_AssetLifeUnit() {
+return Report_report_AssetCreationCommon_AssetLifeUnit;
+				}
+@FindBy(xpath = "//ion-content[1]/form[1]/ion-grid[1]/ion-row[1]/ion-col[2]/app-kub-date-time[1]/ion-item[1]/div[1]/span[1]")
+private WebElement Report_report_AssetCreationCommon_Calendar;
+
+public WebElement Report_report_AssetCreationCommon_Calendar() {
+return Report_report_AssetCreationCommon_Calendar;
 				}	
-	
+@FindBy(xpath = "//ion-header/ion-toolbar[1]/ion-buttons[1]/ion-button[1]")
+private WebElement Report_report_AssetCreationCommon_ViewButton;
+
+public WebElement Report_report_AssetCreationCommon_ViewButton() {
+return Report_report_AssetCreationCommon_ViewButton;
+				}
+//ReportNext
+@FindBy(xpath = "//tbody/tr[2]/td[7]/input[1]\"")
+private WebElement Report_report_NextButton;
+
+public WebElement Report_report_NextButton() {
+return Report_report_NextButton;
+				}	
 	
 	@FindBy(xpath = "//page-fixed-asset-creation-item-dtl-update[1]/ion-header[1]/ion-toolbar[1]/ion-buttons[1]/ion-button[1]")
 	private WebElement fixedAsset_AssetAllocation_SaveButton;
@@ -257,5 +288,93 @@ return fixedAsset_AssetCreation_FixedAssetItems;
 							{
 								return inventory_view;
 							}
+//-------------anand page obj--------
+							@FindBy(xpath="//ion-button[@ng-reflect-router-link=\"/tabs/list/datagrid-view/129\"]")
+							private WebElement fixedasset_view_icon;
+							public WebElement fixedAssetViewIcon()
+							{
+								return fixedasset_view_icon;
+							}
+							@FindBy(xpath="//ion-fab-button[@id='addBtn']")
+							private WebElement fixed_asset_add_button;
+							public WebElement fixedAssetAddButton()
+							{
+								return fixed_asset_add_button;
+							}
+							@FindBy(xpath="//ion-col[2]/app-kub-lov[1]/span[1]/ng-select[1]/div[1]/div[1]/div[2]/input[1]")
+							private WebElement fixedasset_asset_reference_number;
+							public WebElement fixedAssetReferenceNumber()
+							{
+								return fixedasset_asset_reference_number;
+							}
+							@FindBy(xpath="//ion-col[6]//input")
+							private WebElement fixedasset_asset_item_no;
+							public WebElement fixedAssetAssetItemNo()
+							{
+								return fixedasset_asset_item_no;
+							}
+						    @FindBy(xpath="//ion-col[3]/ion-item[1]/ion-select[1]")
+						    private WebElement fixedasset_asset_transaction_type;
+						    public WebElement fixedAssetAssetTransactionType()
+						    {
+						    	return fixedasset_asset_transaction_type;
+						    }
+							@FindBy(xpath="//ion-col[5]/app-kub-display-field[1]/ion-item[1]/ion-input[1]/input[1]")
+							private WebElement fixed_asset_asset_description;
+							public WebElement fixedAssetAssetDescription()
+							{
+								return fixed_asset_asset_description;
+							}
+							@FindBy(xpath="//ion-item[1]/ion-radio")
+							private WebElement fixed_asset_transType_impairement;
+							public WebElement fixedAssetTransTypeImpairement()
+							{
+								return fixed_asset_transType_impairement;
+							}
+							
+							@FindBy(xpath="//ion-item[2]/ion-radio")
+							private WebElement fixed_asset_transType_writeOff;
+							public WebElement fixedAssetTransTypeWriteOff()
+							{
+								return fixed_asset_transType_writeOff;
+							}
+							
+							@FindBy(xpath = "//page-fixed-asset-impairment-update[1]/ion-header[1]/ion-toolbar[1]/ion-buttons[2]/ion-button")
+							private WebElement fixed_asset_save_button;
 
+							public WebElement fixedAssetSaveButton() {
+								return fixed_asset_save_button;
+
+							}
+							@FindBy(xpath="//ion-col[2]/app-kub-lov[1]/span[1]/ng-select[1]/div[1]/div[1]/div[2]/span[2]")
+							private WebElement fixed_asset_get_asset_referece_no;
+							public WebElement fixedAssetGetReferenceNo()
+							{
+								return fixed_asset_get_asset_referece_no;
+							}
+						    @FindBy(xpath="//i[@class='datatable-icon-right']")
+						    private WebElement fixed_asset_next_button;
+						    public WebElement fixedAssetNextButton()
+						    {
+						    	return fixed_asset_next_button;
+						    }
+						    @FindBy(xpath="//ion-input[@name='bookValue']/input")
+						    private WebElement fixedAsset_bookValue;
+						    public WebElement fixedAssetBookValue()
+						    {
+						    	return fixedAsset_bookValue;
+						    }
+						    @FindBy(xpath="//input[@id='assetAmt']")
+						    private WebElement fixedAsset_assetValue;
+						    public WebElement fixedAssetAssetValue()
+						    {
+						    	return fixedAsset_assetValue;
+						    }
+						    @FindBy(xpath="//div[contains(text(),'No items found')]")
+						    private WebElement fixedAsset_noList;
+						    public WebElement fixedAssetNoList()
+						    {
+						    	return fixedAsset_noList;
+						    }
+	
 }

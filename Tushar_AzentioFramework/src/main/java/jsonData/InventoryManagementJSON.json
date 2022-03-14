@@ -42,7 +42,7 @@
 	"GlDay":"1",
 	"GlToMonth":"Oct",
 	"GlFullToMonth":"October",
-	"GlToDate":"18",
+	"GlToDate":"19",
 	
 	"requestReferanceNo"    : "TRN_IR_82_20211228092903",
 		"returnQuantity"        : "2",
@@ -59,9 +59,21 @@
 		"requestRefNumber"		: "TRN_IR_128_20220207171025",
 		"itemCode"				: "MARKER-White boad Marker",
 		"issuerefnumber"		: "TRN_SI_22_20220204152730",
-		"Item Description"		: "Term Deposit Certificate"
+		"Item Description"		: "Term Deposit Certificate",
 		
-		// GL DATA
+		"AcceptStatus":"Yes",
+		
+		"ItemDescriptionForInvtItemDetails":"WHITEBOARD-WHITE BOARD",
+		
+		"RequestReferenceNumber":"TRN_IR_178_20220303122317",
+		"IndentReferenceNo":"TRN_PR_100_20220228131351",
+		"IssueReferenceNo":"TRN_SI_72_20220303122459",
+		"POReference":"Azentio_Soft-Agency-8-PO-120",
+		"ReturnType":"Found",
+		"Itemdescription":"STAPLERS-STAPLERS",
+		"ReturnTypeInventory":"Return to inventory",
+		"Voucher":"ADJ-63-32022"
+	 
 		
 	
 	

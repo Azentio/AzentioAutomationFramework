@@ -58,5 +58,33 @@ public class InventoryManagementTestDataType {
 	public String itemCode;
 	public String branchCode;
 	
+	public String AcceptStatus;
+	
+	
+	
+	public String ItemDescriptionForInvtItemDetails;
+	public String RequestReferenceNumber;
+	public String IndentReferenceNo;
+	public String IssueReferenceNo;
+	
+	public String POReference;
+	public String ReturnType;
+	
+	public String Itemdescription;
+	
+	public String ReturnTypeInventory;
+	
+	public String Voucher;
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 }

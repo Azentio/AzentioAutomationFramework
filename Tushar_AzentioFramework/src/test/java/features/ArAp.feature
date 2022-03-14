@@ -1,6 +1,6 @@
 Feature: Check the Functionality of AR/AP Module
 
-@TC_004 @multiauth
+@KUBS_AR/AP_UAT_001_001_TC_004 @multiauth
  
 Scenario: Create GRN against above create PO for above vendor
 
@@ -37,8 +37,7 @@ Then Click on the Direction
 
 Then Click on Accounts Payable
 Then Click on Good Recived Note GRN Eye buutton
-
-@TC_007	
+@KUBS_AR/AP_UAT_001_001_TC_007	
 Scenario: Verify Approved GRN Reference is available on Fixed Asset creation.
 
 Given Navigate to URL and user should login as a maker
@@ -51,7 +50,7 @@ Then Fill branch details for report
 Then Select date in calendar
 Then Click on View button
 
-@TC_003
+@KUBS_AR/AP_UAT_001_001_TC_003
 Scenario: Verify PO is emailed to Vendor post approval of PO	GRN should be created successfully 
 and displayed in approved queue with Active Status.
 
@@ -110,7 +109,7 @@ Then Click on Auto Payout edit grid
 Then Click on action button of record which we need to verify for details
 
 
-@KUBS_AR/AP_UAT_011_001
+@KUBS_AR/AP_UAT_011_001_TC_01
 Scenario: Cancellation of approved receipts	Cancel approved receipts through Cheque Mode
 
 Given Navigate to kubs URL and user should login as a maker
@@ -355,10 +354,21 @@ Then Fill branch details for report
 Then Select date in calendar
 Then Click on View button
 
+@KUBS_AR/AP_UAT_010_002_TC_04
+Scenario: Verify accounting entries for cleared cheques
 
+Given Navigate to URL and user should login as a maker
+Then click on report button
+And click Enquiry menu
+Then click on Edit icon near by financial transaction
+And choose branch code Id
 
-
-
+And click on transaction from date in calender icon
+Then choose from date in calender
+And click on the transaction to date in calender icon
+Then choose the To date in calender
+And click on view button to see the Record
+Then Verify record is available in the sheet or not
 
 
 

@@ -372,8 +372,9 @@ public class ArApObj {
 				public WebElement appropriation_Add_Button() {
 					return appropriation_Add_Button;
 				}
-				//next button 
-				@FindBy(xpath="(//i[@class='datatable-icon-right'])[2]")
+				//next button //report-data-grid[1]/ion-content[1]/div[1]/ngx-datatable[1]/div[1]/datatable-footer[1]/div[1]/datatable-pager[1]/ul[1]/li[8]/a[1]
+				//(//i[@class='datatable-icon-right'])[2]
+				@FindBy(xpath="//report-data-grid[1]/ion-content[1]/div[1]/ngx-datatable[1]/div[1]/datatable-footer[1]/div[1]/datatable-pager[1]/ul[1]/li[8]/a[1]")
 				  private WebElement apportion_NextRecord;
 				  public WebElement apportion_NextRecord()
 				  {

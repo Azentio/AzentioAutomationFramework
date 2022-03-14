@@ -591,7 +591,40 @@ public class ArAp {
 	    }
 
 	    	
-	    	
+	  //-----------------------KUBS_AR/AP_UAT_010_002_TC_04--------
+
+	    @Then("^Verify record is available in the sheet or not$")
+	    public void verify_record_is_available_in_the_sheet_or_not() throws Throwable {
+	    	arApTestDataType= jsonReader.getArApByName("Maker");
+	    	// div[contains(text(),'DEP-RR12345-20220303')]
+			Thread.sleep(1000);
+			javascripthelper.JavaScriptHelper(driver);
+			// javascriptHelper.scrollDownByPixel();
+			for (int i = 0; i <= 60; i++) {
+				try {
+					waithelper.waitForElementVisible(driver.findElement(By.xpath("//div[contains(text(),'"+arApTestDataType.ClearedChequeReferenceNumber+"')]")),
+							1000, 100);
+					boolean status = driver.findElement(By.xpath("//div[contains(text(),'"+arApTestDataType.ClearedChequeReferenceNumber+"')]")).isDisplayed();
+					// Assert.assertFalse(result);
+					break;
+
+				} catch (NoSuchElementException e) {
+				 
+					Thread.sleep(1000);
+			    	javascripthelper.JavaScriptHelper(driver);
+				 
+			        javascripthelper.scrollIntoView(arAPobj.apportion_NextRecord());
+			        waithelper.waitForElement(driver, 2000,arAPobj.apportion_NextRecord());
+			    	arAPobj.apportion_NextRecord().click();
+
+				}
+				if (i == 60) {
+					System.out.println("This is cleared cheque ");
+					break;
+
+				}
+			}
+	    }
 	    	
 	    	
 	    	

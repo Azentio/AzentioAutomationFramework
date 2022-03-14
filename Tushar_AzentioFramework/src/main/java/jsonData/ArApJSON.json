@@ -37,7 +37,9 @@
 "CreditNoteInInvoiceReferenceNumber":"CN-27-2022-02-25",
 
 "VendorORemployeeeName":"Bonton Agency",
-"GRNStatus":"Active"
+"GRNStatus":"Active",
+
+"ClearedChequeReferenceNumber":"DEP-RR12345-20220303"
 
 
 

@@ -432,6 +432,15 @@ public class InventoryManagamentObj {
 			return inventory_from_date;
 			
 		}
+		
+		
+		@FindBy(xpath="//app-inventory-items-details[1]/ion-content[1]/form[1]/ion-grid[1]/ion-row[1]/ion-col[2]/app-kub-date-time[1]/ion-item[1]/div[1]/span[1]")
+		private WebElement inventoryItemCalandar_report;
+		public WebElement inventoryItemCalandar_report()
+				{
+					return inventoryItemCalandar_report;
+					
+				}
 		@FindBy(xpath="(//span[@class='input-calendar'])[2]")
 		private WebElement inventory_to_date;
 		public WebElement inventoryToDate()
@@ -451,6 +460,206 @@ public class InventoryManagamentObj {
 			return inventory_view;
 		}
 		
+		
+		@FindBy(xpath="//app-inventory-items-details[1]/div[1]/ion-header[1]/ion-toolbar[1]/ion-buttons[1]/ion-button[1]")
+		private WebElement report_viewButton;
+		public WebElement report_viewButton()
+		{
+			return report_viewButton;
+		}
+		
+		
+		
+		
+		
+
+		@FindBy(xpath="//ion-list[1]/div[1]/ion-menu-toggle[15]/ion-item[1]/ion-buttons[1]/ion-button[1]")
+		private WebElement report_inventoryItemDetail_EditButton;
+		public WebElement report_inventoryItemDetail_EditButton()
+		{
+			return report_inventoryItemDetail_EditButton;
+		}
+		
+		
+		
+		
+		@FindBy(xpath="//ion-row[1]/ion-col[1]/app-kub-lov[1]/span[1]/ng-select[1]/div[1]/div[1]/div[2]/input[1]")
+		private WebElement report_inventoryItemDetail_ItemDescription;
+		public WebElement report_inventoryItemDetail_ItemDescription()
+		{
+			return report_inventoryItemDetail_ItemDescription;
+		}
+		
+		
+		@FindBy(xpath="//ion-menu[1]/ion-content[1]/custom-side-menu[1]/ion-list[1]/div[1]/ion-menu-toggle[16]/ion-item[1]/ion-buttons[1]/ion-button[1]")
+		private WebElement report_inventoryRequest_Editbutton;
+		public WebElement report_inventoryRequest_Editbutton()
+		{
+			return report_inventoryRequest_Editbutton;
+		}
+			
+		@FindBy(xpath="//ion-grid[1]/ion-row[1]/ion-col[1]/app-kub-lov[1]/span[1]/ng-select[1]/div[1]/div[1]/div[2]/input[1]")
+		private WebElement report_inventoryRequest_RequestReferenceNo;
+		public WebElement report_inventoryRequest_RequestReferenceNo()
+		{
+			return report_inventoryRequest_RequestReferenceNo;
+		}
+		
+		@FindBy(xpath="//app-inventory-request-report[1]/ion-content[1]/form[1]/ion-grid[1]/ion-row[1]/ion-col[2]/app-kub-date-time[1]/ion-item[1]/div[1]/span[1]")
+		private WebElement report_inventoryRequest_calanderbutton;
+		public WebElement report_inventoryRequest_calanderbutton()
+		{
+			return report_inventoryRequest_calanderbutton;
+		}
+		//ReportNext
+		@FindBy(xpath = "//tbody/tr[2]/td[7]/input[1]\"")
+		private WebElement Report_report_NextButton;
+
+		public WebElement Report_report_NextButton() {
+		return Report_report_NextButton;
+						}	
+		
+		
+		@FindBy(xpath="//div[1]/ion-router-outlet[1]/app-inventory-request-report[1]/div[1]/ion-header[1]/ion-toolbar[1]/ion-buttons[1]/ion-button[1]")
+		private WebElement report_inventoryRequest_viewbutton;
+		public WebElement report_inventoryRequest_viewbutton()
+		{
+			return report_inventoryRequest_viewbutton;
+		}	
+		
+		
+		@FindBy(xpath="//custom-side-menu[1]/ion-list[1]/div[1]/ion-menu-toggle[18]/ion-item[1]/ion-buttons[1]/ion-button[1]")
+		private WebElement report_PurchaseRequsition_editbutton;
+		public WebElement report_PurchaseRequsition_editbutton()
+		{
+			return report_PurchaseRequsition_editbutton;
+		}	
+			
+		@FindBy(xpath="//ion-grid[1]/ion-row[1]/ion-col[1]/app-kub-lov[1]/span[1]/ng-select[1]/div[1]/div[1]/div[2]/input[1]")
+		private WebElement report_PurchaseRequsition_IndentReferenceNo;
+		public WebElement report_PurchaseRequsition_IndentReferenceNo()
+		{
+			return report_PurchaseRequsition_IndentReferenceNo;
+		}	
+		@FindBy(xpath="//app-purchase-requisition[1]/div[1]/ion-header[1]/ion-toolbar[1]/ion-buttons[1]/ion-button[1]/a[1]")
+		private WebElement report_PurchaseRequsition_viewbutton;
+		public WebElement report_PurchaseRequsition_viewbutton()
+		{
+			return report_PurchaseRequsition_viewbutton;
+		}	
+				
+		@FindBy(xpath="//ion-content[1]/form[1]/ion-grid[1]/ion-row[1]/ion-col[2]/app-kub-date-time[1]/ion-item[1]/div[1]/span[1]")
+		private WebElement report_PurchaseRequsition_calanderbutton;
+		public WebElement report_PurchaseRequsition_calanderbutton()
+		{
+			return report_PurchaseRequsition_calanderbutton;
+		}	
+			
+			
+		
+		@FindBy(xpath="//custom-side-menu[1]/ion-list[1]/div[1]/ion-menu-toggle[20]/ion-item[1]/ion-buttons[1]/ion-button[1]")
+		private WebElement report_StockIssuance_editbutton;
+		public WebElement report_StockIssuance_editbutton()
+		{
+			return report_StockIssuance_editbutton;
+		}	
+		
+		@FindBy(xpath="//form[1]/ion-grid[1]/ion-row[1]/ion-col[1]/app-kub-lov[1]/span[1]/ng-select[1]/div[1]/div[1]/div[2]/input[1]")
+		private WebElement report_StockIssuance_IssuanceReffrenceNo;
+		public WebElement report_StockIssuance_IssuanceReffrenceNo()
+		{
+			return report_StockIssuance_IssuanceReffrenceNo;
+		}	
+		
+		@FindBy(xpath="//a[contains(text(),'View')]")
+		private WebElement report_StockIssuance_ViewButton;
+		public WebElement report_StockIssuance_ViewButton()
+		{
+			return report_StockIssuance_ViewButton;
+		}	
+		
+		
+		@FindBy(xpath="//ion-header/ion-toolbar[1]/ion-buttons[1]/ion-button[1]")
+		private WebElement report_inventoryStockReceipt_ViewButton;
+		public WebElement report_inventoryStockReceipt_ViewButton()
+		{
+			return report_inventoryStockReceipt_ViewButton;
+		}			
+		
+		@FindBy(xpath="//ion-grid[1]/ion-row[1]/ion-col[1]/app-kub-lov[1]/span[1]/ng-select[1]/div[1]/div[1]/div[2]/input[1]")
+		private WebElement report_inventoryStockReceipt_POReferenceTextbox;
+		public WebElement report_inventoryStockReceipt_POReferenceTextbox()
+		{
+			return report_inventoryStockReceipt_POReferenceTextbox;
+		}	
+		
+		
+
+		@FindBy(xpath="//custom-side-menu[1]/ion-list[1]/div[1]/ion-menu-toggle[17]/ion-item[1]/ion-buttons[1]/ion-button[1]")
+		private WebElement report_inventoryStockReceipt_EditButton;
+		public WebElement report_inventoryStockReceipt_EditButton()
+		{
+			return report_inventoryStockReceipt_EditButton;
+		}
+		@FindBy(xpath="//custom-side-menu[1]/ion-list[1]/div[1]/ion-menu-toggle[21]/ion-item[1]/ion-buttons[1]/ion-button[1]")
+		private WebElement report_StockReturn_EditButton;
+		public WebElement report_StockReturn_EditButton()
+		{
+			return report_StockReturn_EditButton;
+		}
+		@FindBy(xpath="//ion-grid[1]/ion-row[1]/ion-col[1]/app-kub-lov[1]/span[1]/ng-select[1]/div[1]/div[1]/div[2]/input[1]")
+		private WebElement report_StockReturn_returntype_Textbox;
+		public WebElement report_StockReturn_returntype_Textbox()
+		{
+			return report_StockReturn_returntype_Textbox;
+		}
+		@FindBy(xpath="//custom-side-menu[1]/ion-list[1]/div[1]/ion-menu-toggle[22]/ion-item[1]/ion-buttons[1]/ion-button[1]")
+		private WebElement report_FundRequsitionReport_EditButton;
+		public WebElement report_FundRequsitionReport_EditButton()
+		{
+			return report_FundRequsitionReport_EditButton;
+		}
+		
+			
+		
+		@FindBy(xpath="//form[1]/ion-grid[1]/ion-row[1]/ion-col[1]/app-kub-date-time[1]/ion-item[1]/div[1]/span[1]")
+		private WebElement report_FundRequsitionReport_CalendarButton;
+		public WebElement report_FundRequsitionReport_CalendarButton()
+		{
+			return report_FundRequsitionReport_CalendarButton;
+		}
+		
+		
+		
+		@FindBy(xpath="//custom-side-menu[1]/ion-list[1]/div[1]/ion-menu-toggle[15]/ion-item[1]/ion-buttons[1]/ion-button[1]")
+		private WebElement report_InventoryItemDetails_EditButton;
+		public WebElement report_InventoryItemDetails_EditButton()
+		{
+			return report_InventoryItemDetails_EditButton;
+		}
+		
+		@FindBy(xpath="//form[1]/ion-grid[1]/ion-row[1]/ion-col[1]/app-kub-lov[1]/span[1]/ng-select[1]/div[1]/div[1]/div[2]/input[1]")
+		private WebElement report_InventoryItemDetails_ItemDescription_textbox;
+		public WebElement report_InventoryItemDetails_ItemDescription_textbox()
+		{
+			return report_InventoryItemDetails_ItemDescription_textbox;
+		}	
+		
+		@FindBy(xpath="//app-inventory-items-details[1]/div[1]/ion-header[1]/ion-toolbar[1]/ion-buttons[1]/ion-button[1]")
+		private WebElement report_InventoryItemDetails_ViewButton;
+		public WebElement report_InventoryItemDetails_ViewButton()
+		{
+			return report_InventoryItemDetails_ViewButton;
+		}	
+		
+			
+		@FindBy(xpath="//li[8]/a/i")
+		private WebElement inventory_Next;
+		public WebElement inventory_Next()
+		{
+			return inventory_Next;
+		}
+
 	//---------------------arshat page obj----
 		
 
@@ -946,10 +1155,23 @@ public class InventoryManagamentObj {
 		}
 		
 	 
+		@FindBy(xpath = "//ion-list[1]/div[1]/ion-menu-toggle[19]/ion-item[1]/ion-buttons[1]/ion-button[1]") 
+		private WebElement Report_report_StockConfirmationReport;
+
+		public WebElement Report_report_StockConfirmationReport() {
+
+			return Report_report_StockConfirmationReport;
+		}
+			
+		@FindBy(xpath = "//span[1]/ng-select[1]/div[1]/div[1]/div[2]/input[1]") 
+		private WebElement Report_report_StockConfirmationReport_acceptStatus;
+
+		public WebElement Report_report_StockConfirmationReport_acceptStatus() {
+
+			return Report_report_StockConfirmationReport_acceptStatus;
+		}	
 		
-		
-		
-		
+		 	
 		
 		
 		

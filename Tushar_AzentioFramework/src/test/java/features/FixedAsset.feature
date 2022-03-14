@@ -1,4 +1,4 @@
-Feature: Check the Functionality of Fixed Asset
+Feature: Check the Functionality of Fixed Asset module
 
 @KUBS_FAT_UAT_002_001 @multiauth
 
@@ -223,6 +223,136 @@ Then Click on calander to set desire date
 Then click on Start the job
 Then Click on refresh button
 Then login with maker to check if date is changed or not
+
+@KUBS_FAT_UAT_004_002
+Scenario: Check the accounting Entries
+
+Given Navigate to URL and user should login as a maker
+Then click on report button
+And click Enquiry menu
+Then click on Edit icon near by financial transaction
+And choose branch code Id
+Then choose Gl code Id
+And click on transaction from date in calender icon
+Then choose from date in calender
+And click on the transaction to date in calender icon
+Then choose the To date in calender
+And click on view button to see the Record
+
+@KUBS_FAT_UAT_004_004
+
+Scenario: Check the accounting Entries
+
+Given Navigate to URL and user should login as a maker
+Then click on report button
+And click Enquiry menu
+
+Then click on Edit icon near by financial transaction
+And choose branch code Id
+Then choose Gl code Id
+And click on transaction from date in calender icon
+Then choose from date in calender
+
+And click on the transaction to date in calender icon
+Then choose the To date in calender
+And click on view button to see the Record
+
+
+@KUBS_FAT_UAT_005_004
+Scenario: Check accounting entries
+
+Given Navigate to URL and user should login as a maker
+Then click on report button
+And click Enquiry menu
+Then click on Edit icon near by financial transaction
+And choose branch code Id
+
+And click on transaction from date in calender icon
+Then choose from date in calender
+And click on the transaction to date in calender icon
+Then choose the To date in calender
+And click on view button to see the Record
+
+Then validate voucher number
+
+@KUBS_FAT_UAT_005_008
+
+Scenario: Check accounting entries
+
+Given Navigate to URL and user should login as a maker
+Then click on report button
+And click Enquiry menu
+Then click on Edit icon near by financial transaction
+And choose branch code Id
+
+And click on transaction from date in calender icon
+Then choose from date in calender
+And click on the transaction to date in calender icon
+Then choose the To date in calender
+And click on view button to see the Record
+
+Then validate voucher number
+
+@KUBS_FAT_UAT_004_005
+
+Scenario: Check the Tax/GST on asset sale accordingly
+
+Given Navigate to URL and user should login as a maker
+Then click on report button
+And click Enquiry menu
+Then click on Edit icon near by financial transaction
+And choose branch code Id
+
+And click on transaction from date in calender icon
+Then choose from date in calender
+And click on the transaction to date in calender icon
+Then choose the To date in calender
+And click on view button to see the Record
+
+Then validate voucher number
+
+@KUBS_FAT_UAT_010_002
+Scenario: Check the accounting entries
+
+Given Navigate to URL and user should login as a maker
+Then click on report button
+And click Enquiry menu
+Then click on Edit icon near by financial transaction
+And choose branch code Id
+
+And click on transaction from date in calender icon
+Then choose from date in calender
+And click on the transaction to date in calender icon
+Then choose the To date in calender
+And click on view button to see the Record
+
+@KUBS_FAT_UAT_013_005
+Scenario: Check Asset GL
+Given Navigate to URL and user should login as a maker
+Then click on report segment button
+And click on equiry menu
+Then click on edit icon near by fiancial transaction menu
+And choose branch code
+And choose Gl code
+And click on transaction from date calender icon
+Then choose the from date
+And click on the transaction to date calender icon
+Then choose the to date
+And click on view button
+
+Then validate voucher number
+
+@KUBS_FAT_UAT_013_007
+Scenario: Check Asset Creation(Common)
+
+Given Navigate to URL and user should login as a maker
+Then click on report button
+Then Click on Report Tab
+
+Then Click on Asset Creation Common Edit Grid
+Then Fill the form
+Then Click on view button to see Asset Creation report
+
 
 
 

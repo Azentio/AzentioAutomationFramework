@@ -37,6 +37,10 @@ public class ArApTestDataType {
 	
 	public String CreditNoteInInvoiceReferenceNumber;
 	
+	
 	public String VendorORemployeeeName;
 	public String GRNStatus;
+	
+	
+	public String ClearedChequeReferenceNumber;
 }
