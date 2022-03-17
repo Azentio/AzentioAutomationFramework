@@ -370,29 +370,157 @@ Then choose the To date in calender
 And click on view button to see the Record
 Then Verify record is available in the sheet or not
 
+@KUBS_AR/AP_UAT_001_007_TC_03
+Scenario: Verify Balance sheet post Bill is approved.
+Given Navigate to URL and user should login as a maker
+Then click on report button
+And click Enquiry menu
+Then click on Edit icon near by financial transaction
+And choose branch code Id
+
+And click on transaction from date in calender icon
+Then choose from date in calender
+And click on the transaction to date in calender icon
+Then choose the To date in calender
+And click on view button to see the Record
+Then Verify record is available in the sheet or not
+
+
+@KUBS_AR/AP_UAT_001_010_TC_02
+Scenario: Verify Balance sheet post Bill is approved.
+
+Given Navigate to URL and user should login as a maker
+Then click on report button
+And click Enquiry menu
+Then click on Edit icon near by financial transaction
+And choose branch code Id
+
+And click on transaction from date in calender icon
+Then choose from date in calender
+And click on the transaction to date in calender icon
+Then choose the To date in calender
+And click on view button to see the Record
+Then Verify record is available in the sheet or not
+
+@KUBS_AR/AP_UAT_002_TC_03
+Scenario: Verify Balance sheet post Debit Note is approved.
+
+Given Navigate to URL and user should login as a maker
+Then click on report button
+And click Enquiry menu
+Then click on Edit icon near by financial transaction
+And choose branch code Id
+
+And click on transaction from date in calender icon
+Then choose from date in calender
+And click on the transaction to date in calender icon
+Then choose the To date in calender
+And click on view button to see the Record
+Then Verify record is available in the sheet or not
+
+@KUBS_AR/AP_UAT_002_002_TC_03
+Scenario: Verify Balance sheet post Crdit Note is approved.
+
+Given Navigate to URL and user should login as a maker
+Then click on report button
+And click Enquiry menu
+Then click on Edit icon near by financial transaction
+And choose branch code Id
+
+And click on transaction from date in calender icon
+Then choose from date in calender
+And click on the transaction to date in calender icon
+Then choose the To date in calender
+And click on view button to see the Record
+Then Verify record is available in the sheet or not
+
+@KUBS_AR/AP_UAT_004_007_TC_05
+Scenario: Verify Balance sheet post payment settlement approval.
+ 
+Given Navigate to URL and user should login as a maker
+Then click on report button
+And click Enquiry menu
+Then click on Edit icon near by financial transaction
+And choose branch code Id
+
+And click on transaction from date in calender icon
+Then choose from date in calender
+And click on the transaction to date in calender icon
+Then choose the To date in calender
+And click on view button to see the Record
+Then Verify record is available in the sheet or not
+
+
+ 
+
+@KUBS_AR/AP_UAT_005_001_TC_05
+Scenario: Verify Balance sheet post payment settlement cancellation.
+
+Given Navigate to URL and user should login as a maker
+Then click on report button
+And click Enquiry menu
+Then click on Edit icon near by financial transaction
+And choose branch code Id
+
+And click on transaction from date in calender icon
+Then choose from date in calender
+And click on the transaction to date in calender icon
+Then choose the To date in calender
+And click on view button to see the Record
+Then Verify record is available in the sheet or not
+
+
+ 
 
 
 
+@KUBS_AR/AP_UAT_005_002_TC_04
+
+Scenario: Verify Balance sheet post payment settlement approval.
 
 
+Given Navigate to URL and user should login as a maker
+Then click on report button
+And click Enquiry menu
+Then click on Edit icon near by financial transaction
+And choose branch code Id
 
+And click on transaction from date in calender icon
+Then choose from date in calender
+And click on the transaction to date in calender icon
+Then choose the To date in calender
+And click on view button to see the Record
+Then Verify record is available in the sheet or not
 
+@KUBS_AR/AP_UAT_004_004_TC_05
+Scenario: Verify Balance sheet post payment settlement approval.
+Given Navigate to URL and user should login as a maker
+Then click on report button
+And click Enquiry menu
+Then click on Edit icon near by financial transaction
+And choose branch code Id
 
+And click on transaction from date in calender icon
+Then choose from date in calender
+And click on the transaction to date in calender icon
+Then choose the To date in calender
+And click on view button to see the Record
+Then Verify record is available in the sheet or not
 
+@KUBS_AR/AP_UAT_006_001_TC_03
+Scenario: Verify Balance sheet post payout approval
+Given Navigate to URL and user should login as a maker
+Then click on report button
+And click Enquiry menu
+Then click on Edit icon near by financial transaction
+And choose branch code Id
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+And click on transaction from date in calender icon
+Then choose from date in calender
+And click on the transaction to date in calender icon
+Then choose the To date in calender
+And click on view button to see the Record
+Then Verify record is available in the sheet or not
 
 
 

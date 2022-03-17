@@ -69,7 +69,7 @@ public class FixedAsset {
 
 	    @Then("^Click on the Finance$")
 	    public void click_on_the_finance() throws Throwable {
-	    	
+	    	System.out.println("Click on finance");
 	    }
 
 	    @Then("^Click on the Direction$")

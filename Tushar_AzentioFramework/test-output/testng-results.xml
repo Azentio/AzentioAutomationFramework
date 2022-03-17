@@ -1,55 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="1" passed="0" failed="1" skipped="0">
+<testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2022-03-14T11:47:41 IST" name="Default suite" finished-at="2022-03-14T11:48:30 IST" duration-ms="48432">
+  <suite started-at="2022-03-15T16:59:01 IST" name="Default suite" finished-at="2022-03-15T17:00:49 IST" duration-ms="108572">
     <groups>
       <group name="cucumber">
         <method signature="AbstractTestNGCucumberTests.runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:Runner.TestApplication@3ba987b8]" name="runScenario" class="io.cucumber.testng.AbstractTestNGCucumberTests"/>
       </group> <!-- cucumber -->
     </groups>
-    <test started-at="2022-03-14T11:47:41 IST" name="Default test" finished-at="2022-03-14T11:48:30 IST" duration-ms="48432">
+    <test started-at="2022-03-15T16:59:01 IST" name="Default test" finished-at="2022-03-15T17:00:49 IST" duration-ms="108572">
       <class name="Runner.TestApplication">
-        <test-method is-config="true" signature="beforeExecution()[pri:0, instance:Runner.TestApplication@3ba987b8]" started-at="2022-03-14T11:47:41 IST" name="beforeExecution" finished-at="2022-03-14T11:47:41 IST" duration-ms="6" status="PASS">
+        <test-method is-config="true" signature="beforeExecution()[pri:0, instance:Runner.TestApplication@3ba987b8]" started-at="2022-03-15T16:59:01 IST" name="beforeExecution" finished-at="2022-03-15T16:59:01 IST" duration-ms="6" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeExecution -->
-        <test-method is-config="true" signature="setUpClass()[pri:0, instance:Runner.TestApplication@3ba987b8]" started-at="2022-03-14T11:47:41 IST" name="setUpClass" finished-at="2022-03-14T11:47:43 IST" duration-ms="1464" status="PASS">
+        <test-method is-config="true" signature="setUpClass()[pri:0, instance:Runner.TestApplication@3ba987b8]" started-at="2022-03-15T16:59:01 IST" name="setUpClass" finished-at="2022-03-15T16:59:02 IST" duration-ms="1140" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUpClass -->
-        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:Runner.TestApplication@3ba987b8]" started-at="2022-03-14T11:47:43 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2022-03-14T11:48:17 IST" duration-ms="33841" status="FAIL">
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:Runner.TestApplication@3ba987b8]" started-at="2022-03-15T16:59:02 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2022-03-15T17:00:42 IST" duration-ms="100480" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA["Check stock return to vendors"]]>
+                <![CDATA["Verify Balance sheet post Crdit Note is approved."]]>
               </value>
             </param>
             <param index="1">
               <value>
-                <![CDATA["Optional[Check the Functionality of Inventory]"]]>
+                <![CDATA["Optional[Check the Functionality of AR/AP Module]"]]>
               </value>
             </param>
           </params>
-          <exception class="java.lang.NullPointerException">
-            <message>
-              <![CDATA[Cannot invoke "helper.BrowserHelper.SwitchToWindow(int)" because "this.browserHelper" is null]]>
-            </message>
-            <full-stacktrace>
-              <![CDATA[java.lang.NullPointerException: Cannot invoke "helper.BrowserHelper.SwitchToWindow(int)" because "this.browserHelper" is null
-at stepdefinitions.InventoryManagament.verify_the_approved_record_is_available_in_the_report(InventoryManagament.java:1556)
-at ✽.verify the approved record is available in the report(file:///C:/Users/inindc00082/git/repository2/Tushar_AzentioFramework/src/test/java/features/InventoryManagement.feature:399)
-]]>
-            </full-stacktrace>
-          </exception> <!-- java.lang.NullPointerException -->
           <reporter-output>
           </reporter-output>
         </test-method> <!-- runScenario -->
-        <test-method is-config="true" signature="tearDownClass()[pri:0, instance:Runner.TestApplication@3ba987b8]" started-at="2022-03-14T11:48:17 IST" name="tearDownClass" finished-at="2022-03-14T11:48:30 IST" duration-ms="12986" status="PASS">
+        <test-method is-config="true" signature="tearDownClass()[pri:0, instance:Runner.TestApplication@3ba987b8]" started-at="2022-03-15T17:00:42 IST" name="tearDownClass" finished-at="2022-03-15T17:00:49 IST" duration-ms="6891" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDownClass -->
-        <test-method is-config="true" signature="afterExecution()[pri:0, instance:Runner.TestApplication@3ba987b8]" started-at="2022-03-14T11:48:30 IST" name="afterExecution" finished-at="2022-03-14T11:48:30 IST" duration-ms="132" status="PASS">
+        <test-method is-config="true" signature="afterExecution()[pri:0, instance:Runner.TestApplication@3ba987b8]" started-at="2022-03-15T17:00:49 IST" name="afterExecution" finished-at="2022-03-15T17:00:49 IST" duration-ms="122" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterExecution -->

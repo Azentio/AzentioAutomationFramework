@@ -52,13 +52,14 @@ public class ArAp {
 	ConfigFileReader configFileReader = new ConfigFileReader();
 	ClicksAndActionsHelper clicksAndActionHelper = new ClicksAndActionsHelper(driver);
 	BUDGET_BudgetTransferObj budgetTransferObj = new BUDGET_BudgetTransferObj(driver);
+	ClicksAndActionsHelper clickAndActionHelper=new ClicksAndActionsHelper(driver);
 	String referance_id;
 	KUBS_MakerObj makerobj;
 	DropDownHelper dropdownhelper;
 	KUBS_CheckerObj kubschecker;
 	JavascriptHelper javascript;
 	FixedAssetObj fixedAssetObj = new FixedAssetObj(driver);
-	ArApTestDataType arApTestDataType = new ArApTestDataType();
+	ArApTestDataType arApTestDataType =  jsonReader.getArApByName("Maker");
 	ArApObj arAPobj = new ArApObj(driver);
 	
 	//-----------------TC_007 Verify Approved GRN Reference is available on Fixed Asset creation-------
@@ -67,7 +68,6 @@ public class ArAp {
 		  waithelper.waitForElement(driver, 2000,  arAPobj.report_button());
 		  arAPobj.report_button().click();
 	    }
-
 	    @Then("^Click on Finincial Reporting tab$")
 	    public void click_on_finincial_reporting_tab() throws Throwable {
 	    	  waithelper.waitForElement(driver, 2000,arAPobj.financial_Reporting());
@@ -82,7 +82,7 @@ public class ArAp {
 
 	    @Then("^Fill branch details for report$")
 	    public void fill_branch_details_for_report() throws Throwable {
-	    	arApTestDataType= jsonReader.getArApByName("Maker");
+	    	 
 	    	waithelper.waitForElement(driver, 2000,arAPobj.balanceSheetReport_branch_textbox());
 	    	arAPobj.balanceSheetReport_branch_textbox().click();
 	    	arAPobj.balanceSheetReport_branch_textbox().sendKeys(arApTestDataType.BranchCode);
@@ -95,7 +95,7 @@ public class ArAp {
 	    	waithelper.waitForElement(driver, 2000,arAPobj.calendar_button());
 	    	arAPobj.calendar_button().click();
 	    	javascripthelper.JavaScriptHelper(driver);
-	    	ClicksAndActionsHelper clickAndActionHelper=new ClicksAndActionsHelper(driver);
+	    	
 	    	arApTestDataType= jsonReader.getArApByName("Maker");
 	    	fixedAssetTestDataType= jsonReader.getFixedAssetByName("Maker");
 	    	
@@ -104,7 +104,7 @@ public class ArAp {
 	        {
 			try
 			{
-			
+			//GL month,Year
 				waithelper.waitForElement(driver, 3000, driver.findElement(By.xpath("//span[contains(text(),'"+fixedAssetTestDataType.GlToMonth+" "+fixedAssetTestDataType.GlYear+"')]")));
 				WebElement monthAndYear=driver.findElement(By.xpath("//span[contains(text(),'"+fixedAssetTestDataType.GlToMonth+" "+fixedAssetTestDataType.GlYear+"')]"));
 				Thread.sleep(2000);
@@ -113,10 +113,12 @@ public class ArAp {
 			
 			catch(NoSuchElementException nosuchElement)
 			{
+				//Next button for chhanging month
 				fixedAssetObj.inventoryNextMonth().click();
 			}
 			}
 	    	Thread.sleep(2000);
+	    	//Click the final date
 			WebElement FinalDay=driver.findElement(By.xpath("//td[@aria-label='"+fixedAssetTestDataType.GlFullToMonth+" "+fixedAssetTestDataType.GlToDate+", "+fixedAssetTestDataType.GlYear+"']/span"));
 			clickAndActionHelper.doubleClick(FinalDay);
 		
@@ -220,7 +222,7 @@ public class ArAp {
 	    public void click_on_save_button_to_save_the_record_for_account_recivable() throws Throwable {
 	    	waithelper.waitForElement(driver, 2000,arAPobj.accountReceviableAdvances_Save_Button());
 	    	arAPobj.accountReceviableAdvances_Save_Button().click();
-	    	Thread.sleep(3000);
+	    	Thread.sleep(2000);
 	    }
 	
 //------------------------@KUBS_AR/AP_UAT_002_004 @TC_03	Verify creating advane against PO with amount greater than PO amount is not allowed---
@@ -278,7 +280,7 @@ public class ArAp {
 	        
 	    	waithelper.waitForElement(driver, 2000,arAPobj.accountPayable_AutoPayout_ActionButton());
 	    	arAPobj.accountPayable_AutoPayout_ActionButton().click(); 	
-	    	Thread.sleep(5000);
+	    	Thread.sleep(2000);
 	    	Assert.assertTrue(arAPobj.accountPayable_AutoPayout_BeneficiaryName().isDisplayed());
 	    	Assert.assertTrue(arAPobj.accountPayable_AutoPayout_AccountNumber().isDisplayed());
 	    	Assert.assertTrue(arAPobj.accountPayable_AutoPayout_PaymentMode().isDisplayed());
@@ -587,7 +589,7 @@ public class ArAp {
 	    	arAPobj.report_Report_GRNReport_GRNStatus().click();
 	    	arAPobj.report_Report_GRNReport_GRNStatus().sendKeys(arApTestDataType.GRNStatus);
 	    	arAPobj.report_Report_GRNReport_GRNStatus().sendKeys(Keys.ENTER);
-	    	Thread.sleep(10000);
+	    	Thread.sleep(5000);
 	    }
 
 	    	

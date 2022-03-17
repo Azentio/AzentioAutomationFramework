@@ -352,7 +352,7 @@ Then Click on Report Tab
 Then Click on Asset Creation Common Edit Grid
 Then Fill the form
 Then Click on view button to see Asset Creation report
-
+Then verify the approved record is available in the report
 
 
 

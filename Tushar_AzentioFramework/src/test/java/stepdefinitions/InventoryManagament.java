@@ -1559,8 +1559,8 @@ public void verify_the_approved_record_is_available_in_the_report() throws Throw
 	{
 	try
 	{
-	javascripthelper.scrollIntoView(driver.findElement(By.xpath("//div[contains(text(),'"+inventoryManagementTestDataType.Voucher+"')]")));
-	driver.findElement(By.xpath("//div[contains(text(),'"+inventoryManagementTestDataType.Voucher+"')]")).isDisplayed();
+	javascripthelper.scrollIntoView(driver.findElement(By.xpath("//div[contains(text(),'+inventoryManagementTestDataType.Voucher+')]")));
+	driver.findElement(By.xpath("//div[contains(text(),'+inventoryManagementTestDataType.Voucher+')]")).isDisplayed();
 	break;
 	}
 	catch(NoSuchElementException e)
