@@ -45,9 +45,13 @@ public class ARAP_ARandAPData {
 	public String ReceiptRefNo;
 	public String ReceiptType;
 	public String ReceiptType1;
+	public String TxnNo;
 	
 	public String InvoiceNoBill;
 	public String InvoiceNoAuto;
+	public String InvoiceTax;
+	public String InvoiceRec;
+	public String InvoiceImburse;
 	public String PanNoReport;
 	public String ContractType;
 	public String BusinessPartnerName;

@@ -24,11 +24,11 @@ Scenario: Verify Accounts Payable Report post bill is approved.
 Given Navigate The Azentio Url
 Then Choose the second Tab Segment
 And Click On Main module Accounts payable
-Then Click sub module Payment settlement Eye Icon
+Then Open Invoice Bill Booking Eye icon
 And Click On Search Icon
-Then Give Pan Number in Payment settlement
+Then Give Invoice Number in Invoice Bill
 Then Click on Table Row First Eye Icon
-And Get Business Partner name in Payment settlement
+And Get Business Partner name in Invoice Bill
 Then Third Segment report Icon
 And Click main module Reports
 Then Click sub module Accounts Payable Report
@@ -37,6 +37,24 @@ Then Give Current business Date
 And Give Accounts Payable Status
 Then Click on View button
 And Verify the Accounts Payable Report is correctly displayed
+
+@KUBS_AR_AP_UAT_001_005_TC_07
+Scenario: Verify Balance sheet post Bill is approved
+Given Navigate The Azentio Url
+Then Choose the second Tab Segment
+And Click On Main module Accounts payable
+Then Open Invoice Bill Booking Eye icon
+And Click On Search Icon
+Then Click on Table Row First Eye Icon
+And Get the Branch Name
+Then Get the Transaction Date
+Then Third Segment report Icon
+And Click on Financial Reporting module
+Then Click on Balance sheet Sub module
+And Give Getted Branch code 
+Then Give Getted Transaction Date
+Then Click on Balance sheet View button
+And verify Balance sheet post Bill is approved
 
 @KUBS_AR_AP_UAT_001_006_TC_03
 Scenario: Accounting entries post Bill is approved
@@ -58,6 +76,145 @@ Then Select To date in calender
 And Click View HyperLink
 Then Verify Accounting entries post Bill is approved Auto generate bills
 
+@KUBS_AR_AP_UAT_001_008_TC_01
+Scenario: Verify Accounting entries post Bill is approved
+Given Navigate The Azentio Url
+Then Choose the second Tab Segment
+And Click On Main module Accounts payable
+Then Open Invoice Bill Booking Eye icon
+And Click On Search Icon
+Then Give the Invoice Number for Mapped Tax category
+Then Click on Table Row First Eye Icon
+Then Third Segment report Icon
+And Choose Enquiry Module
+Then Click Note iCon near by financial transction
+And choose branch code
+And click on transaction from date in calender
+Then Select from date in calender
+And click on transaction to date in calender icon
+Then Select To date in calender
+And Click View HyperLink
+Then Verify Accounting entries post Bill is approved Tax category
+
+@KUBS_AR_AP_UAT_001_008_TC_03
+Scenario: Verify Accounts Payable Report post bill is approved
+Given Navigate The Azentio Url
+Then Choose the second Tab Segment
+And Click On Main module Accounts payable
+Then Open Invoice Bill Booking Eye icon
+And Click On Search Icon
+Then Give the Invoice Number for Mapped Tax category
+Then Click on Table Row First Eye Icon
+And Get Business Partner name for Invoice Bill
+Then Third Segment report Icon
+And Click main module Reports
+Then Click sub module Accounts Payable Report
+And Give Getted Business Partner Name
+Then Give Current business Date
+And Give Accounts Payable Status
+Then Click on View button
+And Verify the Accounts Payable Report is displayed correctly
+
+@KUBS_AR_AP_UAT_001_009_TC_01
+Scenario: Verify Accounting entries post Bill is approved
+Given Navigate The Azentio Url
+Then Choose the second Tab Segment
+And Click On Main module Accounts payable
+Then Open Invoice Bill Booking Eye icon
+And Click On Search Icon
+Then Give Invoice Number in Invoice Bill for Reimbursement 
+Then Click on Table Row First Eye Icon
+And Get Business Partner name for Invoice Bill
+Then Third Segment report Icon
+And Choose Enquiry Module
+Then Click Note iCon near by financial transction
+And choose branch code
+And click on transaction from date in calender
+Then Select from date in calender
+And click on transaction to date in calender icon
+Then Select To date in calender
+And Click View HyperLink
+Then Verify Accounting entries post Bill is approved is Display
+
+@KUBS_AR_AP_UAT_001_009_TC_02
+Scenario: Verify Balance sheet post Bill is approved
+Given Navigate The Azentio Url
+Then Choose the second Tab Segment
+And Click On Main module Accounts Receivable
+Then Click on Accounts Receive Advances Eye Icon
+And Click On Search Icon
+Then Enter Active Value In Advance Status
+Then Enter Advance to employee and Active Value In Advance Status
+Then Click on Table Row First Eye Icon
+And Get the Branch Name
+Then Get the Transaction Date
+Then Third Segment report Icon
+And Click on Financial Reporting module
+Then Click on Balance sheet Sub module
+And Give Getted Branch code 
+Then Give Getted Transaction Date
+Then Click on Balance sheet View button
+And verify Balance sheet post Bill is approved
+
+@KUBS_AR_AP_UAT_001_009_TC_03
+Scenario: Verify Accounts Payable Report post bill is approved
+Given Navigate The Azentio Url
+Then Choose the second Tab Segment
+And Click On Main module Accounts payable
+Then Open Invoice Bill Booking Eye icon
+And Click On Search Icon
+Then Give Invoice Number in Invoice Bill for Reimbursement 
+Then Click on Table Row First Eye Icon
+And Get Business Partner name for Invoice Bill
+Then Third Segment report Icon
+And Click main module Reports
+Then Click sub module Accounts Payable Report
+And Give Getted Business Partner Name
+Then Give Current business Date
+And Give Accounts Payable Status
+Then Click on View button
+And Verify the Reimbursement of expenses Accounts Payable Report is displayed correctly 
+
+@KUBS_AR_AP_UAT_001_010_TC_01
+Scenario: Verify Accounting entries post Bill is approved
+Given Navigate The Azentio Url
+Then Choose the second Tab Segment
+And Click On Main module Accounts payable
+Then Open Invoice Bill Booking Eye icon
+And Click On Search Icon
+Then Give Invoice Number in Invoice Bill for Reimbursement 
+Then Click on Table Row First Eye Icon
+And Get Business Partner name for Invoice Bill
+Then Third Segment report Icon
+And Choose Enquiry Module
+Then Click Note iCon near by financial transction
+And choose branch code
+And click on transaction from date in calender
+Then Select from date in calender
+And click on transaction to date in calender icon
+Then Select To date in calender
+And Click View HyperLink
+Then Verify Accounting entries post Bill is approved is Display
+
+@KUBS_AR_AP_UAT_001_010_TC_03
+Scenario: Verify Accounts Payable Report post bill is approved
+Given Navigate The Azentio Url
+Then Choose the second Tab Segment
+And Click On Main module Accounts payable
+Then Open Invoice Bill Booking Eye icon
+And Click On Search Icon
+Then Give Invoice Number in Invoice Bill for Reimbursement 
+Then Click on Table Row First Eye Icon
+And Get Business Partner name for Invoice Bill
+Then Third Segment report Icon
+And Click main module Reports
+Then Click sub module Accounts Payable Report
+And Give Getted Business Partner Name
+Then Give Current business Date
+And Give Accounts Payable Status
+Then Click on View button
+And Verify the Reimbursement of expenses Accounts Payable Report is displayed correctly 
+
 @KUBS_AR_AP_UAT_002_001_TC_02
 Scenario: Verify Accounting entries post Debit note is approved
 Given Navigate The Azentio Url
@@ -78,6 +235,28 @@ And click on transaction to date in calender icon
 Then Select To date in calender
 And Click View HyperLink
 Then Verify Accounting entries post Debit Note is approved
+
+@KUBS_AR_AP_UAT_002_003_TC_02
+Scenario: Verify No accounting entry is generated on approval of advances to Employees
+Given Navigate The Azentio Url
+Then Choose the second Tab Segment
+And Click On Main module Accounts Receivable
+Then Click on Accounts Receive Advances Eye Icon
+And Click On Search Icon
+Then Enter Active Value In Advance Status
+Then Enter Advance to employee and Active Value In Advance Status
+Then Click on Table Row First Eye Icon
+And Get The Business Partner and Advance Number
+Then Third Segment report Icon
+And Choose Enquiry Module
+Then Click Note iCon near by financial transction
+And choose branch code
+And click on transaction from date in calender
+Then Select from date in calender
+And click on transaction to date in calender icon
+Then Select To date in calender
+And Click View HyperLink
+Then Verify No accounting entry is generated on Active advances to Employees
 
 @KUBS_AR_AP_UAT_002_004_TC_02
 Scenario: Verify No accounting entry is generated on approval of advances against PO
@@ -138,6 +317,25 @@ And click on transaction to date in calender icon
 Then Select To date in calender
 And Click View HyperLink
 Then Verify Accounting entries post GRN is cancelled
+
+@KUBS_AR_AP_UAT_003_003_TC_03
+Scenario: Verify Balance sheet post GRN is cancelled
+Given Navigate The Azentio Url
+Then Choose the second Tab Segment
+And Click On Main module Accounts payable
+Then Click On GRN Eye Icon
+And Click On Search Icon
+Then Enter the GRN status cancel
+And Get the Branchcode and Ref No
+Then Click on Table Row First Eye Icon
+Then Get the Transaction Date
+Then Third Segment report Icon
+And Click on Financial Reporting module
+Then Click on Balance sheet Sub module
+And Give Getted Branch code 
+Then Give Getted Transaction Date
+Then Click on Balance sheet View button
+And verify Balance sheet post Bill is approved
 
 @KUBS_AR_AP_UAT_003_003_TC_04
 Scenario: Check PO Report
@@ -230,6 +428,44 @@ Then Select To date in calender
 And Click View HyperLink
 Then Verify Accounting entries post Debit Note is cancelled
 
+@KUBS_AR_AP_UAT_003_006_TC_02
+Scenario: Verify Balance sheet post Debit Note is cancelled
+Given Navigate The Azentio Url
+Then Choose the second Tab Segment
+And Click On Main module Accounts Receivable
+Then Click on Accounts Receivable Debit Note Eye Icon
+And Click On Search Icon
+Then Enter Cancelled Value In Debit Not Status
+Then Click on Table Row First Eye Icon
+And Get the Branch Name in wait
+Then Get the Transaction Date
+Then Third Segment report Icon
+And Click on Financial Reporting module
+Then Click on Balance sheet Sub module
+And Give Getted Branch code 
+Then Give Getted Transaction Date
+Then Click on Balance sheet View button
+And verify Balance sheet post Bill is approved
+
+@KUBS_AR_AP_UAT_003_006_TC_03
+Scenario: Verify Accounts Receivable Report post Debit Note is cancelled
+Given Navigate The Azentio Url
+Then Choose the second Tab Segment
+And Click On Main module Accounts Receivable
+Then Click on Accounts Receivable Debit Note Eye Icon
+And Click On Search Icon
+Then Enter Cancelled Value In Debit Not Status
+Then Click on Table Row First Eye Icon
+And Get The Bp Name and Debit Number Store It
+Then Third Segment report Icon
+And Click main module Reports
+Then Click sub module Accounts Receivable Report
+And Give Getted Business Partner Name
+Then Give Current business Date
+And Give Accounts Payable Status
+Then Click on View button
+And Verify Accounts Receivable Report post Debit Note is cancelled
+
 @KUBS_AR_AP_UAT_003_006_TC_04
 Scenario: Verify Cancelled Debit Note is not available for adjustment at Payment Settlement screen
 Given Navigate The Azentio Url
@@ -255,9 +491,37 @@ Then Choose the second Tab Segment
 And Click On Main module Accounts Receivable
 Then Click on Accounts Receivable Debit Note Eye Icon
 And Click On Search Icon
-Then Enter Cancelled Value In Debit Not Status
+Then Enter Active Value In Debit Not Status
 Then Click on Table Row First Eye Icon
 And Get The Bp Name and Debit Number Store It
+And Click On Main module Accounts payable
+Then Click sub module Payment settlement Eye Icon
+And Click Add icon button
+Then Enter payment option
+And Give stored Business partner Name
+Then Choose value date as System current date
+And find the Debit reference number for Active Debit is availabe at the billing queue
+Then Click the Debit Note Checkbox As Tick
+When Enter the Description value
+And Save The Payment settlement Record
+Then Click the Alert message as Yes
+Then Goto The Notification Icon
+And Store the Referance Id and Open the Record
+Then Click submit button and Enter Remark submit it 
+Given Navigate as a Reviewer
+Then click on Notify icon
+And Click First record Action icon
+Then Approve the record in Reviewer
+And Give Remark and Submit
+Given Navigate as a Checker
+Then Click module security management
+And Claim the Record in Checker
+Then Goto the Checker notification Icon
+And Click the First Action Icon
+Then Approve the Record in checker stage
+And Give the Remark and Submit it
+Given Navigate The Azentio Url
+Then Choose the second Tab Segment
 Then Open the Adjustment ARAP module
 And Click on Adjustment ARAP Eye Icon
 And Click Add icon button
@@ -514,7 +778,7 @@ Then Choose the second Tab Segment
 And Click On Main module Accounts payable
 Then Click sub module Payment settlement Eye Icon
 And Click On Search Icon
-Then Enter Advance Against PO and Active Value In Advance Status
+#Then Enter Advance Against PO and Active Value In Advance Status
 And Enter Advance Against Po Pan Number
 Then Click on Table Row First Eye Icon
 Then Third Segment report Icon
@@ -527,6 +791,65 @@ And click on transaction to date in calender icon
 Then Select To date in calender
 And Click View HyperLink
 Then Verify Accounting entries post payment settlement approval
+
+@KUBS_AR_AP_UAT_004_006_TC_05
+Scenario: Verify Balance sheet post payment settlement approval
+Given Navigate The Azentio Url
+Then Choose the second Tab Segment
+And Click On Main module Accounts payable
+Then Click sub module Payment settlement Eye Icon
+And Click On Search Icon
+And Enter Advance Against Po Pan Number
+Then Click on Table Row First Eye Icon
+And Get the Branch Name
+Then Get the Transaction Date
+Then Third Segment report Icon
+And Click on Financial Reporting module
+Then Click on Balance sheet Sub module
+And Give Getted Branch code 
+Then Give Getted Transaction Date
+Then Click on Balance sheet View button
+And verify Balance sheet post Bill is approved
+
+@KUBS_AR_AP_UAT_004_006_TC_07
+Scenario: Verify Accounts Payable Report post payment settlement approval.
+Given Navigate The Azentio Url
+Then Choose the second Tab Segment
+And Click On Main module Accounts payable
+Then Click sub module Payment settlement Eye Icon
+And Click On Search Icon
+And Enter Advance Against Po Pan Number
+Then Click on Table Row First Eye Icon
+And Get Business Partner name in Invoice Bill
+When Store the Advance Number
+Then Third Segment report Icon
+And Click main module Reports
+Then Click sub module Accounts Payable Report
+And Give Getted Business Partner Name
+Then Give Current business Date
+And Give Accounts Payable Status
+Then Click on View button
+And Verify the Accounts Payable Report post payment settlement approval
+
+@KUBS_AR_AP_UAT_004_006_TC_08
+Scenario: Verify Accounts Receivable Report post payment settlement approval
+Given Navigate The Azentio Url
+Then Choose the second Tab Segment
+And Click On Main module Accounts payable
+Then Click sub module Payment settlement Eye Icon
+And Click On Search Icon
+And Enter Advance Against Po Pan Number
+Then Click on Table Row First Eye Icon
+And Get Business Partner name in Invoice Bill
+When Store the Advance Number
+Then Third Segment report Icon
+And Click main module Reports
+Then Click sub module Accounts Receivable Report
+And Give Getted Business Partner Name
+Then Give Current business Date
+And Give Accounts Payable Status
+Then Click on View button
+And Verify the Accounts Receivable Report post payment settlement approval
 
 @KUBS_AR_AP_UAT_004_007_TC_01
 Scenario: Verify Advance to employee is adjusted against the selected bill and Net Adjusted Value is correctly displayed
@@ -638,6 +961,106 @@ Then Select To date in calender
 And Click View HyperLink
 Then Verify Accounting entries post payment settlement approval fo Advance to Employee
 
+@KUBS_AR_AP_UAT_004_007_TC_06
+Scenario: Verify Accounts Payable Report post payment settlement approval.
+Given Navigate The Azentio Url
+Then Choose the second Tab Segment
+And Click On Main module Accounts payable
+Then Click sub module Payment settlement Eye Icon
+And Click On Search Icon
+#Then Enter Advance to employee and Active Value In Advance Status
+And Enter Advance to employee Pan Number
+Then Click on Table Row First Eye Icon
+And Get Business Partner name in Invoice Bill
+When Store the Advance Number
+Then Third Segment report Icon
+And Click main module Reports
+Then Click sub module Accounts Payable Report
+And Give Getted Business Partner Name
+Then Give Current business Date
+And Give Accounts Payable Status
+Then Click on View button
+And Verify the Accounts Payable Report post payment settlement approval
+
+@KUBS_AR_AP_UAT_004_007_TC_07
+Scenario: Verify Accounts Receivable Report post payment settlement approval.
+Given Navigate The Azentio Url
+Then Choose the second Tab Segment
+And Click On Main module Accounts payable
+Then Click sub module Payment settlement Eye Icon
+And Click On Search Icon
+#Then Enter Advance to employee and Active Value In Advance Status
+And Enter Advance to employee Pan Number
+Then Click on Table Row First Eye Icon
+And Get Business Partner name in Invoice Bill
+When Store the Advance Number
+Then Third Segment report Icon
+And Click main module Reports
+Then Click sub module Accounts Receivable Report
+And Give Getted Business Partner Name
+Then Give Current business Date
+And Give Accounts Payable Status
+Then Click on View button
+And Verify the Accounts Receivable Report post payment settlement approval
+
+@KUBS_AR_AP_UAT_005_001_TC_04
+Scenario: Verify accounting entries post payment settlement cancellation
+Given Navigate The Azentio Url
+Then Choose the second Tab Segment
+And Click On Main module Accounts payable
+Then Click sub module Payment settlement Cancellation Eye Icon
+Then Click on Table Row First Eye Icon
+And Get the Cancelled Txn Number
+Then Third Segment report Icon
+And Choose Enquiry Module
+Then Click Note iCon near by financial transction
+And choose branch code
+And click on transaction from date in calender
+Then Select from date in calender
+And click on transaction to date in calender icon
+Then Select To date in calender
+And Click View HyperLink
+Then Verify Accounting entries post payment settlement cancellation
+
+@KUBS_AR_AP_UAT_005_004_TC_02
+Scenario: Verify accounting entries post payment settlement cancellation
+Given Navigate The Azentio Url
+Then Choose the second Tab Segment
+And Click On Main module Accounts payable
+Then Click sub module Payment settlement Cancellation Eye Icon
+And Click On Search Icon
+Then Enter Txn No for Advance to Empolyee
+Then Click on Table Row First Eye Icon
+And Get the Cancelled Txn Number
+Then Third Segment report Icon
+And Choose Enquiry Module
+Then Click Note iCon near by financial transction
+And choose branch code
+And click on transaction from date in calender
+Then Select from date in calender
+And click on transaction to date in calender icon
+Then Select To date in calender
+And Click View HyperLink
+Then Verify Accounting entries Advance to Empolyee post payment settlement cancellation
+
+@KUBS_AR_AP_UAT_006_002_TC_03
+Scenario: Verify Balance sheet post payout approval
+Given Navigate The Azentio Url
+Then Choose the second Tab Segment
+And Click On Main module Accounts payable
+Then Click on Sub module Maual payout
+Then Click on Table Row First Eye Icon
+And Get the manual payout Branch Name
+And Get the Referance Number
+Then Get the Transaction Date
+Then Third Segment report Icon
+And Click on Financial Reporting module
+Then Click on Balance sheet Sub module
+And Give Getted Branch code 
+Then Give Getted Transaction Date
+Then Click on Balance sheet View button
+And verify Balance sheet post Bill is approved
+
 @KUBS_AR_AP_UAT_010_001_TC_01
 Scenario: Record a receipt through cheque mode
 Given Navigate The Azentio Url
@@ -735,19 +1158,21 @@ Then Select To date in calender
 And Click View HyperLink
 Then Verify Accounting entries post receipt recording
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+@KUBS_AR_AP_UAT_011_001_TC_03
+Scenario: Verify accounting entries post receipt cancellation
+Given Navigate The Azentio Url
+Then Choose the second Tab Segment
+And Click On Main module Accounts Receivable
+Then Click on the Receipt Reverels Eye Icon
+And Click On Search Icon
+Then Enter Receipt Reversals type as Wire
+Then Third Segment report Icon
+And Choose Enquiry Module
+Then Click Note iCon near by financial transction
+And choose branch code
+And click on transaction from date in calender
+Then Select from date in calender
+And click on transaction to date in calender icon
+Then Select To date in calender
+And Click View HyperLink
+Then Verify Accounting entries post receipt recording

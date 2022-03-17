@@ -110,6 +110,14 @@ public class ARAP_ARandAPObj {
 		return ARAP_ItemDetails;
 	}
 
+	@FindBy(xpath = "//ion-col[1]/app-kub-lov[1]/span/ng-select[1]/div[1]/div[1]/div[2]")
+	private WebElement ARAP_GetBranch;
+
+	public WebElement ARAP_GetBranch() {
+
+		return ARAP_GetBranch;
+	}
+
 	@FindBy(xpath = "//ion-col[2]/app-kub-lov[1]/span[1]/ng-select[1]/div[1]/div[1]/div[2]")
 	private WebElement ARAP_GetPoNumber;
 
@@ -456,6 +464,14 @@ public class ARAP_ARandAPObj {
 		return ARAP_ToDate;
 	}
 
+	@FindBy(xpath = "(//span[@class='owl-dt-control-content owl-dt-control-button-content'])[2]")
+	private WebElement ARAP_Year;
+
+	public WebElement ARAP_Year() {
+
+		return ARAP_Year;
+	}
+
 	@FindBy(xpath = "//owl-date-time-container[1]/div[2]/owl-date-time-calendar[1]/div[1]/button[2]/span[1]")
 	private WebElement ARAP_NextMonth;
 
@@ -478,6 +494,13 @@ public class ARAP_ARandAPObj {
 
 	public WebElement accountsPayablePayementSettlementViewIcon() {
 		return accountsPayable_paymentSettlementViewIcon;
+	}
+
+	@FindBy(xpath = "//ion-button[@ng-reflect-router-link='/tabs/list/datagrid-view/204']")
+	private WebElement accountsPayable_paymentSettlementcancellionViewIcon;
+
+	public WebElement accountsPayable_paymentSettlementcancellionViewIcon() {
+		return accountsPayable_paymentSettlementcancellionViewIcon;
 	}
 
 	@FindBy(xpath = "//ion-col[2]//input")
@@ -521,6 +544,13 @@ public class ARAP_ARandAPObj {
 
 	public WebElement firstRecord() {
 		return first_record;
+	}
+
+	@FindBy(xpath = "//page-ap-payment-settlement-update[1]//datatable-body-cell[4]//div")
+	private WebElement paymentSettlement_RecentlyApprovedInvoiceNumber;
+
+	public WebElement paymentSettlementRecentlyApprovedInvoiceNUmber() {
+		return paymentSettlement_RecentlyApprovedInvoiceNumber;
 	}
 
 	@FindBy(xpath = "//ion-col[9]//input")
@@ -613,6 +643,14 @@ public class ARAP_ARandAPObj {
 	public WebElement accountsReceivable_DebitNote_GetBpname() {
 
 		return accountsReceivable_DebitNote_GetBpname;
+	}
+
+	@FindBy(xpath = "//ion-col[8]/app-kub-lov[1]/span[1]/ng-select[1]/div[1]/div[1]/div[2]")
+	private WebElement accountsReceivable_DebitNote_GetInvoiceNo;
+
+	public WebElement accountsReceivable_DebitNote_GetInvoiceNo() {
+
+		return accountsReceivable_DebitNote_GetInvoiceNo;
 	}
 
 	// ACCOUNTS ADVANCES
@@ -753,6 +791,13 @@ public class ARAP_ARandAPObj {
 		return accountReceviableReceipt_Eye;
 	}
 
+	@FindBy(xpath = "//ion-button[@ng-reflect-router-link='/tabs/list/datagrid-view/210']")
+	private WebElement accountReceviableReceiptReversals_Eye;
+
+	public WebElement accountReceviableReceiptReversals_Eye() {
+		return accountReceviableReceiptReversals_Eye;
+	}
+
 	@FindBy(xpath = "(//ion-col[3]//input[1])[1]")
 	private WebElement accountReceviableReceipt_Receipt_Type;
 
@@ -817,7 +862,7 @@ public class ARAP_ARandAPObj {
 
 		return accountReceviableReceipt_Receipt_SearchRefNo;
 	}
-	
+
 	@FindBy(xpath = "//datatable-header[1]/div[1]/div[2]/datatable-header-cell[5]/div[1]/ion-input[1]/input[1]")
 	private WebElement accountReceviableReceipt_ReceiptType;
 
@@ -825,9 +870,17 @@ public class ARAP_ARandAPObj {
 
 		return accountReceviableReceipt_ReceiptType;
 	}
-	
+
+	@FindBy(xpath = "//datatable-row-wrapper[1]/datatable-body-row/div/datatable-body-cell[5]/div[1]")
+	private WebElement accountReceviableReceipt_ReceiptNumber;
+
+	public WebElement accountReceviableReceipt_ReceiptNumber() {
+
+		return accountReceviableReceipt_ReceiptNumber;
+	}
+
 	// GL OBJECTS
-	
+
 	@FindBy(xpath = "//datatable-row-wrapper[1]/datatable-body-row/div/datatable-body-cell[2]/div[1]")
 	private WebElement accountReceviable_GetBranchcode;
 
@@ -835,7 +888,7 @@ public class ARAP_ARandAPObj {
 
 		return accountReceviable_GetBranchcode;
 	}
-	
+
 	@FindBy(xpath = "//datatable-row-wrapper[1]/datatable-body-row/div/datatable-body-cell[3]/div[1]")
 	private WebElement accountReceviable_GetGrn;
 
@@ -843,5 +896,30 @@ public class ARAP_ARandAPObj {
 
 		return accountReceviable_GetGrn;
 	}
+	// Manual Payout
 
+	@FindBy(xpath = "//ion-button[@ng-reflect-router-link='/tabs/list/datagrid-view/222']")
+	private WebElement ARAP_Manual_payout;
+
+	public WebElement ARAP_Manual_payout() {
+
+		return ARAP_Manual_payout;
+	}
+
+	@FindBy(xpath = "(//datatable-body-cell[4]/div[1]/span[1])[9]")
+	private WebElement ARAP_Manual_payout_RefNo;
+
+	public WebElement ARAP_Manual_payout_RefNo() {
+
+		return ARAP_Manual_payout_RefNo;
+	}
+	
+	
+	@FindBy(xpath = "//ion-col[3]/app-kub-lov[1]/span/ng-select[1]/div[1]/div[1]/div[2]")
+	private WebElement ARAP_Manual_payout_GetBranch;
+
+	public WebElement ARAP_Manual_payout_GetBranch() {
+
+		return ARAP_Manual_payout_GetBranch;
+	}
 }
