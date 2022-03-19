@@ -161,5 +161,25 @@ public class KUBS_CheckerObj {
 			return checker_logout_button;
 	    	
 	    }
+	    
+	    //------------
+	    
+	  
+
+		@FindBy(xpath = "//div[@id='toast-container']//button")
+		private WebElement checker_alert_close;
+
+		public WebElement checker_alert_close() {
+			return checker_alert_close;
+		}
+		
+		 
+		//TOTAST - CONTAINER
+		@FindBy(xpath="//div[@id='toast-container']/div/div[@role='alertdialog']")
+		private WebElement Popup_status;
+		public WebElement Popup_status()
+		{
+			return Popup_status;
+		}
 
 }

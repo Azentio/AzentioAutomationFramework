@@ -26,6 +26,7 @@ import testDataType.FIXEDASSET_AixedAssetDeAllocationTestData;
 import testDataType.FIXEDASSET_AssetImpairementTestDataType;
 import testDataType.FIXEDASSET_AssetReturnTestData;
 import testDataType.INVENTORY_EnquiryGlTestData;
+import testDataType.INVENTORY_InventoryManagement_DataType;
 import testDataType.INVENTORY_InventoryStockIssueTestData;
 import testDataType.KUBS_LoginTestDataType;
 
@@ -77,7 +78,9 @@ public class JsonConfig {
 	//AccountsPayablle Advance
 	private final String AccountsReceivableAdvanceFilePath = configFileReader.getJsonPath() + "ACCOUNTSRECEIVABLE_AccountsReceivableTestDataJson.json";
 	private List<ACCOUNTSRECEIVABLE_AccountsReceivableAdvanceTestDataType> accountsReceivableAdvanceTestData ;
-	
+	// Inventory_StockReturnBranch
+		private final String StockReturnBranchFilePath = configFileReader.getJsonPath() + "INVENTORY_InventoryManagement.json";
+		private List<INVENTORY_InventoryManagement_DataType> StockReturnBranchList;
 	private final String AccountsReceivablereceiptFilePath = configFileReader.getJsonPath() + "ACCOUNTSRECEIVABLE_ReceiptJSON.json";
 	private List<ACCOUNTSRECEIVABLE_ReceiptTestData> accountsReceivableReceiptTestData ;
 	//AutoPayout
@@ -105,7 +108,8 @@ public class JsonConfig {
 		accountsReceivableReceiptTestData=getAccounteReceivableReceiptTestData();
 		accountsAutoPayoutTestData=getAccountsPayableAutoPayoutTestData();
 		accountspayableContractReportTestData= getAccountsPayableContractReportTestData();
-		
+		// Inventory - StockReturn
+		StockReturnBranchList = getStockReturnBranchList();
 	}
 	//ContractReport
 	private List<ACCOUNTSPAYABLE_ContractReportTestData> getAccountsPayableContractReportTestData() {
@@ -128,6 +132,25 @@ public class JsonConfig {
 			}
 		}
 	}
+	// Inventory - StockReturnBranch 
+		private List<INVENTORY_InventoryManagement_DataType> getStockReturnBranchList() {
+			Gson gson = new Gson();
+			BufferedReader bufferReader = null;
+			try {
+				bufferReader = new BufferedReader(new FileReader(StockReturnBranchFilePath));
+				INVENTORY_InventoryManagement_DataType[] StockReturn = gson.fromJson(bufferReader,
+						INVENTORY_InventoryManagement_DataType[].class);
+				return Arrays.asList(StockReturn);
+			} catch (FileNotFoundException e) {
+				throw new RuntimeException("Json file not found at path : " + StockReturnBranchFilePath);
+			} finally {
+				try {
+					if (bufferReader != null)
+						bufferReader.close();
+				} catch (IOException ignore) {
+				}
+			}
+		}
 	//AutoPayout
 		private List<ACCOUTSAPAYBLE_AutoPayoutTestDataType> getAccountsPayableAutoPayoutTestData() {
 			Gson gson = new Gson();
@@ -537,6 +560,9 @@ public class JsonConfig {
 		public final ACCOUNTSPAYABLE_ContractReportTestData getAccountsPayableContractReportTestDataByName(String UserName){
 			return accountspayableContractReportTestData.stream().filter(x->x.UserType.equalsIgnoreCase(UserName)).findAny().get();
 	}
-	
+		//Inventory - StockReturnBranch
+		public final INVENTORY_InventoryManagement_DataType getStockReturnBranchByName(String user) {
+			return StockReturnBranchList.stream().filter(x -> x.Usertype.equalsIgnoreCase(user)).findAny().get();
+		}
 	
 }
