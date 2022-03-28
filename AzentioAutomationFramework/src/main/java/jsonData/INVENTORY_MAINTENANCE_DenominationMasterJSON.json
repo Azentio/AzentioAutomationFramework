@@ -1,0 +1,14 @@
+[
+	{
+	"User" : "Maker",
+	"InstrumentCode" : "AZENTIO",
+	"Currency" : "INR",
+	"DenominationType" : "Cash",
+	"DenominationSequence" : "999",
+	"DenominationValue" : "999",
+	"DenominationDescription" : "denomination",
+	"RemarkByMaker" : "submit By Maker",
+	"ApproveRemarkByReviewer" : "Approved by checker"
+
+	}
+]

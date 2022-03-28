@@ -1,0 +1,26 @@
+[
+	{
+		"User": "Maker",
+		"BranchCode": "AZENTMAIN",
+		"GLCode": "IFRS-AS-AS1000017",
+		"GLMonth": "May",
+		"GLFullMonth": "May",
+		"GLYear": "2022",
+		"GLDay": "1",
+		"GLToMonth": "Oct",
+		"GLFullToMonth": "October",
+		"GLToDate": "3"
+	},
+{
+	"userType":"Maker",
+	"branchCode":"AZENTMAIN",
+	"gLCode":"IFRS-AS-AS1000017",
+	"GlMonth":"Mar",
+	"GlFullMonth":"March",
+	"GlYear":"2022",
+	"GlDay":"9",
+	"GlToMonth":"Oct",
+	"GlFullToMonth":"October",
+	"GlToDate":"23"
+	}
+]
