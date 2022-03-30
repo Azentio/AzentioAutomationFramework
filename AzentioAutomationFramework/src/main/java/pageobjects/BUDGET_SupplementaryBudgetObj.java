@@ -255,6 +255,61 @@ public class BUDGET_SupplementaryBudgetObj {
 		return maker_notification_next_button;
 	}
 
+	// reference id
+	@FindBy(xpath = "//app-inbox//datatable-row-wrapper[1]/datatable-body-row/div/datatable-body-cell[2]//span")
+	private WebElement budget_SupplementaryBudget_SupplementaryFirstReferenceId;
+
+	public WebElement budget_SupplementaryBudget_SupplementaryFirstReferenceId() {
+		return budget_SupplementaryBudget_SupplementaryFirstReferenceId;
+
+	}
+	//-----------Report---------//
+	
+		@FindBy(xpath="//ion-menu[1]/ion-content[1]/custom-side-menu[1]/ion-list[1]/ion-item[1]/ion-icon[1]")
+		private WebElement report_Field;
+		public WebElement report_Field()
+		{
+			return report_Field;
+		}
+
+		@FindBy(xpath="//ion-list[1]/div[1]/ion-menu-toggle[13]/ion-item[1]/ion-buttons[1]/ion-button[1]")
+		private WebElement budget_SupplementaryBudget_Report;
+		public WebElement budget_SupplementaryBudget_Report()
+		{
+			return budget_SupplementaryBudget_Report;
+		}
+		//ReportYear
+
+		@FindBy(xpath="//tbody/tr[6]/td[1]/div[1]")
+		private WebElement budget_SupplementaryBudget_ReportYear;
+		public WebElement budget_SupplementaryBudget_ReportYear()
+		{
+			return budget_SupplementaryBudget_ReportYear;
+		}
+
+
+		// CalendarFromDate
+		@FindBy(xpath = "(//span[@class='input-calendar'])[1]")
+		private WebElement budget_SupplementaryBudget_CalendarFromDate;
+
+		public WebElement budget_SupplementaryBudget_CalendarFromDate() {
+			return budget_SupplementaryBudget_CalendarFromDate;
+		}
+
+		// NextMonth
+		@FindBy(xpath = "(//button[@type='button'])[3]")
+		private WebElement budget_SupplementaryBudget_NextMonth;
+
+		public WebElement budget_SupplementaryBudget_NextMonth() {
+			return budget_SupplementaryBudget_NextMonth;
+		}
+		//View REPORT
+		@FindBy(xpath = "//a[contains(text(),'View')]")
+		private WebElement budget_SupplementaryBudget_ViewReport;
+
+		public WebElement budget_SupplementaryBudget_ViewReport() {
+			return budget_SupplementaryBudget_ViewReport;
+		}
 //-------------------------------------------Reviewer---------------------------------------------//
 
 	// notification in reviewer

@@ -18,16 +18,6 @@ public class InventoryMaintenanceTestDataType {
 	public String Remark;
 	
 	
-	public String ItemCodeGL;
-	public String InventoryGL;
-	public String AccruedPurchaseGL;
-	public String AccruedLandedCostGL;
-	public String InventoryInterBranchGL;
-	public String InventoryDamageAdjustmentGL;
-	public String InventoryLossAdjustmentGL;
-	public String InventoryConsumptionGL;
-	
-	
 	
 	
 }

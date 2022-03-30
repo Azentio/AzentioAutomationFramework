@@ -164,7 +164,7 @@ public class InventoryMaintenance extends BaseClass{
 		    inventoryMaintenanceObj.inventoryMaintenance_InventoryItem_ReorderQty().sendKeys(inventoryMaintenanceTestDataType.ReorderQty);
 		    inventoryMaintenanceObj.inventoryMaintenance_InventoryItem_ReorderQty().sendKeys(Keys.ENTER);
 		    
-		    //CurrentBalanceQuantity
+		  /*  //CurrentBalanceQuantity
 		    waithelper.waitForElement(driver, 3000, inventoryMaintenanceObj.inventoryMaintenance_InventoryItem_CurrentBalanceQuantity());
 		    inventoryMaintenanceObj.inventoryMaintenance_InventoryItem_CurrentBalanceQuantity().click();
 		    inventoryMaintenanceObj.inventoryMaintenance_InventoryItem_CurrentBalanceQuantity().sendKeys(inventoryMaintenanceTestDataType.CurrentBalanceQuantity);
@@ -177,7 +177,7 @@ public class InventoryMaintenance extends BaseClass{
 		    //Fill Indicator
 		    waithelper.waitForElement(driver, 3000, inventoryMaintenanceObj.inventoryMaintenance_InventoryItem_FillIndicator());
 		    inventoryMaintenanceObj.inventoryMaintenance_InventoryItem_FillIndicator().click();
-		    
+		    */
 		    }
 
 		    @Then("^Click on Inventory Item Save button$")
@@ -412,158 +412,5 @@ public class InventoryMaintenance extends BaseClass{
 						Thread.sleep(6000);
 					}
 				    
-				    //-------------------GL-----------//
-			
-				    @Then("^Click on Inventory Gl Configuration Eye Icon$")
-				    public void click_on_inventory_gl_configuration_eye_icon() throws InterruptedException {
-				  
-				   // waithelper.waitForElement(driver, 3000, inventoryMaintenanceObj.inventoryMaintenance_InventoryGlConfiguration_EyeButton());
-				   // inventoryMaintenanceObj.inventoryMaintenance_InventoryGlConfiguration_EyeButton().click();
-				    Thread.sleep(2000);
-			  
-			  		WebElement eye = inventoryMaintenanceObj.inventoryMaintenance_InventoryGlConfiguration_EyeButton();
-
-			  		waithelper.waitForElement(driver, 3000, inventoryMaintenanceObj.inventoryMaintenance_InventoryGlConfiguration_EyeButton());
-			  		Assert.assertTrue(inventoryMaintenanceObj.inventoryMaintenance_InventoryGlConfiguration_EyeButton().isDisplayed());
-			  		clicksAndActionHelper.moveToElement(eye);
-			  		inventoryMaintenanceObj.inventoryMaintenance_InventoryGlConfiguration_EyeButton().click();
-			    	
-				       
-				    } 
-				    
-				    @Then("^Fill Inventory Gl Configuration Mandatory fields$")
-				    public void fill_inventory_gl_configuration_mandatory_fields() {
-				    inventoryMaintenanceTestDataType = jsonReader.getInventoryMaintenanceByName("Maker");
-					inventoryMaintenanceObj = new InventoryMaintenanceObj(driver);
-					    
-					//Item Code
-					waithelper.waitForElement(driver, 3000, inventoryMaintenanceObj.inventoryMaintenance_InventoryGlConfiguration_Itemcode());
-					inventoryMaintenanceObj.inventoryMaintenance_InventoryGlConfiguration_Itemcode().click();
-					inventoryMaintenanceObj.inventoryMaintenance_InventoryGlConfiguration_Itemcode().sendKeys(inventoryMaintenanceTestDataType.ItemCodeGL);
-					inventoryMaintenanceObj.inventoryMaintenance_InventoryGlConfiguration_Itemcode().sendKeys(Keys.ENTER);
-					
-					//Inventory Gl
-					waithelper.waitForElement(driver, 3000, inventoryMaintenanceObj.inventoryMaintenance_InventoryGlConfiguration_InventoryGl());
-					inventoryMaintenanceObj.inventoryMaintenance_InventoryGlConfiguration_InventoryGl().click();
-					inventoryMaintenanceObj.inventoryMaintenance_InventoryGlConfiguration_InventoryGl().sendKeys(inventoryMaintenanceTestDataType.InventoryGL);
-					inventoryMaintenanceObj.inventoryMaintenance_InventoryGlConfiguration_InventoryGl().sendKeys(Keys.ENTER);
-				        
-					//Accrued Purchase GL
-					waithelper.waitForElement(driver, 3000, inventoryMaintenanceObj.inventoryMaintenance_InventoryGlConfiguration_AccruedPurchaseGl());
-					inventoryMaintenanceObj.inventoryMaintenance_InventoryGlConfiguration_AccruedPurchaseGl().click();
-					inventoryMaintenanceObj.inventoryMaintenance_InventoryGlConfiguration_AccruedPurchaseGl().sendKeys(inventoryMaintenanceTestDataType.AccruedPurchaseGL);
-					inventoryMaintenanceObj.inventoryMaintenance_InventoryGlConfiguration_AccruedPurchaseGl().sendKeys(Keys.ENTER);
-				 
-					//Accrued Landed Cost GL
-					waithelper.waitForElement(driver, 3000, inventoryMaintenanceObj.inventoryMaintenance_InventoryGlConfiguration_AccruedLandedCostGl());
-					inventoryMaintenanceObj.inventoryMaintenance_InventoryGlConfiguration_AccruedLandedCostGl().click();
-					inventoryMaintenanceObj.inventoryMaintenance_InventoryGlConfiguration_AccruedLandedCostGl().sendKeys(inventoryMaintenanceTestDataType.AccruedLandedCostGL);
-					inventoryMaintenanceObj.inventoryMaintenance_InventoryGlConfiguration_AccruedLandedCostGl().sendKeys(Keys.ENTER);
-				    
-					//Inventory Inter Branch GL
-					waithelper.waitForElement(driver, 3000, inventoryMaintenanceObj.inventoryMaintenance_InventoryGlConfiguration_InventoryInterBranchGl());
-					inventoryMaintenanceObj.inventoryMaintenance_InventoryGlConfiguration_InventoryInterBranchGl().click();
-					inventoryMaintenanceObj.inventoryMaintenance_InventoryGlConfiguration_InventoryInterBranchGl().sendKeys(inventoryMaintenanceTestDataType.InventoryInterBranchGL);
-					inventoryMaintenanceObj.inventoryMaintenance_InventoryGlConfiguration_InventoryInterBranchGl().sendKeys(Keys.ENTER);
 				   
-					//Inventory Damage Adjustment GL
-					waithelper.waitForElement(driver, 3000, inventoryMaintenanceObj.inventoryMaintenance_InventoryGlConfiguration_InventoryDamageAdjustmentGl());
-					inventoryMaintenanceObj.inventoryMaintenance_InventoryGlConfiguration_InventoryDamageAdjustmentGl().click();
-					inventoryMaintenanceObj.inventoryMaintenance_InventoryGlConfiguration_InventoryDamageAdjustmentGl().sendKeys(inventoryMaintenanceTestDataType.InventoryDamageAdjustmentGL);
-					inventoryMaintenanceObj.inventoryMaintenance_InventoryGlConfiguration_InventoryDamageAdjustmentGl().sendKeys(Keys.ENTER);
-				   
-					//Inventory Loss Adjustment GL
-					waithelper.waitForElement(driver, 3000, inventoryMaintenanceObj.inventoryMaintenance_InventoryGlConfiguration_InventoryLossAdjustmentGl());
-					inventoryMaintenanceObj.inventoryMaintenance_InventoryGlConfiguration_InventoryLossAdjustmentGl().click();
-					inventoryMaintenanceObj.inventoryMaintenance_InventoryGlConfiguration_InventoryLossAdjustmentGl().sendKeys(inventoryMaintenanceTestDataType.InventoryLossAdjustmentGL);
-					inventoryMaintenanceObj.inventoryMaintenance_InventoryGlConfiguration_InventoryLossAdjustmentGl().sendKeys(Keys.ENTER);
-				   
-					//Inventory Consumption GL
-					waithelper.waitForElement(driver, 3000, inventoryMaintenanceObj.inventoryMaintenance_InventoryGlConfiguration_InventoryConsumptionGl());
-					inventoryMaintenanceObj.inventoryMaintenance_InventoryGlConfiguration_InventoryConsumptionGl().click();
-					inventoryMaintenanceObj.inventoryMaintenance_InventoryGlConfiguration_InventoryConsumptionGl().sendKeys(inventoryMaintenanceTestDataType.InventoryConsumptionGL);
-					inventoryMaintenanceObj.inventoryMaintenance_InventoryGlConfiguration_InventoryConsumptionGl().sendKeys(Keys.ENTER);
-				    
-				    }
-				    
-				    @And("^Select Inventory Maintenance and Submit the record$")
-				    public void select_inventory_maintenance_and_submit_the_record() throws InterruptedException, IOException, ParseException  {
-				      
-				   //Reference
-				    	waithelper.waitForElement(driver, 2000, inventoryMaintenanceObj.inventoryMaintenance_InventoryItem_ReferenceId());
-				    	String id = inventoryMaintenanceObj.inventoryMaintenance_InventoryItem_ReferenceId().getText();
-				        jsonWriter.addReferanceData(id);
-				        System.out.println("Reference ID:" +id);
-				        for (int i = 1; i <= 35; i++) {
-				        		try {
-				        	    	waithelper.waitForElement(driver, 3000,driver.findElement(By.xpath("//span[contains(text(),'" +jsonWriter.readReferancedata()+ "')]")));	
-				        			WebElement referanceID = driver.findElement(By.xpath("//span[contains(text(),'" +  jsonWriter.readReferancedata() + "')]"));	
-				        			referanceID.click();
-				        	    	System.out.println(referanceID);
-				        	    	//Assert.assertTrue(referanceID.isDisplayed());
-				        			break;
-				        		} catch (NoSuchElementException e) 
-				        		{
-				        			waithelper.waitForElement(driver,4000,inventoryMaintenanceObj.inventoryMaintenance_InventoryItem_NotificationNext_Button());
-				        			
-				        			inventoryMaintenanceObj.inventoryMaintenance_InventoryItem_NotificationNext_Button().click();
-				        		}
-				        	 
-				        	
-				        	
-				        	}
-				           inventoryMaintenanceObj.inventoryMaintenance_InventoryItem_ReferenceId().click();	    	
-				        	
-				        	//pencil 
-				        	 String before_xpath="//span[contains(text(),'";
-				        	 String after_xpath="')]/ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell//ion-button";
-				        	  
-				        	 waithelper.waitForElement(driver, 2000, driver.findElement(By.xpath(before_xpath +reader.readReferancedata()+after_xpath)));
-				        	 driver.findElement(By.xpath(before_xpath +reader.readReferancedata() +after_xpath)).click();
-				        	 
-				        	
-				        	// Submit button
-				        	waithelper.waitForElement(driver, 2000, inventoryMaintenanceObj.inventoryMaintenance_InventoryItem_SubmitButton());
-				        	inventoryMaintenanceObj.inventoryMaintenance_InventoryItem_SubmitButton().click();
-				        			
-				        	//Remark
-				        	javascripthelper.JavaScriptHelper(driver);
-				        	waithelper.waitForElement(driver, 3000,inventoryMaintenanceObj.inventoryMaintenance_InventoryItem_RemarkField());
-				        	javascripthelper.JSEClick(inventoryMaintenanceObj.inventoryMaintenance_InventoryItem_RemarkField());
-				        	inventoryMaintenanceObj.inventoryMaintenance_InventoryItem_RemarkField().sendKeys(inventoryMaintenanceTestDataType.Remark);
-				        			    
-				        			
-				        	//Remark Submit
-				        	waithelper.waitForElement(driver, 2000,inventoryMaintenanceObj.inventoryMaintenance_InventoryItem_SubmitByMaker());
-				        	inventoryMaintenanceObj.inventoryMaintenance_InventoryItem_SubmitByMaker().click();
-				        	Thread.sleep(3000);
-				        	
-				        	// REVIEWER
-				        			Thread.sleep(2000);
-				        			WebElement recordstatus = inventoryMaintenanceObj.inventoryMaintenance_InventoryItem_RecordStatus();
-
-				        			clicksAndActionHelper.moveToElement(recordstatus);
-				        			String message = inventoryMaintenanceObj.inventoryMaintenance_InventoryItem_RecordStatus().getText();
-				        			System.out.println(message);
-				        			inventoryMaintenanceObj.inventoryMaintenance_InventoryItem_RecordStatus().click();
-				        			String t = "";
-				        			String ar[] = message.split(" ");
-				        			Thread.sleep(2000);
-				        			for (int i = ar.length - 1; i >= 0; i--) {
-				        				t = ar[ar.length - 1];
-				        			}
-				        			String reviewerId = "";
-				        			for (int i = 0; i < t.length() - 1; i++) {
-				        				if (t.charAt(i) == '.') {
-				        				} else {
-				        					reviewerId = reviewerId + t.charAt(i);
-				        				}
-				        			}
-				        			System.out.println(reviewerId);
-				        			jsonWriter = new JsonDataReaderWriter();
-				        			jsonWriter.addData(reviewerId);
-				       
-				        }
-				    
-				
 }

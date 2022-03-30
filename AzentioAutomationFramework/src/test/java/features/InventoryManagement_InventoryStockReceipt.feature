@@ -1,6 +1,6 @@
 Feature: Checking the Inventory Management functionality
 
-@KUBS_INV_MGMT_UAT_001_002 @MultiAuth
+@KUBS_INV_MGMT_UAT_001_002_Inventory_Stock @MultiAuth
 
 Scenario: Confirm the inventory stock received from the vendor
 Given Maker Navigate to UAT URL login

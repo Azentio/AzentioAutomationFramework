@@ -48,6 +48,10 @@ public class BUDGET_SupplementarybudgetTestDataType {
 	public String BudgetTypeA;
 	public String AuthStatusA;
 	public String AuthStatusB;
+	public String FromMonth;
+	public String FromFullMonth;
+	public String FromDay;
+	public String Year;
 
 	// -----------------Tushar-------------------------------//
 

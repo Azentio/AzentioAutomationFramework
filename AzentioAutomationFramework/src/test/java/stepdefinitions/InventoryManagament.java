@@ -926,14 +926,14 @@ public class InventoryManagament extends BaseClass {
 		//-----------priyankaaa-----------------
 		 
 
-//			@Then("^click on report segment button$")
-//			public void click_on_report_segment_button() throws Throwable {
-//				waithelper.waitForElement(driver, 3000, inventoryManagamentObj.inventoryReportIcon());
-//				inventoryManagamentObj.inventoryReportIcon().click();
-//				waithelper.waitForElement(driver, 3000, inventoryManagamentObj.inventoryEnquiryMenu());
-//				Assert.assertTrue(inventoryManagamentObj.inventoryEnquiryMenu().isDisplayed());
-//				
-//			}
+			@Then("^click on report segment button$")
+			public void click_on_report_segment_button() throws Throwable {
+			waithelper.waitForElement(driver, 3000, inventoryManagamentObj.inventoryReportIcon());
+			inventoryManagamentObj.inventoryReportIcon().click();
+			//waithelper.waitForElement(driver, 3000, inventoryManagamentObj.inventoryEnquiryMenu());
+			//Assert.assertTrue(inventoryManagamentObj.inventoryEnquiryMenu().isDisplayed());
+			
+			}
 
 			@And("^click on equiry menu$")
 			public void click_on_equiry_menu() throws Throwable {

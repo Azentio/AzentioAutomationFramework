@@ -259,7 +259,7 @@ public class AccountPayable_VendorPurchaseOrderObj {
 	}
 
 	// Select PO Sub Type
-	@FindBy(xpath = "//ion-row[1]/ion-col[6]/app-kub-lov[1]/span[1]/ng-select[1]/div[1]/div[1]/div[2]/input")
+	@FindBy(xpath = "//ion-row[1]/ion-col[7]/app-kub-lov[1]/span[1]/ng-select[1]/div[1]/div[1]/div[2]/input[1]")
 	private WebElement accountsPayable_VendorPurchaseOrder_POSubType;
 
 	public WebElement accountsPayable_VendorPurchaseOrder_POSubType() {
@@ -267,7 +267,7 @@ public class AccountPayable_VendorPurchaseOrderObj {
 	}	
 	
 	//Cost Center Service
-	@FindBy(xpath = "//ion-row[1]/ion-col[12]/app-kub-lov[1]/span[1]/ng-select[1]/div[1]/div[1]/div[2]/input")	
+	@FindBy(xpath = "//ion-row[1]/ion-col[14]/app-kub-lov[1]/span[1]/ng-select[1]/div[1]/div[1]/div[2]/input[1]")	
 	private WebElement accountsPayable_VendorPurchaseOrder_CostCenterService;
 	public WebElement accountsPayable_VendorPurchaseOrder_CostCenterService() {
 		return accountsPayable_VendorPurchaseOrder_CostCenterService;

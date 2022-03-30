@@ -520,7 +520,7 @@ public class BUDGET_SupplementaryBudget extends BaseClass {
 	//--------------------------------------------Returned Status---------------------------------------------------------//
 	 
 	@And("^navigate to search icon and  fill the required field$")
-	    public void navigate_to_search_icon_and_fill_the_required_field()  {
+	    public void navigate_to_search_icon_and_fill_the_required_field() throws InterruptedException  {
 		    //search icon
 			 waithelper.waitForElement(driver, 3000, bUDGET_SupplementaryBudgetObj.budget_SupplementaryBudget_SearchIcon());
 			 bUDGET_SupplementaryBudgetObj.budget_SupplementaryBudget_SearchIcon().click();
@@ -542,16 +542,16 @@ public class BUDGET_SupplementaryBudget extends BaseClass {
 			 bUDGET_SupplementaryBudgetObj.budget_SupplementaryBudget_SearchBudgetYear().sendKeys(bUDGET_SupplementaryBudgetTestDataType.BudgetYearA);
 			 bUDGET_SupplementaryBudgetObj.budget_SupplementaryBudget_SearchBudgetYear().sendKeys(Keys.ENTER);
 			 //budget Type
-			/* waithelper.waitForElement(driver, 3000, bUDGET_SupplementaryBudgetObj.budget_SupplementaryBudget_SearchBudgetType());
+			 waithelper.waitForElement(driver, 3000, bUDGET_SupplementaryBudgetObj.budget_SupplementaryBudget_SearchBudgetType());
 		 	bUDGET_SupplementaryBudgetObj.budget_SupplementaryBudget_SearchBudgetType().click();
-			bUDGET_SupplementaryBudgetObj.budget_SupplementaryBudget_SearchBudgetType().sendKeys(bUDGET_SupplementaryBudgetTestDataType.BudgetTypeM);
+			bUDGET_SupplementaryBudgetObj.budget_SupplementaryBudget_SearchBudgetType().sendKeys(bUDGET_SupplementaryBudgetTestDataType.BudgetTypeA);
 			bUDGET_SupplementaryBudgetObj.budget_SupplementaryBudget_SearchBudgetType().sendKeys(Keys.ENTER);
 			 //total amount
 			 waithelper.waitForElement(driver, 3000, bUDGET_SupplementaryBudgetObj.budget_SupplementaryBudget_SearchTotalAmount());
 			 bUDGET_SupplementaryBudgetObj.budget_SupplementaryBudget_SearchTotalAmount().click();
-			 bUDGET_SupplementaryBudgetObj.budget_SupplementaryBudget_SearchTotalAmount().sendKeys(bUDGET_SupplementaryBudgetTestDataType.TotalAmountM);
-			 bUDGET_SupplementaryBudgetObj.budget_SupplementaryBudget_SearchTotalAmount().sendKeys(Keys.ENTER);	*/
-		
+			 bUDGET_SupplementaryBudgetObj.budget_SupplementaryBudget_SearchTotalAmount().sendKeys(bUDGET_SupplementaryBudgetTestDataType.TotalAmountA);
+			 bUDGET_SupplementaryBudgetObj.budget_SupplementaryBudget_SearchTotalAmount().sendKeys(Keys.ENTER);
+		Thread.sleep(2000);
 	}
 	 @Then("^select the record check Returned auth status of the record$")
 	    public void select_the_record_check_returned_auth_status_of_the_record() {

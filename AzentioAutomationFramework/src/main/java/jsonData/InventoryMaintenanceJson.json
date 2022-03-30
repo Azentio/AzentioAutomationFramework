@@ -2,25 +2,18 @@
 {
 		"User"						: "Maker",
 		"BranchCode"				: "AZENTMAIN-Azentio Main Branch",
-		"ItemCode"					: "Book41",
-		"ItemDescription"			: "Book41",
-		"ItemShortDescription"		: "Book41",
-		"InstrumentCode"			: "INV004-Traveller Check",
+		"ItemCode"					: "BOOKONE2",
+		"ItemDescription"			: "Cheque book two",
+		"ItemShortDescription"		: "CBO2",
+		"InstrumentCode"			: "INV00023-Cheque book one",
 		"CurrencyCode"				: "INR",
 		"ReorderLevel"				: "1",
-		"ExcessLevel"				: "10",
+		"ExcessLevel"				: "100",
 		"ReorderQty"				: "1",
 		"CurrentBalanceQuantity"	: "50",
-		"Remark"					: "OK",	
+		"Remark"					: "OK"
 		
-		"ItemCodeGL"					: 	"TD0001",
-		"InventoryGL"					:	"IFRS-000002-EQ-Equity Capital",
-		"AccruedPurchaseGL"				:	"IFRS-000002-EQ-Equity Capital",
-		"AccruedLandedCostGL"			:	"IFRS-000002-EQ-Equity Capital",
-		"InventoryInterBranchGL"		:	"IFRS-000002-EQ-Equity Capital",
-		"InventoryDamageAdjustmentGL"	:	"IFRS-000002-EQ-Equity Capital",
-		"InventoryLossAdjustmentGL"		:	"IFRS-000002-EQ-Equity Capital",
-		"InventoryConsumptionGL"		:	"IFRS-000002-EQ-Equity Capital"
+		
 			
 }
 ]
