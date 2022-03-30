@@ -802,6 +802,7 @@ public class ARAP_AccountsReceivable_AccountsPayable extends BaseClass {
 	public void click_on_view_button() throws Throwable {
 		// ------CLICK ON VIEW BUTTON---------//
 		arapReportObj.ARAP_Report_ViewButton().click();
+		Thread.sleep(2000);
 	}
 
 	@And("^Verify the GRN Report is correctly displayed$")
@@ -1444,6 +1445,7 @@ public class ARAP_AccountsReceivable_AccountsPayable extends BaseClass {
 		// -----------TABLE ROW FIRST EDIT ICON--------------------//
 		waitHelper.waitForElement(driver, 2000, arapObj.ARAP_TableEdit());
 		arapObj.ARAP_TableEdit().click();
+		
 	}
 
 	@And("^Store The Business partner and Invoice Number$")
@@ -1887,7 +1889,8 @@ public class ARAP_AccountsReceivable_AccountsPayable extends BaseClass {
 		waitHelper.waitForElement(driver, 2000,
 				driver.findElement(By.xpath(befr_xpath + readerData.readReferancedata() + aftr_xpath)));
 		driver.findElement(By.xpath(befr_xpath + readerData.readReferancedata() + aftr_xpath)).click();
-		reviewerObj.reviewer_action_button().click();
+		
+		//reviewerObj.reviewer_action_button().click();
 	}
 
 	@Then("^Approve the record in Reviewer$")

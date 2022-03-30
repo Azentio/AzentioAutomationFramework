@@ -9,6 +9,8 @@ public class BUDGET_RequestAndAllocationTestDataType {
 	public String BudgetYear1;
 	public String Branch;
 	public String BudgetAmount;
+	public String BudgetAmount1;
+	public String Budgettype;
 	public String Currency;
 	public String Remark;	
 	public String SearchCode;

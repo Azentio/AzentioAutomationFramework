@@ -18,6 +18,7 @@ import testDataType.BUDGET_RequestAndAllocationTestDataType;
 import testDataType.BUDGET_RequestandallocationBUDTYPEDATA;
 import testDataType.BUDGET_SupplementarybudgetTestDataType;
 import testDataType.FIXEDASSET_AssetAmendmentData;
+import testDataType.GL1_Accounting_Setup_Data;
 import testDataType.INVENTORY_InventoryManagement_DataType;
 import testDataType.KUBS_LoginTestDataType;
 import testDataType.Logindata;
@@ -71,6 +72,10 @@ public class JsonConfig {
 	private final String ARandAPFilePath = configFileReader.getJsonPath() + "ARAP_ARandAP.json";
 	private List<ARAP_ARandAPData> ARAPList;
 	
+	// Accounting setup
+	private final String AccsetupFilePath = configFileReader.getJsonPath() + "GL1_Accounting_Setup.json";
+	private List<GL1_Accounting_Setup_Data> AccsetupList;
+	
 	public JsonConfig() {
 		/*
 		 * RegisterList = getRegisterData(); LoginList = getLoginList();
@@ -94,6 +99,9 @@ public class JsonConfig {
 		
 		// ARAP_ARandAP
 		ARAPList = getARAPList();
+		
+		// Accounting Setup
+		AccsetupList = getAccsetupList();
 	}
 
 	/*
@@ -245,6 +253,28 @@ public class JsonConfig {
 		}
 	}
 	
+	
+	// Accounting Setup
+	private List<GL1_Accounting_Setup_Data> getAccsetupList() {
+		Gson gson = new Gson();
+		JsonReader reader = new JsonReader(new StringReader(AccsetupFilePath));
+		reader.setLenient(true);
+		BufferedReader bufferReader = null;
+		try {
+			bufferReader = new BufferedReader(new FileReader(AccsetupFilePath));
+			GL1_Accounting_Setup_Data[] GlaccSetup = gson.fromJson(bufferReader,
+					GL1_Accounting_Setup_Data[].class);
+			return Arrays.asList(GlaccSetup);
+		} catch (FileNotFoundException e) {
+			throw new RuntimeException("Json file not found at path : " + AccsetupFilePath);
+		} finally {
+			try {
+				if (bufferReader != null)
+					bufferReader.close();
+			} catch (IOException ignore) {
+			}
+		}
+	}
 	// Inventory - StockReturnBranch 
 	private List<INVENTORY_InventoryManagement_DataType> getStockReturnBranchList() {
 		Gson gson = new Gson();
@@ -304,6 +334,8 @@ public class JsonConfig {
 			}
 		}
 	}
+
+
 	/*
 	 * public final RegisterData getRegisterByName(String customerName) { return
 	 * RegisterList.stream().filter(x ->
@@ -352,5 +384,10 @@ public class JsonConfig {
 	//ARAP_ARandAP
 	public final ARAP_ARandAPData getARAPByName(String ARAP) {
 		return ARAPList.stream().filter(x -> x.User.equalsIgnoreCase(ARAP)).findAny().get();
+	}
+	
+	//Accounting Setup
+	public final GL1_Accounting_Setup_Data getAccsetupByName(String Setup) {
+		return AccsetupList.stream().filter(x -> x.User.equalsIgnoreCase(Setup)).findAny().get();
 	}
 }

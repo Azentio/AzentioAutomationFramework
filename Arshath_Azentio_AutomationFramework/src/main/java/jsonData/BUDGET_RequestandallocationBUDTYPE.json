@@ -1,7 +1,8 @@
 [
 	{
 		"BudgetPeriod": "YEARLY",
-		"BudgetAmounT": "100000000"
+		"BudgetAmounT": "100000000",
+		"BudgetAmounT1": "50000"
 	},
 	{
 		"BudgetPeriod": "MONTHLY",

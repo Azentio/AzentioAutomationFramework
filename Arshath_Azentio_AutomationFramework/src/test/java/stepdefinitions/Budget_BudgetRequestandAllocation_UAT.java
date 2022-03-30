@@ -1,8 +1,14 @@
 package stepdefinitions;
 
+import java.awt.Robot;
+import java.awt.event.KeyEvent;
+import java.util.Set;
+
 import org.junit.Assert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.ElementClickInterceptedException;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 
 import dataProvider.ConfigFileReader;
@@ -14,6 +20,7 @@ import helper.WaitHelper;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 import pageobjects.BUDGET_RequestAndAllocationObj;
 import pageobjects.KUBS_CheckerObj;
 import pageobjects.KUBS_ReviewerObj;
@@ -30,6 +37,7 @@ public class Budget_BudgetRequestandAllocation_UAT extends BaseClass {
 	WaitHelper waitHelper;
 	String reviwerId;
 	BUDGET_RequestAndAllocationTestDataType requestAndAllocationTestData;
+	//BUDGET_RequestAndAllocationTestDataType requestAndAllocationTestData = new BUDGET_RequestAndAllocationTestDataType();
 	JsonConfig jsonReader = new JsonConfig();
 	DropDownHelper dropDownHelper = new DropDownHelper(driver);
 	BUDGET_RequestandallocationBUDTYPEDATA requestAndAllocationBudtype = new BUDGET_RequestandallocationBUDTYPEDATA();
@@ -37,7 +45,8 @@ public class Budget_BudgetRequestandAllocation_UAT extends BaseClass {
 	JsonDataReaderWriter json = new JsonDataReaderWriter();
 	KUBS_ReviewerObj reviewerObj = new KUBS_ReviewerObj(driver);
 	String referance_id;
-	BrowserHelper browserHelper;
+	String Type;
+	BrowserHelper browserHelper = new BrowserHelper(driver);
 	KUBS_CheckerObj kubsChecker = new KUBS_CheckerObj(driver);
 
 	// ---------------------------LOGIN---------------------------------//
@@ -53,7 +62,7 @@ public class Budget_BudgetRequestandAllocation_UAT extends BaseClass {
 
 	@Given("^Azentio Url login as Reviewer$")
 	public void azentio_url_login_as_reviewer() throws Throwable {
-		
+
 		// ---------LOGIN THE REVIEWER USER--------------//
 		login = new KUBS_Login(driver);
 		driver.get(configFileReader.getApplicationUrl());
@@ -62,7 +71,7 @@ public class Budget_BudgetRequestandAllocation_UAT extends BaseClass {
 
 	@Given("^Azentio Url login as checker page$")
 	public void azentio_url_login_as_checker_page() throws Throwable {
-		
+
 		// ---------LOGIN THE CHECKER USER--------------//
 		login = new KUBS_Login(driver);
 		driver.get(configFileReader.getApplicationUrl());
@@ -97,6 +106,7 @@ public class Budget_BudgetRequestandAllocation_UAT extends BaseClass {
 		// ----------TO CLICK THE EYE ICON------------------//
 		waitHelper.waitForElement(driver, 2000, requestAndAllocation.budget_requestAndAllocation_BudgetEyeIcon());
 		requestAndAllocation.budget_requestAndAllocation_BudgetEyeIcon().click();
+		
 	}
 
 	@And("^click on the Add icon in Request and Allocation$")
@@ -123,7 +133,7 @@ public class Budget_BudgetRequestandAllocation_UAT extends BaseClass {
 		dropDownHelper.SelectUsingVisibleText(requestAndAllocation.budget_requestAndAllocation_Budgetyear(),
 				requestAndAllocationTestData.BudgetYear);
 		requestAndAllocation.budget_requestAndAllocation_Budgetyear().sendKeys(Keys.ENTER);
-		//requestAndAllocation.budget_requestAndAllocation_Budgetyear().sendKeys(Keys.DOWN);
+		// requestAndAllocation.budget_requestAndAllocation_Budgetyear().sendKeys(Keys.DOWN);
 	}
 
 	@Then("^click on the Branch ok button$")
@@ -132,6 +142,7 @@ public class Budget_BudgetRequestandAllocation_UAT extends BaseClass {
 		// -----------TO CLICK BRANCH OK BUTTON------------//
 		waitHelper.waitForElement(driver, 2000, requestAndAllocation.budget_requestAndAllocation_branchOK());
 		requestAndAllocation.budget_requestAndAllocation_branchOK().click();
+
 	}
 
 	@Then("^select one currency we need$")
@@ -491,7 +502,8 @@ public class Budget_BudgetRequestandAllocation_UAT extends BaseClass {
 	@And("^Enter the Amount for yearly Budget type$")
 	public void enter_the_amount_for_yearly_budget_type() throws Throwable {
 
-		// -------------------HERE WE ENTER BUDGET AMOUNT FOR EVERY BUDGET TYPE----------------------//
+		// -------------------HERE WE ENTER BUDGET AMOUNT FOR EVERY BUDGET
+		// TYPE----------------------//
 		requestAndAllocationBudtype = new BUDGET_RequestandallocationBUDTYPEDATA();
 		waitHelper.waitForElement(driver, 3000, requestAndAllocation.budget_requestAndAllocation_Budgettype());
 		String budgettype = requestAndAllocation.budget_requestAndAllocation_Budgettype().getText();
@@ -519,7 +531,8 @@ public class Budget_BudgetRequestandAllocation_UAT extends BaseClass {
 		requestAndAllocationTestData = jsonReader.getAllowcationByName("Maker");
 		waitHelper.waitForElement(driver, 3000, requestAndAllocation.budget_requestAndAllocation_Budgetcode());
 		requestAndAllocation.budget_requestAndAllocation_Budgetcode().click();
-		requestAndAllocation.budget_requestAndAllocation_Budgetcode().sendKeys(requestAndAllocationTestData.BudgetApprove);
+		requestAndAllocation.budget_requestAndAllocation_Budgetcode()
+				.sendKeys(requestAndAllocationTestData.BudgetApprove);
 		requestAndAllocation.budget_requestAndAllocation_Budgetcode().sendKeys(Keys.ENTER);
 	}
 
@@ -527,8 +540,8 @@ public class Budget_BudgetRequestandAllocation_UAT extends BaseClass {
 	public void choose_the_one_branch() throws Throwable {
 
 		// ---------------------TO SELECT ONE BRANCH CHECKBOX-----------------------//
-		waitHelper.waitForElement(driver, 2000, requestAndAllocation.requestAndAllocation_branch_type1());
-		requestAndAllocation.requestAndAllocation_branch_type1().click();
+		waitHelper.waitForElement(driver, 2000, requestAndAllocation.requestAndAllocation_branch_type2());
+		requestAndAllocation.requestAndAllocation_branch_type2().click();
 	}
 
 	@And("^Give Amount for Budget Type Show in Budget type field$")
@@ -607,7 +620,6 @@ public class Budget_BudgetRequestandAllocation_UAT extends BaseClass {
 			requestAndAllocation.budget_requestAndAllocation_Budgetmonthremark7()
 					.sendKeys(requestAndAllocationTestData.Remark);
 
-
 		} else if (budgettype.equalsIgnoreCase("QUARTERLY")) {
 
 			// ----------------------------THIS CODE FOR QUARTERLY
@@ -629,7 +641,6 @@ public class Budget_BudgetRequestandAllocation_UAT extends BaseClass {
 					.sendKeys(requestAndAllocationBudtype.BudgetAmounT);
 			requestAndAllocation.budget_requestAndAllocation_BudgetQuaterlyremark2()
 					.sendKeys(requestAndAllocationTestData.Remark);
-
 
 		} else if (budgettype.equalsIgnoreCase("HALFYEARLY")) {
 
@@ -698,7 +709,8 @@ public class Budget_BudgetRequestandAllocation_UAT extends BaseClass {
 		requestAndAllocationTestData = jsonReader.getAllowcationByName("Maker");
 		waitHelper.waitForElement(driver, 3000, requestAndAllocation.budget_requestAndAllocation_Budgetcode());
 		requestAndAllocation.budget_requestAndAllocation_Budgetcode().click();
-		requestAndAllocation.budget_requestAndAllocation_Budgetcode().sendKeys(requestAndAllocationTestData.BudgetCodeUat);
+		// requestAndAllocation.budget_requestAndAllocation_Budgetcode().sendKeys(requestAndAllocationTestData.BudgetCodeUat);
+		requestAndAllocation.budget_requestAndAllocation_Budgetcode().sendKeys(Keys.DOWN);
 		requestAndAllocation.budget_requestAndAllocation_Budgetcode().sendKeys(Keys.ENTER);
 	}
 
@@ -786,7 +798,6 @@ public class Budget_BudgetRequestandAllocation_UAT extends BaseClass {
 			requestAndAllocation.budget_requestAndAllocation_Budgetmonthremark7()
 					.sendKeys(requestAndAllocationTestData.Remark);
 
-
 		} else if (budgettype.equalsIgnoreCase("QUARTERLY")) {
 
 			// ----------------------------THIS CODE FOR QUARTERLY
@@ -809,7 +820,6 @@ public class Budget_BudgetRequestandAllocation_UAT extends BaseClass {
 			requestAndAllocation.budget_requestAndAllocation_BudgetQuaterlyremark2()
 					.sendKeys(requestAndAllocationTestData.Remark);
 
-
 		} else if (budgettype.equalsIgnoreCase("HALFYEARLY")) {
 
 			// ---------------------------------THIS CODE FOR HALFYEARLY
@@ -818,11 +828,11 @@ public class Budget_BudgetRequestandAllocation_UAT extends BaseClass {
 			javaHelper.JavaScriptHelper(driver);
 			waitHelper.waitForElement(driver, 3000, requestAndAllocation.budget_requestAndAllocation_Budgetamount());
 			javaHelper.JSEClick(requestAndAllocation.budget_requestAndAllocation_Budgetamount());
-			waitHelper.waitForElement(driver, 3000, requestAndAllocation.budget_requestAndAllocation_BudgetHy1());
-			requestAndAllocation.budget_requestAndAllocation_BudgetHy1()
+			waitHelper.waitForElement(driver, 3000, requestAndAllocation.budget_requestAndAllocation_BudgetHy2());
+			requestAndAllocation.budget_requestAndAllocation_BudgetHy2()
 					.sendKeys(requestAndAllocationBudtype.BudgetAmounT);
-			waitHelper.waitForElement(driver, 3000, requestAndAllocation.budget_requestAndAllocation_BudgetHyremark1());
-			requestAndAllocation.budget_requestAndAllocation_BudgetHyremark1()
+			waitHelper.waitForElement(driver, 3000, requestAndAllocation.budget_requestAndAllocation_BudgetHyremark2());
+			requestAndAllocation.budget_requestAndAllocation_BudgetHyremark2()
 					.sendKeys(requestAndAllocationTestData.Remark);
 
 		}
@@ -852,23 +862,22 @@ public class Budget_BudgetRequestandAllocation_UAT extends BaseClass {
 		Assert.assertTrue(kubsChecker.Popup_status().isDisplayed());
 	}
 
-	//----------------------@KUBS_UAT_KUBS_BP_UAT_002_007----------------------//
-	
-	//**********Previous steps already written ***********//
-  
+	// ----------------------@KUBS_UAT_KUBS_BP_UAT_002_007----------------------//
+
+	// **********Previous steps already written ***********//
+
 	@Then("^Again Login the Maker$")
-    public void again_login_the_maker() throws Throwable {
+	public void again_login_the_maker() throws Throwable {
 		// ---------LOGIN THE MAKER USER--------------//
 		login = new KUBS_Login(driver);
 		driver.get(configFileReader.getApplicationUrl());
 		login.loginToAzentioApp("Maker");
 		Thread.sleep(1000);
-    }
+	}
 
-    
-    @And("^click on the Record Reject$")
-    public void click_on_the_record_reject() throws Throwable {
-    	
+	@And("^click on the Record Reject$")
+	public void click_on_the_record_reject() throws Throwable {
+
 		// ------------TO Reject THE RECORD------------------//
 		waitHelper.waitForElement(driver, 2000, requestAndAllocation.budget_requestAndAllocation_Cancel());
 		requestAndAllocation.budget_requestAndAllocation_Cancel().click();
@@ -878,14 +887,15 @@ public class Budget_BudgetRequestandAllocation_UAT extends BaseClass {
 		requestAndAllocation.requestAndAllocation_Alertsubmit().click();
 		waitHelper.waitForElement(driver, 10000, requestAndAllocation.requestAndAllocation_reviewer_id());
 		reviwerId = requestAndAllocation.requestAndAllocation_reviewer_id().getText();
-		System.out.println("The Result is:" +reviwerId);
+		System.out.println("The Result is:" + reviwerId);
 		waitHelper.waitForElement(driver, 3000, requestAndAllocation.requestAndAllocation_notificationClose());
 		requestAndAllocation.requestAndAllocation_notificationClose().click();
-    	
-    }
-    @And("^Save the Record and capture the output$")
-    public void save_the_record_and_capture_the_output() throws Throwable {
-    	// ------------TO SAVE THE RECORD--------------------//
+
+	}
+
+	@And("^Save the Record and capture the output$")
+	public void save_the_record_and_capture_the_output() throws Throwable {
+		// ------------TO SAVE THE RECORD--------------------//
 		waitHelper.waitForElement(driver, 3000, requestAndAllocation.budget_requestAndAllocation_AllowSave());
 		requestAndAllocation.budget_requestAndAllocation_AllowSave().click();
 		Thread.sleep(2000);
@@ -894,9 +904,63 @@ public class Budget_BudgetRequestandAllocation_UAT extends BaseClass {
 				"return document.querySelector('ion-toast').shadowRoot.querySelector('div[class=toast-message]').innerText");
 		System.out.println(output);
 		System.out.println("System should allow the rejected budget code Again Re-use");
+	}
+
+	// ---------------------@KUBS_UAT_KUBS_BP_UAT_003_001----------------------//
+
+	@And("^Change the Amount Before Approval$")
+	public void change_the_amount_before_approval() throws Throwable {
+		// ------------HERE WE ENTER BEFORE BUDGET AMOUNT FOR EVERY BUDGET TYPE------------------//
+		javaHelper.JavaScriptHelper(driver);
+		waitHelper.waitForElement(driver, 3000, requestAndAllocation.budget_requestAndAllocation_Budgetamount());
+		javaHelper.JSEClick(requestAndAllocation.budget_requestAndAllocation_Budgetamount());
+		waitHelper.waitForElement(driver, 3000, requestAndAllocation.budget_requestAndAllocation_BudgetHy2());
+		requestAndAllocation.budget_requestAndAllocation_BudgetHy2().clear();
+		waitHelper.waitForElement(driver, 3000, requestAndAllocation.budget_requestAndAllocation_BudgetHy2());
+		requestAndAllocation.budget_requestAndAllocation_BudgetHy2().click();
+		Thread.sleep(1000);
+		waitHelper.waitForElement(driver, 3000, requestAndAllocation.budget_requestAndAllocation_BudgetHy2());
+		requestAndAllocation.budget_requestAndAllocation_BudgetHy2().sendKeys("500000");
+	}
+
+    
+	// ---------------------@KUBS_UAT_KUBS_BP_UAT_003_002----------------------//
+
+    @Then("^Enter the Budget type$")
+    public void enter_the_budget_type() throws Throwable {
+    	
+    	waitHelper.waitForElement(driver, 3000, requestAndAllocation.requestAndAllocation_BudgetHytype());
+    	requestAndAllocation.requestAndAllocation_BudgetHytype().click();
+    	requestAndAllocation.requestAndAllocation_BudgetHytype().sendKeys("Half");
     }
-	
-	
+    
+    @And("^Change the Amount After Approval$")
+    public void change_the_amount_after_approval() throws Throwable {
+		javaHelper.JavaScriptHelper(driver);
+		waitHelper.waitForElement(driver, 3000, requestAndAllocation.budget_requestAndAllocation_Budgetamount());
+		javaHelper.JSEClick(requestAndAllocation.budget_requestAndAllocation_Budgetamount());
+		javaHelper.scrollIntoView(requestAndAllocation.budget_requestAndAllocation_BudgetHy2());
+		waitHelper.waitForElement(driver, 3000, requestAndAllocation.budget_requestAndAllocation_BudgetHy2());
+		requestAndAllocation.budget_requestAndAllocation_BudgetHy2().clear();
+		waitHelper.waitForElement(driver, 3000, requestAndAllocation.budget_requestAndAllocation_BudgetHy2());
+		requestAndAllocation.budget_requestAndAllocation_BudgetHy2().click();
+		Thread.sleep(1000);
+		waitHelper.waitForElement(driver, 3000, requestAndAllocation.budget_requestAndAllocation_BudgetHy2());
+		requestAndAllocation.budget_requestAndAllocation_BudgetHy2().sendKeys("500000");
+    }
+    
+    @When("^validate the modification$")
+    public void validate_the_modification() throws Throwable {
+        //-------VALIDATE THE MODIFICATION-------//    	
+    	try {
+    		
+    		requestAndAllocation.budget_requestAndAllocation_AllowSave().click();    		    		
+    	}
+    	catch(NoSuchElementException e) {
+    		System.out.println("System should not Allow to Modify the Amount");
+    	}
+    }
+    
 	// ---------------------@KUBS_UAT_KUBS_BP_UAT_003_003----------------------//
 
 	@Then("^Monthly Budget Code$")
@@ -985,7 +1049,7 @@ public class Budget_BudgetRequestandAllocation_UAT extends BaseClass {
 
 	@And("^Capture November Month$")
 	public void capture_november_month() throws Throwable {
-		
+
 		// -----------------CAPTURE MONTH AND ENTER AMOUNT-----------------------//
 		waitHelper.waitForElement(driver, 2000, requestAndAllocation.november_Month());
 		Assert.assertTrue(requestAndAllocation.november_Month().isDisplayed());
@@ -1263,8 +1327,8 @@ public class Budget_BudgetRequestandAllocation_UAT extends BaseClass {
 
 	@And("^Click the Cancel button$")
 	public void click_the_cancel_button() throws Throwable {
-		
-		//--------------------CLICK ON CANCEL----------------------//
+
+		// --------------------CLICK ON CANCEL----------------------//
 		waitHelper.waitForElement(driver, 2000, requestAndAllocation.budget_requestAndAllocation_Cancel());
 		requestAndAllocation.budget_requestAndAllocation_Cancel().click();
 	}
@@ -1282,6 +1346,60 @@ public class Budget_BudgetRequestandAllocation_UAT extends BaseClass {
 		System.out.println(status);
 	}
 
+	
+	// -----------------------------@KUBS_UAT_KUBS_BP_UAT_004_002-----------------------------//
+
+
+    @And("^Get Budget type$")
+    public void get_budget_type() throws Throwable {
+        //-------GET BUDGET TYPE-------//
+    	waitHelper.waitForElement(driver, 3000, requestAndAllocation.requestAndAllocation_GetBudgettype());
+    	Type = requestAndAllocation.requestAndAllocation_GetBudgettype().getText();
+    	System.out.println(Type);
+    }
+    
+    @And("^Click on sub module Budget creation Reports$")
+    public void click_on_sub_module_budget_creation_reports() throws Throwable {
+    	//-------BUDGET CREATION REPORTS------//
+    	javaHelper.JavaScriptHelper(driver);
+    	javaHelper.scrollIntoView(requestAndAllocation.Reports_Bud_Creation());
+    	requestAndAllocation.Reports_Bud_Creation().click();
+    }
+    
+    @Then("^Give the Getted budget type$")
+    public void give_the_getted_budget_type() throws Throwable {
+        //--------GIVE BUDGET TYPE---------//
+    	waitHelper.waitForElement(driver, 3000, requestAndAllocation.Reports_Bud_Creation_BudType());
+    	requestAndAllocation.Reports_Bud_Creation_BudType().click();
+    	requestAndAllocation.Reports_Bud_Creation_BudType().sendKeys(Type);
+    	requestAndAllocation.Reports_Bud_Creation_BudType().sendKeys(Keys.ENTER);
+    }
+
+    @And("^Verify the Budget creation Report$")
+    public void verify_the_budget_creation_report() throws Throwable {
+		browserHelper.SwitchToWindow(1);
+		javaHelper.JavaScriptHelper(driver);
+		/*Set<String> windowHandles = driver.getWindowHandles();
+		for (String string : windowHandles) {
+			String title = driver.switchTo().window(string).getTitle();
+			System.out.println(title);
+		}*/
+		while (true) {
+			Thread.sleep(2000);
+			try {
+				javaHelper
+						.scrollIntoView(driver.findElement(By.xpath("//div[contains(text(),'" + Type + "')]")));
+				driver.findElement(By.xpath("//div[contains(text(),'" + Type + "')]")).isDisplayed();
+				break;
+			} catch (NoSuchElementException e) {
+				waitHelper.waitForElement(driver, 3000, requestAndAllocation.Reports_Bud_Creation_Nextbtn());
+				requestAndAllocation.Reports_Bud_Creation_Nextbtn().click();
+			}
+		}
+		
+		browserHelper.switchToParentWithChildClose();
+    }
+	
 	// -----------------------------@KUBS_UAT_KUBS_BP_UAT_005_001-----------------------------//
 
 	@Then("^Select the Branch Request Budget Code$")

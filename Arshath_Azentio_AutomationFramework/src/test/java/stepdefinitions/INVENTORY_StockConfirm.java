@@ -95,6 +95,7 @@ public class INVENTORY_StockConfirm extends BaseClass{
     
     @Then("^Get the New Request Referance No$")
     public void get_the_new_request_referance_no() throws Throwable {
+    	waitHelper.waitForElement(driver, 2000, stockConfirmationObj.inventory_StockissueRefNo());
          RefNo = stockConfirmationObj.inventory_StockissueRefNo().getText();
         System.out.println("Request Referance No =" +RefNo);
     }
@@ -179,7 +180,7 @@ public class INVENTORY_StockConfirm extends BaseClass{
 		inventoryData = jsonConfig.getStockReturnBranchByName("Maker");
 		waitHelper.waitForElement(driver, 2000, stockConfirmationObj.StockConfirm_Remark());
 		stockConfirmationObj.StockConfirm_Remark().click();
-		waitHelper.waitForElement(driver, 5000, stockConfirmationObj.StockConfirm_Remark());
+		//waitHelper.waitForElement(driver, 5000, stockConfirmationObj.StockConfirm_Remark());
 		stockConfirmationObj.StockConfirm_Remark().sendKeys(inventoryData.RemarkApprove);
 		waitHelper.waitForElement(driver, 2000, stockConfirmationObj.StockConfirm_RemarkSubmit());
 		stockConfirmationObj.StockConfirm_RemarkSubmit().click();

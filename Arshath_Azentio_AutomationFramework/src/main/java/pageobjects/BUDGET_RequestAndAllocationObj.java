@@ -421,6 +421,13 @@ public class BUDGET_RequestAndAllocationObj {
 		return requestAndAllocation_BudgetHy1;
 	}
 
+	@FindBy(xpath = "//datatable-row-wrapper[1]/datatable-body-row/div/datatable-body-cell[1]//ion-button[2]")
+	private WebElement  budget_requestAndAllocation_TableEdit;
+
+	public WebElement  budget_requestAndAllocation_TableEdit() {
+		return budget_requestAndAllocation_TableEdit;
+	}
+
 	@FindBy(xpath = "//datatable-body-cell[2]/div/app-kub-currency[@id='1']/input")
 	private WebElement requestAndAllocation_BudgetHy2;
 
@@ -442,7 +449,22 @@ public class BUDGET_RequestAndAllocationObj {
 	public WebElement budget_requestAndAllocation_BudgetHyremark2() {
 		return requestAndAllocation_BudgetHyremark2;
 	}
+	
+	@FindBy(xpath = "//datatable-row-wrapper[1]/datatable-body-row/div/datatable-body-cell[5]/div[1]")
+	private WebElement requestAndAllocation_GetBudgettype;
 
+	public WebElement requestAndAllocation_GetBudgettype() {
+
+		return requestAndAllocation_GetBudgettype;
+	}
+	
+	@FindBy(xpath = "//datatable-header[1]/div[1]/div[2]/datatable-header-cell[5]/div[1]/ion-input[1]/input[1]")
+	private WebElement requestAndAllocation_BudgetHytype;
+
+	public WebElement requestAndAllocation_BudgetHytype() {
+
+		return requestAndAllocation_BudgetHytype;
+	}
 	// Quaterly
 
 	@FindBy(xpath = "//datatable-body-cell[2]/div/app-kub-currency[@id='0']/input")
@@ -767,5 +789,28 @@ public class BUDGET_RequestAndAllocationObj {
 	public WebElement march_Month() {
 		return month_March;
 	}
+	
+	// Reports
+	
+	@FindBy(xpath = "//ion-button[@ng-reflect-router-link='tabs/entities/budget-creation-']")
+	private WebElement Reports_Bud_Creation;
+	public WebElement Reports_Bud_Creation() {
+		return Reports_Bud_Creation;
+	}
+	
+	@FindBy(xpath = "//ion-col[1]/app-kub-lov[1]/span[1]/ng-select[1]/div[1]/div[1]/div[2]/input")
+	private WebElement Reports_Bud_Creation_BudType;
 
+	public WebElement Reports_Bud_Creation_BudType() {
+
+		return Reports_Bud_Creation_BudType;
+	}
+
+	@FindBy(xpath = "//tbody/tr[2]/td[7]/input[1]")
+	private WebElement  Reports_Bud_Creation_Nextbtn;
+
+	public WebElement Reports_Bud_Creation_Nextbtn() {
+
+		return Reports_Bud_Creation_Nextbtn;
+	}
 }

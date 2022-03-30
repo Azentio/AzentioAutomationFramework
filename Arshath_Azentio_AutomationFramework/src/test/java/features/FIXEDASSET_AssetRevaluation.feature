@@ -77,8 +77,6 @@ And Click search icon button
 Then Give the Asset Referance Number 
 When capture Asset Grid view List
 
-
-
 @KUBS_FAT_UAT_012_003
 Scenario: Alter the Value of an existing asset (Revalued)
 Given Navigate the Maker Url
@@ -158,8 +156,6 @@ Then Asset Revaluvation submodule Eye Icon
 And Click search icon button
 Then Give the Asset Referance Number 
 When capture Asset Grid view List
-
-
 
 @KUBS_FAT_UAT_012_005
 Scenario: Alter the Value of an existing asset (Amendent)

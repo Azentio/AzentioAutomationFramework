@@ -43,6 +43,8 @@ public class FIXEDASSET_AssetReturn extends BaseClass {
 	String RefNo;
 	String referance_id;
 	String reviwerId;
+	
+	
 	@Given("^Navigate the Azentio url$")
 	public void navigate_the_azentio_url() throws Throwable {
 		// ---------LOGIN THE MAKER USER--------------//
@@ -196,7 +198,8 @@ public class FIXEDASSET_AssetReturn extends BaseClass {
 		waitHelper.waitForElement(driver, 2000,
 				driver.findElement(By.xpath(befr_xpath + readerData.readReferancedata() + aftr_xpath)));
 		driver.findElement(By.xpath(befr_xpath + readerData.readReferancedata() + aftr_xpath)).click();
-		reviewerObj.reviewer_action_button().click();
+		javaScriptHelper.JSEClick(reviewerObj.reviewer_action_button());
+		//reviewerObj.reviewer_action_button().click();
     }
 
     @And("^Click Approve button from Reviewer End$")

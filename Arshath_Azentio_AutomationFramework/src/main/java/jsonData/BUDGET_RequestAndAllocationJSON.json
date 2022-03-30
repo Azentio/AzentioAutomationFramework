@@ -1,13 +1,14 @@
 [
 	{
 		"UserType": "Maker",
-		"BudgetCode": "BUD_0123",		
+		"BudgetCode": "123132 - ASDFG",		
 		"BudgetName": "xxx",
 		"BudgetType": "xxx",
 		"BudgetYear": "2022-2023",
 		"BudgetYear1": "2023-2024",
 		"Branch": "CO",
 		"BudgetAmount": "100000000",
+		"BudgetAmounT1": "50000",
 		"Currency": "RUP",
 		"Remark": "OK",
 		"SearchCode": "BUD007",
@@ -25,6 +26,7 @@
 		"Halfyearly": "BDG0019",
 		"Yearly": "BUD003",
 		"Budgetcancel":"BUD111",
-		"BudgetAllocate":"BudgetQC"
+		"BudgetAllocate":"BudgetQC",
+		"Budgettype" : "Half"
 	}
 ]

@@ -253,14 +253,14 @@ public class FIXEDASSET_AssetAmendment extends BaseClass {
 		waitHelper.waitForElement(driver, 2000,
 				driver.findElement(By.xpath(befr_xpath + readerData.readReferancedata() + aftr_xpath)));
 		driver.findElement(By.xpath(befr_xpath + readerData.readReferancedata() + aftr_xpath)).click();
-		reviewerObj.reviewer_action_button().click();
-		readerData.addReferanceData(referance_id);
+		javaScriptHelper.JSEClick(reviewerObj.reviewer_action_button());
+		//reviewerObj.reviewer_action_button().click();		
 	}
 
 	@And("^Click the Approve icon from Reviewer End$")
 	public void click_the_approve_icon_from_reviewer_end() throws Throwable {
 		// -----------------REVIEWER APPROVE---------------------//
-		
+		readerData.addReferanceData(referance_id);
 		waitHelper.waitForElement(driver, 2000, reviewerObj.reviewerApproveButton());
 		reviewerObj.reviewerApproveButton().click();
 	}

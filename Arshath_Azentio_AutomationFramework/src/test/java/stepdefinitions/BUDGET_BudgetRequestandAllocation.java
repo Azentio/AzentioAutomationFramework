@@ -549,7 +549,7 @@ public class BUDGET_BudgetRequestandAllocation extends BaseClass {
 	@And("^choose  Branch$")
 	public void choose_Branch() throws Throwable {
 		waitHelper.waitForElement(driver, 2000, requestAndAllocation.requestAndAllocation_branch_type1());
-		requestAndAllocation.requestAndAllocation_branch_type1().click();
+		requestAndAllocation.requestAndAllocation_branch_type2().click();
 	}
 
 

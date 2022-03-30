@@ -196,7 +196,7 @@ public class INVENTORY_StockConfirmationObj {
 		return inventory_Submit;
 	}
 	
-	@FindBy(xpath = "(//ion-textarea[@name='remarks'])[2]") 
+	@FindBy(xpath = "//textarea[@name='remarks']") 
 	private WebElement inventory_Remark;
 
 	public WebElement StockConfirm_Remark() {

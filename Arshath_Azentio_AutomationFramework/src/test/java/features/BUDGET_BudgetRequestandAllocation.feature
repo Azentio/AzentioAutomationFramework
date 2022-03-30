@@ -1,5 +1,6 @@
 Feature: Check Budget Request and Allocation feature module
  @KUBS_RequestandAllocation_BP_BC_05_01
+ @_Multi_auth
   Scenario: System should follow the flow as Maker
   Given Navigate the Azentio Maker Url
   Then Click Transfer Icon
@@ -31,6 +32,7 @@ Feature: Check Budget Request and Allocation feature module
   Then Submit the Record
   
   @KUBS_Reviewer_Approve_Notification_BP_BC_05_02
+  @_Multi_auth
   Scenario: System should follow the flow as Reviewer record approve view in Notification
   Given Navigate the Azentio Maker Url
   Then Click Transfer Icon
@@ -53,6 +55,7 @@ Feature: Check Budget Request and Allocation feature module
   Then Approve the record and get the Notification
   
   @KUBS_Reviewer_Approve_BP_BC_05_03
+  @_Multi_auth
   Scenario: System should follow the flow as Record Approve in Reviewer
   Given Navigate the Azentio Maker Url
   Then Click Transfer Icon
@@ -76,6 +79,7 @@ Feature: Check Budget Request and Allocation feature module
   And Submit the reviewer Approve Record
   
   @KUBS_Reviewer_Rejecting_BP_BC_05_04
+  @_Multi_auth
   Scenario: System should follow the flow as Record Rejecting in Reviewer
   Given Navigate the Azentio Maker Url
   Then Click Transfer Icon
@@ -99,6 +103,7 @@ Feature: Check Budget Request and Allocation feature module
   And Submit the reviewer Rejecting Record
   
   @KUBS_Checker_Approve_Notification_BP_BC_05_05
+  @_Multi_auth
    Scenario: System should follow the flow as Checker Approving Notification
   Given Navigate the Azentio Maker Url
   Then Click Transfer Icon
@@ -128,6 +133,7 @@ Feature: Check Budget Request and Allocation feature module
   Then Capture the Notification is displayed
   
   @KUBS_Checker_Approve_BP_BC_05_06
+  @_Multi_auth
    Scenario: System should follow the flow as Checker Approving
   Given Navigate the Azentio Maker Url
   Then Click Transfer Icon
@@ -159,6 +165,7 @@ Feature: Check Budget Request and Allocation feature module
   Then Submit the Approve Record in checker
   
   @KUBS_Checker_Rejecting_BP_BC_05_07
+  @_Multi_auth
   Scenario: System should follow the flow as Checker Rejecting
   Given Navigate the Azentio Maker Url
   Then Click Transfer Icon
@@ -190,6 +197,7 @@ Feature: Check Budget Request and Allocation feature module
   Then Submit the Reject Record in checker
   
   @KUBS_Authorizationstatus_BP_BC_05_08
+  @_Multi_auth
   Scenario: To check the authorization status of budget creation record post checkers approval
   Given Navigate the Azentio Maker Url
   Then Click Transfer Icon
@@ -222,6 +230,7 @@ Feature: Check Budget Request and Allocation feature module
   And Capture the Authorization status
   
   @KUBS_Checker_Send_Notification_to_Maker_BP_BC_05_09
+  @_Multi_auth
  Scenario: To verify system send notification to maker user once checker user approves/rejects the budget creation record 
   Given Navigate the Azentio Maker Url
   Then Click Transfer Icon
@@ -256,6 +265,7 @@ Feature: Check Budget Request and Allocation feature module
 
  
 @KUBS_SEARCH_CRITERIA_BP_BC_11_01
+@_Multi_auth
 Scenario: System Should follow the flow as Search criteria
   Given Navigate the Azentio Maker Url
   Then Click Transfer Icon
@@ -267,6 +277,7 @@ Scenario: System Should follow the flow as Search criteria
   Then Capture the code is displayed
   
  @KUBS_SEARCH_CRITERIA_MODIFICATION_BP_BC_19_01
+ @_Multi_auth
 Scenario: System Should follow the flow as Search criteria
   Given Navigate the Azentio Maker Url
   Then Click Transfer Icon
@@ -279,7 +290,8 @@ Scenario: System Should follow the flow as Search criteria
   And Modify the Code
   And After modify click save button
  
-@KUBS_BP_BC_01_01_Auto_auth
+@KUBS_BP_BC_01_01
+@_Auto_auth
 Scenario: To verify post clicking on Master Budget tab budget creation screen is getting open with the respective fields
  Given Navigate Azentio Maker Url
   Then Click Transfer Icon button
@@ -303,7 +315,8 @@ Scenario: To verify post clicking on Master Budget tab budget creation screen is
   Then Click on Maker Notification icon
   And Approve the Auto auth Record
   
-  @KUBS_BP_BC_01_03_Autoauth_Savarecord
+  @KUBS_BP_BC_01_03_Savarecord
+  @_Autoauth
 Scenario: To verify the impact if user enters all the valid details and clicking on save button  
   Given Navigate the Azentio Maker Url
   Then Click Transfer Icon button
@@ -319,7 +332,8 @@ Scenario: To verify the impact if user enters all the valid details and clicking
   And Select Amount for which Budget Type Show in Budget type
   And Clk on save icon
   
-  @KUBS_BP_BC_01_04_Autoauth_MultipleRecords
+  @KUBS_BP_BC_01_04_MultipleRecords
+  @_Autoauth
  Scenario: To verify user is able to create multiple records of budget creation
 Given Navigate Azentio Maker Url
   Then Click Transfer Icon button
@@ -351,8 +365,8 @@ Given Navigate Azentio Maker Url
   And Mouseclk save button
   Then Mouseclk the Action button 
   And Mouseclk on Record Approve
-   Given Navigate Azentio Maker Url
-    Then Click Transfer Icon button
+  Given Navigate Azentio Maker Url
+  Then Click Transfer Icon button
   And Click on Budget Module field
   Then Click on Budget Sub module Near Eye Icon button
   And Click on Add icon Request and Allocation
@@ -367,7 +381,8 @@ Given Navigate Azentio Maker Url
   Then Mouseclk to the Action button 
   And Mouseclk on the Record Approve
  
-  @KUBS_BP_BC_01_07_Autoauth_ManualYear
+  @KUBS_BP_BC_01_07_ManualYear
+  @_Autoauth
   Scenario: To verify system allows  user to select financial year manually  
  Given Navigate Azentio Maker Url
   Then Click Transfer Icon button
@@ -377,7 +392,8 @@ Given Navigate Azentio Maker Url
   Then press current Budget Code 
   And Manual Enter current Budget Year
   
-  @KUBS_BP_BC_01_08_Autoauth_pastYear
+  @KUBS_BP_BC_01_08_pastYear
+  @_Autoauth
   Scenario: To verify user is able to select previous year (past).System should not allow user to select past year in financial year field
  Given Navigate Azentio Maker Url
   Then Click Transfer Icon
@@ -388,7 +404,8 @@ Given Navigate Azentio Maker Url
   And  Enter and capture the Previous Budget Year
 
   
-  @KUBS_BP_BC_01_02_Autoauth_Validation
+  @KUBS_BP_BC_01_02_Validation
+  @_Autoauth
   Scenario: To verify the impact if user enters all the invalid details and clicking on save button
   Given Navigate Azentio Maker Url
   Then Click Transfer Icon button
@@ -402,7 +419,8 @@ Given Navigate Azentio Maker Url
   Then Clk Branch ok button in pop up
   And Capture the validation Message
   
-@KUBS_BP_BC_01_06_Autoauth_CodeenterManually
+@KUBS_BP_BC_01_06_CodeenterManually
+@_Autoauth
  Scenario: To verify system allows  user to select budget code, manually
 	Given Navigate Azentio Maker Url
   Then Click Transfer Icon button

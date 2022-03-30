@@ -208,7 +208,8 @@ public class FIXEDASSET_AssetRevaluvation extends BaseClass {
 		waitHelper.waitForElement(driver, 2000,
 				driver.findElement(By.xpath(befr_xpath + readerData.readReferancedata() + aftr_xpath)));
 		driver.findElement(By.xpath(befr_xpath + readerData.readReferancedata() + aftr_xpath)).click();
-		reviewerObj.reviewer_action_button().click();
+		javaScriptHelper.JSEClick(reviewerObj.reviewer_action_button());
+		//reviewerObj.reviewer_action_button().click();
 	}
 
 	@And("^Approve icon from Reviewer End$")
