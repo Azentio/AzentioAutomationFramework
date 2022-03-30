@@ -38,6 +38,8 @@ public class INVENTORY_EnquiryGl extends BaseClass {
 
 	@Then("^click on report segment button$")
 	public void click_on_report_segment_button() throws Throwable {
+		javascriptHelper.JavaScriptHelper(driver);
+		javascriptHelper.scrollIntoView(inventoryEnquiryGlObj.inventoryReportIcon());
 		waitHelper.waitForElement(driver, 3000, inventoryEnquiryGlObj.inventoryReportIcon());
 		inventoryEnquiryGlObj.inventoryReportIcon().click();
 		waitHelper.waitForElement(driver, 3000, inventoryEnquiryGlObj.inventoryEnquiryMenu());

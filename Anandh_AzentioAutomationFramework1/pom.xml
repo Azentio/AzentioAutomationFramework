@@ -40,6 +40,14 @@
     
     
 </dependency>
+<!-- https://mvnrepository.com/artifact/org.jumpmind.symmetric/symmetric-csv -->
+<dependency>
+    <groupId>org.jumpmind.symmetric</groupId>
+    <artifactId>symmetric-csv</artifactId>
+    <version>3.5.19</version>
+</dependency>
+
+
 <!-- https://mvnrepository.com/artifact/org.testng/testng -->
 <dependency>
     <groupId>org.testng</groupId>

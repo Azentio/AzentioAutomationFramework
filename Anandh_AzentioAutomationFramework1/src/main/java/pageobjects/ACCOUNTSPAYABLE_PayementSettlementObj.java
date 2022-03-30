@@ -90,4 +90,40 @@ public class ACCOUNTSPAYABLE_PayementSettlementObj {
   {
 	  return accountsPayable_ApprovedSettlementReferenceNumber;
   }
+  @FindBy(xpath="//datatable-row-wrapper[1]//datatable-body-cell[1]//ion-button[1]")
+  private WebElement paymentSettlement_RecentlyApprovedRecord;
+  public WebElement paymentSettlementRecentlyApprovedRecord()
+  {
+	  return paymentSettlement_RecentlyApprovedRecord;
+  }
+  @FindBy(xpath="//ion-col[3]//span[1]//div[1]/div[1]/div[2]/span[2]")
+  private WebElement payementSettlement_ApprovedBusinesspartnerName;
+  public WebElement payementSettlementApprovedBusinessPartnerName()
+  {
+	  return payementSettlement_ApprovedBusinesspartnerName;
+  }
+  @FindBy(xpath="//page-ap-payment-settlement-update[1]//datatable-body-cell[4]//div")
+  private WebElement paymentSettlement_RecentlyApprovedInvoiceNumber;
+  public WebElement paymentSettlementRecentlyApprovedInvoiceNUmber()
+  {
+	  return paymentSettlement_RecentlyApprovedInvoiceNumber;
+  }
+  @FindBy(xpath="//page-ap-payment-settlement-update[1]//datatable-body-cell[6]//div")
+  private WebElement paymentSettlement_GrossInvoiceAmount;
+  public WebElement paymentSettlementGrossInvoiceAmount()
+  {
+	  return paymentSettlement_GrossInvoiceAmount;
+  }
+  @FindBy(xpath="//input[@placeholder='Search Txn Status']")
+  private WebElement paymentSettlement_SearchTXNNumber;
+  public WebElement paymentSettlementSearchTXNNumber()
+  {
+	  return paymentSettlement_SearchTXNNumber;
+  }
+   @FindBy(xpath="//datatable-row-wrapper[1]//datatable-body-cell[5]//span")
+   private WebElement paymentSettlement_ApprovedBpName;
+   public WebElement paymentSettlementApprovedBpName()
+   {
+	   return paymentSettlement_ApprovedBpName;
+   }
 }

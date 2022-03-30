@@ -93,6 +93,12 @@ public class BUDGET_RequestAndAllocationObj {
 	public WebElement  budget_requestAndAllocation_Budgetbranch() {
 		return requestAndAllocation_Budgetbranch;
 	}
+	@FindBy(xpath="//ion-alert[1]/div/div[3]/button[11]")
+	private WebElement budget_BudgetReqAndAllocationAzentMainBranch;
+	public WebElement budgetBudgetReqAndAllocationAzentMainBranch()
+	{
+		return budget_BudgetReqAndAllocationAzentMainBranch;
+	}
 	@FindBy(xpath = "//ion-textarea/div/textarea[@name='remarks']")
 	private WebElement budget_allocation_alert_remarks;
 

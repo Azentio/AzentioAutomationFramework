@@ -216,64 +216,34 @@ public class ACCOUNTSPAYABLE_PaymentSettlement extends BaseClass {
 		settlementData.put("approvedReferenceNumber", approvedReferenceNumber);
 		System.out.println("Settlement Reference Number" + settlementData.get("approvedReferenceNumber"));
 	}
-
+	@And("^give the refrence number which we going to see accounting entries$")
+    public void give_the_refrence_number_which_we_going_to_see_accounting_entries() throws Throwable {
+		glObj.glTransactionReferenceNumber().click();
+		glObj.glTransactionReferenceNumber().sendKeys(settlementData.get("approvedReferenceNumber"));
+		glObj.glTransactionReferenceNumber().sendKeys(Keys.ENTER);
+    }
 	@Then("^verify approved settlement reference number is available in the Gl report$")
 	public void verify_approved_settlement_reference_number_is_available_in_the_gl_report() throws Throwable {
 		javascriptHelper.JavaScriptHelper(driver);
 		Thread.sleep(1000);
-		for (int i = 0; i < 299; i++) {
-			try {
-
+	
 				driver.findElement(By.xpath("(//datatable-body-cell[1]//span[contains(text(),'"
 						+ settlementData.get("approvedReferenceNumber") + "')])[1]")).isDisplayed();
 
-				driver.findElement(By.xpath("(//datatable-body-cell[1]//span[contains(text(),'"
-						+ settlementData.get("approvedReferenceNumber") + "')])[1]"));
-				String TransactionType = driver
-						.findElement(By.xpath("(//datatable-body-cell[1]//span[contains(text(),' "
-								+ settlementData.get("approvedReferenceNumber")
-								+ " ')]/ancestor::datatable-body-cell[1]/following-sibling::datatable-body-cell[5]//span)[1]"))
-						.getText();
-				System.out.println("TransactionType is " + TransactionType);
-				String amount = driver.findElement(By.xpath("(//datatable-body-cell[1]//span[contains(text(),' "
-						+ settlementData.get("approvedReferenceNumber")
-						+ " ')]/ancestor::datatable-body-cell[1]/following-sibling::datatable-body-cell[6]//span)[1]"))
-						.getText();
-				System.out.println("Amount is " + amount);
-				break;
-
-			} catch (NoSuchElementException e) {
-				javascriptHelper.scrollIntoView(glObj.nextRecord());
-				glObj.nextRecord().click();
-			}
-		}
-		for (int i = 0; i < 299; i++) {
-			try {
-
-				driver.findElement(By.xpath("(//datatable-body-cell[1]//span[contains(text(),'"
-						+ settlementData.get("approvedReferenceNumber") + "')])[2]")).isDisplayed();
-
-				driver.findElement(By.xpath("(//datatable-body-cell[1]//span[contains(text(),'"
-						+ settlementData.get("approvedReferenceNumber") + "')])[1]"));
-				String TransactionType = driver
-						.findElement(By.xpath("(//datatable-body-cell[1]//span[contains(text(),' "
-								+ settlementData.get("approvedReferenceNumber")
-								+ " ')]/ancestor::datatable-body-cell[1]/following-sibling::datatable-body-cell[5]//span)[2]"))
-						.getText();
-				System.out.println("TransactionType is " + TransactionType);
-				String amount = driver.findElement(By.xpath("(//datatable-body-cell[1]//span[contains(text(),' "
-						+ settlementData.get("approvedReferenceNumber")
-						+ " ')]/ancestor::datatable-body-cell[1]/following-sibling::datatable-body-cell[6]//span)[2]"))
-						.getText();
-				System.out.println("Amount is " + amount);
-				break;
-
-			} catch (NoSuchElementException e) {
-				javascriptHelper.scrollIntoView(glObj.nextRecord());
-				glObj.nextRecord().click();
-			}
-		}
-	}
+//				driver.findElement(By.xpath("(//datatable-body-cell[1]//span[contains(text(),'"
+//						+ settlementData.get("approvedReferenceNumber") + "')])[1]"));
+//				String TransactionType = driver
+//						.findElement(By.xpath("(//datatable-body-cell[1]//span[contains(text(),' "
+//								+ settlementData.get("approvedReferenceNumber")
+//								+ " ')]/ancestor::datatable-body-cell[1]/following-sibling::datatable-body-cell[5]//span)[1]"))
+//						.getText();
+//				System.out.println("TransactionType is " + TransactionType);
+//				String amount = driver.findElement(By.xpath("(//datatable-body-cell[1]//span[contains(text(),' "
+//						+ settlementData.get("approvedReferenceNumber")
+//						+ " ')]/ancestor::datatable-body-cell[1]/following-sibling::datatable-body-cell[6]//span)[1]"))
+//						.getText();
+				//System.out.println("Amount is " + amount);
+					}
 
 	@And("^fill the form$")
 	public void fill_the_form() throws Throwable {
@@ -614,7 +584,7 @@ public class ACCOUNTSPAYABLE_PaymentSettlement extends BaseClass {
 		arapAdjustment.adjustmentadjustmentType().click();
 		arapAdjustment.adjustmentadjustmentType().sendKeys(Keys.ENTER);
 		arapAdjustment.adjustmentItemType().click();
-		arapAdjustment.adjustmentItemType().sendKeys("AR Advances");
+		arapAdjustment.adjustmentItemType().sendKeys(paymentSettlementTestData.AdjustementItemType);
 		arapAdjustment.adjustmentItemType().sendKeys(Keys.ENTER);
 		arapAdjustment.adjustmentAdjustmentReference().click();
 		arapAdjustment.adjustmentAdjustmentReference().sendKeys(accountsReceivableTestData.get("advNumber"));
@@ -622,5 +592,11 @@ public class ACCOUNTSPAYABLE_PaymentSettlement extends BaseClass {
 		boolean result = arapAdjustment.adjustmentAdjustmentReferenceNodata().isDisplayed();
 		Assert.assertTrue(result);
 	}
-
+	
+	/**************** KUBS_AR_AP_UAT_005_002_TC_03 ***********************/
+	@And("^search for approved record in view area$")
+    public void search_for_approved_record_in_view_area() throws Throwable {
+		paymentSettlementObj.paymentSettlementSearchTXNNumber().click();
+		paymentSettlementObj.paymentSettlementSearchTXNNumber().sendKeys("Active");
+    }
 }

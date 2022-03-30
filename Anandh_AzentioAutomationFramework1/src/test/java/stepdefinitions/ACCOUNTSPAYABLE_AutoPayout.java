@@ -23,6 +23,7 @@ import pageobjects.ACCOUNTSPAYABLE_InvoiceBookingObj;
 import pageobjects.ACCOUNTSPAYABLE_PayementSettlementObj;
 import pageobjects.ACCOUNTSPAYABLE_VendorContractCreationObj;
 import pageobjects.ACCOUNTSPAYBLE_AccountsPayable_POCreationObj;
+import pageobjects.ARAP_ConfigurationObj;
 import pageobjects.ARAP_GRNCreationPageObject;
 import pageobjects.INVENTORY_EnquiryGlObject;
 import resources.BaseClass;
@@ -353,6 +354,29 @@ public class ACCOUNTSPAYABLE_AutoPayout extends BaseClass {
     public void save_and_submit_the_record() throws Throwable {
      //   throw new PendingException();
     }
+    /******************** ARAp config *****************************/
+    ARAP_ConfigurationObj arapConfigObj = new ARAP_ConfigurationObj(driver);
+    @And("^click on view button near by arap configuration$")
+    public void click_on_view_button_near_by_arap_configuration() throws Throwable {
+    	arapConfigObj.ARAPConfigurationViewButton().click();
+    }
+
+    @And("^select the arap configuration record$")
+    public void select_the_arap_configuration_record() throws Throwable {
+    	arapConfigObj.arapARAPRecord().click();
+    }
+
+    @And("^give auto payout as yes$")
+    public void give_auto_payout_as_yes() throws Throwable {
+    	arapConfigObj.arapAutoPayoutInput().click();
+    	arapConfigObj.arapAutoPayoutInput().sendKeys("Yes");
+    	arapConfigObj.arapAutoPayoutInput().sendKeys(Keys.ENTER);
+    }
+
+    @And("^save the configuration record$")
+    public void save_the_configuration_record() throws Throwable {
+    	arapConfigObj.arapConfigurationSaveButton().click();
+    }
     /********************   INVOICE BILL BOOKING  ****************************/    
     @And("^fill the invoice booking record$")
     public void fill_the_invoice_booking_record() throws Throwable {
@@ -583,14 +607,21 @@ public class ACCOUNTSPAYABLE_AutoPayout extends BaseClass {
 		{
 		
 			waitHelper.waitForElement(driver, 3000, driver.findElement(By.xpath("//span[contains(text(),'"+CreditNoteTestData.MonthYear+"')]")));
-			WebElement monthAndYear=driver.findElement(By.xpath("//span[contains(text(),'"+CreditNoteTestData.MonthYear+"')]"));
+			driver.findElement(By.xpath("//span[contains(text(),'"+CreditNoteTestData.MonthYear+"')]"));
 		    break;
 		}
 		
 		catch(NoSuchElementException nosuchElement)
 		{
+			try
+			{
 			inventoryEnquiryGlObj.inventoryNextMonth().click();
-		}
+			}
+			catch(ElementClickInterceptedException e)
+			{
+				
+			}
+			}
 		}
 		WebElement FinalDay=driver.findElement(By.xpath("//td[@aria-label='"+CreditNoteTestData.FullMonth+" "+CreditNoteTestData.Day+", "+CreditNoteTestData.Year+"']/span"));
 		clickAndActionHelper.doubleClick(FinalDay);

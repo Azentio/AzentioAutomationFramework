@@ -158,9 +158,10 @@ public class ACCOUNTSPAYABLE_GRNCreation extends BaseClass {
     		}
     	}
     	//javascriptHelper.JavaScriptHelper(driver);
-    	Thread.sleep(1000);
-    	grnObject.ItemDetailsSaveButton().click();
-    	//clickAndActions.clickOnElement(grnObject.ItemDetailsSaveButton());
+    	//Thread.sleep(1000);
+    	//grnObject.ItemDetailsSaveButton().click();
+    	//clickAndActions.doubleClick(grnObject.ItemDetailsSaveButton());
+    	clickAndActions.clickOnElement(grnObject.ItemDetailsSaveButton());
     	//Thread.sleep(2000);
     	
     	

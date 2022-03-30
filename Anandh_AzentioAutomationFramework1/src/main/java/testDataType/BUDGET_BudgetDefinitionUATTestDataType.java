@@ -14,4 +14,5 @@ public class BUDGET_BudgetDefinitionUATTestDataType {
 	public String uatQuarterlyBudgetType;
 	public String approvalCommentsFromReviewer;
 	public String approvalCommentsFromChecker;
+	public String uatCurrentFinancialBudgetCode;
 }

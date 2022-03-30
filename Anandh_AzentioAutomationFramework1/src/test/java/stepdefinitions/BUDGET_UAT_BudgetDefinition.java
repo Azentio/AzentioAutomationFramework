@@ -21,6 +21,7 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import pageobjects.BUDGET_BudgetCreationObj;
+import pageobjects.BUDGET_RequestAndAllocationObj;
 import pageobjects.KUBS_CheckerObj;
 import pageobjects.KUBS_MakerObj;
 import pageobjects.KUBS_ReviewerObj;
@@ -45,7 +46,7 @@ public class BUDGET_UAT_BudgetDefinition extends BaseClass {
 	KUBS_CheckerObj kubsCheckerObj = new KUBS_CheckerObj(driver);
 	ClicksAndActionsHelper clickAndActions = new ClicksAndActionsHelper(driver);
 	BrowserHelper browserHelper = new BrowserHelper(driver);
-
+    BUDGET_RequestAndAllocationObj requestAndAllocationObj  = new BUDGET_RequestAndAllocationObj(driver);
 	@Given("^navigate to given url and login with maker credentials$")
 	public void navigate_to_given_url() throws Throwable {
 		/*
@@ -105,6 +106,11 @@ public class BUDGET_UAT_BudgetDefinition extends BaseClass {
 		budgetCreationObj.budgetCreation_BudgetCode().sendKeys(budgetDefinitionUATTestData.uatYearlyBudgetCode);
 
 	}
+	@Then("^enter Budget Code for current financial yearly budget$")
+    public void enter_budget_code_for_current_financial_yearly_budget() throws Throwable {
+		waitHelper.waitForElement(driver, 3000, budgetCreationObj.budgetCreation_BudgetCode());
+		budgetCreationObj.budgetCreation_BudgetCode().sendKeys(budgetDefinitionUATTestData.uatCurrentFinancialBudgetCode);     
+    }
 
 	@Then("^enter Budget Code for monthly budget$")
 	public void enter_budget_code_for_monthly_budget() throws Throwable {
@@ -248,7 +254,33 @@ public class BUDGET_UAT_BudgetDefinition extends BaseClass {
 			}
 		}
 	}
+	
+	@And("^enter the budget code for current financial year$")
+    public void enter_the_budget_code_for_current_financial_year() throws Throwable {
+		requestAndAllocationObj.budget_requestAndAllocation_Budgetcode().click();
+		requestAndAllocationObj.budget_requestAndAllocation_Budgetcode().sendKeys(budgetDefinitionUATTestData.uatCurrentFinancialBudgetCode);
+		requestAndAllocationObj.budget_requestAndAllocation_Budgetcode().sendKeys(Keys.ENTER);
+		
+    }
 
+    @And("^choose the budget year as current financial year$")
+    public void choose_the_budget_year_as_current_financial_year() throws Throwable {
+    	requestAndAllocationObj.budget_requestAndAllocation_Budgetyear().click();
+    	requestAndAllocationObj.budget_requestAndAllocation_Budgetyear().sendKeys(Keys.ENTER);
+    }
+    @And("^choose branch as azentio main$")
+    public void choose_branch_as_azentio_main() throws Throwable {
+    	javascriptHelper.JavaScriptHelper(driver);
+    	requestAndAllocationObj.budget_requestAndAllocation_Budgetbranch().click();
+    	javascriptHelper.scrollIntoViewAndClick(requestAndAllocationObj.budgetBudgetReqAndAllocationAzentMainBranch());
+    	//requestAndAllocationObj.budgetBudgetReqAndAllocationAzentMainBranch().click();
+    	requestAndAllocationObj.budget_requestAndAllocation_branchOK().click();
+    }
+    @And("^enter the budget amount in the appropriate text box along with remark$")
+    public void enter_the_budget_amount_in_the_appropriate_text_box_along_with_remark() throws Throwable {
+    	requestAndAllocationObj.budget_requestAndAllocation_Budgetamount().click();
+    	requestAndAllocationObj.budget_requestAndAllocation_Budgetamount().sendKeys("1000000");
+    }
 	@And("^click notification button$")
 	public void click_notification_button() throws Throwable {
 		// After save our budget record we have to click on notification to submit our
@@ -322,6 +354,7 @@ public class BUDGET_UAT_BudgetDefinition extends BaseClass {
 
 		waitHelper.waitForElement(driver, 2000, budgetCreationObj.budgetCreation_ReviewerId());
 		String reviwerId = budgetCreationObj.budgetCreation_ReviewerId().getText();
+		System.out.println(reviwerId);
 		String trimmerReviewerID = reviwerId.substring(85);
 		StringBuffer sb = new StringBuffer(trimmerReviewerID);
 		StringBuffer finalReviewerID = sb.deleteCharAt(trimmerReviewerID.length() - 1);
@@ -607,16 +640,19 @@ public class BUDGET_UAT_BudgetDefinition extends BaseClass {
 			try {
 				String before_xpath = "//span[contains(text(),'";
 				String after_xpath = "')]/ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell/div/ion-buttons/ion-button";
-				waitHelper.waitForElement(driver, 3000, driver
-						.findElement(By.xpath(before_xpath + jsonReaderWriter.readReferancedata() + after_xpath)));
-				driver.findElement(By.xpath(before_xpath + jsonReaderWriter.readReferancedata() + after_xpath)).click();
+				//waitHelper.waitForElement(driver, 1000, driver
+					//	.findElement(By.xpath(before_xpath + jsonReaderWriter.readReferancedata() + after_xpath)));
+			//	driver.findElement(By.xpath(before_xpath + jsonReaderWriter.readReferancedata() + after_xpath)).click();
+				javascriptHelper.JSEClick(driver.findElement(By.xpath(before_xpath + jsonReaderWriter.readReferancedata() + after_xpath)));
 				break;
 			} catch (Exception exception) {
 				System.out.println(exception.getMessage());
+				
+				
 			}
 		}
-
 	}
+		
 
 	@And("^validate the record which is submited by maker$")
 	public void validate_the_budget_record_which_is_submited_by_maker() throws Throwable {

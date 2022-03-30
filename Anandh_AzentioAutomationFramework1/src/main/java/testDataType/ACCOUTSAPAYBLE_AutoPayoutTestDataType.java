@@ -18,5 +18,7 @@ public class ACCOUTSAPAYBLE_AutoPayoutTestDataType {
 	public String SuplierReferenceNumber;
 	public String FlatDiscount;
 	public String Remark;
+	public String ManualPayoutStatus;
+	public String ManualPayoutReferenceNumber;
 
 }

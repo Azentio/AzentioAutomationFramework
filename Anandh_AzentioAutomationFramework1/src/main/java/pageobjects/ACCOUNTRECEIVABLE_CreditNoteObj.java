@@ -60,5 +60,17 @@ public class ACCOUNTRECEIVABLE_CreditNoteObj {
 	{
 		return approvedCredit_noteRecord;
 	}
+	@FindBy(xpath="//app-data-grid[1]//datatable-row-wrapper[1]//datatable-body-cell[5]//span[1]")
+	private WebElement creditNote_ApprovedBusinessPartnerName;
+	public WebElement creditNoteApprovedBusinessPartnerName()
+	{
+		return creditNote_ApprovedBusinessPartnerName;
+	}
+	@FindBy(xpath="//app-data-grid[1]//datatable-row-wrapper[1]//datatable-body-cell[6]//span[1]")
+	private WebElement crditNote_ApprovedCreditAmount;
+	public WebElement creditNoteApprovedCreditAmount()
+	{
+		return crditNote_ApprovedCreditAmount;
+	}
 	
 }

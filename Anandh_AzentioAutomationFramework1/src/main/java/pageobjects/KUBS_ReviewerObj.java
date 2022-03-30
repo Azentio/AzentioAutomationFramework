@@ -20,12 +20,7 @@ public class KUBS_ReviewerObj {
 	public WebElement reviewerNotidicationIcon() {
 		return reviewer_notification_icon;
 	}
-	@FindBy(xpath = "//datatable-row-wrapper[1]/datatable-body-row/div/datatable-body-cell[1]//ion-button")
-	private WebElement reviewer_action_button1;
 
-	public WebElement reviewer_action_button1() {
-		return reviewer_action_button1;
-	}
 	@FindBy(xpath = "//span/ion-button[3]")
 	private WebElement reviewer_reject_button;
 
@@ -145,23 +140,5 @@ public class KUBS_ReviewerObj {
 		{
 			return reviewer_alert_close;
 		}
-		//---------
-		 
-		@FindBy(xpath = "//datatable-row-wrapper[1]/datatable-body-row/div/datatable-body-cell[2]//span")
-		private WebElement reviewer_referanceid;
-
-		public WebElement reviewer_referanceid() {
-			return reviewer_referanceid;
-		}
-	 
-		
-		@FindBy(xpath="//div[@id='toast-container']/div/div[@role='alertdialog']")
-		private WebElement approval_status;
-		public WebElement approvalStatus()
-		{
-			return approval_status;
-		}
-		
-		 
 
 }

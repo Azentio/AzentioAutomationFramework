@@ -42,6 +42,30 @@ public class ARAP_PoCreationObj {
 	{
 		return po_BusinessPartner;
 	}
+	@FindBy(xpath="//datatable-row-wrapper[1]//datatable-body-cell[3]//span")
+	private WebElement approved_PoNumber;
+	public WebElement approvedPoNumber()
+	{
+		return approved_PoNumber;
+	}
+	@FindBy(xpath="//datatable-row-wrapper[1]//datatable-body-cell[7]//span")
+	private WebElement approved_BpName;
+	public WebElement approvedBpName()
+	{
+		return approved_BpName;
+	}
+	@FindBy(xpath="//datatable-row-wrapper[1]//datatable-body-cell[5]//span")
+	private WebElement approvedPo_PoType;
+	public WebElement approvedPoType()
+	{
+		return approvedPo_PoType;
+	}
+	@FindBy(xpath="//datatable-row-wrapper[1]//datatable-body-cell[6]//span")
+	private WebElement approvedPo_ContractNumber;
+	public WebElement approvedPoContractNumber()
+	{
+		return approvedPo_ContractNumber;
+	}
 	
 	
 

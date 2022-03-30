@@ -834,4 +834,11 @@ public class ACCOUNTSPAYABLE_InvoiceBookingObj {
 	{
 		return serachInvoiceNumber;
 	}
+	@FindBy(xpath="//datatable-row-wrapper[1]//datatable-body-cell[8]//span")
+	public WebElement invoiceBillBooking_TransactionDate;
+	public WebElement invoiceBillBookingTransactionDate()
+	{
+		return invoiceBillBooking_TransactionDate;
+	}
+	
 }

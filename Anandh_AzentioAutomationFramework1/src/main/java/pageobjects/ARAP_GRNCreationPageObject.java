@@ -470,4 +470,11 @@ public class ARAP_GRNCreationPageObject {
 	public WebElement getApprovedGRNNumber() {
 		return getApproved_GRNNumber;
 	}
+	
+	@FindBy(xpath="//datatable-row-wrapper[1]//datatable-body-cell[5]//span")
+	private WebElement grn_TransactionDate;
+	public WebElement grnTransactionDate()
+	{
+		return grn_TransactionDate;
+	}
 }

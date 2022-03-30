@@ -1,7 +1,7 @@
 [
 	{
 		"userName": "Maker",
-		"budgetCode": "BUDG8010",
+		"budgetCode": "BUDG8014",
 		"budgetType": "YEARLY",
 		"warningPecentage": "30",
 		"budgetName": "Capital budget",
@@ -25,27 +25,27 @@
 		"uatQuarterlyBudgetType": "Revenue Budget",
 		"approvalCommentsFromReviewer":"Approved from Reviewer",
 		"approvalCommentsFromChecker":"Approved from Checker",
-		"budgetCode1": "BDG5609",
+		"budgetCode1": "BDG5610",
 		"budgetType1": "YEARLY",
 		"warningPecentage1": "23",
 		"budgetName1": "Home budget",
 		 
-	    "budgetCode2": "BDG1209",
+	    "budgetCode2": "BDG1211",
 		"budgetType2": "Monthly",
 		"warningPecentage2": "25",
 		"budgetName2": "Education",
 		
-		"budgetCode3": "BDG7309",
+		"budgetCode3": "BDG7311",
 		"budgetType3": "HalfYearly",
 		"warningPecentage3": "50",
 		"budgetName3": "Business",
 		
-		"budgetCode4": "BDG7239",
+		"budgetCode4": "BDG7241",
 		"budgetType4": "Quaterly",
 		"warningPecentage4": "70",
 		"budgetName4": "Loan",
 		
-	    "budgetCode5": "BDG1400",
+	    "budgetCode5": "BDG1402",
 		"budgetType5": "YEARLY",
 		"warningPecentage5": "10",
 		"budgetName5": "Traveling"

@@ -12,6 +12,7 @@ import com.google.gson.Gson;
 import com.google.gson.stream.JsonReader;
 
 import testDataType.ACCOUNTSPAYABLE_ContractReportTestData;
+import testDataType.ACCOUNTSPAYABLE_PaymentFileUploadDownloadTestData;
 import testDataType.ACCOUNTSPAYABLE_PaymentSettlementTestDataType;
 import testDataType.ACCOUNTSRECEIVABLE_AccountsReceivableAdvanceTestDataType;
 import testDataType.ACCOUNTSRECEIVABLE_ReceiptTestData;
@@ -26,7 +27,6 @@ import testDataType.FIXEDASSET_AixedAssetDeAllocationTestData;
 import testDataType.FIXEDASSET_AssetImpairementTestDataType;
 import testDataType.FIXEDASSET_AssetReturnTestData;
 import testDataType.INVENTORY_EnquiryGlTestData;
-import testDataType.INVENTORY_InventoryManagement_DataType;
 import testDataType.INVENTORY_InventoryStockIssueTestData;
 import testDataType.KUBS_LoginTestDataType;
 
@@ -78,17 +78,19 @@ public class JsonConfig {
 	//AccountsPayablle Advance
 	private final String AccountsReceivableAdvanceFilePath = configFileReader.getJsonPath() + "ACCOUNTSRECEIVABLE_AccountsReceivableTestDataJson.json";
 	private List<ACCOUNTSRECEIVABLE_AccountsReceivableAdvanceTestDataType> accountsReceivableAdvanceTestData ;
-	// Inventory_StockReturnBranch
-		private final String StockReturnBranchFilePath = configFileReader.getJsonPath() + "INVENTORY_InventoryManagement.json";
-		private List<INVENTORY_InventoryManagement_DataType> StockReturnBranchList;
+	
 	private final String AccountsReceivablereceiptFilePath = configFileReader.getJsonPath() + "ACCOUNTSRECEIVABLE_ReceiptJSON.json";
 	private List<ACCOUNTSRECEIVABLE_ReceiptTestData> accountsReceivableReceiptTestData ;
 	//AutoPayout
 	private final String AccountsPayableAutoPayoutFilePath = configFileReader.getJsonPath() + "ACCOUTSPAYABLE_AutoPayoutJSON.json";
 	private List<ACCOUTSAPAYBLE_AutoPayoutTestDataType> accountsAutoPayoutTestData ;
 	//ContractReport
-	private final String AccountsPayableContractReportFilePath = configFileReader.getJsonPath() + "ACCOUNTSPAYABLE_ContractReportJSON.json";
+	private final String AccountsPayableContractReportFilePath = configFileReader.getJsonPath() + "ACCOUNTSPAYABLE_ReportDataJSON.json";
 	private List<ACCOUNTSPAYABLE_ContractReportTestData> accountspayableContractReportTestData;
+	
+	private final String accountsPayablePaymentFileUploadDownloadFilePath = configFileReader.getJsonPath() + "ACCOUNTSPAYABLE_PaymentFileUploadDownloadJSON.json";
+	private List<ACCOUNTSPAYABLE_PaymentFileUploadDownloadTestData> PaymentFileUploadDwonloadTestData;
+	
 	public JsonConfig() {
 
 		AllocationList = getAllocationList();
@@ -108,9 +110,31 @@ public class JsonConfig {
 		accountsReceivableReceiptTestData=getAccounteReceivableReceiptTestData();
 		accountsAutoPayoutTestData=getAccountsPayableAutoPayoutTestData();
 		accountspayableContractReportTestData= getAccountsPayableContractReportTestData();
-		// Inventory - StockReturn
-		StockReturnBranchList = getStockReturnBranchList();
+		PaymentFileUploadDwonloadTestData=getPaymentFileUploadDwonloadTestData();
+		
 	}
+	//PaymentFile Upload download 
+	private List<ACCOUNTSPAYABLE_PaymentFileUploadDownloadTestData> getPaymentFileUploadDwonloadTestData() {
+		Gson gson = new Gson();
+		JsonReader reader = new JsonReader(new StringReader(accountsPayablePaymentFileUploadDownloadFilePath));
+		reader.setLenient(true);
+		BufferedReader bufferReader = null;
+		try {
+			bufferReader = new BufferedReader(new FileReader(accountsPayablePaymentFileUploadDownloadFilePath));
+			ACCOUNTSPAYABLE_PaymentFileUploadDownloadTestData[] paymentFileUploadDownloadTestData = gson.fromJson(bufferReader,
+					ACCOUNTSPAYABLE_PaymentFileUploadDownloadTestData[].class);
+			return Arrays.asList(paymentFileUploadDownloadTestData);
+		} catch (FileNotFoundException e) {
+			throw new RuntimeException("Json file not found at path : " + accountsPayablePaymentFileUploadDownloadFilePath);
+		} finally {
+			try {
+				if (bufferReader != null)
+					bufferReader.close();
+			} catch (IOException ignore) {
+			}
+		}
+	}
+	
 	//ContractReport
 	private List<ACCOUNTSPAYABLE_ContractReportTestData> getAccountsPayableContractReportTestData() {
 		Gson gson = new Gson();
@@ -132,25 +156,6 @@ public class JsonConfig {
 			}
 		}
 	}
-	// Inventory - StockReturnBranch 
-		private List<INVENTORY_InventoryManagement_DataType> getStockReturnBranchList() {
-			Gson gson = new Gson();
-			BufferedReader bufferReader = null;
-			try {
-				bufferReader = new BufferedReader(new FileReader(StockReturnBranchFilePath));
-				INVENTORY_InventoryManagement_DataType[] StockReturn = gson.fromJson(bufferReader,
-						INVENTORY_InventoryManagement_DataType[].class);
-				return Arrays.asList(StockReturn);
-			} catch (FileNotFoundException e) {
-				throw new RuntimeException("Json file not found at path : " + StockReturnBranchFilePath);
-			} finally {
-				try {
-					if (bufferReader != null)
-						bufferReader.close();
-				} catch (IOException ignore) {
-				}
-			}
-		}
 	//AutoPayout
 		private List<ACCOUTSAPAYBLE_AutoPayoutTestDataType> getAccountsPayableAutoPayoutTestData() {
 			Gson gson = new Gson();
@@ -560,9 +565,9 @@ public class JsonConfig {
 		public final ACCOUNTSPAYABLE_ContractReportTestData getAccountsPayableContractReportTestDataByName(String UserName){
 			return accountspayableContractReportTestData.stream().filter(x->x.UserType.equalsIgnoreCase(UserName)).findAny().get();
 	}
-		//Inventory - StockReturnBranch
-		public final INVENTORY_InventoryManagement_DataType getStockReturnBranchByName(String user) {
-			return StockReturnBranchList.stream().filter(x -> x.Usertype.equalsIgnoreCase(user)).findAny().get();
-		}
+		//ACCOUNTSPAYABLE_PaymentFileUploadDownloadTestData> PaymentFileUploadDwonloadTestData
+		public final ACCOUNTSPAYABLE_PaymentFileUploadDownloadTestData getPaymentFileUploadDownloadTesData(String user) {
+			return PaymentFileUploadDwonloadTestData.stream().filter(x -> x.UserType.equalsIgnoreCase(user)).findAny().get();
+		}	
 	
 }

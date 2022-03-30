@@ -1,7 +1,9 @@
 package stepdefinitions;
 
+import java.nio.charset.Charset;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.ElementNotInteractableException;
@@ -13,12 +15,14 @@ import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 
 import dataProvider.JsonConfig;
+import helper.BrowserHelper;
 import helper.ClicksAndActionsHelper;
 import helper.JavascriptHelper;
 import helper.WaitHelper;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import pageobjects.ACCOUNTRECEIVABLE_CreditNoteObj;
+import pageobjects.ACCOUNTSPAYABLE_AccountsPayableReportObj;
 import pageobjects.ACCOUNTSPAYABLE_ContractReportPageObj;
 import pageobjects.ACCOUNTSPAYABLE_InvoiceBookingObj;
 import pageobjects.ACCOUNTSPAYABLE_PayementSettlementObj;
@@ -45,10 +49,13 @@ public class ACCOUNTSYPAYABLE_Invoicebooking extends BaseClass {
 	String invoiceAmmount;
 	INVENTORY_EnquiryGlObject inventoryEnquiryGlObj = new INVENTORY_EnquiryGlObject(driver);
 	REPORT_ACCOUNTSPAYABLEREPORTObj accountsPayableReportObj = new REPORT_ACCOUNTSPAYABLEREPORTObj(driver);
+	ACCOUNTSPAYABLE_AccountsPayableReportObj payableReportObj=new ACCOUNTSPAYABLE_AccountsPayableReportObj(driver);
 	ACCOUNTSPAYABLE_ContractReportPageObj contractReportObj = new ACCOUNTSPAYABLE_ContractReportPageObj(driver);
 	ACCOUNTSPAYABLE_ContractReportTestData contractReportTestData = jsonConfig
 			.getAccountsPayableContractReportTestDataByName("Maker");
 	ClicksAndActionsHelper clickAndActionHelper = new ClicksAndActionsHelper(driver);
+	BrowserHelper browserHelper=new BrowserHelper(driver);
+	
 	// ClicksAndActionsHelper clickAndActionHelper=new
 	// ClicksAndActionsHelper(driver);
 
@@ -63,7 +70,7 @@ public class ACCOUNTSYPAYABLE_Invoicebooking extends BaseClass {
 	public void fill_the_mendatory_field_for_invoice_booking_module_module() throws Throwable {
 		waitHelper.waitForElementVisible(invoiceBookingObj.accountPayable_InvoiceBooking_InvoiceType(), 2000, 100);
 		invoiceBookingObj.accountPayable_InvoiceBooking_InvoiceType().click();
-		invoiceBookingObj.accountPayable_InvoiceBooking_InvoiceType().sendKeys(Keys.DOWN);
+	//	invoiceBookingObj.accountPayable_InvoiceBooking_InvoiceType().sendKeys(Keys.DOWN);
 		invoiceBookingObj.accountPayable_InvoiceBooking_InvoiceType().sendKeys(Keys.ENTER);
 
 		// waitHelper.waitForElementVisible(invoiceBookingObj.accountPayable_InvoiceBooking_InvoiceSubType(),
@@ -95,6 +102,7 @@ public class ACCOUNTSYPAYABLE_Invoicebooking extends BaseClass {
 
 	@And("^fill the mendatory field for invoice booking for expenseType invoice$")
 	public void fill_the_mendatory_field_for_invoice_booking_for_expensetype_invoice() throws Throwable {
+		Random rand= new Random();
 		waitHelper.waitForElementVisible(invoiceBookingObj.accountPayable_InvoiceBooking_InvoiceType(), 2000, 100);
 		invoiceBookingObj.accountPayable_InvoiceBooking_InvoiceType().click();
 		invoiceBookingObj.accountPayable_InvoiceBooking_InvoiceType().sendKeys(Keys.ENTER);
@@ -108,7 +116,11 @@ public class ACCOUNTSYPAYABLE_Invoicebooking extends BaseClass {
 		invoiceBookingObj.billBookingExpenceBpName().sendKeys(Keys.ENTER);
 
 		invoiceBookingObj.billBookingExpenceSuplierName().click();
-		invoiceBookingObj.billBookingExpenceSuplierName().sendKeys(paymentSettlementTestData.SuplierName);
+		int min=1000;
+		int max=100000;
+	      int random_int = (int)Math.floor(Math.random()*(max-min+1)+min);
+	    String suplierReferenceNumber=paymentSettlementTestData.SuplierName+random_int;
+		invoiceBookingObj.billBookingExpenceSuplierName().sendKeys(suplierReferenceNumber);
 
 		invoiceBookingObj.billBookingExpenceFlatDiscount().click();
 		invoiceBookingObj.billBookingExpenceFlatDiscount().sendKeys(paymentSettlementTestData.FlatDiscount);
@@ -313,7 +325,8 @@ public class ACCOUNTSYPAYABLE_Invoicebooking extends BaseClass {
 		crediteNoteObj.accountsReceivableDescription().click();
 		crediteNoteObj.accountsReceivableDescription().sendKeys(paymentSettlementTestData.Remark);
 		waitHelper.waitForElementVisible(crediteNoteObj.accountsReceivablleSaveButton(), 2000, 100);
-		crediteNoteObj.accountsReceivablleSaveButton().click();
+		clickAndActionHelper.doubleClick(crediteNoteObj.accountsReceivablleSaveButton());
+		//crediteNoteObj.accountsReceivablleSaveButton().click();
 
 	}
 
@@ -672,8 +685,40 @@ public class ACCOUNTSYPAYABLE_Invoicebooking extends BaseClass {
 	public void get_the_business_partner_name() throws Throwable {
 		waitHelper.waitForElementVisible(invoiceBookingObj.billBookingApprovedBpName(), 2000, 200);
 		String approvedBpName = invoiceBookingObj.billBookingApprovedBpName().getText();
+		String approvedInvoiceNumber=invoiceBookingObj.billBookingApprovedInvoiceNumber().getText();
 		invoiceBookingTestData.put("ApprovedBpName", approvedBpName);
+		invoiceBookingTestData.put("approvedInvoiceNumber", approvedInvoiceNumber);
+		System.out.println("Approved invoice number "+invoiceBookingTestData.get("approvedInvoiceNumber"));
 	}
+	
+	@Then("^verify the approved invoicebill number is available in the report$")
+    public void verify_the_approved_invoicebill_number_is_available_in_the_report() throws Throwable {
+		System.out.println("Approved invoice number "+invoiceBookingTestData.get("approvedInvoiceNumber"));
+		javascriptHelper.JavaScriptHelper(driver);
+		//Thread.sleep(1500);
+		browserHelper.SwitchToWindow(1);
+		Thread.sleep(1500);
+		while(true)
+		{
+			try
+			{
+				javascriptHelper.scrollIntoView(driver.findElement(By.xpath("//div[contains(text(),'"+invoiceBookingTestData.get("approvedInvoiceNumber")+"')]")));
+				driver.findElement(By.xpath("//div[contains(text(),'"+invoiceBookingTestData.get("approvedInvoiceNumber")+"')]")).isDisplayed();
+			break;	
+			}
+			catch(NoSuchElementException e)
+			{
+				payableReportObj.accountsPayableReportNextRecord().click();
+					
+			}
+			catch(StaleElementReferenceException e1)
+			{
+				
+			}
+		}
+		browserHelper.switchToParentWithChildClose();
+	}
+	
 
 	/******************** KUBS_AR_AP_UAT_001_002_TC_02 ***********************/
 	@Then("^verify the expence invoice number is available in the accounting entries tab$")
@@ -751,8 +796,8 @@ public class ACCOUNTSYPAYABLE_Invoicebooking extends BaseClass {
 		accountsPayableReportObj.accountsPayableReportDateAsOn().click();
 	}
 
-	@And("^give date in accountspayable report$")
-	public void give_date_in_accountspayable_report() throws Throwable {
+	@And("^give date in report$")
+	public void give_date_in_report() throws Throwable {
 		while (true) {
 			try {
 				waitHelper.waitForElement(driver, 3000, driver.findElement(By.xpath("//span[contains(text(),'"
@@ -771,7 +816,9 @@ public class ACCOUNTSYPAYABLE_Invoicebooking extends BaseClass {
 
 	@And("^give payable status$")
 	public void give_payable_status() throws Throwable {
-
+		accountsPayableReportObj.accountsPayablePayableStatu().click();
+		accountsPayableReportObj.accountsPayablePayableStatu().sendKeys(contractReportTestData.PayableStatus);
+		accountsPayableReportObj.accountsPayablePayableStatu().sendKeys(Keys.ENTER);
 	}
 
 	/******************** KUBS_AR_AP_UAT_001_002_TC_05 ************************/
