@@ -1176,9 +1176,9 @@ public class BUDGET_SupplementaryBudget extends BaseClass {
 							.click();
 					String before_xpath = "//span[contains(text(),'";
 					String after_xpath = "')]/ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell//ion-button";
-					waithelper.waitForElement(driver, 2000,
-							driver.findElement(By.xpath(before_xpath + reader.readReferancedata() + after_xpath)));
-					driver.findElement(By.xpath(before_xpath + reader.readReferancedata() + after_xpath)).click();
+//					waithelper.waitForElement(driver, 2000,
+//							driver.findElement(By.xpath(before_xpath + reader.readReferancedata() + after_xpath)));
+//					driver.findElement(By.xpath(before_xpath + reader.readReferancedata() + after_xpath)).click();
 	    	    }
 
 	    	    @Then("^Click  on the reject button$")

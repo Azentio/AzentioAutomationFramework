@@ -48,7 +48,7 @@ public class ACCOUNTSPAYABLE_VendorContracts {
 		login.loginToAzentioApp("Maker");
 	}
 
-	/*@And("^user should navigate to accounts payable menu$")
+	@And("^user should navigate to accounts payable menu$")
 	public void user_should_navigate_to_accounts_payable_menu() {
 		waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_DirectionButton());
 		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_DirectionButton().click();
@@ -316,7 +316,7 @@ public class ACCOUNTSPAYABLE_VendorContracts {
 		jsonWriter=new JsonDataReaderWriter();
 		jsonWriter.addData(reviewerId);
 		
-	}*/
+	}
 
 	@And("^User should go to the kubs url and login as a reviewer user$")
 	public void user_should_go_to_the_kubs_url_and_login_as_a_reviewer_user() throws IOException, ParseException {
@@ -425,7 +425,7 @@ public class ACCOUNTSPAYABLE_VendorContracts {
 		kubschecker.checkerApproveButton().click();
 		waithelper.waitForElement(driver, 2000, kubschecker.checkerRemarks());
 	
-		/*kubschecker.checkerRemarks().sendKeys(aCCOUNTSPAYABLE_VendorContractsTestDataType.CheckerRemark);
+		kubschecker.checkerRemarks().sendKeys(aCCOUNTSPAYABLE_VendorContractsTestDataType.CheckerRemark);
 		waithelper.waitForElement(driver, 2000, kubschecker.checkersubmitButton());
 		kubschecker.checkersubmitButton().click();
 		Thread.sleep(2000);
@@ -433,11 +433,11 @@ public class ACCOUNTSPAYABLE_VendorContracts {
     	clicksAndActionHelper.moveToElement(recordstatus);
     	String message = aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_RecordStatus().getText();
     	System.out.println(message);
-    	aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_RecordStatus().click();*/
+    	aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_RecordStatus().click();
 	}
-}
+
 	
-	/*@Then("^click on first eye button to get the unique contract code$")
+	@Then("^click on first eye button to get the unique contract code$")
     public void click_on_first_eye_button_to_get_the_unique_contract_code() throws InterruptedException {
 		
 		waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_ContractCodeEyeButton());
@@ -472,7 +472,7 @@ public class ACCOUNTSPAYABLE_VendorContracts {
 		waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_Logout());
 		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_Logout();
     }
-	*/
+}
   
     
     

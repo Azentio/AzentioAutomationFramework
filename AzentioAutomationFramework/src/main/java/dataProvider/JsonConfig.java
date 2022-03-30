@@ -11,6 +11,7 @@ import java.util.List;
 import com.google.gson.Gson;
 import com.google.gson.stream.JsonReader;
 
+import testDataType.ACCOUNTSPAYABLE_InvoiceBookingTestDataType;
 import testDataType.ACCOUNTSPAYABLE_VendorContractsTestDataType;
 import testDataType.BUDGET_BudgetCreationTestDataType;
 import testDataType.BUDGET_BudgetDefinitionTestDataType;
@@ -114,6 +115,14 @@ private final String BudtypeFilepath = configFileReader.getJsonPath() + "BUDGET_
 // INVENTORY_MANAGEMENT_PurchaseRequisitionConfirmation
 	private final String PurchaseRequisitionConfirmationPath = configFileReader.getJsonPath() + "INVENTORY_MANAGEMENT_PurchaseRequisitionConfirmationJSON.json";
 	private List<INVENTORY_MANAGEMENT_PurchaseRequisitionConfirmationTestDataType> PurchaseRequisitionConfirmationList;
+	
+	// ACCOUNTSPAYABLE_VendorContract
+	private final String VendorContractsPath = configFileReader.getJsonPath() + "ACCOUNTSPAYABLE_VendorContractsJSON.json";
+	private List<ACCOUNTSPAYABLE_VendorContractsTestDataType> VendorContractsList;
+
+	// ACCOUNTSPAYABLE_InvoiceBooking
+	private final String InvoiceBookingPath = configFileReader.getJsonPath() + "ACCOUNTSPAYABLE_InvoiceBookingJSON.json";
+	private List<ACCOUNTSPAYABLE_InvoiceBookingTestDataType> InvoiceBookingList;
 		
 	public JsonConfig() {
 		/*RegisterList = getRegisterData();
@@ -137,8 +146,8 @@ private final String BudtypeFilepath = configFileReader.getJsonPath() + "BUDGET_
 		InventoryManagementList =getInventoryManagementList();
 		DenominationMasterList = getDenominationMasterList();
 		PurchaseRequisitionConfirmationList = getPurchaseRequisitionConfirmationList();
-		
-
+		VendorContractsList = getVendorContractList();
+		InvoiceBookingList = getInvoiceBookingList();
 	}
 
 
@@ -426,6 +435,48 @@ private List<BUDGET_RequestAndAllocationTestDataType> getAllocationList() {
 				}
 			}
 			
+			private List<ACCOUNTSPAYABLE_VendorContractsTestDataType> getVendorContractList() {
+				Gson gson = new Gson();
+				JsonReader reader = new JsonReader(new StringReader(VendorContractsPath));
+				reader.setLenient(true);
+				BufferedReader bufferReader = null;
+				try {
+					bufferReader = new BufferedReader(new FileReader(VendorContractsPath));
+					ACCOUNTSPAYABLE_VendorContractsTestDataType[] login = gson.fromJson(bufferReader,
+							ACCOUNTSPAYABLE_VendorContractsTestDataType[].class);
+					return Arrays.asList(login);
+				} catch (FileNotFoundException e) {
+					throw new RuntimeException("Json file not found at path : " + VendorContractsPath);
+				} finally {
+					try {
+						if (bufferReader != null)
+							bufferReader.close();
+					} catch (IOException ignore) {
+					}
+				}
+			}
+			
+			private List<ACCOUNTSPAYABLE_InvoiceBookingTestDataType> getInvoiceBookingList() {
+				Gson gson = new Gson();
+				JsonReader reader = new JsonReader(new StringReader(InvoiceBookingPath));
+				reader.setLenient(true);
+				BufferedReader bufferReader = null;
+				try {
+					bufferReader = new BufferedReader(new FileReader(InvoiceBookingPath));
+					ACCOUNTSPAYABLE_InvoiceBookingTestDataType[] login = gson.fromJson(bufferReader,
+							ACCOUNTSPAYABLE_InvoiceBookingTestDataType[].class);
+					return Arrays.asList(login);
+				} catch (FileNotFoundException e) {
+					throw new RuntimeException("Json file not found at path : " + InvoiceBookingPath);
+				} finally {
+					try {
+						if (bufferReader != null)
+							bufferReader.close();
+					} catch (IOException ignore) {
+					}
+				}
+			}
+			
 	
 	public final BUDGET_RequestAndAllocationTestDataType getAllowcationByName(String user) {
 		return AllocationList.stream().filter(x -> x.UserType.equalsIgnoreCase(user)).findAny().get();
@@ -504,8 +555,8 @@ private List<BUDGET_RequestAndAllocationTestDataType> getAllocationList() {
 	public final ACCOUNTSPAYABLE_VendorContractsTestDataType getVendorContractdata(String UserName) {
 	return VendorContractsList.stream().filter(x -> x.User.equalsIgnoreCase(UserName)).findAny().get();
 			}
-	
-	// ACCOUNTSPAYABLE_VendorContract
-		private final String VendorContractsPath = configFileReader.getJsonPath() + "ACCOUNTSPAYABLE_VendorContractsJSON.json";
-		private List<ACCOUNTSPAYABLE_VendorContractsTestDataType> VendorContractsList;
+
+			public final ACCOUNTSPAYABLE_InvoiceBookingTestDataType getInvoiceBookingdata(String UserName) {
+				return InvoiceBookingList.stream().filter(x -> x.User.equalsIgnoreCase(UserName)).findAny().get();
+			}
 }

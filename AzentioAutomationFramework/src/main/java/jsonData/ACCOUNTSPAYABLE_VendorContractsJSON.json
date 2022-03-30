@@ -1,0 +1,46 @@
+[
+	{
+		"User"	: "Maker",
+		"ExpenseType" : "Purchases Contract",
+		"BP_Name" : "Gangeeta",
+		"BP_Branch" : "vashi",
+		"ContractName" : "Bank-002",
+		"Currency" : "INR",
+		"Remark" : "ok",
+		
+		"AutoGenerateBill" : "No",
+		"CreditPeriod" : "4",
+		"LatePaymentFee" : "100.00",
+		"Currency2" : "INR",
+		"RemarkByMaker" : "submit by maker",
+		"CheckerRemark" : "approved by checker",
+		"ApproveRemarkByReviewer" : "approved by reviewer",
+		"AgreementMonthAndYear" : "2022",
+		"AgreementDate" : "28",
+		"AgreementMonth" : "Nov",
+		"AgreementFullMonth" : "November",
+		"AgreementYear" : "2022",
+		"ContractEndDate" : "29",
+		"ContractEndMonth" : "Dec",
+		"ContractEndFullMonth" : "December",
+		"ContractEndYear" : "2022",
+		"ContractSignedOnDate" : "25",
+		"ContractSignedOnMonth" : "Nov",
+		"ContractSignedOnFullMonth" : "November",
+		"ContractSignedOnYear" : "2022",
+		
+		"HSN_Code" : "8471- Laptop",
+		"ExpenseCode" : "EXP_BALL_PEN",
+		"CostCenter" : "FINANCE",
+		"Quantity" : "1000",
+		"Unit" : "Number",
+		"RatePerUnit" : "10",
+		"CurrencyinItemDetails" : "INR",
+		"PaymentTerm" : "cash",
+		"PaymentTermPercent" : "2",
+		"PaymentTermType" : "Advance",
+		"ModeOfPayment" : "Cheque",
+		"AutoPayout" : "No"
+		
+	}
+]

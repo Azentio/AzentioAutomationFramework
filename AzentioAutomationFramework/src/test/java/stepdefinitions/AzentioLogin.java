@@ -9,6 +9,8 @@ import helper.DropDownHelper;
 import helper.WaitHelper;
 import pageobjects.Azentio_LoginObj;
 import pageobjects.Azentio_MakerObj;
+import pageobjects.KUBS_LoginObj;
+import pageobjects.KUBS_MakerObj;
 import testDataType.KUBS_LoginTestDataType;
 
 public class AzentioLogin {
@@ -125,6 +127,22 @@ public class AzentioLogin {
 			waithelper.waitForElement(driver, 2000, login.Login_loginStatus());
 			Assert.assertTrue(login.Login_loginStatus().isDisplayed());
 		}
+		else if (id.equals("in00027")) {
+			login.Login_userName().sendKeys(logindata.UserName5);
+			login.Login_goButton().click();
+			waithelper.waitForElement(driver, 2000, login.Login_passWord());
+			login.Login_passWord().sendKeys(logindata.PassWord5);
+//			String otp = login.Login_getOtp().getText();
+//			driver.findElement(By.xpath("//ng-otp-input/div/input[1]")).sendKeys(otp.substring(7));
+			waithelper.waitForElement(driver, 2000, login.Login_signIn());
+			login.Login_signIn().click();
+			waithelper.waitForElement(driver, 2000, login.Login_loginStatus());
+			Assert.assertTrue(login.Login_loginStatus().isDisplayed());
+		}
+		else
+		{
+			System.out.println("User name not matching with json");
+		}
 	}
 
 	public void loginToAzentioAppAsChecker(String user) throws InterruptedException {
@@ -161,7 +179,22 @@ public class AzentioLogin {
 		login.Login_signIn().click();
 		waithelper.waitForElement(driver, 2000, login.Login_loginStatus());
 		Assert.assertTrue(login.Login_loginStatus().isDisplayed());
-
+	}
+	public void loginToAzentioAppAsChecker2(String user) throws InterruptedException {
+		waithelper=new WaitHelper(driver);
+		dropdownhelper=new DropDownHelper(driver);
+		makerobj=new Azentio_MakerObj(driver);
+		KUBS_LoginTestDataType logindata = reader.getLoginCredentialsByName(user);
+		login = new Azentio_LoginObj(driver);
+		login.Login_userName().sendKeys(logindata.UserName1);
+		login.Login_goButton().click();
+		waithelper.waitForElement(driver, 2000, login.Login_passWord());
+		login.Login_passWord().sendKeys(logindata.PassWord1);
+//		String otp = login.Login_getOtp().getText();
+//		driver.findElement(By.xpath("//ng-otp-input/div/input[1]")).sendKeys(otp.substring(7));
+		login.Login_signIn().click();
+		waithelper.waitForElement(driver, 2000, login.Login_loginStatus());
+		Assert.assertTrue(login.Login_loginStatus().isDisplayed());	
 	}
 
 }

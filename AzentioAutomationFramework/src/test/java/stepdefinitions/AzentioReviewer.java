@@ -31,12 +31,12 @@ public class AzentioReviewer extends BaseClass {
 	JsonConfig jsonconfig=new JsonConfig();
 	
 	 @Given("^Navigate to Url and login as a reviewer$")
-//	    public void navigate_to_url_and_login_as_a_reviewer() throws Throwable {
-//		  reader=new JsonDataReaderWriter();
-//			login = new AzentioLogin(driver);
-//			driver.get(config.getApplicationUrl());
-//			 login.logintoAzentioappReviewer("Reviewer", reader.readdata());
-//	    }
+	    public void navigate_to_url_and_login_as_a_reviewer() throws Throwable {
+		  reader=new JsonDataReaderWriter();
+			login = new AzentioLogin(driver);
+			driver.get(config.getApplicationUrl());
+			 login.logintoAzentioappReviewer("Reviewer", reader.readdata());
+	    }
 
 //	    @Then("^Click on Notification button$")
 //	    public void click_on_notification_button() throws Throwable {

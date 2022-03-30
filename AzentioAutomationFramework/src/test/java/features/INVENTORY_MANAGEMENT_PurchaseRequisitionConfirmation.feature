@@ -2,7 +2,7 @@ Feature: INVENTORY MANAGEMENT
  Purchase Requisition Confirmation
 
   @PurchseReqConf_KUBS_INV_MGMT_UAT_001_002
-  Scenario: Purchase
+  Scenario: Purchase Requisition Confirmation
     Given User should go to the kubs url and login as a maker user
     And user should navigate to inventory management
     When click on eye button of purchase requisition confirmation

@@ -243,7 +243,7 @@ public class BUDGET_BudgetTransfer {
 		javascripthelper.JavaScriptHelper(driver);
 		Thread.sleep(2000);
 
-		waithelper.waitForElement(driver, 3000, driver.findElement(By.xpath("//span[contains(text(),'"
+		waithelper.waitForElement(driver, 10000, driver.findElement(By.xpath("//span[contains(text(),'"
 				+ jsonWriter.readReferancedata()
 				+ "')]/ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell/div/ion-buttons/ion-button")));
 		driver.findElement(By.xpath("//span[contains(text(),'" + jsonWriter.readReferancedata()
