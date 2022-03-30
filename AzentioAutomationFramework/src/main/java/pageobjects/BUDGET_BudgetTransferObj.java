@@ -476,5 +476,20 @@ public class BUDGET_BudgetTransferObj {
 	{
 		return budgetTransfer_TempView;
 	}
+	
+	@FindBy(xpath = "(//app-kub-currency[@id='2'])[1]//input")
+	private WebElement budget_BudgetTransfer_ApportionedAmountQuarter;
+
+	public WebElement budget_BudgetTransfer_ApportionedAmountQuarter() {
+		return budget_BudgetTransfer_ApportionedAmountQuarter;
+
+	}
+	@FindBy(xpath = "(//app-kub-currency[@id='newAmount'])[3]//input")
+	private WebElement budget_BudgetTransfer_fromNewAmountQuarter;
+
+	public WebElement budget_BudgetTransfer_fromNewAmountQuarter() {
+		return budget_BudgetTransfer_fromNewAmountQuarter;
+
+	}
     
 }

@@ -21,6 +21,8 @@ public class BUDGET_BudgetTransferTestDataType {
 	public String RejectedByChecker;
 	public String ReturnedByChecker;
 	public String ReturnedByReviewer;
+	public String BudgetCodeQuarter;
+	public String TransferToBudgetCodeQuarter;
 	public String ApportionedAmountAExcessive;
 	public String BudgetName;
 	public String InvalidBranch;
