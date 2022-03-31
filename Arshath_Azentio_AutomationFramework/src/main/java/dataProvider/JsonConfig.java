@@ -22,6 +22,7 @@ import testDataType.GL1_Accounting_Setup_Data;
 import testDataType.INVENTORY_InventoryManagement_DataType;
 import testDataType.KUBS_LoginTestDataType;
 import testDataType.Logindata;
+import testDataType.PETTY_PettyCash_Data;
 import testDataType.RegisterData;
 
 public class JsonConfig {
@@ -59,23 +60,28 @@ public class JsonConfig {
 	// Budget_BudgetTransfer
 	private final String BudgetTransferFilePath = configFileReader.getJsonPath() + "BUDGET_BudgetTransferJSON.json";
 	private List<BUDGET_BudgetTransferTestDataType> BudgetTransferList;
-	
+
 	// Inventory_StockReturnBranch
-	private final String StockReturnBranchFilePath = configFileReader.getJsonPath() + "INVENTORY_InventoryManagement.json";
+	private final String StockReturnBranchFilePath = configFileReader.getJsonPath()
+			+ "INVENTORY_InventoryManagement.json";
 	private List<INVENTORY_InventoryManagement_DataType> StockReturnBranchList;
-	
+
 	// FixedAsset_Amendment
 	private final String AssetAmendmentFilePath = configFileReader.getJsonPath() + "FIXEDASSET_AssetAmendment.json";
 	private List<FIXEDASSET_AssetAmendmentData> AssetAmendmentList;
-	
+
 	// ARAP_ARandAP
 	private final String ARandAPFilePath = configFileReader.getJsonPath() + "ARAP_ARandAP.json";
 	private List<ARAP_ARandAPData> ARAPList;
-	
+
 	// Accounting setup
 	private final String AccsetupFilePath = configFileReader.getJsonPath() + "GL1_Accounting_Setup.json";
 	private List<GL1_Accounting_Setup_Data> AccsetupList;
-	
+
+	// Petty Cash
+	private final String PettycashFilePath = configFileReader.getJsonPath() + "PETTY_PettyCash.json";
+	private List<PETTY_PettyCash_Data> PettycashList;
+
 	public JsonConfig() {
 		/*
 		 * RegisterList = getRegisterData(); LoginList = getLoginList();
@@ -90,18 +96,21 @@ public class JsonConfig {
 		SupplementaryBudgetList = getSupplementaryBudgetList();
 
 		BudgetTransferList = getBudgetTransferData();
-		
+
 		// Inventory - StockReturn
 		StockReturnBranchList = getStockReturnBranchList();
-		
+
 		// FixedAsset_Amendment
 		AssetAmendmentList = getAssetAmendmentList();
-		
+
 		// ARAP_ARandAP
 		ARAPList = getARAPList();
-		
+
 		// Accounting Setup
 		AccsetupList = getAccsetupList();
+		
+		// Petty Cash
+		PettycashList = getPettycashList();
 	}
 
 	/*
@@ -252,8 +261,7 @@ public class JsonConfig {
 			}
 		}
 	}
-	
-	
+
 	// Accounting Setup
 	private List<GL1_Accounting_Setup_Data> getAccsetupList() {
 		Gson gson = new Gson();
@@ -262,8 +270,7 @@ public class JsonConfig {
 		BufferedReader bufferReader = null;
 		try {
 			bufferReader = new BufferedReader(new FileReader(AccsetupFilePath));
-			GL1_Accounting_Setup_Data[] GlaccSetup = gson.fromJson(bufferReader,
-					GL1_Accounting_Setup_Data[].class);
+			GL1_Accounting_Setup_Data[] GlaccSetup = gson.fromJson(bufferReader, GL1_Accounting_Setup_Data[].class);
 			return Arrays.asList(GlaccSetup);
 		} catch (FileNotFoundException e) {
 			throw new RuntimeException("Json file not found at path : " + AccsetupFilePath);
@@ -275,7 +282,28 @@ public class JsonConfig {
 			}
 		}
 	}
-	// Inventory - StockReturnBranch 
+
+	// PettyCash
+	private List<PETTY_PettyCash_Data> getPettycashList() {
+		Gson gson = new Gson();
+		JsonReader reader = new JsonReader(new StringReader(PettycashFilePath));
+		reader.setLenient(true);
+		BufferedReader bufferReader = null;
+		try {
+			bufferReader = new BufferedReader(new FileReader(PettycashFilePath));
+			PETTY_PettyCash_Data[] petty = gson.fromJson(bufferReader, PETTY_PettyCash_Data[].class);
+			return Arrays.asList(petty);
+		} catch (FileNotFoundException e) {
+			throw new RuntimeException("Json file not found at path : " + PettycashFilePath);
+		} finally {
+			try {
+				if (bufferReader != null)
+					bufferReader.close();
+			} catch (IOException ignore) {
+			}
+		}
+	}
+	// Inventory - StockReturnBranch
 	private List<INVENTORY_InventoryManagement_DataType> getStockReturnBranchList() {
 		Gson gson = new Gson();
 		BufferedReader bufferReader = null;
@@ -314,15 +342,14 @@ public class JsonConfig {
 			}
 		}
 	}
-	
+
 	// ARAP_ARandAP
 	private List<ARAP_ARandAPData> getARAPList() {
 		Gson gson = new Gson();
 		BufferedReader bufferReader = null;
 		try {
 			bufferReader = new BufferedReader(new FileReader(ARandAPFilePath));
-			ARAP_ARandAPData[] arap = gson.fromJson(bufferReader,
-					ARAP_ARandAPData[].class);
+			ARAP_ARandAPData[] arap = gson.fromJson(bufferReader, ARAP_ARandAPData[].class);
 			return Arrays.asList(arap);
 		} catch (FileNotFoundException e) {
 			throw new RuntimeException("Json file not found at path : " + ARandAPFilePath);
@@ -334,7 +361,6 @@ public class JsonConfig {
 			}
 		}
 	}
-
 
 	/*
 	 * public final RegisterData getRegisterByName(String customerName) { return
@@ -371,23 +397,29 @@ public class JsonConfig {
 		return BudgetTransferList.stream().filter(x -> x.User.equalsIgnoreCase(UserName)).findAny().get();
 	}
 
-	//Inventory - StockReturnBranch
+	// Inventory - StockReturnBranch
 	public final INVENTORY_InventoryManagement_DataType getStockReturnBranchByName(String user) {
 		return StockReturnBranchList.stream().filter(x -> x.Usertype.equalsIgnoreCase(user)).findAny().get();
 	}
-	
-	//Fixed_Asset
+
+	// Fixed_Asset
 	public final FIXEDASSET_AssetAmendmentData getAssetAmendmentByName(String Assetuser) {
 		return AssetAmendmentList.stream().filter(x -> x.Usertype.equalsIgnoreCase(Assetuser)).findAny().get();
 	}
-	
-	//ARAP_ARandAP
+
+	// ARAP_ARandAP
 	public final ARAP_ARandAPData getARAPByName(String ARAP) {
 		return ARAPList.stream().filter(x -> x.User.equalsIgnoreCase(ARAP)).findAny().get();
 	}
-	
-	//Accounting Setup
+
+	// Accounting Setup
 	public final GL1_Accounting_Setup_Data getAccsetupByName(String Setup) {
 		return AccsetupList.stream().filter(x -> x.User.equalsIgnoreCase(Setup)).findAny().get();
 	}
+	
+	// Petty Cash
+	public final PETTY_PettyCash_Data getPettycashByName(String Pettycash) {
+		return PettycashList.stream().filter(x -> x.UserName.equalsIgnoreCase(Pettycash)).findAny().get();
+	}
+	
 }

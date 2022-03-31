@@ -103,6 +103,34 @@ public class KUBS_Login {
 			Assert.assertTrue(login.Login_loginStatus().isDisplayed());
 		
 		}
+		else if(id.equals("1002439"))
+		{
+			login.Login_userName().sendKeys(logindata.UserName4);
+			login.Login_goButton().click();
+			waithelper.waitForElement(driver, 2000, login.Login_passWord());
+			login.Login_passWord().sendKeys(logindata.PassWord4);
+			String otp = login.Login_getOtp().getText();
+			driver.findElement(By.xpath("//ng-otp-input/div/input[1]")).sendKeys(otp.substring(7));
+			waithelper.waitForElement(driver, 2000, login.Login_signIn());
+			login.Login_signIn().click();
+			waithelper.waitForElement(driver, 2000, login.Login_loginStatus());
+			Assert.assertTrue(login.Login_loginStatus().isDisplayed());
+		
+		}
+		else if(id.equals("le4checker"))
+		{
+			login.Login_userName().sendKeys(logindata.UserName5);
+			login.Login_goButton().click();
+			waithelper.waitForElement(driver, 2000, login.Login_passWord());
+			login.Login_passWord().sendKeys(logindata.PassWord5);
+			String otp = login.Login_getOtp().getText();
+			driver.findElement(By.xpath("//ng-otp-input/div/input[1]")).sendKeys(otp.substring(7));
+			waithelper.waitForElement(driver, 2000, login.Login_signIn());
+			login.Login_signIn().click();
+			waithelper.waitForElement(driver, 2000, login.Login_loginStatus());
+			Assert.assertTrue(login.Login_loginStatus().isDisplayed());
+		
+		}
 	}
 	public void loginToAzentioAppAsChecker(String user) throws InterruptedException {
 		waithelper=new WaitHelper(driver);
