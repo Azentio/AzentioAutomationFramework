@@ -15,11 +15,17 @@ public class Payment_SettlementObj {
 	private WebElement paymentSettlementEyeIcon;
     @FindBy(xpath="//ion-fab-button[@id='addBtn']")
     private WebElement paymentSettlementAddIcon;
+    @FindBy(xpath="//datatable-header-cell[8]/div[1]/ion-input[1]/input[1]")
+    private WebElement transactionStatus;
+    @FindBy(xpath="//datatable-header-cell[4]/div[1]/ion-input[1]/input[1]")
+    private WebElement transactionNumber;
     @FindBy(xpath="//ion-col[2]/app-kub-lov/span/ng-select/div/div/div[2]/input")
     private WebElement paymentOptions;
     @FindBy(xpath="//ion-col[3]/app-kub-lov/span/ng-select/div/div/div[2]/input")
     private WebElement selectBuisnessPartner;
-    @FindBy(xpath="//datatable-row-wrapper[1]/datatable-body-row[1]/div/datatable-body-cell[5]/div/span[text()='Bonton Agency']")
+    @FindBy(xpath="//ion-row[1]/ion-col[3]/app-kub-lov[1]/span[1]/ng-select[1]/div[1]/div[1]/div[2]")
+    private WebElement getBuisnessPartnerName;
+    @FindBy(xpath="(//datatable-row-wrapper[1]/datatable-body-row[1]/div[2]/datatable-body-cell[5]/div[1]/span[1])[2]")
     private WebElement getActiveBillBuisnessPartner;
     @FindBy(xpath="//datatable-row-wrapper[1]/datatable-body-row/div/datatable-body-cell/div/ion-checkbox")
     private WebElement billListViewCheckBox;
@@ -38,7 +44,7 @@ public class Payment_SettlementObj {
     @FindBy(xpath="(//span[@class='input-calendar'])[2]")
     private WebElement calenderInPaymentSettlement;
     // change daily date in xpath
-    @FindBy(xpath="//span[text()='4']")
+    @FindBy(xpath="//span[text()='10']")
     private WebElement date;
     @FindBy(xpath="//ion-col[9]/ion-item/ion-input/input[@name='paymentDesc']")
     private WebElement description;
@@ -51,6 +57,15 @@ public class Payment_SettlementObj {
     @FindBy(xpath="//datatable-row-wrapper[1]/datatable-body-row/div/datatable-body-cell[1]//ion-button[1]")
     private WebElement clickFirstPaymentInListView;
     
+	public WebElement getGetBuisnessPartnerName() {
+		return getBuisnessPartnerName;
+	}
+	public WebElement getTransactionNumber() {
+		return transactionNumber;
+	}
+	public WebElement getTransactionStatus() {
+		return transactionStatus;
+	}
 	public WebElement getNextPageInListView() {
 		return nextPageInListView;
 	}

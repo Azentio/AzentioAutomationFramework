@@ -48,7 +48,11 @@ public class ArAp_Cancellation_of_vendorObj {
 	private WebElement pobpname;
 	@FindBy(xpath="//ng-select[@ng-reflect-model=\"35668\"]")
 	private WebElement postatus;
-	
+	@FindBy(xpath="//datatable-header[1]/div[1]/div[2]/datatable-header-cell[14]/div[1]/ion-input[1]/input[1]")
+	private WebElement searchVendorPoStatus;
+	public WebElement getSearchVendorPoStatus() {
+		return searchVendorPoStatus;
+	}
 	public WebElement getClickFirstEyeiconInListView() {
 		return clickFirstEyeiconInListView;
 	}

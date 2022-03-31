@@ -9,5 +9,6 @@ public class Accounting_EntriestestData {
 	public String GlDay;				
 	public String GlToMonth;			
 	public String GlFullToMonth;		
-	public String GlToDate;	
+	public String GlToDate;
+	
 }

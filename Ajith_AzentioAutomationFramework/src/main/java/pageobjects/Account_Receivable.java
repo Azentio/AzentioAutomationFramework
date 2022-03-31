@@ -61,7 +61,6 @@ public class Account_Receivable {
     public WebElement accountsReceivable_Debit_Eye(){
     	return accountsReceivable_Debit_Eye;
     }
-    
 	@FindBy(xpath = "//datatable-header[1]/div[1]/div[2]/datatable-header-cell[8]/div[1]/ion-input[1]/input[1]")
 	private WebElement accountsReceivable_CreditNote_Status;
 
@@ -74,8 +73,13 @@ public class Account_Receivable {
     public WebElement accountsReceivable_DebitNote_Status() {
     	return accountsReceivable_DebitNote_Status;
     }
+    @FindBy(xpath="//datatable-header-cell[3]/div[1]/ion-input[1]/input[1]")
+    private WebElement searchReceivableName;
+    public WebElement searchReceivableName() {
+    	return searchReceivableName;
+    }
     // same x path for debit
-	@FindBy(xpath = "//datatable-row-wrapper[2]/datatable-body-row/div/datatable-body-cell[1]//ion-button[1]")
+	@FindBy(xpath = "//datatable-row-wrapper[1]/datatable-body-row/div/datatable-body-cell[1]//ion-button[1]")
 	private WebElement accountsReceivable_CreditNote_StatusHead;
 
 	public WebElement accountsReceivable_CreditNote_StatusHead() {
@@ -124,6 +128,38 @@ public class Account_Receivable {
 	public WebElement ARAP_Accountsreceivable() {
 
 		return ARAP_Accountsreceivable;
+	}
+	//appropriation
+	@FindBy(xpath="//ion-button[@ng-reflect-router-link='/tabs/list/datagrid-view/200']")
+	private WebElement appropriationEyeIcon;
+	public WebElement appropriationEyeIcon() {
+		return appropriationEyeIcon;
+	}
+	@FindBy(xpath="//ion-button[@ng-reflect-router-link='/tabs/list/datagrid-view/213']")
+	private WebElement appropriationReversalsEyeIcon;
+	public WebElement appropriationReversalsEyeIcon() {
+		return appropriationReversalsEyeIcon;
+		
+	}
+	@FindBy(xpath="//ion-col[3]/app-kub-lov[1]/span[1]/ng-select[1]/div[1]/div[1]/div[2]/input[1]")
+	private WebElement selectRefernceNumber;
+	public WebElement selectRefernceNumber() {
+		return selectRefernceNumber;
+	}
+	@FindBy(xpath="//ion-input[@ng-reflect-placeholder='Search Trx No']/input")
+	private WebElement searchTxtNumber;
+	public WebElement searchTxtNumber(){
+		return searchTxtNumber;
+	}
+	@FindBy(xpath="//datatable-body-cell[4]/div/span")
+	private WebElement getReferenceNumberFromAppropriationReversal;
+	public WebElement getReferenceNumberFromAppropriationReversal() {
+		return getReferenceNumberFromAppropriationReversal;
+	}
+	@FindBy(xpath="//datatable-row-wrapper[1]/datatable-body-row[1]/div[2]/datatable-body-cell[6]/div[1]/input[1]")
+	private WebElement enterAppropriationAmount;
+	public WebElement enterAppropriationAmount() {
+		return enterAppropriationAmount;
 	}
 	
 

@@ -8,9 +8,14 @@ public class Cancellationofcontractdatatype {
 	public String BuisnessPartnerName1;
 	public String PaymentSettlementDescription;
 	public String Contractstatusfordebitnote;
+	public String txtNumber;
+	public String ReceivableName;
+	public String ContracttypeAsInvoice;
 	public String Contractstatusforcancellationofcontract;
 	public String Cancellationtype;
 	public String ContractType;
+	public String ReferenceNumber;
+	public String AppropriationAmount;
 	public String BuisnessPartnerName2;
 	public String branchCode;
 	public String gLCode;

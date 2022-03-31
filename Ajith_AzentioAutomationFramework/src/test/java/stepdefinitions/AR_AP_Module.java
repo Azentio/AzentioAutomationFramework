@@ -15,6 +15,7 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import pageobjects.Account_Receivable;
+import pageobjects.Accounts_Payable;
 import pageobjects.ArAp_Cancellation_of_vendorObj;
 import pageobjects.Ar_Ap_AdjustmentObj;
 import pageobjects.Ar_Po_creationObj;
@@ -33,7 +34,6 @@ public class AR_AP_Module extends BaseClass {
 	JsonConfig jsonconfig = new JsonConfig();
 	Cancellationofcontractdatatype cancellationofcontractdata = jsonconfig.getCancelcontractByName("Maker");
 	Map<String, String> testdata = new LinkedHashMap<>();
-	private String invoicebuisnessPartner;
 	private String NetPayableAmountinBillList;
 	private float CalculatedTdsValue;
 	private String debitbuisnesspartnername;
@@ -42,9 +42,11 @@ public class AR_AP_Module extends BaseClass {
 	InvoiceBookingObj invoiceBookingObj = new InvoiceBookingObj(driver);
 	Payment_SettlementObj paymentSettlementObj = new Payment_SettlementObj(driver);
 	Account_Receivable account_Receivable = new Account_Receivable(driver);
+	Accounts_Payable accounts_PayableObj = new Accounts_Payable(driver);
 	Ar_Ap_AdjustmentObj arapAdjustment = new Ar_Ap_AdjustmentObj(driver);
 	Enquiry_Obj enquiryObj = new Enquiry_Obj(driver);
 	JavascriptHelper javascriphelper = new JavascriptHelper();
+
 	//******************************@KUBS_AR/AP_UAT_001_002TC_02*********************************************************************
 	// verify accounting entries bill is approved
 	 @Given("^user navigate to azentio url and login as maker for verify post bill is approved in Accounting Entries$")
@@ -55,6 +57,7 @@ public class AR_AP_Module extends BaseClass {
 			Thread.sleep(2000);
 			seleniumactions.getWaitHelper().waitForElement(driver, 3000, cancellationofcontract.getOptionicon());
 			seleniumactions.getClickAndActionsHelper().clickOnElement(cancellationofcontract.getOptionicon());
+			
 	    }
 
 	    @When("^click the account payable main module for verify post bill is approved in Accounting Entries$")
@@ -86,17 +89,27 @@ public class AR_AP_Module extends BaseClass {
 
 	    @And("^click the first eye icon in the list view of Active invoice bill$")
 	    public void click_the_first_eye_icon_in_the_list_view_of_active_invoice_bill() throws Throwable {
-	    	String beforexpath="//datatable-row-wrapper[";
+	    	String invoiceBillStatus = null;
+			String beforexpath="//datatable-row-wrapper[";
 	    	String afterxpath ="]/datatable-body-row[1]/div[2]/datatable-body-cell[13]/div[1]/span[1]";
-	    	for (int i = 1; i < 7; i++) {
-	    		// select active bill with expense as contract type
-	    		seleniumactions.getWaitHelper().waitForElement(driver,2000,driver.findElement(By.xpath(beforexpath+i+afterxpath)));
-				String invoiceBillStatus = driver.findElement(By.xpath(beforexpath+i+afterxpath)).getText();
-				if (invoiceBillStatus.equalsIgnoreCase(cancellationofcontractdata.contractstatusactive)) {
-					seleniumactions.getWaitHelper().waitForElement(driver,2000,driver.findElement(By.xpath("(//datatable-body-cell[1]/div/ion-buttons/ion-button[1])["+i+"]")));
-					driver.findElement(By.xpath("(//datatable-body-cell[1]/div/ion-buttons/ion-button[1])["+i+"]")).click();
+	    	for (int j = 1; j < 3; j++) {
+	    		for (int i = 1; i < 9; i++) {
+	        		// select active bill with expense as contract type
+	        		seleniumactions.getWaitHelper().waitForElement(driver,2000,driver.findElement(By.xpath(beforexpath+i+afterxpath)));
+	    			 invoiceBillStatus = driver.findElement(By.xpath(beforexpath+i+afterxpath)).getText();
+	    			System.out.println(invoiceBillStatus);
+	    			if (invoiceBillStatus.equalsIgnoreCase(cancellationofcontractdata.contractstatusactive)) {
+	    				//seleniumactions.getWaitHelper().waitForElement(driver,2000,driver.findElement(By.xpath("(//datatable-body-cell[1]/div/ion-buttons/ion-button[1])["+i+"]")));
+	    				driver.findElement(By.xpath("(//datatable-body-cell[1]/div/ion-buttons/ion-button[1])["+i+"]")).click();
+	    				break;
+	    			}		
+	    			
+			}
+	    		if (invoiceBillStatus.equalsIgnoreCase(cancellationofcontractdata.contractstatusactive)) {
 					break;
 				}
+	    		seleniumactions.getWaitHelper().waitForElement(driver,2000,invoiceBookingObj.nextPageInListView());
+				invoiceBookingObj.nextPageInListView().click();
 			}
 	    }
 
@@ -170,6 +183,13 @@ public class AR_AP_Module extends BaseClass {
 			seleniumactions.getClickAndActionsHelper().clickOnElement(enquiryObj.inventoryViewButton());
 			Thread.sleep(2000);
 	    }
+	    @And("^select the Transaction Ref No$")
+	    public void select_the_transaction_ref_no() throws Throwable {
+	        seleniumactions.getWaitHelper().waitForElement(driver,2000,enquiryObj.transactionRefNo());
+	        enquiryObj.transactionRefNo().click();
+	        enquiryObj.transactionRefNo().sendKeys(testdata.get("invoicenumberforactivebill"));
+	        enquiryObj.transactionRefNo().sendKeys(Keys.ENTER);
+	    }
 
 	    @And("^click the view option for verify post bill is approved in Accounting Entries$")
 	    public void click_the_view_option_for_verify_post_bill_is_approved_in_accounting_entries() throws Throwable {
@@ -182,8 +202,10 @@ public class AR_AP_Module extends BaseClass {
 	    	int i=1;
 	    	while (true) {
 				try {
-					seleniumactions.getWaitHelper().waitForElement(driver,2000,driver.findElement(By.xpath("//datatable-body-cell[1]//span[contains(text(),'"+testdata.get("invoicenumber")+"')]")));
+					seleniumactions.getWaitHelper().waitForElement(driver,2000,driver.findElement(By.xpath("//datatable-body-cell[1]//span[contains(text(),'"+testdata.get("invoicenumberforactivebill")+"')]")));
 					driver.findElement(By.xpath("//datatable-body-cell[1]//span[contains(text(),'"+testdata.get("invoicenumberforactivebill")+"')]")).isDisplayed();
+					String invoicenumber = driver.findElement(By.xpath("//datatable-body-cell[1]//span[contains(text(),'"+testdata.get("invoicenumberforactivebill")+"')]")).getText();
+					System.out.println(invoicenumber);
 					break;
 					
 				} catch (NoSuchElementException e) {
@@ -197,6 +219,188 @@ public class AR_AP_Module extends BaseClass {
 					enquiryObj.previousPageInContractReport().click();
 				}
 			}
+	    }
+	  //******************************@KUBS_AR/AP_UAT_001_004TC_01**********************************************************************
+	    
+	    @And("^click the eye icon of GRN$")
+	    public void click_the_eye_icon_of_grn() throws Throwable {
+	    	seleniumactions.getWaitHelper().waitForElement(driver,2000,accounts_PayableObj.grnEyeIcon());
+	    	accounts_PayableObj.grnEyeIcon().click();
+	    }
+
+	    @And("^Search GRN status as Active$")
+	    public void search_grn_status_as_active() throws Throwable {
+	        seleniumactions.getWaitHelper().waitForElement(driver,2000,accounts_PayableObj.searchGrnStatus());
+	        accounts_PayableObj.searchGrnStatus().click();
+	        accounts_PayableObj.searchGrnStatus().sendKeys(cancellationofcontractdata.contractstatusactive);
+	    }
+
+	    @And("^get the Grn number$")
+	    public void get_the_grn_number() throws Throwable {
+	        javascriphelper.JavaScriptHelper(driver);
+	        String grnNumber = (String) javascriphelper.executeScript("return document.getElementsByName('grnNumber')[1].value");
+	        testdata.put("grnNumber", grnNumber);
+	        System.out.println(grnNumber);
+	        System.out.println(testdata.get("grnNumber"));
+	    }
+	    @And("^choose the Transaction To date$")
+	    public void choose_the_transaction_to_date() throws Throwable {
+	    	seleniumactions.getClickAndActionsHelper().clickOnElement(enquiryObj.inventoryToDate());
+			Thread.sleep(2000);
+			driver.findElement(By.xpath("(//span[@class='owl-dt-control-content owl-dt-control-button-content'])[2]"))
+					.click();
+			driver.findElement(By.xpath("//span[text()='" + cancellationofcontractdata.GlYear + "']")).click();
+			driver.findElement(By.xpath("//span[text()='" + cancellationofcontractdata.GlToMonth + "']")).click();
+			seleniumactions.getWaitHelper().waitForElement(driver, 2000,
+					driver.findElement(By.xpath("(//span[text()='" + cancellationofcontractdata.GlDay + "'])[1]")));
+			driver.findElement(By.xpath("(//span[text()='" + cancellationofcontractdata.GlToDate + "'])[1]")).click();
+	    }
+	    @And("^select the Transaction Ref No as Grn Number$")
+	    public void select_the_transaction_ref_no_as_grn_number() throws Throwable {
+	    	seleniumactions.getWaitHelper().waitForElement(driver,2000,enquiryObj.transactionRefNo());
+	        enquiryObj.transactionRefNo().click();
+	        enquiryObj.transactionRefNo().sendKeys(testdata.get("grnNumber"));
+	        enquiryObj.transactionRefNo().sendKeys(Keys.ENTER);
+	        seleniumactions.getWaitHelper().waitForElement(driver, 2000, enquiryObj.inventoryViewButton());
+			seleniumactions.getClickAndActionsHelper().clickOnElement(enquiryObj.inventoryViewButton());
+			Thread.sleep(2000);
+	    }
+	    @Then("^Verify the GRN number in Voucher Id and verify transaction type$")
+	    public void verify_the_grn_number_in_voucher_id_and_verify_transaction_type() throws Throwable {
+	    	while (true) {
+				try {
+					seleniumactions.getWaitHelper().waitForElement(driver,2000,driver.findElement(By.xpath("(//datatable-body-cell[1]//span[contains(text(),'"+testdata.get("grnNumber")+"')])[1]")));
+					driver.findElement(By.xpath("(//datatable-body-cell[1]//span[contains(text(),'"+testdata.get("grnNumber")+"')])[1]")).isDisplayed();
+					String invoiceNumber = driver.findElement(By.xpath("//datatable-body-cell[1]//span[contains(text(),'"+testdata.get("grnNumber")+"')]")).getText();
+					System.out.println(invoiceNumber);
+					break;
+					
+				} catch (NoSuchElementException e) {
+					javascriphelper.JavaScriptHelper(driver);
+					javascriphelper.scrollIntoView(enquiryObj.nextPageInListView());
+					seleniumactions.getWaitHelper().waitForElement(driver,2000,enquiryObj.nextPageInListView());
+					enquiryObj.nextPageInListView().click();
+				}
+			}
+	    }
+	    
+	  //***********************************************  @KUBS_AR/AP_UAT_001_004TC_08 ************************************************
+	  // Verify Accounts Payable Report post bill is approved
+	    @And("^get the invoice number from the bill viewed invoice against po$")
+	    public void get_the_invoice_number_from_the_bill_viewed_invoice_against_po() throws Throwable {
+			javascriphelper.JavaScriptHelper(driver);
+			String invoicenumber = (String) javascriphelper
+					.executeScript("return document.getElementsByName('billNo')[0].value");
+			System.out.println(invoicenumber);
+			testdata.put("invoicenumber", invoicenumber);
+
+
+	    }
+	    @And("^get buisness partner name and Bill Status for invoice against po$")
+	    public void get_buisness_partner_name_and_bill_status_for_invoice_against_po() throws Throwable {
+	    	seleniumactions.getWaitHelper().waitForElement(driver, 2000,
+					invoiceBookingObj.getBuisnessPartnerFromBillInvoiceAgainstPo());
+			String buisnessPartnerName = invoiceBookingObj.getBuisnessPartnerFromBillInvoiceAgainstPo()
+					.getText();
+			testdata.put("buisnessPartnerName", buisnessPartnerName);
+			javascriphelper.JavaScriptHelper(driver);
+			String contractenddate = (String) javascriphelper.executeScript("return document.getElementsByName('kubDateTime')[1].value");
+			System.out.println(contractenddate);
+			String year = contractenddate.substring(7,11);
+			testdata.put("year", year);
+			String month = contractenddate.substring(3, 6);
+			testdata.put("month", month);
+			if (contractenddate.substring(1, 2).equalsIgnoreCase("0")) {
+				String day = contractenddate.substring(0,2);
+				System.out.println(day);
+				testdata.put("day", day);
+			}
+			else if (Integer.parseInt(contractenddate.substring(1, 2))>0) {
+				String day = contractenddate.substring(0,2);
+				System.out.println(day);
+				testdata.put("day", day);
+			}
+			else{
+				String day = contractenddate.substring(1, 2);
+				testdata.put("day", day);
+				System.out.println(day);
+			}
+			//String xpath="//ion-col[20]/app-kub-lov[1]/span[1]/ng-select[1]/div[1]/div[1]/div[2]";
+			 //String invoicestatus = driver.findElement(By.xpath(xpath)).getText();
+			 //testdata.put("invoicestatus", invoicestatus);
+	    }
+	   
+	    @And("^search invoice type as Invoice Against Po$")
+	    public void search_invoice_type_as_invoice_against_po() throws Throwable {
+	    	seleniumactions.getWaitHelper().waitForElement(driver, 2000, invoiceBookingObj.searchInvoiceType());
+			seleniumactions.getClickAndActionsHelper().clickOnElement(invoiceBookingObj.searchInvoiceType());
+			invoiceBookingObj.searchInvoiceType().sendKeys(cancellationofcontractdata.ContracttypeAsInvoice);
+	    }
+	    @And("^select the payable status as Active$")
+	    public void select_the_payable_status_as_active() throws Throwable {
+	    	seleniumactions.getWaitHelper().waitForElement(driver,2000,enquiryObj.selectContractStatus());
+	        seleniumactions.getClickAndActionsHelper().clickOnElement(enquiryObj.selectContractStatus());
+	        enquiryObj.selectContractStatus().sendKeys("All");
+	        enquiryObj.selectContractStatus().sendKeys(Keys.ENTER);
+	    }
+	    @Then("^verify the bill is Active in Accounts payable report$")
+	    public void verify_the_bill_is_active_in_accounts_payable_report() throws Throwable {
+	    	seleniumactions.getBrowserHelper().SwitchToWindow(1);
+	    	String invoice = null;
+	    	String currenturl = driver.getCurrentUrl();
+	    	System.out.println(currenturl);
+	    	String beforeXpath="//*[@id=\"__bookmark_1\"]/tbody/tr[";
+	    	String afterXpath ="]/td[4]/div";
+	    	for (int i = 1; i <5; i++) {
+	    	for (int j = 2; j <=41; j++) {
+	    		String actualXpath=beforeXpath+j+afterXpath;
+	    		try {
+	    			seleniumactions.getWaitHelper().waitForElement(driver,2000,  driver.findElement(By.xpath(actualXpath)));
+	    			 invoice = driver.findElement(By.xpath(actualXpath)).getText();
+	        		System.out.println(invoice);
+	        		if (invoice.equalsIgnoreCase(testdata.get("invoicenumber"))) {
+	    				System.out.println("found invoice number "+invoice);
+	    				break;
+	    			}
+				} catch (NoSuchElementException e) {
+					continue;
+				}
+	    		
+			}
+	    	if (invoice.equalsIgnoreCase(testdata.get("invoicenumber"))) {
+				break;
+			}
+	    	seleniumactions.getWaitHelper().waitForElement(driver,2000,enquiryObj.nextPageInContractReport());
+	    	enquiryObj.nextPageInContractReport().click();
+	    	}
+	    	seleniumactions.getBrowserHelper().switchToParentWithChildClose();
+	    }
+
+	    //**************************************@KUBS_AR/AP_UAT_001_002TC_02***************************************
+	    // Verify Accounting entries post Credit Note is approved
+	    @And("^search the Active credit note and click the first list$")
+	    public void search_the_active_credit_note_and_click_the_first_list() throws Throwable {
+	    	seleniumactions.getWaitHelper().waitForElement(driver, 2000,
+					account_Receivable.accountsReceivable_CreditNote_Status());
+			seleniumactions.getClickAndActionsHelper()
+					.clickOnElement(account_Receivable.accountsReceivable_CreditNote_Status());
+			account_Receivable.accountsReceivable_CreditNote_Status().sendKeys(cancellationofcontractdata.contractstatusactive);
+			seleniumactions.getWaitHelper().waitForElement(driver, 2000,
+					account_Receivable.accountsReceivable_CreditNote_StatusHead());
+			seleniumactions.getClickAndActionsHelper()
+					.clickOnElement(account_Receivable.accountsReceivable_CreditNote_StatusHead());
+	    }
+	    
+	   //***************************************** @KUBS_AR/AP_UAT_002_002TC_02*******************************************
+	    @And("^select the Transaction Ref No as Credit note Number$")
+	    public void select_the_transaction_ref_no_as_credit_note_number() throws Throwable {
+	    	seleniumactions.getWaitHelper().waitForElement(driver,2000,enquiryObj.transactionRefNo());
+	        enquiryObj.transactionRefNo().click();
+	        enquiryObj.transactionRefNo().sendKeys(testdata.get("creditnotenumber"));
+	        enquiryObj.transactionRefNo().sendKeys(Keys.ENTER);
+	        seleniumactions.getWaitHelper().waitForElement(driver, 2000, enquiryObj.inventoryViewButton());
+			seleniumactions.getClickAndActionsHelper().clickOnElement(enquiryObj.inventoryViewButton());
+			Thread.sleep(2000);
 	    }
 
 	//(***************************************@KUBS_AR/AP_UAT_003_001TC_01***************************************************)
@@ -240,15 +444,25 @@ public class AR_AP_Module extends BaseClass {
 		testdata.put("buisnessPartnerName", buisnessPartnerName);
 		javascriphelper.JavaScriptHelper(driver);
 		String contractacccountcode = (String) javascriphelper.executeScript(
-				"return document.getElementsByClassName('native-input sc-ion-input-md')[\"contractCode\"].value");
+				"return document.getElementsByName('contractCode')[1].value");
+		System.out.println(contractacccountcode);
 		testdata.put("contractacccountcode", contractacccountcode);
 		String contractenddate = (String) javascriphelper.executeScript("return document.getElementsByName('kubDateTime')[2].value");
+		System.out.println(contractenddate);
 		String year = contractenddate.substring(7,11);
 		testdata.put("year", year);
 		String month = contractenddate.substring(3, 6);
 		testdata.put("month", month);
-		String day = contractenddate.substring(1, 2);
-		testdata.put("day", day);
+		if (contractenddate.substring(1, 2).equalsIgnoreCase("0")) {
+			String day = contractenddate.substring(0,2);
+			testdata.put("day", day);
+		}
+		else  {
+			String day = contractenddate.substring(1, 2);
+			testdata.put("day", day);
+		}
+		
+		
 		String contractStatus = driver.findElement(By.xpath("(//ion-col[15]/app-kub-lov[1]/span[1]/ng-select[1]/div[1]/div[1]/div)[2]")).getText();
 		testdata.put("contractstatus", contractStatus);
     }
@@ -303,6 +517,7 @@ public class AR_AP_Module extends BaseClass {
     public void click_the_view_icon() throws Throwable {
        seleniumactions.getWaitHelper().waitForElement(driver,2000,enquiryObj.viewInContractReport());
        seleniumactions.getClickAndActionsHelper().clickOnElement(enquiryObj.viewInContractReport());
+       Thread.sleep(5000);
     }
     @Then("^verify the contract code in contract report$")
     public void verify_the_contract_code_in_contract_report() throws Throwable {
@@ -313,7 +528,9 @@ public class AR_AP_Module extends BaseClass {
     		try {
     			seleniumactions.getWaitHelper().waitForElement(driver,2000,driver.findElement(By.xpath("//div[contains(text(),'"+testdata.get("contractacccountcode")+"')]")));
     			driver.findElement(By.xpath("//div[contains(text(),'"+testdata.get("contractacccountcode")+"')]")).isDisplayed();
-				break;
+    			String contractcode = driver.findElement(By.xpath("//div[contains(text(),'"+testdata.get("contractacccountcode")+"')]")).getText();
+				System.out.println(contractcode);
+    			break;
 			} catch (NoSuchElementException e) {
 				seleniumactions.getWaitHelper().waitForElement(driver,2000,enquiryObj.nextPageInContractReport());
 				enquiryObj.nextPageInContractReport().click();
@@ -463,12 +680,14 @@ public class AR_AP_Module extends BaseClass {
 		seleniumactions.getClickAndActionsHelper().clickOnElement(cancellationofcontract.getApserachicon());
 	}
 
-	@And("^search contract status as closed$")
-	public void search_contract_status_as_closed() throws Throwable {
-		seleniumactions.getWaitHelper().waitForElement(driver, 2000, cancellationofcontract.getSearchcontractstatus());
-		seleniumactions.getClickAndActionsHelper().clickOnElement(cancellationofcontract.getSearchcontractstatus());
-		cancellationofcontract.getSearchcontractstatus()
-				.sendKeys(cancellationofcontractdata.Contractstatusforcancellationofcontract);
+	@And("^search PO status as Active$")
+	public void search_PO_status_as_Active() throws Throwable {
+		//seleniumactions.getWaitHelper().waitForElement(driver, 2000, cancellationofcontract.getPostatus());
+		javascriphelper.JavaScriptHelper(driver);
+		javascriphelper.scrollIntoView(cancellationofcontract.getSearchVendorPoStatus());
+		seleniumactions.getClickAndActionsHelper().clickOnElement(cancellationofcontract.getSearchVendorPoStatus());
+		cancellationofcontract.getSearchVendorPoStatus()
+				.sendKeys(cancellationofcontractdata.contractstatusactive);
 	}
 
 	@And("^click the first eye icon in the list$")
@@ -478,6 +697,41 @@ public class AR_AP_Module extends BaseClass {
 		seleniumactions.getClickAndActionsHelper()
 				.clickOnElement(cancellationofcontract.getClickSecondEyeiconInListView());
 	}
+	@And("^get contract name in vendor$")
+    public void get_contract_name_in_vendor() throws Throwable {
+        String xpath="(//ion-row[1]/ion-col[5]/app-kub-lov[1]/span[1]/ng-select[1]/div[1]/div[1]/div[2])[1]";
+        String ContractName = driver.findElement(By.xpath(xpath)).getText();
+        System.out.println(ContractName);
+        testdata.put("ContractName", ContractName);
+    }
+	@And("^click the eye icon in list based on contractname$")
+    public void click_the_eye_icon_in_list_based_on_contractname() throws Throwable {
+		//datatable-row-wrapper[1]/datatable-body-row[1]/div[2]/datatable-body-cell[4]/div[1]/span[1]
+		String contractName = null;
+		String beforexpath="//datatable-row-wrapper[";
+    	String afterxpath ="]/datatable-body-row[1]/div[2]/datatable-body-cell[4]/div[1]/span[1]";
+    	for (int j = 1; j < 3; j++) {
+    		for (int i = 1; i < 9; i++) {
+        		// select active bill with expense as contract type
+        		seleniumactions.getWaitHelper().waitForElement(driver,2000,driver.findElement(By.xpath(beforexpath+i+afterxpath)));
+        		contractName = driver.findElement(By.xpath(beforexpath+i+afterxpath)).getText();
+    			System.out.println(contractName);
+    			if (contractName.equalsIgnoreCase(testdata.get("ContractName"))) {
+    				//seleniumactions.getWaitHelper().waitForElement(driver,2000,driver.findElement(By.xpath("(//datatable-body-cell[1]/div/ion-buttons/ion-button[1])["+i+"]")));
+    				driver.findElement(By.xpath("(//datatable-body-cell[1]/div/ion-buttons/ion-button[1])["+i+"]")).click();
+    				break;
+    			}		
+    			
+		}
+    		if (contractName.equalsIgnoreCase(testdata.get("ContractName"))) {
+				break;
+			}
+    		seleniumactions.getWaitHelper().waitForElement(driver,2000,invoiceBookingObj.nextPageInListView());
+			invoiceBookingObj.nextPageInListView().click();
+    		
+    	
+		}
+    }
 
 	@And("^get buisness partner name and get contract acccount code$")
 	public void get_buisness_partner_name_and_get_contract_acccount_code() throws Throwable {
@@ -578,7 +832,7 @@ public class AR_AP_Module extends BaseClass {
 	public void click_the_search_icon_in_list_view() throws Throwable {
 		seleniumactions.getWaitHelper().waitForElement(driver, 2000, cancellationofcontract.getApserachicon());
 		seleniumactions.getClickAndActionsHelper().clickOnElement(cancellationofcontract.getApserachicon());
-
+        
 	}
 
 	@And("^search invoice type as expense$")
@@ -587,22 +841,32 @@ public class AR_AP_Module extends BaseClass {
 		seleniumactions.getClickAndActionsHelper().clickOnElement(invoiceBookingObj.searchInvoiceType());
 		invoiceBookingObj.searchInvoiceType().sendKeys(cancellationofcontractdata.ContractType);
 	}
-
-	@And("^search invoice status as cancelled$")
-	public void search_invoice_status_as_cancelled() throws Throwable {
-		javascriphelper.JavaScriptHelper(driver);
-		javascriphelper.scrollIntoView(invoiceBookingObj.searchInvoiceStatus());
-		seleniumactions.getWaitHelper().waitForElement(driver, 2000, invoiceBookingObj.searchInvoiceStatus());
-		seleniumactions.getClickAndActionsHelper().clickOnElement(invoiceBookingObj.searchInvoiceStatus());
-		invoiceBookingObj.searchInvoiceStatus().sendKeys(cancellationofcontractdata.contractstatus);
-	}
-
 	@And("^click the first eye icon in the list view of cancelled invoice bill$")
 	public void click_the_first_eye_icon_in_the_list_view_of_cancelled_invoice_bill() throws Throwable {
-		seleniumactions.getWaitHelper().waitForElement(driver, 2000,
-				cancellationofcontract.getClickSecondEyeiconInListView());
-		seleniumactions.getClickAndActionsHelper()
-				.clickOnElement(cancellationofcontract.getClickSecondEyeiconInListView());
+		String invoiceBillStatus = null;
+		String beforexpath="//datatable-row-wrapper[";
+    	String afterxpath ="]/datatable-body-row[1]/div[2]/datatable-body-cell[13]/div[1]/span[1]";
+    	for (int j = 1; j < 6; j++) {
+    		for (int i = 1; i < 9; i++) {
+        		// select active bill with expense as contract type
+        		seleniumactions.getWaitHelper().waitForElement(driver,2000,driver.findElement(By.xpath(beforexpath+i+afterxpath)));
+    			 invoiceBillStatus = driver.findElement(By.xpath(beforexpath+i+afterxpath)).getText();
+    			System.out.println(invoiceBillStatus);
+    			if (invoiceBillStatus.equalsIgnoreCase(cancellationofcontractdata.contractstatus)) {
+    				seleniumactions.getWaitHelper().waitForElement(driver,2000,driver.findElement(By.xpath("(//datatable-body-cell[1]/div/ion-buttons/ion-button[1])["+i+"]")));
+    				driver.findElement(By.xpath("(//datatable-body-cell[1]/div/ion-buttons/ion-button[1])["+i+"]")).click();
+    				break;
+    			}		
+    			
+		}
+    		if (invoiceBillStatus.equalsIgnoreCase(cancellationofcontractdata.contractstatus)) {
+				break;
+			}
+    		//seleniumactions.getWaitHelper().waitForElement(driver,2000,invoiceBookingObj.nextPageInListView());
+			invoiceBookingObj.nextPageInListView().click();
+    		
+    	
+		}
 	}
 
 	@And("^get the invoice number from the bill viewed$")
@@ -612,7 +876,6 @@ public class AR_AP_Module extends BaseClass {
 		String buisnesspartner = invoiceBookingObj.getBuisnessPartnerFromInvoiceBill().getText();
 		System.out.println(buisnesspartner);
 		testdata.put("buisnesspartner", buisnesspartner);
-		javascriphelper.JavaScriptHelper(driver);
 		javascriphelper.JavaScriptHelper(driver);
 		String invoicenumber = (String) javascriphelper
 				.executeScript("return document.getElementsByName('billNo')[0].value");
@@ -700,6 +963,101 @@ public class AR_AP_Module extends BaseClass {
 			}
 		}
 	}
+	//*****************************@KUBS_AR/AP_UAT_003_004TC_03*****************************************************
+	// verify Accounts payable report post bill is cancelled
+    @And("^get buisness partner name and Bill Status$")
+    public void get_buisness_partner_name_and_bill_status() throws Throwable {
+    	seleniumactions.getWaitHelper().waitForElement(driver, 2000,
+				invoiceBookingObj.getBuisnessPartnerFromInvoiceBill());
+		String buisnessPartnerName = invoiceBookingObj.getBuisnessPartnerFromInvoiceBill()
+				.getText();
+		testdata.put("buisnessPartnerName", buisnessPartnerName);
+		javascriphelper.JavaScriptHelper(driver);
+		String contractenddate = (String) javascriphelper.executeScript("return document.getElementsByName('kubDateTime')[1].value");
+		System.out.println(contractenddate);
+		String year = contractenddate.substring(7,11);
+		testdata.put("year", year);
+		String month = contractenddate.substring(3, 6);
+		testdata.put("month", month);
+		
+		 if (Integer.parseInt(contractenddate.substring(0, 2))>9) {
+			String day = contractenddate.substring(0,2);
+			System.out.println(day);
+			testdata.put("day", day);
+		}
+		else{
+			String day = contractenddate.substring(1, 2);
+			testdata.put("day", day);
+			System.out.println(day);
+		}
+		String invoicestatus = invoiceBookingObj.statusOfInvoice().getText();
+		testdata.put("invoicestatus", invoicestatus);
+
+    }
+    @And("^click the Accounts Payable Report$")
+    public void click_the_accounts_payable_report() throws Throwable {
+		javascriphelper.JavaScriptHelper(driver);
+		javascriphelper.scrollIntoView(enquiryObj.accountsPayableReport());
+       seleniumactions.getWaitHelper().waitForElement(driver,2000,enquiryObj.accountsPayableReport());
+       enquiryObj.accountsPayableReport().click();
+    }
+    @And("^select the date$")
+    public void select_the_date() throws Throwable {
+    	seleniumactions.getWaitHelper().waitForElement(driver,2000,enquiryObj.calenderInContractReport());
+        seleniumactions.getClickAndActionsHelper().clickOnElement(enquiryObj.calenderInContractReport());
+        Thread.sleep(2000);
+        seleniumactions.getWaitHelper().waitForElement(driver,2000,driver.findElement(By.xpath("(//span[@class='owl-dt-control-content owl-dt-control-button-content'])[2]")));
+ 		driver.findElement(By.xpath("(//span[@class='owl-dt-control-content owl-dt-control-button-content'])[2]"))
+ 				.click();
+ 		driver.findElement(By.xpath("//span[text()='" + testdata.get("year")  + "']")).click();
+ 		driver.findElement(By.xpath("//span[text()='" + testdata.get("month") + "']")).click();
+ 		seleniumactions.getWaitHelper().waitForElement(driver, 2000,
+ 				driver.findElement(By.xpath("(//span[text()='" + testdata.get("day") + "'])[1]")));
+ 		driver.findElement(By.xpath("(//span[text()='" + testdata.get("day") + "'])[1]")).click();
+    }
+
+    @And("^select the payable status$")
+    public void select_the_payable_status() throws Throwable {
+    	seleniumactions.getWaitHelper().waitForElement(driver,2000,enquiryObj.selectContractStatus());
+        seleniumactions.getClickAndActionsHelper().clickOnElement(enquiryObj.selectContractStatus());
+        enquiryObj.selectContractStatus().sendKeys(testdata.get("invoicestatus"));
+        enquiryObj.selectContractStatus().sendKeys(Keys.ENTER);
+    }
+   
+    @And("^select the vendor name$")
+    public void select_the_vendor_name() throws Throwable {
+    	seleniumactions.getWaitHelper().waitForElement(driver,2000,enquiryObj.selectVendorName());
+        seleniumactions.getClickAndActionsHelper().clickOnElement(enquiryObj.selectVendorName());
+        enquiryObj.selectVendorName().sendKeys(testdata.get("buisnessPartnerName"));
+        enquiryObj.selectVendorName().sendKeys(Keys.ENTER);
+    }
+
+    @Then("^verify the bill is cancelled in Accounts payable report$")
+    public void verify_the_bill_is_cancelled_in_accounts_payable_report() throws Throwable {
+    	seleniumactions.getBrowserHelper().SwitchToWindow(1);
+    	String currenturl = driver.getCurrentUrl();
+    	System.out.println(currenturl);
+    	String beforeXpath="//*[@id=\"__bookmark_1\"]/tbody/tr[";
+    	String afterXpath ="]/td[4]/div";
+    	for (int j = 1; j <=50; j++) {
+    		String actualXpath=beforeXpath+j+afterXpath;
+    		try {
+    			seleniumactions.getWaitHelper().waitForElement(driver,2000,  driver.findElement(By.xpath(actualXpath)));
+    			String invoice = driver.findElement(By.xpath(actualXpath)).getText();
+        		System.out.println(invoice);
+        		if (invoice.equalsIgnoreCase(testdata.get("invoicenumber"))) {
+    				System.out.println("found invoice number "+invoice);
+    				break;
+    			}
+			} catch (NoSuchElementException e) {
+				continue;
+			}
+    		
+		}
+    	seleniumactions.getBrowserHelper().switchToParentWithChildClose();
+    	
+       
+    }
     //*********************************@KUBS_AR/AP_UAT_003_004TC_05********************************************
 	// cancelled bill is not allowed for payment settlement
 	@When("^click the invoice eye icon in accounts payable$")
@@ -725,24 +1083,7 @@ public class AR_AP_Module extends BaseClass {
 		seleniumactions.getWaitHelper().waitForElement(driver, 2000, cancellationofcontract.getApserachicon());
 		seleniumactions.getClickAndActionsHelper().clickOnElement(cancellationofcontract.getApserachicon());
 	}
-
-	@And("^search the buisness partner in list view$")
-	public void search_the_buisness_partner_in_list_view() throws Throwable {
-		seleniumactions.getWaitHelper().waitForElement(driver, 2000, invoiceBookingObj.searchBpInList());
-		seleniumactions.getClickAndActionsHelper().clickOnElement(invoiceBookingObj.searchBpInList());
-		invoiceBookingObj.searchBpInList().sendKeys(cancellationofcontractdata.BuisnessPartnerName1);
-
-	}
-
-	@Then("^verify the bill is cancelled$")
-	public void verify_the_bill_is_cancelled() throws Throwable {
-
-		seleniumactions.getWaitHelper().waitForElement(driver, 2000, invoiceBookingObj.statusOfInvoice);
-		String statusOfInvoiceBill = invoiceBookingObj.statusOfInvoice.getText();
-		Assert.assertEquals("Cancelled", statusOfInvoiceBill);
-
-	}
-
+	
 	@And("^click the payment settlement eye icon$")
 	public void click_the_payment_settlement_eye_icon() throws Throwable {
 		seleniumactions.getWaitHelper().waitForElement(driver, 2000,
@@ -771,7 +1112,7 @@ public class AR_AP_Module extends BaseClass {
 	public void select_buisness_partner_in_payment_settlement() throws Throwable {
 		seleniumactions.getWaitHelper().waitForElement(driver, 2000, paymentSettlementObj.getSelectBuisnessPartner());
 		seleniumactions.getClickAndActionsHelper().clickOnElement(paymentSettlementObj.getSelectBuisnessPartner());
-		paymentSettlementObj.getSelectBuisnessPartner().sendKeys(cancellationofcontractdata.BuisnessPartnerName1);
+		paymentSettlementObj.getSelectBuisnessPartner().sendKeys(testdata.get("buisnesspartner"));
 		paymentSettlementObj.getSelectBuisnessPartner().sendKeys(Keys.ENTER);
 		Thread.sleep(3000);
 
@@ -779,7 +1120,25 @@ public class AR_AP_Module extends BaseClass {
 
 	@Then("^verify that no bill is available for payment settlement$")
 	public void verify_that_no_bill_is_available_for_payment_settlement() throws Throwable {
-		System.out.println("No records found for paymentsettlement");
+		while (true) {
+			try {
+				seleniumactions.getWaitHelper().waitForElement(driver,2000,driver.findElement(By.xpath("//div[contains(text(),'"+testdata.get("invoicenumber")+"')]")));
+				driver.findElement(By.xpath("//div[contains(text(),'"+testdata.get("invoicenumber")+"')]")).isDisplayed();
+				String invoicenumber = driver.findElement(By.xpath("//div[contains(text(),'"+testdata.get("invoicenumber")+"')]")).getText();
+				System.out.println(invoicenumber);
+				javascriphelper.JavaScriptHelper(driver);
+				javascriphelper.scrollIntoView(enquiryObj.nextPageInListView());
+				seleniumactions.getWaitHelper().waitForElement(driver,2000,enquiryObj.nextPageInListView());
+				enquiryObj.nextPageInListView().click();
+				break;
+				
+			} catch (NoSuchElementException e) {
+				System.out.println("cannot find the invoice number "+testdata.get("invoicenumber"));
+				break;
+			}
+			
+
+		}
 	}
 	//*********************************@KUBS_AR/AP_UAT_003_007TC_01****************************************************//
 	// verify accounting entries cancelled credit
@@ -866,8 +1225,7 @@ public class AR_AP_Module extends BaseClass {
     public void choose_the_transaction_from_date() throws Throwable {
     	seleniumactions.getWaitHelper().waitForElement(driver, 2000, enquiryObj.inventoryFromDate());
 		seleniumactions.getClickAndActionsHelper().clickOnElement(enquiryObj.inventoryFromDate());
-		Thread.sleep(2000);
-		javascriphelper.JavaScriptHelper(driver);
+		Thread.sleep(1000);
 		driver.findElement(By.xpath("(//span[@class='owl-dt-control-content owl-dt-control-button-content'])[2]"))
 				.click();
 		driver.findElement(By.xpath("//span[text()='" + cancellationofcontractdata.GlYear  + "']")).click();
@@ -889,20 +1247,20 @@ public class AR_AP_Module extends BaseClass {
 		seleniumactions.getWaitHelper().waitForElement(driver, 2000,
 				driver.findElement(By.xpath("(//span[text()='" + cancellationofcontractdata.GlDay + "'])[1]")));
 		driver.findElement(By.xpath("(//span[text()='" + cancellationofcontractdata.GlToDate + "'])[1]")).click();
-        seleniumactions.getWaitHelper().waitForElement(driver, 2000, enquiryObj.inventoryViewButton());
+		seleniumactions.getWaitHelper().waitForElement(driver, 2000, enquiryObj.inventoryViewButton());
 		seleniumactions.getClickAndActionsHelper().clickOnElement(enquiryObj.inventoryViewButton());
 		Thread.sleep(2000);
 
         
     }
-    @Then("^Verify the Credit note nuber in Voucher Id and verify transactipon type$")
-    public void verify_the_credit_note_nuber_in_voucher_id_and_verify_transactipon_type() throws Throwable {
+    @Then("^Verify the Credit note number in Voucher Id and verify transaction type$")
+    public void verify_the_credit_note_number_in_voucher_id_and_verify_transaction_type() throws Throwable {
     	while (true) {
 			try {
 				seleniumactions.getWaitHelper().waitForElement(driver,2000,driver.findElement(By.xpath("//datatable-body-cell[1]//span[contains(text(),'"+testdata.get("creditnotenumber")+"')]")));
 				driver.findElement(By.xpath("//datatable-body-cell[1]//span[contains(text(),'"+testdata.get("creditnotenumber")+"')]")).isDisplayed();
 				String creditnotenumber = driver.findElement(By.xpath("//datatable-body-cell[1]//span[contains(text(),'"+testdata.get("creditnotenumber")+"')]")).getText();
-				System.out.println(creditnotenumber);
+				System.out.println("Found the creditnote number in Accounting Entries"+creditnotenumber);
 				break;
 				
 			} catch (NoSuchElementException e) {
@@ -913,8 +1271,74 @@ public class AR_AP_Module extends BaseClass {
 			}
 		}
     }
-	
-	
+	//***************************************** @KUBS_AR/AP_UAT_003_007TC_04************************************************
+    //verify credit cancelled is available in Account receivable report
+    @And("^get buisness partner name , get credit note number and get credit note date$")
+    public void get_buisness_partner_name_get_credit_note_number_and_get_credit_note_date() throws Throwable {
+    	seleniumactions.getWaitHelper().waitForElement(driver, 4000,
+				account_Receivable.creditNote_Buisness_Partner());
+		String buisnessPartnerName = account_Receivable.creditNote_Buisness_Partner()
+				.getText();
+		testdata.put("buisnessPartnerName", buisnessPartnerName);
+		javascriphelper.JavaScriptHelper(driver);
+		String contractenddate = (String) javascriphelper.executeScript("return document.getElementsByName('kubDateTime')[0].value");
+		System.out.println(contractenddate);
+		String year = contractenddate.substring(7,11);
+		testdata.put("year", year);
+		String month = contractenddate.substring(3, 6);
+		testdata.put("month", month);
+		
+		 if (Integer.parseInt(contractenddate.substring(0, 2))>9) {
+			String day = contractenddate.substring(0,2);
+			System.out.println(day);
+			testdata.put("day", day);
+		}
+		else{
+			String day = contractenddate.substring(1, 2);
+			testdata.put("day", day);
+			System.out.println(day);
+		}
+		String creditnotenumber = (String) javascriphelper.executeScript("return document.getElementsByName('creditnoteNo')[1].value");
+		testdata.put("creditnotenumber", creditnotenumber);
+		System.out.println(creditnotenumber);
+		System.out.println(testdata.get("creditnotenumber"));
+		
+    }
+    @And("^click the Account Receivable Report$")
+    public void click_the_account_receivable_report() throws Throwable {
+        seleniumactions.getWaitHelper().waitForElement(driver,2000,enquiryObj.accountsReceivableReportEditIcon());
+        enquiryObj.accountsReceivableReportEditIcon().click();
+    }
+    @And("^select the Receivable status based on we get from Credit note$")
+    public void select_the_receivable_status_based_on_we_get_from_credit_note() throws Throwable {
+    	seleniumactions.getWaitHelper().waitForElement(driver,2000,enquiryObj.selectContractStatus());
+        seleniumactions.getClickAndActionsHelper().clickOnElement(enquiryObj.selectContractStatus());
+        enquiryObj.selectContractStatus().sendKeys(Keys.ENTER);
+    }
+   
+    
+
+    @Then("^verify the Credit Note cancelled is available in the report$")
+    public void verify_the_credit_note_cancelled_is_available_in_the_report() throws Throwable {
+    	seleniumactions.getBrowserHelper().SwitchToWindow(1);
+		
+		 while (true) { 
+			 try {
+		 
+				 seleniumactions.getWaitHelper().waitForElement(driver,2000,driver.findElement(By.xpath("//div[text()='"+testdata.get("creditnotenumber")+"']")));
+				driver.findElement(By.xpath("//div[text()='"+testdata.get("creditnotenumber")+"']")).isDisplayed();
+				String creditnumber = driver.findElement(By.xpath("//div[text()='"+testdata.get("creditnotenumber")+"']")).getText();
+				System.out.println("found the credit number :"+creditnumber);
+				
+		  break; 
+		  }
+		 catch (NoSuchElementException e) {
+		  seleniumactions.getWaitHelper().waitForElement(driver,2000,enquiryObj.
+		  nextPageInContractReport()); enquiryObj.nextPageInContractReport().click(); 
+		  }
+		 }
+		 seleniumactions.getBrowserHelper().switchToParentWithChildClose();
+    }
      //************************************@KUBS_AR/AP_UAT_003_007TC_04*********************************************
 	// creditnote cancelled is not allowed for payment settlement
 	@Given("^login azentio as maker$")
@@ -1076,14 +1500,26 @@ public class AR_AP_Module extends BaseClass {
 	public void click_the_first_eye_icon_in_the_list_view() throws Throwable {
 		seleniumactions.getWaitHelper().waitForElement(driver, 2000, invoiceBookingObj.selectFirstEyeicon);
 		seleniumactions.getClickAndActionsHelper().clickOnElement(invoiceBookingObj.selectFirstEyeicon);
+		String xpath="//datatable-row-wrapper[1]/datatable-body-row[1]/div[2]/datatable-body-cell[4]/div[1]/span[1]";
+		 String InvoiceType = driver.findElement(By.xpath(xpath)).getText();
+		 testdata.put("InvoiceType", InvoiceType);
 	}
 
 	@And("^get the buisness partner from invoice bill$")
 	public void get_the_buisness_partner_and_the_system_invoice_number() throws Throwable {
-		seleniumactions.getWaitHelper().waitForElement(driver, 2000,
-				invoiceBookingObj.getBuisnessPartnerFromInvoiceBill());
-		invoicebuisnessPartner = invoiceBookingObj.getBuisnessPartnerFromInvoiceBill().getText();
-		System.out.println(invoicebuisnessPartner);
+		if (testdata.get("InvoiceType").equalsIgnoreCase("Invoice Against PO")) {
+			String buisnesspartner = invoiceBookingObj.getBuisnessPartnerFromBillInvoiceAgainstPo().getText();
+			testdata.put("buisnesspartner", buisnesspartner);
+			System.out.println(buisnesspartner);
+		}
+		else {
+			seleniumactions.getWaitHelper().waitForElement(driver, 2000,
+					invoiceBookingObj.getBuisnessPartnerFromInvoiceBill());
+			String buisnessPartner = invoiceBookingObj.getBuisnessPartnerFromInvoiceBill().getText();
+			testdata.put("buisnesspartner", buisnessPartner);
+			System.out.println(buisnessPartner);
+		}
+		
 
 	}
 
@@ -1113,7 +1549,7 @@ public class AR_AP_Module extends BaseClass {
 	public void enter_buisness_partner_get_from_bill_booking() throws Throwable {
 		seleniumactions.getWaitHelper().waitForElement(driver, 2000, paymentSettlementObj.getSelectBuisnessPartner());
 		seleniumactions.getClickAndActionsHelper().clickOnElement(paymentSettlementObj.getSelectBuisnessPartner());
-		paymentSettlementObj.getSelectBuisnessPartner().sendKeys(invoicebuisnessPartner);
+		paymentSettlementObj.getSelectBuisnessPartner().sendKeys(testdata.get("buisnesspartner"));
 		paymentSettlementObj.getSelectBuisnessPartner().sendKeys(Keys.ENTER);
 		Thread.sleep(3000);
 
@@ -1124,7 +1560,7 @@ public class AR_AP_Module extends BaseClass {
 		seleniumactions.getWaitHelper().waitForElement(driver, 2000,
 				paymentSettlementObj.getGetActiveBillBuisnessPartner());
 		String ActiveBillBuisnessPartner = paymentSettlementObj.getGetActiveBillBuisnessPartner().getText();
-		Assert.assertEquals(invoicebuisnessPartner, ActiveBillBuisnessPartner);
+		Assert.assertEquals(testdata.get("buisnesspartner"), ActiveBillBuisnessPartner);
 
 	}
    //**********************************@KUBS_AR/AP_UAT_004_001TC_02************************************************
@@ -1277,9 +1713,8 @@ public class AR_AP_Module extends BaseClass {
 	@Then("^verify netpayable amount in payment settlement with calculated amount$")
 	public void verify_netpayable_amount_in_payment_settlement_with_calculated_amount() throws Throwable {
 		javascriphelper.JavaScriptHelper(driver);
-		Object object = javascriphelper.executeScript(
+		String netpayablevalueinsettlement = (String) javascriphelper.executeScript(
 				"return document.getElementsByClassName('form__field ng-untouched ng-pristine ng-valid')[1].value");
-		String netpayablevalueinsettlement = String.valueOf(object);
 		System.out.println(netpayablevalueinsettlement);
 		String substring = netpayablevalueinsettlement.substring(0, 6);
 		System.out.println(substring);
@@ -1471,6 +1906,100 @@ public class AR_AP_Module extends BaseClass {
 	public void verify_bill_is_not_proceed_for_payment_and_return_to_payment_settlement() throws Throwable {
 		System.out.println("User verified previous Screen");
 	}
+	//************************************ @KUBS_AR/AP_UAT_004_001TC_06*************************************************************
+	@And("^user search active in payment settlement list view$")
+    public void user_search_active_in_payment_settlement_list_view() throws Throwable {
+        seleniumactions.getWaitHelper().waitForElement(driver,2000,paymentSettlementObj.getTransactionStatus());
+        seleniumactions.getClickAndActionsHelper().clickOnElement(paymentSettlementObj.getTransactionStatus());
+        paymentSettlementObj.getTransactionStatus().sendKeys(cancellationofcontractdata.contractstatusactive);
+    }
+
+    @And("^get the transaction number from payment settlement$")
+    public void get_the_transaction_number_from_payment_settlement() throws Throwable {
+    	javascriphelper.JavaScriptHelper(driver);
+        String txtnumber = (String) javascriphelper.executeScript("return document.getElementsByName('paymentNo')[1].value");
+        testdata.put("txtnumber", txtnumber);
+        System.out.println(txtnumber);
+    }
+    @Then("^Verify the transaction number in Voucher Id and verify payment Approval$")
+    public void verify_the_transaction_number_in_voucher_id_and_verify_payment_approval() throws Throwable {
+    	 while (true) {
+				try {
+					seleniumactions.getWaitHelper().waitForElement(driver,2000,driver.findElement(By.xpath("//datatable-body-cell[1]//span[contains(text(),'"+testdata.get("txtnumber")+"')]")));
+					driver.findElement(By.xpath("//datatable-body-cell[1]//span[contains(text(),'"+testdata.get("txtnumber")+"')]")).isDisplayed();
+					String txtnumber = driver.findElement(By.xpath("//datatable-body-cell[1]//span[contains(text(),'"+testdata.get("txtnumber")+"')]")).getText();
+					System.out.println(txtnumber);
+					break;
+					
+				} catch (NoSuchElementException e) {
+					javascriphelper.scrollIntoView(enquiryObj.nextPageInListView());
+					seleniumactions.getWaitHelper().waitForElement(driver,2000,enquiryObj.nextPageInListView());
+					enquiryObj.nextPageInListView().click();
+					
+				}
+			}
+    }
+    //************************************@KUBS_AR/AP_UAT_004_001TC_08******************************************************************
+    @And("^select the payable status according to payment settlement$")
+    public void select_the_payable_status_according_to_payment_settlement() throws Throwable {
+    	seleniumactions.getWaitHelper().waitForElement(driver,2000,enquiryObj.selectContractStatus());
+        seleniumactions.getClickAndActionsHelper().clickOnElement(enquiryObj.selectContractStatus());
+        enquiryObj.selectContractStatus().sendKeys(Keys.ENTER);
+    }
+    @And("^get buisness partner name and payment settlement date$")
+    public void get_buisness_partner_name_and_payment_settlement_date() throws Throwable {
+    	
+        seleniumactions.getWaitHelper().waitForElement(driver,2000,paymentSettlementObj.getGetBuisnessPartnerName());
+        String buisnessPartnerName = paymentSettlementObj.getGetBuisnessPartnerName().getText();
+        testdata.put("buisnessPartnerName", buisnessPartnerName);
+        javascriphelper.JavaScriptHelper(driver);
+        String paymentDate = (String) javascriphelper.executeScript("return document.getElementsByName('kubDateTime')[1].value");
+        testdata.put("paymentDate", paymentDate);
+        System.out.println(paymentDate);
+		String year = paymentDate.substring(7,11);
+		testdata.put("year", year);
+		String month = paymentDate.substring(3, 6);
+		testdata.put("month", month);
+		int parseInt = Integer.parseInt(paymentDate.substring(0, 2));
+		System.out.println(parseInt);
+		if (Integer.parseInt(paymentDate.substring(0, 2))>9) {
+			String day = paymentDate.substring(0,2);
+			System.out.println(day);
+			testdata.put("day", day);
+		}
+		else{
+			String day = paymentDate.substring(1, 2);
+			testdata.put("day", day);
+			System.out.println(day);
+		}
+		String invoiceNumber = driver.findElement(By.xpath("(//datatable-body-cell[4]/div[1])[9]")).getText();
+		System.out.println(invoiceNumber);
+		testdata.put("invoiceNumber", invoiceNumber);
+		
+    }
+    @Then("^verify the invoice number get from payment settlement available in Account payable Report$")
+    public void verify_the_invoice_number_get_from_payment_settlement_available_in_account_payable_report() throws Throwable {
+      
+    
+		seleniumactions.getBrowserHelper().SwitchToWindow(1);
+    	
+    	String beforeXpath = "//div[contains(text(),'";
+    	String afterXpath = "')]";
+    	while (true) {
+    		try {
+				seleniumactions.getWaitHelper().waitForElement(driver,2000,driver.findElement(By.xpath(beforeXpath+testdata.get("invoiceNumber")+afterXpath)));
+				driver.findElement(By.xpath(beforeXpath+testdata.get("invoiceNumber")+afterXpath)).isDisplayed();
+				break;
+			} catch (NoSuchElementException e) {
+				seleniumactions.getWaitHelper().waitForElement(driver,20000,enquiryObj.nextPageInContractReport());
+				enquiryObj.nextPageInContractReport().click();
+			}
+			
+		}
+    	seleniumactions.getBrowserHelper().switchToParentWithChildClose();
+    	
+    }
+
 //*************************************** @KUBS_AR/AP_UAT_004_004TC_01***************************************************************
 	// verify debit note adjusted for the selected bill and verify net adjusted
 	// value is correctly displayed
@@ -1528,9 +2057,11 @@ public class AR_AP_Module extends BaseClass {
 	public void get_buisness_partner_name_and_invoice_number() throws Throwable {
 		seleniumactions.getWaitHelper().waitForElement(driver, 2000, account_Receivable.debitNoteBuisnessPartner());
 		debitbuisnesspartnername = account_Receivable.debitNoteBuisnessPartner().getText();
+		System.out.println(debitbuisnesspartnername);
 		seleniumactions.getWaitHelper().waitForElement(driver, 2000, account_Receivable.debitNoteInvoiceNumber());
 		String text = account_Receivable.debitNoteInvoiceNumber().getText();
 		debitinvoicenumber = text.substring(0, 3) + text.substring(4, 7) + text.substring(8);
+		System.out.println(debitinvoicenumber);
 	}
 
 	@And("^click Account Payable Main Module for verify debit note against bill$")
@@ -1568,6 +2099,7 @@ public class AR_AP_Module extends BaseClass {
 
 		seleniumactions.getWaitHelper().waitForElement(driver, 2000, paymentSettlementObj.getSelectBuisnessPartner());
 		seleniumactions.getClickAndActionsHelper().clickOnElement(paymentSettlementObj.getSelectBuisnessPartner());
+		paymentSettlementObj.getSelectBuisnessPartner().sendKeys(debitbuisnesspartnername);
 		paymentSettlementObj.getSelectBuisnessPartner().sendKeys(Keys.ENTER);
 		Thread.sleep(4000);
 	}
@@ -1580,13 +2112,15 @@ public class AR_AP_Module extends BaseClass {
 			String invoice = null;
 
 			for (int i = 1; i <= 6; i++) {
-				seleniumactions.getWaitHelper().waitForElement(driver, 4000, driver.findElement(By.xpath(
-						"(//datatable-row-wrapper[" + i + "]/datatable-body-row/div/datatable-body-cell[4]/div)[2]")));
+				javascriphelper.scrollIntoView(driver.findElement(By.xpath("(//datatable-row-wrapper[" + i + "]/datatable-body-row/div/datatable-body-cell[4]/div)[2]")));
+			//	seleniumactions.getWaitHelper().waitForElement(driver, 4000, driver.findElement(By.xpath(
+			//			"(//datatable-row-wrapper[" + i + "]/datatable-body-row/div/datatable-body-cell[4]/div)[2]")));
 				String text2 = driver.findElement(By.xpath(
 						"(//datatable-row-wrapper[" + i + "]/datatable-body-row/div/datatable-body-cell[4]/div)[2]"))
 						.getText();
 				invoice = text2.substring(0, 3) + text2.substring(4, 7) + text2.substring(8);
-				if (debitinvoicenumber.equalsIgnoreCase(invoice)) {
+				System.out.println(invoice);
+				if (debitinvoicenumber.trim().equalsIgnoreCase(invoice.trim())) {
 					seleniumactions.getWaitHelper().waitForElement(driver, 2000,
 							driver.findElement(By.xpath("//datatable-row-wrapper[" + i
 									+ "]/datatable-body-row/div/datatable-body-cell/div/ion-checkbox")));
@@ -1793,8 +2327,9 @@ public class AR_AP_Module extends BaseClass {
 							+ "]/datatable-body-row/div/datatable-body-cell/div/ion-checkbox")));
 				}
 				if (i == 6) {
-					seleniumactions.getWaitHelper().waitForElement(driver, 2000,
-							paymentSettlementObj.getNextPageInListView());
+					javascriphelper.scrollIntoView(paymentSettlementObj.getNextPageInListView());
+					//seleniumactions.getWaitHelper().waitForElement(driver, 2000,
+						//	paymentSettlementObj.getNextPageInListView());
 					seleniumactions.getClickAndActionsHelper()
 							.clickOnElement(paymentSettlementObj.getNextPageInListView());
 				}
@@ -1990,6 +2525,7 @@ public class AR_AP_Module extends BaseClass {
 							+ "]/datatable-body-row/div/datatable-body-cell/div/ion-checkbox")));
 				}
 				if (i == 6) {
+					javascriphelper.scrollIntoView(paymentSettlementObj.getNextPageInListView());
 					seleniumactions.getWaitHelper().waitForElement(driver, 2000,
 							paymentSettlementObj.getNextPageInListView());
 					seleniumactions.getClickAndActionsHelper()
@@ -2056,5 +2592,272 @@ public class AR_AP_Module extends BaseClass {
 	public void verify_net_payable_amount_is_correctly_displayed_according_to_debit_bill() throws Throwable {
 		Assert.assertEquals(testdata.get("CalculatedNetPayableAmount"), testdata.get("NetPayableAmount"));
 	}
+	// ******************************************* @KUBS_AR/AP_UAT_004_004TC_04*******************************
+	// verify accounting entries post payment approval for debit transaction
+	@And("^click first eye icon in list view in payment settlement$")
+    public void click_first_eye_icon_in_list_view_in_payment_settlement() throws Throwable {
+        seleniumactions.getWaitHelper().waitForElement(driver,2000,paymentSettlementObj.getClickFirstPaymentInListView());
+        seleniumactions.getClickAndActionsHelper().clickOnElement(paymentSettlementObj.getClickFirstPaymentInListView());
+    }
+	
+	 @And("^user search transaction number which is debit payment in payment settlement list view$")
+	    public void user_search_transaction_number_which_is_debit_payment_in_payment_settlement_list_view() throws Throwable {
+		 seleniumactions.getWaitHelper().waitForElement(driver,2000,paymentSettlementObj.getTransactionNumber());
+		 paymentSettlementObj.getTransactionNumber().click();
+		 paymentSettlementObj.getTransactionNumber().sendKeys(cancellationofcontractdata.txtNumber);
+	    }
+	 @Then("^Verify the transaction number in Voucher Id and then payment approved$")
+	    public void verify_the_transaction_number_in_voucher_id_and_then_payment_approved() throws Throwable {
+		 while (true) {
+				try {
+					seleniumactions.getWaitHelper().waitForElement(driver,2000,driver.findElement(By.xpath("//datatable-body-cell[1]//span[contains(text(),'"+testdata.get("txtnumber")+"')]")));
+					driver.findElement(By.xpath("//datatable-body-cell[1]//span[contains(text(),'"+testdata.get("txtnumber")+"')]")).isDisplayed();
+					String txtnumber = driver.findElement(By.xpath("//datatable-body-cell[1]//span[contains(text(),'"+testdata.get("txtnumber")+"')]")).getText();
+					System.out.println(txtnumber);
+					break;
+					
+				} catch (NoSuchElementException e) {
+					javascriphelper.scrollIntoView(enquiryObj.nextPageInListView());
+					seleniumactions.getWaitHelper().waitForElement(driver,2000,enquiryObj.nextPageInListView());
+					enquiryObj.nextPageInListView().click();
+					
+				}
+			}
+	    }
 
+	 //**************************************@KUBS_AR/AP_UAT_004_004TC_06*************************************************
+	 @And("^get buisness partner name and payment settlement date, invoicenumber$")
+	    public void get_buisness_partner_name_and_payment_settlement_date_invoicenumber() throws Throwable {
+		 seleniumactions.getWaitHelper().waitForElement(driver,2000,paymentSettlementObj.getGetBuisnessPartnerName());
+	        String buisnessPartnerName = paymentSettlementObj.getGetBuisnessPartnerName().getText();
+	        testdata.put("buisnessPartnerName", buisnessPartnerName);
+	        javascriphelper.JavaScriptHelper(driver);
+	        String paymentDate = (String) javascriphelper.executeScript("return document.getElementsByName('kubDateTime')[1].value");
+	        testdata.put("paymentDate", paymentDate);
+	        System.out.println(paymentDate);
+			String year = paymentDate.substring(7,11);
+			testdata.put("year", year);
+			String month = paymentDate.substring(3, 6);
+			testdata.put("month", month);
+			if (paymentDate.substring(1, 2).equalsIgnoreCase("0")) {
+				String day = paymentDate.substring(0,2);
+				System.out.println(day);
+				testdata.put("day", day);
+			}
+			else if (Integer.parseInt(paymentDate.substring(1, 2))>0) {
+				String day = paymentDate.substring(0,2);
+				System.out.println(day);
+				testdata.put("day", day);
+			}
+			else{
+				String day = paymentDate.substring(1, 2);
+				testdata.put("day", day);
+				System.out.println(day);
+			}
+			String invoiceNumber = driver.findElement(By.xpath("(//datatable-body-cell[4]/div[1])[2]")).getText();
+			System.out.println(invoiceNumber);
+			testdata.put("invoiceNumber", invoiceNumber);
+	        
+	    }
+	 //*************************************************** @KUBS_AR/AP_UAT_001_010TC_03*****************************************************************************
+	
+
+	    @And("^search sale of assert in debit list$")
+	    public void search_sale_of_assert_in_debit_list() throws Throwable {
+	        seleniumactions.getWaitHelper().waitForElement(driver,2000,account_Receivable.searchReceivableName());
+	        account_Receivable.searchReceivableName().click();
+	        account_Receivable.searchReceivableName().sendKeys(cancellationofcontractdata.ReceivableName);
+	    }
+
+	    @And("^get the debit note number and buisnes partner name,debit note date$")
+	    public void get_the_debit_note_number_and_buisnes_partner_namedebit_note_date() throws Throwable {
+	    	seleniumactions.getWaitHelper().waitForElement(driver, 2000, account_Receivable.debitNoteBuisnessPartner());
+			String debitbuisnesspartnername = account_Receivable.debitNoteBuisnessPartner().getText();
+			testdata.put("buisnessPartnerName", debitbuisnesspartnername);
+			javascriphelper.JavaScriptHelper(driver);
+			String debitNotenumber = (String) javascriphelper.executeScript("return document.getElementsByName('debitNoteNumber')[1].value");
+			testdata.put("debitnotenumber", debitNotenumber);
+			System.out.println(debitNotenumber);
+			 String DebitnoteDate = (String) javascriphelper.executeScript("return document.getElementsByName('kubDateTime')[0].value");
+		        testdata.put("DebitnoteDate", DebitnoteDate);
+		        System.out.println(DebitnoteDate);
+				String year = DebitnoteDate.substring(7,11);
+				testdata.put("year", year);
+				String month =DebitnoteDate.substring(3, 6);
+				testdata.put("month", month);
+				if (DebitnoteDate.substring(1, 2).equalsIgnoreCase("0")) {
+					String day = DebitnoteDate.substring(0,2);
+					System.out.println(day);
+					testdata.put("day", day);
+				}
+				else if (Integer.parseInt(DebitnoteDate.substring(1, 2))>0) {
+					String day = DebitnoteDate.substring(0,2);
+					System.out.println(day);
+					testdata.put("day", day);
+				}
+				else{
+					String day = DebitnoteDate.substring(1, 2);
+					testdata.put("day", day);
+					System.out.println(day);
+				}
+			
+	    }
+
+	    @And("^select the Receivable status based on we get from Debit note$")
+	    public void select_the_receivable_status_based_on_we_get_from_debit_note() throws Throwable {
+	    	seleniumactions.getWaitHelper().waitForElement(driver,2000,enquiryObj.selectContractStatus());
+	        seleniumactions.getClickAndActionsHelper().clickOnElement(enquiryObj.selectContractStatus());
+	        enquiryObj.selectContractStatus().sendKeys(Keys.ENTER);
+	    }
+	    @Then("^verify the debit note is available in Receivable Report$")
+	    public void verify_the_debit_note_is_available_in_receivable_report() throws Throwable {
+		
+	    	seleniumactions.getBrowserHelper().SwitchToWindow(1);
+	    	javascriphelper.JavaScriptHelper(driver);
+	    	while (true) {
+	    		try {
+	    			javascriphelper.scrollIntoView(driver.findElement(By.xpath("//div[contains(text(),'"+testdata.get("debitnotenumber")+"')]")));
+	    			driver.findElement(By.xpath("//div[contains(text(),'"+testdata.get("debitnotenumber")+"')]")).isDisplayed();
+	    			
+	    			break;
+				} catch (NoSuchElementException e) {
+					seleniumactions.getWaitHelper().waitForElement(driver,2000,enquiryObj.nextPageInContractReport());
+					enquiryObj.nextPageInContractReport().click();
+				}
+				
+			}
+	    	seleniumactions.getBrowserHelper().switchToParentWithChildClose();
+	    }
+
+//*************************************** @KUBS_AR/AP_UAT_003_004TC_02********************************************
+	  
+	    @And("^click the financial reporting$")
+	    public void click_the_financial_reporting() throws Throwable {
+	       seleniumactions.getWaitHelper().waitForElement(driver,2000,enquiryObj.financialReporting());
+	       enquiryObj.financialReporting().click();
+	    }
+
+	    @And("^click the balance sheet report$")
+	    public void click_the_balance_sheet_report() throws Throwable {
+	        seleniumactions.getWaitHelper().waitForElement(driver,2000,enquiryObj.balanceSheetReport());
+	        enquiryObj.balanceSheetReport().click();
+	    }
+
+	    
+	    @Then("^Verify Balance sheet should be updated correctly basis the legs impacted in accounting entries.$")
+	    public void verify_balance_sheet_should_be_updated_correctly_basis_the_legs_impacted_in_accounting_entries() throws Throwable {
+	    	System.out.println("balance sheet view and verified");
+	       seleniumactions.getBrowserHelper().SwitchToWindow(1);
+	       seleniumactions.getBrowserHelper().switchToParentWithChildClose();
+	    }
+
+//******************************************* @KUBS_AR/AP_UAT_004_001Tc_07********************************************************
+// Verify Balance sheet post Bill is cancelled
+	    @And("^get the payment date$")
+	    public void get_the_payment_date() throws Throwable {
+	    	javascriphelper.JavaScriptHelper(driver);
+			String contractenddate = (String) javascriphelper.executeScript("return document.getElementsByName('kubDateTime')[1].value");
+			System.out.println(contractenddate);
+			String year = contractenddate.substring(7,11);
+			testdata.put("year", year);
+			String month = contractenddate.substring(3, 6);
+			testdata.put("month", month);
+			if (contractenddate.substring(1, 2).equalsIgnoreCase("0")) {
+				String day = contractenddate.substring(0,2);
+				System.out.println(day);
+				testdata.put("day", day);
+			}
+			else if (Integer.parseInt(contractenddate.substring(1, 2))>0) {
+				String day = contractenddate.substring(0,2);
+				System.out.println(day);
+				testdata.put("day", day);
+			}
+			else if (contractenddate.substring(0).equalsIgnoreCase("0")) {
+				String day = contractenddate.substring(1, 2);
+				testdata.put("day", day);
+				System.out.println(day);
+			}
+	        
+	    }
+	    
+	  
+	    @And("^click the Appropriation reversal eye icon$")
+	    public void click_the_appropriation_reversal_eye_icon() throws Throwable {
+	    	javascriphelper.JavaScriptHelper(driver);
+	    	javascriphelper.scrollIntoView(account_Receivable.appropriationReversalsEyeIcon());
+	       seleniumactions.getWaitHelper().waitForElement(driver,2000,account_Receivable.appropriationReversalsEyeIcon());
+	       account_Receivable.appropriationReversalsEyeIcon().click();
+	    }
+
+	    @And("^search the txt num$")
+	    public void search_the_txt_num() throws Throwable {
+	        seleniumactions.getWaitHelper().waitForElement(driver,2000,account_Receivable.searchTxtNumber());
+	        account_Receivable.searchTxtNumber().click();
+	        account_Receivable.searchTxtNumber().sendKeys(cancellationofcontractdata.ReferenceNumber);
+	    }
+	    @And("^click first eye icon in list view Searched$")
+	    public void click_first_eye_icon_in_list_view_searched() throws Throwable {
+	    	seleniumactions.getWaitHelper().waitForElement(driver, 2000,
+					cancellationofcontract.getClickFirstEyeiconInListView());
+			seleniumactions.getClickAndActionsHelper()
+					.clickOnElement(cancellationofcontract.getClickFirstEyeiconInListView());
+
+	    }
+
+
+	    @And("^get Receipt Reference number$")
+	    public void get_receipt_reference_number() throws Throwable {
+	        String ReferenceNumber = account_Receivable.getReferenceNumberFromAppropriationReversal().getText();
+	        testdata.put("ReferenceNumber", ReferenceNumber);
+	        System.out.println(ReferenceNumber);
+	    }
+
+	    @And("^click the Appropriation eye icon$")
+	    public void click_the_appropriation_eye_icon() throws Throwable {
+	        account_Receivable.appropriationEyeIcon().click();
+	    }
+
+	    @And("^select the Reference number based on we got from Appropriation reversal$")
+	    public void select_the_reference_number_based_on_we_got_from_appropriation_reversal() throws Throwable {
+	    
+	    	account_Receivable.selectRefernceNumber().click();
+	        account_Receivable.selectRefernceNumber().sendKeys(testdata.get("ReferenceNumber"));
+	        account_Receivable.selectRefernceNumber().sendKeys(Keys.ENTER);
+	        account_Receivable.enterAppropriationAmount().click();
+	        account_Receivable.enterAppropriationAmount().sendKeys(cancellationofcontractdata.AppropriationAmount);
+	    }
+	    @Then("^verify Receipts and receivable against cancelled appropriation must be available again for receipt appropriation$")
+	    public void verify_receipts_and_receivable_against_cancelled_appropriation_must_be_available_again_for_receipt_appropriation() throws Throwable {
+	        System.out.println("Verfied Receipts and receivable against cancelled appropriation available again for receipt appropriation$");
+	    }
+	    
+	//**************************************** @KUBS_AR/AP_UAT_002_002TC_04******************************************************
+	    @And("^search credit note status as Active$")
+	    public void search_credit_note_status_as_active() throws Throwable {
+	    	seleniumactions.getWaitHelper().waitForElement(driver, 2000,
+					account_Receivable.accountsReceivable_CreditNote_Status());
+			seleniumactions.getClickAndActionsHelper()
+					.clickOnElement(account_Receivable.accountsReceivable_CreditNote_Status());
+			account_Receivable.accountsReceivable_CreditNote_Status().sendKeys(cancellationofcontractdata.contractstatusactive);
+	    }
+	    @Then("^verify the Credit Note Active is available in the report$")
+	    public void verify_the_credit_note_active_is_available_in_the_report() throws Throwable {
+	    	seleniumactions.getBrowserHelper().SwitchToWindow(1);
+			
+			 while (true) { 
+				 try {
+			 
+					 seleniumactions.getWaitHelper().waitForElement(driver,2000,driver.findElement(By.xpath("//div[text()='"+testdata.get("creditnotenumer")+"']")));
+					driver.findElement(By.xpath("//div[text()='"+testdata.get("creditnotenumer")+"']")).isDisplayed();
+					 String creditnumber = driver.findElement(By.xpath("//div[text()='"+testdata.get("creditnotenumer")+"']")).getText();
+					System.out.println("found the creditnotenumber :"+creditnumber);
+			  break; 
+			  }
+			 catch (NoSuchElementException e) {
+			  seleniumactions.getWaitHelper().waitForElement(driver,2000,enquiryObj.
+			  nextPageInContractReport()); enquiryObj.nextPageInContractReport().click(); 
+			  }
+			 }
+			 seleniumactions.getBrowserHelper().switchToParentWithChildClose();
+	    }
 }

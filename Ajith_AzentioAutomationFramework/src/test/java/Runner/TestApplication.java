@@ -15,7 +15,7 @@ import utilities.ExtentTestManager;
 				            "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:",
 				            "rerun:ReRunScenarios/FailedReRun.txt"}, 
 				//dryRun = false //to check compilation errors
-				 tags=" @KUBS_AR/AP_UAT_003_004TC_01"
+				 tags="@KUBS_GL_UAT_006_001"
                        
 )
 public class TestApplication extends AbstractTestNGCucumberTests {
@@ -35,5 +35,5 @@ public class TestApplication extends AbstractTestNGCucumberTests {
 		System.out.println("*** Test Execution Finished ***");
 		ExtentTestManager.endTest();
 		ExtentManager.getInstance().flush();
-	}
+}
 }

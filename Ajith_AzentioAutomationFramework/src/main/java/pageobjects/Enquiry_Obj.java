@@ -20,6 +20,21 @@ public class Enquiry_Obj {
 
 		return inventoryReportIcon;
 	}
+	@FindBy(xpath="//ion-label[text()=' Financial reporting ']")
+	private WebElement financialReporting;
+	public WebElement financialReporting() {
+		return financialReporting; 
+	}
+	@FindBy(xpath="//ion-button[@ng-reflect-router-link=\"tabs/entities/balance-sheet-re\"]")
+	private WebElement balanceSheetReport;
+	public WebElement balanceSheetReport() {
+		return balanceSheetReport;
+	}
+	@FindBy(xpath="//ion-col[1]/app-kub-lov[1]/span[1]/ng-select[1]/div[1]/div[1]/div[2]/input[1]")
+	private WebElement selectBranchInBalanceSheetReport;
+	public WebElement selectBranchInBalanceSheetReport() {
+		return selectBranchInBalanceSheetReport;
+	}
 	//report sub module
 	@FindBy(xpath="//ion-label[text()=' Reports ']")
 	private WebElement reportMenu;
@@ -30,6 +45,16 @@ public class Enquiry_Obj {
 	private WebElement contractReportEditIcon;
 	public WebElement contractReportEditIcon() {
 		return contractReportEditIcon;
+	}
+	@FindBy(xpath="//ion-button[@ng-reflect-router-link='tabs/entities/account-payable-']")
+	private WebElement accountsPayableReport;
+	public WebElement accountsPayableReport() {
+		return accountsPayableReport;
+	}
+	@FindBy(xpath="//ion-button[@ng-reflect-router-link='/tabs/entities/account-receiva']")
+	private WebElement accountsReceivableReportEditIcon;
+	public WebElement accountsReceivableReportEditIcon() {
+		return accountsReceivableReportEditIcon;
 	}
 	@FindBy(xpath="(//div/input)[1]")
 	private WebElement selectVendorName;
@@ -115,6 +140,11 @@ public class Enquiry_Obj {
 	public WebElement inventoryNextMonth() {
 
 		return inventory_NextMonth;
+	}
+	@FindBy(xpath="//ion-row[1]/ion-col[6]/app-kub-lov[1]/span[1]/ng-select[1]/div[1]/div[1]/div[2]/input[1]")
+	private WebElement transactionRefNo;
+	public WebElement transactionRefNo() {
+		return transactionRefNo;
 	}
 	@FindBy(xpath = "//ion-button[@ng-reflect-shape='round']")
 	private WebElement inventory_ViewButton;

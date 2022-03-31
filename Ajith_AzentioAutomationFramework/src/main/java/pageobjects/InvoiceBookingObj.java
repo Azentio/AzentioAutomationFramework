@@ -39,10 +39,20 @@ public class InvoiceBookingObj {
 	public WebElement searchInvoiceType() {
 		return searchInvoiceType;
 	}
+	@FindBy(xpath="//ion-row[1]/ion-col[3]/app-kub-lov[1]/span[1]/ng-select[1]/div[1]/div[1]/div[2]")
+	private WebElement getBuisnessPartnerFromBillInvoiceAgainstPo;
+	public WebElement getBuisnessPartnerFromBillInvoiceAgainstPo() {
+		return getBuisnessPartnerFromBillInvoiceAgainstPo;
+	}
 	@FindBy(xpath="//ion-col[4]/app-kub-lov[1]/span[1]/ng-select[1]/div[1]/div[1]/div[2]")
 	private WebElement getBuisnessPartnerFromInvoiceBill;
 	public WebElement getBuisnessPartnerFromInvoiceBill() {
 		return getBuisnessPartnerFromInvoiceBill;
+	}
+	@FindBy(xpath="//ion-col[3]/app-kub-lov[1]/span[1]/ng-select[1]/div[1]/div[1]/div[2]")
+	private WebElement getBuisnessPartnerFromInvoiceBillAgainstPo;
+	public WebElement getBuisnessPartnerFromInvoiceBillAgainstPo(){
+		return getBuisnessPartnerFromBillInvoiceAgainstPo;
 	}
 	@FindBy(xpath="//ion-col[5]/ion-item/ion-input/input[@class=\"native-input sc-ion-input-md\"]")
 	private WebElement getInvoiceNumber;
@@ -54,6 +64,12 @@ public class InvoiceBookingObj {
 	public WebElement selectFirstEyeicon;
 	public WebElement selectFirstEyeicon() {
 		return selectFirstEyeicon;
+	}
+	//next in page view
+	@FindBy(xpath="//datatable-pager[1]/ul[1]/li[8]/a[1]/i[1]")
+	private WebElement nextPageInListView;
+	public WebElement nextPageInListView() {
+		return nextPageInListView;
 	}
 	////datatable-header-cell[13]/div/ion-input/input
 	//get the status of the invoice bill booking
