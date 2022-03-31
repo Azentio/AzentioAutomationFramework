@@ -22,7 +22,7 @@ import testDataType.BUDGET_RequestAndAllocationTestDataType;
 import testDataType.BUDGET_RequestandallocationBUDTYPEDATA;
 import testDataType.BUDGET_CommentsFromApprover;
 import testDataType.BUDGET_SupplementarybudgetTestDataType;
-
+import testDataType.FixedAssetTestDataType;
 import testDataType.INVENTORY_EnquiryGlTestData;
 import testDataType.INVENTORY_InventoryManagement_DataType;
 import testDataType.INVENTORY_InventoryStockIssueTestData;
@@ -126,7 +126,14 @@ private final String BudtypeFilepath = configFileReader.getJsonPath() + "BUDGET_
 	// ACCOUNTSPAYABLE_InvoiceBooking
 	private final String InvoiceBookingPath = configFileReader.getJsonPath() + "ACCOUNTSPAYABLE_InvoiceBookingJSON.json";
 	private List<ACCOUNTSPAYABLE_InvoiceBookingTestDataType> InvoiceBookingList;
-		
+	//Fixed asset
+			private final String FixedAssetFilePath = configFileReader.getJsonPath() + "FixedAssetJSON.json";
+			private List<FixedAssetTestDataType>FixedAssetList;	
+	
+	
+	
+	
+	
 	public JsonConfig() {
 		/*RegisterList = getRegisterData();
 		LoginList = getLoginList();*/
@@ -152,6 +159,7 @@ private final String BudtypeFilepath = configFileReader.getJsonPath() + "BUDGET_
 		PurchaseRequisitionConfirmationList = getPurchaseRequisitionConfirmationList();
 		VendorContractsList = getVendorContractList();
 		InvoiceBookingList = getInvoiceBookingList();
+		FixedAssetList= getFixedAssetList();
 	}
 
 
@@ -483,6 +491,31 @@ private List<BUDGET_RequestAndAllocationTestDataType> getAllocationList() {
 				}
 			}
 			
+			
+	//Fixed Asset
+
+private List<FixedAssetTestDataType> getFixedAssetList() {
+	 Gson gson = new Gson();
+	 JsonReader reader = new JsonReader(new StringReader(FixedAssetFilePath));
+	 reader.setLenient(true);
+	BufferedReader bufferReader = null;
+	try {
+		bufferReader = new BufferedReader(new FileReader(FixedAssetFilePath));
+		FixedAssetTestDataType[] FixedAsset = gson.fromJson(bufferReader, FixedAssetTestDataType[].class);
+		return Arrays.asList(FixedAsset);
+	} catch (FileNotFoundException e) {
+		throw new RuntimeException("Json file not found at path : " + FixedAssetFilePath);
+	} finally {
+		try {
+			if (bufferReader != null)
+				bufferReader.close();
+		} catch (IOException ignore) {
+		}
+	}
+	}
+public final FixedAssetTestDataType getFixedAssetByName(String UserName){
+	 return FixedAssetList.stream().filter(x->x.User.equalsIgnoreCase(UserName)).findAny().get();
+}		
 	
 	public final BUDGET_RequestAndAllocationTestDataType getAllowcationByName(String user) {
 		return AllocationList.stream().filter(x -> x.UserType.equalsIgnoreCase(user)).findAny().get();

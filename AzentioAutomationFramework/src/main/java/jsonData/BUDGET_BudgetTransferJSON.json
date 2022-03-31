@@ -21,7 +21,7 @@
         "BudgetName"				:"Yearly budget for Laptops",
        "BudgetCodeQuarter": "BUD002",
 		"TransferToBudgetCodeQuarter": "BDG02-BDG02",
-		"ApportionedAmountAExcessive":"6000000.00",
+		"ApportionedAmountAExcessive":"9999900.00",
 		"Status"					:"Active",
 		"InvalidBranch"				:"CO",
 		"InvalidTransferToBudgetCode":"BDG02",
