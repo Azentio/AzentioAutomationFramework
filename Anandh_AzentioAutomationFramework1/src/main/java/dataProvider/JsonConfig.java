@@ -26,6 +26,7 @@ import testDataType.BUDGET_RequestandallocationBUDTYPEDATA;
 import testDataType.FIXEDASSET_AixedAssetDeAllocationTestData;
 import testDataType.FIXEDASSET_AssetImpairementTestDataType;
 import testDataType.FIXEDASSET_AssetReturnTestData;
+import testDataType.GL_ModuleTestData;
 import testDataType.INVENTORY_EnquiryGlTestData;
 import testDataType.INVENTORY_InventoryStockIssueTestData;
 import testDataType.KUBS_LoginTestDataType;
@@ -91,6 +92,10 @@ public class JsonConfig {
 	private final String accountsPayablePaymentFileUploadDownloadFilePath = configFileReader.getJsonPath() + "ACCOUNTSPAYABLE_PaymentFileUploadDownloadJSON.json";
 	private List<ACCOUNTSPAYABLE_PaymentFileUploadDownloadTestData> PaymentFileUploadDwonloadTestData;
 	
+	
+	//GlModule
+	private final String glModuleFilePath = configFileReader.getJsonPath() + "GL_Module.json";
+	private List<GL_ModuleTestData> glModuleTestData;
 	public JsonConfig() {
 
 		AllocationList = getAllocationList();
@@ -111,7 +116,30 @@ public class JsonConfig {
 		accountsAutoPayoutTestData=getAccountsPayableAutoPayoutTestData();
 		accountspayableContractReportTestData= getAccountsPayableContractReportTestData();
 		PaymentFileUploadDwonloadTestData=getPaymentFileUploadDwonloadTestData();
+		glModuleTestData= getGlModuleTestData();
 		
+	}
+	//Gl module TestData
+	private List<GL_ModuleTestData> getGlModuleTestData()
+	{
+		Gson gson = new Gson();
+		JsonReader reader = new JsonReader(new StringReader(glModuleFilePath));
+		reader.setLenient(true);
+		BufferedReader bufferReader = null;
+		try {
+			bufferReader = new BufferedReader(new FileReader(glModuleFilePath));
+			GL_ModuleTestData[] glmoduleTestData = gson.fromJson(bufferReader,
+					GL_ModuleTestData[].class);
+			return Arrays.asList(glmoduleTestData);
+		} catch (FileNotFoundException e) {
+			throw new RuntimeException("Json file not found at path : " + glModuleFilePath);
+		} finally {
+			try {
+				if (bufferReader != null)
+					bufferReader.close();
+			} catch (IOException ignore) {
+			}
+		}	
 	}
 	//PaymentFile Upload download 
 	private List<ACCOUNTSPAYABLE_PaymentFileUploadDownloadTestData> getPaymentFileUploadDwonloadTestData() {
@@ -569,5 +597,8 @@ public class JsonConfig {
 		public final ACCOUNTSPAYABLE_PaymentFileUploadDownloadTestData getPaymentFileUploadDownloadTesData(String user) {
 			return PaymentFileUploadDwonloadTestData.stream().filter(x -> x.UserType.equalsIgnoreCase(user)).findAny().get();
 		}	
-	
+		//GL_ModuleTestData> getGlModuleTestData
+		public final GL_ModuleTestData getGlmoduleTestDataByName(String user) {
+			return glModuleTestData.stream().filter(x -> x.UserType.equalsIgnoreCase(user)).findAny().get();
+		}
 }
