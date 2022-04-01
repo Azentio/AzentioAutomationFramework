@@ -1,0 +1,1 @@
+file:src/test/java/features/FIXEDASSET_AssetImpairement.feature:413

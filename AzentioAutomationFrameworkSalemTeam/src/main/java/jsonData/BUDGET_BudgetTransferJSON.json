@@ -1,0 +1,31 @@
+[
+	{
+		"UserName"					: "Maker",
+		"User"						: "Maker",
+		"BudgetCode"				: "BUD111-Yearly budget for Laptops",
+		"BudgetType"				: "YEARLY",
+		"BudgetYear"				: "2022-2023",
+		"Branch"					: "AZENTMAIN-Azentio Main Branch",
+		"Currency"					: "INR",
+		"TransferToBudgetCode"		: "BC0011-Head Office And Branch Renovation/Development Expeense",
+		"ApportionedAmountA"		: "100.00",
+		"ApportionedAmountB"		: "100.00",
+		"Comment"					: "ok",
+		"RemarkByMaker"				: "Submit by maker",
+		"ApproveByMaker"			: "Approve by maker",
+		"RemarkByRemarkByReviewer"	: "Approved by reviewer",
+		"ApprovedByChecker"			: "Approved by checker",
+		"RejectedByChecker"			: "Rejected by checker",
+		"ReturnedByChecker"			: "Returned by checker",
+		"ReturnedByReviewer"		: "Returned by Reviewer",
+        "BudgetName"				:"Yearly budget for Laptops",
+       "BudgetCodeQuarter": "BUD002",
+		"TransferToBudgetCodeQuarter": "BDG02-BDG02",
+		"ApportionedAmountAExcessive":"6000000.00",
+		"Status"					:"Active",
+		"InvalidBranch"				:"CO",
+		"InvalidTransferToBudgetCode":"BDG02",
+		"Remark"					:"ok",
+		"CheckerRemark"             : "Approved by checker"
+	}
+]

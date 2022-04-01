@@ -1,0 +1,47 @@
+[
+	{
+		"User": "Maker",
+		"EntityBranch": "Azentio Main Branch",
+		"BpName": "Bonton Agency",
+		"ReferenceType": "Contract",
+		"Contract": "Contract for  hospital",
+		"PoQuantity": "2",
+		
+		"PoSubType": "PO For Asset Purchase",
+		"PoNumber": "Azentio_PO",
+		"CostCenter": "FINANCE",
+		"Remark": "ok",
+		
+		"Month"					: "Oct",
+		"Year"					: "2022",
+		"Day"					: "22",
+		"FullMonth"				:"October",
+		
+		"ShippedFromLocation"	:"INDIA - Punjab",
+		"DeliveryLocation"		: "Azentio Main Branch",
+		
+		"PoQuantityGreater"  : "1000",
+		
+		
+		"PoTypeSerivce": "Services Contract",
+		"PoSubTypeService": "Cleaning Services",
+		"CostCenterService": "FINANCE",
+		
+		"HSNcodeService" :"999459- Cleaning Ser",
+		"ExpensecodeService" : "EXP11CEANINGEXP",
+		"QuantityService":"5",
+		"UnitService" : "Boxes",
+		"RatePerUnit" : "2000",
+		"ShippedLocationService" : "INDIA - Maharastra",
+		"DeliveryLocationService" : "Azentio Main Branch",
+		"AutoGenerateBill" : "No",
+		
+		"ModeOfPayement" :"Cheque",
+		"AutoPayout" : "No",
+		"CreditPeriod" : "3",
+		
+		"ItemDetailQty" : "1000"
+		
+		
+ 	}
+]

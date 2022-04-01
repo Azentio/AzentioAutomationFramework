@@ -1,0 +1,49 @@
+[
+	{
+		"Usertype" 				: "Asset",
+		"assetReferenceNumber"	: "ELECTRONICS-LAP001-Sony comput",
+		"assetLifeRefNo"		: "",
+		"modificationType1"		: "Asset Life",
+		"modificationType2"		: "Capitalization Date",
+		"assetLife"				: "5",
+		"assetLifegreater"		: "3",
+		"assetLifelesser"		: "2",
+		"Remark"				: "Approve",
+		
+		
+		//CALENDAR AND GL DATA
+		"Month"					: "Nov",
+		"FullMonth"				: "November",
+		"Year"					: "2022",
+		"Day"					: "10",
+		"branchCode"			: "AZENTMAIN-Azentio Main Branch",
+		"gLCode1"				: "IFRS-OPEXP-OE6000007 - Deprecitation for Fixed Assets",
+		"gLCode2"				: "IFRS-7000023-NOP - Loss on sale of fixed asset",
+		"GlMonth"				: "Oct",
+		"GlYear"				: "2022",
+		"GlFullMonth"			: "October",
+		"GlFullToMonth"			: "November",
+		"GlDay"					: "15",
+		"GlToMonth"				: "Nov",
+		"GlToDate"				: "4",
+		
+		
+		
+		//REPLACEMENT
+		"itemNumber"			: "Demo",
+		"itemDesc"				: "Demo",
+		
+		
+		//REVALUATION		
+		"BookValue"				: "90000000",
+		"Deallocation"			: "80000000",
+		"Revalue"				: "70000000",
+		"Impaired"				: "60000000",
+		"Amendment"				: "50000000",
+		"Undertaking"			: "40000000",
+		"Sold" 					: "30000000",
+		"Return"				: "20000000",
+		"Replace"				: "10000000"
+		
+	}
+]
