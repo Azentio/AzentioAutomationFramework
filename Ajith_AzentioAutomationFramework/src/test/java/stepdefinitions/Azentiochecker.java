@@ -59,7 +59,8 @@ public class Azentiochecker extends BaseClass {
 		String after_xpath_claim = "')]/parent::div/parent::datatable-body-cell/preceding-sibling::datatable-body-cell[2]/div/ion-buttons/ion-button";
 		//String after_xpath = ;
 		driver.findElement(By.xpath(before_xpath + reader.readReferancedata() + after_xpath_claim)).click();
-    	
+		waithelper.waitForElement(driver, 2000, kubschecker.checker_alert_close());
+		kubschecker.checker_alert_close().click();
 
 	}
 
@@ -75,6 +76,7 @@ public class Azentiochecker extends BaseClass {
 
 	@Then("^approve the records$")
 	public void approve_the_records() throws Throwable {
+		
 		waithelper.waitForElement(driver, 3000, driver.findElement(By.xpath("//span[contains(text(),'" + reader.readReferancedata() + "')]/ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell/div/ion-buttons/ion-button")));
 		driver.findElement(By.xpath("//span[contains(text(),'" + reader.readReferancedata() + "')]/ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell/div/ion-buttons/ion-button")).click();
 		//waithelper.waitForElement(driver,3000,kubschecker.checkersubmitButton());
@@ -83,8 +85,10 @@ public class Azentiochecker extends BaseClass {
 		kubschecker.checkerApproveButton().click();
 		waithelper.waitForElement(driver, 2000, kubschecker.checkerRemarks());
 		kubschecker.checkerRemarks().sendKeys("ok");
+		Thread.sleep(2000);
 		waithelper.waitForElement(driver, 2000, kubschecker.checkersubmitButton());
 		kubschecker.checkersubmitButton().click();
+		Thread.sleep(1000);
         
 	}
 

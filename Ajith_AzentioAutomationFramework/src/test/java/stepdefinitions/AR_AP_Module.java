@@ -1055,8 +1055,6 @@ public class AR_AP_Module extends BaseClass {
     		
 		}
     	seleniumactions.getBrowserHelper().switchToParentWithChildClose();
-    	
-       
     }
     //*********************************@KUBS_AR/AP_UAT_003_004TC_05********************************************
 	// cancelled bill is not allowed for payment settlement
@@ -1075,7 +1073,6 @@ public class AR_AP_Module extends BaseClass {
 				invoiceBookingObj.accountPayable_InvoiceBooking_EyeButton());
 		seleniumactions.getClickAndActionsHelper()
 				.clickOnElement(invoiceBookingObj.accountPayable_InvoiceBooking_EyeButton());
-
 	}
 
 	@And("^click the search icon in invoice booking list view$")
@@ -1096,7 +1093,6 @@ public class AR_AP_Module extends BaseClass {
 		seleniumactions.getWaitHelper().waitForElement(driver, 2000,
 				paymentSettlementObj.getPaymentSettlementAddIcon());
 		seleniumactions.getClickAndActionsHelper().clickOnElement(paymentSettlementObj.getPaymentSettlementAddIcon());
-
 	}
 
 	@And("^select payment option as buisness partnerwise$")
@@ -1105,7 +1101,6 @@ public class AR_AP_Module extends BaseClass {
 		seleniumactions.getClickAndActionsHelper().clickOnElement(paymentSettlementObj.getPaymentOptions());
 		paymentSettlementObj.getPaymentOptions().sendKeys(Keys.DOWN);
 		paymentSettlementObj.getPaymentOptions().sendKeys(Keys.ENTER);
-
 	}
 
 	@And("^select buisness partner in payment settlement$")
@@ -1115,14 +1110,14 @@ public class AR_AP_Module extends BaseClass {
 		paymentSettlementObj.getSelectBuisnessPartner().sendKeys(testdata.get("buisnesspartner"));
 		paymentSettlementObj.getSelectBuisnessPartner().sendKeys(Keys.ENTER);
 		Thread.sleep(3000);
-
 	}
 
 	@Then("^verify that no bill is available for payment settlement$")
 	public void verify_that_no_bill_is_available_for_payment_settlement() throws Throwable {
 		while (true) {
 			try {
-				seleniumactions.getWaitHelper().waitForElement(driver,2000,driver.findElement(By.xpath("//div[contains(text(),'"+testdata.get("invoicenumber")+"')]")));
+				//seleniumactions.getWaitHelper().waitForElement(driver,2000,driver.findElement(By.xpath("//div[contains(text(),'"+testdata.get("invoicenumber")+"')]")));
+				javascriphelper.scrollIntoView(driver.findElement(By.xpath("//div[contains(text(),'"+testdata.get("invoicenumber")+"')]")));
 				driver.findElement(By.xpath("//div[contains(text(),'"+testdata.get("invoicenumber")+"')]")).isDisplayed();
 				String invoicenumber = driver.findElement(By.xpath("//div[contains(text(),'"+testdata.get("invoicenumber")+"')]")).getText();
 				System.out.println(invoicenumber);
@@ -1136,8 +1131,6 @@ public class AR_AP_Module extends BaseClass {
 				System.out.println("cannot find the invoice number "+testdata.get("invoicenumber"));
 				break;
 			}
-			
-
 		}
 	}
 	//*********************************@KUBS_AR/AP_UAT_003_007TC_01****************************************************//

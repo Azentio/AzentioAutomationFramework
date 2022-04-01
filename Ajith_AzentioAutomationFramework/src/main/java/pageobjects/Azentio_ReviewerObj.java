@@ -100,7 +100,6 @@ public class Azentio_ReviewerObj {
            //    return approval_status;
 	
         //}
-	
         
 	@FindBy(xpath = "//ion-button[contains(text(),'Submit')]")
 	private WebElement reviewer_alert_submit_button;

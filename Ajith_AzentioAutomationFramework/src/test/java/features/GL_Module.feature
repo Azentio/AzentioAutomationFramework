@@ -1,20 +1,4 @@
 Feature: testing the General Ledger Module
-@Reviewer
-Scenario: After Budget creation login into Reviewer
-Given Navigate to Url and login as a reviewer
-Then Click on Notification button
-Then Click on action button
-Then Approve the record in Reviewer
-And Give Remark and Submit
-@Checker
-Scenario: After Reviewer submit the record checker will claim it
-Given Navigate to Url and login as a Checker
-Then Click the Notification icon
-And Click on security management
-Then Click on open pool
-And Click on claim button
-Then click on notification
-Then approve the records
 @KUBS_GL2_UAT_008_004
 Scenario: verify GL balance report should display the correct balance of GL
 Given Login as a Azentio Maker
@@ -65,14 +49,15 @@ And click Add button
 And click save button in event mapping
 And Click on notification icon
 And select the first record
+And select the Status for EventMapping
 And click on submit button
 And enter remark in alert tab 
 And click on submit
 Given Navigate to Url and login as a reviewer
 Then Click on Notification button
-And Find the budget code which submitted from maker
 Then Click on action button
-And Approve the record
+Then Approve the record in Reviewer
+And Give Remark and Submit
 Given Navigate to Url and login as a Checker
 Then Click the Notification icon
 And Click on security management

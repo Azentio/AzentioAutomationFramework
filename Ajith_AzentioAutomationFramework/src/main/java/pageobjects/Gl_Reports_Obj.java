@@ -357,6 +357,11 @@ public class Gl_Reports_Obj {
 		public WebElement searchEventName() {
 			return searchEventName;
 		}
+		@FindBy(xpath="//ion-col[4]/app-kub-lov[1]/span[1]/ng-select[1]/div[1]/div[1]/div[3]/input[1]")
+		private WebElement selectStatusInEventMapping;
+		public WebElement selectStatusInEventMapping() {
+			return selectStatusInEventMapping;
+		}
 		@FindBy(xpath="//datatable-row-wrapper[2]/datatable-body-row[1]/div[2]/datatable-body-cell[3]/div[1]/span[1]")
 		private WebElement getAccountingNameInListView;
 		public WebElement getAccountingNameInListView() {

@@ -237,6 +237,7 @@ driver.findElement(By.xpath("(//span[text()='" + glModuleData.GlToDate + "'])[1]
     //Check the accounting mapping done for the accounting Scheme
     @When("^user click the Accounting setup$")
     public void user_click_the_accounting_setup() throws Throwable {
+    	seleniumactions.getWaitHelper().waitForElement(driver,2000,glReportsObj.accountingSetup());
         glReportsObj.accountingSetup().click();
     }
 
@@ -335,6 +336,16 @@ driver.findElement(By.xpath("(//span[text()='" + glModuleData.GlToDate + "'])[1]
     public void click_on_submit() throws Throwable {
     	glReportsObj.submitRemark().click();
          Thread.sleep(2000);
+         Thread.sleep(2000);
+         seleniumactions.getWaitHelper().waitForElement(driver, 2000,glReportsObj.budgetCreation_ReviewerId());
+ 		String reviwerId = glReportsObj.budgetCreation_ReviewerId().getText();
+ 		String trimmerReviewerID = reviwerId.substring(85);
+ 		StringBuffer sb = new StringBuffer(trimmerReviewerID);
+ 		StringBuffer finalReviewerID = sb.deleteCharAt(trimmerReviewerID.length() - 1);
+ 		String revID = finalReviewerID.toString();
+ 		// System.out.println("String buffer reviewer ID is"+finalReviewerID);
+ 		// System.out.println("Reviewer ID is"+revID);
+ 		jsonWriter.addData(revID);
     }
 
     @And("^click on submit button$")
@@ -348,9 +359,37 @@ driver.findElement(By.xpath("(//span[text()='" + glModuleData.GlToDate + "'])[1]
     	Thread.sleep(2000);
         glReportsObj.enterRemarkInMaker().click();
         glReportsObj.enterRemarkInMaker().sendKeys("ok");
+        
     }
+
+    @Then("^verify System should allow to map to the transaction event more than one Accounting Scheme$")
+    public void verify_system_should_allow_to_map_to_the_transaction_event_more_than_one_accounting_scheme() throws Throwable {
+        seleniumactions.getWaitHelper().waitForElement(driver,2000,driver.findElement(By.xpath("//span[contains(text(),'"+glModuleData.SchemeName1+"')]")));
+        driver.findElement(By.xpath("//span[contains(text(),'"+glModuleData.SchemeName1+"')]")).isDisplayed();
+        seleniumactions.getWaitHelper().waitForElement(driver,2000,driver.findElement(By.xpath("//span[contains(text(),'"+glModuleData.SchemeName2+"')]")));
+        driver.findElement(By.xpath("//span[contains(text(),'"+glModuleData.SchemeName2+"')]")).isDisplayed();
+    }
+
+    @And("^search Event name based on which we created$")
+    public void search_event_name_based_on_which_we_created() throws Throwable {
+        seleniumactions.getWaitHelper().waitForElement(driver,2000,glReportsObj.searchEventName());
+        glReportsObj.searchEventName().click();
+        glReportsObj.searchEventName().sendKeys(glModuleData.EventName);
+    }
+
+    @And("^clck the first edit icon in list view$")
+    public void clck_the_first_edit_icon_in_list_view() throws Throwable {
+        glReportsObj.clickFirstEditIconInListView().click();
+    }
+    @And("^select the Status for EventMapping$")
+    public void select_the_status_for_eventmapping() throws Throwable {
+        glReportsObj.selectStatusInEventMapping().click();
+        glReportsObj.selectStatusInEventMapping().sendKeys(Keys.DOWN);
+        glReportsObj.selectStatusInEventMapping().sendKeys(Keys.ENTER);
+    }
+
     
-  
+    
     
     @And("^select accounting book name$")
     public void select_accounting_book_name() throws Throwable {
@@ -397,6 +436,7 @@ driver.findElement(By.xpath("(//span[text()='" + glModuleData.GlToDate + "'])[1]
     
     @And("^click add icon in accounting scheme details$")
     public void click_add_icon_in_accounting_scheme_details() throws Throwable {
+    	seleniumactions.getWaitHelper().waitForElement(driver,2000,glReportsObj.addAccountingSchemesDetail());
         glReportsObj.addAccountingSchemesDetail().click();
     }
 
@@ -467,6 +507,13 @@ driver.findElement(By.xpath("(//span[text()='" + glModuleData.GlToDate + "'])[1]
         glReportsObj.selectCrDrFlag().click();
         glReportsObj.selectCrDrFlag().sendKeys(glModuleData.CrFlag);
         glReportsObj.selectCrDrFlag().sendKeys(Keys.ENTER);
+    }
+    @Then("^verify System should triggered the applied rule for the accounting scheme$")
+    public void verify_system_should_triggered_the_applied_rule_for_the_accounting_scheme() throws Throwable {
+    	String xpath ="//ul/li/span[contains(text(),'"+glModuleData.AccountingSchemeName+"')]";
+        javascriphelper.JavaScriptHelper(driver);
+        javascriphelper.scrollIntoView(driver.findElement(By.xpath(xpath)));
+        driver.findElement(By.xpath(xpath)).isDisplayed();
     }
     
     

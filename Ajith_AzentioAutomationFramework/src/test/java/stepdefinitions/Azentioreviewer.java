@@ -28,7 +28,7 @@ public class Azentioreviewer extends BaseClass {
 	BrowserHelper browserHelper;
 	String referance_id;
 	JsonDataReaderWriter reader;
-	JavascriptHelper javascriptHelper;
+	JavascriptHelper javascriptHelper = new JavascriptHelper();
 	WaitHelper waitHelper = new WaitHelper(driver);
 	JsonDataReaderWriter jsonWriter = new JsonDataReaderWriter();
 	JsonConfig jsonconfig=new JsonConfig();
@@ -46,11 +46,10 @@ public class Azentioreviewer extends BaseClass {
 	    public void click_on_notification_button() throws Throwable {
 	    	waitHelper.waitForElement(driver, 2000, reviewer.reviewerNotidicationIcon());
 	    	reviewer.reviewerNotidicationIcon().click();
-			waitHelper.waitForElement(driver, 2000, reviewer.Ar_Ap_reviewer_id());
-			javascriptHelper.JavaScriptHelper(driver);
-			referance_id = reviewer.Ar_Ap_reviewer_id().getText();
+			waitHelper.waitForElement(driver, 2000, reviewer.reviewerReferenceID());
+			referance_id = reviewer.reviewerReferenceID().getText();
 			System.out.println("Referance_id:" + referance_id);
-			Assert.assertTrue(reviewer.Ar_Ap_reviewer_id().isDisplayed());
+			Assert.assertTrue(reviewer.reviewerReferenceID().isDisplayed());
 	    	waithelper=new WaitHelper(driver);
 	    	reviewer=new Azentio_ReviewerObj(driver);
 	    	waithelper.waitForElement(driver, 2000, reviewer.reviewerNotidicationIcon());
@@ -60,11 +59,10 @@ public class Azentioreviewer extends BaseClass {
         
 	    @Then("^Click on action button$")
 	    public void click_on_action_button() throws IOException, ParseException{
-	    	javascriptHelper.JavaScriptHelper(driver);
 			String befr_xpath = "//span[contains(text(),'";
 			String aftr_xpath = "')]/parent::div/parent::datatable-body-cell/preceding-sibling::datatable-body-cell[1]//div//ion-buttons//ion-button";
-			//waitHelper.waitForElement(driver, 2000,
-			//		driver.findElement(By.xpath(befr_xpath + jsonWriter.readReferancedata() + aftr_xpath)));
+			waitHelper.waitForElement(driver, 2000,
+				driver.findElement(By.xpath(befr_xpath + jsonWriter.readReferancedata() + aftr_xpath)));
 			driver.findElement(By.xpath(befr_xpath + jsonWriter.readReferancedata() + aftr_xpath)).click();
 			
 	    }
@@ -79,11 +77,11 @@ public class Azentioreviewer extends BaseClass {
 		@And("^Give Remark and Submit$")
 		public void give_remark_and_submit() throws Throwable {
 			// ---------------------SUBMIT THE REVIEWER RECORD-----------------------//
-			waitHelper.waitForElement(driver, 5000, reviewer.reviewerAlertRemarks());
+			waitHelper.waitForElement(driver, 2000, reviewer.reviewerAlertRemarks());
 			reviewer.reviewerAlertRemarks().sendKeys("ok");
-			waitHelper.waitForElement(driver, 5000, reviewer.reviewerAlertSubmitButton());
-			javascriptHelper.JSEClick(reviewer.reviewerAlertSubmitButton());
-			waitHelper.waitForElement(driver, 3000, reviewer.approvalStatus());
+			waitHelper.waitForElement(driver, 2000, reviewer.reviewerAlertSubmitButton());
+			reviewer.reviewerAlertSubmitButton().click();
+			waitHelper.waitForElement(driver, 2000, reviewer.approvalStatus());
 			String Notification = reviewer.approvalStatus().getText();
 			System.out.println("Reviewer Notification: " + Notification);
 			Assert.assertTrue(reviewer.approvalStatus().isDisplayed());
