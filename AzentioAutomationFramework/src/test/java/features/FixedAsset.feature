@@ -1,4 +1,4 @@
-Feature: Check the Functionality of Fixed Asset module
+ Feature: Check the Functionality of Fixed Asset module
 
 @KUBS_FAT_UAT_002_001 @multiauth
 
@@ -97,6 +97,7 @@ Then Click on save button of item details
 Then Click on the Notification
 Then Select the record which we saved
 Then Submit record
+
 Then Open Reviewer account
 And Click on notification
 Then Approve the record which we submitted from maker stage
@@ -251,10 +252,10 @@ Then click on Edit icon near by financial transaction
 And choose branch code Id
 Then choose Gl code Id
 And click on transaction from date in calender icon
-Then choose from date in calender
+Then choose from date in the calender
 
 And click on the transaction to date in calender icon
-Then choose the To date in calender
+Then choose the To date in the calender
 And click on view button to see the Record
 
 
@@ -268,9 +269,9 @@ Then click on Edit icon near by financial transaction
 And choose branch code Id
 
 And click on transaction from date in calender icon
-Then choose from date in calender
+Then choose from date in the calender
 And click on the transaction to date in calender icon
-Then choose the To date in calender
+Then choose the To date in the calender
 And click on view button to see the Record
 
 Then validate voucher number
@@ -286,9 +287,9 @@ Then click on Edit icon near by financial transaction
 And choose branch code Id
 
 And click on transaction from date in calender icon
-Then choose from date in calender
+Then choose from date in the calender
 And click on the transaction to date in calender icon
-Then choose the To date in calender
+Then choose the To date in the calender
 And click on view button to see the Record
 
 Then validate voucher number
@@ -304,9 +305,9 @@ Then click on Edit icon near by financial transaction
 And choose branch code Id
 
 And click on transaction from date in calender icon
-Then choose from date in calender
+Then choose from date in the calender
 And click on the transaction to date in calender icon
-Then choose the To date in calender
+Then choose the To date in the calender
 And click on view button to see the Record
 
 Then validate voucher number
@@ -321,9 +322,9 @@ Then click on Edit icon near by financial transaction
 And choose branch code Id
 
 And click on transaction from date in calender icon
-Then choose from date in calender
+Then choose from date in the calender
 And click on the transaction to date in calender icon
-Then choose the To date in calender
+Then choose the To date in the calender
 And click on view button to see the Record
 
 @KUBS_FAT_UAT_013_005

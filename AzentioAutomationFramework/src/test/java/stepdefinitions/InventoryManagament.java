@@ -79,7 +79,7 @@ public class InventoryManagament extends BaseClass {
 
 	@Then("^Click on the Direction$")
 	public void click_on_direction() throws Throwable {
-
+		Thread.sleep(2000);
 		waithelper.waitForElement(driver, 2000, budgetTransferObj.budget_BudgetTransfer_DirectionIcon());
 		budgetTransferObj.budget_BudgetTransfer_DirectionIcon().click();
 
@@ -664,7 +664,7 @@ public class InventoryManagament extends BaseClass {
 
 		    }
 
-		    @Then("^Select the record which we saved$")
+		  @Then("^Select the record which we saved$")
 		    public void select_the_record_which_we_saved() throws Throwable {
 		    	// Reference
 				waithelper.waitForElement(driver, 2000, budgetTransferObj.budget_BudgetTransfer_FirstReferenceId());

@@ -1,0 +1,19 @@
+[
+	{
+		"User"					: "Maker",
+		"BranchCode"			: "AZENTMAIN",
+		"AssetCode"				: "01-001-desk",
+		"BillReferenceNo"		: "INV-203-32022",
+		"Remark"				: "OK",
+		"AssetItemNumber"		: "232",
+		"AssetItemDescription"	: "Wood box for Parcel",
+		"AssetValue"			: "95000",
+		"SalvageValue"			: "9000",
+		
+		"GlYear"				: "2022",
+		"GlDay"					: "19",
+		"GlToMonth"				: "Nov",
+		"GlFullToMonth"			: "November",
+		"GlToDate"				: "19"
+	}
+]

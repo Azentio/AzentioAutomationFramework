@@ -1,0 +1,34 @@
+[
+	{
+		"User"					: "Maker",
+		"BranchCode"			: "AZENTMAIN",
+		"AssetCode"				: "01-001-desk",
+		"BillReferenceNo"		: "INV-203-32022",
+		"Remark"				: "OK",
+		"AssetItemNumber"		: "232",
+		"AssetItemDescription"	: "Wood box for Parcel",
+		"AssetValue"			: "95000",
+		"SalvageValue"			: "9000",
+		
+		"GlYear"				: "2022",
+		"GlDay"					: "19",
+		"GlToMonth"				: "Nov",
+		"GlFullToMonth"			: "November",
+		"GlToDate"				: "19",
+		
+		"EmployeeID"			: "anant",
+		"EmployeeIDAnother" 	: "Azentio", 
+		
+		"ModificationType" 		: "Asset Life",
+		"NewItemNumber"			: "224",
+		"NewItemDiscription" 	: "okok",
+		
+		
+		"AssetReferenceNumberTransfer": "01-001-adjustable table_BOB667_4435",
+		"ItemNumberTransfer": "33333",
+		
+		"AssetReferenceNumberSold": "01-001-adjustable table_BOB667_4435",
+		"ItemNumberSold": "33333"
+		
+		}
+]

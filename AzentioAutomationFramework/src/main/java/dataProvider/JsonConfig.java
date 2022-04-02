@@ -23,6 +23,10 @@ import testDataType.BUDGET_RequestandallocationBUDTYPEDATA;
 import testDataType.BUDGET_CommentsFromApprover;
 import testDataType.BUDGET_SupplementarybudgetTestDataType;
 import testDataType.FixedAssetTestDataType;
+
+import testDataType.FixedAsset_AssetCategoryTestDataType;
+import testDataType.FixedAsset_AssetCreationTestDataType;
+import testDataType.FixedAsset_AssetDeallocationTestDataType;
 import testDataType.INVENTORY_EnquiryGlTestData;
 import testDataType.INVENTORY_InventoryManagement_DataType;
 import testDataType.INVENTORY_InventoryStockIssueTestData;
@@ -126,12 +130,22 @@ private final String BudtypeFilepath = configFileReader.getJsonPath() + "BUDGET_
 	// ACCOUNTSPAYABLE_InvoiceBooking
 	private final String InvoiceBookingPath = configFileReader.getJsonPath() + "ACCOUNTSPAYABLE_InvoiceBookingJSON.json";
 	private List<ACCOUNTSPAYABLE_InvoiceBookingTestDataType> InvoiceBookingList;
+	
 	//Fixed asset
-			private final String FixedAssetFilePath = configFileReader.getJsonPath() + "FixedAssetJSON.json";
-			private List<FixedAssetTestDataType>FixedAssetList;	
-	
-	
-	
+	private final String FixedAssetFilePath = configFileReader.getJsonPath() + "FixedAssetJSON.json";
+	private List<FixedAssetTestDataType>FixedAssetList;	
+  
+	//FixedAsset_AssetCategory
+	private final String AssetCategoryFilePath = configFileReader.getJsonPath() + "FixedAsset_AssetCategoryJSON.json";
+	private List<FixedAsset_AssetCategoryTestDataType> AssetCategoryList;
+		
+	// FixedAsset_AssetDeallocation
+	private final String AssetDeallocationFilePath = configFileReader.getJsonPath()+ "FixedAsset_AssetDeallocationJSON.json";
+	private List<FixedAsset_AssetDeallocationTestDataType> AssetDeallocationList;
+		
+    // FixedAsset_AssetCreation
+    private final String AssetCreationFilePath = configFileReader.getJsonPath()+ "FixedAsset_AssetCreationJSON.json";
+ 	private List<FixedAsset_AssetCreationTestDataType> AssetCreationList;
 	
 	
 	public JsonConfig() {
@@ -160,6 +174,10 @@ private final String BudtypeFilepath = configFileReader.getJsonPath() + "BUDGET_
 		VendorContractsList = getVendorContractList();
 		InvoiceBookingList = getInvoiceBookingList();
 		FixedAssetList= getFixedAssetList();
+		AssetCategoryList = getAssetCategoryListData();
+		AssetDeallocationList = getAssetDeallocationListData();
+		
+		AssetCreationList = getAssetCreationListData();
 	}
 
 
@@ -512,7 +530,59 @@ private List<FixedAssetTestDataType> getFixedAssetList() {
 		} catch (IOException ignore) {
 		}
 	}
-	}
+	
+}
+//AssetCategory
+private List<FixedAsset_AssetCategoryTestDataType> getAssetCategoryListData() {
+	Gson gson = new Gson();
+	BufferedReader bufferReader = null;
+	try {
+		bufferReader = new BufferedReader(new FileReader(AssetCategoryFilePath));
+		FixedAsset_AssetCategoryTestDataType[] AssetCategory = gson.fromJson(bufferReader, FixedAsset_AssetCategoryTestDataType[].class);
+		return Arrays.asList(AssetCategory);
+		}catch(FileNotFoundException e) {
+			throw new RuntimeException("Json file not found at path : " + AssetCategoryFilePath );
+		}finally {
+			try { if(bufferReader != null) bufferReader.close();}
+			catch (IOException ignore) {}
+		}
+	
+}
+//AssetDeallocation
+private List<FixedAsset_AssetDeallocationTestDataType> getAssetDeallocationListData() {
+	Gson gson = new Gson();
+	BufferedReader bufferReader = null;
+	try {
+		bufferReader = new BufferedReader(new FileReader(AssetDeallocationFilePath));
+		FixedAsset_AssetDeallocationTestDataType[] AssetDeallocation = gson.fromJson(bufferReader, FixedAsset_AssetDeallocationTestDataType[].class);
+		return Arrays.asList(AssetDeallocation);
+		}catch(FileNotFoundException e) {
+			throw new RuntimeException("Json file not found at path : " + AssetDeallocationFilePath );
+		}finally {
+			try { if(bufferReader != null) bufferReader.close();}
+			catch (IOException ignore) {}
+		}
+	
+}
+
+
+//AssetCreation
+private List<FixedAsset_AssetCreationTestDataType> getAssetCreationListData() {
+	Gson gson = new Gson();
+	BufferedReader bufferReader = null;
+	try {
+		bufferReader = new BufferedReader(new FileReader(AssetCreationFilePath));
+		FixedAsset_AssetCreationTestDataType[] AssetCreation = gson.fromJson(bufferReader, FixedAsset_AssetCreationTestDataType[].class);
+		return Arrays.asList(AssetCreation);
+		}catch(FileNotFoundException e) {
+			throw new RuntimeException("Json file not found at path : " + AssetCreationFilePath );
+		}finally {
+			try { if(bufferReader != null) bufferReader.close();}
+			catch (IOException ignore) {}
+		}
+	
+}
+
 public final FixedAssetTestDataType getFixedAssetByName(String UserName){
 	 return FixedAssetList.stream().filter(x->x.User.equalsIgnoreCase(UserName)).findAny().get();
 }		
@@ -589,15 +659,30 @@ public final FixedAssetTestDataType getFixedAssetByName(String UserName){
 	}
 	
 	//Inventory - StockReturnBranch
-			public final INVENTORY_InventoryManagement_DataType getStockReturnBranchByName(String user) {
-				return StockReturnBranchList.stream().filter(x -> x.Usertype.equalsIgnoreCase(user)).findAny().get();
-			}
+	public final INVENTORY_InventoryManagement_DataType getStockReturnBranchByName(String user) {
+		return StockReturnBranchList.stream().filter(x -> x.Usertype.equalsIgnoreCase(user)).findAny().get();
+	}
 		
 	public final ACCOUNTSPAYABLE_VendorContractsTestDataType getVendorContractdata(String UserName) {
 	return VendorContractsList.stream().filter(x -> x.User.equalsIgnoreCase(UserName)).findAny().get();
-			}
+	}
 
-			public final ACCOUNTSPAYABLE_InvoiceBookingTestDataType getInvoiceBookingdata(String UserName) {
-				return InvoiceBookingList.stream().filter(x -> x.User.equalsIgnoreCase(UserName)).findAny().get();
-			}
+	public final ACCOUNTSPAYABLE_InvoiceBookingTestDataType getInvoiceBookingdata(String UserName) {
+	return InvoiceBookingList.stream().filter(x -> x.User.equalsIgnoreCase(UserName)).findAny().get();
+	}
+	//FixedAsset_AssetCategory   
+	public final FixedAsset_AssetCategoryTestDataType getAssetCategoryByName(String UserName){
+	return AssetCategoryList.stream().filter(x->x.User.equalsIgnoreCase(UserName)).findAny().get();
+	}
+	
+	//FixedAsset_AssetDeallocation  
+	public final FixedAsset_AssetDeallocationTestDataType getAssetDeallocationByName(String UserName){
+	return AssetDeallocationList.stream().filter(x->x.User.equalsIgnoreCase(UserName)).findAny().get();
+	}
+	
+	
+	//FixedAsset_AssetCreation	
+	public final FixedAsset_AssetCreationTestDataType getAssetCreationByName(String UserName){
+	return AssetCreationList.stream().filter(x->x.User.equalsIgnoreCase(UserName)).findAny().get();
+	}
 }
