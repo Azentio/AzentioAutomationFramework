@@ -93,8 +93,4 @@ public class KUBS_reviewer extends BaseClass {
 	        
 	    }
 
-	    @And("^Approve the record$")
-	    public void approve_the_record() throws Throwable {
-	       
-	    }
 }

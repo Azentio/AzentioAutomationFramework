@@ -21,9 +21,12 @@ import testDataType.BUDGET_CommentsFromApprover;
 import testDataType.BUDGET_RequestAndAllocationTestDataType;
 import testDataType.BUDGET_RequestandallocationBUDTYPEDATA;
 import testDataType.BUDGET_SupplementarybudgetTestDataType;
+import testDataType.Cancellationofcontractdatatype;
 import testDataType.FIXEDASSET_AssetAmendmentData;
 import testDataType.FIXEDASSET_AssetImpairementTestDataType;
 import testDataType.FIXEDASSET_AssetReturnTestData;
+import testDataType.GL1_Accounting_Setup_Data;
+import testDataType.GL_ModuleTestData;
 import testDataType.INVENTORY_EnquiryGlTestData;
 import testDataType.INVENTORY_InventoryManagement_DataType;
 import testDataType.INVENTORY_InventoryStockIssueTestData;
@@ -33,6 +36,7 @@ import testDataType.InventoryMaintenanceTestDataType;
 import testDataType.InventoryManagementTestDataType;
 import testDataType.InventoryManagement_InventoryStockReceiptTestDataType;
 import testDataType.KUBS_LoginTestDataType;
+import testDataType.PETTY_PettyCash_Data;
 
 //master
 public class JsonConfig {
@@ -137,6 +141,21 @@ public class JsonConfig {
 	private final String fixedAssetReturnFilepath = configFileReader.getJsonPath() + "FIXEDASSET_AssetReturnJSON.json";
 	private List<FIXEDASSET_AssetReturnTestData> assetReturnTestData;
 
+	// GL -Accounting setup
+	private final String AccsetupFilePath = configFileReader.getJsonPath() + "GL1_Accounting_Setup.json";
+	private List<GL1_Accounting_Setup_Data> AccsetupList;
+
+	//GlModule - Anandh
+	private final String glModuleFilePath = configFileReader.getJsonPath() + "GL_Module.json";
+	private List<GL_ModuleTestData> glModuleTestData;
+	
+	private final String cancellationofcontractpath = configFileReader.getJsonPath() + "cancellationofcontract.json";
+	private List<Cancellationofcontractdatatype> cancellationlist;
+	
+	// Petty Cash
+	private final String PettycashFilePath = configFileReader.getJsonPath() + "PETTY_PettyCash.json";
+	private List<PETTY_PettyCash_Data> PettycashList;
+
 	public JsonConfig() {
 		/*
 		 * RegisterList = getRegisterData(); LoginList = getLoginList();
@@ -166,8 +185,105 @@ public class JsonConfig {
 		AssetAmendmentList = getAssetAmendmentList();
 		fixedAssetAssetImpairementTestData=getFixedAssetImpairementTestData();
 		assetReturnTestData=getFixedAssetReturnTestData();
+		// Accounting Setup
+		AccsetupList = getAccsetupList();
+	
+		// GL module - Anandh
+		glModuleTestData= getGlModuleTestData();
+		cancellationlist = getCancellationlist();
+		
+		// Petty Cash
+		PettycashList = getPettycashList();
+		
 	}
+	
+	// PettyCash
+	private List<PETTY_PettyCash_Data> getPettycashList() {
+		Gson gson = new Gson();
+		JsonReader reader = new JsonReader(new StringReader(PettycashFilePath));
+		reader.setLenient(true);
+		BufferedReader bufferReader = null;
+		try {
+			bufferReader = new BufferedReader(new FileReader(PettycashFilePath));
+			PETTY_PettyCash_Data[] petty = gson.fromJson(bufferReader, PETTY_PettyCash_Data[].class);
+			return Arrays.asList(petty);
+		} catch (FileNotFoundException e) {
+			throw new RuntimeException("Json file not found at path : " + PettycashFilePath);
+		} finally {
+			try {
+				if (bufferReader != null)
+					bufferReader.close();
+			} catch (IOException ignore) {
+			}
+		}
+	}
+	
+	private List<Cancellationofcontractdatatype> getCancellationlist() {
+		Gson gson = new Gson();
+		JsonReader reader = new JsonReader(new StringReader(cancellationofcontractpath));
+		reader.setLenient(true);
+		BufferedReader bufferReader = null;
+		try {
+			bufferReader = new BufferedReader(new FileReader(cancellationofcontractpath));
+			Cancellationofcontractdatatype[] cancellationlist = gson.fromJson(bufferReader,
+					Cancellationofcontractdatatype[].class);
+			return Arrays.asList(cancellationlist);
+		} catch (FileNotFoundException e) {
+			throw new RuntimeException("Json file not found at path : " + cancellationofcontractpath);
+		} finally {
+			try {
+				if (bufferReader != null)
+					bufferReader.close();
+			} catch (IOException ignore) {
+			}
+		}
 
+	}
+	
+	//Gl module TestData - Anandh
+	private List<GL_ModuleTestData> getGlModuleTestData()
+	{
+		Gson gson = new Gson();
+		JsonReader reader = new JsonReader(new StringReader(glModuleFilePath));
+		reader.setLenient(true);
+		BufferedReader bufferReader = null;
+		try {
+			bufferReader = new BufferedReader(new FileReader(glModuleFilePath));
+			GL_ModuleTestData[] glmoduleTestData = gson.fromJson(bufferReader,
+					GL_ModuleTestData[].class);
+			return Arrays.asList(glmoduleTestData);
+		} catch (FileNotFoundException e) {
+			throw new RuntimeException("Json file not found at path : " + glModuleFilePath);
+		} finally {
+			try {
+				if (bufferReader != null)
+					bufferReader.close();
+			} catch (IOException ignore) {
+			}
+		}	
+	}
+	
+	// Accounting Setup
+	private List<GL1_Accounting_Setup_Data> getAccsetupList() {
+		Gson gson = new Gson();
+		JsonReader reader = new JsonReader(new StringReader(AccsetupFilePath));
+		reader.setLenient(true);
+		BufferedReader bufferReader = null;
+		try {
+			bufferReader = new BufferedReader(new FileReader(AccsetupFilePath));
+			GL1_Accounting_Setup_Data[] GlaccSetup = gson.fromJson(bufferReader, GL1_Accounting_Setup_Data[].class);
+			return Arrays.asList(GlaccSetup);
+		} catch (FileNotFoundException e) {
+			throw new RuntimeException("Json file not found at path : " + AccsetupFilePath);
+		} finally {
+			try {
+				if (bufferReader != null)
+					bufferReader.close();
+			} catch (IOException ignore) {
+			}
+		}
+	}
+	
 	private List<BUDGET_RequestAndAllocationTestDataType> getAllocationList() {
 		Gson gson = new Gson();
 		JsonReader reader = new JsonReader(new StringReader(AllocationFilePath));
@@ -679,6 +795,25 @@ public class JsonConfig {
 	public final FIXEDASSET_AssetReturnTestData getFixedAssetReturnTestDataByUserName(String username) {
 		return assetReturnTestData.stream().filter(x->x.userType.equalsIgnoreCase(username)).findAny().get();
 		
+	}
+	
+
+	// Accounting Setup
+	public final GL1_Accounting_Setup_Data getAccsetupByName(String Setup) {
+		return AccsetupList.stream().filter(x -> x.User.equalsIgnoreCase(Setup)).findAny().get();
+	}
+	public final Cancellationofcontractdatatype getCancelcontractByName(String contractstatus) {
+		return cancellationlist.stream().filter(x -> x.UserType.equalsIgnoreCase(contractstatus)).findAny().get();
+	}
+	
+	//GL_ModuleTestData> getGlModuleTestData - ANANDH
+	public final GL_ModuleTestData getGlmoduleTestDataByName(String user) {
+		return glModuleTestData.stream().filter(x -> x.UserType.equalsIgnoreCase(user)).findAny().get();
+	}
+	
+	// Petty Cash
+	public final PETTY_PettyCash_Data getPettycashByName(String Pettycash) {
+		return PettycashList.stream().filter(x -> x.UserName.equalsIgnoreCase(Pettycash)).findAny().get();
 	}
 	
 }

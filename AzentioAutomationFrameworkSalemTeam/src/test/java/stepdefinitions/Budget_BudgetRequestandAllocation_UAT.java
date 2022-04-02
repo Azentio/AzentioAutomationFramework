@@ -232,13 +232,14 @@ public class Budget_BudgetRequestandAllocation_UAT extends BaseClass {
 		waitHelper.waitForElement(driver, 2000,
 				driver.findElement(By.xpath(befr_xpath + json.readReferancedata() + aftr_xpath)));
 		driver.findElement(By.xpath(befr_xpath + json.readReferancedata() + aftr_xpath)).click();
-		reviewerObj.reviewer_action_button().click();
+
 	}
 
 	@Then("^Click on to Approve button in Reviewer$")
 	public void click_on_to_approve_button_in_reviewer() throws Throwable {
 
 		// -----------------REVIEWER APPROVE---------------------//
+		//reviewerObj.reviewer_action_button().click();
 		json.addReferanceData(referance_id);
 		waitHelper.waitForElement(driver, 2000, reviewerObj.reviewerApproveButton());
 		reviewerObj.reviewerApproveButton().click();
