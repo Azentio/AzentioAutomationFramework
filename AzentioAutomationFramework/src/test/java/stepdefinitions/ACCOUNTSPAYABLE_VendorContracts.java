@@ -27,7 +27,8 @@ import testDataType.ACCOUNTSPAYABLE_VendorContractsTestDataType;
 
 public class ACCOUNTSPAYABLE_VendorContracts {
 	WebDriver driver = BaseClass.driver;
-	KUBS_Login login = new KUBS_Login(driver);
+//	KUBS_Login login = new KUBS_Login(driver);
+	AzentioLogin login = new AzentioLogin(driver);
 	ConfigFileReader config = new ConfigFileReader();
 	JsonConfig jsonReader = new JsonConfig();
 	ACCOUNTSPAYABLE_VendorContractsObj aCCOUNTSPAYABLE_VendorContractsObj = new ACCOUNTSPAYABLE_VendorContractsObj(driver);
@@ -43,7 +44,7 @@ public class ACCOUNTSPAYABLE_VendorContracts {
 //--------	 @KUBS_INV_MGMT_UAT_001_002  ------------
 	@Given("^User should go to the kubs url and login as a maker user$")
 	public void user_should_go_to_the_kubs_url_and_login_as_a_maker_user() throws InterruptedException  {
-		login = new KUBS_Login(driver);
+		login = new AzentioLogin(driver);
 		driver.get(config.getApplicationUrl());
 		login.loginToAzentioApp("Maker");
 	}
@@ -135,7 +136,7 @@ public class ACCOUNTSPAYABLE_VendorContracts {
 		WebElement EndDay=driver.findElement(By.xpath("//td[@aria-label='"+aCCOUNTSPAYABLE_VendorContractsTestDataType.ContractEndFullMonth +" "+aCCOUNTSPAYABLE_VendorContractsTestDataType.ContractEndDate+", "+aCCOUNTSPAYABLE_VendorContractsTestDataType.ContractEndYear+"']/span"));
 		clicksAndActionHelper.doubleClick(EndDay);
 		
-		Thread.sleep(1000);
+		Thread.sleep(2000);
 		//ContractSignedOnDate calendar
 		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_ContractSignedOnDate().click();
 		while(true)
@@ -160,11 +161,13 @@ public class ACCOUNTSPAYABLE_VendorContracts {
 		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_Currency().sendKeys(aCCOUNTSPAYABLE_VendorContractsTestDataType.Currency);;
 		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_Currency().sendKeys(Keys.ENTER);
 		
+		waithelper.waitForElement(driver, 3000, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_Remark());
 		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_Remark().sendKeys(aCCOUNTSPAYABLE_VendorContractsTestDataType.Remark);;
 		
+		waithelper.waitForElement(driver, 3000, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_OtherDetailsButton());
 		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_OtherDetailsButton().click();
 		
-		waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_AutoGenerateInvoice());
+		waithelper.waitForElement(driver, 3000, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_AutoGenerateInvoice());
 		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_AutoGenerateInvoice().sendKeys(Keys.ARROW_DOWN, Keys.ENTER);
 		
 		waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_CreditPeriod());
@@ -212,6 +215,7 @@ public class ACCOUNTSPAYABLE_VendorContracts {
 		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_CurrencyInItemDetail().sendKeys(aCCOUNTSPAYABLE_VendorContractsTestDataType.CurrencyinItemDetails);
 		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_CurrencyInItemDetail().sendKeys(Keys.ENTER);
 		
+		Thread.sleep(1000);
 		waithelper.waitForElement(driver, 3000, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_ItemDetailsSaveButton());
 		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_ItemDetailsSaveButton().click();
 		
@@ -256,10 +260,10 @@ public class ACCOUNTSPAYABLE_VendorContracts {
 				.toString();
 		System.out.println("Message:" + str);
 		
-		waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_NotificationButton());
+		waithelper.waitForElement(driver, 4000, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_NotificationButton());
 		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_NotificationButton().click();
 		
-		waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_FirstReferenceId());
+		waithelper.waitForElement(driver, 4000, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_FirstReferenceId());
 		String id=aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_FirstReferenceId().getText();
 		jsonWriter.addReferanceData(id);
 		System.out.println("Reference ID:" +id);
@@ -321,7 +325,7 @@ public class ACCOUNTSPAYABLE_VendorContracts {
 	@And("^User should go to the kubs url and login as a reviewer user$")
 	public void user_should_go_to_the_kubs_url_and_login_as_a_reviewer_user() throws IOException, ParseException {
 		reader = new JsonDataReaderWriter();
-		login = new KUBS_Login(driver);
+		login = new AzentioLogin(driver);
 		driver.get(config.getApplicationUrl());
 		login.logintoAzentioappReviewer("Reviewer", reader.readdata());
 	}
@@ -368,7 +372,7 @@ public class ACCOUNTSPAYABLE_VendorContracts {
 
 	@Given("^User should go to the kubs url and login as a checker user$")
     public void user_should_go_to_the_kubs_url_and_login_as_a_checker_user() throws InterruptedException {
-		login = new KUBS_Login(driver);
+		login = new AzentioLogin(driver);
 		driver.get(config.getApplicationUrl());
 		login.loginToAzentioAppAsChecker("Checker");
     }
@@ -472,6 +476,26 @@ public class ACCOUNTSPAYABLE_VendorContracts {
 		waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_Logout());
 		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_Logout();
     }
+	
+	@Then("^search vendor contract details by business partner name$")
+	public void search_vendor_contract_details_by_business_partner_name()  {
+		waithelper.waitForElement(driver, 3000, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_BusinessPartnerSearch());
+		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_BusinessPartnerSearch().sendKeys(aCCOUNTSPAYABLE_VendorContractsTestDataType.BP_Name);
+	}
+
+	@And("^vendor contract details should display on contract creation list view$")
+	public void vendor_contract_details_should_display_on_contract_creation_list_view() {
+		waithelper.waitForElement(driver, 3000, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_VendorContractDetails());
+		boolean vendorContractDetails = aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_VendorContractDetails().getText().equals(aCCOUNTSPAYABLE_VendorContractsTestDataType.ContractName);
+		System.out.println("Vendor contract details is displayed in contract creation list view - "+vendorContractDetails );
+	}
+	
+//	@Then("^click on search button$")
+//	public void click_on_search_button()  {
+//		
+//		waithelper.waitForElement(driver, 3000, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_Search());
+//		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_Search().click();
+//	}
 }
   
     

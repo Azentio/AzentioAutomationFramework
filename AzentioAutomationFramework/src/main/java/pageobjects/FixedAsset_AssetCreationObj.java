@@ -213,6 +213,14 @@ public class FixedAsset_AssetCreationObj {
 		return fixedAsset_AssetCreation_NextMonth;
 	}
 	
+	@FindBy(xpath = "//ion-segment[1]/ion-segment-button[3]")
+	private WebElement fixedAssets_AssetCreation_ReportIcon;
+
+	public WebElement fixedAssets_AssetCreation_ReportIcon() {
+		return fixedAssets_AssetCreation_ReportIcon;
+	}
+	
+	
 	
 	
 }

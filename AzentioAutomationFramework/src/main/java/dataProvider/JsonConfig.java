@@ -22,6 +22,11 @@ import testDataType.BUDGET_RequestAndAllocationTestDataType;
 import testDataType.BUDGET_RequestandallocationBUDTYPEDATA;
 import testDataType.BUDGET_CommentsFromApprover;
 import testDataType.BUDGET_SupplementarybudgetTestDataType;
+import testDataType.BUSINESS_PARTNER_SETUP_BusinessPartnerTestDataType;
+import testDataType.FIXEDASSETS_AssetImpairementTestDataType;
+import testDataType.FIXEDASSETS_AssetRevaluationTestDataType;
+import testDataType.FIXEDASSETS_AssetSaleTestDataType;
+import testDataType.FIXEDASSETS_AssetUndertakingTestDataType;
 import testDataType.FixedAssetTestDataType;
 
 import testDataType.FixedAsset_AssetCategoryTestDataType;
@@ -38,16 +43,13 @@ import testDataType.InventoryManagement_InventoryStockReceiptTestDataType;
 import testDataType.KUBS_LoginTestDataType;
 import testDataType.Logindata;
 import testDataType.RegisterData;
+import testDataType.Reports_AssetCreationCommonTestDataType;
 
 
 //master
 public class JsonConfig {
 	ConfigFileReader configFileReader = new ConfigFileReader();
-
 	
-
-
-
 	//Users_Login
 	private final String AzentioLoginDataPath = configFileReader.getJsonPath() + "KUBS_LoginDataJSON.json";
 	private List<KUBS_LoginTestDataType> credentialslist;
@@ -147,42 +149,68 @@ private final String BudtypeFilepath = configFileReader.getJsonPath() + "BUDGET_
     private final String AssetCreationFilePath = configFileReader.getJsonPath()+ "FixedAsset_AssetCreationJSON.json";
  	private List<FixedAsset_AssetCreationTestDataType> AssetCreationList;
 	
+ 	// FIXEDASSETS_AssetSale
+ 	private final String AssetSalePath = configFileReader.getJsonPath() + "FIXEDASSETS_AssetSaleJSON.json";
+ 	private List<FIXEDASSETS_AssetSaleTestDataType> AssetSaleList;
+ 	
+ 	// FIXEDASSETS_AssetUndertaking
+ 	private final String AssetUndertakingPath = configFileReader.getJsonPath() + "FIXEDASSETS_AssetUndertakingJSON.json";
+ 	private List<FIXEDASSETS_AssetUndertakingTestDataType> AssetUndertakingList;
+ 	
+ 	// FIXEDASSETS_AssetImpairement
+ 	private final String AssetImpairementPath = configFileReader.getJsonPath() + "FIXEDASSETS_AssetImpairementJSON.json";
+ 	private List<FIXEDASSETS_AssetImpairementTestDataType>  AssetImpairementList;
+ 	
+ 	// FIXEDASSETS_AssetRevaluation
+ 	private final String AssetRevaluationPath = configFileReader.getJsonPath() + "FIXEDASSETS_AssetRevaluationJSON.json";
+ 	private List<FIXEDASSETS_AssetRevaluationTestDataType>  AssetRevaluationList;
+ 	
+ // Reports_AssetCreationCommon
+ 	private final String AssetCreationCommonPath = configFileReader.getJsonPath() + "Reports_AssetCreationCommonJSON.json";
+ 	private List<Reports_AssetCreationCommonTestDataType> AssetCreationCommonList;
+ 	
+ // BUSINESS_PARTNER_SETUP_BusinessPartner
+ 	private final String BusinessPartnerPath = configFileReader.getJsonPath() + "BUSINESS_PARTNER_SETUP_BusinessPartnerJSON.json";
+ 	private List<BUSINESS_PARTNER_SETUP_BusinessPartnerTestDataType> BusinessPartnerList;
 	
 	public JsonConfig() {
 		/*RegisterList = getRegisterData();
 		LoginList = getLoginList();*/
 
 		budgetDefinitionUATTestData=getBudgetDefinitionUATTestData();
-		
 		AllocationList = getAllocationList();
 		BudtypeList = getBudtypeList();
-
 		BudgetCreationList = getBudgetList();
 		credentialslist = getAzentioCredentialsList();
-
 		SupplementaryBudgetList = getSupplementaryBudgetList();
-
 		BudgetTransferList=getBudgetTransferData();
 		reviewerCommentsList=getApproverCommentsData();
+		
 		VendorPurchaseOrderList = getVendorPurchaseOrderData();
 		InventoryMaintenanceList = getInventoryMaintenanceListData();
 		InventoryStockReceiptList = getInventoryStockReceiptListData();
-		
 		InventoryManagementList =getInventoryManagementList();
 		DenominationMasterList = getDenominationMasterList();
 		PurchaseRequisitionConfirmationList = getPurchaseRequisitionConfirmationList();
 		VendorContractsList = getVendorContractList();
 		InvoiceBookingList = getInvoiceBookingList();
+		
 		FixedAssetList= getFixedAssetList();
 		AssetCategoryList = getAssetCategoryListData();
 		AssetDeallocationList = getAssetDeallocationListData();
-		
 		AssetCreationList = getAssetCreationListData();
+		 AssetSaleList = getAssetSaleList();
+		 AssetUndertakingList = getAssetUndertakingList();
+		 AssetImpairementList = getAssetImpairementList();
+		 AssetRevaluationList = getAssetRevaluationList();
+		 AssetCreationCommonList = getAssetCreationCommonList();
+		 BusinessPartnerList = getBusinessPartnerList();
+		
 	}
 
 
 
-private List<BUDGET_RequestAndAllocationTestDataType> getAllocationList() {
+	private List<BUDGET_RequestAndAllocationTestDataType> getAllocationList() {
 		 Gson gson = new Gson();
 		 JsonReader reader = new JsonReader(new StringReader(AllocationFilePath));
 		 reader.setLenient(true);
@@ -583,6 +611,132 @@ private List<FixedAsset_AssetCreationTestDataType> getAssetCreationListData() {
 	
 }
 
+		private List<FIXEDASSETS_AssetSaleTestDataType> getAssetSaleList() {
+			Gson gson = new Gson();
+			JsonReader reader = new JsonReader(new StringReader(AssetSalePath));
+			reader.setLenient(true);
+			BufferedReader bufferReader = null;
+			try {
+				bufferReader = new BufferedReader(new FileReader(AssetSalePath));
+				FIXEDASSETS_AssetSaleTestDataType[] login = gson.fromJson(bufferReader,
+						FIXEDASSETS_AssetSaleTestDataType[].class);
+				return Arrays.asList(login);
+			} catch (FileNotFoundException e) {
+				throw new RuntimeException("Json file not found at path : " + AssetSalePath);
+			} finally {
+				try {
+					if (bufferReader != null)
+						bufferReader.close();
+				} catch (IOException ignore) {
+				}
+			}
+		}
+		
+		private List<BUSINESS_PARTNER_SETUP_BusinessPartnerTestDataType> getBusinessPartnerList() {
+			Gson gson = new Gson();
+			JsonReader reader = new JsonReader(new StringReader(BusinessPartnerPath));
+			reader.setLenient(true);
+			BufferedReader bufferReader = null;
+			try {
+				bufferReader = new BufferedReader(new FileReader (BusinessPartnerPath));
+				BUSINESS_PARTNER_SETUP_BusinessPartnerTestDataType[] login = gson.fromJson(bufferReader,
+						BUSINESS_PARTNER_SETUP_BusinessPartnerTestDataType[].class);
+				return Arrays.asList(login);
+			} catch (FileNotFoundException e) {
+				throw new RuntimeException("Json file not found at path : " + BusinessPartnerPath);
+			} finally {
+				try {
+					if (bufferReader != null)
+						bufferReader.close();
+				} catch (IOException ignore) {
+				}
+			}
+		}
+		
+		private List<FIXEDASSETS_AssetUndertakingTestDataType> getAssetUndertakingList() {
+			Gson gson = new Gson();
+			JsonReader reader = new JsonReader(new StringReader(AssetUndertakingPath));
+			reader.setLenient(true);
+			BufferedReader bufferReader = null;
+			try {
+				bufferReader = new BufferedReader(new FileReader (AssetUndertakingPath));
+				FIXEDASSETS_AssetUndertakingTestDataType[] login = gson.fromJson(bufferReader,
+						FIXEDASSETS_AssetUndertakingTestDataType[].class);
+				return Arrays.asList(login);
+			} catch (FileNotFoundException e) {
+				throw new RuntimeException("Json file not found at path : " + AssetUndertakingPath);
+			} finally {
+				try {
+					if (bufferReader != null)
+						bufferReader.close();
+				} catch (IOException ignore) {
+				}
+			}
+		}
+		
+		private List<FIXEDASSETS_AssetImpairementTestDataType> getAssetImpairementList() {
+			Gson gson = new Gson();
+			JsonReader reader = new JsonReader(new StringReader(AssetImpairementPath));
+			reader.setLenient(true);
+			BufferedReader bufferReader = null;
+			try {
+				bufferReader = new BufferedReader(new FileReader (AssetImpairementPath));
+				FIXEDASSETS_AssetImpairementTestDataType[] login = gson.fromJson(bufferReader,
+						FIXEDASSETS_AssetImpairementTestDataType[].class);
+				return Arrays.asList(login);
+			} catch (FileNotFoundException e) {
+				throw new RuntimeException("Json file not found at path : " + AssetImpairementPath);
+			} finally {
+				try {
+					if (bufferReader != null)
+						bufferReader.close();
+				} catch (IOException ignore) {
+				}
+			}
+		}
+		
+		private List<FIXEDASSETS_AssetRevaluationTestDataType> getAssetRevaluationList() {
+			Gson gson = new Gson();
+			JsonReader reader = new JsonReader(new StringReader(AssetRevaluationPath));
+			reader.setLenient(true);
+			BufferedReader bufferReader = null;
+			try {
+				bufferReader = new BufferedReader(new FileReader (AssetRevaluationPath));
+				FIXEDASSETS_AssetRevaluationTestDataType[] login = gson.fromJson(bufferReader,
+						FIXEDASSETS_AssetRevaluationTestDataType[].class);
+				return Arrays.asList(login);
+			} catch (FileNotFoundException e) {
+				throw new RuntimeException("Json file not found at path : " + AssetRevaluationPath);
+			} finally {
+				try {
+					if (bufferReader != null)
+						bufferReader.close();
+				} catch (IOException ignore) {
+				}
+			}
+		}
+		
+		private List<Reports_AssetCreationCommonTestDataType> getAssetCreationCommonList() {
+			Gson gson = new Gson();
+			JsonReader reader = new JsonReader(new StringReader(AssetCreationCommonPath));
+			reader.setLenient(true);
+			BufferedReader bufferReader = null;
+			try {
+				bufferReader = new BufferedReader(new FileReader (AssetCreationCommonPath));
+				Reports_AssetCreationCommonTestDataType[] login = gson.fromJson(bufferReader,
+						Reports_AssetCreationCommonTestDataType[].class);
+				return Arrays.asList(login);
+			} catch (FileNotFoundException e) {
+				throw new RuntimeException("Json file not found at path : " + AssetCreationCommonPath);
+			} finally {
+				try {
+					if (bufferReader != null)
+						bufferReader.close();
+				} catch (IOException ignore) {
+				}
+			}
+		}
+
 public final FixedAssetTestDataType getFixedAssetByName(String UserName){
 	 return FixedAssetList.stream().filter(x->x.User.equalsIgnoreCase(UserName)).findAny().get();
 }		
@@ -684,5 +838,29 @@ public final FixedAssetTestDataType getFixedAssetByName(String UserName){
 	//FixedAsset_AssetCreation	
 	public final FixedAsset_AssetCreationTestDataType getAssetCreationByName(String UserName){
 	return AssetCreationList.stream().filter(x->x.User.equalsIgnoreCase(UserName)).findAny().get();
+	}
+	
+	public final FIXEDASSETS_AssetSaleTestDataType getAssetSaledata(String UserName) {
+		return AssetSaleList.stream().filter(x -> x.User.equalsIgnoreCase(UserName)).findAny().get();
+	}
+	
+	public final FIXEDASSETS_AssetUndertakingTestDataType getAssetUndertakingdata(String UserName) {
+		return AssetUndertakingList.stream().filter(x -> x.User.equalsIgnoreCase(UserName)).findAny().get();
+	}
+	
+	public final FIXEDASSETS_AssetImpairementTestDataType getAssetImpairementdata(String UserName) {
+		return AssetImpairementList.stream().filter(x -> x.User.equalsIgnoreCase(UserName)).findAny().get();
+	}
+	
+	public final FIXEDASSETS_AssetRevaluationTestDataType getAssetRevaluationdata(String UserName) {
+		return AssetRevaluationList.stream().filter(x -> x.User.equalsIgnoreCase(UserName)).findAny().get();
+	}
+	
+	public final Reports_AssetCreationCommonTestDataType getAssetCreationCommondata(String UserName) {
+		return AssetCreationCommonList.stream().filter(x -> x.User.equalsIgnoreCase(UserName)).findAny().get();
+	}
+	
+	public final BUSINESS_PARTNER_SETUP_BusinessPartnerTestDataType getBusinessPartnerdata(String UserName) {
+		return BusinessPartnerList.stream().filter(x -> x.User.equalsIgnoreCase(UserName)).findAny().get();
 	}
 }

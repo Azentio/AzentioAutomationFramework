@@ -135,7 +135,32 @@ public class KUBS_Login {
 			login.Login_signIn().click();
 			waithelper.waitForElement(driver, 2000, login.Login_loginStatus());
 			Assert.assertTrue(login.Login_loginStatus().isDisplayed());
-	}else
+	
+		}else if (id.equals("1002439")) {
+			login.Login_userName().sendKeys(logindata.UserName6);
+			login.Login_goButton().click();
+			waithelper.waitForElement(driver, 2000, login.Login_passWord());
+			login.Login_passWord().sendKeys(logindata.PassWord6);
+			String otp = login.Login_getOtp().getText();
+			driver.findElement(By.xpath("//ng-otp-input/div/input[1]")).sendKeys(otp.substring(7));
+			waithelper.waitForElement(driver, 2000, login.Login_signIn());
+			login.Login_signIn().click();
+			waithelper.waitForElement(driver, 2000, login.Login_loginStatus());
+			Assert.assertTrue(login.Login_loginStatus().isDisplayed());
+		}
+		else if (id.equals("le4checker")) {
+			login.Login_userName().sendKeys(logindata.UserName7);
+			login.Login_goButton().click();
+			waithelper.waitForElement(driver, 2000, login.Login_passWord());
+			login.Login_passWord().sendKeys(logindata.PassWord7);
+			String otp = login.Login_getOtp().getText();
+			driver.findElement(By.xpath("//ng-otp-input/div/input[1]")).sendKeys(otp.substring(7));
+			waithelper.waitForElement(driver, 2000, login.Login_signIn());
+			login.Login_signIn().click();
+			waithelper.waitForElement(driver, 2000, login.Login_loginStatus());
+			Assert.assertTrue(login.Login_loginStatus().isDisplayed());
+		}
+		else
 		{
 			System.out.println("User name not matching with json");
 		}

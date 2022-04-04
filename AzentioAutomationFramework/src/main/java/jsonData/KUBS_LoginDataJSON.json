@@ -18,13 +18,21 @@
 "PassWord4":"admin",
 
 "UserName5":"in00027",
-"PassWord5":"admin"
+"PassWord5":"admin",
+
+"UserName6":"1002439",
+"PassWord6":"Admin@1",
+
+"UserName7":"le4checker",
+"PassWord7":"Admin@1"
 
 },
 {
 "UserType":"Checker",
 "UserName":"1002437",
-"PassWord":"Admin@1"
+"PassWord":"Admin@1",
+"UserName1":"in00100",
+"PassWord1":"admin"
 }
 
 ]

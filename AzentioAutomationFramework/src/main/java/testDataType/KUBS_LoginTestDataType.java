@@ -15,6 +15,10 @@ public class KUBS_LoginTestDataType {
 	public String PassWord4;
 	public String UserName5;
 	public String PassWord5;
+	public String UserName6;
+	public String PassWord6;
+	public String UserName7;
+	public String PassWord7;
 	public String UATPassword;
 	public String UserType;
 	

@@ -563,6 +563,14 @@ public class ACCOUNTSPAYABLE_VendorContractsObj {
 		return accountPayable_VendorContracts_Logout;
 	}
 	
+	// vendor contract details
+	@FindBy(xpath = "//datatable-row-wrapper[1]/datatable-body-row/div[2]/datatable-body-cell[4]/div/span")
+	private WebElement accountPayable_VendorContracts_VendorContractDetails;
+
+	public WebElement accountPayable_VendorContracts_VendorContractDetails() {
+		return accountPayable_VendorContracts_VendorContractDetails;
+	}
+	
 	
 	
 	

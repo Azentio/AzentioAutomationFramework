@@ -1,0 +1,14 @@
+[
+	{
+		"User" : "Maker",
+		"AssetReferenceNumber" : "MACHINARY-AIRCONDITIONER-Panasonic AC_BR0003_3",
+		"ItemNumber" : "7543",
+		"SaleValue" : "15000.00",
+		"SaleValueInLoss" : "30000.00",
+		"Currency" : "INR",
+		"ActionableBy" : "anant",
+		"Remark" : "ok",
+		"RemarkByMaker" : "submit by maker",
+		"CheckerRemark" : "approved by checker"
+	}
+]

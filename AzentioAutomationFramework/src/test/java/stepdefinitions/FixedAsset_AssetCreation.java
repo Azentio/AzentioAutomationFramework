@@ -109,6 +109,12 @@ public class FixedAsset_AssetCreation extends BaseClass {
 			clickAndActionHelper.doubleClick(FinalDay);
 			
 	    }
+	    
+	    @Then("^click on report icon$")
+	    public void click_on_report_icon() {
+	    	javascripthelper.JavaScriptHelper(driver);
+	    	javascripthelper.scrollIntoViewAndClick(fixedAsset_AssetCreationObj.fixedAssets_AssetCreation_ReportIcon());
+	    }
 
 	
 	    
