@@ -83,6 +83,7 @@ public class BUDGETT_TRANSFER_BudgetTransferReport extends BaseClass {
 	}
 	@Then("^click on second Segment button$")
 	public void click_on_second_segment_button() throws Throwable {
+		Thread.sleep(2000);
 		kubsMakerObj.kubsDirectionIcon().click();
 	}
 	@And("^click on date icon$")

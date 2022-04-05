@@ -20,18 +20,25 @@ public class KUBS_MakerObj {
 	public WebElement kubsFinaceOption() {
 		return maker_finance_option;
 	}
-	@FindBy(xpath="//ion-item[1]/ion-radio")
+    @FindBy(xpath="//ion-item[2]/ion-radio")
+    private WebElement finance_option;
+    public WebElement FinanceOption() {
+		return finance_option;
+
+    }
+    @FindBy(xpath="//ion-item[1]/ion-radio")
     private WebElement configuration_Menu;
     public WebElement configurationMenu()
     {
     	return configuration_Menu;
     }
-    @FindBy(xpath="//ion-item[2]/ion-radio")
-    private WebElement finance_option;
-    public WebElement FinanceOption() {
-		return finance_option;
-    	
+    @FindBy(xpath="//ion-label[contains(text(),'Entity maintenance')]")
+    private WebElement config_EntityMaintenence;
+    public WebElement configEntityMaintenece()
+    {
+    	return config_EntityMaintenence;
     }
+   
 	@FindBy(xpath = "//ion-segment/ion-segment-button[1]")
 	private WebElement maker_tool_icon;
 
@@ -186,7 +193,7 @@ public class KUBS_MakerObj {
 		return maker_dir_bank_recon;
 
 	}
-	
+
 	// Click on Supplymentary budget eye icon
 		@FindBy(xpath = "//ion-label[contains(text(),' Supplementary budget ')]/../ion-buttons/ion-button[2]/ion-icon[@name='eye']")
 		private WebElement budget_SupplementaryBudget_SupplementaryBudgetEyeIcon;
@@ -201,6 +208,34 @@ public class KUBS_MakerObj {
 		public WebElement budget_SupplementaryBudget_SupplementaryBudgetAddButton() {
 			return budget_SupplementaryBudget_SupplementaryBudgetAddButton;
 		}
-
+		@FindBy(xpath="//ion-button[@ng-reflect-router-link='/tabs/list/datagrid-view/208']")
+		private WebElement arap_Expence_configuration;
+		public WebElement arapExpenceConfiguration()
+		{
+			return arap_Expence_configuration;
+		}
+		@FindBy(xpath="//span[contains(text(),'AZENTMAIN')]/ancestor::datatable-body-cell[1]/preceding-sibling::datatable-body-cell[2]//ion-button[2]")
+        private WebElement arapConfig_BranchRecord;
+		public WebElement arapConfigBranchRecord() {
+			return arapConfig_BranchRecord;
+		}
+		@FindBy(xpath="//ion-row[1]/ion-col[6]//ng-select[1]/div[1]/div[1]/div[2]/span[2]")
+		private WebElement arapConfig_CreateFileBasis;
+		public WebElement arapCreateFileBasis()
+		{
+			return arapConfig_CreateFileBasis;
+		}
+		@FindBy(xpath="//ion-row[1]/ion-col[6]//input")
+		private WebElement arapConfig_CreateFileBasisInputBox;
+		public WebElement arapConfigCreateFileBasisInputBox()
+		{
+			return arapConfig_CreateFileBasisInputBox;
+		}
+		@FindBy(xpath="//page-payment-file-configuration-update//ion-toolbar//ion-buttons[2]//ion-button")
+		private WebElement arapConfig_PaymentFileConfigSaveButton;
+		public WebElement arapConfigPaymentFileConfigSaveButton()
+		{
+			return arapConfig_PaymentFileConfigSaveButton;
+		}
 
 }

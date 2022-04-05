@@ -20,7 +20,7 @@ And click the Gl balance report edit icon
 And select the branch 
 And select the Gl code
 And Select the Gl from date
-And Select the Gl To date
+#And Select the Gl To date
 And select the currency type in gl balance report
 And click the View button
 Then verify that available balance should equal to closing net balance in Gl balance Report

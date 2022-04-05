@@ -126,14 +126,13 @@ public class GL_Module1 extends BaseClass{
     	enquiryObj.calenderInContractReport().click();
     	seleniumactions.getWaitHelper().waitForElement(driver,2000,driver.findElement(By.xpath("(//span[@class='owl-dt-control-content owl-dt-control-button-content'])[2]")) );
     	driver.findElement(By.xpath("(//span[@class='owl-dt-control-content owl-dt-control-button-content'])[2]"))
-		.click();
-    	
+		.click();  	
 seleniumactions.getWaitHelper().waitForElement(driver,2000 , driver.findElement(By.xpath("//span[text()='" + glModuleData.GlYear  + "']")));
 driver.findElement(By.xpath("//span[text()='" + glModuleData.GlYear  + "']")).click();
 driver.findElement(By.xpath("//span[text()='" + glModuleData.GlToMonth + "']")).click();
 seleniumactions.getWaitHelper().waitForElement(driver, 2000,
-		driver.findElement(By.xpath("(//span[text()='" + glModuleData.GlToDate + "'])[1]")));
-driver.findElement(By.xpath("(//span[text()='" + glModuleData.GlToDate + "'])[1]")).click();
+		driver.findElement(By.xpath("//tbody/tr[5]/td[@aria-label='"+glModuleData.GlFullMonth+" "+glModuleData.GlDay+", "+glModuleData.GlYear+"']")));
+driver.findElement(By.xpath("//tbody/tr[5]/td[@aria-label='"+glModuleData.GlFullMonth+" "+glModuleData.GlDay+", "+glModuleData.GlYear+"']")).click();
     }
 
     @And("^Select bank in manual payout$")
@@ -193,7 +192,6 @@ driver.findElement(By.xpath("(//span[text()='" + glModuleData.GlToDate + "'])[1]
         glReportsObj.glBalanceReportSelectGlcode().sendKeys(Keys.ENTER);
         
     }
-
     @And("^Select the Gl from date$")
     public void select_the_gl_from_date() throws Throwable {
     	enquiryObj.calenderInContractReport().click();
@@ -204,10 +202,12 @@ driver.findElement(By.xpath("(//span[text()='" + glModuleData.GlToDate + "'])[1]
 seleniumactions.getWaitHelper().waitForElement(driver,2000 , driver.findElement(By.xpath("//span[text()='" + glModuleData.GlYear  + "']")));
 driver.findElement(By.xpath("//span[text()='" + glModuleData.GlYear  + "']")).click();
 driver.findElement(By.xpath("//span[text()='" + glModuleData.GlMonth + "']")).click();
+//tbody/tr[5]/td[@aria-label='April 30, 2022']
 seleniumactions.getWaitHelper().waitForElement(driver, 2000,
-		driver.findElement(By.xpath("(//span[text()='" + glModuleData.GlDay + "'])[1]")));
-driver.findElement(By.xpath("(//span[text()='" + glModuleData.GlDay + "'])[1]")).click();
+		driver.findElement(By.xpath("//tbody/tr[5]/td[@aria-label='"+glModuleData.GlFullMonth+" "+glModuleData.GlDay+", "+glModuleData.GlYear+"']")));
+driver.findElement(By.xpath("//tbody/tr[5]/td[@aria-label='"+glModuleData.GlFullMonth+" "+glModuleData.GlDay+", "+glModuleData.GlYear+"']")).click();
     }
+    
 
     @And("^Select the Gl To date$")
     public void select_the_gl_to_date() throws Throwable {

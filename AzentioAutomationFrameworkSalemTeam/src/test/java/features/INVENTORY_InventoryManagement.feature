@@ -36,19 +36,19 @@ Then clime the Record
 And click on Notification icon in checker stage
 Then approve the Record
 And validate the approval status in checker stage
-@gl
-Scenario: To verify user can see the GL report for stock return to vendors
-Given navigate to kubs URL and login as maker
-Then click on report segment button
-And click on equiry menu
-Then click on edit icon near by fiancial transaction menu
-And choose branch code
+#@gl
+#Scenario: To verify user can see the GL report for stock return to vendors
+#Given navigate to kubs URL and login as maker
+#Then click on report segment button
+#And click on equiry menu
+#Then click on edit icon near by fiancial transaction menu
+#And choose branch code
 #And choose Gl code
-And click on transaction from date calender icon 
-Then choose the from date
-And click on the transaction to date calender icon
-Then choose the to date
-And click on view button
+#And click on transaction from date calender icon 
+#Then choose the from date
+#And click on the transaction to date calender icon
+#Then choose the to date
+#And click on view button
 
 
 

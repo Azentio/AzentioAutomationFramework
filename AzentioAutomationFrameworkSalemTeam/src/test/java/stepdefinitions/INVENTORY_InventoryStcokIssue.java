@@ -84,6 +84,7 @@ public class INVENTORY_InventoryStcokIssue extends BaseClass {
     @When("^user see the inventory request reference number , The inventory was successfully requested$")
     public void user_see_the_inventory_request_reference_number_the_inventory_was_successfully_requested() throws Throwable {
     	String inventoryReqReferenceNumber=(String) javascriptHelper.executeScript("return document.getElementsByClassName('native-input sc-ion-input-md')[3].value");
+    	jsonData.addInventoryRequestReferenceNumber(inventoryReqReferenceNumber);
     	Assert.assertFalse(inventoryReqReferenceNumber.isBlank());
     }
 
@@ -109,8 +110,9 @@ public class INVENTORY_InventoryStcokIssue extends BaseClass {
 		waitHelper.waitForElement(driver, 3000, inventoryStockIssue.inventoryInventoryItem());
 		//waitHelper.waitForElement(driver, 3000, inventoryStockIssue.inventoryInventoryItem());
 		inventoryStockIssue.inventoryInventoryItem().click();
+		String[] inventoryItem=jsonData.readInventoryItem().split("-");
+		inventoryStockIssue.inventoryInventoryItem().sendKeys(inventoryItem[1].trim());
 		
-		inventoryStockIssue.inventoryInventoryItem().sendKeys(inventoryStockIssueTestData.inventoryItem);
 		inventoryStockIssue.inventoryInventoryItem().sendKeys(Keys.ENTER);
 	}
 
@@ -130,7 +132,8 @@ public class INVENTORY_InventoryStcokIssue extends BaseClass {
 	public void enter_inventory_reference_number() throws Throwable {
 		waitHelper.waitForElement(driver, 3000, inventoryStockIssue.requestReferenceNumber());
 		inventoryStockIssue.requestReferenceNumber().click();
-		inventoryStockIssue.requestReferenceNumber().sendKeys(inventoryStockIssueTestData.inventoryRequestReferenceNumber);
+		
+		inventoryStockIssue.requestReferenceNumber().sendKeys(jsonData.readInventoryRequestReferenceNumber());
 		inventoryStockIssue.requestReferenceNumber().sendKeys(Keys.ENTER);
 	}
 	@Then("^Click on Save button$")

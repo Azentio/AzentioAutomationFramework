@@ -309,8 +309,10 @@ public class BUDGET_UAT_BudgetDefinition extends BaseClass {
 	@And("^click on Submit button$")
 	public void click_on_submit_button() throws Throwable {
 		// After select the record we have to submit the record for approval
+		javascriptHelper.JavaScriptHelper(driver);
 		waitHelper.waitForElement(driver, 3000, budgetCreationObj.budgetCreation_SubmitButton());
-		budgetCreationObj.budgetCreation_SubmitButton().click();
+		//budgetCreationObj.budgetCreation_SubmitButton().click();
+		javascriptHelper.JSEClick(budgetCreationObj.budgetCreation_SubmitButton());
 
 	}
 

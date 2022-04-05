@@ -82,7 +82,7 @@ public class INVENTORY_EnquiryGl1 extends BaseClass {
 
 	@Then("^choose the from date$")
 	public void choose_the_from_date() throws Throwable {
-		
+		//driver.findElement(By.xpath("//span[contains(text(),'"+inventoryEnquiryGlTestData.GlMonth+" "+inventoryEnquiryGlTestData.GlYear+"')]"));
 		javascriptHelper.JavaScriptHelper(driver);
 		while(true)
         {
@@ -90,7 +90,7 @@ public class INVENTORY_EnquiryGl1 extends BaseClass {
 		{
 		
 			waitHelper.waitForElement(driver, 3000, driver.findElement(By.xpath("//span[contains(text(),'"+inventoryEnquiryGlTestData.GlMonth+" "+inventoryEnquiryGlTestData.GlYear+"')]")));
-			WebElement monthAndYear=driver.findElement(By.xpath("//span[contains(text(),'"+inventoryEnquiryGlTestData.GlMonth+" "+inventoryEnquiryGlTestData.GlYear+"')]"));
+			driver.findElement(By.xpath("//span[contains(text(),'"+inventoryEnquiryGlTestData.GlMonth+" "+inventoryEnquiryGlTestData.GlYear+"')]"));
 		    break;
 		}
 		
@@ -120,7 +120,7 @@ public class INVENTORY_EnquiryGl1 extends BaseClass {
 		{
 		
 			waitHelper.waitForElement(driver, 3000, driver.findElement(By.xpath("//span[contains(text(),'"+inventoryEnquiryGlTestData.GlToMonth+" "+inventoryEnquiryGlTestData.GlYear+"')]")));
-			WebElement monthAndYear=driver.findElement(By.xpath("//span[contains(text(),'"+inventoryEnquiryGlTestData.GlToMonth+" "+inventoryEnquiryGlTestData.GlYear+"')]"));
+			driver.findElement(By.xpath("//span[contains(text(),'"+inventoryEnquiryGlTestData.GlToMonth+" "+inventoryEnquiryGlTestData.GlYear+"')]"));
 		    break;
 		}
 		

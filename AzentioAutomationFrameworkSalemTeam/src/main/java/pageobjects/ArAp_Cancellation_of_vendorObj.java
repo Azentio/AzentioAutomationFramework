@@ -50,6 +50,11 @@ public class ArAp_Cancellation_of_vendorObj {
 	private WebElement postatus;
 	@FindBy(xpath="//datatable-header[1]/div[1]/div[2]/datatable-header-cell[14]/div[1]/ion-input[1]/input[1]")
 	private WebElement searchVendorPoStatus;
+	@FindBy(xpath="//ion-col[5]/app-kub-lov[1]/span[1]/ng-select[1]/div[1]/div[1]/div[2]/input[1]")
+	private WebElement selectContractName;
+	public WebElement selectContractName() {
+		return selectContractName;
+	}
 	public WebElement getSearchVendorPoStatus() {
 		return searchVendorPoStatus;
 	}

@@ -3,12 +3,12 @@
 	"userType":"Maker",
 	"branchCode":"AZENTMAIN",
 	"gLCode":"IFRS-AS-AS1000017",
-	"GlMonth":"Mar",
-	"GlFullMonth":"March",
+	"GlMonth":"Apr",
+	"GlFullMonth":"April",
 	"GlYear":"2022",
-	"GlDay":"9",
-	"GlToMonth":"Oct",
-	"GlFullToMonth":"October",
-	"GlToDate":"23"
+	"GlDay":"1",
+	"GlToMonth":"Dec",
+	"GlFullToMonth":"December",
+	"GlToDate":"17"
 	}
 ]

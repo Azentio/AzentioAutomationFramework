@@ -1,0 +1,85 @@
+[
+	{
+		"User"					: "ARAP",
+		"BusinesPartner"		: "Bonton Agency",
+		"GRNStatus"				: "ACTIVE",
+		"GRNStatus1"      		: "CANCELLED",
+		"InvoiceType"			: "Invoice Against PO",
+		"InvoicesubType"		: "Regular Expense",
+		"CostCenter"			: "FINANCE",
+		"SupplyRefNo"			: "SRN00077",
+		"Discount"				: "500000",
+		"ModeofPayment"			: "Cheque",
+		"Remark"				: "Approved",
+		"GRN" 					: "GRN-null-111-2622022",
+		"InvoiceNo"				: "INV-130-22022",
+		"AdjustmentType"		: "Goods Received Notes",
+		"CancelAmount"			: "5000",
+		
+		// GL DATA
+		"branchCode"			: "AZENTMAIN",
+		"gLCode"				: "IFRS-LIAB-LI3000003 - Accounts Payable",
+		"GlMonth"				: "Dec",
+		"GlFullMonth"			: "December",
+		"GlYear"				: "2022",
+		"GlDay"					: "17",
+		"GlToMonth"				: "Dec",
+		"GlFullToMonth"			: "December",
+		"GlToDate"				: "11",
+		"Month"					: "Jan",
+		"FullMonth"				: "January",
+		"Year"					: "2022",
+		"Day"					: "1",
+		
+		// ADJUSTMENTS
+		"PaymentOption"			: "Business Partner wise",
+		"Partner"				: "Bonton Agency",
+		"DebitType"				: "AR Debit Note",
+		"AdvanceType"			: "AR Advances",
+		
+		// ADVANCES
+		"RecivableName"			: "Advance Against PO",
+		"RecivableName1"		: "Advance To Employee",
+		"Partner1"				: "TRM agency",
+		"Description" 			: "Advance",
+		"PONumber" 				: "3-Agency-15-PO-2",
+		"Amount"				: "10000",
+		
+		// RECEIPT
+		"BankAcc" 				: "ICICIBANK-JAIPUR BRANCH-ICICI883298348348394-INR",
+		"Receiptpayer"			: "SRK",
+		"ReceiptRefNo"     	 	: "RRN2802202214",
+		"ReceiptType"			: "Cheque",
+		"ReceiptType1"			: "Wire",
+		
+		
+		// ACCOUNTS PAYABLE AND PAYMENT SETTLEMENT
+		"ContractType"			:"Purchases Contract",
+		"BusinessPartnerName"	:"Bonton Agency",
+		"HSNCode"				:"999459- Cleaning Ser",
+		"PaymentAmmount"		:"50000",
+		"CreditPeriod"			:"2",
+		"VendorContractQuantity":"100",
+		"ContractName"			:"Purchace Contract73",
+		"PaymentTerm"			:"Advance",
+		"PaymentTermPercentage"	:"3",
+		"RatePerUnit"			:"100",
+		"PaymentMode"			:"Pay Order",
+		"GRNItemDetails"		:"2",
+		"FlatDiscount"			:"0",
+		"SuplierReferenceNumber":"SUP-100512",
+		"PanNo"					:"PAN-160-2022-03-16",
+		"PanNo1"				:"PAN-162-2022-03-16",
+		"AdvNo"					:"ADV_59_2422022",
+		"TxnNo"				    :"CAN-22-2022-03-16",
+		
+		// INVOICE BILL
+		"InvoiceNoBill"			: "INV-235-32022",
+		"InvoiceNoAuto"			: "INV-240-32022",
+		"InvoiceTax"			: "INV-248-32022",
+		"InvoiceRec"			: "INV-249-32022",
+		"InvoiceImburse"		: "INV-254-32022",
+		"PanNoReport"			: "PAN-118-2022-03-09"
+		
+	}
+]

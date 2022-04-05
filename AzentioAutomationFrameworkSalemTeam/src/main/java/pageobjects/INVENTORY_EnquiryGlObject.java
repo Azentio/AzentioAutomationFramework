@@ -73,6 +73,12 @@ public class INVENTORY_EnquiryGlObject {
 	{
 		return inventory_view;
 	}
+	@FindBy(xpath="//ion-col[6]//input")
+	private WebElement gl_TransactionReferenceNumber;
+	public WebElement glTransactionReferenceNumber()
+	{
+		return gl_TransactionReferenceNumber;
+	}
 	@FindBy(xpath="(//i[@class='datatable-icon-right'])[2]")
 	private WebElement gl_nextRecord;
 	public WebElement nextRecord()

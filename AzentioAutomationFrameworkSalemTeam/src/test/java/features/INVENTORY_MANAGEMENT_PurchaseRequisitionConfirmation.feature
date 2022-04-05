@@ -8,12 +8,10 @@ Feature: INVENTORY MANAGEMENT
     When click on eye button of purchase requisition confirmation
     And click on add button  of purchase requisition confirmation
     And Fill the required fields to purchase req
-    Then Save and submit the purchase req confirmation
-    
+    Then Save and submit the purchase req confirmation   
     And User should go to the kubs url and login as a reviewer user
     Then Click on notification button in reviewer
-  	And approve the record by reviewer user
-  	
+  	And approve the record by reviewer user  	
     Given User should go to the kubs url and login as a checker user
    	And Click on security management in checker
    	Then Click on open pool in checker
@@ -21,7 +19,6 @@ Feature: INVENTORY MANAGEMENT
    	And capture claimed status
    	Then click on notification in checker
     Then checker should approved the contract record
-
     Given User should go to the kubs url and login as a maker user
     And user should navigate to inventory management
     When click on eye button of purchase requisition confirmation
