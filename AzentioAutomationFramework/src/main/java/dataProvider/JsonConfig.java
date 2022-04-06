@@ -194,12 +194,13 @@ private final String BudtypeFilepath = configFileReader.getJsonPath() + "BUDGET_
 		PurchaseRequisitionConfirmationList = getPurchaseRequisitionConfirmationList();
 		VendorContractsList = getVendorContractList();
 		InvoiceBookingList = getInvoiceBookingList();
-		
+		inventoryStockIssueTestData=getInventoryStockIssueTestData();
 		FixedAssetList= getFixedAssetList();
 		AssetCategoryList = getAssetCategoryListData();
 		AssetDeallocationList = getAssetDeallocationListData();
 		AssetCreationList = getAssetCreationListData();
 		 AssetSaleList = getAssetSaleList();
+		 inventoryGlReportTestData=getGlAccountingTestData();
 		 AssetUndertakingList = getAssetUndertakingList();
 		 AssetImpairementList = getAssetImpairementList();
 		 AssetRevaluationList = getAssetRevaluationList();
@@ -208,7 +209,25 @@ private final String BudtypeFilepath = configFileReader.getJsonPath() + "BUDGET_
 		
 	}
 
-
+	private List<INVENTORY_EnquiryGlTestData> getGlAccountingTestData() {
+		 Gson gson = new Gson();
+		 JsonReader reader = new JsonReader(new StringReader(InventoryGlFilePath));
+		 reader.setLenient(true);
+		BufferedReader bufferReader = null;
+		try {
+			bufferReader = new BufferedReader(new FileReader(InventoryGlFilePath));
+			INVENTORY_EnquiryGlTestData[] glAccountingTestData = gson.fromJson(bufferReader, INVENTORY_EnquiryGlTestData[].class);
+			return Arrays.asList(glAccountingTestData);
+		} catch (FileNotFoundException e) {
+			throw new RuntimeException("Json file not found at path : " + InventoryGlFilePath);
+		} finally {
+			try {
+				if (bufferReader != null)
+					bufferReader.close();
+			} catch (IOException ignore) {
+			}
+		}
+	}
 
 	private List<BUDGET_RequestAndAllocationTestDataType> getAllocationList() {
 		 Gson gson = new Gson();

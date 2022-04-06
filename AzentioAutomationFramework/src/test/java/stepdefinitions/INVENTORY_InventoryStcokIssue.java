@@ -109,8 +109,8 @@ public class INVENTORY_InventoryStcokIssue extends BaseClass {
 		waitHelper.waitForElement(driver, 3000, inventoryStockIssue.inventoryInventoryItem());
 		//waitHelper.waitForElement(driver, 3000, inventoryStockIssue.inventoryInventoryItem());
 		inventoryStockIssue.inventoryInventoryItem().click();
-		
-		inventoryStockIssue.inventoryInventoryItem().sendKeys(inventoryStockIssueTestData.inventoryItem);
+		String[] inventoryItem= jsonData.readInventoryItem().split("-");
+		inventoryStockIssue.inventoryInventoryItem().sendKeys(inventoryItem[1].trim());
 		inventoryStockIssue.inventoryInventoryItem().sendKeys(Keys.ENTER);
 	}
 
@@ -119,7 +119,7 @@ public class INVENTORY_InventoryStcokIssue extends BaseClass {
 	public void enter_inventory_branch() throws Throwable {
 		String requestRefNo=jsonData.readInventoryRequestedBranch();
 		String[] requestReferenceNo=requestRefNo.split("-");
-		inventoryStockIssue.inventoryBranchCode().sendKeys(requestReferenceNo[0]);
+		inventoryStockIssue.inventoryBranchCode().sendKeys(requestReferenceNo[1]);
 		inventoryStockIssue.inventoryBranchCode().sendKeys(Keys.ENTER);
 		
 	}
@@ -157,6 +157,7 @@ public class INVENTORY_InventoryStcokIssue extends BaseClass {
     }
     @Then("^submit the record$")
     public void submit_the_record() throws Throwable {
+    	Thread.sleep(2000);
     	waitHelper.waitForElement(driver, 3000, inventoryStockIssue.inventoryStockIssueSubmitButton());
     	inventoryStockIssue.inventoryStockIssueSubmitButton().click();
     	waitHelper.waitForElement(driver, 3000, inventoryStockIssue.inventoryStockIssueAlertRemarks());
@@ -164,7 +165,13 @@ public class INVENTORY_InventoryStcokIssue extends BaseClass {
     	inventoryStockIssue.inventoryStockIssueAlertSubmitButton().click();
         
     }
-
+    @Then("^verify the inventory stock issue record is appeared in the temp view$")
+    public void verify_the_inventory_stock_issue_record_is_appeared_in_the_temp_view() throws Throwable {
+    	waitHelper.waitForElementVisible(inventoryStockIssue.inventoryStockIssueApprovedFirstRecord(), 3000, 300);
+    	inventoryStockIssue.inventoryStockIssueApprovedFirstRecord().click();
+    	waitHelper.waitForElementVisible(inventoryStockIssue.inventoryStockIssueReferenceNumber(), 2000, 200);
+    	Assert.assertEquals(inventoryStockIssueTestData.inventoryRequestReferenceNumber, inventoryStockIssue.inventoryStockIssueReferenceNumber().getText());
+    }
     @And("^logout from maker end$")
     public void logout_from_maker_end() throws Throwable {
 		waitHelper.waitForElement(driver, 2000,inventoryStockIssue.inventoryStockIssueReviewerID() );
@@ -185,6 +192,8 @@ public class INVENTORY_InventoryStcokIssue extends BaseClass {
     }
     @And("^login with reviewer id$")
     public void login_with_reviewer_id() throws Throwable {
+    	
+    	Thread.sleep(3000);
     	kubsLogin.logintoAzentioappReviewer("Reviewer", jsonData.readdata());
     }
 
@@ -195,6 +204,7 @@ public class INVENTORY_InventoryStcokIssue extends BaseClass {
     }
     @And("^select our record$")
     public void select_our_record() throws Throwable {
+    	Thread.sleep(3000);
     	String before_xpath = "//span[contains(text(),'";
 		String after_xpath = "')]/ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell//ion-button";
 		waitHelper.waitForElement(driver, 3000,
@@ -228,7 +238,7 @@ public class INVENTORY_InventoryStcokIssue extends BaseClass {
     }
     @Then("^login with checker ID$")
     public void login_with_checker_id() throws Throwable {
-    	Thread.sleep(1000);
+    	Thread.sleep(3000);
         kubsLogin.loginToAzentioAppAsChecker("Checker");
     }
     @And("^click on Security management menu$")
@@ -238,6 +248,7 @@ public class INVENTORY_InventoryStcokIssue extends BaseClass {
     }
     @And("^click on action button near by open pool$")
     public void click_on_action_button_near_by_open_pool() throws Throwable {
+    	Thread.sleep(2000);
     	kubsChecker.checkerActionIcon().click();
     }
     @Then("^clime the Record$")

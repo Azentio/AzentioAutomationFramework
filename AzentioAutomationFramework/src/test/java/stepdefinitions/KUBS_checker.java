@@ -17,8 +17,8 @@ public class KUBS_checker extends BaseClass {
 	WebDriver driver = BaseClass.driver;
 	KUBS_Login login;
 	ConfigFileReader config = new ConfigFileReader();
-	KUBS_CheckerObj kubschecker;
-	WaitHelper waithelper;
+	KUBS_CheckerObj kubschecker= new KUBS_CheckerObj(driver);;
+	WaitHelper waithelper= new WaitHelper(driver);;
 	JsonDataReaderWriter reader = new JsonDataReaderWriter();
 	JavascriptHelper javascript;
 
@@ -32,8 +32,8 @@ public class KUBS_checker extends BaseClass {
 
 	@Then("^Click the Notification icon$")
 	public void click_the_notification_icon() throws Throwable {
-		waithelper = new WaitHelper(driver);
-		kubschecker = new KUBS_CheckerObj(driver);
+		//waithelper = new WaitHelper(driver);
+		//kubschecker = new KUBS_CheckerObj(driver);
 		//waithelper.waitForElement(driver, 3000, kubschecker.checkerNotificationIcon());
 		//kubschecker.checkerNotificationIcon().click();
 
@@ -66,10 +66,11 @@ public class KUBS_checker extends BaseClass {
 	@Then("^click on notification$")
 	public void click_on_notification() throws Throwable {
 		javascript=new JavascriptHelper();
-		
+		javascript.JavaScriptHelper(driver);
+		Thread.sleep(3000);
 		waithelper.waitForElement(driver,3000,kubschecker.checkerNotificationIcon());
-		
-		kubschecker.checkerNotificationIcon().click();
+		javascript.JSEClick(kubschecker.checkerNotificationIcon());
+		//kubschecker.checkerNotificationIcon().click();
 
 	}
 

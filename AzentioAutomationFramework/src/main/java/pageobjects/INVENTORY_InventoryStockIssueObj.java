@@ -117,5 +117,17 @@ public class INVENTORY_InventoryStockIssueObj {
 	{
 		return inventory_stock_issue_reviewer_id;
 	}
+	@FindBy(xpath="//datatable-row-wrapper[1]//datatable-body-cell//ion-button[1]")
+	private WebElement inventoryStockIssue_ApprovedFirstRecord;
+	public WebElement inventoryStockIssueApprovedFirstRecord()
+	{
+		return inventoryStockIssue_ApprovedFirstRecord;
+	}
+	@FindBy(xpath="(//ion-col[5]//ng-select//div//span[2])[1]")
+	private WebElement inventoryStockIssue_ReferenceNumber;
+	public WebElement inventoryStockIssueReferenceNumber()
+	{
+		return inventoryStockIssue_ReferenceNumber;
+	}
 
 }
