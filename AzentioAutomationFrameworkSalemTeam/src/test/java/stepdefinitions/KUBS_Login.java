@@ -1,6 +1,7 @@
 package stepdefinitions;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 
@@ -146,7 +147,18 @@ public class KUBS_Login {
 		makerobj=new KUBS_MakerObj(driver);
 		KUBS_LoginTestDataType logindata = reader.getLoginCredentialsByName(user);
 		login = new KUBS_LoginObj(driver);
+		while(true)
+		{
+			try
+			{
 		login.Login_userName().sendKeys(logindata.UserName);
+		break;
+			}
+			catch(StaleElementReferenceException e)
+			{
+				
+			}
+			}
 		login.Login_goButton().click();
 		waithelper.waitForElement(driver, 2000, login.Login_passWord());
 		login.Login_passWord().sendKeys(logindata.PassWord);

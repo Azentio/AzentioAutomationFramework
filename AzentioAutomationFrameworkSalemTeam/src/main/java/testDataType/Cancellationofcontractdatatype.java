@@ -26,5 +26,6 @@ public class Cancellationofcontractdatatype {
 	public String GlToMonth;
 	public String GlFullToMonth;
 	public String GlToDate;
+	public String GlToYear;
 
 }

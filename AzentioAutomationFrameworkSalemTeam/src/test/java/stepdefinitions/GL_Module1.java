@@ -202,10 +202,9 @@ driver.findElement(By.xpath("//tbody/tr[5]/td[@aria-label='"+glModuleData.GlFull
 seleniumactions.getWaitHelper().waitForElement(driver,2000 , driver.findElement(By.xpath("//span[text()='" + glModuleData.GlYear  + "']")));
 driver.findElement(By.xpath("//span[text()='" + glModuleData.GlYear  + "']")).click();
 driver.findElement(By.xpath("//span[text()='" + glModuleData.GlMonth + "']")).click();
-//tbody/tr[5]/td[@aria-label='April 30, 2022']
 seleniumactions.getWaitHelper().waitForElement(driver, 2000,
-		driver.findElement(By.xpath("//tbody/tr[5]/td[@aria-label='"+glModuleData.GlFullMonth+" "+glModuleData.GlDay+", "+glModuleData.GlYear+"']")));
-driver.findElement(By.xpath("//tbody/tr[5]/td[@aria-label='"+glModuleData.GlFullMonth+" "+glModuleData.GlDay+", "+glModuleData.GlYear+"']")).click();
+		driver.findElement(By.xpath("//td[@aria-label='"+glModuleData.GlFullMonth+" "+glModuleData.GlDay+", "+glModuleData.GlYear+"']")));
+driver.findElement(By.xpath("//td[@aria-label='"+glModuleData.GlFullMonth+" "+glModuleData.GlDay+", "+glModuleData.GlYear+"']")).click();
     }
     
 

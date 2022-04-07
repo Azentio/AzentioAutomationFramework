@@ -74,6 +74,7 @@ public class ACCOUNTSPAYABLE_PaymentSettlement extends BaseClass {
 	public void search_the_cancelled_bill() throws Throwable {
 		invoiceBillBookingObj.accountPayable_InvoiceBooking_ContractStatus().click();
 		invoiceBillBookingObj.accountPayableSearchInvoiceStatus().sendKeys(paymentSettlementTestData.InvoiceStatus);
+		Thread.sleep(3000);
 		String beforXpath = "//span[contains(text(),'";
 		String afterXpath = "')]";
 		javascriptHelper.JavaScriptHelper(driver);
@@ -277,6 +278,7 @@ public class ACCOUNTSPAYABLE_PaymentSettlement extends BaseClass {
 		paymentSettlementObj.accountsPayablePayementSettlementBpNAme().click();
 		paymentSettlementObj.accountsPayablePayementSettlementBpNAme()
 				.sendKeys(accountsReceivableTestData.get("BpName"));
+		paymentSettlementObj.accountsPayablePayementSettlementBpNAme().sendKeys(Keys.DOWN);
 		paymentSettlementObj.accountsPayablePayementSettlementBpNAme().sendKeys(Keys.ENTER);
 		Thread.sleep(1000);
 	}
@@ -374,10 +376,10 @@ public class ACCOUNTSPAYABLE_PaymentSettlement extends BaseClass {
 	@And("^find the invoice reference number for cancelled advance is not availabe at the billing queue$")
 	public void find_the_invoice_reference_number_for_cancelled_advance_is_not_availabe_at_the_billing_queue()
 			throws Throwable {
-		Thread.sleep(1000);
+		Thread.sleep(3000);
 		javascriptHelper.JavaScriptHelper(driver);
 		// javascriptHelper.scrollDownByPixel();
-		for (int i = 0; i <= 3; i++) {
+		for (int i = 0; i <= 30; i++) {
 			try {
 				waitHelper.waitForElementVisible(
 						driver.findElement(By.xpath(
@@ -393,10 +395,16 @@ public class ACCOUNTSPAYABLE_PaymentSettlement extends BaseClass {
 				// 1000, 100);
 				// try
 
-				javascriptHelper.scrollIntoView(paymentSettlementObj.accountsPayablePayementSettlementNextRecord());
-
-				paymentSettlementObj.accountsPayablePayementSettlementNextRecord().click();
-			}
+				try
+				{
+				javascriptHelper.scrollIntoViewAndClick(paymentSettlementObj.accountsPayablePayementSettlementNextRecord());
+				//paymentSettlementObj.accountsPayablePayementSettlementNextRecord().click();
+				}
+				catch(ElementNotInteractableException e5)
+				{
+					
+				}
+				}
 			if (i == 3) {
 				System.out.println("This is the end of the table Reference Number is not availabe ");
 				break;
@@ -409,7 +417,7 @@ public class ACCOUNTSPAYABLE_PaymentSettlement extends BaseClass {
 	@And("^find the invoice reference number is availabe at the billing queue$")
 	public void find_the_invoice_reference_number_is_availabe_at_the_billing_queue() throws Throwable {
 		// div[contains(text(),'ADV_10_21122021')]
-		Thread.sleep(1000);
+		Thread.sleep(3000);
 		javascriptHelper.JavaScriptHelper(driver);
 		boolean pageStatus = true;
 		// javascriptHelper.scrollDownByPixel();
@@ -451,7 +459,9 @@ public class ACCOUNTSPAYABLE_PaymentSettlement extends BaseClass {
 	@And("^Goto accounts receivable advances module$")
 	public void goto_accounts_receivable_advances_module() throws Throwable {
 		waitHelper.waitForElementVisible(makerObj.kubsDirectionIcon(), 1000, 100);
+		Thread.sleep(2000);
 		makerObj.kubsDirectionIcon().click();
+		Thread.sleep(2000);
 		makerObj.kubsAccountsReceivable().click();
 		waitHelper.waitForElementVisible(accuountsReceivableObj.accountsreceivableAdvancesViewIcon(), 1000, 100);
 		accuountsReceivableObj.accountsreceivableAdvancesViewIcon().click();

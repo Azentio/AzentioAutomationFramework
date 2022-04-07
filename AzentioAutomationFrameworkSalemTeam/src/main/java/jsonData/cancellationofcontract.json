@@ -18,13 +18,14 @@
 "AppropriationAmount":"200",
 "branchCode": "AZENTMAIN",
 "gLCode": "IFRS-LIAB-LI3000003 - Accounts Payable",
-"GlMonth": "Mar",
-"GlFullMonth": "March",
+"GlMonth":"Apr",
+"GlFullMonth": "April",
 "GlYear": "2022",
-"GlDay"	: "31",
-"GlToMonth": "Dec",
-"GlFullToMonth": "December",
-"GlToDate": "2"
+"GlDay"	: "7",
+"GlToMonth": "Jan",
+"GlFullToMonth": "January",
+"GlToDate": "5",
+"GlToYear":"2023"
 },
 {
 "UserType":"Checker",

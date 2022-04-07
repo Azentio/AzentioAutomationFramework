@@ -74,30 +74,30 @@ Then Enter Asset Referance No in that field
 When capture the Asset Grid view list
 
 
-@KUBS_FAT_UAT_007_008
-Scenario: Check If asset required to retun before vendor payment
-Given Navigate the Azentio url
-Then click Third Segment button
-And Click on Enquiry main module
-Then Click on Financial sub module Edit icon
-And Click Branch code Dropdown
-Then Select GL code as Fixed asset
-And Choose calender From date
-Then Choose Calender To date
-And Click on View and See the record
+#@KUBS_FAT_UAT_007_008
+#Scenario: Check If asset required to retun before vendor payment
+#Given Navigate the Azentio url
+#Then click Third Segment button
+#And Click on Enquiry main module
+#Then Click on Financial sub module Edit icon
+#And Click Branch code Dropdown
+#Then Select GL code as Fixed asset
+#And Choose calender From date
+#Then Choose Calender To date
+#And Click on View and See the record
 
 
-@KUBS_FAT_UAT_007_009
-Scenario: Check If If asset is required to return after vendor payment
-Given Navigate the Azentio url
-Then click Third Segment button
-And Click on Enquiry main module
-Then Click on Financial sub module Edit icon
-And Click Branch code Dropdown
-Then Select GL code as Fixed asset code
-And Choose calender From date
-Then Choose Calender To date
-And Click on View and See the record
+#@KUBS_FAT_UAT_007_009
+#Scenario: Check If If asset is required to return after vendor payment
+#Given Navigate the Azentio url
+#Then click Third Segment button
+#And Click on Enquiry main module
+#Then Click on Financial sub module Edit icon
+#And Click Branch code Dropdown
+#Then Select GL code as Fixed asset code
+#And Choose calender From date
+#Then Choose Calender To date
+#And Click on View and See the record
 
 
 

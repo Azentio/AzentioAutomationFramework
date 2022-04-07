@@ -12,20 +12,20 @@
 		
 		
 		//CALENDAR AND GL DATA
-		"Month"					: "Nov",
-		"FullMonth"				: "November",
-		"Year"					: "2022",
-		"Day"					: "10",
+		"Month"					: "Jan",
+		"FullMonth"				: "January",
+		"Year"					: "2023",
+		"Day"					: "5",
 		"branchCode"			: "AZENTMAIN-Azentio Main Branch",
 		"gLCode1"				: "IFRS-OPEXP-OE6000007 - Deprecitation for Fixed Assets",
 		"gLCode2"				: "IFRS-7000023-NOP - Loss on sale of fixed asset",
-		"GlMonth"				: "Oct",
-		"GlYear"				: "2022",
-		"GlFullMonth"			: "October",
-		"GlFullToMonth"			: "November",
-		"GlDay"					: "15",
-		"GlToMonth"				: "Nov",
-		"GlToDate"				: "4",
+		"GlMonth"				: "Jan",
+		"GlYear"				: "2023",
+		"GlFullMonth"			: "January",
+		"GlFullToMonth"			: "January",
+		"GlDay"					: "1",
+		"GlToMonth"				: "Jan",
+		"GlToDate"				: "5",
 		
 		
 		

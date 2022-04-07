@@ -166,9 +166,12 @@ public class AR_AP_Module extends BaseClass {
 			driver.findElement(By.xpath("//span[text()='" + cancellationofcontractdata.GlYear  + "']")).click();
 			driver.findElement(By.xpath("//span[text()='" + cancellationofcontractdata.GlMonth + "']")).click();
 			seleniumactions.getWaitHelper().waitForElement(driver, 2000,
-					driver.findElement(By.xpath("(//span[text()='" + cancellationofcontractdata.GlDay + "'])[1]")));
-			driver.findElement(By.xpath("(//span[text()='" + cancellationofcontractdata.GlDay + "'])[1]")).click();
+		    driver.findElement(By.xpath("//td[@aria-label='"+cancellationofcontractdata.GlFullMonth+" "
+			+cancellationofcontractdata.GlDay+", "+cancellationofcontractdata.GlYear+"']")));
+			driver.findElement(By.xpath("//td[@aria-label='"+cancellationofcontractdata.GlFullMonth+" "
+			+cancellationofcontractdata.GlDay+", "+cancellationofcontractdata.GlYear+"']")).click();
 	    }
+	    
 
 	    @And("^select the transaction to date for verify post bill is approved in Accounting Entries$")
 	    public void select_the_transaction_to_date_for_verify_post_bill_is_approved_in_accounting_entries() throws Throwable {
@@ -177,12 +180,14 @@ public class AR_AP_Module extends BaseClass {
 			Thread.sleep(2000);
 			driver.findElement(By.xpath("(//span[@class='owl-dt-control-content owl-dt-control-button-content'])[2]"))
 					.click();
-			driver.findElement(By.xpath("//span[text()='" + cancellationofcontractdata.GlYear + "']")).click();
+			driver.findElement(By.xpath("//span[text()='" + cancellationofcontractdata.GlToYear + "']")).click();
 			driver.findElement(By.xpath("//span[text()='" + cancellationofcontractdata.GlToMonth + "']")).click();
 			seleniumactions.getWaitHelper().waitForElement(driver, 2000,
-					driver.findElement(By.xpath("(//span[text()='" + cancellationofcontractdata.GlToDate + "'])[1]")));
-			driver.findElement(By.xpath("(//span[text()='" + cancellationofcontractdata.GlToDate + "'])[1]")).click();
-	seleniumactions.getWaitHelper().waitForElement(driver, 2000, enquiryObj.inventoryViewButton());
+				    driver.findElement(By.xpath("//td[@aria-label='"+cancellationofcontractdata.GlFullToMonth+" "
+			+cancellationofcontractdata.GlToDate+", "+cancellationofcontractdata.GlToYear+"']")));
+					driver.findElement(By.xpath("//td[@aria-label='"+cancellationofcontractdata.GlFullToMonth+" "
+			+cancellationofcontractdata.GlToDate+", "+cancellationofcontractdata.GlToYear+"']")).click();
+	        seleniumactions.getWaitHelper().waitForElement(driver, 2000, enquiryObj.inventoryViewButton());
 			seleniumactions.getClickAndActionsHelper().clickOnElement(enquiryObj.inventoryViewButton());
 			Thread.sleep(2000);
 	    }
@@ -252,11 +257,13 @@ public class AR_AP_Module extends BaseClass {
 			Thread.sleep(2000);
 			driver.findElement(By.xpath("(//span[@class='owl-dt-control-content owl-dt-control-button-content'])[2]"))
 					.click();
-			driver.findElement(By.xpath("//span[text()='" + cancellationofcontractdata.GlYear + "']")).click();
+			driver.findElement(By.xpath("//span[text()='" + cancellationofcontractdata.GlToYear + "']")).click();
 			driver.findElement(By.xpath("//span[text()='" + cancellationofcontractdata.GlToMonth + "']")).click();
 			seleniumactions.getWaitHelper().waitForElement(driver, 2000,
-					driver.findElement(By.xpath("(//span[text()='" + cancellationofcontractdata.GlDay + "'])[1]")));
-			driver.findElement(By.xpath("(//span[text()='" + cancellationofcontractdata.GlToDate + "'])[1]")).click();
+				    driver.findElement(By.xpath("//tbody/tr[5]/td[@aria-label='"+cancellationofcontractdata.GlFullToMonth+" "
+			+cancellationofcontractdata.GlToDate+", "+cancellationofcontractdata.GlToYear+"']")));
+					driver.findElement(By.xpath("//tbody/tr[5]/td[@aria-label='"+cancellationofcontractdata.GlFullToMonth+" "
+			+cancellationofcontractdata.GlToDate+", "+cancellationofcontractdata.GlToYear+"']")).click();
 	    }
 	    @And("^select the Transaction Ref No as Grn Number$")
 	    public void select_the_transaction_ref_no_as_grn_number() throws Throwable {
@@ -313,12 +320,57 @@ public class AR_AP_Module extends BaseClass {
 			testdata.put("year", year);
 			String month = contractenddate.substring(3, 6);
 			testdata.put("month", month);
-			if (contractenddate.substring(1, 2).equalsIgnoreCase("0")) {
-				String day = contractenddate.substring(0,2);
-				System.out.println(day);
-				testdata.put("day", day);
+			switch (month) {
+			case "Dec":
+				testdata.put("fullmonth","December");
+				System.out.println(testdata.get("fullmonth"));
+				break;
+			case "Jan":
+				testdata.put("fullmonth","January");
+				System.out.println(testdata.get("fullmonth"));
+				break;
+			case "Feb":
+				testdata.put("fullmonth","Febuary");
+				System.out.println(testdata.get("fullmonth"));
+				break;
+			case "Mar":
+				testdata.put("fullmonth","March");
+				System.out.println(testdata.get("fullmonth"));
+				break;
+			case "Apr":
+				testdata.put("fullmonth","April");
+				System.out.println(testdata.get("fullmonth"));
+				break;
+			case "May":
+				testdata.put("fullmonth","May");
+				System.out.println(testdata.get("fullmonth"));
+				break;
+			case "Jun":
+				testdata.put("fullmonth","June");
+				System.out.println(testdata.get("fullmonth"));
+				break;
+			case "Jul":
+				testdata.put("fullmonth","July");
+				System.out.println(testdata.get("fullmonth"));
+				break;
+			case "Aug":
+				testdata.put("fullmonth","August");
+				System.out.println(testdata.get("fullmonth"));
+				break;
+			case "Sep":
+				testdata.put("fullmonth","September");
+				System.out.println(testdata.get("fullmonth"));
+				break;
+			case "Oct":
+				testdata.put("fullmonth","October");
+				System.out.println(testdata.get("fullmonth"));
+				break;
+			case "Nov":
+				testdata.put("fullmonth","November");
+				System.out.println(testdata.get("fullmonth"));
+				break;
 			}
-			else if (Integer.parseInt(contractenddate.substring(1, 2))>0) {
+			if (Integer.parseInt(contractenddate.substring(0, 2))>9) {
 				String day = contractenddate.substring(0,2);
 				System.out.println(day);
 				testdata.put("day", day);
@@ -362,7 +414,7 @@ public class AR_AP_Module extends BaseClass {
 	    			 invoice = driver.findElement(By.xpath(actualXpath)).getText();
 	        		System.out.println(invoice);
 	        		if (invoice.equalsIgnoreCase(testdata.get("invoicenumber"))) {
-	    				System.out.println("found invoice number "+invoice);
+	    				System.out.println("Found invoice number "+invoice);
 	    				break;
 	    			}
 				} catch (NoSuchElementException e) {
@@ -456,7 +508,57 @@ public class AR_AP_Module extends BaseClass {
 		testdata.put("year", year);
 		String month = contractenddate.substring(3, 6);
 		testdata.put("month", month);
-		if (contractenddate.substring(1, 2).equalsIgnoreCase("0")) {
+		switch (month) {
+		case "Dec":
+			testdata.put("fullmonth","December");
+			System.out.println(testdata.get("fullmonth"));
+			break;
+		case "Jan":
+			testdata.put("fullmonth","January");
+			System.out.println(testdata.get("fullmonth"));
+			break;
+		case "Feb":
+			testdata.put("fullmonth","Febuary");
+			System.out.println(testdata.get("fullmonth"));
+			break;
+		case "Mar":
+			testdata.put("fullmonth","March");
+			System.out.println(testdata.get("fullmonth"));
+			break;
+		case "Apr":
+			testdata.put("fullmonth","April");
+			System.out.println(testdata.get("fullmonth"));
+			break;
+		case "May":
+			testdata.put("fullmonth","May");
+			System.out.println(testdata.get("fullmonth"));
+			break;
+		case "Jun":
+			testdata.put("fullmonth","June");
+			System.out.println(testdata.get("fullmonth"));
+			break;
+		case "Jul":
+			testdata.put("fullmonth","July");
+			System.out.println(testdata.get("fullmonth"));
+			break;
+		case "Aug":
+			testdata.put("fullmonth","August");
+			System.out.println(testdata.get("fullmonth"));
+			break;
+		case "Sep":
+			testdata.put("fullmonth","September");
+			System.out.println(testdata.get("fullmonth"));
+			break;
+		case "Oct":
+			testdata.put("fullmonth","October");
+			System.out.println(testdata.get("fullmonth"));
+			break;
+		case "Nov":
+			testdata.put("fullmonth","November");
+			System.out.println(testdata.get("fullmonth"));
+			break;
+		}
+		if (Integer.parseInt(contractenddate.substring(0, 2))>9) {
 			String day = contractenddate.substring(0,2);
 			testdata.put("day", day);
 		}
@@ -464,8 +566,6 @@ public class AR_AP_Module extends BaseClass {
 			String day = contractenddate.substring(1, 2);
 			testdata.put("day", day);
 		}
-		
-		
 		String contractStatus = driver.findElement(By.xpath("(//ion-col[15]/app-kub-lov[1]/span[1]/ng-select[1]/div[1]/div[1]/div)[2]")).getText();
 		testdata.put("contractstatus", contractStatus);
     }
@@ -505,8 +605,10 @@ public class AR_AP_Module extends BaseClass {
 		driver.findElement(By.xpath("//span[text()='" + testdata.get("year")  + "']")).click();
 		driver.findElement(By.xpath("//span[text()='" + testdata.get("month") + "']")).click();
 		seleniumactions.getWaitHelper().waitForElement(driver, 2000,
-				driver.findElement(By.xpath("(//span[text()='" + testdata.get("day") + "'])[1]")));
-		driver.findElement(By.xpath("(//span[text()='" + testdata.get("day") + "'])[1]")).click();
+ 				driver.findElement(By.xpath("//td[@aria-label='"+testdata.get("fullmonth")+" "
+ 						+testdata.get("day")+", "+testdata.get("year")+"']")));
+ 		driver.findElement(By.xpath("//td[@aria-label='"+testdata.get("fullmonth")+" "
+					+testdata.get("day")+", "+testdata.get("year")+"']")).click();
     }
     @And("^select the contract status based on we get from list$")
     public void select_the_contract_status_based_on_we_get_from_list() throws Throwable {
@@ -648,7 +750,7 @@ public class AR_AP_Module extends BaseClass {
 		seleniumactions.getClickAndActionsHelper()
 				.clickOnElement(arpoCreationObj.accountsPayable_VendorPurchaseOrder_Contract());
 		Thread.sleep(3000);
-		System.out.println("no items found and not able to create purchase order for cancelled contract");
+		System.out.println("No items found and not able to create purchase order for cancelled contract");
 
 	}
      //*************************************** @KUBS_AR/AP_UAT_003_001TC_03***********************************
@@ -921,8 +1023,10 @@ public class AR_AP_Module extends BaseClass {
 		driver.findElement(By.xpath("//span[text()='" + cancellationofcontractdata.GlYear  + "']")).click();
 		driver.findElement(By.xpath("//span[text()='" + cancellationofcontractdata.GlMonth + "']")).click();
 		seleniumactions.getWaitHelper().waitForElement(driver, 2000,
-				driver.findElement(By.xpath("(//span[text()='" + cancellationofcontractdata.GlDay + "'])[1]")));
-		driver.findElement(By.xpath("(//span[text()='" + cancellationofcontractdata.GlDay + "'])[1]")).click();
+			    driver.findElement(By.xpath("//td[@aria-label='"+cancellationofcontractdata.GlFullMonth+" "
+				+cancellationofcontractdata.GlDay+", "+cancellationofcontractdata.GlYear+"']")));
+				driver.findElement(By.xpath("//td[@aria-label='"+cancellationofcontractdata.GlFullMonth+" "
+				+cancellationofcontractdata.GlDay+", "+cancellationofcontractdata.GlYear+"']")).click();
 	}
 
 	@And("^select the transaction to date$")
@@ -932,11 +1036,14 @@ public class AR_AP_Module extends BaseClass {
 		Thread.sleep(2000);
 		driver.findElement(By.xpath("(//span[@class='owl-dt-control-content owl-dt-control-button-content'])[2]"))
 				.click();
-		driver.findElement(By.xpath("//span[text()='" + cancellationofcontractdata.GlYear + "']")).click();
+		driver.findElement(By.xpath("//span[text()='" + cancellationofcontractdata.GlToYear + "']")).click();
 		driver.findElement(By.xpath("//span[text()='" + cancellationofcontractdata.GlToMonth + "']")).click();
 		seleniumactions.getWaitHelper().waitForElement(driver, 2000,
-				driver.findElement(By.xpath("(//span[text()='" + cancellationofcontractdata.GlDay + "'])[1]")));
-		driver.findElement(By.xpath("(//span[text()='" + cancellationofcontractdata.GlToDate + "'])[1]")).click();
+			    driver.findElement(By.xpath("//td[@aria-label='"+cancellationofcontractdata.GlFullToMonth+" "
+		+cancellationofcontractdata.GlToDate+", "+cancellationofcontractdata.GlToYear+"']")));
+				driver.findElement(By.xpath("//td[@aria-label='"+cancellationofcontractdata.GlFullToMonth+" "
+		+cancellationofcontractdata.GlToDate+", "+cancellationofcontractdata.GlToYear+"']")).click();
+
 	}
 
 	@And("^click the view option$")
@@ -976,20 +1083,71 @@ public class AR_AP_Module extends BaseClass {
 		javascriphelper.JavaScriptHelper(driver);
 		String contractenddate = (String) javascriphelper.executeScript("return document.getElementsByName('kubDateTime')[1].value");
 		System.out.println(contractenddate);
-		String year = contractenddate.trim().substring(7,11);
+		String year = contractenddate.substring(7,11);
 		testdata.put("year", year);
-		String month = contractenddate.trim().substring(3, 6);
+		String month = contractenddate.substring(3, 6);
 		testdata.put("month", month);
-		System.out.println(Integer.parseInt(contractenddate.substring(0, 2)));
-		 if (Integer.parseInt(contractenddate.trim().substring(0, 2))>9) {
-			String day = contractenddate.trim().substring(0,2);
-			System.out.println(day);
+		System.out.println(month);
+		switch (month) {
+		case "Dec":
+			testdata.put("fullmonth","December");
+			System.out.println(testdata.get("fullmonth"));
+			break;
+		case "Jan":
+			testdata.put("fullmonth","January");
+			System.out.println(testdata.get("fullmonth"));
+			break;
+		case "Feb":
+			testdata.put("fullmonth","Febuary");
+			System.out.println(testdata.get("fullmonth"));
+			break;
+		case "Mar":
+			testdata.put("fullmonth","March");
+			System.out.println(testdata.get("fullmonth"));
+			break;
+		case "Apr":
+			testdata.put("fullmonth","April");
+			System.out.println(testdata.get("fullmonth"));
+			break;
+		case "May":
+			testdata.put("fullmonth","May");
+			System.out.println(testdata.get("fullmonth"));
+			break;
+		case "Jun":
+			testdata.put("fullmonth","June");
+			System.out.println(testdata.get("fullmonth"));
+			break;
+		case "Jul":
+			testdata.put("fullmonth","July");
+			System.out.println(testdata.get("fullmonth"));
+			break;
+		case "Aug":
+			testdata.put("fullmonth","August");
+			System.out.println(testdata.get("fullmonth"));
+			break;
+		case "Sep":
+			testdata.put("fullmonth","September");
+			System.out.println(testdata.get("fullmonth"));
+			break;
+		case "Oct":
+			testdata.put("fullmonth","October");
+			System.out.println(testdata.get("fullmonth"));
+			break;
+		case "Nov":
+			testdata.put("fullmonth","November");
+			System.out.println(testdata.get("fullmonth"));
+			break;
+		}
+		//System.out.println(Integer.parseInt(contractenddate.substring(0, 2)));
+		 if (Integer.parseInt(contractenddate.substring(0, 2))>9) {
+			String day = contractenddate.substring(0,2);
 			testdata.put("day", day);
+			//System.out.println(day);
 		}
 		else{
-			String day = contractenddate.trim().substring(1,2);
+			String day = contractenddate.substring(1,2);
 			testdata.put("day", day);
-			System.out.println(day);
+			//System.out.println(day);
 		}
 		String invoicestatus = invoiceBookingObj.statusOfInvoice().getText();
 		testdata.put("invoicestatus", invoicestatus);
@@ -1013,8 +1171,10 @@ public class AR_AP_Module extends BaseClass {
  		driver.findElement(By.xpath("//span[text()='" + testdata.get("year")  + "']")).click();
  		driver.findElement(By.xpath("//span[text()='" + testdata.get("month") + "']")).click();
  		seleniumactions.getWaitHelper().waitForElement(driver, 2000,
- 				driver.findElement(By.xpath("(//span[text()='" + testdata.get("day") + "'])[1]")));
- 		driver.findElement(By.xpath("(//span[text()='" + testdata.get("day") + "'])[1]")).click();
+ 				driver.findElement(By.xpath("//td[@aria-label='"+testdata.get("fullmonth")+" "
+ 						+testdata.get("day")+", "+testdata.get("year")+"']")));
+ 		driver.findElement(By.xpath("//td[@aria-label='"+testdata.get("fullmonth")+" "
+					+testdata.get("day")+", "+testdata.get("year")+"']")).click();
     }
 
     @And("^select the payable status$")
@@ -1226,8 +1386,10 @@ public class AR_AP_Module extends BaseClass {
 		driver.findElement(By.xpath("//span[text()='" + cancellationofcontractdata.GlYear  + "']")).click();
 		driver.findElement(By.xpath("//span[text()='" + cancellationofcontractdata.GlMonth + "']")).click();
 		seleniumactions.getWaitHelper().waitForElement(driver, 2000,
-				driver.findElement(By.xpath("(//span[text()='" + cancellationofcontractdata.GlDay + "'])[1]")));
-		driver.findElement(By.xpath("(//span[text()='" + cancellationofcontractdata.GlDay + "'])[1]")).click();
+			    driver.findElement(By.xpath("//td[@aria-label='"+cancellationofcontractdata.GlFullMonth+" "
+				+cancellationofcontractdata.GlDay+", "+cancellationofcontractdata.GlYear+"']")));
+				driver.findElement(By.xpath("//td[@aria-label='"+cancellationofcontractdata.GlFullMonth+" "
+				+cancellationofcontractdata.GlDay+", "+cancellationofcontractdata.GlYear+"']")).click();
     }
 
     @And("^choose the Transaction To date and click view option$")
@@ -1237,16 +1399,16 @@ public class AR_AP_Module extends BaseClass {
 		Thread.sleep(2000);
 		driver.findElement(By.xpath("(//span[@class='owl-dt-control-content owl-dt-control-button-content'])[2]"))
 				.click();
-		driver.findElement(By.xpath("//span[text()='" + cancellationofcontractdata.GlYear + "']")).click();
+		driver.findElement(By.xpath("//span[text()='" + cancellationofcontractdata.GlToYear + "']")).click();
 		driver.findElement(By.xpath("//span[text()='" + cancellationofcontractdata.GlToMonth + "']")).click();
 		seleniumactions.getWaitHelper().waitForElement(driver, 2000,
-				driver.findElement(By.xpath("(//span[text()='" + cancellationofcontractdata.GlDay + "'])[1]")));
-		driver.findElement(By.xpath("(//span[text()='" + cancellationofcontractdata.GlToDate + "'])[1]")).click();
+			    driver.findElement(By.xpath("//td[@aria-label='"+cancellationofcontractdata.GlFullToMonth+" "
+		+cancellationofcontractdata.GlToDate+", "+cancellationofcontractdata.GlToYear+"']")));
+				driver.findElement(By.xpath("//td[@aria-label='"+cancellationofcontractdata.GlFullToMonth+" "
+		+cancellationofcontractdata.GlToDate+", "+cancellationofcontractdata.GlToYear+"']")).click();
 		seleniumactions.getWaitHelper().waitForElement(driver, 2000, enquiryObj.inventoryViewButton());
 		seleniumactions.getClickAndActionsHelper().clickOnElement(enquiryObj.inventoryViewButton());
-		Thread.sleep(2000);
-
-        
+		Thread.sleep(2000); 
     }
     @Then("^Verify the Credit note number in Voucher Id and verify transaction type$")
     public void verify_the_credit_note_number_in_voucher_id_and_verify_transaction_type() throws Throwable {
@@ -1255,7 +1417,7 @@ public class AR_AP_Module extends BaseClass {
 				seleniumactions.getWaitHelper().waitForElement(driver,2000,driver.findElement(By.xpath("//datatable-body-cell[1]//span[contains(text(),'"+testdata.get("creditnotenumber")+"')]")));
 				driver.findElement(By.xpath("//datatable-body-cell[1]//span[contains(text(),'"+testdata.get("creditnotenumber")+"')]")).isDisplayed();
 				String creditnotenumber = driver.findElement(By.xpath("//datatable-body-cell[1]//span[contains(text(),'"+testdata.get("creditnotenumber")+"')]")).getText();
-				System.out.println("Found the creditnote number in Accounting Entries"+creditnotenumber);
+				System.out.println("Found the creditnote number in Accounting Entries "+creditnotenumber);
 				break;
 				
 			} catch (NoSuchElementException e) {
@@ -1282,6 +1444,56 @@ public class AR_AP_Module extends BaseClass {
 		testdata.put("year", year);
 		String month = contractenddate.substring(3, 6);
 		testdata.put("month", month);
+		switch (month) {
+		case "Dec":
+			testdata.put("fullmonth","December");
+			System.out.println(testdata.get("fullmonth"));
+			break;
+		case "Jan":
+			testdata.put("fullmonth","January");
+			System.out.println(testdata.get("fullmonth"));
+			break;
+		case "Feb":
+			testdata.put("fullmonth","Febuary");
+			System.out.println(testdata.get("fullmonth"));
+			break;
+		case "Mar":
+			testdata.put("fullmonth","March");
+			System.out.println(testdata.get("fullmonth"));
+			break;
+		case "Apr":
+			testdata.put("fullmonth","April");
+			System.out.println(testdata.get("fullmonth"));
+			break;
+		case "May":
+			testdata.put("fullmonth","May");
+			System.out.println(testdata.get("fullmonth"));
+			break;
+		case "Jun":
+			testdata.put("fullmonth","June");
+			System.out.println(testdata.get("fullmonth"));
+			break;
+		case "Jul":
+			testdata.put("fullmonth","July");
+			System.out.println(testdata.get("fullmonth"));
+			break;
+		case "Aug":
+			testdata.put("fullmonth","August");
+			System.out.println(testdata.get("fullmonth"));
+			break;
+		case "Sep":
+			testdata.put("fullmonth","September");
+			System.out.println(testdata.get("fullmonth"));
+			break;
+		case "Oct":
+			testdata.put("fullmonth","October");
+			System.out.println(testdata.get("fullmonth"));
+			break;
+		case "Nov":
+			testdata.put("fullmonth","November");
+			System.out.println(testdata.get("fullmonth"));
+			break;
+		}
 		
 		 if (Integer.parseInt(contractenddate.substring(0, 2))>9) {
 			String day = contractenddate.substring(0,2);
@@ -1812,6 +2024,7 @@ public class AR_AP_Module extends BaseClass {
 
 	@Then("^verify bill is proceed for payment$")
 	public void verify_bill_is_proceed_for_payment() throws Throwable {
+		Thread.sleep(2000);
 		seleniumactions.getWaitHelper().waitForElement(driver, 2000,
 				paymentSettlementObj.getClickFirstPaymentInListView());
 		seleniumactions.getClickAndActionsHelper()
@@ -1960,8 +2173,56 @@ public class AR_AP_Module extends BaseClass {
 		testdata.put("year", year);
 		String month = paymentDate.substring(3, 6);
 		testdata.put("month", month);
-		int parseInt = Integer.parseInt(paymentDate.substring(0, 2));
-		System.out.println(parseInt);
+		switch (month) {
+		case "Dec":
+			testdata.put("fullmonth","December");
+			System.out.println(testdata.get("fullmonth"));
+			break;
+		case "Jan":
+			testdata.put("fullmonth","January");
+			System.out.println(testdata.get("fullmonth"));
+			break;
+		case "Feb":
+			testdata.put("fullmonth","Febuary");
+			System.out.println(testdata.get("fullmonth"));
+			break;
+		case "Mar":
+			testdata.put("fullmonth","March");
+			System.out.println(testdata.get("fullmonth"));
+			break;
+		case "Apr":
+			testdata.put("fullmonth","April");
+			System.out.println(testdata.get("fullmonth"));
+			break;
+		case "May":
+			testdata.put("fullmonth","May");
+			System.out.println(testdata.get("fullmonth"));
+			break;
+		case "Jun":
+			testdata.put("fullmonth","June");
+			System.out.println(testdata.get("fullmonth"));
+			break;
+		case "Jul":
+			testdata.put("fullmonth","July");
+			System.out.println(testdata.get("fullmonth"));
+			break;
+		case "Aug":
+			testdata.put("fullmonth","August");
+			System.out.println(testdata.get("fullmonth"));
+			break;
+		case "Sep":
+			testdata.put("fullmonth","September");
+			System.out.println(testdata.get("fullmonth"));
+			break;
+		case "Oct":
+			testdata.put("fullmonth","October");
+			System.out.println(testdata.get("fullmonth"));
+			break;
+		case "Nov":
+			testdata.put("fullmonth","November");
+			System.out.println(testdata.get("fullmonth"));
+			break;
+		}
 		if (Integer.parseInt(paymentDate.substring(0, 2))>9) {
 			String day = paymentDate.substring(0,2);
 			System.out.println(day);
@@ -2683,14 +2944,63 @@ public class AR_AP_Module extends BaseClass {
 				testdata.put("year", year);
 				String month =DebitnoteDate.substring(3, 6);
 				testdata.put("month", month);
+				switch (month) {
+				case "Dec":
+					testdata.put("fullmonth","December");
+					System.out.println(testdata.get("fullmonth"));
+					break;
+				case "Jan":
+					testdata.put("fullmonth","January");
+					System.out.println(testdata.get("fullmonth"));
+					break;
+				case "Feb":
+					testdata.put("fullmonth","Febuary");
+					System.out.println(testdata.get("fullmonth"));
+					break;
+				case "Mar":
+					testdata.put("fullmonth","March");
+					System.out.println(testdata.get("fullmonth"));
+					break;
+				case "Apr":
+					testdata.put("fullmonth","April");
+					System.out.println(testdata.get("fullmonth"));
+					break;
+				case "May":
+					testdata.put("fullmonth","May");
+					System.out.println(testdata.get("fullmonth"));
+					break;
+				case "Jun":
+					testdata.put("fullmonth","June");
+					System.out.println(testdata.get("fullmonth"));
+					break;
+				case "Jul":
+					testdata.put("fullmonth","July");
+					System.out.println(testdata.get("fullmonth"));
+					break;
+				case "Aug":
+					testdata.put("fullmonth","August");
+					System.out.println(testdata.get("fullmonth"));
+					break;
+				case "Sep":
+					testdata.put("fullmonth","September");
+					System.out.println(testdata.get("fullmonth"));
+					break;
+				case "Oct":
+					testdata.put("fullmonth","October");
+					System.out.println(testdata.get("fullmonth"));
+					break;
+				case "Nov":
+					testdata.put("fullmonth","November");
+					System.out.println(testdata.get("fullmonth"));
+					break;
+				}
 				if (Integer.parseInt(DebitnoteDate.substring(0, 2))>9) {
 					String day = DebitnoteDate.substring(0,2);
 					System.out.println(day);
 					testdata.put("day", day);
 				}
-				
 				else{
-					String day = DebitnoteDate.trim().substring(1,2);
+					String day = DebitnoteDate.substring(1,2);
 					testdata.put("day", day);
 					System.out.println(day);
 				}
@@ -2763,6 +3073,56 @@ public class AR_AP_Module extends BaseClass {
 			testdata.put("year", year);
 			String month = contractenddate.substring(3, 6);
 			testdata.put("month", month);
+			switch (month) {
+			case "Dec":
+				testdata.put("fullmonth","December");
+				System.out.println(testdata.get("fullmonth"));
+				break;
+			case "Jan":
+				testdata.put("fullmonth","January");
+				System.out.println(testdata.get("fullmonth"));
+				break;
+			case "Feb":
+				testdata.put("fullmonth","Febuary");
+				System.out.println(testdata.get("fullmonth"));
+				break;
+			case "Mar":
+				testdata.put("fullmonth","March");
+				System.out.println(testdata.get("fullmonth"));
+				break;
+			case "Apr":
+				testdata.put("fullmonth","April");
+				System.out.println(testdata.get("fullmonth"));
+				break;
+			case "May":
+				testdata.put("fullmonth","May");
+				System.out.println(testdata.get("fullmonth"));
+				break;
+			case "Jun":
+				testdata.put("fullmonth","June");
+				System.out.println(testdata.get("fullmonth"));
+				break;
+			case "Jul":
+				testdata.put("fullmonth","July");
+				System.out.println(testdata.get("fullmonth"));
+				break;
+			case "Aug":
+				testdata.put("fullmonth","August");
+				System.out.println(testdata.get("fullmonth"));
+				break;
+			case "Sep":
+				testdata.put("fullmonth","September");
+				System.out.println(testdata.get("fullmonth"));
+				break;
+			case "Oct":
+				testdata.put("fullmonth","October");
+				System.out.println(testdata.get("fullmonth"));
+				break;
+			case "Nov":
+				testdata.put("fullmonth","November");
+				System.out.println(testdata.get("fullmonth"));
+				break;
+			}
 			if (contractenddate.substring(1, 2).equalsIgnoreCase("0")) {
 				String day = contractenddate.substring(0,2);
 				System.out.println(day);

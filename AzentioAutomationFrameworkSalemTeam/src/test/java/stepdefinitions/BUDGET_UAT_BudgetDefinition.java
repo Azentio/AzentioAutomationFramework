@@ -282,8 +282,21 @@ public class BUDGET_UAT_BudgetDefinition extends BaseClass {
 	public void click_notification_button() throws Throwable {
 		// After save our budget record we have to click on notification to submit our
 		// record for approvals
+		Thread.sleep(2000);
+		while(true)
+		{
+		try
+		{
+		
 		budgetCreationObj.budgetCreationNotificationIcon().click();
-		Thread.sleep(1000);
+		break;
+		}
+		catch(ElementClickInterceptedException e)
+		{
+			
+		}
+		}
+		
 
 	}
 
@@ -565,6 +578,7 @@ public class BUDGET_UAT_BudgetDefinition extends BaseClass {
 		 * By the help of following step we can login as a checker
 		 */
 		Thread.sleep(2000);
+		
 		kubsLogin.loginToAzentioAppAsChecker("Checker");
 		
 	}

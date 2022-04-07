@@ -11,7 +11,7 @@ Then Enter the Asset Referance Number
 And Enter the Asset Item Number
 Then Enter the New Item Number
 And Enter the New Description
-Then save the Replacement record
+Then save the Replacement recordss
 And Went to Maker Notification
 Then Click the first Action icon
 And Submit the Record in maker

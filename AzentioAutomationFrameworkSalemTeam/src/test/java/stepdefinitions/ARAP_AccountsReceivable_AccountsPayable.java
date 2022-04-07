@@ -211,7 +211,7 @@ public class ARAP_AccountsReceivable_AccountsPayable extends BaseClass {
 		Getdata.put("Month", month);
 		String day = Date.substring(0, 2);
 		Getdata.put("Day", day);
-		if(Getdata.get("Day").substring(0).equalsIgnoreCase("0"))
+		if(Getdata.get("Day").substring(0,1).equalsIgnoreCase("0"))
 		{
 			String Day = Getdata.get("Day").substring(1, 2);
 			Getdata.put("Day", Day);
@@ -895,8 +895,9 @@ public class ARAP_AccountsReceivable_AccountsPayable extends BaseClass {
 
 		driver.findElement(By.xpath("//span[text()='" + arapData.Month + "']")).click();
 		waitHelper.waitForElement(driver, 2000,
-				driver.findElement(By.xpath("(//span[text()='" + arapData.Day + "'])[1]")));
-		driver.findElement(By.xpath("(//span[text()='" + arapData.Day + "'])[1]")).click();
+			    driver.findElement(By.xpath("(//span[text()='" + arapData.Day + "'])[1]")));
+		//driver.findElement(By.xpath(("(//span[text()='" + arapData.Day + "'])[1]"))).click();
+		clickAndActionHelper.doubleClick(driver.findElement(By.xpath(("(//span[text()='" + arapData.Day + "'])[1]"))));
 	}
 
 	@And("^click on transaction to date in calender icon$")

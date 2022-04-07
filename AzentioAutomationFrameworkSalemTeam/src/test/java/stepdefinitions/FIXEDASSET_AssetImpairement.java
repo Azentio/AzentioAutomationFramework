@@ -69,7 +69,9 @@ public class FIXEDASSET_AssetImpairement extends BaseClass {
 	@And("^click on fixed asset main module$")
 	public synchronized void click_on_fixed_asset_main_module() throws Throwable {
 		waitHelper.waitForElementVisible(KubsMakerObj.kubsDirectionIcon(), 1000, 100);
+		Thread.sleep(1000);
 		KubsMakerObj.kubsDirectionIcon().click();
+		Thread.sleep(2000);
 		// waitHelper.waitForElementVisible(KubsMakerObj.kubsFixedAssets(), 1000, 100);
 		while (true) {
 			try {
@@ -243,7 +245,7 @@ public class FIXEDASSET_AssetImpairement extends BaseClass {
 		
 		fixedAssetObj.fixedAssetAssetReferenceNumStatus().sendKeys("Active");
 		Thread.sleep(500);
-		impairementData.put("assetReferenceNumber", fixedAssetObj.fixedAssetReValuationReferenceNumber().getText());
+		impairementData.put("assetReferenceNumber", fixedAssetObj.fixedAssetAmmendmentApprovedRecord().getText());
 		System.out.println(impairementData.get("assetReferenceNumber"));
     }
 	@And("^goto asset replacement module$")
@@ -990,7 +992,7 @@ public class FIXEDASSET_AssetImpairement extends BaseClass {
 
 	@And("^login with Maker ID$")
 	public void login_with_maker_id() throws Throwable {
-		Thread.sleep(1000);
+		Thread.sleep(2000);
 		kubsLogin.loginToAzentioApp("Maker");
 	}
 

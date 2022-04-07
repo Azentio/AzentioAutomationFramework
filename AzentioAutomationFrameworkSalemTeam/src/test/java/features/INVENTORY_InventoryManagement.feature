@@ -19,23 +19,30 @@ And enter inventory item
 Then enter inventory branch
 And enter inventory reference number
 Then Click on Save button
-Then click on notification 
-And select the first record in notification 
-Then submit the record 
-And logout from maker end 
-And login with reviewer id
-Then click on notification icon in reviewer
-And select our record
-Then approve the record in reviewer end
-And validate the approval status in reviewer end
-And logout from reviewer end 
-Then login with checker ID
-And click on Security management menu
-And click on action button near by open pool
-Then clime the Record
-And click on Notification icon in checker stage
-Then approve the Record
-And validate the approval status in checker stage
+And click notification button
+Then choose first record in the notification record
+And click on Submit button 
+Then enter remark in confirmation alert
+Then click on submit button in alert
+And capture the reviewer ID in pop up which is open when we submit our record in maker stage
+Then logout from maker
+And login with reviewer credentials
+Then click on notification button
+And select our record in notification records using reference ID
+Then Approve the record from reviewer
+And enter the remark in alert
+Then click on submit in alert
+And logout from reviewer
+Then login as a checker 
+And click on security management menu in checker
+Then click on action button under security management menu
+And select our record and clime using reference ID
+Then click on Notification button
+Then select our record in notification records by the help of reference ID
+And click on approve button in checker stage
+Then give alert remark 
+Then click on submit button on alert
+And verify the record got approved from checker
 #@gl
 #Scenario: To verify user can see the GL report for stock return to vendors
 #Given navigate to kubs URL and login as maker

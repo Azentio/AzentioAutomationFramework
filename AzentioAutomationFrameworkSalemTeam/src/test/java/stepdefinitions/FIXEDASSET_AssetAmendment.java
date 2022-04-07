@@ -144,8 +144,19 @@ public class FIXEDASSET_AssetAmendment extends BaseClass {
 
 	@And("^Choose a current date in calender$")
 	public void choose_a_current_date_in_calender() throws Throwable {
+		waitHelper.waitForElement(driver,2000,driver.findElement(By.xpath("(//span[@class='owl-dt-control-content owl-dt-control-button-content'])[2]")) );
+    	driver.findElement(By.xpath("(//span[@class='owl-dt-control-content owl-dt-control-button-content'])[2]"))
+		.click();
+waitHelper.waitForElement(driver,2000 , driver.findElement(By.xpath("//span[text()='" + assetAmendmentData.Year  + "']")));
+driver.findElement(By.xpath("//span[text()='" + assetAmendmentData.Year  + "']")).click();
+driver.findElement(By.xpath("//span[text()='" + assetAmendmentData.Month + "']")).click();
+//tbody/tr[5]/td[@aria-label='April 30, 2022']
+waitHelper.waitForElement(driver, 2000,
+		driver.findElement(By.xpath("//td[@aria-label='"+assetAmendmentData.FullMonth+" "+assetAmendmentData.Day+", "+assetAmendmentData.Year+"']")));
+driver.findElement(By.xpath("//td[@aria-label='"+assetAmendmentData.FullMonth+" "+assetAmendmentData.Day+", "+assetAmendmentData.Year+"']")).click();
+    
 
-		// -------------CHOOSE DATE---------------//
+	/*	// -------------CHOOSE DATE---------------//
 		javaScriptHelper.JavaScriptHelper(driver);
 		while (true) {
 			try {
@@ -169,7 +180,7 @@ public class FIXEDASSET_AssetAmendment extends BaseClass {
 		
 		clickAndActionHelper.doubleClick(Click);
 		clickAndActionHelper.clickOnElement(Click);
-		
+		*/
 	}
 
 	@Then("^Save the Asset Record$")

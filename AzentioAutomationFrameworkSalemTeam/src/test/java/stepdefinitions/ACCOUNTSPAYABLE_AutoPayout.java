@@ -150,9 +150,19 @@ public class ACCOUNTSPAYABLE_AutoPayout extends BaseClass {
 
     @And("^add the benificiory details and select auto payout as yes$")
     public void add_the_benificiory_details_and_select_auto_payout_as_yes() throws Throwable {
+    	while(true)
+    	{
+    		try
+    		{
     	waitHelper.waitForElementVisible(vendorContractObj.vendorContractBenificioryDetails(), 2000, 100);
     	 vendorContractObj.vendorContractBenificioryDetails().click();
-         //waitHelper.waitForElementVisible(vendorContractObj.vendorContractAddButton(), 2000, 100);
+    	 break;
+    		}
+    		catch(StaleElementReferenceException e)
+    		{
+    			
+    		}
+    	}//waitHelper.waitForElementVisible(vendorContractObj.vendorContractAddButton(), 2000, 100);
          //vendorContractObj.vendorContractAddButton().click();
          waitHelper.waitForElementVisible(vendorContractObj.vendorContractBenificioryDetailsPaymentMode(), 2000, 100);
          vendorContractObj.vendorContractBenificioryDetailsPaymentMode().sendKeys(autoPayoutTestData.PaymentMode);

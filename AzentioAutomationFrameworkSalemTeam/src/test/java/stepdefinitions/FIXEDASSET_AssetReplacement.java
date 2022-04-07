@@ -132,15 +132,15 @@ public class FIXEDASSET_AssetReplacement extends BaseClass {
 		assetReplacement.fixed_AssetNewDesc().sendKeys(assetAmendmentData.itemDesc);
 	}
 
-//	@Then("^save the Replacement record$")
-//	public void save_the_replacement_record() throws Throwable {
-//
-//		// -----------------SAVE THE RECORD---------------//
-//		waitHelper.waitForElement(driver, 3000, assetReplacement.AssetReplace_Save());
-//		javaScriptHelper.JavaScriptHelper(driver);
-//		javaScriptHelper.JSEClick(assetReplacement.AssetReplace_Save());
-//
-//	}
+	@Then("^save the Replacement recordss$")
+	public void save_the_replacement_recordss() throws Throwable {
+
+		// -----------------SAVE THE RECORD---------------//
+		waitHelper.waitForElement(driver, 3000, assetReplacement.AssetReplace_Save());
+		javaScriptHelper.JavaScriptHelper(driver);
+		javaScriptHelper.JSEClick(assetReplacement.AssetReplace_Save());
+
+	}
 
 	@And("^Went to Maker Notification$")
 	public void went_to_maker_notification() throws Throwable {

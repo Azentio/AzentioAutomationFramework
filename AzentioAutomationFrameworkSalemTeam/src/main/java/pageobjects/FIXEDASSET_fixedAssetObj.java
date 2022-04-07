@@ -25,6 +25,12 @@ public class FIXEDASSET_fixedAssetObj {
 	{
 		return fixedAsset_AssetReferenceNumStatus;
 	}
+	@FindBy(xpath="//datatable-row-wrapper[1]//datatable-body-cell[5]//span")
+	private WebElement fixedAsset_AmmendmentApprovedRecord;
+	public WebElement fixedAssetAmmendmentApprovedRecord()
+	{
+		return fixedAsset_AmmendmentApprovedRecord;
+	}
 	@FindBy(xpath="//datatable-row-wrapper[1]//datatable-body-cell[6]//span")
 	private WebElement fixedAsset_ActiveRecord;
 	public WebElement fixedAssetActiveRecord()
@@ -37,7 +43,7 @@ public class FIXEDASSET_fixedAssetObj {
 	{
 		return fixedAssetRevaluation_AssetReferenceNumber;
 	}
-	@FindBy(xpath="//datatable-row-wrapper[1]//datatable-body-cell[5]//span")
+	@FindBy(xpath="//datatable-row-wrapper[4]//datatable-body-cell[5]//span")
 	private WebElement assetAllocation_AssetReferenceNumActive;
 	public WebElement fixedAssetAllocationActiveReferenceNumber()
 	{
