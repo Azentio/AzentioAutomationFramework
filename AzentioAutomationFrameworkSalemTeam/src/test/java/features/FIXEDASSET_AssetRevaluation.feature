@@ -1,5 +1,4 @@
 Feature: Check the functionality of Asset Revaluation
-
 @KUBS_FAT_UAT_012_001
 Scenario: Alter the Value of an existing asset (Any)
 Given Navigate the Maker Url
