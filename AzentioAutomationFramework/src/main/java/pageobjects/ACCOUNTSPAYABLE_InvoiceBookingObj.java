@@ -65,12 +65,20 @@ public class ACCOUNTSPAYABLE_InvoiceBookingObj {
 	}
 	
 	// BP_Name
+	
 	@FindBy(xpath = "//ion-col[4]/app-kub-lov/span/ng-select/div/div/div[2]/input")
 	private WebElement accountPayable_InvoiceBooking_BP_Name;
 	
 	public WebElement accountPayable_InvoiceBooking_BP_Name() {
 		return accountPayable_InvoiceBooking_BP_Name;
 	}
+	// BP_Name - Salem Team
+	/*@FindBy(xpath = "//ion-col[3]//input")
+	private WebElement accountPayable_InvoiceBooking_BP_Name;
+
+	public WebElement accountPayable_InvoiceBooking_BP_Name() {
+		return accountPayable_InvoiceBooking_BP_Name;
+	} */
 	
 	// BP_Name[against po]
 	@FindBy(xpath = "//ion-col[3]/app-kub-lov/span/ng-select/div/div/div[2]/input")
@@ -96,13 +104,25 @@ public class ACCOUNTSPAYABLE_InvoiceBookingObj {
 		return accountPayable_InvoiceBooking_CostCenterAgainstPO;
 	}
 	
-	// Supplier Reference Number
+	// Supplier Reference Number 
 	@FindBy(xpath = "//ion-grid/ion-row/ion-col[8]/ion-item/ion-input/input")
+	
 	private WebElement accountPayable_InvoiceBooking_SupplierReferenceNumber;
 	
 	public WebElement accountPayable_InvoiceBooking_SupplierReferenceNumber() {
 		return accountPayable_InvoiceBooking_SupplierReferenceNumber;
 	}
+
+	// Supplier Reference Number - Salem Team
+	/*@FindBy(xpath = "//ion-col[7]//input")
+	private WebElement accountPayable_InvoiceBooking_SupplierReferenceNumber;
+
+	public WebElement accountPayable_InvoiceBooking_SupplierReferenceNumber() {
+		return accountPayable_InvoiceBooking_SupplierReferenceNumber;
+	}*/
+
+	
+
 	
 	// Supplier Reference Number[againstPO]
 	@FindBy(xpath = "//ion-grid/ion-row/ion-col[7]/ion-item/ion-input/input")
@@ -216,6 +236,14 @@ public class ACCOUNTSPAYABLE_InvoiceBookingObj {
 		return accountPayable_InvoiceBooking_EarlyPaymentFlatDiscountAmount;
 	}
 	
+	// Early Payment Discount Amount[flat] - Salem Team
+/*	@FindBy(xpath = "//ion-col[11]//input")
+	private WebElement accountPayable_InvoiceBooking_EarlyPaymentFlatDiscountAmount;
+
+	public WebElement accountPayable_InvoiceBooking_EarlyPaymentFlatDiscountAmount() {
+		return accountPayable_InvoiceBooking_EarlyPaymentFlatDiscountAmount;
+	}*/
+	
 	// Early Payment Discount Amount[flat][againstPO]
 	@FindBy(xpath = "//ion-grid/ion-row/ion-col[13]/ion-item/input")
 	private WebElement accountPayable_InvoiceBooking_EarlyPaymentFlatDiscountAmountAgainstPO;
@@ -255,6 +283,14 @@ public class ACCOUNTSPAYABLE_InvoiceBookingObj {
 	public WebElement accountPayable_InvoiceBooking_ModeOfPayment() {
 		return accountPayable_InvoiceBooking_ModeOfPayment;
 	}
+
+	// Mode Of Payment - Salem
+/*	@FindBy(xpath = "//ion-col[15]//input")
+	private WebElement accountPayable_InvoiceBooking_ModeOfPayment;
+
+	public WebElement accountPayable_InvoiceBooking_ModeOfPayment() {
+		return accountPayable_InvoiceBooking_ModeOfPayment;
+	}*/
 	
 	// Mode Of Payment[flat]
 	@FindBy(xpath = "//ion-col[16]/app-kub-lov/span/ng-select/div/div/div[2]/input")
@@ -772,5 +808,217 @@ public class ACCOUNTSPAYABLE_InvoiceBookingObj {
 		return accountPayable_InvoiceBooking_InvoiceNumber;
 	}
 	
+	
+	@FindBy(xpath = "//input[@placeholder='Search Invoice Status']")
+	private WebElement accountPayable_search_invoiceStatus;
 
+	public WebElement accountPayableSearchInvoiceStatus() {
+		return accountPayable_search_invoiceStatus;
+	}
+
+	@FindBy(xpath = "//ion-button[@ng-reflect-router-link='/tabs/list/datagrid/52']")
+	private WebElement accountPayable_invoiceBookingTempView;
+
+	public WebElement accountPayableIvoiceBookingTempView() {
+		return accountPayable_invoiceBookingTempView;
+	}
+
+	@FindBy(xpath = "//datatable-row-wrapper[1]//datatable-body-cell[1]//ion-button[1]")
+	private WebElement accountPayable_invoiceBookingRecord;
+
+	public WebElement accountPayableIvoiceBookingRecord() {
+		return accountPayable_invoiceBookingRecord;
+	}
+
+	@FindBy(xpath = "//ion-col[11]//input")
+	private WebElement accountPayable_invoiceBookingExpenceFlatDiscount;
+
+	public WebElement accountPayableIvoiceBookingFLatDiscount() {
+		return accountPayable_invoiceBookingExpenceFlatDiscount;
+	}
+
+	@FindBy(xpath = "//ion-col[7]//input")
+	private WebElement accountPayable_invoiceBookingExpenceSuplierReferenceNo;
+
+	public WebElement accountPayableIvoiceBookingExpenceSuplierReferenceNo() {
+		return accountPayable_invoiceBookingExpenceSuplierReferenceNo;
+	}
+
+	@FindBy(xpath = "//ion-radio-group[1]/ion-item[2]/ion-radio[1]")
+	private WebElement accountPayable_invoiceBookingExpenceExpence11Code;
+
+	public WebElement accountPayableIvoiceBookingExpenceExpense11Code() {
+		return accountPayable_invoiceBookingExpenceExpence11Code;
+	}
+
+	@FindBy(xpath = "//ion-radio-group[1]/ion-item[2]/ion-radio[1]")
+	private WebElement accountPayable_invoiceBookingDeleveryLocationPunjab;
+
+	public WebElement accountPayableIvoiceBookingDeleveryLocationPunjab() {
+		return accountPayable_invoiceBookingDeleveryLocationPunjab;
+	}
+
+	@FindBy(xpath = "")
+	private WebElement alertRemarks;
+
+	public WebElement AlertRemark() {
+		return alertRemarks;
+	}
+
+	@FindBy(xpath = "//ion-button[contains(text(),'Submit')]")
+	private WebElement alertSubmitButton;
+
+	public WebElement alertSubmitButton() {
+		return alertSubmitButton;
+	}
+	//@FindBy(xpath="")
+	@FindBy(xpath="//div[@id='toast-container']//button")
+	private WebElement alert_close;
+	public WebElement toastAlertClose()
+	{
+		return alert_close;
+	}
+	@FindBy(xpath="//datatable-row-wrapper[1]//datatable-body-cell[3]//div")
+	private WebElement billBooking_approvedInvoiceNumber;
+	
+	public WebElement billBookingApprovedInvoiceNumber()
+	{
+		return billBooking_approvedInvoiceNumber;
+	}
+	
+	@FindBy(xpath="//datatable-row-wrapper[1]//datatable-body-cell[5]//div")
+	private WebElement invoiceBooking_approvedBpName;
+	
+	public WebElement billBookingApprovedBpName()
+	{
+		return invoiceBooking_approvedBpName;
+	}
+@FindBy(xpath="(//datatable-body-cell[8]//div)[9]")
+	private WebElement invoiceBooking_approvedInvoiceAmmount;
+	public WebElement billBookingInvoiceAmmount()
+	{
+		return invoiceBooking_approvedInvoiceAmmount;
+	}
+	@FindBy(xpath="(//datatable-body-cell[9]//div)[9]")
+	private WebElement invoiceBooking_approvedExpenceInvoiceAmmount;
+	public WebElement billBookingExpenceInvoiceAmmount()
+	{
+		return invoiceBooking_approvedExpenceInvoiceAmmount;
+	}
+	@FindBy(xpath="//ion-col[4]//input")
+	private WebElement invoiceBooking_approvedExpenceBPName;
+	public WebElement billBookingExpenceBpName()
+	{
+		return invoiceBooking_approvedExpenceBPName;
+	}
+	@FindBy(xpath="//ion-col[3]//input")
+	private WebElement invoiceBooking_poBPName;
+	
+	public WebElement billBookingPoBpName()
+	{
+		return invoiceBooking_poBPName;
+	}
+	@FindBy(xpath="//ion-col[8]//input")
+	private WebElement invoiceBooking_approvedExpenceSuplierName;
+	public WebElement billBookingExpenceSuplierName()
+	{
+		return invoiceBooking_approvedExpenceSuplierName;
+	}
+	
+	@FindBy(xpath="//ion-col[7]//input")
+	private WebElement invoiceBillBooking_invoicePoSuplierName;
+	
+	public WebElement invoiceBollSuplierNAme()
+	{
+		return invoiceBillBooking_invoicePoSuplierName;
+	}
+	@FindBy(xpath="//ion-col[12]//input")
+	private WebElement invoiceBooking_approvedExpenceFlatDiscount;
+	public WebElement billBookingExpenceFlatDiscount()
+	{
+		return invoiceBooking_approvedExpenceFlatDiscount;
+	}
+	@FindBy(xpath="//ion-col[11]//input")
+	private WebElement invoiceBooking_approvedPoFlatDiscount;
+	public WebElement billBookingPoFlatDiscount()
+	{
+		return invoiceBooking_approvedPoFlatDiscount;
+	}
+@FindBy(xpath="//ion-col[13]//input")
+	private WebElement invoiceBooking_approvedExpenceDiscoountType;
+	public WebElement billBookingExpenceDiscountType()
+	{
+		return invoiceBooking_approvedExpenceDiscoountType;
+	}
+	
+	@FindBy(xpath="//ion-col[14]//input")
+	private WebElement invoiceBooking_approvedExpenceDiscountPercent;
+	public WebElement billBookingExpenceDiscountPercent()
+	{
+		return invoiceBooking_approvedExpenceDiscountPercent;
+	}
+	
+	@FindBy(xpath="//ion-col[17]//input")
+	private WebElement invoiceBooking_approvedExpencePaymentMode;
+	public WebElement billBookingExpencePaymentMode()
+	{
+		return invoiceBooking_approvedExpencePaymentMode;
+	}	
+	@FindBy(xpath="//ion-col[15]//input")
+	private WebElement invoiceBooking_poPaymentMode;
+	public WebElement billBookingPoPaymentMode()
+	{
+		return invoiceBooking_poPaymentMode;
+	}
+	
+	@FindBy(xpath="//ion-alert[1]/div[1]/div[3]/button[1]/div[1]/div[1]")
+	private WebElement invoiceBooking_selectGRNRecord;
+	public WebElement invoiceBookingSelectGRNRecord()
+	{
+		return invoiceBooking_selectGRNRecord;
+	}
+	
+	@FindBy(xpath="//span[contains(text(),'OK')]")
+	private WebElement invoiceBooking_OkButton;
+	public WebElement invoiceBooingOkButton()
+	{
+		return invoiceBooking_OkButton;
+	}
+	
+	
+	
+	
+	@FindBy(xpath="//app-data-grid[1]//datatable-row-wrapper[1]//datatable-body-cell[5]//span")
+	private WebElement invoiceBooking_BpName;
+	public WebElement invoiceBookingBpName()
+	{
+		return invoiceBooking_BpName;
+	}
+	
+	@FindBy(xpath="//input[@placeholder='Search Invoice Status']")
+	private WebElement invoiceBooking_cancelledSTatus;
+	public WebElement invoiceBookingCancelledStatus()
+	{
+		return invoiceBooking_cancelledSTatus;
+	}
+	
+	@FindBy(xpath="//app-data-grid[1]//datatable-row-wrapper[1]//datatable-body-cell[3]//span")
+	private WebElement invoiceBooking_InvoiceNumber;
+	public WebElement invoiceBookingInvoiceNumber()
+	{
+		return invoiceBooking_InvoiceNumber;
+	}
+	@FindBy(xpath="//input[@placeholder='Search Invoice Number']")
+	private WebElement serachInvoiceNumber;
+	public WebElement invoiceBookingSearchInvoiceNumber()
+	{
+		return serachInvoiceNumber;
+	}
+	@FindBy(xpath="//datatable-row-wrapper[1]//datatable-body-cell[8]//span")
+	public WebElement invoiceBillBooking_TransactionDate;
+	public WebElement invoiceBillBookingTransactionDate()
+	{
+		return invoiceBillBooking_TransactionDate;
+	}
+	
 }

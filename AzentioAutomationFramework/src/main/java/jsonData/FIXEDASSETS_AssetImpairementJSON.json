@@ -5,7 +5,27 @@
 		"ItemNumber" : "Small",		
 		"CurrencyForImpairement" : "INR",		
 		"CheckerRemark" : "Approved",
-		"RemarkByMaker" : "Submit By Maker"
+		"RemarkByMaker" : "Submit By Maker",
 		
+        "userType": "Maker",
+		"allocatedAssetRefNo": "01-001-desk_BOB667_4",
+		"writeOffAssetRefNo": "MACHINARY-AIRCONDITIONER-Lloyd_HO0001_13",
+		"writeOffImpairedAssetReferenceNumber": "01-001-adjustable table_BR0007_4439",
+		"writeOffRevaluedAssetReferenceNumber": "ELECTRONICS-LAP001-Freedom255_AZENTMAIN_258",
+		"writeOffAmmendentAssetReferenceNumber": "ELECTRONICS-LAP001-Freedom255_AZENTMAIN_268",
+		"writeOffReplacementAssetReferenceNumber": "LAND-BUILDING-Building-01_HO0001_9",
+		"writeOffAllocatedAssetReferenceNumber": "LAND-BUILDING-Building-01_BR0007_6",
+		"writeOffUnderTakingdAssetReferenceNumber": "ELECTRONICS-LAP001-Apple_Mac_Book_BR0007_128981",
+		"AllocationEmployeeName": "anant",
+		"WriteOffNewAssetItemNumber": "527845",
+		"WriteOffNewAssetDescription": "New Building",
+		"allocatedAssetRefNoDeAllocate": "ELECTRONICS-LAP001-Lenovo Laptops_AZENTMAIN_12",
+		"allocatedAssetRefRevalued": "01-ASTSBCTGRY001-Almirahs_AZENTMAIN_4",
+		"allocatedAssetRefNoAmmendent": "ELECTRONICS-LAP001-ASUS Laptops_AZENTMAIN_1222",
+		"allocatedAssetRefNoReplacement": "01-ASTSBCTGRY001-Lockers_BR0003_11",
+		"allocatedAssetRefNoReturn": "ELECTRONICS-LAP001-Laser Printer_BR0003_8898",
+		"allocatedAssetRefNoSale": "01-001-adjustable table_AZENTMAIN_4429",
+		"allocatedAssetRefNoTransfer": "MACHINARY-AIRCONDITIONER-Haier TurboCool_AZENTMAIN_5",
+		"bookValue": "14814"
 	}
 ]

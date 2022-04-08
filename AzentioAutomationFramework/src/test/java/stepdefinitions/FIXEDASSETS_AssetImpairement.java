@@ -21,7 +21,7 @@ import pageobjects.FIXEDASSETS_AssetUndertakingObj;
 import pageobjects.KUBS_CheckerObj;
 import resources.BaseClass;
 import resources.JsonDataReaderWriter;
-import testDataType.FIXEDASSETS_AssetImpairementTestDataType;
+import testDataType.FIXEDASSET_AssetImpairementTestDataType;
 
 public class FIXEDASSETS_AssetImpairement {
 	WebDriver driver = BaseClass.driver;
@@ -32,7 +32,7 @@ public class FIXEDASSETS_AssetImpairement {
 	FIXEDASSETS_AssetSaleObj fIXEDASSETS_AssetSaleObj = new FIXEDASSETS_AssetSaleObj(driver);
 	FIXEDASSETS_AssetUndertakingObj fIXEDASSETS_AssetUndertakingObj = new FIXEDASSETS_AssetUndertakingObj(driver);
 	WaitHelper waithelper = new WaitHelper(driver);
-	FIXEDASSETS_AssetImpairementTestDataType fIXEDASSETS_AssetImpairementTestDataType=jsonReader.getAssetImpairementdata("Maker");
+	FIXEDASSET_AssetImpairementTestDataType fIXEDASSET_AssetImpairementTestDataType=jsonReader.getAssetImpairementdata("Maker");
 	JavascriptHelper javascripthelper = new JavascriptHelper();
 	JsonDataReaderWriter jsonWriter = new JsonDataReaderWriter();
 	ClicksAndActionsHelper clicksAndActionHelper = new ClicksAndActionsHelper(driver);
@@ -56,7 +56,7 @@ public class FIXEDASSETS_AssetImpairement {
 	@And("^Fill the required fields for asset impairement$")
 	public void fill_the_required_fields_for_asset_impairement() throws InterruptedException {
 		waithelper.waitForElement(driver, 3000, fIXEDASSETS_AssetUndertakingObj.fixedAssets_AssetImpairement_AssetReferenceNumber());
-		fIXEDASSETS_AssetUndertakingObj.fixedAssets_AssetImpairement_AssetReferenceNumber().sendKeys(fIXEDASSETS_AssetImpairementTestDataType.AssetReferenceNumber);
+		fIXEDASSETS_AssetUndertakingObj.fixedAssets_AssetImpairement_AssetReferenceNumber().sendKeys(fIXEDASSET_AssetImpairementTestDataType.AssetReferenceNumber);
 		fIXEDASSETS_AssetUndertakingObj.fixedAssets_AssetImpairement_AssetReferenceNumber().sendKeys(Keys.ENTER);
 		
 		waithelper.waitForElement(driver, 3000, fIXEDASSETS_AssetUndertakingObj.fixedAssets_AssetImpairement_TransactionType());
@@ -67,11 +67,11 @@ public class FIXEDASSETS_AssetImpairement {
 		fIXEDASSETS_AssetUndertakingObj.fixedAssets_AssetImpairement_TransactionTypeImpairement().click();
 		
 		waithelper.waitForElement(driver, 3000, fIXEDASSETS_AssetUndertakingObj.fixedAssets_AssetImpairement_ItemNumber());
-		fIXEDASSETS_AssetUndertakingObj.fixedAssets_AssetImpairement_ItemNumber().sendKeys(fIXEDASSETS_AssetImpairementTestDataType.ItemNumber);
+		fIXEDASSETS_AssetUndertakingObj.fixedAssets_AssetImpairement_ItemNumber().sendKeys(fIXEDASSET_AssetImpairementTestDataType.ItemNumber);
 		fIXEDASSETS_AssetUndertakingObj.fixedAssets_AssetImpairement_ItemNumber().sendKeys(Keys.ENTER);
 		
 		waithelper.waitForElement(driver, 3000, fIXEDASSETS_AssetUndertakingObj.fixedAssets_AssetImpairement_Currency());
-		fIXEDASSETS_AssetUndertakingObj.fixedAssets_AssetImpairement_Currency().sendKeys(fIXEDASSETS_AssetImpairementTestDataType.CurrencyForImpairement);
+		fIXEDASSETS_AssetUndertakingObj.fixedAssets_AssetImpairement_Currency().sendKeys(fIXEDASSET_AssetImpairementTestDataType.CurrencyForImpairement);
 		
 	}
 
@@ -118,7 +118,7 @@ public class FIXEDASSETS_AssetImpairement {
     	Thread.sleep(1000);
     	waithelper.waitForElement(driver, 2000, fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_RemarkField());
     	javascripthelper.JSEClick(fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_RemarkField());
-    	fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_RemarkField().sendKeys(fIXEDASSETS_AssetImpairementTestDataType.RemarkByMaker);
+    	fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_RemarkField().sendKeys(fIXEDASSET_AssetImpairementTestDataType.RemarkByMaker);
     	
     	waithelper.waitForElement(driver, 2000, fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_Submit());
     	fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_Submit().click();
@@ -168,7 +168,7 @@ public class FIXEDASSETS_AssetImpairement {
 		waithelper.waitForElement(driver, 2000, kubschecker.checkerApproveButton());
 		kubschecker.checkerApproveButton().click();
 		waithelper.waitForElement(driver, 2000, kubschecker.checkerRemarks());
-		kubschecker.checkerRemarks().sendKeys(fIXEDASSETS_AssetImpairementTestDataType.CheckerRemark);
+		kubschecker.checkerRemarks().sendKeys(fIXEDASSET_AssetImpairementTestDataType.CheckerRemark);
 		waithelper.waitForElement(driver, 2000, kubschecker.checkersubmitButton());
 		kubschecker.checkersubmitButton().click();
 		waithelper.waitForElement(driver, 5000, fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_RecordStatus());

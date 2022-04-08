@@ -76,7 +76,7 @@ Then Click on Direction icon
 Then Click on Account Payable 
 Then Click on purchase order Eye Icon
 Then Click on purchase order Add button
-Then Fill purchase order fields
+Then Fill purchase order Mandatory fields
 Then Enter Po Quantity
 
 @KUBS_AR/AP_UAT_013_TC_02  @MultiAuth

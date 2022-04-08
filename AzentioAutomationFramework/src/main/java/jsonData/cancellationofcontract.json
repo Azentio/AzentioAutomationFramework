@@ -1,0 +1,35 @@
+[
+{
+"UserType":"Maker",
+"BuisnessPartnerName":"Gangeeta",
+"contractstatus":"CANCELLED",
+"contractstatusactive":"ACTIVE",
+"txtNumber":"PAN-124-2022-03-10",
+"ReceivableName":"SOA",
+"BuisnessPartnerName1":"F Name",
+"BuisnessPartnerName2":"suvarana Pvt Ltd",
+"PaymentSettlementDescription":"ok",
+"Contractstatusfordebitnote":"Active",
+"Contractstatusforcancellationofcontract":"CLOSED",
+"Cancellationtype":"Contract",
+"ContractType":"Expense",
+"ContracttypeAsInvoice":"Invoice Against PO",
+"ReferenceNumber":"APPCAN_15_1532022",
+"AppropriationAmount":"200",
+"branchCode": "AZENTMAIN",
+"gLCode": "IFRS-LIAB-LI3000003 - Accounts Payable",
+"GlMonth":"Apr",
+"GlFullMonth": "April",
+"GlYear": "2022",
+"GlDay"	: "7",
+"GlToMonth": "Jan",
+"GlFullToMonth": "January",
+"GlToDate": "5",
+"GlToYear":"2023"
+},
+{
+"UserType":"Checker",
+"PossitiveRemarks":"Approved from checker",
+"NegativeRemarks":"Rejected from checker"
+}
+]

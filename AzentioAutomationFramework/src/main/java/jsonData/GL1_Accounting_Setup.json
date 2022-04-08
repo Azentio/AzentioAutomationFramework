@@ -1,0 +1,24 @@
+[
+	{
+	"User" 			: "Setup",
+	"Template"		: "Base Template",
+	"Template1"		: "CUSTOM_TEMPLATE",
+	"BookName"		: "Testing_11",
+	"BookName1"		: "Testing_12",
+	"Default" 		: "Testing_21",
+	"Modify"		: "Modify_04",
+	"Day"			: "1",
+	"Month"			: "Dec",
+	"Year"			: "2022",
+	"BookType"		: "IFRS Book",
+	"BookType1"		: "GAAP",
+	"Remark"		: "Okay",
+	
+	//Accounting Category
+	"CategoryCode" : "Income3",
+	"CategoryBook" : "Income1",
+	"CategoryCode1" : "Expenditure6",
+	"CategoryBook1" : "Expenditure5",
+	"GlGeneration" : "Auto"
+	}
+]

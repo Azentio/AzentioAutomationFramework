@@ -80,5 +80,11 @@ public class INVENTORY_EnquiryGlObject {
 		return gl_nextRecord;
 	}
 	
+	@FindBy(xpath="//ion-col[6]//input")
+	private WebElement gl_TransactionReferenceNumber;
+	public WebElement glTransactionReferenceNumber()
+	{
+		return gl_TransactionReferenceNumber;
+	}
 	
 }

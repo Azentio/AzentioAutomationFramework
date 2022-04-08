@@ -247,5 +247,16 @@ public class FixedAsset_AssetDeallocationObj {
 			return fixedAsset_transferredAsset_NewBranch;
 		}
 
-		
+		@FindBy(xpath="(//ion-toolbar[1]/ion-buttons[2]/ion-button[1])[2]")
+    private WebElement fixedAsset_AssetDeallocationSaveButton;
+    public WebElement fixedAssetDeAllocationSaveButton()
+    {
+    	return fixedAsset_AssetDeallocationSaveButton;
+    }
+    @FindBy(xpath="//ion-col[2]/app-kub-lov[1]/span[1]/ng-select[1]/div[1]/div[1]/div[2]//span[2]")
+    private WebElement fixedAsset_AssetDeallocationRefNo;
+    public WebElement getReferenceNumberOfDeAllocation()
+    {
+    	return fixedAsset_AssetDeallocationRefNo;
 	}
+}
