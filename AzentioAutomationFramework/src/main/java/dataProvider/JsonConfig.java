@@ -206,7 +206,7 @@ public class JsonConfig {
 	private List<FIXEDASSET_AssetAmendmentData> AssetAmendmentList;
 	// assetImpairement
 	private final String FixedAssetImpairementFilePath = configFileReader.getJsonPath()
-			+ "FIXEDASSET_AssetImpairementJSON.json";
+			+ "FIXEDASSETS_AssetImpairementJSON.json";
 	private List<FIXEDASSET_AssetImpairementTestDataType> fixedAssetAssetImpairementTestData;
 	// assetReturn
 	private final String fixedAssetReturnFilepath = configFileReader.getJsonPath() + "FIXEDASSET_AssetReturnJSON.json";

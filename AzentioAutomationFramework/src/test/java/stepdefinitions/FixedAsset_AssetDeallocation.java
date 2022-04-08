@@ -24,24 +24,24 @@ public class FixedAsset_AssetDeallocation extends BaseClass {
 	
 	
 
-    @Then("^Click on fixed asset deallocaion  Direction icon$")
-    public void click_on_fixed_asset_deallocaion_direction_icon()  {
-    //Direction	
-    waithelper.waitForElement(driver, 2000,  fixedAsset_AssetDeallocationObj.fixedAsset_AssetDeallocation_DirectionIcon());
-    fixedAsset_AssetDeallocationObj.fixedAsset_AssetDeallocation_DirectionIcon().click();
-    	
-       
-    }
+//    @Then("^Click on fixed asset deallocaion  Direction icon$")
+//    public void click_on_fixed_asset_deallocaion_direction_icon()  {
+//    //Direction	
+//    waithelper.waitForElement(driver, 2000,  fixedAsset_AssetDeallocationObj.fixedAsset_AssetDeallocation_DirectionIcon());
+//    fixedAsset_AssetDeallocationObj.fixedAsset_AssetDeallocation_DirectionIcon().click();
+//    	
+//       
+//    }
 
-    @Then("^Click on Fixed assets field$")
-    public void click_on_fixed_assets_field() {
-    //Fixed Assets
-    waithelper.waitForElement(driver, 2000,  fixedAsset_AssetDeallocationObj.fixedAsset_AssetDeallocation_FixedAssetsField());
-    fixedAsset_AssetDeallocationObj.fixedAsset_AssetDeallocation_FixedAssetsField().click();
-        	
-         
-      
-    }
+//    @Then("^Click on Fixed assets field$")
+//    public void click_on_fixed_assets_field() {
+//    //Fixed Assets
+//    waithelper.waitForElement(driver, 2000,  fixedAsset_AssetDeallocationObj.fixedAsset_AssetDeallocation_FixedAssetsField());
+//    fixedAsset_AssetDeallocationObj.fixedAsset_AssetDeallocation_FixedAssetsField().click();
+//        	
+//         
+//      
+//    }
    
 
 

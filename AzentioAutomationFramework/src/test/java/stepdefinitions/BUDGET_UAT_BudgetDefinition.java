@@ -35,7 +35,8 @@ public class BUDGET_UAT_BudgetDefinition extends BaseClass {
 	JsonConfig jsonConfig = new JsonConfig();
 	KUBS_MakerObj kubsMakerObj = new KUBS_MakerObj(driver);
 	WaitHelper waitHelper = new WaitHelper(driver);
-	BUDGET_BudgetDefinitionUATTestDataType budgetDefinitionUATTestData = jsonConfig.getUATBudgetDefinitionTestData(user);
+	BUDGET_BudgetDefinitionUATTestDataType budgetDefinitionUATTestData = jsonConfig
+			.getUATBudgetDefinitionTestData(user);
 	BUDGET_BudgetCreationObj budgetCreationObj = new BUDGET_BudgetCreationObj(driver);
 	JsonDataReaderWriter jsonReaderWriter = new JsonDataReaderWriter();
 	KUBS_ReviewerObj kubsReviewerObj = new KUBS_ReviewerObj(driver);
@@ -43,7 +44,6 @@ public class BUDGET_UAT_BudgetDefinition extends BaseClass {
 	ClicksAndActionsHelper clickAndActions = new ClicksAndActionsHelper(driver);
 	BrowserHelper browserHelper = new BrowserHelper(driver);
     BUDGET_RequestAndAllocationObj requestAndAllocationObj  = new BUDGET_RequestAndAllocationObj(driver);
-    
 	@Given("^navigate to given url and login with maker credentials$")
 	public void navigate_to_given_url() throws Throwable {
 		/*
@@ -122,6 +122,7 @@ public class BUDGET_UAT_BudgetDefinition extends BaseClass {
 		budgetCreationObj.budgetCreation_BudgetCode().sendKeys(budgetDefinitionUATTestData.uatHalfYearlyBudgetCode);
 
 	}
+	
 
 	@Then("^enter Budget Code quarterly budget$")
 	public void enter_budget_code_for_quarterly_budget() throws Throwable {
@@ -172,8 +173,8 @@ public class BUDGET_UAT_BudgetDefinition extends BaseClass {
 		budgetCreationObj.budgetCreation_BudgetName().sendKeys(budgetDefinitionUATTestData.uatYearlyBudgetType);
 	}
 
-	@And("^enter budget name for monthly Budget$")
-	public void enter_budget_name_for_monthly_Budget() throws Throwable {
+	@And("^enter budget name for monthly budget$")
+	public void enter_budget_name_for_monthly_budget() throws Throwable {
 		budgetCreationObj.budgetCreation_BudgetName().sendKeys(budgetDefinitionUATTestData.uatMonthlyBudgetType);
 	}
 
@@ -385,7 +386,7 @@ public class BUDGET_UAT_BudgetDefinition extends BaseClass {
 		/*
 		 * Then we have to login with reviewer and continue the approval process
 		 */
-
+        Thread.sleep(3000);
 		kubsLogin.logintoAzentioappReviewer(userType, jsonReaderWriter.readdata());
 
 	}
@@ -562,7 +563,7 @@ public class BUDGET_UAT_BudgetDefinition extends BaseClass {
 		/*
 		 * By the help of following step we can login as a checker
 		 */
-		Thread.sleep(2000);
+		Thread.sleep(3000);
 		kubsLogin.loginToAzentioAppAsChecker("Checker");
 		
 	}
@@ -587,7 +588,26 @@ public class BUDGET_UAT_BudgetDefinition extends BaseClass {
 		javascriptHelper.JSEClick(kubsCheckerObj.checkerActionIcon());
 
 	}
-
+	@Then("^verify the yearly budget approve record is available in the approved list view$")
+    public void verify_the_yearly_budget_approve_record_is_available_in_the_approved_list_view() throws Throwable {
+		waitHelper.waitForElementVisible(driver.findElement(By.xpath("//datatable-row-wrapper[1]//datatable-body-cell[2]//span[contains(text(),' "+budgetDefinitionUATTestData.uatYearlyBudgetCode+" ')]")), 2000, 200);
+       Assert.assertTrue(driver.findElement(By.xpath("//datatable-row-wrapper[1]//datatable-body-cell[2]//span[contains(text(),' "+budgetDefinitionUATTestData.uatYearlyBudgetCode+" ')]")).isDisplayed());
+    }
+	@Then("^verify the monthly approved budget code is appeared in the list view$")
+    public void verify_the_monthly_approved_budget_code_is_appeared_in_the_list_view() throws Throwable {
+		waitHelper.waitForElementVisible(driver.findElement(By.xpath("//datatable-row-wrapper[1]//datatable-body-cell[2]//span[contains(text(),' "+budgetDefinitionUATTestData.uatMonthlyBudgetCode+" ')]")), 2000, 200);
+	       Assert.assertTrue(driver.findElement(By.xpath("//datatable-row-wrapper[1]//datatable-body-cell[2]//span[contains(text(),' "+budgetDefinitionUATTestData.uatMonthlyBudgetCode+" ')]")).isDisplayed());
+    }
+	@Then("^verify the quaterly budget approve record is available in the approved list view$")
+    public void verify_the_quaterly_budget_approve_record_is_available_in_the_approved_list_view() throws Throwable {
+		waitHelper.waitForElementVisible(driver.findElement(By.xpath("//datatable-row-wrapper[1]//datatable-body-cell[2]//span[contains(text(),' "+budgetDefinitionUATTestData.uatQuarterlyBudgetCode+" ')]")), 2000, 200);
+	       Assert.assertTrue(driver.findElement(By.xpath("//datatable-row-wrapper[1]//datatable-body-cell[2]//span[contains(text(),' "+budgetDefinitionUATTestData.uatQuarterlyBudgetCode+" ')]")).isDisplayed());	     
+    }
+	@Then("^verify the half yearly budget approve record is available in the approved list view$")
+    public void verify_the_half_yearly_budget_approve_record_is_available_in_the_approved_list_view() throws Throwable {
+		waitHelper.waitForElementVisible(driver.findElement(By.xpath("//datatable-row-wrapper[1]//datatable-body-cell[2]//span[contains(text(),' "+budgetDefinitionUATTestData.uatHalfYearlyBudgetCode+" ')]")), 2000, 200);
+	       Assert.assertTrue(driver.findElement(By.xpath("//datatable-row-wrapper[1]//datatable-body-cell[2]//span[contains(text(),' "+budgetDefinitionUATTestData.uatHalfYearlyBudgetCode+" ')]")).isDisplayed());   
+    }
 	@And("^select our record and clime using reference ID$")
 	public void select_our_budget_record_and_clime_using_reference_id() throws Throwable {
 		/*

@@ -274,8 +274,8 @@ Then Click on fixed asset deallocaion  Direction icon
 Then Click on Fixed assets field
 Then Click on asset deallocaion Eye button
 And click on Add Icon
-Then Fill asset deallocaion Mandatory fields
-Then Click on Fixed Asset Save button
+Then Fill the asset de Allocaion Mandatory fields
+Then Click on Fixed Asset Save button for de allocation
 Then click on notification button
 Then choose first record in the notification record
 And click on Submit button 

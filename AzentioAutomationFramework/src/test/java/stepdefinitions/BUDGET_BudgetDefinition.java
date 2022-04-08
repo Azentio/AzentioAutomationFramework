@@ -328,10 +328,10 @@ public class BUDGET_BudgetDefinition extends BaseClass {
 		budgetCreationObj.budgetCreation_BudgetName().sendKeys(budgetDefinitionTestData.uatYearlyBudgetType);
 	}
 
-	@And("^enter budget name for monthly budget$")
-	public void enter_budget_name_for_monthly_budget() throws Throwable {
-		budgetCreationObj.budgetCreation_BudgetName().sendKeys(budgetDefinitionTestData.uatMonthlyBudgetType);
-	}
+//	@And("^enter budget name for monthly budget$")
+//	public void enter_budget_name_for_monthly_budget() throws Throwable {
+//		budgetCreationObj.budgetCreation_BudgetName().sendKeys(budgetDefinitionTestData.uatMonthlyBudgetType);
+//	}
 
 	@And("^enter budget name for half yearly budget$")
 	public void enter_budget_name_for_half_yearly_budget() throws Throwable {

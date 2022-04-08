@@ -241,7 +241,7 @@ Then click on search
 And search the cancelled bill
 And Go to payment settlement module
 And click on Add Icon
-And fill the form
+And fill the form for payment settlement
 And find the invoice reference number is availabe at the billing queue 
 
 @KUBS_AR/AP_UAT_003_005_TC_01

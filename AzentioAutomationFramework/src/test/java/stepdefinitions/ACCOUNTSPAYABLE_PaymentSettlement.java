@@ -246,8 +246,8 @@ public class ACCOUNTSPAYABLE_PaymentSettlement extends BaseClass {
 				//System.out.println("Amount is " + amount);
 					}
 
-	@And("^fill the form$")
-	public void fill_the_form() throws Throwable {
+	@And("^fill the form for payment settlement$")
+	public void fill_the_form_for_payment_settlement() throws Throwable {
 		waitHelper.waitForElementVisible(paymentSettlementObj.accountsPayablePayementSettlementPaymentOption(), 1000,
 				100);
 		paymentSettlementObj.accountsPayablePayementSettlementPaymentOption().click();

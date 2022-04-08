@@ -667,7 +667,7 @@ public class FIXEDASSET_AssetReturn extends BaseClass {
     }
 
     @Then("^Click on fixed asset deallocaion  Direction icon$")
-    public void click_on_fixed_asset_deallocaion_direction_icon()  {
+    public void click_on_fixed_asset_deallocaion_direction_icon_AssetReturn()  {
     //Direction	
     waitHelper.waitForElement(driver, 4000,  fixedAsset_AssetDeallocationObj.fixedAsset_AssetDeallocation_DirectionIcon());
     fixedAsset_AssetDeallocationObj.fixedAsset_AssetDeallocation_DirectionIcon().click();
@@ -685,18 +685,18 @@ public class FIXEDASSET_AssetReturn extends BaseClass {
       
     }
 
-    @Then("^Click on asset deallocaion Eye button$")
-    public void click_on_asset_deallocaion_eye_button(){
-    //Eye
-   WebElement eye = waitHelper.waitForElement(driver, 4000,  fixedAsset_AssetDeallocationObj.fixedAsset_AssetDeallocation_EyeIcon());
-   clicksAndActionHelper.moveToElement(eye);
-   fixedAsset_AssetDeallocationObj.fixedAsset_AssetDeallocation_EyeIcon().click();
-       
-        
-    }
+//    @Then("^Click on asset deallocaion Eye button$")
+//    public void click_on_asset_deallocaion_eye_button(){
+//    //Eye
+//   WebElement eye = waitHelper.waitForElement(driver, 4000,  fixedAsset_AssetDeallocationObj.fixedAsset_AssetDeallocation_EyeIcon());
+//   clicksAndActionHelper.moveToElement(eye);
+//   fixedAsset_AssetDeallocationObj.fixedAsset_AssetDeallocation_EyeIcon().click();
+//       
+//        
+//    }
 
-    @Then("^Fill asset deallocaion Mandatory fields$")
-    public void fill_asset_deallocaion_mandatory_fields() throws InterruptedException  {
+    @Then("^Fill the asset de Allocaion Mandatory fields$")
+    public void fill_the_asset_deallocaion_mandatory_fields() throws InterruptedException  {
      	
     	
     	//AssetReferenceNumber
@@ -718,8 +718,8 @@ public class FIXEDASSET_AssetReturn extends BaseClass {
         Thread.sleep(2000);
        
     }
-    @Then("^Click on Fixed Asset Save button$")
-    public void click_on_fixed_asset_save_button() throws Throwable {
+    @Then("^Click on Fixed Asset Save button for de allocation$")
+    public void click_on_fixed_asset_save_button_Deallocation() throws Throwable {
     	waitHelper.waitForElementVisible(fixedAsset_AssetDeallocationObj.fixedAssetDeAllocationSaveButton(), 1000, 100);
     	fixedAsset_AssetDeallocationObj.fixedAssetDeAllocationSaveButton().click();
     }
