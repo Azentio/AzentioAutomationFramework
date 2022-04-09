@@ -1,0 +1,23 @@
+[{
+		"User": "Maker",
+		"BranchCode": "AZENTMAIN",
+		"GLCode": "IFRS-1000045-AS -  ICICI Bank AC ICICI883298348348394",
+		
+		"GLMonth": "Mar",
+		"GLFullMonth": "March",
+		"GLDay": "7",
+		
+		"GLYear": "2022",
+		
+		"GLToMonth": "Oct",
+		"GLFullToMonth": "October",
+		"GLToDate": "25",
+		
+		"BouncedVoucher"  :"DEP-RR1234567-20220307",
+		
+		"ClearedVoucher"  :"DEP-RR88888888-20220307",
+		
+		"Voucher" : "PAN-106-2022-03-07"
+		
+	}]
+	

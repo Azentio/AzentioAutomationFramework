@@ -150,4 +150,10 @@ public class Azentio_ReviewerObj {
 	public WebElement reviewer_reject_toast() {
 		return reviewer_reject_toast;
 	}
+	@FindBy(xpath = "//ion-row[1]/ion-col[1]/ion-item[1]/ion-textarea[1]/div[1]/textarea[1]")
+	private WebElement reviewer_alert_remarkSecond;
+
+	public WebElement reviewerAlertRemarkSecond() {
+		return reviewer_alert_remarkSecond;
+	}
 }

@@ -171,5 +171,11 @@ public class Azentio_CheckerObj {
 	public WebElement checker_right_corner_reject_toast() {
 		return checker_right_corner_reject_toast;
 	}
+	@FindBy(xpath = "//ion-row[1]/ion-col[1]/ion-item[1]/ion-textarea[1]/div[1]/textarea[1]")
+	private WebElement checker_alert_remarkSecond;
+
+	public WebElement checkerRemarkSecond() {
+		return checker_alert_remarkSecond;
+	}
 
 }
