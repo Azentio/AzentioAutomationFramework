@@ -1,7 +1,7 @@
 Feature: AR/AP Module
  Manual Payout
     
-  @KUBS_AR/AP_UAT_006_001_TC_01
+  @KUBS_AR/AP_UAT_006_001_TC_01_Employee
   Scenario: Creating Manual payouts for approved Bills of a Vendor
    	Given Maker Navigate to UAT URL login
 		Then Click on Direction icon

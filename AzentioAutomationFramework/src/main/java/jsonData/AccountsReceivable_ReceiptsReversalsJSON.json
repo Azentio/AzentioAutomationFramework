@@ -1,0 +1,10 @@
+[
+	{
+		"User" : "Maker",
+		"ReceiptType" : "Wire",
+		"ReceiptNumber" : "RRN26022022",
+		"ReceiptReferenceNumber" : "",
+		"CancellationRemarks" : "ok",
+		"RemarkByMaker" : "submit by maker"
+	}
+]

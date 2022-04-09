@@ -1,0 +1,20 @@
+[
+	{
+		"User" : "Maker",
+		
+		"ToMonth": "Oct",
+		"ToFullMonth": "October",
+		"ToYear" : "2022",
+		"ToDate": "25",
+		
+		"JobCode": "JOB02",
+		"JobName": "JOB02",
+		"ApplicationName": "JOBAPP02",
+		"ModuleCode": "JOBMOD02",
+		"ProcessName": "Process Day Change",
+		"JobType": "End Of Day",
+		"NumberOfThreads": "10",
+		"SequenceNumber": "1001",
+		"Remarks": "ok"
+	}
+]

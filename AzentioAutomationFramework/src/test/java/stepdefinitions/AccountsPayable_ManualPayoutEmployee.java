@@ -62,11 +62,11 @@ public class AccountsPayable_ManualPayoutEmployee  extends BaseClass {
     	accountsPayable_ManualPayoutEmployeeObj.accountPayable_ManualPayout_EyeButton().click();
     }
 
-    @And("^click on add button for manual payout$")
-    public void click_on_add_button_for_manual_payout() {
-    	waithelper.waitForElement(driver, 2000, accountsPayable_ManualPayoutEmployeeObj.accountPayable_ManualPayout_AddButton());
-    	accountsPayable_ManualPayoutEmployeeObj.accountPayable_ManualPayout_AddButton().click();
-    }
+//    @And("^click on add button for manual payout$")
+//    public void click_on_add_button_for_manual_payout() {
+//    	waithelper.waitForElement(driver, 2000, accountsPayable_ManualPayoutEmployeeObj.accountPayable_ManualPayout_AddButton());
+//    	accountsPayable_ManualPayoutEmployeeObj.accountPayable_ManualPayout_AddButton().click();
+//    }
 
     @And("^Fill the required fields for manual payout$")
     public void fill_the_required_fields_for_manual_payout() throws InterruptedException, IOException, ParseException  {
@@ -179,16 +179,16 @@ public class AccountsPayable_ManualPayoutEmployee  extends BaseClass {
 
 
     
-    @Then("^Get the payout status$")
-    public void get_the_payout_status()  {
-    	
-    	waithelper.waitForElement(driver, 3000, accountsPayable_ManualPayoutEmployeeObj.accountPayable_ManualPayout_Search());
-    	accountsPayable_ManualPayoutEmployeeObj.accountPayable_ManualPayout_Search().click();
-    	waithelper.waitForElement(driver, 3000, accountsPayable_ManualPayoutEmployeeObj.accountPayable_ManualPayout_BusinessPartnerSearch());
-    	accountsPayable_ManualPayoutEmployeeObj.accountPayable_ManualPayout_BusinessPartnerSearch().sendKeys(accountsPayable_ManualPayoutEmployeeTestDataType.BP_Name);
-    	System.out.println("Payout Status is - " +accountsPayable_ManualPayoutEmployeeObj.accountPayable_ManualPayout_PayoutStatus().getText());
-       
-    }
+//    @Then("^Get the payout status$")
+//    public void get_the_payout_status()  {
+//    	
+//    	waithelper.waitForElement(driver, 3000, accountsPayable_ManualPayoutEmployeeObj.accountPayable_ManualPayout_Search());
+//    	accountsPayable_ManualPayoutEmployeeObj.accountPayable_ManualPayout_Search().click();
+//    	waithelper.waitForElement(driver, 3000, accountsPayable_ManualPayoutEmployeeObj.accountPayable_ManualPayout_BusinessPartnerSearch());
+//    	accountsPayable_ManualPayoutEmployeeObj.accountPayable_ManualPayout_BusinessPartnerSearch().sendKeys(accountsPayable_ManualPayoutEmployeeTestDataType.BP_Name);
+//    	System.out.println("Payout Status is - " +accountsPayable_ManualPayoutEmployeeObj.accountPayable_ManualPayout_PayoutStatus().getText());
+//       
+//    }
    /* @Then("^click on the Notification select the record and reviewer Approve$")
     * 
    

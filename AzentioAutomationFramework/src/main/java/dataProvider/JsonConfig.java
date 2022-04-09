@@ -13,7 +13,9 @@ import com.google.gson.stream.JsonReader;
 
 import testDataType.ACCOUNTSPAYABLE_ContractReportTestData;
 import testDataType.ACCOUNTSPAYABLE_InvoiceBookingTestDataType;
+import testDataType.ACCOUNTSPAYABLE_ManualPayoutTestDataType;
 import testDataType.ACCOUNTSPAYABLE_PaymentFileUploadDownloadTestData;
+import testDataType.ACCOUNTSPAYABLE_PaymentSettlementCancellationTestDataType;
 import testDataType.ACCOUNTSPAYABLE_PaymentSettlementTestDataType;
 import testDataType.ACCOUNTSPAYABLE_VendorContractsTestDataType;
 import testDataType.ACCOUNTSRECEIVABLE_AccountsReceivableAdvanceTestDataType;
@@ -27,7 +29,12 @@ import testDataType.AccountPayable_VendorPurchaseOrderTestDataType;
 import testDataType.AccountReceivable_AccountReceivableAdvancesTestDataType;
 import testDataType.AccountReceivable_AppropriationTestDataType;
 import testDataType.AccountReceivable_UpdateDepositedChequeTestDataType;
+import testDataType.AccountingSetup_ChartOfAccountsDefinitionTestDataType;
 import testDataType.AccountsPayable_ManualPayoutEmployeeTestDataType;
+import testDataType.AccountsReceivable_AppropriationTestDataType;
+import testDataType.AccountsReceivable_DebitNoteTestDataType;
+import testDataType.AccountsReceivable_ReceiptsReversalsTestDataType;
+import testDataType.AccountsReceivable_UpdateChequeStatusTestDataType;
 import testDataType.ArAp_BalanceSheetReportTestDataType;
 import testDataType.ArAp_EnquiryTestDataType;
 import testDataType.BUDGET_BudgetCreationTestDataType;
@@ -54,12 +61,16 @@ import testDataType.Cancellationofcontractdatatype;
 import testDataType.FIXEDASSET_AssetAmendmentData;
 import testDataType.FIXEDASSET_AssetImpairementTestDataType;
 import testDataType.FIXEDASSET_AssetReturnTestData;
+import testDataType.FinancialReporting_BalanceSheetReportTestDataType;
+import testDataType.FinancialReporting_GLBalancesReportTestDataType;
+import testDataType.FinancialReporting_TrialBalanceReportTestDataType;
 import testDataType.GL1_Accounting_Setup_Data;
 import testDataType.GL2_FinancialTransactionReportTestDataType;
 import testDataType.GL2_JournalVoucherTestDataType;
 import testDataType.GL2_JournalVoucher_AccountEntryReportTestDataType;
 import testDataType.GL2_LegalEntityGLConfigTestDataType;
 import testDataType.GL_ModuleTestData;
+import testDataType.GeneralLedger2_JournalVoucherTestDataType;
 import testDataType.INVENTORY_EnquiryGlTestData;
 import testDataType.INVENTORY_InventoryManagement_DataType;
 import testDataType.INVENTORY_InventoryStockIssueTestData;
@@ -68,11 +79,14 @@ import testDataType.INVENTORY_MANAGEMENT_PurchaseRequisitionConfirmationTestData
 import testDataType.InventoryMaintenanceTestDataType;
 import testDataType.InventoryManagementTestDataType;
 import testDataType.InventoryManagement_InventoryStockReceiptTestDataType;
+import testDataType.JobScheduler_JobExecutionTestDataType;
 import testDataType.KUBS_LoginTestDataType;
 import testDataType.Logindata;
 import testDataType.RegisterData;
 import testDataType.Reports_AssetCreationCommonTestDataType;
+import testDataType.Reports_PettyCashTestDataType;
 import testDataType.PETTY_PettyCash_Data;
+import testDataType.PettyCash_ReconciliationTestDataType;
 
 //master
 public class JsonConfig {
@@ -89,13 +103,12 @@ public class JsonConfig {
 	private final String BudtypeFilepath = configFileReader.getJsonPath() + "BUDGET_RequestandallocationBUDTYPE.json";
 	private List<BUDGET_RequestandallocationBUDTYPEDATA> BudtypeList;
 
-//Budget_BudgetCreation
+	//Budget_BudgetCreation
 	private final String BudgetCreationPath = configFileReader.getJsonPath() + "BUDGET_BudgetCreationJSON.json";
 	private List<BUDGET_BudgetDefinitionTestDataType> BudgetCreationList;
 
 	// UAT Budget Definition
-	private final String BudgetDefinitionUATFilePath = configFileReader.getJsonPath()
-			+ "BUDGET_BudgetDefinitionUATJSON.json";
+	private final String BudgetDefinitionUATFilePath = configFileReader.getJsonPath() + "BUDGET_BudgetDefinitionUATJSON.json";
 	private List<BUDGET_BudgetDefinitionUATTestDataType> budgetDefinitionUATTestData;
 
 	// Budget_SupplementaryBudget
@@ -111,8 +124,7 @@ public class JsonConfig {
 	private List<BUDGET_CommentsFromApprover> reviewerCommentsList;
 
 	// Inventory stock issue
-	private final String InventoryStockIssueFilePath = configFileReader.getJsonPath()
-			+ "INVENTORY_InventoryStockIssue.json";
+	private final String InventoryStockIssueFilePath = configFileReader.getJsonPath() + "INVENTORY_InventoryStockIssue.json";
 	private List<INVENTORY_InventoryStockIssueTestData> inventoryStockIssueTestData;
 
 	// InventoryGL
@@ -317,6 +329,63 @@ public class JsonConfig {
 	//AccountsPayable_ManualPayoutEmployee
 	private final String ManualPayoutEmployeeFilePath = configFileReader.getJsonPath() + "AccountsPayable_ManualPayoutEmployeeJSON.json";
 	private List<AccountsPayable_ManualPayoutEmployeeTestDataType> ManualPayoutEmployeeList;
+	
+	//d--------------------
+	// ACCOUNTSPAYABLE_ManualPayout
+		private final String ManualPayoutPath = configFileReader.getJsonPath() + "ACCOUNTSPAYABLE_ManualPayoutJSON.json";
+		private List<ACCOUNTSPAYABLE_ManualPayoutTestDataType>  ManualPayoutList;
+		
+		// ACCOUNTSPAYABLE_PaymentSettlementCancellation
+		private final String PaymentSettlementCancellationPath = configFileReader.getJsonPath() + "ACCOUNTSPAYABLE_PaymentSettlementCancellationJSON.json";
+		private List<ACCOUNTSPAYABLE_PaymentSettlementCancellationTestDataType>  PaymentSettlementCancellationList;
+		
+		// AccountsReceivable_ReceiptsReversals
+		private final String ReceiptsReversalsPath = configFileReader.getJsonPath() + "AccountsReceivable_ReceiptsReversalsJSON.json";
+		private List<AccountsReceivable_ReceiptsReversalsTestDataType>  ReceiptsReversalsList;
+		
+		// AccountsReceivable_UpdateChequeStatus
+		private final String UpdateChequeStatusPath = configFileReader.getJsonPath() + "AccountsReceivable_UpdateChequeStatusJSON.json";
+		private List<AccountsReceivable_UpdateChequeStatusTestDataType>  UpdateChequeStatusList;
+		
+		// GeneralLedger2_JournalVoucher
+		private final String JournalVoucherPath = configFileReader.getJsonPath() + "GeneralLedger2_JournalVoucherJSON.json";
+		private List<GeneralLedger2_JournalVoucherTestDataType>  JournalVoucher1List;
+		
+		// FinancialReporting_GLBalancesReport
+		private final String GLBalancesReportPath = configFileReader.getJsonPath() + "FinancialReporting_GLBalancesReportJSON.json";
+		private List<FinancialReporting_GLBalancesReportTestDataType>  GLBalancesReportList;
+		
+		// FinancialReporting_BalanceSheetReport
+		private final String BalanceSheetReportPath = configFileReader.getJsonPath() + "FinancialReporting_BalanceSheetReportJSON.json";
+		private List<FinancialReporting_BalanceSheetReportTestDataType>  BalanceSheetReport1List;
+		
+		// FinancialReporting_TrialBalanceReport
+		private final String TrialBalanceReportPath = configFileReader.getJsonPath() + "FinancialReporting_TrialBalanceReportJSON.json";
+		private List<FinancialReporting_TrialBalanceReportTestDataType>  TrialBalanceReportList;
+
+		// JobScheduler_JobExecution
+		private final String JobExecutionPath = configFileReader.getJsonPath() + "JobScheduler_JobExecutionJSON.json";
+		private List<JobScheduler_JobExecutionTestDataType> JobExecutionList;
+
+		// AccountsReceivable_Appropriation
+		private final String AppropriationPath = configFileReader.getJsonPath() + "AccountsReceivable_AppropriationJSON.json";
+		private List<AccountsReceivable_AppropriationTestDataType>  Appropriation1List;
+		
+		//AccountingSetup_ChartOfAccountsDefinition
+		private final String ChartOfAccountsDefinitionPath = configFileReader.getJsonPath() + "AccountingSetup_ChartOfAccountsDefinitionJSON.json";
+		private List<AccountingSetup_ChartOfAccountsDefinitionTestDataType>  ChartOfAccountsDefinitionList;
+		
+		//AccountingSetup_ChartOfAccountsDefinition
+		private final String ReconciliationPath = configFileReader.getJsonPath() + "PettyCash_ReconciliationJSON.json";
+		private List<PettyCash_ReconciliationTestDataType>  ReconciliationList;
+		
+		// Reports_PettyCash
+		private final String PettyCashPath = configFileReader.getJsonPath() + "Reports_PettyCashJSON.json";
+		private List<Reports_PettyCashTestDataType> PettyCashList;
+		
+		// AccountsReceivable_DebitNote
+		private final String DebitNotePath = configFileReader.getJsonPath() + "AccountsReceivable_DebitNoteJSON.json";
+		private List<AccountsReceivable_DebitNoteTestDataType> DebitNoteList;
 			
 	public JsonConfig() {
 		/*
@@ -390,6 +459,22 @@ public class JsonConfig {
 		FinancialTransactionReportList = getFinancialTransactionReportListData();
 		LegalEntityGLConfigList = getLegalEntityGLConfigListData();
 		ManualPayoutEmployeeList = getManualPayoutEmployeeData();
+		
+		//d------------------
+		 ManualPayoutList = getManualPayoutList();
+		 PaymentSettlementCancellationList = getPaymentSettlementCancellationList();
+		 ReceiptsReversalsList = getReceiptsReversalsList();
+		 UpdateChequeStatusList = getUpdateChequeStatusList();
+		 JournalVoucher1List = getJournalVoucherList();
+		 GLBalancesReportList = getGLBalancesReportList();
+		 BalanceSheetReport1List = getBalanceSheetReportList();
+		 TrialBalanceReportList = getTrialBalanceReportList();
+		 JobExecutionList = getJobExecutionList();
+		 Appropriation1List = getAppropriationList();
+		 ChartOfAccountsDefinitionList = getChartOfAccountsDefinitionList();
+		 ReconciliationList = getReconciliationList();
+		 PettyCashList = getPettyCashList();
+		 DebitNoteList = getDebitNoteList();
 	}
 
 	// PaymentFile Upload download
@@ -1758,6 +1843,302 @@ private List<AccountsPayable_ManualPayoutEmployeeTestDataType> getManualPayoutEm
 		}
 	
 }
+
+	//d-------------------------
+private List<ACCOUNTSPAYABLE_ManualPayoutTestDataType> getManualPayoutList() {
+	Gson gson = new Gson();
+	JsonReader reader = new JsonReader(new StringReader(ManualPayoutPath));
+	reader.setLenient(true);
+	BufferedReader bufferReader = null;
+	try {
+		bufferReader = new BufferedReader(new FileReader (ManualPayoutPath));
+		ACCOUNTSPAYABLE_ManualPayoutTestDataType[] login = gson.fromJson(bufferReader,
+				ACCOUNTSPAYABLE_ManualPayoutTestDataType[].class);
+		return Arrays.asList(login);
+	} catch (FileNotFoundException e) {
+		throw new RuntimeException("Json file not found at path : " + ManualPayoutPath);
+	} finally {
+		try {
+			if (bufferReader != null)
+				bufferReader.close();
+		} catch (IOException ignore) {
+		}
+	}
+}
+
+private List<ACCOUNTSPAYABLE_PaymentSettlementCancellationTestDataType> getPaymentSettlementCancellationList() {
+	Gson gson = new Gson();
+	JsonReader reader = new JsonReader(new StringReader(PaymentSettlementCancellationPath));
+	reader.setLenient(true);
+	BufferedReader bufferReader = null;
+	try {
+		bufferReader = new BufferedReader(new FileReader (PaymentSettlementCancellationPath));
+		ACCOUNTSPAYABLE_PaymentSettlementCancellationTestDataType[] login = gson.fromJson(bufferReader,
+				ACCOUNTSPAYABLE_PaymentSettlementCancellationTestDataType[].class);
+		return Arrays.asList(login);
+	} catch (FileNotFoundException e) {
+		throw new RuntimeException("Json file not found at path : " + PaymentSettlementCancellationPath);
+	} finally {
+		try {
+			if (bufferReader != null)
+				bufferReader.close();
+		} catch (IOException ignore) {
+		}
+	}
+}
+
+private List<AccountsReceivable_ReceiptsReversalsTestDataType> getReceiptsReversalsList() {
+	Gson gson = new Gson();
+	JsonReader reader = new JsonReader(new StringReader(ReceiptsReversalsPath));
+	reader.setLenient(true);
+	BufferedReader bufferReader = null;
+	try {
+		bufferReader = new BufferedReader(new FileReader (ReceiptsReversalsPath));
+		AccountsReceivable_ReceiptsReversalsTestDataType[] login = gson.fromJson(bufferReader,
+				AccountsReceivable_ReceiptsReversalsTestDataType[].class);
+		return Arrays.asList(login);
+	} catch (FileNotFoundException e) {
+		throw new RuntimeException("Json file not found at path : " + ReceiptsReversalsPath);
+	} finally {
+		try {
+			if (bufferReader != null)
+				bufferReader.close();
+		} catch (IOException ignore) {
+		}
+	}
+}
+
+private List<AccountsReceivable_UpdateChequeStatusTestDataType> getUpdateChequeStatusList() {
+	Gson gson = new Gson();
+	JsonReader reader = new JsonReader(new StringReader(UpdateChequeStatusPath));
+	reader.setLenient(true);
+	BufferedReader bufferReader = null;
+	try {
+		bufferReader = new BufferedReader(new FileReader (UpdateChequeStatusPath));
+		AccountsReceivable_UpdateChequeStatusTestDataType[] login = gson.fromJson(bufferReader,
+				AccountsReceivable_UpdateChequeStatusTestDataType[].class);
+		return Arrays.asList(login);
+	} catch (FileNotFoundException e) {
+		throw new RuntimeException("Json file not found at path : " + UpdateChequeStatusPath);
+	} finally {
+		try {
+			if (bufferReader != null)
+				bufferReader.close();
+		} catch (IOException ignore) {
+		}
+	}
+}
+
+private List<GeneralLedger2_JournalVoucherTestDataType> getJournalVoucherList() {
+	Gson gson = new Gson();
+	JsonReader reader = new JsonReader(new StringReader(JournalVoucherPath));
+	reader.setLenient(true);
+	BufferedReader bufferReader = null;
+	try {
+		bufferReader = new BufferedReader(new FileReader (JournalVoucherPath));
+		GeneralLedger2_JournalVoucherTestDataType[] login = gson.fromJson(bufferReader,
+				GeneralLedger2_JournalVoucherTestDataType[].class);
+		return Arrays.asList(login);
+	} catch (FileNotFoundException e) {
+		throw new RuntimeException("Json file not found at path : " + JournalVoucherPath);
+	} finally {
+		try {
+			if (bufferReader != null)
+				bufferReader.close();
+		} catch (IOException ignore) {
+		}
+	}
+}
+
+private List<FinancialReporting_GLBalancesReportTestDataType> getGLBalancesReportList() {
+	Gson gson = new Gson();
+	JsonReader reader = new JsonReader(new StringReader(GLBalancesReportPath));
+	reader.setLenient(true);
+	BufferedReader bufferReader = null;
+	try {
+		bufferReader = new BufferedReader(new FileReader (GLBalancesReportPath));
+		FinancialReporting_GLBalancesReportTestDataType[] login = gson.fromJson(bufferReader,
+				FinancialReporting_GLBalancesReportTestDataType[].class);
+		return Arrays.asList(login);
+	} catch (FileNotFoundException e) {
+		throw new RuntimeException("Json file not found at path : " + GLBalancesReportPath);
+	} finally {
+		try {
+			if (bufferReader != null)
+				bufferReader.close();
+		} catch (IOException ignore) {
+		}
+	}
+}
+
+private List<FinancialReporting_BalanceSheetReportTestDataType> getBalanceSheetReportList() {
+	Gson gson = new Gson();
+	JsonReader reader = new JsonReader(new StringReader(BalanceSheetReportPath));
+	reader.setLenient(true);
+	BufferedReader bufferReader = null;
+	try {
+		bufferReader = new BufferedReader(new FileReader (BalanceSheetReportPath));
+		FinancialReporting_BalanceSheetReportTestDataType[] login = gson.fromJson(bufferReader,
+				FinancialReporting_BalanceSheetReportTestDataType[].class);
+		return Arrays.asList(login);
+	} catch (FileNotFoundException e) {
+		throw new RuntimeException("Json file not found at path : " + BalanceSheetReportPath);
+	} finally {
+		try {
+			if (bufferReader != null)
+				bufferReader.close();
+		} catch (IOException ignore) {
+		}
+	}
+}
+
+private List<FinancialReporting_TrialBalanceReportTestDataType> getTrialBalanceReportList() {
+	Gson gson = new Gson();
+	JsonReader reader = new JsonReader(new StringReader(TrialBalanceReportPath));
+	reader.setLenient(true);
+	BufferedReader bufferReader = null;
+	try {
+		bufferReader = new BufferedReader(new FileReader (TrialBalanceReportPath));
+		FinancialReporting_TrialBalanceReportTestDataType[] login = gson.fromJson(bufferReader,
+				FinancialReporting_TrialBalanceReportTestDataType[].class);
+		return Arrays.asList(login);
+	} catch (FileNotFoundException e) {
+		throw new RuntimeException("Json file not found at path : " + TrialBalanceReportPath);
+	} finally {
+		try {
+			if (bufferReader != null)
+				bufferReader.close();
+		} catch (IOException ignore) {
+		}
+	}
+}
+
+private List<JobScheduler_JobExecutionTestDataType> getJobExecutionList() {
+	Gson gson = new Gson();
+	JsonReader reader = new JsonReader(new StringReader(JobExecutionPath));
+	reader.setLenient(true);
+	BufferedReader bufferReader = null;
+	try {
+		bufferReader = new BufferedReader(new FileReader (JobExecutionPath));
+		JobScheduler_JobExecutionTestDataType[] login = gson.fromJson(bufferReader,
+				JobScheduler_JobExecutionTestDataType[].class);
+		return Arrays.asList(login);
+	} catch (FileNotFoundException e) {
+		throw new RuntimeException("Json file not found at path : " + JobExecutionPath);
+	} finally {
+		try {
+			if (bufferReader != null)
+				bufferReader.close();
+		} catch (IOException ignore) {
+		}
+	}
+}
+
+private List<AccountsReceivable_AppropriationTestDataType> getAppropriationList() {
+	Gson gson = new Gson();
+	JsonReader reader = new JsonReader(new StringReader(AppropriationPath));
+	reader.setLenient(true);
+	BufferedReader bufferReader = null;
+	try {
+		bufferReader = new BufferedReader(new FileReader (AppropriationPath));
+		AccountsReceivable_AppropriationTestDataType[] login = gson.fromJson(bufferReader,
+				AccountsReceivable_AppropriationTestDataType[].class);
+		return Arrays.asList(login);
+	} catch (FileNotFoundException e) {
+		throw new RuntimeException("Json file not found at path : " + AppropriationPath);
+	} finally {
+		try {
+			if (bufferReader != null)
+				bufferReader.close();
+		} catch (IOException ignore) {
+		}
+	}
+}
+
+private List<AccountingSetup_ChartOfAccountsDefinitionTestDataType> getChartOfAccountsDefinitionList() {
+	Gson gson = new Gson();
+	JsonReader reader = new JsonReader(new StringReader(ChartOfAccountsDefinitionPath));
+	reader.setLenient(true);
+	BufferedReader bufferReader = null;
+	try {
+		bufferReader = new BufferedReader(new FileReader (ChartOfAccountsDefinitionPath));
+		AccountingSetup_ChartOfAccountsDefinitionTestDataType[] login = gson.fromJson(bufferReader,
+				AccountingSetup_ChartOfAccountsDefinitionTestDataType[].class);
+		return Arrays.asList(login);
+	} catch (FileNotFoundException e) {
+		throw new RuntimeException("Json file not found at path : " + ChartOfAccountsDefinitionPath);
+	} finally {
+		try {
+			if (bufferReader != null)
+				bufferReader.close();
+		} catch (IOException ignore) {
+		}
+	}
+}
+
+private List<PettyCash_ReconciliationTestDataType> getReconciliationList() {
+	Gson gson = new Gson();
+	JsonReader reader = new JsonReader(new StringReader(ReconciliationPath));
+	reader.setLenient(true);
+	BufferedReader bufferReader = null;
+	try {
+		bufferReader = new BufferedReader(new FileReader (ReconciliationPath));
+		PettyCash_ReconciliationTestDataType[] login = gson.fromJson(bufferReader,
+				PettyCash_ReconciliationTestDataType[].class);
+		return Arrays.asList(login);
+	} catch (FileNotFoundException e) {
+		throw new RuntimeException("Json file not found at path : " + ReconciliationPath);
+	} finally {
+		try {
+			if (bufferReader != null)
+				bufferReader.close();
+		} catch (IOException ignore) {
+		}
+	}
+}
+
+private List<Reports_PettyCashTestDataType> getPettyCashList() {
+	Gson gson = new Gson();
+	JsonReader reader = new JsonReader(new StringReader(PettyCashPath));
+	reader.setLenient(true);
+	BufferedReader bufferReader = null;
+	try {
+		bufferReader = new BufferedReader(new FileReader (PettyCashPath));
+		Reports_PettyCashTestDataType[] login = gson.fromJson(bufferReader,
+				Reports_PettyCashTestDataType[].class);
+		return Arrays.asList(login);
+	} catch (FileNotFoundException e) {
+		throw new RuntimeException("Json file not found at path : " + PettyCashPath);
+	} finally {
+		try {
+			if (bufferReader != null)
+				bufferReader.close();
+		} catch (IOException ignore) {
+		}
+	}
+}
+
+private List<AccountsReceivable_DebitNoteTestDataType> getDebitNoteList() {
+	Gson gson = new Gson();
+	JsonReader reader = new JsonReader(new StringReader(DebitNotePath));
+	reader.setLenient(true);
+	BufferedReader bufferReader = null;
+	try {
+		bufferReader = new BufferedReader(new FileReader (DebitNotePath));
+		AccountsReceivable_DebitNoteTestDataType[] login = gson.fromJson(bufferReader,
+				AccountsReceivable_DebitNoteTestDataType[].class);
+		return Arrays.asList(login);
+	} catch (FileNotFoundException e) {
+		throw new RuntimeException("Json file not found at path : " + DebitNotePath);
+	} finally {
+		try {
+			if (bufferReader != null)
+				bufferReader.close();
+		} catch (IOException ignore) {
+		}
+	}
+}
+
 	public final BUDGET_RequestAndAllocationTestDataType getAllowcationByName(String user) {
 		return AllocationList.stream().filter(x -> x.UserType.equalsIgnoreCase(user)).findAny().get();
 	}
@@ -2019,5 +2400,62 @@ private List<AccountsPayable_ManualPayoutEmployeeTestDataType> getManualPayoutEm
 	//AccountsPayable_ManualPayoutEmployee
 	public final AccountsPayable_ManualPayoutEmployeeTestDataType getManualPayoutByName(String UserName){
 		return ManualPayoutEmployeeList.stream().filter(x->x.User.equalsIgnoreCase(UserName)).findAny().get();
+	}
+	
+	//d-------------
+	public final ACCOUNTSPAYABLE_ManualPayoutTestDataType getManualPayoutdata(String UserName) {
+		return ManualPayoutList.stream().filter(x -> x.User.equalsIgnoreCase(UserName)).findAny().get();
+	}
+	
+	public final ACCOUNTSPAYABLE_PaymentSettlementCancellationTestDataType getPaymentSettlementCancellationdata(String UserName) {
+		return PaymentSettlementCancellationList.stream().filter(x -> x.User.equalsIgnoreCase(UserName)).findAny().get();
+	}
+	
+	public final AccountsReceivable_ReceiptsReversalsTestDataType getReceiptsReversalsdata(String UserName) {
+		return ReceiptsReversalsList.stream().filter(x -> x.User.equalsIgnoreCase(UserName)).findAny().get();
+	}
+	
+	public final AccountsReceivable_UpdateChequeStatusTestDataType getUpdateChequeStatusdata(String UserName) {
+		return UpdateChequeStatusList.stream().filter(x -> x.User.equalsIgnoreCase(UserName)).findAny().get();
+	}
+	
+	public final GeneralLedger2_JournalVoucherTestDataType getJournalVoucherdata(String UserName) {
+		return JournalVoucher1List.stream().filter(x -> x.User.equalsIgnoreCase(UserName)).findAny().get();
+	}
+	
+	public final FinancialReporting_GLBalancesReportTestDataType getGLBalancesReportdata(String UserName) {
+		return GLBalancesReportList.stream().filter(x -> x.User.equalsIgnoreCase(UserName)).findAny().get();
+	}
+	
+	public final FinancialReporting_BalanceSheetReportTestDataType getBalanceSheetReportdata(String UserName) {
+		return BalanceSheetReport1List.stream().filter(x -> x.User.equalsIgnoreCase(UserName)).findAny().get();
+	}
+	
+	public final FinancialReporting_TrialBalanceReportTestDataType getTrialBalanceReportdata(String UserName) {
+		return TrialBalanceReportList.stream().filter(x -> x.User.equalsIgnoreCase(UserName)).findAny().get();
+	}
+
+	public final JobScheduler_JobExecutionTestDataType getJobExecutiondata(String UserName) {
+		return JobExecutionList.stream().filter(x -> x.User.equalsIgnoreCase(UserName)).findAny().get();
+	}
+
+	public final AccountsReceivable_AppropriationTestDataType getAppropriationdata(String UserName) {
+		return Appropriation1List.stream().filter(x -> x.User.equalsIgnoreCase(UserName)).findAny().get();
+	}
+	
+	public final AccountingSetup_ChartOfAccountsDefinitionTestDataType getChartOfAccountsDefinitiondata(String UserName) {
+		return ChartOfAccountsDefinitionList.stream().filter(x -> x.User.equalsIgnoreCase(UserName)).findAny().get();
+	}
+	
+	public final PettyCash_ReconciliationTestDataType getReconciliationdata(String UserName) {
+		return ReconciliationList.stream().filter(x -> x.User.equalsIgnoreCase(UserName)).findAny().get();
+	}
+	
+	public final Reports_PettyCashTestDataType getPettyCashdata(String UserName) {
+		return PettyCashList.stream().filter(x -> x.User.equalsIgnoreCase(UserName)).findAny().get();
+	}
+	
+	public final AccountsReceivable_DebitNoteTestDataType getDebitNotedata(String UserName) {
+		return DebitNoteList.stream().filter(x -> x.User.equalsIgnoreCase(UserName)).findAny().get();
 	}
 }

@@ -1,0 +1,27 @@
+[
+	{
+		"User" : "Maker",
+		"AccountingCategory": "AS-ASSETS",
+		"COA_NameSearch": "Test-d3",
+		
+		"LeafCOA_CodeSearch": "IFRS-5000007-EX",
+		"ParentCOA_CodeSearch": "IFRS-5000006-EX",
+		
+		"COA_Name": "-mod",
+		"ExternalMappingCode": "",
+		"ParentGL": "IFRS-1000041-AS-PPE at Branch",
+		"GL_Type": "Main GL",
+		
+		"GL_TypeModifiedForUsedCOA": "Sub GL",
+		
+		"Description": "-mod",
+		"BalanceType": "Debit/Credit",
+		"EntitySegment": "",
+		"Status": "ACTIVE",
+		"StatusInactive": "INACTIVE",
+		"Remark": "ok",
+		"RemarkByMaker": "ok",
+		"ApprovedByChecker": "Approved"
+	}
+		
+]

@@ -1,0 +1,28 @@
+[
+	{
+		"User" : "Maker",
+		"ChequeNumber": "RRN101011",
+		"BranchCode": "AZENTMAIN",
+		"ReceiptRefAgainstDebitNote": "REC_109_2532022",
+		"ReceiptRefAgainstAdvanceEMP": "REC_110_2532022",
+		"ReceiptRefAgainstAdvancePO": "REC_111_2532022",
+		
+		"TxnNumber" : "RECAPP_33_2532022",
+		
+		
+		"GLCode": "IFRS-AS-AS1000017",
+		
+		"GLMonth": "Mar",
+		"GLFullMonth": "March",
+		"GLDay": "7",
+		
+		"GLYear": "2022",
+		
+		"GLToMonth": "Oct",
+		"GLFullToMonth": "October",
+		"GLToDate": "19",
+		
+		"SlipNumber"  :"DEP-RR88888888-20220307",
+		"RemarkByMaker" : "submit by maker"
+	}
+]
