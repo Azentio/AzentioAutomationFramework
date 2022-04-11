@@ -34,7 +34,10 @@ Scenario: System should able to approve the supplimentary requested budget
  And Verify for claming the record UAT
  Then User should click on notification icon on reviewer2 home page UAT
  Then Claim and approve the record UAT
-
+ Given maker should navigate to the url and login with valid credentials UAT
+ And maker should navigate to the budget module UAT
+ And maker click on budget field UAT
+ When maker click on budget supplementary eye icon UAT
 
 @SupplementaryBudget_KUBS_BP_UAT_005_005
 Scenario: Check System should able to Reject the supplimentary requested budget
@@ -56,7 +59,10 @@ Then click on open pool UAT
 And Verify for claming the record UAT
 Then User should click on notification icon on reviewer2 home page UAT
 Then Claim and reject the record UAT
-
+ Given maker should navigate to the url and login with valid credentials UAT
+ And maker should navigate to the budget module UAT
+ And maker click on budget field UAT
+ When maker click on budget supplementary eye icon UAT
 @SupplementaryBudget_KUBS_BP_UAT_005_006
 Scenario: Check if supplimentary budget rejected from HO, the requested amount can not be used
 Given maker should navigate to the url and login with valid credentials UAT

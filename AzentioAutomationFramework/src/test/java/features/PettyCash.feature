@@ -6,7 +6,7 @@ Scenario: Create a fund request for Petty Cash
 
 Given Navigate to URL and user should login as a maker
 Then Click on the Finance
-Then Click on Direction
+Then Click on the Direction
 Then Click on Petty Cash button
 Then Click on Fund Request eye button
 Then Click on Add button to request fund
@@ -22,7 +22,7 @@ And Click on notification
 Then Click on Approve button in reviewer stage
 Given Navigate to URL and user should login as a maker
 Then Click on the Finance
-Then Click on Direction
+Then Click on the Direction
 Then Click on Petty Cash button
 Then Click on Fund Request eye button
 @KUBS_PC_UAT_004_002

@@ -37,7 +37,10 @@ Feature: Supplementary Budget Sub-module
 	When maker click on budget supplementary eye icon
 	And click search icon and  fill the required field
 	Then select the record check Approved auth status of the record
-	
+	Given maker should navigate to the url and login with valid credentials
+ And maker should navigate to the budget module
+ And maker click on budget field
+ When maker click on budget supplementary eye icon
 	@SupplementaryBudget_BP_SB_06_04 @Singleauth
   Scenario: Check the functionality System should display Returned authorisation status of the record
   Given maker should navigate to the url and login with valid credentials

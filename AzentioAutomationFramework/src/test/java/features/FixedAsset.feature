@@ -22,7 +22,11 @@ Then Approve the record which we submitted from maker stage
 Then Go to Checker account
 And Clam the record
 Then Click on notification and approve the record
-
+Given Navigate to kubs URL and user should login as a maker
+Then Click on the Finance
+Then Click on the Direction
+Then Click on Fixed Asset
+Then Click on Asset Creation Eye button
 
 @KUBS_FAT_UAT_001_004	
 Scenario: Create GRN for the generated PO No.s
@@ -52,7 +56,12 @@ Then Approve the record which we submitted from maker stage
 Then Go to Checker account
 And Clam the record
 Then Click on notification and approve the record
+Given Navigate to URL and user should login as a maker
+Then Click on the Finance
+Then Click on the Direction
 
+Then Click on Accounts Payable
+Then Click on Good Recived Note GRN Eye buutton
 @KUBS_FAT_UAT_002_006
 Scenario: Creation of registered asset with minimum details
 
@@ -74,7 +83,11 @@ Then Approve the record which we submitted from maker stage
 Then Go to Checker account
 And Clam the record
 Then Click on notification and approve the record
-
+Given Navigate to kubs URL and user should login as a maker
+Then Click on the Finance
+Then Click on the Direction
+Then Click on Fixed Asset
+Then Click on Asset Creation Eye button
 @KUBS_FAT_UAT_002_007
 Scenario: Creation of the registered asset with full details
 
@@ -104,7 +117,11 @@ Then Approve the record which we submitted from maker stage
 Then Go to Checker account
 And Clam the record
 Then Click on notification and approve the record
-
+Given Navigate to kubs URL and user should login as a maker
+Then Click on the Finance
+Then Click on the Direction
+Then Click on Fixed Asset
+Then Click on Asset Creation Eye button
 @KUBS_FAT_UAT_006_001
 Scenario: Check if any unused asset can be allocated to a specific resource in the branch
 
@@ -129,7 +146,12 @@ Then Approve the record which we submitted from maker stage
 Then Go to Checker account
 And Clam the record
 Then Click on notification and approve the record
+Given Navigate to kubs URL and user should login as a maker
+Then Click on the Finance
+Then Click on the Direction
+Then Click on Fixed Asset
 
+Then Click on Asset Allocation Eye button
 @KUBS_FAT_UAT_006_002
 Scenario: Check if any used asset can be allocated to a specific resource in the branch
 
@@ -154,7 +176,12 @@ Then Approve the record which we submitted from maker stage
 Then Go to Checker account
 And Clam the record
 Then Click on notification and approve the record
+Given Navigate to kubs URL and user should login as a maker
+Then Click on the Finance
+Then Click on the Direction
+Then Click on Fixed Asset
 
+Then Click on Asset Allocation Eye button
 @KUBS_FAT_UAT_006_003
 Scenario: Check if any impaired asset can be allocated to a specific resource in the branch
 
@@ -179,6 +206,12 @@ Then Approve the record which we submitted from maker stage
 Then Go to Checker account
 And Clam the record
 Then Click on notification and approve the record
+Given Navigate to kubs URL and user should login as a maker
+Then Click on the Finance
+Then Click on the Direction
+Then Click on Fixed Asset
+
+Then Click on Asset Allocation Eye button
 @KUBS_FAT_UAT_006_004
 Scenario: Check if any re-valued asset can be allocated to a specific resource in the branch
 
@@ -203,7 +236,12 @@ Then Approve the record which we submitted from maker stage
 Then Go to Checker account
 And Clam the record
 Then Click on notification and approve the record
+Given Navigate to kubs URL and user should login as a maker
+Then Click on the Finance
+Then Click on the Direction
+Then Click on Fixed Asset
 
+Then Click on Asset Allocation Eye button
 @KUBS_FAT_UAT_002_008
 Scenario: Running batch job for the fixed asset
 Given Navigate to kubs URL and user should login as a maker
@@ -233,11 +271,11 @@ Then click on report button
 And click Enquiry menu
 Then click on Edit icon near by financial transaction
 And choose branch code Id
-Then choose Gl code Id
+Then choose the Gl code Id
 And click on transaction from date in calender icon
-Then choose from date in calender
+Then choose from date in the calender
 And click on the transaction to date in calender icon
-Then choose the To date in calender
+Then choose the To date in the calender
 And click on view button to see the Record
 
 @KUBS_FAT_UAT_004_004
@@ -250,7 +288,7 @@ And click Enquiry menu
 
 Then click on Edit icon near by financial transaction
 And choose branch code Id
-Then choose Gl code Id
+Then choose the Gl code Id
 And click on transaction from date in calender icon
 Then choose from date in the calender
 

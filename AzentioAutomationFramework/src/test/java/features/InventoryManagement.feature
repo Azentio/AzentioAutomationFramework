@@ -23,7 +23,11 @@ Then Approve the record which we submitted from maker stage
 Then Go to Checker account
 And Clam the record
 Then Click on notification and approve the record
-
+Given Navigate to URL and user should login as a maker
+Then Click on Finance
+Then Click on the Direction
+Then Click on Inventory Management
+And Click on the eye icon of Inventory Request
 
 @KUBS_INV_MGMT_UAT_001_004 @multiauth
 
@@ -55,6 +59,14 @@ Then Approve the record which we submitted from maker
 Then Go to Checker login
 Then Clam record
 Then Click on the notification and approve the record
+Given Navigate to URL and user should login as a maker
+Then Click on the Finance
+Then Click on the Direction
+
+Then Click on Accounts Payable
+Then Click on Good Recived Note GRN Eye buutton
+
+
 @KUBS_INV_MGMT_UAT_002_001 @multiauth
 
 Scenario: Create instrument code
@@ -76,7 +88,11 @@ Then Approve the record which we submitted from maker stage
 Then Go to Checker account
 And Clam the record
 Then Click on notification and approve the record
+Given Navigate to URL and user should login as a maker
+Then Click on Finance
 
+Then Click on Inventory maintenance
+Then Click on Instrument code master eye button
 
 @KUBS_INV_MGMT_UAT_003_001	
 @allthebranchesareAlreadyExist
@@ -100,7 +116,11 @@ Then Approve the record which we submitted from maker stage
 Then Go to Checker account
 And Clam the record
 Then Click on notification and approve the record
+Given Navigate to URL and user should login as a maker
+Then Click on Finance
 
+Then Click on Inventory maintenance
+Then Click on Inventory access master
 
 
 @KUBS_INV_MGMT_UAT_003_002	
@@ -125,7 +145,11 @@ Then Approve the record which we submitted from maker stage
 Then Go to Checker account
 And Clam the record
 Then Click on notification and approve the record
+Given Navigate to URL and user should login as a maker
+Then Click on Finance
 
+Then Click on Inventory maintenance
+Then Click on Inventory access master
 @KUBS_INV_MGMT_UAT_003_003
 @Existing3
 Scenario: Create branch access for ordering inventories
@@ -148,7 +172,11 @@ Then Approve the record which we submitted from maker stage
 Then Go to Checker account
 And Clam the record
 Then Click on notification and approve the record
+	Given Navigate to URL and user should login as a maker
+Then Click on Finance
 
+Then Click on Inventory maintenance
+Then Click on Inventory access master
 @KUBS_INV_MGMT_UAT_003_004
 @Existing4
 Scenario: Create branch access for requesting inventories
@@ -171,7 +199,11 @@ Then Approve the record which we submitted from maker stage
 Then Go to Checker account
 And Clam the record
 Then Click on notification and approve the record
+Given Navigate to URL and user should login as a maker
+Then Click on Finance
 
+Then Click on Inventory maintenance
+Then Click on Inventory access master
 
 @KUBS_INV_MGMT_UAT_001_006AE
 Scenario: Check the accounting entries

@@ -215,11 +215,12 @@ public class InventoryManagament extends BaseClass {
 				System.out.println(e.getMessage());
 			}
 			}*/
+		Thread.sleep(3000);
 		waithelper.waitForElement(driver, 3000, budgetTransferObj.budget_BudgetTransfer_RemarkField());
 		
 		javahelper.JSEClick(budgetTransferObj.budget_BudgetTransfer_RemarkField());
 
-		budgetTransferObj.budget_BudgetTransfer_RemarkField().sendKeys(inventoryManagementTestDataType.Remark);
+		budgetTransferObj.budget_BudgetTransfer_RemarkField().sendKeys("OK");
 
 		// Remark Submit
 		waithelper.waitForElement(driver, 2000, budgetTransferObj.budget_BudgetTransfer_SubmitByMaker());
