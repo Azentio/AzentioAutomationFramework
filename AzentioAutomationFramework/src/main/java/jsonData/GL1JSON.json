@@ -1,0 +1,20 @@
+[
+{
+"User":"Maker",
+"AccountingCategory":"ASSET2-Asset1",
+"coaName":"Stool for GunMan",
+"parentGL":"105000001-Stoolfor main branch",
+"gLType":"Sub GL",
+"description":"Stool for gunman",
+"balanceType":"Debit",
+"branch":"west",
+"department":"Non IT",
+"costCentre":"FINANCE",
+
+
+"COAnameToinactive":"Testing-Head-D22",
+"statusofCOA":"INACTIVE"
+
+
+}
+]

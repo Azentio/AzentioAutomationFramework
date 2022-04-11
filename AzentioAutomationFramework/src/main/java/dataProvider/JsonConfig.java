@@ -35,6 +35,7 @@ import testDataType.AccountsReceivable_AppropriationTestDataType;
 import testDataType.AccountsReceivable_DebitNoteTestDataType;
 import testDataType.AccountsReceivable_ReceiptsReversalsTestDataType;
 import testDataType.AccountsReceivable_UpdateChequeStatusTestDataType;
+import testDataType.ArApTestDataType;
 import testDataType.ArAp_BalanceSheetReportTestDataType;
 import testDataType.ArAp_EnquiryTestDataType;
 import testDataType.BUDGET_BudgetCreationTestDataType;
@@ -56,6 +57,7 @@ import testDataType.FixedAssetTestDataType;
 import testDataType.FixedAsset_AssetCategoryTestDataType;
 import testDataType.FixedAsset_AssetCreationTestDataType;
 import testDataType.FixedAsset_AssetDeallocationTestDataType;
+import testDataType.GL1TestDataType;
 import testDataType.BUDGET_SupplementarybudgetTestDataType;
 import testDataType.Cancellationofcontractdatatype;
 import testDataType.FIXEDASSET_AssetAmendmentData;
@@ -86,6 +88,7 @@ import testDataType.RegisterData;
 import testDataType.Reports_AssetCreationCommonTestDataType;
 import testDataType.Reports_PettyCashTestDataType;
 import testDataType.PETTY_PettyCash_Data;
+import testDataType.PettyCashTestDataType;
 import testDataType.PettyCash_ReconciliationTestDataType;
 
 //master
@@ -386,7 +389,22 @@ public class JsonConfig {
 		// AccountsReceivable_DebitNote
 		private final String DebitNotePath = configFileReader.getJsonPath() + "AccountsReceivable_DebitNoteJSON.json";
 		private List<AccountsReceivable_DebitNoteTestDataType> DebitNoteList;
-			
+		
+		//AR AP
+		private final String ArApFilePath = configFileReader.getJsonPath() + "ArapJSON.json";
+		private List<ArApTestDataType>ArApList;
+//GL1
+		private final String GL1FilePath = configFileReader.getJsonPath() + "GL1JSON.json";
+		private List<GL1TestDataType>GL1List;
+//PettyCash
+		private final String PettyCashFilePath = configFileReader.getJsonPath() + "PettyCashJSON.json";
+		private List<PettyCashTestDataType>PettyCashList1;
+
+
+		
+		
+		
+		
 	public JsonConfig() {
 		/*
 		 * RegisterList = getRegisterData(); LoginList = getLoginList();
@@ -475,7 +493,60 @@ public class JsonConfig {
 		 ReconciliationList = getReconciliationList();
 		 PettyCashList = getPettyCashList();
 		 DebitNoteList = getDebitNoteList();
+		 
+			ArApList= getArApList();
+			GL1List = getGL1List();
+			PettyCashList1 = getPettyCashList1();
 	}
+
+	
+	//PettyCash	
+	private List<PettyCashTestDataType> getPettyCashList1() {
+		Gson gson = new Gson();
+		BufferedReader bufferReader = null;
+		try {
+			bufferReader = new BufferedReader(new FileReader(PettyCashFilePath));
+			PettyCashTestDataType[] PettyCash = gson.fromJson(bufferReader, PettyCashTestDataType[].class);
+			return Arrays.asList(PettyCash);
+		}catch(FileNotFoundException e) {
+			throw new RuntimeException("Json file not found at path : " + PettyCashFilePath);
+		}finally {
+			try { if(bufferReader != null) bufferReader.close();}
+			catch (IOException ignore) {}
+		}
+		}
+
+	//GL1
+		private List<GL1TestDataType> getGL1List() {
+			Gson gson = new Gson();
+			BufferedReader bufferReader = null;
+			try {
+				bufferReader = new BufferedReader(new FileReader(GL1FilePath));
+				GL1TestDataType[] GL1 = gson.fromJson(bufferReader, GL1TestDataType[].class);
+				return Arrays.asList(GL1);
+			}catch(FileNotFoundException e) {
+				throw new RuntimeException("Json file not found at path : " + GL1FilePath);
+			}finally {
+				try { if(bufferReader != null) bufferReader.close();}
+				catch (IOException ignore) {}
+			}
+		}
+
+
+		private List<ArApTestDataType> getArApList() {
+			Gson gson = new Gson();
+			BufferedReader bufferReader = null;
+			try {
+				bufferReader = new BufferedReader(new FileReader(ArApFilePath));
+				ArApTestDataType[] ArAp = gson.fromJson(bufferReader, ArApTestDataType[].class);
+				return Arrays.asList(ArAp);
+			}catch(FileNotFoundException e) {
+				throw new RuntimeException("Json file not found at path : " + ArApFilePath);
+			}finally {
+				try { if(bufferReader != null) bufferReader.close();}
+				catch (IOException ignore) {}
+			}
+		}
 
 	// PaymentFile Upload download
 	private List<ACCOUNTSPAYABLE_PaymentFileUploadDownloadTestData> getPaymentFileUploadDwonloadTestData() {
@@ -2171,7 +2242,17 @@ private List<AccountsReceivable_DebitNoteTestDataType> getDebitNoteList() {
 	 * BudgetTransferList.stream().filter(x->x.User.equalsIgnoreCase(UserType)).
 	 * findAny().get(); }
 	 */
-
+	public final ArApTestDataType getArApByName(String UserName){
+		 return ArApList.stream().filter(x->x.User.equalsIgnoreCase(UserName)).findAny().get();
+}
+	//GL1
+	public final GL1TestDataType getGL1ByName(String UserName){
+		 return GL1List.stream().filter(x->x.User.equalsIgnoreCase(UserName)).findAny().get();
+}
+	//PettyCash
+	public final PettyCashTestDataType getPettyCashByName(String UserName){
+		 return PettyCashList1.stream().filter(x->x.User.equalsIgnoreCase(UserName)).findAny().get();
+}
 	public final BUDGET_CommentsFromApprover getApproverData(String UserName) {
 		return reviewerCommentsList.stream().filter(x -> x.UserType.equalsIgnoreCase(UserName)).findAny().get();
 	}
