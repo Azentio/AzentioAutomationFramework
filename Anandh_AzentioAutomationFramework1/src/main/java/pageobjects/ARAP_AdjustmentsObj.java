@@ -72,6 +72,12 @@ public class ARAP_AdjustmentsObj {
 	{
 		return adjustement_CancelledAdvanceFirstRecord;
 	}
+	@FindBy(xpath="//div[contains(text(),'No items found')]")
+	private WebElement acountingEntriesScreen_NoDetailsFound;
+	public WebElement accountingEntriesNoDetailsFound()
+	{
+		return acountingEntriesScreen_NoDetailsFound;
+	}
 
 
 

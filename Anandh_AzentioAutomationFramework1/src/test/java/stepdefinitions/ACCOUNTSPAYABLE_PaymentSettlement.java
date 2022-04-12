@@ -74,15 +74,18 @@ public class ACCOUNTSPAYABLE_PaymentSettlement extends BaseClass {
 	public void search_the_cancelled_bill() throws Throwable {
 		invoiceBillBookingObj.accountPayable_InvoiceBooking_ContractStatus().click();
 		invoiceBillBookingObj.accountPayableSearchInvoiceStatus().sendKeys(paymentSettlementTestData.InvoiceStatus);
-		String beforXpath = "//span[contains(text(),'";
-		String afterXpath = "')]";
-		javascriptHelper.JavaScriptHelper(driver);
-		javascriptHelper.scrollIntoView(driver
-				.findElement(By.xpath(beforXpath + paymentSettlementTestData.canceledInvoiceNumber + afterXpath)));
-		boolean status = driver
-				.findElement(By.xpath(beforXpath + paymentSettlementTestData.canceledInvoiceNumber + afterXpath))
-				.isDisplayed();
-		Assert.assertTrue(status);
+//		String beforXpath = "//span[contains(text(),'";
+//		String afterXpath = "')]";
+//		javascriptHelper.JavaScriptHelper(driver);
+//		javascriptHelper.scrollIntoView(driver
+//				.findElement(By.xpath(beforXpath + paymentSettlementTestData.canceledInvoiceNumber + afterXpath)));
+//		boolean status = driver
+//				.findElement(By.xpath(beforXpath + paymentSettlementTestData.canceledInvoiceNumber + afterXpath))
+//				.isDisplayed();
+//		Assert.assertTrue(status);
+		waitHelper.waitForElementVisible(invoiceBillBookingObj.invoiceBookingListViewInvoiceNumber(), 3000, 300);
+		//invoiceBillBookingObj.invoiceBookingListViewInvoiceNumber().getText();
+		accountsReceivableTestData.put("approvedInvoiceNumber", invoiceBillBookingObj.invoiceBookingListViewInvoiceNumber().getText());
 		waitHelper.waitForElementVisible(invoiceBillBookingObj.invoiceBookingBpName(), 2000, 100);
 
 		String bpName = invoiceBillBookingObj.invoiceBookingBpName().getText();
@@ -318,15 +321,16 @@ public class ACCOUNTSPAYABLE_PaymentSettlement extends BaseClass {
 				paymentSettlementObj.accountsPayablePayementSettlementNextRecord().click();
 			}
 		}
-		// javascriptHelper.JSEClick(paymentSettlementObj.firstRecord());
-		// clicksAndActionsHelper.doubleClick(paymentSettlementObj.firstRecord());
-		javascriptHelper.scrollIntoView(paymentSettlementObj.accountsPayablePayementSettlementValueDate());
-		paymentSettlementObj.accountsPayablePayementSettlementValueDate().click();
-		// paymentSettlementObj.accountsPayablePayementSettlementValueDate().sendKeys(Keys.ENTER);
+		Thread.sleep(2000);		
+		paymentSettlementObj.accountsPayablePayementSettlementValueDate().click();		
+		paymentSettlementObj.yearAndMonthCalendarButton().click();
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("//td/span[contains(text(),'"+paymentSettlementTestData.Year+"')]")).click();
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("//td/span[contains(text(),'"+paymentSettlementTestData.month+"')]")).click();
+		Thread.sleep(1000);
 		WebElement FinalDay = driver.findElement(By.xpath("//td[@aria-label='" + paymentSettlementTestData.FullMonth
 				+ " " + paymentSettlementTestData.Day + ", " + paymentSettlementTestData.Year + "']/span"));
-		// clicksAndActionsHelper.moveToElement(FinalDay);
-		clicksAndActionsHelper.clickUsingActionClass(FinalDay, FinalDay);
 		clicksAndActionsHelper.clickOnElement(FinalDay);
 		// javascriptHelper.JSEClick(FinalDay);
 		// FinalDay.sendKeys(Keys.ENTER);
@@ -366,8 +370,8 @@ public class ACCOUNTSPAYABLE_PaymentSettlement extends BaseClass {
 		paymentSettlementObj.accountsPayableSaveButton().click();
 		// clicksAndActionsHelper.doubleClick(paymentSettlementObj.accountsPayableSaveButton());
 		// paymentSettlementObj.accountsPayableSaveButton().click();
-		waitHelper.waitForElementVisible(paymentSettlementObj.accountsPayableAlertYes(), 2000, 100);
-		paymentSettlementObj.accountsPayableAlertYes().click();
+//		waitHelper.waitForElementVisible(paymentSettlementObj.accountsPayableAlertYes(), 2000, 100);
+//		paymentSettlementObj.accountsPayableAlertYes().click();
 		Thread.sleep(1000);
 	}
 
@@ -417,10 +421,10 @@ public class ACCOUNTSPAYABLE_PaymentSettlement extends BaseClass {
 			try {
 				waitHelper.waitForElementVisible(
 						driver.findElement(By.xpath(
-								"//div[contains(text(),'" + paymentSettlementTestData.canceledInvoiceNumber + "')]")),
+								"//div[contains(text(),'" + accountsReceivableTestData.get("approvedInvoiceNumber") + "')]")),
 						1000, 100);
 				driver.findElement(
-						By.xpath("//div[contains(text(),'" + paymentSettlementTestData.canceledInvoiceNumber + "')]"))
+						By.xpath("//div[contains(text(),'" + accountsReceivableTestData.get("approvedInvoiceNumber") + "')]"))
 						.isDisplayed();
 				// Assert.assertFalse(result);
 

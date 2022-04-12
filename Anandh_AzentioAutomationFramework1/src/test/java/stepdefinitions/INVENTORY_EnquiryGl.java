@@ -121,8 +121,8 @@ public class INVENTORY_EnquiryGl extends BaseClass {
 		try
 		{
 		
-			waitHelper.waitForElement(driver, 3000, driver.findElement(By.xpath("//span[contains(text(),'"+inventoryEnquiryGlTestData.GlToMonth+" "+inventoryEnquiryGlTestData.GlYear+"')]")));
-			WebElement monthAndYear=driver.findElement(By.xpath("//span[contains(text(),'"+inventoryEnquiryGlTestData.GlToMonth+" "+inventoryEnquiryGlTestData.GlYear+"')]"));
+			waitHelper.waitForElement(driver, 3000, driver.findElement(By.xpath("//span[contains(text(),'"+inventoryEnquiryGlTestData.GlToMonth+" "+inventoryEnquiryGlTestData.ToYear+"')]")));
+			WebElement monthAndYear=driver.findElement(By.xpath("//span[contains(text(),'"+inventoryEnquiryGlTestData.GlToMonth+" "+inventoryEnquiryGlTestData.ToYear+"')]"));
 		    break;
 		}
 		
@@ -131,7 +131,7 @@ public class INVENTORY_EnquiryGl extends BaseClass {
 			inventoryEnquiryGlObj.inventoryNextMonth().click();
 		}
 		}
-		WebElement FinalDay=driver.findElement(By.xpath("//td[@aria-label='"+inventoryEnquiryGlTestData.GlFullToMonth+" "+inventoryEnquiryGlTestData.GlToDate+", "+inventoryEnquiryGlTestData.GlYear+"']/span"));
+		WebElement FinalDay=driver.findElement(By.xpath("//td[@aria-label='"+inventoryEnquiryGlTestData.GlFullToMonth+" "+inventoryEnquiryGlTestData.GlToDate+", "+inventoryEnquiryGlTestData.ToYear+"']/span"));
 		clickAndActionHelper.doubleClick(FinalDay);
 	}
 

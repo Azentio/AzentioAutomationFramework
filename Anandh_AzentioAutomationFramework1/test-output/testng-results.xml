@@ -1,44 +1,94 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
+<testng-results ignored="0" total="1" passed="0" failed="1" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2022-03-31T12:42:24 IST" name="Default suite" finished-at="2022-03-31T12:43:53 IST" duration-ms="89045">
+  <suite started-at="2022-04-11T18:08:58 IST" name="Default suite" finished-at="2022-04-11T18:35:22 IST" duration-ms="1584711">
     <groups>
       <group name="cucumber">
-        <method signature="AbstractTestNGCucumberTests.runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:Runner.TestApplication@2d901eb0]" name="runScenario" class="io.cucumber.testng.AbstractTestNGCucumberTests"/>
+        <method signature="AbstractTestNGCucumberTests.runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:Runner.TestApplication@35dab4eb]" name="runScenario" class="io.cucumber.testng.AbstractTestNGCucumberTests"/>
       </group> <!-- cucumber -->
     </groups>
-    <test started-at="2022-03-31T12:42:24 IST" name="Default test" finished-at="2022-03-31T12:43:53 IST" duration-ms="89045">
+    <test started-at="2022-04-11T18:08:58 IST" name="Default test" finished-at="2022-04-11T18:35:22 IST" duration-ms="1584711">
       <class name="Runner.TestApplication">
-        <test-method is-config="true" signature="beforeExecution()[pri:0, instance:Runner.TestApplication@2d901eb0]" started-at="2022-03-31T12:42:24 IST" name="beforeExecution" finished-at="2022-03-31T12:42:24 IST" duration-ms="9" status="PASS">
+        <test-method is-config="true" signature="beforeExecution()[pri:0, instance:Runner.TestApplication@35dab4eb]" started-at="2022-04-11T18:08:58 IST" name="beforeExecution" finished-at="2022-04-11T18:08:58 IST" duration-ms="18" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeExecution -->
-        <test-method is-config="true" signature="setUpClass()[pri:0, instance:Runner.TestApplication@2d901eb0]" started-at="2022-03-31T12:42:24 IST" name="setUpClass" finished-at="2022-03-31T12:42:26 IST" duration-ms="2190" status="PASS">
+        <test-method is-config="true" signature="setUpClass()[pri:0, instance:Runner.TestApplication@35dab4eb]" started-at="2022-04-11T18:08:58 IST" name="setUpClass" finished-at="2022-04-11T18:09:00 IST" duration-ms="2867" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUpClass -->
-        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:Runner.TestApplication@2d901eb0]" started-at="2022-03-31T12:42:27 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2022-03-31T12:43:36 IST" duration-ms="69635" status="PASS">
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:Runner.TestApplication@35dab4eb]" started-at="2022-04-11T18:09:00 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2022-04-11T18:35:07 IST" duration-ms="1566629" status="FAIL">
           <params>
             <param index="0">
               <value>
-                <![CDATA["De-activate the account book"]]>
+                <![CDATA["Verify cancelling Advance To employee is not allowed if the same has been adjusted at payment settlement"]]>
               </value>
             </param>
             <param index="1">
               <value>
-                <![CDATA["Optional[To test the Gendral Ledgure module]"]]>
+                <![CDATA["Optional[Checking accountsPayable and accounts Receivable module]"]]>
               </value>
             </param>
           </params>
+          <exception class="org.openqa.selenium.WebDriverException">
+            <message>
+              <![CDATA[chrome not reachable
+  (Session info: chrome=99.0.4844.82)
+Build info: version: '4.0.0-rc-1', revision: 'bc5511cbda'
+System info: host: 'INMUVADP014584', ip: '10.1.47.109', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.1'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [e633ec83ce293e31ade6805f1890c272, findElement {using=xpath, value=//span[contains(text(),'Yes')]}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 99.0.4844.82, chrome: {chromedriverVersion: 99.0.4844.51 (d537ec02474b5..., userDataDir: C:\Users\ININDC~1\AppData\L...}, goog:chromeOptions: {debuggerAddress: localhost:50960}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), se:cdp: ws://localhost:50960/devtoo..., se:cdpVersion: 99.0.4844.82, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
+Session ID: e633ec83ce293e31ade6805f1890c272]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[org.openqa.selenium.WebDriverException: chrome not reachable
+  (Session info: chrome=99.0.4844.82)
+Build info: version: '4.0.0-rc-1', revision: 'bc5511cbda'
+System info: host: 'INMUVADP014584', ip: '10.1.47.109', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.1'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [e633ec83ce293e31ade6805f1890c272, findElement {using=xpath, value=//span[contains(text(),'Yes')]}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 99.0.4844.82, chrome: {chromedriverVersion: 99.0.4844.51 (d537ec02474b5..., userDataDir: C:\Users\ININDC~1\AppData\L...}, goog:chromeOptions: {debuggerAddress: localhost:50960}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), se:cdp: ws://localhost:50960/devtoo..., se:cdpVersion: 99.0.4844.82, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
+Session ID: e633ec83ce293e31ade6805f1890c272
+at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77)
+at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499)
+at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:480)
+at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:200)
+at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:133)
+at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:53)
+at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:184)
+at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:164)
+at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:139)
+at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:547)
+at org.openqa.selenium.remote.ElementLocation$ElementFinder$2.findElement(ElementLocation.java:162)
+at org.openqa.selenium.remote.ElementLocation.findElement(ElementLocation.java:60)
+at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:381)
+at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:373)
+at org.openqa.selenium.support.pagefactory.DefaultElementLocator.findElement(DefaultElementLocator.java:70)
+at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:39)
+at jdk.proxy2/jdk.proxy2.$Proxy46.isDisplayed(Unknown Source)
+at org.openqa.selenium.support.ui.ExpectedConditions.elementIfVisible(ExpectedConditions.java:307)
+at org.openqa.selenium.support.ui.ExpectedConditions.access$000(ExpectedConditions.java:40)
+at org.openqa.selenium.support.ui.ExpectedConditions$10.apply(ExpectedConditions.java:293)
+at org.openqa.selenium.support.ui.ExpectedConditions$10.apply(ExpectedConditions.java:290)
+at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:208)
+at helper.WaitHelper.waitForElementVisible(WaitHelper.java:60)
+at stepdefinitions.ACCOUNTSPAYABLE_PaymentSettlement.Save_the_form(ACCOUNTSPAYABLE_PaymentSettlement.java:373)
+at ✽.Save the form(file:///C:/Users/inindc00076/git/AzentioAutomationFrameworkAnandh/Anandh_AzentioAutomationFramework1/src/test/java/features/ACCOUNTSPAYABLE_ACCOUNTSRECEIVABLE.feature:349)
+]]>
+            </full-stacktrace>
+          </exception> <!-- org.openqa.selenium.WebDriverException -->
           <reporter-output>
           </reporter-output>
         </test-method> <!-- runScenario -->
-        <test-method is-config="true" signature="tearDownClass()[pri:0, instance:Runner.TestApplication@2d901eb0]" started-at="2022-03-31T12:43:36 IST" name="tearDownClass" finished-at="2022-03-31T12:43:53 IST" duration-ms="16899" status="PASS">
+        <test-method is-config="true" signature="tearDownClass()[pri:0, instance:Runner.TestApplication@35dab4eb]" started-at="2022-04-11T18:35:07 IST" name="tearDownClass" finished-at="2022-04-11T18:35:22 IST" duration-ms="15056" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDownClass -->
-        <test-method is-config="true" signature="afterExecution()[pri:0, instance:Runner.TestApplication@2d901eb0]" started-at="2022-03-31T12:43:53 IST" name="afterExecution" finished-at="2022-03-31T12:43:54 IST" duration-ms="376" status="PASS">
+        <test-method is-config="true" signature="afterExecution()[pri:0, instance:Runner.TestApplication@35dab4eb]" started-at="2022-04-11T18:35:22 IST" name="afterExecution" finished-at="2022-04-11T18:35:23 IST" duration-ms="332" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterExecution -->

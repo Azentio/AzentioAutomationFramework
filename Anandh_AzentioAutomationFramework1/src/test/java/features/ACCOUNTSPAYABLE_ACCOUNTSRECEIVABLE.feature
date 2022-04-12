@@ -149,7 +149,7 @@ And give payable status in accounts payable report for approved invoice
 And click on the view button
 Then verify the approved invoice is appeared in the accounts Payable report
 
-@KUBS_AR/AP_UAT_003_002_TC_03
+@KUBS_AR_AP_UAT_003_002_TC_03
 Scenario: Check creating GRN against cancelled PO is not allowed
 And click on accounts Payable module
 Then click on po creation module 
@@ -279,7 +279,7 @@ Then Verify Balance sheet post Bill is cancelled
 
 
 
-@KUBS_AR/AP_UAT_003_008_TC_02
+@KUBS_AR_AP_UAT_003_008_TC_02
 Scenario: Verify cancelled advances is not available for payment settlement
 And Goto accounts receivable advances module
 Then click on search 
@@ -320,7 +320,7 @@ And click on Add Icon
 And fill the form for cancelled advances
 And find the invoice reference number for cancelled advance is not availabe at the billing queue 
 
-@KUBS_AR/AP_UAT_003_008_TC_01
+@KUBS_AR_AP_UAT_003_008_TC_01
 Scenario: Verify No accounting entry is generated on cancelling advances to employees
 Then go to ar ap adjustment module
 Then click on search

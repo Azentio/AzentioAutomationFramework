@@ -4,6 +4,7 @@ package stepdefinitions;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
 
 import org.junit.Assert;
 import org.openqa.selenium.By;
@@ -48,7 +49,7 @@ public class ACCOUNTSPAYABLE_GRNCreation extends BaseClass {
 	ACCOUNTSPAYABLE_PaymentSettlementTestDataType CreditNoteTestData=jsonConfig.getPayementSettlementTestDataByName("Maker");
 	Map<String,String> settlementTestData=new HashMap<>();
 	Map<String,String> testData=new HashMap<>();
-	//INVENTORY_EnquiryGlObject enquiryAccountingObj=new INVENTORY_EnquiryGlObject(driver);
+	INVENTORY_EnquiryGlObject enquiryAccountingObj=new INVENTORY_EnquiryGlObject(driver);
     @And("^click on accounts Payable module$")
     public void click_on_accounts_payable_module() throws Throwable {
     	makerObj.kubsDirectionIcon().click();
@@ -87,6 +88,8 @@ public class ACCOUNTSPAYABLE_GRNCreation extends BaseClass {
 
     @And("^check GRN can be created for that perticular po$")
     public void check_grn_can_be_created_for_that_perticular_po() throws Throwable {
+    	Random random = new Random();
+    	int randNumber=random.nextInt(1000-500)+500;
     	waitHelper.waitForElementVisible(grnObject.accountPayable_GrnBpName(), 1000, 100);
     	System.out.println("Business Partner is"+poBusinessPartner);
     	grnObject.accountPayable_GrnBpName().click();
@@ -96,7 +99,7 @@ public class ACCOUNTSPAYABLE_GRNCreation extends BaseClass {
 	waitHelper.waitForElementVisible(grnObject.accountPayable_GRN_BPBranch(), 2000, 100);
 	grnObject.accountPayable_GRN_BPBranch().click();
     	grnObject.accountPayable_GRN_BPBranch().sendKeys(Keys.ENTER);
-    	grnObject.accountPayable_GrnInvoiceNumber().sendKeys(grnTestData.InvoiceNo);
+    	grnObject.accountPayable_GrnInvoiceNumber().sendKeys(grnTestData.InvoiceNo+randNumber);
     	grnObject.accountPayable_GrnDeliveryLocation().click();
     	//grnObject.accountPayable_GrnDeliveryLocation().sendKeys(Keys.DOWN);
     	grnObject.accountPayable_GrnDeliveryLocation().sendKeys(Keys.ENTER);
@@ -279,26 +282,30 @@ public class ACCOUNTSPAYABLE_GRNCreation extends BaseClass {
     @Then("^adjustment reference number not availabe in the GL  record$")
     public void adjustment_reference_number_not_availabe_in_the_gl_record() throws Throwable {
     	javascriptHelper.JavaScriptHelper(driver);
-
-    	for(int i=0;i<299;i++)
-    	{
-    		try
-    		{
-    			waitHelper.waitForElementVisible(driver.findElement(By.xpath("//span[contains(text(),'"+settlementTestData.get("adjustmentNumber")+"')]")), 2000, 100);
-    			boolean result=driver.findElement(By.xpath("//span[contains(text(),'"+settlementTestData.get("adjustmentNumber")+"')]")).isDisplayed();
-    			if(result==true)
-    	    	{
-    	    		Assert.fail("Data is available ,Hence Expected result is not matched");
-    	    	}
-    			break;
-    	
-    		}
-    		catch(NoSuchElementException e)
-    		{
-    			javascriptHelper.scrollIntoView(glObj.nextRecord());
-    			glObj.nextRecord().click();
-    		}
-    	}
+    	enquiryAccountingObj.glTransactionReferenceNumber().click();
+    	enquiryAccountingObj.glTransactionReferenceNumber().sendKeys(settlementTestData.get("adjustmentNumber"));
+    	waitHelper.waitForElementVisible(arapAdjustment.accountingEntriesNoDetailsFound(), 3000, 300);
+    	arapAdjustment.accountingEntriesNoDetailsFound().isDisplayed();
+    	Assert.assertTrue(arapAdjustment.accountingEntriesNoDetailsFound().isDisplayed());
+//    	for(int i=0;i<299;i++)
+//    	{
+//    		try
+//    		{
+//    			waitHelper.waitForElementVisible(driver.findElement(By.xpath("//span[contains(text(),'"+settlementTestData.get("adjustmentNumber")+"')]")), 2000, 100);
+//    			boolean result=driver.findElement(By.xpath("//span[contains(text(),'"+settlementTestData.get("adjustmentNumber")+"')]")).isDisplayed();
+//    			if(result==true)
+//    	    	{
+//    	    		Assert.fail("Data is available ,Hence Expected result is not matched");
+//    	    	}
+//    			break;
+//    	
+//    		}
+//    		catch(NoSuchElementException e)
+//    		{
+//    			javascriptHelper.scrollIntoView(glObj.nextRecord());
+//    			glObj.nextRecord().click();
+//    		}
+//    	}
     }
     
 /***********  KUBS_AR_AP_UAT_001_004_TC_01  *****************************/

@@ -10,6 +10,7 @@ public class INVENTORY_EnquiryGlTestData {
 	public String GlFullMonth;
 	public String GlToMonth;
 	public String GlToDate;
+	public String ToYear;
 	public String GlFullToMonth;
 
 }
