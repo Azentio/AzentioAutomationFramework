@@ -32,10 +32,10 @@ public class GL2_JournalVoucher extends BaseClass {
  }
 
 	@Then("^Click on Journal Voucher EyeIcon$")
-	public void click_on_journal_voucher_eyeicon()  {
+	public void click_on_journal_voucher_eyeicon() throws InterruptedException  {
 	waithelper.waitForElement(driver, 2000,gL2_JournalVoucherObj.gL2_JournalVoucher_EyeButton());
 	gL2_JournalVoucherObj.gL2_JournalVoucher_EyeButton().click();
-	        
+	Thread.sleep(2000);        
  }
 
 	@Then("^Click on Journal Voucher AddButton$")

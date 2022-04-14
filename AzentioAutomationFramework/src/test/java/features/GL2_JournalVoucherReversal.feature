@@ -18,3 +18,7 @@ Then log in to the Checker Account
 And then checker claim the record
 Then click on the checker Notification 
 And select the Cheque record and Approve by checker
+Given Maker Navigate to UAT URL login
+Then Click on Direction icon
+Then Click on General Ledger Transaction Field
+Then Click on Journal Voucher Reversal EyeIcon

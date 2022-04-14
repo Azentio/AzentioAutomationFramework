@@ -31,10 +31,10 @@ public class GL2_LegalEntityGLConfig extends BaseClass {
     }
 
     @Then("^Click on Legal Entity GL Configuration Eye Icon$")
-    public void click_on_legal_entity_gl_configuration_eye_icon()  {
+    public void click_on_legal_entity_gl_configuration_eye_icon() throws InterruptedException  {
     waithelper.waitForElement(driver, 2000,gL2_LegalEntityGLConfigObj.gL2_LegalEntityGLConfig_EyeIcon());
    	gL2_LegalEntityGLConfigObj.gL2_LegalEntityGLConfig_EyeIcon().click();
-     
+     Thread.sleep(2000);
          
     }
 

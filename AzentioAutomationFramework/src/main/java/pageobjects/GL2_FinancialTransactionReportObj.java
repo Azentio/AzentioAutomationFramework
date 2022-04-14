@@ -98,6 +98,13 @@ public class GL2_FinancialTransactionReportObj {
 		return gL2_BalanceSheetReport_BranchTextbox;
 	}
 
+	//tdsReport
+	@FindBy(xpath = "//div[contains(text(),'TDS Payable')]")
+	private WebElement gL2_BalanceSheetReport_TdsReport;
+
+	public WebElement gL2_BalanceSheetReport_TdsReport() {
+		return gL2_BalanceSheetReport_TdsReport;
+	}
 	// Calendar Button
 	@FindBy(xpath = "//span[@class='input-calendar']")
 	private WebElement gL2_BalanceSheetReport_CalendarButton;

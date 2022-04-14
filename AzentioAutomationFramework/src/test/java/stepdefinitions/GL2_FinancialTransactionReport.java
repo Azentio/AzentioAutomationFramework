@@ -152,6 +152,7 @@ catch(StaleElementReferenceException e1)
 {
 }
 }
+Thread.sleep(1500);
 browserHelper.switchToParentWithChildClose();
 }
     
@@ -188,6 +189,14 @@ browserHelper.switchToParentWithChildClose();
 	gL2_FinancialTransactionReportObj.gL2_GlMonthlyBalanceReport_Currency().sendKeys(Keys.ENTER);
 	
     }
+    @Then("^verify the Record available in report$")
+    public void verify_the_record_available_in_report() throws InterruptedException  {
+    	javascripthelper.JavaScriptHelper(driver);
+    	browserHelper.SwitchToWindow(1);
+    	Thread.sleep(3000);
+    	browserHelper.switchToParentWithChildClose();  
+     
+    }
     
     
     //-----------------KUBS_GL2_UAT_008_011 Balancesheet report-------------------//
@@ -207,6 +216,17 @@ browserHelper.switchToParentWithChildClose();
     gL2_FinancialTransactionReportObj.gL2_BalanceSheetReport_BranchTextbox().sendKeys(gL2_FinancialTransactionReportTestDataType.BranchCode);
     gL2_FinancialTransactionReportObj.gL2_BalanceSheetReport_BranchTextbox().sendKeys(Keys.ENTER);
     	 
+    }
+    @Then("^verify the Record available in the report$")
+    public void verify_the_record_available_in_the_report() throws Throwable {
+    	javascripthelper.JavaScriptHelper(driver);
+    	browserHelper.SwitchToWindow(1);
+    	Thread.sleep(2000);
+        javascripthelper.scrollIntoView(gL2_FinancialTransactionReportObj.gL2_BalanceSheetReport_TdsReport());
+        waithelper.waitForElement(driver, 3000, gL2_FinancialTransactionReportObj.gL2_BalanceSheetReport_TdsReport());
+        gL2_FinancialTransactionReportObj.gL2_BalanceSheetReport_TdsReport().isDisplayed();
+    	Thread.sleep(3000);
+    	browserHelper.switchToParentWithChildClose();   
     }
 
     //--------------------Cashflow statement report-----------------------//

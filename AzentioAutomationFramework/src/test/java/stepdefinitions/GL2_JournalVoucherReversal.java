@@ -22,10 +22,10 @@ public class GL2_JournalVoucherReversal extends BaseClass {
 	
 
     @Then("^Click on Journal Voucher Reversal EyeIcon$")
-    public void click_on_journal_voucher_reversal_eyeicon()  {
+    public void click_on_journal_voucher_reversal_eyeicon() throws InterruptedException  {
     waithelper.waitForElement(driver, 2000,gL2_JournalVoucherReversalObj.gL2_JournalVoucherReversal_EyeButton());
     gL2_JournalVoucherReversalObj.gL2_JournalVoucherReversal_EyeButton().click();
-      	
+     Thread.sleep(2000); 	
         
     }
 

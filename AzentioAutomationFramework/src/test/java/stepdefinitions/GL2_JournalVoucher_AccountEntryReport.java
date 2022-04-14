@@ -5,6 +5,7 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.testng.Assert;
 
 import dataProvider.ConfigFileReader;
 import dataProvider.JsonConfig;
@@ -28,6 +29,7 @@ public class GL2_JournalVoucher_AccountEntryReport extends BaseClass {
 	GL2_JournalVoucher_AccountEntryReportObj gL2_JournalVoucher_AccountEntryReportObj=new GL2_JournalVoucher_AccountEntryReportObj(driver);
 	GL2_JournalVoucher_AccountEntryReportTestDataType gL2_JournalVoucher_AccountEntryReportTestDataType = jsonReader.getJournalVoucherReportByName("Maker");;
 	JavascriptHelper javascripthelper = new JavascriptHelper();
+	
 	
 	
 	//-------------------------------@KUBS_GL2_UAT_003_003 JournalVoucher----------------------------------------//
@@ -119,6 +121,7 @@ public class GL2_JournalVoucher_AccountEntryReport extends BaseClass {
 			
 			waithelper.waitForElement(driver, 3000, driver.findElement(By.xpath("//span[contains(text(),'"+gL2_JournalVoucher_AccountEntryReportTestDataType.Voucher+"')]")));
 			WebElement VoucherNum =driver.findElement(By.xpath("//span[contains(text(),'"+gL2_JournalVoucher_AccountEntryReportTestDataType.Voucher+"')]"));
+			Assert.assertTrue(VoucherNum.isDisplayed());
 			break;
 		}
 		
@@ -150,6 +153,7 @@ public class GL2_JournalVoucher_AccountEntryReport extends BaseClass {
 		{
 			waithelper.waitForElement(driver, 3000, driver.findElement(By.xpath("//span[contains(text(),'"+gL2_JournalVoucher_AccountEntryReportTestDataType.VoucherReverse+"')]")));
 			WebElement VoucherNum =driver.findElement(By.xpath("//span[contains(text(),'"+gL2_JournalVoucher_AccountEntryReportTestDataType.VoucherReverse+"')]"));
+			Assert.assertTrue(VoucherNum.isDisplayed());
 			break;
 		}
 		

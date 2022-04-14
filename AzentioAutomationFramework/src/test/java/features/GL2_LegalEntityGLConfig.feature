@@ -19,6 +19,10 @@ Then log in to the Checker Account
 And then checker claim the record
 Then click on the checker Notification 
 And select the Cheque record and Approve by checker
+Given Maker Navigate to UAT URL login
+Then Click on Direction Left
+Then Click on General ledger configuration
+Then Click on Legal Entity GL Configuration Eye Icon
 
 @KUBS_GL2_UAT_001_002 @MultiAuth
 
@@ -39,6 +43,10 @@ Then log in to the Checker Account
 And then checker claim the record
 Then click on the checker Notification 
 And select the Cheque record and Approve by checker
+Given Maker Navigate to UAT URL login
+Then Click on Direction Left
+Then Click on General ledger configuration
+Then Click on Legal Entity GL Configuration Eye Icon
 
 @KUBS_GL2_UAT_001_003 @MultiAuth
 
@@ -59,3 +67,7 @@ Then log in to the Checker Account
 And then checker claim the record
 Then click on the checker Notification 
 And select the Cheque record and Approve by checker
+Given Maker Navigate to UAT URL login
+Then Click on Direction Left
+Then Click on General ledger configuration
+Then Click on Legal Entity GL Configuration Eye Icon

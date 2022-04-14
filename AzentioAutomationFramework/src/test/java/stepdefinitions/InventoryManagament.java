@@ -929,6 +929,7 @@ public class InventoryManagament extends BaseClass {
 
 			@Then("^click on report segment button$")
 			public void click_on_report_segment_button() throws Throwable {
+				Thread.sleep(1500);
 			waithelper.waitForElement(driver, 3000, inventoryManagamentObj.inventoryReportIcon());
 			inventoryManagamentObj.inventoryReportIcon().click();
 			//waithelper.waitForElement(driver, 3000, inventoryManagamentObj.inventoryEnquiryMenu());
