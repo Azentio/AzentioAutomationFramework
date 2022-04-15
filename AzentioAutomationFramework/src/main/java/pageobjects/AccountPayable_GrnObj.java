@@ -27,7 +27,8 @@ public class AccountPayable_GrnObj {
 	@FindBy(xpath = "//ion-col[2]/app-kub-lov[1]/span[1]/ng-select[1]/div[1]/div[1]/div[2]/input")
 	private WebElement accountsPayable_Grn_BpName;
 
-	public WebElement accountsPayable_Grn_BpName() {
+	public WebElement accountsPayable_Grn_BpName() 
+	{
 		return accountsPayable_Grn_BpName;
 
 	}

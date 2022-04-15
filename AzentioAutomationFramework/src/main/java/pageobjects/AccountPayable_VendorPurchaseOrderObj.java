@@ -377,5 +377,12 @@ public class AccountPayable_VendorPurchaseOrderObj {
 	public WebElement accountsPayable_VendorPurchaseOrder_MakerSubmitFinal() {
 		return accountsPayable_VendorPurchaseOrder_MakerSubmitFinal;
 	}
+	// item Detail qty
+		@FindBy(xpath = "//ion-grid[1]/ion-row[1]/ion-col[4]/ion-item[1]/ion-input[1]/input[1]")
+		private WebElement accountPayable_VendorPurchaseOrder_ItemDetailQty;
+
+		public WebElement accountPayable_VendorPurchaseOrder_ItemDetailQty() {
+			return accountPayable_VendorPurchaseOrder_ItemDetailQty;
+		}
 	
 }
