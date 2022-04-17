@@ -22,6 +22,22 @@ public class FixedAsset_AssetCreationTestDataType {
 	public String GlToMonth;
 	public String GlFullToMonth;
 	public String GlToDate;
+	
+	//arap tax
+	public String GRN_ReferenceNumber;
+	public String BillReferenceNumber;
+	public String ExternalReferenceNumber;
+	public String AssetLifeUnit;
+	public String HSNcode;
+	public String SalvagePercentage;
+	public String AssetLife;
+	public String PO_Creation;
+	public String CheckerRemark;
+	public String CapitalizationMonth;
+	public String CapitalizationFullMonth;
+	public String CapitalizationDate;
+	public String CapitalizationYear;
+	public String RemarkByMaker;
 
 
 }

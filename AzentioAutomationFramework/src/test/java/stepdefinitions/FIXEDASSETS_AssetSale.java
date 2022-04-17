@@ -180,7 +180,7 @@ public class FIXEDASSETS_AssetSale {
 
     @Then("^click on first eye button to get the profit earned$")
     public void click_on_first_eye_button_to_get_the_profit_earned() throws InterruptedException {
-    	javascripthelper.JavaScriptHelper(driver);
+javascripthelper.JavaScriptHelper(driver);
 		
 		waithelper.waitForElement(driver, 2000, fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_ViewEarnedProfitEyeButton());
 		fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_ViewEarnedProfitEyeButton().click();
@@ -197,18 +197,15 @@ public class FIXEDASSETS_AssetSale {
     	waithelper.waitForElement(driver, 3000, fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_LossOnSaleGL());
     	fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_LossOnSaleGL().click();
     	
-//		String bv = javascripthelper.executeScript("return document.getElementsByClassName('form__field ng-pristine ng-valid ng-touched')[0].value").toString();
-		String bv = javascripthelper.executeScript("return document.getElementsByTagName('input')[14].value").toString();
+		String bv = javascripthelper.executeScript("return document.getElementsByClassName('form__field ng-pristine ng-valid ng-touched')[0].value").toString();
 		Double bookvalue = Double.valueOf(bv.replaceAll("[^0-9/.]", ""));
 		System.out.println("Book value is: " +bookvalue);
     	
-//		String sv = javascripthelper.executeScript("return document.getElementsByClassName('form__field ng-pristine ng-valid ng-touched')[1].value").toString();
-		String sv = javascripthelper.executeScript("return document.getElementsByTagName('input')[16].value").toString();
+		String sv = javascripthelper.executeScript("return document.getElementsByClassName('form__field ng-pristine ng-valid ng-touched')[1].value").toString();
 		Double salevalue = Double.parseDouble(sv.replaceAll("[^0-9/.]", ""));
 		System.out.println("Sale value is: " +salevalue);
 		
-//		String  pft= javascripthelper.executeScript("return document.getElementsByClassName('form__field ng-pristine ng-valid ng-touched')[2].value").toString();
-		String  pft= javascripthelper.executeScript("return document.getElementsByTagName('input')[17].value").toString();
+		String  pft= javascripthelper.executeScript("return document.getElementsByClassName('form__field ng-pristine ng-valid ng-touched')[2].value").toString();
 		Double profit = Double.parseDouble(pft.replaceAll("[^0-9/.]", ""));
 		
 		profit=salevalue-bookvalue;

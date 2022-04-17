@@ -27,6 +27,7 @@ import pageobjects.GeneralLedger2_JournalVoucherObj;
 import pageobjects.KUBS_CheckerObj;
 import resources.BaseClass;
 import resources.JsonDataReaderWriter;
+import testDataType.ACCOUNTSPAYABLE_InvoiceBookingTestDataType;
 import testDataType.AccountsReceivable_UpdateChequeStatusTestDataType;
 import testDataType.GeneralLedger2_JournalVoucherTestDataType;
 
@@ -44,6 +45,7 @@ public class GeneralLedger2_JournalVoucher_Reports {
 	AccountsReceivable_ReceiptsReversalsObj accountsReceivable_ReceiptsReversalsObj = new AccountsReceivable_ReceiptsReversalsObj(driver);
 	AccountsReceivable_UpdateChequeStatusTestDataType UpdateChequeStatusTestDataType=jsonReader.getUpdateChequeStatusdata("Maker");
 	GeneralLedger2_JournalVoucherTestDataType JournalVoucherTestDataType=jsonReader.getJournalVoucherdata("Maker");
+	ACCOUNTSPAYABLE_InvoiceBookingTestDataType InvoiceBookingTestDataType=jsonReader.getInvoiceBookingdata("Maker");
 	JavascriptHelper javascripthelper = new JavascriptHelper();
 	JsonDataReaderWriter jsonWriter = new JsonDataReaderWriter();
 	ClicksAndActionsHelper clicksAndActionHelper = new ClicksAndActionsHelper(driver);
@@ -105,6 +107,18 @@ public class GeneralLedger2_JournalVoucher_Reports {
 	public void fill_the_reference_number_field_of_financial_transaction() throws IOException, ParseException  {
 		waithelper.waitForElement(driver, 3000, eNQUIRY_FinancialTransactionObj.ENQUIRY_FinancialTransaction_BranchCode());
 		eNQUIRY_FinancialTransactionObj.ENQUIRY_FinancialTransaction_BranchCode().sendKeys(JournalVoucherTestDataType.BranchCode);
+		eNQUIRY_FinancialTransactionObj.ENQUIRY_FinancialTransaction_BranchCode().sendKeys(Keys.ENTER);
+		
+		waithelper.waitForElement(driver, 3000, eNQUIRY_FinancialTransactionObj.ENQUIRY_FinancialTransaction_TransactionRefNumber());
+		eNQUIRY_FinancialTransactionObj.ENQUIRY_FinancialTransaction_TransactionRefNumber().sendKeys(jsonWriter.readdata());
+		eNQUIRY_FinancialTransactionObj.ENQUIRY_FinancialTransaction_TransactionRefNumber().sendKeys(Keys.ENTER);
+		
+	}
+	
+	@And("^fill the reference number field of financial transaction to check accounting entries post billing$")
+	public void fill_the_reference_number_field_of_financial_transaction_to_check_accounting_entries_post_billing() throws IOException, ParseException  {
+		waithelper.waitForElement(driver, 3000, eNQUIRY_FinancialTransactionObj.ENQUIRY_FinancialTransaction_BranchCode());
+		eNQUIRY_FinancialTransactionObj.ENQUIRY_FinancialTransaction_BranchCode().sendKeys(InvoiceBookingTestDataType.EntityBranch);
 		eNQUIRY_FinancialTransactionObj.ENQUIRY_FinancialTransaction_BranchCode().sendKeys(Keys.ENTER);
 		
 		waithelper.waitForElement(driver, 3000, eNQUIRY_FinancialTransactionObj.ENQUIRY_FinancialTransaction_TransactionRefNumber());

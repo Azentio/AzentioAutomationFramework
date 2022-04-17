@@ -202,7 +202,7 @@ public class BUSINESS_PARTNER_SETUP_BusinessPartner {
 		
 		waithelper.waitForElement(driver, 2000, bUSINESS_PARTNER_SETUP_BusinessPartnerObj.businessPartner_Gender());
 		bUSINESS_PARTNER_SETUP_BusinessPartnerObj.businessPartner_Gender().sendKeys(bUSINESS_PARTNER_SETUP_BusinessPartnerTestDataType.Gender);
-		bUSINESS_PARTNER_SETUP_BusinessPartnerObj.businessPartner_Gender().sendKeys(Keys.ENTER);
+		bUSINESS_PARTNER_SETUP_BusinessPartnerObj.businessPartner_Gender().sendKeys(Keys.DOWN, Keys.ENTER);
 		
 		waithelper.waitForElement(driver, 2000, bUSINESS_PARTNER_SETUP_BusinessPartnerObj.businessPartner_FirstName());
 		bUSINESS_PARTNER_SETUP_BusinessPartnerObj.businessPartner_FirstName().sendKeys(bUSINESS_PARTNER_SETUP_BusinessPartnerTestDataType.FirstName);
@@ -397,17 +397,17 @@ public class BUSINESS_PARTNER_SETUP_BusinessPartner {
 		bUSINESS_PARTNER_SETUP_BusinessPartnerObj.businessPartner_SaveButton().click();
 		
 		Thread.sleep(1000);
-		waithelper.waitForElement(driver, 2000, bUSINESS_PARTNER_SETUP_BusinessPartnerObj.businessPartner_BusinessPartnerDetails());
+		waithelper.waitForElement(driver, 3000, bUSINESS_PARTNER_SETUP_BusinessPartnerObj.businessPartner_BusinessPartnerDetails());
 		bUSINESS_PARTNER_SETUP_BusinessPartnerObj.businessPartner_BusinessPartnerDetails().click();
 		Thread.sleep(1000);
 	}
 
     @Then("^Save and submit the record to create vendor$")
     public void save_and_submit_the_record_to_create_vendor() throws InterruptedException, IOException, ParseException  {
-    	waithelper.waitForElement(driver, 2000, fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_NotificationButton());
+    	waithelper.waitForElement(driver, 3000, fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_NotificationButton());
     	fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_NotificationButton().click();
     	
-    	waithelper.waitForElement(driver, 2000, fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_FirstReferenceId());
+    	waithelper.waitForElement(driver, 3000, fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_FirstReferenceId());
     	String id=fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_FirstReferenceId().getText();
     	jsonWriter.addReferanceData(id);
 		System.out.println("Reference ID:" +id);
@@ -431,18 +431,18 @@ public class BUSINESS_PARTNER_SETUP_BusinessPartner {
     	driver.findElement(By.xpath(before_xpath +jsonWriter.readReferancedata() +after_xpath)).click();
     	
     	
-    	waithelper.waitForElement(driver, 2000, fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_SubmitButton());
+    	waithelper.waitForElement(driver, 4000, fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_SubmitButton());
     	fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_SubmitButton().click();
     	
-    	waithelper.waitForElement(driver, 2000, fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_RemarkField());
+    	waithelper.waitForElement(driver, 4000, fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_RemarkField());
     	javascripthelper.JSEClick(fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_RemarkField());
     	fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_RemarkField().sendKeys(bUSINESS_PARTNER_SETUP_BusinessPartnerTestDataType.RemarkByMaker);
     	
-    	waithelper.waitForElement(driver, 2000, fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_Submit());
+    	waithelper.waitForElement(driver, 4000, fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_Submit());
     	fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_Submit().click();
     	
     	Thread.sleep(1000);
-    	waithelper.waitForElement(driver, 2000, fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_RecordStatus());
+    	waithelper.waitForElement(driver, 3000, fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_RecordStatus());
     	WebElement recordstatus = fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_RecordStatus();
     	clicksAndActionHelper.moveToElement(recordstatus);
     	

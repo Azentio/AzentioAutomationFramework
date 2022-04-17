@@ -110,6 +110,39 @@ Then Click on Accounts Payable
 Then Click on Good Recived Note GRN Eye buutton
 
 #devesh KUBS_FAT_UAT_001_005
+@KUBS_FAT_UAT_001_005
+  Scenario: Check the Bill Booking with all the details
+    Given User should go to the kubs url and login as a maker user
+    And user should navigate to accounts payable menu
+    When click on eye button of invoice booking
+    And click on add button for invoice booking
+    And Fill the required fields for invoice booking
+    Then Save and submit the invoice billing
+    
+    And User should go to the kubs url and login as a reviewer user
+    Then Click on notification button in reviewer
+  	And approve the record by the reviewer user
+  	
+    Given User should go to the kubs url and login as a checker user
+   	And Click on security management in checker
+   	Then Click on open pool in checker
+   	And Click on claim button in checker
+   	And capture claimed status
+   	Then click on notification in checker
+    Then checker should approved the invoice billing
+    
+    Given User should go to the kubs url and login as a maker user
+    And user should navigate to accounts payable menu
+    When click on eye button of invoice booking
+    Then click on first eye button to get the system invoice number to check
+    And maker should logout
+    
+    Given User should go to the kubs url and login as a maker user
+    Then click on report icon
+    Then click on enquiry menu
+    Then click on temp grid button of financial transaction
+    And fill the reference number field of financial transaction to check accounting entries post billing
+    Then click on view button to view the report as per reference number
 
 @KUBS_FAT_UAT_002_001 @multiauth
 
@@ -305,6 +338,7 @@ Then Click on Asset Creation Eye button
     And user should navigate to fixed asset menu
     When click on eye button of asset sale
     Then click on first eye button to get the profit earned
+    And maker should logout
     
  @KUBS_FAT_UAT_004_002
 Scenario: Check the accounting Entries

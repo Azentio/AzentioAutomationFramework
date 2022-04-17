@@ -7,6 +7,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import dataProvider.ConfigFileReader;
 import dataProvider.JsonConfig;
+import helper.BrowserHelper;
 import helper.ClicksAndActionsHelper;
 import helper.JavascriptHelper;
 import helper.WaitHelper;
@@ -36,6 +37,7 @@ public class FinancialReporting_GLBalancesReport {
 	JsonDataReaderWriter jsonWriter = new JsonDataReaderWriter();
 	ClicksAndActionsHelper clicksAndActionHelper = new ClicksAndActionsHelper(driver);
 	JsonDataReaderWriter reader;
+	BrowserHelper browserHelper = new BrowserHelper(driver);
 	KUBS_CheckerObj kubschecker = new KUBS_CheckerObj(driver);
 	
 	@And("^user should navigate to financial reporting menu$")
@@ -109,10 +111,12 @@ public class FinancialReporting_GLBalancesReport {
 	
 
     @Then("^click on view button to view the report for any period$")
-    public void click_on_view_button_to_view_the_report_for_any_period() {
+    public void click_on_view_button_to_view_the_report_for_any_period() throws InterruptedException {
     	
     	waithelper.waitForElement(driver, 3000, financialReporting_GLBalancesReportObj.FinancialReporting_GLBalancesReport_ViewButton());
     	financialReporting_GLBalancesReportObj.FinancialReporting_GLBalancesReport_ViewButton().click();
+    	Thread.sleep(3000);
+    	browserHelper.switchToParentWithChildClose();
     	
     }
     
@@ -161,9 +165,11 @@ public class FinancialReporting_GLBalancesReport {
     }
 
     @Then("^click on view button to view the report for monthly period$")
-    public void click_on_view_button_to_view_the_report_for_monthly_period() {
+    public void click_on_view_button_to_view_the_report_for_monthly_period() throws InterruptedException {
     	waithelper.waitForElement(driver, 3000, financialReporting_GLBalancesReportObj.FinancialReporting_GLBalancesReport_ViewButton());
     	financialReporting_GLBalancesReportObj.FinancialReporting_GLBalancesReport_ViewButton().click();
+    	Thread.sleep(3000);
+    	browserHelper.switchToParentWithChildClose();
        
     }
 

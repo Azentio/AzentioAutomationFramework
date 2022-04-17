@@ -599,39 +599,48 @@ public class AccountPayable_InvoiceBooking extends BaseClass {
     Thread.sleep(2000);
     accountPayable_InvoiceBookingObj.accountPayable_InvoiceBooking_TaxDetailsCloseButton().click();
    
-    double taxSGST = Double.parseDouble(javascripthelper.executeScript("return document.getElementsByTagName('input')[24].value").toString());
-    int invoiceamountSGST = Integer.parseInt(javascripthelper.executeScript("return document.getElementsByTagName('input')[25].value").toString());
-    double taxamountSGST = Double.parseDouble(javascripthelper.executeScript("return document.getElementsByTagName('input')[26].value").toString());
-   
-    double taxCGST = Double.parseDouble(javascripthelper.executeScript("return document.getElementsByTagName('input')[29].value").toString());
-    int invoiceamountCGST = Integer.parseInt(javascripthelper.executeScript("return document.getElementsByTagName('input')[30].value").toString());
-    double taxamountCGST = Double.parseDouble(javascripthelper.executeScript("return document.getElementsByTagName('input')[31].value").toString());
-     
-//     double taxamtSGST = Double.valueOf((taxSGST)/100 * invoiceamountSGST);
-//     double taxamtCGST = Double.valueOf((taxCGST)/100 * invoiceamountCGST);
-//      double taxamt = Double.valueOf(Double.parseDouble(taxSGST)/100 * Integer.parseInt(invoiceamountSGST));
-//     System.out.println("Calculated SGST tax amount is : " +taxamtSGST);
-//     System.out.println("Calculated CGST tax amount is : " +taxamtCGST);
-    if(Double.valueOf((taxSGST)/100 * invoiceamountSGST).equals(taxamountSGST))
-    {
-    System.out.println("SGST Tax details should be correctly displayed");
-    }else System.out.println("Tax details should not be correctly displayed");
-   
-    if(Double.valueOf((taxCGST)/100 * invoiceamountCGST).equals(taxamountCGST))
-    {
-    System.out.println("CGST Tax details should be correctly displayed");
-    }else System.out.println("Tax details should not be correctly displayed");
-    }
-   
+  //CODES FOR SGST AND CGST
+	
+	/*double taxSGST = Double.parseDouble(javascripthelper.executeScript("return document.getElementsByTagName('input')[24].value").toString());
+	int invoiceamountSGST = Integer.parseInt(javascripthelper.executeScript("return document.getElementsByTagName('input')[25].value").toString());
+	double taxamountSGST = Double.parseDouble(javascripthelper.executeScript("return document.getElementsByTagName('input')[26].value").toString());
+	
+	double taxCGST = Double.parseDouble(javascripthelper.executeScript("return document.getElementsByTagName('input')[29].value").toString());
+	int invoiceamountCGST = Integer.parseInt(javascripthelper.executeScript("return document.getElementsByTagName('input')[30].value").toString());
+	double taxamountCGST = Double.parseDouble(javascripthelper.executeScript("return document.getElementsByTagName('input')[31].value").toString());
+	*/
+	
+	double taxIGST =  Double.parseDouble(javascripthelper.executeScript("return document.getElementsByClassName('form-control')[2].value").toString());
+	int invoiceamountIGST = Integer.parseInt(javascripthelper.executeScript("return document.getElementsByClassName('form-control')[3].value").toString());
+	double taxamountIGST = Double.parseDouble(javascripthelper.executeScript("return document.getElementsByClassName('form-control')[4].value").toString());
 	
 	
+//	double taxamtSGST = Double.valueOf((taxSGST)/100 * invoiceamountSGST);
+//	double taxamtCGST = Double.valueOf((taxCGST)/100 * invoiceamountCGST);
+//  double taxamt = Double.valueOf(Double.parseDouble(taxSGST)/100 * Integer.parseInt(invoiceamountSGST));
+//	System.out.println("Calculated SGST tax amount is : " +taxamtSGST);
+//	System.out.println("Calculated CGST tax amount is : " +taxamtCGST);
 	
+	//CODES FOR SGST AND CGST
 	
+	/*if(Double.valueOf((taxSGST)/100 * invoiceamountSGST).equals(taxamountSGST))
+	{
+		System.out.println("SGST Tax details are correctly displayed");
+	}else System.out.println("Tax details are not correctly displayed");
 	
+	if(Double.valueOf((taxCGST)/100 * invoiceamountCGST).equals(taxamountCGST))
+	{
+		System.out.println("CGST Tax details are correctly displayed");
+	}else System.out.println("Tax details are not correctly displayed");
+	*/
 	
+	if(Double.valueOf((taxIGST)/100 * invoiceamountIGST).equals(taxamountIGST))
+	{
+		System.out.println("IGST Tax details are correctly displayed");
+	}else {System.out.println("Tax details are not correctly displayed");}
 	
+	accountPayable_InvoiceBookingObj.accountPayable_InvoiceBooking_TaxDetailsCloseButton().click();
 	
-	
-	
+	}
 
 }

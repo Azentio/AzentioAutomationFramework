@@ -7,7 +7,7 @@
 		"InvoiceSubType" : "Regular Expense",
 		"BP_Name" : "Bonton Agency",
 		"CostCenter" : "FINANCE",
-		"SupplierReferenceNumber" : "SUP-112235",
+		"SupplierReferenceNumber" : "SUP-11224235",
 		
 		"TotalInvoiceAmount" : "",
 		"TaxAndGstAmount" : "",
@@ -43,7 +43,7 @@
 		"PaymentMonth" : "Nov",
 		"PaymentFullMonth" : "November",
 		"PaymentYear" : "2022",
-		"InvoiceNumber" : "INV-113-22022"
+		"InvoiceNumber" : "INV-371-42022"
 
 
 

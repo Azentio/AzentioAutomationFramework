@@ -32,7 +32,7 @@ public class GeneralLedger2_JournalVoucherObj {
 	}
 	
 	// Record eyebutton to get the voucher number
-	@FindBy(xpath = "//datatable-row-wrapper[3]/datatable-body-row[1]/div[2]/datatable-body-cell[1]/div/ion-buttons/ion-button[1]")
+	@FindBy(xpath = "//datatable-row-wrapper[1]/datatable-body-row[1]/div[2]/datatable-body-cell[1]/div/ion-buttons/ion-button[1]")
 	private WebElement GeneralLedger2_JournalVoucher_RecordVoucherNumberEyeButton;
 	
 	public WebElement GeneralLedger2_JournalVoucher_RecordVoucherNumberEyeButton() {

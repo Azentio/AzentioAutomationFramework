@@ -14,6 +14,25 @@
 		"GlDay"					: "19",
 		"GlToMonth"				: "Nov",
 		"GlFullToMonth"			: "November",
-		"GlToDate"				: "19"
+		"GlToDate"				: "19",
+		
+		
+		
+		"GRN_ReferenceNumber" : "GRN-Agency-8-260-1242022",
+		"BillReferenceNumber" : "INV-34-122021",
+		"ExternalReferenceNumber" : "260",
+		"AssetLifeUnit" : "Year",
+		"HSNcode" : "8471- Laptop",
+		"SalvagePercentage" : "5",
+		"AssetLife" : "1",
+		"PO_Creation" : "3-null-PO-2",
+		"CheckerRemark" : "Approved",
+		"CapitalizationMonth" : "Oct",
+		"CapitalizationFullMonth" : "October",
+		"CapitalizationDate" : "21",
+		"CapitalizationYear" : "2022",
+		"RemarkByMaker" : "Submit By Maker"
+		
 	}
 ]
+
