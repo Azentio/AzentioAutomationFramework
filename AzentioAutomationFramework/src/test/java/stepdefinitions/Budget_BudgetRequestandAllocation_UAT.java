@@ -290,7 +290,7 @@ public class Budget_BudgetRequestandAllocation_UAT extends BaseClass {
 	public void click_the_checker_action_icon() throws Throwable {
 
 		// ------------------CHECKER ACTION------------------//
-		waitHelper.waitForElement(driver, 3000, driver.findElement(By.xpath("//span[contains(text(),'"
+		waitHelper.waitForElement(driver, 5000, driver.findElement(By.xpath("//span[contains(text(),'"
 				+ json.readReferancedata()
 				+ "')]/ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell/div/ion-buttons/ion-button")));
 		driver.findElement(By.xpath("//span[contains(text(),'" + json.readReferancedata()

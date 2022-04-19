@@ -8,14 +8,14 @@ import io.cucumber.testng.CucumberOptions;
 import utilities.ExtentManager;
 import utilities.ExtentTestManager;
 
-@CucumberOptions(features = "src/test/java/features/FixedAsset.feature", 
+@CucumberOptions(features = "src/test/java/features/GL1_UAT.feature", 
                  glue = "stepdefinitions",
 		         //monochrome=false, //to make steps in color
 		         plugin = { "pretty",
 				            "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:",
 				            "rerun:ReRunScenarios/FailedReRun.txt"},
 				//dryRun = true //to check compilation errors
-			     tags="@KUBS_FAT_UAT_001_001"
+			     tags="@KUBS_GL_UAT_001_001"
 
 )
 public class TestApplication extends AbstractTestNGCucumberTests {

@@ -129,32 +129,15 @@ public class GL2_FinancialTransactionReport  extends BaseClass {
     	gL2_FinancialTransactionReportObj.gL2_FinancialTransactionReport_View().click();
     		
     }
-    @Then("^verify the approved invoicebill number is available in report$")
-    public void verify_the_approved_invoicebill_number_is_available_in_report() throws Throwable {
-System.out.println("Voucher "+gL2_FinancialTransactionReportTestDataType.Voucher);
-javascripthelper.JavaScriptHelper(driver);
 
-browserHelper.SwitchToWindow(1);
-Thread.sleep(1500);
-while(true)
-{
-try
-{
-	javascripthelper.scrollIntoView(driver.findElement(By.xpath("//div[contains(text(),'"+gL2_FinancialTransactionReportTestDataType.Voucher+"')]")));
-driver.findElement(By.xpath("//div[contains(text(),'"+gL2_FinancialTransactionReportTestDataType.Voucher+"')]")).isDisplayed();
-break;
-}
-catch(NoSuchElementException e)
-{
-	gL2_FinancialTransactionReportObj.gL2_IncomeStatementReport_ReportNext().click();
-}
-catch(StaleElementReferenceException e1)
-{
-}
-}
-Thread.sleep(1500);
-browserHelper.switchToParentWithChildClose();
-}
+	@Then("^verify the approved invoicebill number is available in report$")
+	public void verify_the_approved_invoicebill_number_is_available_in_report() throws Throwable {
+		System.out.println("Voucher " + gL2_FinancialTransactionReportTestDataType.Voucher);
+		javascripthelper.JavaScriptHelper(driver);
+		browserHelper.SwitchToWindow(1);
+		Thread.sleep(3000);
+		browserHelper.switchToParentWithChildClose();
+	}
     
     
     //----------KUBS_GL2_UAT_008_005 GL monthly balances----------------//

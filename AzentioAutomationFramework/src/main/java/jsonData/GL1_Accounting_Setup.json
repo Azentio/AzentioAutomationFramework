@@ -5,8 +5,8 @@
 	"Template1"		: "CUSTOM_TEMPLATE",
 	"BookName"		: "Testing_11",
 	"BookName1"		: "Testing_12",
-	"Default" 		: "Testing_21",
-	"Modify"		: "Modify_04",
+	"Default" 		: "Testing_23",
+	"Modify"		: "Testing_212",
 	"Day"			: "1",
 	"Month"			: "Dec",
 	"Year"			: "2022",
@@ -15,10 +15,10 @@
 	"Remark"		: "Okay",
 	
 	//Accounting Category
-	"CategoryCode" : "Income3",
-	"CategoryBook" : "Income1",
-	"CategoryCode1" : "Expenditure6",
-	"CategoryBook1" : "Expenditure5",
+	"CategoryCode" : "Income4",
+	"CategoryBook" : "Income5",
+	"CategoryCode1" : "Expenditure7",
+	"CategoryBook1" : "Expenditure6",
 	"GlGeneration" : "Auto"
 	}
 ]

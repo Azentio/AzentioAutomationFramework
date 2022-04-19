@@ -1,4 +1,4 @@
-Feature: Check the Functionality of the GL2 Module
+Feature: Check the Functionality of the GL1 Module
 @KUBS_GL_UAT_001_001
 Scenario: Create an accounting base templet for accounting book for legal entity
 Given Navigate to Azentio Kubs
@@ -107,6 +107,7 @@ Then Click on Table Row First Eye Icon
 
 @KUBS_GL_UAT_002_006
 Scenario: Delete the Accunting Book if COA is not created
+Given Navigate to Azentio Kubs
 When user click the Accounting setup
 And click the accounting book eye icon
 And get the book name
@@ -147,6 +148,7 @@ Then verify the bill is inavtive or not
 
 @KUBS_GL_UAT_002_008
 Scenario: De-activate the account book
+Given Navigate to Azentio Kubs
 When user click the Accounting setup
 And click the accounting book eye icon
 And get the book name
@@ -341,6 +343,7 @@ Then Click on Table Row First Eye Icon
 
 @KUBS_GL_UAT_003_005
 Scenario: Check the category already created and trying to create same accounting book
+Given Navigate to Azentio Kubs
 When user click the Accounting setup
 And click accounting category eye icon
 And click add icon in Gl

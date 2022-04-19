@@ -86,7 +86,7 @@ public class GL2_JournalVoucher extends BaseClass {
 	//Glcode
 	waithelper.waitForElement(driver, 2000,gL2_JournalVoucherObj.gL2_JournalVoucher_GlCode());
 	gL2_JournalVoucherObj.gL2_JournalVoucher_GlCode().click();
-	
+	Thread.sleep(2000);
 	//GlCodeDebit
 	waithelper.waitForElement(driver, 2000,gL2_JournalVoucherObj.gL2_JournalVoucher_GlCodeDebit());
 	gL2_JournalVoucherObj.gL2_JournalVoucher_GlCodeDebit().click();
@@ -156,7 +156,7 @@ public class GL2_JournalVoucher extends BaseClass {
     	//Glcode
     	waithelper.waitForElement(driver, 2000,gL2_JournalVoucherObj.gL2_JournalVoucher_GlCode());
     	gL2_JournalVoucherObj.gL2_JournalVoucher_GlCode().click();
-    	
+    	Thread.sleep(2000);
     	//GlCodeDebit
     	waithelper.waitForElement(driver, 2000,gL2_JournalVoucherObj.gL2_JournalVoucher_GlCodeDebit());
     	gL2_JournalVoucherObj.gL2_JournalVoucher_GlCodeDebit().click();
@@ -179,7 +179,7 @@ public class GL2_JournalVoucher extends BaseClass {
     	//Select Credit
     	waithelper.waitForElement(driver, 2000,gL2_JournalVoucherObj.gL2_JournalVoucher_Credit());
     	gL2_JournalVoucherObj.gL2_JournalVoucher_Credit().click();
-    		
+    	
     	//Glcode-Second
     	waithelper.waitForElement(driver, 2000,gL2_JournalVoucherObj.gL2_JournalVoucher_GlCodeSecond());
     	gL2_JournalVoucherObj.gL2_JournalVoucher_GlCodeSecond().click();
@@ -207,7 +207,7 @@ public class GL2_JournalVoucher extends BaseClass {
     	//Select Credit
     	waithelper.waitForElement(driver, 2000,gL2_JournalVoucherObj.gL2_JournalVoucher_Credit());
     	gL2_JournalVoucherObj.gL2_JournalVoucher_Credit().click();
-    		
+    	
     	//Glcode-Third
     	waithelper.waitForElement(driver, 2000,gL2_JournalVoucherObj.gL2_JournalVoucher_GlCodeThird());
     	gL2_JournalVoucherObj.gL2_JournalVoucher_GlCodeThird().click();

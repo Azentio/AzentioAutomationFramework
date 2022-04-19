@@ -55,11 +55,11 @@ function toggleAllBoxes() {
 <body>
 <h2 align='center'>Default test</h2><table border='1' align="center">
 <tr>
-<td>Tests passed/Failed/Skipped:</td><td>0/1/0</td>
+<td>Tests passed/Failed/Skipped:</td><td>1/0/0</td>
 </tr><tr>
-<td>Started on:</td><td>Mon Apr 18 15:55:18 IST 2022</td>
+<td>Started on:</td><td>Tue Apr 19 13:42:57 IST 2022</td>
 </tr>
-<tr><td>Total time:</td><td>4051 seconds (4051657 ms)</td>
+<tr><td>Total time:</td><td>69 seconds (69692 ms)</td>
 </tr><tr>
 <td>Included groups:</td><td></td>
 </tr><tr>
@@ -67,40 +67,17 @@ function toggleAllBoxes() {
 </tr>
 </table><p/>
 <small><i>(Hover the method name to see the test class name)</i></small><p/>
-<table width='100%' border='1' class='invocation-failed'>
-<tr><td colspan='4' align='center'><b>FAILED TESTS</b></td></tr>
+<table width='100%' border='1' class='invocation-passed'>
+<tr><td colspan='4' align='center'><b>PASSED TESTS</b></td></tr>
 <tr><td><b>Test method</b></td>
 <td width="30%"><b>Exception</b></td>
 <td width="10%"><b>Time (seconds)</b></td>
 <td><b>Instance</b></td>
 </tr>
 <tr>
-<td title='Runner.TestApplication.runScenario()'><b>runScenario</b><br>Test class: Runner.TestApplication<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Create a Vendor for the procurement of an asset", "Optional[Check the Functionality of Fixed Asset module]"</td>
-<td><div><pre>org.openqa.selenium.TimeoutException: Expected condition failed: waiting for element to be clickable: [[ChromeDriver: chrome on WINDOWS (7ee0f4effc95af06cc6ee9f8454e9a39)] -&gt; xpath: //span[contains(text(),&apos;Submit&apos;)]] (tried for 4000 second(s) with 500 milliseconds interval)
-Build info: version: &apos;4.0.0-rc-1&apos;, revision: &apos;bc5511cbda&apos;
-System info: host: &apos;INMUVADP016585&apos;, ip: &apos;10.1.47.108&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;17.0.1&apos;
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 99.0.4844.82, chrome: {chromedriverVersion: 99.0.4844.51 (d537ec02474b5..., userDataDir: C:\Users\ININDC~1\AppData\L...}, goog:chromeOptions: {debuggerAddress: localhost:52842}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), se:cdp: ws://localhost:52842/devtoo..., se:cdpVersion: 99.0.4844.82, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
-Session ID: 7ee0f4effc95af06cc6ee9f8454e9a39
-	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:138)
-	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:231)
-	at helper.WaitHelper.waitForElement(WaitHelper.java:79)
-	at stepdefinitions.BUSINESS_PARTNER_SETUP_BusinessPartner.save_and_submit_the_record_to_create_vendor(BUSINESS_PARTNER_SETUP_BusinessPartner.java:434)
-	at ?.Save and submit the record to create vendor(file:///C:/Users/inindc00077/git/AzentioAutomationFrameworkAllModules_TestCaseWise/AzentioAutomationFramework/src/test/java/features/FixedAsset.feature:11)
-</pre></div><a href='#' onClick='toggleBox("stack-trace2131033100", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
-<div class='stack-trace' id='stack-trace2131033100'><pre>org.openqa.selenium.TimeoutException: Expected condition failed: waiting for element to be clickable: [[ChromeDriver: chrome on WINDOWS (7ee0f4effc95af06cc6ee9f8454e9a39)] -&gt; xpath: //span[contains(text(),&apos;Submit&apos;)]] (tried for 4000 second(s) with 500 milliseconds interval)
-Build info: version: &apos;4.0.0-rc-1&apos;, revision: &apos;bc5511cbda&apos;
-System info: host: &apos;INMUVADP016585&apos;, ip: &apos;10.1.47.108&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;17.0.1&apos;
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 99.0.4844.82, chrome: {chromedriverVersion: 99.0.4844.51 (d537ec02474b5..., userDataDir: C:\Users\ININDC~1\AppData\L...}, goog:chromeOptions: {debuggerAddress: localhost:52842}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), se:cdp: ws://localhost:52842/devtoo..., se:cdpVersion: 99.0.4844.82, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
-Session ID: 7ee0f4effc95af06cc6ee9f8454e9a39
-	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:138)
-	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:231)
-	at helper.WaitHelper.waitForElement(WaitHelper.java:79)
-	at stepdefinitions.BUSINESS_PARTNER_SETUP_BusinessPartner.save_and_submit_the_record_to_create_vendor(BUSINESS_PARTNER_SETUP_BusinessPartner.java:434)
-	at ?.Save and submit the record to create vendor(file:///C:/Users/inindc00077/git/AzentioAutomationFrameworkAllModules_TestCaseWise/AzentioAutomationFramework/src/test/java/features/FixedAsset.feature:11)
-</pre></div></td>
-<td>4046</td>
+<td title='Runner.TestApplication.runScenario()'><b>runScenario</b><br>Test class: Runner.TestApplication<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Create an accounting base templet for accounting book for legal entity", "Optional[Check the Functionality of the GL1 Module]"</td>
+<td></td>
+<td>58</td>
 <td>Runner.TestApplication@35dab4eb</td></tr>
 </table><p>
 </body>

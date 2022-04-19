@@ -2,6 +2,7 @@ package stepdefinitions;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.Random;
 
 import org.junit.Assert;
 import org.openqa.selenium.By;
@@ -96,9 +97,11 @@ public class GL1_Accounting_Book_Definition extends BaseClass {
 	@And("^Enter Book Name$")
 	public void enter_book_name() throws Throwable {
 		// ------BOOK NAME-------//
+		Random random = new Random();
+	    int RanNo = random.nextInt(1000-500)+500;
 		waitHelper.waitForElement(driver, 2000, accSetupObj.Accounting_book_definition_BookName());
 		accSetupObj.Accounting_book_definition_BookName().click();
-		accSetupObj.Accounting_book_definition_BookName().sendKeys(acc_Setup_Data.BookName);
+		accSetupObj.Accounting_book_definition_BookName().sendKeys(acc_Setup_Data.BookName+RanNo);
 	}
 
 	@Then("^Select system date as Effective date$")
@@ -151,6 +154,8 @@ public class GL1_Accounting_Book_Definition extends BaseClass {
     @And("^Enter Another Book Name$")
     public void enter_another_book_name() throws Throwable {
 		// ------BOOK NAME-------//
+//    	Random random = new Random();
+//    	int r = random.nextInt(100-50)+50;
 		waitHelper.waitForElement(driver, 2000, accSetupObj.Accounting_book_definition_BookName());
 		accSetupObj.Accounting_book_definition_BookName().click();
 		accSetupObj.Accounting_book_definition_BookName().sendKeys(acc_Setup_Data.Default);
@@ -191,10 +196,13 @@ public class GL1_Accounting_Book_Definition extends BaseClass {
     @And("^Enter Modify Book Name$")
     public void enter_modify_book_name() throws Throwable {
 		// ------BOOK NAME-------//
+    	Random r = new Random();
+    	int add = r.nextInt(1000-500)+500;
 		waitHelper.waitForElement(driver, 2000, accSetupObj.Accounting_book_definition_BookName());
 		accSetupObj.Accounting_book_definition_BookName().click();
 		accSetupObj.Accounting_book_definition_BookName().clear();
-		accSetupObj.Accounting_book_definition_BookName().sendKeys(acc_Setup_Data.Modify);
+		accSetupObj.Accounting_book_definition_BookName().sendKeys(acc_Setup_Data.Modify+add);
+		Thread.sleep(1000);
     }
 	
     
