@@ -9,6 +9,10 @@ public class FixedAsset_AssetCreationTestDataType {
 	public String Remark;
 	
 	public String AssetItemNumber;
+	public String AssetItemNumberimpaired;
+	public String AssetItemNumberRevalued;
+	public String AssetItemNumberamended;
+	public String AssetItemNumberReplaced;
 	public String AssetItemDescription;
 	public String AssetValue;
 	public String SalvageValue;

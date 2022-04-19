@@ -117,6 +117,234 @@ public class FixedAsset_AssetCreation extends BaseClass {
 			
 	    }
 	    
+	    //changes
+	    @Then("^fill the asset item details asset Creation impaired$")
+	    public void fill_the_asset_item_details_asset_Creation_impaired() throws Throwable  {
+	    //item details
+	    	
+	    	fixedAsset_AssetCreationTestDataType = jsonReader.getAssetCreationByName("Maker");
+	    	
+	    	waithelper.waitForElement(driver, 2000,fixedAsset_AssetCreationObj.fixedAsset_AssetCreation_AssetItemNumber());
+	    	fixedAsset_AssetCreationObj.fixedAsset_AssetCreation_AssetItemNumber().click();
+	    	fixedAsset_AssetCreationObj.fixedAsset_AssetCreation_AssetItemNumber().sendKeys(fixedAsset_AssetCreationTestDataType.AssetItemNumberimpaired);
+	    	fixedAsset_AssetCreationObj.fixedAsset_AssetCreation_AssetItemNumber().sendKeys(Keys.ENTER);
+	    	
+	    	waithelper.waitForElement(driver, 2000,fixedAsset_AssetCreationObj.fixedAsset_AssetCreation_AssetItemDescription());
+	    	fixedAsset_AssetCreationObj.fixedAsset_AssetCreation_AssetItemDescription().click();
+	    	fixedAsset_AssetCreationObj.fixedAsset_AssetCreation_AssetItemDescription().sendKeys(fixedAsset_AssetCreationTestDataType.AssetItemDescription);
+	    	fixedAsset_AssetCreationObj.fixedAsset_AssetCreation_AssetItemDescription().sendKeys(Keys.ENTER);
+	       
+	    	waithelper.waitForElement(driver, 2000,fixedAsset_AssetCreationObj.fixedAsset_AssetCreation_AssetValue());
+	    	fixedAsset_AssetCreationObj.fixedAsset_AssetCreation_AssetValue().click();
+	    	fixedAsset_AssetCreationObj.fixedAsset_AssetCreation_AssetValue().sendKeys(fixedAsset_AssetCreationTestDataType.AssetValue);
+	    	fixedAsset_AssetCreationObj.fixedAsset_AssetCreation_AssetValue().sendKeys(Keys.ENTER);
+	       
+	    	waithelper.waitForElement(driver, 2000,fixedAsset_AssetCreationObj.fixedAsset_AssetCreation_SalvageValue());
+	    	fixedAsset_AssetCreationObj.fixedAsset_AssetCreation_SalvageValue().click();
+	    	fixedAsset_AssetCreationObj.fixedAsset_AssetCreation_SalvageValue().sendKeys(fixedAsset_AssetCreationTestDataType.SalvageValue);
+	    	fixedAsset_AssetCreationObj.fixedAsset_AssetCreation_SalvageValue().sendKeys(Keys.ENTER);
+	       
+	    	
+	    	//Calendar
+	    	javascripthelper.JavaScriptHelper(driver);
+	    	fixedAsset_AssetCreationTestDataType= jsonReader.getAssetCreationByName("Maker");
+	    	
+	    	ClicksAndActionsHelper clickAndActionHelper=new ClicksAndActionsHelper(driver);
+	    	waithelper.waitForElement(driver, 2000,fixedAsset_AssetCreationObj.fixedAsset_AssetCreation_AssetItemCalendar());
+	    	fixedAsset_AssetCreationObj.fixedAsset_AssetCreation_AssetItemCalendar().click();
+	    	//Thread.sleep(1000);
+	    	while(true)
+	        {
+			try
+			{
+			
+				waithelper.waitForElement(driver, 3000, driver.findElement(By.xpath("//span[contains(text(),'"+fixedAsset_AssetCreationTestDataType.GlToMonth+" "+fixedAsset_AssetCreationTestDataType.GlYear+"')]")));
+				WebElement monthAndYear=driver.findElement(By.xpath("//span[contains(text(),'"+fixedAsset_AssetCreationTestDataType.GlToMonth+" "+fixedAsset_AssetCreationTestDataType.GlYear+"')]"));
+				Thread.sleep(1000);
+				break;
+			}
+			
+			catch(NoSuchElementException nosuchElement)
+			{
+				fixedAsset_AssetCreationObj.fixedAsset_AssetCreation_NextMonth().click();
+			}
+			}
+	    	Thread.sleep(1000);
+			WebElement FinalDay=driver.findElement(By.xpath("//td[@aria-label='"+fixedAsset_AssetCreationTestDataType.GlFullToMonth+" "+fixedAsset_AssetCreationTestDataType.GlToDate+", "+fixedAsset_AssetCreationTestDataType.GlYear+"']/span"));
+			clickAndActionHelper.doubleClick(FinalDay);
+			
+	    }
+	    @Then("^fill the asset item details asset Creation revalued$")
+	    public void fill_the_asset_item_details_asset_Creation_revalued() throws Throwable  {
+	    //item details
+	    	
+	    	fixedAsset_AssetCreationTestDataType = jsonReader.getAssetCreationByName("Maker");
+	    	
+	    	waithelper.waitForElement(driver, 2000,fixedAsset_AssetCreationObj.fixedAsset_AssetCreation_AssetItemNumber());
+	    	fixedAsset_AssetCreationObj.fixedAsset_AssetCreation_AssetItemNumber().click();
+	    	fixedAsset_AssetCreationObj.fixedAsset_AssetCreation_AssetItemNumber().sendKeys(fixedAsset_AssetCreationTestDataType.AssetItemNumberRevalued);
+	    	fixedAsset_AssetCreationObj.fixedAsset_AssetCreation_AssetItemNumber().sendKeys(Keys.ENTER);
+	    	
+	    	waithelper.waitForElement(driver, 2000,fixedAsset_AssetCreationObj.fixedAsset_AssetCreation_AssetItemDescription());
+	    	fixedAsset_AssetCreationObj.fixedAsset_AssetCreation_AssetItemDescription().click();
+	    	fixedAsset_AssetCreationObj.fixedAsset_AssetCreation_AssetItemDescription().sendKeys(fixedAsset_AssetCreationTestDataType.AssetItemDescription);
+	    	fixedAsset_AssetCreationObj.fixedAsset_AssetCreation_AssetItemDescription().sendKeys(Keys.ENTER);
+	       
+	    	waithelper.waitForElement(driver, 2000,fixedAsset_AssetCreationObj.fixedAsset_AssetCreation_AssetValue());
+	    	fixedAsset_AssetCreationObj.fixedAsset_AssetCreation_AssetValue().click();
+	    	fixedAsset_AssetCreationObj.fixedAsset_AssetCreation_AssetValue().sendKeys(fixedAsset_AssetCreationTestDataType.AssetValue);
+	    	fixedAsset_AssetCreationObj.fixedAsset_AssetCreation_AssetValue().sendKeys(Keys.ENTER);
+	       
+	    	waithelper.waitForElement(driver, 2000,fixedAsset_AssetCreationObj.fixedAsset_AssetCreation_SalvageValue());
+	    	fixedAsset_AssetCreationObj.fixedAsset_AssetCreation_SalvageValue().click();
+	    	fixedAsset_AssetCreationObj.fixedAsset_AssetCreation_SalvageValue().sendKeys(fixedAsset_AssetCreationTestDataType.SalvageValue);
+	    	fixedAsset_AssetCreationObj.fixedAsset_AssetCreation_SalvageValue().sendKeys(Keys.ENTER);
+	       
+	    	
+	    	//Calendar
+	    	javascripthelper.JavaScriptHelper(driver);
+	    	fixedAsset_AssetCreationTestDataType= jsonReader.getAssetCreationByName("Maker");
+	    	
+	    	ClicksAndActionsHelper clickAndActionHelper=new ClicksAndActionsHelper(driver);
+	    	waithelper.waitForElement(driver, 2000,fixedAsset_AssetCreationObj.fixedAsset_AssetCreation_AssetItemCalendar());
+	    	fixedAsset_AssetCreationObj.fixedAsset_AssetCreation_AssetItemCalendar().click();
+	    	//Thread.sleep(1000);
+	    	while(true)
+	        {
+			try
+			{
+			
+				waithelper.waitForElement(driver, 3000, driver.findElement(By.xpath("//span[contains(text(),'"+fixedAsset_AssetCreationTestDataType.GlToMonth+" "+fixedAsset_AssetCreationTestDataType.GlYear+"')]")));
+				WebElement monthAndYear=driver.findElement(By.xpath("//span[contains(text(),'"+fixedAsset_AssetCreationTestDataType.GlToMonth+" "+fixedAsset_AssetCreationTestDataType.GlYear+"')]"));
+				Thread.sleep(1000);
+				break;
+			}
+			
+			catch(NoSuchElementException nosuchElement)
+			{
+				fixedAsset_AssetCreationObj.fixedAsset_AssetCreation_NextMonth().click();
+			}
+			}
+	    	Thread.sleep(1000);
+			WebElement FinalDay=driver.findElement(By.xpath("//td[@aria-label='"+fixedAsset_AssetCreationTestDataType.GlFullToMonth+" "+fixedAsset_AssetCreationTestDataType.GlToDate+", "+fixedAsset_AssetCreationTestDataType.GlYear+"']/span"));
+			clickAndActionHelper.doubleClick(FinalDay);
+			
+	    }
+	    @Then("^fill the asset item details asset Creation replaced$")
+	    public void fill_the_asset_item_details_asset_Creation_replaced() throws Throwable  {
+	    //item details
+	    	
+	    	fixedAsset_AssetCreationTestDataType = jsonReader.getAssetCreationByName("Maker");
+	    	
+	    	waithelper.waitForElement(driver, 2000,fixedAsset_AssetCreationObj.fixedAsset_AssetCreation_AssetItemNumber());
+	    	fixedAsset_AssetCreationObj.fixedAsset_AssetCreation_AssetItemNumber().click();
+	    	fixedAsset_AssetCreationObj.fixedAsset_AssetCreation_AssetItemNumber().sendKeys(fixedAsset_AssetCreationTestDataType.AssetItemNumberReplaced);
+	    	fixedAsset_AssetCreationObj.fixedAsset_AssetCreation_AssetItemNumber().sendKeys(Keys.ENTER);
+	    	
+	    	waithelper.waitForElement(driver, 2000,fixedAsset_AssetCreationObj.fixedAsset_AssetCreation_AssetItemDescription());
+	    	fixedAsset_AssetCreationObj.fixedAsset_AssetCreation_AssetItemDescription().click();
+	    	fixedAsset_AssetCreationObj.fixedAsset_AssetCreation_AssetItemDescription().sendKeys(fixedAsset_AssetCreationTestDataType.AssetItemDescription);
+	    	fixedAsset_AssetCreationObj.fixedAsset_AssetCreation_AssetItemDescription().sendKeys(Keys.ENTER);
+	       
+	    	waithelper.waitForElement(driver, 2000,fixedAsset_AssetCreationObj.fixedAsset_AssetCreation_AssetValue());
+	    	fixedAsset_AssetCreationObj.fixedAsset_AssetCreation_AssetValue().click();
+	    	fixedAsset_AssetCreationObj.fixedAsset_AssetCreation_AssetValue().sendKeys(fixedAsset_AssetCreationTestDataType.AssetValue);
+	    	fixedAsset_AssetCreationObj.fixedAsset_AssetCreation_AssetValue().sendKeys(Keys.ENTER);
+	       
+	    	waithelper.waitForElement(driver, 2000,fixedAsset_AssetCreationObj.fixedAsset_AssetCreation_SalvageValue());
+	    	fixedAsset_AssetCreationObj.fixedAsset_AssetCreation_SalvageValue().click();
+	    	fixedAsset_AssetCreationObj.fixedAsset_AssetCreation_SalvageValue().sendKeys(fixedAsset_AssetCreationTestDataType.SalvageValue);
+	    	fixedAsset_AssetCreationObj.fixedAsset_AssetCreation_SalvageValue().sendKeys(Keys.ENTER);
+	       
+	    	
+	    	//Calendar
+	    	javascripthelper.JavaScriptHelper(driver);
+	    	fixedAsset_AssetCreationTestDataType= jsonReader.getAssetCreationByName("Maker");
+	    	
+	    	ClicksAndActionsHelper clickAndActionHelper=new ClicksAndActionsHelper(driver);
+	    	waithelper.waitForElement(driver, 2000,fixedAsset_AssetCreationObj.fixedAsset_AssetCreation_AssetItemCalendar());
+	    	fixedAsset_AssetCreationObj.fixedAsset_AssetCreation_AssetItemCalendar().click();
+	    	//Thread.sleep(1000);
+	    	while(true)
+	        {
+			try
+			{
+			
+				waithelper.waitForElement(driver, 3000, driver.findElement(By.xpath("//span[contains(text(),'"+fixedAsset_AssetCreationTestDataType.GlToMonth+" "+fixedAsset_AssetCreationTestDataType.GlYear+"')]")));
+				WebElement monthAndYear=driver.findElement(By.xpath("//span[contains(text(),'"+fixedAsset_AssetCreationTestDataType.GlToMonth+" "+fixedAsset_AssetCreationTestDataType.GlYear+"')]"));
+				Thread.sleep(1000);
+				break;
+			}
+			
+			catch(NoSuchElementException nosuchElement)
+			{
+				fixedAsset_AssetCreationObj.fixedAsset_AssetCreation_NextMonth().click();
+			}
+			}
+	    	Thread.sleep(1000);
+			WebElement FinalDay=driver.findElement(By.xpath("//td[@aria-label='"+fixedAsset_AssetCreationTestDataType.GlFullToMonth+" "+fixedAsset_AssetCreationTestDataType.GlToDate+", "+fixedAsset_AssetCreationTestDataType.GlYear+"']/span"));
+			clickAndActionHelper.doubleClick(FinalDay);
+			
+	    }
+	    @Then("^fill the asset item details asset Creation amended$")
+	    public void fill_the_asset_item_details_asset_Creation_amended() throws Throwable  {
+	    //item details
+	    	
+	    	fixedAsset_AssetCreationTestDataType = jsonReader.getAssetCreationByName("Maker");
+	    	
+	    	waithelper.waitForElement(driver, 2000,fixedAsset_AssetCreationObj.fixedAsset_AssetCreation_AssetItemNumber());
+	    	fixedAsset_AssetCreationObj.fixedAsset_AssetCreation_AssetItemNumber().click();
+	    	fixedAsset_AssetCreationObj.fixedAsset_AssetCreation_AssetItemNumber().sendKeys(fixedAsset_AssetCreationTestDataType.AssetItemNumberamended);
+	    	fixedAsset_AssetCreationObj.fixedAsset_AssetCreation_AssetItemNumber().sendKeys(Keys.ENTER);
+	    	
+	    	waithelper.waitForElement(driver, 2000,fixedAsset_AssetCreationObj.fixedAsset_AssetCreation_AssetItemDescription());
+	    	fixedAsset_AssetCreationObj.fixedAsset_AssetCreation_AssetItemDescription().click();
+	    	fixedAsset_AssetCreationObj.fixedAsset_AssetCreation_AssetItemDescription().sendKeys(fixedAsset_AssetCreationTestDataType.AssetItemDescription);
+	    	fixedAsset_AssetCreationObj.fixedAsset_AssetCreation_AssetItemDescription().sendKeys(Keys.ENTER);
+	       
+	    	waithelper.waitForElement(driver, 2000,fixedAsset_AssetCreationObj.fixedAsset_AssetCreation_AssetValue());
+	    	fixedAsset_AssetCreationObj.fixedAsset_AssetCreation_AssetValue().click();
+	    	fixedAsset_AssetCreationObj.fixedAsset_AssetCreation_AssetValue().sendKeys(fixedAsset_AssetCreationTestDataType.AssetValue);
+	    	fixedAsset_AssetCreationObj.fixedAsset_AssetCreation_AssetValue().sendKeys(Keys.ENTER);
+	       
+	    	waithelper.waitForElement(driver, 2000,fixedAsset_AssetCreationObj.fixedAsset_AssetCreation_SalvageValue());
+	    	fixedAsset_AssetCreationObj.fixedAsset_AssetCreation_SalvageValue().click();
+	    	fixedAsset_AssetCreationObj.fixedAsset_AssetCreation_SalvageValue().sendKeys(fixedAsset_AssetCreationTestDataType.SalvageValue);
+	    	fixedAsset_AssetCreationObj.fixedAsset_AssetCreation_SalvageValue().sendKeys(Keys.ENTER);
+	       
+	    	
+	    	//Calendar
+	    	javascripthelper.JavaScriptHelper(driver);
+	    	fixedAsset_AssetCreationTestDataType= jsonReader.getAssetCreationByName("Maker");
+	    	
+	    	ClicksAndActionsHelper clickAndActionHelper=new ClicksAndActionsHelper(driver);
+	    	waithelper.waitForElement(driver, 2000,fixedAsset_AssetCreationObj.fixedAsset_AssetCreation_AssetItemCalendar());
+	    	fixedAsset_AssetCreationObj.fixedAsset_AssetCreation_AssetItemCalendar().click();
+	    	//Thread.sleep(1000);
+	    	while(true)
+	        {
+			try
+			{
+			
+				waithelper.waitForElement(driver, 3000, driver.findElement(By.xpath("//span[contains(text(),'"+fixedAsset_AssetCreationTestDataType.GlToMonth+" "+fixedAsset_AssetCreationTestDataType.GlYear+"')]")));
+				WebElement monthAndYear=driver.findElement(By.xpath("//span[contains(text(),'"+fixedAsset_AssetCreationTestDataType.GlToMonth+" "+fixedAsset_AssetCreationTestDataType.GlYear+"')]"));
+				Thread.sleep(1000);
+				break;
+			}
+			
+			catch(NoSuchElementException nosuchElement)
+			{
+				fixedAsset_AssetCreationObj.fixedAsset_AssetCreation_NextMonth().click();
+			}
+			}
+	    	Thread.sleep(1000);
+			WebElement FinalDay=driver.findElement(By.xpath("//td[@aria-label='"+fixedAsset_AssetCreationTestDataType.GlFullToMonth+" "+fixedAsset_AssetCreationTestDataType.GlToDate+", "+fixedAsset_AssetCreationTestDataType.GlYear+"']/span"));
+			clickAndActionHelper.doubleClick(FinalDay);
+			
+	    }
+	    
+
+	    
 	    @Then("^click on report icon$")
 	    public void click_on_report_icon() {
 	    	javascripthelper.JavaScriptHelper(driver);

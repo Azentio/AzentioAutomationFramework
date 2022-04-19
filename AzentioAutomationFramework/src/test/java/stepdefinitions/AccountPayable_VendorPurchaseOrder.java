@@ -128,9 +128,8 @@ public class AccountPayable_VendorPurchaseOrder extends BaseClass {
 			 accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_PoQuantity().sendKeys(Keys.ENTER);
 		
 			//Po item save
-			 waithelper.waitForElement(driver, 2000, accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_PoItemSave());
-			 accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_PoItemSave().click();
-			
+			 WebElement posave = waithelper.waitForElement(driver, 2000, accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_PoItemSave());
+			 clicksAndActionHelper.clickOnElement(posave);	
 			// Po item save
 			//waithelper.waitForElement(driver, 2000,accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_PONumber());
 			//accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_PONumber().click();

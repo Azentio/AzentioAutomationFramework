@@ -84,11 +84,11 @@ public class AccountPayable_VendorPurchaseOrderObj {
 	}
 	
 	//  Po Item Save
-	@FindBy(xpath = "//ion-modal[1]/div[2]/page-po-item-details[1]/ion-header[1]/ion-toolbar[1]/ion-buttons[1]/ion-button[1]")
+	@FindBy(xpath = "//body[1]/app-root[1]/ion-app[1]/ion-modal[1]/div[3]/page-po-item-details[1]/ion-header[1]/ion-toolbar[1]/ion-buttons[1]/ion-button[1]")
 	private WebElement accountsPayable_VendorPurchaseOrder_PoItemSave;
 	public WebElement accountsPayable_VendorPurchaseOrder_PoItemSave() {
 		return accountsPayable_VendorPurchaseOrder_PoItemSave;
-		
+		//body[1]/app-root[1]/ion-app[1]/ion-modal[1]/div[3]/page-po-item-details[1]/ion-header[1]/ion-toolbar[1]/ion-buttons[1]/ion-button[1]
 	}
 	
 	

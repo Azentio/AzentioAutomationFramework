@@ -6,6 +6,10 @@ public class FixedAsset_AssetDeallocationTestDataType {
     public String AssetItemNumber;
 	public String ModificationType;
 	public String NewItemNumber;
+	public String AssetItemNumberimpaired;
+	public String AssetItemNumberRevalued;
+	public String AssetItemNumberamended;
+	public String AssetItemNumberReplaced;
 	public String NewItemDiscription;
 	public String EmployeeID;
 	public String EmployeeIDAnother;

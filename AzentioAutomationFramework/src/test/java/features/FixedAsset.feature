@@ -784,7 +784,7 @@ Then Click on fixed asset deallocaion  Direction icon
 Then Click on Fixed assets field
 Then Click on asset deallocaion Eye button
 Then Click on Fixed Asset Add button
-Then Fill asset impaired deallocaion Mandatory fields
+Then Fill asset deallocaion Mandatory fields
 Then Click on Fixed Asset Save button
 Then Click on Fixed Asset Notification 
 And Select and Submit the record
@@ -869,7 +869,7 @@ Then Click on the Notification
 Then Select the record which we saved
 Then Click on Fixed Asset items
 Then Click on the add button of asset items
-Then fill the asset item details asset Creation
+Then fill the asset item details asset Creation impaired
 Then Click on save button of item details
 Then Click on Fixed Asset Notification 
 And Select and Submit the record
@@ -893,7 +893,7 @@ Then Click on Fixed Asset Save button
 #Allocation
 Then Click on Asset Allocation Eye button
 Then Click on the add button to add new record
-Then Fill Asset Allocation Form
+Then Fill Asset Allocation Form impaired
 Then Click on Fixed Asset Save button
 Then Click on Fixed Asset Notification 
 And Select and Submit the record
@@ -936,7 +936,7 @@ Then Click on the Notification
 Then Select the record which we saved
 Then Click on Fixed Asset items
 Then Click on the add button of asset items
-Then fill the asset item details asset Creation
+Then fill the asset item details asset Creation revalued
 Then Click on save button of item details
 Then Click on Fixed Asset Notification 
 And Select and Submit the record
@@ -960,7 +960,7 @@ Then Click on Fixed Asset Save button
 #Allocation
 Then Click on Asset Allocation Eye button
 Then Click on the add button to add new record
-Then Fill Asset Allocation Form
+Then Fill Asset Allocation Form revalued
 Then Click on Fixed Asset Save button
 Then Click on Fixed Asset Notification 
 And Select and Submit the record
@@ -976,7 +976,7 @@ Then Click on fixed asset deallocaion  Direction icon
 Then Click on Fixed assets field
 Then Click on asset deallocaion Eye button
 Then Click on Fixed Asset Add button
-Then Fill asset impaired deallocaion Mandatory fields
+Then Fill asset Revalued deallocaion Mandatory fields
 Then Click on Fixed Asset Save button
 Then Click on Fixed Asset Notification 
 And Select and Submit the record
@@ -1002,7 +1002,7 @@ Then Click on the Notification
 Then Select the record which we saved
 Then Click on Fixed Asset items
 Then Click on the add button of asset items
-Then fill the asset item details asset Creation
+Then fill the asset item details asset Creation amended
 Then Click on save button of item details
 Then Click on Fixed Asset Notification 
 And Select and Submit the record
@@ -1034,10 +1034,10 @@ And select the record and Approve by checker
 #Allocation
 Given Maker Navigate to UAT URL login
 Then Click on fixed asset deallocaion  Direction icon
-Then Click on Fixed assets field
+Then Click on Fixed assets field 
 Then Click on Asset Allocation Eye button
 Then Click on the add button to add new record
-Then Fill Asset Allocation Form
+Then Fill Asset Allocation Form amended
 Then Click on Fixed Asset Save button
 Then Click on Fixed Asset Notification 
 And Select and Submit the record
@@ -1053,7 +1053,7 @@ Then Click on fixed asset deallocaion  Direction icon
 Then Click on Fixed assets field
 Then Click on asset deallocaion Eye button
 Then Click on Fixed Asset Add button
-Then Fill asset impaired deallocaion Mandatory fields
+Then Fill asset amended deallocaion Mandatory fields
 Then Click on Fixed Asset Save button
 Then Click on Fixed Asset Notification 
 And Select and Submit the record
@@ -1081,7 +1081,7 @@ Then Click on the Notification
 Then Select the record which we saved
 Then Click on Fixed Asset items
 Then Click on the add button of asset items
-Then fill the asset item details asset Creation
+Then fill the asset item details asset Creation replaced
 Then Click on save button of item details
 Then Click on Fixed Asset Notification 
 And Select and Submit the record
