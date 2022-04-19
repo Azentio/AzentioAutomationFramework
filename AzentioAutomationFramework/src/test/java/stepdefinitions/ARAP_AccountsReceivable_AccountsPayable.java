@@ -2,6 +2,7 @@ package stepdefinitions;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.Random;
 
 import org.junit.Assert;
 import org.openqa.selenium.By;
@@ -891,7 +892,7 @@ public class ARAP_AccountsReceivable_AccountsPayable extends BaseClass {
 		// ----------CLICK ON FROM DATE--------------//
 		driver.findElement(By.xpath("(//span[@class='owl-dt-control-content owl-dt-control-button-content'])[2]"))
 				.click();
-		driver.findElement(By.xpath("//span[text()='" + arapData.Year + "']")).click();
+		driver.findElement(By.xpath("//span[text()='" + arapData.Year1 + "']")).click();
 
 		driver.findElement(By.xpath("//span[text()='" + arapData.Month + "']")).click();
 		waitHelper.waitForElement(driver, 2000,
@@ -1161,9 +1162,11 @@ public class ARAP_AccountsReceivable_AccountsPayable extends BaseClass {
 	@And("^Enter Supplier Referance Number$")
 	public void enter_supplier_referance_number() throws Throwable {
 		// ---------ENTER SUPPLIER REF NO---------//
+		Random random = new Random();
+		int randNum=random.nextInt(1000-500)+500;
 		waitHelper.waitForElement(driver, 2000, arapObj.ARAP_GivesupplierRefno());
 		arapObj.ARAP_GivesupplierRefno().click();
-		arapObj.ARAP_GivesupplierRefno().sendKeys(arapData.SupplyRefNo);
+		arapObj.ARAP_GivesupplierRefno().sendKeys(arapData.SupplyRefNo+randNum);
 	}
 
 	@And("^Enter Flat Discount Invoice Amount$")
@@ -2539,8 +2542,10 @@ public class ARAP_AccountsReceivable_AccountsPayable extends BaseClass {
 	@And("^Enter Receipt Ref Number$")
 	public void enter_receipt_ref_number() throws Throwable {
 		// -------RECEIPT REF NO---------//
+		Random random = new Random();
+		int RanDom =random.nextInt(1000-500)+500;
 		arapObj.accountReceviableReceipt_Receipt_RefNo().click();
-		arapObj.accountReceviableReceipt_Receipt_RefNo().sendKeys(arapData.ReceiptRefNo);
+		arapObj.accountReceviableReceipt_Receipt_RefNo().sendKeys(arapData.ReceiptRefNo+RanDom);
 		arapObj.accountReceviableReceipt_Receipt_RefNo().sendKeys(Keys.ENTER);
 	}
 

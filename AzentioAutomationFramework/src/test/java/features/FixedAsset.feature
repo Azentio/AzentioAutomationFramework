@@ -2,7 +2,7 @@
  
  @KUBS_FAT_UAT_001_001
  Scenario: Create a Vendor for the procurement of an asset
-
+ 
  Given User should go to the kubs url and login as a maker user
  And user should navigate to business partner setup menu
  When click on eye button of business partner

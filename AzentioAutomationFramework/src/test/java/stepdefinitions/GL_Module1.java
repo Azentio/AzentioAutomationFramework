@@ -2,12 +2,9 @@ package stepdefinitions;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
-import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
-
 import dataProvider.ConfigFileReader;
 import dataProvider.JsonConfig;
 import helper.JavascriptHelper;
@@ -20,10 +17,8 @@ import pageobjects.Accounts_Payable;
 import pageobjects.ArAp_Cancellation_of_vendorObj;
 import pageobjects.Enquiry_Obj;
 import pageobjects.Gl_Reports_Obj1;
-import pageobjects.KUBS_LoginObj;
 import resources.BaseClass;
 import resources.JsonDataReaderWriter;
-import testDataType.Cancellationofcontractdatatype;
 import testDataType.GL_ModuleTestData;
 
 
@@ -60,22 +55,39 @@ public class GL_Module1 extends BaseClass{
     public void verify_that_available_balance_should_equal_to_closing_net_balance_in_gl_balance_report() throws Throwable {
         ////*[@id="__bookmark_1"]/tbody/tr[3]/td[15]/div
     	seleniumactions.getBrowserHelper().SwitchToWindow(1);
-    	int i=3;
-    	String xpath="//*[@id=\"__bookmark_1\"]/tbody/tr[3]/td["+i+"]/div";
-    	while (true) {
-    		i++;
-			try {
-				javascriphelper.JavaScriptHelper(driver);
-				javascriphelper.scrollIntoView(driver.findElement(By.xpath(xpath)));
-				driver.findElement(By.xpath(xpath)).isDisplayed();
+    	Thread.sleep(1000);
+    	for (int j = 1; j <20; j++) {
+    		String Glbalance="";
+    		for (int i = 3; i <45; i++) {
+    			try {
+    				String xpath="//*[@id=\"__bookmark_1\"]/tbody/tr["+i+"]/td[15]/div";
+            		javascriphelper.JavaScriptHelper(driver);
+        			javascriphelper.scrollIntoView(driver.findElement(By.xpath(xpath)));
+        			String amount = driver.findElement(By.xpath(xpath)).getText();
+        			//System.out.println(amount);
+        			String string = amount.split("[.]")[0].toString();
+        			//System.out.println(string);
+        			String replace = string.replace(",","");
+        			//System.out.println(replace);
+        			Glbalance = replace.trim().replace(" ","");
+        			//System.out.println(Glbalance);
+        			//- 5022000
+                    //-5022000
+
+        			//System.out.println("Verified Avaliable in the Report :"+driver.findElement(By.xpath(xpath)).getText());
+				} catch (Exception e) {
+					glReportsObj.nextPageInGlbalanceReport().click();
+				}
+    			if (Glbalance.equalsIgnoreCase(testdata.get("Glbalance"))) {
+    				System.out.println("Verified Gl balance in the report :"+Glbalance);
+					break;
+				}
+		}
+    		if (Glbalance.equalsIgnoreCase(testdata.get("Glbalance"))) {
 				break;
-			} catch (NoSuchElementException e) {
-				glReportsObj.nextPageInGlbalanceReport().click();
 			}
 		}
     	seleniumactions.getBrowserHelper().switchToParentWithChildClose();
-    	
-    	
     }
 
     @And("^click the Account Payable Main Module$")
@@ -129,10 +141,10 @@ public class GL_Module1 extends BaseClass{
 		.click();  	
 seleniumactions.getWaitHelper().waitForElement(driver,2000 , driver.findElement(By.xpath("//span[text()='" + glModuleData.GlYear  + "']")));
 driver.findElement(By.xpath("//span[text()='" + glModuleData.GlYear  + "']")).click();
-driver.findElement(By.xpath("//span[text()='" + glModuleData.GlToMonth + "']")).click();
+driver.findElement(By.xpath("//span[text()='" + glModuleData.GlMonth + "']")).click();
 seleniumactions.getWaitHelper().waitForElement(driver, 2000,
-		driver.findElement(By.xpath("//tbody/tr[5]/td[@aria-label='"+glModuleData.GlFullMonth+" "+glModuleData.GlDay+", "+glModuleData.GlYear+"']")));
-driver.findElement(By.xpath("//tbody/tr[5]/td[@aria-label='"+glModuleData.GlFullMonth+" "+glModuleData.GlDay+", "+glModuleData.GlYear+"']")).click();
+		driver.findElement(By.xpath("//td[@aria-label='"+glModuleData.GlFullMonth+" "+glModuleData.GlDay+", "+glModuleData.GlYear+"']")));
+driver.findElement(By.xpath("//td[@aria-label='"+glModuleData.GlFullMonth+" "+glModuleData.GlDay+", "+glModuleData.GlYear+"']")).click();
     }
 
     @And("^Select bank in manual payout$")
@@ -153,10 +165,15 @@ driver.findElement(By.xpath("//tbody/tr[5]/td[@aria-label='"+glModuleData.GlFull
         javascriphelper.JavaScriptHelper(driver);
         String Availablebalance = (String) javascriphelper.executeScript("return document.getElementById('availableBalance').value");
         System.out.println(Availablebalance);
-       String Balance = Availablebalance.substring(0, 9).trim();
-       String AvailabeBalance= Balance.substring(0,1)+","+Balance.substring(1, 2)+Balance.substring(3, 5)+Balance.substring(5);
-       testdata.put("AvailableBalance", AvailabeBalance);
-       System.out.println(AvailabeBalance);
+       String[] Balance = Availablebalance.split("[.]");
+       String Glbalance = Balance[0].toString();
+       System.out.println(Glbalance);
+       String GlBalance = Glbalance.replace(",", "");
+       System.out.println(GlBalance);
+       testdata.put("Glbalance", GlBalance);
+      // String AvailabeBalance= Balance.substring(0,1)+","+Balance.substring(1, 2)+Balance.substring(3, 5)+Balance.substring(5);
+      // testdata.put("AvailableBalance", AvailabeBalance);
+       //System.out.println(AvailabeBalance);
     }
 
     @And("^click the notes option$")

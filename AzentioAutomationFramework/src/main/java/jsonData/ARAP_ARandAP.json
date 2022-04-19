@@ -12,7 +12,7 @@
 		"ModeofPayment"			: "Cheque",
 		"Remark"				: "Approved",
 		"GRN" 					: "GRN-null-111-2622022",
-		"InvoiceNo"				: "INV-130-22022",
+		"InvoiceNo"				: "INV-347-42022",
 		"AdjustmentType"		: "Goods Received Notes",
 		"CancelAmount"			: "5000",
 		
@@ -22,13 +22,14 @@
 		"GlMonth"				: "Jan",
 		"GlFullMonth"			: "January",
 		"GlYear"				: "2023",
-		"GlDay"					: "5",
+		"GlDay"					: "9",
 		"GlToMonth"				: "Jan",
 		"GlFullToMonth"			: "January",
-		"GlToDate"				: "5",
+		"GlToDate"				: "9",
 		"Month"					: "Apr",
 		"FullMonth"				: "April",
-		"Year"					: "2022",
+		"Year"					: "2023",
+		"Year1"					: "2022",
 		"Day"					: "1",
 		
 		// ADJUSTMENTS
@@ -43,7 +44,7 @@
 		"Partner1"				: "TRM agency",
 		"Description" 			: "Advance",
 		"PONumber" 				: "3-Agency-15-PO-2",
-		"Amount"				: "10000",
+		"Amount"				: "1000",
 		
 		// RECEIPT
 		"BankAcc" 				: "ICICIBANK-JAIPUR BRANCH-ICICI883298348348394-INR",

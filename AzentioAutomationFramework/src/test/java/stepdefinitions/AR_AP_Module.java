@@ -1,5 +1,4 @@
 package stepdefinitions;
-import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import org.openqa.selenium.By;
@@ -260,9 +259,9 @@ public class AR_AP_Module extends BaseClass {
 			driver.findElement(By.xpath("//span[text()='" + cancellationofcontractdata.GlToYear + "']")).click();
 			driver.findElement(By.xpath("//span[text()='" + cancellationofcontractdata.GlToMonth + "']")).click();
 			seleniumactions.getWaitHelper().waitForElement(driver, 2000,
-				    driver.findElement(By.xpath("//tbody/tr[5]/td[@aria-label='"+cancellationofcontractdata.GlFullToMonth+" "
+				    driver.findElement(By.xpath("//td[@aria-label='"+cancellationofcontractdata.GlFullToMonth+" "
 			+cancellationofcontractdata.GlToDate+", "+cancellationofcontractdata.GlToYear+"']")));
-					driver.findElement(By.xpath("//tbody/tr[5]/td[@aria-label='"+cancellationofcontractdata.GlFullToMonth+" "
+					driver.findElement(By.xpath("//td[@aria-label='"+cancellationofcontractdata.GlFullToMonth+" "
 			+cancellationofcontractdata.GlToDate+", "+cancellationofcontractdata.GlToYear+"']")).click();
 	    }
 	    @And("^select the Transaction Ref No as Grn Number$")
@@ -282,7 +281,7 @@ public class AR_AP_Module extends BaseClass {
 					seleniumactions.getWaitHelper().waitForElement(driver,2000,driver.findElement(By.xpath("(//datatable-body-cell[1]//span[contains(text(),'"+testdata.get("grnNumber")+"')])[1]")));
 					driver.findElement(By.xpath("(//datatable-body-cell[1]//span[contains(text(),'"+testdata.get("grnNumber")+"')])[1]")).isDisplayed();
 					String invoiceNumber = driver.findElement(By.xpath("//datatable-body-cell[1]//span[contains(text(),'"+testdata.get("grnNumber")+"')]")).getText();
-					System.out.println(invoiceNumber);
+					System.out.println("Found the Invoice Number :"+invoiceNumber);
 					break;
 					
 				} catch (NoSuchElementException e) {
@@ -502,7 +501,7 @@ public class AR_AP_Module extends BaseClass {
 				"return document.getElementsByName('contractCode')[1].value");
 		System.out.println(contractacccountcode);
 		testdata.put("contractacccountcode", contractacccountcode);
-		String contractenddate = (String) javascriphelper.executeScript("return document.getElementsByName('kubDateTime')[2].value");
+		String contractenddate = (String) javascriphelper.executeScript("return document.getElementsByName('kubDateTime')[0].value");
 		System.out.println(contractenddate);
 		String year = contractenddate.substring(7,11);
 		testdata.put("year", year);

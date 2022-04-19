@@ -50,9 +50,10 @@ public class ACCOUNTSPAYABLE_VendorContracts {
 	}
 
 	@And("^user should navigate to accounts payable menu$")
-	public void user_should_navigate_to_accounts_payable_menu() {
+	public void user_should_navigate_to_accounts_payable_menu() throws InterruptedException {
 		waithelper.waitForElement(driver, 3000, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_DirectionButton());
 		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_DirectionButton().click();
+		Thread.sleep(1000);
 		waithelper.waitForElement(driver, 3000, aCCOUNTSPAYABLE_VendorContractsObj.accountPayableMenu());
 		aCCOUNTSPAYABLE_VendorContractsObj.accountPayableMenu().click();
 		
