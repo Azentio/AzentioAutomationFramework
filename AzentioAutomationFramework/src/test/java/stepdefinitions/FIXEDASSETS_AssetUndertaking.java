@@ -75,7 +75,64 @@ public class FIXEDASSETS_AssetUndertaking {
     	
     	fIXEDASSETS_AssetUndertakingObj.fixedAssets_AssetTransfer_AssetReferenceNumber().click();
     	waithelper.waitForElement(driver, 2000, fIXEDASSETS_AssetUndertakingObj.fixedAssets_AssetTransfer_AssetReferenceNumber());
-    	fIXEDASSETS_AssetUndertakingObj.fixedAssets_AssetTransfer_AssetReferenceNumber().sendKeys(fIXEDASSETS_AssetUndertakingTestDataType.AssetReferenceNumber);
+    	fIXEDASSETS_AssetUndertakingObj.fixedAssets_AssetTransfer_AssetReferenceNumber().sendKeys(fIXEDASSETS_AssetUndertakingTestDataType.AssetReferenceNumberForTransfer);
+    	fIXEDASSETS_AssetUndertakingObj.fixedAssets_AssetTransfer_AssetReferenceNumber().sendKeys(Keys.ENTER);
+    	
+    	waithelper.waitForElement(driver, 2000, fIXEDASSETS_AssetUndertakingObj.fixedAssets_AssetTransfer_NewBranch());
+    	fIXEDASSETS_AssetUndertakingObj.fixedAssets_AssetTransfer_NewBranch().sendKeys(fIXEDASSETS_AssetUndertakingTestDataType.NewBranch);
+    	fIXEDASSETS_AssetUndertakingObj.fixedAssets_AssetTransfer_NewBranch().sendKeys(Keys.ENTER);
+    	
+    	waithelper.waitForElement(driver, 2000, fIXEDASSETS_AssetUndertakingObj.fixedAssets_AssetTransfer_Transfer());
+    	fIXEDASSETS_AssetUndertakingObj.fixedAssets_AssetTransfer_Transfer().click();
+    	
+    	waithelper.waitForElement(driver, 2000, fIXEDASSETS_AssetUndertakingObj.fixedAssets_AssetTransfer_TransferYes());
+    	fIXEDASSETS_AssetUndertakingObj.fixedAssets_AssetTransfer_TransferYes().click();
+    }
+    
+    @And("^Fill the required fields for asset undertaking$")
+    public void fill_the_required_fields_for_asset_undertaking()  {
+    	
+    	fIXEDASSETS_AssetUndertakingObj.fixedAssets_AssetTransfer_AssetReferenceNumber().click();
+    	waithelper.waitForElement(driver, 2000, fIXEDASSETS_AssetUndertakingObj.fixedAssets_AssetTransfer_AssetReferenceNumber());
+    	fIXEDASSETS_AssetUndertakingObj.fixedAssets_AssetTransfer_AssetReferenceNumber().sendKeys(fIXEDASSETS_AssetUndertakingTestDataType.AssetReferenceNumberUndertaking);
+    	fIXEDASSETS_AssetUndertakingObj.fixedAssets_AssetTransfer_AssetReferenceNumber().sendKeys(Keys.ENTER);
+    	
+    	waithelper.waitForElement(driver, 2000, fIXEDASSETS_AssetUndertakingObj.fixedAssets_AssetTransfer_NewBranch());
+    	fIXEDASSETS_AssetUndertakingObj.fixedAssets_AssetTransfer_NewBranch().sendKeys(fIXEDASSETS_AssetUndertakingTestDataType.NewBranch);
+    	fIXEDASSETS_AssetUndertakingObj.fixedAssets_AssetTransfer_NewBranch().sendKeys(Keys.ENTER);
+    	
+    	waithelper.waitForElement(driver, 2000, fIXEDASSETS_AssetUndertakingObj.fixedAssets_AssetTransfer_Transfer());
+    	fIXEDASSETS_AssetUndertakingObj.fixedAssets_AssetTransfer_Transfer().click();
+    	
+    	waithelper.waitForElement(driver, 2000, fIXEDASSETS_AssetUndertakingObj.fixedAssets_AssetTransfer_TransferYes());
+    	fIXEDASSETS_AssetUndertakingObj.fixedAssets_AssetTransfer_TransferYes().click();
+    }
+    
+    @And("^Fill the required fields for impaired asset transfer$")
+    public void fill_the_required_fields_for_impaired_asset_transfer()  {
+    	
+    	fIXEDASSETS_AssetUndertakingObj.fixedAssets_AssetTransfer_AssetReferenceNumber().click();
+    	waithelper.waitForElement(driver, 2000, fIXEDASSETS_AssetUndertakingObj.fixedAssets_AssetTransfer_AssetReferenceNumber());
+    	fIXEDASSETS_AssetUndertakingObj.fixedAssets_AssetTransfer_AssetReferenceNumber().sendKeys(fIXEDASSETS_AssetUndertakingTestDataType.AssetReferenceNumberImpairedForTransfer);
+    	fIXEDASSETS_AssetUndertakingObj.fixedAssets_AssetTransfer_AssetReferenceNumber().sendKeys(Keys.ENTER);
+    	
+    	waithelper.waitForElement(driver, 2000, fIXEDASSETS_AssetUndertakingObj.fixedAssets_AssetTransfer_NewBranch());
+    	fIXEDASSETS_AssetUndertakingObj.fixedAssets_AssetTransfer_NewBranch().sendKeys(fIXEDASSETS_AssetUndertakingTestDataType.NewBranch);
+    	fIXEDASSETS_AssetUndertakingObj.fixedAssets_AssetTransfer_NewBranch().sendKeys(Keys.ENTER);
+    	
+    	waithelper.waitForElement(driver, 2000, fIXEDASSETS_AssetUndertakingObj.fixedAssets_AssetTransfer_Transfer());
+    	fIXEDASSETS_AssetUndertakingObj.fixedAssets_AssetTransfer_Transfer().click();
+    	
+    	waithelper.waitForElement(driver, 2000, fIXEDASSETS_AssetUndertakingObj.fixedAssets_AssetTransfer_TransferYes());
+    	fIXEDASSETS_AssetUndertakingObj.fixedAssets_AssetTransfer_TransferYes().click();
+    }
+    
+    @And("^Fill the required fields for revalued asset transfer$")
+    public void fill_the_required_fields_for_revalued_asset_transfer()  {
+    	
+    	fIXEDASSETS_AssetUndertakingObj.fixedAssets_AssetTransfer_AssetReferenceNumber().click();
+    	waithelper.waitForElement(driver, 2000, fIXEDASSETS_AssetUndertakingObj.fixedAssets_AssetTransfer_AssetReferenceNumber());
+    	fIXEDASSETS_AssetUndertakingObj.fixedAssets_AssetTransfer_AssetReferenceNumber().sendKeys(fIXEDASSETS_AssetUndertakingTestDataType.AssetReferenceNumberRevaluedForTransfer);
     	fIXEDASSETS_AssetUndertakingObj.fixedAssets_AssetTransfer_AssetReferenceNumber().sendKeys(Keys.ENTER);
     	
     	waithelper.waitForElement(driver, 2000, fIXEDASSETS_AssetUndertakingObj.fixedAssets_AssetTransfer_NewBranch());

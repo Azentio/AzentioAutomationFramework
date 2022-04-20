@@ -107,6 +107,7 @@ public class ACCOUNTSPAYABLE_InvoiceBooking {
 				}
 
 				catch (NoSuchElementException nosuchElement) {
+					waithelper.waitForElement(driver, 3000, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_ClickOnNextMonth());
 					aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_ClickOnNextMonth().click();
 				}
 			}
@@ -161,6 +162,7 @@ public class ACCOUNTSPAYABLE_InvoiceBooking {
 					}
 
 					catch (NoSuchElementException nosuchElement) {
+						waithelper.waitForElement(driver, 3000, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_ClickOnNextMonth());
 						aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_ClickOnNextMonth().click();
 					}
 				}
@@ -211,6 +213,7 @@ public class ACCOUNTSPAYABLE_InvoiceBooking {
 
 					catch (NoSuchElementException nosuchElement) {
 //						javascripthelper.scrollIntoView(aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_ClickOnNextMonth());
+						waithelper.waitForElement(driver, 3000, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_ClickOnNextMonth());
 						aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_ClickOnNextMonth().click();
 					}
 				}
@@ -258,6 +261,7 @@ public class ACCOUNTSPAYABLE_InvoiceBooking {
 				}
 
 				catch (NoSuchElementException nosuchElement) {
+					waithelper.waitForElement(driver, 3000, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_ClickOnNextMonth());
 					aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_ClickOnNextMonth().click();
 				}
 			}
@@ -313,6 +317,7 @@ public class ACCOUNTSPAYABLE_InvoiceBooking {
 					}
 
 					catch (NoSuchElementException nosuchElement) {
+						waithelper.waitForElement(driver, 3000, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_ClickOnNextMonth());
 						aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_ClickOnNextMonth().click();
 					}
 				}
@@ -366,6 +371,7 @@ public class ACCOUNTSPAYABLE_InvoiceBooking {
 					}
 
 					catch (NoSuchElementException nosuchElement) {
+						waithelper.waitForElement(driver, 3000, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_ClickOnNextMonth());
 						aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_ClickOnNextMonth().click();
 					}
 				}
@@ -433,7 +439,7 @@ public class ACCOUNTSPAYABLE_InvoiceBooking {
 //    	waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_AdvanceNumber());
 //    	aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_AdvanceNumber().sendKeys(aCCOUNTSPAYABLE_InvoiceBookingTestDataType.AdvanceNumber);
 //    	aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_AdvanceNumber().sendKeys(Keys.ENTER);
-    	
+    	waithelper.waitForElement(driver, 4000, aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_ExpenseCode());
     	aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_ExpenseCode().click();
     	
     	waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_ExpenseCodeForLaptop());
@@ -467,6 +473,7 @@ public class ACCOUNTSPAYABLE_InvoiceBooking {
     	waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_TaxAmount());
     	aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_TaxAmount().sendKeys(aCCOUNTSPAYABLE_InvoiceBookingTestDataType.TaxAmount);
     	
+    	waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_TaxDetailsSaveButton());
     	aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_TaxDetailsSaveButton().click();
     	
     	waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_CostCenterButton());
@@ -691,7 +698,7 @@ public class ACCOUNTSPAYABLE_InvoiceBooking {
     	Thread.sleep(2000);
     	javascripthelper.scrollIntoViewAndClick(aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_TaxDetails());
     	Thread.sleep(2000);
-    	aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_TaxDetailsCloseButton().click();
+//    	aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_TaxDetailsCloseButton().click();
     	
     	//CODES FOR SGST AND CGST
     	
@@ -779,6 +786,7 @@ public class ACCOUNTSPAYABLE_InvoiceBooking {
 			}
 
 			catch (NoSuchElementException nosuchElement) {
+				waithelper.waitForElement(driver, 3000, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_ClickOnNextMonth());
 				aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_ClickOnNextMonth().click();
 			}
 		}
@@ -826,6 +834,7 @@ public class ACCOUNTSPAYABLE_InvoiceBooking {
 				}
 
 				catch (NoSuchElementException nosuchElement) {
+					waithelper.waitForElement(driver, 3000, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_ClickOnNextMonth());
 					aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_ClickOnNextMonth().click();
 				}
 			}
@@ -873,6 +882,7 @@ public class ACCOUNTSPAYABLE_InvoiceBooking {
 				}
 
 				catch (NoSuchElementException nosuchElement) {
+					waithelper.waitForElement(driver, 3000, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_ClickOnNextMonth());
 					aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_ClickOnNextMonth().click();
 				}
 			}

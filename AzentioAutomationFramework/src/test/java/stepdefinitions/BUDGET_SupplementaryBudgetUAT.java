@@ -532,11 +532,11 @@ public class BUDGET_SupplementaryBudgetUAT extends BaseClass {
 	    public void verify_the_supplementary_budget_report() throws Throwable {
 	    	javascripthelper.JavaScriptHelper(driver);
 	    	browserHelper.SwitchToWindow(1);
-	    	Thread.sleep(3000);
-	    	javascripthelper.JavaScriptHelper(driver);
-	        javascripthelper.scrollIntoView(bUDGET_SupplementaryBudgetObj.budget_SupplementaryBudget_ReportYear());
-	        waithelper.waitForElement(driver, 3000, bUDGET_SupplementaryBudgetObj.budget_SupplementaryBudget_ReportYear());
-	        bUDGET_SupplementaryBudgetObj.budget_SupplementaryBudget_ReportYear().click();
+//	    	Thread.sleep(3000);
+//	    	javascripthelper.JavaScriptHelper(driver);
+//	        javascripthelper.scrollIntoView(bUDGET_SupplementaryBudgetObj.budget_SupplementaryBudget_ReportYear());
+//	        waithelper.waitForElement(driver, 3000, bUDGET_SupplementaryBudgetObj.budget_SupplementaryBudget_ReportYear());
+//	        bUDGET_SupplementaryBudgetObj.budget_SupplementaryBudget_ReportYear().click();
 	    	Thread.sleep(3000);
 	    	browserHelper.switchToParentWithChildClose();
 	}

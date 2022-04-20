@@ -55,11 +55,11 @@ function toggleAllBoxes() {
 <body>
 <h2 align='center'>Default test</h2><table border='1' align="center">
 <tr>
-<td>Tests passed/Failed/Skipped:</td><td>0/1/0</td>
+<td>Tests passed/Failed/Skipped:</td><td>1/0/0</td>
 </tr><tr>
-<td>Started on:</td><td>Tue Apr 19 04:32:08 PDT 2022</td>
+<td>Started on:</td><td>Tue Apr 19 22:02:08 PDT 2022</td>
 </tr>
-<tr><td>Total time:</td><td>171 seconds (171661 ms)</td>
+<tr><td>Total time:</td><td>131 seconds (131352 ms)</td>
 </tr><tr>
 <td>Included groups:</td><td></td>
 </tr><tr>
@@ -67,78 +67,17 @@ function toggleAllBoxes() {
 </tr>
 </table><p/>
 <small><i>(Hover the method name to see the test class name)</i></small><p/>
-<table width='100%' border='1' class='invocation-failed'>
-<tr><td colspan='4' align='center'><b>FAILED TESTS</b></td></tr>
+<table width='100%' border='1' class='invocation-passed'>
+<tr><td colspan='4' align='center'><b>PASSED TESTS</b></td></tr>
 <tr><td><b>Test method</b></td>
 <td width="30%"><b>Exception</b></td>
 <td width="10%"><b>Time (seconds)</b></td>
 <td><b>Instance</b></td>
 </tr>
 <tr>
-<td title='Runner.TestApplication.runScenario()'><b>runScenario</b><br>Test class: Runner.TestApplication<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Check If the de-allocated asset can be allocated to any other resource", "Optional[Check the Functionality of Fixed Asset module]"</td>
-<td><div><pre>org.openqa.selenium.ElementClickInterceptedException: element click intercepted: Element &lt;ion-button color=&quot;primary&quot; ng-reflect-color=&quot;primary&quot; ng-reflect-disabled=&quot;true&quot; aria-disabled=&quot;true&quot; class=&quot;ion-color ion-color-primary md button button-clear in-toolbar button-disabled ion-activatable ion-focusable hydrated&quot; disabled=&quot;&quot;&gt;...&lt;/ion-button&gt; is not clickable at point (1414, 88). Other element would receive the click: &lt;ion-buttons slot=&quot;end&quot; class=&quot;buttons-last-slot sc-ion-buttons-md-h sc-ion-buttons-md-s md hydrated&quot;&gt;...&lt;/ion-buttons&gt;
-  (Session info: chrome=100.0.4896.60)
-Build info: version: &apos;4.0.0-rc-1&apos;, revision: &apos;bc5511cbda&apos;
-System info: host: &apos;INMUVADP016372&apos;, ip: &apos;10.1.47.119&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;17.0.1&apos;
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Command: [bd359ae92a3908e7cb5f0c0882900d64, clickElement {id=99fcf985-d753-4cdf-bd03-bccf2690129c}]
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 100.0.4896.60, chrome: {chromedriverVersion: 99.0.4844.51 (d537ec02474b5..., userDataDir: C:\Users\ININDC~1\AppData\L...}, goog:chromeOptions: {debuggerAddress: localhost:63000}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), se:cdp: ws://localhost:63000/devtoo..., se:cdpVersion: 100.0.4896.60, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
-Element: [[ChromeDriver: chrome on WINDOWS (bd359ae92a3908e7cb5f0c0882900d64)] -&gt; xpath: (//ion-toolbar[1]/ion-buttons[2]/ion-button[1])[2]]
-Session ID: bd359ae92a3908e7cb5f0c0882900d64
-	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
-	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77)
-	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
-	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499)
-	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:480)
-	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:200)
-	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:133)
-	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:53)
-	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:184)
-	at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:164)
-	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:139)
-	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:547)
-	at org.openqa.selenium.remote.RemoteWebElement.execute(RemoteWebElement.java:251)
-	at org.openqa.selenium.remote.RemoteWebElement.click(RemoteWebElement.java:77)
-	at jdk.internal.reflect.GeneratedMethodAccessor6.invoke(Unknown Source)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
-	at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:52)
-	at jdk.proxy2/jdk.proxy2.$Proxy46.click(Unknown Source)
-	at stepdefinitions.FixedAsset_AssetCategory.click_on_fixed_asset_save_button(FixedAsset_AssetCategory.java:125)
-	at ?.Click on Fixed Asset Save button(file:///C:/Users/inindc00089/git/AzentioAutomationFrameworkFinal2/AzentioAutomationFramework/src/test/java/features/FixedAsset.feature:788)
-</pre></div><a href='#' onClick='toggleBox("stack-trace391595516", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
-<div class='stack-trace' id='stack-trace391595516'><pre>org.openqa.selenium.ElementClickInterceptedException: element click intercepted: Element &lt;ion-button color=&quot;primary&quot; ng-reflect-color=&quot;primary&quot; ng-reflect-disabled=&quot;true&quot; aria-disabled=&quot;true&quot; class=&quot;ion-color ion-color-primary md button button-clear in-toolbar button-disabled ion-activatable ion-focusable hydrated&quot; disabled=&quot;&quot;&gt;...&lt;/ion-button&gt; is not clickable at point (1414, 88). Other element would receive the click: &lt;ion-buttons slot=&quot;end&quot; class=&quot;buttons-last-slot sc-ion-buttons-md-h sc-ion-buttons-md-s md hydrated&quot;&gt;...&lt;/ion-buttons&gt;
-  (Session info: chrome=100.0.4896.60)
-Build info: version: &apos;4.0.0-rc-1&apos;, revision: &apos;bc5511cbda&apos;
-System info: host: &apos;INMUVADP016372&apos;, ip: &apos;10.1.47.119&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;17.0.1&apos;
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Command: [bd359ae92a3908e7cb5f0c0882900d64, clickElement {id=99fcf985-d753-4cdf-bd03-bccf2690129c}]
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 100.0.4896.60, chrome: {chromedriverVersion: 99.0.4844.51 (d537ec02474b5..., userDataDir: C:\Users\ININDC~1\AppData\L...}, goog:chromeOptions: {debuggerAddress: localhost:63000}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), se:cdp: ws://localhost:63000/devtoo..., se:cdpVersion: 100.0.4896.60, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
-Element: [[ChromeDriver: chrome on WINDOWS (bd359ae92a3908e7cb5f0c0882900d64)] -&gt; xpath: (//ion-toolbar[1]/ion-buttons[2]/ion-button[1])[2]]
-Session ID: bd359ae92a3908e7cb5f0c0882900d64
-	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
-	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77)
-	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
-	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499)
-	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:480)
-	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:200)
-	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:133)
-	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:53)
-	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:184)
-	at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:164)
-	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:139)
-	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:547)
-	at org.openqa.selenium.remote.RemoteWebElement.execute(RemoteWebElement.java:251)
-	at org.openqa.selenium.remote.RemoteWebElement.click(RemoteWebElement.java:77)
-	at jdk.internal.reflect.GeneratedMethodAccessor6.invoke(Unknown Source)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
-	at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:52)
-	at jdk.proxy2/jdk.proxy2.$Proxy46.click(Unknown Source)
-	at stepdefinitions.FixedAsset_AssetCategory.click_on_fixed_asset_save_button(FixedAsset_AssetCategory.java:125)
-	at ?.Click on Fixed Asset Save button(file:///C:/Users/inindc00089/git/AzentioAutomationFrameworkFinal2/AzentioAutomationFramework/src/test/java/features/FixedAsset.feature:788)
-</pre></div></td>
-<td>158</td>
+<td title='Runner.TestApplication.runScenario()'><b>runScenario</b><br>Test class: Runner.TestApplication<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Check the supplementary budget request in the report", "Optional[To verify user can able to create the transaction in budget and planning module]"</td>
+<td></td>
+<td>115</td>
 <td>Runner.TestApplication@35dab4eb</td></tr>
 </table><p>
 </body>

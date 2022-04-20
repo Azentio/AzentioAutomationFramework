@@ -319,7 +319,7 @@ Then Click on Asset Creation Eye button
     And user should navigate to fixed asset menu
     When click on eye button of asset sale
     And click on add button to create sale asset record
-    And Fill the required fields to sale asset
+    And Fill the required fields to sale asset in profit
     Then Save and submit the asset sale record
     
     And User should go to the kubs url and login as a reviewer user 
@@ -361,7 +361,7 @@ And click on view button to see the Record
     And user should navigate to fixed asset menu
     When click on eye button of asset sale
     And click on add button to create sale asset record
-    And Fill the required fields to sale asset
+    And Fill the required fields to sale asset in loss
     Then Save and submit the asset sale record
     
     And User should go to the kubs url and login as a reviewer user 
@@ -444,7 +444,7 @@ Then validate voucher number
     And user should navigate to fixed assets menu
     When click on eye button of asset transfer
     And click on add button for asset transfer
-    And Fill the required fields for asset transfer
+    And Fill the required fields for impaired asset transfer
     Then Save and submit the asset transfer
     
     And User should go to the kubs url and login as a reviewer user
@@ -464,7 +464,7 @@ Then validate voucher number
     And user should navigate to fixed assets menu
     When click on eye button of asset transfer
     And click on add button for asset transfer
-    And Fill the required fields for asset transfer
+    And Fill the required fields for revalued asset transfer
     Then Save and submit the asset transfer
     
     And User should go to the kubs url and login as a reviewer user
@@ -498,7 +498,7 @@ Then validate voucher number
     And user should navigate to fixed assets menu
     When click on eye button of asset transfer
     And click on add button for asset transfer
-    And Fill the required fields for asset transfer
+    And Fill the required fields for asset undertaking
     Then Save and submit the asset transfer
     
     And User should go to the kubs url and login as a reviewer user
@@ -795,21 +795,21 @@ And then checker claim the record
 Then click on the checker Notification 
 And select the record and Approve by checker
 #Allocate
-Given Maker Navigate to UAT URL login
-Then Click on fixed asset deallocaion  Direction icon
-Then Click on Fixed assets field
-Then Click on Asset Allocation Eye button
-Then Click on the add button to add new record
-Then Fill Asset Allocation Form another employee
-Then Click on Fixed Asset Save button
-Then Click on Fixed Asset Notification 
-And Select and Submit the record
-Then log in to the reviewer account
-Then click on the Notification select the record and Approve 
-Then log in to the Checker Account
-And then checker claim the record
-Then click on the checker Notification 
-And select the record and Approve by checker
+#Given Maker Navigate to UAT URL login
+#Then Click on fixed asset deallocaion  Direction icon
+#Then Click on Fixed assets field
+#Then Click on Asset Allocation Eye button
+#Then Click on the add button to add new record
+#Then Fill Asset Allocation Form another employee
+#Then Click on Fixed Asset Save button
+#Then Click on Fixed Asset Notification 
+#And Select and Submit the record
+#Then log in to the reviewer account
+#Then click on the Notification select the record and Approve 
+#Then log in to the Checker Account
+#And then checker claim the record
+#Then click on the checker Notification 
+#And select the record and Approve by checker
 
 @KUBS_FAT_UAT_006_007 @MultiAuth
 Scenario: Check If the asset to be transferred then it can be de-allocated

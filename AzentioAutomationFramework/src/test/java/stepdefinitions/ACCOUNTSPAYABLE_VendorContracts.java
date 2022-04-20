@@ -51,6 +51,7 @@ public class ACCOUNTSPAYABLE_VendorContracts {
 
 	@And("^user should navigate to accounts payable menu$")
 	public void user_should_navigate_to_accounts_payable_menu() throws InterruptedException {
+		Thread.sleep(1000);
 		waithelper.waitForElement(driver, 3000, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_DirectionButton());
 		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_DirectionButton().click();
 		Thread.sleep(1000);
@@ -109,6 +110,7 @@ public class ACCOUNTSPAYABLE_VendorContracts {
 		
 		catch(NoSuchElementException nosuchElement)
 		{
+			waithelper.waitForElement(driver, 3000, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_ClickOnNextMonth());
 			aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_ClickOnNextMonth().click();
 		}
 		}
@@ -130,6 +132,7 @@ public class ACCOUNTSPAYABLE_VendorContracts {
 		
 		catch(NoSuchElementException nosuchElement)
 		{
+			waithelper.waitForElement(driver, 3000, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_ClickOnNextMonth());
 			aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_ClickOnNextMonth().click();
 		}
 		}
@@ -152,6 +155,7 @@ public class ACCOUNTSPAYABLE_VendorContracts {
 		
 		catch(NoSuchElementException nosuchElement)
 		{
+			waithelper.waitForElement(driver, 3000, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_ClickOnNextMonth());
 			aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_ClickOnNextMonth().click();
 		}
 		}
@@ -294,7 +298,7 @@ public class ACCOUNTSPAYABLE_VendorContracts {
     	javascripthelper.JSEClick(aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_RemarkField());
     	aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_RemarkField().sendKeys(aCCOUNTSPAYABLE_VendorContractsTestDataType.RemarkByMaker);
 		
-    	waithelper.waitForElement(driver, 3000, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_Submit());
+    	waithelper.waitForElement(driver, 5000, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_Submit());
     	aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_Submit().click();
     	
     	Thread.sleep(1000);

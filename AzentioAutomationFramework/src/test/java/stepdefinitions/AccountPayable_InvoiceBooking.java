@@ -597,7 +597,7 @@ public class AccountPayable_InvoiceBooking extends BaseClass {
     Thread.sleep(2000);
     javascripthelper.scrollIntoViewAndClick(accountPayable_InvoiceBookingObj.accountPayable_InvoiceBooking_TaxDetails());
     Thread.sleep(2000);
-    accountPayable_InvoiceBookingObj.accountPayable_InvoiceBooking_TaxDetailsCloseButton().click();
+//    accountPayable_InvoiceBookingObj.accountPayable_InvoiceBooking_TaxDetailsCloseButton().click();
    
   //CODES FOR SGST AND CGST
 	
@@ -639,6 +639,8 @@ public class AccountPayable_InvoiceBooking extends BaseClass {
 		System.out.println("IGST Tax details are correctly displayed");
 	}else {System.out.println("Tax details are not correctly displayed");}
 	
+	
+	waithelper.waitForElement(driver, 3000, accountPayable_InvoiceBookingObj.accountPayable_InvoiceBooking_TaxDetailsCloseButton());
 	accountPayable_InvoiceBookingObj.accountPayable_InvoiceBooking_TaxDetailsCloseButton().click();
 	
 	}

@@ -36,7 +36,7 @@ public class InventoryManagament extends BaseClass {
 	KUBS_ReviewerObj reviewer;
 
 	JsonConfig jsonconfig = new JsonConfig();
-	BrowserHelper browserHelper;
+	BrowserHelper browserHelper = new BrowserHelper(driver);
 	BUDGET_BudgetDefinitionTestDataType budgetdata;
 	JavascriptHelper javahelper = new JavascriptHelper();
 	JsonConfig jsonReader = new JsonConfig();
@@ -1858,24 +1858,24 @@ public void verify_the_approved_record_is_available_in_the_report() throws Throw
 	System.out.println("Approved invoice number "+inventoryManagementTestDataType.Voucher);
 	javascripthelper.JavaScriptHelper(driver);
 
-	browserHelper.SwitchToWindow(1);
+//	browserHelper.SwitchToWindow(1);
 	Thread.sleep(1500);
-	while(true)
-	{
-	try
-	{
-	javascripthelper.scrollIntoView(driver.findElement(By.xpath("//div[contains(text(),'+inventoryManagementTestDataType.Voucher+')]")));
-	driver.findElement(By.xpath("//div[contains(text(),'+inventoryManagementTestDataType.Voucher+')]")).isDisplayed();
-	break;
-	}
-	catch(NoSuchElementException e)
-	{
-		inventoryManagamentObj.Report_report_NextButton().click();
-	}
-	catch(StaleElementReferenceException e1)
-	{
-	}
-	}
+//	while(true)
+//	{
+//	try
+//	{
+//	javascripthelper.scrollIntoView(driver.findElement(By.xpath("//div[contains(text(),'+inventoryManagementTestDataType.Voucher+')]")));
+//	driver.findElement(By.xpath("//div[contains(text(),'+inventoryManagementTestDataType.Voucher+')]")).isDisplayed();
+//	break;
+//	}
+//	catch(NoSuchElementException e)
+//	{
+//		inventoryManagamentObj.Report_report_NextButton().click();
+//	}
+//	catch(StaleElementReferenceException e1)
+//	{
+//	}
+//	}
 	browserHelper.switchToParentWithChildClose();
 	}
 

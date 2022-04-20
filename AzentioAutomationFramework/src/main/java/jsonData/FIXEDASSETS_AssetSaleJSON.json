@@ -1,9 +1,11 @@
 [
 	{
 		"User" : "Maker",
-		"AssetReferenceNumber" : "MACHINARY-AIRCONDITIONER-Panasonic AC_BR0003_3",
-		"ItemNumber" : "7543",
-		"SaleValue" : "15000.00",
+		"AssetReferenceNumberForProfit" : "ELECTRONICS-LAP001-Freedom255_AZENTMAIN_272",
+		"AssetReferenceNumberForLoss" : "01-001-desk_HO0001_26",
+		"ItemNumber" : "Freedom",
+		"ItemNumberForLoss" : "freedom-2",
+		"SaleValue" : "1500000.00",
 		"SaleValueInLoss" : "30000.00",
 		"Currency" : "INR",
 		"ActionableBy" : "anant",

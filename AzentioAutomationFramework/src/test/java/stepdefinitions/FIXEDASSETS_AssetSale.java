@@ -60,10 +60,10 @@ public class FIXEDASSETS_AssetSale {
 		fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_AddButton().click();
 	}
 	
-	@And("^Fill the required fields to sale asset$")
-	public void fill_the_required_fields_to_sale_asset() throws InterruptedException  {
+	@And("^Fill the required fields to sale asset in profit$")
+	public void fill_the_required_fields_to_sale_asset_in_profit() throws InterruptedException  {
 		waithelper.waitForElement(driver, 2000, fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_AssetReferenceNumber());
-		fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_AssetReferenceNumber().sendKeys(fIXEDASSETS_AssetSaleTestDataType.AssetReferenceNumber);
+		fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_AssetReferenceNumber().sendKeys(fIXEDASSETS_AssetSaleTestDataType.AssetReferenceNumberForProfit);
 		fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_AssetReferenceNumber().sendKeys(Keys.ENTER);
 		
 		fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_ItemNumber().click();
@@ -74,6 +74,31 @@ public class FIXEDASSETS_AssetSale {
 		waithelper.waitForElement(driver, 2000, fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_SaleValue());
 		fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_SaleValue().sendKeys(fIXEDASSETS_AssetSaleTestDataType.SaleValue);
 
+		fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_Currency().sendKeys(fIXEDASSETS_AssetSaleTestDataType.Currency);
+		fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_Currency().sendKeys(Keys.ENTER);
+		
+		waithelper.waitForElement(driver, 2000, fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_ActionableBy());
+		fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_ActionableBy().sendKeys(fIXEDASSETS_AssetSaleTestDataType.ActionableBy);
+		fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_ActionableBy().sendKeys(Keys.ENTER);
+		
+		waithelper.waitForElement(driver, 2000, fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_Remark());
+		fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_Remark().sendKeys(fIXEDASSETS_AssetSaleTestDataType.Remark);
+	}
+	
+	@And("^Fill the required fields to sale asset in loss$")
+	public void fill_the_required_fields_to_sale_asset_in_loss() throws InterruptedException  {
+		waithelper.waitForElement(driver, 2000, fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_AssetReferenceNumber());
+		fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_AssetReferenceNumber().sendKeys(fIXEDASSETS_AssetSaleTestDataType.AssetReferenceNumberForLoss);
+		fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_AssetReferenceNumber().sendKeys(Keys.ENTER);
+		
+		fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_ItemNumber().click();
+		waithelper.waitForElement(driver, 2000, fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_ItemNumber());
+		fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_ItemNumber().sendKeys(fIXEDASSETS_AssetSaleTestDataType.ItemNumberForLoss);
+		fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_ItemNumber().sendKeys(Keys.ENTER);
+		
+		waithelper.waitForElement(driver, 2000, fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_SaleValue());
+		fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_SaleValue().sendKeys(fIXEDASSETS_AssetSaleTestDataType.SaleValue);
+		
 		fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_Currency().sendKeys(fIXEDASSETS_AssetSaleTestDataType.Currency);
 		fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_Currency().sendKeys(Keys.ENTER);
 		

@@ -48,7 +48,7 @@ public class FixedAsset_AssetDeallocation extends BaseClass {
     @Then("^Click on asset deallocaion Eye button$")
     public void click_on_asset_deallocaion_eye_button() throws InterruptedException{
     //Eye
-Thread.sleep(3000);
+Thread.sleep(1500);
    javascripthelper.JavaScriptHelper(driver);
    javascripthelper.scrollIntoView(fixedAsset_AssetDeallocationObj.fixedAsset_AssetDeallocation_EyeIcon());
    waithelper.waitForElement(driver, 3000, fixedAsset_AssetDeallocationObj.fixedAsset_AssetDeallocation_EyeIcon());

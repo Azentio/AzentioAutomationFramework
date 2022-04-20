@@ -2,8 +2,10 @@ package testDataType;
 
 public class FIXEDASSETS_AssetSaleTestDataType {
 	public String User;
-	public String AssetReferenceNumber;
+	public String AssetReferenceNumberForProfit;
+	public String AssetReferenceNumberForLoss;
 	public String ItemNumber;
+	public String ItemNumberForLoss;
 	public String SaleValue;
 	public String SaleValueInLoss;
 	public String Currency;

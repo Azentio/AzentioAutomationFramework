@@ -1,7 +1,10 @@
 [
 	{
 		"User" : "Maker",
-		"AssetReferenceNumber" : "ELECTRONICS-LAP001-Freedom255_AZENTMAIN_269",
+		"AssetReferenceNumberForTransfer" : "01-ASTSBCTGRY001-Small_AZENTMAIN_791",
+		"AssetReferenceNumberImpairedForTransfer" : "01-ASTSBCTGRY001-Small_AZENTMAIN_792",
+		"AssetReferenceNumberRevaluedForTransfer" : "01-ASTSBCTGRY001-Small_AZENTMAIN_793",
+		"AssetReferenceNumberUndertaking" : "01-ASTSBCTGRY001-Small_AZENTMAIN_794",
 		"RemarkByMaker" : "submit by maker",
 		"CheckerRemark" : "approved by checker",
 		"NewBranch" : "Dadar Branch" 
