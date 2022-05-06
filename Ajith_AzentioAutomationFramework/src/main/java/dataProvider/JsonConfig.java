@@ -11,6 +11,7 @@ import java.util.List;
 import com.google.gson.Gson;
 import com.google.gson.stream.JsonReader;
 
+import testDataType.BankReconciliationTestData;
 import testDataType.Cancellationofcontractdatatype;
 import testDataType.GlModuleDataType;
 import testDataType.KUBS_LoginTestDataType;
@@ -26,13 +27,40 @@ public class JsonConfig {
 	private List<Cancellationofcontractdatatype> cancellationlist;
 	private final String GlModulepath=configFileReader.getJsonPath()+"Gl_Module.json";
 	private List<GlModuleDataType> glmodulelist;
+	private final String BankReconPath=configFileReader.getJsonPath()+"BankReconciliationData.json";
+	private List<BankReconciliationTestData> BankReconlist;
 
 	public JsonConfig() {
 
 		credentialslist = getAzentioCredentialsList();
 		cancellationlist = getCancellationlist();
         glmodulelist=getGlModulelist();
+        BankReconlist=getBankReconlist();
+        
 	}
+	//Bank recon data
+		private List<BankReconciliationTestData> getBankReconlist() {
+			Gson gson = new Gson();
+			JsonReader reader = new JsonReader(new StringReader(BankReconPath));
+			reader.setLenient(true);
+			BufferedReader bufferReader = null;
+			try {
+				bufferReader = new BufferedReader(new FileReader(BankReconPath));
+				BankReconciliationTestData[] BankReconlist = gson.fromJson(bufferReader,
+						BankReconciliationTestData[].class);
+				return Arrays.asList(BankReconlist);
+			} catch (FileNotFoundException e) {
+				throw new RuntimeException("Json file not found at path : " + GlModulepath);
+			} finally {
+				try {
+					if (bufferReader != null)
+						bufferReader.close();
+				} catch (IOException ignore) {
+				}
+			}
+
+		}
+	//gl data
 	private List<GlModuleDataType> getGlModulelist() {
 		Gson gson = new Gson();
 		JsonReader reader = new JsonReader(new StringReader(GlModulepath));
@@ -57,7 +85,7 @@ public class JsonConfig {
 
 	
 	
-
+// ararp data
 	private List<Cancellationofcontractdatatype> getCancellationlist() {
 		Gson gson = new Gson();
 		JsonReader reader = new JsonReader(new StringReader(cancellationofcontractpath));
@@ -109,5 +137,9 @@ public class JsonConfig {
 	public final GlModuleDataType getGlModulelist(String UserName) {
 		return glmodulelist.stream().filter(x -> x.UserType.equalsIgnoreCase(UserName)).findAny().get();
 	}
+	public final BankReconciliationTestData getBankReconlist(String UserName) {
+		return BankReconlist.stream().filter(x -> x.UserType.equalsIgnoreCase(UserName)).findAny().get();
+	}
+	
 
 }

@@ -19,7 +19,7 @@ import io.cucumber.java.en.When;
 import pageobjects.Accounts_Payable;
 import pageobjects.ArAp_Cancellation_of_vendorObj;
 import pageobjects.Enquiry_Obj;
-import pageobjects.Gl_Reports_Obj;
+import pageobjects.Gl1_Reports_Obj;
 import resources.BaseClass;
 import resources.JsonDataReaderWriter;
 import testDataType.Cancellationofcontractdatatype;
@@ -27,7 +27,7 @@ import testDataType.GlModuleDataType;
 
 public class GL_Module extends BaseClass{
    WebDriver driver = BaseClass.driver;
-   Gl_Reports_Obj glReportsObj = new Gl_Reports_Obj(driver);
+   Gl1_Reports_Obj glReportsObj = new Gl1_Reports_Obj(driver);
    Selenium_Actions seleniumactions = new Selenium_Actions(driver);
    AzentioLogin login;
 	ConfigFileReader configreader = new ConfigFileReader();

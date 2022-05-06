@@ -1,0 +1,32 @@
+[
+{
+"UserType":"Maker",
+"ChequeReference1":"RRN156",
+"ChequeReference2":"RRN156",
+"ChequeReference3":"RRN444",
+"DepositAmount1":"3000",
+"DepositAmout2":"4000",
+"DepositAmout3":"506",
+"BankName":"KVB",
+"BankReconFromMonth": "Mar",
+"BankReconFromFullMonth": "March",
+"BankReconFromYear": "2023",
+"BankReconFromDay"	: "13",
+"BankReconToMonth": "Mar",
+"BankReconFullToMonth": "March",
+"BankReconToDay": "14",
+"BankReconToYear": "2023",
+"FileLocation":"C:\\Users\\inindc00077\\Desktop\\KVB_1_100.txt",
+"CsvBankReconFromMonth": "Mar",
+"CsvBankReconFromFullMonth": "March",
+"CsvBankReconFromYear": "2023",
+"CsvBankReconFromDay"	: "14",
+"CsvBankReconToMonth": "Mar",
+"CsvBankReconFullToMonth": "March",
+"CsvBankReconToDay": "15",
+"CsvBankReconToYear": "2023",
+"FileLocationCsv":"C:\\Users\\inindc00077\\Desktop\\CANA_R120.csv",
+"CsvBankName":"Canara Bank",
+"ChequeRefUnmachedText":"RRN156"
+}
+]

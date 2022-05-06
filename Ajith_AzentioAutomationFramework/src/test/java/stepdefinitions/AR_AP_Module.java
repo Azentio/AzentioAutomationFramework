@@ -149,6 +149,7 @@ public class AR_AP_Module extends BaseClass {
 	    public void select_the_branch_code_as_azentio_main_branch_for_verify_post_bill_is_approved_in_accounting_entries() throws Throwable {
 	    	seleniumactions.getWaitHelper().waitForElement(driver, 2000, enquiryObj.inventoryBranchCode());
 			seleniumactions.getClickAndActionsHelper().clickOnElement(enquiryObj.inventoryBranchCode());
+			enquiryObj.inventoryBranchCode().sendKeys(cancellationofcontractdata.branchCode);
 			enquiryObj.inventoryBranchCode().sendKeys(Keys.ENTER);
 	    }
 
@@ -177,7 +178,7 @@ public class AR_AP_Module extends BaseClass {
 			driver.findElement(By.xpath("//span[text()='" + cancellationofcontractdata.GlYear + "']")).click();
 			driver.findElement(By.xpath("//span[text()='" + cancellationofcontractdata.GlToMonth + "']")).click();
 			seleniumactions.getWaitHelper().waitForElement(driver, 2000,
-					driver.findElement(By.xpath("(//span[text()='" + cancellationofcontractdata.GlDay + "'])[1]")));
+					driver.findElement(By.xpath("(//span[text()='" + cancellationofcontractdata.GlToDate + "'])[1]")));
 			driver.findElement(By.xpath("(//span[text()='" + cancellationofcontractdata.GlToDate + "'])[1]")).click();
 	seleniumactions.getWaitHelper().waitForElement(driver, 2000, enquiryObj.inventoryViewButton());
 			seleniumactions.getClickAndActionsHelper().clickOnElement(enquiryObj.inventoryViewButton());
