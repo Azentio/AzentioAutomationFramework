@@ -12,26 +12,26 @@
 		
 		
 		//CALENDAR AND GL DATA
-		"Month"					: "Jan",
-		"FullMonth"				: "January",
+		"Month"					: "Feb",
+		"FullMonth"				: "February",
 		"Year"					: "2023",
-		"Day"					: "5",
+		"Day"					: "18",
 		"branchCode"			: "AZENTMAIN-Azentio Main Branch",
 		"gLCode1"				: "IFRS-OPEXP-OE6000007 - Deprecitation for Fixed Assets",
 		"gLCode2"				: "IFRS-7000023-NOP - Loss on sale of fixed asset",
-		"GlMonth"				: "Jan",
-		"GlYear"				: "2023",
-		"GlFullMonth"			: "January",
+		"GlMonth"				: "Apr",
+		"GlYear"				: "2022",
+		"GlFullMonth"			: "April",
 		"GlFullToMonth"			: "January",
 		"GlDay"					: "1",
 		"GlToMonth"				: "Jan",
-		"GlToDate"				: "5",
+		"GlToDate"				: "18",
 		
 		
 		
 		//REPLACEMENT
-		"itemNumber"			: "Demo",
-		"itemDesc"				: "Demo",
+		"itemNumber"			: "Asset005",
+		"itemDesc"				: "Asset005",
 		
 		
 		//REVALUATION		

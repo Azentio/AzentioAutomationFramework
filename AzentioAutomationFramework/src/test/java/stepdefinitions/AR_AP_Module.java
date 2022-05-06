@@ -14,6 +14,7 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import pageobjects.ARAP_ARandAPObj;
 import pageobjects.Account_Receivable;
 import pageobjects.Accounts_Payable;
 import pageobjects.ArAp_Cancellation_of_vendorObj;
@@ -45,6 +46,7 @@ public class AR_AP_Module extends BaseClass {
 	Accounts_Payable accounts_PayableObj = new Accounts_Payable(driver);
 	Ar_Ap_AdjustmentObj arapAdjustment = new Ar_Ap_AdjustmentObj(driver);
 	Enquiry_Obj enquiryObj = new Enquiry_Obj(driver);
+	ARAP_ARandAPObj arapObj = new ARAP_ARandAPObj(driver);
 	JavascriptHelper javascriphelper = new JavascriptHelper();
 
 	//******************************@KUBS_AR/AP_UAT_001_002TC_02*********************************************************************
@@ -1663,6 +1665,25 @@ public class AR_AP_Module extends BaseClass {
 		}
 
 	}
+	
+	
+//	***********************************@KUBS_AR/AP_UAT_003_007TC_05******************************************//
+	@Then("^Give the credit note number in Adjustment Item Type$")
+    public void give_the_credit_note_number_in_adjustment_item_type() throws Throwable {
+		seleniumactions.getWaitHelper().waitForElement(driver, 2000, arapObj.adjustmentItemType());
+		arapObj.adjustmentItemType().click();
+		arapObj.adjustmentItemType().sendKeys(testdata.get("creditnotenumber"));
+		arapObj.adjustmentItemType().sendKeys(Keys.ENTER);
+    }
+	@Then("^Give The Business Partner according to creditnote$")
+    public void give_the_business_partner_according_to_creditnote() throws Throwable {
+		seleniumactions.getWaitHelper().waitForElement(driver, 2000, arapObj.adjustmentBpName());
+		arapObj.adjustmentBpName().click();
+		arapObj.adjustmentBpName().sendKeys(testdata.get("buisnessPartnerName"));
+		arapObj.adjustmentBpName().sendKeys(Keys.ENTER);
+    }
+	
+	
 //****************************************** @KUBS_AR/AP_UAT_004_001TC_01************************************
 	// active bill is available for payment settlement
 	@Given("^log in to azentio as maker$")

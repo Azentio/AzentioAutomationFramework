@@ -230,7 +230,9 @@ public class FIXEDASSETS_AssetCreationObj {
 	}
 
 	//Save Button
-	@FindBy(xpath = "(//ion-buttons[2]/ion-button[1])[2]")
+	//page-fixed-asset-impairment-update[1]/ion-header[1]/ion-toolbar[1]/ion-buttons[2]/ion-button[1]
+	//(//ion-buttons[2]/ion-button[1])[2]
+	@FindBy(xpath = "(//ion-header[1]/ion-toolbar[1]/ion-buttons[2]/ion-button[1])[2]")
 	private WebElement fixedAssets_AssetCreation_SaveButton;
 	
 	public WebElement fixedAssets_AssetCreation_SaveButton() {

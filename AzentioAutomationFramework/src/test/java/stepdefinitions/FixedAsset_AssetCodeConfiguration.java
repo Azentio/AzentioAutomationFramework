@@ -1,11 +1,16 @@
 package stepdefinitions;
 
+import java.util.HashMap;
+import java.util.Map;
+
+import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 
 import dataProvider.JsonConfig;
 import helper.ClicksAndActionsHelper;
 import helper.WaitHelper;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import pageobjects.FixedAsset_AssetCodeConfigurationObj;
 import resources.BaseClass;
@@ -19,6 +24,7 @@ public class FixedAsset_AssetCodeConfiguration extends BaseClass {
 	FixedAsset_AssetCodeConfigurationObj fixedAsset_AssetCodeConfigurationObj = new FixedAsset_AssetCodeConfigurationObj(driver);
 	FixedAsset_AssetCategoryTestDataType fixedAsset_AssetCategoryTestDataType = jsonReader.getAssetCategoryByName("Maker");
 	String AssetCode;
+	Map<String,String> codeConfigData= new HashMap<>();
 	
 	/*@Then("^Select the Asset code from the list$")
     public void select_the_asset_code_from_the_list() throws InterruptedException  {
@@ -28,6 +34,13 @@ public class FixedAsset_AssetCodeConfiguration extends BaseClass {
    	 System.out.println(AssetCode);
    	 
     }*/
+	@And("^get the active asset code in asset category module$")
+    public void get_the_active_asset_code_in_asset_category_module() throws Throwable {
+		waithelper.waitForElementVisible(driver.findElement(By.xpath("//datatable-row-wrapper[1]//datatable-body-cell[2]//span")), 3000, 300);
+     driver.findElement(By.xpath("//datatable-row-wrapper[1]//datatable-body-cell[2]//span")).getText();
+     codeConfigData.put("AssetCode", driver.findElement(By.xpath("//datatable-row-wrapper[1]//datatable-body-cell[2]//span")).getText());
+     
+    }
 	
 	@Then("^Click on Asset code configuration Eye button$")
     public void click_on_asset_code_configuration_eye_button()  {
@@ -48,7 +61,7 @@ public class FixedAsset_AssetCodeConfiguration extends BaseClass {
 	 //Asset Code	
 	  waithelper.waitForElement(driver, 4000, fixedAsset_AssetCodeConfigurationObj.fixedAsset_AssetCodeConfiguration_AssetCode());
 	  fixedAsset_AssetCodeConfigurationObj.fixedAsset_AssetCodeConfiguration_AssetCode().click();
-	  fixedAsset_AssetCodeConfigurationObj.fixedAsset_AssetCodeConfiguration_AssetCode().sendKeys(fixedAsset_AssetCategoryTestDataType.AssetCode);
+	  fixedAsset_AssetCodeConfigurationObj.fixedAsset_AssetCodeConfiguration_AssetCode().sendKeys(codeConfigData.get("AssetCode"));
 	 fixedAsset_AssetCodeConfigurationObj.fixedAsset_AssetCodeConfiguration_AssetCode().sendKeys(Keys.ENTER);
 	 
 		 

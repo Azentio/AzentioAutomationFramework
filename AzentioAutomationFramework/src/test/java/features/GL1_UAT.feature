@@ -44,21 +44,31 @@ Then Select system date as Effective date
 And Choose the Book Type what you Need
 Then Enter the Remark
 And Save the Record
-Then click on the Maker icon button
-  And click on the Record submit
-  Given Azentio Url login as Reviewer
-  Then Click on Reviewer Notification icon
-  And Click on to Reviewer Action button
-  Then Click on to Approve button in Reviewer
-  And Submit the record in reviewer
-  Given Azentio Url login as checker page
-  Then click on the security management
-  And Click on the sub module open pool near Edit icon
-  Then Click the claim option icon
-  And Click on the checker notification icon
-  Then click the checker action icon
-  And Approve the Record in checker
-  Then Submit the Record in checker
+And click notification button
+Then choose first record in the notification record
+And click on Submit button 
+Then enter remark in confirmation alert
+Then click on submit button in alert
+And capture the reviewer ID in pop up which is open when we submit our record in maker stage
+Then logout from maker
+And login with reviewer credentials
+Then click on notification button
+And select our record in notification records using reference ID
+Then Approve the record from reviewer
+And enter the remark in alert
+Then click on submit in alert
+Then verify the approval status of the record
+And logout from reviewer
+Then login as a checker 
+And click on security management menu in checker
+Then click on action button under security management menu
+And select our record and clime using reference ID
+Then click on Notification button
+Then select our record in notification records by the help of reference ID
+And click on approve button in checker stage
+Then give alert remark 
+Then click on submit button on alert
+And verify the record got approved from checker
 Given Navigate to Azentio Kubs
 And Click on Accounting Setup module
 Then Click sub module Accounting book definition
@@ -85,21 +95,31 @@ Then Click on Table Row First Edit Icons
 And Enter Modify Book Name
 #Then Validate the Message we get
 And Save the Record
-Then click on the Maker icon button
-  And click on the Record submit
-  Given Azentio Url login as Reviewer
-  Then Click on Reviewer Notification icon
-  And Click on to Reviewer Action button
-  Then Click on to Approve button in Reviewer
-  And Submit the record in reviewer
-  Given Azentio Url login as checker page
-  Then click on the security management
-  And Click on the sub module open pool near Edit icon
-  Then Click the claim option icon
-  And Click on the checker notification icon
-  Then click the checker action icon
-  And Approve the Record in checker
-  Then Submit the Record in checker
+And click notification button
+Then choose first record in the notification record
+And click on Submit button 
+Then enter remark in confirmation alert
+Then click on submit button in alert
+And capture the reviewer ID in pop up which is open when we submit our record in maker stage
+Then logout from maker
+And login with reviewer credentials
+Then click on notification button
+And select our record in notification records using reference ID
+Then Approve the record from reviewer
+And enter the remark in alert
+Then click on submit in alert
+Then verify the approval status of the record
+And logout from reviewer
+Then login as a checker 
+And click on security management menu in checker
+Then click on action button under security management menu
+And select our record and clime using reference ID
+Then click on Notification button
+Then select our record in notification records by the help of reference ID
+And click on approve button in checker stage
+Then give alert remark 
+Then click on submit button on alert
+And verify the record got approved from checker
 Given Navigate to Azentio Kubs
 And Click on Accounting Setup module
 Then Click sub module Accounting book definition
@@ -111,6 +131,7 @@ Given Navigate to Azentio Kubs
 When user click the Accounting setup
 And click the accounting book eye icon
 And get the book name
+And Click On Search Icon
 And seach the active status
 And Click the status and select deactivate
 Then save the Accounting book record 
@@ -152,6 +173,7 @@ Given Navigate to Azentio Kubs
 When user click the Accounting setup
 And click the accounting book eye icon
 And get the book name
+And Click On Search Icon
 And seach the active status
 And Click the status and select deactivate
 Then save the Accounting book record 
@@ -286,72 +308,6 @@ And select the accounting book for Income
 And enter the accounting category
 And select Gl code generation
 And Save the Record
-Then click on the Maker icon button
-  And click on the Record submit
-  Given Azentio Url login as Reviewer
-  Then Click on Reviewer Notification icon
-  And Click on to Reviewer Action button
-  Then Click on to Approve button in Reviewer
-  And Submit the record in reviewer
-  Given Azentio Url login as checker page
-  Then click on the security management
-  And Click on the sub module open pool near Edit icon
-  Then Click the claim option icon
-  And Click on the checker notification icon
-  Then click the checker action icon
-  And Approve the Record in checker
-  Then Submit the Record in checker
-Given Navigate to Azentio Kubs
-And Click on Accounting Setup module
-Then click sub module Accounting Category
-Then Click on Table Row First Eye Icon
-
-@KUBS_GL_UAT_003_004
-Scenario: Create a category for the accounting type based on the base accounting book for Expenditure
-Given Navigate to Azentio Kubs
-And Click on Accounting Setup module
-Then Click sub module Accounting book definition
-And Click On Search Icon
-When Give the type as Base Template
-And Get the Account Book Name
-Then click sub module Accounting Category
-And Click on Add icon
-And enter the category code as Expenditure
-And select the accounting book for Expenditure
-And enter the accounting category for Expenditure
-And select Gl code generation
-And Save the Record
-Then click on the Maker icon button
-  And click on the Record submit
-  Given Azentio Url login as Reviewer
-  Then Click on Reviewer Notification icon
-  And Click on to Reviewer Action button
-  Then Click on to Approve button in Reviewer
-  And Submit the record in reviewer
-  Given Azentio Url login as checker page
-  Then click on the security management
-  And Click on the sub module open pool near Edit icon
-  Then Click the claim option icon
-  And Click on the checker notification icon
-  Then click the checker action icon
-  And Approve the Record in checker
-  Then Submit the Record in checker
-Given Navigate to Azentio Kubs
-And Click on Accounting Setup module
-Then click sub module Accounting Category
-Then Click on Table Row First Eye Icon
-
-@KUBS_GL_UAT_003_005
-Scenario: Check the category already created and trying to create same accounting book
-Given Navigate to Azentio Kubs
-When user click the Accounting setup
-And click accounting category eye icon
-And click add icon in Gl
-And enter the category code as Liability
-And select the accounting book
-And enter the accounting category as Liability
-And select Gl code generation
-And click on save the accounting record
 And click notification button
 Then choose first record in the notification record
 And click on Submit button 
@@ -377,8 +333,59 @@ And click on approve button in checker stage
 Then give alert remark 
 Then click on submit button on alert
 And verify the record got approved from checker
-Then logout from checker 
-And login with Maker ID
+Given Navigate to Azentio Kubs
+And Click on Accounting Setup module
+Then click sub module Accounting Category
+Then Click on Table Row First Eye Icon
+
+@KUBS_GL_UAT_003_004
+Scenario: Create a category for the accounting type based on the base accounting book for Expenditure
+Given Navigate to Azentio Kubs
+And Click on Accounting Setup module
+Then Click sub module Accounting book definition
+And Click On Search Icon
+When Give the type as Base Template
+And Get the Account Book Name
+Then click sub module Accounting Category
+And Click on Add icon
+And enter the category code as Expenditure
+And select the accounting book for Expenditure
+And enter the accounting category for Expenditure
+And select Gl code generation
+And Save the Record
+And click notification button
+Then choose first record in the notification record
+And click on Submit button 
+Then enter remark in confirmation alert
+Then click on submit button in alert
+And capture the reviewer ID in pop up which is open when we submit our record in maker stage
+Then logout from maker
+And login with reviewer credentials
+Then click on notification button
+And select our record in notification records using reference ID
+Then Approve the record from reviewer
+And enter the remark in alert
+Then click on submit in alert
+Then verify the approval status of the record
+And logout from reviewer
+Then login as a checker 
+And click on security management menu in checker
+Then click on action button under security management menu
+And select our record and clime using reference ID
+Then click on Notification button
+Then select our record in notification records by the help of reference ID
+And click on approve button in checker stage
+Then give alert remark 
+Then click on submit button on alert
+And verify the record got approved from checker
+Given Navigate to Azentio Kubs
+And Click on Accounting Setup module
+Then click sub module Accounting Category
+Then Click on Table Row First Eye Icon
+
+@KUBS_GL_UAT_003_005
+Scenario: Check the category already created and trying to create same accounting book
+Given Navigate to Azentio Kubs
 When user click the Accounting setup
 And click accounting category eye icon
 Then verify the accounting category created for liability
@@ -420,7 +427,7 @@ Then Click on the Finance
 Then click on accounting setup
 Then Click on Chart of account definatation
 Then Click on COA add button
-Then FIll the form for COA
+Then FIll the form for COA1
 Then Click on Save buttonT
 
 Then Click on the Notification
@@ -446,7 +453,7 @@ Then Click on the Finance
 Then click on accounting setup
 Then Click on Chart of account definatation
 Then Click on COA add button
-Then FIll the form for COA
+Then FIll the form for COA2
 Then Click on Save buttonT
 
 Then Click on the Notification
@@ -471,19 +478,14 @@ Then Click on the Finance
 Then click on accounting setup
 Then Click on Chart of account definatation
 Then Click on COA add button
-Then FIll the form for COA
+Then FIll the form for COA3
 Then Click on Save buttonT
-
 Then Click on the Notification
-
-Then Click on add button of branch
-Then Fill the form for which branch we need to save
-Then Click on save button for saving branch
-Then Click on save of General Ledger
-
-Then Click on the Notification
-
-
+#Then Click on add button of branch
+#Then Fill the form for which branch we need to save
+#Then Click on save button for saving branch
+#Then Click on save of General Ledger
+#Then Click on the Notification
 Then Select the record which we saved
 Then Submit record
 Then Open Reviewer account
@@ -508,18 +510,20 @@ Then Click on Chart of account definatation
     Then click on pencil button to modify the COA
     Then modify the COA details
     Then Save and submit the modified record of COA
-    
-    And User should go to the kubs url and login as a reviewer user
-    Then Click on notification button in reviewer
-  	And approve the record by the reviewer user
-  	
-    Given User should go to the kubs url and login as a checker user
-   	And Click on security management in checker
-   	Then Click on open pool in checker
-   	And Click on claim button in checker
-   	And capture claimed status
-   	Then click on notification in checker
-    Then checker should approved the COA record
+
+Given Azentio Url login as Reviewer
+Then Click on Reviewer Notification icon
+And Click on to Reviewer Action button
+Then Click on to Approve button in Reviewer
+And Submit the record in reviewer
+Given Azentio Url login as checker page
+Then click on the security management
+And Click on the sub module open pool near Edit icon
+Then Click the claim option icon
+And Click on the checker notification icon
+Then click the checker action icon
+And Approve the Record in checker
+Then Submit the Record in checker1
     
   @KUBS_GL_UAT_005_006
   Scenario: Check the created COA can be modified after use of COA if GL entries are passed for the COA
@@ -551,7 +555,7 @@ Then Click on Chart of account definatation
     And user should navigate to accounting setup menu
     Then click on eye button of chart of accounts definition submenu
     Then click on search button
-    Then search COA name to modify the coa
+    #Then search COA name to modify the coa
     
     Then click on pencil button to modify the COA
     Then Inactive the active Chart of account
@@ -570,7 +574,7 @@ Then Click on Chart of account definatation
     Then checker should approved the COA record
     Then checker should approved the COA record
     
-    @KUBS_GL_UAT_005_009
+@KUBS_GL_UAT_005_009
 Scenario: If COA marked as de-active when accounting transaction carried out
 
 Given Navigate to URL and user should login as a maker
@@ -672,25 +676,32 @@ And click Add button
 And click next Scheme
 And click Add button
 And click save button in event mapping
-And Click on notification icon
-And select the first record
-And select the Status for EventMapping
-And click on submit buttons
-And enter remark in alert tab 
-And click on submit
-  Given Azentio Url login as Reviewer
-  Then Click on Reviewer Notification icon
-  And Click on to Reviewer Action button
-  Then Click on to Approve button in Reviewer
-  And Submit the record in reviewer
-  Given Azentio Url login as checker page
-  Then click on the security management
-  And Click on the sub module open pool near Edit icon
-  Then Click the claim option icon
-  And Click on the checker notification icon
-  Then click the checker action icon
-  And Approve the Record in checker
-  Then Submit the Record in checker
+And click notification button
+Then choose first record in the notification record
+And click on Submit button 
+Then enter remark in confirmation alert
+Then click on submit button in alert
+And capture the reviewer ID in pop up which is open when we submit our record in maker stage
+Then logout from maker
+And login with reviewer credentials
+Then click on notification button
+And select our record in notification records using reference ID
+Then Approve the record from reviewer
+And enter the remark in alert
+Then click on submit in alert
+Then verify the approval status of the record
+And logout from reviewer
+Then login as a checker 
+And click on security management menu in checker
+Then click on action button under security management menu
+And select our record and clime using reference ID
+Then click on Notification button
+Then select our record in notification records by the help of reference ID
+And click on approve button in checker stage
+Then give alert remark 
+Then click on submit button on alert
+And verify the record got approved from checker
+#Then logout from checker 
 Given Login as a Azentio Maker
 When user click the Accounting setup
 And click the Accounting Scheme Event Mapping Eye icon

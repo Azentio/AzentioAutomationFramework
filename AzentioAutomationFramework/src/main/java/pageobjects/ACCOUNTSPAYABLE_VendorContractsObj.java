@@ -459,7 +459,7 @@ public class ACCOUNTSPAYABLE_VendorContractsObj {
 	}
 
 	// Submit by maker
-	@FindBy(xpath = "//ion-row/ion-col/ion-button")
+	@FindBy(xpath = "//ion-button[contains(text(),'Submit')]")
 	private WebElement accountPayable_VendorContracts_Submit;
 
 	public WebElement accountPayable_VendorContracts_Submit() {

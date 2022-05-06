@@ -2,6 +2,7 @@ package stepdefinitions;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.Random;
 
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -77,8 +78,10 @@ public class Petty_Cash extends BaseClass {
 	@And("^Enter Expense code value$")
 	public void enter_expense_code_value() throws Throwable {
 		// -------EXPENSE CODE VALUE------//
+		Random ran = new Random();
+		int random = ran.nextInt(500-50)+50;
 		waitHelper.waitForElement(driver, 2000, pettyCashObj.Petty_Cash_ExpenseCode());
-		pettyCashObj.Petty_Cash_ExpenseCode().sendKeys(pettyData.ExpenseCode);
+		pettyCashObj.Petty_Cash_ExpenseCode().sendKeys(pettyData.ExpenseCode+random);
 	}
 
 	@Then("^Enter Expense Name Value$")

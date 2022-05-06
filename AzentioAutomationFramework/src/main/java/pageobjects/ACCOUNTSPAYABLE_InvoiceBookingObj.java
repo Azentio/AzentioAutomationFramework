@@ -14,7 +14,12 @@ public class ACCOUNTSPAYABLE_InvoiceBookingObj {
 		PageFactory.initElements(driver, this);
 	}
 //	INVOICE BOOKING SUBMODULE  //
-	
+	@FindBy(xpath="//input[@placeholder='Search Invoice Type']")
+    private WebElement invoiceBooking_SearchInvoiceType;
+    public WebElement invoiceBookingSearchInvoiceType()
+    {
+    return invoiceBooking_SearchInvoiceType;
+    }
 	//eye button of Invoice Booking
 	@FindBy(xpath = "//div[3]//ion-menu-toggle[4]//ion-item//ion-buttons//ion-button[2]")
 	private WebElement accountPayable_InvoiceBooking_EyeButton;

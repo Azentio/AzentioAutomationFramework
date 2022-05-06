@@ -1,5 +1,8 @@
 package stepdefinitions;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
@@ -19,6 +22,8 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import pageobjects.FIXEDASSET_AssetAmendmentObj;
+import pageobjects.FIXEDASSET_fixedAssetObj;
+import pageobjects.FixedAssetObj;
 import pageobjects.KUBS_CheckerObj;
 import pageobjects.KUBS_ReviewerObj;
 import resources.BaseClass;
@@ -44,7 +49,8 @@ public class FIXEDASSET_AssetAmendment extends BaseClass {
 	ClicksAndActionsHelper clickAndActionHelper = new ClicksAndActionsHelper(driver);
 	FIXEDASSET_AssetAmendmentObj assetAmendmentObj = new FIXEDASSET_AssetAmendmentObj(driver);
 	FIXEDASSET_AssetAmendmentData assetAmendmentData = jsonConfig.getAssetAmendmentByName("Asset");
-
+	FIXEDASSET_fixedAssetObj fixedAssetObj = new FIXEDASSET_fixedAssetObj(driver);
+	Map<String,String> testData= new HashMap<>();
 	@Given("^Lauch The Azentio Url$")
 	public void lauch_the_azentio_url() throws Throwable {
 
@@ -85,7 +91,11 @@ public class FIXEDASSET_AssetAmendment extends BaseClass {
 		AssetCreation = assetAmendmentObj.fixed_AssetTableRef().getText();
 		System.out.println(AssetCreation);
 	}
-
+	@And("^get the approved asset reference number to do the asset ammendment$")
+    public void get_the_approved_asset_reference_number_to_do_the_asset_ammendment() throws Throwable {
+     waitHelper.waitForElementVisible(fixedAssetObj.fixedAssetApprovedReferenceNumber(), 3000, 300);
+     
+    }
 //document.getElementsByClassName('native-input sc-ion-input-md')[4].value
 	@Then("^Click on Asset Ammendent submodule Eye Icon$")
 	public void click_on_asset_ammendent_submodule_eye_icon() throws Throwable {

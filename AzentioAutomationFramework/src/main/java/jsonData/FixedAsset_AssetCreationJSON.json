@@ -2,24 +2,24 @@
 	{
 		"User"					: "Maker",
 		"BranchCode"			: "AZENTMAIN",
-		"AssetCode"				: "01-001-desk",
+		"AssetCode"				: "MACHINARY-AIRCONDITIONER-Lloyd",
 		"BillReferenceNo"		: "INV-385-42022",
 		"Remark"				: "OK",
 		
-		"AssetItemNumber"		: "300",
-		"AssetItemNumberimpaired" : "310",
-		"AssetItemNumberRevalued" : "320",
-		"AssetItemNumberamended" : "330",
-		"AssetItemNumberReplaced" : "340",
+		"AssetItemNumber"		: "605",
+		"AssetItemNumberimpaired" : "610",
+		"AssetItemNumberRevalued" : "620",
+		"AssetItemNumberamended" : "630",
+		"AssetItemNumberReplaced" : "640",
 		"AssetItemDescription"	: "Wood box for Parcel",
 		"AssetValue"			: "95000",
 		"SalvageValue"			: "9000",
 		
 		"GlYear"				: "2023",
-		"GlDay"					: "18",
-		"GlToMonth"				: "Jan",
-		"GlFullToMonth"			: "January",
-		"GlToDate"				: "18",
+		"GlDay"					: "2",
+		"GlToMonth"				: "Feb",
+		"GlFullToMonth"			: "February",
+		"GlToDate"				: "1",
 		
 		
 		
@@ -30,7 +30,7 @@
 		"HSNcode" : "8471- Laptop",
 		"SalvagePercentage" : "5",
 		"AssetLife" : "1",
-		"PO_Creation" : "3-null-PO-2",
+		"PO_Creation" : "Azentio_Soft-Agency-8-PO-323",
 		"CheckerRemark" : "Approved",
 		"CapitalizationMonth" : "Oct",
 		"CapitalizationFullMonth" : "October",

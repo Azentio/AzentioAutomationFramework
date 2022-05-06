@@ -2,6 +2,7 @@ package stepdefinitions;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
 
 import org.junit.Assert;
 import org.openqa.selenium.By;
@@ -46,8 +47,11 @@ public class Gl_Module extends BaseClass{
 
     @And("^enter the category code$")
     public void enter_the_category_code() throws Throwable {
+    	Random ran = new Random();
+    	int rand = ran.nextInt(500-10)+10;
+    	Thread.sleep(1000);
     	glObj.enterCategoryCode().click();
-    	glObj.enterCategoryCode().sendKeys(glModuleTestdata.Categorycode);
+    	glObj.enterCategoryCode().sendKeys(glModuleTestdata.Categorycode+rand);
     }
 
     @And("^select the accounting book$")
@@ -59,6 +63,7 @@ public class Gl_Module extends BaseClass{
 
     @And("^enter the accounting categorys$")
     public void enter_the_accounting_categorys() throws Throwable {
+    	
     	glObj.enterAccountingCategory().click();
     	glObj.enterAccountingCategory().sendKeys(glModuleTestdata.AccoutingCategory);
     }
@@ -89,12 +94,16 @@ public class Gl_Module extends BaseClass{
     /**    **/
     @And("^enter the category code as Liability$")
     public void enter_the_category_code_as_liability() throws Throwable {
+    	Random ran = new Random();
+    	int rand = ran.nextInt(500-10)+10;
     	glObj.enterCategoryCode().click();
-    	glObj.enterCategoryCode().sendKeys(glModuleTestdata.Categorycode2);
+    	glObj.enterCategoryCode().sendKeys(glModuleTestdata.Categorycode2+rand);
     }
 
     @And("^enter the accounting category as Liability$")
     public void enter_the_accounting_category_as_liability() throws Throwable {
+//    	Random ran = new Random();
+//    	int rand = ran.nextInt(500-10)+10;
     	glObj.enterAccountingCategory().click();
     	glObj.enterAccountingCategory().sendKeys(glModuleTestdata.AccoutingCategory2);
     }
@@ -124,9 +133,10 @@ public class Gl_Module extends BaseClass{
     @And("^seach the active status$")
     public void seach_the_active_status() throws Throwable {
   	javascriptHelper.JavaScriptHelper(driver);
-//    	javascriptHelper.scrollIntoView(glObj.searchStatus());
-//    	glObj.searchStatus().click();
-//    	glObj.searchStatus().sendKeys(glModuleTestdata.statusactive);
+  	Thread.sleep(1000);
+    	javascriptHelper.scrollIntoView(glObj.searchStatus());    	
+    	glObj.searchStatus().click();  	
+    	glObj.searchStatus().sendKeys(glModuleTestdata.statusactive);
     	
     	while(true)
     	{
@@ -160,6 +170,7 @@ public class Gl_Module extends BaseClass{
 
     @And("^Click the status and select deactivate$")
     public void click_the_status_and_select_deactivate() throws Throwable {
+    	Thread.sleep(1000);
     	glObj.selectStatus().click();
     	glObj.selectStatus().sendKeys(Keys.DOWN);
     	glObj.selectStatus().sendKeys(Keys.ENTER);

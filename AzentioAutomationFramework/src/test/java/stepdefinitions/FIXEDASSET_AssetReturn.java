@@ -667,8 +667,9 @@ public class FIXEDASSET_AssetReturn extends BaseClass {
     }
 
     @Then("^Click on fixed asset deallocaion  Direction icon$")
-    public void click_on_fixed_asset_deallocaion_direction_icon_AssetReturn()  {
+    public void click_on_fixed_asset_deallocaion_direction_icon_AssetReturn() throws InterruptedException  {
     //Direction	
+    	Thread.sleep(2000);
     waitHelper.waitForElement(driver, 4000,  fixedAsset_AssetDeallocationObj.fixedAsset_AssetDeallocation_DirectionIcon());
     fixedAsset_AssetDeallocationObj.fixedAsset_AssetDeallocation_DirectionIcon().click();
     	

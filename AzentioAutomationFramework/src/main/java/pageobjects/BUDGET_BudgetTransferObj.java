@@ -164,7 +164,10 @@ public class BUDGET_BudgetTransferObj {
 	}
 
 	// Remark field
-	@FindBy(xpath = "//ion-content[1]/ion-infinite-scroll[1]/ion-row[1]/ion-col[1]/ion-item[1]/ion-textarea[1]/div[1]/textarea[1]")
+	//ion-label[@id='ion-textarea-0-lbl']
+	//ion-content[1]/ion-infinite-scroll[1]/ion-row[1]/ion-col[1]/ion-item[1]/ion-textarea[1]/div[1]/textarea[1]
+	//ion-row[1]/ion-col[1]/ion-item[1]/ion-textarea[1]/div[1]/textarea[1]
+	@FindBy(xpath = "//ion-row[1]/ion-col[1]/ion-item[1]/ion-textarea[1]/div[1]/textarea[1]")
 
 	private WebElement budget_BudgetTransfer_RemarkField;
 
@@ -292,6 +295,8 @@ public class BUDGET_BudgetTransferObj {
 //			
 //		}
 //Submit by maker remark
+	//(//ion-toolbar[1]/ion-buttons[2]/ion-button[1])[2])
+			//ion-button[contains(text(),'Submit')]
 	@FindBy(xpath = "//ion-button[contains(text(),'Submit')]")
 	private WebElement budget_BudgetTransfer_SubmitByMaker;
 

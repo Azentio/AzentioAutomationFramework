@@ -4,6 +4,7 @@ import static org.testng.Assert.assertTrue;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Random;
 
 import org.json.simple.parser.ParseException;
 import org.openqa.selenium.By;
@@ -66,6 +67,8 @@ public class BUSINESS_PARTNER_SETUP_BusinessPartner {
 	
 	@And("^Fill the required fields to create a vendor$")
 	public void fill_the_required_fields_to_create_a_vendor() throws InterruptedException{
+		Random random = new Random();
+		int randomNum=random.nextInt(1000-1)+1;
 		waithelper.waitForElement(driver, 2000, bUSINESS_PARTNER_SETUP_BusinessPartnerObj.businessPartner_BPType());
 		bUSINESS_PARTNER_SETUP_BusinessPartnerObj.businessPartner_BPType().sendKeys(bUSINESS_PARTNER_SETUP_BusinessPartnerTestDataType.BP_Type);
 		bUSINESS_PARTNER_SETUP_BusinessPartnerObj.businessPartner_BPType().sendKeys(Keys.ENTER);
@@ -205,7 +208,7 @@ public class BUSINESS_PARTNER_SETUP_BusinessPartner {
 		bUSINESS_PARTNER_SETUP_BusinessPartnerObj.businessPartner_Gender().sendKeys(Keys.DOWN, Keys.ENTER);
 		
 		waithelper.waitForElement(driver, 2000, bUSINESS_PARTNER_SETUP_BusinessPartnerObj.businessPartner_FirstName());
-		bUSINESS_PARTNER_SETUP_BusinessPartnerObj.businessPartner_FirstName().sendKeys(bUSINESS_PARTNER_SETUP_BusinessPartnerTestDataType.FirstName);
+		bUSINESS_PARTNER_SETUP_BusinessPartnerObj.businessPartner_FirstName().sendKeys(bUSINESS_PARTNER_SETUP_BusinessPartnerTestDataType.FirstName+randomNum);
 		
 		waithelper.waitForElement(driver, 2000, bUSINESS_PARTNER_SETUP_BusinessPartnerObj.businessPartner_MiddleName());
 		bUSINESS_PARTNER_SETUP_BusinessPartnerObj.businessPartner_MiddleName().sendKeys(bUSINESS_PARTNER_SETUP_BusinessPartnerTestDataType.MiddleName);

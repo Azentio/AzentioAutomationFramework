@@ -1,10 +1,10 @@
 [
 	{
 		"User" : "Maker",
-		"AssetReferenceNumberForTransfer" : "01-ASTSBCTGRY001-Small_AZENTMAIN_791",
-		"AssetReferenceNumberImpairedForTransfer" : "01-ASTSBCTGRY001-Small_AZENTMAIN_792",
-		"AssetReferenceNumberRevaluedForTransfer" : "01-ASTSBCTGRY001-Small_AZENTMAIN_793",
-		"AssetReferenceNumberUndertaking" : "01-ASTSBCTGRY001-Small_AZENTMAIN_794",
+		"AssetReferenceNumberForTransfer" : "01-ASTSBCTGRY001-Small",
+		"AssetReferenceNumberImpairedForTransfer" : "MACHINARY-GENERATOR-UPS_AZENTMAIN_131",
+		"AssetReferenceNumberRevaluedForTransfer" : "01-001-desk_AZENTMAIN_27",
+		"AssetReferenceNumberUndertaking" : "01-001-Plastic chairs_BR0007_60",
 		"RemarkByMaker" : "submit by maker",
 		"CheckerRemark" : "approved by checker",
 		"NewBranch" : "Dadar Branch" 

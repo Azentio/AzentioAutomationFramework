@@ -57,7 +57,9 @@ public class Reports_AssetCreationCommon {
 	
 	@Then("^click on temp grid button of asset creation item$")
 	public void click_on_temp_grid_button_of_asset_creation_item()  {
-		waithelper.waitForElement(driver, 3000, reports_AssetCreationCommonObj.Report_AssetCreationCommon_AssetCreationItemTempView());
+		javascripthelper.JavaScriptHelper(driver);
+		javascripthelper.scrollIntoView(reports_AssetCreationCommonObj.Report_AssetCreationCommon_AssetCreationItemTempView());
+		//waithelper.waitForElement(driver, 3000, reports_AssetCreationCommonObj.Report_AssetCreationCommon_AssetCreationItemTempView());
 		reports_AssetCreationCommonObj.Report_AssetCreationCommon_AssetCreationItemTempView().click();
 	}
 
@@ -105,7 +107,7 @@ public class Reports_AssetCreationCommon {
 	@And("^select the asset life unit and date to check the asset category are displaying$")
 	public void select_the_asset_life_unit_date_to_check_the_asset_category_are_displaying() throws InterruptedException {
 		
-		waithelper.waitForElement(driver, 3000, null);
+		waithelper.waitForElement(driver, 3000, reports_AssetCreationCommonObj.Report_AssetCreationItem_AssetCapitalizationDate());
 		reports_AssetCreationCommonObj.Report_AssetCreationItem_AssetCapitalizationDate().click();
 		Thread.sleep(1000);
 		while(true)
@@ -126,8 +128,27 @@ public class Reports_AssetCreationCommon {
 		WebElement FinalDay2=driver.findElement(By.xpath("//td[@aria-label='"+AssetCreationCommonTestDataType.ToFullMonth+" "+AssetCreationCommonTestDataType.ToDate+", "+AssetCreationCommonTestDataType.ToYear+"']/span"));
 		clicksAndActionHelper.doubleClick(FinalDay2);
 		
-		waithelper.waitForElement(driver, 3000, null);
+		waithelper.waitForElement(driver, 3000, reports_AssetCreationCommonObj.Report_AssetCreationItem_AssetCreationAsOnDate());
 		reports_AssetCreationCommonObj.Report_AssetCreationItem_AssetCreationAsOnDate().click();
+		Thread.sleep(1000);
+		while(true)
+        {
+		try
+		{
+		
+			waithelper.waitForElement(driver, 3000, driver.findElement(By.xpath("//span[contains(text(),'"+AssetCreationCommonTestDataType.ToMonth+" "+AssetCreationCommonTestDataType.ToYear+"')]")));
+			WebElement monthAndYear=driver.findElement(By.xpath("//span[contains(text(),'"+AssetCreationCommonTestDataType.ToMonth+" "+AssetCreationCommonTestDataType.ToYear+"')]"));
+		    break;
+		}
+		
+		catch(NoSuchElementException nosuchElement)
+		{
+			reports_AssetCreationCommonObj.Report_AssetCreationCommon_NextMonth().click();
+		}
+		}
+		WebElement FinalDay3=driver.findElement(By.xpath("//td[@aria-label='"+AssetCreationCommonTestDataType.ToFullMonth+" "+AssetCreationCommonTestDataType.ToDate+", "+AssetCreationCommonTestDataType.ToYear+"']/span"));
+		clicksAndActionHelper.doubleClick(FinalDay3);
+		
 		
 	}
 	

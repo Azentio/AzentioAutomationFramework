@@ -1,5 +1,8 @@
 package stepdefinitions;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 
@@ -7,6 +10,7 @@ import dataProvider.JsonConfig;
 import helper.ClicksAndActionsHelper;
 import helper.JavascriptHelper;
 import helper.WaitHelper;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import pageobjects.FixedAsset_AssetDeallocationObj;
 import resources.BaseClass;
@@ -21,7 +25,7 @@ public class FixedAsset_AssetDeallocation extends BaseClass {
 	FixedAsset_AssetDeallocationTestDataType fixedAsset_AssetDeallocationTestDataType = jsonReader.getAssetDeallocationByName("Maker");	
 	String AssetReferenceNumber;
 	JavascriptHelper javascripthelper = new JavascriptHelper();
-	
+	Map<String,String> mapData= new HashMap<>();
 	
 
 //    @Then("^Click on fixed asset deallocaion  Direction icon$")
@@ -43,7 +47,13 @@ public class FixedAsset_AssetDeallocation extends BaseClass {
 //      
 //    }
    
-
+	@And("^get the allocated asset reference number in asset allocation module$")
+    public void get_the_allocated_asset_reference_number_in_asset_allocation_module() throws Throwable {
+		waithelper.waitForElementVisible(fixedAsset_AssetDeallocationObj.fixedAssetAllocatedApprovedRecord(), 3000, 300);
+		mapData.put("allocatedAssetReferenceNumber", fixedAsset_AssetDeallocationObj.fixedAssetAllocatedApprovedRecord().getText());
+		System.out.println("Allocate dasset reference number is "+mapData.get("allocatedAssetReferenceNumber"));
+		
+    }
 
     @Then("^Click on asset deallocaion Eye button$")
     public void click_on_asset_deallocaion_eye_button() throws InterruptedException{
@@ -51,7 +61,7 @@ public class FixedAsset_AssetDeallocation extends BaseClass {
 Thread.sleep(1500);
    javascripthelper.JavaScriptHelper(driver);
    javascripthelper.scrollIntoView(fixedAsset_AssetDeallocationObj.fixedAsset_AssetDeallocation_EyeIcon());
-   waithelper.waitForElement(driver, 3000, fixedAsset_AssetDeallocationObj.fixedAsset_AssetDeallocation_EyeIcon());
+ //  waithelper.waitForElement(driver, 3000, fixedAsset_AssetDeallocationObj.fixedAsset_AssetDeallocation_EyeIcon());
    fixedAsset_AssetDeallocationObj.fixedAsset_AssetDeallocation_EyeIcon().click();   
         
     }
@@ -70,11 +80,31 @@ Thread.sleep(1500);
         //AssetItemNumber
         waithelper.waitForElement(driver, 2000,  fixedAsset_AssetDeallocationObj.fixedAsset_AssetDeallocation_ItemNumber());
         fixedAsset_AssetDeallocationObj.fixedAsset_AssetDeallocation_ItemNumber().click();
-        Thread.sleep(2000);
-        fixedAsset_AssetDeallocationObj.fixedAsset_AssetDeallocation_ItemNumber().sendKeys(fixedAsset_AssetDeallocationTestDataType.AssetItemNumber);
+        //Thread.sleep(2000);
+        fixedAsset_AssetDeallocationObj.fixedAsset_AssetDeallocation_ItemNumber().sendKeys(Keys.DOWN);
         fixedAsset_AssetDeallocationObj.fixedAsset_AssetDeallocation_ItemNumber().sendKeys(Keys.ENTER);
-        Thread.sleep(2000);
+        //Thread.sleep(2000);
        
+    }
+    
+    @Then("^Fill asset deallocaion Mandatory fields to deallocate the asset$")
+    public void fill_asset_deallocaion_mandatory_fields_to_deallocate_the_asset() throws Throwable {
+fixedAsset_AssetDeallocationTestDataType = jsonReader.getAssetDeallocationByName("Maker");	
+    	
+    	//AssetReferenceNumber
+        waithelper.waitForElement(driver, 2000,  fixedAsset_AssetDeallocationObj.fixedAsset_AssetDeallocation_AssetReferenceNumber());
+        fixedAsset_AssetDeallocationObj.fixedAsset_AssetDeallocation_AssetReferenceNumber().click();
+        fixedAsset_AssetDeallocationObj.fixedAsset_AssetDeallocation_AssetReferenceNumber().sendKeys(mapData.get("allocatedAssetReferenceNumber"));
+        fixedAsset_AssetDeallocationObj.fixedAsset_AssetDeallocation_AssetReferenceNumber().sendKeys(Keys.ENTER);
+       
+        
+        //AssetItemNumber
+        waithelper.waitForElement(driver, 2000,  fixedAsset_AssetDeallocationObj.fixedAsset_AssetDeallocation_ItemNumber());
+        fixedAsset_AssetDeallocationObj.fixedAsset_AssetDeallocation_ItemNumber().click();
+        Thread.sleep(1000);
+        fixedAsset_AssetDeallocationObj.fixedAsset_AssetDeallocation_ItemNumber().sendKeys(Keys.DOWN);
+        fixedAsset_AssetDeallocationObj.fixedAsset_AssetDeallocation_ItemNumber().sendKeys(Keys.ENTER);
+        //Thread.sleep(2000);
     }
     
     //----------asset transferred deallocaion --------------//
@@ -92,8 +122,9 @@ Thread.sleep(1500);
         //AssetItemNumber
         waithelper.waitForElement(driver, 4000,  fixedAsset_AssetDeallocationObj.fixedAsset_AssetDeallocation_ItemNumber());
         fixedAsset_AssetDeallocationObj.fixedAsset_AssetDeallocation_ItemNumber().click();
-        Thread.sleep(2000);
-        fixedAsset_AssetDeallocationObj.fixedAsset_AssetDeallocation_ItemNumber().sendKeys(fixedAsset_AssetDeallocationTestDataType.ItemNumberTransfer);
+        fixedAsset_AssetDeallocationObj.fixedAsset_AssetDeallocation_ItemNumber().sendKeys(Keys.DOWN);
+        //Thread.sleep(2000);
+        //fixedAsset_AssetDeallocationObj.fixedAsset_AssetDeallocation_ItemNumber().sendKeys(fixedAsset_AssetDeallocationTestDataType.ItemNumberTransfer);
         fixedAsset_AssetDeallocationObj.fixedAsset_AssetDeallocation_ItemNumber().sendKeys(Keys.ENTER);
         Thread.sleep(2000);
         
@@ -114,8 +145,9 @@ Thread.sleep(1500);
         //AssetItemNumber
         waithelper.waitForElement(driver, 2000,  fixedAsset_AssetDeallocationObj.fixedAsset_AssetDeallocation_ItemNumber());
         fixedAsset_AssetDeallocationObj.fixedAsset_AssetDeallocation_ItemNumber().click();
-        Thread.sleep(2000);
-        fixedAsset_AssetDeallocationObj.fixedAsset_AssetDeallocation_ItemNumber().sendKeys(fixedAsset_AssetDeallocationTestDataType.ItemNumberSold);
+        fixedAsset_AssetDeallocationObj.fixedAsset_AssetDeallocation_ItemNumber().sendKeys(Keys.DOWN);
+       // Thread.sleep(2000);
+       // fixedAsset_AssetDeallocationObj.fixedAsset_AssetDeallocation_ItemNumber().sendKeys(fixedAsset_AssetDeallocationTestDataType.ItemNumberSold);
         fixedAsset_AssetDeallocationObj.fixedAsset_AssetDeallocation_ItemNumber().sendKeys(Keys.ENTER);
         Thread.sleep(2000);
         
@@ -202,10 +234,10 @@ Thread.sleep(1500);
         
     	waithelper.waitForElement(driver, 2000, fixedAsset_AssetDeallocationObj.fixedAsset_AssetAllocation_ItemNumber());
     	fixedAsset_AssetDeallocationObj.fixedAsset_AssetAllocation_ItemNumber().click();
-    	Thread.sleep(1000); 
-    	fixedAsset_AssetDeallocationObj.fixedAsset_AssetAllocation_ItemNumber().sendKeys(fixedAsset_AssetDeallocationTestDataType.AssetItemNumber);
+    	//Thread.sleep(1000); 
+    	fixedAsset_AssetDeallocationObj.fixedAsset_AssetAllocation_ItemNumber().sendKeys(Keys.DOWN);
     	fixedAsset_AssetDeallocationObj.fixedAsset_AssetAllocation_ItemNumber().sendKeys(Keys.ENTER);
-    	Thread.sleep(2000); 
+    	//Thread.sleep(2000); 
     	
     	waithelper.waitForElement(driver, 2000, fixedAsset_AssetDeallocationObj.fixedAsset_AssetAllocation_EmployeeID());
     	fixedAsset_AssetDeallocationObj.fixedAsset_AssetAllocation_EmployeeID().click();

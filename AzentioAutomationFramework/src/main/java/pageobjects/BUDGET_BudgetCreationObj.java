@@ -235,4 +235,10 @@ public class BUDGET_BudgetCreationObj {
 	{
 		return budget_creation_alert_close;
 	}
+	@FindBy(xpath="//datatable-row-wrapper[1]//datatable-body-cell[2]//span")
+	private WebElement budgetCreation_approvedBudgetCode;
+	public WebElement budgetCreationApprovedBudgetCode()
+	{
+		return budgetCreation_approvedBudgetCode; 
+	}
 }

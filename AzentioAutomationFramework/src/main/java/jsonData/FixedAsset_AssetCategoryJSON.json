@@ -3,14 +3,14 @@
 		"User"					: "Maker",
 		"AssetCategory"			: "Furnitures & Fixtures",
 		"AssetSubCategory"		: "Table & Chair",
-		"AssetItemCategory"		:	"woodply10",
-		"AssetDescription"		:	"woodply10",
+		"AssetItemCategory"		:	"woodply21",
+		"AssetDescription"		:	"woodply21",
 		"Remark"				:	"ok",
 		
 		
 		
 		
-		"AssetCode"						: "01-001-woodply10",
+		"AssetCode"						: "01-001-woodply21",
 		"AccountingModel"				: "Cost Model",
 		"AssetLifeUnit" 				: "Year",
 		"AssetLife"						: "2",
@@ -32,7 +32,7 @@
 		
 		
 		
-		"StartSerialNumber"				: "101010",
+		"StartSerialNumber"				: "10111",
 		
 		
 		"AssetSaleCode" : "01-001-adjustable table",

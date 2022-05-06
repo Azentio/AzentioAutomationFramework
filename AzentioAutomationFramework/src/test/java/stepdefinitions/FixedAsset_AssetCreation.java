@@ -2,6 +2,7 @@ package stepdefinitions;
 
 import java.io.IOException;
 import java.util.NoSuchElementException;
+import java.util.Random;
 
 import org.json.simple.parser.ParseException;
 import org.openqa.selenium.By;
@@ -235,8 +236,9 @@ public class FixedAsset_AssetCreation extends BaseClass {
 	    //item details
 	    	
 	    	fixedAsset_AssetCreationTestDataType = jsonReader.getAssetCreationByName("Maker");
-	    	
-	    	waithelper.waitForElement(driver, 2000,fixedAsset_AssetCreationObj.fixedAsset_AssetCreation_AssetItemNumber());
+	    	Random random = new Random();
+	    	int randomNumber=random.nextInt(5000-9999)+5000;
+	    waithelper.waitForElement(driver, 2000,fixedAsset_AssetCreationObj.fixedAsset_AssetCreation_AssetItemNumber());
 	    	fixedAsset_AssetCreationObj.fixedAsset_AssetCreation_AssetItemNumber().click();
 	    	fixedAsset_AssetCreationObj.fixedAsset_AssetCreation_AssetItemNumber().sendKeys(fixedAsset_AssetCreationTestDataType.AssetItemNumberReplaced);
 	    	fixedAsset_AssetCreationObj.fixedAsset_AssetCreation_AssetItemNumber().sendKeys(Keys.ENTER);
@@ -346,7 +348,8 @@ public class FixedAsset_AssetCreation extends BaseClass {
 
 	    
 	    @Then("^click on report icon$")
-	    public void click_on_report_icon() {
+	    public void click_on_report_icon() throws InterruptedException {
+	    	Thread.sleep(2000);
 	    	javascripthelper.JavaScriptHelper(driver);
 	    	javascripthelper.scrollIntoViewAndClick(fixedAsset_AssetCreationObj.fixedAssets_AssetCreation_ReportIcon());
 	    }

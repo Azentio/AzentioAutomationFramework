@@ -128,7 +128,8 @@ public class AccountingSetup_ChartOfAccountsDefinitionObj {
 	}
 	
 	// Parent GL
-	@FindBy(xpath = "//ion-row[2]/ion-col[2]/app-kub-lov[1]/span[1]/ng-select[1]/div[1]/div[1]/div[3]/input[1]")
+	////ion-col[2]/app-kub-lov[1]/span[1]/ng-select[1]/div[1]/div[1]/div[2]/input[1]
+	@FindBy(xpath = "//ion-col[2]/app-kub-lov[1]/span[1]/ng-select[1]/div[1]/div[1]/div[2]/input[1]")
 	private WebElement accountingSetup_ChartOfAccountsDefinition_ParentGL;
 	
 	public WebElement accountingSetup_ChartOfAccountsDefinition_ParentGL() {
@@ -207,6 +208,15 @@ public class AccountingSetup_ChartOfAccountsDefinitionObj {
 
 	public WebElement accountingSetup_ChartOfAccountsDefinition_RecordStatus() {
 		return accountingSetup_ChartOfAccountsDefinition_RecordStatus;
+	}
+	
+	//submit
+	
+	@FindBy(xpath = "//ion-button[contains(text(),'Submit')]")
+	private WebElement accountingSetup_ChartOfAccountsDefinition_RemarkSubmit;
+
+	public WebElement accountingSetup_ChartOfAccountsDefinition_RemarkSubmit() {
+		return accountingSetup_ChartOfAccountsDefinition_RemarkSubmit;
 	}
 }
 

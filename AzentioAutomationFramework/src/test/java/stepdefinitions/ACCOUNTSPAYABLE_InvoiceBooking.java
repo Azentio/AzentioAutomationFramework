@@ -1,6 +1,7 @@
 package stepdefinitions;
 
 import java.io.IOException;
+import java.util.Random;
 
 import org.json.simple.parser.ParseException;
 import org.openqa.selenium.By;
@@ -65,6 +66,7 @@ public class ACCOUNTSPAYABLE_InvoiceBooking {
 
     @And("^Fill the required fields for invoice booking$")
     public void fill_the_required_fields_for_invoice_booking() throws InterruptedException, IOException, ParseException  {
+    	Random random = new Random();
     	javascripthelper.JavaScriptHelper(driver);
     	waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_EntityBranch());
     	aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_EntityBranch().sendKeys(aCCOUNTSPAYABLE_InvoiceBookingTestDataType.EntityBranch);
@@ -83,14 +85,16 @@ public class ACCOUNTSPAYABLE_InvoiceBooking {
 
 			waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_BP_Name());
 			aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_BP_Name().sendKeys(aCCOUNTSPAYABLE_InvoiceBookingTestDataType.BP_Name);
+			aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_BP_Name().sendKeys(Keys.DOWN);
 			aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_BP_Name().sendKeys(Keys.ENTER);
 
 			waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_CostCenter());
 			aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_CostCenter().sendKeys(aCCOUNTSPAYABLE_InvoiceBookingTestDataType.CostCenter);
 			aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_CostCenter().sendKeys(Keys.ENTER);
 
+			int randomNum=random.nextInt(5000-2500)+2500;
 			waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_SupplierReferenceNumber());
-			aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_SupplierReferenceNumber().sendKeys(aCCOUNTSPAYABLE_InvoiceBookingTestDataType.SupplierReferenceNumber);
+			aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_SupplierReferenceNumber().sendKeys(aCCOUNTSPAYABLE_InvoiceBookingTestDataType.SupplierReferenceNumber+randomNum);
 
 			waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_InvoiceDate());
 			aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_InvoiceDate().click();

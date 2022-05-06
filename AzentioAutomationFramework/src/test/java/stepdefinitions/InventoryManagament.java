@@ -1,6 +1,7 @@
 package stepdefinitions;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.ElementClickInterceptedException;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.StaleElementReferenceException;
@@ -82,6 +83,7 @@ public class InventoryManagament extends BaseClass {
 		Thread.sleep(2000);
 		waithelper.waitForElement(driver, 2000, budgetTransferObj.budget_BudgetTransfer_DirectionIcon());
 		budgetTransferObj.budget_BudgetTransfer_DirectionIcon().click();
+		Thread.sleep(2000);
 
 	} 
 	
@@ -702,10 +704,18 @@ public class InventoryManagament extends BaseClass {
 		    public void submit_record() throws Throwable {
 		    	// Submit button
 				//Thread.sleep(2000);
-				waithelper.waitForElement(driver, 2000, inventoryManagamentObj.accountPayable_SubmitButton());
+		    	javahelper.JavaScriptHelper(driver);
+		    	waithelper.waitForElement(driver, 2000, inventoryManagamentObj.accountPayable_SubmitButton());
+		    	try
+		    	{
 				inventoryManagamentObj.accountPayable_SubmitButton().click();
+		    	}
+		    	catch(ElementClickInterceptedException e)
+		    	{
+		    		javahelper.JSEClick(inventoryManagamentObj.accountPayable_SubmitButton());
+		    	}
 				//budgetTransferObj.budget_BudgetTransfer_Submit().click();
-				javahelper.JavaScriptHelper(driver);
+				
 				// Remark
 				//javahelper.JSEClick(inventoryManagamentObj.accountPayable_SubmitButton());
 				/*inventoryManagamentObj.accountPayable_SubmitButton().isDisplayed();
@@ -723,23 +733,23 @@ public class InventoryManagament extends BaseClass {
 						System.out.println(e.getMessage());
 					}
 					}*/
-				Thread.sleep(2000);	
-				waithelper.waitForElement(driver, 3000, budgetTransferObj.budget_BudgetTransfer_RemarkField());
+				Thread.sleep(3000);	
+			//	waithelper.waitForElement(driver, 2000, budgetTransferObj.budget_BudgetTransfer_RemarkField());
 				
 				//javahelper.JSEClick(budgetTransferObj.budget_BudgetTransfer_RemarkField());
 				budgetTransferObj.budget_BudgetTransfer_RemarkField().click();
-				waithelper.waitForElement(driver, 2000, budgetTransferObj.budget_BudgetTransfer_RemarkField());
-				Thread.sleep(2000);
+				//waithelper.waitForElement(driver, 2000, budgetTransferObj.budget_BudgetTransfer_RemarkField());
+				//Thread.sleep(2000);
 				budgetTransferObj.budget_BudgetTransfer_RemarkField().sendKeys("ok");
 				budgetTransferObj.budget_BudgetTransfer_RemarkField().sendKeys(Keys.ENTER);
 				
-				Thread.sleep(2000);
+				//Thread.sleep(2000);
 				// Remark Submit
 				waithelper.waitForElement(driver, 2000, budgetTransferObj.budget_BudgetTransfer_SubmitByMaker());
 				budgetTransferObj.budget_BudgetTransfer_SubmitByMaker().click();
-				Thread.sleep(2000);
+				//Thread.sleep(2000);
 				WebElement recordstatus = budgetTransferObj.budget_BudgetTransfer_RecordStatus();
-
+				Thread.sleep(2000);
 				clicksAndActionHelper.moveToElement(recordstatus);
 				String message = budgetTransferObj.budget_BudgetTransfer_RecordStatus().getText();
 				System.out.println(message);
@@ -1365,6 +1375,7 @@ public class InventoryManagament extends BaseClass {
  			@Then("^click on report button$")
 			public void click_on_report_button() throws Throwable {
  				//-----------CLICK ON REPORT ICON----------------//
+ 				Thread.sleep(2000);
  				waithelper.waitForElement(driver, 3000, inventoryManagamentObj.inventoryReportIcon());
  				inventoryManagamentObj.inventoryReportIcon().click();
  				waithelper.waitForElement(driver, 3000, inventoryManagamentObj.inventoryEnquiryMenu());
@@ -1432,7 +1443,9 @@ public class InventoryManagament extends BaseClass {
 				}
 				WebElement FinalDay = driver.findElement(By.xpath("//td[@aria-label='" + inventoryManagementTestDataType.GlFullMonth + " "
 						+ inventoryManagementTestDataType.GlDay + ", " + inventoryManagementTestDataType.GlYear + "']/span"));
+				Thread.sleep(1000);
 				clicksAndActionHelper.doubleClick(FinalDay);
+				
 			}
 
 			@And("^click on the transaction to date in calender icon$")

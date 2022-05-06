@@ -43,7 +43,9 @@ public class FIXEDASSETS_AssetRevaluation {
 	
 	@When("^click on eye button of asset revaluation$")
     public void click_on_eye_button_of_asset_revaluation() {
-		waithelper.waitForElement(driver, 3000, fIXEDASSETS_AssetUndertakingObj.fixedAssets_AssetRevaluation_EyeButton());
+		//waithelper.waitForElement(driver, 3000, fIXEDASSETS_AssetUndertakingObj.fixedAssets_AssetRevaluation_EyeButton());
+		javascripthelper.JavaScriptHelper(driver);
+		javascripthelper.scrollIntoView(fIXEDASSETS_AssetUndertakingObj.fixedAssets_AssetRevaluation_EyeButton());
 		fIXEDASSETS_AssetUndertakingObj.fixedAssets_AssetRevaluation_EyeButton().click();
     }
 	
@@ -59,11 +61,14 @@ public class FIXEDASSETS_AssetRevaluation {
 		fIXEDASSETS_AssetUndertakingObj.fixedAssets_AssetRevaluation_AssetReferenceNumber().sendKeys(fIXEDASSETS_AssetRevaluationTestDataType.AssetReferenceNumber);
 		fIXEDASSETS_AssetUndertakingObj.fixedAssets_AssetRevaluation_AssetReferenceNumber().sendKeys(Keys.ENTER);
 		
-		waithelper.waitForElement(driver, 3000, fIXEDASSETS_AssetUndertakingObj.fixedAssets_AssetRevaluation_ItemNumber());
+		//waithelper.waitForElement(driver, 3000, fIXEDASSETS_AssetUndertakingObj.fixedAssets_AssetRevaluation_ItemNumber());
+		fIXEDASSETS_AssetUndertakingObj.fixedAssets_AssetRevaluation_ItemNumber().click();
+		fIXEDASSETS_AssetUndertakingObj.fixedAssets_AssetRevaluation_ItemNumber().sendKeys(Keys.DOWN);
 		fIXEDASSETS_AssetUndertakingObj.fixedAssets_AssetRevaluation_ItemNumber().sendKeys(Keys.ENTER);
 		
 		waithelper.waitForElement(driver, 3000, fIXEDASSETS_AssetUndertakingObj.fixedAssets_AssetRevaluation_Currency());
 		fIXEDASSETS_AssetUndertakingObj.fixedAssets_AssetRevaluation_Currency().sendKeys(fIXEDASSETS_AssetRevaluationTestDataType.CurrencyForRevaluation);
+		fIXEDASSETS_AssetUndertakingObj.fixedAssets_AssetRevaluation_Currency().sendKeys(Keys.ENTER);
 		
 	}
 

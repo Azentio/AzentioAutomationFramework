@@ -403,7 +403,7 @@ driver.findElement(By.xpath("(//span[text()='" + glModuleData.GlToDate + "'])[1]
     @And("^select the Status for EventMapping$")
     public void select_the_status_for_eventmapping() throws Throwable {
         glReportsObj.selectStatusInEventMapping().click();
-        glReportsObj.selectStatusInEventMapping().sendKeys(Keys.DOWN);
+       glReportsObj.selectStatusInEventMapping().sendKeys(Keys.DOWN);
         glReportsObj.selectStatusInEventMapping().sendKeys(Keys.ENTER);
     }
 

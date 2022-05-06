@@ -1,5 +1,7 @@
 package stepdefinitions;
 
+import java.util.Random;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.ElementClickInterceptedException;
 import org.openqa.selenium.Keys;
@@ -103,6 +105,22 @@ public class BUDGET_UAT_BudgetDefinition extends BaseClass {
 		budgetCreationObj.budgetCreation_BudgetCode().sendKeys(budgetDefinitionUATTestData.uatYearlyBudgetCode);
 
 	}
+	@Then("^enter the budget code  to make current/future financial budget$")
+    public void enter_the_budget_code_to_make_current_financial_budget() throws Throwable {
+		//String budgetPrefix="BUD";
+     Random random = new Random();
+     int randomNumber=random.nextInt(999999-100000)+100000;
+     waitHelper.waitForElement(driver, 3000, budgetCreationObj.budgetCreation_BudgetCode());
+		budgetCreationObj.budgetCreation_BudgetCode().sendKeys(budgetDefinitionUATTestData.BudgetCodePrefix+randomNumber);     
+     
+    }
+	@Then("^fill the budget code field$")
+    public void fill_the_budget_code_field() throws Throwable {
+		 Random random = new Random();
+	     int randomNumber=random.nextInt(999999-100000)+100000;
+	     waitHelper.waitForElement(driver, 3000, budgetCreationObj.budgetCreation_BudgetCode());
+			budgetCreationObj.budgetCreation_BudgetCode().sendKeys(budgetDefinitionUATTestData.BudgetCodePrefix+randomNumber);     
+    }
 	@Then("^enter Budget Code for current financial yearly budget$")
     public void enter_budget_code_for_current_financial_yearly_budget() throws Throwable {
 		waitHelper.waitForElement(driver, 3000, budgetCreationObj.budgetCreation_BudgetCode());

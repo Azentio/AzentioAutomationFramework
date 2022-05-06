@@ -2,7 +2,9 @@ package stepdefinitions;
 
 import java.io.IOException;
 import org.json.simple.parser.ParseException;
+import org.junit.Assert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.ElementClickInterceptedException;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
@@ -67,6 +69,7 @@ public class FIXEDASSETS_AssetImpairement {
 		fIXEDASSETS_AssetUndertakingObj.fixedAssets_AssetImpairement_TransactionTypeImpairement().click();
 		
 		waithelper.waitForElement(driver, 3000, fIXEDASSETS_AssetUndertakingObj.fixedAssets_AssetImpairement_ItemNumber());
+		fIXEDASSETS_AssetUndertakingObj.fixedAssets_AssetImpairement_ItemNumber().click();
 		fIXEDASSETS_AssetUndertakingObj.fixedAssets_AssetImpairement_ItemNumber().sendKeys(fIXEDASSET_AssetImpairementTestDataType.ItemNumber);
 		fIXEDASSETS_AssetUndertakingObj.fixedAssets_AssetImpairement_ItemNumber().sendKeys(Keys.ENTER);
 		
@@ -78,7 +81,7 @@ public class FIXEDASSETS_AssetImpairement {
     @Then("^Save and submit the asset impairement$")
     public void save_and_submit_the_asset_creation_record() throws InterruptedException, IOException, ParseException{
     	
-    	waithelper.waitForElement(driver, 3000, fIXEDASSETS_AssetCreationObj.fixedAssets_AssetCreation_SaveButton());
+        //waithelper.waitForElement(driver, 3000, fIXEDASSETS_AssetCreationObj.fixedAssets_AssetCreation_SaveButton());
     	fIXEDASSETS_AssetCreationObj.fixedAssets_AssetCreation_SaveButton().click();
     	Thread.sleep(2000);
     	javascripthelper.JavaScriptHelper(driver);

@@ -1,5 +1,7 @@
 package stepdefinitions;
 
+import java.util.Random;
+
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 
@@ -84,6 +86,8 @@ public class GL1 {
 
 	    @Then("^FIll the form for COA$")
 	    public void fill_the_form_for_coa() throws Throwable {
+	    	Random random = new Random();
+	    	int radom = random.nextInt(500-100)+100;
 	    	waithelper.waitForElement(driver, 2000, gL1obj.accountingCategory_textBox());
 			gL1obj.accountingCategory_textBox().click(); 
 			gL1obj.accountingCategory_textBox().sendKeys(gL1TestDataType.AccountingCategory);
@@ -91,7 +95,7 @@ public class GL1 {
 			
 			waithelper.waitForElement(driver, 2000, gL1obj.cOAname_textBox());
 			gL1obj.cOAname_textBox().click(); 
-			gL1obj.cOAname_textBox().sendKeys(gL1TestDataType.coaName);
+			gL1obj.cOAname_textBox().sendKeys(gL1TestDataType.coaName+radom);
 			gL1obj.cOAname_textBox().sendKeys(Keys.ENTER);
 			
 			waithelper.waitForElement(driver, 2000, gL1obj.parentGL_textBox());
@@ -106,7 +110,7 @@ public class GL1 {
 			
 			waithelper.waitForElement(driver, 2000, gL1obj.decriptionOfGL_textBox());
 			gL1obj.decriptionOfGL_textBox().click(); 
-			gL1obj.decriptionOfGL_textBox().sendKeys(gL1TestDataType.description);
+			gL1obj.decriptionOfGL_textBox().sendKeys(gL1TestDataType.description+radom);
 			gL1obj.decriptionOfGL_textBox().sendKeys(Keys.ENTER);
 			
 			waithelper.waitForElement(driver, 2000, gL1obj.balanceType_Textbox());
@@ -117,6 +121,111 @@ public class GL1 {
 			
 	    }
 
+	    @Then("^FIll the form for COA1$")
+	    public void fill_the_form_for_coa1() throws Throwable {
+	    	Random ran = new Random();
+	    	int radom = ran.nextInt(500-100)+100;
+	    	waithelper.waitForElement(driver, 2000, gL1obj.accountingCategory_textBox());
+			gL1obj.accountingCategory_textBox().click(); 
+			gL1obj.accountingCategory_textBox().sendKeys(gL1TestDataType.AccountingCategory);
+			gL1obj.accountingCategory_textBox().sendKeys(Keys.ENTER);
+			
+			waithelper.waitForElement(driver, 2000, gL1obj.cOAname_textBox());
+			gL1obj.cOAname_textBox().click(); 
+			gL1obj.cOAname_textBox().sendKeys(gL1TestDataType.coaName1+radom);
+			gL1obj.cOAname_textBox().sendKeys(Keys.ENTER);
+			
+			waithelper.waitForElement(driver, 2000, gL1obj.parentGL_textBox());
+			gL1obj.parentGL_textBox().click(); 
+			gL1obj.parentGL_textBox().sendKeys(gL1TestDataType.parentGL1);
+			gL1obj.parentGL_textBox().sendKeys(Keys.ENTER);
+			
+			waithelper.waitForElement(driver, 2000, gL1obj.gLType_textBox());
+			gL1obj.gLType_textBox().click(); 
+			gL1obj.gLType_textBox().sendKeys(gL1TestDataType.gLType1);
+			gL1obj.gLType_textBox().sendKeys(Keys.ENTER);
+			
+			waithelper.waitForElement(driver, 2000, gL1obj.decriptionOfGL_textBox());
+			gL1obj.decriptionOfGL_textBox().click(); 
+			gL1obj.decriptionOfGL_textBox().sendKeys(gL1TestDataType.description1+radom);
+			gL1obj.decriptionOfGL_textBox().sendKeys(Keys.ENTER);
+			
+			waithelper.waitForElement(driver, 2000, gL1obj.balanceType_Textbox());
+			gL1obj.balanceType_Textbox().click(); 
+			gL1obj.balanceType_Textbox().sendKeys(gL1TestDataType.balanceType);
+			gL1obj.balanceType_Textbox().sendKeys(Keys.ENTER);
+	    }
+	    
+	    @Then("^FIll the form for COA2$")
+	    public void fill_the_form_for_coa2() throws Throwable {
+	    	Random ran = new Random();
+	    	int radom = ran.nextInt(500-100)+100;
+	    	waithelper.waitForElement(driver, 2000, gL1obj.accountingCategory_textBox());
+			gL1obj.accountingCategory_textBox().click(); 
+			gL1obj.accountingCategory_textBox().sendKeys(gL1TestDataType.AccountingCategory);
+			gL1obj.accountingCategory_textBox().sendKeys(Keys.ENTER);
+			
+			waithelper.waitForElement(driver, 2000, gL1obj.cOAname_textBox());
+			gL1obj.cOAname_textBox().click(); 
+			gL1obj.cOAname_textBox().sendKeys(gL1TestDataType.coaName2+radom);
+			gL1obj.cOAname_textBox().sendKeys(Keys.ENTER);
+			
+			waithelper.waitForElement(driver, 2000, gL1obj.parentGL_textBox());
+			gL1obj.parentGL_textBox().click(); 
+			gL1obj.parentGL_textBox().sendKeys(gL1TestDataType.parentGL2);
+			gL1obj.parentGL_textBox().sendKeys(Keys.ENTER);
+			
+			waithelper.waitForElement(driver, 2000, gL1obj.gLType_textBox());
+			gL1obj.gLType_textBox().click(); 
+			gL1obj.gLType_textBox().sendKeys(gL1TestDataType.gLType2);
+			gL1obj.gLType_textBox().sendKeys(Keys.ENTER);
+			
+			waithelper.waitForElement(driver, 2000, gL1obj.decriptionOfGL_textBox());
+			gL1obj.decriptionOfGL_textBox().click(); 
+			gL1obj.decriptionOfGL_textBox().sendKeys(gL1TestDataType.description2+radom);
+			gL1obj.decriptionOfGL_textBox().sendKeys(Keys.ENTER);
+			
+			waithelper.waitForElement(driver, 2000, gL1obj.balanceType_Textbox());
+			gL1obj.balanceType_Textbox().click(); 
+			gL1obj.balanceType_Textbox().sendKeys(gL1TestDataType.balanceType);
+			gL1obj.balanceType_Textbox().sendKeys(Keys.ENTER);
+	    }
+	    
+	    @Then("^FIll the form for COA3$")
+	    public void fill_the_form_for_coa3() throws Throwable {
+	    	Random ran = new Random();
+	    	int radom = ran.nextInt(500-100)+100;
+	    	waithelper.waitForElement(driver, 2000, gL1obj.accountingCategory_textBox());
+			gL1obj.accountingCategory_textBox().click(); 
+			gL1obj.accountingCategory_textBox().sendKeys(gL1TestDataType.AccountingCategory);
+			gL1obj.accountingCategory_textBox().sendKeys(Keys.ENTER);
+			
+			waithelper.waitForElement(driver, 2000, gL1obj.cOAname_textBox());
+			gL1obj.cOAname_textBox().click(); 
+			gL1obj.cOAname_textBox().sendKeys(gL1TestDataType.coaName3+radom);
+			gL1obj.cOAname_textBox().sendKeys(Keys.ENTER);
+			
+			waithelper.waitForElement(driver, 2000, gL1obj.parentGL_textBox());
+			gL1obj.parentGL_textBox().click(); 
+			gL1obj.parentGL_textBox().sendKeys(gL1TestDataType.parentGL3);
+			gL1obj.parentGL_textBox().sendKeys(Keys.ENTER);
+			
+			waithelper.waitForElement(driver, 2000, gL1obj.gLType_textBox());
+			gL1obj.gLType_textBox().click(); 
+			gL1obj.gLType_textBox().sendKeys(gL1TestDataType.gLType3);
+			gL1obj.gLType_textBox().sendKeys(Keys.ENTER);
+			
+			waithelper.waitForElement(driver, 2000, gL1obj.decriptionOfGL_textBox());
+			gL1obj.decriptionOfGL_textBox().click(); 
+			gL1obj.decriptionOfGL_textBox().sendKeys(gL1TestDataType.description3+radom);
+			gL1obj.decriptionOfGL_textBox().sendKeys(Keys.ENTER);
+			
+			waithelper.waitForElement(driver, 2000, gL1obj.balanceType_Textbox());
+			gL1obj.balanceType_Textbox().click(); 
+			gL1obj.balanceType_Textbox().sendKeys(gL1TestDataType.balanceType);
+			gL1obj.balanceType_Textbox().sendKeys(Keys.ENTER);
+	    }
+	    
 	    @Then("^Click on Save buttonT$")
 	    public void click_on_save_buttonT() throws Throwable {
 	    	waithelper.waitForElement(driver, 2000, gL1obj.saveButtonForGeneralLedger());
@@ -151,8 +260,6 @@ public class GL1 {
 			gL1obj.costCentre_TextBox().click(); 
 			gL1obj.costCentre_TextBox().sendKeys(gL1TestDataType.costCentre);
 			gL1obj.costCentre_TextBox().sendKeys(Keys.ENTER);
-			
-			 
 			
 	    }
 	    

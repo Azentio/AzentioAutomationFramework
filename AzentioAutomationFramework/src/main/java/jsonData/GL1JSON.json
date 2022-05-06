@@ -2,10 +2,10 @@
 {
 "User":"Maker",
 "AccountingCategory":"ASSET2-Asset1",
-"coaName":"Stool for GunMan",
+"coaName":"Chair119",
 "parentGL":"105000001-Stoolfor main branch",
 "gLType":"Sub GL",
-"description":"Stool for gunman",
+"description":"gunman109",
 "balanceType":"Debit",
 "branch":"west",
 "department":"Non IT",
@@ -13,8 +13,21 @@
 
 
 "COAnameToinactive":"Testing-Head-D22",
-"statusofCOA":"INACTIVE"
+"statusofCOA":"INACTIVE",
 
+"coaName1":"Chair105",
+"parentGL1":"105000001-Stoolfor main branch",
+"gLType1":"Sub GL",
+"description1":"gunman105",
 
+"coaName2":"Chair106",
+"parentGL2":"105000001-Stoolfor main branch",
+"gLType2":"Sub GL",
+"description2":"gunman106",
+
+"coaName3":"Chair108",
+"parentGL3":"105000001-Stoolfor main branch",
+"gLType3":"Sub GL",
+"description3":"gunman108"
 }
 ]

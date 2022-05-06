@@ -91,7 +91,7 @@ public class KUBS_ReviewerObj {
 		return reviewer_budget_status;
 	}
 
-	@FindBy(xpath = "//ion-content[1]/ion-infinite-scroll[1]/ion-row[1]/ion-col[1]/ion-item[1]/ion-textarea[1]/div[1]/textarea[1]")
+	@FindBy(xpath = "//ion-row[1]/ion-col[1]/ion-item[1]/ion-textarea[1]/div[1]/textarea[1]")
 	private WebElement reviewer_alert_remarks;
 
 	public WebElement reviewerAlertRemarks() {

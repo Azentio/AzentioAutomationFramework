@@ -34,6 +34,12 @@ public class FixedAsset_AssetDeallocationObj {
 	public WebElement fixedAsset_AssetDeallocation_EyeIcon() {
 		return fixedAsset_AssetDeallocation_EyeIcon;
 	}
+	@FindBy(xpath="//datatable-row-wrapper[1]//datatable-body-cell[5]//span")
+	private WebElement fixedAsset_AllocationApprovedRecord;
+	public WebElement fixedAssetAllocatedApprovedRecord()
+	{
+		return fixedAsset_AllocationApprovedRecord;
+	}
 	
 	
 	//AssetReferenceNumber

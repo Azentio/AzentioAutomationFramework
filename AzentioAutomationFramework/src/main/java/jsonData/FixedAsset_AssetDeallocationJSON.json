@@ -2,23 +2,25 @@
 	{
 		"User"					: "Maker",
 		"BranchCode"			: "AZENTMAIN",
-		"AssetCode"				: "01-001-desk",
+		"AssetCode"				: "MACHINARY-AIRCONDITIONER-Lloyd",
 		"BillReferenceNo"		: "INV-385-42022",
+		
 		"Remark"				: "OK",
-		"AssetItemNumber"		: "300",
-		"AssetItemNumberimpaired" : "310",
-		"AssetItemNumberRevalued" : "320",
-		"AssetItemNumberamended" : "330",
-		"AssetItemNumberReplaced" : "340",
+		
+		"AssetItemNumber"		: "605",
+		"AssetItemNumberimpaired" : "610",
+		"AssetItemNumberRevalued" : "620",
+		"AssetItemNumberamended" : "630",
+		"AssetItemNumberReplaced" : "640",
 		"AssetItemDescription"	: "Wood box for Parcel",
 		"AssetValue"			: "95000",
 		"SalvageValue"			: "9000",
 		
 		"GlYear"				: "2023",
-		"GlDay"					: "18",
+		"GlDay"					: "20",
 		"GlToMonth"				: "Jan",
 		"GlFullToMonth"			: "January",
-		"GlToDate"				: "18",
+		"GlToDate"				: "31",
 		
 		"EmployeeID"			: "anant",
 		"EmployeeIDAnother" 	: "Azentio", 
@@ -29,10 +31,10 @@
 		
 		
 		"AssetReferenceNumberTransfer": "01-001-desk_AZENTMAIN_27",
-		"ItemNumberTransfer": "250",
+		"ItemNumberTransfer": "420",
 		
 		"AssetReferenceNumberSold": "01-001-desk_AZENTMAIN_27",
-		"ItemNumberSold": "290"
+		"ItemNumberSold": "410"
 		
 		}
 ]

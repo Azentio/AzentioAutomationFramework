@@ -386,6 +386,8 @@ public class InventoryManagamentObj {
 									}		
 		
 		//Submit button
+		//ion-button[contains(text(),'Submit')]
+		//ion-header/ion-toolbar[1]/ion-buttons[2]/app-kub-decision-button[1]/div[1]/span[1]/ion-button[1]
 		 @FindBy(xpath = "//ion-header/ion-toolbar[1]/ion-buttons[2]/app-kub-decision-button[1]/div[1]/span[1]/ion-button[1]")
 			private WebElement accountPayable_SubmitButton;
 		public WebElement accountPayable_SubmitButton() {

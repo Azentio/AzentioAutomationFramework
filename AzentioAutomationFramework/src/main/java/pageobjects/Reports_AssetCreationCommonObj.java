@@ -47,7 +47,7 @@ public class Reports_AssetCreationCommonObj {
 		
 	}
 	
-	@FindBy(xpath="//div[1]//ion-menu-toggle[11]//ion-item//ion-buttons//ion-button[1]")
+	@FindBy(xpath="//ion-button[@ng-reflect-router-link='tabs/entities/asset-creation-i']")
 	private WebElement Report_AssetCreationCommon_AssetCreationItemTempView; 
 	public WebElement Report_AssetCreationCommon_AssetCreationItemTempView()
 	{
@@ -122,7 +122,7 @@ public class Reports_AssetCreationCommonObj {
 		
 	}
 	
-	@FindBy(xpath="//ion-col[1]/app-kub-date-time/ion-item/div/span/ion-icon")
+	@FindBy(xpath="(//span[@class='input-calendar'])[1]")
 	private WebElement Report_AssetCreationItem_AssetCapitalizationDate;
 	public WebElement Report_AssetCreationItem_AssetCapitalizationDate()
 	{
@@ -130,7 +130,7 @@ public class Reports_AssetCreationCommonObj {
 		
 	}
 	
-	@FindBy(xpath="//ion-col[2]/app-kub-date-time/ion-item/div/span/ion-icon")
+	@FindBy(xpath="(//span[@class='input-calendar'])[2]")
 	private WebElement Report_AssetCreationItem_AssetCreationAsOnDate;
 	public WebElement Report_AssetCreationItem_AssetCreationAsOnDate()
 	{

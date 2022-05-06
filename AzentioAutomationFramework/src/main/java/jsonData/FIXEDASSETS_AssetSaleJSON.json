@@ -1,10 +1,10 @@
 [
 	{
 		"User" : "Maker",
-		"AssetReferenceNumberForProfit" : "ELECTRONICS-LAP001-Freedom255_AZENTMAIN_272",
-		"AssetReferenceNumberForLoss" : "01-001-desk_HO0001_26",
-		"ItemNumber" : "Freedom",
-		"ItemNumberForLoss" : "freedom-2",
+		"AssetReferenceNumberForProfit" : "01-001-adjustable table_AZENTMAIN_4456",
+		"AssetReferenceNumberForLoss" : "01-001-wooden table_AZENTMAIN_5002",
+		"ItemNumber" : "Asset-654",
+		"ItemNumberForLoss" : "AIN111111",
 		"SaleValue" : "1500000.00",
 		"SaleValueInLoss" : "30000.00",
 		"Currency" : "INR",

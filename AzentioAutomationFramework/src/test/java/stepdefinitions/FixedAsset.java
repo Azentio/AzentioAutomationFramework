@@ -1,5 +1,7 @@
 package stepdefinitions;
 
+import java.util.Random;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.NoSuchElementException;
@@ -182,16 +184,17 @@ public class FixedAsset {
 	    @Then("^fill the asset item details$")
 	    public void fill_the_asset_item_details() throws Throwable  {
 	    //item details
-	    	
+	    	Random random = new Random();
+	    	int randomNumber=random.nextInt(5000-999)+5000;
 	    	fixedAssetTestDataType= jsonReader.getFixedAssetByName("Maker");
 	    	waithelper.waitForElement(driver, 2000,fixedAssetObj.fixedAsset_AssetCreation_AssetItemNumber());
 	    	fixedAssetObj.fixedAsset_AssetCreation_AssetItemNumber().click();
-	    	fixedAssetObj.fixedAsset_AssetCreation_AssetItemNumber().sendKeys(fixedAssetTestDataType.AssetItemNumber);
+	    	fixedAssetObj.fixedAsset_AssetCreation_AssetItemNumber().sendKeys(fixedAssetTestDataType.AssetItemNumber+randomNumber);
 	    	fixedAssetObj.fixedAsset_AssetCreation_AssetItemNumber().sendKeys(Keys.ENTER);
 	    	
 	    	waithelper.waitForElement(driver, 2000,fixedAssetObj.fixedAsset_AssetCreation_AssetItemDescription());
 	    	fixedAssetObj.fixedAsset_AssetCreation_AssetItemDescription().click();
-	    	fixedAssetObj.fixedAsset_AssetCreation_AssetItemDescription().sendKeys(fixedAssetTestDataType.AssetItemDescription);
+	    	fixedAssetObj.fixedAsset_AssetCreation_AssetItemDescription().sendKeys(fixedAssetTestDataType.AssetItemDescription+randomNumber);
 	    	fixedAssetObj.fixedAsset_AssetCreation_AssetItemDescription().sendKeys(Keys.ENTER);
 	       
 	    	waithelper.waitForElement(driver, 2000,fixedAssetObj.fixedAsset_AssetCreation_AssetValue());
@@ -211,7 +214,7 @@ public class FixedAsset {
 	    	ClicksAndActionsHelper clickAndActionHelper=new ClicksAndActionsHelper(driver);
 	    	waithelper.waitForElement(driver, 2000,fixedAssetObj.fixedAsset_AssetCreation_AssetItemCalendar());
 	    	fixedAssetObj.fixedAsset_AssetCreation_AssetItemCalendar().click();
-	    	Thread.sleep(2000);
+	    	Thread.sleep(1000);
 	    	while(true)
 	        {
 			try
@@ -219,7 +222,7 @@ public class FixedAsset {
 			
 				waithelper.waitForElement(driver, 3000, driver.findElement(By.xpath("//span[contains(text(),'"+fixedAssetTestDataType.GlToMonth+" "+fixedAssetTestDataType.GlYear+"')]")));
 				WebElement monthAndYear=driver.findElement(By.xpath("//span[contains(text(),'"+fixedAssetTestDataType.GlToMonth+" "+fixedAssetTestDataType.GlYear+"')]"));
-				Thread.sleep(2000);
+				Thread.sleep(1000);
 				break;
 			}
 			
@@ -478,7 +481,8 @@ public class FixedAsset {
 	    	
 	    	waithelper.waitForElement(driver, 2000, fixedAssetObj.fixedAsset_AssetAllocation_ItemNumber());
 	    	fixedAssetObj.fixedAsset_AssetAllocation_ItemNumber().click();
-	    	fixedAssetObj.fixedAsset_AssetAllocation_ItemNumber().sendKeys(fixedAssetTestDataType.ItemNumber);
+	    	fixedAssetObj.fixedAsset_AssetAllocation_ItemNumber().sendKeys(Keys.DOWN);
+	    	//fixedAssetObj.fixedAsset_AssetAllocation_ItemNumber().sendKeys(fixedAssetTestDataType.ItemNumber);
 	    	fixedAssetObj.fixedAsset_AssetAllocation_ItemNumber().sendKeys(Keys.ENTER);
 	    	
 	    	waithelper.waitForElement(driver, 2000, fixedAssetObj.fixedAsset_AssetAllocation_EmployeeID());
@@ -490,7 +494,7 @@ public class FixedAsset {
 	
 	    @Then("^Save the filled Allocation$")
 	    public void save_the_filled_allocation() throws Throwable {
-	    	waithelper.waitForElement(driver, 2000, fixedAssetObj.fixedAsset_AssetAllocation_SaveButton());
+	    	//waithelper.waitForElement(driver, 2000, fixedAssetObj.fixedAsset_AssetAllocation_SaveButton());
 	    	fixedAssetObj.fixedAsset_AssetAllocation_SaveButton().click();
 	    }
 //-----------KUBS_FAT_UAT_006_002----
@@ -504,7 +508,8 @@ public class FixedAsset {
 	    	
 	    	waithelper.waitForElement(driver, 2000, fixedAssetObj.fixedAsset_AssetAllocation_ItemNumber());
 	    	fixedAssetObj.fixedAsset_AssetAllocation_ItemNumber().click();
-	    	fixedAssetObj.fixedAsset_AssetAllocation_ItemNumber().sendKeys(fixedAssetTestDataType.ItemNumber);
+	    	fixedAssetObj.fixedAsset_AssetAllocation_ItemNumber().sendKeys(Keys.DOWN);
+	    	//fixedAssetObj.fixedAsset_AssetAllocation_ItemNumber().sendKeys(fixedAssetTestDataType.ItemNumber);
 	    	fixedAssetObj.fixedAsset_AssetAllocation_ItemNumber().sendKeys(Keys.ENTER);
 	    	
 	    	waithelper.waitForElement(driver, 2000, fixedAssetObj.fixedAsset_AssetAllocation_EmployeeID());
@@ -524,7 +529,8 @@ public class FixedAsset {
 	    	
 	    	waithelper.waitForElement(driver, 2000, fixedAssetObj.fixedAsset_AssetAllocation_ItemNumber());
 	    	fixedAssetObj.fixedAsset_AssetAllocation_ItemNumber().click();
-	    	fixedAssetObj.fixedAsset_AssetAllocation_ItemNumber().sendKeys(fixedAssetTestDataType.ItemNumber);
+	    	fixedAssetObj.fixedAsset_AssetAllocation_ItemNumber().sendKeys(Keys.DOWN);
+	    	//fixedAssetObj.fixedAsset_AssetAllocation_ItemNumber().sendKeys(fixedAssetTestDataType.ItemNumber);
 	    	fixedAssetObj.fixedAsset_AssetAllocation_ItemNumber().sendKeys(Keys.ENTER);
 	    	
 	    	waithelper.waitForElement(driver, 2000, fixedAssetObj.fixedAsset_AssetAllocation_EmployeeID());
@@ -545,7 +551,8 @@ public class FixedAsset {
 	    	
 	    	waithelper.waitForElement(driver, 2000, fixedAssetObj.fixedAsset_AssetAllocation_ItemNumber());
 	    	fixedAssetObj.fixedAsset_AssetAllocation_ItemNumber().click();
-	    	fixedAssetObj.fixedAsset_AssetAllocation_ItemNumber().sendKeys(fixedAssetTestDataType.ItemNumber);
+	    	fixedAssetObj.fixedAsset_AssetAllocation_ItemNumber().sendKeys(Keys.DOWN);
+	    	//fixedAssetObj.fixedAsset_AssetAllocation_ItemNumber().sendKeys(fixedAssetTestDataType.ItemNumber);
 	    	fixedAssetObj.fixedAsset_AssetAllocation_ItemNumber().sendKeys(Keys.ENTER);
 	    	
 	    	waithelper.waitForElement(driver, 2000, fixedAssetObj.fixedAsset_AssetAllocation_EmployeeID());

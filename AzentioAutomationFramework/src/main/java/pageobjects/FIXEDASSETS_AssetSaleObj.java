@@ -176,7 +176,7 @@ public class FIXEDASSETS_AssetSaleObj {
 	}
 
 	// Submit by maker
-	@FindBy(xpath = "//ion-row/ion-col/ion-button")
+	@FindBy(xpath = "//ion-button[contains(text(),'Submit')]")
 	private WebElement fixedAssets_AssetSale_Submit;
 
 	public WebElement fixedAssets_AssetSale_Submit() {

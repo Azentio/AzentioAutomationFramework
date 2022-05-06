@@ -1,5 +1,7 @@
 package stepdefinitions;
 
+import java.util.Random;
+
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 
@@ -89,6 +91,7 @@ public class FixedAsset_AssetCategory extends BaseClass{
 	    @Then("^Fill Asset Category Mandatory fields$")
 	    public void fill_asset_category_mandatory_fields() {
 	    fixedAsset_AssetCategoryTestDataType = jsonReader.getAssetCategoryByName("Maker");
+	    Random random = new Random();
 	  //Asset Category 	
 	  waithelper.waitForElement(driver, 4000,  fixedAsset_AssetCategoryObj.fixedAsset_AssetCategory_AssetCategoryInputField());
 	  fixedAsset_AssetCategoryObj.fixedAsset_AssetCategory_AssetCategoryInputField().click();
@@ -102,10 +105,12 @@ public class FixedAsset_AssetCategory extends BaseClass{
 	  fixedAsset_AssetCategoryObj.fixedAsset_AssetCategory_AssetSubCategory().sendKeys(Keys.ENTER);
 	 
 	  //AssetItemCategory
+	  
+	  int randomNum=random.nextInt(1000-1)+1;
 	  waithelper.waitForElement(driver, 4000,  fixedAsset_AssetCategoryObj.fixedAsset_AssetCategory_AssetItemCategory());
 	  fixedAsset_AssetCategoryObj.fixedAsset_AssetCategory_AssetItemCategory().click();
-	  fixedAsset_AssetCategoryObj.fixedAsset_AssetCategory_AssetItemCategory().sendKeys(fixedAsset_AssetCategoryTestDataType.AssetItemCategory);
-	  fixedAsset_AssetCategoryObj.fixedAsset_AssetCategory_AssetItemCategory().sendKeys(Keys.ENTER);
+	  fixedAsset_AssetCategoryObj.fixedAsset_AssetCategory_AssetItemCategory().sendKeys(fixedAsset_AssetCategoryTestDataType.AssetItemCategory+randomNum);
+	  //fixedAsset_AssetCategoryObj.fixedAsset_AssetCategory_AssetItemCategory().sendKeys(Keys.ENTER);
 	 
 	  //AssetDescription
 	  waithelper.waitForElement(driver, 4000,  fixedAsset_AssetCategoryObj.fixedAsset_AssetCategory_AssetDescription());

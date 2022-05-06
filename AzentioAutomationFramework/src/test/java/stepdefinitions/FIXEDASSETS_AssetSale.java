@@ -68,7 +68,9 @@ public class FIXEDASSETS_AssetSale {
 		
 		fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_ItemNumber().click();
 		waithelper.waitForElement(driver, 2000, fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_ItemNumber());
-		fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_ItemNumber().sendKeys(fIXEDASSETS_AssetSaleTestDataType.ItemNumber);
+		fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_ItemNumber().click();
+		fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_ItemNumber().sendKeys(Keys.DOWN);
+		//fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_ItemNumber().sendKeys(fIXEDASSETS_AssetSaleTestDataType.ItemNumber);
 		fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_ItemNumber().sendKeys(Keys.ENTER);
 		
 		waithelper.waitForElement(driver, 2000, fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_SaleValue());
@@ -93,7 +95,9 @@ public class FIXEDASSETS_AssetSale {
 		
 		fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_ItemNumber().click();
 		waithelper.waitForElement(driver, 2000, fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_ItemNumber());
-		fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_ItemNumber().sendKeys(fIXEDASSETS_AssetSaleTestDataType.ItemNumberForLoss);
+		fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_ItemNumber().click();
+		fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_ItemNumber().sendKeys(Keys.DOWN);
+		//fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_ItemNumber().sendKeys(fIXEDASSETS_AssetSaleTestDataType.ItemNumberForLoss);
 		fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_ItemNumber().sendKeys(Keys.ENTER);
 		
 		waithelper.waitForElement(driver, 2000, fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_SaleValue());

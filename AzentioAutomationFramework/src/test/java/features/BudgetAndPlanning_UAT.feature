@@ -173,12 +173,197 @@ Given navigate to given url and login with maker credentials
 Then click on budget configuration menu
 Then click on eye icon which is near by budget definition submenu
 Then verify the half yearly budget approve record is available in the approved list view
-
+@CurentFinancialYear
+Scenario: To Create the budget for current financial year
+Given navigate to given url and login with maker credentials
+Then click on budget configuration menu
+Then click on eye icon which is near by budget definition submenu
+And click on add button to create budget code
+Then enter the budget code  to make current/future financial budget
+And choose yearly option in budget type
+And give warning percentage
+And enter budget name for yearly budget
+Then enter remark
+Then click on Save button
+And click notification button
+Then choose first record in the notification record
+And click on Submit button 
+Then enter remark in confirmation alert
+Then click on submit button in alert
+And capture the reviewer ID in pop up which is open when we submit our record in maker stage
+Then logout from maker
+And login with reviewer credentials
+Then click on notification button
+And select our record in notification records using reference ID
+Then Approve the record from reviewer
+And enter the remark in alert
+Then click on submit in alert
+Then verify the approval status of the record
+And logout from reviewer
+Then login as a checker 
+And click on security management menu in checker
+Then click on action button under security management menu
+And select our record and clime using reference ID
+Then click on Notification button
+Then select our record in notification records by the help of reference ID
+And click on approve button in checker stage
+Then give alert remark 
+Then click on submit button on alert
+And verify the record got approved from checker
+Given navigate to given url and login with maker credentials
+Then click on budget configuration menu
+Then click on eye icon which is near by budget definition submenu
+And get the budget code for allocation
+  Then click the Two Direction Icon
+  And click to the Budget
+  Then click on the Budget Sub module Budget Request and Allocation Near Eye Icon
+  And click on the Add icon in Request and Allocation
+  Then Choose to the Budget Code for current financial budget
+  And select the Budget Year
+  Then click on the Branch
+  And Choose to the one Branch
+  Then click on the Branch ok button
+  Then select one currency we need
+  And Enter the Amount for yearly Budget type
+  And click on the save button
+  Then click on the Maker icon button
+  And click on the Record submit
+  Given Azentio Url login as Reviewer
+  Then Click on Reviewer Notification icon
+  And Click on to Reviewer Action button
+  Then Click on to Approve button in Reviewer
+  And Submit the record in reviewer
+  Given Azentio Url login as checker page
+  Then click on the security management
+  And Click on the sub module open pool near Edit icon
+  Then Click the claim option icon
+  And Click on the checker notification icon
+  Then click the checker action icon
+  And Approve the Record in checker
+  Then Submit the Record in checker
+  Given Navigate to the Azentio Url
+  Then click the Two Direction Icon
+  And click to the Budget
+  Then click on the Budget Sub module Budget Request and Allocation Near Eye Icon
+  
+  @Future_FinacialBudget
+  Scenario: To Create the budget for current financial year
+    Given navigate to given url and login with maker credentials
+Then click on budget configuration menu
+Then click on eye icon which is near by budget definition submenu
+And click on add button to create budget code
+Then enter the budget code  to make current/future financial budget
+And choose yearly option in budget type
+And give warning percentage
+And enter budget name for yearly budget
+Then enter remark
+Then click on Save button
+And click notification button
+Then choose first record in the notification record
+And click on Submit button 
+Then enter remark in confirmation alert
+Then click on submit button in alert
+And capture the reviewer ID in pop up which is open when we submit our record in maker stage
+Then logout from maker
+And login with reviewer credentials
+Then click on notification button
+And select our record in notification records using reference ID
+Then Approve the record from reviewer
+And enter the remark in alert
+Then click on submit in alert
+Then verify the approval status of the record
+And logout from reviewer
+Then login as a checker 
+And click on security management menu in checker
+Then click on action button under security management menu
+And select our record and clime using reference ID
+Then click on Notification button
+Then select our record in notification records by the help of reference ID
+And click on approve button in checker stage
+Then give alert remark 
+Then click on submit button on alert
+And verify the record got approved from checker
+Given navigate to given url and login with maker credentials
+Then click on budget configuration menu
+Then click on eye icon which is near by budget definition submenu
+And get the budget code for allocation
+  
+  Then click the Two Direction Icon
+  And click to the Budget
+  Then click on the Budget Sub module Budget Request and Allocation Near Eye Icon
+  And click on the Add icon in Request and Allocation
+  Then Choose to the Budget Code for future financial year budget
+  And select the Budget Year fo future 
+  Then click on the Branch
+  And Choose to the one Branch
+  Then click on the Branch ok button
+  Then select one currency we need
+  And Enter the Amount for yearly Budget type
+  And click on the save button
+  Then click on the Maker icon button
+  And click on the Record submit
+  Given Azentio Url login as Reviewer
+  Then Click on Reviewer Notification icon
+  And Click on to Reviewer Action button
+  Then Click on to Approve button in Reviewer
+  And Submit the record in reviewer
+  Given Azentio Url login as checker page
+  Then click on the security management
+  And Click on the sub module open pool near Edit icon
+  Then Click the claim option icon
+  And Click on the checker notification icon
+  Then click the checker action icon
+  And Approve the Record in checker
+  Then Submit the Record in checker
+  Given Navigate to the Azentio Url
+  Then click the Two Direction Icon
+  And click to the Budget
+  Then click on the Budget Sub module Budget Request and Allocation Near Eye Icon
 #Budget Request AndAllocation
 @KUBS_UAT_Monthly_KUBS_BP_UAT_002_001
 
 Scenario: budget for Budgetcode  type monthly
-  Given Navigate to the Azentio Url
+  Given navigate to given url and login with maker credentials
+Then click on budget configuration menu
+Then click on eye icon which is near by budget definition submenu
+And click on add button to create budget code
+Then fill the budget code field
+And choose monthly option in budget type
+And give warning percentage
+And enter budget name for monthly budget
+Then enter remark
+Then click on Save button
+And click notification button
+Then choose first record in the notification record
+And click on Submit button 
+Then enter remark in confirmation alert
+Then click on submit button in alert
+And capture the reviewer ID in pop up which is open when we submit our record in maker stage
+Then logout from maker
+And login with reviewer credentials
+Then click on notification button
+And select our record in notification records using reference ID
+Then Approve the record from reviewer
+And enter the remark in alert
+Then click on submit in alert
+Then verify the approval status of the record
+And logout from reviewer
+Then login as a checker 
+And click on security management menu in checker
+Then click on action button under security management menu
+And select our record and clime using reference ID
+Then click on Notification button
+Then select our record in notification records by the help of reference ID
+And click on approve button in checker stage
+Then give alert remark 
+Then click on submit button on alert
+And verify the record got approved from checker
+Given navigate to given url and login with maker credentials
+Then click on budget configuration menu
+Then click on eye icon which is near by budget definition submenu
+And get the budget code for allocation
+
+
   Then click the Two Direction Icon
   And click to the Budget
   Then click on the Budget Sub module Budget Request and Allocation Near Eye Icon
@@ -195,12 +380,52 @@ Scenario: budget for Budgetcode  type monthly
   @KUBS_UAT_Quarterly_KUBS_BP_UAT_002_002
   
   Scenario: budget for Budgetcode  type Quaterly
-  Given Navigate to the Azentio Url
+Given navigate to given url and login with maker credentials
+Then click on budget configuration menu
+Then click on eye icon which is near by budget definition submenu
+And click on add button to create budget code
+Then fill the budget code field
+And choose Quarterly option in budget type
+And give warning percentage
+And enter budget name for Quarterly budget
+Then enter remark
+Then click on Save button
+And click notification button
+Then choose first record in the notification record
+And click on Submit button 
+Then enter remark in confirmation alert
+Then click on submit button in alert
+And capture the reviewer ID in pop up which is open when we submit our record in maker stage
+Then logout from maker
+And login with reviewer credentials
+Then click on notification button
+And select our record in notification records using reference ID
+Then Approve the record from reviewer
+And enter the remark in alert
+Then click on submit in alert
+Then verify the approval status of the record
+And logout from reviewer
+Then login as a checker 
+And click on security management menu in checker
+Then click on action button under security management menu
+And select our record and clime using reference ID
+Then click on Notification button
+Then select our record in notification records by the help of reference ID
+And click on approve button in checker stage
+Then give alert remark 
+Then click on submit button on alert
+And verify the record got approved from checker
+Given navigate to given url and login with maker credentials
+Then click on budget configuration menu
+Then click on eye icon which is near by budget definition submenu
+And get the budget code for allocation
+
+
   Then click the Two Direction Icon
-  And click to the Budget
+    And click to the Budget
   Then click on the Budget Sub module Budget Request and Allocation Near Eye Icon
   And click on the Add icon in Request and Allocation
-  Then select to Budget Code 
+Then select the Budget Code
   And select the Budget Year
   Then click on the Branch
   And select the one Branch
@@ -212,12 +437,53 @@ Scenario: budget for Budgetcode  type monthly
   @KUBS_UAT_Halfyearly_KUBS_BP_UAT_002_003
   
   Scenario: budget for Budgetcode  type Halfyearly
-  Given Navigate to the Azentio Url
+  
+  Given navigate to given url and login with maker credentials
+Then click on budget configuration menu
+Then click on eye icon which is near by budget definition submenu
+And click on add button to create budget code
+Then fill the budget code field
+And choose half yearly option in budget type
+And give warning percentage
+And enter budget name for Quarterly budget
+Then enter remark
+Then click on Save button
+And click notification button
+Then choose first record in the notification record
+And click on Submit button 
+Then enter remark in confirmation alert
+Then click on submit button in alert
+And capture the reviewer ID in pop up which is open when we submit our record in maker stage
+Then logout from maker
+And login with reviewer credentials
+Then click on notification button
+And select our record in notification records using reference ID
+Then Approve the record from reviewer
+And enter the remark in alert
+Then click on submit in alert
+Then verify the approval status of the record
+And logout from reviewer
+Then login as a checker 
+And click on security management menu in checker
+Then click on action button under security management menu
+And select our record and clime using reference ID
+Then click on Notification button
+Then select our record in notification records by the help of reference ID
+And click on approve button in checker stage
+Then give alert remark 
+Then click on submit button on alert
+And verify the record got approved from checker
+Given navigate to given url and login with maker credentials
+Then click on budget configuration menu
+Then click on eye icon which is near by budget definition submenu
+And get the budget code for allocation
+
+
   Then click the Two Direction Icon
   And click to the Budget
   Then click on the Budget Sub module Budget Request and Allocation Near Eye Icon
   And click on the Add icon in Request and Allocation
-  Then Choose to Budget Code 
+  Then select the Budget Code 
   And select the Budget Year
   Then click on the Branch
   And select the Branch
@@ -229,12 +495,52 @@ Scenario: budget for Budgetcode  type monthly
   @KUBS_UAT_yearly_KUBS_BP_UAT_002_004
   
   Scenario: budget for Budgetcode  type yearly
-  Given Navigate to the Azentio Url
+  Given navigate to given url and login with maker credentials
+Then click on budget configuration menu
+Then click on eye icon which is near by budget definition submenu
+And click on add button to create budget code
+Then enter the budget code  to make current/future financial budget
+And choose yearly option in budget type
+And give warning percentage
+And enter budget name for yearly budget
+Then enter remark
+Then click on Save button
+And click notification button
+Then choose first record in the notification record
+And click on Submit button 
+Then enter remark in confirmation alert
+Then click on submit button in alert
+And capture the reviewer ID in pop up which is open when we submit our record in maker stage
+Then logout from maker
+And login with reviewer credentials
+Then click on notification button
+And select our record in notification records using reference ID
+Then Approve the record from reviewer
+And enter the remark in alert
+Then click on submit in alert
+Then verify the approval status of the record
+And logout from reviewer
+Then login as a checker 
+And click on security management menu in checker
+Then click on action button under security management menu
+And select our record and clime using reference ID
+Then click on Notification button
+Then select our record in notification records by the help of reference ID
+And click on approve button in checker stage
+Then give alert remark 
+Then click on submit button on alert
+And verify the record got approved from checker
+Given navigate to given url and login with maker credentials
+Then click on budget configuration menu
+Then click on eye icon which is near by budget definition submenu
+And get the budget code for allocation
+  
+  
   Then click the Two Direction Icon
   And click to the Budget
   Then click on the Budget Sub module Budget Request and Allocation Near Eye Icon
   And click on the Add icon in Request and Allocation
-  Then Choose to the Budget Code 
+  Then select the Budget Code  
   And select the Budget Year
   Then click on the Branch
   And Choose to the one Branch
@@ -246,12 +552,52 @@ Scenario: budget for Budgetcode  type monthly
   @KUBS_UAT_BudgetApprove_KUBS_BP_UAT_002_005
   
   Scenario: Check requested  budget for budget code  can be approved
-  Given Navigate to the Azentio Url
+  Given navigate to given url and login with maker credentials
+Then click on budget configuration menu
+Then click on eye icon which is near by budget definition submenu
+And click on add button to create budget code
+Then fill the budget code field
+And choose monthly option in budget type
+And give warning percentage
+And enter budget name for monthly budget
+Then enter remark
+Then click on Save button
+And click notification button
+Then choose first record in the notification record
+And click on Submit button 
+Then enter remark in confirmation alert
+Then click on submit button in alert
+And capture the reviewer ID in pop up which is open when we submit our record in maker stage
+Then logout from maker
+And login with reviewer credentials
+Then click on notification button
+And select our record in notification records using reference ID
+Then Approve the record from reviewer
+And enter the remark in alert
+Then click on submit in alert
+Then verify the approval status of the record
+And logout from reviewer
+Then login as a checker 
+And click on security management menu in checker
+Then click on action button under security management menu
+And select our record and clime using reference ID
+Then click on Notification button
+Then select our record in notification records by the help of reference ID
+And click on approve button in checker stage
+Then give alert remark 
+Then click on submit button on alert
+And verify the record got approved from checker
+Given navigate to given url and login with maker credentials
+Then click on budget configuration menu
+Then click on eye icon which is near by budget definition submenu
+And get the budget code for allocation
+
+
   Then click the Two Direction Icon
   And click to the Budget
   Then click on the Budget Sub module Budget Request and Allocation Near Eye Icon
   And click on the Add icon in Request and Allocation
-  Then To Select the Budget Code 
+  Then select the Budget Code
  	And select the Budget Year
   Then click on the Branch
   And Choose the one Branch
@@ -278,12 +624,52 @@ Scenario: budget for Budgetcode  type monthly
   @KUBS_UAT_BudgetReject_KUBS_BP_UAT_002_006
   
   Scenario: Check requested  budget for budget code  can be Rejected
-  Given Navigate to the Azentio Url
+    Given navigate to given url and login with maker credentials
+Then click on budget configuration menu
+Then click on eye icon which is near by budget definition submenu
+And click on add button to create budget code
+Then fill the budget code field
+And choose yearly option in budget type
+And give warning percentage
+And enter budget name for yearly budget
+Then enter remark
+Then click on Save button
+And click notification button
+Then choose first record in the notification record
+And click on Submit button 
+Then enter remark in confirmation alert
+Then click on submit button in alert
+And capture the reviewer ID in pop up which is open when we submit our record in maker stage
+Then logout from maker
+And login with reviewer credentials
+Then click on notification button
+And select our record in notification records using reference ID
+Then Approve the record from reviewer
+And enter the remark in alert
+Then click on submit in alert
+Then verify the approval status of the record
+And logout from reviewer
+Then login as a checker 
+And click on security management menu in checker
+Then click on action button under security management menu
+And select our record and clime using reference ID
+Then click on Notification button
+Then select our record in notification records by the help of reference ID
+And click on approve button in checker stage
+Then give alert remark 
+Then click on submit button on alert
+And verify the record got approved from checker
+Given navigate to given url and login with maker credentials
+Then click on budget configuration menu
+Then click on eye icon which is near by budget definition submenu
+And get the budget code for allocation
+  
+  
   Then click the Two Direction Icon
   And click to the Budget
   Then click on the Budget Sub module Budget Request and Allocation Near Eye Icon
   And click on the Add icon in Request and Allocation
-  Then Current Budget Code 
+  Then select the Budget Code 
  	And select the Budget Year
   Then click on the Branch
   And Select Branch checkbox
@@ -310,12 +696,52 @@ Scenario: budget for Budgetcode  type monthly
   @KUBS_UAT_KUBS_BP_UAT_002_007
   
   Scenario: Check the rejected budget can be used 
-  Given Navigate to the Azentio Url
+      Given navigate to given url and login with maker credentials
+Then click on budget configuration menu
+Then click on eye icon which is near by budget definition submenu
+And click on add button to create budget code
+Then fill the budget code field
+And choose yearly option in budget type
+And give warning percentage
+And enter budget name for yearly budget
+Then enter remark
+Then click on Save button
+And click notification button
+Then choose first record in the notification record
+And click on Submit button 
+Then enter remark in confirmation alert
+Then click on submit button in alert
+And capture the reviewer ID in pop up which is open when we submit our record in maker stage
+Then logout from maker
+And login with reviewer credentials
+Then click on notification button
+And select our record in notification records using reference ID
+Then Approve the record from reviewer
+And enter the remark in alert
+Then click on submit in alert
+Then verify the approval status of the record
+And logout from reviewer
+Then login as a checker 
+And click on security management menu in checker
+Then click on action button under security management menu
+And select our record and clime using reference ID
+Then click on Notification button
+Then select our record in notification records by the help of reference ID
+And click on approve button in checker stage
+Then give alert remark 
+Then click on submit button on alert
+And verify the record got approved from checker
+Given navigate to given url and login with maker credentials
+Then click on budget configuration menu
+Then click on eye icon which is near by budget definition submenu
+And get the budget code for allocation
+  
+
   Then click the Two Direction Icon
   And click to the Budget
   Then click on the Budget Sub module Budget Request and Allocation Near Eye Icon
   And click on the Add icon in Request and Allocation
-  Then Current Budget Code 
+  Then select the Budget Code 
  	And select the Budget Year
   Then click on the Branch
   And Select Branch checkbox
@@ -330,7 +756,7 @@ Scenario: budget for Budgetcode  type monthly
   And click to the Budget
   Then click on the Budget Sub module Budget Request and Allocation Near Eye Icon
   And click on the Add icon in Request and Allocation
-  Then Current Budget Code 
+  Then select the Budget Code  
  	And select the Budget Year
   Then click on the Branch
   And Select Branch checkbox
@@ -343,13 +769,53 @@ Scenario: budget for Budgetcode  type monthly
   @KUBS_UAT_KUBS_BP_UAT_003_001
   
   Scenario: Modificatin of the budget before HO approval
-  Given Navigate to the Azentio Url
+ Given navigate to given url and login with maker credentials
+Then click on budget configuration menu
+Then click on eye icon which is near by budget definition submenu
+And click on add button to create budget code
+Then fill the budget code field
+And choose half yearly option in budget type
+And give warning percentage
+And enter budget name for Quarterly budget
+Then enter remark
+Then click on Save button
+And click notification button
+Then choose first record in the notification record
+And click on Submit button 
+Then enter remark in confirmation alert
+Then click on submit button in alert
+And capture the reviewer ID in pop up which is open when we submit our record in maker stage
+Then logout from maker
+And login with reviewer credentials
+Then click on notification button
+And select our record in notification records using reference ID
+Then Approve the record from reviewer
+And enter the remark in alert
+Then click on submit in alert
+Then verify the approval status of the record
+And logout from reviewer
+Then login as a checker 
+And click on security management menu in checker
+Then click on action button under security management menu
+And select our record and clime using reference ID
+Then click on Notification button
+Then select our record in notification records by the help of reference ID
+And click on approve button in checker stage
+Then give alert remark 
+Then click on submit button on alert
+And verify the record got approved from checker
+Given navigate to given url and login with maker credentials
+Then click on budget configuration menu
+Then click on eye icon which is near by budget definition submenu
+And get the budget code for allocation
+
+
   Then click the Two Direction Icon
   And click to the Budget
   Then click on the Budget Sub module Budget Request and Allocation Near Eye Icon
   And click on the Add icon in Request and Allocation
-  Then Current Budget Code 
- 	And select the Budget Year
+  Then select the Budget Code
+  	And select the Budget Year
   Then click on the Branch
   And Select Branch checkbox
   Then click on the Branch ok button
@@ -392,13 +858,52 @@ Scenario: budget for Budgetcode  type monthly
 	@KUBS_UAT_KUBS_BP_UAT_003_003
 	
 	Scenario: Check for the budget request for monthly on  current financial year  accounting period is Jan to Dec and current month is on April 
-	Given Navigate to the Azentio Url
+	 Given navigate to given url and login with maker credentials
+	Then click on budget configuration menu
+Then click on eye icon which is near by budget definition submenu
+And click on add button to create budget code
+Then fill the budget code field
+And choose monthly option in budget type
+And give warning percentage
+And enter budget name for monthly budget
+Then enter remark
+Then click on Save button
+And click notification button
+Then choose first record in the notification record
+And click on Submit button 
+Then enter remark in confirmation alert
+Then click on submit button in alert
+And capture the reviewer ID in pop up which is open when we submit our record in maker stage
+Then logout from maker
+And login with reviewer credentials
+Then click on notification button
+And select our record in notification records using reference ID
+Then Approve the record from reviewer
+And enter the remark in alert
+Then click on submit in alert
+Then verify the approval status of the record
+And logout from reviewer
+Then login as a checker 
+And click on security management menu in checker
+Then click on action button under security management menu
+And select our record and clime using reference ID
+Then click on Notification button
+Then select our record in notification records by the help of reference ID
+And click on approve button in checker stage
+Then give alert remark 
+Then click on submit button on alert
+And verify the record got approved from checker
+Given navigate to given url and login with maker credentials
+Then click on budget configuration menu
+Then click on eye icon which is near by budget definition submenu
+And get the budget code for allocation
+
+
   Then click the Two Direction Icon
   And click to the Budget
   Then click on the Budget Sub module Budget Request and Allocation Near Eye Icon
   And click on the Add icon in Request and Allocation
-  Then Monthly Budget Code 
- 	And select the Budget Year
+  Then select the Budget Code
  	Then click on the Branch
   And select to one Branch
   Then click on the Branch ok button
@@ -419,12 +924,52 @@ Scenario: budget for Budgetcode  type monthly
 	@KUBS_UAT_KUBS_BP_UAT_003_004
 	
 	Scenario: Check for the budget request for Quarterly on  current financial year accounting period is Jan to Dec 
-	Given Navigate to the Azentio Url
+	Given navigate to given url and login with maker credentials
+Then click on budget configuration menu
+Then click on eye icon which is near by budget definition submenu
+And click on add button to create budget code
+Then fill the budget code field
+And choose Quarterly option in budget type
+And give warning percentage
+And enter budget name for Quarterly budget
+Then enter remark
+Then click on Save button
+And click notification button
+Then choose first record in the notification record
+And click on Submit button 
+Then enter remark in confirmation alert
+Then click on submit button in alert
+And capture the reviewer ID in pop up which is open when we submit our record in maker stage
+Then logout from maker
+And login with reviewer credentials
+Then click on notification button
+And select our record in notification records using reference ID
+Then Approve the record from reviewer
+And enter the remark in alert
+Then click on submit in alert
+Then verify the approval status of the record
+And logout from reviewer
+Then login as a checker 
+And click on security management menu in checker
+Then click on action button under security management menu
+And select our record and clime using reference ID
+Then click on Notification button
+Then select our record in notification records by the help of reference ID
+And click on approve button in checker stage
+Then give alert remark 
+Then click on submit button on alert
+And verify the record got approved from checker
+Given navigate to given url and login with maker credentials
+Then click on budget configuration menu
+Then click on eye icon which is near by budget definition submenu
+And get the budget code for allocation
+
+
   Then click the Two Direction Icon
-  And click to the Budget
+    And click to the Budget
   Then click on the Budget Sub module Budget Request and Allocation Near Eye Icon
   And click on the Add icon in Request and Allocation
-  Then Quarterly Budget Code
+Then select the Budget Code
  	And Enter the Budget Year
   Then click on the Branch
   And select to one Branch
@@ -435,12 +980,52 @@ Scenario: budget for Budgetcode  type monthly
 	@KUBS_UAT_KUBS_BP_UAT_003_005
 	
 	Scenario: Check for the budget request for Half Yearly  on  current financial year  accounting period is Jan to Dec 
-	Given Navigate to the Azentio Url
+	Given navigate to given url and login with maker credentials
+Then click on budget configuration menu
+Then click on eye icon which is near by budget definition submenu
+And click on add button to create budget code
+Then fill the budget code field
+And choose half yearly option in budget type
+And give warning percentage
+And enter budget name for Quarterly budget
+Then enter remark
+Then click on Save button
+And click notification button
+Then choose first record in the notification record
+And click on Submit button 
+Then enter remark in confirmation alert
+Then click on submit button in alert
+And capture the reviewer ID in pop up which is open when we submit our record in maker stage
+Then logout from maker
+And login with reviewer credentials
+Then click on notification button
+And select our record in notification records using reference ID
+Then Approve the record from reviewer
+And enter the remark in alert
+Then click on submit in alert
+Then verify the approval status of the record
+And logout from reviewer
+Then login as a checker 
+And click on security management menu in checker
+Then click on action button under security management menu
+And select our record and clime using reference ID
+Then click on Notification button
+Then select our record in notification records by the help of reference ID
+And click on approve button in checker stage
+Then give alert remark 
+Then click on submit button on alert
+And verify the record got approved from checker
+Given navigate to given url and login with maker credentials
+Then click on budget configuration menu
+Then click on eye icon which is near by budget definition submenu
+And get the budget code for allocation
+
+
   Then click the Two Direction Icon
   And click to the Budget
   Then click on the Budget Sub module Budget Request and Allocation Near Eye Icon
   And click on the Add icon in Request and Allocation
-  Then Halfyearly Budget Code
+  Then select the Budget Code
  	And Enter the Budget Year for halfyearly
   Then click on the Branch
   And select to one Branch
@@ -451,12 +1036,52 @@ Scenario: budget for Budgetcode  type monthly
 	@KUBS_UAT_KUBS_BP_UAT_004_001
 	
 	Scenario: Check to cancel the wrongly created budget code
-  Given Navigate to the Azentio Url
+  	Given navigate to given url and login with maker credentials
+Then click on budget configuration menu
+Then click on eye icon which is near by budget definition submenu
+And click on add button to create budget code
+Then fill the budget code field
+And choose half yearly option in budget type
+And give warning percentage
+And enter budget name for Quarterly budget
+Then enter remark
+Then click on Save button
+And click notification button
+Then choose first record in the notification record
+And click on Submit button 
+Then enter remark in confirmation alert
+Then click on submit button in alert
+And capture the reviewer ID in pop up which is open when we submit our record in maker stage
+Then logout from maker
+And login with reviewer credentials
+Then click on notification button
+And select our record in notification records using reference ID
+Then Approve the record from reviewer
+And enter the remark in alert
+Then click on submit in alert
+Then verify the approval status of the record
+And logout from reviewer
+Then login as a checker 
+And click on security management menu in checker
+Then click on action button under security management menu
+And select our record and clime using reference ID
+Then click on Notification button
+Then select our record in notification records by the help of reference ID
+And click on approve button in checker stage
+Then give alert remark 
+Then click on submit button on alert
+And verify the record got approved from checker
+Given navigate to given url and login with maker credentials
+Then click on budget configuration menu
+Then click on eye icon which is near by budget definition submenu
+And get the budget code for allocation
+
+
   Then click the Two Direction Icon
   And click to the Budget
   Then click on the Budget Sub module Budget Request and Allocation Near Eye Icon
   And click on the Add icon in Request and Allocation
-  Then select the Wrong Budget Code 
+  Then select the Budget Code 
   And select the past Budget Year
   Then click on the Branch
   And select FIRST Branch
@@ -487,12 +1112,52 @@ Scenario: budget for Budgetcode  type monthly
 	@KUBS_UAT_KUBS_BP_UAT_005_001
 	
 	Scenario: Branch requested to allocate the budget
-	Given Navigate to the Azentio Url
+	 Given navigate to given url and login with maker credentials
+Then click on budget configuration menu
+Then click on eye icon which is near by budget definition submenu
+And click on add button to create budget code
+Then enter the budget code  to make current/future financial budget
+And choose yearly option in budget type
+And give warning percentage
+And enter budget name for yearly budget
+Then enter remark
+Then click on Save button
+And click notification button
+Then choose first record in the notification record
+And click on Submit button 
+Then enter remark in confirmation alert
+Then click on submit button in alert
+And capture the reviewer ID in pop up which is open when we submit our record in maker stage
+Then logout from maker
+And login with reviewer credentials
+Then click on notification button
+And select our record in notification records using reference ID
+Then Approve the record from reviewer
+And enter the remark in alert
+Then click on submit in alert
+Then verify the approval status of the record
+And logout from reviewer
+Then login as a checker 
+And click on security management menu in checker
+Then click on action button under security management menu
+And select our record and clime using reference ID
+Then click on Notification button
+Then select our record in notification records by the help of reference ID
+And click on approve button in checker stage
+Then give alert remark 
+Then click on submit button on alert
+And verify the record got approved from checker
+Given navigate to given url and login with maker credentials
+Then click on budget configuration menu
+Then click on eye icon which is near by budget definition submenu
+And get the budget code for allocation
+  
+  
   Then click the Two Direction Icon
   And click to the Budget
   Then click on the Budget Sub module Budget Request and Allocation Near Eye Icon
   And click on the Add icon in Request and Allocation
-  Then Select the Branch Request Budget Code 
+  Then select the Budget Code 
  	And select the Budget Year
   Then click on the Branch
   And Select the Requested Branch
@@ -658,7 +1323,7 @@ When User login to maker
 Then click on configuration
 And click on finance
 Then click on direction button
-And Budget button
+Then click on budget button
 Then Click on budget transfer eye button
 Then click on add buttion
 Then fill the form

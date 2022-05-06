@@ -198,6 +198,8 @@ Scenario: Configure the asset category for asset code creation
 Given Maker Navigate to UAT URL login
 Then Click on Fixed Asset Direction icon
 Then Click on Fixed assets configuration 
+Then Click on Asset Category Eye button
+And get the active asset code in asset category module 
 Then Click on Asset code configuration Eye button
 Then Click on Fixed Asset Add button
 Then Fill Asset code configuration Mandatory fields
@@ -738,27 +740,29 @@ Then Click on Asset Allocation Eye button
 
 Scenario: Check If the de-allocated asset can be allocated to any other resource
 #Creation
-Given Maker Navigate to UAT URL login
+Given Navigate to KUBS URL and login with maker credentials
 Then Click on the Direction
 Then Click on Fixed Asset
 Then Click on Asset Creation Eye button
 Then Click on the add button to add new record
-Then Fill Form asset Creation
+Then Fill Form
 Then Save the filled form
 Then Click on the Notification
 Then Select the record which we saved
 Then Click on Fixed Asset items
 Then Click on the add button of asset items
-Then fill the asset item details asset Creation
+Then fill the asset item details
 Then Click on save button of item details
-Then Click on Fixed Asset Notification 
-And Select and Submit the record
-Then log in to the reviewer account
-Then click on the Notification select the record and Approve 
-Then log in to the Checker Account
-And then checker claim the record
-Then click on the checker Notification 
-And select the record and Approve by checker
+Then Click on the Notification
+Then Select the record which we saved
+Then Submit record
+Then Open Reviewer account
+And Click on notification
+Then Approve the record which we submitted from maker stage
+Then Go to Checker account
+And Clam the record
+Then Click on notification and approve the record
+
 #Reference
 Given Maker Navigate to UAT URL login
 Then Click on the Direction
@@ -780,11 +784,15 @@ Then click on the checker Notification
 And select the record and Approve by checker
 #Deallocation
 Given Maker Navigate to UAT URL login
+
 Then Click on fixed asset deallocaion  Direction icon
 Then Click on Fixed assets field
+Then Click on Asset Allocation Eye button
+And get the allocated asset reference number in asset allocation module
 Then Click on asset deallocaion Eye button
 Then Click on Fixed Asset Add button
-Then Fill asset deallocaion Mandatory fields
+#Then Fill asset deallocaion Mandatory fields
+Then Fill asset deallocaion Mandatory fields to deallocate the asset 
 Then Click on Fixed Asset Save button
 Then Click on Fixed Asset Notification 
 And Select and Submit the record
@@ -885,7 +893,7 @@ Then Click on the Direction
 Then Click on Fixed Asset
 Then Click on Asset Creation Eye button
 Then Select Asset Reference Number
-#Impairment
+# 
 Then Click on Asset Impairment Eye button
 Then Click on the add button to add new record
 Then fill the form for Asset Impairment
@@ -1630,6 +1638,29 @@ When capture Asset Grid view
 @KUBS_FAT_UAT_009_001
 Scenario: Check the impairement of asset 
 Given Navigate to KUBS URL and login with maker credentials
+Then Click on the Direction
+Then Click on Fixed Asset
+Then Click on Asset Creation Eye button
+Then Click on the add button to add new record
+Then Fill Form
+Then Save the filled form
+Then Click on the Notification
+Then Select the record which we saved
+Then Click on Fixed Asset items
+Then Click on the add button of asset items
+Then fill the asset item details
+Then Click on save button of item details
+Then Click on the Notification
+Then Select the record which we saved
+Then Submit record
+Then Open Reviewer account
+And Click on notification
+Then Approve the record which we submitted from maker stage
+Then Go to Checker account
+And Clam the record
+Then Click on notification and approve the record
+
+Given Navigate to KUBS URL and login with maker credentials
 And click on fixed asset main module
 And goto asset creation module
 And click on search icon
@@ -1675,11 +1706,56 @@ Then  check the approved record is displayed in appeared in maker list view stag
 @KUBS_FAT_UAT_009_002
 Scenario: Check the impairement of asset (allocated)
 Given Navigate to KUBS URL and login with maker credentials
+Then Click on the Direction
+Then Click on Fixed Asset
+Then Click on Asset Creation Eye button
+Then Click on the add button to add new record
+Then Fill Form
+Then Save the filled form
+Then Click on the Notification
+Then Select the record which we saved
+Then Click on Fixed Asset items
+Then Click on the add button of asset items
+Then fill the asset item details
+Then Click on save button of item details
+Then Click on the Notification
+Then Select the record which we saved
+Then Submit record
+Then Open Reviewer account
+And Click on notification
+Then Approve the record which we submitted from maker stage
+Then Go to Checker account
+And Clam the record
+Then Click on notification and approve the record
+
+
+Given Maker Navigate to UAT URL login
+Then Click on the Direction
+Then Click on Fixed Asset
+Then Click on Asset Creation Eye button
+Then Select Asset Reference Number
+#Allocate
+Then Click on Asset Allocation Eye button
+Then Click on the add button to add new record
+Then Fill Asset Allocation Form
+Then Click on Fixed Asset Save button
+Then Click on Fixed Asset Notification 
+And Select and Submit the record
+Then log in to the reviewer account
+Then click on the Notification select the record and Approve 
+Then log in to the Checker Account
+And then checker claim the record
+Then click on the checker Notification 
+And select the record and Approve by checker
+
+
+
+Given Navigate to KUBS URL and login with maker credentials
 And click on fixed asset main module
 And go to asset allocation module
 And click on search icon
 And get the active reference number in asset allocation module
-Then check asset reference number is availabe in the list view
+#Then check asset reference number is availabe in the list view
 And click on view button near by asset impairement module
 And click on Add Icon
 Then Check System shuld display the input fields
@@ -1723,6 +1799,73 @@ Then  check the approved record is displayed in appeared in maker list view stag
 @KUBS_FAT_UAT_009_003    
 Scenario: Check the impairement of asset (de allocated)
 Given Navigate to KUBS URL and login with maker credentials
+Then Click on the Direction
+Then Click on Fixed Asset
+Then Click on Asset Creation Eye button
+Then Click on the add button to add new record
+Then Fill Form
+Then Save the filled form
+Then Click on the Notification
+Then Select the record which we saved
+Then Click on Fixed Asset items
+Then Click on the add button of asset items
+Then fill the asset item details
+Then Click on save button of item details
+Then Click on the Notification
+Then Select the record which we saved
+Then Submit record
+Then Open Reviewer account
+And Click on notification
+Then Approve the record which we submitted from maker stage
+Then Go to Checker account
+And Clam the record
+Then Click on notification and approve the record
+
+#Reference
+Given Maker Navigate to UAT URL login
+Then Click on the Direction
+Then Click on Fixed Asset
+Then Click on Asset Creation Eye button
+Then Select Asset Reference Number
+#Allocate
+Then Click on Asset Allocation Eye button
+Then Click on the add button to add new record
+Then Fill Asset Allocation Form
+Then Click on Fixed Asset Save button
+Then Click on Fixed Asset Notification 
+And Select and Submit the record
+Then log in to the reviewer account
+Then click on the Notification select the record and Approve 
+Then log in to the Checker Account
+And then checker claim the record
+Then click on the checker Notification 
+And select the record and Approve by checker
+#Deallocation
+Given Maker Navigate to UAT URL login
+
+Then Click on fixed asset deallocaion  Direction icon
+Then Click on Fixed assets field
+Then Click on Asset Allocation Eye button
+And get the allocated asset reference number in asset allocation module
+Then Click on asset deallocaion Eye button
+Then Click on Fixed Asset Add button
+#Then Fill asset deallocaion Mandatory fields
+Then Fill asset deallocaion Mandatory fields to deallocate the asset 
+Then Click on Fixed Asset Save button
+Then Click on Fixed Asset Notification 
+And Select and Submit the record
+Then log in to the reviewer account
+Then click on the Notification select the record and Approve 
+Then log in to the Checker Account
+And then checker claim the record
+Then click on the checker Notification 
+And select the record and Approve by checker
+
+Given Navigate to KUBS URL and login with maker credentials
+
+
+
+
 And click on fixed asset main module
 And go to asset de allocation module
 And click on search icon
@@ -1769,6 +1912,58 @@ Then  check the approved record is displayed in appeared in maker list view stag
 @KUBS_FAT_UAT_009_004
 Scenario: Check the impairement of asset (re-valued)
 Given Navigate to KUBS URL and login with maker credentials
+Then Click on the Direction
+Then Click on Fixed Asset
+Then Click on Asset Creation Eye button
+Then Click on the add button to add new record
+Then Fill Form
+Then Save the filled form
+Then Click on the Notification
+Then Select the record which we saved
+Then Click on Fixed Asset items
+Then Click on the add button of asset items
+Then fill the asset item details
+Then Click on save button of item details
+Then Click on the Notification
+Then Select the record which we saved
+Then Submit record
+Then Open Reviewer account
+And Click on notification
+Then Approve the record which we submitted from maker stage
+Then Go to Checker account
+And Clam the record
+Then Click on notification and approve the record
+
+Given Navigate to KUBS URL and login with maker credentials
+Then Click on the Direction
+Then Click on Fixed Asset
+Then Click on Asset Creation Eye button
+And store the asset reference number to do the asset revaluation
+
+Then 	Asset Revaluvation submodule Eye Icon
+And 	Add Icon button
+Then 	Give Asset Referance Number
+And Select Asset Item Number
+Then Alter TheBook Value
+Then save the Revaluation record
+And Go to Maker Notification
+Then Select the first Action icon
+And Submit Record in maker
+Then Give Remark and Submit it
+Given Launch Azentio Reviewer Url
+And Reviewer Notification icon
+Then submitted record from maker
+And Approve icon from Reviewer End
+Then Enter remark and submit Record
+Given Launch Azentio Checker Url
+Then Click the Security management
+And Click the open pool Note icon
+Then Claim the record from Checker
+And Checker Notification icon
+Then Action Icon from claimed record
+And Press Approve icon
+Then Submit Record from Checker
+
 And click on fixed asset main module
 And go to revalued asset module
 And click on search icon
@@ -1815,6 +2010,61 @@ Then  check the approved record is displayed in appeared in maker list view stag
 @KUBS_FAT_UAT_009_005
  Scenario: Check the impairement of asset (ammendent)
  Given Navigate to KUBS URL and login with maker credentials
+Then Click on the Direction
+Then Click on Fixed Asset
+Then Click on Asset Creation Eye button
+Then Click on the add button to add new record
+Then Fill Form
+Then Save the filled form
+Then Click on the Notification
+Then Select the record which we saved
+Then Click on Fixed Asset items
+Then Click on the add button of asset items
+Then fill the asset item details
+Then Click on save button of item details
+Then Click on the Notification
+Then Select the record which we saved
+Then Submit record
+Then Open Reviewer account
+And Click on notification
+Then Approve the record which we submitted from maker stage
+Then Go to Checker account
+And Clam the record
+Then Click on notification and approve the record
+
+ Given Navigate to KUBS URL and login with maker credentials
+ 
+Then Click Second Segment Icon
+And Click on fixed Asset Module
+Then click on Asset creation Eye icon
+And Click to view First record and store RefNo
+Then Click on Asset Ammendent submodule Eye Icon
+And Click on Add Icon
+Then Enter Asset Referance Number
+And Enter Asset Item Number
+Then Choose Modification Type Which we need
+And Click on calender Icon
+And Choose a current date in calender
+Then Save the Asset Record
+And Click on Maker Notification
+Then Select Saved record and click on action icon
+And Submit the Asset record to Reviewer
+Given Launch the Azentio Reviewer Page
+And Click the Reviewer Notification icon
+Then Click the submitted record from maker
+And Click the Approve icon from Reviewer End
+Then Enter the remark and submit the Record
+Given Launch the Azentio Checker page
+Then Click the Security management module
+And Click the open pool Edit icon
+Then Claim the record Approved from Reviewer
+And Click the Checker Notification icon
+Then Click the Action Icon from claimed record
+And Click on Approve icon
+Then Submit the Record from Checker End
+
+ 
+ Given Navigate to KUBS URL and login with maker credentials
 And click on fixed asset main module
 And goto asset ammendent module
 And click on search icon
@@ -1860,11 +2110,53 @@ Then  check the approved record is displayed in appeared in maker list view stag
 
 
 @KUBS_FAT_UAT_009_006
-Scenario: Check the impairement of asset (Replacement)
+Scenario: Check the impairement of asset ( Replacement- maker done)
+Given Navigate to KUBS URL and login with maker credentials
+Then Click on the Direction
+Then Click on Fixed Asset
+Then Click on Asset Creation Eye button
+Then Click on the add button to add new record
+Then Fill Form
+Then Save the filled form
+Then Click on the Notification
+Then Select the record which we saved
+Then Click on Fixed Asset items
+Then Click on the add button of asset items
+Then fill the asset item details
+Then Click on save button of item details
+Then Click on the Notification
+Then Select the record which we saved
+Then Submit record
+Then Open Reviewer account
+And Click on notification
+Then Approve the record which we submitted from maker stage
+Then Go to Checker account
+And Clam the record
+Then Click on notification and approve the record
+Given Navigate to KUBS URL and login with maker credentials
+Then Click on the Direction
+Then Click on Fixed Asset
+Then Click on Asset Creation Eye button
+And get the asset reference number for do asset replacement 
+#Given Launch The Azentio Url
+#Then Click Second Segman button
+#And Click fixed Asset Module
+Then Click on Asset Replacement submodule Eye Icon
+And Click Add Icon button
+#Then Enter the Asset Referance Number
+Then Enter the Asset Referance Number which we got from aset Creation module 
+And Enter the Asset Item Number
+Then Enter the New Item Number
+And Enter the New Description
+Then save the Replacement recordss
+And Went to Maker Notification
+Then Click the first Action icon
+And Submit the Record in maker
+Then Enter Remark and Submit it
+
 Given Navigate to KUBS URL and login with maker credentials
 And click on fixed asset main module
 And goto asset replacement module
-And click on search icon
 And get the active reference number in the asset replacement module
 And click on view button near by asset impairement module
 And click on Add Icon
@@ -2686,7 +2978,31 @@ Then  check the approved record is displayed in appeared in maker list view stag
 
 @KUBS_FAT_UAT_011_001
 Scenario: Create an amendment to modify an asset for capitalization date
-Given Lauch The Azentio Url 
+Given Navigate to KUBS URL and login with maker credentials
+Then Click on the Direction
+Then Click on Fixed Asset
+Then Click on Asset Creation Eye button
+Then Click on the add button to add new record
+Then Fill Form
+Then Save the filled form
+Then Click on the Notification
+Then Select the record which we saved
+Then Click on Fixed Asset items
+Then Click on the add button of asset items
+Then fill the asset item details
+Then Click on save button of item details
+Then Click on the Notification
+Then Select the record which we saved
+Then Submit record
+Then Open Reviewer account
+And Click on notification
+Then Approve the record which we submitted from maker stage
+Then Go to Checker account
+And Clam the record
+Then Click on notification and approve the record
+
+ Given Navigate to KUBS URL and login with maker credentials
+ 
 Then Click Second Segment Icon
 And Click on fixed Asset Module
 Then click on Asset creation Eye icon
@@ -2840,9 +3156,35 @@ When capture the Asset Grid view
 
 @KUBS_FAT_UAT_012_001
 Scenario: Alter the Value of an existing asset (Any)
-Given Navigate the Maker Url
-Then  Choose Second Segmant Icon
-And 	fixed Asset Module
+Given Navigate to KUBS URL and login with maker credentials
+Then Click on the Direction
+Then Click on Fixed Asset
+Then Click on Asset Creation Eye button
+Then Click on the add button to add new record
+Then Fill Form
+Then Save the filled form
+Then Click on the Notification
+Then Select the record which we saved
+Then Click on Fixed Asset items
+Then Click on the add button of asset items
+Then fill the asset item details
+Then Click on save button of item details
+Then Click on the Notification
+Then Select the record which we saved
+Then Submit record
+Then Open Reviewer account
+And Click on notification
+Then Approve the record which we submitted from maker stage
+Then Go to Checker account
+And Clam the record
+Then Click on notification and approve the record
+
+Given Navigate to KUBS URL and login with maker credentials
+Then Click on the Direction
+Then Click on Fixed Asset
+Then Click on Asset Creation Eye button
+And store the asset reference number to do the asset revaluation
+
 Then 	Asset Revaluvation submodule Eye Icon
 And 	Add Icon button
 Then 	Give Asset Referance Number
@@ -3199,6 +3541,7 @@ Then verify the approved record is available in the report
  Then click on temp grid button of asset creation item
  And select the asset life unit and date to check the asset category are displaying
  Then click in the view button to check
+ Then the report is displaying all the asset transfer details for a branch
  
  @KUBS_FAT_UAT_013_009
  Scenario: Check Asset Contract

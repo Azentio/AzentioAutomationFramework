@@ -43,7 +43,7 @@ public class FIXEDASSET_fixedAssetObj {
 	{
 		return fixedAssetRevaluation_AssetReferenceNumber;
 	}
-	@FindBy(xpath="//datatable-row-wrapper[4]//datatable-body-cell[5]//span")
+	@FindBy(xpath="//datatable-row-wrapper[1]//datatable-body-cell[5]//span")
 	private WebElement assetAllocation_AssetReferenceNumActive;
 	public WebElement fixedAssetAllocationActiveReferenceNumber()
 	{
@@ -92,7 +92,7 @@ public class FIXEDASSET_fixedAssetObj {
 		return fixedAsset_assetReturn_action;
 	}
 
-	@FindBy(xpath = "//ion-button[@ng-reflect-router-link='/tabs/list/datagrid-view/124']")
+	@FindBy(xpath = "//ion-button[@ng-reflect-router-link='/tabs/list/datagrid/121']")
 	private WebElement fixedAsset_assetReplacement;
 
 	public WebElement fixedAssetAssetReplacement() {
@@ -178,5 +178,11 @@ public class FIXEDASSET_fixedAssetObj {
 	public WebElement fixedAssetLife()
 	{
 		return fixedAssetLife;
+	}
+	@FindBy(xpath="//datatable-row-wrapper[1]//datatable-body-cell[6]//span")
+	private WebElement fixedAsset_ApprovedAssetReferenceNumber;
+	public WebElement fixedAssetApprovedReferenceNumber()
+	{
+		return fixedAsset_ApprovedAssetReferenceNumber;
 	}
 }

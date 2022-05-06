@@ -7,6 +7,7 @@ import java.util.Random;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.ElementClickInterceptedException;
+import org.openqa.selenium.ElementNotInteractableException;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
@@ -24,13 +25,17 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import pageobjects.ACCOUNTSPAYABLE_PayementSettlementObj;
 import pageobjects.ARAP_ARandAPObj;
 import pageobjects.ARAP_ReportsObj;
+import pageobjects.AccountsReceivable_DebitNoteObj;
 import pageobjects.KUBS_CheckerObj;
 import pageobjects.KUBS_ReviewerObj;
 import resources.BaseClass;
 import resources.JsonDataReaderWriter;
 import testDataType.ARAP_ARandAPData;
+import testDataType.AccountsReceivable_DebitNoteTestDataType;
+import testDataType.AccountsReceivable_ReceiptsReversalsTestDataType;
 
 public class ARAP_AccountsReceivable_AccountsPayable extends BaseClass {
 
@@ -63,7 +68,11 @@ public class ARAP_AccountsReceivable_AccountsPayable extends BaseClass {
 	ARAP_ReportsObj arapReportObj = new ARAP_ReportsObj(driver);
 	JsonDataReaderWriter json = new JsonDataReaderWriter();
 	BrowserHelper browseHelper = new BrowserHelper(driver);
-
+	AccountsReceivable_DebitNoteObj accountsReceivable_DebitNoteObj = new AccountsReceivable_DebitNoteObj(driver);
+	AccountsReceivable_DebitNoteTestDataType DebitNoteTestDataType= jsonConfig.getDebitNotedata("Maker");
+	ACCOUNTSPAYABLE_PayementSettlementObj payementSettlementObj = new ACCOUNTSPAYABLE_PayementSettlementObj(driver);
+	
+	
 	// **********************@KUBS_AR/AP_UAT_001_001_TC_012*********************//
 
 	@Then("^Give the Invoice Number for Puchase Bill$")
@@ -149,7 +158,7 @@ public class ARAP_AccountsReceivable_AccountsPayable extends BaseClass {
 	@And("^Get Business Partner name in Invoice Bill$")
 	public void get_business_partner_name_in_invoice_bill() throws Throwable {
 		// -------GET DATA BP NAME -------//
-		waitHelper.waitForElement(driver, 2000, arapObj.ARAP_GetcancelBpName());
+		waitHelper.waitForElement(driver, 5000, arapObj.ARAP_GetcancelBpName());
 		BPNumber = arapObj.ARAP_GetcancelBpName().getText();
 		System.out.println(BPNumber);
 	}
@@ -1421,6 +1430,8 @@ public class ARAP_AccountsReceivable_AccountsPayable extends BaseClass {
 	@And("^Click On Main module Accounts Receivable$")
 	public void click_on_main_module_accounts_receivable() throws Throwable {
 		// ----------ACCOUTS RECEIVABLE----------//
+		javaScriptHelper.JavaScriptHelper(driver);
+		javaScriptHelper.scrollIntoView(arapObj.ARAP_Accountsreceivable());
 		waitHelper.waitForElement(driver, 2000, arapObj.ARAP_Accountsreceivable());
 		arapObj.ARAP_Accountsreceivable().click();
 	}
@@ -1559,7 +1570,47 @@ public class ARAP_AccountsReceivable_AccountsPayable extends BaseClass {
 	}
 
 	// ****************@KUBS_AR/AP_UAT_003_006_TC_05*******************//
-
+    @And("^get the invoice number for DebitNote$")
+    public void get_the_invoice_number_for_debitnote() throws Throwable {
+    	Thread.sleep(1000);
+		javaScriptHelper.JavaScriptHelper(driver);
+		InvoiceNo = (String) javaScriptHelper
+				.executeScript("return document.getElementsByName('billNo')[0].value");			
+    	System.out.println(InvoiceNo);
+    }
+    
+    
+    @And("^Fill the required fields in debit note$")
+    public void fill_the_required_fields_in_debit_note() throws Throwable {
+    	waitHelper.waitForElement(driver, 3000, accountsReceivable_DebitNoteObj.accountsReceivable_DebitNote_ReceivableName());
+		accountsReceivable_DebitNoteObj.accountsReceivable_DebitNote_ReceivableName().sendKeys("Purchase Return");
+		accountsReceivable_DebitNoteObj.accountsReceivable_DebitNote_ReceivableName().sendKeys(Keys.ENTER);
+		
+		waitHelper.waitForElement(driver, 3000, accountsReceivable_DebitNoteObj.accountsReceivable_DebitNote_BPName());
+		accountsReceivable_DebitNoteObj.accountsReceivable_DebitNote_BPName().sendKeys(DebitNoteTestDataType.BPName);
+		accountsReceivable_DebitNoteObj.accountsReceivable_DebitNote_BPName().sendKeys(Keys.ENTER);
+		
+		accountsReceivable_DebitNoteObj.accountsReceivable_DebitNote_InvoiceNumber().click();
+		waitHelper.waitForElement(driver, 3000, accountsReceivable_DebitNoteObj.accountsReceivable_DebitNote_InvoiceNumber());
+		accountsReceivable_DebitNoteObj.accountsReceivable_DebitNote_InvoiceNumber().sendKeys(InvoiceNo);
+		accountsReceivable_DebitNoteObj.accountsReceivable_DebitNote_InvoiceNumber().sendKeys(Keys.ENTER);
+				
+		waitHelper.waitForElement(driver, 3000, accountsReceivable_DebitNoteObj.accountsReceivable_DebitNote_DebitNoteAmount());
+		clickAndActionHelper.doubleClick(accountsReceivable_DebitNoteObj.accountsReceivable_DebitNote_DebitNoteAmount());
+		accountsReceivable_DebitNoteObj.accountsReceivable_DebitNote_DebitNoteAmount().sendKeys(DebitNoteTestDataType.DebitNoteAmount);
+		
+		javaScriptHelper.JavaScriptHelper(driver);
+		javaScriptHelper.scrollIntoView(accountsReceivable_DebitNoteObj.accountsReceivable_DebitNote_Description());
+		accountsReceivable_DebitNoteObj.accountsReceivable_DebitNote_Description().click();
+		accountsReceivable_DebitNoteObj.accountsReceivable_DebitNote_Description().sendKeys(DebitNoteTestDataType.Description);		
+		
+//		waitHelper.waitForElement(driver, 3000, arapObj.ARAP_Debit_Cost());
+//		arapObj.ARAP_Debit_Cost().click();
+//		arapObj.ARAP_Debit_Cost().sendKeys("FINANCE");
+//		arapObj.ARAP_Debit_Cost().sendKeys(Keys.ENTER);
+    }
+    
+    
 	// document.getElementsByName('debitNoteNumber')[1].value
 	@And("^Get The Bp Name and Debit Number Store It$")
 	public void get_the_bp_name_and_debit_number_store_it() throws Throwable {
@@ -1763,8 +1814,11 @@ public class ARAP_AccountsReceivable_AccountsPayable extends BaseClass {
 				javaScriptHelper.scrollIntoView(arapObj.accountsPayablePayementSettlementNextRecord());
 				arapObj.accountsPayablePayementSettlementNextRecord().click();
 
+			} catch (ElementNotInteractableException e) {
+				System.out.println("This is the end of the table invoice number is not availabe ");
+				break;
 			}
-			if (i == 13) {
+			if (i == 10) {
 				System.out.println("This is the end of the table invoice number is not availabe ");
 				break;
 
@@ -1798,7 +1852,6 @@ public class ARAP_AccountsReceivable_AccountsPayable extends BaseClass {
 				// waitHelper.waitForElementVisible(paymentSettlementObj.accountsPayablePayementSettlementNextRecord(),
 				// 1000, 100);
 				javaScriptHelper.scrollIntoView(arapObj.accountsPayablePayementSettlementNextRecord());
-
 				arapObj.accountsPayablePayementSettlementNextRecord().click();
 
 			}
@@ -1963,12 +2016,8 @@ public class ARAP_AccountsReceivable_AccountsPayable extends BaseClass {
 	@And("^Click the First Action Icon$")
 	public void click_the_first_action_icon() throws Throwable {
 		// ------------------CHECKER ACTION------------------//
-		waitHelper.waitForElement(driver, 3000, driver.findElement(By.xpath("//span[contains(text(),'"
-				+ readerData.readReferancedata()
-				+ "')]/ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell/div/ion-buttons/ion-button")));
-		driver.findElement(By.xpath("//span[contains(text(),'" + readerData.readReferancedata()
-				+ "')]/ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell/div/ion-buttons/ion-button"))
-				.click();
+		waitHelper.waitForElement(driver, 3000, driver.findElement(By.xpath("//span[contains(text(),'" + readerData.readReferancedata() + "')]/ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell/div/ion-buttons/ion-button")));
+		driver.findElement(By.xpath("//span[contains(text(),'" + readerData.readReferancedata()	+ "')]/ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell/div/ion-buttons/ion-button")).click();
 	}
 
 	@Then("^Approve the Record in checker stage$")

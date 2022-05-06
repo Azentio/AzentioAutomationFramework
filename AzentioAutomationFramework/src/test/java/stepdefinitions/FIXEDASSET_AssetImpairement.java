@@ -178,7 +178,7 @@ public class FIXEDASSET_AssetImpairement extends BaseClass {
 				Assert.fail(" Monthly Asset is not expired ");
 			}
 		} else if (assetLife.equalsIgnoreCase("Year")) {
-			if (finalAssetLife == noOfDaysBetween || finalAssetLife >= noOfDaysBetween) {
+			if (finalAssetLife == noOfDaysBetween || finalAssetLife <= noOfDaysBetween) {
 				System.out.println("Condition satisfied");
 			} else {
 				Assert.fail("Yearly Asset is not expired");
@@ -197,6 +197,7 @@ public class FIXEDASSET_AssetImpairement extends BaseClass {
 		javascriptHelper.scrollIntoViewAndClick(fixedAssetObj.fixedAssetAssetReferenceNumStatus());
 		
 		fixedAssetObj.fixedAssetAssetReferenceNumStatus().sendKeys("Active");
+		Thread.sleep(1000);
 		impairementData.put("assetReferenceNumber", fixedAssetObj.fixedAssetAllocationActiveReferenceNumber().getText());
 		System.out.println(impairementData.get("assetReferenceNumber"));
     }
@@ -257,10 +258,11 @@ public class FIXEDASSET_AssetImpairement extends BaseClass {
 	@And("^get the active reference number in the asset replacement module$")
     public void get_the_active_reference_number_in_the_asset_replacement_module() throws Throwable {
 		javascriptHelper.JavaScriptHelper(driver);
-		javascriptHelper.scrollIntoViewAndClick(fixedAssetObj.fixedAssetAssetReferenceNumStatus());
-		
-		fixedAssetObj.fixedAssetAssetReferenceNumStatus().sendKeys("Active");
-		Thread.sleep(500);
+//		javascriptHelper.scrollIntoViewAndClick(fixedAssetObj.fixedAssetAssetReferenceNumStatus());
+//		
+//		fixedAssetObj.fixedAssetAssetReferenceNumStatus().sendKeys("Active");
+//		Thread.sleep(500);
+		waitHelper.waitForElementVisible(fixedAssetObj.fixedAssetReValuationReferenceNumber(), 3000, 300);
 		impairementData.put("assetReferenceNumber", fixedAssetObj.fixedAssetReValuationReferenceNumber().getText());
 		System.out.println(impairementData.get("assetReferenceNumber"));
     }

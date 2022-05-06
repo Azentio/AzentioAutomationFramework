@@ -21,6 +21,19 @@ public class AccountsReceivable_DebitNoteObj {
 	public WebElement accountsReceivableMenu() {
 		return accountsReceivableMenu;
 	}
+	@FindBy(xpath="//ion-col[17]//input")
+	private WebElement accountsReceivable_CostCenter;
+	public WebElement accountsReceivableCostCenter()
+	{
+	return accountsReceivable_CostCenter;
+	}
+
+	@FindBy(xpath="//datatable-row-wrapper[1]//datatable-body-cell[4]//span")
+	private WebElement accountsReceivale_DebitNote_ApprovedDebitReferenceNumber;
+	public WebElement accountsReceivableDebitNoteApprovedReferenceNumber()
+	{
+	return accountsReceivale_DebitNote_ApprovedDebitReferenceNumber;
+	}
 
 	// eye button of accounts receivable debitenote
 	@FindBy(xpath = "//div[5]//ion-menu-toggle[1]//ion-item//ion-buttons//ion-button[2]")

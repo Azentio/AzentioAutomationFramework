@@ -23,5 +23,14 @@ public class AccountingSetup_ChartOfAccountsDefinitionTestDataType {
 	public String Remark;
 	public String RemarkByMaker;
 	public String ApprovedByChecker;
-
+	
+	public String COA_Name1;
+	public String ExternalMappingCode1;
+	public String ParentGL1;
+	public String GL_Type1;
+	
+	public String GL_TypeModifiedForUsedCOA1;
+	public String BalanceType1;
+	public String Description1;
+	public String statusofCOA;
 }

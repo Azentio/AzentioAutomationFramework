@@ -1,5 +1,8 @@
 package stepdefinitions;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
@@ -16,6 +19,7 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import pageobjects.FIXEDASSET_AssetReplacementObj;
+import pageobjects.FIXEDASSET_fixedAssetObj;
 import pageobjects.KUBS_CheckerObj;
 import pageobjects.KUBS_ReviewerObj;
 import resources.BaseClass;
@@ -46,6 +50,8 @@ public class FIXEDASSET_AssetReplacement extends BaseClass {
 	JavascriptHelper javascripthelper = new JavascriptHelper();
 	FIXEDASSET_AssetImpairementTestDataType fixedAssetImairementTestData = jsonConfig
 			.getFixedAssetTestDataByName("Maker");
+	FIXEDASSET_fixedAssetObj fixedAssetObj = new FIXEDASSET_fixedAssetObj(driver);
+	Map<String,String> testData= new HashMap<>();
 
 	// **********************@KUBS_FAT_UAT_008_001************************//
 
@@ -74,7 +80,13 @@ public class FIXEDASSET_AssetReplacement extends BaseClass {
 		waitHelper.waitForElement(driver, 2000, assetReplacement.fixed_FixedAssets());
 		assetReplacement.fixed_FixedAssets().click();
 	}
-
+	@And("^get the asset reference number for do asset replacement$")
+    public void get_the_asset_reference_number_for_do_asset_replacement() throws Throwable {
+		waitHelper.waitForElementVisible(fixedAssetObj.fixedAssetApprovedReferenceNumber(), 3000, 300);
+		testData.put("AssetReferemnceNumber", fixedAssetObj.fixedAssetApprovedReferenceNumber().getText());
+		System.out.println("Asset reference number is :"+testData.get("AssetReferemnceNumber"));
+		
+    }
 	@Then("^Click on Asset Replacement submodule Eye Icon$")
 	public void click_on_asset_replacement_submodule_eye_icon() throws Throwable {
 
@@ -104,7 +116,17 @@ public class FIXEDASSET_AssetReplacement extends BaseClass {
 		AssetCreation = assetReplacement.fixed_AssetGetReferenceNumber().getText();
 		System.out.println(AssetCreation);
 	}
-
+	@Then("^Enter the Asset Referance Number which we got from aset Creation module$")
+    public void enter_the_asset_referance_number_which_we_got_from_aset_creation_module() throws Throwable {
+		waitHelper.waitForElement(driver, 2000, assetReplacement.fixed_AssetReferenceNumber());
+		assetReplacement.fixed_AssetReferenceNumber().sendKeys(testData.get("AssetReferemnceNumber"));
+		assetReplacement.fixed_AssetReferenceNumber().sendKeys(Keys.DOWN);
+		assetReplacement.fixed_AssetReferenceNumber().sendKeys(Keys.ENTER);
+		waitHelper.waitForElement(driver, 2000, assetReplacement.fixed_AssetGetReferenceNumber());
+		AssetCreation = assetReplacement.fixed_AssetGetReferenceNumber().getText();
+		System.out.println(AssetCreation);
+		
+    }
 	@And("^Enter the Asset Item Number$")
 	public void enter_the_asset_item_number() throws Throwable {
 

@@ -51,7 +51,7 @@ public class ACCOUNTSPAYABLE_VendorContracts {
 
 	@And("^user should navigate to accounts payable menu$")
 	public void user_should_navigate_to_accounts_payable_menu() throws InterruptedException {
-		Thread.sleep(1000);
+		Thread.sleep(2000);
 		waithelper.waitForElement(driver, 3000, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_DirectionButton());
 		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_DirectionButton().click();
 		Thread.sleep(1000);
@@ -298,7 +298,7 @@ public class ACCOUNTSPAYABLE_VendorContracts {
     	javascripthelper.JSEClick(aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_RemarkField());
     	aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_RemarkField().sendKeys(aCCOUNTSPAYABLE_VendorContractsTestDataType.RemarkByMaker);
 		
-    	waithelper.waitForElement(driver, 5000, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_Submit());
+    	waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_Submit());
     	aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_Submit().click();
     	
     	Thread.sleep(1000);
@@ -420,6 +420,7 @@ public class ACCOUNTSPAYABLE_VendorContracts {
     
 	@Then("^checker should approved the contract record$")
 	public void checker_should_approved_the_contract_record() throws IOException, ParseException, InterruptedException {
+		
 		waithelper.waitForElement(driver, 3000, driver.findElement(By.xpath("//span[contains(text(),'" + jsonWriter.readReferancedata() + "')]/ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell/div/ion-buttons/ion-button")));
 		driver.findElement(By.xpath("//span[contains(text(),'" + jsonWriter.readReferancedata() + "')]/ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell/div/ion-buttons/ion-button")).click();
 //    	waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_NotificationButton());
@@ -433,16 +434,16 @@ public class ACCOUNTSPAYABLE_VendorContracts {
 		waithelper.waitForElement(driver, 3000, kubschecker.checkerApproveButton());
 		kubschecker.checkerApproveButton().click();
 		waithelper.waitForElement(driver, 3000, kubschecker.checkerRemarks());
-	
+		Thread.sleep(2000);
 		kubschecker.checkerRemarks().sendKeys(aCCOUNTSPAYABLE_VendorContractsTestDataType.CheckerRemark);
 		waithelper.waitForElement(driver, 3000, kubschecker.checkersubmitButton());
 		kubschecker.checkersubmitButton().click();
-		Thread.sleep(2000);
-    	WebElement recordstatus = aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_RecordStatus();
+		
+    	/* WebElement recordstatus = aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_RecordStatus();
     	clicksAndActionHelper.moveToElement(recordstatus);
     	String message = aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_RecordStatus().getText();
     	System.out.println(message);
-    	aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_RecordStatus().click();
+    	aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_RecordStatus().click();*/
 	}
 
 	

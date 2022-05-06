@@ -3,22 +3,22 @@
 	"User" 			: "Setup",
 	"Template"		: "Base Template",
 	"Template1"		: "CUSTOM_TEMPLATE",
-	"BookName"		: "Testing_11",
-	"BookName1"		: "Testing_12",
-	"Default" 		: "Testing_23",
-	"Modify"		: "Testing_212",
-	"Day"			: "1",
-	"Month"			: "Dec",
-	"Year"			: "2022",
+	"BookName"		: "Testing_32",
+	"BookName1"		: "Testing_33",
+	"Default" 		: "Testing_40",
+	"Modify"		: "Testing_8",
+	"Day"			: "2",
+	"Month"			: "Mar",
+	"Year"			: "2023",
 	"BookType"		: "IFRS Book",
 	"BookType1"		: "GAAP",
 	"Remark"		: "Okay",
 	
 	//Accounting Category
-	"CategoryCode" : "Income4",
-	"CategoryBook" : "Income5",
-	"CategoryCode1" : "Expenditure7",
-	"CategoryBook1" : "Expenditure6",
+	"CategoryCode" : "Income32",
+	"CategoryBook" : "Income33",
+	"CategoryCode1" : "Expenditure53",
+	"CategoryBook1" : "Expenditure64",
 	"GlGeneration" : "Auto"
 	}
 ]

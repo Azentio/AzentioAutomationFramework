@@ -38,6 +38,7 @@ import testDataType.AccountsReceivable_UpdateChequeStatusTestDataType;
 import testDataType.ArApTestDataType;
 import testDataType.ArAp_BalanceSheetReportTestDataType;
 import testDataType.ArAp_EnquiryTestDataType;
+import testDataType.BANKRECON_BankReconTestData;
 import testDataType.BUDGET_BudgetCreationTestDataType;
 import testDataType.BUDGET_BudgetDefinitionTestDataType;
 import testDataType.BUDGET_BudgetDefinitionUATTestDataType;
@@ -48,6 +49,8 @@ import testDataType.BUDGET_RequestandallocationBUDTYPEDATA;
 
 import testDataType.BUDGET_SupplementarybudgetTestDataType;
 import testDataType.BUSINESS_PARTNER_SETUP_BusinessPartnerTestDataType;
+import testDataType.BankReconData;
+import testDataType.BankReconciliationTestData;
 import testDataType.FIXEDASSET_AssetImpairementTestDataType;
 import testDataType.FIXEDASSETS_AssetRevaluationTestDataType;
 import testDataType.FIXEDASSETS_AssetSaleTestDataType;
@@ -401,9 +404,18 @@ public class JsonConfig {
 		private List<PettyCashTestDataType>PettyCashList1;
 
 
+		//BankRecon_Ajith
+		private final String BankReconPath=configFileReader.getJsonPath()+"BankReconciliationData.json";
+		private List<BankReconciliationTestData> BankReconlist;
 		
+		//BankRecon-Anandh
 		
-		
+				private final String bankReconFilePath = configFileReader.getJsonPath() + "BANKRECON_BankReconJSONData.json";
+				private List<BANKRECON_BankReconTestData> bankReconTestData;
+				//bankRecon-Arshath
+				private final String BankReconFilePath = configFileReader.getJsonPath() + "BankRecon.json";
+				private List<BankReconData> BankReconList;
+				
 		
 	public JsonConfig() {
 		/*
@@ -497,8 +509,69 @@ public class JsonConfig {
 			ArApList= getArApList();
 			GL1List = getGL1List();
 			PettyCashList1 = getPettyCashList1();
+			//BankRecon-Ajith
+			  BankReconlist=getBankReconlist();
+			//BankRecon-Anandh
+				bankReconTestData=getBankReconList();
+				BankReconList = getBankreconList();
 	}
+//bankrecon
+	private List<BankReconData> getBankreconList() {
+		Gson gson = new Gson();
+		BufferedReader bufferReader = null;
+		try {
+			bufferReader = new BufferedReader(new FileReader(BankReconFilePath));
+			BankReconData[] rcon = gson.fromJson(bufferReader, BankReconData[].class);
+			return Arrays.asList(rcon);
+		} catch (FileNotFoundException e) {
+			throw new RuntimeException("Json file not found at path : " + BankReconFilePath);
+		} finally {
+			try {
+				if (bufferReader != null)
+					bufferReader.close();
+			} catch (IOException ignore) {
+			}
+		}
+	}
+	//BankRecon-GetBabnkReconList()
+		//		private List<BANKRECON_BankReconTestData> bankReconTestData;		
+		
+		private List<BANKRECON_BankReconTestData> getBankReconList() {
+			Gson gson = new Gson();
+			BufferedReader bufferReader = null;
+			try {
+				bufferReader = new BufferedReader(new FileReader(bankReconFilePath));
+				BANKRECON_BankReconTestData[] bankReconTestData = gson.fromJson(bufferReader, BANKRECON_BankReconTestData[].class);
+				return Arrays.asList(bankReconTestData);
+			}catch(FileNotFoundException e) {
+				throw new RuntimeException("Json file not found at path : " + bankReconFilePath);
+			}finally {
+				try { if(bufferReader != null) bufferReader.close();}
+				catch (IOException ignore) {}
+			}
+			}
+	//Bank recon data
+			private List<BankReconciliationTestData> getBankReconlist() {
+				Gson gson = new Gson();
+				JsonReader reader = new JsonReader(new StringReader(BankReconPath));
+				reader.setLenient(true);
+				BufferedReader bufferReader = null;
+				try {
+					bufferReader = new BufferedReader(new FileReader(BankReconPath));
+					BankReconciliationTestData[] BankReconlist = gson.fromJson(bufferReader,
+							BankReconciliationTestData[].class);
+					return Arrays.asList(BankReconlist);
+				} catch (FileNotFoundException e) {
+					throw new RuntimeException("Json file not found at path : " + BankReconPath);
+				} finally {
+					try {
+						if (bufferReader != null)
+							bufferReader.close();
+					} catch (IOException ignore) {
+					}
+				}
 
+			}
 	
 	//PettyCash	
 	private List<PettyCashTestDataType> getPettyCashList1() {
@@ -2539,4 +2612,17 @@ private List<AccountsReceivable_DebitNoteTestDataType> getDebitNoteList() {
 	public final AccountsReceivable_DebitNoteTestDataType getDebitNotedata(String UserName) {
 		return DebitNoteList.stream().filter(x -> x.User.equalsIgnoreCase(UserName)).findAny().get();
 	}
+	
+	public final BankReconciliationTestData getBankReconlist(String UserName) {
+		return BankReconlist.stream().filter(x -> x.UserType.equalsIgnoreCase(UserName)).findAny().get();
+	}
+		//BankRecon
+		//BankReconAnandh
+		//private List<BANKRECON_BankReconTestData> bankReconTestData;
+		public final BANKRECON_BankReconTestData getBankReconTestData(String UserName) {
+			return bankReconTestData.stream().filter(x -> x.UserType.equalsIgnoreCase(UserName)).findAny().get();
+	}
+		public final BankReconData getBankReconData(String UserName) {
+			return BankReconList.stream().filter(x -> x.UserName.equalsIgnoreCase(UserName)).findAny().get();
+		}
 }

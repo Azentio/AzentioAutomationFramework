@@ -19,13 +19,25 @@ public class ACCOUNTSRECEIVABLE_AppropriationObj {
 	{
 		return accountsReceivable_viewButton;
 	}
+	@FindBy(xpath="//page-receipt-appropriation-hdr-update//ion-toolbar//ion-buttons[2]")
+	private WebElement accountsReceivableAppropriation_SaveButton;
+	public WebElement appropriationSaveButton()
+	{
+		return accountsReceivableAppropriation_SaveButton;
+	}
 	@FindBy(xpath="//ul[1]/li[8]/a[1]")
 	private WebElement accountsReceivable_nextButton;
 	public WebElement accontsReceivableNextButton()
 	{
 		return accountsReceivable_nextButton;
 	}
-	
+	@FindBy(xpath="//ion-col[3]//input")
+	private WebElement accountsReceivable_AppropriationReceiptReferenceNumber;
+	public WebElement  accountsReceivableAppropriationReceiptReferenceNumber()
+	{
+	return accountsReceivable_AppropriationReceiptReferenceNumber;
+	}
+
 //	Update Cheque Status SUBMODULE  //
 
 	// eye button of update cheque status

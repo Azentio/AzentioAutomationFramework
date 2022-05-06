@@ -2,6 +2,7 @@ package stepdefinitions;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.ElementClickInterceptedException;
@@ -390,6 +391,8 @@ public class ACCOUNTSPAYABLE_AutoPayout extends BaseClass {
     /********************   INVOICE BILL BOOKING  ****************************/    
     @And("^fill the invoice booking record$")
     public void fill_the_invoice_booking_record() throws Throwable {
+    	Random ran = new Random();
+    	int random = ran.nextInt(1000-500)+500;
     	waitHelper.waitForElementVisible(invoiceBookingObj.accountPayable_InvoiceBooking_InvoiceType(), 2000, 100);
 	     invoiceBookingObj.accountPayable_InvoiceBooking_InvoiceType().click();
 	     invoiceBookingObj.accountPayable_InvoiceBooking_InvoiceType().sendKeys(Keys.DOWN);
@@ -405,7 +408,7 @@ public class ACCOUNTSPAYABLE_AutoPayout extends BaseClass {
 	     invoiceBookingObj.billBookingPoBpName().sendKeys(Keys.ENTER);
 	     
 	     invoiceBookingObj.invoiceBollSuplierNAme().click();
-	     invoiceBookingObj.invoiceBollSuplierNAme().sendKeys(autoPayoutTestData.SuplierReferenceNumber);
+	     invoiceBookingObj.invoiceBollSuplierNAme().sendKeys(autoPayoutTestData.SuplierReferenceNumber+random);
 	     
 	     invoiceBookingObj.billBookingPoFlatDiscount().click();
 	     invoiceBookingObj.billBookingPoFlatDiscount().sendKeys(autoPayoutTestData.FlatDiscount);

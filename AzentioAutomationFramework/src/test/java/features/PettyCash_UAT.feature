@@ -234,7 +234,7 @@ Then validate voucher number for petty cash
 
 
 
-@KUBS_PC_UAT_006_001
+@KUBS_PC_UAT_005_002
   Scenario: Check amount remaining in hand
  										 Balance Should tally
     Given User should go to the kubs url and login as a maker user

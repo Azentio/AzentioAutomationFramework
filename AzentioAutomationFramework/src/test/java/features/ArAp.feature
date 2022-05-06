@@ -1,33 +1,33 @@
  Feature: AR/AP Module
  Contract Creation[Vendor Contract]
-
+ 
   @KUBS_AR/AP_UAT_001_001_TC_001  @AR/AP
-  Scenario: Create a contract for an active vendor with expense type Purchases
-    Given User should go to the kubs url and login as a maker user
-    And user should navigate to accounts payable menu
-    When click on eye button of vendor contract
-    And click on add button to create contract
-    And Fill the required fields to create contract
-    Then Save and submit the creation contract record
-    
-    And User should go to the kubs url and login as a reviewer user
-    Then Click on notification button in reviewer
-  	And approve the record by reviewer user
-  	
-    Given User should go to the kubs url and login as a checker user
-   	And Click on security management in checker
-   	Then Click on open pool in checker
-   	And Click on claim button in checker
-   	And capture claimed status
-   	Then click on notification in checker
-    Then checker should approved the contract record
-    
-    Given User should go to the kubs url and login as a maker user
-    And user should navigate to accounts payable menu
-    When click on eye button of vendor contract
-    Then Get the contract and Txn status by searching the record via business partner
-    And maker should logout
-    
+ Scenario: Create a contract for an active vendor with expense type Purchases
+Given User should go to the kubs url and login as a maker user
+And user should navigate to accounts payable menu
+When click on eye button of vendor contract
+And click on add button to create contract
+And Fill the required fields to create contract
+Then Save and submit the creation contract record
+
+And User should go to the kubs url and login as a reviewer user
+Then Click on notification button in reviewer
+And approve the record by reviewer user
+
+Given User should go to the kubs url and login as a checker user
+And Click on security management in checker
+Then Click on open pool in checker
+And Click on claim button in checker
+And capture claimed status
+Then click on notification in checker
+Then checker should approved the contract record
+
+Given User should go to the kubs url and login as a maker user
+And user should navigate to accounts payable menu
+When click on eye button of vendor contract
+Then Get the contract and Txn status by searching the record via business partner
+And maker should logout
+
     @KUBS_AR/AP_UAT_001_001_TC_02  @AR/AP
 Scenario: PO should be created successfully and displayed in approved queue with Active Status
 Given Maker Navigate to UAT URL login
@@ -252,26 +252,6 @@ Then Click on Account Payable
 When click on eye button of the invoice booking
 Then Get the tax details and check the details
 
-#Duplicate codes below 2 - @KUBS_AR/AP_UAT_001_002TC_02
-@KUBS_AR/AP_UAT_001_002TC_02  @AR/AP
-Scenario: Verify Accounting entries post Bill is approved
-   Given user navigate to azentio url and login as maker for verify post bill is approved in Accounting Entries
-   When click the account payable main module for verify post bill is approved in Accounting Entries
-   And click the eye icon of invoice bill booking for verify post bill is approved in Accounting Entries
-   And click the search icon in list view for verify post bill is approved in Accounting Entries
-   And search invoice type as expense for verify post bill is approved in Accounting Entries
-   And click the first eye icon in the list view of Active invoice bill
-   And get the invoice number from the Active  bill viewed 
-   And click the notes option in top for verify post bill is approved
-   And click the enquiry module for verify post bill is approved
-   And click the financial transaction edit icon for verify post bill is approved in Accounting Entries
-   And select the branch code as azentio main branch for verify post bill is approved in Accounting Entries
-   And select the transaction from date  for verify post bill is approved in Accounting Entries
-   And select the transaction to date for verify post bill is approved in Accounting Entries
-   And select the Transaction Ref No
-   And click the view option for verify post bill is approved in Accounting Entries
-   Then verify that the invoice number get from Active bill matches with voucher id in report
-   
    @KUBS_AR_AP_UAT_001_002_TC_02
 Scenario: Verify Accounting entries post Bill is approved
 And Go to invoice bill booking module
@@ -332,7 +312,24 @@ Then Click on Account Payable
 When click on eye button of the invoice booking
 Then Get the tax details and check the details
 
-# KUBS_AR/AP_UAT_001_003_TC_02 -Ajith bro
+@KUBS_AR/AP_UAT_001_003TC_02  @AR/AP
+Scenario: Verify Accounting entries post Bill is approved
+   Given user navigate to azentio url and login as maker for verify post bill is approved in Accounting Entries
+   When click the account payable main module for verify post bill is approved in Accounting Entries
+   And click the eye icon of invoice bill booking for verify post bill is approved in Accounting Entries
+   And click the search icon in list view for verify post bill is approved in Accounting Entries
+   And search invoice type as expense for verify post bill is approved in Accounting Entries
+   And click the first eye icon in the list view of Active invoice bill
+   And get the invoice number from the Active  bill viewed 
+   And click the notes option in top for verify post bill is approved
+   And click the enquiry module for verify post bill is approved
+   And click the financial transaction edit icon for verify post bill is approved in Accounting Entries
+   And select the branch code as azentio main branch for verify post bill is approved in Accounting Entries
+   And select the transaction from date  for verify post bill is approved in Accounting Entries
+   And select the transaction to date for verify post bill is approved in Accounting Entries
+   And select the Transaction Ref No
+   And click the view option for verify post bill is approved in Accounting Entries
+   Then verify that the invoice number get from Active bill matches with voucher id in report
 
  @KUBS_AR/AP_UAT_001_003TC_03  @AR/AP
    Scenario: Verify Balance sheet post Bill is approved.
@@ -1145,8 +1142,23 @@ Then choose the To date in the calender
 And click on view button to see the Record
 Then Verify record is available in the sheet or not
 
-#KUBS_AR/AP_UAT_002_002_TC_04 - Ajith 
-
+@KUBS_AR/AP_UAT_002_002_TC_04
+Scenario: Verify Accounts Receivable Report post credit note is Active
+   Given user login as Azentio Maker
+   When click the Account Receivable main module
+   And click the eye icon in credit note
+   And click the search icon in credit note page
+   And search credit note status as Active
+   And click first eye icon in list view Searched
+   And get buisness partner name , get credit note number and get credit note date
+   And click the notes option in top
+   And click the Reports Sub Module
+   And click the Account Receivable Report
+   And select the vendor name 
+   And select the Receivable status based on we get from Credit note
+   And select the date
+   And click the view icon
+   Then verify the Credit Note Active is available in the report
 
 
 
@@ -1808,7 +1820,83 @@ And Give Business partner Name
 Then Choose value date as System current date
 And find the invoice reference number for cancelled DebitNote is availabe at the billing queue
 
-#KUBS_AR_AP_UAT_003_006_TC_05 - Defect
+@KUBS_AR_AP_UAT_003_006_TC_05
+Scenario: Verify cancelling Debit Note is not allowed if the same has been adjusted at payment settlement
+Given user navigate to azentio url and login as maker
+When click the account payable main module 
+And click the eye icon of invoice bill booking
+And click the search icon in list view
+And search invoice type as Invoice Against Po
+And click the first eye icon in the list view of Active invoice bill
+And get the invoice number for DebitNote
+When click the account payable main module
+And Click On Main module Accounts Receivable
+Then Click on Accounts Receivable Debit Note Eye Icon
+Then click on add button
+And Fill the required fields in debit note
+And Click save button  
+Then Goto The Notification Icon
+And Store the Referance Id and Open the Record
+Then Click submit button and Enter Remark submit it 
+Given Navigate as a Reviewer
+Then click on Notify icon
+And Click First record Action icon
+Then Approve the record in Reviewer
+And Give Remark and Submit
+Given Navigate as a Checker
+Then Click module security management
+And Claim the Record in Checker
+Then Goto the Checker notification Icon
+And Click the First Action Icon
+Then Approve the Record in checker stage
+And Give the Remark and Submit it
+Given Navigate The Azentio Url
+Then Choose the second Tab Segment
+And Click On Main module Accounts Receivable
+Then Click on Accounts Receivable Debit Note Eye Icon
+And Click On Search Icon
+Then Enter Active Value In Debit Not Status
+Then Click on Table Row First Eye Icon
+And Get The Bp Name and Debit Number Store It
+And Click On Main module Accounts payable
+Then Click sub module Payment settlement Eye Icon
+And Click Add icon button
+Then Enter payment option
+And Give stored Business partner Name
+Then Choose value date as System current date
+#Then Give Current business Date
+And find the Debit reference number for Active Debit is availabe at the billing queue
+Then Click the Debit Note Checkbox As Tick
+When Enter the Description value
+And Save The Payment settlement Record
+#Then Click the Alert message as Yes
+Then Goto The Notification Icon
+And Store the Referance Id and Open the Record
+Then Click submit button and Enter Remark submit it 
+Given Navigate as a Reviewer
+Then click on Notify icon
+And Click First record Action icon
+Then Approve the record in Reviewer
+And Give Remark and Submit
+Given Navigate as a Checker
+Then Click module security management
+And Claim the Record in Checker
+Then Goto the Checker notification Icon
+And Click the First Action Icon
+Then Approve the Record in checker stage
+And Give the Remark and Submit it
+Given Navigate The Azentio Url
+Then Choose the second Tab Segment
+Then Open the Adjustment ARAP module
+And Click on Adjustment ARAP Eye Icon
+And Click Add icon button
+Then Give The Business Partner
+And Give The Adjustment Type
+Then Give the Adjustment Item Type
+And Give the Adjustment Ref No and Validate
+
+
+
 
 
 
@@ -1883,8 +1971,223 @@ And find the invoice reference number for cancelled DebitNote is availabe at the
    And select buisness partner in payment settlement for credit
    Then verify that invoice from credit not is not available in bill list
    
-    #KUBS_AR/AP_UAT_003_007TC_05 - Defect
+    @KUBS_AR/AP_UAT_003_007_TC_05
+    Scenario: Verify cancelling Credit Note is not allowed if the same has been adjusted at payment settlement
+   Given user navigate to the url and login as a maker for cancellation of contract is not allowed
+	 And click on accounts Payable module
+	 And goto vendor contract module
+	 And click on Add Icon
+Then fill all the mendatory fields for creating vendor
+And add item details for the contract
+And add the payment term for the contract
+And add the benificiory details and select auto payout as yes
+And click notification button
+Then choose first record in the notification record
+And click on Submit button 
+Then enter remark in confirmation alert
+Then click on submit button in alert
+And capture the reviewer ID in pop up which is open when we submit our record in maker stage
+Then logout from maker
+And login with reviewer credentials
+Then click on notification button
+And select our record in notification records using reference ID
+Then Approve the record from reviewer
+And enter the remark in alert
+Then click on submit in alert
+Then verify the approval status of the record
+And logout from reviewer
+Then login as a checker 
+And click on security management menu in checker
+Then click on action button under security management menu
+And select our record and clime using reference ID
+Then click on Notification button
+Then select our record in notification records by the help of reference ID
+And click on approve button in checker stage
+Then give alert remark 
+Then click on submit button on alert
+And verify the record got approved from checker
+Then logout from checker
+And login with Maker ID
+And click on accounts Payable module
+And goto vendor contract module
+And get the contract number
+And goto po creation module
+And click on Add Icon
+And fill the mendatory fields for po creation 
+And save the po creation record
+And save the item details for pocreation 
+And save the benificiery details for po creation
+And click notification button
+Then choose first record in the notification record
+And click on Submit button 
+Then enter remark in confirmation alert
+Then click on submit button in alert
+And capture the reviewer ID in pop up which is open when we submit our record in maker stage
+Then logout from maker
+And login with reviewer credentials
+Then click on notification button
+And select our record in notification records using reference ID
+Then Approve the record from reviewer
+And enter the remark in alert
+Then click on submit in alert
+Then verify the approval status of the record
+And logout from reviewer
+Then login as a checker 
+And click on security management menu in checker
+Then click on action button under security management menu
+And select our record and clime using reference ID
+Then click on Notification button
+Then select our record in notification records by the help of reference ID
+And click on approve button in checker stage
+Then give alert remark 
+Then click on submit button on alert
+#And verify the record got approved from checker
+Then logout from checker
+And login with Maker ID
+And click on accounts Payable module
+Then click on po creation module
+And search for approved po
+Then go to GRN module
+And click on Add Icon
+And check GRN can be created for that perticular po
+Then go to Item details and enter po number for approval
+And click notification button
+Then choose first record in the notification record in GRN stage
+And click on Submit button 
+Then enter remark in confirmation alert in grn 
+And capture the reviewer ID in pop up which is open when we submit our record in maker stage
+Then logout from maker
+And login with reviewer credentials
+Then click on notification button
+And select our record in notification records using reference ID
+Then Approve the record from reviewer
+Then enter remark in confirmation alert in grn
+Then verify the approval status of the record
+And logout from reviewer
+Then login as a checker 
+And click on security management menu in checker
+Then click on action button under security management menu
+And select our record and clime using reference ID
+Then click on Notification button
+Then select our record in notification records by the help of reference ID
+And click on approve button in checker stage
+Then enter remark in confirmation alert in grn 
+And verify the record got approved from checker
+Then logout from checker
+
+And login with Maker ID
+And click on accounts Payable module
+Then click on po creation module
+And get the approved po number from approved record
+And go to invoice bill booking module
+And click on Add Icon
+And fill the invoice booking record
+And goto invoice bill booking temp view and select the record
+And fill The invoice againse po record
+And click notification button
+Then choose first record in the notification record in GRN stage
+And click on Submit button 
+Then click on the submit button which is appeared in alert box
+And capture the reviewer ID in pop up which is open when we submit our record in maker stage
+Then logout from maker
+And login with reviewer credentials
+Then click on notification button
+And select our record in notification records using reference ID
+Then Approve the record from reviewer
+Then click on the submit button which is appeared in alert box
+Then verify the approval status of the record
+And logout from reviewer
+Then login as a checker 
+And click on security management menu in checker
+Then click on action button under security management menu
+And select our record and clime using reference ID
+Then click on Notification button
+Then select our record in notification records by the help of reference ID
+And click on approve button in checker stage
+Then click on the submit button which is appeared in alert box
+And verify the record got approved from checker
+Then logout from checker
+And login with Maker ID
+And click on accounts Payable module
+And goto invoice booking module
+And select the approved record from invoice bill booking 
+And goto accouts receivable module
+And goto credit notet module
+And click on Add Icon
+And Fill the form for credit note
+And click notification button
+Then choose first record in the notification record
+And click on Submit button 
+Then click on the submit button which is appeared in alert box
+And capture the reviewer ID in pop up which is open when we submit our record in maker stage
+Then logout from maker
+And login with reviewer credentials
+Then click on notification button
+And select our record in notification records using reference ID
+Then Approve the record from reviewer
+Then click on the submit button which is appeared in alert box
+Then verify the approval status of the record
+And logout from reviewer
+Then login as a checker 
+And click on security management menu in checker
+Then click on action button under security management menu
+And select our record and clime using reference ID
+Then click on Notification button
+Then select our record in notification records by the help of reference ID
+And click on approve button in checker stage
+Then click on the submit button which is appeared in alert box
+And verify the record got approved from checker
+Then logout from checker
+And login with Maker ID
+And click on accounts Payable module
+And goto invoice booking module
+And get the approved invoice from table
+And Go to payment settlement module
+And click on Add Icon
+And fill the mendatory field for settle the payment
+And fill the calender details and description
+And Save the form
+And click notification button
+Then choose first record in the notification record
+And click on Submit button 
+Then click on the submit button which is appeared in alert box
+And capture the reviewer ID in pop up which is open when we submit our record in maker stage
+Then logout from maker
+And login with reviewer credentials
+Then click on notification button
+And select our record in notification records using reference ID
+Then Approve the record from reviewer
+Then click on submit button in alert
+Then verify the approval status of the record
+And logout from reviewer
+Then login as a checker 
+And click on security management menu in checker
+Then click on action button under security management menu
+And select our record and clime using reference ID
+Then click on Notification button
+Then select our record in notification records by the help of reference ID
+And click on approve button in checker stage
+Then click on submit button in alert
+And verify the record got approved from checker
+Then logout from checker
+And login with Maker ID
+When click the Account Receivable Main Module for verify Accounting entries
+   And click the credit note eye icon
+   And click the search icon in the list view of credit 
+  And search the Active credit note and click the first list
+   And get buisness partner name , get credit note number and get credit note date
    
+   Then Open the Adjustment ARAP module
+And Click on Adjustment ARAP Eye Icon
+And Click Add icon button
+Then Give The Business Partner according to creditnote
+And Give The Adjustment Type
+Then Give the credit note number in Adjustment Item Type
+And Give the Adjustment Ref No and Validate
+   
+
+
+
    
    
    @KUBS_AR/AP_UAT_003_008_TC_01  @AR/AP
@@ -4979,8 +5282,8 @@ And fill the payment settlement record and validate the invoice number is not av
     Given User should go to the kubs url and login as a maker user
     And user should navigate to accounts payable menu
     When click on eye button of payment settlement against bill
-    And click on add button for payment settlement against billl
-    And Fill the required fields to adjust against bill
+    And click on add button for payment settlement against bill
+    And Fill the required fields to adjust against billl
     Then Save and submit the payment settlement
     
     And User should go to the kubs url and login as a reviewer user
@@ -5006,3 +5309,84 @@ And fill the payment settlement record and validate the invoice number is not av
     Then click on eye button of appropriation to verify
     Then click on add button
     Then Verify the receivable adjusted against bill is not available for appropriation
+    @KUBS_AR/AP_UAT_013_002TC_01 @AR/AP
+    Scenario: Verify Receivables once appropriated against a receipt is not adjusted against a bill on payment settlement screen.
+And click on accounts Payable module
+And go to invoice bill booking module
+Then click on search
+And search the invoice agaist po in invoice type area
+And get the approved invoice reference to do debit note
+
+And goto accouts Receivable module to do debit note 
+
+And click on debit note module
+And click on Add Icon
+And fill the debit note details against that bill 
+And save the debit note record 
+And click notification button
+Then choose first record in the notification record
+And click on Submit button 
+Then enter remark in confirmation alert
+Then click on submit button in alert
+And capture the reviewer ID in pop up which is open when we submit our record in maker stage
+Then logout from maker
+And login with reviewer credentials
+Then click on notification button
+And select our record in notification records using reference ID
+Then Approve the record from reviewer
+And enter the remark in alert
+Then click on submit in alert
+Then verify the approval status of the record
+And logout from reviewer
+Then login as a checker 
+And click on security management menu in checker
+Then click on action button under security management menu
+And select our record and clime using reference ID
+Then click on Notification button
+Then select our record in notification records by the help of reference ID
+And click on approve button in checker stage
+Then give alert remark 
+Then click on submit button on alert
+And verify the record got approved from checker
+Then logout from checker 
+And login with Maker ID
+
+And goto accouts Receivable module
+And click on debit note module
+And get the recently we approved debit note reference number
+And goto appropriation module
+And click on Add Icon
+And do the appropriation for the debit note record
+And save the appropriation record 
+And click notification button
+Then choose first record in the notification record
+And click on Submit button 
+Then enter remark in confirmation alert
+Then click on submit button in alert
+And capture the reviewer ID in pop up which is open when we submit our record in maker stage
+Then logout from maker
+And login with reviewer credentials
+Then click on notification button
+And select our record in notification records using reference ID
+Then Approve the record from reviewer
+And enter the remark in alert
+Then click on submit in alert
+Then verify the approval status of the record
+And logout from reviewer
+Then login as a checker 
+And click on security management menu in checker
+Then click on action button under security management menu
+And select our record and clime using reference ID
+Then click on Notification button
+Then select our record in notification records by the help of reference ID
+And click on approve button in checker stage
+Then give alert remark 
+Then click on submit button on alert
+And verify the record got approved from checker
+Then logout from checker 
+And login with Maker ID
+
+Then click on second Segment button
+And Go to payment settlement module
+And click on Add Icon
+And check the aprropriation against bill is visible in the payment settlement or not in payment settlement module

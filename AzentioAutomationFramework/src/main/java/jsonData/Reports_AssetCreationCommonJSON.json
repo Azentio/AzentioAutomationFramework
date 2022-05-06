@@ -3,13 +3,13 @@
 		"User" : "Maker",
 		
 		"AssetLifeUnit": "Year",
-		"ToMonth": "Oct",
-		"ToFullMonth": "October",
-		"ToYear" : "2022",
-		"ToDate": "25",
+		"ToMonth": "Jan",
+		"ToFullMonth": "January",
+		"ToYear" : "2023",
+		"ToDate": "31",
 		
 		"CapitalizationMonth": "Oct",
-		"CapitalizationFullMonth": "",
+		"CapitalizationFullMonth": "October",
 		"CapitalizationYear" : "2022",
 		"CapitalizationDate": "25",
 		

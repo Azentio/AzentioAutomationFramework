@@ -142,7 +142,7 @@ public class FixedAssetObj {
 		return fixedAsset_AssetCreation_BillReferenceNumber_Textbox;
 								}	
 			// SaveButton for FixedAsset Creation
-@FindBy(xpath = "//page-fixed-asset-creation-update[1]/ion-header[1]/ion-toolbar[1]/ion-buttons[2]/ion-button[1]")
+@FindBy(xpath = "(//ion-header[1]/ion-toolbar[1]/ion-buttons[2]/ion-button[1])[2]")
 private WebElement fixedAsset_AssetCreation_SaveButton;
 
 	public WebElement fixedAsset_AssetCreation_SaveButton() {
@@ -187,8 +187,10 @@ private WebElement Report_report_NextButton;
 public WebElement Report_report_NextButton() {
 return Report_report_NextButton;
 				}	
-	
-	@FindBy(xpath = "//page-fixed-asset-creation-item-dtl-update[1]/ion-header[1]/ion-toolbar[1]/ion-buttons[1]/ion-button[1]")
+//page-fixed-asset-allocation-update[1]/ion-header[1]/ion-toolbar[1]/ion-buttons[2]/ion-button[1]
+// (//ion-header[1]/ion-toolbar[1]/ion-buttons[2]/ion-button[1])[2]
+//page-fixed-asset-creation-item-dtl-update//ion-toolbar//ion-button
+	@FindBy(xpath = "//page-fixed-asset-creation-item-dtl-update//ion-toolbar//ion-button")
 	private WebElement fixedAsset_AssetAllocation_SaveButton;
 
 		public WebElement fixedAsset_AssetAllocation_SaveButton() {

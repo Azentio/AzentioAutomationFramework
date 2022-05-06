@@ -1,5 +1,8 @@
 package stepdefinitions;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
@@ -17,6 +20,7 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import pageobjects.FIXEDASSET_AssetRevaluvationObj;
+import pageobjects.FIXEDASSET_fixedAssetObj;
 import pageobjects.KUBS_CheckerObj;
 import pageobjects.KUBS_ReviewerObj;
 import resources.BaseClass;
@@ -42,6 +46,8 @@ public class FIXEDASSET_AssetRevaluvation extends BaseClass {
 	ClicksAndActionsHelper clickAndActionHelper = new ClicksAndActionsHelper(driver);
 	FIXEDASSET_AssetRevaluvationObj assetRevaluvationObj = new FIXEDASSET_AssetRevaluvationObj(driver);
 	FIXEDASSET_AssetAmendmentData assetAmendmentData = jsonConfig.getAssetAmendmentByName("Asset");
+	FIXEDASSET_fixedAssetObj fixedAssetObj = new FIXEDASSET_fixedAssetObj(driver);
+	Map<String,String> revaluationTestData= new HashMap<>();
 
 	// ************************@KUBS_FAT_UAT_012_001********************* //
 
@@ -63,6 +69,7 @@ public class FIXEDASSET_AssetRevaluvation extends BaseClass {
 		assetRevaluvationObj.fixedTransfericon().click();
 
 	}
+	
 
 	@And("^fixed Asset Module$")
 	public void fixed_asset_module() throws Throwable {
@@ -71,7 +78,13 @@ public class FIXEDASSET_AssetRevaluvation extends BaseClass {
 		waitHelper.waitForElement(driver, 2000, assetRevaluvationObj.fixed_FixedAssets());
 		assetRevaluvationObj.fixed_FixedAssets().click();
 	}
-
+	@And("^store the asset reference number to do the asset revaluation$")
+    public void store_the_asset_reference_number_to_do_the_asset_revaluation() throws Throwable {
+		waitHelper.waitForElementVisible(fixedAssetObj.fixedAssetApprovedReferenceNumber(), 3000, 300);
+		
+		revaluationTestData.put("AssetReferenceNumber", fixedAssetObj.fixedAssetApprovedReferenceNumber().getText());
+		System.out.println("Asset Reference number is : "+revaluationTestData.get("AssetReferenceNumber"));
+    }
 	@Then("^Asset Revaluvation submodule Eye Icon$")
 	public void asset_revaluvation_submodule_eye_icon() throws Throwable {
 		// -----------TO CLICK THE ASSET REPLACEMENT------------//
@@ -94,6 +107,7 @@ public class FIXEDASSET_AssetRevaluvation extends BaseClass {
 
 		// -----------ENTER ASSET REF NO---------------//
 		waitHelper.waitForElement(driver, 2000, assetRevaluvationObj.fixed_AssetReferenceNumber());
+		assetRevaluvationObj.fixed_AssetReferenceNumber().sendKeys(revaluationTestData.get("AssetReferenceNumber"));
 		assetRevaluvationObj.fixed_AssetReferenceNumber().sendKeys(Keys.DOWN);
 		assetRevaluvationObj.fixed_AssetReferenceNumber().sendKeys(Keys.ENTER);
 		waitHelper.waitForElement(driver, 2000, assetRevaluvationObj.fixed_AssetGetReferenceNumber());
@@ -280,6 +294,7 @@ public class FIXEDASSET_AssetRevaluvation extends BaseClass {
 	@Then("^Action Icon from claimed record$")
 	public void action_icon_from_claimed_record() throws Throwable {
 		// ------------------CHECKER ACTION------------------//
+		Thread.sleep(1000);
 		waitHelper.waitForElement(driver, 3000, driver.findElement(By.xpath("//span[contains(text(),'"
 				+ readerData.readReferancedata()
 				+ "')]/ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell/div/ion-buttons/ion-button")));
@@ -366,6 +381,8 @@ public class FIXEDASSET_AssetRevaluvation extends BaseClass {
 
 		// -------------GETTIN ASSET REFERANCE NO-----------//
 		waitHelper.waitForElement(driver, 2000, assetRevaluvationObj.fixed_AssetGetReferenceNumber());
+		//javaScriptHelper.JavaScriptHelper(driver);
+		// AssetCreation = (String) javaScriptHelper.executeScript("return document.getElementsByClassName('ng-value-label')[0].innerText");
 		AssetCreation = assetRevaluvationObj.fixed_AssetGetReferenceNumber().getText();
 		System.out.println(AssetCreation);
 	}

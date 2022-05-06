@@ -1,6 +1,8 @@
 package stepdefinitions;
 
 import java.io.IOException;
+import java.util.Random;
+
 import org.json.simple.parser.ParseException;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
@@ -68,37 +70,43 @@ public class AccountingSetup_ChartOfAccountsDefinition {
 
     @Then("^modify the COA details$")
     public void modify_the_coa_details()  {
+    	Random ran = new Random();
+    	int radom = ran.nextInt(500-100)+100;
     	waithelper.waitForElement(driver, 3000, ChartOfAccountsDefinitionObj.accountingSetup_ChartOfAccountsDefinition_AccountingCategory());
     	ChartOfAccountsDefinitionObj.accountingSetup_ChartOfAccountsDefinition_AccountingCategory().sendKeys(ChartOfAccountsDefinitionTestDataType.AccountingCategory);
     	ChartOfAccountsDefinitionObj.accountingSetup_ChartOfAccountsDefinition_AccountingCategory().sendKeys(Keys.ENTER);
     	
     	waithelper.waitForElement(driver, 3000, ChartOfAccountsDefinitionObj.accountingSetup_ChartOfAccountsDefinition_COA_NameField());
-    	ChartOfAccountsDefinitionObj.accountingSetup_ChartOfAccountsDefinition_COA_NameField().sendKeys(ChartOfAccountsDefinitionTestDataType.COA_Name);
+    	ChartOfAccountsDefinitionObj.accountingSetup_ChartOfAccountsDefinition_COA_NameField().sendKeys(ChartOfAccountsDefinitionTestDataType.COA_Name1+radom);
     	
     	waithelper.waitForElement(driver, 3000, ChartOfAccountsDefinitionObj.accountingSetup_ChartOfAccountsDefinition_ExternalMappingCode());
-    	ChartOfAccountsDefinitionObj.accountingSetup_ChartOfAccountsDefinition_ExternalMappingCode().sendKeys(ChartOfAccountsDefinitionTestDataType.ExternalMappingCode);
+ 		ChartOfAccountsDefinitionObj.accountingSetup_ChartOfAccountsDefinition_ExternalMappingCode().sendKeys(ChartOfAccountsDefinitionTestDataType.ExternalMappingCode1);
+    	
     	
     	waithelper.waitForElement(driver, 3000, ChartOfAccountsDefinitionObj.accountingSetup_ChartOfAccountsDefinition_ParentGL());
-    	ChartOfAccountsDefinitionObj.accountingSetup_ChartOfAccountsDefinition_ParentGL().sendKeys(ChartOfAccountsDefinitionTestDataType.ParentGL);
+   	    ChartOfAccountsDefinitionObj.accountingSetup_ChartOfAccountsDefinition_ParentGL().click();
+    	ChartOfAccountsDefinitionObj.accountingSetup_ChartOfAccountsDefinition_ParentGL().sendKeys(ChartOfAccountsDefinitionTestDataType.ParentGL1);
+    	ChartOfAccountsDefinitionObj.accountingSetup_ChartOfAccountsDefinition_ParentGL().sendKeys(Keys.DOWN);
     	ChartOfAccountsDefinitionObj.accountingSetup_ChartOfAccountsDefinition_ParentGL().sendKeys(Keys.ENTER);
     	
     	waithelper.waitForElement(driver, 3000, ChartOfAccountsDefinitionObj.accountingSetup_ChartOfAccountsDefinition_GLtype());
-    	ChartOfAccountsDefinitionObj.accountingSetup_ChartOfAccountsDefinition_GLtype().sendKeys(ChartOfAccountsDefinitionTestDataType.GL_Type);
+    	ChartOfAccountsDefinitionObj.accountingSetup_ChartOfAccountsDefinition_GLtype().sendKeys(ChartOfAccountsDefinitionTestDataType.GL_Type1);
     	ChartOfAccountsDefinitionObj.accountingSetup_ChartOfAccountsDefinition_GLtype().sendKeys(Keys.ENTER);
     	
     	waithelper.waitForElement(driver, 3000, ChartOfAccountsDefinitionObj.accountingSetup_ChartOfAccountsDefinition_Description());
-    	ChartOfAccountsDefinitionObj.accountingSetup_ChartOfAccountsDefinition_Description().sendKeys(ChartOfAccountsDefinitionTestDataType.Description);
+    	ChartOfAccountsDefinitionObj.accountingSetup_ChartOfAccountsDefinition_Description().sendKeys(ChartOfAccountsDefinitionTestDataType.Description1+radom);
     	
     	waithelper.waitForElement(driver, 3000, ChartOfAccountsDefinitionObj.accountingSetup_ChartOfAccountsDefinition_BalanceType());
-    	ChartOfAccountsDefinitionObj.accountingSetup_ChartOfAccountsDefinition_BalanceType().sendKeys(ChartOfAccountsDefinitionTestDataType.BalanceType);
+    	ChartOfAccountsDefinitionObj.accountingSetup_ChartOfAccountsDefinition_BalanceType().sendKeys(ChartOfAccountsDefinitionTestDataType.BalanceType1);
     	ChartOfAccountsDefinitionObj.accountingSetup_ChartOfAccountsDefinition_BalanceType().sendKeys(Keys.ENTER);
     	
-    	waithelper.waitForElement(driver, 3000, ChartOfAccountsDefinitionObj.accountingSetup_ChartOfAccountsDefinition_StatusField());
-    	ChartOfAccountsDefinitionObj.accountingSetup_ChartOfAccountsDefinition_StatusField().sendKeys(ChartOfAccountsDefinitionTestDataType.Status);
-    	ChartOfAccountsDefinitionObj.accountingSetup_ChartOfAccountsDefinition_StatusField().sendKeys(Keys.ENTER);
+//    	waithelper.waitForElement(driver, 3000, ChartOfAccountsDefinitionObj.accountingSetup_ChartOfAccountsDefinition_StatusField());
+//    	ChartOfAccountsDefinitionObj.accountingSetup_ChartOfAccountsDefinition_StatusField().sendKeys(ChartOfAccountsDefinitionTestDataType.statusofCOA);
+//    	ChartOfAccountsDefinitionObj.accountingSetup_ChartOfAccountsDefinition_StatusField().sendKeys(Keys.DOWN);
+//    	ChartOfAccountsDefinitionObj.accountingSetup_ChartOfAccountsDefinition_StatusField().sendKeys(Keys.ENTER);
     	
-//    	waithelper.waitForElement(driver, 3000, ChartOfAccountsDefinitionObj.accountingSetup_ChartOfAccountsDefinition_Remarks());
-//    	ChartOfAccountsDefinitionObj.accountingSetup_ChartOfAccountsDefinition_Remarks().sendKeys(ChartOfAccountsDefinitionTestDataType.Remark);
+    	waithelper.waitForElement(driver, 3000, ChartOfAccountsDefinitionObj.accountingSetup_ChartOfAccountsDefinition_Remarks());
+   	ChartOfAccountsDefinitionObj.accountingSetup_ChartOfAccountsDefinition_Remarks().sendKeys(ChartOfAccountsDefinitionTestDataType.Remark);
     	
 //    	waithelper.waitForElement(driver, 3000, ChartOfAccountsDefinitionObj.accountingSetup_ChartOfAccountsDefinition_EntitySegment());
 //    	ChartOfAccountsDefinitionObj.accountingSetup_ChartOfAccountsDefinition_EntitySegment().sendKeys(ChartOfAccountsDefinitionTestDataType.EntitySegment);
@@ -157,8 +165,8 @@ public class AccountingSetup_ChartOfAccountsDefinition {
     	javascripthelper.JSEClick(aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_RemarkField());
     	aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_RemarkField().sendKeys(ChartOfAccountsDefinitionTestDataType.RemarkByMaker);
 		
-    	waithelper.waitForElement(driver, 3000, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_Submit());
-    	aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_Submit().click();
+    	waithelper.waitForElement(driver, 3000, ChartOfAccountsDefinitionObj.accountingSetup_ChartOfAccountsDefinition_RemarkSubmit());
+    	ChartOfAccountsDefinitionObj.accountingSetup_ChartOfAccountsDefinition_RemarkSubmit().click();
     	
     	waithelper.waitForElement(driver, 10000, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_RecordStatus());
     	WebElement recordstatus = aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_RecordStatus();

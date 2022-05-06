@@ -4,6 +4,7 @@ public class BUDGET_BudgetDefinitionUATTestDataType {
 	public String usertType;
 	public String warningPecentage;
 	public String remark;
+	public String BudgetCodePrefix;
 	public String uatYearlyBudgetCode;
 	public String uatMonthlyBudgetCode;
 	public String uatHalfYearlyBudgetCode;

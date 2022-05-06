@@ -148,7 +148,7 @@ public class ACCOUNTSPAYBLE_AccountsPayable_POCreationObj {
 	}
 
 //Cost Center
-	@FindBy(xpath = "//ion-col[13]//input")
+	@FindBy(xpath = "//ion-col[14]//input")
 	private WebElement accountsPayable_VendorPurchaseOrder_CostCenter;
 
 	public WebElement accountsPayable_VendorPurchaseOrder_CostCenter() {

@@ -47,8 +47,8 @@ public class FIXEDASSETS_AssetUndertaking {
 	ACCOUNTSPAYABLE_InvoiceBookingObj aCCOUNTSPAYABLE_InvoiceBookingObj = new ACCOUNTSPAYABLE_InvoiceBookingObj(driver);
 	
 	@And("^user should navigate to fixed assets menu$")
-	public void user_should_navigate_to_fixed_assets_menu()  {
-		
+	public void user_should_navigate_to_fixed_assets_menu() throws InterruptedException  {
+		Thread.sleep(2000);
 		waithelper.waitForElement(driver, 2000, fIXEDASSETS_AssetUndertakingObj.fixedAssets_AssetUndertaking_DirectionButton());
 		fIXEDASSETS_AssetUndertakingObj.fixedAssets_AssetUndertaking_DirectionButton().click();
 		
