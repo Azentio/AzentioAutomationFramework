@@ -51,6 +51,7 @@ import testDataType.BUDGET_SupplementarybudgetTestDataType;
 import testDataType.BUSINESS_PARTNER_SETUP_BusinessPartnerTestDataType;
 import testDataType.BankReconData;
 import testDataType.BankRecon_BankReconciliationTestDataType;
+import testDataType.BankRecon_ReconFormatTestDataType;
 import testDataType.BankReconciliationTestData;
 import testDataType.FIXEDASSET_AssetImpairementTestDataType;
 import testDataType.FIXEDASSETS_AssetRevaluationTestDataType;
@@ -408,6 +409,11 @@ public class JsonConfig {
 		private final String PettyCashFilePath = configFileReader.getJsonPath() + "PettyCashJSON.json";
 		private List<PettyCashTestDataType>PettyCashList1;
 
+		//BankRecon_ReconFormat_PRIYANKA
+		private final String BankReconsFilePath = configFileReader.getJsonPath() + "BankRecon_ReconFormatJSON.json";
+	    private List<BankRecon_ReconFormatTestDataType>BankReconsList;
+				
+				
 
 		//BankRecon_Ajith
 		private final String BankReconPath=configFileReader.getJsonPath()+"BankReconciliationData.json";
@@ -520,6 +526,8 @@ public class JsonConfig {
 			//BankRecon-Anandh
 				bankReconTestData=getBankReconList();
 				BankReconList = getBankreconList();
+	//P
+	BankReconsList = getBankReconsListData();
 	}
 //bankrecon
 	private List<BankReconData> getBankreconList() {
@@ -2310,6 +2318,25 @@ private List<BankRecon_BankReconciliationTestDataType> getBankReconciliationList
 	}
 }
 
+//BankRecon_ReconFormat
+private List<BankRecon_ReconFormatTestDataType> getBankReconsListData() {
+	Gson gson = new Gson();
+	BufferedReader bufferReader = null;
+	try {
+		bufferReader = new BufferedReader(new FileReader(BankReconsFilePath));
+		BankRecon_ReconFormatTestDataType[] BankRecons = gson.fromJson(bufferReader,BankRecon_ReconFormatTestDataType[].class);
+		return Arrays.asList(BankRecons);
+	} catch (FileNotFoundException e) {
+		throw new RuntimeException("Json file not found at path : " + BankReconsFilePath);
+	} finally {
+		try {
+			if (bufferReader != null)
+				bufferReader.close();
+		} catch (IOException ignore) {}
+	}	
+}
+
+
 	public final BUDGET_RequestAndAllocationTestDataType getAllowcationByName(String user) {
 		return AllocationList.stream().filter(x -> x.UserType.equalsIgnoreCase(user)).findAny().get();
 	}
@@ -2655,5 +2682,9 @@ private List<BankRecon_BankReconciliationTestDataType> getBankReconciliationList
 		
 	public final BankRecon_BankReconciliationTestDataType getBankReconciliationdata(String UserName) {
 		return BankReconciliationList.stream().filter(x -> x.User.equalsIgnoreCase(UserName)).findAny().get();
+	}
+	//BankRecon_ReconFormat
+	public final BankRecon_ReconFormatTestDataType getBankReconByName(String UserName){
+		return BankReconsList.stream().filter(x->x.User.equalsIgnoreCase(UserName)).findAny().get();
 	}
 }

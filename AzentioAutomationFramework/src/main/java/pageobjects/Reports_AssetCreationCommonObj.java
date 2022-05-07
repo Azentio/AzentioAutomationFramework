@@ -243,4 +243,108 @@ public class Reports_AssetCreationCommonObj {
 	{
 		return Report_AccountPayableReport_NextPage;
 	}	
+	
+	@FindBy(xpath = "//div[5]//ion-menu-toggle[3]//ion-item//ion-buttons//ion-button[1]")
+
+	private WebElement Report_AssetCodeReport_TempView;
+
+	public WebElement Report_AssetCodeReport_TempView()
+
+	{
+
+		return Report_AssetCodeReport_TempView;
+
+	}
+
+	@FindBy(xpath = "//div[5]//ion-menu-toggle[4]//ion-item//ion-buttons//ion-button[1]")
+
+	private WebElement Report_AssetCategoryReport_TempView;
+
+	public WebElement Report_AssetCategoryReport_TempView()
+
+	{
+
+		return Report_AssetCategoryReport_TempView;
+
+	}
+
+	@FindBy(xpath = "//div[5]//ion-menu-toggle[9]//ion-item//ion-buttons//ion-button[1]")
+
+	private WebElement Report_AssetLimitConfiguration_TempView;
+
+	public WebElement Report_AssetLimitConfiguration_TempView()
+
+	{
+
+		return Report_AssetLimitConfiguration_TempView;
+
+	}
+
+	@FindBy(xpath = "//div[5]//ion-menu-toggle[8]//ion-item//ion-buttons//ion-button[1]")
+
+	private WebElement Report_AssetSerialNumber_TempView;
+
+	public WebElement Report_AssetSerialNumber_TempView()
+
+	{
+
+		return Report_AssetSerialNumber_TempView;
+
+	}
+
+	@FindBy(xpath = "//ion-label[contains(text(),'Master reports')]")
+
+	private WebElement Report_MasterReportsMenu;
+
+	public WebElement Report_MasterReportsMenu()
+
+	{
+
+		return Report_MasterReportsMenu;
+
+	}
+
+	@FindBy(xpath = "//ion-col[1]/app-kub-lov/span/ng-select/div/div/div[2]//input")
+
+	private WebElement Report_MasterReports_DepreciationMethod;
+
+	public WebElement Report_MasterReports_DepreciationMethod()
+
+	{
+
+		return Report_MasterReports_DepreciationMethod;
+
+	}
+
+//   Start serial number 
+
+	@FindBy(xpath = "//ion-col[2]/ion-item[1]/ion-input[1]/input[1]")
+
+	private WebElement Report_AssetLimit_StartSerialNumber;
+
+	public WebElement Report_AssetLimit_StartSerialNumber()
+
+	{
+
+		return Report_AssetLimit_StartSerialNumber;
+
+	} 
+
+//	Asset codes report 
+
+	@FindBy(xpath = "//td[2]/div/div/div[1]/table/tbody/tr[2]/td/div[1]")
+
+	private WebElement Report_AssetCodesReport;
+
+	public WebElement Report_AssetCodesReport()
+
+	{
+
+		return Report_AssetCodesReport;
+
+	} 
+
+ 
+
+ 
 }

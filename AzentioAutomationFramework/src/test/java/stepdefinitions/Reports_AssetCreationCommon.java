@@ -724,5 +724,346 @@ public class Reports_AssetCreationCommon {
     	browserHelper.switchToParentWithChildClose();
     	//---report fetching code---//
     }
+    
+	@And("^user should navigate to master reports menu$")
+
+	public void user_should_navigate_to_master_reports_menu() {
+
+//    		waithelper.waitForElement(driver, 3000, reports_AssetCreationCommonObj.Report_AssetCreationCommon_ReportIcon()); 
+
+//    		reports_AssetCreationCommonObj.Report_AssetCreationCommon_ReportIcon().click(); 
+
+		waithelper.waitForElement(driver, 3000, reports_AssetCreationCommonObj.Report_MasterReportsMenu());
+
+		reports_AssetCreationCommonObj.Report_MasterReportsMenu().click();
+
+	}
+
+	@Then("^click on temp grid button of asset code$")
+
+	public void click_on_temp_grid_button_of_asset_code() {
+
+		waithelper.waitForElement(driver, 3000, reports_AssetCreationCommonObj.Report_AssetCodeReport_TempView());
+
+		reports_AssetCreationCommonObj.Report_AssetCodeReport_TempView().click();
+
+	}
+	
+	@And("^select the depreciation method and date to check the asset codes are displaying$")
+
+	public void select_the_depreciation_method_and_date_to_check_the_asset_codes_are_displaying()
+			throws InterruptedException {
+
+		waithelper.waitForElement(driver, 3000,
+				reports_AssetCreationCommonObj.Report_MasterReports_DepreciationMethod());
+
+		reports_AssetCreationCommonObj.Report_MasterReports_DepreciationMethod()
+				.sendKeys(AssetCreationCommonTestDataType.DepreciationMethod);
+
+		reports_AssetCreationCommonObj.Report_MasterReports_DepreciationMethod().sendKeys(Keys.ENTER);
+
+		waithelper.waitForElement(driver, 3000, reports_AssetCreationCommonObj.Report_AssetCreationCommon_Date());
+
+		reports_AssetCreationCommonObj.Report_AssetCreationCommon_Date().click();
+
+		Thread.sleep(1000);
+
+		while (true)
+
+		{
+
+			try
+
+			{
+
+				waithelper.waitForElement(driver, 3000,
+						driver.findElement(
+								By.xpath("//span[contains(text(),'" + AssetCreationCommonTestDataType.AssetCodeToMonth
+										+ " " + AssetCreationCommonTestDataType.AssetCodeToYear + "')]")));
+
+				WebElement monthAndYear = driver.findElement(
+						By.xpath("//span[contains(text(),'" + AssetCreationCommonTestDataType.AssetCodeToMonth + " "
+								+ AssetCreationCommonTestDataType.AssetCodeToYear + "')]"));
+
+				break;
+
+			}
+
+			catch (NoSuchElementException nosuchElement)
+
+			{
+
+				reports_AssetCreationCommonObj.Report_AssetCreationCommon_NextMonth().click();
+
+			}
+
+		}
+
+		WebElement FinalDay2 = driver
+				.findElement(By.xpath("//td[@aria-label='" + AssetCreationCommonTestDataType.AssetCodeToFullMonth + " "
+						+ AssetCreationCommonTestDataType.AssetCodeToDate + ", "
+						+ AssetCreationCommonTestDataType.AssetCodeToYear + "']/span"));
+
+		clicksAndActionHelper.doubleClick(FinalDay2);
+
+	}
+
+	@Then("^click on temp grid button of asset category$")
+
+	public void click_on_temp_grid_button_of_asset_category() {
+
+		waithelper.waitForElement(driver, 3000, reports_AssetCreationCommonObj.Report_AssetCategoryReport_TempView());
+
+		reports_AssetCreationCommonObj.Report_AssetCategoryReport_TempView().click();
+
+	}
+
+	@Then("^click on temp grid button of asset limit configuration$")
+
+	public void click_on_temp_grid_button_of_asset_limit_configuration() {
+
+		javascripthelper.JavaScriptHelper(driver);
+
+		javascripthelper
+				.scrollIntoViewAndClick(reports_AssetCreationCommonObj.Report_AssetLimitConfiguration_TempView());
+
+	}
+
+	@Then("^click on temp grid button of asset serial number$")
+
+	public void click_on_temp_grid_button_of_asset_serial_number() {
+
+		javascripthelper.JavaScriptHelper(driver);
+
+		javascripthelper.scrollIntoViewAndClick(reports_AssetCreationCommonObj.Report_AssetSerialNumber_TempView());
+
+	}
+
+	// ------- Check Asset Serial number
+
+	@And("^select the asset code and serial number and date to check the asset serial number are displaying$")
+
+	public void select_the_asset_code_and_serial_number_and_date_to_check_the_asset_serial_number_are_displaying()
+			throws InterruptedException {
+
+		waithelper.waitForElement(driver, 3000,
+				reports_AssetCreationCommonObj.Report_MasterReports_DepreciationMethod());
+
+		reports_AssetCreationCommonObj.Report_MasterReports_DepreciationMethod()
+				.sendKeys(AssetCreationCommonTestDataType.AssetSerialAssetCode);
+
+		reports_AssetCreationCommonObj.Report_MasterReports_DepreciationMethod().sendKeys(Keys.ENTER);
+
+		waithelper.waitForElement(driver, 3000, reports_AssetCreationCommonObj.Report_AssetLimit_StartSerialNumber());
+
+		reports_AssetCreationCommonObj.Report_AssetLimit_StartSerialNumber()
+				.sendKeys(AssetCreationCommonTestDataType.AssetStartSerialNumber);
+
+		waithelper.waitForElement(driver, 3000, reports_AssetCreationCommonObj.Report_AssetCreationCommon_Date());
+
+		reports_AssetCreationCommonObj.Report_AssetCreationCommon_Date().click();
+
+		Thread.sleep(1000);
+
+		while (true)
+
+		{
+
+			try
+
+			{
+
+				waithelper.waitForElement(driver, 3000,
+						driver.findElement(
+								By.xpath("//span[contains(text(),'" + AssetCreationCommonTestDataType.AssetSerialToMonth
+										+ " " + AssetCreationCommonTestDataType.AssetSerialToYear + "')]")));
+
+				WebElement monthAndYear = driver.findElement(
+						By.xpath("//span[contains(text(),'" + AssetCreationCommonTestDataType.AssetSerialToMonth + " "
+								+ AssetCreationCommonTestDataType.AssetSerialToYear + "')]"));
+
+				break;
+
+			}
+
+			catch (NoSuchElementException nosuchElement)
+
+			{
+
+				reports_AssetCreationCommonObj.Report_AssetCreationCommon_NextMonth().click();
+
+			}
+
+		}
+
+		WebElement FinalDay2 = driver
+				.findElement(By.xpath("//td[@aria-label='" + AssetCreationCommonTestDataType.AssetSerialToFullMonth
+						+ " " + AssetCreationCommonTestDataType.AssetSerialToDate + ", "
+						+ AssetCreationCommonTestDataType.AssetSerialToYear + "']/span"));
+
+		clicksAndActionHelper.doubleClick(FinalDay2);
+
+	}
+
+	// ------- Check Asset limit configuration
+
+	@And("^select the accounting standards and date to check the asset limit are displaying$")
+
+	public void select_the_accounting_standards_date_to_check_the_asset_limit_are_displaying()
+			throws InterruptedException {
+
+		waithelper.waitForElement(driver, 3000,
+				reports_AssetCreationCommonObj.Report_MasterReports_DepreciationMethod());
+
+		reports_AssetCreationCommonObj.Report_MasterReports_DepreciationMethod()
+				.sendKeys(AssetCreationCommonTestDataType.AccountingStandards);
+
+		reports_AssetCreationCommonObj.Report_MasterReports_DepreciationMethod().sendKeys(Keys.ENTER);
+
+		waithelper.waitForElement(driver, 3000, reports_AssetCreationCommonObj.Report_AssetCreationCommon_Date());
+
+		reports_AssetCreationCommonObj.Report_AssetCreationCommon_Date().click();
+
+		Thread.sleep(1000);
+
+		while (true)
+
+		{
+
+			try
+
+			{
+
+				waithelper
+						.waitForElement(driver, 3000,
+								driver.findElement(By.xpath("//span[contains(text(),'"
+										+ AssetCreationCommonTestDataType.AssetCategoryToMonth + " "
+										+ AssetCreationCommonTestDataType.AssetCategoryToYear + "')]")));
+
+				WebElement monthAndYear = driver.findElement(
+						By.xpath("//span[contains(text(),'" + AssetCreationCommonTestDataType.AssetCategoryToMonth + " "
+								+ AssetCreationCommonTestDataType.AssetCategoryToYear + "')]"));
+
+				break;
+
+			}
+
+			catch (NoSuchElementException nosuchElement)
+
+			{
+
+				reports_AssetCreationCommonObj.Report_AssetCreationCommon_NextMonth().click();
+
+			}
+
+		}
+
+		WebElement FinalDay2 = driver
+				.findElement(By.xpath("//td[@aria-label='" + AssetCreationCommonTestDataType.AssetCategoryToFullMonth
+						+ " " + AssetCreationCommonTestDataType.AssetCategoryToDate + ", "
+						+ AssetCreationCommonTestDataType.AssetCategoryToYear + "']/span"));
+
+		clicksAndActionHelper.doubleClick(FinalDay2);
+
+	}
+
+	// ------- Check Asset Category
+
+	@And("^select the asset category and date to check the asset category are displaying$")
+
+	public void select_the_asset_category_and_date_to_check_the_asset_category_are_displaying()
+			throws InterruptedException {
+
+		waithelper.waitForElement(driver, 3000,
+				reports_AssetCreationCommonObj.Report_MasterReports_DepreciationMethod());
+
+		reports_AssetCreationCommonObj.Report_MasterReports_DepreciationMethod()
+				.sendKeys(AssetCreationCommonTestDataType.AssetCategory);
+
+		reports_AssetCreationCommonObj.Report_MasterReports_DepreciationMethod().sendKeys(Keys.ENTER);
+
+		waithelper.waitForElement(driver, 3000, reports_AssetCreationCommonObj.Report_AssetCreationCommon_Date());
+
+		reports_AssetCreationCommonObj.Report_AssetCreationCommon_Date().click();
+
+		Thread.sleep(1000);
+
+		while (true)
+
+		{
+
+			try
+
+			{
+
+				waithelper
+						.waitForElement(driver, 3000,
+								driver.findElement(By.xpath("//span[contains(text(),'"
+										+ AssetCreationCommonTestDataType.AssetCategoryToMonth + " "
+										+ AssetCreationCommonTestDataType.AssetCategoryToYear + "')]")));
+
+				WebElement monthAndYear = driver.findElement(
+						By.xpath("//span[contains(text(),'" + AssetCreationCommonTestDataType.AssetCategoryToMonth + " "
+								+ AssetCreationCommonTestDataType.AssetCategoryToYear + "')]"));
+
+				break;
+
+			}
+
+			catch (NoSuchElementException nosuchElement)
+
+			{
+
+				reports_AssetCreationCommonObj.Report_AssetCreationCommon_NextMonth().click();
+
+			}
+
+		}
+
+		WebElement FinalDay2 = driver
+				.findElement(By.xpath("//td[@aria-label='" + AssetCreationCommonTestDataType.AssetCategoryToFullMonth
+						+ " " + AssetCreationCommonTestDataType.AssetCategoryToDate + ", "
+						+ AssetCreationCommonTestDataType.AssetCategoryToYear + "']/span"));
+
+		clicksAndActionHelper.doubleClick(FinalDay2);
+
+	}
+
+	@Then("^the report is displaying all the asset codes details for a branch$")
+
+	public void the_report_is_displaying_all_the_asset_codes_details_for_a_branch() throws InterruptedException {
+
+		Thread.sleep(1000);
+
+		browserHelper.SwitchToWindow(1);
+
+		waithelper.waitForElement(driver, 10000, reports_AssetCreationCommonObj.Report_AssetCodesReport());
+
+		boolean result = reports_AssetCreationCommonObj.Report_AssetCodesReport().isDisplayed();
+
+		System.out.println(result);
+
+		browserHelper.switchToParentWithChildClose();
+
+	}
+
+	@Then("^the report is displaying all the asset category details for a branch$")
+
+	public void the_report_is_displaying_all_the_asset_category_details_for_a_branch() throws InterruptedException {
+
+		Thread.sleep(1000);
+
+		browserHelper.SwitchToWindow(1);
+
+		waithelper.waitForElement(driver, 10000, reports_AssetCreationCommonObj.Report_AssetCodesReport());
+
+		boolean result = reports_AssetCreationCommonObj.Report_AssetCodesReport().isDisplayed();
+
+		System.out.println(result);
+
+		browserHelper.switchToParentWithChildClose();
+
+	}
+	
 
 }

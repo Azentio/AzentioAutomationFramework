@@ -1,56 +1,159 @@
-[
-	{
-		"User" : "Maker",
-		
-		"AssetLifeUnit": "Year",
-		"ToMonth": "Jan",
-		"ToFullMonth": "January",
-		"ToYear" : "2023",
-		"ToDate": "31",
-		
-		"CapitalizationMonth": "Oct",
-		"CapitalizationFullMonth": "October",
-		"CapitalizationYear" : "2022",
-		"CapitalizationDate": "25",
-		
-		"CreationMonth": "Oct",
-		"CreationFullMonth": "October",
-		"CreationYear" : "2022",
-		"CreationDate": "6",
-		
-		"DepreciationMonth": "Mar",
-		"DepreciationFullMonth": "March",
-		"DepreciationYear" : "2022",
-		"DepreciationDate": "14",
-		
-		"DepreciationBranch": "Azentio Main Branch",
-		"DepreciationPeriod": "Yearly",
-		
-		"ContractReferenceNumber": "null_6_2022-01-05",
-		"AssetContractMonth": "Oct",
-		"AssetContractFullMonth": "October",
-		"AssetContractYear": "2022",
-		"AssetContractDate": "10",
-		
-		"AssetCode": "ELECTRONICS-LAP001-Freedom255",
-		"AssetTransferMonth": "Oct",
-		"AssetTransferFullMonth": "October",
-		"AssetTransferYear": "2022",
-		"AssetTransferDate": "10",
-		
-		
-		"AssetCodeOfUndertaking": "MACHINARY-AIRCONDITIONER-Haier TurboCool",
-		"AssetUndertakingMonth": "Mar",
-		"AssetUndertakingFullMonth": "March",
-		"AssetUndertakingYear": "2022",
-		"AssetUndertakingDate": "4",
-		
-		"AccountPayableMonth": "Mar",
-		"AccountPayableFullMonth": "March",
-		"AccountPayableYear" : "2022",
-		"AccountPayableDate": "14",
-		
-		"AccountPayableVendorName": "Bonton",
-		"AccountPayablePayableStatus": "Open"
-	}
-]
+[ {    "User" : "Maker", 
+
+		 
+
+		"AssetLifeUnit": "Year", 
+
+		"ToMonth": "Oct", 
+
+		"ToFullMonth": "October", 
+
+		"ToYear" : "2022", 
+
+		"ToDate": "25", 
+
+		 
+
+		"DepreciationMethod": "SYD", 
+
+		"AssetCodeToMonth": "Oct", 
+
+		"AssetCodeToFullMonth": "October", 
+
+		"AssetCodeToYear" : "2022", 
+
+		"AssetCodeToDate": "25", 
+
+		 
+
+		"AssetCategory": "Furnitures & Fixtures", 
+
+		"AssetCategoryToMonth": "Oct", 
+
+		"AssetCategoryToFullMonth": "October", 
+
+		"AssetCategoryToYear" : "2022", 
+
+		"AssetCategoryToDate": "25", 
+
+		 
+
+		"AssetSerialAssetCode": "ELECTRONICS-LAP001-Freedom255", 
+
+		"AssetStartSerialNumber": "1", 
+
+		"AssetSerialToMonth": "Oct", 
+
+		"AssetSerialToFullMonth": "October", 
+
+		"AssetSerialToYear" : "2022", 
+
+		"AssetSerialToDate": "25", 
+
+		 
+
+		"AccountingStandards": "IFRS Book", 
+
+		"AssetLimitToMonth": "Oct", 
+
+		"AssetLimitToFullMonth": "October", 
+
+		"AssetLimitToYear" : "2022", 
+
+		"AssetLimitToDate": "25", 
+
+		 
+
+		"CapitalizationMonth": "Oct", 
+
+		"CapitalizationFullMonth": "", 
+
+		"CapitalizationYear" : "2022", 
+
+		"CapitalizationDate": "25", 
+
+		 
+
+		"CreationMonth": "Oct", 
+
+		"CreationFullMonth": "October", 
+
+		"CreationYear" : "2022", 
+
+		"CreationDate": "6", 
+
+		 
+
+		"DepreciationMonth": "Mar", 
+
+		"DepreciationFullMonth": "March", 
+
+		"DepreciationYear" : "2022", 
+
+		"DepreciationDate": "14", 
+
+		 
+
+		"DepreciationBranch": "Azentio Main Branch", 
+
+		"DepreciationPeriod": "Yearly", 
+
+		 
+
+		"ContractReferenceNumber": "null_6_2022-01-05", 
+
+		"AssetContractMonth": "Oct", 
+
+		"AssetContractFullMonth": "October", 
+
+		"AssetContractYear": "2022", 
+
+		"AssetContractDate": "10", 
+
+		 
+
+		"AssetCode": "ELECTRONICS-LAP001-Freedom255", 
+
+		"AssetTransferMonth": "Oct", 
+
+		"AssetTransferFullMonth": "October", 
+
+		"AssetTransferYear": "2022", 
+
+		"AssetTransferDate": "10", 
+
+		 
+
+		 
+
+		"AssetCodeOfUndertaking": "MACHINARY-AIRCONDITIONER-Haier TurboCool", 
+
+		"AssetUndertakingMonth": "Mar", 
+
+		"AssetUndertakingFullMonth": "March", 
+
+		"AssetUndertakingYear": "2022", 
+
+		"AssetUndertakingDate": "4", 
+
+		 
+
+		"AccountPayableMonth": "Mar", 
+
+		"AccountPayableFullMonth": "March", 
+
+		"AccountPayableYear" : "2022", 
+
+		"AccountPayableDate": "14", 
+
+		 
+
+		"AccountPayableVendorName": "Bonton", 
+
+		"AccountPayablePayableStatus": "Open" 
+
+	} 
+
+] 
+
+ 

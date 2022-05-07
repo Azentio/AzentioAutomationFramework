@@ -111,22 +111,16 @@ while(true)
 
 	    browserHelper.SwitchToWindow(1);
 	    Thread.sleep(1500);
-	    while(true)
-	    {
-	    try
-	    {
-	    	javascripthelper.scrollIntoView(driver.findElement(By.xpath("//div[contains(text(),'"+arAp_BalanceSheetReportTestDataType.BranchCode+"')]")));
-	    driver.findElement(By.xpath("//div[contains(text(),'"+arAp_BalanceSheetReportTestDataType.BranchCode+"')]")).isDisplayed();
-	    break;
-	    }
-	    catch(NoSuchElementException e)
-	    {
-	    	arAp_BalanceSheetReportObj.arAp_BalanceSheetReport_ReportNext().click();
-	    }
-	    catch(StaleElementReferenceException e1)
-	    {
-	    }
-	    }
+		/*
+		 * while(true) { try {
+		 * javascripthelper.scrollIntoView(driver.findElement(By.xpath(
+		 * "//div[contains(text(),'"+arAp_BalanceSheetReportTestDataType.BranchCode+
+		 * "')]"))); driver.findElement(By.xpath("//div[contains(text(),'"+
+		 * arAp_BalanceSheetReportTestDataType.BranchCode+"')]")).isDisplayed(); break;
+		 * } catch(NoSuchElementException e) {
+		 * arAp_BalanceSheetReportObj.arAp_BalanceSheetReport_ReportNext().click(); }
+		 * catch(StaleElementReferenceException e1) { } }
+		 */
 	    browserHelper.switchToParentWithChildClose();
 	    
 	    }

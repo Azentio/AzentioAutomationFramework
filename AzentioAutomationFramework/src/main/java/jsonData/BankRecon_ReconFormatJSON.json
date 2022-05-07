@@ -1,0 +1,84 @@
+[{
+
+
+
+"User": "Maker",
+"FormatStatus" : "INACTIVE",
+"BankName" : "HDFC BANK",
+"ApplicableAccountType" :"CURRENT ACCOUNT",
+"UploadFileExtension" : "Text",
+"Separator" : "Fixed Length",
+"AllowUnadjusted" : "No",
+"SummaryLineToBeSkipped" :"6",
+"FileNamePrefix" : "HDFC_BANK",
+"AllowValueDate" : "Previous Month end",
+
+"AccNoRow"      : "2",
+"AccNoColumn"   : "1",
+"AccNoLength"   : "14",
+"AccNoPosition" : "15",
+
+"AsOnDateRow"      : "4",
+"AsOnDateColumn"   : "1",
+"AsOnDateLength"   : "11",
+"AsOnDatePosition" : "13",
+
+"ClosingBalanceRow"      : "3",
+"ClosingBalanceColumn"   : "1",
+"ClosingBalanceLength"   : "11",
+"ClosingBalancePosition" : "19",
+
+"FileName" : "Value Date",
+"SystemDataPoint" : "Value Date",
+"DataType" : "Date",
+"DateFormate" : "dd/MM/yyyy",
+"FixedLength" : "10",
+"BlankSpacePadding" : "Left Padding",
+"Position" : "4",
+"MatchCondition" : "Fully Matched",
+
+"FileNameTrans" : "Transaction Date",
+"SystemDataPointTrans" : "Transaction Date",
+"DataTypeTrans" : "Date",
+"DateFormateTrans" : "dd/MM/yyyy",
+"FixedLengthTrans" : "12",
+"BlankSpacePaddingTrans" : "Left Padding",
+"PositionTrans" : "1",
+"MatchConditionTrans" : "Fully Matched",
+
+"FileNameDepo" : "Deposits",
+"SystemDataPointDepo" : "Debit Amount",
+"DataTypeDepo" : "Numeric",
+"FixedLengthDepo" : "25",
+"BlankSpacePaddingDepo" : "Left Padding",
+"PositionDepo" : "2",
+"MatchConditionDepo" : "Fully Matched",
+"TranspositionCondition" : "Transposition",
+
+"FileNameWith" : "Withdrawals",
+"SystemDataPointWith" : "Credit Amount",
+"DataTypeWith" : "Numeric",
+"FixedLengthWith" : "24",
+"BlankSpacePaddingWith" : "Left Padding",
+"PositionWith" : "3",
+"MatchConditionWith" : "Fully Matched",
+
+
+"BankNameRecon" : "ANDHRA BANK",
+"AccountNumberRecon" : "ANDHRA777555",
+"ReconPeriodFromMonth": "Apr",
+"ReconPeriodFromFullMonth": "April",
+"ReconPeriodFromDay": "18",
+"ReconYear": "2023",
+		
+"ReconPeriodToMonth": "Apr",
+"ReconPeriodToFullMonth": "April",
+"ReconPeriodToDate": "19",
+
+"ChooseFile": "C:\\Users\\inindc00089\\Desktop\\ANDHRA_REC_A3.txt",
+"ChooseFileMismatch": "C:\\Users\\inindc00089\\Desktop\\ANDHRA_REC_A4.txt"
+
+
+
+
+}]

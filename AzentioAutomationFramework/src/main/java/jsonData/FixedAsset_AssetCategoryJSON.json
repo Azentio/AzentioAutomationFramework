@@ -39,9 +39,61 @@
 		"FromMonth"		: "Nov",
 		"FromFullMonth"	: "November",
 		"FromDay"		: "4",
-		"Year"			: "2022"
+		"Year"			: "2022",
 		
+		"ReplacementReportAssetCode" : "ELECTRONICS-LAP001-Apple_Mac_Book",
+		"ReplacementReportItemNumber" : "IN7585",
+		"ReplacementFromMonth"		: "Apr",
+		"ReplacementFromFullMonth"	: "April",
+		"ReplacementFromDay"		: "26",
+		"ReplacementYear"			: "2022",
 		
+		"ImpairmentFromMonth"		: "Apr",
+		"ImpairmentFromFullMonth"	: "April",
+		"ImpairmentFromDay"			: "26",
+		"ImpairmentYear"			: "2022",
+		
+		"RevaluationFromMonth"		: "Apr",
+		"RevaluationFromFullMonth"	: "April",
+		"RevaluationFromDay"		: "26",
+		"RevaluationYear"			: "2023",
+		
+		"ReturnReportAssetCode" : "ELECTRONICS-LAP001-Apple_Mac_Book",
+		"ReturnReportItemNumber" : "IN7585",
+		"ReturnFromMonth"		: "Apr",
+		"ReturnFromFullMonth"	: "April",
+		"ReturnFromDay"		: "26",
+		"ReturnYear"			: "2023",
+		
+	"AllocationReportEmployeeID" : "Anant",
+	"AllocationReportItemNumber" : "Account12",
+	"AllocationFromMonth" : "Apr",
+	"AllocationFromFullMonth" : "April",
+	"AllocationFromDay" : "26",
+	"AllocationYear" : "2023",
+	
+	
+	"DeAllocationReportEmployeeID" : "Anant",
+	"DeAllocationFromMonth"  : "Apr",
+	"DeAllocationFromFullMonth" : "April",
+	"DeAllocationFromDay": "26", 
+	"DeAllocationYear": "2023",
+	
+	"DeAllocationToMonth": "Apr",
+	"DeAllocationToFullMonth": "April",
+	"DeAllocationToDate": "26",
+	"DeAllocationToYear": "2023",
+		
+	"AmendmentModification" : "Capitalization Date",
+	"AmendmentFromMonth"  : "Apr",
+	"AmendmentFromFullMonth" : "April",
+	"AmendmentFromDay": "26", 
+	"AmendmentYear": "2023",
+	
+	"AmendmentToMonth": "Apr",
+	"AmendmentToFullMonth": "April",
+	"AmendmentToDate": "26",
+	"AmendmentToYear": "2023"
 		
 		
 		

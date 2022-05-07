@@ -3607,10 +3607,127 @@ Then click on Start the job
 Then Click on refresh button
 Then login with maker to check if date is changed or not
 
+@KUBS_FAT_UAT_013_016
+Scenario: Check Asset return Report
+Given Maker Navigate to UAT URL login
+Then Click on Report button
+Then Click on Transaction Reports tab
+Then Click on return Report edit button
+Then Fill details for return report
+Then Select return date in calendar
+Then Click on the View button
+Then close the report
+
+@KUBS_FAT_UAT_013_017
+Scenario: Check Asset replacement Report
+Given Maker Navigate to UAT URL login
+Then Click on Report button
+Then Click on Transaction Reports tab
+Then Click on Asset replacement Report edit button
+Then Fill details for report
+Then Select date from calendar
+Then Click on the View button
+Then close the report
+
+@KUBS_FAT_UAT_013_018
+Scenario: Check Impairement Loss booking Report
+Given Maker Navigate to UAT URL login
+Then Click on Report button
+Then Click on Transaction Reports tab
+Then Click on Impairement Report edit button
+Then Select Impairement loss date in calendar
+Then Click on the View button
+Then close the report
+
+@KUBS_FAT_UAT_013_019
+Scenario: Check Asset Revaluation Report
+Given Maker Navigate to UAT URL login
+Then Click on Report button
+Then Click on Transaction Reports tab
+Then Click on Revaluation Report edit button
+Then Select Revaluation date in calendar
+Then Click on the View button
+Then close the report
 
 
+@KUBS_FAT_UAT_013_014
+Scenario: Check Asset Allocation Report
+Given Maker Navigate to UAT URL login
+Then Click on Report button
+Then Click on Transaction Reports tab
+Then Click on Allocation Report edit button
+Then fill Allocation Report details
+Then Select Allocation date in calendar
+Then Click on the View button
+Then close the report
 
 
+@KUBS_FAT_UAT_013_015
+Scenario: Check Asset DeAllocation Report
+Given Maker Navigate to UAT URL login
+Then Click on Report button
+Then Click on Transaction Reports tab
+Then Click on DeAllocation Report edit button
+Then fill DeAllocation Report details
+Then Select DeAllocation from date in calendar
+Then Select DeAllocation to date in calendar
+Then Click on the View button
+Then close the report
+
+
+@KUBS_FAT_UAT_013_010
+Scenario: Check Asset Amendment Report
+Given Maker Navigate to UAT URL login
+Then Click on Report button
+Then Click on Transaction Reports tab
+Then Click on Amendment Report edit button
+Then fill Amendment Report details
+Then Select Amendment from date in calendar
+Then Select Amendment to date in calendar
+Then Click on the View button
+Then close the report
+
+@KUBS_FAT_UAT_013_001 
+
+  Scenario: Check Asset Limit Config 
+
+ Given User should go to the kubs url and login as a maker user 
+ Then click on report icon 
+ And user should navigate to master reports menu 
+ Then click on temp grid button of asset limit configuration 
+ And select the accounting standards and date to check the asset limit are displaying 
+ Then click in the view button to check 
+ Then the report is displaying all the asset codes details for a branch 
+ 
+@KUBS_FAT_UAT_013_002 
+Scenario: Check Asset Category 
+Given User should go to the kubs url and login as a maker user 
+Then click on report icon 
+And user should navigate to master reports menu 
+Then click on temp grid button of asset category 
+And select the asset category and date to check the asset category are displaying 
+Then click in the view button to check 
+Then the report is displaying all the asset codes details for a branch 
+
+ @KUBS_FAT_UAT_013_003 
+Scenario: Check Asset Codes 
+Given User should go to the kubs url and login as a maker user 
+Then click on report icon 
+And user should navigate to master reports menu 
+Then click on temp grid button of asset code 
+And select the depreciation method and date to check the asset codes are displaying 
+Then click in the view button to check 
+Then the report is displaying all the asset codes details for a branch 
+
+@KUBS_FAT_UAT_013_006 
+Scenario: Check Asset Serial Number 
+Given User should go to the kubs url and login as a maker user 
+Then click on report icon 
+And user should navigate to master reports menu 
+Then click on temp grid button of asset serial number 
+And select the asset code and serial number and date to check the asset serial number are displaying 
+Then click in the view button to check 
+Then the report is displaying all the asset codes details for a branch 
 
 
 
