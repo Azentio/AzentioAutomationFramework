@@ -6,8 +6,8 @@
 "Remark":"TM",
 
 "InstrumentCode":"1131",
-"InstrumentDescription":"Book & A4 Paper6",
-"StartingSerialNumber":"121",
+"InstrumentDescription":"Book & A4 Paper15",
+"StartingSerialNumber":"130",
 
 "AccessBranchCodeForIssue":"AZENTMAIN-Azentio Main Branch",
 "InventoryBranchCodeForIssue":"BR0004-West Zone",
@@ -24,12 +24,12 @@
 
 
 
-"GRNbpName":"suvarana Pvt Ltd",
-"GRNbpBranch":"ICICI Bank Limited",
-"GRNInvoiceNumber":"1112",
+"GRNbpName":"Bonton Agency",
+"GRNbpBranch":"Corporate Branch- Panvel",
+"GRNInvoiceNumber":"INV1112",
 "GRNDeliveryLocation":"West Zone",
 
-"GRNPoNumber":"Azentio_Soft-null-PO-19",
+"GRNPoNumber":"Azentio_Soft-Agency-8-PO-290",
 "GRNQtyReceived":"1",
 "GRNQtyApproved":"1",
 

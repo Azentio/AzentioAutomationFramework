@@ -50,6 +50,7 @@ import testDataType.BUDGET_RequestandallocationBUDTYPEDATA;
 import testDataType.BUDGET_SupplementarybudgetTestDataType;
 import testDataType.BUSINESS_PARTNER_SETUP_BusinessPartnerTestDataType;
 import testDataType.BankReconData;
+import testDataType.BankRecon_BankReconciliationTestDataType;
 import testDataType.BankReconciliationTestData;
 import testDataType.FIXEDASSET_AssetImpairementTestDataType;
 import testDataType.FIXEDASSETS_AssetRevaluationTestDataType;
@@ -393,6 +394,10 @@ public class JsonConfig {
 		private final String DebitNotePath = configFileReader.getJsonPath() + "AccountsReceivable_DebitNoteJSON.json";
 		private List<AccountsReceivable_DebitNoteTestDataType> DebitNoteList;
 		
+		// Bank Recon module
+		private final String BankReconciliationPath = configFileReader.getJsonPath() + "BankRecon_BankReconciliationJSON.json";
+		private List<BankRecon_BankReconciliationTestDataType> BankReconciliationList;
+		
 		//AR AP
 		private final String ArApFilePath = configFileReader.getJsonPath() + "ArapJSON.json";
 		private List<ArApTestDataType>ArApList;
@@ -505,6 +510,7 @@ public class JsonConfig {
 		 ReconciliationList = getReconciliationList();
 		 PettyCashList = getPettyCashList();
 		 DebitNoteList = getDebitNoteList();
+		 BankReconciliationList = getBankReconciliationList();
 		 
 			ArApList= getArApList();
 			GL1List = getGL1List();
@@ -2283,6 +2289,27 @@ private List<AccountsReceivable_DebitNoteTestDataType> getDebitNoteList() {
 	}
 }
 
+private List<BankRecon_BankReconciliationTestDataType> getBankReconciliationList() {
+	Gson gson = new Gson();
+	JsonReader reader = new JsonReader(new StringReader(BankReconciliationPath));
+	reader.setLenient(true);
+	BufferedReader bufferReader = null;
+	try {
+		bufferReader = new BufferedReader(new FileReader (BankReconciliationPath));
+		BankRecon_BankReconciliationTestDataType[] login = gson.fromJson(bufferReader,
+				BankRecon_BankReconciliationTestDataType[].class);
+		return Arrays.asList(login);
+	} catch (FileNotFoundException e) {
+		throw new RuntimeException("Json file not found at path : " + BankReconciliationPath);
+	} finally {
+		try {
+			if (bufferReader != null)
+				bufferReader.close();
+		} catch (IOException ignore) {
+		}
+	}
+}
+
 	public final BUDGET_RequestAndAllocationTestDataType getAllowcationByName(String user) {
 		return AllocationList.stream().filter(x -> x.UserType.equalsIgnoreCase(user)).findAny().get();
 	}
@@ -2625,4 +2652,8 @@ private List<AccountsReceivable_DebitNoteTestDataType> getDebitNoteList() {
 		public final BankReconData getBankReconData(String UserName) {
 			return BankReconList.stream().filter(x -> x.UserName.equalsIgnoreCase(UserName)).findAny().get();
 		}
+		
+	public final BankRecon_BankReconciliationTestDataType getBankReconciliationdata(String UserName) {
+		return BankReconciliationList.stream().filter(x -> x.User.equalsIgnoreCase(UserName)).findAny().get();
+	}
 }

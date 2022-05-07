@@ -1,0 +1,22 @@
+[
+	{
+		"User" : "Maker",
+		"BankName" : "IDFC FIRST BANK",
+		"AccountNumber" : "IDFC77712345",
+		
+		"FromMonth": "Feb",
+		"FromFullMonth": "February",
+		"FromDate": "1",
+		"FromYear": "2023",
+		
+		"ToMonth": "Feb",
+		"ToFullMonth": "February",
+		"ToDate": "2",
+		"ToYear": "2023",
+		
+		"FileUpload": "C:\\Users\\inindc00091\\git\\AzentioAutomationFramework_FinalCode\\AzentioAutomationFramework\\BankReconTextCsvFiles\\IDFC_REC_A11.txt",
+		
+		"MatchedTab": "Matched Data"
+		
+	}
+]
