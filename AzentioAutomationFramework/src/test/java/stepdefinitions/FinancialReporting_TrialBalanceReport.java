@@ -54,6 +54,15 @@ public class FinancialReporting_TrialBalanceReport {
 		financialReporting_TrialBalanceReportObj.FinancialReporting_TrialBalanceReport_BranchCode().sendKeys(TrialBalanceReportTestDataType.BranchCode);
 		financialReporting_TrialBalanceReportObj.FinancialReporting_TrialBalanceReport_BranchCode().sendKeys(Keys.ENTER);
 		
+		financialReporting_TrialBalanceReportObj.financialReportingTrailBalanceReportType().sendKeys(Keys.DOWN);
+		financialReporting_TrialBalanceReportObj.financialReportingTrailBalanceReportType().sendKeys(Keys.ENTER);
+		financialReporting_TrialBalanceReportObj.financialReportingTrialBalanceCurrencyType().click();
+		financialReporting_TrialBalanceReportObj.financialReportingTrialBalanceCurrencyType().sendKeys(Keys.DOWN);
+		financialReporting_TrialBalanceReportObj.financialReportingTrialBalanceCurrencyType().sendKeys(Keys.DOWN);
+		financialReporting_TrialBalanceReportObj.financialReportingTrialBalanceCurrencyType().sendKeys(Keys.DOWN);
+		financialReporting_TrialBalanceReportObj.financialReportingTrialBalanceCurrencyType().sendKeys(Keys.ENTER);
+	
+		
 		waithelper.waitForElement(driver, 3000, financialReporting_TrialBalanceReportObj.FinancialReporting_TrialBalanceReport_TrialBalanceFromDate());
 		financialReporting_TrialBalanceReportObj.FinancialReporting_TrialBalanceReport_TrialBalanceFromDate().click();
 		
@@ -96,16 +105,18 @@ public class FinancialReporting_TrialBalanceReport {
 		WebElement FinalDay2=driver.findElement(By.xpath("//td[@aria-label='"+TrialBalanceReportTestDataType.TrialFullToMonth+" "+TrialBalanceReportTestDataType.TrialToDate+", "+TrialBalanceReportTestDataType.TrialToYear+"']/span"));
 		clicksAndActionHelper.doubleClick(FinalDay2);
 		
-		waithelper.waitForElement(driver, 3000, financialReporting_TrialBalanceReportObj.FinancialReporting_TrialBalanceReport_Currency());
-		financialReporting_TrialBalanceReportObj.FinancialReporting_TrialBalanceReport_Currency().sendKeys(TrialBalanceReportTestDataType.Currency);
-		financialReporting_TrialBalanceReportObj.FinancialReporting_TrialBalanceReport_Currency().sendKeys(Keys.ENTER);
+//		waithelper.waitForElement(driver, 3000, financialReporting_TrialBalanceReportObj.FinancialReporting_TrialBalanceReport_Currency());
+//		financialReporting_TrialBalanceReportObj.FinancialReporting_TrialBalanceReport_Currency().sendKeys(TrialBalanceReportTestDataType.Currency);
+//		financialReporting_TrialBalanceReportObj.FinancialReporting_TrialBalanceReport_Currency().sendKeys(Keys.ENTER);
 	}
 	
 		
     @Then("^click on view button to view the report of Trial balance$")
-    public void click_on_view_button_to_view_the_report_of_trial_balance()  {
+    public void click_on_view_button_to_view_the_report_of_trial_balance() throws InterruptedException  {
     	waithelper.waitForElement(driver, 3000, financialReporting_TrialBalanceReportObj.FinancialReporting_TrialBalanceReport_ViewButton());
     	financialReporting_TrialBalanceReportObj.FinancialReporting_TrialBalanceReport_ViewButton().click();
+    	Thread.sleep(9000);
+    	
 //    	clicksAndActionHelper.doubleClick(financialReporting_TrialBalanceReportObj.FinancialReporting_TrialBalanceReport_ViewButton());
     	
     }
@@ -123,7 +134,15 @@ public class FinancialReporting_TrialBalanceReport {
     	waithelper.waitForElement(driver, 3000, financialReporting_TrialBalanceReportObj.FinancialReporting_TrialBalanceReport_BranchCode());
     	financialReporting_TrialBalanceReportObj.FinancialReporting_TrialBalanceReport_BranchCode().sendKeys(TrialBalanceReportTestDataType.BranchCodeForTrialBalancesSummary);
     	financialReporting_TrialBalanceReportObj.FinancialReporting_TrialBalanceReport_BranchCode().sendKeys(Keys.ENTER);
+    	financialReporting_TrialBalanceReportObj.financialReportingTrailBalanceReportType().click();
+    	financialReporting_TrialBalanceReportObj.financialReportingTrailBalanceReportType().sendKeys(Keys.DOWN);
+    	financialReporting_TrialBalanceReportObj.financialReportingTrailBalanceReportType().sendKeys(Keys.ENTER);
     	
+    	financialReporting_TrialBalanceReportObj.financialReportingTrialBalanceCurrencyType().click();
+    	financialReporting_TrialBalanceReportObj.financialReportingTrialBalanceCurrencyType().sendKeys(Keys.DOWN);
+    	financialReporting_TrialBalanceReportObj.financialReportingTrialBalanceCurrencyType().sendKeys(Keys.DOWN);
+    	financialReporting_TrialBalanceReportObj.financialReportingTrialBalanceCurrencyType().sendKeys(Keys.DOWN);
+    	financialReporting_TrialBalanceReportObj.financialReportingTrialBalanceCurrencyType().sendKeys(Keys.ENTER);
     	waithelper.waitForElement(driver, 3000, financialReporting_TrialBalanceReportObj.FinancialReporting_TrialBalanceReport_TrialBalanceFromDate());
     	financialReporting_TrialBalanceReportObj.FinancialReporting_TrialBalanceReport_TrialBalanceFromDate().click();
     	
@@ -177,10 +196,12 @@ public class FinancialReporting_TrialBalanceReport {
     }
     
     @Then("^click on view button to view the report of Trial balance summary$")
-    public void click_on_view_button_to_view_the_report_of_trial_balance_summary() {
+    public void click_on_view_button_to_view_the_report_of_trial_balance_summary() throws InterruptedException {
     	waithelper.waitForElement(driver, 3000, financialReporting_TrialBalanceReportObj.FinancialReporting_TrialBalanceReport_ViewButton());
     	financialReporting_TrialBalanceReportObj.FinancialReporting_TrialBalanceReport_ViewButton().click();
-       
+       Thread.sleep(5000);
+      driver.quit();
+
     }
     
     //----008_009 & 008_010
@@ -215,8 +236,16 @@ public class FinancialReporting_TrialBalanceReport {
     	waithelper.waitForElement(driver, 3000, financialReporting_TrialBalanceReportObj.FinancialReporting_TrialBalanceReport_BranchCode());
 		financialReporting_TrialBalanceReportObj.FinancialReporting_TrialBalanceReport_BranchCode().sendKeys(TrialBalanceReportTestDataType.BranchCode);
 		financialReporting_TrialBalanceReportObj.FinancialReporting_TrialBalanceReport_BranchCode().sendKeys(Keys.ENTER);
-    	
-    	waithelper.waitForElement(driver, 3000, financialReporting_TrialBalanceReportObj.FinancialReporting_TrialBalanceReport_TrialBalanceFromDate());
+		financialReporting_TrialBalanceReportObj.financialReportingTrailBalanceReportType().click();
+		financialReporting_TrialBalanceReportObj.financialReportingTrailBalanceReportType().sendKeys(Keys.DOWN);
+		financialReporting_TrialBalanceReportObj.financialReportingTrailBalanceReportType().sendKeys(Keys.ENTER);
+		financialReporting_TrialBalanceReportObj.financialReportingTrialBalanceCurrencyType().click();
+		financialReporting_TrialBalanceReportObj.financialReportingTrialBalanceCurrencyType().sendKeys(Keys.DOWN);
+		financialReporting_TrialBalanceReportObj.financialReportingTrialBalanceCurrencyType().sendKeys(Keys.DOWN);
+		financialReporting_TrialBalanceReportObj.financialReportingTrialBalanceCurrencyType().sendKeys(Keys.DOWN);
+		financialReporting_TrialBalanceReportObj.financialReportingTrialBalanceCurrencyType().sendKeys(Keys.ENTER);
+		
+		waithelper.waitForElement(driver, 3000, financialReporting_TrialBalanceReportObj.FinancialReporting_TrialBalanceReport_TrialBalanceFromDate());
 		financialReporting_TrialBalanceReportObj.FinancialReporting_TrialBalanceReport_TrialBalanceFromDate().click();
 		
 		while(true)
@@ -324,9 +353,21 @@ public class FinancialReporting_TrialBalanceReport {
     	Thread.sleep(6000);
 //    	waithelper.waitForElement(driver, 10000, driver.findElement(By.xpath(beforexpath +jsonWriter.readdata()+ afterxpath)));
 //    	javascripthelper.scrollIntoView(driver.findElement(By.xpath(beforexpath +jsonWriter.readdata()+ afterxpath)));
+
+    	while(true)
+    	{
+    		try
+    		{
     	javascripthelper.scrollToElemet(driver.findElement(By.xpath(beforexpath +jsonWriter.readdata()+ afterxpath)));
     	boolean leafGL=driver.findElement(By.xpath(beforexpath +jsonWriter.readdata()+ afterxpath)).isDisplayed();
     	System.out.println("LeafGL record is available - "+ leafGL);
+break;
+    		}
+    		catch(NoSuchElementException e)
+    		{
+    			driver.findElement(By.xpath("//input[@title='Next page']")).click();
+    		}
+    		}
     	browserHelper.switchToParentWithChildClose();
     }
 

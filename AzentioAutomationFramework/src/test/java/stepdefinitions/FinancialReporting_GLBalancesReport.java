@@ -56,8 +56,8 @@ public class FinancialReporting_GLBalancesReport {
 	public void fill_the_required_field_of_gl_balances_report() {
 		waithelper.waitForElement(driver, 3000, financialReporting_GLBalancesReportObj.FinancialReporting_GLBalancesReport_BranchCode());
 		financialReporting_GLBalancesReportObj.FinancialReporting_GLBalancesReport_BranchCode().sendKeys(GLBalancesReportTestDataType.BranchCode);
+		financialReporting_GLBalancesReportObj.FinancialReporting_GLBalancesReport_BranchCode().sendKeys(Keys.DOWN);
 		financialReporting_GLBalancesReportObj.FinancialReporting_GLBalancesReport_BranchCode().sendKeys(Keys.ENTER);
-		
 		waithelper.waitForElement(driver, 3000, financialReporting_GLBalancesReportObj.FinancialReporting_GLBalancesReport_GlCode());
 		financialReporting_GLBalancesReportObj.FinancialReporting_GLBalancesReport_GlCode().sendKeys(GLBalancesReportTestDataType.GLCode);
 		financialReporting_GLBalancesReportObj.FinancialReporting_GLBalancesReport_GlCode().sendKeys(Keys.ENTER);
@@ -91,8 +91,8 @@ public class FinancialReporting_GLBalancesReport {
 		try
 		{
 		
-			waithelper.waitForElement(driver, 3000, driver.findElement(By.xpath("//span[contains(text(),'"+GLBalancesReportTestDataType.GLToMonth+" "+GLBalancesReportTestDataType.GLYear+"')]")));
-			WebElement monthAndYear=driver.findElement(By.xpath("//span[contains(text(),'"+GLBalancesReportTestDataType.GLToMonth+" "+GLBalancesReportTestDataType.GLYear+"')]"));
+			waithelper.waitForElement(driver, 3000, driver.findElement(By.xpath("//span[contains(text(),'"+GLBalancesReportTestDataType.GLToMonth+" "+GLBalancesReportTestDataType.GLToYear+"')]")));
+			WebElement monthAndYear=driver.findElement(By.xpath("//span[contains(text(),'"+GLBalancesReportTestDataType.GLToMonth+" "+GLBalancesReportTestDataType.GLToYear+"')]"));
 		    break;
 		}
 		
@@ -101,7 +101,7 @@ public class FinancialReporting_GLBalancesReport {
 			eNQUIRY_FinancialTransactionObj.ENQUIRY_FinancialTransaction_NextMonth().click();
 		}
 		}
-		WebElement FinalDay2=driver.findElement(By.xpath("//td[@aria-label='"+GLBalancesReportTestDataType.GLFullToMonth+" "+GLBalancesReportTestDataType.GLToDate+", "+GLBalancesReportTestDataType.GLYear+"']/span"));
+		WebElement FinalDay2=driver.findElement(By.xpath("//td[@aria-label='"+GLBalancesReportTestDataType.GLFullToMonth+" "+GLBalancesReportTestDataType.GLToDate+", "+GLBalancesReportTestDataType.GLToYear+"']/span"));
 		clicksAndActionHelper.doubleClick(FinalDay2);
 		
 		waithelper.waitForElement(driver, 3000, financialReporting_GLBalancesReportObj.FinancialReporting_GLBalancesReport_Currency());

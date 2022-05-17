@@ -197,8 +197,11 @@ public class GL2_FinancialTransactionReport  extends BaseClass {
     waithelper.waitForElement(driver, 3000, gL2_FinancialTransactionReportObj.gL2_BalanceSheetReport_BranchTextbox());
     gL2_FinancialTransactionReportObj.gL2_BalanceSheetReport_BranchTextbox().click();
     gL2_FinancialTransactionReportObj.gL2_BalanceSheetReport_BranchTextbox().sendKeys(gL2_FinancialTransactionReportTestDataType.BranchCode);
+    gL2_FinancialTransactionReportObj.gL2_BalanceSheetReport_BranchTextbox().sendKeys(Keys.DOWN);
     gL2_FinancialTransactionReportObj.gL2_BalanceSheetReport_BranchTextbox().sendKeys(Keys.ENTER);
-    	 
+    gL2_FinancialTransactionReportObj.gl2BalanceSheetReportType().click();
+    gL2_FinancialTransactionReportObj.gl2BalanceSheetReportType().sendKeys(Keys.DOWN);
+    gL2_FinancialTransactionReportObj.gl2BalanceSheetReportType().sendKeys(Keys.ENTER);
     }
     @Then("^verify the Record available in the report$")
     public void verify_the_record_available_in_the_report() throws Throwable {

@@ -57,7 +57,7 @@ public class FinancialReporting_GLBalancesReportObj {
 		
 	}
 
-	@FindBy(xpath="//ion-col[2]//input")
+	@FindBy(xpath="//ion-col[3]//input")
 	private WebElement FinancialReporting_GLBalancesReport_GlCode;
 	public WebElement FinancialReporting_GLBalancesReport_GlCode()
 	{
@@ -94,7 +94,7 @@ public class FinancialReporting_GLBalancesReportObj {
 		return FinancialReporting_GLBalancesReport_Currency;
 	}
 	// Currency For Monthly
-	@FindBy(xpath="//ion-col[4]//input")
+	@FindBy(xpath="//ion-col[5]//input")
 	private WebElement FinancialReporting_GLBalancesReport_CurrencyForMonthly;
 	public WebElement FinancialReporting_GLBalancesReport_CurrencyForMonthly()
 	{

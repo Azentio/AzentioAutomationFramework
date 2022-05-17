@@ -12,7 +12,7 @@ public class Gl_Reports_Obj1 {
 		PageFactory.initElements(driver,this);
 	}
 	// reviewer id
-	@FindBy(xpath = "//div[@id='toast-container']/div/div[@role='alert']")
+	@FindBy(xpath = "//div[@id='toast-container']/div/div[@role='alertdialog']")
 	private WebElement Ar_Ap_reviewer_id;
 	public WebElement Ar_Ap_reviewer_id() {
 		return Ar_Ap_reviewer_id;
@@ -389,12 +389,12 @@ public class Gl_Reports_Obj1 {
 	public  WebElement glBalanceReportSelectBranch() {
 		return glBalanceReportSelectBranch;
 	}
-	@FindBy(xpath="//ion-col[2]/app-kub-lov/span/ng-select/div/div/div[2]/input")
+	@FindBy(xpath="//ion-col[3]/app-kub-lov/span/ng-select/div/div/div[2]/input")
 	public WebElement glBalanceReportSelectGlcode;
 	public WebElement glBalanceReportSelectGlcode() {
 		return glBalanceReportSelectGlcode;
 	}
-	@FindBy(xpath="//ion-col[5]/app-kub-lov/span/ng-select/div/div/div/input")
+	@FindBy(xpath="//ion-col[6]/app-kub-lov/span/ng-select/div/div/div/input")
 	private WebElement glBalanceReportSelectCurrency;
 	public WebElement glBalanceReportCurrency() {
 		return glBalanceReportSelectCurrency;
@@ -416,13 +416,12 @@ public class Gl_Reports_Obj1 {
 	public WebElement nextPageInGlbalanceReport() {
 		return nextPageInGlbalanceReport;
 	}
-	@FindBy(xpath = "//div[@id='toast-container']/div/div[@role='alert']")
+	@FindBy(xpath = "//div[@id='toast-container']/div/div[@role='alertdialog']")
 	private WebElement budget_creation_reviewer_id;
 
 	public WebElement budgetCreation_ReviewerId() {
 	return budget_creation_reviewer_id;
 	}
 	
-
 
 }

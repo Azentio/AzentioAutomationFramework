@@ -304,8 +304,7 @@ And select the currency type in gl balance report
 And click the View button
 Then verify that available balance should equal to closing net balance in Gl balance Report
 
-
-@KUBS_GL2_UAT_008_005 @MultiAuth @GL2
+@GlMonthlyBalance
 
 Scenario: Check report for GL monthly balances.
 Given Maker Navigate to UAT URL login

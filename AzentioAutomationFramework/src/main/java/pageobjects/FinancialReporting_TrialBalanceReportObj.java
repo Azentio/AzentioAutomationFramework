@@ -41,7 +41,18 @@ public class FinancialReporting_TrialBalanceReportObj {
 		return FinancialReporting_TrialBalanceReport_BranchCode;
 		
 	}
-	
+	@FindBy(xpath="//ion-col[2]//input")
+	private WebElement finacialReporting_TrialBalance_ReportType;
+	public WebElement financialReportingTrailBalanceReportType()
+	{
+		return finacialReporting_TrialBalance_ReportType;
+	}
+	@FindBy(xpath="//ion-col[5]//input")
+	private WebElement financialReportingTrialBalance_CurrencyType;
+	public WebElement financialReportingTrialBalanceCurrencyType()
+	{
+		return financialReportingTrialBalance_CurrencyType; 
+	}
 	@FindBy(xpath="(//span[@class='input-calendar'])[1]")
 	private WebElement FinancialReporting_TrialBalanceReport_TrialBalanceFromDate;
 	public WebElement FinancialReporting_TrialBalanceReport_TrialBalanceFromDate()

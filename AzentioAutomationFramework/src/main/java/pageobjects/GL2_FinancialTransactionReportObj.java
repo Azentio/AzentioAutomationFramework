@@ -42,7 +42,7 @@ public class GL2_FinancialTransactionReportObj {
 	}
 
 	// GlCode
-	@FindBy(xpath = "//ion-row[1]/ion-col[2]/app-kub-lov[1]/span[1]/ng-select[1]/div[1]/div[1]/div[2]/input[1]")
+	@FindBy(xpath = "//ion-row[1]/ion-col[3]/app-kub-lov[1]/span[1]/ng-select[1]/div[1]/div[1]/div[2]/input[1]")
 	private WebElement gL2_FinancialTransactionReport_GlCode;
 
 	public WebElement gL2_FinancialTransactionReport_GlCode() {
@@ -97,6 +97,13 @@ public class GL2_FinancialTransactionReportObj {
 	public WebElement gL2_BalanceSheetReport_BranchTextbox() {
 		return gL2_BalanceSheetReport_BranchTextbox;
 	}
+	
+	@FindBy(xpath="//ion-col[2]//input")
+	private WebElement gl2_BalanceSheetReport_ReportType;
+	public WebElement gl2BalanceSheetReportType()
+	{
+		return gl2_BalanceSheetReport_ReportType;
+	}
 
 	//tdsReport
 	@FindBy(xpath = "//div[contains(text(),'TDS Payable')]")
@@ -148,7 +155,7 @@ public class GL2_FinancialTransactionReportObj {
 	}
 
 	// GlCode
-	@FindBy(xpath = "//ion-row[1]/ion-col[2]/app-kub-lov[1]/span[1]/ng-select[1]/div[1]/div[1]/div[2]/input[1]")
+	@FindBy(xpath = "//ion-row[1]/ion-col[3]/app-kub-lov[1]/span[1]/ng-select[1]/div[1]/div[1]/div[2]/input[1]")
 	private WebElement gL2_GlMonthlyBalanceReport_GlCode;
 
 	public WebElement gL2_GlMonthlyBalanceReport_GlCode() {
@@ -172,7 +179,7 @@ public class GL2_FinancialTransactionReportObj {
 	}
 
 	// Currency
-	@FindBy(xpath = "//ion-row[1]/ion-col[4]/app-kub-lov[1]/span[1]/ng-select[1]/div[1]/div[1]/div[2]/input[1]")
+	@FindBy(xpath = "//ion-row[1]/ion-col[5]/app-kub-lov[1]/span[1]/ng-select[1]/div[1]/div[1]/div[2]/input[1]")
 	private WebElement gL2_GlMonthlyBalanceReport_Currency;
 
 	public WebElement gL2_GlMonthlyBalanceReport_Currency() {
