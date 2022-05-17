@@ -459,11 +459,19 @@ public class InventoryManagamentObj {
 		{
 			return inventory_to_date;	
 		}
+		
 		@FindBy(xpath="(//button[@type='button'])[3]")
 		private WebElement inventory_next_month;
 		public WebElement inventoryNextMonth()
 		{
 			return inventory_next_month;
+		}
+		
+		@FindBy(xpath="(//button[@type='button'])[1]")
+		private WebElement inventory_previous_month;
+		public WebElement inventory_previous_month()
+		{
+			return inventory_previous_month;
 		}
 		@FindBy(xpath="//ion-button[contains(text(),'View')]")
 		private WebElement inventory_view;
@@ -639,6 +647,13 @@ public class InventoryManagamentObj {
 		public WebElement report_FundRequsitionReport_CalendarButton()
 		{
 			return report_FundRequsitionReport_CalendarButton;
+		}
+		
+		@FindBy(xpath="//ion-col[2]/app-kub-date-time[1]/ion-item[1]/div[1]/span[1]")
+		private WebElement report_InventoryCodeReport_CalendarButton;
+		public WebElement report_InventoryCodeReport_CalendarButton()
+		{
+			return report_InventoryCodeReport_CalendarButton;
 		}
 		
 		
@@ -1183,6 +1198,31 @@ public class InventoryManagamentObj {
 
 			return Report_report_StockConfirmationReport_acceptStatus;
 		}	
+		
+		@FindBy(xpath = "//div[5]//ion-menu-toggle[2]//ion-item//ion-buttons//ion-button[1]")
+		private WebElement Report_InventoryCode_TempView;
+		
+		public WebElement Report_InventoryCode_TempView()
+		{
+			return Report_InventoryCode_TempView;
+		}
+		
+		@FindBy(xpath = "//ion-col[1]/app-kub-lov[1]/span[1]/ng-select[1]/div[1]/div[1]/div[2]/input[1]")
+		private WebElement Report_InventoryCode_Description;
+		
+		public WebElement Report_InventoryCode_Description()
+		{
+			return Report_InventoryCode_Description;
+		}
+		
+//		invenotyr codes report 
+		@FindBy(xpath = "//td[2]/div/div/div[1]/table/tbody/tr[2]/td/div[1]")
+		private WebElement Report_inventoryCodeReport;
+		
+		public WebElement Report_inventoryCodeReport()
+		{
+			return Report_inventoryCodeReport;
+		} 
 		
 		 	
 		

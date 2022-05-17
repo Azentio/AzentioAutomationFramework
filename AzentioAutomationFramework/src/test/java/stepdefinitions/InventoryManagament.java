@@ -1,5 +1,7 @@
 package stepdefinitions;
 
+import java.util.List;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.ElementClickInterceptedException;
 import org.openqa.selenium.Keys;
@@ -117,9 +119,25 @@ public class InventoryManagament extends BaseClass {
 		inventoryManagamentObj.inventoryManagament_InventoryRequest_BranchCode().sendKeys(Keys.ENTER);
 		waithelper.waitForElement(driver, 2000,inventoryManagamentObj.inventoryManagament_InventoryRequest_ItemCodeDescriptionButton());
 		inventoryManagamentObj.inventoryManagament_InventoryRequest_ItemCodeDescriptionButton().click();
-		Thread.sleep(1000);
-		waithelper.waitForElement(driver, 2000,inventoryManagamentObj.inventoryManagament_InventoryRequest_SavingAccountChequeRadioButton());
-		inventoryManagamentObj.inventoryManagament_InventoryRequest_SavingAccountChequeRadioButton().click();
+		Thread.sleep(2000);
+//		waithelper.waitForElement(driver, 2000,inventoryManagamentObj.inventoryManagament_InventoryRequest_SavingAccountChequeRadioButton());
+//		inventoryManagamentObj.inventoryManagament_InventoryRequest_SavingAccountChequeRadioButton().click();
+		
+		String beforexpath = "//ion-radio-group/ion-item[";
+		String afterxpath = "]/ion-label";
+		List<WebElement> radioitem= driver.findElements(By.xpath("//ion-radio-group/ion-item"));
+		int size = radioitem.size();
+		System.out.println(size);
+		for (int i = 1; i <= size ; i++) {
+			if(driver.findElement(By.xpath(beforexpath+ i + afterxpath)).getText().equals(inventoryManagementTestDataType.ItemCodeDescription))
+			{
+				String beforexpath1 = "//ion-item[";
+				String afterxpath1 = "]/ion-radio";
+				driver.findElement(By.xpath(beforexpath1 + i + afterxpath1)).click();
+				break;
+			}
+		}
+		
 		waithelper.waitForElement(driver, 2000,inventoryManagamentObj.inventoryManagament_InventoryRequest_RequestTypeButton());
 		inventoryManagamentObj.inventoryManagament_InventoryRequest_RequestTypeButton().click();
 		Thread.sleep(1000);
@@ -999,7 +1017,7 @@ public class InventoryManagament extends BaseClass {
 				
 				catch(NoSuchElementException nosuchElement)
 				{
-					inventoryManagamentObj.inventoryNextMonth().click();
+					inventoryManagamentObj.inventory_previous_month().click();
 				}
 				}
 				WebElement FinalDay=driver.findElement(By.xpath("//td[@aria-label='"+inventoryManagementTestDataType.GlFullMonth+" "+inventoryManagementTestDataType.GlDay+", "+inventoryManagementTestDataType.GlYear+"']/span"));
@@ -1438,7 +1456,7 @@ public class InventoryManagament extends BaseClass {
 					}
 
 					catch (NoSuchElementException nosuchElement) {
-						inventoryManagamentObj.inventoryNextMonth().click();
+						inventoryManagamentObj.inventory_previous_month().click();
 					}
 				}
 				WebElement FinalDay = driver.findElement(By.xpath("//td[@aria-label='" + inventoryManagementTestDataType.GlFullMonth + " "
@@ -1871,8 +1889,8 @@ public void verify_the_approved_record_is_available_in_the_report() throws Throw
 	System.out.println("Approved invoice number "+inventoryManagementTestDataType.Voucher);
 	javascripthelper.JavaScriptHelper(driver);
 
-//	browserHelper.SwitchToWindow(1);
-	Thread.sleep(1500);
+	browserHelper.SwitchToWindow(1);
+	Thread.sleep(3000);
 //	while(true)
 //	{
 //	try
@@ -1907,9 +1925,6 @@ public void click_on_fund_requisition_report_edit_grid() throws Throwable {
 @Then("^Fill the form for Fund Requisition Report$")
 public void fill_the_form_for_fund_requisition_report() throws Throwable {
 	inventoryManagementTestDataType = jsonReader.getInventoryManagementByName("Maker");
-
-	
-	
 	
 	
 	//Calendar
@@ -2098,19 +2113,60 @@ public void fill_the_form_for_stock_return_report_for_return_the_inventories() t
 }
 
 
+@Then("^click on temp grid button of inventory code report$")
+public void click_on_temp_grid_button_of_inventory_code_report() {
+	waithelper.waitForElement(driver, 3000, inventoryManagamentObj.Report_InventoryCode_TempView());
+	inventoryManagamentObj.Report_InventoryCode_TempView().click();
 
+}
 
+@Then("^Fill the form for inventory code Report$")
+public void fill_the_form_for_inventory_code_report() throws Throwable {
+	inventoryManagementTestDataType = jsonReader.getInventoryManagementByName("Maker");
+	
+	waithelper.waitForElement(driver, 3000, inventoryManagamentObj.Report_InventoryCode_Description());
+	inventoryManagamentObj.Report_InventoryCode_Description().click();
+	inventoryManagamentObj.Report_InventoryCode_Description().sendKeys(inventoryManagementTestDataType.Description);
+	inventoryManagamentObj.Report_InventoryCode_Description().sendKeys(Keys.ENTER);
+	
+	
+	//Calendar
+		Thread.sleep(2000);
+		waithelper.waitForElement(driver, 2000,inventoryManagamentObj.report_InventoryCodeReport_CalendarButton());
+		inventoryManagamentObj.report_InventoryCodeReport_CalendarButton().click();
+		Thread.sleep(2000);
+		 
+		inventoryManagementTestDataType = jsonReader.getInventoryManagementByName("Maker");
+		while(true)
+	    {
+		try
+		{
+		
+			waithelper.waitForElement(driver, 3000, driver.findElement(By.xpath("//span[contains(text(),'"+inventoryManagementTestDataType.GlToMonth+" "+inventoryManagementTestDataType.GlYear+"')]")));
+			WebElement monthAndYear=driver.findElement(By.xpath("//span[contains(text(),'"+inventoryManagementTestDataType.GlToMonth+" "+inventoryManagementTestDataType.GlYear+"')]"));
+		    break;
+		}
+		
+		catch(NoSuchElementException nosuchElement)
+		{
+			inventoryManagamentObj.inventoryNextMonth().click();
+		}
+		}
+		WebElement FinalDay=driver.findElement(By.xpath("//td[@aria-label='"+inventoryManagementTestDataType.GlFullToMonth+" "+inventoryManagementTestDataType.GlToDate+", "+inventoryManagementTestDataType.GlYear+"']/span"));
+		clicksAndActionHelper.doubleClick(FinalDay);
+}
 
+@Then("^the report is displaying with all the details$")
 
+public void the_report_is_displaying_with_all_the_details() throws InterruptedException {
+	Thread.sleep(1000);
+	browserHelper.SwitchToWindow(1);
+	waithelper.waitForElement(driver, 10000, inventoryManagamentObj.Report_inventoryCodeReport());
+	boolean result = inventoryManagamentObj.Report_inventoryCodeReport().isDisplayed();
+	System.out.println(result);
+	browserHelper.switchToParentWithChildClose();
 
-
-
-
-
-
-
-
-
+}
 
 
 }	    

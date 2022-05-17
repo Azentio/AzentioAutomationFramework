@@ -43,3 +43,14 @@ Feature: Bank Recon Module
     And Fill the required fields and upload bank statement for bank reconciliation
     Then Save and click on process
     Then Verify the Unmatch Record Tab must display all the entries for unmatched records from Book
+
+    #@KUBS_TAX_UAT_002_002_TC_002
+  #Scenario: Click on a match record and check it displays the match record from uploaded file
+    #Given User should go to the kubs url and login as a maker user
+    #And user should navigate to bank recon menu
+    #When click on eye button of bank reconciliation
+    #And click on add button for bank reconciliationl
+    #And Fill the required fields and upload bank statement for bank reconciliation
+    #Then Save and click on process
+    #Then verify after clicking on a match record it displays the match record from uploaded file
+    

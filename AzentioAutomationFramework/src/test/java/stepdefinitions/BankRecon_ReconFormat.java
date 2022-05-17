@@ -7,6 +7,7 @@ import java.util.List;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
+import org.openqa.selenium.ElementNotInteractableException;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
@@ -106,87 +107,49 @@ public class BankRecon_ReconFormat  extends BaseClass{
 	//EffectiveDate
 	waithelper.waitForElement(driver, 3000, bankRecon_ReconFormatObj.bankRecon_ReconFormat_EffectiveDate());
 	bankRecon_ReconFormatObj.bankRecon_ReconFormat_EffectiveDate().click();
-	/*Thread.sleep(2000);
-	WebElement date = driver.findElement(By.xpath("//ion-picker-column[1]"));
-	WebElement day = driver.findElement(By.xpath("//ion-picker-column[1]/div/button[7]"));
-	Actions a = new Actions(driver);
-	a.moveToElement(date).clickAndHold().moveToElement(day).release().build().perform();
-
-	
+	//Year Selection
 	Thread.sleep(2000);
-	WebElement month = driver.findElement(By.xpath("//ion-picker-column[2]"));
-	WebElement mon = driver.findElement(By.xpath("//ion-picker-column[2]/div/button[7]"));
-	a.moveToElement(month).clickAndHold().moveToElement(mon).release().build().perform();
-	*/
-	/*
-	 * Actions a = new Actions(driver); Thread.sleep(2000); WebElement year =
-	 * driver.findElement(By.xpath("//ion-picker-column[3]")); WebElement yr =
-	 * driver.findElement(By.xpath("//ion-picker-column[3]/div/button[3]"));
-	 * a.moveToElement(year).clickAndHold().moveToElement(yr).release().build().
-	 * perform();
-	 */
-	Thread.sleep(2000);
-	 String year1 = driver.findElement(By.xpath("(//button[@class='picker-opt picker-opt-selected'])[3]")).getText().toString();
-	int yr1=Integer.parseInt(year1);
-  List<WebElement> size1 = driver.findElements(By.xpath("//ion-picker-column[3]/div/button"));
-	int size = size1.size();
-  System.out.println(size);
-  
-	for( int i=1;i<=size;i++)
-	{
-		if(yr1==2023)
-		{	
+	String year1 = driver.findElement(By.xpath("(//button[@class='picker-opt picker-opt-selected'])[3]")).getText().toString();
+	List<WebElement> size1 = driver.findElements(By.xpath("//ion-picker-column[3]/div/button"));
+	for(WebElement webElement : size1) {
+		webElement.click();
+		String year = webElement.getText();
+		if(year.equalsIgnoreCase("2023")) {
+			break;
 		}
-		else if(yr1>2023)	
-			{
-				while(true)
-				{
-					try{
-						driver.findElement(By.xpath("//ion-picker-column[3]/div/button[@class='picker-opt picker-opt-selected' and @opt-index='9']"));
-						break;
-					}
-					catch(NoSuchElementException nosuchElement1) {
-					int newyear=yr1-1;
-					System.out.println(newyear);
-					String ny = Integer.toString(newyear);
-					Thread.sleep(1000);
-					WebElement click = driver.findElement(By.xpath("//button[contains(text(),'"+ny+"')]"));
-					click.click();
-					yr1--;
-					}
-				}
-			}
 	}
-	
+	//Month selection
 	Thread.sleep(2000);
-	 String month1 = driver.findElement(By.xpath("(//button[@class='picker-opt picker-opt-selected'])[2]")).getText().toString();
-//	int mo1=Integer.parseInt(month1);
- List<WebElement> monsize = driver.findElements(By.xpath("//ion-picker-column[2]/div/button"));
-	int monthsize = monsize.size();
- System.out.println(monthsize);
- 
-	for( int i=1;i<=monthsize;i++)
-	{
-		if(month1.equals("Jun"))
-		{	
-		}
-		else 	
-			{
-				while(true)
-				{
-					try{
-						driver.findElement(By.xpath("//ion-picker-column[2]/div/button[@class='picker-opt picker-opt-selected' and @opt-index='5']"));
-						break;
-					}
-					catch(NoSuchElementException nosuchElement1) {
-					for(int j=4;j<=12;i++)
-					{
-						driver.findElement(By.xpath("//ion-picker-column[2]/div/button[@opt-index='"+j+"']")).click();
-						
-					}
-					}
-				}
+	String month1 = driver.findElement(By.xpath("(//button[@class='picker-opt picker-opt-selected'])[2]")).getText().toString();
+	List<WebElement> size2 = driver.findElements(By.xpath("//ion-picker-column[2]/div/button"));
+	for(WebElement webElement2 : size2) {
+		try{
+			webElement2.click();
+			String month = webElement2.getText();
+			if(month.equalsIgnoreCase("Jun")) {
+				break;
 			}
+		}
+		catch(ElementNotInteractableException ee) {
+			
+		}
+		
+	}
+	//Date selection
+	Thread.sleep(2000);
+	String day1 = driver.findElement(By.xpath("(//button[@class='picker-opt picker-opt-selected'])[1]")).getText().toString();
+	List<WebElement> size3 = driver.findElements(By.xpath("//ion-picker-column[1]/div/button"));
+	for(WebElement webElement3 : size3) {
+		try{
+			webElement3.click();
+			String day = webElement3.getText();
+			if(day.equalsIgnoreCase("09")) {
+				break;
+			}
+		}
+		catch(ElementNotInteractableException ee) {
+			
+		}
 	}
 	
 	/*waithelper.waitForElement(driver, 2000, driver.findElement(By.xpath("//ion-picker-column[3]/div/button[10]")));

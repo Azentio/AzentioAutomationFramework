@@ -5,14 +5,14 @@
 		"BranchCode": "AZENTMAIN",
 		"GLCode": "IFRS-AS-AS1000017",
 		
-		"GLMonth": "Mar",
-		"GLFullMonth": "March",
-		"GLDay": "7",
+		"GLMonth": "Apr",
+		"GLFullMonth": "April",
+		"GLDay": "1",
 		
-		"GLYear": "2022",
+		"GLYear": "2023",
 		
-		"GLToMonth": "Oct",
-		"GLFullToMonth": "October",
+		"GLToMonth": "Apr",
+		"GLFullToMonth": "April",
 		"GLToDate": "19",
 		
 		"SlipNumber"  :"DEP-RR88888888-20220307",

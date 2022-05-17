@@ -5,6 +5,7 @@ import java.io.IOException;
 import org.json.simple.parser.ParseException;
 import org.junit.Assert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.ElementNotInteractableException;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
@@ -117,9 +118,21 @@ public class ACCOUNTSPAYABLE_ManualPayout {
 		waithelper.waitForElement(driver, 2000,aCCOUNTSPAYABLE_ManualPayoutObj.accountPayable_ManualPayout_Remark());
 		aCCOUNTSPAYABLE_ManualPayoutObj.accountPayable_ManualPayout_Remark().sendKeys(aCCOUNTSPAYABLE_ManualPayoutTestDataType.Remarks);
 		
-		String beforexpath = "//div[contains(text(),'";
-		String afterxpath = "')]/../../datatable-body-cell/div/ion-checkbox";
-		driver.findElement(By.xpath(beforexpath+aCCOUNTSPAYABLE_ManualPayoutTestDataType.PaymentApprovalTxnNumber+afterxpath)).click();
+		while(true)
+		{
+			try {
+					String beforexpath = "//div[contains(text(),'";
+					String afterxpath = "')]/../../datatable-body-cell/div/ion-checkbox";
+					if(driver.findElement(By.xpath(beforexpath+aCCOUNTSPAYABLE_ManualPayoutTestDataType.PaymentApprovalTxnNumber+afterxpath)).isDisplayed()) {
+						driver.findElement(By.xpath(beforexpath+aCCOUNTSPAYABLE_ManualPayoutTestDataType.PaymentApprovalTxnNumber+afterxpath)).click();
+					}
+					break;
+			}
+			catch(Exception e) {
+				aCCOUNTSPAYABLE_ManualPayoutObj.accountPayable_ManualPayout_ClickOnNextButton().click();
+			}
+		}
+		
 		
     }
     
@@ -304,16 +317,34 @@ public class ACCOUNTSPAYABLE_ManualPayout {
 	
 		waithelper.waitForElement(driver, 2000,aCCOUNTSPAYABLE_ManualPayoutObj.accountPayable_ManualPayout_Remark());
 		aCCOUNTSPAYABLE_ManualPayoutObj.accountPayable_ManualPayout_Remark().sendKeys(aCCOUNTSPAYABLE_ManualPayoutTestDataType.Remarks);
-	
-		String beforexpath = "//div[contains(text(),'";
-		String afterxpath = "')]/../../datatable-body-cell/div/ion-checkbox";
-		if(driver.findElement(By.xpath(beforexpath+aCCOUNTSPAYABLE_ManualPayoutTestDataType.CancelledPaymentTxnNumber+afterxpath)).isDisplayed())
+		
+		Thread.sleep(1000);
+		javascripthelper.scrollToElemetAndClick(aCCOUNTSPAYABLE_ManualPayoutObj.accountPayable_ManualPayout_Footer());
+		while(true)
 		{
-			System.out.println("Cancelled payment txn is available");
-		}else
-		{
-			System.out.println("Cancelled payment txn is not available");
+			try {
+				//div[contains(text(),'PAN-246-2022-04-19')]/../../datatable-body-cell/div/ion-checkbox
+				String beforexpath = "//div[contains(text(),'";
+				String afterxpath = "')]";
+				if(driver.findElement(By.xpath(beforexpath+aCCOUNTSPAYABLE_ManualPayoutTestDataType.CancelledPaymentTxnNumber+afterxpath)).isDisplayed()){
+					System.out.println("Cancelled payment txn is available");
+					Assert.fail();
+				}
+				break;
+			}
+			catch(NoSuchElementException nosuchElement) {
+//				waithelper.waitForElement(driver, 3000, aCCOUNTSPAYABLE_ManualPayoutObj.accountPayable_ManualPayout_ClickOnNextButton());
+				try {
+						aCCOUNTSPAYABLE_ManualPayoutObj.accountPayable_ManualPayout_ClickOnNextButton().click();
+				}
+				catch(ElementNotInteractableException ee) {
+					Thread.sleep(1000);
+					System.out.println("Cancelled payment txn is not available");
+					break;
+				}
+			}
 		}
+		
 	}
 	
 }

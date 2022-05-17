@@ -42,5 +42,7 @@ public class ACCOUNTSPAYABLE_VendorContractsTestDataType {
 	public String PaymentTermType;
 	public String ModeOfPayment;
 	public String AutoPayout;
+	
+	public String AutoGenerateBill;
 
 }

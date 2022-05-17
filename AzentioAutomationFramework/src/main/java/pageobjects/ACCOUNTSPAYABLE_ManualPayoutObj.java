@@ -247,4 +247,14 @@ public class ACCOUNTSPAYABLE_ManualPayoutObj {
 	public WebElement accountPayable_ManualPayout_PayoutStatus() {
 		return accountPayable_ManualPayout_PayoutStatus;
 	}
+	
+	// click on next button
+//	@FindBy(xpath = "(//li[5]/a/i)[2]")
+	@FindBy(xpath = "(//li[@class='']/a/i)[1]")
+	private WebElement accountPayable_ManualPayout_ClickOnNextButton;
+	
+	public WebElement accountPayable_ManualPayout_ClickOnNextButton() {
+		return accountPayable_ManualPayout_ClickOnNextButton;
+	}
+	
 }

@@ -3,6 +3,7 @@ package testDataType;
 public class InventoryManagementTestDataType {
 	public String User;
 	public String BranchCode;
+	public String ItemCodeDescription;
 	public String RequestQty;
 	public String Remark;
 	public String StartingSerialNumber;
@@ -38,10 +39,6 @@ public class InventoryManagementTestDataType {
 	public String GlFullToMonth;
 	public String GlToDate;
 	
-	
-	
-	
-	
 	public String Usertype;
 	public String requestReferanceNo;
 	public String returnQuantity;
@@ -59,6 +56,7 @@ public class InventoryManagementTestDataType {
 	public String branchCode;
 	
 	public String AcceptStatus;
+	public String Description;
 	
 	
 	

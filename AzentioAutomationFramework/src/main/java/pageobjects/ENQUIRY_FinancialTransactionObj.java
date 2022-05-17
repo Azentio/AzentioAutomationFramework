@@ -98,7 +98,7 @@ public class ENQUIRY_FinancialTransactionObj {
 		return ENQUIRY_FinancialTransaction_Next;
 	}	
 	
-	@FindBy(xpath="//li[8]/a/i")
+	@FindBy(xpath="//li[8][@class='']/a/i")
 	private WebElement ENQUIRY_FinancialTransaction_NextPage;
 	public WebElement ENQUIRY_FinancialTransaction_NextPage()
 	{

@@ -331,7 +331,7 @@ public class BankRecon_BankReconciliation {
 		
 		waithelper.waitForElement(driver, 4000, bankRecon_BankReconciliationObj.BankRecon_BankReconciliation_MatchedDataTab());
 		boolean tab = bankRecon_BankReconciliationObj.BankRecon_BankReconciliation_MatchedDataTab().getText().equals(BankReconciliationTestDataType.MatchedTab);
-		System.out.println("All the records are under Matched Tab - "+tab);
+		System.out.println("All the matched records are under Matched Tab - "+tab);
 		
     }
     
@@ -374,7 +374,7 @@ public class BankRecon_BankReconciliation {
     	
     	waithelper.waitForElement(driver, 4000, bankRecon_BankReconciliationObj.BankRecon_BankReconciliation_MatchedDataTab());
     	boolean tab = bankRecon_BankReconciliationObj.BankRecon_BankReconciliation_MatchedDataTab().getText().equals(BankReconciliationTestDataType.MatchedTab);
-    	System.out.println("All the records are under Matched Tab - "+tab);
+    	System.out.println("All the matched records are under Matched Tab - "+tab);
     }
     
     @Then("^Verify the Unmatch Record Tab must display all the entries for unmatched records from Book$")
@@ -385,6 +385,7 @@ public class BankRecon_BankReconciliation {
     	
     	waithelper.waitForElement(driver, 3000, bankRecon_BankReconciliationObj.BankRecon_BankReconciliation_RecordsFromBookSearch());
     	bankRecon_BankReconciliationObj.BankRecon_BankReconciliation_RecordsFromBookSearch().click();
+    	Thread.sleep(1000);
     	javascripthelper.JavaScriptHelper(driver);
 //    	javascripthelper.scrollToElemetAndClick(bankRecon_BankReconciliationObj.BankRecon_BankReconciliation_StatusSearchFromBook());
     	javascripthelper.scrollIntoViewAndClick(bankRecon_BankReconciliationObj.BankRecon_BankReconciliation_StatusSearchFromBook());

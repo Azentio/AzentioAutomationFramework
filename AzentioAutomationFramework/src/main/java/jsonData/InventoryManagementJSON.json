@@ -2,12 +2,13 @@
 {
 "User":"Maker",
 "BranchCode":"AZENTMAIN",
+"ItemCodeDescription":"IBALL-IBALL-MOUSE",
 "RequestQty":"1",
 "Remark":"TM",
 
-"InstrumentCode":"1131",
-"InstrumentDescription":"Book & A4 Paper15",
-"StartingSerialNumber":"130",
+"InstrumentCode":"1142",
+"InstrumentDescription":"Book & A4 Paper17",
+"StartingSerialNumber":"132",
 
 "AccessBranchCodeForIssue":"AZENTMAIN-Azentio Main Branch",
 "InventoryBranchCodeForIssue":"BR0004-West Zone",
@@ -44,8 +45,8 @@
 	"GlFullToMonth":"November",
 	"GlToDate":"4",
 	
-	"requestReferanceNo"    : "TRN_IR_82_20211228092903",
-		"returnQuantity"        : "2",
+	"requestReferanceNo"    : "TRN_IR_223_20220421142913",
+		"returnQuantity"        : "1",
 		"returnType"			: "Return to inventory",
 		"returnType1"			: "Found",
 		"returnType2"			: "Lost/Misplaced",
@@ -67,13 +68,14 @@
 		
 		"RequestReferenceNumber":"TRN_IR_208_20220418154738",
 		"IndentReferenceNo":"TRN_PR_109_20220417161626",
-		"IssueReferenceNo":"TRN_SI_72_20220303122459",
+		"IssueReferenceNo":"TRN_SI_91_20220421163750",
 		"POReference":"Azentio_Soft-Agency-8-PO-219",
 		"ReturnType":"Found",
 		"Itemdescription":"STAPLERS-STAPLERS",
 		"ReturnTypeInventory":"Return to inventory",
 		"Voucher":"ADJ-63-32022",
-		"VoucherForStockIssue":"TRN_SI_80_20220328124933"
+		"VoucherForStockIssue":"TRN_SI_80_20220328124933",
+		"Description":"Dell Keyboard"
 	 
 	 
 }

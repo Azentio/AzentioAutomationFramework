@@ -2251,6 +2251,7 @@ And find the invoice reference number for cancelled advance is not availabe at t
 
 @KUBS_AR_AP_UAT_003_008_TC_03  @AR/AP
 Scenario: Verify cancelling Advance To employee is not allowed if the same has been adjusted at payment settlement
+Given Maker Navigate to UAT URL login
 And Goto accounts receivable advances module
 Then click on search
 And select the advance to employee active record
@@ -5283,7 +5284,7 @@ And fill the payment settlement record and validate the invoice number is not av
     And user should navigate to accounts payable menu
     When click on eye button of payment settlement against bill
     And click on add button for payment settlement against bill
-    And Fill the required fields to adjust against billl
+    And Fill the required fields to adjust against bill
     Then Save and submit the payment settlement
     
     And User should go to the kubs url and login as a reviewer user

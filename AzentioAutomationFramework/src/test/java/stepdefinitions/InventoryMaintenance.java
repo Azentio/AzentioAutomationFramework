@@ -255,7 +255,7 @@ public class InventoryMaintenance extends BaseClass{
 		        	Thread.sleep(3000);
 		        	
 		        	// REVIEWER
-		        			Thread.sleep(2000);
+		        			waithelper.waitForElement(driver, 5000, inventoryMaintenanceObj.inventoryMaintenance_InventoryItem_RecordStatus());
 		        			WebElement recordstatus = inventoryMaintenanceObj.inventoryMaintenance_InventoryItem_RecordStatus();
 
 		        			clicksAndActionHelper.moveToElement(recordstatus);
@@ -380,7 +380,7 @@ public class InventoryMaintenance extends BaseClass{
 
 				    @And("^select the record and Approve by checker$")
 				    public void select_the_record_and_approve_by_checker() throws InterruptedException, IOException, ParseException  {
-				    Thread.sleep(1000);
+				    Thread.sleep(2000);
 					for (int i = 1; i <= 35; i++) {
 						try {
 						waithelper.waitForElement(driver, 3000,driver.findElement(By.xpath("//span[contains(text(),'" +reader.readReferancedata()+ "')]")));

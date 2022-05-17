@@ -451,21 +451,16 @@ public class ACCOUNTSPAYABLE_VendorContractsObj {
 	}
 
 	// Remark field
-	@FindBy(xpath = "//ion-textarea/div/textarea[@name='remarks']")
+//	@FindBy(xpath = "//ion-textarea/div/textarea[@name='remarks']")
+	@FindBy(xpath = "//ion-row[1]/ion-col/ion-item/ion-textarea/div/textarea")
 	private WebElement accountPayable_VendorContracts_RemarkField;
 
 	public WebElement accountPayable_VendorContracts_RemarkField() {
 		return accountPayable_VendorContracts_RemarkField;
 	}
-	
-			@FindBy(xpath = "(//ion-textarea/div/textarea[@name='remarks'])[2]")
-			private WebElement accountPayable_VendorContracts_RemarkField1;
 
-			public WebElement accountPayable_VendorContracts_RemarkField1() {
-				return accountPayable_VendorContracts_RemarkField1;
-			}	
 	// Submit by maker
-	@FindBy(xpath = "//ion-button[contains(text(),'Submit')]")
+	@FindBy(xpath = "//ion-row[2]/ion-button")
 	private WebElement accountPayable_VendorContracts_Submit;
 
 	public WebElement accountPayable_VendorContracts_Submit() {
@@ -577,6 +572,13 @@ public class ACCOUNTSPAYABLE_VendorContractsObj {
 		return accountPayable_VendorContracts_VendorContractDetails;
 	}
 	
+	// Remark field 1
+		@FindBy(xpath = "(//ion-textarea/div/textarea[@name='remarks'])[2]")
+		private WebElement accountPayable_VendorContracts_RemarkField1;
+
+		public WebElement accountPayable_VendorContracts_RemarkField1() {
+			return accountPayable_VendorContracts_RemarkField1;
+		}
 	
 	
 	

@@ -6,7 +6,7 @@
 		"InvoiceSubType" : "Regular Expense",
 		"BP_Name" : "Bonton Agency",
 		"CostCenter" : "FINANCE",
-		"SupplierReferenceNumber" : "SRN-04352422",
+		"SupplierReferenceNumber" : "SRN-044524",
 		"TotalInvoiceAmount" : "",
 		"TaxAndGstAmount" : "",
 		"FlatDiscountOnInvoice" : "10.000",
@@ -23,7 +23,9 @@
 		"RemarkByMaker" : "Submit By Maker",
 		"AdvanceNumber" : "ADV_2",
 		"PONumber" : "Azentio_Soft-Agency-8-PO-10",
+		
 		"InvoiceQuantity" : "100",
+		
 		"RatePerUnit" : "100",
 		"TaxAmount" : "10",
 		"AmountToBeAllocated" : "10",

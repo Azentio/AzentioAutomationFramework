@@ -159,17 +159,20 @@ public class AccountsReceivable_UpdateChequeStatus {
     	{
     		try {
     			driver.findElement(By.xpath(beforexpath+jsonWriter.readdata()+afterxpath));
+    			System.out.println("Cleared cheque record is available in list");
     			break;
     		}
     		catch(NoSuchElementException nosuchElement){
-    			eNQUIRY_FinancialTransactionObj.ENQUIRY_FinancialTransaction_NextPage().click();
+    			try {
+    				eNQUIRY_FinancialTransactionObj.ENQUIRY_FinancialTransaction_NextPage().click();
+    			}
+    			catch(NoSuchElementException nosuchElement1) {
+    				System.out.println("Cleared cheque record is not available in list");
+    				break;
+    			}
     		}
-//    		finally{
-//    			System.out.println("Record is not present in the list");
-//    			System.exit(0);
-//    		}
     	}
-    	System.out.println("Cleared cheque record is available in list");
+    	
     }
 
 }

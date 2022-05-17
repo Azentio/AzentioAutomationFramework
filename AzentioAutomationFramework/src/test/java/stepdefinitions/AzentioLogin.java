@@ -45,7 +45,8 @@ public class AzentioLogin {
 		Assert.assertTrue(login.Login_loginStatus().isDisplayed());
 		waithelper.waitForElement(driver, 2000, makerobj.kubsFinaceOption());
 		makerobj.kubsFinaceOption().click();
-		waithelper.waitForElement(driver, 2000, makerobj.FinanceOption());
+		Thread.sleep(2000);
+		waithelper.waitForElement(driver, 4000, makerobj.FinanceOption());
 		makerobj.FinanceOption().click();
 
 	}

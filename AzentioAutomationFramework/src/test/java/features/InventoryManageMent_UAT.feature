@@ -114,7 +114,7 @@ And Click on the eye icon of Inventory Request
 Scenario: Create a purchase order with Unique purchase order number
 Given Maker Navigate to UAT URL login
 Then Click on Direction icon
-Then Click on Account Payable 
+Then Click on Account Payable
 Then Click on purchase order Eye Icon
 Then Click on purchase order Add button
 Then Fill purchase order Mandatory fields
@@ -135,7 +135,6 @@ And select the record and Approve by checker
  @KUBS_INV_MGMT_UAT_001_004 @multiauth
 
 Scenario: Create a GRN
-
 Given Navigate to URL and user should login as a maker
 Then Click on the Finance
 Then Click on the Direction
@@ -144,7 +143,6 @@ Then Click on Accounts Payable
 Then Click on Good Recived Note GRN Eye buutton
 Then Click on Add button
 Then Fill the form for GRN
-
 
 Then Click on save button to save the record
 Then Click on notification & open record which we created for GRN
@@ -411,6 +409,7 @@ Then click on view button near by inventory request menu
 Then select the perticular inventory record by the help of request reference number
 And check the inventory requested sucessfully and capture the inventory data
 When user see the inventory request reference number , The inventory was successfully requested
+
 @InventoryStockIssue @KUBS_INV_MGMT_UAT_004_002
 Scenario: To verify inventory stock to be issued to requested branch
 Given navigate to kubs URL and login as maker credentials
@@ -642,7 +641,16 @@ Then Fill the form for stock return report
 And Click on view button to view report of stock return report
 Then verify the approved record is available in the report
 
+@KUBS_INV_MGMT_UAT_007_007 
+Scenario: Check instrument code report 
 
+ Given User should go to the kubs url and login as a maker user 
+ Then click on report icon 
+ And user should navigate to master reports menu 
+ Then click on temp grid button of inventory code report
+ And Fill the form for inventory code Report
+ Then click in the view button to check 
+ Then the report is displaying with all the details
 
 @KUBS_INV_MGMT_UAT_007_008
 Scenario: Check denomination details report

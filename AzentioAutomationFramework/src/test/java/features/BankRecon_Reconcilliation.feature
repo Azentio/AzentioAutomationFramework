@@ -26,7 +26,7 @@ Then Select Recon period from
 Then Select Recon period to
 Then upload the file data does not match
 
-@KUBS_TAX_UAT_002_001_TC_003  @MultiAuth
+@KUBS_TAX_UAT_002_002_TC_007  @MultiAuth
 
 Scenario: Check system throws validation any data on Bank Reconciliation Details screen does not match with uploaded file.
 Given Maker Navigate to UAT URL login
@@ -42,7 +42,7 @@ Then Click on Inventory Item Save button
 Then Click on Process button
 Then verify matched record
 
-@KUBS_TAX_UAT_002_001_TC_004  @MultiAuth
+@KUBS_TAX_UAT_002_003_TC_003  @MultiAuth
 
 Scenario: System must give correct unmatch (Unmatch, Partial Match & Transposition match) basis the matching rule defined.
 Given Maker Navigate to UAT URL login
