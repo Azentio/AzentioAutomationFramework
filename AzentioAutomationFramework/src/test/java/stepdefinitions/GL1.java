@@ -4,6 +4,7 @@ import java.util.Random;
 
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
+import org.testng.Assert;
 
 import dataProvider.ConfigFileReader;
 import dataProvider.JsonConfig;
@@ -314,7 +315,10 @@ public class GL1 {
 
 	    @Then("^Validation message should pop up$")
 	    public void validation_message_should_pop_up() throws Throwable {
-	       System.out.println("Can not deactivate as COA is currently used");
+//	       System.out.println("Can not deactivate as COA is currently used");
+	    	String Msg = gL1obj.budget_creation_Getalert().getText();
+	    	System.out.println(Msg);
+	    	Assert.assertEquals(Msg, "There are already active transcation for the COA, cannot be modified");
 	    } 
 	    
 	    

@@ -10,6 +10,7 @@ public class PettyCashTestDataType {
 	public String GlMonth;
 	public String GlFullMonth;
 	public String GlYear;
+	public String GlToYear;
 	public String GlDay;
 	public String GlToMonth;
 	public String GlFullToMonth;

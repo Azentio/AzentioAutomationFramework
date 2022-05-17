@@ -216,9 +216,11 @@ public class GL1_Accounting_Book_Definition extends BaseClass {
    
     @And("^enter the category code as Income$")
     public void enter_the_category_code_as_income() throws Throwable {
+    	Random rand = new Random();
+    	int randm = rand.nextInt(100-50)+50;
     	waitHelper.waitForElement(driver,2000,accSetupObj.enterCategoryCode());
         accSetupObj.enterCategoryCode().click();
-        accSetupObj.enterCategoryCode().sendKeys(acc_Setup_Data.CategoryBook);
+        accSetupObj.enterCategoryCode().sendKeys(acc_Setup_Data.CategoryBook+randm);
     }
     
     @And("^select the accounting book for Income$")
@@ -231,9 +233,11 @@ public class GL1_Accounting_Book_Definition extends BaseClass {
     
     @And("^enter the accounting category$")
     public void enter_the_accounting_category() throws Throwable {
+    	Random rand = new Random();
+    	int randm = rand.nextInt(100-50)+50;
     	waitHelper.waitForElement(driver,2000,accSetupObj.enterAccountingCategory());
         accSetupObj.enterAccountingCategory().click();
-        accSetupObj.enterAccountingCategory().sendKeys(acc_Setup_Data.CategoryCode);
+        accSetupObj.enterAccountingCategory().sendKeys(acc_Setup_Data.CategoryCode+randm);
     }
     
     @And("^select Gl code generation$")
@@ -263,9 +267,11 @@ public class GL1_Accounting_Book_Definition extends BaseClass {
     
     @And("^enter the category code as Expenditure$")
     public void enter_the_category_code_as_expenditure() throws Throwable {
+    	Random rand= new Random();
+    	int ranm = rand.nextInt(100-50)+50;
     	waitHelper.waitForElement(driver,2000,accSetupObj.enterCategoryCode());
         accSetupObj.enterCategoryCode().click();
-        accSetupObj.enterCategoryCode().sendKeys(acc_Setup_Data.CategoryBook1);
+        accSetupObj.enterCategoryCode().sendKeys(acc_Setup_Data.CategoryBook1+ranm);
     }
 	
     @And("^select the accounting book for Expenditure$")
@@ -278,9 +284,14 @@ public class GL1_Accounting_Book_Definition extends BaseClass {
 
     @And("^enter the accounting category for Expenditure$")
     public void enter_the_accounting_category_for_expenditure() throws Throwable {
+    	Random rand= new Random();
+    	int ranm = rand.nextInt(100-50)+50;
     	waitHelper.waitForElement(driver,2000,accSetupObj.enterAccountingCategory());
         accSetupObj.enterAccountingCategory().click();
-        accSetupObj.enterAccountingCategory().sendKeys(acc_Setup_Data.CategoryCode1);
+        accSetupObj.enterAccountingCategory().sendKeys(acc_Setup_Data.CategoryCode1+ranm);
+        Thread.sleep(1000);
+        String Exp =accSetupObj.enterAccountingCategory().getText();
+        Getdata.put("Exp", Exp);
     }
 	
 }

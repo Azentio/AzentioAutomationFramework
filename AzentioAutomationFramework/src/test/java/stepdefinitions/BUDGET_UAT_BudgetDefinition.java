@@ -781,7 +781,7 @@ public class BUDGET_UAT_BudgetDefinition extends BaseClass {
 		 */
 		waitHelper.waitForElement(driver, 3000, kubsCheckerObj.checkerApprovalStatus());
 		String approvalStatusForChecker = kubsCheckerObj.checkerApprovalStatus().getText();
-		Assert.assertEquals(approvalStatusForChecker, "Record APPROVED Successfully");
+		Assert.assertEquals(approvalStatusForChecker, "Record APPROVED successfully");
 	}
 
 	@Then("^logout from checker$")

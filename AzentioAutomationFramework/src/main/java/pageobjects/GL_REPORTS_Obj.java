@@ -441,7 +441,7 @@ public class GL_REPORTS_Obj {
 	{
 		return accountingSetUp_ActiveBookRecord;
 	}
-	@FindBy(xpath = "//div[@id='toast-container']/div/div[@role='alertdialog']")
+	@FindBy(xpath = "//div[@id='toast-container']/div/div[@role='alert']")
 	private WebElement existingRecord_ToastMessage;
 
 	public WebElement existingRecordToastMessage() {

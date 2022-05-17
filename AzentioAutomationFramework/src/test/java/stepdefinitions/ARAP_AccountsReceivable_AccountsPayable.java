@@ -1969,6 +1969,7 @@ public class ARAP_AccountsReceivable_AccountsPayable extends BaseClass {
 		String Notification = reviewerObj.approvalStatus().getText();
 		System.out.println("Reviewer Notification: " + Notification);
 		Assert.assertTrue(reviewerObj.approvalStatus().isDisplayed());
+
 	}
 
 	// CHECKER

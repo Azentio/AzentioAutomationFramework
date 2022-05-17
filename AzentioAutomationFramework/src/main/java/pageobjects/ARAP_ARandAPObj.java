@@ -294,7 +294,7 @@ public class ARAP_ARandAPObj {
 		return ARAP_RemarkSubmit;
 	}
 
-	@FindBy(xpath = "//div[@id='toast-container']/div/div[@role='alertdialog']")
+	@FindBy(xpath = "//div[@id='toast-container']/div/div[@role='alert']")
 	private WebElement ARAP_ReviewerId;
 
 	public WebElement ARAP_ReviewerId() {

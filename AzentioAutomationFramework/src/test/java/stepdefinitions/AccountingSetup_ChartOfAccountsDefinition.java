@@ -69,48 +69,52 @@ public class AccountingSetup_ChartOfAccountsDefinition {
     }
 
     @Then("^modify the COA details$")
-    public void modify_the_coa_details()  {
+    public void modify_the_coa_details() throws InterruptedException  {
     	Random ran = new Random();
     	int radom = ran.nextInt(500-100)+100;
     	waithelper.waitForElement(driver, 3000, ChartOfAccountsDefinitionObj.accountingSetup_ChartOfAccountsDefinition_AccountingCategory());
     	ChartOfAccountsDefinitionObj.accountingSetup_ChartOfAccountsDefinition_AccountingCategory().sendKeys(ChartOfAccountsDefinitionTestDataType.AccountingCategory);
     	ChartOfAccountsDefinitionObj.accountingSetup_ChartOfAccountsDefinition_AccountingCategory().sendKeys(Keys.ENTER);
     	
-    	waithelper.waitForElement(driver, 3000, ChartOfAccountsDefinitionObj.accountingSetup_ChartOfAccountsDefinition_COA_NameField());
-    	ChartOfAccountsDefinitionObj.accountingSetup_ChartOfAccountsDefinition_COA_NameField().sendKeys(ChartOfAccountsDefinitionTestDataType.COA_Name1+radom);
-    	
-    	waithelper.waitForElement(driver, 3000, ChartOfAccountsDefinitionObj.accountingSetup_ChartOfAccountsDefinition_ExternalMappingCode());
- 		ChartOfAccountsDefinitionObj.accountingSetup_ChartOfAccountsDefinition_ExternalMappingCode().sendKeys(ChartOfAccountsDefinitionTestDataType.ExternalMappingCode1);
-    	
-    	
-    	waithelper.waitForElement(driver, 3000, ChartOfAccountsDefinitionObj.accountingSetup_ChartOfAccountsDefinition_ParentGL());
-   	    ChartOfAccountsDefinitionObj.accountingSetup_ChartOfAccountsDefinition_ParentGL().click();
-    	ChartOfAccountsDefinitionObj.accountingSetup_ChartOfAccountsDefinition_ParentGL().sendKeys(ChartOfAccountsDefinitionTestDataType.ParentGL1);
-    	ChartOfAccountsDefinitionObj.accountingSetup_ChartOfAccountsDefinition_ParentGL().sendKeys(Keys.DOWN);
-    	ChartOfAccountsDefinitionObj.accountingSetup_ChartOfAccountsDefinition_ParentGL().sendKeys(Keys.ENTER);
-    	
-    	waithelper.waitForElement(driver, 3000, ChartOfAccountsDefinitionObj.accountingSetup_ChartOfAccountsDefinition_GLtype());
-    	ChartOfAccountsDefinitionObj.accountingSetup_ChartOfAccountsDefinition_GLtype().sendKeys(ChartOfAccountsDefinitionTestDataType.GL_Type1);
-    	ChartOfAccountsDefinitionObj.accountingSetup_ChartOfAccountsDefinition_GLtype().sendKeys(Keys.ENTER);
-    	
-    	waithelper.waitForElement(driver, 3000, ChartOfAccountsDefinitionObj.accountingSetup_ChartOfAccountsDefinition_Description());
-    	ChartOfAccountsDefinitionObj.accountingSetup_ChartOfAccountsDefinition_Description().sendKeys(ChartOfAccountsDefinitionTestDataType.Description1+radom);
-    	
-    	waithelper.waitForElement(driver, 3000, ChartOfAccountsDefinitionObj.accountingSetup_ChartOfAccountsDefinition_BalanceType());
-    	ChartOfAccountsDefinitionObj.accountingSetup_ChartOfAccountsDefinition_BalanceType().sendKeys(ChartOfAccountsDefinitionTestDataType.BalanceType1);
-    	ChartOfAccountsDefinitionObj.accountingSetup_ChartOfAccountsDefinition_BalanceType().sendKeys(Keys.ENTER);
-    	
-//    	waithelper.waitForElement(driver, 3000, ChartOfAccountsDefinitionObj.accountingSetup_ChartOfAccountsDefinition_StatusField());
-//    	ChartOfAccountsDefinitionObj.accountingSetup_ChartOfAccountsDefinition_StatusField().sendKeys(ChartOfAccountsDefinitionTestDataType.statusofCOA);
-//    	ChartOfAccountsDefinitionObj.accountingSetup_ChartOfAccountsDefinition_StatusField().sendKeys(Keys.DOWN);
-//    	ChartOfAccountsDefinitionObj.accountingSetup_ChartOfAccountsDefinition_StatusField().sendKeys(Keys.ENTER);
-    	
-    	waithelper.waitForElement(driver, 3000, ChartOfAccountsDefinitionObj.accountingSetup_ChartOfAccountsDefinition_Remarks());
-   	ChartOfAccountsDefinitionObj.accountingSetup_ChartOfAccountsDefinition_Remarks().sendKeys(ChartOfAccountsDefinitionTestDataType.Remark);
-    	
-//    	waithelper.waitForElement(driver, 3000, ChartOfAccountsDefinitionObj.accountingSetup_ChartOfAccountsDefinition_EntitySegment());
-//    	ChartOfAccountsDefinitionObj.accountingSetup_ChartOfAccountsDefinition_EntitySegment().sendKeys(ChartOfAccountsDefinitionTestDataType.EntitySegment);
-//    	ChartOfAccountsDefinitionObj.accountingSetup_ChartOfAccountsDefinition_EntitySegment().sendKeys(Keys.ENTER);
+//    	    	
+//    	waithelper.waitForElement(driver, 3000, ChartOfAccountsDefinitionObj.accountingSetup_ChartOfAccountsDefinition_COA_NameField());
+//    	ChartOfAccountsDefinitionObj.accountingSetup_ChartOfAccountsDefinition_COA_NameField().click();
+//    	ChartOfAccountsDefinitionObj.accountingSetup_ChartOfAccountsDefinition_COA_NameField().sendKeys(ChartOfAccountsDefinitionTestDataType.COA_Name1+radom);
+//    	
+////    	waithelper.waitForElement(driver, 3000, ChartOfAccountsDefinitionObj.accountingSetup_ChartOfAccountsDefinition_ExternalMappingCode());
+////    	ChartOfAccountsDefinitionObj.accountingSetup_ChartOfAccountsDefinition_ExternalMappingCode().click();
+////    	ChartOfAccountsDefinitionObj.accountingSetup_ChartOfAccountsDefinition_ExternalMappingCode().sendKeys(ChartOfAccountsDefinitionTestDataType.ExternalMappingCode1);
+////    	
+//    	
+//    	waithelper.waitForElement(driver, 3000, ChartOfAccountsDefinitionObj.accountingSetup_ChartOfAccountsDefinition_ParentGL());
+//   	    ChartOfAccountsDefinitionObj.accountingSetup_ChartOfAccountsDefinition_ParentGL().click();
+//    	ChartOfAccountsDefinitionObj.accountingSetup_ChartOfAccountsDefinition_ParentGL().sendKeys(ChartOfAccountsDefinitionTestDataType.ParentGL1);
+//    	ChartOfAccountsDefinitionObj.accountingSetup_ChartOfAccountsDefinition_ParentGL().sendKeys(Keys.DOWN);
+//    	ChartOfAccountsDefinitionObj.accountingSetup_ChartOfAccountsDefinition_ParentGL().sendKeys(Keys.ENTER);
+//    	
+//    	waithelper.waitForElement(driver, 3000, ChartOfAccountsDefinitionObj.accountingSetup_ChartOfAccountsDefinition_GLtype());
+//    	ChartOfAccountsDefinitionObj.accountingSetup_ChartOfAccountsDefinition_GLtype().sendKeys(ChartOfAccountsDefinitionTestDataType.GL_Type1);
+//    	ChartOfAccountsDefinitionObj.accountingSetup_ChartOfAccountsDefinition_GLtype().sendKeys(Keys.ENTER);
+//    	
+//    	waithelper.waitForElement(driver, 3000, ChartOfAccountsDefinitionObj.accountingSetup_ChartOfAccountsDefinition_Description());
+//    	ChartOfAccountsDefinitionObj.accountingSetup_ChartOfAccountsDefinition_Description().click();
+//    	ChartOfAccountsDefinitionObj.accountingSetup_ChartOfAccountsDefinition_Description().sendKeys(ChartOfAccountsDefinitionTestDataType.Description1+radom);
+//    	
+//    	waithelper.waitForElement(driver, 3000, ChartOfAccountsDefinitionObj.accountingSetup_ChartOfAccountsDefinition_BalanceType());
+//    	ChartOfAccountsDefinitionObj.accountingSetup_ChartOfAccountsDefinition_BalanceType().sendKeys(ChartOfAccountsDefinitionTestDataType.BalanceType1);
+//    	ChartOfAccountsDefinitionObj.accountingSetup_ChartOfAccountsDefinition_BalanceType().sendKeys(Keys.ENTER);
+//    	
+////    	waithelper.waitForElement(driver, 3000, ChartOfAccountsDefinitionObj.accountingSetup_ChartOfAccountsDefinition_StatusField());
+////    	ChartOfAccountsDefinitionObj.accountingSetup_ChartOfAccountsDefinition_StatusField().sendKeys(ChartOfAccountsDefinitionTestDataType.statusofCOA);
+////    	ChartOfAccountsDefinitionObj.accountingSetup_ChartOfAccountsDefinition_StatusField().sendKeys(Keys.DOWN);
+////    	ChartOfAccountsDefinitionObj.accountingSetup_ChartOfAccountsDefinition_StatusField().sendKeys(Keys.ENTER);
+//    	
+//    	waithelper.waitForElement(driver, 3000, ChartOfAccountsDefinitionObj.accountingSetup_ChartOfAccountsDefinition_Remarks());
+//   	ChartOfAccountsDefinitionObj.accountingSetup_ChartOfAccountsDefinition_Remarks().sendKeys(ChartOfAccountsDefinitionTestDataType.Remark);
+//    	
+////    	waithelper.waitForElement(driver, 3000, ChartOfAccountsDefinitionObj.accountingSetup_ChartOfAccountsDefinition_EntitySegment());
+////    	ChartOfAccountsDefinitionObj.accountingSetup_ChartOfAccountsDefinition_EntitySegment().sendKeys(ChartOfAccountsDefinitionTestDataType.EntitySegment);
+////    	ChartOfAccountsDefinitionObj.accountingSetup_ChartOfAccountsDefinition_EntitySegment().sendKeys(Keys.ENTER);
     }
     
     @Then("^Inactive the active Chart of account$")
@@ -119,7 +123,71 @@ public class AccountingSetup_ChartOfAccountsDefinition {
     	ChartOfAccountsDefinitionObj.accountingSetup_ChartOfAccountsDefinition_StatusField().sendKeys(ChartOfAccountsDefinitionTestDataType.StatusInactive);
     	ChartOfAccountsDefinitionObj.accountingSetup_ChartOfAccountsDefinition_StatusField().sendKeys(Keys.ENTER);
     }
-
+    
+    @Then("^Save the Record and submit the modified record of COA$")
+    public void save_the_record_and_submit_the_modified_record_of_coa() throws Throwable {
+    	waithelper.waitForElement(driver, 3000, ChartOfAccountsDefinitionObj.accountingSetup_ChartOfAccountsDefinition_SaveButton());
+    	ChartOfAccountsDefinitionObj.accountingSetup_ChartOfAccountsDefinition_SaveButton().click();
+    	
+    	Thread.sleep(1000);
+		javascripthelper.JavaScriptHelper(driver);
+		String str = javascripthelper.executeScript(
+				"return document.querySelector(\"ion-toast\").shadowRoot.querySelector(\"div[class='toast-message']\").innerText")
+				.toString();
+		System.out.println("Message:" + str);
+		
+		waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_NotificationButton());
+		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_NotificationButton().click();
+		
+		waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_FirstReferenceId());
+		String id=aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_FirstReferenceId().getText();
+		jsonWriter.addReferanceData(id);
+		System.out.println("Reference ID:" +id);
+    	for (int i = 1; i <= 35; i++) {
+			try {
+		    	waithelper.waitForElement(driver, 3000,driver.findElement(By.xpath("//span[contains(text(),'" +jsonWriter.readReferancedata()+ "')]")));	
+				WebElement referanceID = driver.findElement(By.xpath("//span[contains(text(),'" +  jsonWriter.readReferancedata() + "')]"));	
+				waithelper.waitForElement(driver, i, referanceID);
+				referanceID.click();
+		    	System.out.println(referanceID);
+//				Assert.assertTrue(referanceID.isDisplayed());
+				break;
+			} catch (NoSuchElementException e) {
+				waithelper.waitForElement(driver,4000,aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_NotificationNextButton());
+				aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_NotificationNextButton().click();
+			}
+		}
+    	String before_xpath="//span[contains(text(),'";
+    	String after_xpath="')]/ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell//ion-button"; 
+    	waithelper.waitForElement(driver, 10000, driver.findElement(By.xpath(before_xpath +jsonWriter.readReferancedata()+after_xpath)));
+    	driver.findElement(By.xpath(before_xpath +jsonWriter.readReferancedata() +after_xpath)).click();
+    	
+    	waithelper.waitForElement(driver, 3000, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_SubmitButton());
+    	aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_SubmitButton().click(); 
+    	Thread.sleep(1000);
+    	waithelper.waitForElement(driver, 3000, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_RemarkField1());
+    	javascripthelper.JSEClick(aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_RemarkField1());
+    	aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_RemarkField1().sendKeys(ChartOfAccountsDefinitionTestDataType.RemarkByMaker);
+		
+    	waithelper.waitForElement(driver, 3000, ChartOfAccountsDefinitionObj.accountingSetup_ChartOfAccountsDefinition_RemarkSubmit());
+    	ChartOfAccountsDefinitionObj.accountingSetup_ChartOfAccountsDefinition_RemarkSubmit().click();
+    	
+    	waithelper.waitForElement(driver, 10000, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_RecordStatus());
+    	WebElement recordstatus = aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_RecordStatus();
+    	clicksAndActionHelper.moveToElement(recordstatus);
+    	
+    	String message = aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_RecordStatus().getText();
+    	System.out.println(message);
+    	aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_RecordStatus().click();
+    	String emptystring = "";
+		String ar[] = message.split(" ");
+		emptystring=ar[ar.length-1];
+		String reviewerId=emptystring.replaceAll("[/.]", "");
+		System.out.println(reviewerId);
+		jsonWriter=new JsonDataReaderWriter();
+		jsonWriter.addData(reviewerId);
+    }
+    
     @Then("^Save and submit the modified record of COA$")
     public void save_and_submit_the_modified_record_of_coa() throws IOException, ParseException, InterruptedException {
     	waithelper.waitForElement(driver, 3000, ChartOfAccountsDefinitionObj.accountingSetup_ChartOfAccountsDefinition_SaveButton());
@@ -228,13 +296,14 @@ public class AccountingSetup_ChartOfAccountsDefinition {
 //    	ChartOfAccountsDefinitionObj.accountingSetup_ChartOfAccountsDefinition_ParentGL().sendKeys(ChartOfAccountsDefinitionTestDataType.ParentGL);
 //    	ChartOfAccountsDefinitionObj.accountingSetup_ChartOfAccountsDefinition_ParentGL().sendKeys(Keys.ENTER);
     	
-    	waithelper.waitForElement(driver, 3000, ChartOfAccountsDefinitionObj.accountingSetup_ChartOfAccountsDefinition_GLtype());
-    	ChartOfAccountsDefinitionObj.accountingSetup_ChartOfAccountsDefinition_GLtype().sendKeys(ChartOfAccountsDefinitionTestDataType.GL_TypeModifiedForUsedCOA);
-    	ChartOfAccountsDefinitionObj.accountingSetup_ChartOfAccountsDefinition_GLtype().sendKeys(Keys.ENTER);
+//    	waithelper.waitForElement(driver, 3000, ChartOfAccountsDefinitionObj.accountingSetup_ChartOfAccountsDefinition_GLtype());
+//    	ChartOfAccountsDefinitionObj.accountingSetup_ChartOfAccountsDefinition_GLtype().sendKeys(ChartOfAccountsDefinitionTestDataType.GL_TypeModifiedForUsedCOA);
+//    	ChartOfAccountsDefinitionObj.accountingSetup_ChartOfAccountsDefinition_GLtype().sendKeys(Keys.ENTER);
     	
-//    	waithelper.waitForElement(driver, 3000, ChartOfAccountsDefinitionObj.accountingSetup_ChartOfAccountsDefinition_Description());
-//    	ChartOfAccountsDefinitionObj.accountingSetup_ChartOfAccountsDefinition_Description().sendKeys(ChartOfAccountsDefinitionTestDataType.Description);
-//    	
+    	waithelper.waitForElement(driver, 3000, ChartOfAccountsDefinitionObj.accountingSetup_ChartOfAccountsDefinition_Description());
+    	ChartOfAccountsDefinitionObj.accountingSetup_ChartOfAccountsDefinition_Description().clear();
+    	ChartOfAccountsDefinitionObj.accountingSetup_ChartOfAccountsDefinition_Description().sendKeys(ChartOfAccountsDefinitionTestDataType.Description);
+    	
 //    	waithelper.waitForElement(driver, 3000, ChartOfAccountsDefinitionObj.accountingSetup_ChartOfAccountsDefinition_BalanceType());
 //    	ChartOfAccountsDefinitionObj.accountingSetup_ChartOfAccountsDefinition_BalanceType().sendKeys(ChartOfAccountsDefinitionTestDataType.BalanceType);
 //    	ChartOfAccountsDefinitionObj.accountingSetup_ChartOfAccountsDefinition_BalanceType().sendKeys(Keys.ENTER);

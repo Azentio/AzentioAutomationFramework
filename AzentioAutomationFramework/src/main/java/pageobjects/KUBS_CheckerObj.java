@@ -154,7 +154,7 @@ public class KUBS_CheckerObj {
 		return checker_right_corner_reject_toast;
 	}
 	
-	@FindBy(xpath = "//div[@id='toast-container']/div/div[@role='alertdialog']")
+	@FindBy(xpath = "//div[@id='toast-container']/div/div[@role='alert']")
 	private WebElement checker_approval_status;
 
 	public WebElement checkerApprovalStatus() {
@@ -162,7 +162,7 @@ public class KUBS_CheckerObj {
 	}
 
 	//TOTAST - CONTAINER
-	@FindBy(xpath="//div[@id='toast-container']/div/div[@role='alertdialog']")
+	@FindBy(xpath="//div[@id='toast-container']/div/div[@role='alert']")
 	private WebElement Popup_status;
 	public WebElement Popup_status()
 	{

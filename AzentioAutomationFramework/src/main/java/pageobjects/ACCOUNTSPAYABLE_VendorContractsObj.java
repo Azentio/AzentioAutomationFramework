@@ -457,7 +457,13 @@ public class ACCOUNTSPAYABLE_VendorContractsObj {
 	public WebElement accountPayable_VendorContracts_RemarkField() {
 		return accountPayable_VendorContracts_RemarkField;
 	}
+	
+			@FindBy(xpath = "(//ion-textarea/div/textarea[@name='remarks'])[2]")
+			private WebElement accountPayable_VendorContracts_RemarkField1;
 
+			public WebElement accountPayable_VendorContracts_RemarkField1() {
+				return accountPayable_VendorContracts_RemarkField1;
+			}	
 	// Submit by maker
 	@FindBy(xpath = "//ion-button[contains(text(),'Submit')]")
 	private WebElement accountPayable_VendorContracts_Submit;

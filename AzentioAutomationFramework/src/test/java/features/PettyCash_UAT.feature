@@ -152,7 +152,7 @@ Then Click on Reimbursement Eye Icon
 Then Click on Table Row First Eye Icon
 
 @KUBS_PC_UAT_003_003
-Scenario: Create reimbursement for vouchers received
+Scenario: Record multiple expense code at a time in the reimbursement
 Given Navigate The Azentio Url
 Then Choose the second Tab Segment
 And Click on Petty cash module

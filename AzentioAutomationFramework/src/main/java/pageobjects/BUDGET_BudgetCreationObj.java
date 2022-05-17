@@ -128,7 +128,7 @@ public class BUDGET_BudgetCreationObj {
 
 	}
 
-	@FindBy(xpath = "//div[@id='toast-container']/div/div[@role='alertdialog']")
+	@FindBy(xpath = "//div[@id='toast-container']/div/div[@role='alert']")
 	private WebElement budget_creation_reviewer_id;
 
 	public WebElement budgetCreation_ReviewerId() {
@@ -197,7 +197,7 @@ public class BUDGET_BudgetCreationObj {
    {
 	   return budget_creation_approve_button;
    }
-   @FindBy(xpath = "//div[@id='toast-container']/div/div[@role='alertdialog']")
+   @FindBy(xpath = "//div[@id='toast-container']/div/div[@role='alert']")
 	private WebElement budget_creation_approval_status;
 
 	public WebElement budgetCreationApprovalStatus() {

@@ -12,7 +12,7 @@ public class Gl_Reports_Obj1 {
 		PageFactory.initElements(driver,this);
 	}
 	// reviewer id
-	@FindBy(xpath = "//div[@id='toast-container']/div/div[@role='alertdialog']")
+	@FindBy(xpath = "//div[@id='toast-container']/div/div[@role='alert']")
 	private WebElement Ar_Ap_reviewer_id;
 	public WebElement Ar_Ap_reviewer_id() {
 		return Ar_Ap_reviewer_id;
@@ -416,12 +416,13 @@ public class Gl_Reports_Obj1 {
 	public WebElement nextPageInGlbalanceReport() {
 		return nextPageInGlbalanceReport;
 	}
-	@FindBy(xpath = "//div[@id='toast-container']/div/div[@role='alertdialog']")
+	@FindBy(xpath = "//div[@id='toast-container']/div/div[@role='alert']")
 	private WebElement budget_creation_reviewer_id;
 
 	public WebElement budgetCreation_ReviewerId() {
 	return budget_creation_reviewer_id;
 	}
 	
+
 
 }

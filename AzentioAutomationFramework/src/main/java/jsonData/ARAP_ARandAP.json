@@ -7,11 +7,11 @@
 		"InvoiceType"			: "Invoice Against PO",
 		"InvoicesubType"		: "Regular Expense",
 		"CostCenter"			: "FINANCE",
-		"SupplyRefNo"			: "SRN00077",
+		"SupplyRefNo"			: "SRN00078",
 		"Discount"				: "500000",
 		"ModeofPayment"			: "Cheque",
 		"Remark"				: "Approved",
-		"GRN" 					: "GRN-null-111-2622022",
+		"GRN" 					: "GRN-null-329-2542022",
 		"InvoiceNo"				: "INV-347-42022",
 		"AdjustmentType"		: "Goods Received Notes",
 		"CancelAmount"			: "5000",
@@ -49,7 +49,7 @@
 		// RECEIPT
 		"BankAcc" 				: "ICICIBANK-JAIPUR BRANCH-ICICI883298348348394-INR",
 		"Receiptpayer"			: "SRK",
-		"ReceiptRefNo"     	 	: "RRN2802202214",
+		"ReceiptRefNo"     	 	: "RRN2802202215",
 		"ReceiptType"			: "Cheque",
 		"ReceiptType1"			: "Wire",
 		
@@ -68,18 +68,18 @@
 		"PaymentMode"			:"Pay Order",
 		"GRNItemDetails"		:"2",
 		"FlatDiscount"			:"0",
-		"SuplierReferenceNumber":"SUP-100512",
-		"PanNo"					:"PAN-160-2022-03-16",
-		"PanNo1"				:"PAN-162-2022-03-16",
+		"SuplierReferenceNumber":"SUP-100513",
+		"PanNo"					:"PAN-253-2022-04-22",
+		"PanNo1"				:"PAN-254-2022-04-22",
 		"AdvNo"					:"ADV_59_2422022",
-		"TxnNo"				    :"CAN-22-2022-03-16",
+		"TxnNo"				    :"CAN-30-2022-04-26",
 		
 		// INVOICE BILL
-		"InvoiceNoBill"			: "INV-235-32022",
-		"InvoiceNoAuto"			: "INV-240-32022",
-		"InvoiceTax"			: "INV-248-32022",
+		"InvoiceNoBill"			: "INV-447-52022",
+		"InvoiceNoAuto"			: "INV-450-52022",
+		"InvoiceTax"			: "INV-448-52022",
 		"InvoiceRec"			: "INV-249-32022",
-		"InvoiceImburse"		: "INV-254-32022",
+		"InvoiceImburse"		: "INV-449-52022",
 		"PanNoReport"			: "PAN-118-2022-03-09"
 		
 	}

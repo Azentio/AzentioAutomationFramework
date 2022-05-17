@@ -333,7 +333,7 @@ public class BUDGET_RequestAndAllocationObj {
 		return requestAndAllocation_Alertsubmit;
 	}
 
-	@FindBy(xpath = "//div[@id='toast-container']/div/div[@role='alertdialog']")
+	@FindBy(xpath = "//div[@id='toast-container']/div/div[@role='alert']")
 	private WebElement requestAndAllocation_reviewer_id;
 
 	public WebElement requestAndAllocation_reviewer_id() {
@@ -713,7 +713,7 @@ public class BUDGET_RequestAndAllocationObj {
 	}
 
 	// TOTAST - CONTAINER
-	@FindBy(xpath = "//div[@id='toast-container']/div/div[@role='alertdialog']")
+	@FindBy(xpath = "//div[@id='toast-container']/div/div[@role='alert']")
 	private WebElement Popup_status;
 
 	public WebElement Popup_status() {

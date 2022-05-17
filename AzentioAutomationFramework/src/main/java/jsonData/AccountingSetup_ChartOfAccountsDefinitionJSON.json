@@ -2,19 +2,19 @@
 	{
 		"User" : "Maker",
 		"AccountingCategory": "AS-ASSETS",
-		"COA_NameSearch": "Chair5",
+		"COA_NameSearch": "1004785",
 		
-		"LeafCOA_CodeSearch": "IFRS-5000007-EX",
-		"ParentCOA_CodeSearch": "IFRS-5000006-EX",
+		"LeafCOA_CodeSearch": "IFRS-1000085-AS",
+		"ParentCOA_CodeSearch": "IFRS-1000085-AS",
 		
-		"COA_Name": "-modi50",
+		"COA_Name": "-modi050",
 		"ExternalMappingCode": "1",
 		"ParentGL": "105000000-Stool for bank",
 		"GL_Type": "Main GL",
 		
 		"GL_TypeModifiedForUsedCOA": "Sub GL",
 		
-		"Description": "-modi51",
+		"Description": "-modi501",
 		"BalanceType": "Debit/Credit",
 		"EntitySegment": "1",
 		"Status": "ACTIVE",
@@ -23,11 +23,11 @@
 		"RemarkByMaker": "ok",
 		"ApprovedByChecker": "Approved",
 		
-		"COA_Name1": "-modi52",
+		"COA_Name1": "-modi502",
 		"ExternalMappingCode1": "1",
 		"ParentGL1": "IFRS-1000041-AS-PPE at Branch",
 		"GL_Type1": "Main GL",
-		"Description1": "-modi52",
+		"Description1": "-modi502",
 		"BalanceType1": "Debit/Credit"
 	}
 		

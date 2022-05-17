@@ -149,9 +149,9 @@ public class PettyCash {
 			try {
 
 				waithelper.waitForElement(driver, 3000, driver.findElement(By.xpath("//span[contains(text(),'"
-						+ pettyCashTestDataType.GlToMonth + " " + pettyCashTestDataType.GlYear + "')]")));
+						+ pettyCashTestDataType.GlToMonth + " " + pettyCashTestDataType.GlToYear + "')]")));
 				WebElement monthAndYear = driver.findElement(By.xpath("//span[contains(text(),'"
-						+ pettyCashTestDataType.GlToMonth + " " + pettyCashTestDataType.GlYear + "')]"));
+						+ pettyCashTestDataType.GlToMonth + " " + pettyCashTestDataType.GlToYear + "')]"));
 				break;
 			}
 
@@ -159,8 +159,9 @@ public class PettyCash {
 				inventoryManagamentObj.inventoryNextMonth().click();
 			}
 		}
+    	Thread.sleep(1000);
 		WebElement FinalDay = driver.findElement(By.xpath("//td[@aria-label='" + pettyCashTestDataType.GlFullToMonth
-				+ " " + pettyCashTestDataType.GlToDate + ", " + pettyCashTestDataType.GlYear + "']/span"));
+				+ " " + pettyCashTestDataType.GlToDate + ", " + pettyCashTestDataType.GlToYear + "']/span"));
 		clicksAndActionHelper.doubleClick(FinalDay);
 	}
        

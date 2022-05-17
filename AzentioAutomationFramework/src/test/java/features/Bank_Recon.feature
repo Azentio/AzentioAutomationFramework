@@ -77,10 +77,10 @@ Then click on second Segment button
 And click Bank Recon module
 And click view button near by Bank Reconcilation sub module
 And click on Add Icon
-And enter the bank name and account number for Barclays Bank
-And Give recon period from date 
-And Give recon period to date 
-Then Upload our Bank file for Bank
+And enter the bank name and account numbers
+And Give Bank recon period from date 
+And Give Bank recon period to date 
+Then Upload our Bank file
 And check the file validated  successfully or not
 And save bank recon record
 And Process that Bank file

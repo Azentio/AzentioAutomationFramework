@@ -90,7 +90,7 @@ public class Bank_Recon extends BaseClass {
 	@Then("^Upload our Barclays Bank file$")
 	public void upload_barclays_bank_our_file() throws Throwable {
 		Thread.sleep(2000);
-		bankReconObj.BANKRECON_BankReconUploadFileButton().sendKeys("C:\\Users\\inindc00075\\Music\\Barclay_0021.csv");
+		bankReconObj.BANKRECON_BankReconUploadFileButton().sendKeys("C:\\Users\\inindc00075\\Music\\Barclay_0026.csv");
 
 	}
 
@@ -160,9 +160,8 @@ public class Bank_Recon extends BaseClass {
 				bankReconObj.calendarNextMonthButton().click();
 			}
 		}
-		Thread.sleep(2000);
-		clickAndActionHelper.doubleClick(driver.findElement(By.xpath("//td[@aria-label='" + recondata.FullMonth + " "
-				+ recondata.FromDate + ", " + recondata.FromYear + "']//span")));
+		Thread.sleep(1000);
+		clickAndActionHelper.doubleClick(driver.findElement(By.xpath("//td[@aria-label='" + recondata.FullMonth + " " + recondata.FromDate + ", " + recondata.FromYear + "']//span")));
 
 	}
 
@@ -206,7 +205,7 @@ public class Bank_Recon extends BaseClass {
 	public void enter_the_indian_bank_name_and_indian_account_number() throws Throwable {
 		waitHelper.waitForElementVisible(bankReconObj.BANKRECONBankName(), 3000, 300);
 		bankReconObj.BANKRECONBankName().click();
-		bankReconObj.BANKRECONBankName().sendKeys(recondata.Bankname2);
+		bankReconObj.BANKRECONBankName().sendKeys(recondata.Bankname1);
 		bankReconObj.BANKRECONBankName().sendKeys(Keys.ENTER);
 
 		bankReconObj.BANKRECONBAnkAccountNumber().click();
@@ -253,7 +252,7 @@ public class Bank_Recon extends BaseClass {
 	@Then("^Upload our file for Indian$")
 	public void upload_our_file_for_indian() throws Throwable {
 		Thread.sleep(2000);
-		bankReconObj.BANKRECON_BankReconUploadFileButton().sendKeys("C:\\Users\\inindc00075\\Music\\INDIAN_A1_16.csv");
+		bankReconObj.BANKRECON_BankReconUploadFileButton().sendKeys("C:\\Users\\inindc00075\\Music\\Barclay_0025.csv");
 		Thread.sleep(5000);
 
 	}
@@ -289,7 +288,7 @@ public class Bank_Recon extends BaseClass {
 		}
 		Thread.sleep(2000);
 		clickAndActionHelper.doubleClick(driver.findElement(By.xpath("//td[@aria-label='" + recondata.FullMonth + " "
-				+ recondata.FromDate + ", " + recondata.FromYear + "']//span")));
+				+ recondata.FromDate1 + ", " + recondata.FromYear + "']//span")));
 
 	}
 
@@ -308,7 +307,7 @@ public class Bank_Recon extends BaseClass {
 		}
 		Thread.sleep(2000);
 		clickAndActionHelper.doubleClick(driver.findElement(By.xpath("//td[@aria-label='" + recondata.FullMonth + " "
-				+ recondata.FromToDate + ", " + recondata.FromYear + "']//span")));
+				+ recondata.FromToDate1 + ", " + recondata.FromYear + "']//span")));
 	}
 
 	@Then("^Upload our Bank file$")
@@ -334,7 +333,7 @@ public class Bank_Recon extends BaseClass {
 		}
 		Thread.sleep(2000);
 		clickAndActionHelper.doubleClick(driver.findElement(By.xpath("//td[@aria-label='" + recondata.FullMonth + " "
-				+ recondata.FromDate + ", " + recondata.FromYear + "']//span")));
+				+ recondata.FromDate1 + ", " + recondata.FromYear + "']//span")));
 
 	}
 
@@ -353,7 +352,7 @@ public class Bank_Recon extends BaseClass {
 		}
 		Thread.sleep(2000);
 		clickAndActionHelper.doubleClick(driver.findElement(By.xpath("//td[@aria-label='" + recondata.FullMonth + " "
-				+ recondata.FromToDate + ", " + recondata.FromYear + "']//span")));
+				+ recondata.FromToDate1 + ", " + recondata.FromYear + "']//span")));
 	}
 
 	@Then("^Upload the Bank file$")
@@ -445,13 +444,13 @@ public class Bank_Recon extends BaseClass {
 	@Then("^Upload our Bank files$")
 	public void upload_our_bank_files() throws Throwable {
 		Thread.sleep(2000);
-		bankReconObj.BANKRECON_BankReconUploadFileButton().sendKeys("C:\\Users\\inindc00075\\Music\\PALLAV_AL15.csv");
+		bankReconObj.BANKRECON_BankReconUploadFileButton().sendKeys("C:\\Users\\inindc00075\\Music\\PALLAV_AL16.csv");
 	}
 
 	@Then("^Upload our Bank file for Bank$")
 	public void upload_our_bank_file_for_bank() throws Throwable {
 		Thread.sleep(2000);
-		bankReconObj.BANKRECON_BankReconUploadFileButton().sendKeys("C:\\Users\\inindc00075\\Music\\Barclay_0021.csv");
+		bankReconObj.BANKRECON_BankReconUploadFileButton().sendKeys("C:\\Users\\inindc00075\\Music\\Barclay_0025.csv");
 	}
 
 	@Then("^Try to submit the Record$")
@@ -469,7 +468,7 @@ public class Bank_Recon extends BaseClass {
 	@Then("^Upload Barclays Bank file$")
 	public void upload_barclays_bank_file() throws Throwable {
 		Thread.sleep(2000);
-		bankReconObj.BANKRECON_BankReconUploadFileButton().sendKeys("C:\\Users\\inindc00075\\Music\\Barclay_0023.csv");
+		bankReconObj.BANKRECON_BankReconUploadFileButton().sendKeys("C:\\Users\\inindc00075\\Music\\Barclay_0027.csv");
 	}
 
 	@And("^Verify the Message we get$")

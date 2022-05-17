@@ -237,6 +237,12 @@ public class GL1Obj {
 			return activeTransactionCOA_Toast;
 		}
 		
+		@FindBy(xpath = "//div[@id='toast-container']//div[@role='alert']")
+		private WebElement budget_creation_Getalert;
+
+		public WebElement budget_creation_Getalert() {
+		return budget_creation_Getalert;
+		}
 		
 		
 		

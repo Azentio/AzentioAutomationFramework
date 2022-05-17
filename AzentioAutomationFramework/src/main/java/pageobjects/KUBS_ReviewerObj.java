@@ -127,7 +127,7 @@ public class KUBS_ReviewerObj {
 
 	}
 
-	@FindBy(xpath="//div[@id='toast-container']/div/div[@role='alertdialog']")
+	@FindBy(xpath="//div[@id='toast-container']/div/div[@role='alert']")
 	private WebElement reviewer_approval_status;
 	public WebElement reviewerApprovalStatus()
 	{
@@ -169,7 +169,7 @@ public class KUBS_ReviewerObj {
 		}
 	 
 		
-		@FindBy(xpath="//div[@id='toast-container']/div/div[@role='alertdialog']")
+		@FindBy(xpath="//div[@id='toast-container']/div/div[@role='alert']")
 		private WebElement approval_status;
 		public WebElement approvalStatus()
 		{
