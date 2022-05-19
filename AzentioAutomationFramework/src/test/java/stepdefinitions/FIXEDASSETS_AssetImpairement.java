@@ -70,21 +70,28 @@ public class FIXEDASSETS_AssetImpairement {
 		
 		waithelper.waitForElement(driver, 3000, fIXEDASSETS_AssetUndertakingObj.fixedAssets_AssetImpairement_ItemNumber());
 		fIXEDASSETS_AssetUndertakingObj.fixedAssets_AssetImpairement_ItemNumber().click();
-		fIXEDASSETS_AssetUndertakingObj.fixedAssets_AssetImpairement_ItemNumber().sendKeys(fIXEDASSET_AssetImpairementTestDataType.ItemNumber);
+		//fIXEDASSETS_AssetUndertakingObj.fixedAssets_AssetImpairement_ItemNumber().sendKeys(fIXEDASSET_AssetImpairementTestDataType.ItemNumber);
+		fIXEDASSETS_AssetUndertakingObj.fixedAssets_AssetImpairement_ItemNumber().sendKeys(Keys.DOWN);
 		fIXEDASSETS_AssetUndertakingObj.fixedAssets_AssetImpairement_ItemNumber().sendKeys(Keys.ENTER);
-		
-		waithelper.waitForElement(driver, 3000, fIXEDASSETS_AssetUndertakingObj.fixedAssets_AssetImpairement_Currency());
-		fIXEDASSETS_AssetUndertakingObj.fixedAssets_AssetImpairement_Currency().sendKeys(fIXEDASSET_AssetImpairementTestDataType.CurrencyForImpairement);
-		
+//		/*
+//		 * waithelper.waitForElement(driver, 3000,
+//		 * fIXEDASSETS_AssetUndertakingObj.fixedAssets_AssetImpairement_Currency());
+//		 * fIXEDASSETS_AssetUndertakingObj.fixedAssets_AssetImpairement_Currency().
+//		 * sendKeys(fIXEDASSET_AssetImpairementTestDataType.CurrencyForImpairement);
+//		 */	
 	}
 
     @Then("^Save and submit the asset impairement$")
     public void save_and_submit_the_asset_creation_record() throws InterruptedException, IOException, ParseException{
     	
-        //waithelper.waitForElement(driver, 3000, fIXEDASSETS_AssetCreationObj.fixedAssets_AssetCreation_SaveButton());
-    	fIXEDASSETS_AssetCreationObj.fixedAssets_AssetCreation_SaveButton().click();
-    	Thread.sleep(2000);
+      //  waithelper.waitForElement(driver, 3000, fIXEDASSETS_AssetCreationObj.fixedAssets_AssetCreation_SaveButton());
     	javascripthelper.JavaScriptHelper(driver);
+    	//Thread.sleep(2000);
+    	driver.findElement(By.xpath("//page-fixed-asset-impairment-update//ion-toolbar//ion-buttons[2]//ion-button")).click();
+    //	javascripthelper.JSEClick(fIXEDASSETS_AssetCreationObj.fixedAssets_AssetCreation_SaveButton());
+    	//fIXEDASSETS_AssetCreationObj.fixedAssets_AssetCreation_SaveButton().click();
+    	Thread.sleep(2000);
+    	
 		String str = javascripthelper.executeScript(
 				"return document.querySelector(\"ion-toast\").shadowRoot.querySelector(\"div[class='toast-message']\").innerText")
 				.toString();

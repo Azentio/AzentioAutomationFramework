@@ -12,16 +12,16 @@
 "AssetValue":"1000000000",
 "HSNCode":"83034090- Lockers",
 
-"AssetReferenceNumber":"01-001-adjustable table_AZENTMAIN_4455",
-"ItemNumber":"33333",
+"AssetReferenceNumber":"01-001-wooden table_AZENTMAIN_5008",
+"ItemNumber":"wt04",
 "EmployeeID":"anant",
 
 
 	"GlYear":"2023",
-	"GlDay":"17",
-	"GlToMonth":"Feb",
-	"GlFullToMonth":"February",
-	"GlToDate":"4",
+	"GlDay":"19",
+	"GlToMonth":"Apr",
+	"GlFullToMonth":"April",
+	"GlToDate":"19",
 	
 	"AssetLife":"Month"
 

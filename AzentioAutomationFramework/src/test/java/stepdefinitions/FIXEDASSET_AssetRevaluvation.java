@@ -391,7 +391,7 @@ public class FIXEDASSET_AssetRevaluvation extends BaseClass {
 	public void give_asset_deallocation_referance_number() throws Throwable {
 		// -----------ENTER ASSET REF NO---------------//
 		waitHelper.waitForElement(driver, 2000, assetRevaluvationObj.fixed_AssetReferenceNumber());
-		assetRevaluvationObj.fixed_AssetReferenceNumber().sendKeys(AssetCreation);
+		assetRevaluvationObj.fixed_AssetReferenceNumber().sendKeys(assetAmendmentData.DeallocationRef);
 		assetRevaluvationObj.fixed_AssetReferenceNumber().sendKeys(Keys.ENTER);
 	}
 
@@ -430,7 +430,7 @@ public class FIXEDASSET_AssetRevaluvation extends BaseClass {
     public void give_asset_impaired_referance_number() throws Throwable {
 		// -----------ENTER ASSET REF NO---------------//
 		waitHelper.waitForElement(driver, 2000, assetRevaluvationObj.fixed_AssetReferenceNumber());
-		assetRevaluvationObj.fixed_AssetReferenceNumber().sendKeys(AssetCreation);
+		assetRevaluvationObj.fixed_AssetReferenceNumber().sendKeys(assetAmendmentData.ImpairedAssetRef);
 		assetRevaluvationObj.fixed_AssetReferenceNumber().sendKeys(Keys.ENTER);
     }
     
@@ -470,7 +470,7 @@ public class FIXEDASSET_AssetRevaluvation extends BaseClass {
     public void give_asset_amendment_referance_number() throws Throwable {
 		// -----------ENTER ASSET REF NO---------------//
 		waitHelper.waitForElement(driver, 2000, assetRevaluvationObj.fixed_AssetReferenceNumber());
-		assetRevaluvationObj.fixed_AssetReferenceNumber().sendKeys(AssetCreation);
+		assetRevaluvationObj.fixed_AssetReferenceNumber().sendKeys(assetAmendmentData.AmendmentAssetRef);
 		assetRevaluvationObj.fixed_AssetReferenceNumber().sendKeys(Keys.ENTER);
     }
     
@@ -522,7 +522,7 @@ public class FIXEDASSET_AssetRevaluvation extends BaseClass {
     public void give_asset_sale_referance_number() throws Throwable {
 		// -----------ENTER ASSET REF NO---------------//
 		waitHelper.waitForElement(driver, 2000, assetRevaluvationObj.fixed_AssetReferenceNumber());
-		assetRevaluvationObj.fixed_AssetReferenceNumber().sendKeys(AssetCreation);
+		assetRevaluvationObj.fixed_AssetReferenceNumber().sendKeys(assetAmendmentData.SoldAssetRefNum);
 		assetRevaluvationObj.fixed_AssetReferenceNumber().sendKeys(Keys.ENTER);
     }
 
@@ -550,7 +550,7 @@ public class FIXEDASSET_AssetRevaluvation extends BaseClass {
     public void give_asset_return_referance_number() throws Throwable {
 		// -----------ENTER ASSET REF NO---------------//
 		waitHelper.waitForElement(driver, 2000, assetRevaluvationObj.fixed_AssetReferenceNumber());
-		assetRevaluvationObj.fixed_AssetReferenceNumber().sendKeys(AssetCreation);
+		assetRevaluvationObj.fixed_AssetReferenceNumber().sendKeys(assetAmendmentData.returnAssetNum);
 		assetRevaluvationObj.fixed_AssetReferenceNumber().sendKeys(Keys.ENTER);
     }
 
@@ -579,7 +579,7 @@ public class FIXEDASSET_AssetRevaluvation extends BaseClass {
     public void give_asset_replace_referance_number() throws Throwable {
 		// -----------ENTER ASSET REF NO---------------//
 		waitHelper.waitForElement(driver, 2000, assetRevaluvationObj.fixed_AssetReferenceNumber());
-		assetRevaluvationObj.fixed_AssetReferenceNumber().sendKeys(AssetCreation);
+		assetRevaluvationObj.fixed_AssetReferenceNumber().sendKeys(assetAmendmentData.replacementAssetRefNum);
 		assetRevaluvationObj.fixed_AssetReferenceNumber().sendKeys(Keys.ENTER);
     }
 

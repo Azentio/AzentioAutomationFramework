@@ -195,7 +195,8 @@ public class FixedAsset_Reports {
     	  //Item Number
     	  waithelper.waitForElement(driver, 4000,  fixedAsset_ReportsObj.fixedAsset_ReturnReport_ItemNumber());
     	  fixedAsset_ReportsObj.fixedAsset_ReturnReport_ItemNumber().click();
-    	  fixedAsset_ReportsObj.fixedAsset_ReturnReport_ItemNumber().sendKeys(fixedAsset_AssetCategoryTestDataType.ReturnReportItemNumber);
+    	  fixedAsset_ReportsObj.fixedAsset_ReturnReport_ItemNumber().sendKeys(Keys.DOWN);
+    	 // fixedAsset_ReportsObj.fixedAsset_ReturnReport_ItemNumber().sendKeys(fixedAsset_AssetCategoryTestDataType.ReturnReportItemNumber);
     	  fixedAsset_ReportsObj.fixedAsset_ReturnReport_ItemNumber().sendKeys(Keys.ENTER);
     	      
     }

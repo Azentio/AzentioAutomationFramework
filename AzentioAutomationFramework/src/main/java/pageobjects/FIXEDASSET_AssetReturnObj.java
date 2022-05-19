@@ -28,7 +28,7 @@ public class FIXEDASSET_AssetReturnObj {
 		return fixed_Transfericon;
 	}
 
-	@FindBy(xpath = "//div[@id='toast-container']/div/div[@role='alertdialog']")
+	@FindBy(xpath = "//div[@id='toast-container']/div/div[@role='alert']")
 	private WebElement fixed_Popup;
 
 	public WebElement fixed_Popup() {
@@ -137,7 +137,7 @@ public class FIXEDASSET_AssetReturnObj {
 		return fixed_RemarkSubmit;
 	}
 
-	@FindBy(xpath = "//div[@id='toast-container']/div/div[@role='alertdialog']")
+	@FindBy(xpath = "//div[@id='toast-container']/div/div[@role='alert']")
 	private WebElement fixed_ReviewerId;
 
 	public WebElement fixed_ReviewerId() {

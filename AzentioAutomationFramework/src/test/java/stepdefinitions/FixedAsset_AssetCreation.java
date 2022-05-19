@@ -237,7 +237,7 @@ public class FixedAsset_AssetCreation extends BaseClass {
 	    	
 	    	fixedAsset_AssetCreationTestDataType = jsonReader.getAssetCreationByName("Maker");
 	    	Random random = new Random();
-	    	int randomNumber=random.nextInt(5000-9999)+5000;
+	    	int randomNumber=random.nextInt(5000-999)+5000;
 	    waithelper.waitForElement(driver, 2000,fixedAsset_AssetCreationObj.fixedAsset_AssetCreation_AssetItemNumber());
 	    	fixedAsset_AssetCreationObj.fixedAsset_AssetCreation_AssetItemNumber().click();
 	    	fixedAsset_AssetCreationObj.fixedAsset_AssetCreation_AssetItemNumber().sendKeys(fixedAsset_AssetCreationTestDataType.AssetItemNumberReplaced);

@@ -3,14 +3,14 @@
 		"User"					: "Maker",
 		"AssetCategory"			: "Furnitures & Fixtures",
 		"AssetSubCategory"		: "Table & Chair",
-		"AssetItemCategory"		:	"woodply21",
-		"AssetDescription"		:	"woodply21",
+		"AssetItemCategory"		:	"woodply25",
+		"AssetDescription"		:	"woodply25",
 		"Remark"				:	"ok",
 		
 		
 		
 		
-		"AssetCode"						: "01-001-woodply21",
+		"AssetCode"						: "01-001-woodply25",
 		"AccountingModel"				: "Cost Model",
 		"AssetLifeUnit" 				: "Year",
 		"AssetLife"						: "2",
@@ -36,22 +36,22 @@
 		
 		
 		"AssetSaleCode" : "01-001-adjustable table",
-		"FromMonth"		: "Nov",
-		"FromFullMonth"	: "November",
+		"FromMonth"		: "Apr",
+		"FromFullMonth"	: "April",
 		"FromDay"		: "4",
-		"Year"			: "2022",
+		"Year"			: "2023",
 		
 		"ReplacementReportAssetCode" : "ELECTRONICS-LAP001-Apple_Mac_Book",
 		"ReplacementReportItemNumber" : "IN7585",
 		"ReplacementFromMonth"		: "Apr",
 		"ReplacementFromFullMonth"	: "April",
-		"ReplacementFromDay"		: "26",
-		"ReplacementYear"			: "2022",
+		"ReplacementFromDay"		: "19",
+		"ReplacementYear"			: "2023",
 		
 		"ImpairmentFromMonth"		: "Apr",
 		"ImpairmentFromFullMonth"	: "April",
-		"ImpairmentFromDay"			: "26",
-		"ImpairmentYear"			: "2022",
+		"ImpairmentFromDay"			: "19",
+		"ImpairmentYear"			: "2023",
 		
 		"RevaluationFromMonth"		: "Apr",
 		"RevaluationFromFullMonth"	: "April",

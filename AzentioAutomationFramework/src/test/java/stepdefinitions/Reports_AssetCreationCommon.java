@@ -1032,22 +1032,35 @@ public class Reports_AssetCreationCommon {
 	@Then("^the report is displaying all the asset codes details for a branch$")
 
 	public void the_report_is_displaying_all_the_asset_codes_details_for_a_branch() throws InterruptedException {
+
 		Thread.sleep(1000);
+
 		browserHelper.SwitchToWindow(1);
+
 		waithelper.waitForElement(driver, 10000, reports_AssetCreationCommonObj.Report_AssetCodesReport());
+
 		boolean result = reports_AssetCreationCommonObj.Report_AssetCodesReport().isDisplayed();
+
 		System.out.println(result);
+
 		browserHelper.switchToParentWithChildClose();
 
 	}
 
 	@Then("^the report is displaying all the asset category details for a branch$")
+
 	public void the_report_is_displaying_all_the_asset_category_details_for_a_branch() throws InterruptedException {
+
 		Thread.sleep(1000);
+
 		browserHelper.SwitchToWindow(1);
+
 		waithelper.waitForElement(driver, 10000, reports_AssetCreationCommonObj.Report_AssetCodesReport());
+
 		boolean result = reports_AssetCreationCommonObj.Report_AssetCodesReport().isDisplayed();
+
 		System.out.println(result);
+
 		browserHelper.switchToParentWithChildClose();
 
 	}

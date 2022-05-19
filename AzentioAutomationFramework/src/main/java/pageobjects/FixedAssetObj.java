@@ -196,6 +196,13 @@ return Report_report_NextButton;
 		public WebElement fixedAsset_AssetAllocation_SaveButton() {
 	return fixedAsset_AssetAllocation_SaveButton;
 							}
+		
+		@FindBy(xpath="//page-fixed-asset-allocation-update//ion-toolbar//ion-buttons[2]//ion-button")
+		private WebElement fixedAsset_allocationSaveButton;
+		public WebElement fixedAsserAllocationSaveButton()
+		{
+			return fixedAsset_allocationSaveButton;
+		}
 		//Job Scheduler Button
 		@FindBy(xpath = "//ion-label[contains(text(),'Job scheduler')]")
 		private WebElement JobScheduler_Button;

@@ -40,6 +40,7 @@ public class FixedAsset_AssetGlConfiguration extends BaseClass  {
     waithelper.waitForElement(driver, 4000, fixedAsset_AssetGlConfigurationObj.fixedAsset_AssetGlConfiguration_AssetCode());
     fixedAsset_AssetGlConfigurationObj.fixedAsset_AssetGlConfiguration_AssetCode().click();
     fixedAsset_AssetGlConfigurationObj.fixedAsset_AssetGlConfiguration_AssetCode().sendKeys(fixedAsset_AssetCategoryTestDataType.AssetCode);
+    fixedAsset_AssetGlConfigurationObj.fixedAsset_AssetGlConfiguration_AssetCode().sendKeys(Keys.DOWN);
     fixedAsset_AssetGlConfigurationObj.fixedAsset_AssetGlConfiguration_AssetCode().sendKeys(Keys.ENTER);
     Thread.sleep(2000);
     //FixedAssetGL

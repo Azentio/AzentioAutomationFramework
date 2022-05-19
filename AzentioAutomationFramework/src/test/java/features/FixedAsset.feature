@@ -57,7 +57,7 @@
     Then search vendor contract details by business partner name
     And vendor contract details should display on contract creation list view
     
-@KUBS_FAT_UAT_001_003  @MultiAuth
+@KUBS_FAT_UAT_001_003  
 Scenario: Create a purchase order with Unique purchase order number
 Given Maker Navigate to UAT URL login
 Then Click on Direction icon
@@ -144,7 +144,7 @@ Then Click on Good Recived Note GRN Eye buutton
     And fill the reference number field of financial transaction to check accounting entries post billing
     Then click on view button to view the report as per reference number
 
-@KUBS_FAT_UAT_002_001 @multiauth
+@KUBS_FAT_UAT_002_001 
 
 Scenario: Create the asset limit
 
@@ -172,7 +172,7 @@ Then Click on the Direction
 Then Click on Fixed Asset
 Then Click on Asset Creation Eye button
 
-@KUBS_FAT_UAT_002_002 @MultiAuth
+@KUBS_FAT_UAT_002_002
 
 Scenario: Create an asset category
 Given Maker Navigate to UAT URL login
@@ -191,7 +191,7 @@ And then checker claim the record
 Then click on the checker Notification 
 And select the record and Approve by checker
 
-@KUBS_FAT_UAT_002_003 @MultiAuth
+@KUBS_FAT_UAT_002_003 
 
 Scenario: Configure the asset category for asset code creation
 
@@ -213,7 +213,7 @@ And then checker claim the record
 Then click on the checker Notification 
 And select the record and Approve by checker
 
-@KUBS_FAT_UAT_002_004  @MultiAuth
+@KUBS_FAT_UAT_002_004  
 
 Scenario: Map the various GLs for created asset code
 Given Maker Navigate to UAT URL login
@@ -232,7 +232,7 @@ And then checker claim the record
 Then click on the checker Notification 
 And select the record and Approve by checker
 
-@KUBS_FAT_UAT_002_005  @MultiAuth
+@KUBS_FAT_UAT_002_005  
 
 Scenario: Allocate the serial number for the asset
 Given Maker Navigate to UAT URL login
@@ -736,7 +736,7 @@ Then Click on the Direction
 Then Click on Fixed Asset
 Then Click on Asset Allocation Eye button
 
-@KUBS_FAT_UAT_006_005 @MultiAuth
+@KUBS_FAT_UAT_006_005
 
 Scenario: Check If the de-allocated asset can be allocated to any other resource
 #Creation
@@ -819,7 +819,7 @@ And select the record and Approve by checker
 #Then click on the checker Notification 
 #And select the record and Approve by checker
 
-@KUBS_FAT_UAT_006_007 @MultiAuth
+@KUBS_FAT_UAT_006_007 
 Scenario: Check If the asset to be transferred then it can be de-allocated
 
 Given Maker Navigate to UAT URL login
@@ -839,10 +839,7 @@ Then click on the checker Notification
 And select the record and Approve by checker
 
 
-
-
-
-@KUBS_FAT_UAT_006_008 @MultiAuth
+@KUBS_FAT_UAT_006_008 
 Scenario: Check If the asset to be sold then it should be de-allocated
 
 Given Maker Navigate to UAT URL login
@@ -863,7 +860,7 @@ And select the record and Approve by checker
 
 
 
-@KUBS_FAT_UAT_006_009 @MultiAuth
+@KUBS_FAT_UAT_006_009 
 Scenario: Check if any impaired asset can be de-allocated
 #Creation
 Given Maker Navigate to UAT URL login
@@ -929,7 +926,7 @@ Then click on the checker Notification
 And select the record and Approve by checker
 
 
-@KUBS_FAT_UAT_006_010 @MultiAuth
+@KUBS_FAT_UAT_006_010 
 Scenario: Check if any Check if any re-valued asset can be de-allocated asset can be de-allocated
 
 #Creation
@@ -996,7 +993,7 @@ Then click on the checker Notification
 And select the record and Approve by checker
 
 
-@KUBS_FAT_UAT_006_011 @MultiAuth
+@KUBS_FAT_UAT_006_011 
 Scenario: Check if any amended asset can be de-allocated
 #Creation
 Given Maker Navigate to UAT URL login
@@ -1151,7 +1148,7 @@ And then checker claim the record
 Then click on the checker Notification 
 And select the record and Approve by checker
 
-@AssetReturn @KUBS_FAT_UAT_007_001
+ @KUBS_FAT_UAT_007_001 @AssetReturn
 Scenario: Check if the asset can be returned to its vendor
 Given Navigate to KUBS URL and login with maker credentials
 And click on fixed asset main module
@@ -1191,7 +1188,7 @@ And click on fixed asset main module
 And click on view button nearby asset return module
 Then check the approved record is displayed in list view of returned asset
 
-@returnRevaluedAsset @KUBS_FAT_UAT_007_002
+ @KUBS_FAT_UAT_007_002 @returnRevaluedAsset
 Scenario: Check if the re-valued asset can be returned to its vendor
 Given Navigate to KUBS URL and login with maker credentials
 And click on fixed asset main module
@@ -1267,7 +1264,7 @@ And click on fixed asset main module
 And click on view button nearby asset return module
 Then check the approved record is displayed in list view of returned asset
 
-@AmmendentAssetReturn  @KUBS_FAT_UAT_007_003
+@KUBS_FAT_UAT_007_003 @AmmendentAssetReturn
 Scenario: Check if the ammendent asset can be returned to its vendor
 Given Navigate to KUBS URL and login with maker credentials
 And click on fixed asset main module
@@ -1345,7 +1342,7 @@ And click on view button nearby asset return module
 Then check the approved record is displayed in list view of returned asset
 
 
-@returnImpairedAsset @KUBS_FAT_UAT_007_004
+@KUBS_FAT_UAT_007_004 @returnImpairedAsset
 Scenario: Check if the impaired asset can be returned to its vendor
 Given Navigate to KUBS URL and login with maker credentials
 And click on fixed asset main module
@@ -1458,7 +1455,7 @@ And  Mouse click on search icon
 Then Enter Asset Referance No in that field
 When capture the Asset Grid view list
 
-@deAllocatedAssetReturn  @KUBS_FAT_UAT_007_006
+@KUBS_FAT_UAT_007_006 @deAllocatedAssetReturn
 Scenario: Check if the deallocated asset can be returned to its vendor
 Given Navigate to KUBS URL and login with maker credentials
 Then Click on fixed asset deallocaion  Direction icon
@@ -3223,9 +3220,9 @@ Scenario: Alter the Value of an existing asset (de-allocation)
 Given Navigate the Maker Url
 Then Choose Second Segmant Icon
 And fixed Asset Module
-Then Asset deallocation submodule Eye Icon
-And Click Table first Eye Icon
-Then Store the Referance No
+#Then Asset deallocation submodule Eye Icon
+#And Click Table first Eye Icon
+#Then Store the Referance No
 Then Asset Revaluvation submodule Eye Icon
 And Add Icon button
 Then Give Asset Deallocation Referance Number
@@ -3303,9 +3300,9 @@ Scenario: Alter the Value of an existing asset (Impared)
 Given Navigate the Maker Url
 Then Choose Second Segmant Icon
 And fixed Asset Module
-Then Asset Impairment submodule Eye Icon
-And Click Table Row first Eye Icon
-Then Store the Referance No
+#Then Asset Impairment submodule Eye Icon
+#And Click Table Row first Eye Icon
+#Then Store the Referance No
 Then Asset Revaluvation submodule Eye Icon
 And Add Icon button
 Then Give Asset Impaired Referance Number
@@ -3342,9 +3339,9 @@ Scenario: Alter the Value of an existing asset (Amendent)
 Given Navigate the Maker Url
 Then Choose Second Segmant Icon
 And fixed Asset Module
-Then Asset Amendment submodule Eye Icon
-And Click Table Row first Eye Icon
-Then Store the Referance No
+#Then Asset Amendment submodule Eye Icon
+#And Click Table Row first Eye Icon
+#Then Store the Referance No
 Then Asset Revaluvation submodule Eye Icon
 And Add Icon button
 Then Give Asset Amendment Referance Number
@@ -3383,9 +3380,9 @@ Scenario: Alter the Value of an existing asset (undertaken)
 Given Navigate the Maker Url
 Then Choose Second Segmant Icon
 And fixed Asset Module
-Then Asset Undertaken submodule Eye Icon
-And Click Table Row first Eye Icon
-Then Store the Referance No
+#Then Asset Undertaken submodule Eye Icon
+#And Click Table Row first Eye Icon
+#Then Store the Referance No
 Then Asset Revaluvation submodule Eye Icon
 And Add Icon button
 Then Give Asset Undertaken Referance Number
@@ -3424,9 +3421,9 @@ Scenario: Alter the Value of an existing asset (Sold - Maker Only)
 Given Navigate the Maker Url
 Then Choose Second Segmant Icon
 And fixed Asset Module
-Then Asset Sale submodule Eye Icon
-And Click Table Row first Eye Icon
-Then Store the Referance No
+#Then Asset Sale submodule Eye Icon
+#And Click Table Row first Eye Icon
+#Then Store the Referance No
 Then Asset Revaluvation submodule Eye Icon
 And Add Icon button
 Then Give Asset Sale Referance Number
@@ -3438,15 +3435,14 @@ Then Select the first Action icon
 And Submit Record in maker
 Then Give Remark and Submit it
 
-
 @KUBS_FAT_UAT_012_008
 Scenario: Alter the Value of an existing asset (Return - Maker Only)
 Given Navigate the Maker Url
 Then Choose Second Segmant Icon
 And fixed Asset Module
-Then Asset Return submodule Eye Icon
-And Click Table Row first Eye Icon
-Then Store the Referance No
+#Then Asset Return submodule Eye Icon
+#And Click Table Row first Eye Icon
+#Then Store the Referance No
 Then Asset Revaluvation submodule Eye Icon
 And Add Icon button
 Then Give Asset Return Referance Number
@@ -3464,9 +3460,9 @@ Scenario: Alter the Value of an existing asset (Replace)
 Given Navigate the Maker Url
 Then Choose Second Segmant Icon
 And fixed Asset Module
-Then Asset Replacement submodule Eye Icon
-And Click Table Row first Eye Icon
-Then Store the Referance No
+#Then Asset Replacement submodule Eye Icon
+#And Click Table Row first Eye Icon
+#Then Store the Referance No
 Then Asset Revaluvation submodule Eye Icon
 And Add Icon button
 Then Give Asset Replace Referance Number
@@ -3728,6 +3724,8 @@ Then click on temp grid button of asset serial number
 And select the asset code and serial number and date to check the asset serial number are displaying 
 Then click in the view button to check 
 Then the report is displaying all the asset codes details for a branch 
+
+
 
 
 

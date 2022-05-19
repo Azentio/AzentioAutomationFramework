@@ -145,11 +145,21 @@ public class FIXEDASSETS_AssetRevaluation {
     	waithelper.waitForElement(driver, 2000, fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_NotificationButton());
     	fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_NotificationButton().click();
 		Thread.sleep(2000);
+		while(true)
+		{
+		try
+		{
 		waithelper.waitForElement(driver, 3000, driver.findElement(By.xpath("//span[contains(text(),'" + jsonWriter.readReferancedata()
 		+ "')]/ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell/div/ion-buttons/ion-button")));
 		driver.findElement(By.xpath("//span[contains(text(),'" + jsonWriter.readReferancedata() + "')]/ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell/div/ion-buttons/ion-button"))
 		.click();
-		
+		break;
+		}
+		catch(NoSuchElementException e)
+		{
+			
+		}
+		}
 		waithelper.waitForElement(driver, 2000, kubschecker.checkerApproveButton());
 		kubschecker.checkerApproveButton().click();
 		waithelper.waitForElement(driver, 2000, kubschecker.checkerRemarks());

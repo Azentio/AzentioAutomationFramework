@@ -1,10 +1,10 @@
 [
 	{
 		"User" : "Maker",
-		"AssetReferenceNumberForTransfer" : "01-ASTSBCTGRY001-Small",
-		"AssetReferenceNumberImpairedForTransfer" : "MACHINARY-GENERATOR-UPS_AZENTMAIN_131",
-		"AssetReferenceNumberRevaluedForTransfer" : "01-001-desk_AZENTMAIN_27",
-		"AssetReferenceNumberUndertaking" : "01-001-Plastic chairs_BR0007_60",
+		"AssetReferenceNumberForTransfer" : "01-001-wooden table_AZENTMAIN_5006",
+		"AssetReferenceNumberImpairedForTransfer" : "01-001-woodply22638_AZENTMAIN_10111",
+		"AssetReferenceNumberRevaluedForTransfer" : "ELECTRONICS-LAP001-Apple_Mac_Book_AZENTMAIN_128991",
+		"AssetReferenceNumberUndertaking" : "ELECTRONICS-LAP001-DELL laptops_AZENTMAIN_849",
 		"RemarkByMaker" : "submit by maker",
 		"CheckerRemark" : "approved by checker",
 		"NewBranch" : "Dadar Branch" 

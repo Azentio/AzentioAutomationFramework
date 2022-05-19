@@ -494,8 +494,8 @@ public class FixedAsset {
 	
 	    @Then("^Save the filled Allocation$")
 	    public void save_the_filled_allocation() throws Throwable {
-	    	//waithelper.waitForElement(driver, 2000, fixedAssetObj.fixedAsset_AssetAllocation_SaveButton());
-	    	fixedAssetObj.fixedAsset_AssetAllocation_SaveButton().click();
+	    	waithelper.waitForElement(driver, 2000, fixedAssetObj.fixedAsserAllocationSaveButton());
+	    	fixedAssetObj.fixedAsserAllocationSaveButton().click();
 	    }
 //-----------KUBS_FAT_UAT_006_002----
 	    @Then("^Fill the Allocation form with used asset details$")

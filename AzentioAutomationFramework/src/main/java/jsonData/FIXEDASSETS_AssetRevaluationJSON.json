@@ -1,8 +1,8 @@
 [	
 	{
 		"User" : "Maker",		
-		"AssetReferenceNumber" : "01-001-Plastic chairs_BR0007_60",		
-		"ItemNumber" : "AIN3333",
+		"AssetReferenceNumber" : "01-001-wooden table_AZENTMAIN_5007",		
+		"ItemNumber" : "wt03",
 		"CurrencyForRevaluation" : "INR",
 		"CheckerRemark" : "Approved",
 		"RemarkByMaker" : "Submit By Maker"
