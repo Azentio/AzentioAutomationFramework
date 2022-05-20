@@ -4,13 +4,15 @@
 		"ContractType": "Purchases Contract",
 		"BusinessPartnerName": "Bonton Agency",
 		"HSNCode": "999459- Cleaning Ser",
+		"budgetMapedHSNCode":"8471- Laptop",
+		"budgetMapedExpensecode":"EXP23",
 		"PaymentAmmount": "50000",
 		"CreditPeriod": "2",
-		"VendorContractQuantity": "100",
+		"VendorContractQuantity": "10",
 		"ContractName": "Purchace Contract92325",
 		"PaymentTerm": "Advance",
 		"PaymentTermPercentage": "3",
-		"RatePerUnit": "100",
+		"RatePerUnit": "10",
 		"PaymentMode": "Pay Order",
 		"GRNItemDetails": "2",
 		"FlatDiscount": "0",
@@ -19,7 +21,7 @@
 		
 		//Manual Payout Data
 		"ManualPayoutStatus":"Active",
-		"ManualPayoutReferenceNumber":"PTN-901-27-1232022"
+		"ManualPayoutReferenceNumber":"PTN-901-59-1652022"
 		
 		
 	}

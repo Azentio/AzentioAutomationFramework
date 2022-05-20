@@ -12,6 +12,12 @@ public class Ar_Ap_AdjustmentObj {
 		this.driver=driver;
 		PageFactory.initElements(driver,this);
 	}
+	@FindBy(xpath="//page-ar-ap-adjustments-update//ion-toolbar//ion-buttons[2]")
+	private WebElement adjustement_AdjustmentSaveButton;
+	public WebElement adjustementSaveButton()
+	{
+	return adjustement_AdjustmentSaveButton;
+	}
 	@FindBy(xpath="//ion-label[text()=' Adjustments ( AR and AP) ']")
 	private WebElement ClickArApAdjustmentModule;
 	public WebElement ClickArApAdjustmentModule() {

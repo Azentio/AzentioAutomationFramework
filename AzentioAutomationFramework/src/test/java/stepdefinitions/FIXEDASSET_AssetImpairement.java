@@ -1001,7 +1001,7 @@ public class FIXEDASSET_AssetImpairement extends BaseClass {
 	@Then("^check the approved record is displayed in appeared in maker list view stage$")
 	public void check_the_approved_record_is_displayed_in_appeared_in_maker_list_view_stage() throws Throwable {
 		System.out.println(impairementData.get("AssetReferenceNo"));
-
+           Thread.sleep(1000);
 		String beforeXpath = "//span[contains(text(),'";
 		String afterXpath = "')]";
 		while (true) {

@@ -217,7 +217,7 @@ public class ACCOUNTSPAYABLE_AutoPayout extends BaseClass {
     waitHelper.waitForElementVisible(driver.findElement(By.xpath("//div[contains(text(),'"+autoPayout.get("approvedContractNumber")+"')]/ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell[1]//ion-checkbox")), 2000, 100);
     driver.findElement(By.xpath("//div[contains(text(),'"+autoPayout.get("approvedContractNumber")+"')]/ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell[1]//ion-checkbox")).click();
     driver.findElement(By.xpath("//div[contains(text(),'"+autoPayout.get("approvedContractNumber")+"')]/parent::datatable-body-cell/following-sibling::datatable-body-cell[5]//input")).click();
-    driver.findElement(By.xpath("//div[contains(text(),'"+autoPayout.get("approvedContractNumber")+"')]/parent::datatable-body-cell/following-sibling::datatable-body-cell[5]//input")).sendKeys("100");
+    driver.findElement(By.xpath("//div[contains(text(),'"+autoPayout.get("approvedContractNumber")+"')]/parent::datatable-body-cell/following-sibling::datatable-body-cell[5]//input")).sendKeys("1");
     while(true)
     {
     try

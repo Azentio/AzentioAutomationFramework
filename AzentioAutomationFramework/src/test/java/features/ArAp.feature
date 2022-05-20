@@ -1434,7 +1434,128 @@ And click notification button
 Then choose first record in the notification record
 Then go to Item details and enter po number
 
-#KUBS_AR/AP_UAT_003_002_TC_04 - Defect
+@KUBS_AR/AP_UAT_003_002_TC_04
+Scenario: Check Budget utilization is re-instated
+Given maker should navigate to the url and login with valid credentials UAT
+And maker should navigate to the budget module UAT 
+And maker click on budget field UAT
+When maker click on budget supplementary eye icon UAT
+And click on add button on budget supplementary view page UAT
+Then check the budget utilazation amount of budet code which we create the expense code
+And click on accounts Payable module
+And goto vendor contract module
+And click on Add Icon
+Then fill all the mendatory fields for creating vendor
+And add item details for the contract give budgetcode maped expense code
+And add the payment term for the contract
+And add the benificiory details and select auto payout as yes
+And click notification button
+Then choose first record in the notification record
+And click on Submit button 
+Then enter remark in confirmation alert
+Then click on submit button in alert
+And capture the reviewer ID in pop up which is open when we submit our record in maker stage
+Then logout from maker
+And login with reviewer credentials
+Then click on notification button
+And select our record in notification records using reference ID
+Then Approve the record from reviewer
+And enter the remark in alert
+Then click on submit in alert
+Then verify the approval status of the record
+And logout from reviewer
+Then login as a checker 
+And click on security management menu in checker
+Then click on action button under security management menu
+And select our record and clime using reference ID
+Then click on Notification button
+Then select our record in notification records by the help of reference ID
+And click on approve button in checker stage
+Then give alert remark 
+Then click on submit button on alert
+And verify the record got approved from checker
+Then logout from checker
+And login with Maker ID
+And click on accounts Payable module
+And goto vendor contract module
+And get the contract number
+And goto po creation module
+And click on Add Icon
+And fill the mendatory fields for po creation 
+And save the po creation record
+And save the item details for pocreation 
+And save the benificiery details for po creation
+And click notification button
+Then choose first record in the notification record
+And click on Submit button 
+Then enter remark in confirmation alert
+Then click on submit button in alert
+And capture the reviewer ID in pop up which is open when we submit our record in maker stage
+Then logout from maker
+And login with reviewer credentials
+Then click on notification button
+And select our record in notification records using reference ID
+Then Approve the record from reviewer
+And enter the remark in alert
+Then click on submit in alert
+Then verify the approval status of the record
+And logout from reviewer
+Then login as a checker 
+And click on security management menu in checker
+Then click on action button under security management menu
+And select our record and clime using reference ID
+Then click on Notification button
+Then select our record in notification records by the help of reference ID
+And click on approve button in checker stage
+Then give alert remark 
+Then click on submit button on alert
+Then logout from checker
+Given maker should navigate to the url and login with valid credentials UAT
+And maker should navigate to the budget module UAT 
+And maker click on budget field UAT
+When maker click on budget supplementary eye icon UAT
+And click on add button on budget supplementary view page UAT
+Then check the budget utilazation amount of budet code which we create the expense code after creating po 
+And click on accounts Payable module 
+And goto po creation module
+Then get the approved Po number which is created newly
+And click the ar ap adjustment sub module
+And click ar ap eye icon
+And click add icon
+Then enter business partner name and po number for cancellation 
+And click notification button
+Then choose first record in the notification record
+And click on Submit button 
+Then enter remark in confirmation alert
+Then click on submit button in alert
+And capture the reviewer ID in pop up which is open when we submit our record in maker stage
+Then logout from maker
+And login with reviewer credentials
+Then click on notification button
+And select our record in notification records using reference ID
+Then Approve the record from reviewer
+And enter the remark in alert
+Then click on submit in alert
+Then verify the approval status of the record
+And logout from reviewer
+Then login as a checker 
+And click on security management menu in checker
+Then click on action button under security management menu
+And select our record and clime using reference ID
+Then click on Notification button
+Then select our record in notification records by the help of reference ID
+And click on approve button in checker stage
+Then give alert remark 
+Then click on submit button on alert
+And verify the record got approved from checker
+Then logout from checker
+And login with Maker ID
+And maker should navigate to the budget module UAT 
+And maker click on budget field UAT
+When maker click on budget supplementary eye icon UAT
+And click on add button on budget supplementary view page UAT
+Then check the budget utilazation amount of budet code which we create the expense code after cancelling the po
+Then verify budget code budget utilization amount is re-instated after cancelling the po
 
 @KUBS_AR_AP_UAT_003_002_TC_05  @AR/AP
 Scenario: Check PO cancellation is not allowed if GRN has been approved against that PO
@@ -1664,7 +1785,128 @@ And Enter the Adjustment Ref No and Validate
    And click the view icon
    Then verify the bill is cancelled in Accounts payable report
    
-   #KUBS_AR/AP_UAT_003_004TC_04 - Defect
+   @KUBS_AR/AP_UAT_003_004TC_04
+   Scenario: Check Budget utilization is re-instated
+Given maker should navigate to the url and login with valid credentials UAT
+And maker should navigate to the budget module UAT 
+And maker click on budget field UAT
+When maker click on budget supplementary eye icon UAT
+And click on add button on budget supplementary view page UAT
+Then check the budget utilazation amount of budet code which we create the expense code
+And click on accounts Payable module
+And goto vendor contract module
+And click on Add Icon
+Then fill all the mendatory fields for creating vendor
+And add item details for the contract give budgetcode maped expense code
+And add the payment term for the contract
+And add the benificiory details and select auto payout as yes
+And click notification button
+Then choose first record in the notification record
+And click on Submit button 
+Then enter remark in confirmation alert
+Then click on submit button in alert
+And capture the reviewer ID in pop up which is open when we submit our record in maker stage
+Then logout from maker
+And login with reviewer credentials
+Then click on notification button
+And select our record in notification records using reference ID
+Then Approve the record from reviewer
+And enter the remark in alert
+Then click on submit in alert
+Then verify the approval status of the record
+And logout from reviewer
+Then login as a checker 
+And click on security management menu in checker
+Then click on action button under security management menu
+And select our record and clime using reference ID
+Then click on Notification button
+Then select our record in notification records by the help of reference ID
+And click on approve button in checker stage
+Then give alert remark 
+Then click on submit button on alert
+And verify the record got approved from checker
+Then logout from checker
+And login with Maker ID
+And click on accounts Payable module
+And goto vendor contract module
+And get the contract number
+And goto po creation module
+And click on Add Icon
+And fill the mendatory fields for po creation 
+And save the po creation record
+And save the item details for pocreation 
+And save the benificiery details for po creation
+And click notification button
+Then choose first record in the notification record
+And click on Submit button 
+Then enter remark in confirmation alert
+Then click on submit button in alert
+And capture the reviewer ID in pop up which is open when we submit our record in maker stage
+Then logout from maker
+And login with reviewer credentials
+Then click on notification button
+And select our record in notification records using reference ID
+Then Approve the record from reviewer
+And enter the remark in alert
+Then click on submit in alert
+Then verify the approval status of the record
+And logout from reviewer
+Then login as a checker 
+And click on security management menu in checker
+Then click on action button under security management menu
+And select our record and clime using reference ID
+Then click on Notification button
+Then select our record in notification records by the help of reference ID
+And click on approve button in checker stage
+Then give alert remark 
+Then click on submit button on alert
+Then logout from checker
+Given maker should navigate to the url and login with valid credentials UAT
+And maker should navigate to the budget module UAT 
+And maker click on budget field UAT
+When maker click on budget supplementary eye icon UAT
+And click on add button on budget supplementary view page UAT
+Then check the budget utilazation amount of budet code which we create the expense code after creating po 
+And click on accounts Payable module 
+And goto po creation module
+Then get the approved Po number which is created newly
+And click the ar ap adjustment sub module
+And click ar ap eye icon
+And click add icon
+Then enter business partner name and po number for cancellation 
+And click notification button
+Then choose first record in the notification record
+And click on Submit button 
+Then enter remark in confirmation alert
+Then click on submit button in alert
+And capture the reviewer ID in pop up which is open when we submit our record in maker stage
+Then logout from maker
+And login with reviewer credentials
+Then click on notification button
+And select our record in notification records using reference ID
+Then Approve the record from reviewer
+And enter the remark in alert
+Then click on submit in alert
+Then verify the approval status of the record
+And logout from reviewer
+Then login as a checker 
+And click on security management menu in checker
+Then click on action button under security management menu
+And select our record and clime using reference ID
+Then click on Notification button
+Then select our record in notification records by the help of reference ID
+And click on approve button in checker stage
+Then give alert remark 
+Then click on submit button on alert
+And verify the record got approved from checker
+Then logout from checker
+And login with Maker ID
+And maker should navigate to the budget module UAT 
+And maker click on budget field UAT
+When maker click on budget supplementary eye icon UAT
+And click on add button on budget supplementary view page UAT
+Then check the budget utilazation amount of budet code which we create the expense code after cancelling the po
+Then verify budget code budget utilization amount is re-instated after cancelling the po
    
    @KUBS_AR/AP_UAT_003_004TC_05  @AR/AP
    Scenario: verify cancelled bill is not allowed for payment settlement
@@ -1675,7 +1917,7 @@ And Enter the Adjustment Ref No and Validate
    And get the invoice number from the bill viewed
    And click the payment settlement eye icon
    And click the add icon in payment settlement
-   And select payment option as buisness partnerwise
+   And select payment option as buisness partnerwise 
    And select buisness partner in payment settlement
    Then verify that no bill is available for payment settlement
    
@@ -2251,7 +2493,6 @@ And find the invoice reference number for cancelled advance is not availabe at t
 
 @KUBS_AR_AP_UAT_003_008_TC_03  @AR/AP
 Scenario: Verify cancelling Advance To employee is not allowed if the same has been adjusted at payment settlement
-Given Maker Navigate to UAT URL login
 And Goto accounts receivable advances module
 Then click on search
 And select the advance to employee active record
@@ -5284,7 +5525,7 @@ And fill the payment settlement record and validate the invoice number is not av
     And user should navigate to accounts payable menu
     When click on eye button of payment settlement against bill
     And click on add button for payment settlement against bill
-    And Fill the required fields to adjust against bill
+    And Fill the required fields to adjust against billl
     Then Save and submit the payment settlement
     
     And User should go to the kubs url and login as a reviewer user

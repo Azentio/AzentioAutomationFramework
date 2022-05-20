@@ -12,6 +12,13 @@ public class ACCOUNTSPAYBLE_AccountsPayable_POCreationObj {
 		this.driver = driver;
 		PageFactory.initElements(driver, this);
 	}
+	
+	@FindBy(xpath="//datatable-row-wrapper[1]//datatable-body-cell[7]//div")
+	private WebElement poCreation_approvedBpName;
+	public WebElement poCreationApprovedBpNAme()
+	{
+	return poCreation_approvedBpName;
+	}
 
 	@FindBy(xpath = "//ion-segment/ion-segment-button[2]")
 	private WebElement accountsPayable_VendorPurchaseOrder_DirectionIcon;
