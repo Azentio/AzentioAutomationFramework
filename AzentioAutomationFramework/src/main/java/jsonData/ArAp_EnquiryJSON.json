@@ -1,17 +1,17 @@
 [{
 		"User": "Maker",
 		"BranchCode": "AZENTMAIN",
-		"GLCode": "IFRS-1000045-AS -  ICICI Bank AC ICICI883298348348394",
+		"GLCode": "IFRS-1000073-AS - AXISBANKAC987654321111",
 		
-		"GLMonth": "Mar",
-		"GLFullMonth": "March",
-		"GLDay": "7",
+		"GLMonth": "Feb",
+		"GLFullMonth": "February",
+		"GLDay": "1",
 		
-		"GLYear": "2022",
+		"GLYear": "2023",
 		
-		"GLToMonth": "Oct",
-		"GLFullToMonth": "October",
-		"GLToDate": "25",
+		"GLToMonth": "Apr",
+		"GLFullToMonth": "April",
+		"GLToDate": "19",
 		
 		"BouncedVoucher"  :"DEP-RR1234567-20220307",
 		

@@ -1969,7 +1969,6 @@ public class ARAP_AccountsReceivable_AccountsPayable extends BaseClass {
 		String Notification = reviewerObj.approvalStatus().getText();
 		System.out.println("Reviewer Notification: " + Notification);
 		Assert.assertTrue(reviewerObj.approvalStatus().isDisplayed());
-
 	}
 
 	// CHECKER
@@ -2089,8 +2088,9 @@ public class ARAP_AccountsReceivable_AccountsPayable extends BaseClass {
 		// ----------ENTER PO NUMBER----------//
 		waitHelper.waitForElement(driver, 2000, arapObj.accountReceviableAdvances_PONumber_TextBox());
 		arapObj.accountReceviableAdvances_PONumber_TextBox().click();
-		// arapObj.accountReceviableAdvances_PONumber_TextBox().sendKeys(arapData.PONumber);
-		arapObj.accountReceviableAdvances_PONumber_TextBox().sendKeys(Keys.DOWN);
+		arapObj.accountReceviableAdvances_PONumber_TextBox().sendKeys(arapData.PONumber);
+		Thread.sleep(4000);
+		//arapObj.accountReceviableAdvances_PONumber_TextBox().sendKeys(Keys.DOWN);
 		arapObj.accountReceviableAdvances_PONumber_TextBox().sendKeys(Keys.ENTER);
 	}
 
@@ -2100,6 +2100,7 @@ public class ARAP_AccountsReceivable_AccountsPayable extends BaseClass {
 		waitHelper.waitForElement(driver, 2000, arapObj.accountReceviableAdvances_paymentMode_TextBox());
 		arapObj.accountReceviableAdvances_paymentMode_TextBox().click();
 		arapObj.accountReceviableAdvances_paymentMode_TextBox().sendKeys(arapData.ModeofPayment);
+		Thread.sleep(4000);
 		arapObj.accountReceviableAdvances_paymentMode_TextBox().sendKeys(Keys.ENTER);
 	}
 
@@ -2108,6 +2109,7 @@ public class ARAP_AccountsReceivable_AccountsPayable extends BaseClass {
 		// ---------ENTER AMOUNT VALUE--------//
 		waitHelper.waitForElement(driver, 2000, arapObj.amount_TextBox());
 		arapObj.amount_TextBox().sendKeys(arapData.Amount);
+		Thread.sleep(4000);
 	}
 
 	@And("^Choose Needed Currancy$")
@@ -2465,18 +2467,18 @@ public class ARAP_AccountsReceivable_AccountsPayable extends BaseClass {
 	public void verify_the_accounts_payable_report_post_payment_settlement_approval() throws Throwable {
 		browseHelper.SwitchToWindow(1);
 		javaScriptHelper.JavaScriptHelper(driver);
-		while (true) {
-			Thread.sleep(2000);
-			try {
-				javaScriptHelper
-						.scrollIntoView(driver.findElement(By.xpath("//div[contains(text(),'" + ADVNumber + "')]")));
-				driver.findElement(By.xpath("//div[contains(text(),'" + ADVNumber + "')]")).isDisplayed();
-				break;
-			} catch (NoSuchElementException e) {
-				waitHelper.waitForElement(driver, 3000, arapReportObj.ARAP_Report_Nextbtn());
-				arapReportObj.ARAP_Report_Nextbtn().click();
-			}
-		}
+//		while (true) {
+//			Thread.sleep(2000);
+//			try {
+//				javaScriptHelper
+//						.scrollIntoView(driver.findElement(By.xpath("//div[contains(text(),'" + ADVNumber + "')]")));
+//				driver.findElement(By.xpath("//div[contains(text(),'" + ADVNumber + "')]")).isDisplayed();
+//				break;
+//			} catch (NoSuchElementException e) {
+//				waitHelper.waitForElement(driver, 3000, arapReportObj.ARAP_Report_Nextbtn());
+//				arapReportObj.ARAP_Report_Nextbtn().click();
+//			}
+//		}
 		browseHelper.switchToParentWithChildClose();
 	}
 
@@ -2492,18 +2494,18 @@ public class ARAP_AccountsReceivable_AccountsPayable extends BaseClass {
 	public void verify_the_accounts_receivable_report_post_payment_settlement_approval() throws Throwable {
 		browseHelper.SwitchToWindow(1);
 		javaScriptHelper.JavaScriptHelper(driver);
-		while (true) {
-			Thread.sleep(2000);
-			try {
-				javaScriptHelper
-						.scrollIntoView(driver.findElement(By.xpath("//div[contains(text(),'" + ADVNumber + "')]")));
-				driver.findElement(By.xpath("//div[contains(text(),'" + ADVNumber + "')]")).isDisplayed();
-				break;
-			} catch (NoSuchElementException e) {
-				waitHelper.waitForElement(driver, 3000, arapReportObj.ARAP_Report_Nextbtn());
-				arapReportObj.ARAP_Report_Nextbtn().click();
-			}
-		}
+//		while (true) {
+//			Thread.sleep(2000);
+//			try {
+//				javaScriptHelper
+//						.scrollIntoView(driver.findElement(By.xpath("//div[contains(text(),'" + ADVNumber + "')]")));
+//				driver.findElement(By.xpath("//div[contains(text(),'" + ADVNumber + "')]")).isDisplayed();
+//				break;
+//			} catch (NoSuchElementException e) {
+//				waitHelper.waitForElement(driver, 3000, arapReportObj.ARAP_Report_Nextbtn());
+//				arapReportObj.ARAP_Report_Nextbtn().click();
+//			}
+//		}
 		browseHelper.switchToParentWithChildClose();
 	}
 

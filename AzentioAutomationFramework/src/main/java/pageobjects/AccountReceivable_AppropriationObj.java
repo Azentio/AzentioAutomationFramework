@@ -56,7 +56,7 @@ public class AccountReceivable_AppropriationObj {
 	
 	
 	//AppropriationAmount
-	@FindBy(xpath = "//datatable-row-wrapper[2]/datatable-body-row[1]/div[2]/datatable-body-cell[6]/div[1]/input")
+	@FindBy(xpath = "//datatable-row-wrapper[3]/datatable-body-row[1]/div[2]/datatable-body-cell[6]/div[1]/input")
 	private WebElement accountReceivable_Appropriation_AppropriationAmount;
 
 	public WebElement accountReceivable_Appropriation_AppropriationAmount() {

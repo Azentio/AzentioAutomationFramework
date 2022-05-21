@@ -10,4 +10,5 @@ public class ArAp_BalanceSheetReportTestDataType {
 	public String Year;
 	public String VendorEmployeeName;
 	public String ReceivableStatus;
+	public String ReportType;
 }

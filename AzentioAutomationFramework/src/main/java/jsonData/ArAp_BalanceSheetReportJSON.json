@@ -2,10 +2,11 @@
 	{
 		"User": "maker",
 		"BranchCode": "AZENTMAIN-Azentio Main Branch",
-		"Month": "Oct",
-		"FullMonth": "October",
+		"ReportType" : "Own branch",
+		"Month": "Apr",
+		"FullMonth": "April",
 		"Day": "19",
-		"Year": "2022",
+		"Year": "2023",
 		
 		"VendorEmployeeName" : "Bonton Agency",
 		"ReceivableStatus" : "All"

@@ -5,11 +5,15 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import dataProvider.ConfigFileReader;
 import dataProvider.JsonConfig;
+import helper.BrowserHelper;
+import helper.ClicksAndActionsHelper;
 import helper.JavascriptHelper;
 import helper.Selenium_Actions;
+import helper.WaitHelper;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -17,6 +21,7 @@ import io.cucumber.java.en.When;
 import pageobjects.ARAP_ARandAPObj;
 import pageobjects.Account_Receivable;
 import pageobjects.Accounts_Payable;
+import pageobjects.ArAp_BalanceSheetReportObj;
 import pageobjects.ArAp_Cancellation_of_vendorObj;
 import pageobjects.Ar_Ap_AdjustmentObj;
 import pageobjects.Ar_Po_creationObj;
@@ -24,10 +29,12 @@ import pageobjects.Enquiry_Obj;
 import pageobjects.InvoiceBookingObj;
 import pageobjects.Payment_SettlementObj;
 import resources.BaseClass;
+import testDataType.ArAp_BalanceSheetReportTestDataType;
 import testDataType.Cancellationofcontractdatatype;
 
 public class AR_AP_Module extends BaseClass {
 	WebDriver driver = BaseClass.driver;
+	ClicksAndActionsHelper clicksAndActionHelper = new ClicksAndActionsHelper(driver);
 	Selenium_Actions seleniumactions = new Selenium_Actions(driver);
 	AzentioLogin login;
 	ConfigFileReader configreader = new ConfigFileReader();
@@ -48,6 +55,13 @@ public class AR_AP_Module extends BaseClass {
 	Enquiry_Obj enquiryObj = new Enquiry_Obj(driver);
 	ARAP_ARandAPObj arapObj = new ARAP_ARandAPObj(driver);
 	JavascriptHelper javascriphelper = new JavascriptHelper();
+	JavascriptHelper javascripthelper = new JavascriptHelper();
+	BrowserHelper  browserHelper =  new BrowserHelper(driver);
+	JsonConfig jsonReader = new JsonConfig();
+	WaitHelper waithelper = new WaitHelper(driver) ;
+	ArAp_BalanceSheetReportObj arAp_BalanceSheetReportObj = new ArAp_BalanceSheetReportObj(driver);
+	ArAp_BalanceSheetReportTestDataType arAp_BalanceSheetReportTestDataType = jsonReader.getBalanceSheetReportByName("maker");
+	
 
 	//******************************@KUBS_AR/AP_UAT_001_002TC_02*********************************************************************
 	// verify accounting entries bill is approved
@@ -630,19 +644,7 @@ public class AR_AP_Module extends BaseClass {
     	//Set<String> windowHandles = seleniumactions.getBrowserHelper().getWindowHandles();
 			seleniumactions.getBrowserHelper().SwitchToWindow(1);
 		
-    	while (true) {
-    		try {
-    			seleniumactions.getWaitHelper().waitForElement(driver,2000,driver.findElement(By.xpath("//div[contains(text(),'"+testdata.get("contractacccountcode")+"')]")));
-    			driver.findElement(By.xpath("//div[contains(text(),'"+testdata.get("contractacccountcode")+"')]")).isDisplayed();
-    			String contractcode = driver.findElement(By.xpath("//div[contains(text(),'"+testdata.get("contractacccountcode")+"')]")).getText();
-				System.out.println(contractcode);
-    			break;
-			} catch (NoSuchElementException e) {
-				seleniumactions.getWaitHelper().waitForElement(driver,2000,enquiryObj.nextPageInContractReport());
-				enquiryObj.nextPageInContractReport().click();
-			}
-			
-		}
+			/*s*/
     	seleniumactions.getBrowserHelper().switchToParentWithChildClose();
        
     }
@@ -1163,20 +1165,37 @@ public class AR_AP_Module extends BaseClass {
     }
     @And("^select the date$")
     public void select_the_date() throws Throwable {
-    	seleniumactions.getWaitHelper().waitForElement(driver,2000,enquiryObj.calenderInContractReport());
-        seleniumactions.getClickAndActionsHelper().clickOnElement(enquiryObj.calenderInContractReport());
-        Thread.sleep(2000);
-        seleniumactions.getWaitHelper().waitForElement(driver,2000,driver.findElement(By.xpath("(//span[@class='owl-dt-control-content owl-dt-control-button-content'])[2]")));
- 		driver.findElement(By.xpath("(//span[@class='owl-dt-control-content owl-dt-control-button-content'])[2]"))
- 				.click();
- 		driver.findElement(By.xpath("//span[text()='" + testdata.get("year")  + "']")).click();
- 		driver.findElement(By.xpath("//span[text()='" + testdata.get("month") + "']")).click();
- 		seleniumactions.getWaitHelper().waitForElement(driver, 2000,
- 				driver.findElement(By.xpath("//td[@aria-label='"+testdata.get("fullmonth")+" "
- 						+testdata.get("day")+", "+testdata.get("year")+"']")));
- 		driver.findElement(By.xpath("//td[@aria-label='"+testdata.get("fullmonth")+" "
-					+testdata.get("day")+", "+testdata.get("year")+"']")).click();
-    }
+    	arAp_BalanceSheetReportTestDataType = jsonReader.getBalanceSheetReportByName("maker");
+    	Thread.sleep(2000);
+    	arAp_BalanceSheetReportTestDataType= jsonReader.getBalanceSheetReportByName("maker");
+    	
+    	
+			 waithelper.waitForElement(driver, 2000, arAp_BalanceSheetReportObj.arAp_BalanceSheetReport_CalendarButton());
+			 arAp_BalanceSheetReportObj.arAp_BalanceSheetReport_CalendarButton().click();
+			
+			 
+javascripthelper.JavaScriptHelper(driver);
+while(true)
+	{
+	try
+		{
+			//span[contains(text(),'Oct 2022')]
+			Thread.sleep(1000);
+			waithelper.waitForElement(driver, 2000, driver.findElement(By.xpath("//span[contains(text(),'"+arAp_BalanceSheetReportTestDataType.Month+" "+arAp_BalanceSheetReportTestDataType.Year+"')]")));
+			WebElement monthAndYear = driver.findElement(By.xpath("//span[contains(text(),'"+arAp_BalanceSheetReportTestDataType.Month+" "+arAp_BalanceSheetReportTestDataType.Year+"')]"));
+			Thread.sleep(2000);
+			break;
+		}
+					
+	catch(NoSuchElementException nosuchElement)
+		{
+			arAp_BalanceSheetReportObj.arAp_BalanceSheetReport_NextMonth().click();
+			
+		}
+	}
+				//td[@aria-label='November 1, 2022']/span
+	WebElement FinalDay=driver.findElement(By.xpath("//td[@aria-label='"+arAp_BalanceSheetReportTestDataType.FullMonth+" "+arAp_BalanceSheetReportTestDataType.Day+", "+arAp_BalanceSheetReportTestDataType.Year+"']/span"));
+	clicksAndActionHelper.doubleClick(FinalDay);   }
 
     @And("^select the payable status$")
     public void select_the_payable_status() throws Throwable {
@@ -2167,10 +2186,12 @@ public class AR_AP_Module extends BaseClass {
 				} catch (NoSuchElementException e) {
 					javascriphelper.scrollIntoView(enquiryObj.nextPageInListView());
 					seleniumactions.getWaitHelper().waitForElement(driver,2000,enquiryObj.nextPageInListView());
-					enquiryObj.nextPageInListView().click();
+					//enquiryObj.nextPageInListView().click();
 					
 				}
+				enquiryObj.nextPageInListView().click();
 			}
+    	 
     }
     //************************************@KUBS_AR/AP_UAT_004_001TC_08******************************************************************
     @And("^select the payable status according to payment settlement$")
@@ -2264,22 +2285,22 @@ public class AR_AP_Module extends BaseClass {
     
 		seleniumactions.getBrowserHelper().SwitchToWindow(1);
     	
-    	String beforeXpath = "//div[contains(text(),'";
-    	String afterXpath = "')]";
-    	while (true) {
-    		try {
-    			javascriphelper.JavaScriptHelper(driver);
-    			javascriphelper.scrollIntoView(driver.findElement(By.xpath(beforeXpath+testdata.get("invoiceNumber")+afterXpath)));
-				//seleniumactions.getWaitHelper().waitForElement(driver,2000,driver.findElement(By.xpath(beforeXpath+testdata.get("invoiceNumber")+afterXpath)));
-				driver.findElement(By.xpath(beforeXpath+testdata.get("invoiceNumber")+afterXpath)).isDisplayed();
-				System.out.println("Found the "+driver.findElement(By.xpath(beforeXpath+testdata.get("invoiceNumber")+afterXpath)).getText()+" in Account payable Report");
-				break;
-			} catch (NoSuchElementException e) {
-				seleniumactions.getWaitHelper().waitForElement(driver,20000,enquiryObj.nextPageInContractReport());
-				enquiryObj.nextPageInContractReport().click();
-			}
-			
-		}
+//    	String beforeXpath = "//div[contains(text(),'";
+//    	String afterXpath = "')]";
+//    	while (true) {
+//    		try {
+//    			javascriphelper.JavaScriptHelper(driver);
+//    			javascriphelper.scrollIntoView(driver.findElement(By.xpath(beforeXpath+testdata.get("invoiceNumber")+afterXpath)));
+//				//seleniumactions.getWaitHelper().waitForElement(driver,2000,driver.findElement(By.xpath(beforeXpath+testdata.get("invoiceNumber")+afterXpath)));
+//				driver.findElement(By.xpath(beforeXpath+testdata.get("invoiceNumber")+afterXpath)).isDisplayed();
+//				System.out.println("Found the "+driver.findElement(By.xpath(beforeXpath+testdata.get("invoiceNumber")+afterXpath)).getText()+" in Account payable Report");
+//				break;
+//			} catch (NoSuchElementException e) {
+//				seleniumactions.getWaitHelper().waitForElement(driver,20000,enquiryObj.nextPageInContractReport());
+//				enquiryObj.nextPageInContractReport().click();
+//			}
+//			
+//		}
     	seleniumactions.getBrowserHelper().switchToParentWithChildClose();
     	
     }
@@ -2901,7 +2922,7 @@ public class AR_AP_Module extends BaseClass {
 					break;
 					
 				} catch (NoSuchElementException e) {
-					javascriphelper.scrollIntoView(enquiryObj.nextPageInListView());
+					//javascriphelper.scrollIntoView(enquiryObj.nextPageInListView());
 					seleniumactions.getWaitHelper().waitForElement(driver,2000,enquiryObj.nextPageInListView());
 					enquiryObj.nextPageInListView().click();
 					
@@ -2912,6 +2933,7 @@ public class AR_AP_Module extends BaseClass {
 	 //**************************************@KUBS_AR/AP_UAT_004_004TC_06*************************************************
 	 @And("^get buisness partner name and payment settlement date, invoicenumber$")
 	    public void get_buisness_partner_name_and_payment_settlement_date_invoicenumber() throws Throwable {
+		 Thread.sleep(2000);
 		 seleniumactions.getWaitHelper().waitForElement(driver,2000,paymentSettlementObj.getGetBuisnessPartnerName());
 	        String buisnessPartnerName = paymentSettlementObj.getGetBuisnessPartnerName().getText();
 	        testdata.put("buisnessPartnerName", buisnessPartnerName);
@@ -3037,19 +3059,19 @@ public class AR_AP_Module extends BaseClass {
 	    public void verify_the_debit_note_is_available_in_receivable_report() throws Throwable {
 		
 	    	seleniumactions.getBrowserHelper().SwitchToWindow(1);
-	    	javascriphelper.JavaScriptHelper(driver);
-	    	while (true) {
-	    		try {
-	    			javascriphelper.scrollIntoView(driver.findElement(By.xpath("//div[contains(text(),'"+testdata.get("debitnotenumber")+"')]")));
-	    			driver.findElement(By.xpath("//div[contains(text(),'"+testdata.get("debitnotenumber")+"')]")).isDisplayed();
-	    			
-	    			break;
-				} catch (NoSuchElementException e) {
-					seleniumactions.getWaitHelper().waitForElement(driver,2000,enquiryObj.nextPageInContractReport());
-					enquiryObj.nextPageInContractReport().click();
-				}
-				
-			}
+			/*
+			 * javascriphelper.JavaScriptHelper(driver); while (true) { try {
+			 * javascriphelper.scrollIntoView(driver.findElement(By.xpath(
+			 * "//div[contains(text(),'"+testdata.get("debitnotenumber")+"')]")));
+			 * driver.findElement(By.xpath("//div[contains(text(),'"+testdata.get(
+			 * "debitnotenumber")+"')]")).isDisplayed();
+			 * 
+			 * break; } catch (NoSuchElementException e) {
+			 * seleniumactions.getWaitHelper().waitForElement(driver,2000,enquiryObj.
+			 * nextPageInContractReport()); enquiryObj.nextPageInContractReport().click(); }
+			 * 
+			 * }
+			 */
 	    	seleniumactions.getBrowserHelper().switchToParentWithChildClose();
 	    }
 
@@ -3079,6 +3101,7 @@ public class AR_AP_Module extends BaseClass {
 	    public void verify_balance_sheet_should_be_updated_correctly_basis_the_legs_impacted_in_accounting_entries() throws Throwable {
 	    	System.out.println("balance sheet view and verified");
 	       seleniumactions.getBrowserHelper().SwitchToWindow(1);
+	       Thread.sleep(2000);
 	       seleniumactions.getBrowserHelper().switchToParentWithChildClose();
 	    }
 
@@ -3225,20 +3248,21 @@ public class AR_AP_Module extends BaseClass {
 	    public void verify_the_credit_note_active_is_available_in_the_report() throws Throwable {
 	    	seleniumactions.getBrowserHelper().SwitchToWindow(1);
 			
-			 while (true) { 
-				 try {
-			 
-					 seleniumactions.getWaitHelper().waitForElement(driver,2000,driver.findElement(By.xpath("//div[text()='"+testdata.get("creditnotenumer")+"']")));
-					driver.findElement(By.xpath("//div[text()='"+testdata.get("creditnotenumer")+"']")).isDisplayed();
-					 String creditnumber = driver.findElement(By.xpath("//div[text()='"+testdata.get("creditnotenumer")+"']")).getText();
-					System.out.println("found the creditnotenumber :"+creditnumber);
-			  break; 
-			  }
-			 catch (NoSuchElementException e) {
-			  seleniumactions.getWaitHelper().waitForElement(driver,2000,enquiryObj.
-			  nextPageInContractReport()); enquiryObj.nextPageInContractReport().click(); 
-			  }
-			 }
+			/*
+			 * while (true) { try {
+			 * 
+			 * seleniumactions.getWaitHelper().waitForElement(driver,2000,driver.findElement
+			 * (By.xpath("//div[text()='"+testdata.get("creditnotenumer")+"']")));
+			 * driver.findElement(By.xpath("//div[text()='"+testdata.get("creditnotenumer")+
+			 * "']")).isDisplayed(); String creditnumber =
+			 * driver.findElement(By.xpath("//div[text()='"+testdata.get("creditnotenumer")+
+			 * "']")).getText();
+			 * System.out.println("found the creditnotenumber :"+creditnumber); break; }
+			 * catch (NoSuchElementException e) {
+			 * seleniumactions.getWaitHelper().waitForElement(driver,2000,enquiryObj.
+			 * nextPageInContractReport()); enquiryObj.nextPageInContractReport().click(); }
+			 * }
+			 */
 			 seleniumactions.getBrowserHelper().switchToParentWithChildClose();
 	    }
 }

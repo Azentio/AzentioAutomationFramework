@@ -19,18 +19,18 @@
 
 
 "EntityBranchforReversal":"Azentio Main Branch",
-"RecieptReferenceNumber":"REC_5_3122021",
+"RecieptReferenceNumber":"RECAPP_46_2042022",
 "CancellationRemark":"Cancel due to Internal error",
 
-"RecieptReferenceNumberForWire":"REC_10_21122021",
+"RecieptReferenceNumberForWire":"RECAPP_48_2242022",
 
 
 "EntityBranchforApportion":"Azentio Main Branch",
-"RecieptReferenceNumberforApportion":"RECAPP_9_31122021",
+"RecieptReferenceNumberforApportion":"RECAPP_53_1252022",
 "CancellationRemarkforApportion":"Cancel due to Internal error",
 
 
-"RecieptReferenceNumberforApportionWire":"RECAPP_18_1812022",
+"RecieptReferenceNumberforApportionWire":"RECAPP_44_1142022",
 
 "GRNQtyReceivedExcessive":"1000",
 

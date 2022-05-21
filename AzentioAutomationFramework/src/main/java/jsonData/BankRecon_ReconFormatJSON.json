@@ -4,8 +4,8 @@
 
 "User": "Maker",
 "FormatStatus" : "INACTIVE",
-"BankName" : "HDFC BANK",
-"ApplicableAccountType" :"CURRENT ACCOUNT",
+"BankName" : "KOTAK",
+"ApplicableAccountType" :"SAVINGS ACCOUNT",
 "UploadFileExtension" : "Text",
 "Separator" : "Fixed Length",
 "AllowUnadjusted" : "No",
@@ -52,6 +52,7 @@
 "FixedLengthDepo" : "25",
 "BlankSpacePaddingDepo" : "Left Padding",
 "PositionDepo" : "2",
+"Soundex" : "No",
 "MatchConditionDepo" : "Fully Matched",
 "TranspositionCondition" : "Transposition",
 

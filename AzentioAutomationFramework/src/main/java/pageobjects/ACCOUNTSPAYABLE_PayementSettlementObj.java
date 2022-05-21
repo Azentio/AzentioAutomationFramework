@@ -18,6 +18,13 @@ public class ACCOUNTSPAYABLE_PayementSettlementObj {
   {
 	  return accountsPayable_paymentSettlementViewIcon;
   }
+  @FindBy(xpath = "//owl-date-time-container[1]/div[2]/owl-date-time-calendar[1]/div[1]/button[2]/span[1]")
+	private WebElement accountsPayable_paymentSettlemen_NextMonth;
+
+	public WebElement accountsPayable_paymentSettlemen_NextMonth() {
+
+		return accountsPayable_paymentSettlemen_NextMonth;
+	}
   @FindBy(xpath="//ion-col[2]//input")
   private WebElement accountsPayable_paymentSettlementPaymentOption;
   public WebElement accountsPayablePayementSettlementPaymentOption()

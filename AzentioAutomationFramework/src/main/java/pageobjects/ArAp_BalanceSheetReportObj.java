@@ -47,6 +47,13 @@ public class ArAp_BalanceSheetReportObj {
 		return arAp_BalanceSheetReport_BranchTextbox;
 	}		
 
+	//ReportType
+	@FindBy(xpath = "//ion-row[1]/ion-col[2]/app-kub-lov[1]/span[1]/ng-select[1]/div[1]/div[1]/div[2]/input[1]")
+	private WebElement arAp_BalanceSheetReport_ReportType;
+
+	public WebElement arAp_BalanceSheetReport_ReportType() {
+	return arAp_BalanceSheetReport_ReportType;
+	}	
 	//Calendar Button
 	@FindBy(xpath = "//span[@class='input-calendar']")
 	private WebElement arAp_BalanceSheetReport_CalendarButton;

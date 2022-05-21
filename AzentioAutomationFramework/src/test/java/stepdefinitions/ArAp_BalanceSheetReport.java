@@ -59,12 +59,19 @@ public class ArAp_BalanceSheetReport extends BaseClass {
 	    }
 	    @Then("^Fill branch details for report$")
 	    public void fill_branch_details_for_report()  {
-	    	//arAp_BalanceSheetReportTestDataType= jsonReader.getBalanceSheetReportByName("maker");
+	    	
+	    	//Thread.sleep(6000);
+	    	
 	    	waithelper.waitForElement(driver, 2000,arAp_BalanceSheetReportObj.arAp_BalanceSheetReport_BranchTextbox());
 	    	arAp_BalanceSheetReportObj.arAp_BalanceSheetReport_BranchTextbox().click();
 	    	arAp_BalanceSheetReportObj.arAp_BalanceSheetReport_BranchTextbox().sendKeys(arAp_BalanceSheetReportTestDataType.BranchCode);
 	    	arAp_BalanceSheetReportObj.arAp_BalanceSheetReport_BranchTextbox().sendKeys(Keys.ENTER);
-	    	//Thread.sleep(6000);
+	    	//arAp_BalanceSheetReportTestDataType= jsonReader.getBalanceSheetReportByName("maker");
+	    	waithelper.waitForElement(driver, 2000,arAp_BalanceSheetReportObj.arAp_BalanceSheetReport_ReportType());
+	    	arAp_BalanceSheetReportObj.arAp_BalanceSheetReport_ReportType().click();
+	    	arAp_BalanceSheetReportObj.arAp_BalanceSheetReport_ReportType().sendKeys(arAp_BalanceSheetReportTestDataType.ReportType);
+	    	arAp_BalanceSheetReportObj.arAp_BalanceSheetReport_ReportType().sendKeys(Keys.ENTER);
+	    	
 	    }
 	    @Then("^Select date in calendar$")
 	    public void select_date_in_calendar() throws InterruptedException  {
@@ -82,7 +89,7 @@ while(true)
 	try
 		{
 			//span[contains(text(),'Oct 2022')]
-			Thread.sleep(2000);
+			Thread.sleep(1000);
 			waithelper.waitForElement(driver, 2000, driver.findElement(By.xpath("//span[contains(text(),'"+arAp_BalanceSheetReportTestDataType.Month+" "+arAp_BalanceSheetReportTestDataType.Year+"')]")));
 			WebElement monthAndYear = driver.findElement(By.xpath("//span[contains(text(),'"+arAp_BalanceSheetReportTestDataType.Month+" "+arAp_BalanceSheetReportTestDataType.Year+"')]"));
 			Thread.sleep(2000);

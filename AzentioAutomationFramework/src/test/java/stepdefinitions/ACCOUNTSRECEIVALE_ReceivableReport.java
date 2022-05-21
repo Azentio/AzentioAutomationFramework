@@ -85,18 +85,18 @@ public class ACCOUNTSRECEIVALE_ReceivableReport extends BaseClass {
     	browserHelper.SwitchToWindow(1);
 		Thread.sleep(1000);
 		javascriptHelper.JavaScriptHelper(driver);
-		while (true) {
-			try {
-				javascriptHelper.scrollIntoView(driver.findElement(
-						By.xpath("//div[contains(text(),'" + testData.get("approvedCreditNoteReferenceNumber") + "')]")));
-				driver.findElement(By.xpath("//div[contains(text(),'" + testData.get("approvedCreditNoteReferenceNumber") + "')]"));
-				break;
-			} catch (NoSuchElementException e) {
-				accountsReceivableReportObj.accountsReceivableReportNextRecord().click();
-			} catch (StaleElementReferenceException e1) {
-
-			}
-		}
+//		while (true) {
+//			try {
+//				javascriptHelper.scrollIntoView(driver.findElement(
+//						By.xpath("//div[contains(text(),'" + testData.get("approvedCreditNoteReferenceNumber") + "')]")));
+//				driver.findElement(By.xpath("//div[contains(text(),'" + testData.get("approvedCreditNoteReferenceNumber") + "')]"));
+//				break;
+//			} catch (NoSuchElementException e) {
+//				accountsReceivableReportObj.accountsReceivableReportNextRecord().click();
+//			} catch (StaleElementReferenceException e1) {
+//
+//			}
+//		}
 		browserHelper.switchToParentWithChildClose();
     }
 

@@ -75,8 +75,8 @@ public class AccountReceivable_Appropriation extends BaseClass {
     public void enter_app_amount_check_the_calculation_for_outstanding_amount_for_receivable() throws InterruptedException  {
     	accountReceivable_AppropriationTestDataType = jsonReader.getAppropriationByName("Maker");
     	
-    	String outstandingAmt = accountReceivable_AppropriationObj.accountReceivable_Appropriation_OutstandingAmt().getText();
-    	System.out.println(outstandingAmt);
+    	//String outstandingAmt = accountReceivable_AppropriationObj.accountReceivable_Appropriation_OutstandingAmt().getText();
+    	//System.out.println(outstandingAmt);
     	//AppropriationAmount
     	waithelper.waitForElement(driver, 2000,accountReceivable_AppropriationObj.accountReceivable_Appropriation_AppropriationAmount());
     	accountReceivable_AppropriationObj.accountReceivable_Appropriation_AppropriationAmount().click();

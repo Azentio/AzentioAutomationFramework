@@ -88,6 +88,7 @@ public class ArAp {
 	    	arAPobj.balanceSheetReport_branch_textbox().sendKeys(arApTestDataType.BranchCode);
 	    	arAPobj.balanceSheetReport_branch_textbox().sendKeys(Keys.ENTER);
 	    	//Thread.sleep(6000);
+	    	
 	    }
 
 	    @Then("^Select date in calendarT$")

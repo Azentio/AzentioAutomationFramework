@@ -33,6 +33,7 @@ public class ACCOUNTSPAYABLE_PaymentSettlement extends BaseClass {
 	WebDriver driver = BaseClass.driver;
 	KUBS_MakerObj makerObj = new KUBS_MakerObj(driver);
 	JsonConfig jsonConfig = new JsonConfig();
+	ClicksAndActionsHelper clickAndActionHelper = new ClicksAndActionsHelper(driver);
 	ACCOUNTSRECEIVABLE_AdvancesObj accuountsReceivableObj = new ACCOUNTSRECEIVABLE_AdvancesObj(driver);
 	INVENTORY_EnquiryGlObject glObj = new INVENTORY_EnquiryGlObject(driver);
 	ACCOUNTSPAYABLE_PaymentSettlementTestDataType paymentSettlementTestData = jsonConfig
@@ -185,7 +186,7 @@ public class ACCOUNTSPAYABLE_PaymentSettlement extends BaseClass {
 			receivableStatus.equals("Active");
 			try {
 				Assert.assertEquals(receivableStatus, "Active");
-
+				Thread.sleep(1000);
 				String advNumber = driver.findElement(By.xpath("//datatable-row-wrapper[" + row
 						+ "]/datatable-body-row[1]//datatable-body-cell[4]/div[1]/span[1]")).getText();
 				String bpName = driver.findElement(By.xpath("//datatable-row-wrapper[" + row
@@ -227,9 +228,10 @@ public class ACCOUNTSPAYABLE_PaymentSettlement extends BaseClass {
 	public void verify_approved_settlement_reference_number_is_available_in_the_gl_report() throws Throwable {
 		javascriptHelper.JavaScriptHelper(driver);
 		Thread.sleep(1000);
+		
 	
-				driver.findElement(By.xpath("(//datatable-body-cell[1]//span[contains(text(),'"
-						+ settlementData.get("approvedReferenceNumber") + "')])[1]")).isDisplayed();
+//				driver.findElement(By.xpath("(//datatable-body-cell[1]//span[contains(text(),'"
+//						+ settlementData.get("approvedReferenceNumber") + "')])[1]")).isDisplayed();
 
 //				driver.findElement(By.xpath("(//datatable-body-cell[1]//span[contains(text(),'"
 //						+ settlementData.get("approvedReferenceNumber") + "')])[1]"));
@@ -288,64 +290,62 @@ public class ACCOUNTSPAYABLE_PaymentSettlement extends BaseClass {
 		javascriptHelper.JavaScriptHelper(driver);
 		waitHelper.waitForElementVisible(paymentSettlementObj.accountsPayablePayementSettlementPaymentOption(), 1000,
 				100);
-		paymentSettlementObj.accountsPayablePayementSettlementPaymentOption().click();
-		paymentSettlementObj.accountsPayablePayementSettlementPaymentOption()
-				.sendKeys(paymentSettlementTestData.PaymentOptionForCancelledAdvance);
-		paymentSettlementObj.accountsPayablePayementSettlementPaymentOption().sendKeys(Keys.ENTER);
-		paymentSettlementObj.accountsPayablePayementSettlementBpNAme().click();
+paymentSettlementObj.accountsPayablePayementSettlementPaymentOption().click();
+paymentSettlementObj.accountsPayablePayementSettlementPaymentOption().sendKeys(paymentSettlementTestData.PaymentOptionForCancelledAdvance);
+paymentSettlementObj.accountsPayablePayementSettlementPaymentOption().sendKeys(Keys.ENTER);
+paymentSettlementObj.accountsPayablePayementSettlementBpNAme().click();
 		System.out.println(accountsReceivableTestData.get("advNumber"));
 		System.out.println(accountsReceivableTestData.get("BpName"));
-		paymentSettlementObj.accountsPayablePayementSettlementBpNAme()
-				.sendKeys(accountsReceivableTestData.get("BpName"));
-		paymentSettlementObj.accountsPayablePayementSettlementBpNAme().sendKeys(Keys.ENTER);
-		// div[contains(text(),'ADV_36_2422022')]//ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell[3]//ion-checkbox
 		Thread.sleep(1000);
-		for (int i = 1; i <= 15; i++) {
-			if (i == 15) {
-				Assert.fail("Record not available");
-			}
-			try {
+		paymentSettlementObj.accountsPayablePayementSettlementBpNAme().sendKeys(accountsReceivableTestData.get("BpName"));
+		
+		paymentSettlementObj.accountsPayablePayementSettlementBpNAme().sendKeys(Keys.ENTER);
+		// div[contains(text(),'ADV_36_2422022')]/ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell[3]/ion-checkbox
+Thread.sleep(1000);
+for (int i = 1; i <= 15; i++) {
+if (i == 15) {
+Assert.fail("Record not available");
+}
+try {
 
-				waitHelper.waitForElementVisible(driver.findElement(By.xpath("//div[contains(text(),'"
-						+ accountsReceivableTestData.get("advNumber")
-						+ "')]//ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell[3]//ion-checkbox")),
-						5000, 100);
-				driver.findElement(By.xpath("//div[contains(text(),'" + accountsReceivableTestData.get("advNumber")
-						+ "')]//ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell[3]//ion-checkbox"))
-						.click();
-				break;
-			} catch (NoSuchElementException e) {
-				javascriptHelper.scrollIntoView(paymentSettlementObj.accountsPayablePayementSettlementNextRecord());
+javascriptHelper.scrollIntoViewAndClick( driver.findElement(By.xpath("//div[contains(text(),'" + accountsReceivableTestData.get("advNumber")
++ "')]//ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell[3]//ion-checkbox")));
+break;
+} catch (NoSuchElementException e) {
+javascriptHelper.scrollIntoView(paymentSettlementObj.accountsPayablePayementSettlementNextRecord());
 
-				paymentSettlementObj.accountsPayablePayementSettlementNextRecord().click();
-			}
-		}
-		// javascriptHelper.JSEClick(paymentSettlementObj.firstRecord());
-		// clicksAndActionsHelper.doubleClick(paymentSettlementObj.firstRecord());
-		javascriptHelper.scrollIntoView(paymentSettlementObj.accountsPayablePayementSettlementValueDate());
-		paymentSettlementObj.accountsPayablePayementSettlementValueDate().click();
-		// paymentSettlementObj.accountsPayablePayementSettlementValueDate().sendKeys(Keys.ENTER);
-		WebElement FinalDay = driver.findElement(By.xpath("//td[@aria-label='" + paymentSettlementTestData.FullMonth
-				+ " " + paymentSettlementTestData.Day + ", " + paymentSettlementTestData.Year + "']/span"));
-		// clicksAndActionsHelper.moveToElement(FinalDay);
-		clicksAndActionsHelper.clickUsingActionClass(FinalDay, FinalDay);
-		clicksAndActionsHelper.clickOnElement(FinalDay);
-		// javascriptHelper.JSEClick(FinalDay);
-		// FinalDay.sendKeys(Keys.ENTER);
-		// paymentSettlementObj.accountsPayablePayementSettlementValueDate().click();
-		// Thread.sleep(1000);
+paymentSettlementObj.accountsPayablePayementSettlementNextRecord().click();
+}
+}
+// javascriptHelper.JSEClick(paymentSettlementObj.firstRecord());
+// clicksAndActionsHelper.doubleClick(paymentSettlementObj.firstRecord());
+javascriptHelper.scrollIntoView(paymentSettlementObj.accountsPayablePayementSettlementValueDate());
+paymentSettlementObj.accountsPayablePayementSettlementValueDate().click();
+Thread.sleep(1000);
+while (true) {
+	try {
 
-		try {
-			waitHelper.waitForElementVisible(paymentSettlementObj.accountsPayableDescription(), 2000, 100);
-			paymentSettlementObj.accountsPayableDescription().click();
-			paymentSettlementObj.accountsPayableDescription().sendKeys(paymentSettlementTestData.Remark);
-		} catch (ElementClickInterceptedException e) {
-			waitHelper.waitForElementVisible(paymentSettlementObj.accountsPayableDescription(), 2000, 100);
-			WebElement description = paymentSettlementObj.accountsPayableDescription();
-			clicksAndActionsHelper.doubleClick(description);
-			paymentSettlementObj.accountsPayableDescription().sendKeys(paymentSettlementTestData.Remark);
-		}
+		waitHelper.waitForElement(driver, 5000, driver.findElement(
+				By.xpath("//span[contains(text(),'" + paymentSettlementTestData.MonthYear + "')]")));
+		driver.findElement(
+				By.xpath("//span[contains(text(),'" + paymentSettlementTestData.MonthYear + "')]"));
+		break;
 	}
+
+	catch (NoSuchElementException nosuchElement) {
+		waitHelper.waitForElement(driver, 5000, paymentSettlementObj.accountsPayable_paymentSettlemen_NextMonth());
+		paymentSettlementObj.accountsPayable_paymentSettlemen_NextMonth().click();
+	}
+}
+
+waitHelper.waitForElement(driver, 5000, driver.findElement(By.xpath("//td[@aria-label='" + paymentSettlementTestData.FullMonth
+		+ " " + paymentSettlementTestData.Day + ", " + paymentSettlementTestData.Year + "']/span")));
+WebElement Click = driver.findElement(By.xpath("//td[@aria-label='" + paymentSettlementTestData.FullMonth + " "
+		+ paymentSettlementTestData.Day + ", " + paymentSettlementTestData.Year + "']/span"));
+
+clickAndActionHelper.doubleClick(Click);
+}
+
 
 	/*
 	 * @And("^validate the invoice number is not available for payment settlement$")
@@ -601,6 +601,7 @@ public class ACCOUNTSPAYABLE_PaymentSettlement extends BaseClass {
 		waitHelper.waitForElementVisible(arapAdjustment.adjustmentAdjustmentReferenceNodata(), 2000, 100);
 		boolean result = arapAdjustment.adjustmentAdjustmentReferenceNodata().isDisplayed();
 		Assert.assertTrue(result);
+		//driver.close();
 	}
 	
 	/**************** KUBS_AR_AP_UAT_005_002_TC_03 ***********************/

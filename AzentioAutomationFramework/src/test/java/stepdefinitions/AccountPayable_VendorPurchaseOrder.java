@@ -137,18 +137,18 @@ public class AccountPayable_VendorPurchaseOrder extends BaseClass {
 			//accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_PONumber().sendKeys(Keys.ENTER);
 		
 			 //Po Sub Type
-			 waithelper.waitForElement(driver, 2000, accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_POSubType());
-			 accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_POSubType().click();
-			 accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_POSubType().sendKeys(accountPayable_VendorPurchaseOrderTestDataType.PoSubType);
-			 accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_POSubType().sendKeys(Keys.ENTER);
+			 waithelper.waitForElement(driver, 2000, accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_POSubType1());
+			 accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_POSubType1().click();
+			 accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_POSubType1().sendKeys(accountPayable_VendorPurchaseOrderTestDataType.PoSubType);
+			 accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_POSubType1().sendKeys(Keys.ENTER);
 		
 			
 			
 			 //cost Center
-			 waithelper.waitForElement(driver, 2000, accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_CostCenter());
-			 accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_CostCenter().click();
-			 accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_CostCenter().sendKeys(accountPayable_VendorPurchaseOrderTestDataType.CostCenter);
-			 accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_CostCenter().sendKeys(Keys.ENTER);
+			 waithelper.waitForElement(driver, 2000, accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_CostCenter1());
+			 accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_CostCenter1().click();
+			 accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_CostCenter1().sendKeys(accountPayable_VendorPurchaseOrderTestDataType.CostCenter);
+			 accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_CostCenter1().sendKeys(Keys.ENTER);
 	
 		 }
 		 
@@ -396,7 +396,7 @@ public class AccountPayable_VendorPurchaseOrder extends BaseClass {
 							try
 							{
 								//span[contains(text(),'Nov 2022')]
-								 Thread.sleep(2000);
+								 Thread.sleep(1000);
 								waithelper.waitForElement(driver, 2000, driver.findElement(By.xpath("//span[contains(text(),'"+accountPayable_VendorPurchaseOrderTestDataType.Month+" "+accountPayable_VendorPurchaseOrderTestDataType.Year+"')]")));
 								 WebElement monthAndYear = driver.findElement(By.xpath("//span[contains(text(),'"+accountPayable_VendorPurchaseOrderTestDataType.Month+" "+accountPayable_VendorPurchaseOrderTestDataType.Year+"')]"));
 							    break;

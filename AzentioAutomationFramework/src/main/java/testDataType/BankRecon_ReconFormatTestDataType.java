@@ -52,7 +52,7 @@ public class BankRecon_ReconFormatTestDataType {
 	public String PositionDepo;
 	public String MatchConditionDepo;
 	public String TranspositionCondition;
-	
+	public String Soundex;
 	public String FileNameWith;
 	public String SystemDataPointWith;
 	public String DataTypeWith;

@@ -232,7 +232,7 @@ public class ACCOUNTSPAYABLE_GRNCreation extends BaseClass {
     }
     @Then("^go to ar ap adjustment module$")
     public void go_to_ar_ap_adjustment_module() throws Throwable {
-    	
+    	Thread.sleep(2000);
     	waitHelper.waitForElementVisible(makerObj.kubsDirectionIcon(), 2000, 100);
     	makerObj.kubsDirectionIcon().click();
     	makerObj.kubsAdjustmentsArAp().click();

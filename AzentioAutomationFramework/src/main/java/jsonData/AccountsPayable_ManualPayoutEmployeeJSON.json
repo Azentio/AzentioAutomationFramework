@@ -3,8 +3,8 @@
 
 		"User" : "Maker",
 		"EntityBranch" : "Azentio Main Branch",
-		"BP_Name" : "PAUL MCADAMS & Co.",
-		"BeneficiaryName" : "PAUL MCADAMS & Co.",
+		"BP_Name" : "Bonton Agency",
+		"BeneficiaryName" : "Bonton Agency",
 		"Currency" : "INR",
 		"PaymentBank" : "HDFC BANK",
 		"BankAccountNumber" : "1234534555",
@@ -14,7 +14,9 @@
 		"Remarks" : "ok",
 		"RemarkByMaker" : "Submit By Maker",
 		"ApprovedByReviewer" : "Approved By Reviewer",
-		"ApprovedByChecker" : "Approved By Checker"
+		"ApprovedByChecker" : "Approved By Checker",
+		"PaymentApprovalTxnNumber" : "PAN-273-2022-05-11",
+		"CancelledPaymentTxnNumber" : "PAN-248-2022-04-21"
 
 
 

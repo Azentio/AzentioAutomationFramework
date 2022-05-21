@@ -4,7 +4,7 @@
 		"EntityBranch": "Azentio Main Branch",
 		"BpName": "Bonton Agency",
 		"ReferenceType": "Contract",
-		"Contract": "Bank-005",
+		"Contract": "Contract 2",
 		"PoQuantity": "2",
 		
 		"PoSubType": "PO For Asset Purchase",
@@ -12,15 +12,15 @@
 		"CostCenter": "FINANCE",
 		"Remark": "ok",
 		
-		"Month"					: "Oct",
-		"Year"					: "2022",
-		"Day"					: "22",
-		"FullMonth"				:"October",
+		"Month"					: "Apr",
+		"Year"					: "2023",
+		"Day"					: "25",
+		"FullMonth"				:"April",
 		
 		"ShippedFromLocation"	:"INDIA - Punjab",
 		"DeliveryLocation"		: "Azentio Main Branch",
 		
-		"PoQuantityGreater"  : "1000",
+		"PoQuantityGreater"  : "100000",
 		
 		
 		"PoTypeSerivce": "Services Contract",

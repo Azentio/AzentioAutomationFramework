@@ -418,4 +418,13 @@ public class BankRecon_ReconFormatObj {
 		public WebElement bankRecon_ReconFormat_BackButton() {
 			return bankRecon_ReconFormat_BackButton;
 		}
+		
+		//soundex
+		@FindBy(xpath = "//ion-row[1]/ion-col[9]/app-kub-lov[1]/span[1]/ng-select[1]/div[1]/div[1]/div[2]/input[1]")
+		private WebElement bankRecon_ReconFormat_Soundex;
+
+		public WebElement bankRecon_ReconFormat_Soundex() {
+			return bankRecon_ReconFormat_Soundex;
+		}
+		
 }
