@@ -42,12 +42,13 @@ public class ACCOUNTSRECEIVABLE_AppropriationAndPaymentSettlement extends BaseCl
 		waitHelper.waitForElementVisible(invoicebookingObj.billBookingApprovedInvoiceNumber(), 3000, 300);
 		testData.put("approvedInvoiceReferenceNumber", invoicebookingObj.billBookingApprovedInvoiceNumber().getText());
 		testData.put("approvedBpName", invoicebookingObj.billBookingApprovedBpName().getText());
+		System.out.println("Approved Invoice Reference number "+testData.get("approvedInvoiceReferenceNumber")+" ApprovedBp name "+testData.get("approvedBpName"));
 	}
 
 	@And("^click on debit note module$")
 	public void click_on_debit_note_module() throws Throwable {
 		javascriptHelper.JavaScriptHelper(driver);
-		waitHelper.waitForElementVisible(debitNoteObj.accountsReceivable_DebitNote_EyeButton(), 3000, 300);
+		//waitHelper.waitForElementVisible(debitNoteObj.accountsReceivable_DebitNote_EyeButton(), 3000, 300);
 		javascriptHelper.scrollIntoViewAndClick(debitNoteObj.accountsReceivable_DebitNote_EyeButton());
 	}
 
@@ -89,8 +90,10 @@ public class ACCOUNTSRECEIVABLE_AppropriationAndPaymentSettlement extends BaseCl
 	}
 	@And("^goto accouts Receivable module to do debit note$")
     public void goto_accouts_receivable_module_to_do_debit_note() throws Throwable {
+		Thread.sleep(1000);
      javascriptHelper.JavaScriptHelper(driver);
-     javascriptHelper.scrollToElemetAndClick(kubsMakerObj.kubsAccountsPayable());
+     javascriptHelper.scrollIntoView(kubsMakerObj.kubsAccountsReceivable());
+     javascriptHelper.scrollToElemetAndClick(kubsMakerObj.kubsAccountsReceivable());
      
     }
 

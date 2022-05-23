@@ -1503,6 +1503,7 @@ And Select and Submit the Update Deposited Cheque record
 		And select the Cheque record and Approve by checker
 Given Maker Navigate to UAT URL login
 Then click on second Segment button
+And click on accounts Payable module
 And Go to payment settlement module
 And click on Add Icon
 And check the aprropriation against bill is visible in the payment settlement or not in payment settlement module
