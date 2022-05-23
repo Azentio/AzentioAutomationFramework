@@ -3,6 +3,7 @@ package testDataType;
 public class FinancialReporting_BalanceSheetReportTestDataType {
 	public String User;
 	public String Branch;
+	public String ReportType;
 	public String BalanceSheetMonth;
 	public String BalanceSheetFullMonth;
 	public String BalanceSheetDate;

@@ -119,6 +119,15 @@ public class FinancialReporting_GLBalancesReportObj {
 		
 	}
 	
+	//report type
+	@FindBy(xpath = "//ion-col[2]/app-kub-lov[1]/span[1]/ng-select[1]/div[1]/div[1]/div[2]/input[1]")
+	private WebElement FinancialReporting_BalanceSheetReport_ReportType;
+
+	public WebElement FinancialReporting_BalanceSheetReport_ReportType() {
+		return FinancialReporting_BalanceSheetReport_ReportType;
+
+	}
+	
 	// Branch
 	@FindBy(xpath="//ion-col[1]/app-kub-lov/span/ng-select/div/div/div[2]//input")
 	private WebElement FinancialReporting_BalanceSheetReport_Branch; 

@@ -92,15 +92,20 @@ public class AccountsReceivable_DebitNote {
 		waithelper.waitForElement(driver, 3000, accountsReceivable_DebitNoteObj.accountsReceivable_DebitNote_DebitNoteAmount());
 		accountsReceivable_DebitNoteObj.accountsReceivable_DebitNote_DebitNoteAmount().sendKeys(DebitNoteTestDataType.DebitNoteAmount);
 		
+		accountsReceivable_DebitNoteObj.accountsReceivable_DebitNote_CostCenter().click();
+		waithelper.waitForElement(driver, 3000, accountsReceivable_DebitNoteObj.accountsReceivable_DebitNote_CostCenter());
+		accountsReceivable_DebitNoteObj.accountsReceivable_DebitNote_CostCenter().sendKeys(DebitNoteTestDataType.CostCenter);
+		accountsReceivable_DebitNoteObj.accountsReceivable_DebitNote_CostCenter().sendKeys(Keys.ENTER);
+		
 //		waithelper.waitForElement(driver, 3000, accountsReceivable_DebitNoteObj.accountsReceivable_DebitNote_Description());
 		javascripthelper.JavaScriptHelper(driver);
 		javascripthelper.scrollIntoView(accountsReceivable_DebitNoteObj.accountsReceivable_DebitNote_Description());
-		accountsReceivable_DebitNoteObj.accountsReceivable_DebitNote_Description().sendKeys(DebitNoteTestDataType.Description);
+		accountsReceivable_DebitNoteObj.accountsReceivable_DebitNote_Description().sendKeys(DebitNoteTestDataType.DebitNotesDescription);
 	}
 	
 	@Then("^save and submit the record of receivable debit note$")
 	public void save_and_submit_the_record_of_receivable_debit_note() throws IOException, ParseException, InterruptedException{
-		
+		Thread.sleep(1000);
 		waithelper.waitForElement(driver, 3000, accountsReceivable_DebitNoteObj.accountsReceivable_DebitNote_SaveButton());
 		accountsReceivable_DebitNoteObj.accountsReceivable_DebitNote_SaveButton().click();
 		
@@ -264,17 +269,19 @@ public class AccountsReceivable_DebitNote {
 		driver.findElement(By.xpath("//div[contains(text(),'"+DebitNoteTestDataType.InvoiceNumber+"')]/../../datatable-body-cell[1]/div/ion-checkbox")).click();
 		
 		Thread.sleep(1000);
-		javascripthelper.scrollToElemet(accountsReceivable_DebitNoteObj.accountsReceivable_DebitNote_Description());
-		accountsReceivable_DebitNoteObj.accountsReceivable_DebitNote_Description().sendKeys(DebitNoteTestDataType.Description);
+		javascripthelper.scrollToElemet(accountsReceivable_DebitNoteObj.accountsReceivable_PaymentSettlement_Description());
+		accountsReceivable_DebitNoteObj.accountsReceivable_PaymentSettlement_Description().sendKeys(DebitNoteTestDataType.Description);
 		
-		waithelper.waitForElement(driver, 3000, accountsReceivable_DebitNoteObj.accountPayable_PaymentSettlement_ConfirmYes());
-		accountsReceivable_DebitNoteObj.accountPayable_PaymentSettlement_ConfirmYes().click();
+		
 	}
 
 	@Then("^Save and submit the payment settlement$")
 	public void save_and_submit_the_payment_settlement() throws InterruptedException, IOException, ParseException {
 		waithelper.waitForElement(driver, 3000, accountsReceivable_DebitNoteObj.accountsReceivable_DebitNote_SaveButton());
 		accountsReceivable_DebitNoteObj.accountsReceivable_DebitNote_SaveButton().click();
+		
+		waithelper.waitForElement(driver, 3000, accountsReceivable_DebitNoteObj.accountPayable_PaymentSettlement_ConfirmYes());
+		accountsReceivable_DebitNoteObj.accountPayable_PaymentSettlement_ConfirmYes().click();
 		
 		Thread.sleep(2000);
 		javascripthelper.JavaScriptHelper(driver);

@@ -218,7 +218,8 @@ public class ACCOUNTSYPAYABLE_Invoicebooking extends BaseClass {
 
 		Thread.sleep(1000);
 		invoiceBookingObj.accountPayable_InvoiceBooking_ShippedFromLocation().click();
-
+		
+		Thread.sleep(1500);
 		invoiceBookingObj.accountPayableIvoiceBookingDeleveryLocationPunjab().click();
 
 		invoiceBookingObj.accountPayable_InvoiceBooking_SaveExpense().click();

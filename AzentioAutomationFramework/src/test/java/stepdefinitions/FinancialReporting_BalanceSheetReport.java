@@ -55,6 +55,10 @@ public class FinancialReporting_BalanceSheetReport {
 		financialReporting_GLBalancesReportObj.FinancialReporting_BalanceSheetReport_Branch().sendKeys(BalanceSheetReportTestDataType.Branch);
 		financialReporting_GLBalancesReportObj.FinancialReporting_BalanceSheetReport_Branch().sendKeys(Keys.ENTER);
 		
+		waithelper.waitForElement(driver, 3000, financialReporting_GLBalancesReportObj.FinancialReporting_BalanceSheetReport_ReportType());
+		financialReporting_GLBalancesReportObj.FinancialReporting_BalanceSheetReport_ReportType().sendKeys(BalanceSheetReportTestDataType.ReportType);
+		financialReporting_GLBalancesReportObj.FinancialReporting_BalanceSheetReport_ReportType().sendKeys(Keys.ENTER);
+		
 		waithelper.waitForElement(driver, 3000, financialReporting_GLBalancesReportObj.FinancialReporting_BalanceSheetReport_BalanceSheetAsOnDate());
 		financialReporting_GLBalancesReportObj.FinancialReporting_BalanceSheetReport_BalanceSheetAsOnDate().click();
 		

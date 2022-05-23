@@ -1,6 +1,7 @@
 package stepdefinitions;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Random;
 
 import org.json.simple.parser.ParseException;
@@ -945,8 +946,23 @@ public class ACCOUNTSPAYABLE_InvoiceBooking {
     	waithelper.waitForElement(driver, 5000, aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_ExpenseCode());
     	aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_ExpenseCode().click();
     	
-    	waithelper.waitForElement(driver, 3000, aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_ExpenseNewCode());
-    	aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_ExpenseNewCode().click();
+//    	waithelper.waitForElement(driver, 3000, aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_ExpenseNewCode());
+//    	aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_ExpenseNewCode().click();
+    	
+    	String beforexpath = "//ion-radio-group/ion-item[";
+		String afterxpath = "]/ion-label";
+		List<WebElement> radioitem= driver.findElements(By.xpath("//ion-radio-group/ion-item"));
+		int size = radioitem.size();
+		System.out.println(size);
+		for (int i = 1; i <= size ; i++) {
+			if(driver.findElement(By.xpath(beforexpath+ i + afterxpath)).getText().equals(aCCOUNTSPAYABLE_InvoiceBookingTestDataType.ExpenseCodeExceededBudget))
+			{
+				String beforexpath1 = "//ion-item[";
+				String afterxpath1 = "]/ion-radio";
+				driver.findElement(By.xpath(beforexpath1 + i + afterxpath1)).click();
+				break;
+			}
+		}
     	
     	aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_InvoiceQuantity().sendKeys(aCCOUNTSPAYABLE_InvoiceBookingTestDataType.InvoiceQuantity);
     	

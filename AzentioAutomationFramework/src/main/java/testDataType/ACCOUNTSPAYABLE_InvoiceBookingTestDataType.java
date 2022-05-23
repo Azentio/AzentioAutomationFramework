@@ -26,6 +26,8 @@ public class ACCOUNTSPAYABLE_InvoiceBookingTestDataType {
 	public String AdvanceNumber;
 	public String PONumber;
 	public String InvoiceQuantity;
+	
+	public String ExpenseCodeExceededBudget;
 	public String RatePerUnit;
 	public String TaxAmount;
 	public String AmountToBeAllocated;

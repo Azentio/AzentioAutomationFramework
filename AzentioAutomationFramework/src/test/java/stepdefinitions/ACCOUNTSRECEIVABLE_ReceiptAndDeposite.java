@@ -60,8 +60,7 @@ public class ACCOUNTSRECEIVABLE_ReceiptAndDeposite extends BaseClass {
     	receiptObj.accoutsReceivableReceiptReceiptAmount().sendKeys(receipTTestData.ReceiptAmount);
     	
     	receiptObj.accoutsReceivableReceiptBankAccount().click();
-    	receiptObj.accoutsReceivableReceiptBankAccount().sendKeys(Keys.DOWN);
-    	receiptObj.accoutsReceivableReceiptBankAccount().sendKeys(Keys.DOWN);
+    	receiptObj.accoutsReceivableReceiptBankAccount().sendKeys(receipTTestData.BankAccountNumber);
     	receiptObj.accoutsReceivableReceiptBankAccount().sendKeys(Keys.ENTER);
     	
     	receiptObj.accoutsReceivableReceiptPayerName().click();

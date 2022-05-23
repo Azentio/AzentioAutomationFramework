@@ -2088,9 +2088,9 @@ public class ARAP_AccountsReceivable_AccountsPayable extends BaseClass {
 		// ----------ENTER PO NUMBER----------//
 		waitHelper.waitForElement(driver, 2000, arapObj.accountReceviableAdvances_PONumber_TextBox());
 		arapObj.accountReceviableAdvances_PONumber_TextBox().click();
-		arapObj.accountReceviableAdvances_PONumber_TextBox().sendKeys(arapData.PONumber);
-		Thread.sleep(4000);
-		//arapObj.accountReceviableAdvances_PONumber_TextBox().sendKeys(Keys.DOWN);
+//		arapObj.accountReceviableAdvances_PONumber_TextBox().sendKeys(arapData.PONumber);
+//		Thread.sleep(4000);
+		arapObj.accountReceviableAdvances_PONumber_TextBox().sendKeys(Keys.DOWN);
 		arapObj.accountReceviableAdvances_PONumber_TextBox().sendKeys(Keys.ENTER);
 	}
 

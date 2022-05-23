@@ -3,9 +3,9 @@
 		"User" : "Maker",
 		"ChequeNumber": "RRN101011",
 		"BranchCode": "AZENTMAIN",
-		"ReceiptRefAgainstDebitNote": "REC_109_2532022",
-		"ReceiptRefAgainstAdvanceEMP": "REC_110_2532022",
-		"ReceiptRefAgainstAdvancePO": "REC_111_2532022",
+		"ReceiptRefAgainstDebitNote": "REC_384_1852022",
+		"ReceiptRefAgainstAdvanceEMP": "REC_385_1852022",
+		"ReceiptRefAgainstAdvancePO": "REC_386_1852022",
 		
 		"TxnNumber" : "RECAPP_33_2532022",
 		

@@ -91,10 +91,18 @@ public class AccountsReceivable_DebitNoteObj {
 		return accountsReceivable_DebitNote_DebitNoteAmount;
 	}
 	
-	// description
-	@FindBy(xpath = "//ion-col[9]/ion-item[1]/ion-input[1]/input[1]")
-	private WebElement accountsReceivable_DebitNote_Description;
+	//costCenter
+	@FindBy(xpath = "//ion-col[17]/app-kub-lov[1]/span[1]/ng-select[1]/div[1]/div/div[2]/input")
+	private WebElement accountsReceivable_DebitNote_CostCenter;
+
+	public WebElement accountsReceivable_DebitNote_CostCenter() {
+		return accountsReceivable_DebitNote_CostCenter;
+	}
 	
+	// DebitNotesDescription
+	@FindBy(xpath = "//ion-row[2]/ion-col[1]/ion-item[1]/ion-textarea[1]/div[1]/textarea[1]")
+	private WebElement accountsReceivable_DebitNote_Description;
+
 	public WebElement accountsReceivable_DebitNote_Description() {
 		return accountsReceivable_DebitNote_Description;
 	}
@@ -178,6 +186,14 @@ public class AccountsReceivable_DebitNoteObj {
 	
 	public WebElement accountPayable_PaymentSettlement_PaymentOption() {
 		return accountPayable_PaymentSettlement_PaymentOption;
+	}
+	
+	// Description
+	@FindBy(xpath = "//ion-col[9]/ion-item[1]/ion-input[1]/input[1]")
+	private WebElement accountsReceivable_PaymentSettlement_Description;
+
+	public WebElement accountsReceivable_PaymentSettlement_Description() {
+		return accountsReceivable_PaymentSettlement_Description;
 	}
 	
 	// Value Date Calendar

@@ -3,6 +3,7 @@ package testDataType;
 public class ACCOUNTSRECEIVABLE_ReceiptTestData {
 	public String UserType;
 	public String ReceiptReferenceNumber;
+	public String BankAccountNumber;
 	public String ReceiptAmount;
 	public String ReceiptPayer;
 	public String Remark;

@@ -38,6 +38,7 @@ public class ACCOUNTSRECEIVABLE_AppropriationAndPaymentSettlement extends BaseCl
 
 	@And("^get the approved invoice reference to do debit note$")
 	public void get_the_approved_invoice_reference_to_do_debit_note() throws Throwable {
+		Thread.sleep(1500);
 		waitHelper.waitForElementVisible(invoicebookingObj.billBookingApprovedInvoiceNumber(), 3000, 300);
 		testData.put("approvedInvoiceReferenceNumber", invoicebookingObj.billBookingApprovedInvoiceNumber().getText());
 		testData.put("approvedBpName", invoicebookingObj.billBookingApprovedBpName().getText());

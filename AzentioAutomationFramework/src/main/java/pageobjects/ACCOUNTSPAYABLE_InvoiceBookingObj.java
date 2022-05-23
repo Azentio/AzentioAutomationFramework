@@ -883,7 +883,7 @@ public class ACCOUNTSPAYABLE_InvoiceBookingObj {
 	{
 		return alert_close;
 	}
-	@FindBy(xpath="//datatable-row-wrapper[1]//datatable-body-cell[3]//div")
+	@FindBy(xpath="//datatable-row-wrapper[1]/datatable-body-row/div[2]/datatable-body-cell[3]/div/span")
 	private WebElement billBooking_approvedInvoiceNumber;
 	
 	public WebElement billBookingApprovedInvoiceNumber()

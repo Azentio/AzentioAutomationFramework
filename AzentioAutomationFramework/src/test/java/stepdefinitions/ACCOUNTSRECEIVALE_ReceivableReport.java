@@ -107,7 +107,7 @@ public class ACCOUNTSRECEIVALE_ReceivableReport extends BaseClass {
     	javascriptHelper.JavaScriptHelper(driver);
     	javascriptHelper.scrollIntoView(manualPayoutObj.accountsPayableSearchApprovvedPayoutNumber());
     	manualPayoutObj.accountsPayableSearchApprovvedPayoutNumber().click();
-    	manualPayoutObj.accountsPayableSearchApprovvedPayoutNumber().sendKeys("PTN-1001-17-1712022");
+    	manualPayoutObj.accountsPayableSearchApprovvedPayoutNumber().sendKeys("PTN-901-58-1452022");
     	
     }
 

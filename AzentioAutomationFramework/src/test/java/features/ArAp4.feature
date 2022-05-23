@@ -70,7 +70,7 @@ And click on transaction from date calender icon
 Then choose the from date
 And click on the transaction to date calender icon
 Then choose the to date
-#And give the refrence number which we going to see accounting entries
+And give the refrence number which we going to see accounting entries
 And click on view button
 Then verify approved settlement reference number is available in the Gl report
 
@@ -118,6 +118,7 @@ Then close the report
     
     @KUBS_AR_AP_UAT_005_003_TC_02  @AR/AP
 Scenario: Verify accounting entries post payment settlement approval.
+Given Navigate The Azentio Url
 And click on accounts Payable module
 And Go to payment settlement module
 Then click on search
@@ -1036,6 +1037,9 @@ And select the record and Approve by checker
 
 @KUBS_AR/AP_UAT_010_005_TC_05  @AR/AP
   Scenario: Verify accounting entries for appropriating receipts against:
+ 						 1. Debit Note
+ 						 2. Advance against PO
+ 						 3. Advance to Employee
 						 
  	  Given User should go to the kubs url and login as a maker user
     And user should navigate to accounts receivable menu
@@ -1404,60 +1408,60 @@ And click on Add Icon
 And fill the payment settlement record and validate the invoice number is not available in the invoice list view
 
 
-#@KUBS_AR/AP_UAT_013_002_TC_01  @AR/AP
-  #Scenario: Verify Receivables once adjusted against Bill is not available for appropriation on Receipt appropriation screen
- #	  Given User should go to the kubs url and login as a maker user
-    #And user should navigate to accounts receivable menu
-    #When click on eye button of receivable debit note
-    #Then click on add button
-    #And Fill the required fields in debit note screen
-    #Then save and submit the record of receivable debit note
-    #
-    #And User should go to the kubs url and login as a reviewer user
-    #Then Click on notification button in reviewer
-  #	And approve the record by the reviewer user
-  #	
-    #Given User should go to the kubs url and login as a checker user
-   #	And Click on security management in checker
-   #	Then Click on open pool in checker
-   #	And Click on claim button in checker
-   #	And capture claimed status
-   #	Then click on notification in checker
-    #Then checker should approved the record of receivable debit note
-    #
-    #
-    #Given User should go to the kubs url and login as a maker user
-    #And user should navigate to accounts payable menu
-    #When click on eye button of payment settlement against bill
-    #And click on add button for payment settlement against bill
-    #And Fill the required fields to adjust against billl
-    #Then Save and submit the payment settlement
-    #
-    #And User should go to the kubs url and login as a reviewer user
-    #Then Click on notification button in reviewer
-  #	And approve the record by the reviewer user
-  #	
-    #Given User should go to the kubs url and login as a checker user
-   #	And Click on security management in checker
-   #	Then Click on open pool in checker
-   #	And Click on claim button in checker
-   #	And capture claimed status
-   #	Then click on notification in checker
-    #Then checker should approved the payment settlement against bill
-    #
-    #
-    #Given User should go to the kubs url and login as a maker user
-    #And user should navigate to accounts receivable menu
-    #When click on eye button of receivable debit note
-    #Then get the receivable debit number to verify
-    #
-    #Given User should go to the kubs url and login as a maker user
-    #And user should navigate to accounts receivable menu
-    #Then click on eye button of appropriation to verify
-    #Then click on add button
-    #Then Verify the receivable adjusted against bill is not available for appropriation
-    #
-    @KUBS_AR/AP_UAT_013_002TC_01 @AR/AP
+@KUBS_AR/AP_UAT_013_002_TC_01  @AR/AP
+  Scenario: Verify Receivables once adjusted against Bill is not available for appropriation on Receipt appropriation screen
+ 	  Given User should go to the kubs url and login as a maker user
+    And user should navigate to accounts receivable menu
+    When click on eye button of receivable debit note
+    Then click on add button
+    And Fill the required fields in debit note screen
+    Then save and submit the record of receivable debit note
+    
+    And User should go to the kubs url and login as a reviewer user
+    Then Click on notification button in reviewer
+  	And approve the record by the reviewer user
+  	
+    Given User should go to the kubs url and login as a checker user
+   	And Click on security management in checker
+   	Then Click on open pool in checker
+   	And Click on claim button in checker
+   	And capture claimed status
+   	Then click on notification in checker
+    Then checker should approved the record of receivable debit note
+    
+    
+    Given User should go to the kubs url and login as a maker user
+    And user should navigate to accounts payable menu
+    When click on eye button of payment settlement against bill
+    And click on add button for payment settlement against bill
+    And Fill the required fields to adjust against bill
+    Then Save and submit the payment settlement
+    
+    And User should go to the kubs url and login as a reviewer user
+    Then Click on notification button in reviewer
+  	And approve the record by the reviewer user
+  	
+    Given User should go to the kubs url and login as a checker user
+   	And Click on security management in checker
+   	Then Click on open pool in checker
+   	And Click on claim button in checker
+   	And capture claimed status
+   	Then click on notification in checker
+    Then checker should approved the payment settlement against bill
+    
+    
+    Given User should go to the kubs url and login as a maker user
+    And user should navigate to accounts receivable menu
+    When click on eye button of receivable debit note
+    Then get the receivable debit number to verify
+    
+    Given User should go to the kubs url and login as a maker user
+    And user should navigate to accounts receivable menu
+    Then click on eye button of appropriation to verify
+    Then click on add button
+    Then Verify the receivable adjusted against bill is not available for appropriation
+    
+    @KUBS_AR/AP_UAT_013_002TC_02 @AR/AP
     Scenario: Verify Receivables once appropriated against a receipt is not adjusted against a bill on payment settlement screen.
 Given Maker Navigate to UAT URL login
 And click on accounts Payable module
