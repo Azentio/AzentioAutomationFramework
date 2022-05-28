@@ -345,6 +345,7 @@ Then Click on Finance
 
 Then Click on Inventory maintenance
 Then Click on Inventory access master
+
 @KUBS_INV_MGMT_UAT_003_003
 @Existing3
 Scenario: Create branch access for ordering inventories
@@ -507,12 +508,12 @@ Then Approve the record which we submitted from maker stage
 Then Go to Checker account
 And Clam the record
 Then Click on notification and approve the record
-Given Navigate to URL and user should login as a maker
-Then Click on Inventory Maintance module
-And click on Master Item eye icon
-Then click on search icon
-And Give Item description value and Click Edit icon
-When validate the quantity of the Item
+#Given Navigate to URL and user should login as a maker
+#Then Click on Inventory Maintance module
+#And click on Master Item eye icon
+#Then click on search icon
+#And Give Item description value and Click Edit icon
+#When validate the quantity of the Item
 
 
 @KUBS_INV_MGMT_UAT_005_002AE

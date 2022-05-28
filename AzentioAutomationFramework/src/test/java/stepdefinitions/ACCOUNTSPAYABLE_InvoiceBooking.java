@@ -61,7 +61,7 @@ public class ACCOUNTSPAYABLE_InvoiceBooking {
 
     @And("^click on add button for invoice booking$")
     public void click_on_add_button_for_invoice_booking() {
-    	waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_AddButton());
+    	waithelper.waitForElement(driver, 3000, aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_AddButton());
     	aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_AddButton().click();
     }
 

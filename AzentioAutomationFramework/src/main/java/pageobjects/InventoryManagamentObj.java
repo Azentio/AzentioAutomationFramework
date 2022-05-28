@@ -799,7 +799,8 @@ public class InventoryManagamentObj {
 		
 	 
 		
-		@FindBy(xpath = "//button[@aria-label='Close']") 
+//		@FindBy(xpath = "//button[@aria-label='Close']") 
+		@FindBy(xpath = "//body/div/div/div/button[1]") 
 		private WebElement inventory_Notification_Close;
 
 		public WebElement StockConfirm_Notification_Close() {
@@ -990,7 +991,8 @@ public class InventoryManagamentObj {
 			return inventory_Revieweralert;
 		}
 		
-		@FindBy(xpath = "//div[@id='toast-container']/div/div[@role='alertdialog']") 
+//		@FindBy(xpath = "//div[@id='toast-container']/div/div[@role='alertdialog']") 
+		@FindBy(xpath = "//body/div/div/div/div[1]") 
 		private WebElement inventory_ReviewerId;
 
 		public WebElement inventory_ReviewerId() {
@@ -1070,7 +1072,9 @@ public class InventoryManagamentObj {
 			return StockConfirm_RequestReferanceNumber;
 		}
 		
-		@FindBy(xpath = "//ion-infinite-scroll[1]/ion-row[1]/ion-col[1]/ion-item[1]/ion-textarea[1]/div[1]/textarea[1]") 
+//		@FindBy(xpath = "//ion-infinite-scroll[1]/ion-row[1]/ion-col[1]/ion-item[1]/ion-textarea[1]/div[1]/textarea[1]") 
+//		@FindBy(xpath = "//ion-item[1]/ion-textarea[1]/div[1]/textarea[1]") 
+		@FindBy(xpath = "//ion-textarea/div/textarea[@name='remarks']") 
 		private WebElement StockConfirm_Remark;
 
 		public WebElement StockConfirm_Remark() {
@@ -1174,7 +1178,8 @@ public class InventoryManagamentObj {
 			return StockConfirm_RemarkSubmit;
 		}
 		
-		@FindBy(xpath = "//div[@id='toast-container']/div/div[@role='alertdialog']") 
+//		@FindBy(xpath = "//div[@id='toast-container']/div/div[@role='alertdialog']") 
+		@FindBy(xpath = "//body/div/div/div/div[1]") 
 		private WebElement StockConfirm_ReviewerId;
 
 		public WebElement StockConfirm_ReviewerId() {

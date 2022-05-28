@@ -2,12 +2,13 @@
 {
 "User":"Maker",
 "BranchCode":"AZENTMAIN",
+"ItemCodeDescription":"IBALL-IBALL-MOUSE",
 "RequestQty":"1",
 "Remark":"TM",
 
-"InstrumentCode":"1131",
-"InstrumentDescription":"Book & A4 Paper15",
-"StartingSerialNumber":"130",
+"InstrumentCode":"1153",
+"InstrumentDescription":"Book & A4 Paper53",
+"StartingSerialNumber":"153",
 
 "AccessBranchCodeForIssue":"AZENTMAIN-Azentio Main Branch",
 "InventoryBranchCodeForIssue":"BR0004-West Zone",
@@ -44,7 +45,7 @@
 	"GlFullToMonth":"April",
 	"GlToDate":"19",
 	
-	"requestReferanceNo"    : "TRN_IR_82_20211228092903",
+	"requestReferanceNo"    : "TRN_IR_262_20220521112951",
 		"returnQuantity"        : "2",
 		"returnType"			: "Return to inventory",
 		"returnType1"			: "Found",

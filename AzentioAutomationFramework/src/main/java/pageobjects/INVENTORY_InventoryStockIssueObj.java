@@ -111,7 +111,8 @@ public class INVENTORY_InventoryStockIssueObj {
 	{
 		return inventory_stock_issue_alert_submit_button;
 	}
-	@FindBy(xpath="//div[@id='toast-container']/div/div[@role='alertdialog']")
+//	@FindBy(xpath="//div[@id='toast-container']/div/div[@role='alertdialog']")
+	@FindBy(xpath="//body/div/div/div/div[1]")
 	private WebElement inventory_stock_issue_reviewer_id;
 	public WebElement inventoryStockIssueReviewerID()
 	{

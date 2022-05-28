@@ -310,7 +310,7 @@ public class INVENTORY_InventoryStcokIssue extends BaseClass {
     public void validate_the_approval_status_in_checker_stage() throws Throwable {
     	waitHelper.waitForElement(driver, 3000, kubsChecker.checkerApprovalStatus());
 		String approvalStatusForChecker = kubsChecker.checkerApprovalStatus().getText();
-		Assert.assertEquals(approvalStatusForChecker, "Record APPROVED Successfully");
+		Assert.assertEquals(approvalStatusForChecker, "Record APPROVED successfully");
     }
 
 

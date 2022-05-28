@@ -138,7 +138,7 @@ public class InventoryManagament extends BaseClass {
 			}
 		}
 		
-		waithelper.waitForElement(driver, 2000,inventoryManagamentObj.inventoryManagament_InventoryRequest_RequestTypeButton());
+		waithelper.waitForElement(driver, 4000,inventoryManagamentObj.inventoryManagament_InventoryRequest_RequestTypeButton());
 		inventoryManagamentObj.inventoryManagament_InventoryRequest_RequestTypeButton().click();
 		Thread.sleep(1000);
 		waithelper.waitForElement(driver, 2000,inventoryManagamentObj.inventoryManagament_InventoryRequest_RequestTypeNormalRadioButton());
@@ -1022,7 +1022,7 @@ public class InventoryManagament extends BaseClass {
 				
 				catch(NoSuchElementException nosuchElement)
 				{
-					inventoryManagamentObj.inventory_previous_month().click();
+					inventoryManagamentObj.inventoryNextMonth().click();
 				}
 				}
 				WebElement FinalDay=driver.findElement(By.xpath("//td[@aria-label='"+inventoryManagementTestDataType.GlFullMonth+" "+inventoryManagementTestDataType.GlDay+", "+inventoryManagementTestDataType.GlYear+"']/span"));
@@ -1349,13 +1349,15 @@ public class InventoryManagament extends BaseClass {
 				// ----------SAVE THE RECORD----------//
 				waithelper.waitForElement(driver, 2000, inventoryManagamentObj.StockConfirm_Save());
 				inventoryManagamentObj.StockConfirm_Save().click();
-				Thread.sleep(2000);
+				
+				waithelper.waitForElement(driver, 3000, inventoryManagamentObj.StockConfirm_Notification_Close());
 				inventoryManagamentObj.StockConfirm_Notification_Close().click();
 			}
 
 			@And("^goto maker Notification Icon$")
 			public void goto_maker_notification_Icon() throws Throwable {
 				// ------------Maker Notification icon---------//
+//				Thread.sleep(2000);
 				waithelper.waitForElement(driver, 2000, inventoryManagamentObj.StockConfirm_MakerNotification());
 				inventoryManagamentObj.StockConfirm_MakerNotification().click();
 				waithelper.waitForElement(driver, 2000, inventoryManagamentObj.StockConfirm_ReferanceId());
@@ -1382,6 +1384,7 @@ public class InventoryManagament extends BaseClass {
 				inventoryManagamentObj.StockConfirm_Remark().sendKeys(inventoryManagementTestDataType.RemarkApprove);
 				waithelper.waitForElement(driver, 2000, inventoryManagamentObj.StockConfirm_RemarkSubmit());
 				inventoryManagamentObj.StockConfirm_RemarkSubmit().click();
+				Thread.sleep(1000);
 				waithelper.waitForElement(driver, 2000, inventoryManagamentObj.StockConfirm_ReviewerId());
 				reviwerId = inventoryManagamentObj.StockConfirm_ReviewerId().getText();
 				String ReviewerID = reviwerId.substring(85);
