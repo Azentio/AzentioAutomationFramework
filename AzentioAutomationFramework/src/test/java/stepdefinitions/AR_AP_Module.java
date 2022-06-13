@@ -1736,6 +1736,7 @@ while(true)
 		seleniumactions.getWaitHelper().waitForElement(driver, 2000, cancellationofcontract.getApserachicon());
 		seleniumactions.getClickAndActionsHelper().clickOnElement(cancellationofcontract.getApserachicon());
 		javascriphelper.JavaScriptHelper(driver);
+		Thread.sleep(2000);
 		javascriphelper.scrollIntoView(invoiceBookingObj.searchInvoiceStatus());
 		seleniumactions.getWaitHelper().waitForElement(driver, 2000, invoiceBookingObj.searchInvoiceStatus());
 		seleniumactions.getClickAndActionsHelper().clickOnElement(invoiceBookingObj.searchInvoiceStatus());
@@ -1860,15 +1861,15 @@ while(true)
 
 	@And("^select listed bill contains tds percentage$")
 	public void select_listed_bill_contains_tds_percentage() throws Throwable {
-		seleniumactions.getWaitHelper().waitForElement(driver, 2000, paymentSettlementObj.getBillListViewCheckBox2());
-		seleniumactions.getClickAndActionsHelper().clickOnElement(paymentSettlementObj.getBillListViewCheckBox2());
+		seleniumactions.getWaitHelper().waitForElement(driver, 2000, paymentSettlementObj.getBillListViewCheckBox());
+		seleniumactions.getClickAndActionsHelper().clickOnElement(paymentSettlementObj.getBillListViewCheckBox());
 	}
 
 	@And("^get tds percentage and calculate tds amount$")
 	public void get_tds_percentage_and_calculate_tds_amount() throws Throwable {
 		seleniumactions.getWaitHelper().waitForElement(driver, 2000, paymentSettlementObj.getTdspercentfromList2());
 		String tdspercent = paymentSettlementObj.getTdspercentfromList2().getText();
-		String substring = tdspercent.substring(0, 1);
+		String tdsPercent = tdspercent.replaceAll("[%]", "");
 		seleniumactions.getWaitHelper().waitForElement(driver, 2000, paymentSettlementObj.getTdsvaluefromlist2());
 		String TdsValue = paymentSettlementObj.getTdsvaluefromlist2().getText();
 		int TDSVALUE = Integer.parseInt(TdsValue);
@@ -1876,11 +1877,10 @@ while(true)
 				paymentSettlementObj.getGetNetAdjustedAmountList2());
 		String NetAdjusted = paymentSettlementObj.getGetNetAdjustedAmountList2().getText();
 		int NETADJUSTED = Integer.parseInt(NetAdjusted);
-		int TDSPERCENTAGE = Integer.parseInt(substring);
-		float tdspercent1 = TDSPERCENTAGE;
-		System.out.println(TDSPERCENTAGE);
+		int TDSPERCENTAGE = Integer.parseInt(tdsPercent);
 		CalculatedTdsValue = (float) ((TDSPERCENTAGE / 100.0) * NETADJUSTED);
 		Assert.assertEquals(TDSVALUE, Math.round(CalculatedTdsValue));
+		
 	}
 
 	@Then("^verify tds in bill with calculated tds amt$")
@@ -1963,13 +1963,9 @@ while(true)
 		String netpayablevalueinsettlement = (String) javascriphelper.executeScript(
 				"return document.getElementsByClassName('form__field ng-untouched ng-pristine ng-valid')[1].value");
 		System.out.println(netpayablevalueinsettlement);
-		//String substring = netpayablevalueinsettlement.substring(0, 6);
-		//System.out.println(substring);
-		String[] NetAmount = netpayablevalueinsettlement.split("[.");
-		StringBuffer amt = new StringBuffer();
-		amt.append(NetAmount[0]);
-		String netamt = amt.toString();
-		//System.out.println(netamt);
+		String[] NetAmount = netpayablevalueinsettlement.split("[.]");
+		String Netamt = NetAmount[0].toString();
+		String netamt = Netamt.replaceAll("[,]","");
 		Assert.assertEquals(NetPayableAmountinBillList, netamt);
 
 	}
@@ -2020,6 +2016,7 @@ while(true)
 	public void select_the_buisness_partner_from_the_list_for_verify_pop_up() throws Throwable {
 		seleniumactions.getWaitHelper().waitForElement(driver, 2000, paymentSettlementObj.getSelectBuisnessPartner());
 		seleniumactions.getClickAndActionsHelper().clickOnElement(paymentSettlementObj.getSelectBuisnessPartner());
+		paymentSettlementObj.getSelectBuisnessPartner().sendKeys("Bonton Agency");
 		paymentSettlementObj.getSelectBuisnessPartner().sendKeys(Keys.ENTER);
 	}
 
@@ -2054,7 +2051,7 @@ while(true)
 		seleniumactions.getClickAndActionsHelper().clickOnElement(paymentSettlementObj.getSavebutton());
 	}
 
-	@And("^pop up messages displayed and  click yes$")
+	@And("^pop up messages displayed and click yes$")
 	public void pop_up_messages_displayed_and_click_yes() throws Throwable {
 		seleniumactions.getWaitHelper().waitForElement(driver, 2000, paymentSettlementObj.getClickYespopup());
 		seleniumactions.getClickAndActionsHelper().clickOnElement(paymentSettlementObj.getClickYespopup());
@@ -2116,6 +2113,7 @@ while(true)
 	public void select_the_buisness_partner_from_the_list_for_verify_pop_up_display() throws Throwable {
 		seleniumactions.getWaitHelper().waitForElement(driver, 2000, paymentSettlementObj.getSelectBuisnessPartner());
 		seleniumactions.getClickAndActionsHelper().clickOnElement(paymentSettlementObj.getSelectBuisnessPartner());
+		paymentSettlementObj.getSelectBuisnessPartner().sendKeys("Bonton Agency");
 		paymentSettlementObj.getSelectBuisnessPartner().sendKeys(Keys.ENTER);
 	}
 
@@ -2164,6 +2162,7 @@ while(true)
         seleniumactions.getWaitHelper().waitForElement(driver,2000,paymentSettlementObj.getTransactionStatus());
         seleniumactions.getClickAndActionsHelper().clickOnElement(paymentSettlementObj.getTransactionStatus());
         paymentSettlementObj.getTransactionStatus().sendKeys(cancellationofcontractdata.contractstatusactive);
+        
     }
 
     @And("^get the transaction number from payment settlement$")

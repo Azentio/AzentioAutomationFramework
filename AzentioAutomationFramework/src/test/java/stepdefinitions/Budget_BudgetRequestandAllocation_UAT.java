@@ -12,6 +12,7 @@ import org.openqa.selenium.ElementClickInterceptedException;
 import org.openqa.selenium.ElementNotInteractableException;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
@@ -257,7 +258,14 @@ public class Budget_BudgetRequestandAllocation_UAT extends BaseClass {
 		waitHelper.waitForElement(driver, 2000,
 				driver.findElement(By.xpath(befr_xpath + json.readReferancedata() + aftr_xpath)));
 		driver.findElement(By.xpath(befr_xpath + json.readReferancedata() + aftr_xpath)).click();
-		reviewerObj.reviewer_action_button().click();
+//		while (true) {
+//			try {
+//				reviewerObj.reviewer_action_button().click();
+//				break;
+//			} catch (StaleElementReferenceException e) {
+//
+//			}
+//		}
 	}
 
 	@Then("^Click on to Approve button in Reviewer$")

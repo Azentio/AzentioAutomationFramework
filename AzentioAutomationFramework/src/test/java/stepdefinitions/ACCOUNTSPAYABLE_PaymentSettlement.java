@@ -183,10 +183,11 @@ public class ACCOUNTSPAYABLE_PaymentSettlement extends BaseClass {
 			String receivableStatus = driver.findElement(By.xpath("//datatable-row-wrapper[" + row
 					+ "]/datatable-body-row[1]//datatable-body-cell[8]/div[1]/span[1]")).getText();
 			System.out.println("Receivable STatus is " + receivableStatus);
-			receivableStatus.equals("Active");
+			
+			
 			try {
 				Assert.assertEquals(receivableStatus, "Active");
-				Thread.sleep(1000);
+				Thread.sleep(2000);
 				String advNumber = driver.findElement(By.xpath("//datatable-row-wrapper[" + row
 						+ "]/datatable-body-row[1]//datatable-body-cell[4]/div[1]/span[1]")).getText();
 				String bpName = driver.findElement(By.xpath("//datatable-row-wrapper[" + row
@@ -344,6 +345,8 @@ WebElement Click = driver.findElement(By.xpath("//td[@aria-label='" + paymentSet
 		+ paymentSettlementTestData.Day + ", " + paymentSettlementTestData.Year + "']/span"));
 
 clickAndActionHelper.doubleClick(Click);
+paymentSettlementObj.accountsPayableDescription().click();
+paymentSettlementObj.accountsPayableDescription().sendKeys("Ok");
 }
 
 

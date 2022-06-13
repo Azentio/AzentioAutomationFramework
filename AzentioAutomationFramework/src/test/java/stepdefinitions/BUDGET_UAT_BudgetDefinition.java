@@ -1,10 +1,14 @@
 package stepdefinitions;
 
+import java.time.Month;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Random;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.ElementClickInterceptedException;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -24,6 +28,7 @@ import pageobjects.BUDGET_RequestAndAllocationObj;
 import pageobjects.KUBS_CheckerObj;
 import pageobjects.KUBS_MakerObj;
 import pageobjects.KUBS_ReviewerObj;
+import pageobjects.MASTERREPORT_BudgetCodeReportObj;
 import resources.BaseClass;
 import resources.JsonDataReaderWriter;
 import testDataType.BUDGET_BudgetDefinitionUATTestDataType;
@@ -45,7 +50,9 @@ public class BUDGET_UAT_BudgetDefinition extends BaseClass {
 	KUBS_CheckerObj kubsCheckerObj = new KUBS_CheckerObj(driver);
 	ClicksAndActionsHelper clickAndActions = new ClicksAndActionsHelper(driver);
 	BrowserHelper browserHelper = new BrowserHelper(driver);
-    BUDGET_RequestAndAllocationObj requestAndAllocationObj  = new BUDGET_RequestAndAllocationObj(driver);
+	Map<String, String> testData = new HashMap<>();
+	BUDGET_RequestAndAllocationObj requestAndAllocationObj = new BUDGET_RequestAndAllocationObj(driver);
+
 	@Given("^navigate to given url and login with maker credentials$")
 	public void navigate_to_given_url() throws Throwable {
 		/*
@@ -105,27 +112,33 @@ public class BUDGET_UAT_BudgetDefinition extends BaseClass {
 		budgetCreationObj.budgetCreation_BudgetCode().sendKeys(budgetDefinitionUATTestData.uatYearlyBudgetCode);
 
 	}
+
 	@Then("^enter the budget code  to make current/future financial budget$")
-    public void enter_the_budget_code_to_make_current_financial_budget() throws Throwable {
-		//String budgetPrefix="BUD";
-     Random random = new Random();
-     int randomNumber=random.nextInt(999999-100000)+100000;
-     waitHelper.waitForElement(driver, 3000, budgetCreationObj.budgetCreation_BudgetCode());
-		budgetCreationObj.budgetCreation_BudgetCode().sendKeys(budgetDefinitionUATTestData.BudgetCodePrefix+randomNumber);     
-     
-    }
-	@Then("^fill the budget code field$")
-    public void fill_the_budget_code_field() throws Throwable {
-		 Random random = new Random();
-	     int randomNumber=random.nextInt(999999-100000)+100000;
-	     waitHelper.waitForElement(driver, 3000, budgetCreationObj.budgetCreation_BudgetCode());
-			budgetCreationObj.budgetCreation_BudgetCode().sendKeys(budgetDefinitionUATTestData.BudgetCodePrefix+randomNumber);     
-    }
-	@Then("^enter Budget Code for current financial yearly budget$")
-    public void enter_budget_code_for_current_financial_yearly_budget() throws Throwable {
+	public void enter_the_budget_code_to_make_current_financial_budget() throws Throwable {
+		// String budgetPrefix="BUD";
+		Random random = new Random();
+		int randomNumber = random.nextInt(999999 - 100000) + 100000;
 		waitHelper.waitForElement(driver, 3000, budgetCreationObj.budgetCreation_BudgetCode());
-		budgetCreationObj.budgetCreation_BudgetCode().sendKeys(budgetDefinitionUATTestData.uatCurrentFinancialBudgetCode);     
-    }
+		budgetCreationObj.budgetCreation_BudgetCode()
+				.sendKeys(budgetDefinitionUATTestData.BudgetCodePrefix + randomNumber);
+
+	}
+
+	@Then("^fill the budget code field$")
+	public void fill_the_budget_code_field() throws Throwable {
+		Random random = new Random();
+		int randomNumber = random.nextInt(999999 - 100000) + 100000;
+		waitHelper.waitForElement(driver, 3000, budgetCreationObj.budgetCreation_BudgetCode());
+		budgetCreationObj.budgetCreation_BudgetCode()
+				.sendKeys(budgetDefinitionUATTestData.BudgetCodePrefix + randomNumber);
+	}
+
+	@Then("^enter Budget Code for current financial yearly budget$")
+	public void enter_budget_code_for_current_financial_yearly_budget() throws Throwable {
+		waitHelper.waitForElement(driver, 3000, budgetCreationObj.budgetCreation_BudgetCode());
+		budgetCreationObj.budgetCreation_BudgetCode()
+				.sendKeys(budgetDefinitionUATTestData.uatCurrentFinancialBudgetCode);
+	}
 
 	@Then("^enter Budget Code for monthly budget$")
 	public void enter_budget_code_for_monthly_budget() throws Throwable {
@@ -140,7 +153,6 @@ public class BUDGET_UAT_BudgetDefinition extends BaseClass {
 		budgetCreationObj.budgetCreation_BudgetCode().sendKeys(budgetDefinitionUATTestData.uatHalfYearlyBudgetCode);
 
 	}
-	
 
 	@Then("^enter Budget Code quarterly budget$")
 	public void enter_budget_code_for_quarterly_budget() throws Throwable {
@@ -270,33 +282,37 @@ public class BUDGET_UAT_BudgetDefinition extends BaseClass {
 			}
 		}
 	}
-	
-	@And("^enter the budget code for current financial year$")
-    public void enter_the_budget_code_for_current_financial_year() throws Throwable {
-		requestAndAllocationObj.budget_requestAndAllocation_Budgetcode().click();
-		requestAndAllocationObj.budget_requestAndAllocation_Budgetcode().sendKeys(budgetDefinitionUATTestData.uatCurrentFinancialBudgetCode);
-		requestAndAllocationObj.budget_requestAndAllocation_Budgetcode().sendKeys(Keys.ENTER);
-		
-    }
 
-    @And("^choose the budget year as current financial year$")
-    public void choose_the_budget_year_as_current_financial_year() throws Throwable {
-    	requestAndAllocationObj.budget_requestAndAllocation_Budgetyear().click();
-    	requestAndAllocationObj.budget_requestAndAllocation_Budgetyear().sendKeys(Keys.ENTER);
-    }
-    @And("^choose branch as azentio main$")
-    public void choose_branch_as_azentio_main() throws Throwable {
-    	javascriptHelper.JavaScriptHelper(driver);
-    	requestAndAllocationObj.budget_requestAndAllocation_Budgetbranch().click();
-    	//javascriptHelper.scrollIntoViewAndClick(requestAndAllocationObj.budgetBudgetReqAndAllocationAzentMainBranch());
-    	//requestAndAllocationObj.budgetBudgetReqAndAllocationAzentMainBranch().click();
-    	requestAndAllocationObj.budget_requestAndAllocation_branchOK().click();
-    }
-    @And("^enter the budget amount in the appropriate text box along with remark$")
-    public void enter_the_budget_amount_in_the_appropriate_text_box_along_with_remark() throws Throwable {
-    	requestAndAllocationObj.budget_requestAndAllocation_Budgetamount().click();
-    	requestAndAllocationObj.budget_requestAndAllocation_Budgetamount().sendKeys("1000000");
-    }
+	@And("^enter the budget code for current financial year$")
+	public void enter_the_budget_code_for_current_financial_year() throws Throwable {
+		requestAndAllocationObj.budget_requestAndAllocation_Budgetcode().click();
+		requestAndAllocationObj.budget_requestAndAllocation_Budgetcode()
+				.sendKeys(budgetDefinitionUATTestData.uatCurrentFinancialBudgetCode);
+		requestAndAllocationObj.budget_requestAndAllocation_Budgetcode().sendKeys(Keys.ENTER);
+
+	}
+
+	@And("^choose the budget year as current financial year$")
+	public void choose_the_budget_year_as_current_financial_year() throws Throwable {
+		requestAndAllocationObj.budget_requestAndAllocation_Budgetyear().click();
+		requestAndAllocationObj.budget_requestAndAllocation_Budgetyear().sendKeys(Keys.ENTER);
+	}
+
+	@And("^choose branch as azentio main$")
+	public void choose_branch_as_azentio_main() throws Throwable {
+		javascriptHelper.JavaScriptHelper(driver);
+		requestAndAllocationObj.budget_requestAndAllocation_Budgetbranch().click();
+		// javascriptHelper.scrollIntoViewAndClick(requestAndAllocationObj.budgetBudgetReqAndAllocationAzentMainBranch());
+		// requestAndAllocationObj.budgetBudgetReqAndAllocationAzentMainBranch().click();
+		requestAndAllocationObj.budget_requestAndAllocation_branchOK().click();
+	}
+
+	@And("^enter the budget amount in the appropriate text box along with remark$")
+	public void enter_the_budget_amount_in_the_appropriate_text_box_along_with_remark() throws Throwable {
+		requestAndAllocationObj.budget_requestAndAllocation_Budgetamount().click();
+		requestAndAllocationObj.budget_requestAndAllocation_Budgetamount().sendKeys("1000000");
+	}
+
 	@And("^click notification button$")
 	public void click_notification_button() throws Throwable {
 		// After save our budget record we have to click on notification to submit our
@@ -404,7 +420,7 @@ public class BUDGET_UAT_BudgetDefinition extends BaseClass {
 		/*
 		 * Then we have to login with reviewer and continue the approval process
 		 */
-        Thread.sleep(3000);
+		Thread.sleep(3000);
 		kubsLogin.logintoAzentioappReviewer(userType, jsonReaderWriter.readdata());
 
 	}
@@ -446,6 +462,8 @@ public class BUDGET_UAT_BudgetDefinition extends BaseClass {
 		 * maker submitted data we can use java script locator for locating the budget
 		 * code and etc
 		 */
+		Thread.sleep(2000);
+		javascriptHelper.JavaScriptHelper(driver);
 		while (true) {
 			try {
 				waitHelper.setImplicitWait(5000);
@@ -491,18 +509,14 @@ public class BUDGET_UAT_BudgetDefinition extends BaseClass {
 		 * 
 		 * approveButton() function contains the xpath for the approve button
 		 */
-		while(true)
-		{
-		try
-		{
-		waitHelper.waitForElement(driver, 3000, kubsReviewerObj.reviewerApproveButton());
-		kubsReviewerObj.reviewerApproveButton().click();
-		break;
-		}
-	    catch(Exception e)
-		{
-	    	
-		}
+		while (true) {
+			try {
+				waitHelper.waitForElement(driver, 3000, kubsReviewerObj.reviewerApproveButton());
+				kubsReviewerObj.reviewerApproveButton().click();
+				break;
+			} catch (Exception e) {
+
+			}
 		}
 	}
 
@@ -516,20 +530,17 @@ public class BUDGET_UAT_BudgetDefinition extends BaseClass {
 
 	@Then("^click on submit in alert$")
 	public void click_on_submit_in_alert() throws Throwable {
-		while(true)
-		{
-			
-		try
-		{
-		waitHelper.waitForElement(driver, 3000, kubsReviewerObj.reviewerAlertSubmitButton());
-		kubsReviewerObj.reviewerAlertSubmitButton().click();
-		break;
-		}
-		catch(ElementClickInterceptedException e)
-		{
-			kubsReviewerObj.reviewerAlertRemarks().click();
-			kubsReviewerObj.reviewerAlertRemarks().sendKeys(budgetDefinitionUATTestData.approvalCommentsFromReviewer);
-		}
+		while (true) {
+
+			try {
+				waitHelper.waitForElement(driver, 3000, kubsReviewerObj.reviewerAlertSubmitButton());
+				kubsReviewerObj.reviewerAlertSubmitButton().click();
+				break;
+			} catch (ElementClickInterceptedException e) {
+				kubsReviewerObj.reviewerAlertRemarks().click();
+				kubsReviewerObj.reviewerAlertRemarks()
+						.sendKeys(budgetDefinitionUATTestData.approvalCommentsFromReviewer);
+			}
 		}
 	}
 
@@ -556,23 +567,19 @@ public class BUDGET_UAT_BudgetDefinition extends BaseClass {
 		/*
 		 * Then we have to logout from reviewer and start with checker approval
 		 */
-		while(true)
-		{
-		try
-		{
-		javascriptHelper.JavaScriptHelper(driver);
-		kubsReviewerObj.reviewerAlertClose().click();
-		kubsReviewerObj.reviewerUserName().click();
-		waitHelper.waitForElement(driver, 3000, kubsReviewerObj.reviewerLogoutButton());
-		javascriptHelper.JSEClick(kubsReviewerObj.reviewerLogoutButton());
-		break;
+		while (true) {
+			try {
+				javascriptHelper.JavaScriptHelper(driver);
+				kubsReviewerObj.reviewerAlertClose().click();
+				kubsReviewerObj.reviewerUserName().click();
+				waitHelper.waitForElement(driver, 3000, kubsReviewerObj.reviewerLogoutButton());
+				javascriptHelper.JSEClick(kubsReviewerObj.reviewerLogoutButton());
+				break;
+			} catch (StaleElementReferenceException e) {
+
+			}
 		}
-		catch(StaleElementReferenceException e)
-		{
-			
-		}
-		}
-		}
+	}
 
 	/* *** checker steps ***** */
 
@@ -583,7 +590,7 @@ public class BUDGET_UAT_BudgetDefinition extends BaseClass {
 		 */
 		Thread.sleep(3000);
 		kubsLogin.loginToAzentioAppAsChecker("Checker");
-		
+
 	}
 
 	@And("^click on security management menu in checker$")
@@ -606,26 +613,55 @@ public class BUDGET_UAT_BudgetDefinition extends BaseClass {
 		javascriptHelper.JSEClick(kubsCheckerObj.checkerActionIcon());
 
 	}
+
 	@Then("^verify the yearly budget approve record is available in the approved list view$")
-    public void verify_the_yearly_budget_approve_record_is_available_in_the_approved_list_view() throws Throwable {
-		waitHelper.waitForElementVisible(driver.findElement(By.xpath("//datatable-row-wrapper[1]//datatable-body-cell[2]//span[contains(text(),' "+budgetDefinitionUATTestData.uatYearlyBudgetCode+" ')]")), 2000, 200);
-       Assert.assertTrue(driver.findElement(By.xpath("//datatable-row-wrapper[1]//datatable-body-cell[2]//span[contains(text(),' "+budgetDefinitionUATTestData.uatYearlyBudgetCode+" ')]")).isDisplayed());
-    }
+	public void verify_the_yearly_budget_approve_record_is_available_in_the_approved_list_view() throws Throwable {
+		waitHelper.waitForElementVisible(driver
+				.findElement(By.xpath("//datatable-row-wrapper[1]//datatable-body-cell[2]//span[contains(text(),' "
+						+ budgetDefinitionUATTestData.uatYearlyBudgetCode + " ')]")),
+				2000, 200);
+		Assert.assertTrue(driver
+				.findElement(By.xpath("//datatable-row-wrapper[1]//datatable-body-cell[2]//span[contains(text(),' "
+						+ budgetDefinitionUATTestData.uatYearlyBudgetCode + " ')]"))
+				.isDisplayed());
+	}
+
 	@Then("^verify the monthly approved budget code is appeared in the list view$")
-    public void verify_the_monthly_approved_budget_code_is_appeared_in_the_list_view() throws Throwable {
-		waitHelper.waitForElementVisible(driver.findElement(By.xpath("//datatable-row-wrapper[1]//datatable-body-cell[2]//span[contains(text(),' "+budgetDefinitionUATTestData.uatMonthlyBudgetCode+" ')]")), 2000, 200);
-	       Assert.assertTrue(driver.findElement(By.xpath("//datatable-row-wrapper[1]//datatable-body-cell[2]//span[contains(text(),' "+budgetDefinitionUATTestData.uatMonthlyBudgetCode+" ')]")).isDisplayed());
-    }
+	public void verify_the_monthly_approved_budget_code_is_appeared_in_the_list_view() throws Throwable {
+		waitHelper.waitForElementVisible(driver
+				.findElement(By.xpath("//datatable-row-wrapper[1]//datatable-body-cell[2]//span[contains(text(),' "
+						+ budgetDefinitionUATTestData.uatMonthlyBudgetCode + " ')]")),
+				2000, 200);
+		Assert.assertTrue(driver
+				.findElement(By.xpath("//datatable-row-wrapper[1]//datatable-body-cell[2]//span[contains(text(),' "
+						+ budgetDefinitionUATTestData.uatMonthlyBudgetCode + " ')]"))
+				.isDisplayed());
+	}
+
 	@Then("^verify the quaterly budget approve record is available in the approved list view$")
-    public void verify_the_quaterly_budget_approve_record_is_available_in_the_approved_list_view() throws Throwable {
-		waitHelper.waitForElementVisible(driver.findElement(By.xpath("//datatable-row-wrapper[1]//datatable-body-cell[2]//span[contains(text(),' "+budgetDefinitionUATTestData.uatQuarterlyBudgetCode+" ')]")), 2000, 200);
-	       Assert.assertTrue(driver.findElement(By.xpath("//datatable-row-wrapper[1]//datatable-body-cell[2]//span[contains(text(),' "+budgetDefinitionUATTestData.uatQuarterlyBudgetCode+" ')]")).isDisplayed());	     
-    }
+	public void verify_the_quaterly_budget_approve_record_is_available_in_the_approved_list_view() throws Throwable {
+		waitHelper.waitForElementVisible(driver
+				.findElement(By.xpath("//datatable-row-wrapper[1]//datatable-body-cell[2]//span[contains(text(),' "
+						+ budgetDefinitionUATTestData.uatQuarterlyBudgetCode + " ')]")),
+				2000, 200);
+		Assert.assertTrue(driver
+				.findElement(By.xpath("//datatable-row-wrapper[1]//datatable-body-cell[2]//span[contains(text(),' "
+						+ budgetDefinitionUATTestData.uatQuarterlyBudgetCode + " ')]"))
+				.isDisplayed());
+	}
+
 	@Then("^verify the half yearly budget approve record is available in the approved list view$")
-    public void verify_the_half_yearly_budget_approve_record_is_available_in_the_approved_list_view() throws Throwable {
-		waitHelper.waitForElementVisible(driver.findElement(By.xpath("//datatable-row-wrapper[1]//datatable-body-cell[2]//span[contains(text(),' "+budgetDefinitionUATTestData.uatHalfYearlyBudgetCode+" ')]")), 2000, 200);
-	       Assert.assertTrue(driver.findElement(By.xpath("//datatable-row-wrapper[1]//datatable-body-cell[2]//span[contains(text(),' "+budgetDefinitionUATTestData.uatHalfYearlyBudgetCode+" ')]")).isDisplayed());   
-    }
+	public void verify_the_half_yearly_budget_approve_record_is_available_in_the_approved_list_view() throws Throwable {
+		waitHelper.waitForElementVisible(driver
+				.findElement(By.xpath("//datatable-row-wrapper[1]//datatable-body-cell[2]//span[contains(text(),' "
+						+ budgetDefinitionUATTestData.uatHalfYearlyBudgetCode + " ')]")),
+				2000, 200);
+		Assert.assertTrue(driver
+				.findElement(By.xpath("//datatable-row-wrapper[1]//datatable-body-cell[2]//span[contains(text(),' "
+						+ budgetDefinitionUATTestData.uatHalfYearlyBudgetCode + " ')]"))
+				.isDisplayed());
+	}
+
 	@And("^select our record and clime using reference ID$")
 	public void select_our_budget_record_and_clime_using_reference_id() throws Throwable {
 		/*
@@ -653,7 +689,7 @@ public class BUDGET_UAT_BudgetDefinition extends BaseClass {
 				System.out.println(staleElementException.getMessage());
 			}
 		}
-		
+
 	}
 
 	@Then("^click on Notification button$")
@@ -675,19 +711,20 @@ public class BUDGET_UAT_BudgetDefinition extends BaseClass {
 			try {
 				String before_xpath = "//span[contains(text(),'";
 				String after_xpath = "')]/ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell/div/ion-buttons/ion-button";
-				//waitHelper.waitForElement(driver, 1000, driver
-					//	.findElement(By.xpath(before_xpath + jsonReaderWriter.readReferancedata() + after_xpath)));
-			//	driver.findElement(By.xpath(before_xpath + jsonReaderWriter.readReferancedata() + after_xpath)).click();
-				javascriptHelper.JSEClick(driver.findElement(By.xpath(before_xpath + jsonReaderWriter.readReferancedata() + after_xpath)));
+				// waitHelper.waitForElement(driver, 1000, driver
+				// .findElement(By.xpath(before_xpath + jsonReaderWriter.readReferancedata() +
+				// after_xpath)));
+				// driver.findElement(By.xpath(before_xpath +
+				// jsonReaderWriter.readReferancedata() + after_xpath)).click();
+				javascriptHelper.JSEClick(driver
+						.findElement(By.xpath(before_xpath + jsonReaderWriter.readReferancedata() + after_xpath)));
 				break;
 			} catch (Exception exception) {
 				System.out.println(exception.getMessage());
-				
-				
+
 			}
 		}
 	}
-		
 
 	@And("^validate the record which is submited by maker$")
 	public void validate_the_budget_record_which_is_submited_by_maker() throws Throwable {
@@ -736,21 +773,16 @@ public class BUDGET_UAT_BudgetDefinition extends BaseClass {
 
 	@And("^click on approve button in checker stage$")
 	public void click_on_approve_button_in_checker_stage() throws Throwable {
-		while(true)
-		{
-		try
-		{
-		waitHelper.waitForElement(driver, 3000, kubsCheckerObj.checkerApproveButton());
-		kubsCheckerObj.checkerApproveButton().click();
-		break;
-		}
-		catch(ElementClickInterceptedException e)
-		{
-			
-		}
+		while (true) {
+			try {
+				waitHelper.waitForElement(driver, 3000, kubsCheckerObj.checkerApproveButton());
+				kubsCheckerObj.checkerApproveButton().click();
+				break;
+			} catch (ElementClickInterceptedException e) {
+
+			}
 		}
 	}
-	
 
 	@Then("^give alert remark$")
 	public void give_alert_remark() throws Throwable {
@@ -802,4 +834,153 @@ public class BUDGET_UAT_BudgetDefinition extends BaseClass {
 		}
 	}
 
+	@Then("^get the budget code budget type and transaction date$")
+	public void get_the_budget_code_budget_type_and_transaction_date() throws Throwable {
+		waitHelper.waitForElementVisible(budgetCreationObj.budgetCreationApprovedBudgetCode(), 3000, 300);
+
+		testData.put("budgetCode", budgetCreationObj.budgetCreationApprovedBudgetCode().getText());
+		testData.put("budgetType", budgetCreationObj.approvedBudgetType().getText());
+		testData.put("TransactionDate", budgetCreationObj.approvedBudgetDate().getText());
+		System.out.println("Apprpved Budget code :" + testData.get("budgetCode"));
+		System.out.println("Approved Budget Type :" + testData.get("budgetType"));
+		System.out.println("Approved budget Transaction Date :" + testData.get("TransactionDate"));
+	}
+
+//	@Then("^click on report segment button$")
+//    public void click_on_report_segment_button() throws Throwable {
+//
+//    }
+	MASTERREPORT_BudgetCodeReportObj budgetCodeReport = new MASTERREPORT_BudgetCodeReportObj(driver);
+
+	@Then("^click on master report main module$")
+	public void click_on_master_report_main_module() throws Throwable {
+		waitHelper.waitForElementVisible(budgetCodeReport.masterReportMainMenu(), 3000, 300);
+		budgetCodeReport.masterReportMainMenu().click();
+	}
+
+	@Then("^enter budget type in budget code report$")
+	public void enter_budget_type_in_budget_code_report() throws Throwable {
+		waitHelper.waitForElementVisible(budgetCodeReport.masterBudgetBudgetType(), 3000, 300);
+		budgetCodeReport.masterBudgetBudgetType().click();
+		budgetCodeReport.masterBudgetBudgetType().sendKeys(testData.get("budgetType"));
+		budgetCodeReport.masterBudgetBudgetType().sendKeys(Keys.DOWN);
+		budgetCodeReport.masterBudgetBudgetType().sendKeys(Keys.ENTER);
+	}
+
+	@And("^click on temp view near by budget code report sub module$")
+	public void click_on_temp_view_near_by_budget_code_report_sub_module() throws Throwable {
+		waitHelper.waitForElementVisible(budgetCodeReport.masterBudgetReport(), 3000, 300);
+		budgetCodeReport.masterBudgetReport().click();
+	}
+
+	@And("^give transaction date$")
+	public void give_transaction_date() throws Throwable {
+		Month months = null;
+		String[] splittedDate = testData.get("TransactionDate").split("-");
+		String day = splittedDate[0];
+		String month = splittedDate[1];
+		String year = splittedDate[2];
+		switch (month) {
+		case "Jan":
+			months = months.JANUARY;
+			break;
+		case "Feb":
+			months = months.FEBRUARY;
+			break;
+		case "Mar":
+			months = months.MARCH;
+			break;
+		case "Apr":
+			months = months.APRIL;
+			break;
+		case "May":
+			months = months.MAY;
+			break;
+		case "Jun":
+			months = months.JUNE;
+			break;
+		case "Jul":
+			months = months.JULY;
+			break;
+		case "Aug":
+			months = months.AUGUST;
+			break;
+		case "Sep":
+			months = months.SEPTEMBER;
+			break;
+		case "Oct":
+			months = months.OCTOBER;
+			break;
+		case "Nov":
+			months = months.NOVEMBER;
+			break;
+		case "Dec":
+			months = months.DECEMBER;
+			break;
+
+		}
+		String stringMonth = months.toString();
+		String finalMonth = stringMonth.substring(1).toLowerCase();
+		String trmDay=null;
+		System.out.println("Final Month is : "+finalMonth);
+		stringMonth.substring(0, 1);
+		System.out.println("Final Full month:"+stringMonth.substring(0, 1)+finalMonth);
+		Thread.sleep(1000);
+        int dayNo=Integer.parseInt(day);
+        if(dayNo<10)
+        {
+        	System.out.println("Inside day if statement");
+        	 trmDay = day.substring(1);
+        	
+        }
+        else
+        {
+        	trmDay=day.substring(0);
+        }
+        System.out.println("Trim Day is "+trmDay);
+		waitHelper.waitForElementVisible(budgetCodeReport.masterBudgetInputCalendar(), 3000, 300);
+		budgetCodeReport.masterBudgetInputCalendar().click();
+		System.out.println(month + " "+year);
+		driver.findElement(By.xpath("//owl-date-time-calendar/div/div/button")).click();
+		driver.findElement(By.xpath("//td//span[contains(text(),'"+year+"')]")).click();
+		driver.findElement(By.xpath("//td//span[contains(text(),'"+month+"')]")).click();
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("//td[@aria-label='"+stringMonth.substring(0, 1)+finalMonth+" "+trmDay+", "+year+"']/span")).click();
+		
+		
+		
+		
+		
+	}
+	@Then("^click on view button in budget code report$")
+    public void click_on_view_button_in_budget_code_report() throws Throwable {
+        waitHelper.waitForElementVisible(budgetCodeReport.masterBudgetBudgetCodeViewButton(), 3000, 300);
+		budgetCodeReport.masterBudgetBudgetCodeViewButton().click();
+    }
+	@Then("^verify approved budget code is appeared under in master report$")
+	public void verify_approved_budget_code_is_appeared_under_in_master_report() throws Throwable {
+		Thread.sleep(1000);
+		browserHelper.SwitchToWindow(1);
+		Thread.sleep(2000);
+		while(true)
+		{
+			try
+			{
+		      boolean budgetCodeStatus = driver.findElement(By.xpath("//td/div[contains(text(),'"+testData.get("budgetCode")+"')]")).isDisplayed();
+           if(budgetCodeStatus==true)
+           {
+        	   System.out.println(testData.get("budgetCode")+" is visible in budget code report");   
+           }
+		     
+		      break;
+			}
+			catch(NoSuchElementException e)
+			{
+				budgetCodeReport.masterBudgetNextPage().click();
+			}
+		}
+		
+		browserHelper.switchToParentWithChildClose();
+		
+	}
 }

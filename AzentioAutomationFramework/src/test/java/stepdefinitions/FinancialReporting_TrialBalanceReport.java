@@ -200,7 +200,9 @@ public class FinancialReporting_TrialBalanceReport {
     	waithelper.waitForElement(driver, 3000, financialReporting_TrialBalanceReportObj.FinancialReporting_TrialBalanceReport_ViewButton());
     	financialReporting_TrialBalanceReportObj.FinancialReporting_TrialBalanceReport_ViewButton().click();
        Thread.sleep(5000);
-      driver.quit();
+       browserHelper.SwitchToWindow(1);
+       Thread.sleep(1000);
+       browserHelper.switchToParentWithChildClose();
 
     }
     

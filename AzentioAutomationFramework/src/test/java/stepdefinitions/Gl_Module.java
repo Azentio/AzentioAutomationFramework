@@ -119,7 +119,7 @@ public class Gl_Module extends BaseClass{
     }
     @Then("^verify the accounting category created for liability$")
     public void verify_the_accounting_category_created_for_liability() throws Throwable {
-    	 if(driver.findElement(By.xpath("//datatable-body-cell[3]//span[contains(text(),'"+glModuleTestdata.AccoutingCategory2+"')]")).isDisplayed())
+    	 if(driver.findElement(By.xpath("//datatable-body-cell[3]//span[contains(text(),'"+ glModuleTestdata.AccoutingCategory2 +"')]")).isDisplayed())
          {
         	 System.out.println("Accounting catogory is visible ");
          }

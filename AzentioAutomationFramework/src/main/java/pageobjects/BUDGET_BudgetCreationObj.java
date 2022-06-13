@@ -241,4 +241,17 @@ public class BUDGET_BudgetCreationObj {
 	{
 		return budgetCreation_approvedBudgetCode; 
 	}
+	@FindBy(xpath="//app-data-grid//datatable-row-wrapper[1]//datatable-body-cell[4]//span")
+	private WebElement budgetCreation_approvedBudgetType;
+	public WebElement approvedBudgetType()
+	{
+		return budgetCreation_approvedBudgetType; 
+	}
+
+	@FindBy(xpath="//app-data-grid//datatable-row-wrapper[1]//datatable-body-cell[7]//span")
+	private WebElement budgetCreation_approvedBudgetDate;
+	public WebElement approvedBudgetDate()
+	{
+		return budgetCreation_approvedBudgetDate; 
+	}
 }

@@ -78,7 +78,7 @@ public class Budget_BudgetTransfer_BP_BT_UAT_006_007 {
     }
 
     @Then("^fill the form and enter excessive budget amount to transfer$")
-    public void fill_the_form_and_enter_excessive_budget_amount_to_transfer()   {
+    public void fill_the_form_and_enter_excessive_budget_amount_to_transfer() throws InterruptedException   {
     	dropDownHelper = new DropDownHelper(driver);
 		budgetTransferTestDataType = jsonReader.getBudgetTransferdata("Maker");
 		waithelper.waitForElement(driver, 3000, budgetTransferObj.budget_BudgetTransfer_BudgetCodeDropDown());
@@ -133,6 +133,7 @@ public class Budget_BudgetTransfer_BP_BT_UAT_006_007 {
 		javahelper.JavaScriptHelper(driver);
 		String script ="return document.querySelector('ion-toast').shadowRoot.querySelector(\"div[class='toast-message']\")";
 		//document.querySelector('ion-toast').shadowRoot.querySelector("div[class='toast-message']")
+		Thread.sleep(1000);
 		String str = javahelper.executeScript(script).toString();
 		System.out.println(str);
     }

@@ -13,9 +13,9 @@ import utilities.ExtentTestManager;
 		         //monochrome=false, //to make steps in color
 		         plugin = { "pretty",
 				            "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:",
-				            "rerun:ReRunScenarios/FailedReRun.txt"},
+				            "rerun:ReRunScenarios/FailedReRun.txt"}
 //				dryRun = true //to check compilation errors
-		   tags="@KUBS_AR/AP_UAT_013_002TC_02"
+		 ,  tags="@KUBS_AR_AP_UAT_003_008_TC_03"
 
 )
 public class TestApplication extends AbstractTestNGCucumberTests {

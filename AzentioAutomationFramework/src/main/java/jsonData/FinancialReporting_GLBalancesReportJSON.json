@@ -8,21 +8,21 @@
 
 		"GLCode": "IFRS-5000001-EX - Expenses", 
 
-		"GLMonth": "May", 
+		"GLMonth": "Apr", 
 
-		"GLDate": "15", 
+		"GLDate": "10", 
 
-		"GLFullMonth": "May", 
+		"GLFullMonth": "April", 
 
-		"GLYear": "2022", 
+		"GLYear": "2023", 
 
 		 
 
-		"GLToMonth": "Jan", 
+		"GLToMonth": "Apr", 
 
-		"GLToDate": "7", 
+		"GLToDate": "10", 
 
-		"GLFullToMonth": "January", 
+		"GLFullToMonth": "April", 
 
 		"GLToYear": "2023", 
 
@@ -36,12 +36,12 @@
 
 		"GLCodeForMonthlyBalancesReport": "IFRS-5000001-EX - Expenses", 
 
-		"GLMonthForMonthlyBalancesReport": "May", 
+		"GLMonthForMonthlyBalancesReport": "Apr", 
 
-		"GLDateForMonthlyBalancesReport": "7", 
+		"GLDateForMonthlyBalancesReport": "10", 
 
-		"GLFullMonthForMonthlyBalancesReport": "May", 
+		"GLFullMonthForMonthlyBalancesReport": "April", 
 
-		"GLYearForMonthlyBalancesReport": "2022" 
+		"GLYearForMonthlyBalancesReport": "2023" 
 	}
 ]

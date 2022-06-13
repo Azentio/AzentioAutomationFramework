@@ -91,10 +91,10 @@ public class AccountingSetup_ChartOfAccountsDefinition {
 //    	ChartOfAccountsDefinitionObj.accountingSetup_ChartOfAccountsDefinition_ParentGL().sendKeys(ChartOfAccountsDefinitionTestDataType.ParentGL1);
 //    	ChartOfAccountsDefinitionObj.accountingSetup_ChartOfAccountsDefinition_ParentGL().sendKeys(Keys.DOWN);
 //    	ChartOfAccountsDefinitionObj.accountingSetup_ChartOfAccountsDefinition_ParentGL().sendKeys(Keys.ENTER);
-//    	
-//    	waithelper.waitForElement(driver, 3000, ChartOfAccountsDefinitionObj.accountingSetup_ChartOfAccountsDefinition_GLtype());
-//    	ChartOfAccountsDefinitionObj.accountingSetup_ChartOfAccountsDefinition_GLtype().sendKeys(ChartOfAccountsDefinitionTestDataType.GL_Type1);
-//    	ChartOfAccountsDefinitionObj.accountingSetup_ChartOfAccountsDefinition_GLtype().sendKeys(Keys.ENTER);
+    	
+    	waithelper.waitForElement(driver, 3000, ChartOfAccountsDefinitionObj.accountingSetup_ChartOfAccountsDefinition_GLtype());
+    	ChartOfAccountsDefinitionObj.accountingSetup_ChartOfAccountsDefinition_GLtype().sendKeys(ChartOfAccountsDefinitionTestDataType.GL_Type1);
+    	ChartOfAccountsDefinitionObj.accountingSetup_ChartOfAccountsDefinition_GLtype().sendKeys(Keys.ENTER);
 //    	
 //    	waithelper.waitForElement(driver, 3000, ChartOfAccountsDefinitionObj.accountingSetup_ChartOfAccountsDefinition_Description());
 //    	ChartOfAccountsDefinitionObj.accountingSetup_ChartOfAccountsDefinition_Description().click();

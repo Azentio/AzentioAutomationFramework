@@ -212,7 +212,7 @@ public class BUDGET_SupplementaryBudgetObj {
 	}
 
 	// Submit by maker
-	@FindBy(xpath = "//ion-row/ion-col/ion-button")
+	@FindBy(xpath = "//ion-button[contains(text(),'Submit')]")
 	private WebElement budget_SupplementaryBudget_SubmitByMaker;
 
 	public WebElement budget_SupplementaryBudget_SubmitByMaker() {

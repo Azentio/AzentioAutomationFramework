@@ -81,6 +81,7 @@ public class BUDGET_BudgetTransferUAT extends BaseClass {
 			javahelper.JavaScriptHelper(driver);
 			String script = "return document.querySelector('ion-toast').shadowRoot.querySelector(\"div[class='toast-message']\")";
 			// document.querySelector('ion-toast').shadowRoot.querySelector("div[class='toast-message']")
+			Thread.sleep(1000);
 			String str = javahelper.executeScript(script).toString();
 			System.out.println(str);
 	    	

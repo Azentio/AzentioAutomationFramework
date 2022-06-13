@@ -1868,7 +1868,7 @@ public class ARAP_AccountsReceivable_AccountsPayable extends BaseClass {
 		// -------CHECKBOX CLICK----------------//
 		String befr_xpath = "//div[contains(text(),'";
 		String aftr_xpath = "')]//ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell[3]//ion-checkbox";
-		waitHelper.waitForElement(driver, 2000, driver.findElement(By.xpath(befr_xpath + ADVNumber + aftr_xpath)));
+		waitHelper.waitForElement(driver, 5000, driver.findElement(By.xpath(befr_xpath + ADVNumber + aftr_xpath)));
 		driver.findElement(By.xpath(befr_xpath + ADVNumber + aftr_xpath)).click();
 	}
 
@@ -2438,9 +2438,7 @@ public class ARAP_AccountsReceivable_AccountsPayable extends BaseClass {
 				javaScriptHelper.scrollIntoView(arapObj.accountsPayablePayementSettlementNextRecord());
 				arapObj.accountsPayablePayementSettlementNextRecord().click();
 			}
-			if (i == 299) {
-				Assert.fail();
-			}
+			
 		}
 	}
 

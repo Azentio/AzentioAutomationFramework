@@ -319,6 +319,21 @@ And get the budget code for allocation
   Then click the Two Direction Icon
   And click to the Budget
   Then click on the Budget Sub module Budget Request and Allocation Near Eye Icon
+  
+  
+  @KUBS_BP_UAT_001_007
+  Scenario: Check created budget code in the report
+Given navigate to given url and login with maker credentials
+Then click on budget configuration menu
+Then click on eye icon which is near by budget definition submenu
+Then get the budget code budget type and transaction date
+Then click on report segment button
+Then click on master report main module 
+And click on temp view near by budget code report sub module 
+Then enter budget type in budget code report
+And give transaction date 
+Then click on view button in budget code report
+Then verify approved budget code is appeared under in master report
 #Budget Request AndAllocation
 @KUBS_UAT_Monthly_KUBS_BP_UAT_002_001
 

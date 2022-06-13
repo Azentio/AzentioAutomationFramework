@@ -128,6 +128,36 @@ Then Click on Table Row First Eye Icon
 @KUBS_GL_UAT_002_006
 Scenario: Delete the Accunting Book if COA is not created
 Given Navigate to Azentio Kubs
+And Click on Accounting Setup module
+Then Click sub module Accounting book definition
+And Click on Add icon
+Then Choose the Template Type of Base Template
+And Enter Book Name 
+Then Select system date as Effective date
+And Choose the Book Type what you Need
+Then Enter the Remark
+And Save the Record
+Then click on the Maker icon button
+And click on the Record submit
+Given Azentio Url login as Reviewer
+Then Click on Reviewer Notification icon
+And Click on to Reviewer Action button
+Then Click on to Approve button in Reviewer
+And Submit the record in reviewer
+Given Azentio Url login as checker page
+Then click on the security management
+And Click on the sub module open pool near Edit icon
+Then Click the claim option icon
+And Click on the checker notification icon
+Then click the checker action icon
+And Approve the Record in checker
+Then Submit the Record in checker
+Given Navigate to Azentio Kubs
+And Click on Accounting Setup module
+Then Click sub module Accounting book definition
+Then Click on Table Row First Eye Icon
+And System should Generate unique code
+Given Navigate to Azentio Kubs
 When user click the Accounting setup
 And click the accounting book eye icon
 And get the book name
@@ -169,6 +199,36 @@ Then verify the bill is inavtive or not
 
 @KUBS_GL_UAT_002_008
 Scenario: De-activate the account book
+Given Navigate to Azentio Kubs
+And Click on Accounting Setup module
+Then Click sub module Accounting book definition
+And Click on Add icon
+Then Choose the Template Type of Base Template
+And Enter Book Name 
+Then Select system date as Effective date
+And Choose the Book Type what you Need
+Then Enter the Remark
+And Save the Record
+Then click on the Maker icon button
+And click on the Record submit
+Given Azentio Url login as Reviewer
+Then Click on Reviewer Notification icon
+And Click on to Reviewer Action button
+Then Click on to Approve button in Reviewer
+And Submit the record in reviewer
+Given Azentio Url login as checker page
+Then click on the security management
+And Click on the sub module open pool near Edit icon
+Then Click the claim option icon
+And Click on the checker notification icon
+Then click the checker action icon
+And Approve the Record in checker
+Then Submit the Record in checker
+Given Navigate to Azentio Kubs
+And Click on Accounting Setup module
+Then Click sub module Accounting book definition
+Then Click on Table Row First Eye Icon
+And System should Generate unique code
 Given Navigate to Azentio Kubs
 When user click the Accounting setup
 And click the accounting book eye icon
@@ -461,9 +521,14 @@ Then Submit record
 Then Open Reviewer account
 And Click on notification
 Then Approve the record which we submitted from maker stage
-Then Go to Checker account
-And Clam the record
-Then Click on notification and approve the record
+Given Azentio Url login as checker page
+Then click on the security management
+And Click on the sub module open pool near Edit icon
+Then Click the claim option icon
+And Click on the checker notification icon
+Then click the checker action icon
+And Approve the Record in checker
+Then Submit the Record in checker
 Given Navigate to URL and user should login as a maker
 Then Click on the Finance
 Then click on accounting setup
@@ -486,9 +551,14 @@ Then Submit record
 Then Open Reviewer account
 And Click on notification
 Then Approve the record which we submitted from maker stage
-Then Go to Checker account
-And Clam the record
-Then Click on notification and approve the record
+Given Azentio Url login as checker page
+Then click on the security management
+And Click on the sub module open pool near Edit icon
+Then Click the claim option icon
+And Click on the checker notification icon
+Then click the checker action icon
+And Approve the Record in checker
+Then Submit the Record in checker
 Given Navigate to URL and user should login as a maker
 Then Click on the Finance
 Then click on accounting setup
@@ -555,7 +625,7 @@ Given User should go to the kubs url and login as a maker user
 And user should navigate to accounting setup menu
 Then click on eye button of chart of accounts definition submenu
 Then click on search button
-Then search COA name to modify the coa 
+#Then search COA name to modify the coa 
 Then click on pencil button to modify the COA
 Then modify the COA details
 Then Save and submit the modified record of COA
@@ -601,7 +671,7 @@ Given User should go to the kubs url and login as a maker user
 And user should navigate to accounting setup menu
 Then click on eye button of chart of accounts definition submenu
 Then click on search button
-    #Then search COA name to modify the coa
+#Then search COA name to modify the coa
 Then click on pencil button to modify the COA
 Then Inactive the active Chart of account
 Then Save the Record and submit the modified record of COA
@@ -614,7 +684,6 @@ Then Click on open pool in checker
 And Click on claim button in checker
 And capture claimed status
 Then click on notification in checker
-Then checker should approved the COA record
 Then checker should approved the COA record
     
 @KUBS_GL_UAT_005_009

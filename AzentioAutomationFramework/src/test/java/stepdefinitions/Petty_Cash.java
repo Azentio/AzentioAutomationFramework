@@ -345,6 +345,7 @@ public class Petty_Cash extends BaseClass {
 	public void choose_multiple_expense_code() throws Throwable {
 		waitHelper.waitForElement(driver, 2000, pettyCashObj.Reimbursement_expenseCode1());
 		pettyCashObj.Reimbursement_expenseCode1().click();
+		waitHelper.waitForElement(driver, 2000, pettyCashObj.Reimbursement_Expense2());
 		pettyCashObj.Reimbursement_Expense2().click();
 	}
 

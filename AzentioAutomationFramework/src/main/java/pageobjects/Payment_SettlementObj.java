@@ -33,11 +33,11 @@ public class Payment_SettlementObj {
     private WebElement billListViewCheckBox2;
     @FindBy(xpath="//datatable-row-wrapper[1]/datatable-body-row[1]/div/datatable-body-cell[15]/div")
     private WebElement getNetPayableAmountinBillList;
-    @FindBy(xpath="//datatable-row-wrapper[2]/datatable-body-row[1]/div/datatable-body-cell[12]/div")
+    @FindBy(xpath="//datatable-row-wrapper[1]/datatable-body-row[1]/div/datatable-body-cell[12]/div")
     private WebElement getNetAdjustedAmountList2;
-    @FindBy(xpath="//datatable-row-wrapper[2]/datatable-body-row[1]/div/datatable-body-cell[13]/div")
+    @FindBy(xpath="//datatable-row-wrapper[1]/datatable-body-row[1]/div/datatable-body-cell[13]/div")
     private WebElement tdspercentfromList2;
-    @FindBy(xpath="//datatable-row-wrapper[2]/datatable-body-row[1]/div/datatable-body-cell[14]/div")
+    @FindBy(xpath="//datatable-row-wrapper[1]/datatable-body-row[1]/div/datatable-body-cell[14]/div")
     private WebElement tdsvaluefromlist2;
     @FindBy(xpath="(//datatable-pager/ul/li[8]/a)[2]")
     private WebElement nextPageInListView;

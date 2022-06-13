@@ -10,40 +10,32 @@ And select one record from advances
 Then go to ar ap adjustment module
 And click on Add Icon
 And Fill The form for advance adjustment
-#And click notification button
-#Then choose first record in the notification record in GRN stage
-#And click on Submit button 
-#Then enter remark in confirmation alert
-#Then click on submit button in alert
-#And capture the reviewer ID in pop up which is open when we submit our record in maker stage
-#Then logout from maker
-#And login with reviewer credentials
-#Then click on notification button
-#And select our record in notification records using reference ID
-#Then Approve the record from reviewer
-#And enter the remark in alert
-#Then click on submit in alert
-#Then verify the approval status of the record
-#And logout from reviewer
-#Then login as a checker 
-#And click on security management menu in checker
-#Then click on action button under security management menu
-#And select our record and clime using reference ID
-#Then click on Notification button
-#Then select our record in notification records by the help of reference ID
-#And click on approve button in checker stage
-#Then give alert remark 
-#Then click on submit button on alert
-#And verify the record got approved from checker
-#Then logout from checker 
-Then Click on Update Deposited Cheque Notification
-And Select and Submit the Update Deposited Cheque record
-		Then log in to the reviewer account
-		Then click on the Notification select the Cheque record and Approve
-		Then log in to the Checker Account
-		And then checker claim the record
-		Then click on the checker Notification 
-		And select the Cheque record and Approve by checker
+And click notification button
+Then choose first record in the notification record in GRN stage
+And click on Submit button 
+Then enter remark in confirmation alert
+Then click on submit button in alert
+And capture the reviewer ID in pop up which is open when we submit our record in maker stage
+Then logout from maker
+And login with reviewer credentials
+Then click on notification button
+And select our record in notification records using reference ID
+Then Approve the record from reviewer
+And enter the remark in alert
+Then click on submit in alert
+Then verify the approval status of the record
+And logout from reviewer
+Then login as a checker 
+And click on security management menu in checker
+Then click on action button under security management menu
+And select our record and clime using reference ID
+Then click on Notification button
+Then select our record in notification records by the help of reference ID
+And click on approve button in checker stage
+Then give alert remark 
+Then click on submit button on alert
+And verify the record got approved from checker
+Then logout from checker 
 Given Maker Navigate to UAT URL login
 And click on accounts Payable module
 And Go to payment settlement module
@@ -67,41 +59,33 @@ And fill the form for settlement
 
 And Save the form
 
-#And click notification button
-#Then choose first record in the notification record
-#And click on Submit button 
-#Then enter remark in confirmation alert
-#Then click on submit button in alert
-#And capture the reviewer ID in pop up which is open when we submit our record in maker stage
-#Then logout from maker
-#And login with reviewer credentials
-#Then click on notification button
-#And select our record in notification records using reference ID
-#Then Approve the record from reviewer
-#And enter the remark in alert
-#Then click on submit in alert
-#Then verify the approval status of the record
-#And logout from reviewer
-#Then login as a checker 
-#And click on security management menu in checker
-#Then click on action button under security management menu
-#And select our record and clime using reference ID
-#Then click on Notification button
-#Then select our record in notification records by the help of reference ID
-#And click on approve button in checker stage
-#Then give alert remark 
-#Then click on submit button on alert
-#And verify the record got approved from checker
-#Then logout from checker 
+And click notification button
+Then choose first record in the notification record
+And click on Submit button 
+Then enter remark in confirmation alert
+Then click on submit button in alert
+And capture the reviewer ID in pop up which is open when we submit our record in maker stage
+Then logout from maker
+And login with reviewer credentials
+Then click on notification button
+And select our record in notification records using reference ID
+Then Approve the record from reviewer
+And enter the remark in alert
+Then click on submit in alert
+Then verify the approval status of the record
+And logout from reviewer
+Then login as a checker 
+And click on security management menu in checker
+Then click on action button under security management menu
+And select our record and clime using reference ID
+Then click on Notification button
+Then select our record in notification records by the help of reference ID
+And click on approve button in checker stage
+Then give alert remark 
+Then click on submit button on alert
+And verify the record got approved from checker
+Then logout from checker 
 
-Then Click on Update Deposited Cheque Notification
-And Select and Submit the Update Deposited Cheque record
-		Then log in to the reviewer account
-		Then click on the Notification select the Cheque record and Approve
-		Then log in to the Checker Account
-		And then checker claim the record
-		Then click on the checker Notification 
-		And select the Cheque record and Approve by checker
 		
 Given Maker Navigate to UAT URL login
 And goto arap adjustment main module
@@ -262,7 +246,7 @@ And Give the Advance Adjustment Ref No and Validate
   And choose the valid date
   And Enter the description
   And Click save button
-  And pop up messages displayed and  click yes
+  And pop up messages displayed and click yes
   Then verify bill is proceed for payment
  #p
  @KUBS_AR/AP_UAT_004_001TC_05  @AR/AP
@@ -583,9 +567,50 @@ Given Maker Navigate to UAT URL login
 And click on accounts Payable module
 And goto invoice booking module
 And click on Add Icon
-And fill the mendatory field for invoice booking module module
+And fill the mendatory field for invoice booking for expenseType invoice
 And goto invoice bill booking temp view and select the record
-And fill the second tab details details
+And fill the second tab for expencess details
+Then Click on Update Deposited Cheque Notification
+And Select and Submit the Update Deposited Cheque record
+		Then log in to the reviewer account
+		Then click on the Notification select the Cheque record and Approve
+		Then log in to the Checker Account
+		And then checker claim the record
+		Then click on the checker Notification 
+		And select the Cheque record and Approve by checker
+
+Given Maker Navigate to UAT URL login
+And click on accounts Payable module
+And goto invoice booking module
+And select the approved record from invoice bill booking 
+
+And goto accouts receivable module
+And goto credit notet module
+And click on Add Icon
+And Fill the form for credit note
+Then Click on Update Deposited Cheque Notification
+And Select and Submit the Update Deposited Cheque record
+		Then log in to the reviewer account
+		Then click on the Notification select the Cheque record and Approve
+		Then log in to the Checker Account
+		And then checker claim the record
+		Then click on the checker Notification 
+		And select the Cheque record and Approve by checker
+Given Maker Navigate to UAT URL login
+And click on accounts Payable module
+And Go to payment settlement module
+And click on Add Icon
+And fill the mendatory field to check the the net payable ammount
+#p
+@KUBS_AR_AP_UAT_004_005_TC_02  @AR/AP
+Scenario: Verify TDS % & amount is correctly calculated & displayed for the bill
+Given Maker Navigate to UAT URL login
+And click on accounts Payable module
+And goto invoice booking module
+And click on Add Icon
+And fill the mendatory field for invoice booking for expenseType invoice
+And goto invoice bill booking temp view and select the record
+And fill the second tab for expencess details
 And click notification button
 Then choose first record in the notification record in GRN stage
 And click on Submit button 
@@ -644,47 +669,6 @@ And verify the record got approved from checker
 Then logout from checker
 
 And login with Maker ID
-And click on accounts Payable module
-And Go to payment settlement module
-And click on Add Icon
-And fill the mendatory field to check
-#p
-@KUBS_AR_AP_UAT_004_005_TC_02  @AR/AP
-Scenario: Verify TDS % & amount is correctly calculated & displayed for the bill
-Given Maker Navigate to UAT URL login
-And click on accounts Payable module
-And goto invoice booking module
-And click on Add Icon
-And fill the mendatory field for invoice booking for expenseType invoice
-And goto invoice bill booking temp view and select the record
-And fill the second tab for expencess details
-Then Click on Update Deposited Cheque Notification
-And Select and Submit the Update Deposited Cheque record
-		Then log in to the reviewer account
-		Then click on the Notification select the Cheque record and Approve
-		Then log in to the Checker Account
-		And then checker claim the record
-		Then click on the checker Notification 
-		And select the Cheque record and Approve by checker
-Given Maker Navigate to UAT URL login
-And click on accounts Payable module
-And goto invoice booking module
-And select the approved record from invoice bill booking 
-
-And goto accouts receivable module
-And goto credit notet module
-And click on Add Icon
-And Fill the form for credit note
-And click notification button
-Then Click on Update Deposited Cheque Notification
-And Select and Submit the Update Deposited Cheque record
-		Then log in to the reviewer account
-		Then click on the Notification select the Cheque record and Approve
-		Then log in to the Checker Account
-		And then checker claim the record
-		Then click on the checker Notification 
-		And select the Cheque record and Approve by checker
-Given Maker Navigate to UAT URL login
 And click on accounts Payable module
 And Go to payment settlement module
 And click on Add Icon
