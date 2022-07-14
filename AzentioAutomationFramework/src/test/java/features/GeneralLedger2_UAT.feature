@@ -9,16 +9,33 @@ Then Click on Legal Entity GL Configuration Eye Icon
 Then Click on Legal Entity GL Configuration Add button
 Then Fill Legal Entity GL Configuration fields
 Then save the Legal Entity GL Configuration record
-
-Then Click on Update Deposited Cheque Notification
-And Select and Submit the Update Deposited Cheque record
-Then log in to the reviewer account
-Then click on the Notification select the Cheque record and Approve
-Then log in to the Checker Account
-And then checker claim the record
-Then click on the checker Notification 
-And select the Cheque record and Approve by checker
-Given Maker Navigate to UAT URL login
+And click notification button
+Then choose first record in the notification record
+And click on Submit button 
+Then enter remark in confirmation alert
+Then click on submit button in alert
+And capture the reviewer ID in pop up which is open when we submit our record in maker stage
+Then logout from maker
+And login with reviewer credentials
+Then click on notification button
+And select our record in notification records using reference ID
+Then Approve the record from reviewer
+And enter the remark in alert
+Then click on submit in alert
+Then verify the approval status of the record
+And logout from reviewer
+Then login as a checker 
+And click on security management menu in checker
+Then click on action button under security management menu
+And select our record and clime using reference ID
+Then click on Notification button
+Then select our record in notification records by the help of reference ID
+And click on approve button in checker stage
+Then give alert remark 
+Then click on submit button on alert
+And verify the record got approved from checker
+Then logout from checker
+And login with Maker ID
 Then Click on Direction Left
 Then Click on General ledger configuration
 Then Click on Legal Entity GL Configuration Eye Icon
@@ -33,16 +50,33 @@ Then Click on Legal Entity GL Configuration Eye Icon
 Then Click on Legal Entity GL Configuration Add button
 Then Fill Legal Entity GL Configuration fields
 Then save the Legal Entity GL Configuration record
-
-Then Click on Update Deposited Cheque Notification
-And Select and Submit the Update Deposited Cheque record
-Then log in to the reviewer account
-Then click on the Notification select the Cheque record and Approve
-Then log in to the Checker Account
-And then checker claim the record
-Then click on the checker Notification 
-And select the Cheque record and Approve by checker
-Given Maker Navigate to UAT URL login
+And click notification button
+Then choose first record in the notification record
+And click on Submit button 
+Then enter remark in confirmation alert
+Then click on submit button in alert
+And capture the reviewer ID in pop up which is open when we submit our record in maker stage
+Then logout from maker
+And login with reviewer credentials
+Then click on notification button
+And select our record in notification records using reference ID
+Then Approve the record from reviewer
+And enter the remark in alert
+Then click on submit in alert
+Then verify the approval status of the record
+And logout from reviewer
+Then login as a checker 
+And click on security management menu in checker
+Then click on action button under security management menu
+And select our record and clime using reference ID
+Then click on Notification button
+Then select our record in notification records by the help of reference ID
+And click on approve button in checker stage
+Then give alert remark 
+Then click on submit button on alert
+And verify the record got approved from checker
+Then logout from checker
+And login with Maker ID
 Then Click on Direction Left
 Then Click on General ledger configuration
 Then Click on Legal Entity GL Configuration Eye Icon
@@ -59,15 +93,33 @@ Then Click on Journal Voucher AddButton
 Then Fill the Mandatory fields of Journal Voucher
 Then Add Debit credit record 
 Then save the Journal Voucher record
-Then Click on Update Deposited Cheque Notification
-And Select and Submit the Update Deposited Cheque record
-Then log in to the reviewer account
-Then click on the Notification select the Cheque record and Approve
-Then log in to the Checker Account
-And then checker claim the record
-Then click on the checker Notification 
-And select the Cheque record and Approve by checker
-Given Maker Navigate to UAT URL login
+And click notification button
+Then choose first record in the notification record
+And click on Submit button 
+Then enter remark in confirmation alert
+Then click on submit button in alert
+And capture the reviewer ID in pop up which is open when we submit our record in maker stage
+Then logout from maker
+And login with reviewer credentials
+Then click on notification button
+And select our record in notification records using reference ID
+Then Approve the record from reviewer
+And enter the remark in alert
+Then click on submit in alert
+Then verify the approval status of the record
+And logout from reviewer
+Then login as a checker 
+And click on security management menu in checker
+Then click on action button under security management menu
+And select our record and clime using reference ID
+Then click on Notification button
+Then select our record in notification records by the help of reference ID
+And click on approve button in checker stage
+Then give alert remark 
+Then click on submit button on alert
+And verify the record got approved from checker
+Then logout from checker
+And login with Maker ID
 Then Click on Direction icon
 Then Click on General Ledger Transaction Field
 Then Click on Journal Voucher EyeIcon
@@ -82,16 +134,33 @@ Then Click on Legal Entity GL Configuration Eye Icon
 Then Click on Legal Entity GL Configuration Add button
 Then Fill Legal Entity GL Configuration fields
 Then save the Legal Entity GL Configuration record
-
-Then Click on Update Deposited Cheque Notification
-And Select and Submit the Update Deposited Cheque record
-Then log in to the reviewer account
-Then click on the Notification select the Cheque record and Approve
-Then log in to the Checker Account
-And then checker claim the record
-Then click on the checker Notification 
-And select the Cheque record and Approve by checker
-Given Maker Navigate to UAT URL login
+And click notification button
+Then choose first record in the notification record
+And click on Submit button 
+Then enter remark in confirmation alert
+Then click on submit button in alert
+And capture the reviewer ID in pop up which is open when we submit our record in maker stage
+Then logout from maker
+And login with reviewer credentials
+Then click on notification button
+And select our record in notification records using reference ID
+Then Approve the record from reviewer
+And enter the remark in alert
+Then click on submit in alert
+Then verify the approval status of the record
+And logout from reviewer
+Then login as a checker 
+And click on security management menu in checker
+Then click on action button under security management menu
+And select our record and clime using reference ID
+Then click on Notification button
+Then select our record in notification records by the help of reference ID
+And click on approve button in checker stage
+Then give alert remark 
+Then click on submit button on alert
+And verify the record got approved from checker
+Then logout from checker
+And login with Maker ID
 Then Click on Direction Left
 Then Click on General ledger configuration
 Then Click on Legal Entity GL Configuration Eye Icon
@@ -110,16 +179,33 @@ Then Click on Journal Voucher AddButton
 Then Fill the Mandatory fields of Journal Voucher
 Then Add one Debit multiple credit record 
 Then save the Journal Voucher record
-
-Then Click on Update Deposited Cheque Notification
-And Select and Submit the Update Deposited Cheque record
-Then log in to the reviewer account
-Then click on the Notification select the Cheque record and Approve
-Then log in to the Checker Account
-And then checker claim the record
-Then click on the checker Notification 
-And select the Cheque record and Approve by checker
-Given Maker Navigate to UAT URL login
+And click notification button
+Then choose first record in the notification record
+And click on Submit button 
+Then enter remark in confirmation alert
+Then click on submit button in alert
+And capture the reviewer ID in pop up which is open when we submit our record in maker stage
+Then logout from maker
+And login with reviewer credentials
+Then click on notification button
+And select our record in notification records using reference ID
+Then Approve the record from reviewer
+And enter the remark in alert
+Then click on submit in alert
+Then verify the approval status of the record
+And logout from reviewer
+Then login as a checker 
+And click on security management menu in checker
+Then click on action button under security management menu
+And select our record and clime using reference ID
+Then click on Notification button
+Then select our record in notification records by the help of reference ID
+And click on approve button in checker stage
+Then give alert remark 
+Then click on submit button on alert
+And verify the record got approved from checker
+Then logout from checker
+And login with Maker ID
 Then Click on Direction icon
 Then Click on General Ledger Transaction Field
 Then Click on Journal Voucher EyeIcon
@@ -148,15 +234,33 @@ Then Click on General Ledger Transaction Field
 Then Click on Journal Voucher Reversal EyeIcon
 Then Click on Journal Voucher Reversal Pencil Icon
 Then save the Journal Voucher record
-Then Click on Update Deposited Cheque Notification
-And Select and Submit the Update Deposited Cheque record
-Then log in to the reviewer account
-Then click on the Notification select the Cheque record and Approve
-Then log in to the Checker Account
-And then checker claim the record
-Then click on the checker Notification 
-And select the Cheque record and Approve by checker
-Given Maker Navigate to UAT URL login
+And click notification button
+Then choose first record in the notification record
+And click on Submit button 
+Then enter remark in confirmation alert
+Then click on submit button in alert
+And capture the reviewer ID in pop up which is open when we submit our record in maker stage
+Then logout from maker
+And login with reviewer credentials
+Then click on notification button
+And select our record in notification records using reference ID
+Then Approve the record from reviewer
+And enter the remark in alert
+Then click on submit in alert
+Then verify the approval status of the record
+And logout from reviewer
+Then login as a checker 
+And click on security management menu in checker
+Then click on action button under security management menu
+And select our record and clime using reference ID
+Then click on Notification button
+Then select our record in notification records by the help of reference ID
+And click on approve button in checker stage
+Then give alert remark 
+Then click on submit button on alert
+And verify the record got approved from checker
+Then logout from checker
+And login with Maker ID
 Then Click on Direction icon
 Then Click on General Ledger Transaction Field
 Then Click on Journal Voucher Reversal EyeIcon
@@ -308,6 +412,7 @@ Then verify that available balance should equal to closing net balance in Gl bal
 
 Scenario: Check report for GL monthly balances.
 Given Maker Navigate to UAT URL login
+And click on tool icon
 Then click on report segment button
 Then click on Financial reporting button
 Then click on GL monthly balances 
@@ -323,6 +428,7 @@ Scenario: Check report for Financial Transaction
 					The report should display all the details for transaction.
 					
 Given Maker Navigate to UAT URL login
+And click on tool icon
 Then click on report segment button
 Then click on Financial reporting button
 Then click on Financial Transaction Report
@@ -363,7 +469,8 @@ Then verify the approved invoicebill number is available in report
     And user should navigate to financial reporting menu
     Then click on temp grid button of Trial Balance report
     And fill the required field of Trial Balance report based on leaf GL
-    Then click on view button to view the report of Trial balance
+    And click on view button in trial balance report 
+  #  Then click on view button to view the report of Trial balance
     And check the trial balance based on the leaf gl is available
     
   @KUBS_GL2_UAT_008_010 @Report @GL2
@@ -380,6 +487,7 @@ Then verify the approved invoicebill number is available in report
 
 Scenario: System should display the balancesheet report  
 Given Maker Navigate to UAT URL login
+And click on tool icon
 Then click on report segment button
 Then click on Financial reporting button
 Then click on balancesheet report
@@ -393,6 +501,7 @@ Then verify the Record available in the report
 
 Scenario: System should display the Cashflow statement report  
 Given Maker Navigate to UAT URL login
+And click on tool icon
 Then click on report segment button
 Then click on Financial reporting button
 Then click on Cashflow statement report
@@ -405,6 +514,7 @@ Then verify the Record available in report
 
 Scenario: System should display the Income statement report  
 Given Maker Navigate to UAT URL login
+And click on tool icon
 Then click on report segment button
 Then click on Financial reporting button
 Then click on Income statement report

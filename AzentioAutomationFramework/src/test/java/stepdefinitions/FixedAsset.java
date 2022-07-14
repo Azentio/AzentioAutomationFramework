@@ -30,6 +30,7 @@ import testDataType.BUDGET_BudgetCreationTestDataType;
 import testDataType.BUDGET_BudgetDefinitionTestDataType;
 import testDataType.BUDGET_BudgetTransferTestDataType;
 import testDataType.FixedAssetTestDataType;
+import testDataType.FixedAsset_AssetCreationTestDataType;
 import testDataType.InventoryManagementTestDataType;
 import utilities.ExtentTestManager;
 
@@ -50,6 +51,7 @@ public class FixedAsset {
 	JsonDataReaderWriter reader = new JsonDataReaderWriter();
 	JsonDataReaderWriter jsonWriter = new JsonDataReaderWriter();
 	FixedAssetTestDataType fixedAssetTestDataType = new FixedAssetTestDataType();
+	FixedAsset_AssetCreationTestDataType assetCreation =jsonReader.getAssetCreationByName("Maker");
 	InventoryManagamentObj inventoryManagamentObj = new InventoryManagamentObj(driver);
 	InventoryManagementTestDataType inventoryManagementTestDataType = new InventoryManagementTestDataType();
 	ConfigFileReader configFileReader = new ConfigFileReader();
@@ -77,14 +79,14 @@ public class FixedAsset {
 
 //	    @Then("^Click on the Direction$")
 //	    public void click_on_the_direction() throws Throwable {
-//	    	waithelper.waitForElement(driver, 2000, budgetTransferObj.budget_BudgetTransfer_DirectionIcon());
+//	    	waithelper.waitForElementToVisisbleWithFluentWait(driver, budgetTransferObj.budget_BudgetTransfer_DirectionIcon());
 //			budgetTransferObj.budget_BudgetTransfer_DirectionIcon().click();
 //
 //	    }
 
 	    @Then("^Click on Fixed Asset$")
 	    public void click_on_fixed_asset() throws Throwable {
-	    	waithelper.waitForElement(driver, 2000,fixedAssetObj.fixedAsset_Button());
+	    	waithelper.waitForElementToVisibleWithFluentWait(driver,fixedAssetObj.fixedAsset_Button(),60,5);
 	    	fixedAssetObj.fixedAsset_Button().click();
 	    }
 
@@ -101,17 +103,17 @@ public class FixedAsset {
 	    @Then("^Fill Form$")
 	    public void fill_form() throws Throwable {
 	    	fixedAssetTestDataType= jsonReader.getFixedAssetByName("Maker");
-	    	waithelper.waitForElement(driver, 2000,fixedAssetObj.fixedAsset_AssetCreation_BranchCode_Textbox());
+	    	waithelper.waitForElementToVisibleWithFluentWait(driver,fixedAssetObj.fixedAsset_AssetCreation_BranchCode_Textbox(),60,5);
 	    	fixedAssetObj.fixedAsset_AssetCreation_BranchCode_Textbox().click();
 	    	fixedAssetObj.fixedAsset_AssetCreation_BranchCode_Textbox().sendKeys(fixedAssetTestDataType.BranchCode);
 	    	fixedAssetObj.fixedAsset_AssetCreation_BranchCode_Textbox().sendKeys(Keys.ENTER);
 	    	
-	    	waithelper.waitForElement(driver, 2000,fixedAssetObj.fixedAsset_AssetCreation_AssetCode_Textbox());
+	    	waithelper.waitForElementToVisibleWithFluentWait(driver,fixedAssetObj.fixedAsset_AssetCreation_AssetCode_Textbox(),60,5);
 	    	fixedAssetObj.fixedAsset_AssetCreation_AssetCode_Textbox().click();
-	    	fixedAssetObj.fixedAsset_AssetCreation_AssetCode_Textbox().sendKeys(fixedAssetTestDataType.AssetCode);
+	    	fixedAssetObj.fixedAsset_AssetCreation_AssetCode_Textbox().sendKeys(assetCreation.AssetCode);
 	    	fixedAssetObj.fixedAsset_AssetCreation_AssetCode_Textbox().sendKeys(Keys.ENTER);	
 	    	
-	    	waithelper.waitForElement(driver, 2000,fixedAssetObj.fixedAsset_AssetCreation_BillReferenceNumber_Textbox());
+	    	waithelper.waitForElementToVisibleWithFluentWait(driver,fixedAssetObj.fixedAsset_AssetCreation_BillReferenceNumber_Textbox(),60,5);
 	    	fixedAssetObj.fixedAsset_AssetCreation_BillReferenceNumber_Textbox().click();
 	    	fixedAssetObj.fixedAsset_AssetCreation_BillReferenceNumber_Textbox().sendKeys(fixedAssetTestDataType.BillReferenceNo);
 	    	fixedAssetObj.fixedAsset_AssetCreation_BillReferenceNumber_Textbox().sendKeys(Keys.ENTER);
@@ -120,13 +122,13 @@ public class FixedAsset {
 
 	    @Then("^Save the filled form$")
 	    public void save_the_filled_form() throws Throwable {
-	    	waithelper.waitForElement(driver, 2000,fixedAssetObj.fixedAsset_AssetCreation_SaveButton());
+	    	waithelper.waitForElementToVisibleWithFluentWait(driver,fixedAssetObj.fixedAsset_AssetCreation_SaveButton(),60,5);
 	    	fixedAssetObj.fixedAsset_AssetCreation_SaveButton().click();
 	    	}
 
 //	    @Then("^Click on the Notification$")
 //	    public void click_on_the_notification() throws Throwable {
-//	    	waithelper.waitForElement(driver, 3000, budgetTransferObj.budget_BudgetTransfer_NotificationIcon());
+//	    	waithelper.waitForElementToVisisbleWithFluentWait(driver,  budgetTransferObj.budget_BudgetTransfer_NotificationIcon());
 //			budgetTransferObj.budget_BudgetTransfer_NotificationIcon().click();
 //
 //	    }
@@ -134,20 +136,20 @@ public class FixedAsset {
 	  /*  @Then("^Select the record which we saved$")
 	    public void select_the_record_which_we_saved() throws Throwable {
 	    	// Reference
-			waithelper.waitForElement(driver, 2000, budgetTransferObj.budget_BudgetTransfer_FirstReferenceId());
+			waithelper.waitForElementToVisisbleWithFluentWait(driver, budgetTransferObj.budget_BudgetTransfer_FirstReferenceId());
 			String id = budgetTransferObj.budget_BudgetTransfer_FirstReferenceId().getText();
 			jsonWriter.addReferanceData(id);
 			System.out.println("Reference ID:" + id);
 			for (int i = 1; i <= 35; i++) {
 				try {
-					waithelper.waitForElement(driver, 3000, driver.findElement(By.xpath("//span[contains(text(),'" + jsonWriter.readReferancedata() + "')]")));
+					waithelper.waitForElementToVisisbleWithFluentWait(driver,  driver.findElement(By.xpath("//span[contains(text(),'" + jsonWriter.readReferancedata() + "')]")));
 					WebElement referanceID = driver.findElement(By.xpath("//span[contains(text(),'" + jsonWriter.readReferancedata() + "')]"));
 					referanceID.click();
 					System.out.println(referanceID);
 					// Assert.assertTrue(referanceID.isDisplayed());
 					break;
 				} catch (NoSuchElementException e) {
-					waithelper.waitForElement(driver, 4000, budgetTransferObj.maker_notification_next_button());
+					waithelper.waitForElementToVisisbleWithFluentWait(driver, 4000, budgetTransferObj.maker_notification_next_button());
 
 					budgetTransferObj.maker_notification_next_button().click();
 				}
@@ -159,7 +161,7 @@ public class FixedAsset {
 			String before_xpath = "//span[contains(text(),'";
 			String after_xpath = "')]/ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell//ion-button";
 
-			waithelper.waitForElement(driver, 10000,driver.findElement(By.xpath(before_xpath + reader.readReferancedata() + after_xpath)));
+			waithelper.waitForElementToVisisbleWithFluentWait(driver, 10000,driver.findElement(By.xpath(before_xpath + reader.readReferancedata() + after_xpath)));
 			driver.findElement(By.xpath(before_xpath + reader.readReferancedata() + after_xpath)).click();
 
 	    }
@@ -168,7 +170,7 @@ public class FixedAsset {
 	    public void click_on_fixed_asset_items() throws Throwable {
 	    //Asset Items
 	    	Thread.sleep(2000);
-	    waithelper.waitForElement(driver, 2000,fixedAssetObj.fixedAsset_AssetCreation_FixedAssetItems());
+	    waithelper.waitForElementToVisibleWithFluentWait(driver,fixedAssetObj.fixedAsset_AssetCreation_FixedAssetItems(),60,5);
 	    fixedAssetObj.fixedAsset_AssetCreation_FixedAssetItems().click();	
 	    
 	    }
@@ -176,7 +178,7 @@ public class FixedAsset {
 	    @Then("^Click on the add button of asset items$")
 	    public void click_on_the_add_button_of_asset_items() {
 	    //Add button	
-	    waithelper.waitForElement(driver, 2000,fixedAssetObj.fixedAsset_AssetCreation_AddButton());
+	    waithelper.waitForElementToVisibleWithFluentWait(driver,fixedAssetObj.fixedAsset_AssetCreation_AddButton(),60,5);
 	    fixedAssetObj.fixedAsset_AssetCreation_AddButton().click();	
 	 	    	
 	    }
@@ -187,22 +189,22 @@ public class FixedAsset {
 	    	Random random = new Random();
 	    	int randomNumber=random.nextInt(5000-999)+5000;
 	    	fixedAssetTestDataType= jsonReader.getFixedAssetByName("Maker");
-	    	waithelper.waitForElement(driver, 2000,fixedAssetObj.fixedAsset_AssetCreation_AssetItemNumber());
+	    	waithelper.waitForElementToVisibleWithFluentWait(driver,fixedAssetObj.fixedAsset_AssetCreation_AssetItemNumber(),60,5);
 	    	fixedAssetObj.fixedAsset_AssetCreation_AssetItemNumber().click();
 	    	fixedAssetObj.fixedAsset_AssetCreation_AssetItemNumber().sendKeys(fixedAssetTestDataType.AssetItemNumber+randomNumber);
 	    	fixedAssetObj.fixedAsset_AssetCreation_AssetItemNumber().sendKeys(Keys.ENTER);
 	    	
-	    	waithelper.waitForElement(driver, 2000,fixedAssetObj.fixedAsset_AssetCreation_AssetItemDescription());
+	    	waithelper.waitForElementToVisibleWithFluentWait(driver,fixedAssetObj.fixedAsset_AssetCreation_AssetItemDescription(),60,5);
 	    	fixedAssetObj.fixedAsset_AssetCreation_AssetItemDescription().click();
 	    	fixedAssetObj.fixedAsset_AssetCreation_AssetItemDescription().sendKeys(fixedAssetTestDataType.AssetItemDescription+randomNumber);
 	    	fixedAssetObj.fixedAsset_AssetCreation_AssetItemDescription().sendKeys(Keys.ENTER);
 	       
-	    	waithelper.waitForElement(driver, 2000,fixedAssetObj.fixedAsset_AssetCreation_AssetValue());
+	    	waithelper.waitForElementToVisibleWithFluentWait(driver,fixedAssetObj.fixedAsset_AssetCreation_AssetValue(),60,5);
 	    	fixedAssetObj.fixedAsset_AssetCreation_AssetValue().click();
 	    	fixedAssetObj.fixedAsset_AssetCreation_AssetValue().sendKeys(fixedAssetTestDataType.AssetValue);
 	    	fixedAssetObj.fixedAsset_AssetCreation_AssetValue().sendKeys(Keys.ENTER);
 	       
-	    	waithelper.waitForElement(driver, 2000,fixedAssetObj.fixedAsset_AssetCreation_HSNCode());
+	    	waithelper.waitForElementToVisibleWithFluentWait(driver,fixedAssetObj.fixedAsset_AssetCreation_HSNCode(),60,5);
 	    	fixedAssetObj.fixedAsset_AssetCreation_HSNCode().click();
 	    	fixedAssetObj.fixedAsset_AssetCreation_HSNCode().sendKeys(fixedAssetTestDataType.HSNCode);
 	    	fixedAssetObj.fixedAsset_AssetCreation_HSNCode().sendKeys(Keys.ENTER);
@@ -212,7 +214,7 @@ public class FixedAsset {
 	    	javascripthelper.JavaScriptHelper(driver);
 	    	fixedAssetTestDataType= jsonReader.getFixedAssetByName("Maker");
 	    	ClicksAndActionsHelper clickAndActionHelper=new ClicksAndActionsHelper(driver);
-	    	waithelper.waitForElement(driver, 2000,fixedAssetObj.fixedAsset_AssetCreation_AssetItemCalendar());
+	    	waithelper.waitForElementToVisibleWithFluentWait(driver,fixedAssetObj.fixedAsset_AssetCreation_AssetItemCalendar(),60,5);
 	    	fixedAssetObj.fixedAsset_AssetCreation_AssetItemCalendar().click();
 	    	Thread.sleep(1000);
 	    	while(true)
@@ -220,7 +222,7 @@ public class FixedAsset {
 			try
 			{
 			
-				waithelper.waitForElement(driver, 3000, driver.findElement(By.xpath("//span[contains(text(),'"+fixedAssetTestDataType.GlToMonth+" "+fixedAssetTestDataType.GlYear+"')]")));
+				waithelper.waitForElementToVisibleWithFluentWait(driver,driver.findElement(By.xpath("//span[contains(text(),'"+fixedAssetTestDataType.GlToMonth+" "+fixedAssetTestDataType.GlYear+"')]")),60,5);
 				WebElement monthAndYear=driver.findElement(By.xpath("//span[contains(text(),'"+fixedAssetTestDataType.GlToMonth+" "+fixedAssetTestDataType.GlYear+"')]"));
 				Thread.sleep(1000);
 				break;
@@ -238,7 +240,7 @@ public class FixedAsset {
 	    }
 	    @Then("^Click on save button of item details$")
 	    public void click_on_save_button_of_item_details() throws Throwable {
-	    	 waithelper.waitForElement(driver, 2000,fixedAssetObj.fixedAsset_AssetAllocation_SaveButton());
+	    	 waithelper.waitForElementToVisibleWithFluentWait(driver,fixedAssetObj.fixedAsset_AssetAllocation_SaveButton(),60,5);
 	    	fixedAssetObj.fixedAsset_AssetAllocation_SaveButton().click();
 	    	Thread.sleep(3000);
 	    }
@@ -247,7 +249,7 @@ public class FixedAsset {
 //	    public void submit_record() throws Throwable {
 //	    	// Submit button
 //			//Thread.sleep(2000);
-//			waithelper.waitForElement(driver, 2000, inventoryManagamentObj.accountPayable_SubmitButton());
+//			waithelper.waitForElementToVisisbleWithFluentWait(driver, inventoryManagamentObj.accountPayable_SubmitButton());
 //			inventoryManagamentObj.accountPayable_SubmitButton().click();
 //			//budgetTransferObj.budget_BudgetTransfer_Submit().click();
 //			javahelper.JavaScriptHelper(driver);
@@ -268,18 +270,18 @@ public class FixedAsset {
 //					System.out.println(e.getMessage());
 //				}
 //				}*/
-//			waithelper.waitForElement(driver, 3000, budgetTransferObj.budget_BudgetTransfer_RemarkField());
+//			waithelper.waitForElementToVisisbleWithFluentWait(driver,  budgetTransferObj.budget_BudgetTransfer_RemarkField());
 //			
 //			//javahelper.JSEClick(budgetTransferObj.budget_BudgetTransfer_RemarkField());
 //			budgetTransferObj.budget_BudgetTransfer_RemarkField().click();
-//			waithelper.waitForElement(driver, 2000, budgetTransferObj.budget_BudgetTransfer_RemarkField());
+//			waithelper.waitForElementToVisisbleWithFluentWait(driver, budgetTransferObj.budget_BudgetTransfer_RemarkField());
 //			Thread.sleep(2000);
 //			budgetTransferObj.budget_BudgetTransfer_RemarkField().sendKeys("ok");
 //			budgetTransferObj.budget_BudgetTransfer_RemarkField().sendKeys(Keys.ENTER);
 //			
 //			Thread.sleep(2000);
 //			// Remark Submit
-//			waithelper.waitForElement(driver, 2000, budgetTransferObj.budget_BudgetTransfer_SubmitByMaker());
+//			waithelper.waitForElementToVisisbleWithFluentWait(driver, budgetTransferObj.budget_BudgetTransfer_SubmitByMaker());
 //			budgetTransferObj.budget_BudgetTransfer_SubmitByMaker().click();
 //			Thread.sleep(2000);
 //			WebElement recordstatus = budgetTransferObj.budget_BudgetTransfer_RecordStatus();
@@ -315,7 +317,7 @@ public class FixedAsset {
 //			login.logintoAzentioappReviewer("Reviewer", reader.readdata());
 //			waithelper = new WaitHelper(driver);
 //			reviewer = new KUBS_ReviewerObj(driver);
-//			waithelper.waitForElement(driver, 2000, reviewer.reviewerNotidicationIcon());
+//			waithelper.waitForElementToVisisbleWithFluentWait(driver, reviewer.reviewerNotidicationIcon());
 //			reviewer.reviewerNotidicationIcon().click();
 //			browserHelper = new BrowserHelper(driver);
 //			budgetdata1 = jsonconfig.getBudgetdataByName("Maker");
@@ -324,14 +326,14 @@ public class FixedAsset {
 //			waithelper = new WaitHelper(driver);
 //			for (int i = 1; i <= 35; i++) {
 //				try {
-//					waithelper.waitForElement(driver, 3000,driver.findElement(By.xpath("//span[contains(text(),'" + reader.readReferancedata() + "')]")));
+//					waithelper.waitForElementToVisisbleWithFluentWait(driver, driver.findElement(By.xpath("//span[contains(text(),'" + reader.readReferancedata() + "')]")));
 //					WebElement referanceID = driver.findElement(By.xpath("//span[contains(text(),'"+reader.readReferancedata()+"')]"));
 //					referanceID.click();
 //
 //					Assert.assertTrue(referanceID.isDisplayed());
 //					break;
 //				} catch (NoSuchElementException e) {
-//					waithelper.waitForElement(driver, 4000, kubschecker.checker_notification_next_button());
+//					waithelper.waitForElementToVisisbleWithFluentWait(driver, 4000, kubschecker.checker_notification_next_button());
 //
 //					kubschecker.checker_notification_next_button().click();
 //				}
@@ -339,7 +341,7 @@ public class FixedAsset {
 //			String before_xpath = "//span[contains(text(),'";
 //			String after_xpath = "')]/ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell//ion-button";
 //			Thread.sleep(2000);
-//			waithelper.waitForElement(driver, 10000,driver.findElement(By.xpath(before_xpath + reader.readReferancedata() + after_xpath)));
+//			waithelper.waitForElementToVisisbleWithFluentWait(driver, 10000,driver.findElement(By.xpath(before_xpath + reader.readReferancedata() + after_xpath)));
 //			driver.findElement(By.xpath(before_xpath+reader.readReferancedata()+after_xpath)).click();
 //
 //	    }
@@ -355,7 +357,7 @@ public class FixedAsset {
 			Thread.sleep(1000);
 			for (int i = 1; i <= 35; i++) {
 				try {
-					waithelper.waitForElement(driver, 3000, driver.findElement(
+					waithelper.waitForElementToVisisbleWithFluentWait(driver,  driver.findElement(
 
 						By.xpath("//span[contains(text(),'" + reader.readReferancedata() + "')]")));
 					WebElement referanceID = driver.findElement(
@@ -364,7 +366,7 @@ public class FixedAsset {
 					Assert.assertTrue(referanceID.isDisplayed());
 					break;
 				} catch (NoSuchElementException e) {
-					waithelper.waitForElement(driver, 4000, kubschecker.checker_notification_next_button());
+					waithelper.waitForElementToVisisbleWithFluentWait(driver, 4000, kubschecker.checker_notification_next_button());
 
 					kubschecker.checker_notification_next_button().click();
 				}
@@ -372,21 +374,21 @@ public class FixedAsset {
 			String before_xpath = "//span[contains(text(),'";
 			String after_xpath = "')]/ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell//ion-button";
 
-			waithelper.waitForElement(driver, 5000,
+			waithelper.waitForElementToVisisbleWithFluentWait(driver, 5000,
 					driver.findElement(By.xpath(before_xpath + reader.readReferancedata() + after_xpath)));
 			driver.findElement(By.xpath(before_xpath + reader.readReferancedata() + after_xpath)).click();
 
 			
 
-	    	waithelper.waitForElement(driver, 2000, reviewer.reviewerApproveButton());
+	    	waithelper.waitForElementToVisisbleWithFluentWait(driver, reviewer.reviewerApproveButton());
 			reviewer.reviewerApproveButton().click();
 			Thread.sleep(2000);
-			waithelper.waitForElement(driver, 2000, reviewer.reviewerAlertRemarks());
+			waithelper.waitForElementToVisisbleWithFluentWait(driver, reviewer.reviewerAlertRemarks());
 			javahelper.JSEClick(reviewer.reviewerAlertRemarks());
 			Thread.sleep(2000);
 			reviewer.reviewerAlertRemarks().sendKeys("ok");
 			Thread.sleep(3000);
-			waithelper.waitForElement(driver, 2000, reviewer.reviewerAlertSubmitButton());
+			waithelper.waitForElementToVisisbleWithFluentWait(driver, reviewer.reviewerAlertSubmitButton());
 			reviewer.reviewerAlertSubmitButton().click();
 			Thread.sleep(3000);
 		
@@ -406,17 +408,17 @@ public class FixedAsset {
 //	    public void clam_record() throws Throwable {
 //	    	waithelper = new WaitHelper(driver);
 //			kubschecker = new KUBS_CheckerObj(driver);
-//			waithelper.waitForElement(driver, 3000, kubschecker.checkerSecurityManagement());
+//			waithelper.waitForElementToVisisbleWithFluentWait(driver,  kubschecker.checkerSecurityManagement());
 //			kubschecker.checkerSecurityManagement().click();
-//			waithelper.waitForElement(driver, 3000, kubschecker.checkerActionIcon());
+//			waithelper.waitForElementToVisisbleWithFluentWait(driver,  kubschecker.checkerActionIcon());
 //
 //			kubschecker.checkerActionIcon().click();
 //			Thread.sleep(1000);
 //			String before_xpath = "//span[contains(text(),'";
 //			String after_xpath_claim = "')]/parent::div/parent::datatable-body-cell/preceding-sibling::datatable-body-cell[2]/div/ion-buttons/ion-button";
-//			waithelper.waitForElement(driver, 5000,driver.findElement(By.xpath(before_xpath + reader.readReferancedata() + after_xpath_claim)));
+//			waithelper.waitForElementToVisisbleWithFluentWait(driver, 5000,driver.findElement(By.xpath(before_xpath + reader.readReferancedata() + after_xpath_claim)));
 //			driver.findElement(By.xpath(before_xpath + reader.readReferancedata() + after_xpath_claim)).click();
-//			waithelper.waitForElement(driver, 3000, kubschecker.checkerAlertClose());
+//			waithelper.waitForElementToVisisbleWithFluentWait(driver,  kubschecker.checkerAlertClose());
 //			kubschecker.checkerAlertClose().click();
 // 
 //	    }
@@ -425,20 +427,20 @@ public class FixedAsset {
 //	    public void click_on_the_notification_and_approve_the_record() throws Throwable {
 //	    	javascript = new JavascriptHelper();
 //			Thread.sleep(1000);
-//			waithelper.waitForElement(driver, 3000, kubschecker.checkerNotificationIcon());
+//			waithelper.waitForElementToVisisbleWithFluentWait(driver,  kubschecker.checkerNotificationIcon());
 //
 //			kubschecker.checkerNotificationIcon().click();
 //			Thread.sleep(1000);
 //			for (int i = 1; i <= 35; i++) {
 //				try {
-//					waithelper.waitForElement(driver, 3000,driver.findElement(By.xpath("//span[contains(text(),'" + reader.readReferancedata() + "')]")));
+//					waithelper.waitForElementToVisisbleWithFluentWait(driver, driver.findElement(By.xpath("//span[contains(text(),'" + reader.readReferancedata() + "')]")));
 //					WebElement referanceID = driver.findElement(By.xpath("//span[contains(text(),'" + reader.readReferancedata() + "')]"));
 //					referanceID.click();
 //
 //					Assert.assertTrue(referanceID.isDisplayed());
 //					break;
 //				} catch (NoSuchElementException e) {
-//					waithelper.waitForElement(driver, 4000, kubschecker.checker_notification_next_button());
+//					waithelper.waitForElementToVisisbleWithFluentWait(driver, 4000, kubschecker.checker_notification_next_button());
 //
 //					kubschecker.checker_notification_next_button().click();
 //				}
@@ -446,16 +448,16 @@ public class FixedAsset {
 //			String before_xpath = "//span[contains(text(),'";
 //			String after_xpath = "')]/ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell//ion-button";
 //
-//			waithelper.waitForElement(driver, 10000,driver.findElement(By.xpath(before_xpath + reader.readReferancedata() + after_xpath)));
+//			waithelper.waitForElementToVisisbleWithFluentWait(driver, 10000,driver.findElement(By.xpath(before_xpath + reader.readReferancedata() + after_xpath)));
 //			driver.findElement(By.xpath(before_xpath + reader.readReferancedata() + after_xpath)).click();
 //
-//			waithelper.waitForElement(driver, 4000, kubschecker.checkerApproveButton());
+//			waithelper.waitForElementToVisisbleWithFluentWait(driver, 4000, kubschecker.checkerApproveButton());
 //
 //			kubschecker.checkerApproveButton().click();
-//			waithelper.waitForElement(driver, 2000, reviewer.reviewerAlertRemarks());
+//			waithelper.waitForElementToVisisbleWithFluentWait(driver, reviewer.reviewerAlertRemarks());
 //			reviewer.reviewerAlertRemarks().sendKeys("ok");
 //			Thread.sleep(1000);
-//			waithelper.waitForElement(driver, 2000, reviewer.reviewerAlertSubmitButton());
+//			waithelper.waitForElementToVisisbleWithFluentWait(driver, reviewer.reviewerAlertSubmitButton());
 //			reviewer.reviewerAlertSubmitButton().click();
 //			Thread.sleep(4000);
 //		 
@@ -466,7 +468,7 @@ public class FixedAsset {
 	
 	    @Then("^Click on Asset Allocation Eye button$")
 	    public void click_on_asset_allocation_eye_button() throws Throwable {
-	    	waithelper.waitForElement(driver, 2000, fixedAssetObj.fixedAsset_AssetAllocation_EyeButton());
+	    	waithelper.waitForElementToVisibleWithFluentWait(driver, fixedAssetObj.fixedAsset_AssetAllocation_EyeButton(),60,5);
 	    	fixedAssetObj.fixedAsset_AssetAllocation_EyeButton().click();
 	    }
 	
@@ -474,18 +476,21 @@ public class FixedAsset {
 	    @Then("^Fill the Allocation form with unused asset$")
 	    public void fill_the_allocation_form_with_unused_asset() throws Throwable {
 	    	fixedAssetTestDataType= jsonReader.getFixedAssetByName("Maker");
-	    	waithelper.waitForElement(driver, 2000, fixedAssetObj.fixedAsset_AssetAllocation_AssetRefferenceNumber());
+	    	waithelper.waitForElementToVisibleWithFluentWait(driver, fixedAssetObj.fixedAsset_AssetAllocation_AssetRefferenceNumber(),60,5);
 	    	fixedAssetObj.fixedAsset_AssetAllocation_AssetRefferenceNumber().click();
-	    	fixedAssetObj.fixedAsset_AssetAllocation_AssetRefferenceNumber().sendKeys(fixedAssetTestDataType.AssetReferenceNumber);
+	    	Thread.sleep(50000);
+	    	//fixedAssetObj.fixedAsset_AssetAllocation_AssetRefferenceNumber().sendKeys(fixedAssetTestDataType.AssetReferenceNumber);
+	    	fixedAssetObj.fixedAsset_AssetAllocation_AssetRefferenceNumber().sendKeys(assetCreation.AssetCode);
+	    	fixedAssetObj.fixedAsset_AssetAllocation_AssetRefferenceNumber().sendKeys(Keys.DOWN);
 	    	fixedAssetObj.fixedAsset_AssetAllocation_AssetRefferenceNumber().sendKeys(Keys.ENTER);
 	    	
-	    	waithelper.waitForElement(driver, 2000, fixedAssetObj.fixedAsset_AssetAllocation_ItemNumber());
+	    	waithelper.waitForElementToVisibleWithFluentWait(driver, fixedAssetObj.fixedAsset_AssetAllocation_ItemNumber(),60,5);
 	    	fixedAssetObj.fixedAsset_AssetAllocation_ItemNumber().click();
 	    	fixedAssetObj.fixedAsset_AssetAllocation_ItemNumber().sendKeys(Keys.DOWN);
 	    	//fixedAssetObj.fixedAsset_AssetAllocation_ItemNumber().sendKeys(fixedAssetTestDataType.ItemNumber);
 	    	fixedAssetObj.fixedAsset_AssetAllocation_ItemNumber().sendKeys(Keys.ENTER);
 	    	
-	    	waithelper.waitForElement(driver, 2000, fixedAssetObj.fixedAsset_AssetAllocation_EmployeeID());
+	    	waithelper.waitForElementToVisibleWithFluentWait(driver, fixedAssetObj.fixedAsset_AssetAllocation_EmployeeID(),60,5);
 	    	fixedAssetObj.fixedAsset_AssetAllocation_EmployeeID().click();
 	    	fixedAssetObj.fixedAsset_AssetAllocation_EmployeeID().sendKeys(fixedAssetTestDataType.EmployeeID);
 	    	fixedAssetObj.fixedAsset_AssetAllocation_EmployeeID().sendKeys(Keys.ENTER);
@@ -494,25 +499,26 @@ public class FixedAsset {
 	
 	    @Then("^Save the filled Allocation$")
 	    public void save_the_filled_allocation() throws Throwable {
-	    	waithelper.waitForElement(driver, 2000, fixedAssetObj.fixedAsserAllocationSaveButton());
+	    	waithelper.waitForElementToVisibleWithFluentWait(driver, fixedAssetObj.fixedAsserAllocationSaveButton(),60,5);
 	    	fixedAssetObj.fixedAsserAllocationSaveButton().click();
 	    }
 //-----------KUBS_FAT_UAT_006_002----
 	    @Then("^Fill the Allocation form with used asset details$")
 	    public void fill_the_allocation_form_with_used_asset_details() throws Throwable {
 	    	fixedAssetTestDataType= jsonReader.getFixedAssetByName("Maker");
-	    	waithelper.waitForElement(driver, 2000, fixedAssetObj.fixedAsset_AssetAllocation_AssetRefferenceNumber());
+	    	waithelper.waitForElementToVisibleWithFluentWait(driver, fixedAssetObj.fixedAsset_AssetAllocation_AssetRefferenceNumber(),60,5);
 	    	fixedAssetObj.fixedAsset_AssetAllocation_AssetRefferenceNumber().click();
-	    	fixedAssetObj.fixedAsset_AssetAllocation_AssetRefferenceNumber().sendKeys(fixedAssetTestDataType.AssetReferenceNumber);
+	   // 	fixedAssetObj.fixedAsset_AssetAllocation_AssetRefferenceNumber().sendKeys(fixedAssetTestDataType.AssetReferenceNumber);
+	    	fixedAssetObj.fixedAsset_AssetAllocation_AssetRefferenceNumber().sendKeys(assetCreation.AssetCode);
 	    	fixedAssetObj.fixedAsset_AssetAllocation_AssetRefferenceNumber().sendKeys(Keys.ENTER);
 	    	
-	    	waithelper.waitForElement(driver, 2000, fixedAssetObj.fixedAsset_AssetAllocation_ItemNumber());
+	    	waithelper.waitForElementToVisibleWithFluentWait(driver, fixedAssetObj.fixedAsset_AssetAllocation_ItemNumber(),60,5);
 	    	fixedAssetObj.fixedAsset_AssetAllocation_ItemNumber().click();
 	    	fixedAssetObj.fixedAsset_AssetAllocation_ItemNumber().sendKeys(Keys.DOWN);
 	    	//fixedAssetObj.fixedAsset_AssetAllocation_ItemNumber().sendKeys(fixedAssetTestDataType.ItemNumber);
 	    	fixedAssetObj.fixedAsset_AssetAllocation_ItemNumber().sendKeys(Keys.ENTER);
 	    	
-	    	waithelper.waitForElement(driver, 2000, fixedAssetObj.fixedAsset_AssetAllocation_EmployeeID());
+	    	waithelper.waitForElementToVisibleWithFluentWait(driver, fixedAssetObj.fixedAsset_AssetAllocation_EmployeeID(),60,5);
 	    	fixedAssetObj.fixedAsset_AssetAllocation_EmployeeID().click();
 	    	fixedAssetObj.fixedAsset_AssetAllocation_EmployeeID().sendKeys(fixedAssetTestDataType.EmployeeID);
 	    	fixedAssetObj.fixedAsset_AssetAllocation_EmployeeID().sendKeys(Keys.ENTER);
@@ -522,18 +528,19 @@ public class FixedAsset {
 	    @Then("^Fill the Allocation form with impaired asset details$")
 	    public void fill_the_allocation_form_with_impaired_asset_details() throws Throwable {
 	    	fixedAssetTestDataType= jsonReader.getFixedAssetByName("Maker");
-	    	waithelper.waitForElement(driver, 2000, fixedAssetObj.fixedAsset_AssetAllocation_AssetRefferenceNumber());
+	    	waithelper.waitForElementToVisibleWithFluentWait(driver, fixedAssetObj.fixedAsset_AssetAllocation_AssetRefferenceNumber(),60,5);
 	    	fixedAssetObj.fixedAsset_AssetAllocation_AssetRefferenceNumber().click();
-	    	fixedAssetObj.fixedAsset_AssetAllocation_AssetRefferenceNumber().sendKeys(fixedAssetTestDataType.AssetReferenceNumber);
+	    //	fixedAssetObj.fixedAsset_AssetAllocation_AssetRefferenceNumber().sendKeys(fixedAssetTestDataType.AssetReferenceNumber);
+	    	fixedAssetObj.fixedAsset_AssetAllocation_AssetRefferenceNumber().sendKeys(assetCreation.AssetCode);
 	    	fixedAssetObj.fixedAsset_AssetAllocation_AssetRefferenceNumber().sendKeys(Keys.ENTER);
 	    	
-	    	waithelper.waitForElement(driver, 2000, fixedAssetObj.fixedAsset_AssetAllocation_ItemNumber());
+	    	waithelper.waitForElementToVisibleWithFluentWait(driver, fixedAssetObj.fixedAsset_AssetAllocation_ItemNumber(),60,5);
 	    	fixedAssetObj.fixedAsset_AssetAllocation_ItemNumber().click();
 	    	fixedAssetObj.fixedAsset_AssetAllocation_ItemNumber().sendKeys(Keys.DOWN);
 	    	//fixedAssetObj.fixedAsset_AssetAllocation_ItemNumber().sendKeys(fixedAssetTestDataType.ItemNumber);
 	    	fixedAssetObj.fixedAsset_AssetAllocation_ItemNumber().sendKeys(Keys.ENTER);
 	    	
-	    	waithelper.waitForElement(driver, 2000, fixedAssetObj.fixedAsset_AssetAllocation_EmployeeID());
+	    	waithelper.waitForElementToVisibleWithFluentWait(driver, fixedAssetObj.fixedAsset_AssetAllocation_EmployeeID(),60,5);
 	    	fixedAssetObj.fixedAsset_AssetAllocation_EmployeeID().click();
 	    	fixedAssetObj.fixedAsset_AssetAllocation_EmployeeID().sendKeys(fixedAssetTestDataType.EmployeeID);
 	    	fixedAssetObj.fixedAsset_AssetAllocation_EmployeeID().sendKeys(Keys.ENTER);
@@ -544,18 +551,19 @@ public class FixedAsset {
 	    @Then("^Fill the Allocation form with revalued asset details$")
 	    public void fill_the_allocation_form_with_revalued_asset_details() throws Throwable {
 	    	fixedAssetTestDataType= jsonReader.getFixedAssetByName("Maker");
-	    	waithelper.waitForElement(driver, 2000, fixedAssetObj.fixedAsset_AssetAllocation_AssetRefferenceNumber());
+	    	waithelper.waitForElementToVisibleWithFluentWait(driver, fixedAssetObj.fixedAsset_AssetAllocation_AssetRefferenceNumber(),60,5);
 	    	fixedAssetObj.fixedAsset_AssetAllocation_AssetRefferenceNumber().click();
-	    	fixedAssetObj.fixedAsset_AssetAllocation_AssetRefferenceNumber().sendKeys(fixedAssetTestDataType.AssetReferenceNumber);
+	   // 	fixedAssetObj.fixedAsset_AssetAllocation_AssetRefferenceNumber().sendKeys(fixedAssetTestDataType.AssetReferenceNumber);
+	    	fixedAssetObj.fixedAsset_AssetAllocation_AssetRefferenceNumber().sendKeys(assetCreation.AssetCode);
 	    	fixedAssetObj.fixedAsset_AssetAllocation_AssetRefferenceNumber().sendKeys(Keys.ENTER);
 	    	
-	    	waithelper.waitForElement(driver, 2000, fixedAssetObj.fixedAsset_AssetAllocation_ItemNumber());
+	    	waithelper.waitForElementToVisibleWithFluentWait(driver, fixedAssetObj.fixedAsset_AssetAllocation_ItemNumber(),60,5);
 	    	fixedAssetObj.fixedAsset_AssetAllocation_ItemNumber().click();
 	    	fixedAssetObj.fixedAsset_AssetAllocation_ItemNumber().sendKeys(Keys.DOWN);
 	    	//fixedAssetObj.fixedAsset_AssetAllocation_ItemNumber().sendKeys(fixedAssetTestDataType.ItemNumber);
 	    	fixedAssetObj.fixedAsset_AssetAllocation_ItemNumber().sendKeys(Keys.ENTER);
 	    	
-	    	waithelper.waitForElement(driver, 2000, fixedAssetObj.fixedAsset_AssetAllocation_EmployeeID());
+	    	waithelper.waitForElementToVisibleWithFluentWait(driver, fixedAssetObj.fixedAsset_AssetAllocation_EmployeeID(),60,5);
 	    	fixedAssetObj.fixedAsset_AssetAllocation_EmployeeID().click();
 	    	fixedAssetObj.fixedAsset_AssetAllocation_EmployeeID().sendKeys(fixedAssetTestDataType.EmployeeID);
 	    	fixedAssetObj.fixedAsset_AssetAllocation_EmployeeID().sendKeys(Keys.ENTER);
@@ -565,13 +573,13 @@ public class FixedAsset {
 	//--------KUBS_FAT_UAT_002_008-----
 	    @Then("^Click on Job Scheduler$")
 	    public void click_on_job_scheduler() throws Throwable {
-	    	waithelper.waitForElement(driver, 2000, fixedAssetObj.JobScheduler_Button());
+	    	waithelper.waitForElementToVisibleWithFluentWait(driver, fixedAssetObj.JobScheduler_Button(),60,5);
 	    	fixedAssetObj.JobScheduler_Button().click();
 	    }
 
 	    @Then("^Click on Job Execution edit button$")
 	    public void click_on_job_execution_edit_button() throws Throwable {
-	    	waithelper.waitForElement(driver, 2000, fixedAssetObj.JobExecution_EditButton());
+	    	waithelper.waitForElementToVisibleWithFluentWait(driver, fixedAssetObj.JobExecution_EditButton(),60,5);
 	    	fixedAssetObj.JobExecution_EditButton().click(); 
 	    }
 
@@ -580,7 +588,7 @@ public class FixedAsset {
 	    	javascripthelper.JavaScriptHelper(driver);
 	    	fixedAssetTestDataType= jsonReader.getFixedAssetByName("Maker");
 	    	ClicksAndActionsHelper clickAndActionHelper=new ClicksAndActionsHelper(driver);
-	    	waithelper.waitForElement(driver, 2000, fixedAssetObj.JobExecution_ToDateCalanderButton());
+	    	waithelper.waitForElementToVisibleWithFluentWait(driver, fixedAssetObj.JobExecution_ToDateCalanderButton(),60,5);
 	    	fixedAssetObj.JobExecution_ToDateCalanderButton().click();
 	    	Thread.sleep(2000);
 	    	while(true)
@@ -588,7 +596,7 @@ public class FixedAsset {
 			try
 			{
 			
-				waithelper.waitForElement(driver, 3000, driver.findElement(By.xpath("//span[contains(text(),'"+fixedAssetTestDataType.GlToMonth+" "+fixedAssetTestDataType.GlYear+"')]")));
+				waithelper.waitForElementToVisibleWithFluentWait(driver,  driver.findElement(By.xpath("//span[contains(text(),'"+fixedAssetTestDataType.GlToMonth+" "+fixedAssetTestDataType.GlYear+"')]")),60,5);
 				WebElement monthAndYear=driver.findElement(By.xpath("//span[contains(text(),'"+fixedAssetTestDataType.GlToMonth+" "+fixedAssetTestDataType.GlYear+"')]"));
 				Thread.sleep(2000);
 				break;
@@ -609,14 +617,14 @@ public class FixedAsset {
 
 	    @Then("^click on Start the job$")
 	    public void click_on_start_the_job() throws Throwable {
-	    	waithelper.waitForElement(driver, 2000, fixedAssetObj.JobExecution_StartJobButton());
+	    	waithelper.waitForElementToVisibleWithFluentWait(driver, fixedAssetObj.JobExecution_StartJobButton(),60,5);
 	    	fixedAssetObj.JobExecution_StartJobButton().click(); 
 	    	Thread.sleep(2000);
 	    }
 
 	    @Then("^Click on refresh button$")
 	    public void click_on_refresh_button() throws Throwable {
-	    	waithelper.waitForElement(driver, 2000, fixedAssetObj.JobExecution_RefreshButton());
+	    	waithelper.waitForElementToVisibleWithFluentWait(driver, fixedAssetObj.JobExecution_RefreshButton(),60,5);
 	    	fixedAssetObj.JobExecution_RefreshButton().click();
 	    }
 
@@ -632,7 +640,7 @@ public class FixedAsset {
 	    public void click_on_asset_creation_common_edit_grid() throws Throwable {
 	    	javascripthelper.JavaScriptHelper(driver);
 	    	javascripthelper.scrollIntoView(fixedAssetObj.Report_report_AssetCreationCommon_editButton());
-	    	waithelper.waitForElement(driver, 2000,fixedAssetObj.Report_report_AssetCreationCommon_editButton());
+	    	waithelper.waitForElementToVisibleWithFluentWait(driver,fixedAssetObj.Report_report_AssetCreationCommon_editButton(),60,5);
 	    	fixedAssetObj.Report_report_AssetCreationCommon_editButton().click();    
 			
 	    }
@@ -640,7 +648,7 @@ public class FixedAsset {
 	    @Then("^Fill the form$")
 	    public void fill_the_form() throws Throwable {
 	    	fixedAssetTestDataType= jsonReader.getFixedAssetByName("Maker");
-	    	waithelper.waitForElement(driver, 2000,fixedAssetObj.Report_report_AssetCreationCommon_AssetLifeUnit());
+	    	waithelper.waitForElementToVisibleWithFluentWait(driver,fixedAssetObj.Report_report_AssetCreationCommon_AssetLifeUnit(),60,5);
 	    	fixedAssetObj.Report_report_AssetCreationCommon_AssetLifeUnit().click(); 
 	    	
 	    	fixedAssetObj.Report_report_AssetCreationCommon_AssetLifeUnit().sendKeys(fixedAssetTestDataType.AssetLife);
@@ -648,7 +656,7 @@ public class FixedAsset {
 			
 	    	
 	    	
-	    	waithelper.waitForElement(driver, 2000,fixedAssetObj.Report_report_AssetCreationCommon_Calendar());
+	    	waithelper.waitForElementToVisibleWithFluentWait(driver,fixedAssetObj.Report_report_AssetCreationCommon_Calendar(),60,5);
 	    	fixedAssetObj.Report_report_AssetCreationCommon_Calendar().click(); 
 	    	
 	    	inventoryManagementTestDataType = jsonReader.getInventoryManagementByName("Maker");
@@ -657,7 +665,7 @@ public class FixedAsset {
 			try
 			{
 			
-				waithelper.waitForElement(driver, 3000, driver.findElement(By.xpath("//span[contains(text(),'"+inventoryManagementTestDataType.GlToMonth+" "+inventoryManagementTestDataType.GlYear+"')]")));
+				waithelper.waitForElementToVisibleWithFluentWait(driver,  driver.findElement(By.xpath("//span[contains(text(),'"+inventoryManagementTestDataType.GlToMonth+" "+inventoryManagementTestDataType.GlYear+"')]")),60,5);
 				WebElement monthAndYear=driver.findElement(By.xpath("//span[contains(text(),'"+inventoryManagementTestDataType.GlToMonth+" "+inventoryManagementTestDataType.GlYear+"')]"));
 			    break;
 			}
@@ -673,7 +681,7 @@ public class FixedAsset {
 
 	    @Then("^Click on view button to see Asset Creation report$")
 	    public void click_on_view_button_to_see_asset_creation_report() throws Throwable {
-	    	waithelper.waitForElement(driver, 2000,fixedAssetObj.Report_report_AssetCreationCommon_ViewButton());
+	    	waithelper.waitForElementToVisibleWithFluentWait(driver,fixedAssetObj.Report_report_AssetCreationCommon_ViewButton(),60,5);
 	    	fixedAssetObj.Report_report_AssetCreationCommon_ViewButton().click(); 
 	    	
 	    }

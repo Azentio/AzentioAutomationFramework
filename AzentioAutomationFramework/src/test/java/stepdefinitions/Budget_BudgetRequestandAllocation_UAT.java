@@ -10,6 +10,7 @@ import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.ElementClickInterceptedException;
 import org.openqa.selenium.ElementNotInteractableException;
+import org.openqa.selenium.JavascriptException;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.StaleElementReferenceException;
@@ -30,6 +31,7 @@ import io.cucumber.java.en.When;
 import pageobjects.BUDGET_BudgetCreationObj;
 import pageobjects.BUDGET_RequestAndAllocationObj;
 import pageobjects.KUBS_CheckerObj;
+import pageobjects.KUBS_MakerObj;
 import pageobjects.KUBS_ReviewerObj;
 import resources.BaseClass;
 import resources.JsonDataReaderWriter;
@@ -52,6 +54,7 @@ public class Budget_BudgetRequestandAllocation_UAT extends BaseClass {
 	JavascriptHelper javaHelper = new JavascriptHelper();
 	JsonDataReaderWriter json = new JsonDataReaderWriter();
 	KUBS_ReviewerObj reviewerObj = new KUBS_ReviewerObj(driver);
+	KUBS_MakerObj kubsMakerObj = new KUBS_MakerObj(driver);
 	String referance_id;
 	String Type;
 	BrowserHelper browserHelper = new BrowserHelper(driver);
@@ -68,7 +71,7 @@ public class Budget_BudgetRequestandAllocation_UAT extends BaseClass {
 		login = new KUBS_Login(driver);
 		driver.get(configFileReader.getApplicationUrl());
 		login.loginToAzentioApp("Maker");
-		Thread.sleep(1000);
+
 	}
 
 	@Given("^Azentio Url login as Reviewer$")
@@ -97,25 +100,31 @@ public class Budget_BudgetRequestandAllocation_UAT extends BaseClass {
 
 		// ---------TO VIEW THE TRANFER AMOUNT BUDGET----------//
 		requestAndAllocation = new BUDGET_RequestAndAllocationObj(driver);
+		
 		waitHelper = new WaitHelper(driver);
-		waitHelper.waitForElement(driver, 5000, requestAndAllocation.budget_requestAndAllocation_DirctionIcon());
-		requestAndAllocation.budget_requestAndAllocation_DirctionIcon().click();
+		waitHelper.waitForElementToVisibleWithFluentWait(driver, kubsMakerObj.kubsToolIcon(), 60, 500);		
+		clickAndActionHelper.moveToElement(kubsMakerObj.kubsToolIcon());
+		clickAndActionHelper.doubleClick(kubsMakerObj.kubsToolIcon());
+		waitHelper.waitForElementToVisibleWithFluentWait(driver,requestAndAllocation.budget_requestAndAllocation_DirctionIcon(), 60, 500);
+		clickAndActionHelper.moveToElement(requestAndAllocation.budget_requestAndAllocation_DirctionIcon());
+		clickAndActionHelper.doubleClick(requestAndAllocation.budget_requestAndAllocation_DirctionIcon());
+		
 	}
 
 	@And("^click to the Budget$")
 	public void click_to_the_budget() throws Throwable {
 
 		// -----------TO CLICK THE BUDGET MODULE--------------//
-		waitHelper.waitForElement(driver, 2000, requestAndAllocation.budget_requestAndAllocation_BudgetField());
+		waitHelper.waitForElementToVisibleWithFluentWait(driver,requestAndAllocation.budget_requestAndAllocation_BudgetField(), 60, 500);
 		requestAndAllocation.budget_requestAndAllocation_BudgetField().click();
-		Thread.sleep(1000);
+
 	}
 
 	@Then("^click on the Budget Sub module Budget Request and Allocation Near Eye Icon$")
 	public void click_on_the_budget_sub_module_budget_request_and_allocation_near_eye_icon() throws Throwable {
 
 		// ----------TO CLICK THE EYE ICON------------------//
-		waitHelper.waitForElement(driver, 2000, requestAndAllocation.budget_requestAndAllocation_BudgetEyeIcon());
+		waitHelper.waitForElementToVisibleWithFluentWait(driver,requestAndAllocation.budget_requestAndAllocation_BudgetEyeIcon(), 60, 500);
 		requestAndAllocation.budget_requestAndAllocation_BudgetEyeIcon().click();
 
 	}
@@ -124,7 +133,7 @@ public class Budget_BudgetRequestandAllocation_UAT extends BaseClass {
 	public void click_on_the_add_icon_in_request_and_allocation() throws Throwable {
 
 		// ----------TO CREATE A NEW BUDGET AMOUNT------------//
-		waitHelper.waitForElement(driver, 2000, requestAndAllocation.budget_requestAndAllocation_Addicon());
+		waitHelper.waitForElementToVisibleWithFluentWait(driver,requestAndAllocation.budget_requestAndAllocation_Addicon(), 60, 500);
 		requestAndAllocation.budget_requestAndAllocation_Addicon().click();
 	}
 
@@ -132,13 +141,13 @@ public class Budget_BudgetRequestandAllocation_UAT extends BaseClass {
 	public void click_on_the_branch() throws Throwable {
 
 		// ----------TO SELECT THE BRANCH-----------------//
-		waitHelper.waitForElement(driver, 3000, requestAndAllocation.budget_requestAndAllocation_Budgetbranch());
+		waitHelper.waitForElementToVisibleWithFluentWait(driver,requestAndAllocation.budget_requestAndAllocation_Budgetbranch(), 60, 500);
 		requestAndAllocation.budget_requestAndAllocation_Budgetbranch().click();
 	}
 
 	@And("^get the budget code for allocation$")
 	public void get_the_budget_code_for_allocation() throws Throwable {
-		waitHelper.waitForElementVisible(budgetCreationobj.budgetCreationApprovedBudgetCode(), 3000, 300);
+		waitHelper.waitForElementToVisibleWithFluentWait(driver,budgetCreationobj.budgetCreationApprovedBudgetCode(), 60, 500);
 		// budgetCreationobj.budgetCreationApprovedBudgetCode().getText();
 		budgetAllocationTestData.put("budgetCode", budgetCreationobj.budgetCreationApprovedBudgetCode().getText());
 		System.out.println("Budget code is : " + budgetAllocationTestData.get("budgetCode"));
@@ -148,26 +157,56 @@ public class Budget_BudgetRequestandAllocation_UAT extends BaseClass {
 	public void select_the_budget_year() throws Throwable {
 
 		// ----------TO SELECT THE BUDGET YEAR-------------//
-		waitHelper.waitForElement(driver, 3000, requestAndAllocation.budget_requestAndAllocation_Budgetyear());
-		dropDownHelper.SelectUsingVisibleText(requestAndAllocation.budget_requestAndAllocation_Budgetyear(),
-				requestAndAllocationTestData.BudgetYear);
-		requestAndAllocation.budget_requestAndAllocation_Budgetyear().sendKeys(Keys.ENTER);
-		// requestAndAllocation.budget_requestAndAllocation_Budgetyear().sendKeys(Keys.DOWN);
+	for(int i=0;i<=10;i++)
+	{
+	try
+	{
+		waitHelper.waitForElementToVisibleWithFluentWait(driver,requestAndAllocation.budget_requestAndAllocation_Budgetyear(), 5, 500);
+				dropDownHelper.SelectUsingVisibleText(requestAndAllocation.budget_requestAndAllocation_Budgetyear(),
+						requestAndAllocationTestData.BudgetYear);
+					requestAndAllocation.budget_requestAndAllocation_Budgetyear().sendKeys(Keys.ENTER);
+	break;
+	}
+	catch(Exception e)
+	{
+	if(i==10)
+	{
+		Assert.fail(e.getMessage());
+	}
+	}
+	}
+					// requestAndAllocation.budget_requestAndAllocation_Budgetyear().sendKeys(Keys.DOWN);
 	}
 
 	@And("^select the Budget Year fo future$")
 	public void select_the_budget_year_fo_future() throws Throwable {
-		waitHelper.waitForElement(driver, 3000, requestAndAllocation.budget_requestAndAllocation_Budgetyear());
-		dropDownHelper.SelectUsingVisibleText(requestAndAllocation.budget_requestAndAllocation_Budgetyear(),
-				requestAndAllocationTestData.BudgetYear1);
-		requestAndAllocation.budget_requestAndAllocation_Budgetyear().sendKeys(Keys.ENTER);
+		waitHelper.waitForElementToVisibleWithFluentWait(driver,requestAndAllocation.budget_requestAndAllocation_Budgetyear(), 60, 500);
+
+		for(int i=0;i<=10;i++)
+		{
+//				waitHelper.waitForElement(driver, 3000, requestAndAllocation.budget_requestAndAllocation_Budgetyear());
+		try
+		{
+			dropDownHelper.SelectUsingVisibleText(requestAndAllocation.budget_requestAndAllocation_Budgetyear(),
+						requestAndAllocationTestData.BudgetYear1);
+				requestAndAllocation.budget_requestAndAllocation_Budgetyear().sendKeys(Keys.ENTER);
+		break;
+		}
+		catch(Exception e)
+		{
+			if(i==10)
+			{
+				Assert.fail(e.getMessage());
+			}
+		}
+		}
 	}
 
 	@Then("^click on the Branch ok button$")
 	public void click_on_the_branch_ok_button() throws Throwable {
 
 		// -----------TO CLICK BRANCH OK BUTTON------------//
-		waitHelper.waitForElement(driver, 2000, requestAndAllocation.budget_requestAndAllocation_branchOK());
+		waitHelper.waitForElementToVisibleWithFluentWait(driver,requestAndAllocation.budget_requestAndAllocation_branchOK(), 60, 500);
 		requestAndAllocation.budget_requestAndAllocation_branchOK().click();
 
 	}
@@ -176,7 +215,8 @@ public class Budget_BudgetRequestandAllocation_UAT extends BaseClass {
 	public void select_one_currency_we_need() throws Throwable {
 
 		// -----------TO SELECT THE CURRENCY WE NEED-----------//
-		waitHelper.waitForElement(driver, 3000, requestAndAllocation.budget_requestAndAllocation_Amountcurruncy());
+		waitHelper.waitForElementToVisibleWithFluentWait(driver,requestAndAllocation.budget_requestAndAllocation_Amountcurruncy(), 60, 500);
+		//waitHelper.waitForElement(driver, 3000, requestAndAllocation.budget_requestAndAllocation_Amountcurruncy());
 		requestAndAllocation.budget_requestAndAllocation_Amountcurruncy().click();
 		// requestAndAllocation.budget_requestAndAllocation_Amountcurruncy().sendKeys(Keys.DOWN);
 		requestAndAllocation.budget_requestAndAllocation_Amountcurruncy().sendKeys(Keys.ENTER);
@@ -186,9 +226,10 @@ public class Budget_BudgetRequestandAllocation_UAT extends BaseClass {
 	public void click_on_the_maker_icon_button() throws Throwable {
 
 		// -----------TO CLICK THE MAKER NOTIFICATION-------------//
-		waitHelper.waitForElement(driver, 2000, requestAndAllocation.makerNotificationIcon());
+		waitHelper.waitForElementToVisibleWithFluentWait(driver,requestAndAllocation.makerNotificationIcon(), 60, 500);
+		//		waitHelper.waitForElement(driver, 2000, requestAndAllocation.makerNotificationIcon());
 		requestAndAllocation.makerNotificationIcon().click();
-		waitHelper.waitForElement(driver, 2000, requestAndAllocation.maker_Referance_id());
+		waitHelper.waitForElementToVisibleWithFluentWait(driver,requestAndAllocation.maker_Referance_id(), 60, 500);
 		String Referance_id = requestAndAllocation.maker_Referance_id().getText();
 		json.addReferanceData(Referance_id);
 		waitHelper.waitForElement(driver, 2000, requestAndAllocation.maker_Action_icon());
@@ -201,11 +242,24 @@ public class Budget_BudgetRequestandAllocation_UAT extends BaseClass {
 		// ------------TO SAVE THE RECORD--------------------//
 		waitHelper.waitForElement(driver, 3000, requestAndAllocation.budget_requestAndAllocation_AllowSave());
 		requestAndAllocation.budget_requestAndAllocation_AllowSave().click();
-		Thread.sleep(2000);
+
 		javaHelper.JavaScriptHelper(driver);
-		String output = (String) javaHelper.executeScript(
-				"return document.querySelector('ion-toast').shadowRoot.querySelector('div[class=toast-message]').innerText");
-		System.out.println(output);
+		String output = "";
+		for (int i = 0; i <= 100; i++) {
+			try {
+				output = (String) javaHelper.executeScript(
+						"return document.querySelector('ion-toast').shadowRoot.querySelector('div[class=toast-message]').innerText");
+				System.out.println(output);
+				break;
+			} catch (JavascriptException e) {
+				if(i==100)
+				{
+				//e.printStackTrace();
+				Assert.fail(e.getMessage());
+				}
+				}
+		}
+
 	}
 
 	@And("^click on the Record submit$")
@@ -214,10 +268,10 @@ public class Budget_BudgetRequestandAllocation_UAT extends BaseClass {
 		// ------------TO SUBMIT THE RECORD------------------//
 		waitHelper.waitForElement(driver, 2000, requestAndAllocation.budget_requestAndAllocation_BudgetSubmit());
 		requestAndAllocation.budget_requestAndAllocation_BudgetSubmit().click();
-		Thread.sleep(1000);
+
 		waitHelper.waitForElement(driver, 2000, requestAndAllocation.requestAndAllocation_Alertremark());
 		requestAndAllocation.requestAndAllocation_Alertremark().sendKeys(requestAndAllocationTestData.Remark);
-		Thread.sleep(1000);
+
 		waitHelper.waitForElement(driver, 5000, requestAndAllocation.requestAndAllocation_Alertsubmit());
 		requestAndAllocation.requestAndAllocation_Alertsubmit().click();
 		waitHelper.waitForElement(driver, 10000, requestAndAllocation.requestAndAllocation_reviewer_id());
@@ -322,7 +376,6 @@ public class Budget_BudgetRequestandAllocation_UAT extends BaseClass {
 	@Then("^click the checker action icon$")
 	public void click_the_checker_action_icon() throws Throwable {
 
-		Thread.sleep(1000);
 		waitHelper.waitForElement(driver, 3000, driver.findElement(By.xpath("//span[contains(text(),'"
 				+ json.readReferancedata()
 				+ "')]/ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell/div/ion-buttons/ion-button")));
@@ -341,6 +394,9 @@ public class Budget_BudgetRequestandAllocation_UAT extends BaseClass {
 		requestAndAllocation.budget_requestAndAllocation_Budgetcode().click();
 		requestAndAllocation.budget_requestAndAllocation_Budgetcode()
 				.sendKeys(budgetAllocationTestData.get("budgetCode"));
+		Thread.sleep(500);
+		requestAndAllocation.budget_requestAndAllocation_Budgetcode().sendKeys(Keys.DOWN);
+	//	requestAndAllocation.budget_requestAndAllocation_Budgetcode().sendKeys(Keys.DOWN);
 		requestAndAllocation.budget_requestAndAllocation_Budgetcode().sendKeys(Keys.ENTER);
 	}
 
@@ -368,6 +424,7 @@ public class Budget_BudgetRequestandAllocation_UAT extends BaseClass {
 		try {
 			javaHelper.JavaScriptHelper(driver);
 			javaHelper.scrollIntoViewAndClick(requestAndAllocation.budget_requestAndAllocation_Budgetmonth12());
+			
 			waitHelper.waitForElement(driver, 3000, requestAndAllocation.budget_requestAndAllocation_Budgetmonth12());
 			requestAndAllocation.budget_requestAndAllocation_Budgetmonth12()
 					.sendKeys(requestAndAllocationBudtype.BudgetAmounT);
@@ -537,9 +594,11 @@ public class Budget_BudgetRequestandAllocation_UAT extends BaseClass {
 	public void choose_to_the_budget_code_for_future_financial_year_budget() throws Throwable {
 		requestAndAllocationTestData = jsonReader.getAllowcationByName("Maker");
 		waitHelper.waitForElement(driver, 3000, requestAndAllocation.budget_requestAndAllocation_Budgetcode());
+		Thread.sleep(500);
 		requestAndAllocation.budget_requestAndAllocation_Budgetcode().click();
 		requestAndAllocation.budget_requestAndAllocation_Budgetcode()
 				.sendKeys(budgetAllocationTestData.get("budgetCode"));
+		requestAndAllocation.budget_requestAndAllocation_Budgetcode().sendKeys(Keys.DOWN);
 		requestAndAllocation.budget_requestAndAllocation_Budgetcode().sendKeys(Keys.ENTER);
 	}
 
@@ -548,8 +607,10 @@ public class Budget_BudgetRequestandAllocation_UAT extends BaseClass {
 		requestAndAllocationTestData = jsonReader.getAllowcationByName("Maker");
 		waitHelper.waitForElement(driver, 3000, requestAndAllocation.budget_requestAndAllocation_Budgetcode());
 		requestAndAllocation.budget_requestAndAllocation_Budgetcode().click();
+		Thread.sleep(500);
 		requestAndAllocation.budget_requestAndAllocation_Budgetcode()
 				.sendKeys(budgetAllocationTestData.get("budgetCode"));
+		requestAndAllocation.budget_requestAndAllocation_Budgetcode().sendKeys(Keys.DOWN);
 		requestAndAllocation.budget_requestAndAllocation_Budgetcode().sendKeys(Keys.ENTER);
 	}
 
@@ -595,6 +656,7 @@ public class Budget_BudgetRequestandAllocation_UAT extends BaseClass {
 		requestAndAllocation.budget_requestAndAllocation_Budgetcode().click();
 		requestAndAllocation.budget_requestAndAllocation_Budgetcode()
 				.sendKeys(requestAndAllocationTestData.BudgetApprove);
+		requestAndAllocation.budget_requestAndAllocation_Budgetcode().sendKeys(Keys.DOWN);
 		requestAndAllocation.budget_requestAndAllocation_Budgetcode().sendKeys(Keys.ENTER);
 	}
 
@@ -795,7 +857,7 @@ public class Budget_BudgetRequestandAllocation_UAT extends BaseClass {
 	public void select_branch_checkbox() throws Throwable {
 
 		// ---------------------TO SELECT ONE BRANCH CHECKBOX-----------------------//
-		waitHelper.waitForElement(driver, 2000, requestAndAllocation.requestAndAllocation_branch_type1());
+		waitHelper.waitForElementToVisibleWithFluentWait(driver, requestAndAllocation.requestAndAllocation_branch_type1(), 60, 500);
 		requestAndAllocation.requestAndAllocation_branch_type1().click();
 	}
 
@@ -805,7 +867,7 @@ public class Budget_BudgetRequestandAllocation_UAT extends BaseClass {
 		// ----------------------HERE WE ENTER BUDGET AMOUNT FOR EVERY BUDGET
 		// TYPE----------------------//
 		requestAndAllocationBudtype = new BUDGET_RequestandallocationBUDTYPEDATA();
-		waitHelper.waitForElement(driver, 3000, requestAndAllocation.budget_requestAndAllocation_Budgettype());
+		waitHelper.waitForElementToVisibleWithFluentWait(driver, requestAndAllocation.budget_requestAndAllocation_Budgettype(), 60, 500);
 		String budgettype = requestAndAllocation.budget_requestAndAllocation_Budgettype().getText();
 		requestAndAllocationBudtype = jsonReader.getBudtypeByName(budgettype);
 		javaHelper.JavaScriptHelper(driver);
@@ -949,7 +1011,7 @@ public class Budget_BudgetRequestandAllocation_UAT extends BaseClass {
 		login = new KUBS_Login(driver);
 		driver.get(configFileReader.getApplicationUrl());
 		login.loginToAzentioApp("Maker");
-		Thread.sleep(1000);
+
 	}
 
 	@And("^click on the Record Reject$")
@@ -960,8 +1022,15 @@ public class Budget_BudgetRequestandAllocation_UAT extends BaseClass {
 		requestAndAllocation.budget_requestAndAllocation_Cancel().click();
 		waitHelper.waitForElement(driver, 2000, requestAndAllocation.requestAndAllocation_Alertremark());
 		requestAndAllocation.requestAndAllocation_Alertremark().sendKeys(requestAndAllocationTestData.Remark);
-		waitHelper.waitForElement(driver, 5000, requestAndAllocation.requestAndAllocation_Alertsubmit());
-		requestAndAllocation.requestAndAllocation_Alertsubmit().click();
+		while (true) {
+			try {
+				waitHelper.waitForElement(driver, 5000, requestAndAllocation.requestAndAllocation_Alertsubmit());
+				requestAndAllocation.requestAndAllocation_Alertsubmit().click();
+				break;
+			} catch (ElementClickInterceptedException e) {
+
+			}
+		}
 		waitHelper.waitForElement(driver, 10000, requestAndAllocation.requestAndAllocation_reviewer_id());
 		reviwerId = requestAndAllocation.requestAndAllocation_reviewer_id().getText();
 		System.out.println("The Result is:" + reviwerId);
@@ -975,11 +1044,19 @@ public class Budget_BudgetRequestandAllocation_UAT extends BaseClass {
 		// ------------TO SAVE THE RECORD--------------------//
 		waitHelper.waitForElement(driver, 3000, requestAndAllocation.budget_requestAndAllocation_AllowSave());
 		requestAndAllocation.budget_requestAndAllocation_AllowSave().click();
-		Thread.sleep(2000);
+
 		javaHelper.JavaScriptHelper(driver);
-		String output = (String) javaHelper.executeScript(
-				"return document.querySelector('ion-toast').shadowRoot.querySelector('div[class=toast-message]').innerText");
-		System.out.println(output);
+		for (int i = 0; i <= 30; i++) {
+			try {
+				String output = (String) javaHelper.executeScript(
+						"return document.querySelector('ion-toast').shadowRoot.querySelector('div[class=toast-message]').innerText");
+
+				System.out.println(output);
+				break;
+			} catch (JavascriptException e) {
+
+			}
+		}
 		System.out.println("System should allow the rejected budget code Again Re-use");
 	}
 
@@ -996,7 +1073,7 @@ public class Budget_BudgetRequestandAllocation_UAT extends BaseClass {
 		requestAndAllocation.budget_requestAndAllocation_BudgetHy2().clear();
 		waitHelper.waitForElement(driver, 3000, requestAndAllocation.budget_requestAndAllocation_BudgetHy2());
 		requestAndAllocation.budget_requestAndAllocation_BudgetHy2().click();
-		Thread.sleep(1000);
+
 		waitHelper.waitForElement(driver, 3000, requestAndAllocation.budget_requestAndAllocation_BudgetHy2());
 		requestAndAllocation.budget_requestAndAllocation_BudgetHy2().sendKeys("500000");
 	}
@@ -1033,7 +1110,7 @@ public class Budget_BudgetRequestandAllocation_UAT extends BaseClass {
 		requestAndAllocation.budget_requestAndAllocation_BudgetHy2().clear();
 		waitHelper.waitForElement(driver, 3000, requestAndAllocation.budget_requestAndAllocation_BudgetHy2());
 		requestAndAllocation.budget_requestAndAllocation_BudgetHy2().click();
-		Thread.sleep(1000);
+
 		waitHelper.waitForElement(driver, 3000, requestAndAllocation.budget_requestAndAllocation_BudgetHy2());
 		requestAndAllocation.budget_requestAndAllocation_BudgetHy2().sendKeys("500000");
 	}
@@ -1242,9 +1319,17 @@ public class Budget_BudgetRequestandAllocation_UAT extends BaseClass {
 	public void enter_the_budget_year_for_halfyearly() throws Throwable {
 
 		// ----------------BUDGET YEAR-----------------//
-		waitHelper.waitForElement(driver, 3000, requestAndAllocation.budget_requestAndAllocation_Budgetyear());
-		dropDownHelper.SelectUsingVisibleText(requestAndAllocation.budget_requestAndAllocation_Budgetyear(),
-				requestAndAllocationTestData.BudgetYear1);
+		while (true) {
+			try {
+				waitHelper.waitForElement(driver, 3000, requestAndAllocation.budget_requestAndAllocation_Budgetyear());
+				dropDownHelper.SelectUsingVisibleText(requestAndAllocation.budget_requestAndAllocation_Budgetyear(),
+						requestAndAllocationTestData.BudgetYear1);
+				break;
+			} catch (NoSuchElementException e) {
+
+			}
+		}
+
 	}
 
 	@Then("^Give budget amount for HalfYearly$")
@@ -1284,9 +1369,16 @@ public class Budget_BudgetRequestandAllocation_UAT extends BaseClass {
 	public void select_the_past_budget_year() throws Throwable {
 
 		// ----------TO SELECT THE PAST BUDGET YEAR---------------//
-		waitHelper.waitForElement(driver, 3000, requestAndAllocation.budget_requestAndAllocation_Budgetyear());
-		dropDownHelper.SelectUsingVisibleText(requestAndAllocation.budget_requestAndAllocation_Budgetyear(),
-				requestAndAllocationTestData.BudgetYear1);
+		while (true) {
+			try {
+				waitHelper.waitForElement(driver, 3000, requestAndAllocation.budget_requestAndAllocation_Budgetyear());
+				dropDownHelper.SelectUsingVisibleText(requestAndAllocation.budget_requestAndAllocation_Budgetyear(),
+						requestAndAllocationTestData.BudgetYear1);
+				break;
+			} catch (NoSuchElementException e) {
+
+			}
+		}
 		// requestAndAllocation.budget_requestAndAllocation_Budgetyear().sendKeys(Keys.DOWN);
 	}
 
@@ -1497,18 +1589,18 @@ public class Budget_BudgetRequestandAllocation_UAT extends BaseClass {
 
 			}
 		}
-		waitHelper.waitForElement(driver, 3000,
-				driver.findElement(By.xpath("//td[@aria-label='" + requestAndAllocationTestData.FullMonth + " "
-						+ requestAndAllocationTestData.Date + ", " + requestAndAllocationTestData.Year + "']/span")));
+		
+		waitHelper.waitForElementToVisibleWithFluentWait(driver, driver.findElement(By.xpath("//td[@aria-label='" + requestAndAllocationTestData.FullMonth
+				+ " " + requestAndAllocationTestData.Date + ", " + requestAndAllocationTestData.Year + "']/span")), 100, 500);
 		WebElement Click = driver.findElement(By.xpath("//td[@aria-label='" + requestAndAllocationTestData.FullMonth
 				+ " " + requestAndAllocationTestData.Date + ", " + requestAndAllocationTestData.Year + "']/span"));
-
+		clickAndActionHelper.moveToElement(Click);
 		clickAndActionHelper.doubleClick(Click);
 	}
 
 	@Then("^Click on View button$")
 	public void click_on_view_button() throws Throwable {
-		waitHelper.waitForElement(driver, 3000, requestAndAllocation.Reports_Bud_Creation_ViewButton());
+waitHelper.waitForElementToVisibleWithFluentWait(driver, requestAndAllocation.Reports_Bud_Creation_ViewButton(), 60, 500);
 		requestAndAllocation.Reports_Bud_Creation_ViewButton().click();
 	}
 
@@ -1522,7 +1614,7 @@ public class Budget_BudgetRequestandAllocation_UAT extends BaseClass {
 		 * System.out.println(title); }
 		 */
 		while (true) {
-			Thread.sleep(2000);
+
 			try {
 				javaHelper.scrollIntoView(driver.findElement(By.xpath("//div[contains(text(),'" + Type + "')]")));
 				driver.findElement(By.xpath("//div[contains(text(),'" + Type + "')]")).isDisplayed();
@@ -1530,6 +1622,8 @@ public class Budget_BudgetRequestandAllocation_UAT extends BaseClass {
 			} catch (NoSuchElementException e) {
 				waitHelper.waitForElement(driver, 3000, requestAndAllocation.Reports_Bud_Creation_Nextbtn());
 				requestAndAllocation.Reports_Bud_Creation_Nextbtn().click();
+			} catch (StaleElementReferenceException staleElement) {
+
 			}
 		}
 

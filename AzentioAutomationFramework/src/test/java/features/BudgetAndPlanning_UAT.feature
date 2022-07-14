@@ -13,6 +13,8 @@ And enter budget name for yearly budget
 Then enter remark
 Then click on Save button
 And click notification button
+Then click on the search button
+And serach the budget defenition sub module name
 Then choose first record in the notification record
 And click on Submit button 
 Then enter remark in confirmation alert
@@ -39,7 +41,8 @@ And click on approve button in checker stage
 Then give alert remark 
 Then click on submit button on alert
 And verify the record got approved from checker
-Given navigate to given url and login with maker credentials
+Then logout from checker
+And login with Maker ID
 Then click on budget configuration menu
 Then click on eye icon which is near by budget definition submenu
 Then verify the yearly budget approve record is available in the approved list view
@@ -56,6 +59,8 @@ And enter budget name for monthly budget
 Then enter remark
 Then click on Save button
 And click notification button
+Then click on the search button
+And serach the budget defenition sub module name
 Then choose first record in the notification record
 And click on Submit button 
 Then enter remark in confirmation alert
@@ -82,7 +87,8 @@ And click on approve button in checker stage
 Then give alert remark 
 Then click on submit button on alert
 And verify the record got approved from checker
-Given navigate to given url and login with maker credentials
+Then logout from checker
+And login with Maker ID
 Then click on budget configuration menu
 Then click on eye icon which is near by budget definition submenu
 Then verify the monthly approved budget code is appeared in the list view
@@ -100,6 +106,8 @@ And enter budget name for Quarterly budget
 Then enter remark
 Then click on Save button
 And click notification button
+Then click on the search button
+And serach the budget defenition sub module name
 Then choose first record in the notification record
 And click on Submit button 
 Then enter remark in confirmation alert
@@ -126,7 +134,8 @@ And click on approve button in checker stage
 Then give alert remark 
 Then click on submit button on alert
 And verify the record got approved from checker
-Given navigate to given url and login with maker credentials
+Then logout from checker
+And login with Maker ID
 Then click on budget configuration menu
 Then click on eye icon which is near by budget definition submenu
 Then verify the quaterly budget approve record is available in the approved list view
@@ -143,6 +152,8 @@ And enter budget name for half yearly
 Then enter remark
 Then click on Save button
 And click notification button
+Then click on the search button
+And serach the budget defenition sub module name
 Then choose first record in the notification record
 And click on Submit button 
 Then enter remark in confirmation alert
@@ -169,7 +180,8 @@ And click on approve button in checker stage
 Then give alert remark 
 Then click on submit button on alert
 And verify the record got approved from checker
-Given navigate to given url and login with maker credentials
+Then logout from checker
+And login with Maker ID
 Then click on budget configuration menu
 Then click on eye icon which is near by budget definition submenu
 Then verify the half yearly budget approve record is available in the approved list view
@@ -185,7 +197,9 @@ And give warning percentage
 And enter budget name for yearly budget
 Then enter remark
 Then click on Save button
-And click notification button
+And click notification button 
+Then click on the search button
+And serach the budget defenition sub module name
 Then choose first record in the notification record
 And click on Submit button 
 Then enter remark in confirmation alert
@@ -226,39 +240,9 @@ And get the budget code for allocation
   Then select one currency we need
   And Enter the Amount for yearly Budget type
   And click on the save button
-  Then click on the Maker icon button
-  And click on the Record submit
-  Given Azentio Url login as Reviewer
-  Then Click on Reviewer Notification icon
-  And Click on to Reviewer Action button
-  Then Click on to Approve button in Reviewer
-  And Submit the record in reviewer
-  Given Azentio Url login as checker page
-  Then click on the security management
-  And Click on the sub module open pool near Edit icon
-  Then Click the claim option icon
-  And Click on the checker notification icon
-  Then click the checker action icon
-  And Approve the Record in checker
-  Then Submit the Record in checker
-  Given Navigate to the Azentio Url
-  Then click the Two Direction Icon
-  And click to the Budget
-  Then click on the Budget Sub module Budget Request and Allocation Near Eye Icon
-  
-  @Future_FinacialBudget
-  Scenario: To Create the budget for current financial year
-    Given navigate to given url and login with maker credentials
-Then click on budget configuration menu
-Then click on eye icon which is near by budget definition submenu
-And click on add button to create budget code
-Then enter the budget code  to make current/future financial budget
-And choose yearly option in budget type
-And give warning percentage
-And enter budget name for yearly budget
-Then enter remark
-Then click on Save button
-And click notification button
+  And click notification button 
+Then click on the search button
+And serach the budget request and allocation sub module name
 Then choose first record in the notification record
 And click on Submit button 
 Then enter remark in confirmation alert
@@ -283,7 +267,48 @@ And click on approve button in checker stage
 Then give alert remark 
 Then click on submit button on alert
 And verify the record got approved from checker
-Given navigate to given url and login with maker credentials
+  
+  @Future_FinacialBudget
+  Scenario: To Create the budget for future financial year
+    Given navigate to given url and login with maker credentials
+Then click on budget configuration menu
+Then click on eye icon which is near by budget definition submenu
+And click on add button to create budget code
+Then enter the budget code  to make current/future financial budget
+And choose yearly option in budget type
+And give warning percentage
+And enter budget name for yearly budget
+Then enter remark
+Then click on Save button
+And click notification button
+Then click on the search button
+And serach the budget defenition sub module name
+Then choose first record in the notification record
+And click on Submit button 
+Then enter remark in confirmation alert
+Then click on submit button in alert
+And capture the reviewer ID in pop up which is open when we submit our record in maker stage
+Then logout from maker
+And login with reviewer credentials
+Then click on notification button
+And select our record in notification records using reference ID
+Then Approve the record from reviewer
+And enter the remark in alert
+Then click on submit in alert
+Then verify the approval status of the record
+And logout from reviewer
+Then login as a checker 
+And click on security management menu in checker
+Then click on action button under security management menu
+And select our record and clime using reference ID
+Then click on Notification button
+Then select our record in notification records by the help of reference ID
+And click on approve button in checker stage
+Then give alert remark 
+Then click on submit button on alert
+And verify the record got approved from checker
+Then logout from checker
+And login with Maker ID
 Then click on budget configuration menu
 Then click on eye icon which is near by budget definition submenu
 And get the budget code for allocation
@@ -300,22 +325,35 @@ And get the budget code for allocation
   Then select one currency we need
   And Enter the Amount for yearly Budget type
   And click on the save button
-  Then click on the Maker icon button
-  And click on the Record submit
-  Given Azentio Url login as Reviewer
-  Then Click on Reviewer Notification icon
-  And Click on to Reviewer Action button
-  Then Click on to Approve button in Reviewer
-  And Submit the record in reviewer
-  Given Azentio Url login as checker page
-  Then click on the security management
-  And Click on the sub module open pool near Edit icon
-  Then Click the claim option icon
-  And Click on the checker notification icon
-  Then click the checker action icon
-  And Approve the Record in checker
-  Then Submit the Record in checker
-  Given Navigate to the Azentio Url
+  And click notification button 
+Then click on the search button
+And serach the budget request and allocation sub module name
+Then choose first record in the notification record
+And click on Submit button 
+Then enter remark in confirmation alert
+Then click on submit button in alert
+And capture the reviewer ID in pop up which is open when we submit our record in maker stage
+Then logout from maker
+And login with reviewer credentials
+Then click on notification button
+And select our record in notification records using reference ID
+Then Approve the record from reviewer
+And enter the remark in alert
+Then click on submit in alert
+Then verify the approval status of the record
+And logout from reviewer
+Then login as a checker 
+And click on security management menu in checker
+Then click on action button under security management menu
+And select our record and clime using reference ID
+Then click on Notification button
+Then select our record in notification records by the help of reference ID
+And click on approve button in checker stage
+Then give alert remark 
+Then click on submit button on alert
+And verify the record got approved from checker
+Then logout from checker
+And login with Maker ID
   Then click the Two Direction Icon
   And click to the Budget
   Then click on the Budget Sub module Budget Request and Allocation Near Eye Icon
@@ -349,6 +387,8 @@ And enter budget name for monthly budget
 Then enter remark
 Then click on Save button
 And click notification button
+Then click on the search button
+And serach the budget defenition sub module name
 Then choose first record in the notification record
 And click on Submit button 
 Then enter remark in confirmation alert
@@ -373,7 +413,8 @@ And click on approve button in checker stage
 Then give alert remark 
 Then click on submit button on alert
 And verify the record got approved from checker
-Given navigate to given url and login with maker credentials
+Then logout from checker
+And login with Maker ID
 Then click on budget configuration menu
 Then click on eye icon which is near by budget definition submenu
 And get the budget code for allocation
@@ -406,6 +447,8 @@ And enter budget name for Quarterly budget
 Then enter remark
 Then click on Save button
 And click notification button
+Then click on the search button
+And serach the budget defenition sub module name
 Then choose first record in the notification record
 And click on Submit button 
 Then enter remark in confirmation alert
@@ -430,7 +473,8 @@ And click on approve button in checker stage
 Then give alert remark 
 Then click on submit button on alert
 And verify the record got approved from checker
-Given navigate to given url and login with maker credentials
+Then logout from checker
+And login with Maker ID
 Then click on budget configuration menu
 Then click on eye icon which is near by budget definition submenu
 And get the budget code for allocation
@@ -464,6 +508,8 @@ And enter budget name for Quarterly budget
 Then enter remark
 Then click on Save button
 And click notification button
+Then click on the search button
+And serach the budget defenition sub module name
 Then choose first record in the notification record
 And click on Submit button 
 Then enter remark in confirmation alert
@@ -488,7 +534,8 @@ And click on approve button in checker stage
 Then give alert remark 
 Then click on submit button on alert
 And verify the record got approved from checker
-Given navigate to given url and login with maker credentials
+Then logout from checker
+And login with Maker ID
 Then click on budget configuration menu
 Then click on eye icon which is near by budget definition submenu
 And get the budget code for allocation
@@ -521,6 +568,8 @@ And enter budget name for yearly budget
 Then enter remark
 Then click on Save button
 And click notification button
+Then click on the search button
+And serach the budget defenition sub module name
 Then choose first record in the notification record
 And click on Submit button 
 Then enter remark in confirmation alert
@@ -545,7 +594,8 @@ And click on approve button in checker stage
 Then give alert remark 
 Then click on submit button on alert
 And verify the record got approved from checker
-Given navigate to given url and login with maker credentials
+Then logout from checker
+And login with Maker ID
 Then click on budget configuration menu
 Then click on eye icon which is near by budget definition submenu
 And get the budget code for allocation
@@ -578,6 +628,8 @@ And enter budget name for monthly budget
 Then enter remark
 Then click on Save button
 And click notification button
+Then click on the search button
+And serach the budget defenition sub module name
 Then choose first record in the notification record
 And click on Submit button 
 Then enter remark in confirmation alert
@@ -602,7 +654,8 @@ And click on approve button in checker stage
 Then give alert remark 
 Then click on submit button on alert
 And verify the record got approved from checker
-Given navigate to given url and login with maker credentials
+Then logout from checker
+And login with Maker ID
 Then click on budget configuration menu
 Then click on eye icon which is near by budget definition submenu
 And get the budget code for allocation
@@ -620,36 +673,9 @@ And get the budget code for allocation
   Then select one currency we need
   And Give Amount for Budget Type Show in Budget type field
   And click on the save button
- Then click on the Maker icon button
-  And click on the Record submit
-  Given Azentio Url login as Reviewer
-  Then Click on Reviewer Notification icon
-  And Click on to Reviewer Action button
-  Then Click on to Approve button in Reviewer
-  And Submit the record in reviewer
-  Given Azentio Url login as checker page
-  Then click on the security management
-  And Click on the sub module open pool near Edit icon
-  Then Click the claim option icon
-  And Click on the checker notification icon
-  Then click the checker action icon
-  And Approve the Record in checker
-  Then Submit the Record in checker
-  
-  @KUBS_UAT_BudgetReject_KUBS_BP_UAT_002_006
-  
-  Scenario: Check requested  budget for budget code  can be Rejected
-    Given navigate to given url and login with maker credentials
-Then click on budget configuration menu
-Then click on eye icon which is near by budget definition submenu
-And click on add button to create budget code
-Then fill the budget code field
-And choose yearly option in budget type
-And give warning percentage
-And enter budget name for yearly budget
-Then enter remark
-Then click on Save button
-And click notification button
+ And click notification button 
+Then click on the search button
+And serach the budget request and allocation sub module name
 Then choose first record in the notification record
 And click on Submit button 
 Then enter remark in confirmation alert
@@ -674,7 +700,49 @@ And click on approve button in checker stage
 Then give alert remark 
 Then click on submit button on alert
 And verify the record got approved from checker
-Given navigate to given url and login with maker credentials
+  
+  @KUBS_UAT_BudgetReject_KUBS_BP_UAT_002_006
+  
+  Scenario: Check requested  budget for budget code  can be Rejected
+    Given navigate to given url and login with maker credentials
+Then click on budget configuration menu
+Then click on eye icon which is near by budget definition submenu
+And click on add button to create budget code
+Then fill the budget code field
+And choose yearly option in budget type
+And give warning percentage
+And enter budget name for yearly budget
+Then enter remark
+Then click on Save button
+And click notification button
+Then click on the search button
+And serach the budget defenition sub module name
+Then choose first record in the notification record
+And click on Submit button 
+Then enter remark in confirmation alert
+Then click on submit button in alert
+And capture the reviewer ID in pop up which is open when we submit our record in maker stage
+Then logout from maker
+And login with reviewer credentials
+Then click on notification button
+And select our record in notification records using reference ID
+Then Approve the record from reviewer
+And enter the remark in alert
+Then click on submit in alert
+Then verify the approval status of the record
+And logout from reviewer
+Then login as a checker 
+And click on security management menu in checker
+Then click on action button under security management menu
+And select our record and clime using reference ID
+Then click on Notification button
+Then select our record in notification records by the help of reference ID
+And click on approve button in checker stage
+Then give alert remark 
+Then click on submit button on alert
+And verify the record got approved from checker
+Then logout from checker
+And login with Maker ID
 Then click on budget configuration menu
 Then click on eye icon which is near by budget definition submenu
 And get the budget code for allocation
@@ -692,19 +760,29 @@ And get the budget code for allocation
   Then select one currency we need
   And Budget Amount for Budget Type Show in Budget type field
   And click on the save button
- Then click on the Maker icon button
-  And click on the Record submit
-  Given Azentio Url login as Reviewer
-  Then Click on Reviewer Notification icon
-  And Click on to Reviewer Action button
-  Then Click on to Approve button in Reviewer
-  And Submit the record in reviewer
-  Given Azentio Url login as checker page
-  Then click on the security management
-  And Click on the sub module open pool near Edit icon
-  Then Click the claim option icon
-  And Click on the checker notification icon
-  Then click the checker action icon
+ And click notification button 
+Then click on the search button
+And serach the budget request and allocation sub module name
+Then choose first record in the notification record
+And click on Submit button 
+Then enter remark in confirmation alert
+Then click on submit button in alert
+And capture the reviewer ID in pop up which is open when we submit our record in maker stage
+Then logout from maker
+And login with reviewer credentials
+Then click on notification button
+And select our record in notification records using reference ID
+Then Approve the record from reviewer
+And enter the remark in alert
+Then click on submit in alert
+Then verify the approval status of the record
+And logout from reviewer
+Then login as a checker 
+And click on security management menu in checker
+Then click on action button under security management menu
+And select our record and clime using reference ID
+Then click on Notification button
+Then select our record in notification records by the help of reference ID
   And Reject the Record in checker
   Then Submit the Rejecting Record in checker 
    
@@ -722,6 +800,8 @@ And enter budget name for yearly budget
 Then enter remark
 Then click on Save button
 And click notification button
+Then click on the search button
+And serach the budget defenition sub module name
 Then choose first record in the notification record
 And click on Submit button 
 Then enter remark in confirmation alert
@@ -746,7 +826,8 @@ And click on approve button in checker stage
 Then give alert remark 
 Then click on submit button on alert
 And verify the record got approved from checker
-Given navigate to given url and login with maker credentials
+Then logout from checker
+And login with Maker ID
 Then click on budget configuration menu
 Then click on eye icon which is near by budget definition submenu
 And get the budget code for allocation
@@ -795,6 +876,8 @@ And enter budget name for Quarterly budget
 Then enter remark
 Then click on Save button
 And click notification button
+Then click on the search button
+And serach the budget defenition sub module name
 Then choose first record in the notification record
 And click on Submit button 
 Then enter remark in confirmation alert
@@ -819,7 +902,8 @@ And click on approve button in checker stage
 Then give alert remark 
 Then click on submit button on alert
 And verify the record got approved from checker
-Given navigate to given url and login with maker credentials
+Then logout from checker
+And login with Maker ID
 Then click on budget configuration menu
 Then click on eye icon which is near by budget definition submenu
 And get the budget code for allocation
@@ -837,24 +921,33 @@ And get the budget code for allocation
   Then select one currency we need
   And Budget Amount for Budget Type Show in Budget type field
   And click on the save button
-  Then click on the Maker icon button
-  And Change the Amount Before Approval
-  And click on the save button
-  Then click on the Maker icon button
-  And click on the Record submit
-  Given Azentio Url login as Reviewer
-  Then Click on Reviewer Notification icon
-  And Click on to Reviewer Action button
-  Then Click on to Approve button in Reviewer
-  And Submit the record in reviewer
-  Given Azentio Url login as checker page
-  Then click on the security management
-  And Click on the sub module open pool near Edit icon
-  Then Click the claim option icon
-  And Click on the checker notification icon
-  Then click the checker action icon
-  And Approve the Record in checker
-  Then Submit the Record in checker	  
+  And click notification button 
+Then click on the search button
+And serach the budget request and allocation sub module name
+Then choose first record in the notification record
+And click on Submit button 
+Then enter remark in confirmation alert
+Then click on submit button in alert
+And capture the reviewer ID in pop up which is open when we submit our record in maker stage
+Then logout from maker
+And login with reviewer credentials
+Then click on notification button
+And select our record in notification records using reference ID
+Then Approve the record from reviewer
+And enter the remark in alert
+Then click on submit in alert
+Then verify the approval status of the record
+And logout from reviewer
+Then login as a checker 
+And click on security management menu in checker
+Then click on action button under security management menu
+And select our record and clime using reference ID
+Then click on Notification button
+Then select our record in notification records by the help of reference ID
+And click on approve button in checker stage
+Then give alert remark 
+Then click on submit button on alert
+And verify the record got approved from checker
   
   @KUBS_UAT_KUBS_BP_UAT_003_002
   
@@ -884,6 +977,9 @@ And enter budget name for monthly budget
 Then enter remark
 Then click on Save button
 And click notification button
+Then click on the search button
+And serach the budget defenition sub module name
+And click notification button
 Then choose first record in the notification record
 And click on Submit button 
 Then enter remark in confirmation alert
@@ -908,7 +1004,8 @@ And click on approve button in checker stage
 Then give alert remark 
 Then click on submit button on alert
 And verify the record got approved from checker
-Given navigate to given url and login with maker credentials
+Then logout from checker
+And login with Maker ID
 Then click on budget configuration menu
 Then click on eye icon which is near by budget definition submenu
 And get the budget code for allocation
@@ -950,6 +1047,8 @@ And enter budget name for Quarterly budget
 Then enter remark
 Then click on Save button
 And click notification button
+Then click on the search button
+And serach the budget defenition sub module name
 Then choose first record in the notification record
 And click on Submit button 
 Then enter remark in confirmation alert
@@ -974,7 +1073,8 @@ And click on approve button in checker stage
 Then give alert remark 
 Then click on submit button on alert
 And verify the record got approved from checker
-Given navigate to given url and login with maker credentials
+Then logout from checker
+And login with Maker ID
 Then click on budget configuration menu
 Then click on eye icon which is near by budget definition submenu
 And get the budget code for allocation
@@ -1006,6 +1106,8 @@ And enter budget name for Quarterly budget
 Then enter remark
 Then click on Save button
 And click notification button
+Then click on the search button
+And serach the budget defenition sub module name
 Then choose first record in the notification record
 And click on Submit button 
 Then enter remark in confirmation alert
@@ -1030,7 +1132,8 @@ And click on approve button in checker stage
 Then give alert remark 
 Then click on submit button on alert
 And verify the record got approved from checker
-Given navigate to given url and login with maker credentials
+Then logout from checker
+And login with Maker ID
 Then click on budget configuration menu
 Then click on eye icon which is near by budget definition submenu
 And get the budget code for allocation
@@ -1062,6 +1165,8 @@ And enter budget name for Quarterly budget
 Then enter remark
 Then click on Save button
 And click notification button
+Then click on the search button
+And serach the budget defenition sub module name
 Then choose first record in the notification record
 And click on Submit button 
 Then enter remark in confirmation alert
@@ -1086,7 +1191,8 @@ And click on approve button in checker stage
 Then give alert remark 
 Then click on submit button on alert
 And verify the record got approved from checker
-Given navigate to given url and login with maker credentials
+Then logout from checker
+And login with Maker ID
 Then click on budget configuration menu
 Then click on eye icon which is near by budget definition submenu
 And get the budget code for allocation
@@ -1138,6 +1244,8 @@ And enter budget name for yearly budget
 Then enter remark
 Then click on Save button
 And click notification button
+Then click on the search button
+And serach the budget defenition sub module name
 Then choose first record in the notification record
 And click on Submit button 
 Then enter remark in confirmation alert
@@ -1162,7 +1270,8 @@ And click on approve button in checker stage
 Then give alert remark 
 Then click on submit button on alert
 And verify the record got approved from checker
-Given navigate to given url and login with maker credentials
+Then logout from checker
+And login with Maker ID
 Then click on budget configuration menu
 Then click on eye icon which is near by budget definition submenu
 And get the budget code for allocation
@@ -1180,28 +1289,40 @@ And get the budget code for allocation
   Then select one currency we need
   And Give Branch requested to allocate the budget amount
   And click on the save button
- Then click on the Maker icon button
-  And click on the Record submit
-  Given Azentio Url login as Reviewer
-  Then Click on Reviewer Notification icon
-  And Click on to Reviewer Action button
-  Then Click on to Approve button in Reviewer
-  And Submit the record in reviewer
-  Given Azentio Url login as checker page
-  Then click on the security management
-  And Click on the sub module open pool near Edit icon
-  Then Click the claim option icon
-  And Click on the checker notification icon
-  Then click the checker action icon
-  And Approve the Record in checker
-  Then Submit the Record in checker
+ And click notification button 
+Then click on the search button
+And serach the budget request and allocation sub module name
+Then choose first record in the notification record
+And click on Submit button 
+Then enter remark in confirmation alert
+Then click on submit button in alert
+And capture the reviewer ID in pop up which is open when we submit our record in maker stage
+Then logout from maker
+And login with reviewer credentials
+Then click on notification button
+And select our record in notification records using reference ID
+Then Approve the record from reviewer
+And enter the remark in alert
+Then click on submit in alert
+Then verify the approval status of the record
+And logout from reviewer
+Then login as a checker 
+And click on security management menu in checker
+Then click on action button under security management menu
+And select our record and clime using reference ID
+Then click on Notification button
+Then select our record in notification records by the help of reference ID
+And click on approve button in checker stage
+Then give alert remark 
+Then click on submit button on alert
+And verify the record got approved from checker
   
   
   #budget Suplimentory
   @SupplementaryBudget_KUBS_BP_UAT_005_002
 Scenario: System should allocate more requested amount for the inputted budget code.
 
- Given maker should navigate to the url and login with valid credentials UAT
+ Given navigate to given url and login with maker credentials
  And maker should navigate to the budget module UAT
  And maker click on budget field UAT
  When maker click on budget supplementary eye icon UAT
@@ -1214,74 +1335,115 @@ Scenario: System should allocate more requested amount for the inputted budget c
 @SupplementaryBudget_KUBS_BP_UAT_005_004
 Scenario: System should able to approve the supplimentary requested budget
 
- Given maker should navigate to the url and login with valid credentials UAT
+Given navigate to given url and login with maker credentials
  And maker should navigate to the budget module UAT
  And maker click on budget field UAT
  When maker click on budget supplementary eye icon UAT
  And click on add button on budget supplementary view page UAT
  Then fill the input fields UAT
  Then fill apportion amount and save the record UAT
- Then validate maker can submit the record UAT
- Then user login to checker1 UAT
- And click on notification icon UAT
- And click on action button button of the record which we want to approve UAT
- Then user approve the record UAT
- And user write the remark & submit the record UAT
- Then User should login to checker2 UAT
- Then click on open pool UAT
- And Verify for claming the record UAT
- Then User should click on notification icon on reviewer2 home page UAT
- Then Claim and approve the record UAT
- Given maker should navigate to the url and login with valid credentials UAT
- And maker should navigate to the budget module UAT
- And maker click on budget field UAT
- When maker click on budget supplementary eye icon UAT
+ 
+ And click notification button 
+Then click on the search button
+And serach the budget supplimentory sub module name
+Then choose first record in the notification record
+And click on Submit button 
+Then enter remark in confirmation alert
+Then click on submit button in alert
+And capture the reviewer ID in pop up which is open when we submit our record in maker stage
+Then logout from maker
+And login with reviewer credentials
+Then click on notification button
+And select our record in notification records using reference ID
+Then Approve the record from reviewer
+And enter the remark in alert
+Then click on submit in alert
+Then verify the approval status of the record
+And logout from reviewer
+Then login as a checker 
+And click on security management menu in checker
+Then click on action button under security management menu
+And select our record and clime using reference ID
+Then click on Notification button
+Then select our record in notification records by the help of reference ID
+And click on approve button in checker stage
+Then give alert remark 
+Then click on submit button on alert
+And verify the record got approved from checker
 
 @SupplementaryBudget_KUBS_BP_UAT_005_005
 Scenario: Check System should able to Reject the supplimentary requested budget
-	 Given maker should navigate to the url and login with valid credentials UAT
+Given navigate to given url and login with maker credentials
  And maker should navigate to the budget module UAT
  And maker click on budget field UAT
  When maker click on budget supplementary eye icon UAT
  And click on add button on budget supplementary view page UAT
  Then fill the input fields UAT
  Then fill apportion amount and save the record UAT
- Then validate maker can submit the record UAT
-Then user login to checker1 UAT
-And click on notification icon UAT
-And click on action button button of the record which we want to approve UAT
-Then user approve the record UAT
-And user write the remark & submit the record UAT
-Then User should login to checker2 UAT
+ And click notification button 
+Then click on the search button
+And serach the budget supplimentory sub module name
+Then choose first record in the notification record
+And click on Submit button 
+Then enter remark in confirmation alert
+Then click on submit button in alert
+And capture the reviewer ID in pop up which is open when we submit our record in maker stage
+Then logout from maker
+And login with reviewer credentials
+Then click on notification button
+And select our record in notification records using reference ID
+Then Approve the record from reviewer
+And enter the remark in alert
+Then click on submit in alert
+Then verify the approval status of the record
+And logout from reviewer
+Then login as a checker
 Then click on open pool UAT
 And Verify for claming the record UAT
-Then User should click on notification icon on reviewer2 home page UAT
+#Then User should click on notification icon on reviewer2 home page UAT
+Then click on Notification button
+Then select our record in notification records by the help of reference ID
 Then Claim and reject the record UAT
- Given maker should navigate to the url and login with valid credentials UAT
+Then logout from checker
+And login with Maker ID
  And maker should navigate to the budget module UAT
  And maker click on budget field UAT
  When maker click on budget supplementary eye icon UAT
 @SupplementaryBudget_KUBS_BP_UAT_005_006
 Scenario: Check if supplimentary budget rejected from HO, the requested amount can not be used
-Given maker should navigate to the url and login with valid credentials UAT
+Given navigate to given url and login with maker credentials
 And maker should navigate to the budget module UAT
 And maker click on budget field UAT
 When maker click on budget supplementary eye icon UAT
 And click on add button on budget supplementary view page UAT
 Then fill the input fields UAT
 Then fill apportion amount and save the record UAT
-Then validate maker can submit the record UAT
-Then user login to checker1 UAT
-And click on notification icon UAT
-And click on action button button of the record which we want to approve UAT
-Then user approve the record UAT
-And user write the remark & submit the record UAT
-Then User should login to checker2 UAT
-Then click on open pool UAT
-And Verify for claming the record UAT
-Then User should click on notification icon on reviewer2 home page UAT
+And click notification button 
+Then click on the search button
+And serach the budget supplimentory sub module name
+Then choose first record in the notification record
+And click on Submit button 
+Then enter remark in confirmation alert
+Then click on submit button in alert
+And capture the reviewer ID in pop up which is open when we submit our record in maker stage
+Then logout from maker
+And login with reviewer credentials
+Then click on notification button
+And select our record in notification records using reference ID
+Then Approve the record from reviewer
+And enter the remark in alert
+Then click on submit in alert
+Then verify the approval status of the record
+And logout from reviewer
+Then login as a checker
+And click on security management menu in checker
+Then click on action button under security management menu
+And select our record and clime using reference ID
+Then click on Notification button
+Then select our record in notification records by the help of reference ID
 Then Claim and reject the record UAT 
-Given maker should navigate to the url and login with valid credentials UAT
+Then logout from checker
+And login with Maker ID
 And maker should navigate to the budget module UAT
 And maker click on budget field UAT
 When maker click on budget supplementary eye icon UAT
@@ -1290,7 +1452,7 @@ And navigate to search icon and  fill the required field
 
 @SupplementaryBudget_KUBS_BP_UAT_005_003
 Scenario: System should allow to modify the supplimentary request budget before approval
- Given maker should navigate to the url and login with valid credentials UAT
+ Given navigate to given url and login with maker credentials
  And maker should navigate to the budget module UAT
  And maker click on budget field UAT
  When maker click on budget supplementary eye icon UAT
@@ -1302,7 +1464,7 @@ Scenario: System should allow to modify the supplimentary request budget before 
  
  @SupplementaryBudget_KUBS_BP_UAT_005_007
 Scenario: Check the supplementary budget request in the report
-Given maker should navigate to the url and login with valid credentials UAT
+Given navigate to given url and login with maker credentials
 Then click on report segment button
 Then Click on Report field
 Then click on supplementary budget Report
@@ -1316,7 +1478,7 @@ Then verify the Supplementary Budget report
 Scenario: Check the functionality if transfering budget does not have sufficeint amount in that quarter
 Given Maker login
 And Maker click on  the direction tab
-Then Maker click on the budget
+And click on budget main menu
 Then Maker click on  budget transfer eye button
 And Maker click on add button
 Then fill form and enter excessive budget amount to transfer
@@ -1325,7 +1487,7 @@ Then fill form and enter excessive budget amount to transfer
 Scenario: Check when transfered budget from one budget code to another budget can modify the amount
 Given Maker login
 And Maker click on  the direction tab
-Then Maker click on the budget
+And click on budget main menu
 Then Maker click on  budget transfer eye button
 And Maker click on add button
 Then Maker fill the details and save
@@ -1337,8 +1499,8 @@ Scenario: UAT_006_001 System should transfer the requested budgeted code amount 
 When User login to maker
 Then click on configuration
 And click on finance
-Then click on direction button
-Then click on budget button
+And Maker click on  the direction tab
+And click on budget main menu
 Then Click on budget transfer eye button
 Then click on add buttion
 Then fill the form
@@ -1350,8 +1512,7 @@ Scenario: UAT_006_007 If transfering budget code does not have sufficeint amount
 When user login into maker stage
 Then user click on configuration
 Then user click on the finance button
-Then click on direction
-Then click on budget button
+And click on budget main menu
 Then click on transfer eye button
 Then click on add button in transfer
 Then fill the form and enter excessive budget amount to transfer

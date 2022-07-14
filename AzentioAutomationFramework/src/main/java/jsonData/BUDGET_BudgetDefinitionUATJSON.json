@@ -3,26 +3,26 @@
 		"usertType": "Maker",
 		"warningPecentage": "28",
 		"remark": "Ok",
-		"BudgetCodePrefix":"BUD",
-		"uatYearlyBudgetCode": "BUDGC010",
-		"uatMonthlyBudgetCode": "BUDGC011",
-		"uatHalfYearlyBudgetCode": "BUDGC012",
-		"uatQuarterlyBudgetCode": "BUDG013",
-		"uatCurrentFinancialBudgetCode":"BUDG0502",
+		"BudgetCodePrefix": "bc27",
+		"uatYearlyBudgetCode": "BUDG382",
+		"uatMonthlyBudgetCode": "BUDGC383",
+		"uatHalfYearlyBudgetCode": "BUDGC384",
+		"uatQuarterlyBudgetCode": "BUDG385",
+		"uatCurrentFinancialBudgetCode": "BUDG0502",
+		"budgetDefenitionEventCode": "BUDGET_REGISTER",
+		"budgetRequestAndAllocationEventCode": "BUDGET_CREATION",
+		"budgetSupplimentoryEventCode": "BUDGET_SUPPLIMENT",
+		"budgetTransferEventCode": "BUDGET_TRANSFER",
 		"uatYearlyBudgetType": "Capital Budgets",
 		"uatMonthlyBudgetType": "Financial Plan",
 		"uatHalfYearlyBudgetType": "Departments",
 		"uatQuarterlyBudgetType": "Revenue Budget",
 		"approvalCommentsFromReviewer": "Approved from Reviewer",
 		"approvalCommentsFromChecker": "Approved from Checker",
-		
-		
-		
-		
 		//Budget Transfer Report
-		"Month":"May",
-	"FullMonth":"May",
-	"Year":"2023",
-	"Day":"19"
+		"Month": "May",
+		"FullMonth": "May",
+		"Year": "2023",
+		"Day": "19"
 	}
 ]

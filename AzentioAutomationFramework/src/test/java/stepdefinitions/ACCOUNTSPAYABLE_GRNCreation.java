@@ -224,6 +224,8 @@ public class ACCOUNTSPAYABLE_GRNCreation extends BaseClass {
        System.out.println(poNumber+" "+poBusinessPartner+" ");
        settlementTestData.put("poNumber", poNumber);
        settlementTestData.put("poBusinessPartner", poBusinessPartner);
+       System.out.println("Po Number"+settlementTestData.get("poNumber"));
+       System.out.println("Po Number"+settlementTestData.get("poBusinessPartner"));
     }
     @And("^goto arap adjustment main module$")
     public void goto_arap_adjustment_main_module() throws Throwable {
@@ -233,6 +235,8 @@ public class ACCOUNTSPAYABLE_GRNCreation extends BaseClass {
     @Then("^go to ar ap adjustment module$")
     public void go_to_ar_ap_adjustment_module() throws Throwable {
     	Thread.sleep(2000);
+    	waitHelper.waitForElementToVisibleWithFluentWait(driver, makerObj.kubsToolIcon(), 5, 500);
+    	makerObj.kubsToolIcon().click();
     	waitHelper.waitForElementVisible(makerObj.kubsDirectionIcon(), 2000, 100);
     	makerObj.kubsDirectionIcon().click();
     	makerObj.kubsAdjustmentsArAp().click();

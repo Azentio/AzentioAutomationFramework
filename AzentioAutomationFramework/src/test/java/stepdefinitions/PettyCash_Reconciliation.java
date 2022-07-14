@@ -61,85 +61,93 @@ public class PettyCash_Reconciliation {
 	@And("^user should navigate to petty cash menu$")
 	public void user_should_navigate_to_petty_cash_menu()  {
 		
-		waithelper.waitForElement(driver, 3000, ReconciliationObj.PettyCash_Reconciliation_DirctionIcon());
+		waithelper.waitForElementToVisibleWithFluentWait(driver, ReconciliationObj.PettyCash_Reconciliation_DirctionIcon(), 90, 500);
 		ReconciliationObj.PettyCash_Reconciliation_DirctionIcon().click();
-		waithelper.waitForElement(driver, 3000, ReconciliationObj.PettyCash_Reconciliation_PettyCashMenu());
+		waithelper.waitForElementToVisibleWithFluentWait(driver, ReconciliationObj.PettyCash_Reconciliation_PettyCashMenu(), 90, 500);
 		ReconciliationObj.PettyCash_Reconciliation_PettyCashMenu().click();
 	}
 	
 	@When("^click on eye button of reconciliation$")
     public void click_on_eye_button_of_reconciliation(){
 		javascripthelper.JavaScriptHelper(driver);
-		waithelper.waitForElement(driver, 3000, ReconciliationObj.PettyCash_Reconciliation_EyeButton());
-		javascripthelper.scrollIntoViewAndClick(ReconciliationObj.PettyCash_Reconciliation_EyeButton());
+		waithelper.waitForElementToVisibleWithFluentWait(driver, ReconciliationObj.PettyCash_Reconciliation_EyeButton(), 60, 500);
+		javascripthelper.scrollIntoViewAndClick(ReconciliationObj.PettyCash_Reconciliation_EyeButton());		
     }
 	
 	@And("^Fill the required fields for reconciliation$")
 	public void fill_the_required_fields_for_reconciliation()  {
-		waithelper.waitForElement(driver, 3000, ReconciliationObj.PettyCash_Reconciliation_PhysicalCashInHand());
+		waithelper.waitForElementToVisibleWithFluentWait(driver, ReconciliationObj.PettyCash_Reconciliation_PhysicalCashInHand(), 60, 500);
 		ReconciliationObj.PettyCash_Reconciliation_PhysicalCashInHand().sendKeys(ReconciliationTestDataType.PhysicalCashInHand);
 		ReconciliationObj.PettyCash_Reconciliation_Currency().sendKeys(ReconciliationTestDataType.Currency);
 	}
 	
 	@Then("^Save and submit the reconciliation$")
     public void save_and_submit_the_reconciliation() throws InterruptedException, IOException, ParseException  {
-		waithelper.waitForElement(driver, 3000, ReconciliationObj.PettyCash_Reconciliation_SaveButton());
+		waithelper.waitForElementToVisibleWithFluentWait(driver, ReconciliationObj.PettyCash_Reconciliation_SaveButton(), 60, 500);
 		ReconciliationObj.PettyCash_Reconciliation_SaveButton().click();
 		
-		Thread.sleep(2000);
+		
 		javascripthelper.JavaScriptHelper(driver);
 		
-		WebElement recordstatus = ReconciliationObj.PettyCash_Reconciliation_ApprovalRecordStatus();
-    	clicksAndActionHelper.moveToElement(recordstatus);
+//		WebElement recordstatus = ReconciliationObj.PettyCash_Reconciliation_ApprovalRecordStatus();
+//    	clicksAndActionHelper.moveToElement(recordstatus);
+    	
+    	waithelper.waitForElementToVisibleWithFluentWait(driver, ReconciliationObj.PettyCash_Reconciliation_ApprovalRecordStatus(), 60, 500);
     	String message = ReconciliationObj.PettyCash_Reconciliation_ApprovalRecordStatus().getText();
     	System.out.println(message);
-    	ReconciliationObj.PettyCash_Reconciliation_ApprovalRecordStatus().click();
-		
-		waithelper.waitForElement(driver, 3000, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_NotificationButton());
+    	//ReconciliationObj.PettyCash_Reconciliation_ApprovalRecordStatus().click();
+    	
+    	waithelper.waitForElementToVisibleWithFluentWait(driver, kubschecker.checker_alert_close(), 60, 500);
+    	kubschecker.checker_alert_close().click();
+    	
+		waithelper.waitForElementToVisibleWithFluentWait(driver, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_NotificationButton(), 60, 500);
 		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_NotificationButton().click();
 		
-		waithelper.waitForElement(driver, 3000, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_FirstReferenceId());
+		waithelper.waitForElementToVisibleWithFluentWait(driver, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_FirstReferenceId(), 60, 500);
 		String id=aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_FirstReferenceId().getText();
 		jsonWriter.addReferanceData(id);
 		System.out.println("Reference ID:" +id);
+
     	for (int i = 1; i <= 35; i++) {
 			try {
-		    	waithelper.waitForElement(driver, 3000,driver.findElement(By.xpath("//span[contains(text(),'" +jsonWriter.readReferancedata()+ "')]")));	
+		    	//waithelper.waitForElementwithFluentwait(driver,driver.findElement(By.xpath("//span[contains(text(),'" +jsonWriter.readReferancedata()+ "')]")));	
 				WebElement referanceID = driver.findElement(By.xpath("//span[contains(text(),'" +  jsonWriter.readReferancedata() + "')]"));	
-				waithelper.waitForElement(driver, i, referanceID);
+				waithelper.waitForElementToVisibleWithFluentWait(driver,  referanceID, 60, 500);
 				referanceID.click();
 		    	System.out.println(referanceID);
 //				Assert.assertTrue(referanceID.isDisplayed());
 				break;
 			} catch (NoSuchElementException e) {
-				waithelper.waitForElement(driver,4000,aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_NotificationNextButton());
+				//waithelper.waitForElementwithFluentwait(driver,aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_NotificationNextButton());
 				aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_NotificationNextButton().click();
 			}
     	}
     	
     	String before_xpath="//span[contains(text(),'";
     	String after_xpath="')]/ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell//ion-button"; 
-    	waithelper.waitForElement(driver, 10000, driver.findElement(By.xpath(before_xpath +jsonWriter.readReferancedata()+after_xpath)));
+    	waithelper.waitForElementToVisibleWithFluentWait(driver, driver.findElement(By.xpath(before_xpath +jsonWriter.readReferancedata()+after_xpath)), 60, 500);
     	driver.findElement(By.xpath(before_xpath +jsonWriter.readReferancedata() +after_xpath)).click();
     	
-    	waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_SubmitButton());
+    	waithelper.waitForElementToVisibleWithFluentWait(driver, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_SubmitButton(), 60, 500);
     	aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_SubmitButton().click(); 
     	
-    	waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_RemarksByMaker());
+    	waithelper.waitForElementToVisibleWithFluentWait(driver, aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_RemarksByMaker(), 60, 500);
     	javascripthelper.JSEClick(aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_RemarksByMaker());
     	aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_RemarksByMaker().sendKeys(ReconciliationTestDataType.RemarkByMaker);
 		
-    	waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_Submit());
+    	waithelper.waitForElementToVisibleWithFluentWait(driver, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_Submit(), 60, 500);
     	aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_Submit().click();
     	
-    	Thread.sleep(1000);
-    	waithelper.waitForElement(driver, 3000, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_RecordStatus());
-    	WebElement recordstatus1 = aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_RecordStatus();
-    	clicksAndActionHelper.moveToElement(recordstatus1);
     	
+//
+//    	waithelper.waitForElementwithFluentwait(driver, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_RecordStatus());
+//    	WebElement recordstatus1 = aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_RecordStatus();
+//    	clicksAndActionHelper.moveToElement(recordstatus1);
+    	
+    	waithelper.waitForElementToVisibleWithFluentWait(driver, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_RecordStatus(), 60, 500);
     	String message1 = aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_RecordStatus().getText();
     	System.out.println(message1);
-    	aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_RecordStatus().click();
+    	//aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_RecordStatus().click();
     	
     	String emptystring = "";
 		String ar[] = message1.split(" ");
@@ -148,12 +156,12 @@ public class PettyCash_Reconciliation {
 		System.out.println(reviewerId);
 		jsonWriter=new JsonDataReaderWriter();
 		jsonWriter.addData(reviewerId);
-		
+    	
     }
 	
 	@Then("^click on first eye button of new record$")
 	public void click_on_first_eye_button_of_new_record() {
-		waithelper.waitForElement(driver, 3000, ReconciliationObj.PettyCash_Reconciliation_FirstRecordEyeButton());
+		waithelper.waitForElementToVisibleWithFluentWait(driver, ReconciliationObj.PettyCash_Reconciliation_FirstRecordEyeButton(), 60, 500);
 		ReconciliationObj.PettyCash_Reconciliation_FirstRecordEyeButton().click();
 	}
 
@@ -169,7 +177,6 @@ public class PettyCash_Reconciliation {
 	
 	@Then("^click on temp grid button of fund requisition report$")
 	public void click_on_temp_grid_button_of_fund_requisition_report() throws InterruptedException {
-		Thread.sleep(2000);
 		javascripthelper.JavaScriptHelper(driver);
 		javascripthelper.scrollIntoViewAndClick(ReconciliationObj.Reports_PettyCash_FundRequisitionTempView());
 	}
@@ -177,24 +184,24 @@ public class PettyCash_Reconciliation {
 	@And("^select the date to check the fund requisition details are displaying$")
 	public void select_the_date_to_check_the_fund_requisition_details_are_displaying() throws InterruptedException {
 		
-		waithelper.waitForElement(driver, 3000, ReconciliationObj.Reports_PettyCash_Calendar1());
+		waithelper.waitForElementToVisibleWithFluentWait(driver, ReconciliationObj.Reports_PettyCash_Calendar1(), 60, 500);
 		ReconciliationObj.Reports_PettyCash_Calendar1().click();
 		
-		Thread.sleep(2000);
+		
 		while(true)
 		{
 			try 
 			{
-				waithelper.waitForElement(driver, 3000, driver.findElement(By.xpath("//span[contains(text(),'"+PettyCashTestDataType.FundRequisition_Month+" "+PettyCashTestDataType.FundRequisition_Year+"')]")));
+				//waithelper.waitForElementwithFluentwait(driver, driver.findElement(By.xpath("//span[contains(text(),'"+PettyCashTestDataType.FundRequisition_Month+" "+PettyCashTestDataType.FundRequisition_Year+"')]")));
 				WebElement birthmonthandyear=driver.findElement(By.xpath("//span[contains(text(),'"+PettyCashTestDataType.FundRequisition_Month+" "+PettyCashTestDataType.FundRequisition_Year+"')]"));
 //				driver.findElement(By.xpath("//div/div/button")).getText().contains(bUSINESS_PARTNER_SETUP_BusinessPartnerTestDataType.BirthMonth+" "+bUSINESS_PARTNER_SETUP_BusinessPartnerTestDataType.BirthYear);
 				break;
 			}catch(NoSuchElementException nosuchElement)
 			{
-				waithelper.waitForElement(driver, 3000, bUSINESS_PARTNER_SETUP_BusinessPartnerObj.businessPartner_SelectDate());
+				//waithelper.waitForElementwithFluentwait(driver, bUSINESS_PARTNER_SETUP_BusinessPartnerObj.businessPartner_SelectDate());
 				bUSINESS_PARTNER_SETUP_BusinessPartnerObj.businessPartner_SelectDate().click();
 				String tablehead=bUSINESS_PARTNER_SETUP_BusinessPartnerObj.businessPartner_HeadYear().getText();
-//				String tablehead="2016 ~ 2036";
+//				String tablehead="6016 ~ 6036";
 				String headyear=tablehead.replaceAll(" ~", "");
 //				System.out.println(headyear);
 				String ar[] = headyear.split(" ");
@@ -206,20 +213,20 @@ public class PettyCash_Reconciliation {
 					while(true)
 					{
 						try {
-							waithelper.waitForElement(driver, 3000, driver.findElement(By.xpath("//span[contains(text(),'"+PettyCashTestDataType.FundRequisition_Year+"')]")));
+							//waithelper.waitForElementwithFluentwait(driver, driver.findElement(By.xpath("//span[contains(text(),'"+PettyCashTestDataType.FundRequisition_Year+"')]")));
 							WebElement Year=driver.findElement(By.xpath("//span[contains(text(),'"+PettyCashTestDataType.FundRequisition_Year+"')]"));
 						    break;
 						}
 						catch(NoSuchElementException nosuchElement1) {
-							waithelper.waitForElement(driver, 3000, bUSINESS_PARTNER_SETUP_BusinessPartnerObj.businessPartner_ClickOnPreviousYear());
+							//waithelper.waitForElementwithFluentwait(driver, bUSINESS_PARTNER_SETUP_BusinessPartnerObj.businessPartner_ClickOnPreviousYear());
 							bUSINESS_PARTNER_SETUP_BusinessPartnerObj.businessPartner_ClickOnPreviousYear().click();
 						}
 					}
-					waithelper.waitForElement(driver, 3000, driver.findElement(By.xpath("//span[contains(text(),'"+PettyCashTestDataType.FundRequisition_Year+"')]")));
+					waithelper.waitForElementToVisibleWithFluentWait(driver, driver.findElement(By.xpath("//span[contains(text(),'"+PettyCashTestDataType.FundRequisition_Year+"')]")), 60, 500);
 					WebElement Year=driver.findElement(By.xpath("//span[contains(text(),'"+PettyCashTestDataType.FundRequisition_Year+"')]"));
 					Year.click();
 					
-					waithelper.waitForElement(driver, 2000, driver.findElement(By.xpath("//td[@aria-label='"+PettyCashTestDataType.FundRequisition_FullMonth+" "+PettyCashTestDataType.FundRequisition_Year+"']")));
+					waithelper.waitForElementToVisibleWithFluentWait(driver, driver.findElement(By.xpath("//td[@aria-label='"+PettyCashTestDataType.FundRequisition_FullMonth+" "+PettyCashTestDataType.FundRequisition_Year+"']")), 60, 500);
 					driver.findElement(By.xpath("//td[@aria-label='"+PettyCashTestDataType.FundRequisition_FullMonth+" "+PettyCashTestDataType.FundRequisition_Year+"']")).click();
 					
 				}
@@ -228,36 +235,36 @@ public class PettyCash_Reconciliation {
 					while(true)
 					{
 						try {
-							waithelper.waitForElement(driver, 3000, driver.findElement(By.xpath("//span[contains(text(),'"+PettyCashTestDataType.FundRequisition_Year+"')]")));
+							//waithelper.waitForElementwithFluentwait(driver, driver.findElement(By.xpath("//span[contains(text(),'"+PettyCashTestDataType.FundRequisition_Year+"')]")));
 							WebElement Year=driver.findElement(By.xpath("//span[contains(text(),'"+PettyCashTestDataType.FundRequisition_Year+"')]"));
 						    break;
 						}
 						catch(NoSuchElementException nosuchElement2) {
-							waithelper.waitForElement(driver, 3000, bUSINESS_PARTNER_SETUP_BusinessPartnerObj.businessPartner_ClickOnNextYear());
+							//waithelper.waitForElementwithFluentwait(driver, bUSINESS_PARTNER_SETUP_BusinessPartnerObj.businessPartner_ClickOnNextYear());
 							bUSINESS_PARTNER_SETUP_BusinessPartnerObj.businessPartner_ClickOnNextYear().click();
 						}
 					}
-					waithelper.waitForElement(driver, 3000, driver.findElement(By.xpath("//span[contains(text(),'"+PettyCashTestDataType.FundRequisition_Year+"')]")));
+					waithelper.waitForElementToVisibleWithFluentWait(driver, driver.findElement(By.xpath("//span[contains(text(),'"+PettyCashTestDataType.FundRequisition_Year+"')]")), 60, 500);
 					WebElement Year=driver.findElement(By.xpath("//span[contains(text(),'"+PettyCashTestDataType.FundRequisition_Year+"')]"));
 					Year.click();
 					
-					waithelper.waitForElement(driver, 2000, driver.findElement(By.xpath("//td[@aria-label='"+PettyCashTestDataType.FundRequisition_FullMonth+" "+PettyCashTestDataType.FundRequisition_Year+"']")));
+					waithelper.waitForElementToVisibleWithFluentWait(driver, driver.findElement(By.xpath("//td[@aria-label='"+PettyCashTestDataType.FundRequisition_FullMonth+" "+PettyCashTestDataType.FundRequisition_Year+"']")), 60, 500);
 					driver.findElement(By.xpath("//td[@aria-label='"+PettyCashTestDataType.FundRequisition_FullMonth+" "+PettyCashTestDataType.FundRequisition_Year+"']")).click();
 					
 				}
 				else
 				{
-					waithelper.waitForElement(driver, 3000, driver.findElement(By.xpath("//td[@aria-label='"+PettyCashTestDataType.FundRequisition_Year+"']")));
+					waithelper.waitForElementToVisibleWithFluentWait(driver, driver.findElement(By.xpath("//td[@aria-label='"+PettyCashTestDataType.FundRequisition_Year+"']")), 60, 500);
 					WebElement Year=driver.findElement(By.xpath("//td[@aria-label='"+PettyCashTestDataType.FundRequisition_Year+"']"));
 					Year.click();
 					
-					waithelper.waitForElement(driver, 2000, driver.findElement(By.xpath("//td[@aria-label='"+PettyCashTestDataType.FundRequisition_FullMonth+" "+PettyCashTestDataType.FundRequisition_Year+"']")));
+					waithelper.waitForElementToVisibleWithFluentWait(driver, driver.findElement(By.xpath("//td[@aria-label='"+PettyCashTestDataType.FundRequisition_FullMonth+" "+PettyCashTestDataType.FundRequisition_Year+"']")), 60, 500);
 					driver.findElement(By.xpath("//td[@aria-label='"+PettyCashTestDataType.FundRequisition_FullMonth+" "+PettyCashTestDataType.FundRequisition_Year+"']")).click();
 					
 				}
 			}
 		}
-		waithelper.waitForElement(driver, 3000, driver.findElement(By.xpath("//td[@aria-label='"+PettyCashTestDataType.FundRequisition_FullMonth +" "+PettyCashTestDataType.FundRequisition_Date+", "+PettyCashTestDataType.FundRequisition_Year+"']/span")));	
+		waithelper.waitForElementToVisibleWithFluentWait(driver, driver.findElement(By.xpath("//td[@aria-label='"+PettyCashTestDataType.FundRequisition_FullMonth +" "+PettyCashTestDataType.FundRequisition_Date+", "+PettyCashTestDataType.FundRequisition_Year+"']/span")), 60, 500);	
 		WebElement FundRequisitionDate=driver.findElement(By.xpath("//td[@aria-label='"+PettyCashTestDataType.FundRequisition_FullMonth +" "+PettyCashTestDataType.FundRequisition_Date+", "+PettyCashTestDataType.FundRequisition_Year+"']/span"));
 		clicksAndActionHelper.doubleClick(FundRequisitionDate);
 		
@@ -267,14 +274,14 @@ public class PettyCash_Reconciliation {
 	public void the_report_is_displaying_all_fund_requisition_details() throws InterruptedException {
 		Thread.sleep(1000);
 		browserHelper.SwitchToWindow(1);
-		waithelper.waitForElement(driver, 10000, ReconciliationObj.Reports_PettyCash_FundRequisitionReport());
+		waithelper.waitForElementToVisibleWithFluentWait(driver, ReconciliationObj.Reports_PettyCash_FundRequisitionReport(), 60, 500);
 		ReconciliationObj.Reports_PettyCash_FundRequisitionReport().isDisplayed();
 		browserHelper.switchToParentWithChildClose();
 	}
 	
 	@Then("^click on temp grid button of petty cash receipt report$")
     public void click_on_temp_grid_button_of_petty_cash_receipt_report() throws InterruptedException  {
-		Thread.sleep(2000);
+		Thread.sleep(1000);
 		javascripthelper.JavaScriptHelper(driver);
 		javascripthelper.scrollIntoViewAndClick(ReconciliationObj.Reports_PettyCash_PettyCashReceiptTempView());
     }
@@ -282,24 +289,24 @@ public class PettyCash_Reconciliation {
 	@And("^select the date to check the petty cash receipt details are displaying$")
 	public void select_the_date_to_check_the_petty_cash_receipt_details_are_displaying() throws InterruptedException  {
 		
-		waithelper.waitForElement(driver, 3000, ReconciliationObj.Reports_PettyCash_Calendar1());
+		waithelper.waitForElementToVisibleWithFluentWait(driver, ReconciliationObj.Reports_PettyCash_Calendar1(), 60, 500);
 		ReconciliationObj.Reports_PettyCash_Calendar1().click();
 		
-		Thread.sleep(2000);
+		
 		while(true)
 		{
 			try 
 			{
-				waithelper.waitForElement(driver, 3000, driver.findElement(By.xpath("//span[contains(text(),'"+PettyCashTestDataType.PettyCashReceipt_Month+" "+PettyCashTestDataType.PettyCashReceipt_Year+"')]")));
+				//waithelper.waitForElementwithFluentwait(driver, driver.findElement(By.xpath("//span[contains(text(),'"+PettyCashTestDataType.PettyCashReceipt_Month+" "+PettyCashTestDataType.PettyCashReceipt_Year+"')]")));
 				WebElement birthmonthandyear=driver.findElement(By.xpath("//span[contains(text(),'"+PettyCashTestDataType.PettyCashReceipt_Month+" "+PettyCashTestDataType.PettyCashReceipt_Year+"')]"));
 //				driver.findElement(By.xpath("//div/div/button")).getText().contains(bUSINESS_PARTNER_SETUP_BusinessPartnerTestDataType.BirthMonth+" "+bUSINESS_PARTNER_SETUP_BusinessPartnerTestDataType.BirthYear);
 				break;
 			}catch(NoSuchElementException nosuchElement)
 			{
-				waithelper.waitForElement(driver, 3000, bUSINESS_PARTNER_SETUP_BusinessPartnerObj.businessPartner_SelectDate());
+				//waithelper.waitForElementwithFluentwait(driver, bUSINESS_PARTNER_SETUP_BusinessPartnerObj.businessPartner_SelectDate());
 				bUSINESS_PARTNER_SETUP_BusinessPartnerObj.businessPartner_SelectDate().click();
 				String tablehead=bUSINESS_PARTNER_SETUP_BusinessPartnerObj.businessPartner_HeadYear().getText();
-//				String tablehead="2016 ~ 2036";
+//				String tablehead="6016 ~ 6036";
 				String headyear=tablehead.replaceAll(" ~", "");
 //				System.out.println(headyear);
 				String ar[] = headyear.split(" ");
@@ -311,20 +318,20 @@ public class PettyCash_Reconciliation {
 					while(true)
 					{
 						try {
-							waithelper.waitForElement(driver, 3000, driver.findElement(By.xpath("//span[contains(text(),'"+PettyCashTestDataType.PettyCashReceipt_Year+"')]")));
+							//waithelper.waitForElementwithFluentwait(driver, driver.findElement(By.xpath("//span[contains(text(),'"+PettyCashTestDataType.PettyCashReceipt_Year+"')]")));
 							WebElement Year=driver.findElement(By.xpath("//span[contains(text(),'"+PettyCashTestDataType.PettyCashReceipt_Year+"')]"));
 						    break;
 						}
 						catch(NoSuchElementException nosuchElement1) {
-							waithelper.waitForElement(driver, 3000, bUSINESS_PARTNER_SETUP_BusinessPartnerObj.businessPartner_ClickOnPreviousYear());
+							//waithelper.waitForElementwithFluentwait(driver, bUSINESS_PARTNER_SETUP_BusinessPartnerObj.businessPartner_ClickOnPreviousYear());
 							bUSINESS_PARTNER_SETUP_BusinessPartnerObj.businessPartner_ClickOnPreviousYear().click();
 						}
 					}
-					waithelper.waitForElement(driver, 3000, driver.findElement(By.xpath("//span[contains(text(),'"+PettyCashTestDataType.PettyCashReceipt_Year+"')]")));
+					waithelper.waitForElementToVisibleWithFluentWait(driver, driver.findElement(By.xpath("//span[contains(text(),'"+PettyCashTestDataType.PettyCashReceipt_Year+"')]")), 60, 500);
 					WebElement Year=driver.findElement(By.xpath("//span[contains(text(),'"+PettyCashTestDataType.PettyCashReceipt_Year+"')]"));
 					Year.click();
 					
-					waithelper.waitForElement(driver, 2000, driver.findElement(By.xpath("//td[@aria-label='"+PettyCashTestDataType.PettyCashReceipt_FullMonth+" "+PettyCashTestDataType.PettyCashReceipt_Year+"']")));
+					waithelper.waitForElementToVisibleWithFluentWait(driver, driver.findElement(By.xpath("//td[@aria-label='"+PettyCashTestDataType.PettyCashReceipt_FullMonth+" "+PettyCashTestDataType.PettyCashReceipt_Year+"']")), 60, 500);
 					driver.findElement(By.xpath("//td[@aria-label='"+PettyCashTestDataType.PettyCashReceipt_FullMonth+" "+PettyCashTestDataType.PettyCashReceipt_Year+"']")).click();
 					
 				}
@@ -333,36 +340,36 @@ public class PettyCash_Reconciliation {
 					while(true)
 					{
 						try {
-							waithelper.waitForElement(driver, 3000, driver.findElement(By.xpath("//span[contains(text(),'"+PettyCashTestDataType.PettyCashReceipt_Year+"')]")));
+							//waithelper.waitForElementwithFluentwait(driver, driver.findElement(By.xpath("//span[contains(text(),'"+PettyCashTestDataType.PettyCashReceipt_Year+"')]")));
 							WebElement Year=driver.findElement(By.xpath("//span[contains(text(),'"+PettyCashTestDataType.PettyCashReceipt_Year+"')]"));
 						    break;
 						}
 						catch(NoSuchElementException nosuchElement2) {
-							waithelper.waitForElement(driver, 3000, bUSINESS_PARTNER_SETUP_BusinessPartnerObj.businessPartner_ClickOnNextYear());
+							//waithelper.waitForElementwithFluentwait(driver, bUSINESS_PARTNER_SETUP_BusinessPartnerObj.businessPartner_ClickOnNextYear());
 							bUSINESS_PARTNER_SETUP_BusinessPartnerObj.businessPartner_ClickOnNextYear().click();
 						}
 					}
-					waithelper.waitForElement(driver, 3000, driver.findElement(By.xpath("//span[contains(text(),'"+PettyCashTestDataType.PettyCashReceipt_Year+"')]")));
+					waithelper.waitForElementToVisibleWithFluentWait(driver, driver.findElement(By.xpath("//span[contains(text(),'"+PettyCashTestDataType.PettyCashReceipt_Year+"')]")), 60, 500);
 					WebElement Year=driver.findElement(By.xpath("//span[contains(text(),'"+PettyCashTestDataType.PettyCashReceipt_Year+"')]"));
 					Year.click();
 					
-					waithelper.waitForElement(driver, 2000, driver.findElement(By.xpath("//td[@aria-label='"+PettyCashTestDataType.PettyCashReceipt_FullMonth+" "+PettyCashTestDataType.PettyCashReceipt_Year+"']")));
+					waithelper.waitForElementToVisibleWithFluentWait(driver, driver.findElement(By.xpath("//td[@aria-label='"+PettyCashTestDataType.PettyCashReceipt_FullMonth+" "+PettyCashTestDataType.PettyCashReceipt_Year+"']")), 60, 500);
 					driver.findElement(By.xpath("//td[@aria-label='"+PettyCashTestDataType.PettyCashReceipt_FullMonth+" "+PettyCashTestDataType.PettyCashReceipt_Year+"']")).click();
 					
 				}
 				else
 				{
-					waithelper.waitForElement(driver, 3000, driver.findElement(By.xpath("//td[@aria-label='"+PettyCashTestDataType.PettyCashReceipt_Year+"']")));
+					waithelper.waitForElementToVisibleWithFluentWait(driver, driver.findElement(By.xpath("//td[@aria-label='"+PettyCashTestDataType.PettyCashReceipt_Year+"']")), 60, 500);
 					WebElement Year=driver.findElement(By.xpath("//td[@aria-label='"+PettyCashTestDataType.PettyCashReceipt_Year+"']"));
 					Year.click();
 					
-					waithelper.waitForElement(driver, 2000, driver.findElement(By.xpath("//td[@aria-label='"+PettyCashTestDataType.PettyCashReceipt_FullMonth+" "+PettyCashTestDataType.PettyCashReceipt_Year+"']")));
+					waithelper.waitForElementToVisibleWithFluentWait(driver, driver.findElement(By.xpath("//td[@aria-label='"+PettyCashTestDataType.PettyCashReceipt_FullMonth+" "+PettyCashTestDataType.PettyCashReceipt_Year+"']")), 60, 500);
 					driver.findElement(By.xpath("//td[@aria-label='"+PettyCashTestDataType.PettyCashReceipt_FullMonth+" "+PettyCashTestDataType.PettyCashReceipt_Year+"']")).click();
 					
 				}
 			}
 		}
-		waithelper.waitForElement(driver, 3000, driver.findElement(By.xpath("//td[@aria-label='"+PettyCashTestDataType.PettyCashReceipt_FullMonth +" "+PettyCashTestDataType.PettyCashReceipt_Date+", "+PettyCashTestDataType.PettyCashReceipt_Year+"']/span")));	
+		waithelper.waitForElementToVisibleWithFluentWait(driver, driver.findElement(By.xpath("//td[@aria-label='"+PettyCashTestDataType.PettyCashReceipt_FullMonth +" "+PettyCashTestDataType.PettyCashReceipt_Date+", "+PettyCashTestDataType.PettyCashReceipt_Year+"']/span")), 60, 500);	
 		WebElement ReceiptDate=driver.findElement(By.xpath("//td[@aria-label='"+PettyCashTestDataType.PettyCashReceipt_FullMonth +" "+PettyCashTestDataType.PettyCashReceipt_Date+", "+PettyCashTestDataType.PettyCashReceipt_Year+"']/span"));
 		clicksAndActionHelper.doubleClick(ReceiptDate);
 		
@@ -370,40 +377,40 @@ public class PettyCash_Reconciliation {
 	
     @Then("^the report is displaying all the petty cash receipt details$")
     public void the_report_is_displaying_all_the_petty_cash_receipt_details() throws InterruptedException {
-    	Thread.sleep(1000);
+//    	Thread.sleep(1000);
 		browserHelper.SwitchToWindow(1);
-    	waithelper.waitForElement(driver, 10000, ReconciliationObj.Reports_PettyCash_PettyCashReceiptReport());
+    	waithelper.waitForElementToVisibleWithFluentWait(driver, ReconciliationObj.Reports_PettyCash_PettyCashReceiptReport(), 60, 500);
     	ReconciliationObj.Reports_PettyCash_PettyCashReceiptReport().isDisplayed();
     	browserHelper.switchToParentWithChildClose();
     }
     
     @Then("^click on temp grid button of petty cash register report$")
     public void click_on_temp_grid_button_of_petty_cash_register_report() throws InterruptedException  {
-    	Thread.sleep(2000);
+//    	Thread.sleep(6000);
 		javascripthelper.JavaScriptHelper(driver);
 		javascripthelper.scrollIntoViewAndClick(ReconciliationObj.Reports_PettyCash_PettyCashRegisterTempView());
     }
 
     @And("^select the date to check the petty cash register details are displaying$")
     public void select_the_date_to_check_the_petty_cash_register_details_are_displaying() throws InterruptedException  {
-    	waithelper.waitForElement(driver, 3000, ReconciliationObj.Reports_PettyCash_Calendar1());
+    	waithelper.waitForElementToVisibleWithFluentWait(driver, ReconciliationObj.Reports_PettyCash_Calendar1(), 60, 500);
     	ReconciliationObj.Reports_PettyCash_Calendar1().click();
-    	
-    	Thread.sleep(2000);
+//    	
+//    	Thread.sleep(6000);
 		while(true)
 		{
 			try 
 			{
-				waithelper.waitForElement(driver, 3000, driver.findElement(By.xpath("//span[contains(text(),'"+PettyCashTestDataType.PettyCashRegister_Month+" "+PettyCashTestDataType.PettyCashRegister_Year+"')]")));
+				//waithelper.waitForElementwithFluentwait(driver, driver.findElement(By.xpath("//span[contains(text(),'"+PettyCashTestDataType.PettyCashRegister_Month+" "+PettyCashTestDataType.PettyCashRegister_Year+"')]")));
 				WebElement birthmonthandyear=driver.findElement(By.xpath("//span[contains(text(),'"+PettyCashTestDataType.PettyCashRegister_Month+" "+PettyCashTestDataType.PettyCashRegister_Year+"')]"));
 //				driver.findElement(By.xpath("//div/div/button")).getText().contains(bUSINESS_PARTNER_SETUP_BusinessPartnerTestDataType.BirthMonth+" "+bUSINESS_PARTNER_SETUP_BusinessPartnerTestDataType.BirthYear);
 				break;
 			}catch(NoSuchElementException nosuchElement)
 			{
-				waithelper.waitForElement(driver, 3000, bUSINESS_PARTNER_SETUP_BusinessPartnerObj.businessPartner_SelectDate());
+				//waithelper.waitForElementwithFluentwait(driver, bUSINESS_PARTNER_SETUP_BusinessPartnerObj.businessPartner_SelectDate());
 				bUSINESS_PARTNER_SETUP_BusinessPartnerObj.businessPartner_SelectDate().click();
 				String tablehead=bUSINESS_PARTNER_SETUP_BusinessPartnerObj.businessPartner_HeadYear().getText();
-//				String tablehead="2016 ~ 2036";
+//				String tablehead="6016 ~ 6036";
 				String headyear=tablehead.replaceAll(" ~", "");
 //				System.out.println(headyear);
 				String ar[] = headyear.split(" ");
@@ -415,20 +422,20 @@ public class PettyCash_Reconciliation {
 					while(true)
 					{
 						try {
-							waithelper.waitForElement(driver, 3000, driver.findElement(By.xpath("//span[contains(text(),'"+PettyCashTestDataType.PettyCashRegister_Year+"')]")));
+							//waithelper.waitForElementwithFluentwait(driver, driver.findElement(By.xpath("//span[contains(text(),'"+PettyCashTestDataType.PettyCashRegister_Year+"')]")));
 							WebElement Year=driver.findElement(By.xpath("//span[contains(text(),'"+PettyCashTestDataType.PettyCashRegister_Year+"')]"));
 						    break;
 						}
 						catch(NoSuchElementException nosuchElement1) {
-							waithelper.waitForElement(driver, 3000, bUSINESS_PARTNER_SETUP_BusinessPartnerObj.businessPartner_ClickOnPreviousYear());
+							//waithelper.waitForElementwithFluentwait(driver, bUSINESS_PARTNER_SETUP_BusinessPartnerObj.businessPartner_ClickOnPreviousYear());
 							bUSINESS_PARTNER_SETUP_BusinessPartnerObj.businessPartner_ClickOnPreviousYear().click();
 						}
 					}
-					waithelper.waitForElement(driver, 3000, driver.findElement(By.xpath("//span[contains(text(),'"+PettyCashTestDataType.PettyCashRegister_Year+"')]")));
+					waithelper.waitForElementToVisibleWithFluentWait(driver, driver.findElement(By.xpath("//span[contains(text(),'"+PettyCashTestDataType.PettyCashRegister_Year+"')]")), 60, 500);
 					WebElement Year=driver.findElement(By.xpath("//span[contains(text(),'"+PettyCashTestDataType.PettyCashRegister_Year+"')]"));
 					Year.click();
 					
-					waithelper.waitForElement(driver, 2000, driver.findElement(By.xpath("//td[@aria-label='"+PettyCashTestDataType.PettyCashRegister_FullMonth+" "+PettyCashTestDataType.PettyCashRegister_Year+"']")));
+					waithelper.waitForElementToVisibleWithFluentWait(driver, driver.findElement(By.xpath("//td[@aria-label='"+PettyCashTestDataType.PettyCashRegister_FullMonth+" "+PettyCashTestDataType.PettyCashRegister_Year+"']")), 60, 500);
 					driver.findElement(By.xpath("//td[@aria-label='"+PettyCashTestDataType.PettyCashRegister_FullMonth+" "+PettyCashTestDataType.PettyCashRegister_Year+"']")).click();
 					
 				}
@@ -437,36 +444,36 @@ public class PettyCash_Reconciliation {
 					while(true)
 					{
 						try {
-							waithelper.waitForElement(driver, 3000, driver.findElement(By.xpath("//span[contains(text(),'"+PettyCashTestDataType.PettyCashRegister_Year+"')]")));
+							//waithelper.waitForElementwithFluentwait(driver, driver.findElement(By.xpath("//span[contains(text(),'"+PettyCashTestDataType.PettyCashRegister_Year+"')]")));
 							WebElement Year=driver.findElement(By.xpath("//span[contains(text(),'"+PettyCashTestDataType.PettyCashRegister_Year+"')]"));
 						    break;
 						}
 						catch(NoSuchElementException nosuchElement2) {
-							waithelper.waitForElement(driver, 3000, bUSINESS_PARTNER_SETUP_BusinessPartnerObj.businessPartner_ClickOnNextYear());
+							//waithelper.waitForElementwithFluentwait(driver, bUSINESS_PARTNER_SETUP_BusinessPartnerObj.businessPartner_ClickOnNextYear());
 							bUSINESS_PARTNER_SETUP_BusinessPartnerObj.businessPartner_ClickOnNextYear().click();
 						}
 					}
-					waithelper.waitForElement(driver, 3000, driver.findElement(By.xpath("//span[contains(text(),'"+PettyCashTestDataType.PettyCashRegister_Year+"')]")));
+					waithelper.waitForElementToVisibleWithFluentWait(driver, driver.findElement(By.xpath("//span[contains(text(),'"+PettyCashTestDataType.PettyCashRegister_Year+"')]")), 60, 500);
 					WebElement Year=driver.findElement(By.xpath("//span[contains(text(),'"+PettyCashTestDataType.PettyCashRegister_Year+"')]"));
 					Year.click();
 					
-					waithelper.waitForElement(driver, 2000, driver.findElement(By.xpath("//td[@aria-label='"+PettyCashTestDataType.PettyCashRegister_FullMonth+" "+PettyCashTestDataType.PettyCashRegister_Year+"']")));
+					waithelper.waitForElementToVisibleWithFluentWait(driver, driver.findElement(By.xpath("//td[@aria-label='"+PettyCashTestDataType.PettyCashRegister_FullMonth+" "+PettyCashTestDataType.PettyCashRegister_Year+"']")), 60, 500);
 					driver.findElement(By.xpath("//td[@aria-label='"+PettyCashTestDataType.PettyCashRegister_FullMonth+" "+PettyCashTestDataType.PettyCashRegister_Year+"']")).click();
 					
 				}
 				else
 				{
-					waithelper.waitForElement(driver, 3000, driver.findElement(By.xpath("//td[@aria-label='"+PettyCashTestDataType.PettyCashRegister_Year+"']")));
+					waithelper.waitForElementToVisibleWithFluentWait(driver, driver.findElement(By.xpath("//td[@aria-label='"+PettyCashTestDataType.PettyCashRegister_Year+"']")), 60, 500);
 					WebElement Year=driver.findElement(By.xpath("//td[@aria-label='"+PettyCashTestDataType.PettyCashRegister_Year+"']"));
 					Year.click();
 					
-					waithelper.waitForElement(driver, 2000, driver.findElement(By.xpath("//td[@aria-label='"+PettyCashTestDataType.PettyCashRegister_FullMonth+" "+PettyCashTestDataType.PettyCashRegister_Year+"']")));
+					waithelper.waitForElementToVisibleWithFluentWait(driver, driver.findElement(By.xpath("//td[@aria-label='"+PettyCashTestDataType.PettyCashRegister_FullMonth+" "+PettyCashTestDataType.PettyCashRegister_Year+"']")), 60, 500);
 					driver.findElement(By.xpath("//td[@aria-label='"+PettyCashTestDataType.PettyCashRegister_FullMonth+" "+PettyCashTestDataType.PettyCashRegister_Year+"']")).click();
 					
 				}
 			}
 		}
-		waithelper.waitForElement(driver, 3000, driver.findElement(By.xpath("//td[@aria-label='"+PettyCashTestDataType.PettyCashRegister_FullMonth +" "+PettyCashTestDataType.PettyCashRegister_Date+", "+PettyCashTestDataType.PettyCashRegister_Year+"']/span")));	
+		waithelper.waitForElementToVisibleWithFluentWait(driver, driver.findElement(By.xpath("//td[@aria-label='"+PettyCashTestDataType.PettyCashRegister_FullMonth +" "+PettyCashTestDataType.PettyCashRegister_Date+", "+PettyCashTestDataType.PettyCashRegister_Year+"']/span")), 60, 500);	
 		WebElement registerDate=driver.findElement(By.xpath("//td[@aria-label='"+PettyCashTestDataType.PettyCashRegister_FullMonth +" "+PettyCashTestDataType.PettyCashRegister_Date+", "+PettyCashTestDataType.PettyCashRegister_Year+"']/span"));
 		clicksAndActionHelper.doubleClick(registerDate);
     }
@@ -475,7 +482,7 @@ public class PettyCash_Reconciliation {
     public void the_report_is_displaying_all_the_petty_cash_register_details() throws InterruptedException {
     	Thread.sleep(1000);
 		browserHelper.SwitchToWindow(1);
-    	waithelper.waitForElement(driver, 10000, ReconciliationObj.Reports_PettyCash_PettyCashRegisterReport());
+    	waithelper.waitForElementToVisibleWithFluentWait(driver, ReconciliationObj.Reports_PettyCash_PettyCashRegisterReport(), 60, 500);
     	ReconciliationObj.Reports_PettyCash_PettyCashRegisterReport().isDisplayed();
     	browserHelper.switchToParentWithChildClose();
     }

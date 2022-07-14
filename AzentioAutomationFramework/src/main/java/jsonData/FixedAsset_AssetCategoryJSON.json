@@ -3,14 +3,14 @@
 		"User"					: "Maker",
 		"AssetCategory"			: "Furnitures & Fixtures",
 		"AssetSubCategory"		: "Table & Chair",
-		"AssetItemCategory"		:	"woodply25",
-		"AssetDescription"		:	"woodply25",
+		"AssetItemCategory"		:	"woodply39",
+		"AssetDescription"		:	"woodply39",
 		"Remark"				:	"ok",
 		
 		
 		
 		
-		"AssetCode"						: "01-001-woodply25",
+		"AssetCode"						: "01-001-woodply39",
 		"AccountingModel"				: "Cost Model",
 		"AssetLifeUnit" 				: "Year",
 		"AssetLife"						: "2",
@@ -20,15 +20,15 @@
 		
 		
 		
-		"FixedAssetGL"					: "Non-Financial Inventories",
-		"AccumulatedDepreciationGL"		: "Non-Financial Inventories",
-		"DepreciationGL"				: "Non-Financial Inventories",
-		"ProfitOnSaleGL"				: "Non-Financial Inventories",
-		"lossOnSaleGL"					: "Non-Financial Inventories",
-		"WriteOffGL"					: "Non-Financial Inventories",
-		"ImpairmentLossGL"				: "Non-Financial Inventories",
-		"AccumulatedImpairmentLossGL"	: "Non-Financial Inventories",
-		"RevaluationSurplusGL"			: "Non-Financial Inventories",
+		"FixedAssetGL"					: "IFRS-AS-AS1000011-Chairs & Tables",
+		"AccumulatedDepreciationGL"		: "IFRS-OPEXP-OE6000008- Accumulated Depreciation",
+		"DepreciationGL"				: "IFRS-OPEXP-OE6000007-Deprecitation for Fixed Assets",
+		"ProfitOnSaleGL"				: "IFRS-NONOPEXP-NOP7000015-Profit on sale of Asset",
+		"lossOnSaleGL"					: "IFRS-7000023-NOP-Loss on sale of fixed asset",
+		"WriteOffGL"					: "IFRS-NONOPEXP-NOP7000014-Asset Write Off",
+		"ImpairmentLossGL"				: "IFRS-7000021-NOP-Impairment Loss",
+		"AccumulatedImpairmentLossGL"	: "IFRS-7000022-NOP-Accumulated Impairment GL",
+		"RevaluationSurplusGL"			: "IFRS-4000004-IC-REVALUATION SURPLUS",
 		
 		
 		

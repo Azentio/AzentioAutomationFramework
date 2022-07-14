@@ -26,7 +26,7 @@ public class FixedAsset_AssetSerialNumCreation extends BaseClass {
 	@Then("^Click on Asset Serial Num Creation Eye button$")
     public void click_on_asset_serial_num_creation_eye_button()  {
 	//Eye Button
-	WebElement eye = waithelper.waitForElement(driver, 4000,  fixedAsset_AssetSerialNumCreationObj.fixedAsset_AssetSerialNumCreation_EyeIcon());
+	WebElement eye = waithelper.waitForElementToVisibleWithFluentWait(driver, fixedAsset_AssetSerialNumCreationObj.fixedAsset_AssetSerialNumCreation_EyeIcon(),60,5);
 	clicksAndActionHelper.moveToElement(eye);
 	fixedAsset_AssetSerialNumCreationObj.fixedAsset_AssetSerialNumCreation_EyeIcon().click();
 		
@@ -35,7 +35,7 @@ public class FixedAsset_AssetSerialNumCreation extends BaseClass {
 
     @Then("^Click on Asset Serial Num Creation Search icon$")
     public void click_on_asset_serial_num_creation_search_icon()  {
-    waithelper.waitForElement(driver, 4000,  fixedAsset_AssetSerialNumCreationObj.fixedAsset_AssetSerialNumCreation_SearchIcon());
+    waithelper.waitForElementToVisibleWithFluentWait(driver, fixedAsset_AssetSerialNumCreationObj.fixedAsset_AssetSerialNumCreation_SearchIcon(),60,5);
     fixedAsset_AssetSerialNumCreationObj.fixedAsset_AssetSerialNumCreation_SearchIcon().click();
     	
         
@@ -46,7 +46,7 @@ public class FixedAsset_AssetSerialNumCreation extends BaseClass {
     fixedAsset_AssetCategoryTestDataType = jsonReader.getAssetCategoryByName("Maker");	
     //Asset code
     	
-    waithelper.waitForElement(driver, 4000,  fixedAsset_AssetSerialNumCreationObj.fixedAsset_AssetSerialNumCreation_AssetCode());
+    waithelper.waitForElementToVisibleWithFluentWait(driver, fixedAsset_AssetSerialNumCreationObj.fixedAsset_AssetSerialNumCreation_AssetCode(),60,5);
     fixedAsset_AssetSerialNumCreationObj.fixedAsset_AssetSerialNumCreation_AssetCode().click();
     fixedAsset_AssetSerialNumCreationObj.fixedAsset_AssetSerialNumCreation_AssetCode().sendKeys(fixedAsset_AssetCategoryTestDataType.AssetCode);
     fixedAsset_AssetSerialNumCreationObj.fixedAsset_AssetSerialNumCreation_AssetCode().sendKeys(Keys.ENTER);
@@ -59,7 +59,7 @@ public class FixedAsset_AssetSerialNumCreation extends BaseClass {
     public void click_on_the_record()  {
     //Pencil
     	
-     waithelper.waitForElement(driver, 4000,  fixedAsset_AssetSerialNumCreationObj.fixedAsset_AssetSerialNumCreation_PencilIcon());
+     waithelper.waitForElementToVisibleWithFluentWait(driver,fixedAsset_AssetSerialNumCreationObj.fixedAsset_AssetSerialNumCreation_PencilIcon(),60,5);
      fixedAsset_AssetSerialNumCreationObj.fixedAsset_AssetSerialNumCreation_PencilIcon().click();
        
         
@@ -70,7 +70,7 @@ public class FixedAsset_AssetSerialNumCreation extends BaseClass {
     fixedAsset_AssetCategoryTestDataType = jsonReader.getAssetCategoryByName("Maker");	
     //StartSerialNumber
  	
-    waithelper.waitForElement(driver, 4000,  fixedAsset_AssetSerialNumCreationObj.fixedAsset_AssetSerialNumCreation_StartSerialNumber());
+    waithelper.waitForElementToVisibleWithFluentWait(driver, fixedAsset_AssetSerialNumCreationObj.fixedAsset_AssetSerialNumCreation_StartSerialNumber(),60,5);
     fixedAsset_AssetSerialNumCreationObj.fixedAsset_AssetSerialNumCreation_StartSerialNumber().click();
     fixedAsset_AssetSerialNumCreationObj.fixedAsset_AssetSerialNumCreation_StartSerialNumber().sendKeys(fixedAsset_AssetCategoryTestDataType.StartSerialNumber);
     fixedAsset_AssetSerialNumCreationObj.fixedAsset_AssetSerialNumCreation_StartSerialNumber().sendKeys(Keys.ENTER);

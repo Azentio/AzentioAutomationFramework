@@ -2,24 +2,24 @@
 	{
 		"User"					: "Maker",
 		"BranchCode"			: "AZENTMAIN",
-		"AssetCode"				: "MACHINARY-AIRCONDITIONER-Lloyd",
-		"BillReferenceNo"		: "INV-385-42022",
+		"AssetCode"				: "01-001-woodply39239",
+		"BillReferenceNo"		: "INV-365-42022",
 		"Remark"				: "OK",
 		
 		"AssetItemNumber"		: "605",
-		"AssetItemNumberimpaired" : "610",
+		"AssetItemNumberimpaired" : "612",
 		"AssetItemNumberRevalued" : "620",
 		"AssetItemNumberamended" : "630",
-		"AssetItemNumberReplaced" : "640",
+		"AssetItemNumberReplaced" : "641",
 		"AssetItemDescription"	: "Wood box for Parcel",
 		"AssetValue"			: "95000",
 		"SalvageValue"			: "9000",
 		
 		"GlYear"				: "2023",
 		"GlDay"					: "2",
-		"GlToMonth"				: "Feb",
-		"GlFullToMonth"			: "February",
-		"GlToDate"				: "1",
+		"GlToMonth"				: "Jun",
+		"GlFullToMonth"			: "June",
+		"GlToDate"				: "30",
 		
 		
 		

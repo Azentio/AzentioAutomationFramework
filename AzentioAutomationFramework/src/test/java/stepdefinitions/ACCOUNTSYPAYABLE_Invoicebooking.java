@@ -559,9 +559,9 @@ public class ACCOUNTSYPAYABLE_Invoicebooking extends BaseClass {
 		paymentSettlementObj.accountsPayablePayementSettlementBpNAme().sendKeys(Keys.ENTER);
 		Thread.sleep(1000);
 		// div[contains(text(),'ADV_36_2422022')]
-		for (int i = 1; i <= 14; i++) {
+		for (int i = 1; i <= 30; i++) {
 			Thread.sleep(1000);
-			if (i == 14) {
+			if (i == 30) {
 				System.out.println("Data not available");
 				System.out.println("Approved record we search " + invoiceBookingTestData.get("approvedInvoiceNumber"));
 				Assert.fail("Data not available");

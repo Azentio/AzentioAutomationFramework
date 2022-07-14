@@ -24,6 +24,7 @@ import pageobjects.KUBS_CheckerObj;
 import resources.BaseClass;
 import resources.JsonDataReaderWriter;
 import testDataType.FIXEDASSET_AssetImpairementTestDataType;
+import testDataType.FixedAsset_AssetCreationTestDataType;
 
 public class FIXEDASSETS_AssetImpairement {
 	WebDriver driver = BaseClass.driver;
@@ -33,6 +34,7 @@ public class FIXEDASSETS_AssetImpairement {
 	FIXEDASSETS_AssetCreationObj fIXEDASSETS_AssetCreationObj = new FIXEDASSETS_AssetCreationObj(driver);
 	FIXEDASSETS_AssetSaleObj fIXEDASSETS_AssetSaleObj = new FIXEDASSETS_AssetSaleObj(driver);
 	FIXEDASSETS_AssetUndertakingObj fIXEDASSETS_AssetUndertakingObj = new FIXEDASSETS_AssetUndertakingObj(driver);
+	FixedAsset_AssetCreationTestDataType assetCreation =jsonReader.getAssetCreationByName("Maker");
 	WaitHelper waithelper = new WaitHelper(driver);
 	FIXEDASSET_AssetImpairementTestDataType fIXEDASSET_AssetImpairementTestDataType=jsonReader.getAssetImpairementdata("Maker");
 	JavascriptHelper javascripthelper = new JavascriptHelper();
@@ -58,7 +60,8 @@ public class FIXEDASSETS_AssetImpairement {
 	@And("^Fill the required fields for asset impairement$")
 	public void fill_the_required_fields_for_asset_impairement() throws InterruptedException {
 		waithelper.waitForElement(driver, 3000, fIXEDASSETS_AssetUndertakingObj.fixedAssets_AssetImpairement_AssetReferenceNumber());
-		fIXEDASSETS_AssetUndertakingObj.fixedAssets_AssetImpairement_AssetReferenceNumber().sendKeys(fIXEDASSET_AssetImpairementTestDataType.AssetReferenceNumber);
+	//	fIXEDASSETS_AssetUndertakingObj.fixedAssets_AssetImpairement_AssetReferenceNumber().sendKeys(fIXEDASSET_AssetImpairementTestDataType.AssetReferenceNumber);
+		fIXEDASSETS_AssetUndertakingObj.fixedAssets_AssetImpairement_AssetReferenceNumber().sendKeys(assetCreation.AssetCode);
 		fIXEDASSETS_AssetUndertakingObj.fixedAssets_AssetImpairement_AssetReferenceNumber().sendKeys(Keys.ENTER);
 		
 		waithelper.waitForElement(driver, 3000, fIXEDASSETS_AssetUndertakingObj.fixedAssets_AssetImpairement_TransactionType());

@@ -124,10 +124,11 @@ public class FixedAsset_AssetCreation extends BaseClass {
 	    //item details
 	    	
 	    	fixedAsset_AssetCreationTestDataType = jsonReader.getAssetCreationByName("Maker");
-	    	
+	    	Random random = new Random();
+	    	int randomNumber=random.nextInt(5000-999)+5000;
 	    	waithelper.waitForElement(driver, 2000,fixedAsset_AssetCreationObj.fixedAsset_AssetCreation_AssetItemNumber());
 	    	fixedAsset_AssetCreationObj.fixedAsset_AssetCreation_AssetItemNumber().click();
-	    	fixedAsset_AssetCreationObj.fixedAsset_AssetCreation_AssetItemNumber().sendKeys(fixedAsset_AssetCreationTestDataType.AssetItemNumberimpaired);
+	    	fixedAsset_AssetCreationObj.fixedAsset_AssetCreation_AssetItemNumber().sendKeys(fixedAsset_AssetCreationTestDataType.AssetItemNumberimpaired+randomNumber);
 	    	fixedAsset_AssetCreationObj.fixedAsset_AssetCreation_AssetItemNumber().sendKeys(Keys.ENTER);
 	    	
 	    	waithelper.waitForElement(driver, 2000,fixedAsset_AssetCreationObj.fixedAsset_AssetCreation_AssetItemDescription());
@@ -180,10 +181,12 @@ public class FixedAsset_AssetCreation extends BaseClass {
 	    //item details
 	    	
 	    	fixedAsset_AssetCreationTestDataType = jsonReader.getAssetCreationByName("Maker");
+	    	Random random = new Random();
+	    	int randomNumber=random.nextInt(5000-999)+5000;
 	    	
 	    	waithelper.waitForElement(driver, 2000,fixedAsset_AssetCreationObj.fixedAsset_AssetCreation_AssetItemNumber());
 	    	fixedAsset_AssetCreationObj.fixedAsset_AssetCreation_AssetItemNumber().click();
-	    	fixedAsset_AssetCreationObj.fixedAsset_AssetCreation_AssetItemNumber().sendKeys(fixedAsset_AssetCreationTestDataType.AssetItemNumberRevalued);
+	    	fixedAsset_AssetCreationObj.fixedAsset_AssetCreation_AssetItemNumber().sendKeys(fixedAsset_AssetCreationTestDataType.AssetItemNumberRevalued+randomNumber);
 	    	fixedAsset_AssetCreationObj.fixedAsset_AssetCreation_AssetItemNumber().sendKeys(Keys.ENTER);
 	    	
 	    	waithelper.waitForElement(driver, 2000,fixedAsset_AssetCreationObj.fixedAsset_AssetCreation_AssetItemDescription());
@@ -240,7 +243,7 @@ public class FixedAsset_AssetCreation extends BaseClass {
 	    	int randomNumber=random.nextInt(5000-999)+5000;
 	    waithelper.waitForElement(driver, 2000,fixedAsset_AssetCreationObj.fixedAsset_AssetCreation_AssetItemNumber());
 	    	fixedAsset_AssetCreationObj.fixedAsset_AssetCreation_AssetItemNumber().click();
-	    	fixedAsset_AssetCreationObj.fixedAsset_AssetCreation_AssetItemNumber().sendKeys(fixedAsset_AssetCreationTestDataType.AssetItemNumberReplaced);
+	    	fixedAsset_AssetCreationObj.fixedAsset_AssetCreation_AssetItemNumber().sendKeys(fixedAsset_AssetCreationTestDataType.AssetItemNumberReplaced+randomNumber);
 	    	fixedAsset_AssetCreationObj.fixedAsset_AssetCreation_AssetItemNumber().sendKeys(Keys.ENTER);
 	    	
 	    	waithelper.waitForElement(driver, 2000,fixedAsset_AssetCreationObj.fixedAsset_AssetCreation_AssetItemDescription());
@@ -293,10 +296,11 @@ public class FixedAsset_AssetCreation extends BaseClass {
 	    //item details
 	    	
 	    	fixedAsset_AssetCreationTestDataType = jsonReader.getAssetCreationByName("Maker");
-	    	
+	    	Random random = new Random();
+	    	int randomNumber=random.nextInt(5000-999)+5000;
 	    	waithelper.waitForElement(driver, 2000,fixedAsset_AssetCreationObj.fixedAsset_AssetCreation_AssetItemNumber());
 	    	fixedAsset_AssetCreationObj.fixedAsset_AssetCreation_AssetItemNumber().click();
-	    	fixedAsset_AssetCreationObj.fixedAsset_AssetCreation_AssetItemNumber().sendKeys(fixedAsset_AssetCreationTestDataType.AssetItemNumberamended);
+	    	fixedAsset_AssetCreationObj.fixedAsset_AssetCreation_AssetItemNumber().sendKeys(fixedAsset_AssetCreationTestDataType.AssetItemNumberamended+randomNumber);
 	    	fixedAsset_AssetCreationObj.fixedAsset_AssetCreation_AssetItemNumber().sendKeys(Keys.ENTER);
 	    	
 	    	waithelper.waitForElement(driver, 2000,fixedAsset_AssetCreationObj.fixedAsset_AssetCreation_AssetItemDescription());

@@ -195,6 +195,12 @@ public class KUBS_MakerObj {
 		public WebElement budget_SupplementaryBudget_SupplementaryBudgetAddButton() {
 			return budget_SupplementaryBudget_SupplementaryBudgetAddButton;
 		}
+		@FindBy(xpath="//ion-segment//ion-segment-button[1]")
+		private WebElement segmentButton_1;
+		public WebElement segmentButton1()
+		{
+			return segmentButton_1;
+		}
 
 		@FindBy(xpath="//ion-item[1]/ion-radio")
 	    private WebElement configuration_Menu;

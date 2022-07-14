@@ -1,7 +1,7 @@
 [
 	{
 		"Usertype" 				: "Asset",
-		"assetReferenceNumber"	: "01-001-desk_AZENTMAIN_35",
+		"assetReferenceNumber"	: "01-001-woodply28738",
 		"assetLifeRefNo"		: "",
 		"modificationType1"		: "Asset Life",
 		"modificationType2"		: "Capitalization Date",
@@ -12,10 +12,10 @@
 		
 		
 		//CALENDAR AND GL DATA
-		"Month"					: "Feb",
-		"FullMonth"				: "February",
+		"Month"					: "Jun",
+		"FullMonth"				: "June",
 		"Year"					: "2023",
-		"Day"					: "18",
+		"Day"					: "30",
 		"branchCode"			: "AZENTMAIN-Azentio Main Branch",
 		"gLCode1"				: "IFRS-OPEXP-OE6000007 - Deprecitation for Fixed Assets",
 		"gLCode2"				: "IFRS-7000023-NOP - Loss on sale of fixed asset",

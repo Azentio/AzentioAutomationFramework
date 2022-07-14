@@ -12,6 +12,10 @@ public class BUDGET_BudgetDefinitionUATTestDataType {
 	public String uatYearlyBudgetType;
 	public String uatMonthlyBudgetType;
 	public String uatHalfYearlyBudgetType;
+	public String budgetDefenitionEventCode;
+	public String budgetRequestAndAllocationEventCode;
+	public String budgetSupplimentoryEventCode;
+	public String budgetTransferEventCode;
 	public String uatQuarterlyBudgetType;
 	public String approvalCommentsFromReviewer;
 	public String approvalCommentsFromChecker;

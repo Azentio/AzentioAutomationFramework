@@ -7,6 +7,7 @@ import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
@@ -29,6 +30,7 @@ import pageobjects.KUBS_ReviewerObj;
 import resources.BaseClass;
 import resources.JsonDataReaderWriter;
 import testDataType.FIXEDASSET_AssetAmendmentData;
+import testDataType.FixedAsset_AssetCreationTestDataType;
 
 public class FIXEDASSET_AssetAmendment extends BaseClass {
 
@@ -50,6 +52,7 @@ public class FIXEDASSET_AssetAmendment extends BaseClass {
 	FIXEDASSET_AssetAmendmentObj assetAmendmentObj = new FIXEDASSET_AssetAmendmentObj(driver);
 	FIXEDASSET_AssetAmendmentData assetAmendmentData = jsonConfig.getAssetAmendmentByName("Asset");
 	FIXEDASSET_fixedAssetObj fixedAssetObj = new FIXEDASSET_fixedAssetObj(driver);
+	FixedAsset_AssetCreationTestDataType fixedAsset_AssetCreationTestDataType = jsonConfig.getAssetCreationByName("Maker");
 	Map<String,String> testData= new HashMap<>();
 	@Given("^Lauch The Azentio Url$")
 	public void lauch_the_azentio_url() throws Throwable {
@@ -120,7 +123,8 @@ public class FIXEDASSET_AssetAmendment extends BaseClass {
 
 		// ---------ENTER THE REQUEST REFERANCE NUMBER---------//
 		waitHelper.waitForElement(driver, 2000, assetAmendmentObj.fixed_AssetReferenceNumber());
-		assetAmendmentObj.fixed_AssetReferenceNumber().sendKeys(AssetCreation);
+	//	assetAmendmentObj.fixed_AssetReferenceNumber().sendKeys(AssetCreation);
+		assetAmendmentObj.fixed_AssetReferenceNumber().sendKeys(fixedAsset_AssetCreationTestDataType.AssetCode);
 		assetAmendmentObj.fixed_AssetReferenceNumber().sendKeys(Keys.ENTER);
 	}
 
@@ -346,12 +350,25 @@ driver.findElement(By.xpath("//td[@aria-label='"+assetAmendmentData.FullMonth+" 
 	@Then("^Click the Action Icon from claimed record$")
 	public void click_the_action_icon_from_claimed_record() throws Throwable {
 		// ------------------CHECKER ACTION------------------//
-		waitHelper.waitForElement(driver, 3000, driver.findElement(By.xpath("//span[contains(text(),'"
-				+ readerData.readReferancedata()
-				+ "')]/ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell/div/ion-buttons/ion-button")));
-		driver.findElement(By.xpath("//span[contains(text(),'" + readerData.readReferancedata()
+	//	waitHelper.waitForElement(driver, 3000, driver.findElement(By.xpath("//span[contains(text(),'"
+	//			+ readerData.readReferancedata()
+	//			+ "')]/ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell/div/ion-buttons/ion-button")));
+		for (int i = 0; i < 9; i++) {
+			try {
+				driver.findElement(By.xpath("//span[contains(text(),'" + readerData.readReferancedata()
 				+ "')]/ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell/div/ion-buttons/ion-button"))
 				.click();
+				break;
+			} catch (NoSuchElementException e) {
+				
+			}
+			catch (StaleElementReferenceException e) {
+				
+			}
+			
+		}
+		
+		
 	}
 
 	@And("^Click on Approve icon$")

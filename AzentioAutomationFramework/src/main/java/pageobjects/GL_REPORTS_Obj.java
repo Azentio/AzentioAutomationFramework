@@ -172,6 +172,12 @@ public class GL_REPORTS_Obj {
 	 public WebElement enterCategoryCode() {
 		 return enterCategoryCode;
 	 }
+	//
+	 @FindBy(xpath="//ion-input[@formcontrolname='macName']/input[1]")
+	 private WebElement enterCategoryCode1;
+	 public WebElement enterCategoryCode1() {
+		 return enterCategoryCode1;
+	 }
 	 @FindBy(xpath="//input[@placeholder='Search Accounting Book Name']")
 	 private WebElement accountingBookDefenition_SearchBookName;
 	 public WebElement accountingBookDefenitionSearchBookName()
@@ -187,6 +193,12 @@ public class GL_REPORTS_Obj {
 	 private WebElement enterAccountingCategory;
 	 public WebElement enterAccountingCategory() {
 		 return enterAccountingCategory;
+	 }
+
+	 @FindBy(xpath="//ion-input[@formcontrolname='macCode']/input[1]")
+	 private WebElement enterAccountingCategory1;
+	 public WebElement enterAccountingCategory1() {
+		 return enterAccountingCategory1;
 	 }
 	 @FindBy(xpath="//ion-row[2]/ion-col[2]/app-kub-lov[1]/span[1]/ng-select[1]/div[1]/div[1]/div[2]/input[1]")
 	 private WebElement selectGlCodeGeneration;

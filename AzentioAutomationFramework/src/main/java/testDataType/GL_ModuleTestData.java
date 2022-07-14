@@ -19,6 +19,8 @@ public class GL_ModuleTestData {
     public String AccoutingCategory;
     public String Categorycode2;
     public String AccoutingCategory2;
+    public String Defaultcategorycode;
+    public String DefaultAccountingBookname;   
     public String AccountingBookname;
     public String GlCodeGeneration;
     public String EventName;

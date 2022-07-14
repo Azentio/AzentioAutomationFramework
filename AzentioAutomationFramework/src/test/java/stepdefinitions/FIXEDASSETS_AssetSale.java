@@ -23,6 +23,7 @@ import pageobjects.KUBS_CheckerObj;
 import resources.BaseClass;
 import resources.JsonDataReaderWriter;
 import testDataType.FIXEDASSETS_AssetSaleTestDataType;
+import testDataType.FixedAsset_AssetCreationTestDataType;
 
 public class FIXEDASSETS_AssetSale {
 	
@@ -33,6 +34,7 @@ public class FIXEDASSETS_AssetSale {
 	FIXEDASSETS_AssetSaleObj fIXEDASSETS_AssetSaleObj = new FIXEDASSETS_AssetSaleObj(driver);
 	WaitHelper waithelper = new WaitHelper(driver);
 	FIXEDASSETS_AssetSaleTestDataType fIXEDASSETS_AssetSaleTestDataType=jsonReader.getAssetSaledata("Maker");
+	FixedAsset_AssetCreationTestDataType assetCreation =jsonReader.getAssetCreationByName("Maker");
 	JavascriptHelper javascripthelper = new JavascriptHelper();
 	JsonDataReaderWriter jsonWriter = new JsonDataReaderWriter();
 	ClicksAndActionsHelper clicksAndActionHelper = new ClicksAndActionsHelper(driver);
@@ -42,81 +44,82 @@ public class FIXEDASSETS_AssetSale {
 	
 	@And("^user should navigate to fixed asset menu$")
 	public void user_should_navigate_to_fixed_asset_menu() {
-		waithelper.waitForElement(driver, 2000, fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_DirectionButton());
+		waithelper.waitForElementToVisibleWithFluentWait(driver,fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_DirectionButton(),60,5);
 		fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_DirectionButton().click();
-		waithelper.waitForElement(driver, 2000, fIXEDASSETS_AssetSaleObj.fixedAssets_Menu());
+		waithelper.waitForElementToVisibleWithFluentWait(driver, fIXEDASSETS_AssetSaleObj.fixedAssets_Menu(),60,5);
 		fIXEDASSETS_AssetSaleObj.fixedAssets_Menu().click();
 	}
 	
 	@When("^click on eye button of asset sale$")
     public void click_on_eye_button_of_asset_sale() {
-		waithelper.waitForElement(driver, 2000, fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_EyeButton());
+		waithelper.waitForElementToVisibleWithFluentWait(driver, fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_EyeButton(),60,5);
 		fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_EyeButton().click();
     }
 
 	@And("^click on add button to create sale asset record$")
 	public void click_on_add_button_to_create_sale_asset_record()  {
-		waithelper.waitForElement(driver, 2000, fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_AddButton());
+		waithelper.waitForElementToVisibleWithFluentWait(driver, fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_AddButton(),60,5);
 		fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_AddButton().click();
 	}
 	
 	@And("^Fill the required fields to sale asset in profit$")
 	public void fill_the_required_fields_to_sale_asset_in_profit() throws InterruptedException  {
-		waithelper.waitForElement(driver, 2000, fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_AssetReferenceNumber());
-		fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_AssetReferenceNumber().sendKeys(fIXEDASSETS_AssetSaleTestDataType.AssetReferenceNumberForProfit);
+		waithelper.waitForElementToVisibleWithFluentWait(driver, fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_AssetReferenceNumber(),60,5);
+	//	fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_AssetReferenceNumber().sendKeys(fIXEDASSETS_AssetSaleTestDataType.AssetReferenceNumberForProfit);
+		fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_AssetReferenceNumber().sendKeys(assetCreation.AssetCode);
 		fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_AssetReferenceNumber().sendKeys(Keys.ENTER);
 		
 		fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_ItemNumber().click();
-		waithelper.waitForElement(driver, 2000, fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_ItemNumber());
+		waithelper.waitForElementToVisibleWithFluentWait(driver, fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_ItemNumber(),60,5);
 		fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_ItemNumber().click();
 		fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_ItemNumber().sendKeys(Keys.DOWN);
 		//fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_ItemNumber().sendKeys(fIXEDASSETS_AssetSaleTestDataType.ItemNumber);
 		fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_ItemNumber().sendKeys(Keys.ENTER);
 		
-		waithelper.waitForElement(driver, 2000, fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_SaleValue());
+		waithelper.waitForElementToVisibleWithFluentWait(driver, fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_SaleValue(),60,5);
 		fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_SaleValue().sendKeys(fIXEDASSETS_AssetSaleTestDataType.SaleValue);
 
 		fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_Currency().sendKeys(fIXEDASSETS_AssetSaleTestDataType.Currency);
 		fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_Currency().sendKeys(Keys.ENTER);
 		
-		waithelper.waitForElement(driver, 2000, fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_ActionableBy());
+		waithelper.waitForElementToVisibleWithFluentWait(driver, fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_ActionableBy(),60,5);
 		fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_ActionableBy().sendKeys(fIXEDASSETS_AssetSaleTestDataType.ActionableBy);
 		fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_ActionableBy().sendKeys(Keys.ENTER);
 		
-		waithelper.waitForElement(driver, 2000, fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_Remark());
+		waithelper.waitForElementToVisibleWithFluentWait(driver, fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_Remark(),60,5);
 		fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_Remark().sendKeys(fIXEDASSETS_AssetSaleTestDataType.Remark);
 	}
 	
 	@And("^Fill the required fields to sale asset in loss$")
 	public void fill_the_required_fields_to_sale_asset_in_loss() throws InterruptedException  {
-		waithelper.waitForElement(driver, 2000, fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_AssetReferenceNumber());
+		waithelper.waitForElementToVisibleWithFluentWait(driver, fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_AssetReferenceNumber(),60,5);
 		fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_AssetReferenceNumber().sendKeys(fIXEDASSETS_AssetSaleTestDataType.AssetReferenceNumberForLoss);
 		fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_AssetReferenceNumber().sendKeys(Keys.ENTER);
 		
 		fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_ItemNumber().click();
-		waithelper.waitForElement(driver, 2000, fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_ItemNumber());
+		waithelper.waitForElementToVisibleWithFluentWait(driver, fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_ItemNumber(),60,5);
 		fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_ItemNumber().click();
 		fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_ItemNumber().sendKeys(Keys.DOWN);
 		//fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_ItemNumber().sendKeys(fIXEDASSETS_AssetSaleTestDataType.ItemNumberForLoss);
 		fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_ItemNumber().sendKeys(Keys.ENTER);
 		
-		waithelper.waitForElement(driver, 2000, fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_SaleValue());
+		waithelper.waitForElementToVisibleWithFluentWait(driver, fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_SaleValue(),60,5);
 		fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_SaleValue().sendKeys(fIXEDASSETS_AssetSaleTestDataType.SaleValue);
 		
 		fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_Currency().sendKeys(fIXEDASSETS_AssetSaleTestDataType.Currency);
 		fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_Currency().sendKeys(Keys.ENTER);
 		
-		waithelper.waitForElement(driver, 2000, fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_ActionableBy());
+		waithelper.waitForElementToVisibleWithFluentWait(driver, fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_ActionableBy(),60,5);
 		fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_ActionableBy().sendKeys(fIXEDASSETS_AssetSaleTestDataType.ActionableBy);
 		fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_ActionableBy().sendKeys(Keys.ENTER);
 		
-		waithelper.waitForElement(driver, 2000, fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_Remark());
+		waithelper.waitForElementToVisibleWithFluentWait(driver, fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_Remark(),60,5);
 		fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_Remark().sendKeys(fIXEDASSETS_AssetSaleTestDataType.Remark);
 	}
 	
     @Then("^Save and submit the asset sale record$")
     public void save_and_submit_the_asset_sale_record() throws IOException, ParseException, InterruptedException {
-    	waithelper.waitForElement(driver, 2000, fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_Save());
+    	waithelper.waitForElementToVisibleWithFluentWait(driver, fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_Save(),60,5);
     	fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_Save().click();
     	Thread.sleep(2000);
     	javascripthelper.JavaScriptHelper(driver);
@@ -125,45 +128,45 @@ public class FIXEDASSETS_AssetSale {
 				.toString();
 		System.out.println("Message:" + str);
     	
-    	waithelper.waitForElement(driver, 2000, fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_NotificationButton());
+    	waithelper.waitForElementToVisibleWithFluentWait(driver, fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_NotificationButton(),60,5);
     	fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_NotificationButton().click();
     	
-    	waithelper.waitForElement(driver, 2000, fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_FirstReferenceId());
+    	waithelper.waitForElementToVisibleWithFluentWait(driver, fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_FirstReferenceId(),60,5);
     	String id=fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_FirstReferenceId().getText();
     	jsonWriter.addReferanceData(id);
 		System.out.println("Reference ID:" +id);
     	for (int i = 1; i <= 35; i++) {
 			try {
-		    	waithelper.waitForElement(driver, 3000,driver.findElement(By.xpath("//span[contains(text(),'" +jsonWriter.readReferancedata()+ "')]")));	
+		    	waithelper.waitForElementToVisibleWithFluentWait(driver, driver.findElement(By.xpath("//span[contains(text(),'" +jsonWriter.readReferancedata()+ "')]")),60,5);	
 				WebElement referanceID = driver.findElement(By.xpath("//span[contains(text(),'" +  jsonWriter.readReferancedata() + "')]"));	
-				waithelper.waitForElement(driver, i, referanceID);
+				waithelper.waitForElementToVisibleWithFluentWait(driver,referanceID,60,5);
 				referanceID.click();
 		    	System.out.println(referanceID);
 //				Assert.assertTrue(referanceID.isDisplayed());
 				break;
 			} catch (NoSuchElementException e) {
-				waithelper.waitForElement(driver,4000,fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_NotificationNextButton());
+				waithelper.waitForElementToVisibleWithFluentWait(driver,fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_NotificationNextButton(),60,5);
 				fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_NotificationNextButton().click();
 			}
 		}
     	String before_xpath="//span[contains(text(),'";
     	String after_xpath="')]/ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell//ion-button"; 
-    	waithelper.waitForElement(driver, 10000, driver.findElement(By.xpath(before_xpath +jsonWriter.readReferancedata()+after_xpath)));
+    	waithelper.waitForElementToVisibleWithFluentWait(driver, driver.findElement(By.xpath(before_xpath +jsonWriter.readReferancedata()+after_xpath)),60,5);
     	driver.findElement(By.xpath(before_xpath +jsonWriter.readReferancedata() +after_xpath)).click();
     	
-    	waithelper.waitForElement(driver, 2000, fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_SubmitButton());
+    	waithelper.waitForElementToVisibleWithFluentWait(driver, fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_SubmitButton(),60,5);
     	fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_SubmitButton().click();
-    	Thread.sleep(1000);
+    	//Thread.sleep(1000);
     	
-    	waithelper.waitForElement(driver, 2000, fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_RemarkField());
+    	waithelper.waitForElementToVisibleWithFluentWait(driver, fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_RemarkField(),60,5);
     	javascripthelper.JSEClick(fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_RemarkField());
     	fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_RemarkField().sendKeys(fIXEDASSETS_AssetSaleTestDataType.RemarkByMaker);
     	
-    	waithelper.waitForElement(driver, 2000, fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_Submit());
+    	waithelper.waitForElementToVisibleWithFluentWait(driver, fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_Submit(),60,5);
     	fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_Submit().click();
     	
     	Thread.sleep(1000);
-    	waithelper.waitForElement(driver, 2000, fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_RecordStatus());
+    	waithelper.waitForElementToVisibleWithFluentWait(driver, fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_RecordStatus(),60,5);
     	WebElement recordstatus = fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_RecordStatus();
     	clicksAndActionHelper.moveToElement(recordstatus);
     	
@@ -181,24 +184,24 @@ public class FIXEDASSETS_AssetSale {
     
     @Then("^checker should approved the asset sale$")
     public void checker_should_approved_the_asset_sale() throws InterruptedException, IOException, ParseException{
-    	waithelper.waitForElement(driver, 3000, driver.findElement(By.xpath("//span[contains(text(),'" + jsonWriter.readReferancedata() + "')]/ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell/div/ion-buttons/ion-button")));
+    	waithelper.waitForElementToVisibleWithFluentWait(driver,driver.findElement(By.xpath("//span[contains(text(),'" + jsonWriter.readReferancedata() + "')]/ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell/div/ion-buttons/ion-button")),60,5);
 		driver.findElement(By.xpath("//span[contains(text(),'" + jsonWriter.readReferancedata() + "')]/ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell/div/ion-buttons/ion-button")).click();
-    	waithelper.waitForElement(driver, 2000, fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_NotificationButton());
+    	waithelper.waitForElementToVisibleWithFluentWait(driver, fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_NotificationButton(),60,5);
     	fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_NotificationButton().click();
 		Thread.sleep(2000);
-		waithelper.waitForElement(driver, 3000, driver.findElement(By.xpath("//span[contains(text(),'" + jsonWriter.readReferancedata()
-		+ "')]/ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell/div/ion-buttons/ion-button")));
+		waithelper.waitForElementToVisibleWithFluentWait(driver,  driver.findElement(By.xpath("//span[contains(text(),'" + jsonWriter.readReferancedata()
+		+ "')]/ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell/div/ion-buttons/ion-button")),60,5);
 		driver.findElement(By.xpath("//span[contains(text(),'" + jsonWriter.readReferancedata() + "')]/ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell/div/ion-buttons/ion-button"))
 		.click();
 		
-		waithelper.waitForElement(driver, 2000, kubschecker.checkerApproveButton());
+		waithelper.waitForElementToVisibleWithFluentWait(driver, kubschecker.checkerApproveButton(),60,5);
 		kubschecker.checkerApproveButton().click();
-		waithelper.waitForElement(driver, 2000, kubschecker.checkerRemarks());
+		waithelper.waitForElementToVisibleWithFluentWait(driver, kubschecker.checkerRemarks(),60,5);
 		kubschecker.checkerRemarks().sendKeys(fIXEDASSETS_AssetSaleTestDataType.CheckerRemark);
-		waithelper.waitForElement(driver, 2000, kubschecker.checkersubmitButton());
+		waithelper.waitForElementToVisibleWithFluentWait(driver, kubschecker.checkersubmitButton(),60,5);
 		kubschecker.checkersubmitButton().click();
 		Thread.sleep(2000);
-		waithelper.waitForElement(driver, 2000, fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_RecordStatus());
+		waithelper.waitForElementToVisibleWithFluentWait(driver, fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_RecordStatus(),60,5);
     	WebElement recordstatus = fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_RecordStatus();
     	clicksAndActionHelper.moveToElement(recordstatus);
     	String message = fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_RecordStatus().getText();
@@ -211,19 +214,19 @@ public class FIXEDASSETS_AssetSale {
     public void click_on_first_eye_button_to_get_the_profit_earned() throws InterruptedException {
 javascripthelper.JavaScriptHelper(driver);
 		
-		waithelper.waitForElement(driver, 2000, fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_ViewEarnedProfitEyeButton());
+		waithelper.waitForElementToVisibleWithFluentWait(driver, fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_ViewEarnedProfitEyeButton(),60,5);
 		fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_ViewEarnedProfitEyeButton().click();
 		
-		waithelper.waitForElement(driver, 3000, fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_BookValue());
+		waithelper.waitForElementToVisibleWithFluentWait(driver,  fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_BookValue(),60,5);
     	fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_BookValue().click();
     	
-    	waithelper.waitForElement(driver, 3000, fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_SaleValue());
+    	waithelper.waitForElementToVisibleWithFluentWait(driver,  fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_SaleValue(),60,5);
     	fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_SaleValue().click();
     	
-    	waithelper.waitForElement(driver, 3000, fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_ProfitOnSaleGL());
+    	waithelper.waitForElementToVisibleWithFluentWait(driver,  fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_ProfitOnSaleGL(),60,5);
     	fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_ProfitOnSaleGL().click();
     	
-    	waithelper.waitForElement(driver, 3000, fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_LossOnSaleGL());
+    	waithelper.waitForElementToVisibleWithFluentWait(driver,  fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_LossOnSaleGL(),60,5);
     	fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_LossOnSaleGL().click();
     	
 		String bv = javascripthelper.executeScript("return document.getElementsByClassName('form__field ng-pristine ng-valid ng-touched')[0].value").toString();
@@ -248,19 +251,19 @@ javascripthelper.JavaScriptHelper(driver);
     public void click_on_first_eye_button_to_get_the_loss_earned() throws InterruptedException {
     	javascripthelper.JavaScriptHelper(driver);
     	
-    	waithelper.waitForElement(driver, 2000, fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_ViewEarnedProfitEyeButton());
+    	waithelper.waitForElementToVisibleWithFluentWait(driver, fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_ViewEarnedProfitEyeButton(),60,5);
 		fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_ViewEarnedProfitEyeButton().click();
 		
-		waithelper.waitForElement(driver, 3000, fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_BookValue());
+		waithelper.waitForElementToVisibleWithFluentWait(driver,  fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_BookValue(),60,5);
     	fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_BookValue().click();
     	
-    	waithelper.waitForElement(driver, 3000, fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_SaleValue());
+    	waithelper.waitForElementToVisibleWithFluentWait(driver,  fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_SaleValue(),60,5);
     	fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_SaleValue().click();
     	
-    	waithelper.waitForElement(driver, 3000, fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_ProfitOnSaleGL());
+    	waithelper.waitForElementToVisibleWithFluentWait(driver,  fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_ProfitOnSaleGL(),60,5);
     	fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_ProfitOnSaleGL().click();
     	
-    	waithelper.waitForElement(driver, 3000, fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_LossOnSaleGL());
+    	waithelper.waitForElementToVisibleWithFluentWait(driver,  fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_LossOnSaleGL(),60,5);
     	fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_LossOnSaleGL().click();
     	
     	String bv = javascripthelper.executeScript("return document.getElementsByClassName('form__field ng-pristine ng-valid ng-touched')[0].value").toString();

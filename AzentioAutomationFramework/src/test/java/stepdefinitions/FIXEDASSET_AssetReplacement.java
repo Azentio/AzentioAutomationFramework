@@ -1,11 +1,13 @@
 package stepdefinitions;
 
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import dataProvider.ConfigFileReader;
 import dataProvider.JsonConfig;
@@ -26,6 +28,7 @@ import resources.BaseClass;
 import resources.JsonDataReaderWriter;
 import testDataType.FIXEDASSET_AssetAmendmentData;
 import testDataType.FIXEDASSET_AssetImpairementTestDataType;
+import testDataType.FixedAsset_AssetCreationTestDataType;
 
 public class FIXEDASSET_AssetReplacement extends BaseClass {
 
@@ -51,6 +54,7 @@ public class FIXEDASSET_AssetReplacement extends BaseClass {
 	FIXEDASSET_AssetImpairementTestDataType fixedAssetImairementTestData = jsonConfig
 			.getFixedAssetTestDataByName("Maker");
 	FIXEDASSET_fixedAssetObj fixedAssetObj = new FIXEDASSET_fixedAssetObj(driver);
+	FixedAsset_AssetCreationTestDataType fixedAsset_AssetCreationTestDataType = jsonConfig.getAssetCreationByName("Maker");
 	Map<String,String> testData= new HashMap<>();
 
 	// **********************@KUBS_FAT_UAT_008_001************************//
@@ -120,6 +124,7 @@ public class FIXEDASSET_AssetReplacement extends BaseClass {
     public void enter_the_asset_referance_number_which_we_got_from_aset_creation_module() throws Throwable {
 		waitHelper.waitForElement(driver, 2000, assetReplacement.fixed_AssetReferenceNumber());
 		assetReplacement.fixed_AssetReferenceNumber().sendKeys(testData.get("AssetReferemnceNumber"));
+	//	assetReplacement.fixed_AssetReferenceNumber().sendKeys(fixedAsset_AssetCreationTestDataType.AssetCode);
 		assetReplacement.fixed_AssetReferenceNumber().sendKeys(Keys.DOWN);
 		assetReplacement.fixed_AssetReferenceNumber().sendKeys(Keys.ENTER);
 		waitHelper.waitForElement(driver, 2000, assetReplacement.fixed_AssetGetReferenceNumber());
@@ -317,12 +322,21 @@ public class FIXEDASSET_AssetReplacement extends BaseClass {
 	@Then("^Click Action Icon from claimed record$")
 	public void click_action_icon_from_claimed_record() throws Throwable {
 		// ------------------CHECKER ACTION------------------//
-		waitHelper.waitForElement(driver, 3000, driver.findElement(By.xpath("//span[contains(text(),'"
+		waitHelper.waitForElementToVisibleWithFluentWait(driver,driver.findElement(By.xpath("//span[contains(text(),'"
 				+ readerData.readReferancedata()
-				+ "')]/ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell/div/ion-buttons/ion-button")));
-		driver.findElement(By.xpath("//span[contains(text(),'" + readerData.readReferancedata()
+				+ "')]/ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell/div/ion-buttons/ion-button")),60,5);
+		for (int i = 0; i <10; i++) {
+			try {
+				driver.findElement(By.xpath("//span[contains(text(),'" + readerData.readReferancedata()
 				+ "')]/ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell/div/ion-buttons/ion-button"))
 				.click();
+				break;
+			} catch (NoSuchElementException e) {
+				
+			}
+			
+		}
+		
 	}
 
 	@And("^Click Approve icon$")

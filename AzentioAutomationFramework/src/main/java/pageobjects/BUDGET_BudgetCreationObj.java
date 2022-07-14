@@ -36,7 +36,7 @@ public class BUDGET_BudgetCreationObj {
 		return budget_creation_search_budget_code;
     	
     }
-	@FindBy(xpath = "//ion-fab-button[@id='addBtn']")
+	@FindBy(xpath = "//ion-icon[@name='add']")
 	private WebElement budget_creation_addbutton;
 
 	public WebElement budgetCreation_AddButton() {
@@ -190,6 +190,18 @@ public class BUDGET_BudgetCreationObj {
    public WebElement budgetCreationNextButton()
    {
 	   return budget_creation_next_button;
+   }
+   @FindBy(xpath="//app-inbox[1]//ion-toolbar[1]/ion-buttons[2]//ion-icon")
+   private WebElement notification_SearchIcon;
+   public WebElement notificationSearchIcon()
+   {
+	   return notification_SearchIcon;
+   }
+   @FindBy(xpath="//input[@placeholder='Search eventCode']")
+   private WebElement envent_Code;
+   public WebElement eventCode()
+   {
+	   return envent_Code;
    }
    @FindBy(xpath="//span[contains(text(),'Approve')]")
    private WebElement budget_creation_approve_button;

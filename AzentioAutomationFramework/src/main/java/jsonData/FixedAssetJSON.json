@@ -2,8 +2,8 @@
 {
 "User":"Maker",
 "BranchCode":"AZENTMAIN",
-"AssetCode":"ELECTRONICS-LAP001-Apple_Mac_Book",
-"BillReferenceNo":"INV-403-42022",
+"AssetCode":"01-001-woodply30775",
+"BillReferenceNo":"INV-365-42022",
 "Remark":"OK",
 
 
@@ -12,16 +12,16 @@
 "AssetValue":"1000000000",
 "HSNCode":"83034090- Lockers",
 
-"AssetReferenceNumber":"01-001-wooden table_AZENTMAIN_5008",
-"ItemNumber":"wt04",
+"AssetReferenceNumber":"01-001-woodply28738",
+"ItemNumber":"111",
 "EmployeeID":"anant",
 
 
 	"GlYear":"2023",
 	"GlDay":"19",
-	"GlToMonth":"Apr",
-	"GlFullToMonth":"April",
-	"GlToDate":"19",
+	"GlToMonth":"Jun",
+	"GlFullToMonth":"June",
+	"GlToDate":"30",
 	
 	"AssetLife":"Month"
 

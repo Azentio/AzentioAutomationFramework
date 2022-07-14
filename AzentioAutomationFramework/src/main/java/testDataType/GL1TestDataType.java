@@ -3,6 +3,9 @@ package testDataType;
 public class GL1TestDataType {
 	public String User;
 	public String AccountingCategory;
+	public String AccountingCategory1;
+	public String AccountingCategory3;
+	public String AccountingCategory2;
 	public String coaName;
 	public String parentGL;
 	public String gLType;

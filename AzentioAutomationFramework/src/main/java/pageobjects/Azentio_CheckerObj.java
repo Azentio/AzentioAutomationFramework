@@ -42,7 +42,7 @@ public class Azentio_CheckerObj {
 		return checker_notification_icon;
 	}
 
-	@FindBy(xpath = "//span/ion-button[3]")
+	@FindBy(xpath = "//span[text()='Reject']")
 	private WebElement checker_reject_button;
 
 	public WebElement checkerRejectButton() {

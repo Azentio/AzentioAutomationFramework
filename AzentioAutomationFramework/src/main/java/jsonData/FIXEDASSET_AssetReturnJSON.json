@@ -1,11 +1,11 @@
 [
 {
 "userType":"Maker",
-"assetReferenceNumber":"ELECTRONICS-LAP001-Freedom255_AZENTMAIN_271",
-"assetReferenceNumberOFRevaluedAsset":"MACHINARY-AIRCONDITIONER-Lloyd_AZENTMAIN_19",
-"assetReferenceNumberOFAmmendentAsset":"FIXTURESANDFITTINGS1-TABLESANDCHAIRS01-stairs_AZENTMAIN_21",
-"assetReferenceNumberOFImpairedAsset":"MACHINARY-GENERATOR-UPS_AZENTMAIN_131",
-"assetReferenceNumberOFDeallocationAsset":"01-001-adjustable table_AZENTMAIN_4455",
+"assetReferenceNumber":"01-001-woodply28738",
+"assetReferenceNumberOFRevaluedAsset":"01-001-woodply28738",
+"assetReferenceNumberOFAmmendentAsset":"01-001-woodply28738",
+"assetReferenceNumberOFImpairedAsset":"01-001-woodply28738",
+"assetReferenceNumberOFDeallocationAsset":"01-001-woodply28738",
 "assetLife":"Asset Life",
 "assetLifeValue":"2",
 "bookValue":"2000"

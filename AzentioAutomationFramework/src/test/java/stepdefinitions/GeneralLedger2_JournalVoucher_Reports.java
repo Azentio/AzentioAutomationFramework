@@ -159,6 +159,7 @@ public class GeneralLedger2_JournalVoucher_Reports {
 		
 		catch(NoSuchElementException nosuchElement)
 		{
+			waithelper.waitForElementToVisibleWithFluentWait(driver, eNQUIRY_FinancialTransactionObj.ENQUIRY_FinancialTransaction_NextMonth(), 5, 500);
 			eNQUIRY_FinancialTransactionObj.ENQUIRY_FinancialTransaction_NextMonth().click();
 		}
 		}

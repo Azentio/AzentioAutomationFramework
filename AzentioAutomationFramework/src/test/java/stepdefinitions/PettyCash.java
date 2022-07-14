@@ -73,25 +73,25 @@ public class PettyCash {
 
     @Then("^Click on Petty Cash button$")
     public void click_on_petty_cash_button() throws Throwable {
-    	waithelper.waitForElement(driver, 2000, pettyCashobj.pettyCash_Button());
+    	waithelper.waitForElementToVisibleWithFluentWait(driver, pettyCashobj.pettyCash_Button(), 20, 500);
     	pettyCashobj.pettyCash_Button().click();
     }
 
     @Then("^Click on Fund Request eye button$")
     public void click_on_fund_request_eye_button() throws Throwable {
-    	waithelper.waitForElement(driver, 2000, pettyCashobj.fundRequest_EyeButton());
+    	waithelper.waitForElementToVisibleWithFluentWait(driver, pettyCashobj.fundRequest_EyeButton(), 20, 500);
     	pettyCashobj.fundRequest_EyeButton().click();
     }
 
     @Then("^Click on Add button to request fund$")
     public void click_on_add_button_to_request_fund() throws Throwable {
-    	waithelper.waitForElement(driver, 2000, pettyCashobj.fundRequest_AddButton());
+    	waithelper.waitForElementToVisibleWithFluentWait(driver, pettyCashobj.fundRequest_AddButton(), 20, 500);
     	pettyCashobj.fundRequest_AddButton().click();
     }
 
     @Then("^Click on Request Amount Text Box and entre amount$")
     public void click_on_request_amount_text_box_and_entre_amount() throws Throwable {
-    	waithelper.waitForElement(driver, 2000, pettyCashobj.requestAmount_TextBox());
+    	waithelper.waitForElementToVisibleWithFluentWait(driver, pettyCashobj.requestAmount_TextBox(), 20, 500);
     	pettyCashobj.requestAmount_TextBox().click(); 
     	pettyCashobj.requestAmount_TextBox().sendKeys(pettyCashTestDataType.RequestAmount);
     	pettyCashobj.requestAmount_TextBox().sendKeys(Keys.ENTER);
@@ -99,21 +99,20 @@ public class PettyCash {
 
     @Then("^Click on Save button for saving record$")
     public void click_on_save_button_for_saving_record() throws Throwable {
-    	waithelper.waitForElement(driver, 2000, pettyCashobj.pettyCashFundRequest_SaveButton());
+    	waithelper.waitForElementToVisibleWithFluentWait(driver, pettyCashobj.pettyCashFundRequest_SaveButton(), 20, 500);
     	pettyCashobj.pettyCashFundRequest_SaveButton().click();
     }
 	
 	
     @Then("^Click on Approve button in reviewer stage$")
     public void click_on_approve_button_in_reviewer_stage() throws Throwable {
-    	waithelper.waitForElement(driver, 2000, pettyCashobj.ReviewerPettyCash_ApproveButton());
+    	waithelper.waitForElementToVisibleWithFluentWait(driver, pettyCashobj.ReviewerPettyCash_ApproveButton(), 20, 500);
     	pettyCashobj.ReviewerPettyCash_ApproveButton().click();
-    	Thread.sleep(2000);
-    	waithelper.waitForElement(driver, 2000, reviewer.reviewerAlertRemarks());
+    	waithelper.waitForElementToVisibleWithFluentWait(driver, reviewer.reviewerAlertRemarks(), 20, 500);
 		reviewer.reviewerAlertRemarks().sendKeys("ok");
-		waithelper.waitForElement(driver, 2000, reviewer.reviewerAlertSubmitButton());
+		waithelper.waitForElementToVisibleWithFluentWait(driver, reviewer.reviewerAlertSubmitButton(), 20, 500);
 		reviewer.reviewerAlertSubmitButton().click();
-		Thread.sleep(3000);
+		
     }
 	
 	//----------KUBS_PC_UAT_004_002-------
@@ -125,8 +124,7 @@ public class PettyCash {
 		while (true) {
 			try {
 
-				waithelper.waitForElement(driver, 3000, driver.findElement(By.xpath("//span[contains(text(),'"
-						+ pettyCashTestDataType.GlMonth + " " + pettyCashTestDataType.GlYear + "')]")));
+				//waithelper.waitForElementwithFluentwait(driver, driver.findElement(By.xpath("//span[contains(text(),'"/+ pettyCashTestDataType.GlMonth + " " + pettyCashTestDataType.GlYear + "')]")));
 				WebElement monthAndYear = driver.findElement(By.xpath("//span[contains(text(),'"
 						+ pettyCashTestDataType.GlMonth + " " + pettyCashTestDataType.GlYear + "')]"));
 				break;
@@ -148,8 +146,7 @@ public class PettyCash {
     	while (true) {
 			try {
 
-				waithelper.waitForElement(driver, 3000, driver.findElement(By.xpath("//span[contains(text(),'"
-						+ pettyCashTestDataType.GlToMonth + " " + pettyCashTestDataType.GlToYear + "')]")));
+				//waithelper.waitForElementwithFluentwait(driver, driver.findElement(By.xpath("//span[contains(text(),'"/+ pettyCashTestDataType.GlToMonth + " " + pettyCashTestDataType.GlToYear + "')]")));
 				WebElement monthAndYear = driver.findElement(By.xpath("//span[contains(text(),'"
 						+ pettyCashTestDataType.GlToMonth + " " + pettyCashTestDataType.GlToYear + "')]"));
 				break;
@@ -159,7 +156,8 @@ public class PettyCash {
 				inventoryManagamentObj.inventoryNextMonth().click();
 			}
 		}
-    	Thread.sleep(1000);
+    	waithelper.waitForElementToVisibleWithFluentWait(driver,driver.findElement(By.xpath("//td[@aria-label='" + pettyCashTestDataType.GlFullToMonth
+				+ " " + pettyCashTestDataType.GlToDate + ", " + pettyCashTestDataType.GlToYear + "']/span")),20, 500);
 		WebElement FinalDay = driver.findElement(By.xpath("//td[@aria-label='" + pettyCashTestDataType.GlFullToMonth
 				+ " " + pettyCashTestDataType.GlToDate + ", " + pettyCashTestDataType.GlToYear + "']/span"));
 		clicksAndActionHelper.doubleClick(FinalDay);
@@ -169,12 +167,11 @@ public class PettyCash {
     
     @Then("^validate voucher number for petty cash$")
     public void validate_voucher_number_for_petty_cash() throws Throwable {
-    	Thread.sleep(3000);
-
+    	
 	    while(true) {
 	    	try{
 
-	waithelper.waitForElement(driver, 3000,driver.findElement(By.xpath("//span[contains(text(),'"+pettyCashTestDataType.Voucher+"')]")));
+	//waithelper.waitForElementwithFluentwait(driver,driver.findElement(By.xpath("//span[contains(text(),'"+pettyCashTestDataType.Voucher+"')]")));
 
 
 	WebElement VoucherNum =driver.findElement(By.xpath("//span[contains(text(),'"+pettyCashTestDataType.Voucher+"')]"));

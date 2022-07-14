@@ -14,6 +14,7 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import pageobjects.FixedAsset_AssetDeallocationObj;
 import resources.BaseClass;
+import testDataType.FixedAsset_AssetCreationTestDataType;
 import testDataType.FixedAsset_AssetDeallocationTestDataType;
 
 public class FixedAsset_AssetDeallocation extends BaseClass {
@@ -23,6 +24,7 @@ public class FixedAsset_AssetDeallocation extends BaseClass {
 	ClicksAndActionsHelper clicksAndActionHelper = new ClicksAndActionsHelper(driver);
 	FixedAsset_AssetDeallocationObj fixedAsset_AssetDeallocationObj = new FixedAsset_AssetDeallocationObj(driver);
 	FixedAsset_AssetDeallocationTestDataType fixedAsset_AssetDeallocationTestDataType = jsonReader.getAssetDeallocationByName("Maker");	
+	FixedAsset_AssetCreationTestDataType fixedAsset_AssetCreationTestDataType = jsonReader.getAssetCreationByName("Maker");
 	String AssetReferenceNumber;
 	JavascriptHelper javascripthelper = new JavascriptHelper();
 	Map<String,String> mapData= new HashMap<>();
@@ -31,7 +33,7 @@ public class FixedAsset_AssetDeallocation extends BaseClass {
 //    @Then("^Click on fixed asset deallocaion  Direction icon$")
 //    public void click_on_fixed_asset_deallocaion_direction_icon()  {
 //    //Direction	
-//    waithelper.waitForElement(driver, 2000,  fixedAsset_AssetDeallocationObj.fixedAsset_AssetDeallocation_DirectionIcon());
+//    waithelper.waitForElementToVisisbleWithFluentWait(driver,  fixedAsset_AssetDeallocationObj.fixedAsset_AssetDeallocation_DirectionIcon());
 //    fixedAsset_AssetDeallocationObj.fixedAsset_AssetDeallocation_DirectionIcon().click();
 //    	
 //       
@@ -40,7 +42,7 @@ public class FixedAsset_AssetDeallocation extends BaseClass {
 //    @Then("^Click on Fixed assets field$")
 //    public void click_on_fixed_assets_field() {
 //    //Fixed Assets
-//    waithelper.waitForElement(driver, 2000,  fixedAsset_AssetDeallocationObj.fixedAsset_AssetDeallocation_FixedAssetsField());
+//    waithelper.waitForElementToVisisbleWithFluentWait(driver,  fixedAsset_AssetDeallocationObj.fixedAsset_AssetDeallocation_FixedAssetsField());
 //    fixedAsset_AssetDeallocationObj.fixedAsset_AssetDeallocation_FixedAssetsField().click();
 //        	
 //         
@@ -49,7 +51,7 @@ public class FixedAsset_AssetDeallocation extends BaseClass {
    
 	@And("^get the allocated asset reference number in asset allocation module$")
     public void get_the_allocated_asset_reference_number_in_asset_allocation_module() throws Throwable {
-		waithelper.waitForElementVisible(fixedAsset_AssetDeallocationObj.fixedAssetAllocatedApprovedRecord(), 3000, 300);
+		waithelper.waitForElementToVisibleWithFluentWait(driver,fixedAsset_AssetDeallocationObj.fixedAssetAllocatedApprovedRecord(),60,5);
 		mapData.put("allocatedAssetReferenceNumber", fixedAsset_AssetDeallocationObj.fixedAssetAllocatedApprovedRecord().getText());
 		System.out.println("Allocate dasset reference number is "+mapData.get("allocatedAssetReferenceNumber"));
 		
@@ -61,7 +63,7 @@ public class FixedAsset_AssetDeallocation extends BaseClass {
 Thread.sleep(1500);
    javascripthelper.JavaScriptHelper(driver);
    javascripthelper.scrollIntoView(fixedAsset_AssetDeallocationObj.fixedAsset_AssetDeallocation_EyeIcon());
- //  waithelper.waitForElement(driver, 3000, fixedAsset_AssetDeallocationObj.fixedAsset_AssetDeallocation_EyeIcon());
+ //  waithelper.waitForElementToVisisbleWithFluentWait(driver, fixedAsset_AssetDeallocationObj.fixedAsset_AssetDeallocation_EyeIcon());
    fixedAsset_AssetDeallocationObj.fixedAsset_AssetDeallocation_EyeIcon().click();   
         
     }
@@ -71,14 +73,14 @@ Thread.sleep(1500);
     	fixedAsset_AssetDeallocationTestDataType = jsonReader.getAssetDeallocationByName("Maker");	
     	
     	//AssetReferenceNumber
-        waithelper.waitForElement(driver, 2000,  fixedAsset_AssetDeallocationObj.fixedAsset_AssetDeallocation_AssetReferenceNumber());
+        waithelper.waitForElementToVisibleWithFluentWait(driver,fixedAsset_AssetDeallocationObj.fixedAsset_AssetDeallocation_AssetReferenceNumber(),60,5);
         fixedAsset_AssetDeallocationObj.fixedAsset_AssetDeallocation_AssetReferenceNumber().click();
         fixedAsset_AssetDeallocationObj.fixedAsset_AssetDeallocation_AssetReferenceNumber().sendKeys(fixedAsset_AssetDeallocationTestDataType.AssetReferenceNumber);
         fixedAsset_AssetDeallocationObj.fixedAsset_AssetDeallocation_AssetReferenceNumber().sendKeys(Keys.ENTER);
        
         
         //AssetItemNumber
-        waithelper.waitForElement(driver, 2000,  fixedAsset_AssetDeallocationObj.fixedAsset_AssetDeallocation_ItemNumber());
+        waithelper.waitForElementToVisibleWithFluentWait(driver,fixedAsset_AssetDeallocationObj.fixedAsset_AssetDeallocation_ItemNumber(),60,5);
         fixedAsset_AssetDeallocationObj.fixedAsset_AssetDeallocation_ItemNumber().click();
         //Thread.sleep(2000);
         fixedAsset_AssetDeallocationObj.fixedAsset_AssetDeallocation_ItemNumber().sendKeys(Keys.DOWN);
@@ -92,14 +94,15 @@ Thread.sleep(1500);
 fixedAsset_AssetDeallocationTestDataType = jsonReader.getAssetDeallocationByName("Maker");	
     	
     	//AssetReferenceNumber
-        waithelper.waitForElement(driver, 2000,  fixedAsset_AssetDeallocationObj.fixedAsset_AssetDeallocation_AssetReferenceNumber());
+        waithelper.waitForElementToVisibleWithFluentWait(driver,fixedAsset_AssetDeallocationObj.fixedAsset_AssetDeallocation_AssetReferenceNumber(),60,5);
         fixedAsset_AssetDeallocationObj.fixedAsset_AssetDeallocation_AssetReferenceNumber().click();
-        fixedAsset_AssetDeallocationObj.fixedAsset_AssetDeallocation_AssetReferenceNumber().sendKeys(mapData.get("allocatedAssetReferenceNumber"));
+         fixedAsset_AssetDeallocationObj.fixedAsset_AssetDeallocation_AssetReferenceNumber().sendKeys(mapData.get("allocatedAssetReferenceNumber"));
+      //  fixedAsset_AssetDeallocationObj.fixedAsset_AssetDeallocation_AssetReferenceNumber().sendKeys(fixedAsset_AssetCreationTestDataType.AssetCode);
         fixedAsset_AssetDeallocationObj.fixedAsset_AssetDeallocation_AssetReferenceNumber().sendKeys(Keys.ENTER);
        
         
         //AssetItemNumber
-        waithelper.waitForElement(driver, 2000,  fixedAsset_AssetDeallocationObj.fixedAsset_AssetDeallocation_ItemNumber());
+        waithelper.waitForElementToVisibleWithFluentWait(driver,fixedAsset_AssetDeallocationObj.fixedAsset_AssetDeallocation_ItemNumber(),60,5);
         fixedAsset_AssetDeallocationObj.fixedAsset_AssetDeallocation_ItemNumber().click();
         Thread.sleep(1000);
         fixedAsset_AssetDeallocationObj.fixedAsset_AssetDeallocation_ItemNumber().sendKeys(Keys.DOWN);
@@ -113,14 +116,15 @@ fixedAsset_AssetDeallocationTestDataType = jsonReader.getAssetDeallocationByName
     	fixedAsset_AssetDeallocationTestDataType = jsonReader.getAssetDeallocationByName("Maker");	
     	
     	//AssetReferenceNumber
-        waithelper.waitForElement(driver, 4000,  fixedAsset_AssetDeallocationObj.fixedAsset_AssetDeallocation_AssetReferenceNumber());
+        waithelper.waitForElementToVisibleWithFluentWait(driver,fixedAsset_AssetDeallocationObj.fixedAsset_AssetDeallocation_AssetReferenceNumber(),60,5);
         fixedAsset_AssetDeallocationObj.fixedAsset_AssetDeallocation_AssetReferenceNumber().click();
         fixedAsset_AssetDeallocationObj.fixedAsset_AssetDeallocation_AssetReferenceNumber().sendKeys(fixedAsset_AssetDeallocationTestDataType.AssetReferenceNumberTransfer);
+        fixedAsset_AssetDeallocationObj.fixedAsset_AssetDeallocation_AssetReferenceNumber().sendKeys(Keys.DOWN);
         fixedAsset_AssetDeallocationObj.fixedAsset_AssetDeallocation_AssetReferenceNumber().sendKeys(Keys.ENTER);
        
         
         //AssetItemNumber
-        waithelper.waitForElement(driver, 4000,  fixedAsset_AssetDeallocationObj.fixedAsset_AssetDeallocation_ItemNumber());
+        waithelper.waitForElementToVisibleWithFluentWait(driver, fixedAsset_AssetDeallocationObj.fixedAsset_AssetDeallocation_ItemNumber(),60,5);
         fixedAsset_AssetDeallocationObj.fixedAsset_AssetDeallocation_ItemNumber().click();
         fixedAsset_AssetDeallocationObj.fixedAsset_AssetDeallocation_ItemNumber().sendKeys(Keys.DOWN);
         //Thread.sleep(2000);
@@ -136,14 +140,14 @@ fixedAsset_AssetDeallocationTestDataType = jsonReader.getAssetDeallocationByName
     	fixedAsset_AssetDeallocationTestDataType = jsonReader.getAssetDeallocationByName("Maker");	
     	
     	//AssetReferenceNumber
-        waithelper.waitForElement(driver, 2000,  fixedAsset_AssetDeallocationObj.fixedAsset_AssetDeallocation_AssetReferenceNumber());
+        waithelper.waitForElementToVisibleWithFluentWait(driver,fixedAsset_AssetDeallocationObj.fixedAsset_AssetDeallocation_AssetReferenceNumber(),60,5);
         fixedAsset_AssetDeallocationObj.fixedAsset_AssetDeallocation_AssetReferenceNumber().click();
         fixedAsset_AssetDeallocationObj.fixedAsset_AssetDeallocation_AssetReferenceNumber().sendKeys(fixedAsset_AssetDeallocationTestDataType.AssetReferenceNumberSold);
         fixedAsset_AssetDeallocationObj.fixedAsset_AssetDeallocation_AssetReferenceNumber().sendKeys(Keys.ENTER);
        
         
         //AssetItemNumber
-        waithelper.waitForElement(driver, 2000,  fixedAsset_AssetDeallocationObj.fixedAsset_AssetDeallocation_ItemNumber());
+        waithelper.waitForElementToVisibleWithFluentWait(driver,fixedAsset_AssetDeallocationObj.fixedAsset_AssetDeallocation_ItemNumber(),60,5);
         fixedAsset_AssetDeallocationObj.fixedAsset_AssetDeallocation_ItemNumber().click();
         fixedAsset_AssetDeallocationObj.fixedAsset_AssetDeallocation_ItemNumber().sendKeys(Keys.DOWN);
        // Thread.sleep(2000);
@@ -158,7 +162,7 @@ fixedAsset_AssetDeallocationTestDataType = jsonReader.getAssetDeallocationByName
     @Then("^Select Asset Reference Number$")
     public void select_asset_reference_number() throws InterruptedException {
     Thread.sleep(2000);
-   	waithelper.waitForElement(driver, 2000,fixedAsset_AssetDeallocationObj.fixedAsset_AssetReference());
+   	waithelper.waitForElementToVisibleWithFluentWait(driver,fixedAsset_AssetDeallocationObj.fixedAsset_AssetReference(),60,5);
    	AssetReferenceNumber = fixedAsset_AssetDeallocationObj.fixedAsset_AssetReference().getText();
    	System.out.println(AssetReferenceNumber);
     Thread.sleep(1000);
@@ -167,27 +171,28 @@ fixedAsset_AssetDeallocationTestDataType = jsonReader.getAssetDeallocationByName
     public void click_on_asset_impairment_eye_button() throws InterruptedException  {
     javascripthelper.JavaScriptHelper(driver);
     javascripthelper.scrollIntoView(fixedAsset_AssetDeallocationObj.fixedAsset_AssetImpairement_EyeIcon());
-    waithelper.waitForElement(driver, 3000, fixedAsset_AssetDeallocationObj.fixedAsset_AssetImpairement_EyeIcon());
+    waithelper.waitForElementToVisibleWithFluentWait(driver,fixedAsset_AssetDeallocationObj.fixedAsset_AssetImpairement_EyeIcon(),60,5);
     fixedAsset_AssetDeallocationObj.fixedAsset_AssetImpairement_EyeIcon().click();
     Thread.sleep(1000);
     }
     @Then("^fill the form for Asset Impairment$")
     public void fill_the_form_for_asset_impairment() throws Throwable {
     	//AssetReferenceNumber
-        waithelper.waitForElement(driver, 2000,  fixedAsset_AssetDeallocationObj.fixedAsset_AssetImpairement_AssetReferenceNumber());
+        waithelper.waitForElementToVisibleWithFluentWait(driver,fixedAsset_AssetDeallocationObj.fixedAsset_AssetImpairement_AssetReferenceNumber(),60,5);
         fixedAsset_AssetDeallocationObj.fixedAsset_AssetImpairement_AssetReferenceNumber().click();
         fixedAsset_AssetDeallocationObj.fixedAsset_AssetImpairement_AssetReferenceNumber().sendKeys(AssetReferenceNumber);
+        //fixedAsset_AssetDeallocationObj.fixedAsset_AssetImpairement_AssetReferenceNumber().sendKeys(fixedAsset_AssetCreationTestDataType.AssetCode);
         fixedAsset_AssetDeallocationObj.fixedAsset_AssetImpairement_AssetReferenceNumber().sendKeys(Keys.ENTER);
        Thread.sleep(3000);
         //Transaction TYpe
-        waithelper.waitForElement(driver, 2000,  fixedAsset_AssetDeallocationObj.fixedAsset_AssetImpairement_TransactionType());
+        waithelper.waitForElementToVisibleWithFluentWait(driver,fixedAsset_AssetDeallocationObj.fixedAsset_AssetImpairement_TransactionType(),60,5);
         fixedAsset_AssetDeallocationObj.fixedAsset_AssetImpairement_TransactionType().click();
       //impairement
-        waithelper.waitForElement(driver, 2000,  fixedAsset_AssetDeallocationObj.fixedAsset_AssetImpairement_Impairement());
+        waithelper.waitForElementToVisibleWithFluentWait(driver,fixedAsset_AssetDeallocationObj.fixedAsset_AssetImpairement_Impairement(),60,5);
         fixedAsset_AssetDeallocationObj.fixedAsset_AssetImpairement_Impairement().click();
         Thread.sleep(1000);
         //AssetItemNumber
-        waithelper.waitForElement(driver, 2000,  fixedAsset_AssetDeallocationObj.fixedAsset_AssetImpairement_ItemNumber());
+        waithelper.waitForElementToVisibleWithFluentWait(driver,fixedAsset_AssetDeallocationObj.fixedAsset_AssetImpairement_ItemNumber(),60,5);
         fixedAsset_AssetDeallocationObj.fixedAsset_AssetImpairement_ItemNumber().click();
         fixedAsset_AssetDeallocationObj.fixedAsset_AssetImpairement_ItemNumber().sendKeys(fixedAsset_AssetDeallocationTestDataType.AssetItemNumberimpaired);
         fixedAsset_AssetDeallocationObj.fixedAsset_AssetImpairement_ItemNumber().sendKeys(Keys.ENTER);
@@ -201,20 +206,23 @@ fixedAsset_AssetDeallocationTestDataType = jsonReader.getAssetDeallocationByName
 		
     	fixedAsset_AssetDeallocationTestDataType = jsonReader.getAssetDeallocationByName("Maker");	
     	
-		waithelper.waitForElement(driver, 2000, fixedAsset_AssetDeallocationObj.fixedAsset_AssetAllocation_AssetRefferenceNumber());
+		waithelper.waitForElementToVisibleWithFluentWait(driver,fixedAsset_AssetDeallocationObj.fixedAsset_AssetAllocation_AssetRefferenceNumber(),60,5);
     	fixedAsset_AssetDeallocationObj.fixedAsset_AssetAllocation_AssetRefferenceNumber().click();
     	fixedAsset_AssetDeallocationObj.fixedAsset_AssetAllocation_AssetRefferenceNumber().sendKeys(AssetReferenceNumber);
+    //	fixedAsset_AssetDeallocationObj.fixedAsset_AssetAllocation_AssetRefferenceNumber().sendKeys(fixedAsset_AssetCreationTestDataType.AssetCode);
     	fixedAsset_AssetDeallocationObj.fixedAsset_AssetAllocation_AssetRefferenceNumber().sendKeys(Keys.ENTER);
         Thread.sleep(2000);
         
-    	waithelper.waitForElement(driver, 2000, fixedAsset_AssetDeallocationObj.fixedAsset_AssetAllocation_ItemNumber());
+    	waithelper.waitForElementToVisibleWithFluentWait(driver, fixedAsset_AssetDeallocationObj.fixedAsset_AssetAllocation_ItemNumber(),60,5);
     	fixedAsset_AssetDeallocationObj.fixedAsset_AssetAllocation_ItemNumber().click();
     	Thread.sleep(1000); 
-    	fixedAsset_AssetDeallocationObj.fixedAsset_AssetAllocation_ItemNumber().sendKeys(fixedAsset_AssetDeallocationTestDataType.AssetItemNumberimpaired);
+    //	fixedAsset_AssetDeallocationObj.fixedAsset_AssetAllocation_ItemNumber().sendKeys(fixedAsset_AssetDeallocationTestDataType.AssetItemNumberimpaired);
+    	fixedAsset_AssetDeallocationObj.fixedAsset_AssetAllocation_ItemNumber().sendKeys(Keys.DOWN);
+    	
     	fixedAsset_AssetDeallocationObj.fixedAsset_AssetAllocation_ItemNumber().sendKeys(Keys.ENTER);
     	Thread.sleep(2000); 
     	
-    	waithelper.waitForElement(driver, 2000, fixedAsset_AssetDeallocationObj.fixedAsset_AssetAllocation_EmployeeID());
+    	waithelper.waitForElementToVisibleWithFluentWait(driver, fixedAsset_AssetDeallocationObj.fixedAsset_AssetAllocation_EmployeeID(),60,5);
     	fixedAsset_AssetDeallocationObj.fixedAsset_AssetAllocation_EmployeeID().click();
     	fixedAsset_AssetDeallocationObj.fixedAsset_AssetAllocation_EmployeeID().sendKeys(fixedAsset_AssetDeallocationTestDataType.EmployeeID);
     	fixedAsset_AssetDeallocationObj.fixedAsset_AssetAllocation_EmployeeID().sendKeys(Keys.ENTER);
@@ -226,20 +234,22 @@ fixedAsset_AssetDeallocationTestDataType = jsonReader.getAssetDeallocationByName
 		
     	fixedAsset_AssetDeallocationTestDataType = jsonReader.getAssetDeallocationByName("Maker");	
     	
-		waithelper.waitForElement(driver, 2000, fixedAsset_AssetDeallocationObj.fixedAsset_AssetAllocation_AssetRefferenceNumber());
+		waithelper.waitForElementToVisibleWithFluentWait(driver, fixedAsset_AssetDeallocationObj.fixedAsset_AssetAllocation_AssetRefferenceNumber(),60,5);
     	fixedAsset_AssetDeallocationObj.fixedAsset_AssetAllocation_AssetRefferenceNumber().click();
+    	//AssetReferenceNumber
     	fixedAsset_AssetDeallocationObj.fixedAsset_AssetAllocation_AssetRefferenceNumber().sendKeys(AssetReferenceNumber);
+    //	fixedAsset_AssetDeallocationObj.fixedAsset_AssetAllocation_AssetRefferenceNumber().sendKeys(fixedAsset_AssetCreationTestDataType.AssetCode);
     	fixedAsset_AssetDeallocationObj.fixedAsset_AssetAllocation_AssetRefferenceNumber().sendKeys(Keys.ENTER);
         Thread.sleep(2000);
         
-    	waithelper.waitForElement(driver, 2000, fixedAsset_AssetDeallocationObj.fixedAsset_AssetAllocation_ItemNumber());
+    	waithelper.waitForElementToVisibleWithFluentWait(driver, fixedAsset_AssetDeallocationObj.fixedAsset_AssetAllocation_ItemNumber(),60,5);
     	fixedAsset_AssetDeallocationObj.fixedAsset_AssetAllocation_ItemNumber().click();
     	//Thread.sleep(1000); 
     	fixedAsset_AssetDeallocationObj.fixedAsset_AssetAllocation_ItemNumber().sendKeys(Keys.DOWN);
     	fixedAsset_AssetDeallocationObj.fixedAsset_AssetAllocation_ItemNumber().sendKeys(Keys.ENTER);
     	//Thread.sleep(2000); 
     	
-    	waithelper.waitForElement(driver, 2000, fixedAsset_AssetDeallocationObj.fixedAsset_AssetAllocation_EmployeeID());
+    	waithelper.waitForElementToVisibleWithFluentWait(driver,fixedAsset_AssetDeallocationObj.fixedAsset_AssetAllocation_EmployeeID(),60,5);
     	fixedAsset_AssetDeallocationObj.fixedAsset_AssetAllocation_EmployeeID().click();
     	fixedAsset_AssetDeallocationObj.fixedAsset_AssetAllocation_EmployeeID().sendKeys(fixedAsset_AssetDeallocationTestDataType.EmployeeID);
     	fixedAsset_AssetDeallocationObj.fixedAsset_AssetAllocation_EmployeeID().sendKeys(Keys.ENTER);
@@ -251,20 +261,21 @@ fixedAsset_AssetDeallocationTestDataType = jsonReader.getAssetDeallocationByName
 		
     	fixedAsset_AssetDeallocationTestDataType = jsonReader.getAssetDeallocationByName("Maker");	
     	
-		waithelper.waitForElement(driver, 2000, fixedAsset_AssetDeallocationObj.fixedAsset_AssetAllocation_AssetRefferenceNumber());
+		waithelper.waitForElementToVisibleWithFluentWait(driver,fixedAsset_AssetDeallocationObj.fixedAsset_AssetAllocation_AssetRefferenceNumber(),60,5);
     	fixedAsset_AssetDeallocationObj.fixedAsset_AssetAllocation_AssetRefferenceNumber().click();
     	fixedAsset_AssetDeallocationObj.fixedAsset_AssetAllocation_AssetRefferenceNumber().sendKeys(AssetReferenceNumber);
+    //	fixedAsset_AssetDeallocationObj.fixedAsset_AssetAllocation_AssetRefferenceNumber().sendKeys(fixedAsset_AssetCreationTestDataType.AssetCode);
     	fixedAsset_AssetDeallocationObj.fixedAsset_AssetAllocation_AssetRefferenceNumber().sendKeys(Keys.ENTER);
         Thread.sleep(2000);
         
-    	waithelper.waitForElement(driver, 2000, fixedAsset_AssetDeallocationObj.fixedAsset_AssetAllocation_ItemNumber());
+    	waithelper.waitForElementToVisibleWithFluentWait(driver,fixedAsset_AssetDeallocationObj.fixedAsset_AssetAllocation_ItemNumber(),60,5);
     	fixedAsset_AssetDeallocationObj.fixedAsset_AssetAllocation_ItemNumber().click();
     	Thread.sleep(1000); 
     	fixedAsset_AssetDeallocationObj.fixedAsset_AssetAllocation_ItemNumber().sendKeys(fixedAsset_AssetDeallocationTestDataType.AssetItemNumberRevalued);
     	fixedAsset_AssetDeallocationObj.fixedAsset_AssetAllocation_ItemNumber().sendKeys(Keys.ENTER);
     	Thread.sleep(2000); 
     	
-    	waithelper.waitForElement(driver, 2000, fixedAsset_AssetDeallocationObj.fixedAsset_AssetAllocation_EmployeeID());
+    	waithelper.waitForElementToVisibleWithFluentWait(driver,fixedAsset_AssetDeallocationObj.fixedAsset_AssetAllocation_EmployeeID(),60,5);
     	fixedAsset_AssetDeallocationObj.fixedAsset_AssetAllocation_EmployeeID().click();
     	fixedAsset_AssetDeallocationObj.fixedAsset_AssetAllocation_EmployeeID().sendKeys(fixedAsset_AssetDeallocationTestDataType.EmployeeID);
     	fixedAsset_AssetDeallocationObj.fixedAsset_AssetAllocation_EmployeeID().sendKeys(Keys.ENTER);
@@ -276,20 +287,22 @@ fixedAsset_AssetDeallocationTestDataType = jsonReader.getAssetDeallocationByName
 		
     	fixedAsset_AssetDeallocationTestDataType = jsonReader.getAssetDeallocationByName("Maker");	
     	
-		waithelper.waitForElement(driver, 2000, fixedAsset_AssetDeallocationObj.fixedAsset_AssetAllocation_AssetRefferenceNumber());
+		waithelper.waitForElementToVisibleWithFluentWait(driver, fixedAsset_AssetDeallocationObj.fixedAsset_AssetAllocation_AssetRefferenceNumber(),60,5);
     	fixedAsset_AssetDeallocationObj.fixedAsset_AssetAllocation_AssetRefferenceNumber().click();
-    	fixedAsset_AssetDeallocationObj.fixedAsset_AssetAllocation_AssetRefferenceNumber().sendKeys(AssetReferenceNumber);
+    	//fixedAsset_AssetCreationTestDataType.AssetCode
+    	//fixedAsset_AssetDeallocationObj.fixedAsset_AssetAllocation_AssetRefferenceNumber().sendKeys(AssetReferenceNumber);
+    	fixedAsset_AssetDeallocationObj.fixedAsset_AssetAllocation_AssetRefferenceNumber().sendKeys(fixedAsset_AssetCreationTestDataType.AssetCode);
     	fixedAsset_AssetDeallocationObj.fixedAsset_AssetAllocation_AssetRefferenceNumber().sendKeys(Keys.ENTER);
         Thread.sleep(2000);
         
-    	waithelper.waitForElement(driver, 2000, fixedAsset_AssetDeallocationObj.fixedAsset_AssetAllocation_ItemNumber());
+    	waithelper.waitForElementToVisibleWithFluentWait(driver, fixedAsset_AssetDeallocationObj.fixedAsset_AssetAllocation_ItemNumber(),60,5);
     	fixedAsset_AssetDeallocationObj.fixedAsset_AssetAllocation_ItemNumber().click();
     	Thread.sleep(1000); 
     	fixedAsset_AssetDeallocationObj.fixedAsset_AssetAllocation_ItemNumber().sendKeys(fixedAsset_AssetDeallocationTestDataType.AssetItemNumberamended);
     	fixedAsset_AssetDeallocationObj.fixedAsset_AssetAllocation_ItemNumber().sendKeys(Keys.ENTER);
     	Thread.sleep(2000); 
     	
-    	waithelper.waitForElement(driver, 2000, fixedAsset_AssetDeallocationObj.fixedAsset_AssetAllocation_EmployeeID());
+    	waithelper.waitForElementToVisibleWithFluentWait(driver, fixedAsset_AssetDeallocationObj.fixedAsset_AssetAllocation_EmployeeID(),60,5);
     	fixedAsset_AssetDeallocationObj.fixedAsset_AssetAllocation_EmployeeID().click();
     	fixedAsset_AssetDeallocationObj.fixedAsset_AssetAllocation_EmployeeID().sendKeys(fixedAsset_AssetDeallocationTestDataType.EmployeeID);
     	fixedAsset_AssetDeallocationObj.fixedAsset_AssetAllocation_EmployeeID().sendKeys(Keys.ENTER);
@@ -301,19 +314,19 @@ fixedAsset_AssetDeallocationTestDataType = jsonReader.getAssetDeallocationByName
     	
 		
     	
-		waithelper.waitForElement(driver, 2000, fixedAsset_AssetDeallocationObj.fixedAsset_AssetAllocation_AssetRefferenceNumber());
+		waithelper.waitForElementToVisibleWithFluentWait(driver, fixedAsset_AssetDeallocationObj.fixedAsset_AssetAllocation_AssetRefferenceNumber(),60,5);
     	fixedAsset_AssetDeallocationObj.fixedAsset_AssetAllocation_AssetRefferenceNumber().click();
     	fixedAsset_AssetDeallocationObj.fixedAsset_AssetAllocation_AssetRefferenceNumber().sendKeys(AssetReferenceNumber);
     	fixedAsset_AssetDeallocationObj.fixedAsset_AssetAllocation_AssetRefferenceNumber().sendKeys(Keys.ENTER);
         Thread.sleep(2000);
         
-    	waithelper.waitForElement(driver, 2000, fixedAsset_AssetDeallocationObj.fixedAsset_AssetAllocation_ItemNumber());
+    	waithelper.waitForElementToVisibleWithFluentWait(driver, fixedAsset_AssetDeallocationObj.fixedAsset_AssetAllocation_ItemNumber(),60,5);
     	fixedAsset_AssetDeallocationObj.fixedAsset_AssetAllocation_ItemNumber().click();
     	fixedAsset_AssetDeallocationObj.fixedAsset_AssetAllocation_ItemNumber().sendKeys(fixedAsset_AssetDeallocationTestDataType.AssetItemNumber);
     	fixedAsset_AssetDeallocationObj.fixedAsset_AssetAllocation_ItemNumber().sendKeys(Keys.ENTER);
     	Thread.sleep(2000); 
     	
-    	waithelper.waitForElement(driver, 2000, fixedAsset_AssetDeallocationObj.fixedAsset_AssetAllocation_EmployeeID());
+    	waithelper.waitForElementToVisibleWithFluentWait(driver, fixedAsset_AssetDeallocationObj.fixedAsset_AssetAllocation_EmployeeID(),60,5);
     	fixedAsset_AssetDeallocationObj.fixedAsset_AssetAllocation_EmployeeID().click();
     	fixedAsset_AssetDeallocationObj.fixedAsset_AssetAllocation_EmployeeID().sendKeys(fixedAsset_AssetDeallocationTestDataType.EmployeeIDAnother);
     	fixedAsset_AssetDeallocationObj.fixedAsset_AssetAllocation_EmployeeID().sendKeys(Keys.ENTER);
@@ -326,17 +339,19 @@ fixedAsset_AssetDeallocationTestDataType = jsonReader.getAssetDeallocationByName
     	fixedAsset_AssetDeallocationTestDataType = jsonReader.getAssetDeallocationByName("Maker");	
     	
     	//AssetReferenceNumber
-        waithelper.waitForElement(driver, 2000,  fixedAsset_AssetDeallocationObj.fixedAsset_AssetDeallocation_AssetReferenceNumber());
+        waithelper.waitForElementToVisibleWithFluentWait(driver,  fixedAsset_AssetDeallocationObj.fixedAsset_AssetDeallocation_AssetReferenceNumber(),60,5);
         fixedAsset_AssetDeallocationObj.fixedAsset_AssetDeallocation_AssetReferenceNumber().click();
         fixedAsset_AssetDeallocationObj.fixedAsset_AssetDeallocation_AssetReferenceNumber().sendKeys(AssetReferenceNumber);
+      //  fixedAsset_AssetDeallocationObj.fixedAsset_AssetDeallocation_AssetReferenceNumber().sendKeys(fixedAsset_AssetCreationTestDataType.AssetCode);
         fixedAsset_AssetDeallocationObj.fixedAsset_AssetDeallocation_AssetReferenceNumber().sendKeys(Keys.ENTER);
        
         
         //AssetItemNumber
-        waithelper.waitForElement(driver, 2000,  fixedAsset_AssetDeallocationObj.fixedAsset_AssetDeallocation_ItemNumber());
+        waithelper.waitForElementToVisibleWithFluentWait(driver,  fixedAsset_AssetDeallocationObj.fixedAsset_AssetDeallocation_ItemNumber(),60,5);
         fixedAsset_AssetDeallocationObj.fixedAsset_AssetDeallocation_ItemNumber().click();
         Thread.sleep(2000);
-        fixedAsset_AssetDeallocationObj.fixedAsset_AssetDeallocation_ItemNumber().sendKeys(fixedAsset_AssetDeallocationTestDataType.AssetItemNumberimpaired);
+    //    fixedAsset_AssetDeallocationObj.fixedAsset_AssetDeallocation_ItemNumber().sendKeys(fixedAsset_AssetDeallocationTestDataType.AssetItemNumberimpaired);
+        fixedAsset_AssetDeallocationObj.fixedAsset_AssetDeallocation_ItemNumber().sendKeys(Keys.DOWN);
         fixedAsset_AssetDeallocationObj.fixedAsset_AssetDeallocation_ItemNumber().sendKeys(Keys.ENTER);
         Thread.sleep(2000);
       
@@ -346,14 +361,16 @@ fixedAsset_AssetDeallocationTestDataType = jsonReader.getAssetDeallocationByName
     	fixedAsset_AssetDeallocationTestDataType = jsonReader.getAssetDeallocationByName("Maker");	
     	
     	//AssetReferenceNumber
-        waithelper.waitForElement(driver, 2000,  fixedAsset_AssetDeallocationObj.fixedAsset_AssetDeallocation_AssetReferenceNumber());
+        waithelper.waitForElementToVisibleWithFluentWait(driver,  fixedAsset_AssetDeallocationObj.fixedAsset_AssetDeallocation_AssetReferenceNumber(),60,5);
         fixedAsset_AssetDeallocationObj.fixedAsset_AssetDeallocation_AssetReferenceNumber().click();
-        fixedAsset_AssetDeallocationObj.fixedAsset_AssetDeallocation_AssetReferenceNumber().sendKeys(AssetReferenceNumber);
+      //  fixedAsset_AssetCreationTestDataType.AssetCode
+     //   fixedAsset_AssetDeallocationObj.fixedAsset_AssetDeallocation_AssetReferenceNumber().sendKeys(AssetReferenceNumber);
+        fixedAsset_AssetDeallocationObj.fixedAsset_AssetDeallocation_AssetReferenceNumber().sendKeys(fixedAsset_AssetCreationTestDataType.AssetCode);
         fixedAsset_AssetDeallocationObj.fixedAsset_AssetDeallocation_AssetReferenceNumber().sendKeys(Keys.ENTER);
        
         
         //AssetItemNumber
-        waithelper.waitForElement(driver, 2000,  fixedAsset_AssetDeallocationObj.fixedAsset_AssetDeallocation_ItemNumber());
+        waithelper.waitForElementToVisibleWithFluentWait(driver,fixedAsset_AssetDeallocationObj.fixedAsset_AssetDeallocation_ItemNumber(),60,5);
         fixedAsset_AssetDeallocationObj.fixedAsset_AssetDeallocation_ItemNumber().click();
         Thread.sleep(2000);
         fixedAsset_AssetDeallocationObj.fixedAsset_AssetDeallocation_ItemNumber().sendKeys(fixedAsset_AssetDeallocationTestDataType.AssetItemNumberReplaced);
@@ -367,14 +384,14 @@ fixedAsset_AssetDeallocationTestDataType = jsonReader.getAssetDeallocationByName
     	fixedAsset_AssetDeallocationTestDataType = jsonReader.getAssetDeallocationByName("Maker");	
     	
     	//AssetReferenceNumber
-        waithelper.waitForElement(driver, 2000,  fixedAsset_AssetDeallocationObj.fixedAsset_AssetDeallocation_AssetReferenceNumber());
+        waithelper.waitForElementToVisibleWithFluentWait(driver,fixedAsset_AssetDeallocationObj.fixedAsset_AssetDeallocation_AssetReferenceNumber(),60,5);
         fixedAsset_AssetDeallocationObj.fixedAsset_AssetDeallocation_AssetReferenceNumber().click();
         fixedAsset_AssetDeallocationObj.fixedAsset_AssetDeallocation_AssetReferenceNumber().sendKeys(AssetReferenceNumber);
         fixedAsset_AssetDeallocationObj.fixedAsset_AssetDeallocation_AssetReferenceNumber().sendKeys(Keys.ENTER);
        
         
         //AssetItemNumber
-        waithelper.waitForElement(driver, 2000,  fixedAsset_AssetDeallocationObj.fixedAsset_AssetDeallocation_ItemNumber());
+        waithelper.waitForElementToVisibleWithFluentWait(driver,  fixedAsset_AssetDeallocationObj.fixedAsset_AssetDeallocation_ItemNumber(),60,5);
         fixedAsset_AssetDeallocationObj.fixedAsset_AssetDeallocation_ItemNumber().click();
         Thread.sleep(2000);
         fixedAsset_AssetDeallocationObj.fixedAsset_AssetDeallocation_ItemNumber().sendKeys(fixedAsset_AssetDeallocationTestDataType.AssetItemNumberamended);
@@ -389,7 +406,7 @@ fixedAsset_AssetDeallocationTestDataType = jsonReader.getAssetDeallocationByName
     public void click_on_revalued_asset_eye_button() throws Throwable {
     	javascripthelper.JavaScriptHelper(driver);
         javascripthelper.scrollIntoView(fixedAsset_AssetDeallocationObj.fixedAsset_RevaluedAsset_EyeIcon());
-        waithelper.waitForElement(driver, 3000, fixedAsset_AssetDeallocationObj.fixedAsset_RevaluedAsset_EyeIcon());
+        waithelper.waitForElementToVisibleWithFluentWait(driver, fixedAsset_AssetDeallocationObj.fixedAsset_RevaluedAsset_EyeIcon(),60,5);
         fixedAsset_AssetDeallocationObj.fixedAsset_RevaluedAsset_EyeIcon().click();
         Thread.sleep(1000);
     }
@@ -399,14 +416,15 @@ fixedAsset_AssetDeallocationTestDataType = jsonReader.getAssetDeallocationByName
     public void fill_the_form_for_revalued_asset() throws Throwable {
     	fixedAsset_AssetDeallocationTestDataType = jsonReader.getAssetDeallocationByName("Maker");  
     	//AssetReferenceNumber
-        waithelper.waitForElement(driver, 2000,  fixedAsset_AssetDeallocationObj.fixedAsset_RevaluedAsset_AssetReferenceNumber());
+        waithelper.waitForElementToVisibleWithFluentWait(driver,  fixedAsset_AssetDeallocationObj.fixedAsset_RevaluedAsset_AssetReferenceNumber(),60,5);
         fixedAsset_AssetDeallocationObj.fixedAsset_RevaluedAsset_AssetReferenceNumber().click();
         fixedAsset_AssetDeallocationObj.fixedAsset_RevaluedAsset_AssetReferenceNumber().sendKeys(AssetReferenceNumber);
+      //  fixedAsset_AssetDeallocationObj.fixedAsset_RevaluedAsset_AssetReferenceNumber().sendKeys(fixedAsset_AssetCreationTestDataType.AssetCode);
         fixedAsset_AssetDeallocationObj.fixedAsset_RevaluedAsset_AssetReferenceNumber().sendKeys(Keys.ENTER);
        
         
         //AssetItemNumber
-        waithelper.waitForElement(driver, 2000,  fixedAsset_AssetDeallocationObj.fixedAsset_RevaluedAsset_ItemNumber());
+        waithelper.waitForElementToVisibleWithFluentWait(driver,  fixedAsset_AssetDeallocationObj.fixedAsset_RevaluedAsset_ItemNumber(),60,5);
         fixedAsset_AssetDeallocationObj.fixedAsset_RevaluedAsset_ItemNumber().click();
         Thread.sleep(2000);
         fixedAsset_AssetDeallocationObj.fixedAsset_RevaluedAsset_ItemNumber().sendKeys(fixedAsset_AssetDeallocationTestDataType.AssetItemNumberRevalued);
@@ -418,14 +436,15 @@ fixedAsset_AssetDeallocationTestDataType = jsonReader.getAssetDeallocationByName
     	fixedAsset_AssetDeallocationTestDataType = jsonReader.getAssetDeallocationByName("Maker");	
     	
     	//AssetReferenceNumber
-        waithelper.waitForElement(driver, 2000,  fixedAsset_AssetDeallocationObj.fixedAsset_AssetDeallocation_AssetReferenceNumber());
+        waithelper.waitForElementToVisibleWithFluentWait(driver,  fixedAsset_AssetDeallocationObj.fixedAsset_AssetDeallocation_AssetReferenceNumber(),60,5);
         fixedAsset_AssetDeallocationObj.fixedAsset_AssetDeallocation_AssetReferenceNumber().click();
         fixedAsset_AssetDeallocationObj.fixedAsset_AssetDeallocation_AssetReferenceNumber().sendKeys(AssetReferenceNumber);
+    //    fixedAsset_AssetDeallocationObj.fixedAsset_AssetDeallocation_AssetReferenceNumber().sendKeys(fixedAsset_AssetCreationTestDataType.AssetCode);
         fixedAsset_AssetDeallocationObj.fixedAsset_AssetDeallocation_AssetReferenceNumber().sendKeys(Keys.ENTER);
        
         
         //AssetItemNumber
-        waithelper.waitForElement(driver, 2000,  fixedAsset_AssetDeallocationObj.fixedAsset_AssetDeallocation_ItemNumber());
+        waithelper.waitForElementToVisibleWithFluentWait(driver,  fixedAsset_AssetDeallocationObj.fixedAsset_AssetDeallocation_ItemNumber(),60,5);
         fixedAsset_AssetDeallocationObj.fixedAsset_AssetDeallocation_ItemNumber().click();
         Thread.sleep(2000);
         fixedAsset_AssetDeallocationObj.fixedAsset_AssetDeallocation_ItemNumber().sendKeys(fixedAsset_AssetDeallocationTestDataType.AssetItemNumberRevalued);
@@ -441,7 +460,7 @@ fixedAsset_AssetDeallocationTestDataType = jsonReader.getAssetDeallocationByName
     public void click_on_amended_asset_eye_button() throws InterruptedException  {
     	javascripthelper.JavaScriptHelper(driver);
         javascripthelper.scrollIntoView(fixedAsset_AssetDeallocationObj.fixedAsset_AmendedAsset_EyeIcon());
-        waithelper.waitForElement(driver, 3000, fixedAsset_AssetDeallocationObj.fixedAsset_AmendedAsset_EyeIcon());
+        waithelper.waitForElementToVisibleWithFluentWait(driver, fixedAsset_AssetDeallocationObj.fixedAsset_AmendedAsset_EyeIcon(),60,5);
         fixedAsset_AssetDeallocationObj.fixedAsset_AmendedAsset_EyeIcon().click();
         Thread.sleep(1000);  
     }
@@ -451,14 +470,15 @@ fixedAsset_AssetDeallocationTestDataType = jsonReader.getAssetDeallocationByName
     	fixedAsset_AssetDeallocationTestDataType = jsonReader.getAssetDeallocationByName("Maker");	
     	
     	//AssetReferenceNumber
-        waithelper.waitForElement(driver, 2000,  fixedAsset_AssetDeallocationObj.fixedAsset_AmendedAsset_AssetReferenceNumber());
+        waithelper.waitForElementToVisibleWithFluentWait(driver, fixedAsset_AssetDeallocationObj.fixedAsset_AmendedAsset_AssetReferenceNumber(),60,5);
         fixedAsset_AssetDeallocationObj.fixedAsset_AmendedAsset_AssetReferenceNumber().click();
         fixedAsset_AssetDeallocationObj.fixedAsset_AmendedAsset_AssetReferenceNumber().sendKeys(AssetReferenceNumber);
+      //  fixedAsset_AssetDeallocationObj.fixedAsset_AmendedAsset_AssetReferenceNumber().sendKeys(fixedAsset_AssetCreationTestDataType.AssetCode);
         fixedAsset_AssetDeallocationObj.fixedAsset_AmendedAsset_AssetReferenceNumber().sendKeys(Keys.ENTER);
        
         
         //AssetItemNumber
-        waithelper.waitForElement(driver, 2000,  fixedAsset_AssetDeallocationObj.fixedAsset_AmendedAsset_ItemNumber());
+        waithelper.waitForElementToVisibleWithFluentWait(driver,  fixedAsset_AssetDeallocationObj.fixedAsset_AmendedAsset_ItemNumber(),60,5);
         fixedAsset_AssetDeallocationObj.fixedAsset_AmendedAsset_ItemNumber().click();
         Thread.sleep(1000);
         fixedAsset_AssetDeallocationObj.fixedAsset_AmendedAsset_ItemNumber().sendKeys(fixedAsset_AssetDeallocationTestDataType.AssetItemNumberamended);
@@ -466,7 +486,7 @@ fixedAsset_AssetDeallocationTestDataType = jsonReader.getAssetDeallocationByName
         Thread.sleep(1000);  
         
        //ModificationType
-        waithelper.waitForElement(driver, 2000,  fixedAsset_AssetDeallocationObj.fixedAsset_AmendedAsset_ModificationType());
+        waithelper.waitForElementToVisibleWithFluentWait(driver,  fixedAsset_AssetDeallocationObj.fixedAsset_AmendedAsset_ModificationType(),60,5);
         fixedAsset_AssetDeallocationObj.fixedAsset_AmendedAsset_ModificationType().click();
         fixedAsset_AssetDeallocationObj.fixedAsset_AmendedAsset_ModificationType().sendKeys(fixedAsset_AssetDeallocationTestDataType.ModificationType);
         fixedAsset_AssetDeallocationObj.fixedAsset_AmendedAsset_ModificationType().sendKeys(Keys.ENTER);
@@ -481,7 +501,7 @@ fixedAsset_AssetDeallocationTestDataType = jsonReader.getAssetDeallocationByName
     public void click_on_asset_replacement_eye_button() throws InterruptedException  {
     	javascripthelper.JavaScriptHelper(driver);
         javascripthelper.scrollIntoView(fixedAsset_AssetDeallocationObj.fixedAsset_AssetReplacement_EyeIcon());
-        waithelper.waitForElement(driver, 3000, fixedAsset_AssetDeallocationObj.fixedAsset_AssetReplacement_EyeIcon());
+        waithelper.waitForElementToVisibleWithFluentWait(driver, fixedAsset_AssetDeallocationObj.fixedAsset_AssetReplacement_EyeIcon(),60,5);
         fixedAsset_AssetDeallocationObj.fixedAsset_AssetReplacement_EyeIcon().click();
         Thread.sleep(1000);    
     }
@@ -491,29 +511,31 @@ fixedAsset_AssetDeallocationTestDataType = jsonReader.getAssetDeallocationByName
    fixedAsset_AssetDeallocationTestDataType = jsonReader.getAssetDeallocationByName("Maker");	
     	
     	//AssetReferenceNumber
-        waithelper.waitForElement(driver, 2000,  fixedAsset_AssetDeallocationObj.fixedAsset_RevaluedAsset_AssetReferenceNumber());
+        waithelper.waitForElementToVisibleWithFluentWait(driver,fixedAsset_AssetDeallocationObj.fixedAsset_RevaluedAsset_AssetReferenceNumber(),60,5);
         fixedAsset_AssetDeallocationObj.fixedAsset_RevaluedAsset_AssetReferenceNumber().click();
-        fixedAsset_AssetDeallocationObj.fixedAsset_RevaluedAsset_AssetReferenceNumber().sendKeys(AssetReferenceNumber);
+     //   fixedAsset_AssetDeallocationObj.fixedAsset_RevaluedAsset_AssetReferenceNumber().sendKeys(AssetReferenceNumber);
+        fixedAsset_AssetDeallocationObj.fixedAsset_RevaluedAsset_AssetReferenceNumber().sendKeys(fixedAsset_AssetCreationTestDataType.AssetCode);
         fixedAsset_AssetDeallocationObj.fixedAsset_RevaluedAsset_AssetReferenceNumber().sendKeys(Keys.ENTER);
        
         
         //AssetItemNumber
-        waithelper.waitForElement(driver, 2000,  fixedAsset_AssetDeallocationObj.fixedAsset_AssetReplacement_ItemNumber());
+        waithelper.waitForElementToVisibleWithFluentWait(driver,  fixedAsset_AssetDeallocationObj.fixedAsset_AssetReplacement_ItemNumber(),60,5);
         fixedAsset_AssetDeallocationObj.fixedAsset_AssetReplacement_ItemNumber().click();
-        Thread.sleep(1000);
-        fixedAsset_AssetDeallocationObj.fixedAsset_AssetReplacement_ItemNumber().sendKeys(fixedAsset_AssetDeallocationTestDataType.AssetItemNumberReplaced);
+        fixedAsset_AssetDeallocationObj.fixedAsset_AssetReplacement_ItemNumber().sendKeys(Keys.DOWN);
+  //      Thread.sleep(1000);
+  //    fixedAsset_AssetDeallocationObj.fixedAsset_AssetReplacement_ItemNumber().sendKeys(fixedAsset_AssetDeallocationTestDataType.AssetItemNumberReplaced);
         fixedAsset_AssetDeallocationObj.fixedAsset_AssetReplacement_ItemNumber().sendKeys(Keys.ENTER);
-        Thread.sleep(1000);
+ //     Thread.sleep(1000);
         
         //NewItemNumber
-        waithelper.waitForElement(driver, 2000,  fixedAsset_AssetDeallocationObj.fixedAsset_AssetReplacement_NewItemNumber());
+        waithelper.waitForElementToVisibleWithFluentWait(driver,  fixedAsset_AssetDeallocationObj.fixedAsset_AssetReplacement_NewItemNumber(),60,5);
         fixedAsset_AssetDeallocationObj.fixedAsset_AssetReplacement_NewItemNumber().click();
         fixedAsset_AssetDeallocationObj.fixedAsset_AssetReplacement_NewItemNumber().sendKeys(fixedAsset_AssetDeallocationTestDataType.NewItemNumber);
         fixedAsset_AssetDeallocationObj.fixedAsset_AssetReplacement_NewItemNumber().sendKeys(Keys.ENTER);
         
         
         //NewItemDiscription
-        waithelper.waitForElement(driver, 2000,  fixedAsset_AssetDeallocationObj.fixedAsset_AssetReplacement_NewItemDiscription());
+        waithelper.waitForElementToVisibleWithFluentWait(driver,  fixedAsset_AssetDeallocationObj.fixedAsset_AssetReplacement_NewItemDiscription(),60,5);
         fixedAsset_AssetDeallocationObj.fixedAsset_AssetReplacement_NewItemDiscription().click();
         Thread.sleep(1000);
         fixedAsset_AssetDeallocationObj.fixedAsset_AssetReplacement_NewItemDiscription().sendKeys(fixedAsset_AssetDeallocationTestDataType.NewItemDiscription);
@@ -527,19 +549,22 @@ fixedAsset_AssetDeallocationTestDataType = jsonReader.getAssetDeallocationByName
     
 		
     	
-		waithelper.waitForElement(driver, 2000, fixedAsset_AssetDeallocationObj.fixedAsset_AssetAllocation_AssetRefferenceNumber());
+		waithelper.waitForElementToVisibleWithFluentWait(driver, fixedAsset_AssetDeallocationObj.fixedAsset_AssetAllocation_AssetRefferenceNumber(),60,5);
     	fixedAsset_AssetDeallocationObj.fixedAsset_AssetAllocation_AssetRefferenceNumber().click();
-    	fixedAsset_AssetDeallocationObj.fixedAsset_AssetAllocation_AssetRefferenceNumber().sendKeys(AssetReferenceNumber);
+    	//fixedAsset_AssetCreationTestDataType.AssetCode
+    	//fixedAsset_AssetDeallocationObj.fixedAsset_AssetAllocation_AssetRefferenceNumber().sendKeys(AssetReferenceNumber);
+    	fixedAsset_AssetDeallocationObj.fixedAsset_AssetAllocation_AssetRefferenceNumber().sendKeys(fixedAsset_AssetCreationTestDataType.AssetCode);
     	fixedAsset_AssetDeallocationObj.fixedAsset_AssetAllocation_AssetRefferenceNumber().sendKeys(Keys.ENTER);
         Thread.sleep(2000);
         
-    	waithelper.waitForElement(driver, 2000, fixedAsset_AssetDeallocationObj.fixedAsset_AssetAllocation_ItemNumber());
+    	waithelper.waitForElementToVisibleWithFluentWait(driver, fixedAsset_AssetDeallocationObj.fixedAsset_AssetAllocation_ItemNumber(),60,5);
     	fixedAsset_AssetDeallocationObj.fixedAsset_AssetAllocation_ItemNumber().click();
-    	fixedAsset_AssetDeallocationObj.fixedAsset_AssetAllocation_ItemNumber().sendKeys(fixedAsset_AssetDeallocationTestDataType.NewItemNumber);
+    	fixedAsset_AssetDeallocationObj.fixedAsset_AssetAllocation_ItemNumber().sendKeys(Keys.DOWN);
+       //fixedAsset_AssetDeallocationObj.fixedAsset_AssetAllocation_ItemNumber().sendKeys(fixedAsset_AssetDeallocationTestDataType.NewItemNumber);
     	fixedAsset_AssetDeallocationObj.fixedAsset_AssetAllocation_ItemNumber().sendKeys(Keys.ENTER);
     	Thread.sleep(2000); 
     	
-    	waithelper.waitForElement(driver, 2000, fixedAsset_AssetDeallocationObj.fixedAsset_AssetAllocation_EmployeeID());
+    	waithelper.waitForElementToVisibleWithFluentWait(driver, fixedAsset_AssetDeallocationObj.fixedAsset_AssetAllocation_EmployeeID(),60,5);
     	fixedAsset_AssetDeallocationObj.fixedAsset_AssetAllocation_EmployeeID().click();
     	fixedAsset_AssetDeallocationObj.fixedAsset_AssetAllocation_EmployeeID().sendKeys(fixedAsset_AssetDeallocationTestDataType.EmployeeID);
     	fixedAsset_AssetDeallocationObj.fixedAsset_AssetAllocation_EmployeeID().sendKeys(Keys.ENTER);
@@ -550,17 +575,18 @@ fixedAsset_AssetDeallocationTestDataType = jsonReader.getAssetDeallocationByName
 fixedAsset_AssetDeallocationTestDataType = jsonReader.getAssetDeallocationByName("Maker");	
     	
     	//AssetReferenceNumber
-        waithelper.waitForElement(driver, 2000,  fixedAsset_AssetDeallocationObj.fixedAsset_AssetDeallocation_AssetReferenceNumber());
+        waithelper.waitForElementToVisibleWithFluentWait(driver,fixedAsset_AssetDeallocationObj.fixedAsset_AssetDeallocation_AssetReferenceNumber(),60,5);
         fixedAsset_AssetDeallocationObj.fixedAsset_AssetDeallocation_AssetReferenceNumber().click();
         fixedAsset_AssetDeallocationObj.fixedAsset_AssetDeallocation_AssetReferenceNumber().sendKeys(AssetReferenceNumber);
         fixedAsset_AssetDeallocationObj.fixedAsset_AssetDeallocation_AssetReferenceNumber().sendKeys(Keys.ENTER);
        
         
         //AssetItemNumber
-        waithelper.waitForElement(driver, 2000,  fixedAsset_AssetDeallocationObj.fixedAsset_AssetDeallocation_ItemNumber());
+        waithelper.waitForElementToVisibleWithFluentWait(driver,fixedAsset_AssetDeallocationObj.fixedAsset_AssetDeallocation_ItemNumber(),60,5);
         fixedAsset_AssetDeallocationObj.fixedAsset_AssetDeallocation_ItemNumber().click();
-        Thread.sleep(2000);
-        fixedAsset_AssetDeallocationObj.fixedAsset_AssetDeallocation_ItemNumber().sendKeys(fixedAsset_AssetDeallocationTestDataType.NewItemNumber);
+       // Thread.sleep(2000);
+        fixedAsset_AssetDeallocationObj.fixedAsset_AssetDeallocation_ItemNumber().sendKeys(Keys.DOWN);
+       // fixedAsset_AssetDeallocationObj.fixedAsset_AssetDeallocation_ItemNumber().sendKeys(fixedAsset_AssetDeallocationTestDataType.NewItemNumber);
         fixedAsset_AssetDeallocationObj.fixedAsset_AssetDeallocation_ItemNumber().sendKeys(Keys.ENTER);
         Thread.sleep(2000);   
     }

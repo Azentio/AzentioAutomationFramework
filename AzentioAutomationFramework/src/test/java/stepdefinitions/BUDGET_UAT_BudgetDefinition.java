@@ -4,9 +4,11 @@ import java.time.Month;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
+import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.ElementClickInterceptedException;
+import org.openqa.selenium.JavascriptException;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.StaleElementReferenceException;
@@ -69,7 +71,7 @@ public class BUDGET_UAT_BudgetDefinition extends BaseClass {
 
 	@Then("^click on budget configuration menu$")
 	public void click_on_budget_configuration_menu() throws Throwable {
-		waitHelper.waitForElement(driver, 3000, kubsMakerObj.kubsBudgetConfiguration());
+		waitHelper.waitForElementToVisibleWithFluentWait(driver, kubsMakerObj.kubsBudgetConfiguration(), 60, 500);
 		/*
 		 * This step is to click the budget configuration main menu after login to the
 		 * azentio application successfully
@@ -80,7 +82,7 @@ public class BUDGET_UAT_BudgetDefinition extends BaseClass {
 
 	@Then("^click on eye icon which is near by budget definition submenu$")
 	public void click_on_eye_icon_which_is_near_by_budget_definition_submenu() throws Throwable {
-
+		waitHelper.waitForElementToVisibleWithFluentWait(driver, budgetCreationObj.budgetCreation_EyeIcon(), 60, 500);
 		budgetCreationObj.budgetCreation_EyeIcon().click();
 
 	}
@@ -92,12 +94,22 @@ public class BUDGET_UAT_BudgetDefinition extends BaseClass {
 		 * is used instead of xpath Javascript Locator :
 		 * document.getElementById('addBtn')
 		 */
-
-		WebElement addButton = (WebElement) javascriptHelper.executeScript("return document.getElementById('addBtn')");
-		javascriptHelper.JSEClick(addButton);
-		waitHelper.waitForElement(driver, 3000, budgetCreationObj.budgetCreation_BudgetCode());
-		Assert.assertTrue(budgetCreationObj.budgetCreation_BudgetCode().isDisplayed());
-
+		waitHelper.waitForElementToVisibleWithFluentWait(driver, budgetCreationObj.budgetCreation_AddButton(), 60, 500);
+		// budgetCreationObj.budgetCreation_AddButton().click();
+		for (int i = 0; i <= 10; i++) {
+			try {
+				clickAndActions.moveToElement(budgetCreationObj.budgetCreation_AddButton());
+				clickAndActions.doubleClick(budgetCreationObj.budgetCreation_AddButton());
+				waitHelper.waitForElementToVisibleWithFluentWait(driver, budgetCreationObj.budgetCreation_BudgetCode(),
+						5, 500);
+				Assert.assertTrue(budgetCreationObj.budgetCreation_BudgetCode().isDisplayed());
+				break;
+			} catch (Exception e) {
+				if (i == 10) {
+					Assert.fail(e.getMessage());
+				}
+			}
+		}
 	}
 
 	/*
@@ -108,7 +120,8 @@ public class BUDGET_UAT_BudgetDefinition extends BaseClass {
 	@Then("^enter Budget Code for yearly budget$")
 	public void enter_budget_code_for_yearly_budget() throws Throwable {
 
-		waitHelper.waitForElement(driver, 3000, budgetCreationObj.budgetCreation_BudgetCode());
+		waitHelper.waitForElementToVisibleWithFluentWait(driver, budgetCreationObj.budgetCreation_BudgetCode(), 60,
+				500);
 		budgetCreationObj.budgetCreation_BudgetCode().sendKeys(budgetDefinitionUATTestData.uatYearlyBudgetCode);
 
 	}
@@ -118,7 +131,8 @@ public class BUDGET_UAT_BudgetDefinition extends BaseClass {
 		// String budgetPrefix="BUD";
 		Random random = new Random();
 		int randomNumber = random.nextInt(999999 - 100000) + 100000;
-		waitHelper.waitForElement(driver, 3000, budgetCreationObj.budgetCreation_BudgetCode());
+		waitHelper.waitForElementToVisibleWithFluentWait(driver, budgetCreationObj.budgetCreation_BudgetCode(), 60,
+				500);
 		budgetCreationObj.budgetCreation_BudgetCode()
 				.sendKeys(budgetDefinitionUATTestData.BudgetCodePrefix + randomNumber);
 
@@ -128,41 +142,48 @@ public class BUDGET_UAT_BudgetDefinition extends BaseClass {
 	public void fill_the_budget_code_field() throws Throwable {
 		Random random = new Random();
 		int randomNumber = random.nextInt(999999 - 100000) + 100000;
-		waitHelper.waitForElement(driver, 3000, budgetCreationObj.budgetCreation_BudgetCode());
+		waitHelper.waitForElementToVisibleWithFluentWait(driver, budgetCreationObj.budgetCreation_BudgetCode(), 60,
+				500);
 		budgetCreationObj.budgetCreation_BudgetCode()
 				.sendKeys(budgetDefinitionUATTestData.BudgetCodePrefix + randomNumber);
 	}
 
 	@Then("^enter Budget Code for current financial yearly budget$")
 	public void enter_budget_code_for_current_financial_yearly_budget() throws Throwable {
-		waitHelper.waitForElement(driver, 3000, budgetCreationObj.budgetCreation_BudgetCode());
+		waitHelper.waitForElementToVisibleWithFluentWait(driver, budgetCreationObj.budgetCreation_BudgetCode(), 60,
+				500);
 		budgetCreationObj.budgetCreation_BudgetCode()
 				.sendKeys(budgetDefinitionUATTestData.uatCurrentFinancialBudgetCode);
 	}
 
 	@Then("^enter Budget Code for monthly budget$")
 	public void enter_budget_code_for_monthly_budget() throws Throwable {
-		waitHelper.waitForElement(driver, 3000, budgetCreationObj.budgetCreation_BudgetCode());
+		waitHelper.waitForElementToVisibleWithFluentWait(driver, budgetCreationObj.budgetCreation_BudgetCode(), 60,
+				500);
 		budgetCreationObj.budgetCreation_BudgetCode().sendKeys(budgetDefinitionUATTestData.uatMonthlyBudgetCode);
 
 	}
 
 	@Then("^enter Budget Code for half yearly budget$")
 	public void enter_budget_code_for_half_yearly_budget() throws Throwable {
-		waitHelper.waitForElement(driver, 3000, budgetCreationObj.budgetCreation_BudgetCode());
+		waitHelper.waitForElementToVisibleWithFluentWait(driver, budgetCreationObj.budgetCreation_BudgetCode(), 60,
+				500);
 		budgetCreationObj.budgetCreation_BudgetCode().sendKeys(budgetDefinitionUATTestData.uatHalfYearlyBudgetCode);
 
 	}
 
 	@Then("^enter Budget Code quarterly budget$")
 	public void enter_budget_code_for_quarterly_budget() throws Throwable {
-		waitHelper.waitForElement(driver, 3000, budgetCreationObj.budgetCreation_BudgetCode());
+		waitHelper.waitForElementToVisibleWithFluentWait(driver, budgetCreationObj.budgetCreation_BudgetCode(), 60,
+				500);
 		budgetCreationObj.budgetCreation_BudgetCode().sendKeys(budgetDefinitionUATTestData.uatQuarterlyBudgetCode);
 
 	}
 
 	@And("^choose yearly option in budget type$")
 	public void choose_yearly_option_in_budget_type() throws Throwable {
+		waitHelper.waitForElementToVisibleWithFluentWait(driver, budgetCreationObj.budgetCreation_BudgetType(), 60,
+				500);
 		budgetCreationObj.budgetCreation_BudgetType().click();
 		budgetCreationObj.budgetCreation_BudgetType().sendKeys(Keys.DOWN);
 		budgetCreationObj.budgetCreation_BudgetType().sendKeys(Keys.DOWN);
@@ -230,57 +251,10 @@ public class BUDGET_UAT_BudgetDefinition extends BaseClass {
 	 */
 	@Then("^click on Save button$")
 	public void click_on_save_button() throws Throwable {
-		waitHelper.waitForElement(driver, 2000, budgetCreationObj.budgetCreation_saveButton());
+		waitHelper.waitForElementToVisibleWithFluentWait(driver, budgetCreationObj.budgetCreation_saveButton(), 60,
+				500);
 		budgetCreationObj.budgetCreation_saveButton().click();
-		/*
-		 * This two while loops are helped us to capture the message pop up after click
-		 * on the save button
-		 */
-		// while(true) --> is used for implement infinity loop
-		while (true) {
-			/*
-			 * we have to wait for the first pop up that is available only one second if the
-			 * pop up is not present the it throw the exception we have to locate until the
-			 * alert is displayed so that infinity loop is used
-			 */
-			try {
-				/*
-				 * Query selector is used here to locate the element inside the shadow DOM
-				 */
-				WebElement successMsg1 = (WebElement) javascriptHelper.executeScript(
-						"return document.querySelector('ion-toast').shadowRoot.querySelector('div[class=toast-message]')");
 
-				String successmsg1 = successMsg1.getText();
-
-				Assert.assertEquals(successmsg1, "Budget Registration  created successfully.");
-				break;
-			}
-			/*
-			 * In this catch block just catch the exception and and it wont print any thing
-			 * inside to console to make our console clear
-			 */
-			catch (Exception exception) {
-
-			}
-		}
-		while (true) {
-			try {
-				WebElement successMsg2 = (WebElement) javascriptHelper.executeScript(
-						"return document.querySelector('ion-toast').shadowRoot.querySelector('div[class=toast-message]')");
-				String successmsg2 = successMsg2.getText();
-				// System.out.println("The Message is " + successmsg2);
-				Assert.assertEquals(successmsg2, "success");
-				break;
-			}
-			/*
-			 * In this catch blocks just catch the exception and and it wont print any thin
-			 * inside to console to make our console clear
-			 */
-
-			catch (AssertionError exception) {
-			} catch (StaleElementReferenceException staleElementException) {
-			}
-		}
 	}
 
 	@And("^enter the budget code for current financial year$")
@@ -317,8 +291,10 @@ public class BUDGET_UAT_BudgetDefinition extends BaseClass {
 	public void click_notification_button() throws Throwable {
 		// After save our budget record we have to click on notification to submit our
 		// record for approvals
+		waitHelper.waitForElementToVisibleWithFluentWait(driver, budgetCreationObj.budgetCreationNotificationIcon(), 60,
+				100);
 		budgetCreationObj.budgetCreationNotificationIcon().click();
-		Thread.sleep(1000);
+//		Thread.sleep(1000);
 
 	}
 
@@ -330,7 +306,8 @@ public class BUDGET_UAT_BudgetDefinition extends BaseClass {
 		 * reference ID into the JSon file so that we can call the data in reviewer and
 		 * checker stage
 		 */
-		waitHelper.waitForElement(driver, 5000, budgetCreationObj.budgetCreationFirstReferenceId());
+		waitHelper.waitForElementToVisibleWithFluentWait(driver, budgetCreationObj.budgetCreationFirstReferenceId(), 60,
+				500);
 		String referenceID = budgetCreationObj.budgetCreationFirstReferenceId().getText();
 		/*
 		 * addReferanceData(referenceID) This method is a predefined method to store the
@@ -339,6 +316,49 @@ public class BUDGET_UAT_BudgetDefinition extends BaseClass {
 		jsonReaderWriter.addReferanceData(referenceID);
 		budgetCreationObj.budgetCreationFirstRecord().click();
 
+	}
+
+	@Then("^click on the search button$")
+	public void click_on_the_search_button() throws Throwable {
+		waitHelper.waitForElementVisible(budgetCreationObj.notificationSearchIcon(), 3000, 300);
+//		javascriptHelper.JavaScriptHelper(driver);
+//		javascriptHelper.JSEClick( budgetCreationObj.notificationSearchIcon());
+		for(int i=0;i<=15;i++)
+		{
+		try
+		{
+		budgetCreationObj.notificationSearchIcon().click();
+		break;
+		}
+		catch(Exception e)
+		{
+			if(i==15)
+			{
+				Assert.fail(e.getMessage());
+			}
+		}
+		}
+	}
+
+	@And("^serach the budget defenition sub module name$")
+	public void serach_the_budget_defenition_sub_module_name() throws Throwable {
+		waitHelper.waitForElementToVisibleWithFluentWait(driver, budgetCreationObj.eventCode(), 30, 500);
+		budgetCreationObj.eventCode().click();
+		budgetCreationObj.eventCode().sendKeys(budgetDefinitionUATTestData.budgetDefenitionEventCode);
+	}
+
+	@And("^serach the budget request and allocation sub module name$")
+	public void serach_the_budget_request_and_allocation_sub_module_name() throws Throwable {
+		waitHelper.waitForElementVisible(budgetCreationObj.eventCode(), 3000, 300);
+		budgetCreationObj.eventCode().click();
+		budgetCreationObj.eventCode().sendKeys(budgetDefinitionUATTestData.budgetRequestAndAllocationEventCode);
+	}
+
+	@And("^serach the budget supplimentory sub module name$")
+	public void serach_the_budget_supplimentory_sub_module_name() throws Throwable {
+		waitHelper.waitForElementVisible(budgetCreationObj.eventCode(), 3000, 300);
+		budgetCreationObj.eventCode().click();
+		budgetCreationObj.eventCode().sendKeys(budgetDefinitionUATTestData.budgetSupplimentoryEventCode);
 	}
 
 	@And("^click on Submit button$")
@@ -352,7 +372,8 @@ public class BUDGET_UAT_BudgetDefinition extends BaseClass {
 	@Then("^enter remark in confirmation alert$")
 	public void enter_remark_in_confirmation_alert() throws Throwable {
 		javascriptHelper.JavaScriptHelper(driver);
-		waitHelper.waitForElement(driver, 3000, budgetCreationObj.budgetCreation_AlertRemarks());
+		waitHelper.waitForElementToVisibleWithFluentWait(driver, budgetCreationObj.budgetCreation_AlertRemarks(), 60,
+				500);
 		javascriptHelper.JSEClick(budgetCreationObj.budgetCreation_AlertRemarks());
 		/*
 		 * After click on submit button one alert will open we have to enter the alert
@@ -367,7 +388,7 @@ public class BUDGET_UAT_BudgetDefinition extends BaseClass {
 		try {
 			budgetCreationObj.budgetCreation_AlertsubmitButton().click();
 		} catch (ElementClickInterceptedException clickException) {
-			Thread.sleep(1000);
+//			Thread.sleep(1000);
 			budgetCreationObj.budgetCreation_AlertRemarks().click();
 			budgetCreationObj.budgetCreation_AlertRemarks().sendKeys(budgetDefinitionUATTestData.remark);
 			budgetCreationObj.budgetCreation_AlertsubmitButton().click();
@@ -403,10 +424,11 @@ public class BUDGET_UAT_BudgetDefinition extends BaseClass {
 		 * Then we have to logout from maker
 		 */
 		budgetCreationObj.budgetCreationUserName().click();
-		Thread.sleep(1000);
-		waitHelper.waitForElement(driver, 3000, budgetCreationObj.budgetCreationLogoutButton());
+//		Thread.sleep(1000);		
+		waitHelper.waitForElementToVisibleWithFluentWait(driver, budgetCreationObj.budgetCreationLogoutButton(), 90,
+				500);
+		clickAndActions.moveToElement(budgetCreationObj.budgetCreationLogoutButton());
 		budgetCreationObj.budgetCreationLogoutButton().click();
-
 	}
 
 	/*
@@ -430,7 +452,7 @@ public class BUDGET_UAT_BudgetDefinition extends BaseClass {
 		/*
 		 * After successful login our first step is to click on the notification icon
 		 */
-		waitHelper.waitForElement(driver, 3000, kubsReviewerObj.reviewerNotidicationIcon());
+		waitHelper.waitForElementToVisibleWithFluentWait(driver, kubsReviewerObj.reviewerNotidicationIcon(), 60, 500);
 		kubsReviewerObj.reviewerNotidicationIcon().click();
 
 	}
@@ -445,13 +467,25 @@ public class BUDGET_UAT_BudgetDefinition extends BaseClass {
 		 * before_xpath and after_xpath string variable are used to customize the xpath
 		 * as per our reference ID
 		 */
-		Thread.sleep(1000);
+		// Thread.sleep(1000);
+		javascriptHelper.JavaScriptHelper(driver);
 		String before_xpath = "//span[contains(text(),'";
 		String after_xpath = "')]/ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell//ion-button";
-		waitHelper.waitForElement(driver, 3000,
-				driver.findElement(By.xpath(before_xpath + jsonReaderWriter.readReferancedata() + after_xpath)));
-		driver.findElement(By.xpath(before_xpath + jsonReaderWriter.readReferancedata() + after_xpath)).click();
-
+		for (int i = 0; i <= 300; i++) {
+			try {
+				waitHelper.waitForElement(driver, 3000, driver
+						.findElement(By.xpath(before_xpath + jsonReaderWriter.readReferancedata() + after_xpath)));
+				javascriptHelper.JSEClick(driver
+						.findElement(By.xpath(before_xpath + jsonReaderWriter.readReferancedata() + after_xpath)));
+				// driver.findElement(By.xpath(before_xpath +
+				// jsonReaderWriter.readReferancedata() + after_xpath)).click();
+				break;
+			} catch (Exception e) {
+				if (i == 300) {
+					Assert.fail(e.getMessage());
+				}
+			}
+		}
 	}
 
 	@Then("^verify budget data are matched whic is submited by maker$")
@@ -462,10 +496,11 @@ public class BUDGET_UAT_BudgetDefinition extends BaseClass {
 		 * maker submitted data we can use java script locator for locating the budget
 		 * code and etc
 		 */
-		Thread.sleep(2000);
-		javascriptHelper.JavaScriptHelper(driver);
+//		Thread.sleep(2000);
+
 		while (true) {
 			try {
+				javascriptHelper.JavaScriptHelper(driver);
 				waitHelper.setImplicitWait(5000);
 
 				String budgetCode = (String) javascriptHelper.executeScript(
@@ -498,6 +533,8 @@ public class BUDGET_UAT_BudgetDefinition extends BaseClass {
 				break;
 			} catch (StaleElementReferenceException staleElement) {
 				System.out.println(staleElement.getMessage());
+			} catch (JavascriptException e) {
+
 			}
 		}
 	}
@@ -509,15 +546,10 @@ public class BUDGET_UAT_BudgetDefinition extends BaseClass {
 		 * 
 		 * approveButton() function contains the xpath for the approve button
 		 */
-		while (true) {
-			try {
-				waitHelper.waitForElement(driver, 3000, kubsReviewerObj.reviewerApproveButton());
-				kubsReviewerObj.reviewerApproveButton().click();
-				break;
-			} catch (Exception e) {
 
-			}
-		}
+		waitHelper.waitForElementToVisibleWithFluentWait(driver, kubsReviewerObj.reviewerApproveButton(), 60, 500);
+		kubsReviewerObj.reviewerApproveButton().click();
+
 	}
 
 	@And("^enter the remark in alert$")
@@ -673,31 +705,51 @@ public class BUDGET_UAT_BudgetDefinition extends BaseClass {
 		String before_xpath = "//span[contains(text(),'";
 		String after_xpath_claim = "')]/parent::div/parent::datatable-body-cell/preceding-sibling::datatable-body-cell[2]/div/ion-buttons/ion-button";
 		javascriptHelper.JSEClick(kubsCheckerObj.checkerActionIcon());
-		for (int i = 1; i <= 3; i++) {
+		for (int i = 0; i <= 100; i++) {
 			try {
-
+//			waitHelper.waitForElementToVisibleWithFluentWait(driver,
+//				driver.findElement(By.xpath(before_xpath + jsonReaderWriter.readReferancedata() + after_xpath_claim)),
+//				80, 500);
 				WebElement climeButton = driver
 						.findElement(By.xpath(before_xpath + jsonReaderWriter.readReferancedata() + after_xpath_claim));
+
 				boolean bool = climeButton.isDisplayed();
 				clickAndActions.clickOnElement(climeButton);
+
 				// after clicking on the clime button , clime successful message will came we
 
 				Assert.assertTrue(bool);
-
 				break;
-			} catch (StaleElementReferenceException staleElementException) {
-				System.out.println(staleElementException.getMessage());
+			} catch (Exception e) {
+				if (i == 100) {
+					Assert.fail(e.getMessage());
+				}
 			}
 		}
-
 	}
 
 	@Then("^click on Notification button$")
 	public void cliick_on_notification_button() throws Throwable {
-		waitHelper.waitForElement(driver, 3000, kubsCheckerObj.checkerAlertClose());
+		javascriptHelper.JavaScriptHelper(driver);
+		waitHelper.waitForElementToVisibleWithFluentWait(driver, kubsCheckerObj.checkerAlertClose(), 80, 500);
+for(int i=0;i<=15;i++)
+{
+		try
+{
 		kubsCheckerObj.checkerAlertClose().click();
-		Thread.sleep(1000);
-		clickAndActions.clickOnElement(kubsCheckerObj.checkerNotificationIcon());
+break;
+}
+catch(Exception e)
+{
+if(i==15)
+{
+	Assert.fail(e.getMessage());
+}
+}
+}
+		waitHelper.waitForElementToVisibleWithFluentWait(driver, kubsCheckerObj.checkerNotificationIcon(), 60, 500);
+		javascriptHelper.JSEClick(kubsCheckerObj.checkerNotificationIcon());
+		// clickAndActions.clickOnElement(kubsCheckerObj.checkerNotificationIcon());
 
 	}
 
@@ -707,21 +759,23 @@ public class BUDGET_UAT_BudgetDefinition extends BaseClass {
 		 * After clime our record the record will go to notification we have to capture
 		 * the our record by the help of reference ID
 		 */
-		while (true) {
+
+		String before_xpath = "//span[contains(text(),'";
+		String after_xpath = "')]/ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell/div/ion-buttons/ion-button";
+		for (int i = 0; i <= 100; i++) {
 			try {
-				String before_xpath = "//span[contains(text(),'";
-				String after_xpath = "')]/ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell/div/ion-buttons/ion-button";
-				// waitHelper.waitForElement(driver, 1000, driver
-				// .findElement(By.xpath(before_xpath + jsonReaderWriter.readReferancedata() +
-				// after_xpath)));
-				// driver.findElement(By.xpath(before_xpath +
-				// jsonReaderWriter.readReferancedata() + after_xpath)).click();
-				javascriptHelper.JSEClick(driver
+//				waitHelper.waitForElementToVisibleWithFluentWait(driver,
+//						driver.findElement(By.xpath(before_xpath + jsonReaderWriter.readReferancedata() + after_xpath)),
+//						100, 500);
+				clickAndActions.moveToElement(driver
+						.findElement(By.xpath(before_xpath + jsonReaderWriter.readReferancedata() + after_xpath)));
+				clickAndActions.doubleClick(driver
 						.findElement(By.xpath(before_xpath + jsonReaderWriter.readReferancedata() + after_xpath)));
 				break;
-			} catch (Exception exception) {
-				System.out.println(exception.getMessage());
-
+			} catch (Exception e) {
+				if (i == 100) {
+					Assert.fail(e.getMessage());
+				}
 			}
 		}
 	}
@@ -732,9 +786,9 @@ public class BUDGET_UAT_BudgetDefinition extends BaseClass {
 		 * After select our record we have to verify the budget data by the help of
 		 * assert statement
 		 */
-		while (true) {
+		for (int i = 0; i <= 30; i++) {
 			try {
-				waitHelper.waitForElement(driver, 3000, kubsCheckerObj.budgetType());
+				waitHelper.waitForElementToVisibleWithFluentWait(driver, kubsCheckerObj.budgetType(), 60, 500);
 				String budgetType = kubsCheckerObj.budgetType().getText();
 				String budgetCode = (String) javascriptHelper.executeScript(
 						"return document.getElementsByClassName('native-input sc-ion-input-md')[1].value");
@@ -765,37 +819,44 @@ public class BUDGET_UAT_BudgetDefinition extends BaseClass {
 
 				Assert.assertEquals(budgetRemark, budgetDefinitionUATTestData.remark);
 				break;
-			} catch (StaleElementReferenceException staleElement) {
-				System.out.println(staleElement.getMessage());
+			} catch (Exception e) {
+				if (i == 30) {
+					System.out.println(e.getMessage());
+
+				}
 			}
 		}
 	}
 
 	@And("^click on approve button in checker stage$")
 	public void click_on_approve_button_in_checker_stage() throws Throwable {
-		while (true) {
-			try {
-				waitHelper.waitForElement(driver, 3000, kubsCheckerObj.checkerApproveButton());
-				kubsCheckerObj.checkerApproveButton().click();
-				break;
-			} catch (ElementClickInterceptedException e) {
+		waitHelper.waitForElementToVisibleWithFluentWait(driver, kubsCheckerObj.checkerApproveButton(), 60, 500);
+		kubsCheckerObj.checkerApproveButton().click();
 
-			}
-		}
 	}
 
 	@Then("^give alert remark$")
 	public void give_alert_remark() throws Throwable {
-		waitHelper.waitForElement(driver, 3000, kubsCheckerObj.checkerRemarks());
-		kubsCheckerObj.checkerRemarks().click();
+		javascriptHelper.JavaScriptHelper(driver);
+		waitHelper.waitForElementToVisibleWithFluentWait(driver, kubsCheckerObj.checkerRemarks(), 60, 500);
+		clickAndActions.clickOnElement(kubsCheckerObj.checkerRemarks());
 		kubsCheckerObj.checkerRemarks().sendKeys(budgetDefinitionUATTestData.approvalCommentsFromChecker);
 	}
 
 	@Then("^click on submit button on alert$")
 	public void click_on_submit_button_on_alert() throws Throwable {
 
-		waitHelper.waitForElement(driver, 3000, kubsCheckerObj.checkersubmitButton());
-		kubsCheckerObj.checkersubmitButton().click();
+		try {
+			waitHelper.waitForElementToVisibleWithFluentWait(driver, kubsCheckerObj.checkersubmitButton(), 60, 500);
+			kubsCheckerObj.checkersubmitButton().click();
+		} catch (Exception e) {
+			waitHelper.waitForElementToVisibleWithFluentWait(driver, kubsCheckerObj.checkerRemarks(), 60, 500);
+			clickAndActions.clickOnElement(kubsCheckerObj.checkerRemarks());
+			kubsCheckerObj.checkerRemarks().sendKeys(budgetDefinitionUATTestData.approvalCommentsFromChecker);
+			waitHelper.waitForElementToVisibleWithFluentWait(driver, kubsCheckerObj.checkersubmitButton(), 60, 500);
+			kubsCheckerObj.checkersubmitButton().click();
+		}
+
 	}
 
 	@And("^verify the record got approved from checker$")
@@ -811,33 +872,26 @@ public class BUDGET_UAT_BudgetDefinition extends BaseClass {
 		 * We can use assert function for verification
 		 * 
 		 */
-		waitHelper.waitForElement(driver, 3000, kubsCheckerObj.checkerApprovalStatus());
+		waitHelper.waitForElementToVisibleWithFluentWait(driver, kubsCheckerObj.checkerApprovalStatus(), 60, 500);
 		String approvalStatusForChecker = kubsCheckerObj.checkerApprovalStatus().getText();
 		Assert.assertEquals(approvalStatusForChecker, "Record APPROVED successfully");
 	}
 
 	@Then("^logout from checker$")
 	public void logout_from_checker() throws Throwable {
-		waitHelper.waitForElementVisible(kubsCheckerObj.checkerAlertClose(), 1000, 100);
+		waitHelper.waitForElementToVisibleWithFluentWait(driver, kubsCheckerObj.checkerAlertClose(), 60, 500);
 		kubsCheckerObj.checkerAlertClose().click();
-		waitHelper.waitForElementVisible(kubsCheckerObj.checkerUserName(), 1000, 100);
+		waitHelper.waitForElementToVisibleWithFluentWait(driver, kubsCheckerObj.checkerUserName(), 60, 500);
 		kubsCheckerObj.checkerUserName().click();
-		Thread.sleep(1000);
-		for (int i = 0; i < 3; i++) {
-			try {
-				waitHelper.waitForElementVisible(kubsCheckerObj.checkerLogoutButton(), 1000, 100);
-				kubsCheckerObj.checkerLogoutButton().click();
-				break;
-			} catch (ElementClickInterceptedException e) {
-				System.out.println(e.getMessage());
-			}
-		}
+		waitHelper.waitForElementToVisibleWithFluentWait(driver, kubsCheckerObj.checkerLogoutButton(), 60, 500);
+		clickAndActions.moveToElement(kubsCheckerObj.checkerLogoutButton());
+		kubsCheckerObj.checkerLogoutButton().click();
 	}
 
 	@Then("^get the budget code budget type and transaction date$")
 	public void get_the_budget_code_budget_type_and_transaction_date() throws Throwable {
-		waitHelper.waitForElementVisible(budgetCreationObj.budgetCreationApprovedBudgetCode(), 3000, 300);
-
+		waitHelper.waitForElementToVisibleWithFluentWait(driver, budgetCreationObj.budgetCreationApprovedBudgetCode(),
+				60, 500);
 		testData.put("budgetCode", budgetCreationObj.budgetCreationApprovedBudgetCode().getText());
 		testData.put("budgetType", budgetCreationObj.approvedBudgetType().getText());
 		testData.put("TransactionDate", budgetCreationObj.approvedBudgetDate().getText());
@@ -846,21 +900,17 @@ public class BUDGET_UAT_BudgetDefinition extends BaseClass {
 		System.out.println("Approved budget Transaction Date :" + testData.get("TransactionDate"));
 	}
 
-//	@Then("^click on report segment button$")
-//    public void click_on_report_segment_button() throws Throwable {
-//
-//    }
 	MASTERREPORT_BudgetCodeReportObj budgetCodeReport = new MASTERREPORT_BudgetCodeReportObj(driver);
 
 	@Then("^click on master report main module$")
 	public void click_on_master_report_main_module() throws Throwable {
-		waitHelper.waitForElementVisible(budgetCodeReport.masterReportMainMenu(), 3000, 300);
+
 		budgetCodeReport.masterReportMainMenu().click();
 	}
 
 	@Then("^enter budget type in budget code report$")
 	public void enter_budget_type_in_budget_code_report() throws Throwable {
-		waitHelper.waitForElementVisible(budgetCodeReport.masterBudgetBudgetType(), 3000, 300);
+		waitHelper.waitForElementToVisibleWithFluentWait(driver, budgetCodeReport.masterBudgetBudgetType(), 60, 500);
 		budgetCodeReport.masterBudgetBudgetType().click();
 		budgetCodeReport.masterBudgetBudgetType().sendKeys(testData.get("budgetType"));
 		budgetCodeReport.masterBudgetBudgetType().sendKeys(Keys.DOWN);
@@ -869,7 +919,7 @@ public class BUDGET_UAT_BudgetDefinition extends BaseClass {
 
 	@And("^click on temp view near by budget code report sub module$")
 	public void click_on_temp_view_near_by_budget_code_report_sub_module() throws Throwable {
-		waitHelper.waitForElementVisible(budgetCodeReport.masterBudgetReport(), 3000, 300);
+		waitHelper.waitForElementToVisibleWithFluentWait(driver, budgetCodeReport.masterBudgetReport(), 60, 500);
 		budgetCodeReport.masterBudgetReport().click();
 	}
 
@@ -921,66 +971,69 @@ public class BUDGET_UAT_BudgetDefinition extends BaseClass {
 		}
 		String stringMonth = months.toString();
 		String finalMonth = stringMonth.substring(1).toLowerCase();
-		String trmDay=null;
-		System.out.println("Final Month is : "+finalMonth);
+		String trmDay = null;
+		System.out.println("Final Month is : " + finalMonth);
 		stringMonth.substring(0, 1);
-		System.out.println("Final Full month:"+stringMonth.substring(0, 1)+finalMonth);
+		System.out.println("Final Full month:" + stringMonth.substring(0, 1) + finalMonth);
 		Thread.sleep(1000);
-        int dayNo=Integer.parseInt(day);
-        if(dayNo<10)
-        {
-        	System.out.println("Inside day if statement");
-        	 trmDay = day.substring(1);
-        	
-        }
-        else
-        {
-        	trmDay=day.substring(0);
-        }
-        System.out.println("Trim Day is "+trmDay);
-		waitHelper.waitForElementVisible(budgetCodeReport.masterBudgetInputCalendar(), 3000, 300);
+		int dayNo = Integer.parseInt(day);
+		if (dayNo < 10) {
+			System.out.println("Inside day if statement");
+			trmDay = day.substring(1);
+
+		} else {
+			trmDay = day.substring(0);
+		}
+		System.out.println("Trim Day is " + trmDay);
+		waitHelper.waitForElementToVisibleWithFluentWait(driver, budgetCodeReport.masterBudgetInputCalendar(), 90, 500);
 		budgetCodeReport.masterBudgetInputCalendar().click();
-		System.out.println(month + " "+year);
+		System.out.println(month + " " + year);
 		driver.findElement(By.xpath("//owl-date-time-calendar/div/div/button")).click();
-		driver.findElement(By.xpath("//td//span[contains(text(),'"+year+"')]")).click();
-		driver.findElement(By.xpath("//td//span[contains(text(),'"+month+"')]")).click();
+		driver.findElement(By.xpath("//td//span[contains(text(),'" + year + "')]")).click();
+		driver.findElement(By.xpath("//td//span[contains(text(),'" + month + "')]")).click();
 		Thread.sleep(1000);
-		driver.findElement(By.xpath("//td[@aria-label='"+stringMonth.substring(0, 1)+finalMonth+" "+trmDay+", "+year+"']/span")).click();
-		
-		
-		
-		
-		
+		driver.findElement(By.xpath("//td[@aria-label='" + stringMonth.substring(0, 1) + finalMonth + " " + trmDay
+				+ ", " + year + "']/span")).click();
+
 	}
+
 	@Then("^click on view button in budget code report$")
-    public void click_on_view_button_in_budget_code_report() throws Throwable {
-        waitHelper.waitForElementVisible(budgetCodeReport.masterBudgetBudgetCodeViewButton(), 3000, 300);
+	public void click_on_view_button_in_budget_code_report() throws Throwable {
+		waitHelper.waitForElementToVisibleWithFluentWait(driver, budgetCodeReport.masterBudgetBudgetCodeViewButton(),
+				60, 500);
 		budgetCodeReport.masterBudgetBudgetCodeViewButton().click();
-    }
+	}
+
 	@Then("^verify approved budget code is appeared under in master report$")
 	public void verify_approved_budget_code_is_appeared_under_in_master_report() throws Throwable {
-		Thread.sleep(1000);
+
 		browserHelper.SwitchToWindow(1);
-		Thread.sleep(2000);
-		while(true)
-		{
-			try
-			{
-		      boolean budgetCodeStatus = driver.findElement(By.xpath("//td/div[contains(text(),'"+testData.get("budgetCode")+"')]")).isDisplayed();
-           if(budgetCodeStatus==true)
-           {
-        	   System.out.println(testData.get("budgetCode")+" is visible in budget code report");   
-           }
-		     
-		      break;
-			}
-			catch(NoSuchElementException e)
-			{
-				budgetCodeReport.masterBudgetNextPage().click();
+		// waitHelper.setPageLoadTimeout(60, TimeUnit.SECONDS);
+		boolean budgetCodeStatus = false;
+		for (int i = 0; i <= 150; i++) {
+			try {
+				waitHelper.waitForElementToVisibleWithFluentWait(driver,
+						driver.findElement(By.xpath("//td/div[contains(text(),'" + testData.get("budgetCode") + "')]")),
+						150, 500);
+				budgetCodeStatus = driver
+						.findElement(By.xpath("//td/div[contains(text(),'" + testData.get("budgetCode") + "')]"))
+						.isDisplayed();
+			} catch (Exception e) {
+				if (i == 150) {
+
+					Assert.fail(e.getMessage());
+				}
 			}
 		}
-		
-		browserHelper.switchToParentWithChildClose();
-		
+		if (budgetCodeStatus == true) {
+			System.out.println(testData.get("budgetCode") + " is visible in budget code report");
+
+			browserHelper.switchToParentWithChildClose();
+		} else {
+
+			Assert.fail(testData.get("budgetCode") + "Budget Code not visisble in report");
+			browserHelper.switchToParentWithChildClose();
+		}
+
 	}
 }

@@ -22,6 +22,7 @@ import pageobjects.AccountPayable_VendorPurchaseOrderObj;
 //import pageobjects.AccountPayable_VendorPurchaseOrderObj;
 import pageobjects.Azentio_CheckerObj;
 import pageobjects.Azentio_ReviewerObj;
+import pageobjects.KUBS_MakerObj;
 import resources.BaseClass;
 import resources.JsonDataReaderWriter;
 import testDataType.AccountPayable_VendorPurchaseOrderTestDataType;
@@ -53,14 +54,15 @@ public class AccountPayable_VendorPurchaseOrder extends BaseClass {
 		String user = "Maker";
 		Azentio_CheckerObj kubschecker = new Azentio_CheckerObj(driver) ;
 		BUDGET_BudgetCreationTestDataType budgetdata;
-		
+		KUBS_MakerObj kubsMakerObj = new KUBS_MakerObj(driver);
 		//getVendorPurchaseOrderyByName
 		
 		 @Then("^Click on Direction icon$")
 		 public void click_on_direction_icon() throws InterruptedException {
 		 waithelper = new WaitHelper(driver) ;
-		Thread.sleep(2000);
-		 waithelper.waitForElement(driver, 4000, accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_DirectionIcon());
+		 waithelper.waitForElementToVisibleWithFluentWait(driver, kubsMakerObj.kubsToolIcon(), 5, 500);
+		 kubsMakerObj.kubsToolIcon().click();
+		 waithelper.waitForElementToVisibleWithFluentWait(driver, accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_DirectionIcon(), 5, 500);
 		 accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_DirectionIcon().click();
     
 		    }

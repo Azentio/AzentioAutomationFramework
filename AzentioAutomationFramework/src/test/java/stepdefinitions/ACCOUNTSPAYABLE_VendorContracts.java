@@ -7,6 +7,7 @@ import org.json.simple.parser.ParseException;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import dataProvider.ConfigFileReader;
@@ -21,6 +22,7 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import pageobjects.ACCOUNTSPAYABLE_VendorContractsObj;
 import pageobjects.KUBS_CheckerObj;
+import pageobjects.KUBS_MakerObj;
 import resources.BaseClass;
 import resources.JsonDataReaderWriter;
 import testDataType.ACCOUNTSPAYABLE_VendorContractsTestDataType;
@@ -39,6 +41,7 @@ public class ACCOUNTSPAYABLE_VendorContracts {
 	JsonDataReaderWriter reader;
 	BrowserHelper browserHelper;
 	KUBS_CheckerObj kubschecker = new KUBS_CheckerObj(driver);
+	KUBS_MakerObj kubsMakerObj = new KUBS_MakerObj(driver);
 	
 //--------	 @KUBS_INV_MGMT_UAT_001_002  ------------
 	@Given("^User should go to the kubs url and login as a maker user$")
@@ -50,10 +53,12 @@ public class ACCOUNTSPAYABLE_VendorContracts {
 
 	@And("^user should navigate to accounts payable menu$")
 	public void user_should_navigate_to_accounts_payable_menu() throws InterruptedException {
-		Thread.sleep(1000);
-		waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_DirectionButton());
+		//Thread.sleep(1000);
+		waithelper.waitForElementToVisibleWithFluentWait(driver,kubsMakerObj.kubsToolIcon(),65,5);
+		kubsMakerObj.kubsToolIcon().click();
+		waithelper.waitForElementToVisibleWithFluentWait(driver,aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_DirectionButton() ,60, 5);
 		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_DirectionButton().click();
-		waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_VendorContractsObj.accountPayableMenu());
+		waithelper.waitForElementToVisibleWithFluentWait(driver, aCCOUNTSPAYABLE_VendorContractsObj.accountPayableMenu(),60,5);
 		aCCOUNTSPAYABLE_VendorContractsObj.accountPayableMenu().click();
 		
 	}
@@ -61,38 +66,41 @@ public class ACCOUNTSPAYABLE_VendorContracts {
 	@When("^click on eye button of vendor contract$")
 	public void click_on_eye_button_of_vendor_contract() throws InterruptedException  {
 		//Thread.sleep(2000);
-		waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_EyeButton());
+		waithelper.waitForElementToVisibleWithFluentWait(driver, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_EyeButton() ,60, 5);
+	//	waithelper.waitForElementToVisisbleWithFluentWait(driver, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_EyeButton());
 		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_EyeButton().click();
 	}
 
 	@And("^click on add button to create contract$")
 	public void click_on_add_button_to_create_contract() throws InterruptedException {
 		//Thread.sleep(2000);
-		waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_AddButton());
+		waithelper.waitForElementToVisibleWithFluentWait(driver, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_AddButton(),30, 2);
+		//waithelper.waitForElementToVisisbleWithFluentWait(driver, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_AddButton());
 		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_AddButton().click();
 	}
 	
 	@And("^Fill the required fields to create contract$")
 	public void fill_the_required_fields_to_create_contract() throws InterruptedException  {
-		waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_ExpenseType());
+		//waithelper.waitForElementToVisisbleWithFluentWait(driver, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_ExpenseType());
+		waithelper.waitForElementToVisibleWithFluentWait(driver, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_ExpenseType(),30, 2);
 		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_ExpenseType().sendKeys(aCCOUNTSPAYABLE_VendorContractsTestDataType.ExpenseType);
 		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_ExpenseType().sendKeys(Keys.ENTER);
 		
-		waithelper.waitForElement(driver, 3000, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_BP_Name());
+		waithelper.waitForElementToVisibleWithFluentWait(driver,aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_BP_Name(),30,2);
 		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_BP_Name().sendKeys(aCCOUNTSPAYABLE_VendorContractsTestDataType.BP_Name);
 		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_BP_Name().sendKeys(Keys.ENTER);
 		
 		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_BP_Branch().click();
-		waithelper.waitForElement(driver, 3000, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_BP_Branch());
+		waithelper.waitForElementToVisibleWithFluentWait(driver,aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_BP_Branch(),30,2);
 		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_BP_Branch().sendKeys(aCCOUNTSPAYABLE_VendorContractsTestDataType.BP_Branch);
 		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_BP_Branch().sendKeys(Keys.ENTER);
 		
-		waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_ContractName());
+		waithelper.waitForElementToVisibleWithFluentWait(driver, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_ContractName(),30,2);
 		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_ContractName().sendKeys(aCCOUNTSPAYABLE_VendorContractsTestDataType.ContractName);
 		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_ContractName().sendKeys(Keys.ENTER);
 		
 		//agreement calendar
-		waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_AgreementCalendar());
+		waithelper.waitForElementToVisibleWithFluentWait(driver, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_AgreementCalendar(),30,2);
 		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_AgreementCalendar().click();
 		Thread.sleep(2000);
 		javascripthelper.JavaScriptHelper(driver);
@@ -101,7 +109,7 @@ public class ACCOUNTSPAYABLE_VendorContracts {
 		try
 		{
 		
-			waithelper.waitForElement(driver, 3000, driver.findElement(By.xpath("//span[contains(text(),'"+aCCOUNTSPAYABLE_VendorContractsTestDataType.AgreementMonth+" "+aCCOUNTSPAYABLE_VendorContractsTestDataType.AgreementYear+"')]")));
+			waithelper.waitForElementToVisibleWithFluentWait(driver,driver.findElement(By.xpath("//span[contains(text(),'"+aCCOUNTSPAYABLE_VendorContractsTestDataType.AgreementMonth+" "+aCCOUNTSPAYABLE_VendorContractsTestDataType.AgreementYear+"')]")),30,2);
 			WebElement monthAndYear=driver.findElement(By.xpath("//span[contains(text(),'"+aCCOUNTSPAYABLE_VendorContractsTestDataType.AgreementMonth+" "+aCCOUNTSPAYABLE_VendorContractsTestDataType.AgreementYear+"')]"));
 		    break;
 		}
@@ -116,14 +124,14 @@ public class ACCOUNTSPAYABLE_VendorContracts {
 		
 		Thread.sleep(1000);
 		//ContractEndDate calendar
-		waithelper.waitForElement(driver, 3000, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_ContractEndDate());
+		waithelper.waitForElementToVisibleWithFluentWait(driver,aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_ContractEndDate(),30,2);
 		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_ContractEndDate().click();
 		while(true)
         {
 		try
 		{
 		
-			waithelper.waitForElement(driver, 3000, driver.findElement(By.xpath("//span[contains(text(),'"+aCCOUNTSPAYABLE_VendorContractsTestDataType.ContractEndMonth+" "+aCCOUNTSPAYABLE_VendorContractsTestDataType.ContractEndYear+"')]")));
+			waithelper.waitForElementToVisibleWithFluentWait(driver,driver.findElement(By.xpath("//span[contains(text(),'"+aCCOUNTSPAYABLE_VendorContractsTestDataType.ContractEndMonth+" "+aCCOUNTSPAYABLE_VendorContractsTestDataType.ContractEndYear+"')]")),30,2);
 			WebElement monthAndYear=driver.findElement(By.xpath("//span[contains(text(),'"+aCCOUNTSPAYABLE_VendorContractsTestDataType.ContractEndMonth+" "+aCCOUNTSPAYABLE_VendorContractsTestDataType.ContractEndYear+"')]"));
 		    break;
 		}
@@ -133,34 +141,34 @@ public class ACCOUNTSPAYABLE_VendorContracts {
 			aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_ClickOnNextMonth().click();
 		}
 		}
-		waithelper.waitForElement(driver, 3000, driver.findElement(By.xpath("//td[@aria-label='"+aCCOUNTSPAYABLE_VendorContractsTestDataType.ContractEndFullMonth +" "+aCCOUNTSPAYABLE_VendorContractsTestDataType.ContractEndDate+", "+aCCOUNTSPAYABLE_VendorContractsTestDataType.ContractEndYear+"']/span")));
+		waithelper.waitForElementToVisibleWithFluentWait(driver,driver.findElement(By.xpath("//td[@aria-label='"+aCCOUNTSPAYABLE_VendorContractsTestDataType.ContractEndFullMonth +" "+aCCOUNTSPAYABLE_VendorContractsTestDataType.ContractEndDate+", "+aCCOUNTSPAYABLE_VendorContractsTestDataType.ContractEndYear+"']/span")),30,2);
 		WebElement EndDay=driver.findElement(By.xpath("//td[@aria-label='"+aCCOUNTSPAYABLE_VendorContractsTestDataType.ContractEndFullMonth +" "+aCCOUNTSPAYABLE_VendorContractsTestDataType.ContractEndDate+", "+aCCOUNTSPAYABLE_VendorContractsTestDataType.ContractEndYear+"']/span"));
 		clicksAndActionHelper.doubleClick(EndDay);
 		
 		Thread.sleep(1000);
 		//ContractSignedOnDate calendar
-		waithelper.waitForElement(driver, 3000, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_ContractSignedOnDate());
+		waithelper.waitForElementToVisibleWithFluentWait(driver,aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_ContractSignedOnDate(),30,2);
 		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_ContractSignedOnDate().click();
 		while(true)
         {
 		try
 		{
 		
-			waithelper.waitForElement(driver, 3000, driver.findElement(By.xpath("//span[contains(text(),'"+aCCOUNTSPAYABLE_VendorContractsTestDataType.ContractSignedOnMonth+" "+aCCOUNTSPAYABLE_VendorContractsTestDataType.ContractSignedOnYear+"')]")));
+			waithelper.waitForElementToVisibleWithFluentWait(driver,driver.findElement(By.xpath("//span[contains(text(),'"+aCCOUNTSPAYABLE_VendorContractsTestDataType.ContractSignedOnMonth+" "+aCCOUNTSPAYABLE_VendorContractsTestDataType.ContractSignedOnYear+"')]")),30,2);
 			WebElement monthAndYear=driver.findElement(By.xpath("//span[contains(text(),'"+aCCOUNTSPAYABLE_VendorContractsTestDataType.ContractSignedOnMonth+" "+aCCOUNTSPAYABLE_VendorContractsTestDataType.ContractSignedOnYear+"')]"));
 		    break;
 		}
 		
 		catch(NoSuchElementException nosuchElement)
 		{
-			waithelper.waitForElement(driver, 3000, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_ClickOnNextMonth());
+			waithelper.waitForElementToVisibleWithFluentWait(driver,aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_ClickOnNextMonth(),30,2);
 			aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_ClickOnNextMonth().click();
 		}
 		}
 		WebElement SignedOnDay=driver.findElement(By.xpath("//td[@aria-label='"+aCCOUNTSPAYABLE_VendorContractsTestDataType.ContractSignedOnFullMonth +" "+aCCOUNTSPAYABLE_VendorContractsTestDataType.ContractSignedOnDate+", "+aCCOUNTSPAYABLE_VendorContractsTestDataType.ContractSignedOnYear+"']/span"));
 		clicksAndActionHelper.doubleClick(SignedOnDay);
 		
-		waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_Currency());
+		waithelper.waitForElementToVisibleWithFluentWait(driver, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_Currency(),30,2);
 		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_Currency().sendKeys(aCCOUNTSPAYABLE_VendorContractsTestDataType.Currency);;
 		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_Currency().sendKeys(Keys.ENTER);
 		
@@ -168,86 +176,86 @@ public class ACCOUNTSPAYABLE_VendorContracts {
 		
 		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_OtherDetailsButton().click();
 		
-		waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_AutoGenerateInvoice());
+		waithelper.waitForElementToVisibleWithFluentWait(driver, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_AutoGenerateInvoice(),30,2);
 		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_AutoGenerateInvoice().sendKeys(aCCOUNTSPAYABLE_VendorContractsTestDataType.AutoGenerateBill);
 		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_AutoGenerateInvoice().sendKeys(Keys.ARROW_DOWN, Keys.ENTER);
 		
-		waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_CreditPeriod());
+		waithelper.waitForElementToVisibleWithFluentWait(driver, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_CreditPeriod(),30,2);
 		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_CreditPeriod().sendKeys(aCCOUNTSPAYABLE_VendorContractsTestDataType.CreditPeriod);
 		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_CreditPeriod().sendKeys(Keys.ENTER);
 		
-		waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_LatePaymentFee());
+		waithelper.waitForElementToVisibleWithFluentWait(driver, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_LatePaymentFee(),30,2);
 		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_LatePaymentFee().sendKeys(aCCOUNTSPAYABLE_VendorContractsTestDataType.LatePaymentFee);
 		
-		waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_Currency2());
+		waithelper.waitForElementToVisibleWithFluentWait(driver, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_Currency2(),30,2);
 		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_Currency2().sendKeys(aCCOUNTSPAYABLE_VendorContractsTestDataType.Currency2);;
 		//scroll down to additional details button
 		
-		waithelper.waitForElement(driver, 3000, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_SaveButton());
+		waithelper.waitForElementToVisibleWithFluentWait(driver,aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_SaveButton(),30,2);
 		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_SaveButton().click();
 		
 		Thread.sleep(1000);
-		waithelper.waitForElement(driver, 3000, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_AddButton());
+		waithelper.waitForElementToVisibleWithFluentWait(driver,aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_AddButton(),30,2);
 		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_AddButton().click();
 		
-		waithelper.waitForElement(driver, 3000, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_HSN_Code());
+		waithelper.waitForElementToVisibleWithFluentWait(driver,aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_HSN_Code(),30,2);
 		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_HSN_Code().sendKeys(aCCOUNTSPAYABLE_VendorContractsTestDataType.HSN_Code);
 		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_HSN_Code().sendKeys(Keys.ENTER);
 		
 		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_ExpenseCode().click();
-		waithelper.waitForElement(driver, 3000, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_ExpenseCode());
+		waithelper.waitForElementToVisibleWithFluentWait(driver,aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_ExpenseCode(),30,2);
 		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_ExpenseCode().sendKeys(aCCOUNTSPAYABLE_VendorContractsTestDataType.ExpenseCode);
 		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_ExpenseCode().sendKeys(Keys.ENTER);
 		
-		waithelper.waitForElement(driver, 3000, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_Quantity());
+		waithelper.waitForElementToVisibleWithFluentWait(driver,aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_Quantity(),30,2);
 		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_Quantity().sendKeys(aCCOUNTSPAYABLE_VendorContractsTestDataType.Quantity);
 		
-		waithelper.waitForElement(driver, 3000, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_CostCenter());
+		waithelper.waitForElementToVisibleWithFluentWait(driver,aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_CostCenter(),30,2);
 		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_CostCenter().sendKeys(aCCOUNTSPAYABLE_VendorContractsTestDataType.CostCenter);
 		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_CostCenter().sendKeys(Keys.ENTER);
 		
-		waithelper.waitForElement(driver, 3000, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_Unit());
+		waithelper.waitForElementToVisibleWithFluentWait(driver,aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_Unit(),30,2);
 		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_Unit().sendKeys(aCCOUNTSPAYABLE_VendorContractsTestDataType.Unit);
 		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_Unit().sendKeys(Keys.ENTER);
 		
-		waithelper.waitForElement(driver, 3000, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_RatePerUnit());
+		waithelper.waitForElementToVisibleWithFluentWait(driver,aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_RatePerUnit(),30,2);
 		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_RatePerUnit().sendKeys(aCCOUNTSPAYABLE_VendorContractsTestDataType.RatePerUnit);
 		
-		waithelper.waitForElement(driver, 3000, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_CurrencyInItemDetail());
+		waithelper.waitForElementToVisibleWithFluentWait(driver,aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_CurrencyInItemDetail(),30,2);
 		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_CurrencyInItemDetail().sendKeys(aCCOUNTSPAYABLE_VendorContractsTestDataType.CurrencyinItemDetails);
 		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_CurrencyInItemDetail().sendKeys(Keys.ENTER);
 		
 		Thread.sleep(1000);
-		waithelper.waitForElement(driver, 3000, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_ItemDetailsSaveButton());
+		waithelper.waitForElementToVisibleWithFluentWait(driver,aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_ItemDetailsSaveButton(),30,2);
 		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_ItemDetailsSaveButton().click();
 		
 		Thread.sleep(1000);
-		waithelper.waitForElement(driver, 3000, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_AddButton());
+		waithelper.waitForElementToVisibleWithFluentWait(driver,aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_AddButton(),30,2);
 		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_AddButton().click();
 		
 		Thread.sleep(1000);
-		waithelper.waitForElement(driver, 3000, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_PaymentTermDetails());
+		waithelper.waitForElementToVisibleWithFluentWait(driver,aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_PaymentTermDetails(),30,2);
 		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_PaymentTermDetails().sendKeys(aCCOUNTSPAYABLE_VendorContractsTestDataType.PaymentTerm);
 		
-		waithelper.waitForElement(driver, 3000, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_PaymentTermPercent());
+		waithelper.waitForElementToVisibleWithFluentWait(driver,aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_PaymentTermPercent(),30,2);
 		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_PaymentTermPercent().sendKeys(aCCOUNTSPAYABLE_VendorContractsTestDataType.PaymentTermPercent);
 		
-		waithelper.waitForElement(driver, 3000, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_PaymentTermType());
+		waithelper.waitForElementToVisibleWithFluentWait(driver,aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_PaymentTermType(),30,2);
 		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_PaymentTermType().sendKeys(aCCOUNTSPAYABLE_VendorContractsTestDataType.PaymentTermType);
 		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_PaymentTermType().sendKeys(Keys.ENTER);
 		
-		waithelper.waitForElement(driver, 3000, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_ItemDetailsSaveButton());
+		waithelper.waitForElementToVisibleWithFluentWait(driver,aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_ItemDetailsSaveButton(),30,2);
 		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_ItemDetailsSaveButton().click();
 		
-		waithelper.waitForElement(driver, 3000, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_ModeOfPayment());
+		waithelper.waitForElementToVisibleWithFluentWait(driver,aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_ModeOfPayment(),30,2);
 		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_ModeOfPayment().sendKeys(aCCOUNTSPAYABLE_VendorContractsTestDataType.ModeOfPayment);
 		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_ModeOfPayment().sendKeys(Keys.ENTER);
 		
-		waithelper.waitForElement(driver, 3000, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_AutoPayout());
+		waithelper.waitForElementToVisibleWithFluentWait(driver,aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_AutoPayout(),30,2);
 		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_AutoPayout().sendKeys(aCCOUNTSPAYABLE_VendorContractsTestDataType.AutoPayout);
 		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_AutoPayout().sendKeys(Keys.ENTER);
 		
-		waithelper.waitForElement(driver, 3000, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_BenificiaryDetailsSaveButton());
+		waithelper.waitForElementToVisibleWithFluentWait(driver,aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_BenificiaryDetailsSaveButton(),30,2);
 		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_BenificiaryDetailsSaveButton().click();		
 	}
 	
@@ -262,45 +270,45 @@ public class ACCOUNTSPAYABLE_VendorContracts {
 				.toString();
 		System.out.println("Message:" + str);
 		
-		waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_NotificationButton());
+		waithelper.waitForElementToVisibleWithFluentWait(driver, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_NotificationButton(),30,2);
 		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_NotificationButton().click();
 		
-		waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_FirstReferenceId());
+		waithelper.waitForElementToVisibleWithFluentWait(driver, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_FirstReferenceId(),30,2);
 		String id=aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_FirstReferenceId().getText();
 		jsonWriter.addReferanceData(id);
 		System.out.println("Reference ID:" +id);
     	for (int i = 1; i <= 35; i++) {
 			try {
-		    	waithelper.waitForElement(driver, 3000,driver.findElement(By.xpath("//span[contains(text(),'" +jsonWriter.readReferancedata()+ "')]")));	
+		    	waithelper.waitForElementToVisibleWithFluentWait(driver, driver.findElement(By.xpath("//span[contains(text(),'" +jsonWriter.readReferancedata()+ "')]")),30,2);	
 				WebElement referanceID = driver.findElement(By.xpath("//span[contains(text(),'" +  jsonWriter.readReferancedata() + "')]"));	
-				waithelper.waitForElement(driver, i, referanceID);
+				waithelper.waitForElementToVisibleWithFluentWait(driver, referanceID,30,2);
 				referanceID.click();
 		    	System.out.println(referanceID);
 //				Assert.assertTrue(referanceID.isDisplayed());
 				break;
 			} catch (NoSuchElementException e) {
-				waithelper.waitForElement(driver,4000,aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_NotificationNextButton());
+				waithelper.waitForElementToVisibleWithFluentWait(driver,aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_NotificationNextButton(),30,2);
 				aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_NotificationNextButton().click();
 			}
 		}
     	String before_xpath="//span[contains(text(),'";
     	String after_xpath="')]/ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell//ion-button"; 
-    	waithelper.waitForElement(driver, 10000, driver.findElement(By.xpath(before_xpath +jsonWriter.readReferancedata()+after_xpath)));
+    	waithelper.waitForElementToVisibleWithFluentWait(driver,  driver.findElement(By.xpath(before_xpath +jsonWriter.readReferancedata()+after_xpath)),30,2);
     	driver.findElement(By.xpath(before_xpath +jsonWriter.readReferancedata() +after_xpath)).click();
     	
     	Thread.sleep(2000);
-    	waithelper.waitForElement(driver, 3000, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_SubmitButton());
+    	waithelper.waitForElementToVisibleWithFluentWait(driver,aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_SubmitButton(),30,2);
     	aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_SubmitButton().click(); 
     	
-    	waithelper.waitForElement(driver, 3000, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_RemarkField());
+    	waithelper.waitForElementToVisibleWithFluentWait(driver,aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_RemarkField(),30,2);
     	javascripthelper.JSEClick(aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_RemarkField());
     	aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_RemarkField().sendKeys(aCCOUNTSPAYABLE_VendorContractsTestDataType.RemarkByMaker);
 		
-    	waithelper.waitForElement(driver, 3000, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_Submit());
+    	waithelper.waitForElementToVisibleWithFluentWait(driver,aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_Submit(),30,2);
     	aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_Submit().click();
     	
     	Thread.sleep(1000);
-    	waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_RecordStatus());
+    	waithelper.waitForElementToVisibleWithFluentWait(driver, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_RecordStatus(),30,2);
     	WebElement recordstatus = aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_RecordStatus();
     	clicksAndActionHelper.moveToElement(recordstatus);
     	
@@ -327,7 +335,7 @@ public class ACCOUNTSPAYABLE_VendorContracts {
 
 	@Then("^Click on notification button in reviewer$")
 	public void click_on_notification_button_in_reviewer() {
-		waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_NotificationButton());
+		waithelper.waitForElementToVisibleWithFluentWait(driver, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_NotificationButton(),30,2);
 		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_NotificationButton().click();;
 	}
 
@@ -339,21 +347,21 @@ public class ACCOUNTSPAYABLE_VendorContracts {
 		String after_xpath_for_action="]/datatable-body-row/div/datatable-body-cell[1]/div/ion-buttons/ion-button";
 		
 		for (int i = 1; i < 10; i++) {
-			waithelper.waitForElement(driver, 10000, driver.findElement(By.xpath(before_xpath + i + after_xpath)));
+			waithelper.waitForElementToVisibleWithFluentWait(driver,driver.findElement(By.xpath(before_xpath + i + after_xpath)),60,500);
 			String referance_id = driver.findElement(By.xpath(before_xpath + i + after_xpath)).getText();
 			
-			waithelper.waitForElement(driver, 10000, driver.findElement(By.xpath(before_xpath + i
-					+ after_xpath_for_action)));
+			waithelper.waitForElementToVisibleWithFluentWait(driver,  driver.findElement(By.xpath(before_xpath + i
+					+ after_xpath_for_action)),30,2);
 			driver.findElement(By.xpath(before_xpath + i
 					+ after_xpath_for_action)).click();
 			
 				reader.addReferanceData(referance_id);
 				
-				waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_Approve_Button());
+				waithelper.waitForElementToVisibleWithFluentWait(driver, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_Approve_Button(),30,2);
 				aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_Approve_Button().click();
-				waithelper.waitForElement(driver, 3000, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_ApproveRemarkByReviewer());
+				waithelper.waitForElementToVisibleWithFluentWait(driver,aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_ApproveRemarkByReviewer(),30,2);
 				aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_ApproveRemarkByReviewer().sendKeys(aCCOUNTSPAYABLE_VendorContractsTestDataType.ApproveRemarkByReviewer);
-				waithelper.waitForElement(driver, 3000, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_Submit());
+				waithelper.waitForElementToVisibleWithFluentWait(driver,aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_Submit(),30,2);
 				aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_Submit().click();
 				Thread.sleep(2000);
 		    	WebElement recordstatus = aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_RecordStatus();
@@ -374,14 +382,14 @@ public class ACCOUNTSPAYABLE_VendorContracts {
 	
     @And("^Click on security management in checker$")
     public void click_on_security_management_in_checker() {
-    	waithelper.waitForElement(driver,3000, kubschecker.checkerSecurityManagement());
+    	waithelper.waitForElementToVisibleWithFluentWait(driver, kubschecker.checkerSecurityManagement(),30,2);
     	kubschecker.checkerSecurityManagement().click();
     	
     }
 
     @Then("^Click on open pool in checker$")
     public void click_on_open_pool_in_checker() {
-    	waithelper.waitForElement(driver,3000,kubschecker.checkerActionIcon());
+    	waithelper.waitForElementToVisibleWithFluentWait(driver,kubschecker.checkerActionIcon(),60,5);
     	kubschecker.checkerActionIcon().click();
     }
 
@@ -390,6 +398,8 @@ public class ACCOUNTSPAYABLE_VendorContracts {
     	String before_xpath = "//span[contains(text(),'";
 		String after_xpath_claim = "')]/parent::div/parent::datatable-body-cell/preceding-sibling::datatable-body-cell[2]/div/ion-buttons/ion-button";
 		//String after_xpath = ;
+		waithelper.waitForElementToVisibleWithFluentWait(driver,driver.findElement(By.xpath(before_xpath + reader.readReferancedata() + after_xpath_claim)),60, 5);
+		//waithelper.waitForElement(driver,2000,driver.findElement(By.xpath(before_xpath + reader.readReferancedata() + after_xpath_claim)));
 		driver.findElement(By.xpath(before_xpath + reader.readReferancedata() + after_xpath_claim)).click();
     }
     
@@ -404,40 +414,52 @@ public class ACCOUNTSPAYABLE_VendorContracts {
     
     @Then("^click on notification in checker$")
     public void click_on_notification_in_checker()  {
-    	waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_NotificationButton());
+    	waithelper.waitForElementToVisibleWithFluentWait(driver, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_NotificationButton(),30,2);
 		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_NotificationButton().click();
     }
     
 	@Then("^checker should approved the contract record$")
 	public void checker_should_approved_the_contract_record() throws IOException, ParseException, InterruptedException {
-		waithelper.waitForElement(driver, 3000, driver.findElement(By.xpath("//span[contains(text(),'" + jsonWriter.readReferancedata() + "')]/ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell/div/ion-buttons/ion-button")));
-		driver.findElement(By.xpath("//span[contains(text(),'" + jsonWriter.readReferancedata() + "')]/ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell/div/ion-buttons/ion-button")).click();
-//    	waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_NotificationButton());
+		//waithelper.waitForElementToVisisbleWithFluentWait(driver,driver.findElement(By.xpath("//span[contains(text(),'" + jsonWriter.readReferancedata() + "')]/ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell/div/ion-buttons/ion-button")));
+		for (int i = 0; i <10; i++) {
+			try {
+			driver.findElement(By.xpath("//span[contains(text(),'" + jsonWriter.readReferancedata() + "')]/ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell/div/ion-buttons/ion-button")).click();
+			break;
+			} catch (NoSuchElementException e) {
+				
+			}
+			catch (StaleElementReferenceException e) {
+				
+			}
+		}
+		
+//    	waithelper.waitForElementToVisisbleWithFluentWait(driver, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_NotificationButton());
 //		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_NotificationButton().click();
-		Thread.sleep(2000);
-//		waithelper.waitForElement(driver, 3000, driver.findElement(By.xpath("//span[contains(text(),'" + jsonWriter.readReferancedata()
+//		Thread.sleep(2000);
+//		waithelper.waitForElementToVisisbleWithFluentWait(driver,driver.findElement(By.xpath("//span[contains(text(),'" + jsonWriter.readReferancedata()
 //		+ "')]/ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell/div/ion-buttons/ion-button")));
 //		driver.findElement(By.xpath("//span[contains(text(),'" + jsonWriter.readReferancedata() + "')]/ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell/div/ion-buttons/ion-button"))
 //		.click();
 		
-		waithelper.waitForElement(driver, 2000, kubschecker.checkerApproveButton());
+		waithelper.waitForElementToVisibleWithFluentWait(driver, kubschecker.checkerApproveButton(),60,5);
 		kubschecker.checkerApproveButton().click();
-		waithelper.waitForElement(driver, 2000, kubschecker.checkerRemarks());
+		waithelper.waitForElementToVisibleWithFluentWait(driver, kubschecker.checkerRemarks(),30,2);
 		kubschecker.checkerRemarks().sendKeys(aCCOUNTSPAYABLE_VendorContractsTestDataType.CheckerRemark);
-		waithelper.waitForElement(driver, 2000, kubschecker.checkersubmitButton());
+		waithelper.waitForElementToVisibleWithFluentWait(driver, kubschecker.checkersubmitButton(),60,5);
 		kubschecker.checkersubmitButton().click();
-		Thread.sleep(2000);
-    	WebElement recordstatus = aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_RecordStatus();
-    	clicksAndActionHelper.moveToElement(recordstatus);
+	//	Thread.sleep(2000);
+		waithelper.waitForElementToVisibleWithFluentWait(driver,aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_RecordStatus(),60,5);
+    //	WebElement recordstatus = aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_RecordStatus();
+   // 	clicksAndActionHelper.moveToElement(recordstatus);
     	String message = aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_RecordStatus().getText();
     	System.out.println(message);
-    	aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_RecordStatus().click();
+    //	aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_RecordStatus().click();
 	}
 	
 	@Then("^click on first eye button to get the unique contract code$")
     public void click_on_first_eye_button_to_get_the_unique_contract_code() throws InterruptedException {
 		
-		waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_ContractCodeEyeButton());
+		waithelper.waitForElementToVisibleWithFluentWait(driver, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_ContractCodeEyeButton(),30,2);
 		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_ContractCodeEyeButton().click();
 		Thread.sleep(2000);
 		String uniquecode = javascripthelper.executeScript("return document.getElementsByClassName('native-input sc-ion-input-md')[2].value").toString();
@@ -448,27 +470,39 @@ public class ACCOUNTSPAYABLE_VendorContracts {
 	@Then("^Get the contract and Txn status by searching the record via business partner$")
     public void get_the_contract_and_txn_status_by_searching_the_record_via_business_partner()  {
 		
-		waithelper.waitForElement(driver, 3000, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_Search());
+		waithelper.waitForElementToVisibleWithFluentWait(driver,aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_Search(),30,2);
 		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_Search().click();
 		
-		waithelper.waitForElement(driver, 3000, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_BusinessPartnerSearch());
+		waithelper.waitForElementToVisibleWithFluentWait(driver,aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_BusinessPartnerSearch(),30,2);
 		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_BusinessPartnerSearch().sendKeys(aCCOUNTSPAYABLE_VendorContractsTestDataType.BP_Name);
 		
-		waithelper.waitForElement(driver, 3000, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_ContractStatus());
+		waithelper.waitForElementToVisibleWithFluentWait(driver,aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_ContractStatus(),30,2);
 		System.out.println("Contract Status - " +aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_ContractStatus().getText());
 		
-		waithelper.waitForElement(driver, 3000, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_TxnStatus());
+		waithelper.waitForElementToVisibleWithFluentWait(driver,aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_TxnStatus(),30,2);
 		System.out.println("Txn Status - " +aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_TxnStatus().getText());
     }
 
-	
+	 
 	@And("^maker should logout$")
     public void checker_should_logout()  {
-		waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_ProfileName());
+		waithelper.waitForElementToVisibleWithFluentWait(driver, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_ProfileName(),30,2);
 		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_ProfileName().click();
-		waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_Logout());
+		waithelper.waitForElementToVisibleWithFluentWait(driver, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_Logout(),30,2);
 		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_Logout();
     }
+	@Then("^search vendor contract details by business partner name$")
+	public void search_vendor_contract_details_by_business_partner_name()  {
+		waithelper.waitForElementToVisibleWithFluentWait(driver,aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_BusinessPartnerSearch(),30,2);
+		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_BusinessPartnerSearch().sendKeys(aCCOUNTSPAYABLE_VendorContractsTestDataType.BP_Name);
+	}
+
+	@And("^vendor contract details should display on contract creation list view$")
+	public void vendor_contract_details_should_display_on_contract_creation_list_view() {
+		waithelper.waitForElementToVisibleWithFluentWait(driver,aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_VendorContractDetails(),30,2);
+		boolean vendorContractDetails = aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_VendorContractDetails().getText().equals(aCCOUNTSPAYABLE_VendorContractsTestDataType.ContractName);
+		System.out.println("Vendor contract details is displayed in contract creation list view - "+vendorContractDetails );
+	}
      
     
 }

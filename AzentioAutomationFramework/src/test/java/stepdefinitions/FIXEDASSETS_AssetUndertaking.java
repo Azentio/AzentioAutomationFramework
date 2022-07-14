@@ -26,6 +26,7 @@ import resources.BaseClass;
 import resources.JsonDataReaderWriter;
 import testDataType.FIXEDASSETS_AssetSaleTestDataType;
 import testDataType.FIXEDASSETS_AssetUndertakingTestDataType;
+import testDataType.FixedAsset_AssetCreationTestDataType;
 
 public class FIXEDASSETS_AssetUndertaking {
 	WebDriver driver = BaseClass.driver;
@@ -37,6 +38,7 @@ public class FIXEDASSETS_AssetUndertaking {
 	FIXEDASSETS_AssetUndertakingObj fIXEDASSETS_AssetUndertakingObj = new FIXEDASSETS_AssetUndertakingObj(driver);
 	WaitHelper waithelper = new WaitHelper(driver);
 	FIXEDASSETS_AssetUndertakingTestDataType fIXEDASSETS_AssetUndertakingTestDataType=jsonReader.getAssetUndertakingdata("Maker");
+	FixedAsset_AssetCreationTestDataType assetCreation =jsonReader.getAssetCreationByName("Maker");
 	JavascriptHelper javascripthelper = new JavascriptHelper();
 	JsonDataReaderWriter jsonWriter = new JsonDataReaderWriter();
 	ClicksAndActionsHelper clicksAndActionHelper = new ClicksAndActionsHelper(driver);
@@ -75,7 +77,8 @@ public class FIXEDASSETS_AssetUndertaking {
     	
     	fIXEDASSETS_AssetUndertakingObj.fixedAssets_AssetTransfer_AssetReferenceNumber().click();
     	waithelper.waitForElement(driver, 2000, fIXEDASSETS_AssetUndertakingObj.fixedAssets_AssetTransfer_AssetReferenceNumber());
-    	fIXEDASSETS_AssetUndertakingObj.fixedAssets_AssetTransfer_AssetReferenceNumber().sendKeys(fIXEDASSETS_AssetUndertakingTestDataType.AssetReferenceNumberForTransfer);
+    //	fIXEDASSETS_AssetUndertakingObj.fixedAssets_AssetTransfer_AssetReferenceNumber().sendKeys(fIXEDASSETS_AssetUndertakingTestDataType.AssetReferenceNumberForTransfer);
+    	fIXEDASSETS_AssetUndertakingObj.fixedAssets_AssetTransfer_AssetReferenceNumber().sendKeys(assetCreation.AssetCode);
     	fIXEDASSETS_AssetUndertakingObj.fixedAssets_AssetTransfer_AssetReferenceNumber().sendKeys(Keys.ENTER);
     	
     	waithelper.waitForElement(driver, 2000, fIXEDASSETS_AssetUndertakingObj.fixedAssets_AssetTransfer_NewBranch());
@@ -94,7 +97,9 @@ public class FIXEDASSETS_AssetUndertaking {
     	
     	fIXEDASSETS_AssetUndertakingObj.fixedAssets_AssetTransfer_AssetReferenceNumber().click();
     	waithelper.waitForElement(driver, 2000, fIXEDASSETS_AssetUndertakingObj.fixedAssets_AssetTransfer_AssetReferenceNumber());
-    	fIXEDASSETS_AssetUndertakingObj.fixedAssets_AssetTransfer_AssetReferenceNumber().sendKeys(fIXEDASSETS_AssetUndertakingTestDataType.AssetReferenceNumberUndertaking);
+    //	fIXEDASSETS_AssetUndertakingObj.fixedAssets_AssetTransfer_AssetReferenceNumber().sendKeys(fIXEDASSETS_AssetUndertakingTestDataType.AssetReferenceNumberUndertaking);
+    	fIXEDASSETS_AssetUndertakingObj.fixedAssets_AssetTransfer_AssetReferenceNumber().sendKeys(assetCreation.AssetCode);
+    	
     	fIXEDASSETS_AssetUndertakingObj.fixedAssets_AssetTransfer_AssetReferenceNumber().sendKeys(Keys.ENTER);
     	
     	waithelper.waitForElement(driver, 2000, fIXEDASSETS_AssetUndertakingObj.fixedAssets_AssetTransfer_NewBranch());
@@ -132,7 +137,8 @@ public class FIXEDASSETS_AssetUndertaking {
     	
     	fIXEDASSETS_AssetUndertakingObj.fixedAssets_AssetTransfer_AssetReferenceNumber().click();
     	waithelper.waitForElement(driver, 2000, fIXEDASSETS_AssetUndertakingObj.fixedAssets_AssetTransfer_AssetReferenceNumber());
-    	fIXEDASSETS_AssetUndertakingObj.fixedAssets_AssetTransfer_AssetReferenceNumber().sendKeys(fIXEDASSETS_AssetUndertakingTestDataType.AssetReferenceNumberRevaluedForTransfer);
+    //	fIXEDASSETS_AssetUndertakingObj.fixedAssets_AssetTransfer_AssetReferenceNumber().sendKeys(fIXEDASSETS_AssetUndertakingTestDataType.AssetReferenceNumberRevaluedForTransfer);
+    	fIXEDASSETS_AssetUndertakingObj.fixedAssets_AssetTransfer_AssetReferenceNumber().sendKeys(assetCreation.AssetCode);
     	fIXEDASSETS_AssetUndertakingObj.fixedAssets_AssetTransfer_AssetReferenceNumber().sendKeys(Keys.ENTER);
     	
     	waithelper.waitForElement(driver, 2000, fIXEDASSETS_AssetUndertakingObj.fixedAssets_AssetTransfer_NewBranch());

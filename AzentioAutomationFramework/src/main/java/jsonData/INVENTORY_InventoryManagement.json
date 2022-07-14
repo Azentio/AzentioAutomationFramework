@@ -23,10 +23,11 @@
 		"gLCode"				: "IFRS-LIAB-LI3000003 - Accounts Payable",
 		"GlMonth"				: "Oct",
 		"GlFullMonth"			: "October",
-		"GlYear"				: "2022",
+		"GlYear"				: "2023",
 		"GlDay"					: "1",
 		"GlToMonth"				: "Oct",
 		"GlFullToMonth"			: "October",
 		"GlToDate"				: "19"
+		
 	}
 ]

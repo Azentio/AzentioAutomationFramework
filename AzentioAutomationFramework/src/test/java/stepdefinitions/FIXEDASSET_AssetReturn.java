@@ -33,6 +33,7 @@ import resources.BaseClass;
 import resources.JsonDataReaderWriter;
 import testDataType.FIXEDASSET_AssetAmendmentData;
 import testDataType.FIXEDASSET_AssetReturnTestData;
+import testDataType.FixedAsset_AssetCreationTestDataType;
 
 public class FIXEDASSET_AssetReturn extends BaseClass {
 	WebDriver driver = BaseClass.driver;
@@ -49,6 +50,7 @@ public class FIXEDASSET_AssetReturn extends BaseClass {
 	ClicksAndActionsHelper clickAndActionHelper = new ClicksAndActionsHelper(driver);
 	FIXEDASSET_AssetReturnObj assetReturnObj = new FIXEDASSET_AssetReturnObj(driver);
 	FIXEDASSET_AssetAmendmentData assetAmendmentData = jsonConfig.getAssetAmendmentByName("Asset");
+	FixedAsset_AssetCreationTestDataType fixedAsset_AssetCreationTestDataType = jsonConfig.getAssetCreationByName("Maker");
 	String RefNo;
 	String referance_id;
 	String reviwerId;
@@ -120,7 +122,8 @@ public class FIXEDASSET_AssetReturn extends BaseClass {
         //-----------GIVE ASSET REF NO----------------//
     	waitHelper.waitForElement(driver, 2000, assetReturnObj.assetReturnAssetReferenceNumber());
     	assetReturnObj.assetReturnAssetReferenceNumber().click();
-    	assetReturnObj.assetReturnAssetReferenceNumber().sendKeys(RefNo);
+    	//RefNo
+    	assetReturnObj.assetReturnAssetReferenceNumber().sendKeys("01-001-woodply28738");
     	assetReturnObj.assetReturnAssetReferenceNumber().sendKeys(Keys.ENTER);
     }
 
@@ -129,6 +132,7 @@ public class FIXEDASSET_AssetReturn extends BaseClass {
        //-----------ASSET ITEM NUMBER----------//
     	waitHelper.waitForElement(driver, 2000, assetReturnObj.assetReturnAssetItemNo());
     	assetReturnObj.assetReturnAssetItemNo().click();
+    	Thread.sleep(1000);
     	assetReturnObj.assetReturnAssetItemNo().sendKeys(Keys.DOWN);
     	assetReturnObj.assetReturnAssetItemNo().sendKeys(Keys.ENTER);
     }
@@ -289,12 +293,22 @@ public class FIXEDASSET_AssetReturn extends BaseClass {
     @Then("^Action Icon from claim record$")
     public void action_icon_from_claim_record() throws Throwable {
 		// ------------------CHECKER ACTION------------------//
-		waitHelper.waitForElement(driver, 3000, driver.findElement(By.xpath("//span[contains(text(),'"
-				+ readerData.readReferancedata()
-				+ "')]/ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell/div/ion-buttons/ion-button")));
-		driver.findElement(By.xpath("//span[contains(text(),'" + readerData.readReferancedata()
-				+ "')]/ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell/div/ion-buttons/ion-button"))
-				.click();
+//		waitHelper.waitForElement(driver, 3000, driver.findElement(By.xpath("//span[contains(text(),'"
+//				+ readerData.readReferancedata()
+//				+ "')]/ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell/div/ion-buttons/ion-button")));
+	for (int i = 0; i <10; i++) {
+		try {
+			driver.findElement(By.xpath("//span[contains(text(),'" + readerData.readReferancedata()
+			+ "')]/ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell/div/ion-buttons/ion-button"))
+			.click();
+			break;
+			
+		} catch (NoSuchElementException e) {
+			
+		}
+	}
+		
+		
     }
 
     @And("^Click Approve icon button$")
@@ -644,7 +658,8 @@ public class FIXEDASSET_AssetReturn extends BaseClass {
 	    @And("^choose asset reference number of impaired asset$")
 	    public void choose_asset_reference_number_of_impaired_asset() throws Throwable {
 	    	 assetReturnObj.assetReturnAssetReferenceNumber().click();
-				assetReturnObj.assetReturnAssetReferenceNumber().sendKeys(assetReturnTestData.assetReferenceNumberOFImpairedAsset);
+			//	assetReturnObj.assetReturnAssetReferenceNumber().sendKeys(assetReturnTestData.assetReferenceNumberOFImpairedAsset);
+	    	 fixedAsset_AssetDeallocationObj.fixedAsset_AssetDeallocation_AssetReferenceNumber().sendKeys(fixedAsset_AssetCreationTestDataType.AssetCode);
 				assetReturnObj.assetReturnAssetReferenceNumber().sendKeys(Keys.DOWN);
 				assetReturnObj.assetReturnAssetReferenceNumber().sendKeys(Keys.ENTER);
 				String assetReferenceNumber=assetReturnObj.fixedAssetGetReferenceNo().getText();
@@ -703,9 +718,10 @@ public class FIXEDASSET_AssetReturn extends BaseClass {
     	//AssetReferenceNumber
         waitHelper.waitForElement(driver, 4000,  fixedAsset_AssetDeallocationObj.fixedAsset_AssetDeallocation_AssetReferenceNumber());
         fixedAsset_AssetDeallocationObj.fixedAsset_AssetDeallocation_AssetReferenceNumber().click();
-        fixedAsset_AssetDeallocationObj.fixedAsset_AssetDeallocation_AssetReferenceNumber().sendKeys(assetReturnTestData.assetReferenceNumberOFDeallocationAsset);
+      //  fixedAsset_AssetDeallocationObj.fixedAsset_AssetDeallocation_AssetReferenceNumber().sendKeys(assetReturnTestData.assetReferenceNumberOFDeallocationAsset);
+        fixedAsset_AssetDeallocationObj.fixedAsset_AssetDeallocation_AssetReferenceNumber().sendKeys(fixedAsset_AssetCreationTestDataType.AssetCode);
         fixedAsset_AssetDeallocationObj.fixedAsset_AssetDeallocation_AssetReferenceNumber().sendKeys(Keys.ENTER);
-       
+        
         
         //ItemNumber
         waitHelper.waitForElement(driver, 4000,  fixedAsset_AssetDeallocationObj.fixedAsset_AssetDeallocation_ItemNumber());

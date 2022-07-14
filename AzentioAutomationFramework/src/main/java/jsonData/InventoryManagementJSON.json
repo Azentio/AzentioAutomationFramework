@@ -30,7 +30,7 @@
 "GRNInvoiceNumber":"INV1112",
 "GRNDeliveryLocation":"West Zone",
 
-"GRNPoNumber":"Azentio_Soft-Agency-8-PO-290",
+"GRNPoNumber":"Azentio_Soft-Agency-8-PO-455",
 "GRNQtyReceived":"1",
 "GRNQtyApproved":"1",
 
@@ -73,7 +73,7 @@
 		"ReturnType":"Found",
 		"Itemdescription":"STAPLERS-STAPLERS",
 		"ReturnTypeInventory":"Return to inventory",
-		"Voucher":"ADJ-129-52022",
+		"Voucher":"ASSR628",
 		"VoucherForStockIssue":"TRN_SI_80_20220328124933"
 	 
 	 

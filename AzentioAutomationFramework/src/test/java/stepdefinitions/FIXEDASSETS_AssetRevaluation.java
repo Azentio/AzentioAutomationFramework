@@ -23,6 +23,7 @@ import pageobjects.KUBS_CheckerObj;
 import resources.BaseClass;
 import resources.JsonDataReaderWriter;
 import testDataType.FIXEDASSETS_AssetRevaluationTestDataType;
+import testDataType.FixedAsset_AssetCreationTestDataType;
 
 public class FIXEDASSETS_AssetRevaluation {
 	WebDriver driver = BaseClass.driver;
@@ -32,6 +33,7 @@ public class FIXEDASSETS_AssetRevaluation {
 	FIXEDASSETS_AssetCreationObj fIXEDASSETS_AssetCreationObj = new FIXEDASSETS_AssetCreationObj(driver);
 	FIXEDASSETS_AssetSaleObj fIXEDASSETS_AssetSaleObj = new FIXEDASSETS_AssetSaleObj(driver);
 	FIXEDASSETS_AssetUndertakingObj fIXEDASSETS_AssetUndertakingObj = new FIXEDASSETS_AssetUndertakingObj(driver);
+	FixedAsset_AssetCreationTestDataType assetCreation =jsonReader.getAssetCreationByName("Maker");
 	WaitHelper waithelper = new WaitHelper(driver);
 	FIXEDASSETS_AssetRevaluationTestDataType fIXEDASSETS_AssetRevaluationTestDataType=jsonReader.getAssetRevaluationdata("Maker");
 	JavascriptHelper javascripthelper = new JavascriptHelper();
@@ -58,7 +60,8 @@ public class FIXEDASSETS_AssetRevaluation {
 	@And("^Fill the required fields for asset revaluation$")
 	public void fill_the_required_fields_for_asset_revaluation() {
 		waithelper.waitForElement(driver, 3000, fIXEDASSETS_AssetUndertakingObj.fixedAssets_AssetRevaluation_AssetReferenceNumber());
-		fIXEDASSETS_AssetUndertakingObj.fixedAssets_AssetRevaluation_AssetReferenceNumber().sendKeys(fIXEDASSETS_AssetRevaluationTestDataType.AssetReferenceNumber);
+		// fIXEDASSETS_AssetUndertakingObj.fixedAssets_AssetRevaluation_AssetReferenceNumber().sendKeys(fIXEDASSETS_AssetRevaluationTestDataType.AssetReferenceNumber);
+		fIXEDASSETS_AssetUndertakingObj.fixedAssets_AssetRevaluation_AssetReferenceNumber().sendKeys(assetCreation.AssetCode);
 		fIXEDASSETS_AssetUndertakingObj.fixedAssets_AssetRevaluation_AssetReferenceNumber().sendKeys(Keys.ENTER);
 		
 		//waithelper.waitForElement(driver, 3000, fIXEDASSETS_AssetUndertakingObj.fixedAssets_AssetRevaluation_ItemNumber());

@@ -1,21 +1,14 @@
 package stepdefinitions;
 
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.Month;
 import java.time.temporal.ChronoUnit;
-import java.util.Date;
 import java.util.HashMap;
-import java.util.Locale;
 import java.util.Map;
-import java.util.Random;
-import java.util.concurrent.TimeUnit;
-import java.util.stream.DoubleStream;
 
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.ElementClickInterceptedException;
-import org.openqa.selenium.JavascriptException;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.StaleElementReferenceException;
@@ -38,6 +31,7 @@ import resources.BaseClass;
 import resources.JsonDataReaderWriter;
 import resources.MonthFinder;
 import testDataType.FIXEDASSET_AssetImpairementTestDataType;
+import testDataType.FixedAsset_AssetCreationTestDataType;
 
 public class FIXEDASSET_AssetImpairement extends BaseClass {
 	WebDriver driver = BaseClass.driver;
@@ -57,6 +51,7 @@ public class FIXEDASSET_AssetImpairement extends BaseClass {
 	FIXED_ASSET_AssetDeAllocationObj deAllocationObj = new FIXED_ASSET_AssetDeAllocationObj(driver);
 	FIXEDASSET_AssetTransferObj assetTransferObj = new FIXEDASSET_AssetTransferObj(driver);
 	JsonDataReaderWriter jsonReaderWriter = new JsonDataReaderWriter();
+	FixedAsset_AssetCreationTestDataType fixedAsset_AssetCreationTestDataType = jsonConfig.getAssetCreationByName("Maker");
 	public String assetLife;
 
 	@Given("^Navigate to KUBS URL and login with maker credentials$")
@@ -573,8 +568,9 @@ public class FIXEDASSET_AssetImpairement extends BaseClass {
 
 		assetImpairementObj.fixedAssetReferenceNumber().click();
 		assetImpairementObj.fixedAssetReferenceNumber().sendKeys(impairementData.get("assetReferenceNumber"));
+		//assetImpairementObj.fixedAssetReferenceNumber().sendKeys(fixedAsset_AssetCreationTestDataType.AssetCode);
 		assetImpairementObj.fixedAssetReferenceNumber().sendKeys(Keys.ENTER);
-
+		
 	}
 
 	@And("^select the asset reference number of allocated asset$")

@@ -1,24 +1,25 @@
 [
 	{
-	"User" 			: "Setup",
-	"Template"		: "Base Template",
-	"Template1"		: "CUSTOM_TEMPLATE",
-	"BookName"		: "Testing_35",
-	"BookName1"		: "Testing_34",
-	"Default" 		: "Testing_52",
-	"Modify"		: "Testing_9",
-	"Day"			: "2",
-	"Month"			: "May",
-	"Year"			: "2023",
-	"BookType"		: "IFRS Book",
-	"BookType1"		: "GAAP",
-	"Remark"		: "Okay",
-	
-	//Accounting Category
-	"CategoryCode" : "Income36",
-	"CategoryBook" : "Income37",
-	"CategoryCode1" : "Expenditure54",
-	"CategoryBook1" : "Expenditure66",
-	"GlGeneration" : "Auto"
+		"User"			: "Setup",
+		"Template"		: "Base Template",
+		"Template1"		: "CUSTOM_TEMPLATE",
+		"BookName"		: "Testing_50",
+		"BookName1"		: "Testing_30",
+		"Default"		: "Testing_136",
+		"Modify"		: "Accounting_",
+		"Day"			: "30",
+		"Month"			: "Jul",
+		"Year"			: "2023",
+		"BookType"		: "IFRS Book",
+		"BookType1"		: "GAAP",
+		"Remark"		: "Okay",
+		
+		//Accounting Category
+		
+		"CategoryCode"	: "Income10",
+		"CategoryBook"	: "Income20",
+		"CategoryCode1"	: "Expenditure10",
+		"CategoryBook1"	: "Expenditure20",
+		"GlGeneration"	: "Auto"
 	}
 ]

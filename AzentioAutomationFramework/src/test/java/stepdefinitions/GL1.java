@@ -68,20 +68,21 @@ public class GL1 {
 	
 	 @Then("^click on accounting setup$")
 	    public void click_on_accounting_setup() throws Throwable {
-			waithelper.waitForElement(driver, 2000, gL1obj.accountingSetup_Button());
+			waithelper.waitForElementToVisibleWithFluentWait(driver, gL1obj.accountingSetup_Button(), 60, 500);
 			gL1obj.accountingSetup_Button().click();
-			Thread.sleep(2000);
+			
 	    }
 
 	    @Then("^Click on Chart of account definatation$")
 	    public void click_on_chart_of_account_definatation() throws Throwable {
-	    	waithelper.waitForElement(driver, 2000, gL1obj.chartOfAccountsDefination_Button());
-			gL1obj.chartOfAccountsDefination_Button().click(); 
+	    	waithelper.waitForElementToVisibleWithFluentWait(driver, gL1obj.chartOfAccountsDefination_Button(), 60, 500);
+			gL1obj.chartOfAccountsDefination_Button().click();
+			
 	    }
 
 	    @Then("^Click on COA add button$")
 	    public void click_on_coa_add_button() throws Throwable {
-	    	waithelper.waitForElement(driver, 2000, gL1obj.chartOfAccountsDefination_AddButton());
+	    	waithelper.waitForElementToVisibleWithFluentWait(driver, gL1obj.chartOfAccountsDefination_AddButton(), 60, 500);
 			gL1obj.chartOfAccountsDefination_AddButton().click(); 
 	    }
 
@@ -89,32 +90,33 @@ public class GL1 {
 	    public void fill_the_form_for_coa() throws Throwable {
 	    	Random random = new Random();
 	    	int radom = random.nextInt(500-100)+100;
-	    	waithelper.waitForElement(driver, 2000, gL1obj.accountingCategory_textBox());
+	    	waithelper.waitForElementToVisibleWithFluentWait(driver, gL1obj.accountingCategory_textBox(), 60, 500);
 			gL1obj.accountingCategory_textBox().click(); 
 			gL1obj.accountingCategory_textBox().sendKeys(gL1TestDataType.AccountingCategory);
 			gL1obj.accountingCategory_textBox().sendKeys(Keys.ENTER);
 			
-			waithelper.waitForElement(driver, 2000, gL1obj.cOAname_textBox());
+			waithelper.waitForElementToVisibleWithFluentWait(driver, gL1obj.cOAname_textBox(), 60, 500);
 			gL1obj.cOAname_textBox().click(); 
 			gL1obj.cOAname_textBox().sendKeys(gL1TestDataType.coaName+radom);
 			gL1obj.cOAname_textBox().sendKeys(Keys.ENTER);
 			
-			waithelper.waitForElement(driver, 2000, gL1obj.parentGL_textBox());
+			waithelper.waitForElementToVisibleWithFluentWait(driver, gL1obj.parentGL_textBox(), 60, 500);
 			gL1obj.parentGL_textBox().click(); 
-			gL1obj.parentGL_textBox().sendKeys(gL1TestDataType.parentGL);
+			gL1obj.parentGL_textBox().sendKeys(Keys.DOWN);
 			gL1obj.parentGL_textBox().sendKeys(Keys.ENTER);
 			
-			waithelper.waitForElement(driver, 2000, gL1obj.gLType_textBox());
+			waithelper.waitForElementToVisibleWithFluentWait(driver, gL1obj.gLType_textBox(), 60, 500);
 			gL1obj.gLType_textBox().click(); 
-			gL1obj.gLType_textBox().sendKeys(gL1TestDataType.gLType);
+			//gL1obj.gLType_textBox().sendKeys(gL1TestDataType.gLType);
+			gL1obj.gLType_textBox().sendKeys(Keys.DOWN);
 			gL1obj.gLType_textBox().sendKeys(Keys.ENTER);
 			
-			waithelper.waitForElement(driver, 2000, gL1obj.decriptionOfGL_textBox());
+			waithelper.waitForElementToVisibleWithFluentWait(driver, gL1obj.decriptionOfGL_textBox(), 60, 500);
 			gL1obj.decriptionOfGL_textBox().click(); 
 			gL1obj.decriptionOfGL_textBox().sendKeys(gL1TestDataType.description+radom);
 			gL1obj.decriptionOfGL_textBox().sendKeys(Keys.ENTER);
 			
-			waithelper.waitForElement(driver, 2000, gL1obj.balanceType_Textbox());
+			waithelper.waitForElementToVisibleWithFluentWait(driver, gL1obj.balanceType_Textbox(), 60, 500);
 			gL1obj.balanceType_Textbox().click(); 
 			gL1obj.balanceType_Textbox().sendKeys(gL1TestDataType.balanceType);
 			gL1obj.balanceType_Textbox().sendKeys(Keys.ENTER);
@@ -126,32 +128,33 @@ public class GL1 {
 	    public void fill_the_form_for_coa1() throws Throwable {
 	    	Random ran = new Random();
 	    	int radom = ran.nextInt(500-100)+100;
-	    	waithelper.waitForElement(driver, 2000, gL1obj.accountingCategory_textBox());
+	    	waithelper.waitForElementToVisibleWithFluentWait(driver, gL1obj.accountingCategory_textBox(), 60, 500);
 			gL1obj.accountingCategory_textBox().click(); 
 			gL1obj.accountingCategory_textBox().sendKeys(gL1TestDataType.AccountingCategory);
 			gL1obj.accountingCategory_textBox().sendKeys(Keys.ENTER);
 			
-			waithelper.waitForElement(driver, 2000, gL1obj.cOAname_textBox());
+			waithelper.waitForElementToVisibleWithFluentWait(driver, gL1obj.cOAname_textBox(), 60, 500);
 			gL1obj.cOAname_textBox().click(); 
 			gL1obj.cOAname_textBox().sendKeys(gL1TestDataType.coaName1+radom);
 			gL1obj.cOAname_textBox().sendKeys(Keys.ENTER);
 			
-			waithelper.waitForElement(driver, 2000, gL1obj.parentGL_textBox());
+			waithelper.waitForElementToVisibleWithFluentWait(driver, gL1obj.parentGL_textBox(), 60, 500);
 			gL1obj.parentGL_textBox().click(); 
-			gL1obj.parentGL_textBox().sendKeys(gL1TestDataType.parentGL1);
+			//gL1obj.parentGL_textBox().sendKeys(gL1TestDataType.parentGL1);
+			gL1obj.parentGL_textBox().sendKeys(Keys.DOWN);
 			gL1obj.parentGL_textBox().sendKeys(Keys.ENTER);
 			
-			waithelper.waitForElement(driver, 2000, gL1obj.gLType_textBox());
+			waithelper.waitForElementToVisibleWithFluentWait(driver, gL1obj.gLType_textBox(), 60, 500);
 			gL1obj.gLType_textBox().click(); 
 			gL1obj.gLType_textBox().sendKeys(gL1TestDataType.gLType1);
 			gL1obj.gLType_textBox().sendKeys(Keys.ENTER);
 			
-			waithelper.waitForElement(driver, 2000, gL1obj.decriptionOfGL_textBox());
+			waithelper.waitForElementToVisibleWithFluentWait(driver, gL1obj.decriptionOfGL_textBox(), 60, 500);
 			gL1obj.decriptionOfGL_textBox().click(); 
 			gL1obj.decriptionOfGL_textBox().sendKeys(gL1TestDataType.description1+radom);
 			gL1obj.decriptionOfGL_textBox().sendKeys(Keys.ENTER);
 			
-			waithelper.waitForElement(driver, 2000, gL1obj.balanceType_Textbox());
+			waithelper.waitForElementToVisibleWithFluentWait(driver, gL1obj.balanceType_Textbox(), 60, 500);
 			gL1obj.balanceType_Textbox().click(); 
 			gL1obj.balanceType_Textbox().sendKeys(gL1TestDataType.balanceType);
 			gL1obj.balanceType_Textbox().sendKeys(Keys.ENTER);
@@ -161,32 +164,33 @@ public class GL1 {
 	    public void fill_the_form_for_coa2() throws Throwable {
 	    	Random ran = new Random();
 	    	int radom = ran.nextInt(500-100)+100;
-	    	waithelper.waitForElement(driver, 2000, gL1obj.accountingCategory_textBox());
+	    	waithelper.waitForElementToVisibleWithFluentWait(driver, gL1obj.accountingCategory_textBox(), 60, 500);
 			gL1obj.accountingCategory_textBox().click(); 
 			gL1obj.accountingCategory_textBox().sendKeys(gL1TestDataType.AccountingCategory);
 			gL1obj.accountingCategory_textBox().sendKeys(Keys.ENTER);
 			
-			waithelper.waitForElement(driver, 2000, gL1obj.cOAname_textBox());
+			waithelper.waitForElementToVisibleWithFluentWait(driver, gL1obj.cOAname_textBox(), 60, 500);
 			gL1obj.cOAname_textBox().click(); 
 			gL1obj.cOAname_textBox().sendKeys(gL1TestDataType.coaName2+radom);
 			gL1obj.cOAname_textBox().sendKeys(Keys.ENTER);
 			
-			waithelper.waitForElement(driver, 2000, gL1obj.parentGL_textBox());
+			waithelper.waitForElementToVisibleWithFluentWait(driver, gL1obj.parentGL_textBox(), 60, 500);
 			gL1obj.parentGL_textBox().click(); 
-			gL1obj.parentGL_textBox().sendKeys(gL1TestDataType.parentGL2);
+			//gL1obj.parentGL_textBox().sendKeys(gL1TestDataType.parentGL2);
+			gL1obj.parentGL_textBox().sendKeys(Keys.DOWN);
 			gL1obj.parentGL_textBox().sendKeys(Keys.ENTER);
 			
-			waithelper.waitForElement(driver, 2000, gL1obj.gLType_textBox());
+			waithelper.waitForElementToVisibleWithFluentWait(driver, gL1obj.gLType_textBox(), 60, 500);
 			gL1obj.gLType_textBox().click(); 
 			gL1obj.gLType_textBox().sendKeys(gL1TestDataType.gLType2);
 			gL1obj.gLType_textBox().sendKeys(Keys.ENTER);
 			
-			waithelper.waitForElement(driver, 2000, gL1obj.decriptionOfGL_textBox());
+			waithelper.waitForElementToVisibleWithFluentWait(driver, gL1obj.decriptionOfGL_textBox(), 60, 500);
 			gL1obj.decriptionOfGL_textBox().click(); 
 			gL1obj.decriptionOfGL_textBox().sendKeys(gL1TestDataType.description2+radom);
 			gL1obj.decriptionOfGL_textBox().sendKeys(Keys.ENTER);
 			
-			waithelper.waitForElement(driver, 2000, gL1obj.balanceType_Textbox());
+			waithelper.waitForElementToVisibleWithFluentWait(driver, gL1obj.balanceType_Textbox(), 60, 500);
 			gL1obj.balanceType_Textbox().click(); 
 			gL1obj.balanceType_Textbox().sendKeys(gL1TestDataType.balanceType);
 			gL1obj.balanceType_Textbox().sendKeys(Keys.ENTER);
@@ -196,32 +200,33 @@ public class GL1 {
 	    public void fill_the_form_for_coa3() throws Throwable {
 	    	Random ran = new Random();
 	    	int radom = ran.nextInt(500-100)+100;
-	    	waithelper.waitForElement(driver, 2000, gL1obj.accountingCategory_textBox());
+	    	waithelper.waitForElementToVisibleWithFluentWait(driver, gL1obj.accountingCategory_textBox(), 60, 500);
 			gL1obj.accountingCategory_textBox().click(); 
 			gL1obj.accountingCategory_textBox().sendKeys(gL1TestDataType.AccountingCategory);
 			gL1obj.accountingCategory_textBox().sendKeys(Keys.ENTER);
 			
-			waithelper.waitForElement(driver, 2000, gL1obj.cOAname_textBox());
+			waithelper.waitForElementToVisibleWithFluentWait(driver, gL1obj.cOAname_textBox(), 60, 500);
 			gL1obj.cOAname_textBox().click(); 
 			gL1obj.cOAname_textBox().sendKeys(gL1TestDataType.coaName3+radom);
 			gL1obj.cOAname_textBox().sendKeys(Keys.ENTER);
 			
-			waithelper.waitForElement(driver, 2000, gL1obj.parentGL_textBox());
+			waithelper.waitForElementToVisibleWithFluentWait(driver, gL1obj.parentGL_textBox(), 60, 500);
 			gL1obj.parentGL_textBox().click(); 
-			gL1obj.parentGL_textBox().sendKeys(gL1TestDataType.parentGL3);
+			//gL1obj.parentGL_textBox().sendKeys(gL1TestDataType.parentGL3);
+			gL1obj.parentGL_textBox().sendKeys(Keys.DOWN);
 			gL1obj.parentGL_textBox().sendKeys(Keys.ENTER);
 			
-			waithelper.waitForElement(driver, 2000, gL1obj.gLType_textBox());
+			waithelper.waitForElementToVisibleWithFluentWait(driver, gL1obj.gLType_textBox(), 60, 500);
 			gL1obj.gLType_textBox().click(); 
 			gL1obj.gLType_textBox().sendKeys(gL1TestDataType.gLType3);
 			gL1obj.gLType_textBox().sendKeys(Keys.ENTER);
 			
-			waithelper.waitForElement(driver, 2000, gL1obj.decriptionOfGL_textBox());
+			waithelper.waitForElementToVisibleWithFluentWait(driver, gL1obj.decriptionOfGL_textBox(), 60, 500);
 			gL1obj.decriptionOfGL_textBox().click(); 
 			gL1obj.decriptionOfGL_textBox().sendKeys(gL1TestDataType.description3+radom);
 			gL1obj.decriptionOfGL_textBox().sendKeys(Keys.ENTER);
 			
-			waithelper.waitForElement(driver, 2000, gL1obj.balanceType_Textbox());
+			waithelper.waitForElementToVisibleWithFluentWait(driver, gL1obj.balanceType_Textbox(), 60, 500);
 			gL1obj.balanceType_Textbox().click(); 
 			gL1obj.balanceType_Textbox().sendKeys(gL1TestDataType.balanceType);
 			gL1obj.balanceType_Textbox().sendKeys(Keys.ENTER);
@@ -229,7 +234,7 @@ public class GL1 {
 	    
 	    @Then("^Click on Save buttonT$")
 	    public void click_on_save_buttonT() throws Throwable {
-	    	waithelper.waitForElement(driver, 2000, gL1obj.saveButtonForGeneralLedger());
+	    	waithelper.waitForElementToVisibleWithFluentWait(driver, gL1obj.saveButtonForGeneralLedger(), 60, 500);
 			gL1obj.saveButtonForGeneralLedger().click(); 
 	    }
 	    
@@ -239,25 +244,25 @@ public class GL1 {
 	    
 	    @Then("^Click on add button of branch$")
 	    public void click_on_add_button_of_branch() throws Throwable {
-	    	waithelper.waitForElement(driver, 2000, gL1obj.branch_AddButton());
+	    	waithelper.waitForElementToVisibleWithFluentWait(driver, gL1obj.branch_AddButton(), 60, 500);
 			gL1obj.branch_AddButton().click(); 
 	    }
 
 	    @Then("^Fill the form for which branch we need to save$")
 	    public void fill_the_form_for_which_branch_we_need_to_save() throws Throwable {
-	    	waithelper.waitForElement(driver, 2000, gL1obj.branch_TextBox());
+	    	waithelper.waitForElementToVisibleWithFluentWait(driver, gL1obj.branch_TextBox(), 60, 500);
 			gL1obj.branch_TextBox().click(); 
 			gL1obj.branch_TextBox().sendKeys(gL1TestDataType.branch);
 			gL1obj.branch_TextBox().sendKeys(Keys.ENTER);
 			
 			
-			waithelper.waitForElement(driver, 2000, gL1obj.department_TextBox());
+			waithelper.waitForElementToVisibleWithFluentWait(driver, gL1obj.department_TextBox(), 60, 500);
 			gL1obj.department_TextBox().click(); 
 			gL1obj.department_TextBox().sendKeys(gL1TestDataType.department);
 			gL1obj.department_TextBox().sendKeys(Keys.ENTER);
 			
 			
-			waithelper.waitForElement(driver, 2000, gL1obj.costCentre_TextBox());
+			waithelper.waitForElementToVisibleWithFluentWait(driver, gL1obj.costCentre_TextBox(), 60, 500);
 			gL1obj.costCentre_TextBox().click(); 
 			gL1obj.costCentre_TextBox().sendKeys(gL1TestDataType.costCentre);
 			gL1obj.costCentre_TextBox().sendKeys(Keys.ENTER);
@@ -267,13 +272,13 @@ public class GL1 {
 
 	    @Then("^Click on save button for saving branch$")
 	    public void click_on_save_button_for_saving_branch() throws Throwable {
-	    	waithelper.waitForElement(driver, 2000, gL1obj.branch_SaveButton());
+	    	waithelper.waitForElementToVisibleWithFluentWait(driver, gL1obj.branch_SaveButton(), 60, 500);
 			gL1obj.branch_SaveButton().click(); 
 	    }
 
 	    @Then("^Click on save of General Ledger$")
 	    public void click_on_save_of_general_ledger() throws Throwable {
-	    	waithelper.waitForElement(driver, 2000, gL1obj.gLbranch_SaveButton());
+	    	waithelper.waitForElementToVisibleWithFluentWait(driver, gL1obj.gLbranch_SaveButton(), 60, 500);
 			gL1obj.gLbranch_SaveButton().click();
 	    } 
 	    
@@ -282,10 +287,10 @@ public class GL1 {
 
 	    @Then("^Click on search button to search COA$")
 	    public void click_on_search_button_to_search_coa() throws Throwable {
-	    	waithelper.waitForElement(driver, 2000, gL1obj.search_Button());
+	    	waithelper.waitForElementToVisibleWithFluentWait(driver, gL1obj.search_Button(), 60, 500);
 			gL1obj.search_Button().click(); 
 			
-			waithelper.waitForElement(driver, 2000, gL1obj.cOANameSearch_Textbox());
+			waithelper.waitForElementToVisibleWithFluentWait(driver, gL1obj.cOANameSearch_Textbox(), 60, 500);
 			gL1obj.cOANameSearch_Textbox().click(); 
 			gL1obj.cOANameSearch_Textbox().sendKeys(gL1TestDataType.COAnameToinactive);
 			gL1obj.cOANameSearch_Textbox().sendKeys(Keys.ENTER);
@@ -294,22 +299,22 @@ public class GL1 {
 
 	    @Then("^Click on Edit button to edit COA record$")
 	    public void click_on_edit_button_to_edit_coa_record() throws Throwable {
-	    	waithelper.waitForElement(driver, 2000, gL1obj.editAction_Button());
+	    	waithelper.waitForElementToVisibleWithFluentWait(driver, gL1obj.editAction_Button(), 60, 500);
 			gL1obj.editAction_Button().click();
 	    }
 
 	    @Then("^Click on status to make it inactive$")
 	    public void click_on_status_to_make_it_inactive() throws Throwable {
-	    	waithelper.waitForElement(driver, 2000, gL1obj.statusOfCOA_Textbox());
+	    	waithelper.waitForElementToVisibleWithFluentWait(driver, gL1obj.statusOfCOA_Textbox(), 60, 500);
 			gL1obj.statusOfCOA_Textbox().click(); 
 			gL1obj.statusOfCOA_Textbox().sendKeys(gL1TestDataType.statusofCOA);
 			gL1obj.statusOfCOA_Textbox().sendKeys(Keys.ENTER);
-			Thread.sleep(5000);
+			
 	    }
 
 	    @Then("^Click on save button to save record$")
 	    public void click_on_save_button_to_save_record() throws Throwable {
-	    	waithelper.waitForElement(driver, 2000, gL1obj.saveCOA_Button());
+	    	waithelper.waitForElementToVisibleWithFluentWait(driver, gL1obj.saveCOA_Button(), 60, 500);
 			gL1obj.saveCOA_Button().click();  
 	    }
 

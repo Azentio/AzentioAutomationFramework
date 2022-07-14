@@ -103,5 +103,12 @@ public class ENQUIRY_FinancialTransactionObj {
 	public WebElement ENQUIRY_FinancialTransaction_NextPage()
 	{
 		return ENQUIRY_FinancialTransaction_NextPage;
-	}	
+	}
+	@FindBy(xpath="//ion-col[5]//input")
+	private WebElement trialBalance_currencyType;
+	public WebElement trialBalanceCurrencyType()
+	{
+		return 	trialBalance_currencyType;
+
+	}
 }

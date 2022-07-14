@@ -5,6 +5,7 @@ public class AccountingSetup_ChartOfAccountsDefinitionTestDataType {
 	public String AccountingCategory;
 	public String COA_Name;
 	public String COA_NameSearch;
+	public String COA_NameSearch1;
 	
 	public String LeafCOA_CodeSearch;
 	public String ParentCOA_CodeSearch;
