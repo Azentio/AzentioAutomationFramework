@@ -1,5 +1,7 @@
 package stepdefinitions;
 
+import java.io.IOException;
+
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
@@ -67,8 +69,9 @@ public class INVENTORY_InventoryStcokIssue extends BaseClass {
     public void select_the_perticular_inventory_record_by_the_help_of_request_reference_number() throws Throwable {
     	String before_xpath="//span[contains(text(),'";
     	String after_xpath="')]/ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell[2]//ion-button[1]";
-    	waitHelper.waitForElement(driver, 3000, driver.findElement(By.xpath(before_xpath+inventoryStockIssueTestData.inventoryRequestReferenceNumber+after_xpath)));
-    	driver.findElement(By.xpath(before_xpath+inventoryStockIssueTestData.inventoryRequestReferenceNumber+after_xpath)).click();
+//    	waitHelper.waitForElement(driver, 3000, driver.findElement(By.xpath(before_xpath+inventoryStockIssueTestData.inventoryRequestReferenceNumber+after_xpath)));
+    	waitHelper.waitForElementwithFluentwait(driver, driver.findElement(By.xpath(before_xpath+jsonData.readInventoryManagementReqRefNumber()+after_xpath)));
+    	driver.findElement(By.xpath(before_xpath+jsonData.readInventoryManagementReqRefNumber()+after_xpath)).click();
     }
 
     @And("^check the inventory requested sucessfully and capture the inventory data$")
@@ -130,7 +133,7 @@ public class INVENTORY_InventoryStcokIssue extends BaseClass {
 	public void enter_inventory_reference_number() throws Throwable {
 		waitHelper.waitForElement(driver, 3000, inventoryStockIssue.requestReferenceNumber());
 		inventoryStockIssue.requestReferenceNumber().click();
-		inventoryStockIssue.requestReferenceNumber().sendKeys(inventoryStockIssueTestData.inventoryRequestReferenceNumber);
+		inventoryStockIssue.requestReferenceNumber().sendKeys(jsonData.readInventoryManagementReqRefNumber());
 		inventoryStockIssue.requestReferenceNumber().sendKeys(Keys.ENTER);
 	}
 	@Then("^Click on Save button$")
@@ -158,10 +161,12 @@ public class INVENTORY_InventoryStcokIssue extends BaseClass {
     @Then("^submit the record$")
     public void submit_the_record() throws Throwable {
     	Thread.sleep(2000);
-    	waitHelper.waitForElement(driver, 3000, inventoryStockIssue.inventoryStockIssueSubmitButton());
+//    	waitHelper.waitForElement(driver, 3000, inventoryStockIssue.inventoryStockIssueSubmitButton());
+    	waitHelper.waitForElementwithFluentwait(driver, inventoryStockIssue.inventoryStockIssueSubmitButton());
     	inventoryStockIssue.inventoryStockIssueSubmitButton().click();
     	waitHelper.waitForElement(driver, 3000, inventoryStockIssue.inventoryStockIssueAlertRemarks());
     	inventoryStockIssue.inventoryStockIssueAlertRemarks().sendKeys("Ok");
+    	waitHelper.waitForElementwithFluentwait(driver, inventoryStockIssue.inventoryStockIssueAlertSubmitButton());
     	inventoryStockIssue.inventoryStockIssueAlertSubmitButton().click();
         
     }
@@ -183,10 +188,14 @@ public class INVENTORY_InventoryStcokIssue extends BaseClass {
 		System.out.println("Reviewer ID is" + revID);
 		jsonData.addData(revID);
 
-    	waitHelper.waitForElement(driver, 3000, inventoryStockIssue.inventoryStockIssueAlertClose());
+//    	waitHelper.waitForElement(driver, 3000, inventoryStockIssue.inventoryStockIssueAlertClose());
+    	waitHelper.waitForElementwithFluentwait(driver, inventoryStockIssue.inventoryStockIssueAlertClose());
     	inventoryStockIssue.inventoryStockIssueAlertClose().click();
+    	waitHelper.waitForElementwithFluentwait(driver, inventoryStockIssue.inventoryStockIssueUserName());
     	inventoryStockIssue.inventoryStockIssueUserName().click();
-    	waitHelper.waitForElement(driver, 3000, inventoryStockIssue.inventoryStockIssueLogoutButton());
+//    	waitHelper.waitForElement(driver, 3000, inventoryStockIssue.inventoryStockIssueLogoutButton());
+//    	Thread.sleep(1000);
+    	waitHelper.waitForElementToVisibleWithFluentWait(driver, inventoryStockIssue.inventoryStockIssueLogoutButton(), 3, 1);
     	inventoryStockIssue.inventoryStockIssueLogoutButton().click();
         
     }
@@ -229,11 +238,14 @@ public class INVENTORY_InventoryStcokIssue extends BaseClass {
     }
     @And("^logout from reviewer end$")
     public void logout_from_reviewer_end() throws Throwable {
-    	waitHelper.waitForElement(driver, 3000, reviewerObj.reviewerAlertClose());
+//    	waitHelper.waitForElement(driver, 3000, reviewerObj.reviewerAlertClose());
+    	waitHelper.waitForElementwithFluentwait(driver, reviewerObj.reviewerAlertClose());
     	reviewerObj.reviewerAlertClose().click();
-    	waitHelper.waitForElement(driver, 3000,reviewerObj.reviewerUserName());
+//    	waitHelper.waitForElement(driver, 3000,reviewerObj.reviewerUserName());
+    	waitHelper.waitForElementwithFluentwait(driver, reviewerObj.reviewerUserName());
     	reviewerObj.reviewerUserName().click();
-    	waitHelper.waitForElement(driver, 3000,reviewerObj.reviewerLogoutButton());
+//    	waitHelper.waitForElement(driver, 3000,reviewerObj.reviewerLogoutButton());
+    	waitHelper.waitForElementwithFluentwait(driver, reviewerObj.reviewerLogoutButton());
     	reviewerObj.reviewerLogoutButton().click();
     }
     @Then("^login with checker ID$")
@@ -312,6 +324,18 @@ public class INVENTORY_InventoryStcokIssue extends BaseClass {
 		String approvalStatusForChecker = kubsChecker.checkerApprovalStatus().getText();
 		Assert.assertEquals(approvalStatusForChecker, "Record APPROVED successfully");
     }
+    @Then("^click on first eye button to get the request reference number$")
+	public void click_on_first_eye_button_to_get_the_request_reference_number() throws InterruptedException, IOException {
+		
+		javascriptHelper.JavaScriptHelper(driver);
+		waitHelper.waitForElement(driver, 2000, inventoryStockIssue.inventoryStockIssue_FirstEyeButton());
+		inventoryStockIssue.inventoryStockIssue_FirstEyeButton().click();
+		Thread.sleep(2000);
+		String reqRefnumber = javascriptHelper.executeScript("return document.getElementsByClassName('native-input sc-ion-input-md')[3].value").toString();
+		System.out.println("Request Reference Number: " + reqRefnumber);
+		jsonData.addInventoryManagementReqRefNumber(reqRefnumber);
+
+	}
 
 
     

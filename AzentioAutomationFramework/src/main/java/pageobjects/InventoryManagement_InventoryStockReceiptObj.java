@@ -64,5 +64,13 @@ public class InventoryManagement_InventoryStockReceiptObj {
 		 return inventoryManagement_InventoryStockReceipt_MakerNotification;
 	}
 	
+	// first eye button
+	@FindBy(xpath = "//datatable-row-wrapper[1]/datatable-body-row[1]/div[2]/datatable-body-cell[1]/div/ion-buttons/ion-button[1]")
+	private WebElement inventoryManagement_InventoryStockReceipt_FirstEyeButton;
+
+	public WebElement inventoryManagement_InventoryStockReceipt_FirstEyeButton() {
+		return inventoryManagement_InventoryStockReceipt_FirstEyeButton;
+	}
+	
 	
 }

@@ -3,6 +3,7 @@ package stepdefinitions;
 import java.io.IOException;
 import java.util.NoSuchElementException;
 
+import org.json.simple.parser.ParseException;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -22,7 +23,6 @@ import pageobjects.AccountPayable_VendorPurchaseOrderObj;
 //import pageobjects.AccountPayable_VendorPurchaseOrderObj;
 import pageobjects.Azentio_CheckerObj;
 import pageobjects.Azentio_ReviewerObj;
-import pageobjects.KUBS_MakerObj;
 import resources.BaseClass;
 import resources.JsonDataReaderWriter;
 import testDataType.AccountPayable_VendorPurchaseOrderTestDataType;
@@ -54,15 +54,15 @@ public class AccountPayable_VendorPurchaseOrder extends BaseClass {
 		String user = "Maker";
 		Azentio_CheckerObj kubschecker = new Azentio_CheckerObj(driver) ;
 		BUDGET_BudgetCreationTestDataType budgetdata;
-		KUBS_MakerObj kubsMakerObj = new KUBS_MakerObj(driver);
+		
 		//getVendorPurchaseOrderyByName
 		
 		 @Then("^Click on Direction icon$")
 		 public void click_on_direction_icon() throws InterruptedException {
 		 waithelper = new WaitHelper(driver) ;
-		 waithelper.waitForElementToVisibleWithFluentWait(driver, kubsMakerObj.kubsToolIcon(), 5, 500);
-		 kubsMakerObj.kubsToolIcon().click();
-		 waithelper.waitForElementToVisibleWithFluentWait(driver, accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_DirectionIcon(), 5, 500);
+		Thread.sleep(2000);
+//		 waithelper.waitForElement(driver, 4000, accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_DirectionIcon());
+		 waithelper.waitForElementwithFluentwait(driver, accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_DirectionIcon());
 		 accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_DirectionIcon().click();
     
 		    }
@@ -78,13 +78,28 @@ public class AccountPayable_VendorPurchaseOrder extends BaseClass {
 		 public void click_on_purchase_order_eye_icon()  {
 			 waithelper.waitForElement(driver, 2000, accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_EyeButton());
 			 accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_EyeButton().click();
-				
 		       
 		    }
+		 
+			@Then("^click on first eye button to get the po number$")
+			public void click_on_first_eye_button_to_get_the_po_number() throws InterruptedException, IOException {
+				
+				javascripthelper.JavaScriptHelper(driver);
+				waithelper.waitForElement(driver, 2000, accountPayable_VendorPurchaseOrderObj.accountPayable_VendorPurchaseOrder_FirstEyeButton());
+				accountPayable_VendorPurchaseOrderObj.accountPayable_VendorPurchaseOrder_FirstEyeButton().click();
+				Thread.sleep(2000);
+				String ponumber = javascripthelper.executeScript("return document.getElementsByClassName('native-input sc-ion-input-md')[2].value").toString();
+				System.out.println("PO Number: " + ponumber);
+				jsonWriter.addInventoryManagementPOnumber(ponumber);
+				
+
+			}
 
 		 @Then("^Click on purchase order Add button$")
-		 public void click_on_purchase_order_add_button()  {
-			 waithelper.waitForElement(driver, 2000, accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_AddButton());
+		 public void click_on_purchase_order_add_button() throws InterruptedException  {
+//			 waithelper.waitForElement(driver, 2000, accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_AddButton());
+			 Thread.sleep(500);
+			 waithelper.waitForElementwithFluentwait(driver, accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_AddButton());
 			 accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_AddButton().click();
 				
 		        
@@ -174,8 +189,9 @@ public class AccountPayable_VendorPurchaseOrder extends BaseClass {
 		@Then("^Click on Item Details Record$")
 		public void click_on_item_details_record() throws InterruptedException {
 			
-			Thread.sleep(2000);
-			waithelper.waitForElement(driver, 2000,accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_ItemDetailsRecord());
+//			Thread.sleep(2000);
+//			waithelper.waitForElement(driver, 2000,accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_ItemDetailsRecord());
+			waithelper.waitForElementwithFluentwait(driver, accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_ItemDetailsRecord());
 			accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_ItemDetailsRecord().click();
 
 			//validate msg
@@ -199,12 +215,41 @@ public class AccountPayable_VendorPurchaseOrder extends BaseClass {
 			accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_ShippedFromLocation().sendKeys(accountPayable_VendorPurchaseOrderTestDataType.ShippedFromLocation);
 			accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_ShippedFromLocation().sendKeys(Keys.ENTER);
 			
+			waithelper.waitForElementwithFluentwait(driver, accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_RatePerUnitService());
+			accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_RatePerUnitService().sendKeys(accountPayable_VendorPurchaseOrderTestDataType.RatePerUnit);
 			//DeliveryLocation
 			waithelper.waitForElement(driver, 2000,accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_DeliveryLocation());
 			accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_DeliveryLocation().click();
 			accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_DeliveryLocation().sendKeys(accountPayable_VendorPurchaseOrderTestDataType.DeliveryLocation);
 			accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_DeliveryLocation().sendKeys(Keys.ENTER);
 
+		}
+		@Then("^Edit the item details fields po$")
+		public void edit_the_item_details_fields_po() {
+
+			accountPayable_VendorPurchaseOrderTestDataType = jsonReader.getVendorPurchaseOrderyByName("Maker");
+
+			//Shipped from Location
+			waithelper.waitForElement(driver, 2000,accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_ShippedFromLocation());
+			accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_ShippedFromLocation().click();
+			accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_ShippedFromLocation().sendKeys(accountPayable_VendorPurchaseOrderTestDataType.ShippedFromLocation);
+			accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_ShippedFromLocation().sendKeys(Keys.ENTER);
+			
+			waithelper.waitForElementwithFluentwait(driver, accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_RatePerUnitService());
+			accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_RatePerUnitService().sendKeys(accountPayable_VendorPurchaseOrderTestDataType.RatePerUnit);
+			//DeliveryLocation
+//			waithelper.waitForElement(driver, 2000,accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_DeliveryLocation());
+//			accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_DeliveryLocation().click();
+//			accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_DeliveryLocation().sendKeys(accountPayable_VendorPurchaseOrderTestDataType.DeliveryLocation);
+//			accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_DeliveryLocation().sendKeys(Keys.ENTER);
+
+		}
+		@Then("^Click on the item details save button po$")
+		public void Click_on_the_item_details_save_button_po() {
+			waithelper.waitForElementwithFluentwait(driver, accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_ItemDetailsSave());
+			accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_ItemDetailsSave().click();
+//			waithelper.waitForElementwithFluentwait(driver, accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_Save());
+//			accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_Save().click();
 		}
 		@Then("^Click on Account Payable Notification$")
 		 public void click_on_account_payable_notification() {
@@ -257,18 +302,21 @@ public class AccountPayable_VendorPurchaseOrder extends BaseClass {
         	javascripthelper.JavaScriptHelper(driver);
         	waithelper.waitForElement(driver, 3000,accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_RemarkField());
         	javascripthelper.JSEClick(accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_RemarkField());
+        	waithelper.waitForElementwithFluentwait(driver, accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_RemarkField());
         	accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_RemarkField().sendKeys("OK");
         	//inventoryMaintenanceTestDataType.Remark
         			    
         			
         	//Remark Submit
         	
-        	waithelper.waitForElement(driver, 2000,accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_SubmitByMaker());
+//        	waithelper.waitForElement(driver, 2000,accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_SubmitByMaker());
+        	waithelper.waitForElementwithFluentwait(driver, accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_SubmitByMaker());
         	accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_SubmitByMaker().click();
-        	Thread.sleep(2000);
+//        	Thread.sleep(2000);
         	
         	// REVIEWER
-        			Thread.sleep(2000);
+//        			Thread.sleep(2000);
+        			waithelper.waitForElementwithFluentwait(driver, accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_RecordStatus());
         			WebElement recordstatus = accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_RecordStatus();
 
         			clicksAndActionHelper.moveToElement(recordstatus);
@@ -337,9 +385,10 @@ public class AccountPayable_VendorPurchaseOrder extends BaseClass {
 					 accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_PoQuantity().sendKeys(accountPayable_VendorPurchaseOrderTestDataType.PoQuantityGreater);
 					 accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_PoQuantity().sendKeys(Keys.ENTER);
 				
-					Thread.sleep(2000);
+//					Thread.sleep(2000);
 				  	//WebElement toast = driver.findElement(By.xpath("//body/div/div/div/div[1]"));
-				  	WebElement toast = accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_VaildationMsg();
+				  	waithelper.waitForElementwithFluentwait(driver, accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_VaildationMsg());
+					WebElement toast = accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_VaildationMsg();
 
 				  	waithelper.waitForElement(driver, 3000, accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_VaildationMsg());
 				  	Assert.assertTrue(accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_VaildationMsg().isDisplayed());
@@ -387,8 +436,9 @@ public class AccountPayable_VendorPurchaseOrder extends BaseClass {
 				    
 					 
 					 //Po Delivery Date
-					 Thread.sleep(2000);
-					 waithelper.waitForElement(driver, 2000, accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_PODeliveryDate());
+//					 Thread.sleep(2000);
+//					 waithelper.waitForElement(driver, 2000, accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_PODeliveryDate());
+					 waithelper.waitForElementwithFluentwait(driver, accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_PODeliveryDate());
 					 accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_PODeliveryDate().click();
 					
 					 
@@ -399,7 +449,7 @@ public class AccountPayable_VendorPurchaseOrder extends BaseClass {
 							{
 								//span[contains(text(),'Nov 2022')]
 								 Thread.sleep(1000);
-								waithelper.waitForElement(driver, 2000, driver.findElement(By.xpath("//span[contains(text(),'"+accountPayable_VendorPurchaseOrderTestDataType.Month+" "+accountPayable_VendorPurchaseOrderTestDataType.Year+"')]")));
+								 waithelper.waitForElement(driver, 2000, driver.findElement(By.xpath("//span[contains(text(),'"+accountPayable_VendorPurchaseOrderTestDataType.Month+" "+accountPayable_VendorPurchaseOrderTestDataType.Year+"')]")));
 								 WebElement monthAndYear = driver.findElement(By.xpath("//span[contains(text(),'"+accountPayable_VendorPurchaseOrderTestDataType.Month+" "+accountPayable_VendorPurchaseOrderTestDataType.Year+"')]"));
 							    break;
 							}
@@ -470,6 +520,15 @@ public class AccountPayable_VendorPurchaseOrder extends BaseClass {
 					
 					 
 			    }
+			    
+			    @Then("^Click on Beneficiary details tab$")
+			    public void Click_on_Beneficiary_details_tab()  {
+//			    waithelper.waitForElement(driver, 2000, accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_BeneficiarySave());
+//			    accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_BeneficiarySave().click();
+			    	waithelper.waitForElementwithFluentwait(driver, accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_BeneficiaryTab());
+			    	accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_BeneficiaryTab().click();
+			    }
+			    
 			    @Then("^fill Beneficiary Details$")
 			    public void fill_beneficiary_details()  {
 			    	
@@ -520,10 +579,11 @@ public class AccountPayable_VendorPurchaseOrder extends BaseClass {
 		    	
 		    	waithelper.waitForElement(driver, 2000,accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_SubmitByMaker());
 		    	accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_SubmitByMaker().click();
-		    	Thread.sleep(2000);
+//		    	Thread.sleep(2000);
 		    	
 		    	// REVIEWER
-		    			Thread.sleep(2000);
+//		    			Thread.sleep(2000);
+		    			waithelper.waitForElementwithFluentwait(driver, accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_RecordStatus());
 		    			WebElement recordstatus = accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_RecordStatus();
 
 		    			clicksAndActionHelper.moveToElement(recordstatus);
@@ -559,9 +619,10 @@ public class AccountPayable_VendorPurchaseOrder extends BaseClass {
 					 accountPayable_VendorPurchaseOrderObj.accountPayable_VendorPurchaseOrder_ItemDetailQty().sendKeys(accountPayable_VendorPurchaseOrderTestDataType.ItemDetailQty);
 					 accountPayable_VendorPurchaseOrderObj.accountPayable_VendorPurchaseOrder_ItemDetailQty().sendKeys(Keys.ENTER);
 				    
-					 Thread.sleep(2000);
+//					 Thread.sleep(2000);
 					  	//WebElement toast = driver.findElement(By.xpath("//body/div/div/div/div[1]"));
-					  	WebElement toast = accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_VaildationMsg();
+					  waithelper.waitForElementwithFluentwait(driver, accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_VaildationMsg());
+					 WebElement toast = accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_VaildationMsg();
 
 					  	waithelper.waitForElement(driver, 3000, accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_VaildationMsg());
 					  	Assert.assertTrue(accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_VaildationMsg().isDisplayed());
@@ -570,12 +631,98 @@ public class AccountPayable_VendorPurchaseOrder extends BaseClass {
 					    System.out.println(message);
 					
 				}
-			    
-			    
-			    
-			    
-			    
 
+			    @Then("^Fill purchase order for inventory Mandatory fields$")
+			    public void Fill_purchase_order_for_inventory_Mandatory_fields() throws InterruptedException, IOException, ParseException  {
+			    	accountPayable_VendorPurchaseOrderTestDataType = jsonReader.getVendorPurchaseOrderyByName("Maker");
+					 //Entity Branch
+					 waithelper.waitForElement(driver, 2000, accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_EntityBranch());
+					 accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_EntityBranch().click();
+					 accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_EntityBranch().sendKeys(accountPayable_VendorPurchaseOrderTestDataType.EntityBranch);
+					 accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_EntityBranch().sendKeys(Keys.ENTER);
+				    
+				     //BP Name
+					 waithelper.waitForElement(driver, 2000, accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_BPName());
+					 accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_BPName().click();
+					 accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_BPName().sendKeys(accountPayable_VendorPurchaseOrderTestDataType.BpName);
+					 accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_BPName().sendKeys(Keys.ENTER);
+				    
+				     //Reference Type
+					 waithelper.waitForElement(driver, 2000, accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_ReferenceType());
+					 accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_ReferenceType().click();
+					 accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_ReferenceType().sendKeys(accountPayable_VendorPurchaseOrderTestDataType.ReferenceTypePurchaseReq);
+					 accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_ReferenceType().sendKeys(Keys.ENTER);
+				
+
+					 //Contract
+					 waithelper.waitForElement(driver, 2000, accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_Contract());
+					 accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_Contract().click();
+					 accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_Contract().sendKeys(jsonWriter.readInventoryManagementPRnumber());
+					 accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_Contract().sendKeys(Keys.ENTER);
+				
+					 //CheckBox Po Item
+					 waithelper.waitForElement(driver, 2000, accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_CheckBoxPoItem());
+					 accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_CheckBoxPoItem().click();
+					
+					//Po Quantity
+					 waithelper.waitForElement(driver, 2000, accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_PoQuantity());
+					 accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_PoQuantity().click();
+					 accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_PoQuantity().sendKeys(accountPayable_VendorPurchaseOrderTestDataType.PoQuantity);
+					 accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_PoQuantity().sendKeys(Keys.ENTER);
+				
+					//Po item save
+					 WebElement posave = waithelper.waitForElement(driver, 2000, accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_PoItemSave());
+					 clicksAndActionHelper.clickOnElement(posave);	
+				    
+					 //PO type
+//					 waithelper.waitForElement(driver, 2000, accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_POType());
+//					 accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_POType().click();
+//					 accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_POType().sendKeys(accountPayable_VendorPurchaseOrderTestDataType.ReferenceTypePurchaseReq);
+//					 accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_POType().sendKeys(Keys.ENTER);
+				    
+					//PO Sub type
+					 waithelper.waitForElement(driver, 2000, accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_POSubType1());
+					 accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_POSubType1().click();
+					 accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_POSubType1().sendKeys(accountPayable_VendorPurchaseOrderTestDataType.PoSubTypeForInventory);
+					 accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_POSubType1().sendKeys(Keys.ENTER);
+				    
+					//CostCenterService
+					 waithelper.waitForElement(driver, 2000, accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_CostCenter1());
+					 accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_CostCenter1().click();
+					 accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_CostCenter1().sendKeys(accountPayable_VendorPurchaseOrderTestDataType.CostCenterService);
+					 accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_CostCenter1().sendKeys(Keys.ENTER);
+				    
+					 
+					 //Po Delivery Date
+//					 Thread.sleep(2000);
+//					 waithelper.waitForElement(driver, 2000, accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_PODeliveryDate());
+					 waithelper.waitForElementwithFluentwait(driver, accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_PODeliveryDate());
+					 accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_PODeliveryDate().click();
+					
+					 
+					 javascripthelper.JavaScriptHelper(driver);
+						while(true)
+				        {
+							try
+							{
+								//span[contains(text(),'Nov 2022')]
+//								 Thread.sleep(1000);
+								 waithelper.waitForElement(driver, 2000, driver.findElement(By.xpath("//span[contains(text(),'"+accountPayable_VendorPurchaseOrderTestDataType.Month+" "+accountPayable_VendorPurchaseOrderTestDataType.Year+"')]")));
+								 WebElement monthAndYear = driver.findElement(By.xpath("//span[contains(text(),'"+accountPayable_VendorPurchaseOrderTestDataType.Month+" "+accountPayable_VendorPurchaseOrderTestDataType.Year+"')]"));
+							    break;
+							}
+							
+							catch(Exception e)
+							{
+								accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_NextMonth().click();
+							}
+						}
+						//td[@aria-label='November 1, 2022']/span
+						WebElement FinalDay=driver.findElement(By.xpath("//td[@aria-label='"+accountPayable_VendorPurchaseOrderTestDataType.FullMonth+" "+accountPayable_VendorPurchaseOrderTestDataType.Day+", "+accountPayable_VendorPurchaseOrderTestDataType.Year+"']/span"));
+						clicksAndActionHelper.doubleClick(FinalDay);
+			
+			    }
+			    
 }
 	    
 	    

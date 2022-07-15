@@ -151,6 +151,13 @@ public class AccountPayable_VendorPurchaseOrderObj {
 			return accountsPayable_VendorPurchaseOrder_Save;
 	}
 	
+	//Save item details
+	@FindBy(xpath = "//page-po-item-details-update/ion-header/ion-toolbar/ion-buttons[2]/ion-button")	
+	private WebElement accountsPayable_VendorPurchaseOrder_ItemDetailsSave;
+	public WebElement accountsPayable_VendorPurchaseOrder_ItemDetailsSave() {
+		return accountsPayable_VendorPurchaseOrder_ItemDetailsSave;
+	}
+	
 	//Notification
 	@FindBy(xpath = "//ion-header/ion-toolbar[1]/ion-buttons[2]/ion-button[2]")	
 	private WebElement accountsPayable_VendorPurchaseOrder_Notification;
@@ -350,10 +357,18 @@ public class AccountPayable_VendorPurchaseOrderObj {
 	
 	//----Beneficiary deatails-----//
 	
+	//Beneficiary tab button
+	@FindBy(xpath = "//span[3]/ion-tab-button/ion-label")
+	private WebElement accountsPayable_VendorPurchaseOrder_BeneficiaryTab;
+
+	public WebElement accountsPayable_VendorPurchaseOrder_BeneficiaryTab() {
+		return accountsPayable_VendorPurchaseOrder_BeneficiaryTab;
+	}
+	
 	//ModeOfPayement
 	@FindBy(xpath = "//ion-grid[1]/ion-row[1]/ion-col[2]/app-kub-lov[1]/span[1]/ng-select[1]/div[1]/div[1]/div[2]/input")
 	private WebElement accountsPayable_VendorPurchaseOrder_ModeOfPayement;
-
+	
 	public WebElement accountsPayable_VendorPurchaseOrder_ModeOfPayement() {
 		return accountsPayable_VendorPurchaseOrder_ModeOfPayement;
 	}
@@ -389,12 +404,20 @@ public class AccountPayable_VendorPurchaseOrderObj {
 	public WebElement accountsPayable_VendorPurchaseOrder_MakerSubmitFinal() {
 		return accountsPayable_VendorPurchaseOrder_MakerSubmitFinal;
 	}
-	// item Detail qty
-		@FindBy(xpath = "//ion-grid[1]/ion-row[1]/ion-col[4]/ion-item[1]/ion-input[1]/input[1]")
-		private WebElement accountPayable_VendorPurchaseOrder_ItemDetailQty;
 
-		public WebElement accountPayable_VendorPurchaseOrder_ItemDetailQty() {
-			return accountPayable_VendorPurchaseOrder_ItemDetailQty;
-		}
+	// item Detail qty
+	@FindBy(xpath = "//ion-grid[1]/ion-row[1]/ion-col[4]/ion-item[1]/ion-input[1]/input[1]")
+	private WebElement accountPayable_VendorPurchaseOrder_ItemDetailQty;
+
+	public WebElement accountPayable_VendorPurchaseOrder_ItemDetailQty() {
+		return accountPayable_VendorPurchaseOrder_ItemDetailQty;
+	}
 	
+	// first eye button
+	@FindBy(xpath = "//datatable-row-wrapper[1]/datatable-body-row[1]/div[2]/datatable-body-cell[1]/div/ion-buttons/ion-button[1]")
+	private WebElement accountPayable_VendorPurchaseOrder_FirstEyeButton;
+	
+	public WebElement accountPayable_VendorPurchaseOrder_FirstEyeButton() {
+		return accountPayable_VendorPurchaseOrder_FirstEyeButton;
+	}	
 }

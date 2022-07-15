@@ -6,9 +6,9 @@
 "RequestQty":"1",
 "Remark":"TM",
 
-"InstrumentCode":"1153",
-"InstrumentDescription":"Book & A4 Paper53",
-"StartingSerialNumber":"153",
+"InstrumentCode":"ic023",
+"InstrumentDescription":"instrumentCode_023",
+"StartingSerialNumber":"sn023",
 
 "AccessBranchCodeForIssue":"AZENTMAIN-Azentio Main Branch",
 "InventoryBranchCodeForIssue":"BR0004-West Zone",
@@ -30,23 +30,24 @@
 "GRNInvoiceNumber":"INV1112",
 "GRNDeliveryLocation":"West Zone",
 
-"GRNPoNumber":"Azentio_Soft-Agency-8-PO-455",
+"GRNPoNumber":"Azentio_Soft-Agency-8-PO-290",
 "GRNQtyReceived":"1",
 "GRNQtyApproved":"1",
 
 
  
 	"gLCode":"IFRS-AS-AS1000017",
-	"GlMonth":"Apr",
-	"GlFullMonth":"April",
-	"GlYear":"2023",
-	"GlDay":"10",
-	"GlToMonth":"Apr",
-	"GlFullToMonth":"April",
+	"GlMonth":"Nov",
+	"GlFullMonth":"November",
+	"GlFromYear":"2022",
+	"GlYear":"2022",
+	"GlDay":"1",
+	"GlToMonth":"Nov",
+	"GlFullToMonth":"November",
 	"GlToDate":"19",
 	
-	"requestReferanceNo"    : "TRN_IR_262_20220521112951",
-		"returnQuantity"        : "2",
+	"requestReferanceNo"    : "TRN_IR_266_20220523162811",
+		"returnQuantity"        : "1",
 		"returnType"			: "Return to inventory",
 		"returnType1"			: "Found",
 		"returnType2"			: "Lost/Misplaced",
@@ -63,6 +64,7 @@
 		"Item Description"		: "Term Deposit Certificate",
 		
 		"AcceptStatus":"Yes",
+		"Description":"Dell Keyboard",
 		
 		"ItemDescriptionForInvtItemDetails":"WHITEBOARD-WHITE BOARD",
 		
@@ -73,7 +75,7 @@
 		"ReturnType":"Found",
 		"Itemdescription":"STAPLERS-STAPLERS",
 		"ReturnTypeInventory":"Return to inventory",
-		"Voucher":"ASSR628",
+		"Voucher":"ADJ-84-32022",
 		"VoucherForStockIssue":"TRN_SI_80_20220328124933"
 	 
 	 

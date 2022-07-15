@@ -2,9 +2,9 @@
 {
 		"User"						: "Maker",
 		"BranchCode"				: "AZENTMAIN-Azentio Main Branch",
-		"ItemCode"					: "BOOKONE26",
-		"ItemDescription"			: "Cheque book two026",
-		"ItemShortDescription"		: "CBO2026",
+		"ItemCode"					: "itemC023",
+		"ItemDescription"			: "itemCodeDes_023",
+		"ItemShortDescription"		: "itemS023",
 		"InstrumentCode"			: "INV00023-Cheque book one",
 		"CurrencyCode"				: "INR",
 		"ReorderLevel"				: "1",

@@ -100,7 +100,7 @@ public class InventoryManagamentObj {
 	}
 
 	// RequestType Normal Radio Button
-	@FindBy(xpath = "//div[2]/ion-select-popover[1]/ion-list[1]/ion-radio-group[1]/ion-item[2]/ion-radio[1]")
+	@FindBy(xpath = "//ion-radio-group[1]/ion-item[2]/ion-radio[1]")
 	private WebElement inventoryManagament_InventoryRequest_RequestTypeNormalRadioButton;
 
 	public WebElement inventoryManagament_InventoryRequest_RequestTypeNormalRadioButton() {

@@ -449,7 +449,7 @@ public class JsonConfig {
 		InventoryStockReceiptList = getInventoryStockReceiptListData();
 		inventoryGlReportTestData = getInventoryGlTestData();
 		InventoryManagementList = getInventoryManagementList();
-		InventoryManagementList = getInventoryManagementList();
+//		InventoryManagementList = getInventoryManagementList();
 		DenominationMasterList = getDenominationMasterList();
 		PurchaseRequisitionConfirmationList = getPurchaseRequisitionConfirmationList();
 		VendorContractsList = getVendorContractList();
@@ -2393,7 +2393,7 @@ private List<BankRecon_ReconFormatTestDataType> getBankReconsListData() {
 		return VendorPurchaseOrderList.stream().filter(x -> x.User.equalsIgnoreCase(UserName)).findAny().get();
 	}
 
-	// InventoryMaintenance
+	// InventoryMaintenancel
 	public final InventoryMaintenanceTestDataType getInventoryMaintenanceByName(String UserName) {
 		return InventoryMaintenanceList.stream().filter(x -> x.User.equalsIgnoreCase(UserName)).findAny().get();
 	}

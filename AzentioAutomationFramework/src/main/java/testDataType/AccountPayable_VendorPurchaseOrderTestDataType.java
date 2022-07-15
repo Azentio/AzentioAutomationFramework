@@ -5,9 +5,11 @@ public class AccountPayable_VendorPurchaseOrderTestDataType {
 	public String EntityBranch;
 	public String BpName;
 	public String ReferenceType;
+	public String ReferenceTypePurchaseReq;
 	public String Contract;
 
 	public String PoSubType;
+	public String PoSubTypeForInventory;
 	public String PoNumber;
 	public String CostCenter;
 	public String Remark;

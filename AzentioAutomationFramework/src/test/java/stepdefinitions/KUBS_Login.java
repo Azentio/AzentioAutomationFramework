@@ -1,12 +1,10 @@
 package stepdefinitions;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 
 import dataProvider.JsonConfig;
-import helper.ClicksAndActionsHelper;
 import helper.DropDownHelper;
 import helper.WaitHelper;
 import pageobjects.KUBS_LoginObj;
@@ -19,8 +17,7 @@ public class KUBS_Login {
 	WaitHelper waithelper;
 	KUBS_MakerObj makerobj;
 	DropDownHelper dropdownhelper;
-	ClicksAndActionsHelper clicksAndActionsHelper;
-
+	
 	JsonConfig reader = new JsonConfig();
 	KUBS_LoginObj login;
 
@@ -29,13 +26,11 @@ public class KUBS_Login {
 	}
 
 	public void loginToAzentioApp(String user) throws InterruptedException {
-		waithelper = new WaitHelper(driver);
-		dropdownhelper = new DropDownHelper(driver);
-		makerobj = new KUBS_MakerObj(driver);
-		clicksAndActionsHelper= new ClicksAndActionsHelper(driver);
+		waithelper=new WaitHelper(driver);
+		dropdownhelper=new DropDownHelper(driver);
+		makerobj=new KUBS_MakerObj(driver);
 		KUBS_LoginTestDataType logindata = reader.getLoginCredentialsByName(user);
 		login = new KUBS_LoginObj(driver);
-		waithelper.waitForElementToVisibleWithFluentWait(driver, login.Login_userName(), 70, 500);
 		login.Login_userName().sendKeys(logindata.UserName);
 		login.Login_goButton().click();
 		waithelper.waitForElement(driver, 2000, login.Login_passWord());
@@ -43,21 +38,19 @@ public class KUBS_Login {
 		String otp = login.Login_getOtp().getText();
 		driver.findElement(By.xpath("//ng-otp-input/div/input[1]")).sendKeys(otp.substring(7));
 		login.Login_signIn().click();
-		waithelper.waitForElementToVisibleWithFluentWait(driver, login.Login_loginStatus(), 5, 500);
+		waithelper.waitForElement(driver, 3000, login.Login_loginStatus());
 		Assert.assertTrue(login.Login_loginStatus().isDisplayed());
-		waithelper.waitForElementToVisibleWithFluentWait(driver, makerobj.kubsFinaceOption(), 70, 500);
-		clicksAndActionsHelper.moveToElement(makerobj.kubsFinaceOption());
-		makerobj.kubsFinaceOption().click();
-		waithelper.waitForElementToVisibleWithFluentWait(driver,makerobj.FinanceOption(), 70, 500);
-		//waithelper.waitForElement(driver, 4000, makerobj.FinanceOption());
-		clicksAndActionsHelper.moveToElement(makerobj.FinanceOption());
-		clicksAndActionsHelper.doubleClick(makerobj.FinanceOption());
-		//makerobj.FinanceOption().click();
-
+	    waithelper.waitForElement(driver, 4000, makerobj.kubsFinaceOption());
+	    makerobj.kubsFinaceOption().click();
+//	    Thread.sleep(2000);
+	    waithelper.waitForElementwithFluentwait(driver, makerobj.FinanceOption());
+//	    waithelper.waitForElement(driver, 4000, makerobj.FinanceOption());
+	    makerobj.FinanceOption().click();
+		
 	}
-
-	public void logintoAzentioappReviewer(String user, String id) {
-		waithelper = new WaitHelper(driver);
+	public void  logintoAzentioappReviewer(String user,String id)
+	{
+		waithelper=new WaitHelper(driver);
 		KUBS_LoginTestDataType logindata = reader.getLoginCredentialsByName(user);
 		login = new KUBS_LoginObj(driver);
 //		if(id.equals(logindata.UserName))
@@ -73,18 +66,18 @@ public class KUBS_Login {
 //		Assert.assertTrue(login.Login_loginStatus().isDisplayed());
 //		}
 		if (id.equals("12345")) {
-			waithelper.waitForElementToVisibleWithFluentWait(driver, login.Login_userName(), 60, 500);
+
 			login.Login_userName().sendKeys(logindata.UserName);
 			login.Login_goButton().click();
 			waithelper.waitForElement(driver, 2000, login.Login_passWord());
 			login.Login_passWord().sendKeys(logindata.PassWord);
 			waithelper.waitForElement(driver, 2000, login.Login_signIn());
 			login.Login_signIn().click();
-			waithelper.waitForElementToVisibleWithFluentWait(driver, login.Login_loginStatus(), 5, 500);
+			waithelper.waitForElement(driver, 2000, login.Login_loginStatus());
 			Assert.assertTrue(login.Login_loginStatus().isDisplayed());
 		} else if (id.equals("1993")) {
 			System.out.println("Username : " + logindata.UserName2);
-			waithelper.waitForElementToVisibleWithFluentWait(driver, login.Login_userName(), 60, 500);
+
 			login.Login_userName().sendKeys(logindata.UserName2);
 			login.Login_goButton().click();
 			waithelper.waitForElement(driver, 2000, login.Login_passWord());
@@ -93,11 +86,10 @@ public class KUBS_Login {
 			driver.findElement(By.xpath("//ng-otp-input/div/input[1]")).sendKeys(otp.substring(7));
 			waithelper.waitForElement(driver, 2000, login.Login_signIn());
 			login.Login_signIn().click();
-			waithelper.waitForElementToVisibleWithFluentWait(driver, login.Login_loginStatus(), 5, 500);
+			waithelper.waitForElement(driver, 2000, login.Login_loginStatus());
 			Assert.assertTrue(login.Login_loginStatus().isDisplayed());
 
 		} else if (id.equals("1992")) {
-			waithelper.waitForElementToVisibleWithFluentWait(driver, login.Login_userName(), 60, 500);
 			login.Login_userName().sendKeys(logindata.UserName1);
 			login.Login_goButton().click();
 			waithelper.waitForElement(driver, 2000, login.Login_passWord());
@@ -106,11 +98,10 @@ public class KUBS_Login {
 			driver.findElement(By.xpath("//ng-otp-input/div/input[1]")).sendKeys(otp.substring(7));
 			waithelper.waitForElement(driver, 2000, login.Login_signIn());
 			login.Login_signIn().click();
-			waithelper.waitForElementToVisibleWithFluentWait(driver, login.Login_loginStatus(), 5, 500);
+			waithelper.waitForElement(driver, 2000, login.Login_loginStatus());
 			Assert.assertTrue(login.Login_loginStatus().isDisplayed());
 
-		} else if (id.equals("in001")) {
-			waithelper.waitForElementToVisibleWithFluentWait(driver, login.Login_userName(), 60, 500);
+		}else if (id.equals("in001")) {
 			login.Login_userName().sendKeys(logindata.UserName3);
 			login.Login_goButton().click();
 			waithelper.waitForElement(driver, 2000, login.Login_passWord());
@@ -119,11 +110,10 @@ public class KUBS_Login {
 			driver.findElement(By.xpath("//ng-otp-input/div/input[1]")).sendKeys(otp.substring(7));
 			waithelper.waitForElement(driver, 2000, login.Login_signIn());
 			login.Login_signIn().click();
-			waithelper.waitForElementToVisibleWithFluentWait(driver, login.Login_loginStatus(), 5, 500);
+			waithelper.waitForElement(driver, 2000, login.Login_loginStatus());
 			Assert.assertTrue(login.Login_loginStatus().isDisplayed());
 
-		} else if (id.equals("1002436")) {
-			waithelper.waitForElementToVisibleWithFluentWait(driver, login.Login_userName(), 60, 500);
+		}else if (id.equals("1002436")) {
 			login.Login_userName().sendKeys(logindata.UserName4);
 			login.Login_goButton().click();
 			waithelper.waitForElement(driver, 2000, login.Login_passWord());
@@ -132,11 +122,10 @@ public class KUBS_Login {
 			driver.findElement(By.xpath("//ng-otp-input/div/input[1]")).sendKeys(otp.substring(7));
 			waithelper.waitForElement(driver, 2000, login.Login_signIn());
 			login.Login_signIn().click();
-			waithelper.waitForElementToVisibleWithFluentWait(driver, login.Login_loginStatus(), 5, 500);
+			waithelper.waitForElement(driver, 2000, login.Login_loginStatus());
 			Assert.assertTrue(login.Login_loginStatus().isDisplayed());
-
+			
 		} else if (id.equals("in00027")) {
-			waithelper.waitForElementToVisibleWithFluentWait(driver, login.Login_userName(), 70, 500);
 			login.Login_userName().sendKeys(logindata.UserName5);
 			login.Login_goButton().click();
 			waithelper.waitForElement(driver, 2000, login.Login_passWord());
@@ -145,11 +134,10 @@ public class KUBS_Login {
 //			driver.findElement(By.xpath("//ng-otp-input/div/input[1]")).sendKeys(otp.substring(7));
 			waithelper.waitForElement(driver, 2000, login.Login_signIn());
 			login.Login_signIn().click();
-			waithelper.waitForElementToVisibleWithFluentWait(driver, login.Login_loginStatus(), 5, 500);
+			waithelper.waitForElement(driver, 2000, login.Login_loginStatus());
 			Assert.assertTrue(login.Login_loginStatus().isDisplayed());
-
-		} else if (id.equals("1002439")) {
-			waithelper.waitForElementToVisibleWithFluentWait(driver, login.Login_userName(), 60, 500);
+	
+		}else if (id.equals("1002439")) {
 			login.Login_userName().sendKeys(logindata.UserName6);
 			login.Login_goButton().click();
 			waithelper.waitForElement(driver, 2000, login.Login_passWord());
@@ -158,9 +146,10 @@ public class KUBS_Login {
 			driver.findElement(By.xpath("//ng-otp-input/div/input[1]")).sendKeys(otp.substring(7));
 			waithelper.waitForElement(driver, 2000, login.Login_signIn());
 			login.Login_signIn().click();
-			waithelper.waitForElementToVisibleWithFluentWait(driver, login.Login_loginStatus(), 5, 500);
+			waithelper.waitForElement(driver, 2000, login.Login_loginStatus());
 			Assert.assertTrue(login.Login_loginStatus().isDisplayed());
-		} else if (id.equals("le4checker")) {
+		}
+		else if (id.equals("le4checker")) {
 			login.Login_userName().sendKeys(logindata.UserName7);
 			login.Login_goButton().click();
 			waithelper.waitForElement(driver, 2000, login.Login_passWord());
@@ -169,45 +158,36 @@ public class KUBS_Login {
 			driver.findElement(By.xpath("//ng-otp-input/div/input[1]")).sendKeys(otp.substring(7));
 			waithelper.waitForElement(driver, 2000, login.Login_signIn());
 			login.Login_signIn().click();
-			waithelper.waitForElementToVisibleWithFluentWait(driver, login.Login_loginStatus(), 5, 500);
+			waithelper.waitForElement(driver, 2000, login.Login_loginStatus());
 			Assert.assertTrue(login.Login_loginStatus().isDisplayed());
-		} else {
+		}
+		else
+		{
 			System.out.println("User name not matching with json");
 		}
 	}
-
 	public void loginToAzentioAppAsChecker(String user) throws InterruptedException {
-		waithelper = new WaitHelper(driver);
-		dropdownhelper = new DropDownHelper(driver);
-		makerobj = new KUBS_MakerObj(driver);
+		waithelper=new WaitHelper(driver);
+		dropdownhelper=new DropDownHelper(driver);
+		makerobj=new KUBS_MakerObj(driver);
 		KUBS_LoginTestDataType logindata = reader.getLoginCredentialsByName(user);
 		login = new KUBS_LoginObj(driver);
-		waithelper.waitForElementToVisibleWithFluentWait(driver, login.Login_userName(), 60, 500);
 		login.Login_userName().sendKeys(logindata.UserName);
-		for (int i = 0; i <= 30; i++) {
-			try {
-				login.Login_goButton().click();
-				break;
-			} catch (StaleElementReferenceException e) {
-
-			}
-		}
+		login.Login_goButton().click();
 		waithelper.waitForElement(driver, 2000, login.Login_passWord());
 		login.Login_passWord().sendKeys(logindata.PassWord);
 		String otp = login.Login_getOtp().getText();
 		driver.findElement(By.xpath("//ng-otp-input/div/input[1]")).sendKeys(otp.substring(7));
 		login.Login_signIn().click();
 		waithelper.waitForElement(driver, 2000, login.Login_loginStatus());
-		waithelper.waitForElementToVisibleWithFluentWait(driver, login.Login_loginStatus(), 5, 500);
+		Assert.assertTrue(login.Login_loginStatus().isDisplayed());	
 	}
-
 	public void loginToAzentioAppAsChecker2(String user) throws InterruptedException {
-		waithelper = new WaitHelper(driver);
-		dropdownhelper = new DropDownHelper(driver);
-		makerobj = new KUBS_MakerObj(driver);
+		waithelper=new WaitHelper(driver);
+		dropdownhelper=new DropDownHelper(driver);
+		makerobj=new KUBS_MakerObj(driver);
 		KUBS_LoginTestDataType logindata = reader.getLoginCredentialsByName(user);
 		login = new KUBS_LoginObj(driver);
-		waithelper.waitForElementToVisibleWithFluentWait(driver,login.Login_userName(), 60, 500);
 		login.Login_userName().sendKeys(logindata.UserName1);
 		login.Login_goButton().click();
 		waithelper.waitForElement(driver, 2000, login.Login_passWord());
@@ -216,7 +196,7 @@ public class KUBS_Login {
 //		driver.findElement(By.xpath("//ng-otp-input/div/input[1]")).sendKeys(otp.substring(7));
 		login.Login_signIn().click();
 		waithelper.waitForElement(driver, 2000, login.Login_loginStatus());
-		Assert.assertTrue(login.Login_loginStatus().isDisplayed());
+		Assert.assertTrue(login.Login_loginStatus().isDisplayed());	
 	}
-
+	
 }

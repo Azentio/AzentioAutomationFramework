@@ -1,5 +1,8 @@
 package stepdefinitions;
 
+import java.io.IOException;
+
+import org.json.simple.parser.ParseException;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -49,14 +52,18 @@ public class InventoryManagement_InventoryStockReceipt  extends BaseClass{
 		
 		@Then("^Click on Inventory Management$")
 	    public void click_on_inventory_management() {
-		waithelper.waitForElement(driver, 3000, inventoryManagement_InventoryStockReceiptObj.inventoryManagement_InventoryStockReceipt_InventoryManagementField());
-		inventoryManagement_InventoryStockReceiptObj.inventoryManagement_InventoryStockReceipt_InventoryManagementField().click();
+//		waithelper.waitForElement(driver, 3000, inventoryManagement_InventoryStockReceiptObj.inventoryManagement_InventoryStockReceipt_InventoryManagementField());
+		javascripthelper.JavaScriptHelper(driver);
+//		waithelper.waitForElementwithFluentwait(driver, inventoryManagement_InventoryStockReceiptObj.inventoryManagement_InventoryStockReceipt_InventoryManagementField());
+		javascripthelper.scrollIntoViewAndClick(inventoryManagement_InventoryStockReceiptObj.inventoryManagement_InventoryStockReceipt_InventoryManagementField());
+//		inventoryManagement_InventoryStockReceiptObj.inventoryManagement_InventoryStockReceipt_InventoryManagementField().click();
 	        
 	    }
 
 	    @Then("^Click on inventory stock receipt Eye Icon$")
 	    public void click_on_inventory_stock_receipt_eye_icon() throws InterruptedException  {
-	    Thread.sleep(2000);
+//	    Thread.sleep(2000);
+	    waithelper.waitForElementwithFluentwait(driver, inventoryManagement_InventoryStockReceiptObj.inventoryManagement_InventoryStockReceipt_EyeButton());
 	    WebElement EyeIcon = inventoryManagement_InventoryStockReceiptObj.inventoryManagement_InventoryStockReceipt_EyeButton();
 	    waithelper.waitForElement(driver, 3000, inventoryManagement_InventoryStockReceiptObj.inventoryManagement_InventoryStockReceipt_EyeButton());
 	  	Assert.assertTrue(inventoryManagement_InventoryStockReceiptObj.inventoryManagement_InventoryStockReceipt_EyeButton().isDisplayed());
@@ -68,21 +75,22 @@ public class InventoryManagement_InventoryStockReceipt  extends BaseClass{
 
 	    @Then("^Click on inventory stock Add button$")
 	    public void click_on_inventory_stock_add_button() throws InterruptedException  {
-	    Thread.sleep(2000);
-	    waithelper.waitForElement(driver, 3000, inventoryManagement_InventoryStockReceiptObj.inventoryManagement_InventoryStockReceipt_AddButton());
-		inventoryManagement_InventoryStockReceiptObj.inventoryManagement_InventoryStockReceipt_AddButton().click();
+//	    Thread.sleep(2000);
+//	    waithelper.waitForElement(driver, 3000, inventoryManagement_InventoryStockReceiptObj.inventoryManagement_InventoryStockReceipt_AddButton());
+		waithelper.waitForElementwithFluentwait(driver, inventoryManagement_InventoryStockReceiptObj.inventoryManagement_InventoryStockReceipt_AddButton());
+	    inventoryManagement_InventoryStockReceiptObj.inventoryManagement_InventoryStockReceipt_AddButton().click();
 		        
 	       
 	    }
 	    
 
 	    @Then("^Fill inventory stock Mandatory fields$")
-	    public void fill_inventory_stock_mandatory_fields()  {
+	    public void fill_inventory_stock_mandatory_fields() throws IOException, ParseException  {
 	    inventoryManagement_InventoryStockReceiptTestDataType = jsonReader.getInventoryStockReceiptByName("Maker");
 	    //GRN Number
 	    waithelper.waitForElement(driver, 3000, inventoryManagement_InventoryStockReceiptObj.inventoryManagement_InventoryStockReceipt_GRNNumber());
 	 	inventoryManagement_InventoryStockReceiptObj.inventoryManagement_InventoryStockReceipt_GRNNumber().click();
-	 	inventoryManagement_InventoryStockReceiptObj.inventoryManagement_InventoryStockReceipt_GRNNumber().sendKeys(inventoryManagement_InventoryStockReceiptTestDataType.GRNNumber);
+	 	inventoryManagement_InventoryStockReceiptObj.inventoryManagement_InventoryStockReceipt_GRNNumber().sendKeys(jsonWriter.readInventoryManagementGRNnumber());
 	 	inventoryManagement_InventoryStockReceiptObj.inventoryManagement_InventoryStockReceipt_GRNNumber().sendKeys(Keys.ENTER);
 	 	
 	    
@@ -108,6 +116,19 @@ public class InventoryManagement_InventoryStockReceipt  extends BaseClass{
 		inventoryManagement_InventoryStockReceiptObj.inventoryManagement_InventoryStockReceipt_MakerNotification().click();
 	       
 	    }
+	    
+	    @Then("^click on first eye button to get the grn number$")
+		public void click_on_first_eye_button_to_get_the_grn_number() throws InterruptedException, IOException {
+			
+			javascripthelper.JavaScriptHelper(driver);
+			waithelper.waitForElement(driver, 2000, inventoryManagement_InventoryStockReceiptObj.inventoryManagement_InventoryStockReceipt_FirstEyeButton());
+			inventoryManagement_InventoryStockReceiptObj.inventoryManagement_InventoryStockReceipt_FirstEyeButton().click();
+			Thread.sleep(2000);
+			String grnnumber = javascripthelper.executeScript("return document.getElementsByClassName('native-input sc-ion-input-md')[2].value").toString();
+			System.out.println("GRN Number: " + grnnumber);
+			jsonWriter.addInventoryManagementGRNnumber(grnnumber);
+
+		}
 		
 
 }

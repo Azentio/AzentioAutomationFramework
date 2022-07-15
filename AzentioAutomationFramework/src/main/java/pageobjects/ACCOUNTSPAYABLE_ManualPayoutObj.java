@@ -249,7 +249,9 @@ public class ACCOUNTSPAYABLE_ManualPayoutObj {
 	}
 	
 	// click on next button
-	@FindBy(xpath = "(//li[@class='']/a/i)[1]")
+//	@FindBy(xpath = "(//li[@class='']/a/i)[1]")
+	@FindBy(xpath = "//li[6][@class='']/a/i[@class='datatable-icon-right']")
+//	@FindBy(xpath = "(//i[@class='datatable-icon-right'])[2]")
 	private WebElement accountPayable_ManualPayout_ClickOnNextButton;
 
 	public WebElement accountPayable_ManualPayout_ClickOnNextButton() {

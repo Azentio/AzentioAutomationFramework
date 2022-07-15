@@ -33,6 +33,7 @@ public class InventoryManagementTestDataType {
 	public String gLCode;
 	public String GlMonth;
 	public String GlFullMonth;
+	public String GlFromYear;
 	public String GlYear;
 	public String GlDay;
 	public String GlToMonth;

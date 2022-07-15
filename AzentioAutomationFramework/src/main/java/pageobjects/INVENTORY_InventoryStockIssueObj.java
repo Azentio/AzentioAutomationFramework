@@ -131,4 +131,12 @@ public class INVENTORY_InventoryStockIssueObj {
 		return inventoryStockIssue_ReferenceNumber;
 	}
 
+	// first eye button
+	@FindBy(xpath = "//datatable-row-wrapper[1]/datatable-body-row[1]/div[2]/datatable-body-cell[1]/div/ion-buttons/ion-button[1]")
+	private WebElement inventoryStockIssue_FirstEyeButton;
+
+	public WebElement inventoryStockIssue_FirstEyeButton() {
+		return inventoryStockIssue_FirstEyeButton;
+	}
+
 }

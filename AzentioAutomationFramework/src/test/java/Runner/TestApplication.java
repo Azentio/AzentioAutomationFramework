@@ -9,14 +9,14 @@ import io.cucumber.testng.CucumberOptions;
 import utilities.ExtentManager;
 import utilities.ExtentTestManager;
 
-@CucumberOptions(features = "src/test/java/features/GeneralLedger2_UAT.feature",
+@CucumberOptions(features = "src/test/java/features",
                  glue = "stepdefinitions",
 		         //monochrome=false, //to make steps in color
 		         plugin = { "pretty",
 				            "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:",
 				            "rerun:ReRunScenarios/FailedReRun.txt"}
 //				dryRun = true //to check compilation errors
-//					,  tags="@QuarterlyBudget"
+					,  tags="@KUBS_INV_MGMT_UAT_001_001"
 
 )
 public class TestApplication extends AbstractTestNGCucumberTests {

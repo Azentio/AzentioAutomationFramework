@@ -6,6 +6,7 @@ import org.testng.Assert;
 
 import dataProvider.JsonConfig;
 import helper.DropDownHelper;
+import helper.JavascriptHelper;
 import helper.WaitHelper;
 import pageobjects.Azentio_LoginObj;
 import pageobjects.Azentio_MakerObj;
@@ -31,6 +32,7 @@ public class AzentioLogin {
 		waithelper = new WaitHelper(driver);
 		dropdownhelper = new DropDownHelper(driver);
 		makerobj = new Azentio_MakerObj(driver);
+		JavascriptHelper javascriptHelper=new JavascriptHelper();
 		KUBS_LoginTestDataType logindata = reader.getLoginCredentialsByName(user);
 		login = new Azentio_LoginObj(driver);
 		waithelper.waitForElement(driver, 2000, login.Login_userName());
@@ -41,12 +43,33 @@ public class AzentioLogin {
 		String otp = login.Login_getOtp().getText();
 		driver.findElement(By.xpath("//ng-otp-input/div/input[1]")).sendKeys(otp.substring(7));
 		login.Login_signIn().click();
-		waithelper.waitForElement(driver, 2000, login.Login_loginStatus());
-		Assert.assertTrue(login.Login_loginStatus().isDisplayed());
+		while(true)
+		{
+			try {
+				waithelper.waitForElementToVisibleWithFluentWait(driver, login.Login_loginStatus(), 2, 1);
+				Assert.assertTrue(login.Login_loginStatus().isDisplayed());
+				break;
+			}catch(Exception e) {
+				waithelper.waitForElementwithFluentwait(driver, login.Login_userName());
+				login.Login_userName().click();
+				waithelper.waitForElementwithFluentwait(driver, login.Login_signIn());
+				login.Login_signIn().click();
+				waithelper.waitForElementwithFluentwait(driver, login.Login_goButton());
+				login.Login_goButton().click();
+				waithelper.waitForElementwithFluentwait(driver, login.Login_passWord());
+				login.Login_passWord().sendKeys(logindata.PassWord);
+				String newotp = login.Login_getOtp().getText();
+				driver.findElement(By.xpath("//ng-otp-input/div/input[1]")).sendKeys(newotp.substring(7));
+				login.Login_signIn().click();
+			}
+		}
+//		waithelper.waitForElementwithFluentwait(driver, login.Login_loginStatus());
+//		Assert.assertTrue(login.Login_loginStatus().isDisplayed());
 		waithelper.waitForElement(driver, 2000, makerobj.kubsFinaceOption());
 		makerobj.kubsFinaceOption().click();
-		Thread.sleep(2000);
-		waithelper.waitForElement(driver, 4000, makerobj.FinanceOption());
+//		Thread.sleep(2000);
+		waithelper.waitForElementwithFluentwait(driver, makerobj.FinanceOption());
+//		waithelper.waitForElement(driver, 4000, makerobj.FinanceOption());
 		makerobj.FinanceOption().click();
 
 	}

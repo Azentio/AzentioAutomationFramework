@@ -523,6 +523,14 @@ public class ARAP_ARandAPObj {
 	public WebElement accountsPayablePayementSettlementdisabledNext() {
 		return accountsPayable_paymentSettlementDisabledNext;
 	}
+	
+//	@FindBy(xpath = "(//datatable-footer[1]/div[1]/datatable-pager[1])[2]")
+	@FindBy(xpath = "(//div[contains(text(),'total')])[2]")
+	private WebElement accountsPayable_paymentSettlementFooter;
+	
+	public WebElement accountsPayable_paymentSettlementFooter() {
+		return accountsPayable_paymentSettlementFooter;
+	}
 
 	@FindBy(xpath = "//ion-col[3]//input")
 	private WebElement accountsPayable_paymentSettlementBpName;

@@ -103,7 +103,8 @@ public class ACCOUNTSPAYABLE_PayementSettlementObj {
   {
 	  return paymentSettlement_RecentlyApprovedRecord;
   }
-  @FindBy(xpath="//ion-col[3]//span[1]//div[1]/div[1]/div[2]/span[2]")
+//  @FindBy(xpath="//ion-col[3]//span[1]//div[1]/div[1]/div[2]/span[2]")
+  @FindBy(xpath="(//datatable-row-wrapper[1]/datatable-body-row[1]/div[2]/datatable-body-cell[5]/div[1]/span[1])[2]")
   private WebElement payementSettlement_ApprovedBusinesspartnerName;
   public WebElement payementSettlementApprovedBusinessPartnerName()
   {

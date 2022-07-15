@@ -42,8 +42,9 @@ public class ArAp_BalanceSheetReport extends BaseClass {
 	
 	 @Then("^Click on Report button$")
 	    public void click_on_repoet_button() throws InterruptedException  {
-		 Thread.sleep(2000);
-		  waithelper.waitForElement(driver, 2000,  arAp_BalanceSheetReportObj.arAp_BalanceSheetReport_ReportButton());
+//		 Thread.sleep(2000);
+//		  waithelper.waitForElement(driver, 2000,  arAp_BalanceSheetReportObj.arAp_BalanceSheetReport_ReportButton());
+		  waithelper.waitForElementwithFluentwait(driver, arAp_BalanceSheetReportObj.arAp_BalanceSheetReport_ReportButton());
 		  arAp_BalanceSheetReportObj.arAp_BalanceSheetReport_ReportButton().click();
 	    }
 
@@ -89,10 +90,11 @@ while(true)
 	try
 		{
 			//span[contains(text(),'Oct 2022')]
-			Thread.sleep(1000);
-			waithelper.waitForElement(driver, 2000, driver.findElement(By.xpath("//span[contains(text(),'"+arAp_BalanceSheetReportTestDataType.Month+" "+arAp_BalanceSheetReportTestDataType.Year+"')]")));
+//			Thread.sleep(1000);
+//			waithelper.waitForElement(driver, 2000, driver.findElement(By.xpath("//span[contains(text(),'"+arAp_BalanceSheetReportTestDataType.Month+" "+arAp_BalanceSheetReportTestDataType.Year+"')]")));
+			waithelper.waitForElementwithFluentwait(driver, driver.findElement(By.xpath("//span[contains(text(),'"+arAp_BalanceSheetReportTestDataType.Month+" "+arAp_BalanceSheetReportTestDataType.Year+"')]")));
 			WebElement monthAndYear = driver.findElement(By.xpath("//span[contains(text(),'"+arAp_BalanceSheetReportTestDataType.Month+" "+arAp_BalanceSheetReportTestDataType.Year+"')]"));
-			Thread.sleep(2000);
+//			Thread.sleep(2000);
 			break;
 		}
 					

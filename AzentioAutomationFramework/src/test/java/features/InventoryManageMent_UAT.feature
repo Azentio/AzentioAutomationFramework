@@ -112,16 +112,28 @@ And Click on the eye icon of Inventory Request
     @KUBS_INV_MGMT_UAT_001_003 @MultiAuth
 
 Scenario: Create a purchase order with Unique purchase order number
-Given Maker Navigate to UAT URL login
-Then Click on Direction icon
+
+Given User should go to the kubs url and login as a maker user
+And user should navigate to inventory management
+When click on eye button of purchase requisition confirmation
+Then click on first eye button to get the indent reference number
+#Given Maker Navigate to UAT URL login
+#Then Click on Direction icon
 Then Click on Account Payable
 Then Click on purchase order Eye Icon
 Then Click on purchase order Add button
-Then Fill purchase order Mandatory fields
+Then Fill purchase order for inventory Mandatory fields
 Then Click on Account Payable Save button
 Then Click on Item Details Record
-Then Edit the item details fields
-Then Click on Account Payable Save button
+Then Edit the item details fields po
+Then Click on the item details save button po
+#Then Click on Account Payable Save button
+
+Then Click on Beneficiary details tab
+Then fill Beneficiary Details
+Then Click on Beneficiary Save button
+
+#Then Click on Account Payable Save button
 Then Click on Account Payable Notification
 Then Select the record from Notification 
 And Submit the Selected record
@@ -135,11 +147,17 @@ And select the record and Approve by checker
  @KUBS_INV_MGMT_UAT_001_004 @multiauth
 
 Scenario: Create a GRN
-Given Navigate to URL and user should login as a maker
-Then Click on the Finance
-Then Click on the Direction
+Given Maker Navigate to UAT URL login
+Then Click on Direction icon
+Then Click on Account Payable
+Then Click on purchase order Eye Icon
+Then click on first eye button to get the po number
 
-Then Click on Accounts Payable
+#Given Navigate to URL and user should login as a maker
+#Then Click on the Finance
+#Then Click on the Direction
+#Then Click on Accounts Payable
+
 Then Click on Good Recived Note GRN Eye buutton
 Then Click on Add button
 Then Fill the form for GRN
@@ -164,8 +182,16 @@ Then Click on the notification and approve the record
     @KUBS_INV_MGMT_UAT_001_002_Inventory_Stock @MultiAuth
 
 Scenario: Confirm the inventory stock received from the vendor
-Given Maker Navigate to UAT URL login
-Then Click on Direction icon
+
+Given Navigate to URL and user should login as a maker
+Then Click on the Finance
+Then Click on the Direction
+Then Click on Accounts Payable
+Then Click on Good Recived Note GRN Eye buutton
+Then click on first eye button to get the grn number
+
+#Given Maker Navigate to UAT URL login
+#Then Click on Direction icon
 Then Click on Inventory Management
 Then Click on inventory stock receipt Eye Icon
 Then Click on inventory stock Add button
@@ -226,7 +252,7 @@ And click on view button
 
 Scenario: Create instrument code
 Given Navigate to URL and user should login as a maker
-Then Click on Finance
+#Then Click on Finance
 
 Then Click on Inventory maintenance
 Then Click on Instrument code master eye button
@@ -290,116 +316,116 @@ And then checker claim the record
 Then click on the checker Notification 
 And select the record and Approve by checker
 
-@KUBS_INV_MGMT_UAT_003_001	
-@allthebranchesareAlreadyExist
-Scenario: Create branch access for issuing inventories
-Given Navigate to URL and user should login as a maker
-Then Click on Finance
-
-Then Click on Inventory maintenance
-Then Click on Inventory access master
-Then Click on Add button
-Then Fill all the required field for issuing inventories
-Then Click on issue checkbox
-
-Then Click on save button in inventory Access Master
-Then Click Notification button
-And Select record which we saved
-And Submit the record
-Then Open Reviewer account
-And Click on notification
-Then Approve the record which we submitted from maker stage
-Then Go to Checker account
-And Clam the record
-Then Click on notification and approve the record
-Given Navigate to URL and user should login as a maker
-Then Click on Finance
-
-Then Click on Inventory maintenance
-Then Click on Inventory access master
-
-@KUBS_INV_MGMT_UAT_003_002	
-@Existing2
-Scenario: Create branch access for receiving inventories
-Given Navigate to URL and user should login as a maker
-Then Click on Finance
-
-Then Click on Inventory maintenance
-Then Click on Inventory access master
-Then Click on Add button
-Then Fill all the required field for receiving inventories
-Then Click on Recive checkbox
-
-Then Click on save button in inventory Access Master
-Then Click Notification button
-And Select record which we saved
-And Submit the record
-Then Open Reviewer account
-And Click on notification
-Then Approve the record which we submitted from maker stage
-Then Go to Checker account
-And Clam the record
-Then Click on notification and approve the record
-Given Navigate to URL and user should login as a maker
-Then Click on Finance
-
-Then Click on Inventory maintenance
-Then Click on Inventory access master
-
-@KUBS_INV_MGMT_UAT_003_003
-@Existing3
-Scenario: Create branch access for ordering inventories
-	Given Navigate to URL and user should login as a maker
-Then Click on Finance
-
-Then Click on Inventory maintenance
-Then Click on Inventory access master
-Then Click on Add button
-Then Fill all the required field for ordering inventories
-Then Click on Place Order checkbox
-
-Then Click on save button in inventory Access Master
-Then Click Notification button
-And Select record which we saved
-And Submit the record
-Then Open Reviewer account
-And Click on notification
-Then Approve the record which we submitted from maker stage
-Then Go to Checker account
-And Clam the record
-Then Click on notification and approve the record
-	Given Navigate to URL and user should login as a maker
-Then Click on Finance
-
-Then Click on Inventory maintenance
-Then Click on Inventory access master
-@KUBS_INV_MGMT_UAT_003_004
-@Existing4
-Scenario: Create branch access for requesting inventories
-Given Navigate to URL and user should login as a maker
-Then Click on Finance
-
-Then Click on Inventory maintenance
-Then Click on Inventory access master
-Then Click on Add button
-Then Fill all the required field for requesting inventories
-Then Click on Place Request checkbox
-
-Then Click on save button in inventory Access Master
-Then Click Notification button
-And Select record which we saved
-And Submit the record
-Then Open Reviewer account
-And Click on notification
-Then Approve the record which we submitted from maker stage
-Then Go to Checker account
-And Clam the record
-Then Click on notification and approve the record
-Given Navigate to URL and user should login as a maker
-Then Click on Finance
-
-Then Click on Inventory maintenance
-Then Click on Inventory access master
+#@KUBS_INV_MGMT_UAT_003_001	
+#@allthebranchesareAlreadyExist
+#Scenario: Create branch access for issuing inventories
+#Given Navigate to URL and user should login as a maker
+#Then Click on Finance
+#
+#Then Click on Inventory maintenance
+#Then Click on Inventory access master
+#Then Click on Add button
+#Then Fill all the required field for issuing inventories
+#Then Click on issue checkbox
+#
+#Then Click on save button in inventory Access Master
+#Then Click Notification button
+#And Select record which we saved
+#And Submit the record
+#Then Open Reviewer account
+#And Click on notification
+#Then Approve the record which we submitted from maker stage
+#Then Go to Checker account
+#And Clam the record
+#Then Click on notification and approve the record
+#Given Navigate to URL and user should login as a maker
+#Then Click on Finance
+#
+#Then Click on Inventory maintenance
+#Then Click on Inventory access master
+#
+#@KUBS_INV_MGMT_UAT_003_002	
+#@Existing2
+#Scenario: Create branch access for receiving inventories
+#Given Navigate to URL and user should login as a maker
+#Then Click on Finance
+#
+#Then Click on Inventory maintenance
+#Then Click on Inventory access master
+#Then Click on Add button
+#Then Fill all the required field for receiving inventories
+#Then Click on Recive checkbox
+#
+#Then Click on save button in inventory Access Master
+#Then Click Notification button
+#And Select record which we saved
+#And Submit the record
+#Then Open Reviewer account
+#And Click on notification
+#Then Approve the record which we submitted from maker stage
+#Then Go to Checker account
+#And Clam the record
+#Then Click on notification and approve the record
+#Given Navigate to URL and user should login as a maker
+#Then Click on Finance
+#
+#Then Click on Inventory maintenance
+#Then Click on Inventory access master
+#
+#@KUBS_INV_MGMT_UAT_003_003
+#@Existing3
+#Scenario: Create branch access for ordering inventories
+#	Given Navigate to URL and user should login as a maker
+#Then Click on Finance
+#
+#Then Click on Inventory maintenance
+#Then Click on Inventory access master
+#Then Click on Add button
+#Then Fill all the required field for ordering inventories
+#Then Click on Place Order checkbox
+#
+#Then Click on save button in inventory Access Master
+#Then Click Notification button
+#And Select record which we saved
+#And Submit the record
+#Then Open Reviewer account
+#And Click on notification
+#Then Approve the record which we submitted from maker stage
+#Then Go to Checker account
+#And Clam the record
+#Then Click on notification and approve the record
+#	Given Navigate to URL and user should login as a maker
+#Then Click on Finance
+#
+#Then Click on Inventory maintenance
+#Then Click on Inventory access master
+#@KUBS_INV_MGMT_UAT_003_004
+#@Existing4
+#Scenario: Create branch access for requesting inventories
+#Given Navigate to URL and user should login as a maker
+#Then Click on Finance
+#
+#Then Click on Inventory maintenance
+#Then Click on Inventory access master
+#Then Click on Add button
+#Then Fill all the required field for requesting inventories
+#Then Click on Place Request checkbox
+#
+#Then Click on save button in inventory Access Master
+#Then Click Notification button
+#And Select record which we saved
+#And Submit the record
+#Then Open Reviewer account
+#And Click on notification
+#Then Approve the record which we submitted from maker stage
+#Then Go to Checker account
+#And Clam the record
+#Then Click on notification and approve the record
+#Given Navigate to URL and user should login as a maker
+#Then Click on Finance
+#
+#Then Click on Inventory maintenance
+#Then Click on Inventory access master
 
 @InventoryRequestChecking @KUBS_INV_MGMT_UAT_004_001
 Scenario: To verify maker user can able to issue the inventory to requested branch
@@ -416,6 +442,12 @@ Scenario: To verify inventory stock to be issued to requested branch
 Given navigate to kubs URL and login as maker credentials
 Then click on second Segment button
 And click on inventory management main menu
+Then click on view button near by inventory request menu
+Then click on first eye button to get the request reference number
+
+#Given navigate to kubs URL and login as maker credentials
+#Then click on second Segment button
+#And click on inventory management main menu
 Then click the eye icon near by inventory stock issue
 And click on Add button
 And enter inventory item

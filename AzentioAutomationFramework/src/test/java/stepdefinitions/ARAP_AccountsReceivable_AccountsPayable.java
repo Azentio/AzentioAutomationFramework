@@ -158,7 +158,8 @@ public class ARAP_AccountsReceivable_AccountsPayable extends BaseClass {
 	@And("^Get Business Partner name in Invoice Bill$")
 	public void get_business_partner_name_in_invoice_bill() throws Throwable {
 		// -------GET DATA BP NAME -------//
-		waitHelper.waitForElement(driver, 5000, arapObj.ARAP_GetcancelBpName());
+//		waitHelper.waitForElement(driver, 5000, arapObj.ARAP_GetcancelBpName());
+		WaitHelper.waitForElementwithFluentwait(driver, arapObj.ARAP_GetcancelBpName());
 		BPNumber = arapObj.ARAP_GetcancelBpName().getText();
 		System.out.println(BPNumber);
 	}
@@ -1529,6 +1530,7 @@ public class ARAP_AccountsReceivable_AccountsPayable extends BaseClass {
 
 		clickAndActionHelper.doubleClick(Click);
 		//clickAndActionHelper.clickOnElement(Click);
+		
 	}
 
 	@And("^Give Business partner Name$")
@@ -1772,7 +1774,8 @@ public class ARAP_AccountsReceivable_AccountsPayable extends BaseClass {
 
 	@And("^Get The Business Partner and Advance Number$")
 	public void get_the_business_partner_and_advance_number() throws Throwable {
-		waitHelper.waitForElement(driver, 2000, arapObj.accountsReceivable_Advance_GetBp());
+//		waitHelper.waitForElement(driver, 2000, arapObj.accountsReceivable_Advance_GetBp());
+		WaitHelper.waitForElementwithFluentwait(driver, arapObj.accountsReceivable_Advance_GetBp());
 		BPNumber = arapObj.accountsReceivable_Advance_GetBp().getText();
 		System.out.println(BPNumber);
 
@@ -1801,6 +1804,7 @@ public class ARAP_AccountsReceivable_AccountsPayable extends BaseClass {
 		Thread.sleep(1000);
 		javaScriptHelper.JavaScriptHelper(driver);
 		// javascriptHelper.scrollDownByPixel();
+		javaScriptHelper.scrollIntoView(arapObj.accountsPayable_paymentSettlementFooter());
 		for (int i = 0; i <= 13; i++) {
 			try {
 				waitHelper.waitForElementVisible(
@@ -1811,8 +1815,15 @@ public class ARAP_AccountsReceivable_AccountsPayable extends BaseClass {
 			} catch (NoSuchElementException e) {
 				// waitHelper.waitForElementVisible(paymentSettlementObj.accountsPayablePayementSettlementNextRecord(),
 				// 1000, 100);
-				javaScriptHelper.scrollIntoView(arapObj.accountsPayablePayementSettlementNextRecord());
-				arapObj.accountsPayablePayementSettlementNextRecord().click();
+//				javaScriptHelper.scrollIntoView(arapObj.accountsPayablePayementSettlementNextRecord());
+				try {
+					arapObj.accountsPayablePayementSettlementNextRecord().click();
+					
+				}catch(Exception ee) {
+					System.out.println("cancelled advances is not available for payment settlement");
+					break;
+				}
+				
 
 			} catch (ElementNotInteractableException e) {
 				System.out.println("This is the end of the table invoice number is not availabe ");
@@ -2016,7 +2027,9 @@ public class ARAP_AccountsReceivable_AccountsPayable extends BaseClass {
 	@And("^Click the First Action Icon$")
 	public void click_the_first_action_icon() throws Throwable {
 		// ------------------CHECKER ACTION------------------//
-		waitHelper.waitForElement(driver, 3000, driver.findElement(By.xpath("//span[contains(text(),'" + readerData.readReferancedata() + "')]/ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell/div/ion-buttons/ion-button")));
+		Thread.sleep(2000);
+//		waitHelper.waitForElement(driver, 3000, driver.findElement(By.xpath("//span[contains(text(),'" + readerData.readReferancedata() + "')]/ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell/div/ion-buttons/ion-button")));
+//		waitHelper.waitForElementwithFluentwait(driver, driver.findElement(By.xpath("//span[contains(text(),'" + readerData.readReferancedata()	+ "')]/ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell/div/ion-buttons/ion-button")));
 		driver.findElement(By.xpath("//span[contains(text(),'" + readerData.readReferancedata()	+ "')]/ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell/div/ion-buttons/ion-button")).click();
 	}
 
@@ -2090,6 +2103,7 @@ public class ARAP_AccountsReceivable_AccountsPayable extends BaseClass {
 		arapObj.accountReceviableAdvances_PONumber_TextBox().click();
 //		arapObj.accountReceviableAdvances_PONumber_TextBox().sendKeys(arapData.PONumber);
 //		Thread.sleep(4000);
+		waitHelper.waitForElementwithFluentwait(driver, arapObj.accountReceviableAdvances_PONumber_TextBox());
 		arapObj.accountReceviableAdvances_PONumber_TextBox().sendKeys(Keys.DOWN);
 		arapObj.accountReceviableAdvances_PONumber_TextBox().sendKeys(Keys.ENTER);
 	}
@@ -2100,7 +2114,8 @@ public class ARAP_AccountsReceivable_AccountsPayable extends BaseClass {
 		waitHelper.waitForElement(driver, 2000, arapObj.accountReceviableAdvances_paymentMode_TextBox());
 		arapObj.accountReceviableAdvances_paymentMode_TextBox().click();
 		arapObj.accountReceviableAdvances_paymentMode_TextBox().sendKeys(arapData.ModeofPayment);
-		Thread.sleep(4000);
+//		Thread.sleep(4000);
+		waitHelper.waitForElementwithFluentwait(driver, arapObj.accountReceviableAdvances_paymentMode_TextBox());
 		arapObj.accountReceviableAdvances_paymentMode_TextBox().sendKeys(Keys.ENTER);
 	}
 
@@ -2109,13 +2124,14 @@ public class ARAP_AccountsReceivable_AccountsPayable extends BaseClass {
 		// ---------ENTER AMOUNT VALUE--------//
 		waitHelper.waitForElement(driver, 2000, arapObj.amount_TextBox());
 		arapObj.amount_TextBox().sendKeys(arapData.Amount);
-		Thread.sleep(4000);
+//		Thread.sleep(4000);
 	}
 
 	@And("^Choose Needed Currancy$")
 	public void choose_needed_currancy() throws Throwable {
 		// --------ENTER NEEDED CURRENCY-----------//
-		waitHelper.waitForElement(driver, 2000, arapObj.accountReceviableAdvances_currency_TextBox());
+//		waitHelper.waitForElement(driver, 2000, arapObj.accountReceviableAdvances_currency_TextBox());
+		waitHelper.waitForElementwithFluentwait(driver, arapObj.accountReceviableAdvances_currency_TextBox());
 		arapObj.accountReceviableAdvances_currency_TextBox().sendKeys("INR");
 		arapObj.accountReceviableAdvances_currency_TextBox().sendKeys(Keys.ENTER);
 	}
@@ -2219,6 +2235,7 @@ public class ARAP_AccountsReceivable_AccountsPayable extends BaseClass {
 		Thread.sleep(1000);
 		javaScriptHelper.JavaScriptHelper(driver);
 		// javascriptHelper.scrollDownByPixel();
+		javaScriptHelper.scrollIntoView(arapObj.accountsPayable_paymentSettlementFooter());
 		for (int i = 0; i <= 1; i++) {
 			try {
 				waitHelper.waitForElementVisible(
@@ -2229,8 +2246,6 @@ public class ARAP_AccountsReceivable_AccountsPayable extends BaseClass {
 			} catch (NoSuchElementException e) {
 				// waitHelper.waitForElementVisible(paymentSettlementObj.accountsPayablePayementSettlementNextRecord(),
 				// 1000, 100);
-				javaScriptHelper.scrollIntoView(arapObj.accountsPayablePayementSettlementNextRecord());
-
 				arapObj.accountsPayablePayementSettlementNextRecord().click();
 
 			}
