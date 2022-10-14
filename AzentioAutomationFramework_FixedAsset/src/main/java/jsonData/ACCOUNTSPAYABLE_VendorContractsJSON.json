@@ -1,0 +1,46 @@
+[
+	{
+		"User"	: "Maker",
+		"ExpenseType" : "Purchases Contract",
+		"BP_Name" : "Shasheekant",
+		"BP_Branch" : "Vashi",
+		"ContractName" : "Contract-002",
+		"Currency" : "INR",
+		"Remark" : "ok",
+		
+		"AutoGenerateBill" : "No",
+		"CreditPeriod" : "4",
+		"LatePaymentFee" : "100.00",
+		"Currency2" : "INR",
+		"RemarkByMaker" : "submit by maker",
+		"CheckerRemark" : "approved by checker",
+		"ApproveRemarkByReviewer" : "approved by reviewer",
+		"AgreementMonthAndYear" : "2023",
+		"AgreementDate" : "2",
+		"AgreementMonth" : "Dec",
+		"AgreementFullMonth" : "December",
+		"AgreementYear" : "2023",
+		"ContractEndDate" : "2",
+		"ContractEndMonth" : "Dec",
+		"ContractEndFullMonth" : "December",
+		"ContractEndYear" : "2023",
+		"ContractSignedOnDate" : "25",
+		"ContractSignedOnMonth" : "Dec",
+		"ContractSignedOnFullMonth" : "December",
+		"ContractSignedOnYear" : "2023",
+		
+		"HSN_Code" : "997133- Insurance",
+		"ExpenseCode" : "EXPINSURANCE001",
+		"CostCenter" : "FINANCE",
+		"Quantity" : "1000",
+		"Unit" : "Number",
+		"RatePerUnit" : "10",
+		"CurrencyinItemDetails" : "INR",
+		"PaymentTerm" : "cash",
+		"PaymentTermPercent" : "2",
+		"PaymentTermType" : "Advance",
+		"ModeOfPayment" : "Cheque",
+		"AutoPayout" : "No"
+		
+	}
+]

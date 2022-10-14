@@ -1,0 +1,29 @@
+[
+{
+"User":"Maker",
+"BranchCode":"AZENTMAIN",
+"AssetCode":"01-001-woodply30775",
+"BillReferenceNo":"INV-365-42022",
+"Remark":"OK",
+
+
+"AssetItemNumber" : "IN",
+"AssetItemDescription":"Laptop for work from home",
+"AssetValue":"1000000000",
+"HSNCode":"83034090- Lockers",
+
+"AssetReferenceNumber":"01-001-woodply28738",
+"ItemNumber":"111",
+"EmployeeID":"anant",
+
+
+	"GlYear":"2023",
+	"GlDay":"19",
+	"GlToMonth":"Jun",
+	"GlFullToMonth":"June",
+	"GlToDate":"30",
+	
+	"AssetLife":"Month"
+
+}
+]

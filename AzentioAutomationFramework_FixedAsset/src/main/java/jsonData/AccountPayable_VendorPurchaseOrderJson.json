@@ -1,0 +1,49 @@
+[
+	{
+		"User": "Maker",
+		"EntityBranch": "Azentio Main Branch",
+		"BpName": "Shasheekant",
+		"ReferenceType": "Contract",
+		"ReferenceTypePurchaseReq": "Purchase Requisition",
+		"Contract": "ORM",
+		"PoQuantity": "1",
+		
+		"PoSubType": "Telecom Expense",
+		"PoSubTypeForInventory": "PO for Inventory",
+		"PoNumber": "Azentio_PO",
+		"CostCenter": "FINANCE",
+		"Remark": "ok",
+		
+		"Month"					: "Dec",
+		"Year"					: "2023",
+		"Day"					: "25",
+		"FullMonth"				:"December",
+		
+		"ShippedFromLocation"	:"INDIA - Punjab",
+		"DeliveryLocation"		: "Azentio Main Branch",
+		
+		"PoQuantityGreater"  : "100000",
+		
+		
+		"PoTypeSerivce": "Services Contract",
+		"PoSubTypeService": "Cleaning Services",
+		"CostCenterService": "FINANCE",
+		
+		"HSNcodeService" :"999459- Cleaning Ser",
+		"ExpensecodeService" : "EXP11CEANINGEXP",
+		"QuantityService":"5",
+		"UnitService" : "Boxes",
+		"RatePerUnit" : "2",
+		"ShippedLocationService" : "INDIA - Maharastra",
+		"DeliveryLocationService" : "Azentio Main Branch",
+		"AutoGenerateBill" : "No",
+		
+		"ModeOfPayement" :"Cheque",
+		"AutoPayout" : "No",
+		"CreditPeriod" : "3",
+		
+		"ItemDetailQty" : "1000"
+		
+		
+ 	}
+]

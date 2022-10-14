@@ -1,0 +1,18 @@
+[{
+
+
+"User"				:	"Maker",
+"EntityBranch" 		: 	"Azentio Main Branch",
+"ReceivableName"	:	"Advance To Employee",
+"EmployeeName"		:	"Mehta",
+"PaymentMode"		:	"Cheque",
+"Amount"			:	"500000",
+"Currency"			:	"INR",
+"CostCenter"		:	"FINANCE",
+"Description"		:	"ADV"
+		
+
+
+
+
+}]
