@@ -31,15 +31,16 @@ public class FixedAsset_AssetGlConfiguration extends BaseClass  {
 	@Then("^Click on Asset GL configuration Eye button$")
     public void click_on_asset_gl_configuration_eye_button()  {
 	//Eye Button
-	waithelper.waitForElementToVisibleWithFluentWait(driver,   fixedAsset_AssetGlConfigurationObj.fixedAsset_AssetGlConfiguration_EyeIcon(),60,5);
+	waithelper.waitForElementToVisibleWithFluentWait(driver,   fixedAsset_AssetGlConfigurationObj.fixedAsset_AssetGlConfiguration_EyeIcon(),30,2);
 	fixedAsset_AssetGlConfigurationObj.fixedAsset_AssetGlConfiguration_EyeIcon().click();
 		     
     }
 	@And("^get the active asset code in asset category modules$")
     public void get_the_active_asset_code_in_asset_category_modules() throws Throwable {
 		waithelper.waitForElementVisible(driver.findElement(By.xpath("//datatable-row-wrapper[1]//datatable-body-cell[2]//span")), 3000, 300);
-     driver.findElement(By.xpath("//datatable-row-wrapper[1]//datatable-body-cell[2]//span")).getText();
-     codeConfigData.put("AssetCode", driver.findElement(By.xpath("//datatable-row-wrapper[1]//datatable-body-cell[2]//span")).getText());
+	     //driver.findElement(By.xpath("//datatable-row-wrapper[1]//datatable-body-cell[2]//span")).getText();
+	     codeConfigData.put("AssetCode", driver.findElement(By.xpath("//datatable-row-wrapper[1]//datatable-body-cell[2]//span")).getText());
+	     System.out.println( driver.findElement(By.xpath("//datatable-row-wrapper[1]//datatable-body-cell[2]//span")).getText());
      
     }
 	

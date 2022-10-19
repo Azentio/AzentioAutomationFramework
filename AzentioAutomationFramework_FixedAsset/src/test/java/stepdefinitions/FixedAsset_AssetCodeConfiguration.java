@@ -37,9 +37,9 @@ public class FixedAsset_AssetCodeConfiguration extends BaseClass {
 	@And("^get the active asset code in asset category module$")
     public void get_the_active_asset_code_in_asset_category_module() throws Throwable {
 		waithelper.waitForElementVisible(driver.findElement(By.xpath("//datatable-row-wrapper[1]//datatable-body-cell[2]//span")), 3000, 300);
-     driver.findElement(By.xpath("//datatable-row-wrapper[1]//datatable-body-cell[2]//span")).getText();
+     //driver.findElement(By.xpath("//datatable-row-wrapper[1]//datatable-body-cell[2]//span")).getText();
      codeConfigData.put("AssetCode", driver.findElement(By.xpath("//datatable-row-wrapper[1]//datatable-body-cell[2]//span")).getText());
-     
+     System.out.println( driver.findElement(By.xpath("//datatable-row-wrapper[1]//datatable-body-cell[2]//span")).getText());
     }
 	
 	@Then("^Click on Asset code configuration Eye button$")
@@ -53,7 +53,7 @@ public class FixedAsset_AssetCodeConfiguration extends BaseClass {
 	
 	
 	 @Then("^Fill Asset code configuration Mandatory fields$")
-	 public void fill_asset_code_configuration_mandatory_fields()  {
+	 public void fill_asset_code_configuration_mandatory_fields() throws InterruptedException  {
 		 
 	 fixedAsset_AssetCategoryTestDataType = jsonReader.getAssetCategoryByName("Maker");
 	 
@@ -62,6 +62,7 @@ public class FixedAsset_AssetCodeConfiguration extends BaseClass {
 	  waithelper.waitForElement(driver, 4000, fixedAsset_AssetCodeConfigurationObj.fixedAsset_AssetCodeConfiguration_AssetCode());
 	  fixedAsset_AssetCodeConfigurationObj.fixedAsset_AssetCodeConfiguration_AssetCode().click();
 	  fixedAsset_AssetCodeConfigurationObj.fixedAsset_AssetCodeConfiguration_AssetCode().sendKeys(codeConfigData.get("AssetCode"));
+	  Thread.sleep(1000);
 	 fixedAsset_AssetCodeConfigurationObj.fixedAsset_AssetCodeConfiguration_AssetCode().sendKeys(Keys.ENTER);
 	 
 		 

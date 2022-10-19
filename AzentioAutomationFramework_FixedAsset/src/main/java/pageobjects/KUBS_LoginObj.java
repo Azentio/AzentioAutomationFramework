@@ -22,7 +22,7 @@ public class KUBS_LoginObj {
 
 	}
 
-	@FindBy(xpath = "//button[contains(text(),'Go')]")
+	@FindBy(xpath = "//button[text()='Continue']")
 	private WebElement go_button;
 
 	public WebElement Login_goButton() {

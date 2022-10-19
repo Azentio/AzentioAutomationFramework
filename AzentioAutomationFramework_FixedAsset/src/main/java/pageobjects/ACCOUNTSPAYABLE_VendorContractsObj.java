@@ -411,7 +411,7 @@ public class ACCOUNTSPAYABLE_VendorContractsObj {
 	}
 	
 	//Notification Button
-	@FindBy(xpath = "//ion-buttons[2]/ion-button[2]")
+	@FindBy(xpath = "//ion-icon[@ng-reflect-name='mail-unread-outline']")
 	private WebElement  accountPayable_VendorContracts_NotificationButton;
 	
 	public WebElement accountPayable_VendorContracts_NotificationButton() {

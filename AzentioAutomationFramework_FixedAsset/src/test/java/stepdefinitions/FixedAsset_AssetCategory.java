@@ -2,6 +2,7 @@ package stepdefinitions;
 
 import java.util.Random;
 
+import org.junit.Assert;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 
@@ -29,7 +30,7 @@ public class FixedAsset_AssetCategory extends BaseClass{
 	ConfigFileReader config=new ConfigFileReader();
 	DropDownHelper dropDownHelper;
 	WaitHelper waithelper = new WaitHelper(driver);
-	
+	ClicksAndActionsHelper clickAndActions = new ClicksAndActionsHelper(driver);
 	JavascriptHelper javascripthelper = new JavascriptHelper();
 	AzentioLogin login;
 	JsonDataReaderWriter jsonWriter = new JsonDataReaderWriter();
@@ -80,8 +81,18 @@ public class FixedAsset_AssetCategory extends BaseClass{
 	    @Then("^Click on Fixed Asset Add button$")
 	    public void click_on_fixed_asset_add_button()  {
 	    //Add Button
-	    waithelper.waitForElementToVisibleWithFluentWait(driver, fixedAsset_AssetCategoryObj.fixedAsset_AssetCategory_AddButton(),60,5);
-		fixedAsset_AssetCategoryObj.fixedAsset_AssetCategory_AddButton().click();
+	    //waithelper.waitForElementToVisibleWithFluentWait(driver, fixedAsset_AssetCategoryObj.fixedAsset_AssetCategory_AddButton(),60,5);
+	    	for (int i = 0; i <30; i++) {
+				try {
+					fixedAsset_AssetCategoryObj.fixedAsset_AssetCategory_AddButton().click();
+					break;
+				} catch (Exception e) {
+					if (i==29) {
+						Assert.fail("add button not clicked");
+					}
+				}
+			}
+		
 		 		
 	        
 	    }
@@ -137,7 +148,7 @@ public class FixedAsset_AssetCategory extends BaseClass{
 				
 			}
 	   	
-	  // 	Thread.sleep(2000); 
+	  	Thread.sleep(2000); 
 	    	
 	    
 	    }
@@ -145,10 +156,29 @@ public class FixedAsset_AssetCategory extends BaseClass{
 	    @Then("^Click on Fixed Asset Notification$")
 	    public void click_on_fixed_asset_notification() {
 	    //Notification
-		    waithelper.waitForElementToVisibleWithFluentWait(driver,fixedAsset_AssetCategoryObj.fixedAsset_AssetCategory_AlertClose(),60,5);
-		 	fixedAsset_AssetCategoryObj.fixedAsset_AssetCategory_AlertClose().click();
-	    waithelper.waitForElementToVisibleWithFluentWait(driver,fixedAsset_AssetCategoryObj.fixedAsset_AssetCategory_Notification(),60,5);
-	 	fixedAsset_AssetCategoryObj.fixedAsset_AssetCategory_Notification().click();
+		    waithelper.waitForElementToVisibleWithFluentWait(driver,fixedAsset_AssetCategoryObj.fixedAsset_AssetCategory_WorkflowInitiated(),30,2);
+	    	fixedAsset_AssetCategoryObj.fixedAsset_AssetCategory_WorkflowInitiated().click();
+	    	for (int i = 0; i <30; i++) {
+				try {
+					
+					clickAndActions.moveToElement(fixedAsset_AssetCategoryObj.fixedAsset_AssetCategory_AlertClose());
+					fixedAsset_AssetCategoryObj.fixedAsset_AssetCategory_AlertClose().click();
+					break;
+				} catch (Exception e) {
+					
+				}
+			}
+	    	
+	   // waithelper.waitForElementToVisibleWithFluentWait(driver,fixedAsset_AssetCategoryObj.fixedAsset_AssetCategory_Notification(),60,5);
+	 	for (int i = 0; i <30; i++) {
+			try {
+				fixedAsset_AssetCategoryObj.fixedAsset_AssetCategory_Notification().click();
+				break;
+			} catch (Exception e) {
+				
+			}
+		}
+		 	
 	 	   	
 	      
 	    }

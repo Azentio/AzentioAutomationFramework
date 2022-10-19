@@ -2,8 +2,8 @@
 	{
 		"User"					: "Maker",
 		"BranchCode"			: "AZENTMAIN",
-		"AssetCode"				: "01-001-woodply4494",
-		"BillReferenceNo"		: "INV-365-42022",
+		"AssetCode"				: "LAND-LAND-woodply79685",
+		"BillReferenceNo"		: "INV-35-102022",
 		"Remark"				: "OK",
 		
 		"AssetItemNumber"		: "605",
@@ -16,15 +16,15 @@
 		"SalvageValue"			: "9000",
 		
 		"GlYear"				: "2023",
-		"GlDay"					: "2",
-		"GlToMonth"				: "Jun",
-		"GlFullToMonth"			: "June",
+		"GlDay"					: "25",
+		"GlToMonth"				: "Oct",
+		"GlFullToMonth"			: "October",
 		"GlToDate"				: "30",
 		
 		
 		
-		"GRN_ReferenceNumber" : "GRN-Agency-8-260-1242022",
-		"BillReferenceNumber" : "INV-365-42022",
+		"GRN_ReferenceNumber" : "GRN-Bank-9-51-13102022",
+		"BillReferenceNumber" : "INV-35-102022",
 		"ExternalReferenceNumber" : "260",
 		"AssetLifeUnit" : "Year",
 		"HSNcode" : "8471- Laptop",
@@ -35,7 +35,7 @@
 		"CapitalizationMonth" : "Oct",
 		"CapitalizationFullMonth" : "October",
 		"CapitalizationDate" : "21",
-		"CapitalizationYear" : "2022",
+		"CapitalizationYear" : "2023",
 		"RemarkByMaker" : "Submit By Maker"
 		
 	}

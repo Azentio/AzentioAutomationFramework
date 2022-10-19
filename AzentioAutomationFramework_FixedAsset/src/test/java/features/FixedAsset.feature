@@ -156,7 +156,6 @@ Then Click on Asset Creation Eye button
 Then Click on the add button to add new record
 Then Fill Form
 Then Save the filled form
-
 Then Click on the Notification
 Then Select the record which we saved
 Then Submit record
@@ -256,15 +255,14 @@ And select the record and Approve by checker
 @KUBS_FAT_UAT_002_006
 Scenario: Creation of registered asset with minimum details
 
-Given Navigate to kubs URL and user should login as a maker
-Then Click on the Finance
+Given Maker Navigate to UAT URL login
+#Then Click on the Finance
 Then Click on the Direction
 Then Click on Fixed Asset
 Then Click on Asset Creation Eye button
 Then Click on the add button to add new record
 Then Fill Form
 Then Save the filled form
-
 Then Click on the Notification
 Then Select the record which we saved
 Then Submit record

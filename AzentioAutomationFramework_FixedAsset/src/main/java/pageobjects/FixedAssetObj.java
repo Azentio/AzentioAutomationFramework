@@ -93,7 +93,7 @@ public class FixedAssetObj {
 		}
 		
 	//Asset AssetValue
-		@FindBy(xpath = "//ion-row[4]/ion-col[1]/ion-item[1]/ion-input[1]/input")
+		@FindBy(xpath = "//ion-label[text()='Asset Value ']/following-sibling::ion-input/input")
 		private WebElement fixedAsset_AssetCreation_AssetValue;
 
 		public WebElement fixedAsset_AssetCreation_AssetValue() {
@@ -148,6 +148,13 @@ private WebElement fixedAsset_AssetCreation_SaveButton;
 	public WebElement fixedAsset_AssetCreation_SaveButton() {
 return fixedAsset_AssetCreation_SaveButton;
 						}
+	//success message close
+	@FindBy(xpath = "//button[@aria-label='Close']")
+	private WebElement fixedAsset_AssetCreation_SuccessMessageClose;
+
+		public WebElement fixedAsset_AssetCreation_SuccessMessageClose() {
+	return fixedAsset_AssetCreation_SuccessMessageClose;
+							}
 	//Fixed Asset Items
 @FindBy(xpath = "//span[2]/ion-tab-button/ion-label")
 private WebElement fixedAsset_AssetCreation_FixedAssetItems;

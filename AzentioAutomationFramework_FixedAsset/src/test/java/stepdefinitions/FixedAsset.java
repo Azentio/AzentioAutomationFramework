@@ -97,7 +97,17 @@ public class FixedAsset {
 
 	    @Then("^Click on the add button to add new record$")
 	    public void click_on_the_add_button_to_add_new_record() throws Throwable {
-	    	fixedAssetObj.fixedAsset_AssetCreation_AddButton().click();
+	    	for (int i = 0; i <30; i++) {
+				try {
+					fixedAssetObj.fixedAsset_AssetCreation_AddButton().click();
+					break;
+				} catch (Exception e) {
+					if (i==29) {
+						Assert.fail("Add button not clicked");
+					}
+				}
+			}
+	    	
 	    }
 
 	    @Then("^Fill Form$")
@@ -124,6 +134,16 @@ public class FixedAsset {
 	    public void save_the_filled_form() throws Throwable {
 	    	waithelper.waitForElementToVisibleWithFluentWait(driver,fixedAssetObj.fixedAsset_AssetCreation_SaveButton(),60,5);
 	    	fixedAssetObj.fixedAsset_AssetCreation_SaveButton().click();
+	    	for (int i = 0; i <30; i++) {
+				try {
+					fixedAssetObj.fixedAsset_AssetCreation_SuccessMessageClose().click();
+					break;
+				} catch (Exception e) {
+					if (i==29) {
+						//Assert.fail("Success message close button not clicked ");
+					}
+				}
+			}
 	    	}
 
 //	    @Then("^Click on the Notification$")
@@ -178,8 +198,17 @@ public class FixedAsset {
 	    @Then("^Click on the add button of asset items$")
 	    public void click_on_the_add_button_of_asset_items() {
 	    //Add button	
-	    waithelper.waitForElementToVisibleWithFluentWait(driver,fixedAssetObj.fixedAsset_AssetCreation_AddButton(),60,5);
-	    fixedAssetObj.fixedAsset_AssetCreation_AddButton().click();	
+	   // waithelper.waitForElementToVisibleWithFluentWait(driver,fixedAssetObj.fixedAsset_AssetCreation_AddButton(),60,5);
+	    	for (int i = 0; i <30; i++) {
+				try {
+					fixedAssetObj.fixedAsset_AssetCreation_AddButton().click();
+					break;
+				} catch (Exception e) {
+					if (i==29) {
+						Assert.fail("Add icon not clicked in asset item creation");
+					}
+				}
+			}
 	 	    	
 	    }
 	    
@@ -189,22 +218,22 @@ public class FixedAsset {
 	    	Random random = new Random();
 	    	int randomNumber=random.nextInt(5000-999)+5000;
 	    	fixedAssetTestDataType= jsonReader.getFixedAssetByName("Maker");
-	    	waithelper.waitForElementToVisibleWithFluentWait(driver,fixedAssetObj.fixedAsset_AssetCreation_AssetItemNumber(),60,5);
+	    	waithelper.waitForElementToVisibleWithFluentWait(driver,fixedAssetObj.fixedAsset_AssetCreation_AssetItemNumber(),30,5);
 	    	fixedAssetObj.fixedAsset_AssetCreation_AssetItemNumber().click();
 	    	fixedAssetObj.fixedAsset_AssetCreation_AssetItemNumber().sendKeys(fixedAssetTestDataType.AssetItemNumber+randomNumber);
 	    	fixedAssetObj.fixedAsset_AssetCreation_AssetItemNumber().sendKeys(Keys.ENTER);
 	    	
-	    	waithelper.waitForElementToVisibleWithFluentWait(driver,fixedAssetObj.fixedAsset_AssetCreation_AssetItemDescription(),60,5);
+	    	waithelper.waitForElementToVisibleWithFluentWait(driver,fixedAssetObj.fixedAsset_AssetCreation_AssetItemDescription(),30,5);
 	    	fixedAssetObj.fixedAsset_AssetCreation_AssetItemDescription().click();
 	    	fixedAssetObj.fixedAsset_AssetCreation_AssetItemDescription().sendKeys(fixedAssetTestDataType.AssetItemDescription+randomNumber);
 	    	fixedAssetObj.fixedAsset_AssetCreation_AssetItemDescription().sendKeys(Keys.ENTER);
 	       
-	    	waithelper.waitForElementToVisibleWithFluentWait(driver,fixedAssetObj.fixedAsset_AssetCreation_AssetValue(),60,5);
+	    	waithelper.waitForElementToVisibleWithFluentWait(driver,fixedAssetObj.fixedAsset_AssetCreation_AssetValue(),30,5);
 	    	fixedAssetObj.fixedAsset_AssetCreation_AssetValue().click();
 	    	fixedAssetObj.fixedAsset_AssetCreation_AssetValue().sendKeys(fixedAssetTestDataType.AssetValue);
 	    	fixedAssetObj.fixedAsset_AssetCreation_AssetValue().sendKeys(Keys.ENTER);
 	       
-	    	waithelper.waitForElementToVisibleWithFluentWait(driver,fixedAssetObj.fixedAsset_AssetCreation_HSNCode(),60,5);
+	    	waithelper.waitForElementToVisibleWithFluentWait(driver,fixedAssetObj.fixedAsset_AssetCreation_HSNCode(),30,5);
 	    	fixedAssetObj.fixedAsset_AssetCreation_HSNCode().click();
 	    	fixedAssetObj.fixedAsset_AssetCreation_HSNCode().sendKeys(fixedAssetTestDataType.HSNCode);
 	    	fixedAssetObj.fixedAsset_AssetCreation_HSNCode().sendKeys(Keys.ENTER);

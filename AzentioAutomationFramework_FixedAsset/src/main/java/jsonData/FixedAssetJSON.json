@@ -2,8 +2,8 @@
 {
 "User":"Maker",
 "BranchCode":"AZENTMAIN",
-"AssetCode":"01-001-woodply30775",
-"BillReferenceNo":"INV-365-42022",
+"AssetCode":"LAND-LAND-woodply79685",
+"BillReferenceNo":"INV-35-102022",
 "Remark":"OK",
 
 
@@ -12,15 +12,13 @@
 "AssetValue":"1000000000",
 "HSNCode":"83034090- Lockers",
 
-"AssetReferenceNumber":"01-001-woodply28738",
+"AssetReferenceNumber":"LAND-LAND-woodply79685",
 "ItemNumber":"111",
 "EmployeeID":"anant",
-
-
 	"GlYear":"2023",
 	"GlDay":"19",
-	"GlToMonth":"Jun",
-	"GlFullToMonth":"June",
+	"GlToMonth":"Oct",
+	"GlFullToMonth":"October",
 	"GlToDate":"30",
 	
 	"AssetLife":"Month"

@@ -9,6 +9,8 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.testng.Assert;
+
 import dataProvider.ConfigFileReader;
 import dataProvider.JsonConfig;
 import helper.BrowserHelper;
@@ -381,7 +383,9 @@ waithelper.waitForElement(driver, 2000,
 				aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_NotificationButton().click();
 				break;
 			} catch (Exception e) {
-				
+				if (i==29) {
+					Assert.fail("notification icon not clicked");
+				}
 			}
 		}
 		

@@ -82,7 +82,6 @@ And select the record and Approve by checker
 @KUBS_FAT_UAT_001_004	
 Scenario: Create GRN for the generated PO No.s
 Given Navigate to URL and user should login as a maker
-Then Click on the Finance
 Then Click on the Direction
 Then Click on Accounts Payable
 Then Click on Good Recived Note GRN Eye buutton
@@ -104,7 +103,6 @@ Then Go to Checker account
 And Clam the record
 Then Click on notification and approve the record
 Given Navigate to URL and user should login as a maker
-Then Click on the Finance
 Then Click on the Direction
 Then Click on Accounts Payable
 Then Click on Good Recived Note GRN Eye buutton
@@ -148,8 +146,7 @@ Then Click on Good Recived Note GRN Eye buutton
 
 Scenario: Create the asset limit
 
-Given Navigate to kubs URL and user should login as a maker
-Then Click on the Finance
+Given Maker Navigate to UAT URL login
 Then Click on the Direction
 Then Click on Fixed Asset
 Then Click on Asset Creation Eye button
@@ -167,7 +164,6 @@ Then Go to Checker account
 And Clam the record
 Then Click on notification and approve the record
 Given Navigate to kubs URL and user should login as a maker
-Then Click on the Finance
 Then Click on the Direction
 Then Click on Fixed Asset
 Then Click on Asset Creation Eye button
@@ -255,8 +251,7 @@ And select the record and Approve by checker
 
 @KUBS_FAT_UAT_002_006
 Scenario: Creation of registered asset with minimum details
-Given Navigate to kubs URL and user should login as a maker
-Then Click on the Finance
+Given Maker Navigate to UAT URL login
 Then Click on the Direction
 Then Click on Fixed Asset
 Then Click on Asset Creation Eye button
@@ -272,8 +267,7 @@ Then Approve the record which we submitted from maker stage
 Then Go to Checker account
 And Clam the record
 Then Click on notification and approve the record
-Given Navigate to kubs URL and user should login as a maker
-Then Click on the Finance
+Given Maker Navigate to UAT URL login
 Then Click on the Direction
 Then Click on Fixed Asset
 Then Click on Asset Creation Eye button
@@ -281,8 +275,7 @@ Then Click on Asset Creation Eye button
 @KUBS_FAT_UAT_002_007
 Scenario: Creation of the registered asset with full details
 
-Given Navigate to kubs URL and user should login as a maker
-Then Click on the Finance
+Given Maker Navigate to UAT URL login
 Then Click on the Direction
 Then Click on Fixed Asset
 Then Click on Asset Creation Eye button
@@ -307,8 +300,7 @@ Then Approve the record which we submitted from maker stage
 Then Go to Checker account
 And Clam the record
 Then Click on notification and approve the record
-Given Navigate to kubs URL and user should login as a maker
-Then Click on the Finance
+Given Maker Navigate to UAT URL login
 Then Click on the Direction
 Then Click on Fixed Asset
 Then Click on Asset Creation Eye button
@@ -328,7 +320,7 @@ Then Click on the Notification
 Then Select the record which we saved
 Then Click on Fixed Asset items
 Then Click on the add button of asset items
-Then fill the asset item details asset Creation replaced
+Then fill the asset item details
 Then Click on save button of item details
 Then Click on Fixed Asset Notification 
 And Select and Submit the record
@@ -339,7 +331,7 @@ And then checker claim the record
 Then click on the checker Notification 
 And select the record and Approve by checker
 
-    Given User should go to the kubs url and login as a maker user
+    Given Maker Navigate to UAT URL login
     And user should navigate to fixed asset menu
     When click on eye button of asset sale
     And click on add button to create sale asset record
@@ -393,7 +385,7 @@ Then Click on the Notification
 Then Select the record which we saved
 Then Click on Fixed Asset items
 Then Click on the add button of asset items
-Then fill the asset item details asset Creation replaced
+Then fill the asset item details
 Then Click on save button of item details
 Then Click on Fixed Asset Notification 
 And Select and Submit the record
@@ -403,14 +395,14 @@ Then log in to the Checker Account
 And then checker claim the record
 Then click on the checker Notification 
 And select the record and Approve by checker
-Given User should go to the kubs url and login as a maker user
+Given Maker Navigate to UAT URL login
 And user should navigate to fixed asset menu
 When click on eye button of asset sale
 And click on add button to create sale asset record
 And Fill the required fields to sale asset in loss
 Then Save and submit the asset sale record
-    
-     And User should go to the kubs url and login as a reviewer user 
+
+    And User should go to the kubs url and login as a reviewer user 
     Then Click on notification button in reviewer
   	And approve the record by reviewer user
   	
@@ -422,7 +414,7 @@ Then Save and submit the asset sale record
    	Then click on notification in checker
     Then checker should approved the asset sale
     
-    Given User should go to the kubs url and login as a maker user
+    Given Maker Navigate to UAT URL login
     And user should navigate to fixed asset menu
     When click on eye button of asset sale
     Then click on first eye button to get the loss earned

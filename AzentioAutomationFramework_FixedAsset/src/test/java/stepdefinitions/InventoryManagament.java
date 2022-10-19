@@ -57,7 +57,7 @@ public class InventoryManagament extends BaseClass {
 	ClicksAndActionsHelper clicksAndActionHelper = new ClicksAndActionsHelper(driver);
 	BUDGET_BudgetTransferObj budgetTransferObj = new BUDGET_BudgetTransferObj(driver);
 	String referance_id;
-	KUBS_CheckerObj kubschecker;
+	KUBS_CheckerObj kubschecker = new KUBS_CheckerObj(driver);
 	JavascriptHelper javascript;
 	RadioButtonHelper radioButtonHelper = new RadioButtonHelper(driver);
 	String reviwerId;
@@ -71,17 +71,18 @@ public class InventoryManagament extends BaseClass {
 		login.loginToAzentioApp("Maker");
 	}
 
-	@Then("^Click on Finance$")
-	public void click_on_finance() throws Throwable {
-		waithelper = new WaitHelper(driver);
-		budgetTransferObj = new BUDGET_BudgetTransferObj(driver);
-
-	} 
+	/*
+	 * @Then("^Click on Finance$") public void click_on_finance() throws Throwable {
+	 * waithelper = new WaitHelper(driver); budgetTransferObj = new
+	 * BUDGET_BudgetTransferObj(driver);
+	 * 
+	 * }
+	 */
 	
-	 @Then("^Click on the Finance$")
-	    public void click_on_the_finance() throws Throwable {
-	    	System.out.println("Click on finance");
-	    }
+//	 @Then("^Click on the Finance$")
+//	    public void click_on_the_finance() throws Throwable {
+//	    	System.out.println("Click on finance");
+//	    }
 
 	@Then("^Click on the Direction$")
 	public void click_on_direction() throws Throwable {
@@ -729,8 +730,18 @@ public class InventoryManagament extends BaseClass {
 		    @Then("^Click on the Notification$")
 		    public void click_on_the_notification() throws Throwable {
 //		    	waithelper.waitForElement(driver, 3000, budgetTransferObj.budget_BudgetTransfer_NotificationIcon());
-				waithelper.waitForElementwithFluentwait(driver, budgetTransferObj.budget_BudgetTransfer_NotificationIcon());
-		    	budgetTransferObj.budget_BudgetTransfer_NotificationIcon().click();
+				//waithelper.waitForElementwithFluentwait(driver, budgetTransferObj.budget_BudgetTransfer_NotificationIcon());
+		    	for (int i = 0; i <30; i++) {
+					try {
+						budgetTransferObj.budget_BudgetTransfer_NotificationIcon().click();
+						break;
+					} catch (Exception e) {
+					if (i==29) {
+						Assert.fail("notification icon not clicked");
+					}
+					}
+				}
+		    	
 
 		    }
 
@@ -817,7 +828,7 @@ public class InventoryManagament extends BaseClass {
 				budgetTransferObj.budget_BudgetTransfer_SubmitByMaker().click();
 				//Thread.sleep(2000);
 				WebElement recordstatus = budgetTransferObj.budget_BudgetTransfer_RecordStatus();
-//				Thread.sleep(2000);
+				Thread.sleep(2000);
 				waithelper.waitForElementwithFluentwait(driver, budgetTransferObj.budget_BudgetTransfer_RecordStatus());
 				clicksAndActionHelper.moveToElement(recordstatus);
 				String message = budgetTransferObj.budget_BudgetTransfer_RecordStatus().getText();

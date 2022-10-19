@@ -43,7 +43,7 @@ public class AzentioLogin {
 		String otp = login.Login_getOtp().getText();
 		driver.findElement(By.xpath("//ng-otp-input/div/input[1]")).sendKeys(otp.substring(7));
 		login.Login_signIn().click();
-		while(true)
+	/*	while(true)
 		{
 			try {
 				waithelper.waitForElementToVisibleWithFluentWait(driver, login.Login_loginStatus(), 2, 1);
@@ -63,14 +63,26 @@ public class AzentioLogin {
 				login.Login_signIn().click();
 			}
 		}
+		*/
 //		waithelper.waitForElementwithFluentwait(driver, login.Login_loginStatus());
 //		Assert.assertTrue(login.Login_loginStatus().isDisplayed());
 		waithelper.waitForElement(driver, 2000, makerobj.kubsFinaceOption());
 		makerobj.kubsFinaceOption().click();
 //		Thread.sleep(2000);
-		waithelper.waitForElementwithFluentwait(driver, makerobj.FinanceOption());
+	//	waithelper.waitForElementwithFluentwait(driver, makerobj.FinanceOption());
 //		waithelper.waitForElement(driver, 4000, makerobj.FinanceOption());
-		makerobj.FinanceOption().click();
+		for (int i = 0; i <30; i++) {
+			try {
+				makerobj.FinanceOption().click();
+				break;
+			} catch (Exception e) {
+				if (i==29) {
+					Assert.fail("Finance option ont clicked");
+				}
+			}
+		}
+		
+		
 
 	}
 
@@ -110,8 +122,8 @@ public class AzentioLogin {
 			login.Login_passWord().sendKeys(logindata.PassWord);
 			waithelper.waitForElement(driver, 2000, login.Login_signIn());
 			login.Login_signIn().click();
-			waithelper.waitForElement(driver, 2000, login.Login_loginStatus());
-			Assert.assertTrue(login.Login_loginStatus().isDisplayed());
+//			waithelper.waitForElement(driver, 2000, login.Login_loginStatus());
+//			Assert.assertTrue(login.Login_loginStatus().isDisplayed());
 		} else if (id.equals("1993")) {
 			System.out.println("Username : " + logindata.UserName2);
 
@@ -123,8 +135,8 @@ public class AzentioLogin {
 			driver.findElement(By.xpath("//ng-otp-input/div/input[1]")).sendKeys(otp.substring(7));
 			waithelper.waitForElement(driver, 2000, login.Login_signIn());
 			login.Login_signIn().click();
-			waithelper.waitForElement(driver, 2000, login.Login_loginStatus());
-			Assert.assertTrue(login.Login_loginStatus().isDisplayed());
+//			waithelper.waitForElement(driver, 2000, login.Login_loginStatus());
+//			Assert.assertTrue(login.Login_loginStatus().isDisplayed());
 
 		} else if (id.equals("1992")) {
 			login.Login_userName().sendKeys(logindata.UserName3);
@@ -135,8 +147,8 @@ public class AzentioLogin {
 			driver.findElement(By.xpath("//ng-otp-input/div/input[1]")).sendKeys(otp.substring(7));
 			waithelper.waitForElement(driver, 2000, login.Login_signIn());
 			login.Login_signIn().click();
-			waithelper.waitForElement(driver, 2000, login.Login_loginStatus());
-			Assert.assertTrue(login.Login_loginStatus().isDisplayed());
+//			waithelper.waitForElement(driver, 2000, login.Login_loginStatus());
+//			Assert.assertTrue(login.Login_loginStatus().isDisplayed());
 
 		}
 		else if (id.equals("1002436")) {
@@ -148,8 +160,8 @@ public class AzentioLogin {
 			driver.findElement(By.xpath("//ng-otp-input/div/input[1]")).sendKeys(otp.substring(7));
 			waithelper.waitForElement(driver, 2000, login.Login_signIn());
 			login.Login_signIn().click();
-			waithelper.waitForElement(driver, 2000, login.Login_loginStatus());
-			Assert.assertTrue(login.Login_loginStatus().isDisplayed());
+//			waithelper.waitForElement(driver, 2000, login.Login_loginStatus());
+//			Assert.assertTrue(login.Login_loginStatus().isDisplayed());
 		}
 		else if (id.equals("in00027")) {
 			login.Login_userName().sendKeys(logindata.UserName5);
@@ -160,8 +172,8 @@ public class AzentioLogin {
 //			driver.findElement(By.xpath("//ng-otp-input/div/input[1]")).sendKeys(otp.substring(7));
 			waithelper.waitForElement(driver, 2000, login.Login_signIn());
 			login.Login_signIn().click();
-			waithelper.waitForElement(driver, 2000, login.Login_loginStatus());
-			Assert.assertTrue(login.Login_loginStatus().isDisplayed());
+//			waithelper.waitForElement(driver, 2000, login.Login_loginStatus());
+//			Assert.assertTrue(login.Login_loginStatus().isDisplayed());
 		}else if (id.equals("1002439")) {
 			login.Login_userName().sendKeys(logindata.UserName6);
 			login.Login_goButton().click();
@@ -171,8 +183,8 @@ public class AzentioLogin {
 			driver.findElement(By.xpath("//ng-otp-input/div/input[1]")).sendKeys(otp.substring(7));
 			waithelper.waitForElement(driver, 2000, login.Login_signIn());
 			login.Login_signIn().click();
-			waithelper.waitForElement(driver, 2000, login.Login_loginStatus());
-			Assert.assertTrue(login.Login_loginStatus().isDisplayed());
+//			waithelper.waitForElement(driver, 2000, login.Login_loginStatus());
+//			Assert.assertTrue(login.Login_loginStatus().isDisplayed());
 		}
 		else if (id.equals("le4checker")) {
 			login.Login_userName().sendKeys(logindata.UserName7);
@@ -183,9 +195,21 @@ public class AzentioLogin {
 			driver.findElement(By.xpath("//ng-otp-input/div/input[1]")).sendKeys(otp.substring(7));
 			waithelper.waitForElement(driver, 2000, login.Login_signIn());
 			login.Login_signIn().click();
-			waithelper.waitForElement(driver, 2000, login.Login_loginStatus());
-			Assert.assertTrue(login.Login_loginStatus().isDisplayed());
+//			waithelper.waitForElement(driver, 2000, login.Login_loginStatus());
+//			Assert.assertTrue(login.Login_loginStatus().isDisplayed());
 		}
+		else if (id.equals("twin01")) {
+            login.Login_userName().sendKeys(logindata.UserName8);
+            login.Login_goButton().click();
+            waithelper.waitForElement(driver, 2000, login.Login_passWord());
+            login.Login_passWord().sendKeys(logindata.PassWord8);
+            String otp = login.Login_getOtp().getText();
+            driver.findElement(By.xpath("//ng-otp-input/div/input[1]")).sendKeys(otp.substring(7));
+            waithelper.waitForElement(driver, 2000, login.Login_signIn());
+            login.Login_signIn().click();
+            //waithelper.waitForElement(driver, 2000, login.Login_loginStatus());
+           // Assert.assertTrue(login.Login_loginStatus().isDisplayed());
+        }
 		else
 		{
 			System.out.println("User name not matching with json");
@@ -206,8 +230,8 @@ public class AzentioLogin {
 		String otp = login.Login_getOtp().getText();
 		driver.findElement(By.xpath("//ng-otp-input/div/input[1]")).sendKeys(otp.substring(7));
 		login.Login_signIn().click();
-		waithelper.waitForElement(driver, 2000, login.Login_loginStatus());
-		Assert.assertTrue(login.Login_loginStatus().isDisplayed());
+//		waithelper.waitForElement(driver, 2000, login.Login_loginStatus());
+//		Assert.assertTrue(login.Login_loginStatus().isDisplayed());
 
 	}
 
@@ -224,8 +248,8 @@ public class AzentioLogin {
 		String otp = login.Login_getOtp().getText();
 		driver.findElement(By.xpath("//ng-otp-input/div/input[1]")).sendKeys(otp.substring(7));
 		login.Login_signIn().click();
-		waithelper.waitForElement(driver, 2000, login.Login_loginStatus());
-		Assert.assertTrue(login.Login_loginStatus().isDisplayed());
+//		waithelper.waitForElement(driver, 2000, login.Login_loginStatus());
+//		Assert.assertTrue(login.Login_loginStatus().isDisplayed());
 	}
 	public void loginToAzentioAppAsChecker2(String user) throws InterruptedException {
 		waithelper=new WaitHelper(driver);
@@ -240,8 +264,8 @@ public class AzentioLogin {
 //		String otp = login.Login_getOtp().getText();
 //		driver.findElement(By.xpath("//ng-otp-input/div/input[1]")).sendKeys(otp.substring(7));
 		login.Login_signIn().click();
-		waithelper.waitForElement(driver, 2000, login.Login_loginStatus());
-		Assert.assertTrue(login.Login_loginStatus().isDisplayed());	
+//		waithelper.waitForElement(driver, 2000, login.Login_loginStatus());
+//		Assert.assertTrue(login.Login_loginStatus().isDisplayed());	
 	}
 
 }

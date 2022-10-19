@@ -238,20 +238,33 @@ public class InventoryMaintenance extends BaseClass{
 		        	 String after_xpath="')]/ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell//ion-button";
 		        	  
 		        	// waithelper.waitForElement(driver, 2000, driver.findElement(By.xpath(before_xpath +reader.readReferancedata()+after_xpath)));
-		        	 for (int i = 0; i < 20; i++) {
+		        	 for (int i = 0; i < 50; i++) {
 						try {
-							driver.findElement(By.xpath(before_xpath +reader.readReferancedata() +after_xpath)).click();
+							driver.findElement(By.xpath(before_xpath +reader.readReferancedata()+after_xpath)).click();
 							break;
 						} catch (Exception e) {
-							
+							if (i==49) {
+								Assert.fail(" Record not clicked");
+							}
 						}
 					}
 		        	 
-		        	 
+		        	 Thread.sleep(2000);
 		        	
 		        	// Submit button
-		        	waithelper.waitForElement(driver, 2000, inventoryMaintenanceObj.inventoryMaintenance_InventoryItem_SubmitButton());
-		        	inventoryMaintenanceObj.inventoryMaintenance_InventoryItem_SubmitButton().click();
+		        	//waithelper.waitForElement(driver, 2000, inventoryMaintenanceObj.inventoryMaintenance_InventoryItem_SubmitButton());
+		        	 for (int i = 0; i <90; i++) {
+		        		 try {
+			        		 inventoryMaintenanceObj.inventoryMaintenance_InventoryItem_SubmitButton().click();
+			        		 break;
+						} catch (Exception e) {
+							if (i==89) {
+								Assert.fail("Submit button not clicked ");
+							}
+						}
+					}
+		        	 
+		        	
 		        			
 		        	//Remark
 		        	javascripthelper.JavaScriptHelper(driver);
@@ -262,7 +275,9 @@ public class InventoryMaintenance extends BaseClass{
 				        	inventoryMaintenanceObj.inventoryMaintenance_InventoryItem_RemarkField().sendKeys("OK");
 							break;
 						} catch (Exception e) {
-							
+							if (i==39) {
+								Assert.fail("Remark not entered");
+							}
 						}
 					}
 		        	

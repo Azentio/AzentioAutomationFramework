@@ -60,6 +60,12 @@ public class FixedAsset_AssetCategoryObj {
     public WebElement fixedAsset_AssetCategory_AlertClose() {
 		 return fixedAsset_AssetCategory_AlertClose;
 	}
+  //div[@id='toast-container']//div[@role='alert']
+    @FindBy(xpath = "//button[@aria-label='Close']")
+	private WebElement fixedAsset_AssetCategory_WorkflowInitiated;
+    public WebElement fixedAsset_AssetCategory_WorkflowInitiated() {
+		 return fixedAsset_AssetCategory_WorkflowInitiated;
+	}
     //Asset Item Category
   	@FindBy(xpath = "//ion-col[3]/ion-item[1]/ion-input[1]/input")
   	private WebElement fixedAsset_AssetCategory_AssetItemCategory;

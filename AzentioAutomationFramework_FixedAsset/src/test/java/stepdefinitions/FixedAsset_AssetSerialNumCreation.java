@@ -7,6 +7,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.testng.Assert;
 
 import dataProvider.JsonConfig;
 import helper.ClicksAndActionsHelper;
@@ -48,8 +49,18 @@ public class FixedAsset_AssetSerialNumCreation extends BaseClass {
 	
     @Then("^Click on Asset Serial Num Creation Search icon$")
     public void click_on_asset_serial_num_creation_search_icon()  {
-    waithelper.waitForElementToVisibleWithFluentWait(driver, fixedAsset_AssetSerialNumCreationObj.fixedAsset_AssetSerialNumCreation_SearchIcon(),60,5);
-    fixedAsset_AssetSerialNumCreationObj.fixedAsset_AssetSerialNumCreation_SearchIcon().click();
+   // waithelper.waitForElementToVisibleWithFluentWait(driver, fixedAsset_AssetSerialNumCreationObj.fixedAsset_AssetSerialNumCreation_SearchIcon(),60,5);
+    for (int i = 0; i <30; i++) {
+		try {
+			fixedAsset_AssetSerialNumCreationObj.fixedAsset_AssetSerialNumCreation_SearchIcon().click();
+			break;
+		} catch (Exception e) {
+			if (i==29) {
+				Assert.fail("Asset serial number search icon not clicked");
+			}
+		}
+	}
+    	
     	
         
     }

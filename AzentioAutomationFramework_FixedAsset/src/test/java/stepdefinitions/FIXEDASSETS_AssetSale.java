@@ -3,6 +3,7 @@ package stepdefinitions;
 import java.io.IOException;
 
 import org.json.simple.parser.ParseException;
+import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.NoSuchElementException;
@@ -58,8 +59,18 @@ public class FIXEDASSETS_AssetSale {
 
 	@And("^click on add button to create sale asset record$")
 	public void click_on_add_button_to_create_sale_asset_record()  {
-		waithelper.waitForElementToVisibleWithFluentWait(driver, fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_AddButton(),60,5);
-		fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_AddButton().click();
+		//waithelper.waitForElementToVisibleWithFluentWait(driver, fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_AddButton(),60,5);
+		for (int i = 0; i < 30; i++) {
+			try {
+				fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_AddButton().click();
+				break;
+			} catch (Exception e) {
+				if (i==29) {
+					Assert.fail("Add icon not clicked");
+				}
+			}
+		}
+		
 	}
 	
 	@And("^Fill the required fields to sale asset in profit$")
@@ -92,25 +103,28 @@ public class FIXEDASSETS_AssetSale {
 	
 	@And("^Fill the required fields to sale asset in loss$")
 	public void fill_the_required_fields_to_sale_asset_in_loss() throws InterruptedException  {
-		waithelper.waitForElementToVisibleWithFluentWait(driver, fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_AssetReferenceNumber(),60,5);
+		waithelper.waitForElementToVisibleWithFluentWait(driver, fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_AssetReferenceNumber(),30,2);
 		fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_AssetReferenceNumber().sendKeys(fIXEDASSETS_AssetSaleTestDataType.AssetReferenceNumberForLoss);
+		Thread.sleep(1000);
 		fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_AssetReferenceNumber().sendKeys(Keys.ENTER);
-		
+		waithelper.waitForElementToVisibleWithFluentWait(driver, fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_ItemNumber(),30,2);
 		fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_ItemNumber().click();
-		waithelper.waitForElementToVisibleWithFluentWait(driver, fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_ItemNumber(),60,5);
-		fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_ItemNumber().click();
+		Thread.sleep(1000);
 		fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_ItemNumber().sendKeys(Keys.DOWN);
 		//fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_ItemNumber().sendKeys(fIXEDASSETS_AssetSaleTestDataType.ItemNumberForLoss);
 		fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_ItemNumber().sendKeys(Keys.ENTER);
 		
-		waithelper.waitForElementToVisibleWithFluentWait(driver, fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_SaleValue(),60,5);
+		waithelper.waitForElementToVisibleWithFluentWait(driver, fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_SaleValue(),30,2);
 		fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_SaleValue().sendKeys(fIXEDASSETS_AssetSaleTestDataType.SaleValue);
-		
+		waithelper.waitForElementToVisibleWithFluentWait(driver, fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_Currency(),30,2);
+		fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_Currency().click();
 		fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_Currency().sendKeys(fIXEDASSETS_AssetSaleTestDataType.Currency);
+		Thread.sleep(1000);
 		fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_Currency().sendKeys(Keys.ENTER);
 		
-		waithelper.waitForElementToVisibleWithFluentWait(driver, fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_ActionableBy(),60,5);
+		waithelper.waitForElementToVisibleWithFluentWait(driver, fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_ActionableBy(),30,2);
 		fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_ActionableBy().sendKeys(fIXEDASSETS_AssetSaleTestDataType.ActionableBy);
+		Thread.sleep(1000);
 		fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_ActionableBy().sendKeys(Keys.ENTER);
 		
 		waithelper.waitForElementToVisibleWithFluentWait(driver, fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_Remark(),60,5);
@@ -128,8 +142,18 @@ public class FIXEDASSETS_AssetSale {
 				.toString();
 		System.out.println("Message:" + str);
     	
-    	waithelper.waitForElementToVisibleWithFluentWait(driver, fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_NotificationButton(),60,5);
-    	fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_NotificationButton().click();
+    	//waithelper.waitForElementToVisibleWithFluentWait(driver, fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_NotificationButton(),60,5);
+		for (int i = 0; i < 30; i++) {
+			try {
+				fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_NotificationButton().click();
+				break;
+			} catch (Exception e) {
+				if (i==29) {
+					Assert.fail("Inbox Icon not clicked ");
+				}
+			}
+		}
+    	
     	
     	waithelper.waitForElementToVisibleWithFluentWait(driver, fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_FirstReferenceId(),60,5);
     	String id=fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_FirstReferenceId().getText();

@@ -14,7 +14,7 @@ import utilities.ExtentTestManager;
 
 
 
-@CucumberOptions(features = "src/test/java/features",
+@CucumberOptions(features = "src/test/java/features/FixedAssetCreation.feature",
                  glue = "stepdefinitions",
                  //monochrome=false, //to make steps in color
                  plugin = { "pretty",
@@ -23,7 +23,7 @@ import utilities.ExtentTestManager;
                 //dryRun = false //to check compilation errors            
                     //, tags="@AT_LE_007_Invalid_Modification"
                                 
-                  , tags="@KUBS_GL_UAT_001_001"
+                  , tags="@KUBS_FAT_UAT_004_001"
                         
 )
 public class TestApplication extends AbstractTestNGCucumberTests {
