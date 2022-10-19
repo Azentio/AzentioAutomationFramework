@@ -1,8 +1,13 @@
 package stepdefinitions;
 
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import dataProvider.ConfigFileReader;
 import dataProvider.JsonConfig;
@@ -16,11 +21,14 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import pageobjects.FIXEDASSET_AssetReplacementObj;
+import pageobjects.FIXEDASSET_fixedAssetObj;
 import pageobjects.KUBS_CheckerObj;
 import pageobjects.KUBS_ReviewerObj;
 import resources.BaseClass;
 import resources.JsonDataReaderWriter;
 import testDataType.FIXEDASSET_AssetAmendmentData;
+import testDataType.FIXEDASSET_AssetImpairementTestDataType;
+import testDataType.FixedAsset_AssetCreationTestDataType;
 
 public class FIXEDASSET_AssetReplacement extends BaseClass {
 
@@ -41,6 +49,13 @@ public class FIXEDASSET_AssetReplacement extends BaseClass {
 	ClicksAndActionsHelper clickAndActionHelper = new ClicksAndActionsHelper(driver);
 	FIXEDASSET_AssetReplacementObj assetReplacement = new FIXEDASSET_AssetReplacementObj(driver);
 	FIXEDASSET_AssetAmendmentData assetAmendmentData = jsonConfig.getAssetAmendmentByName("Asset");
+	FIXEDASSET_AssetReplacementObj assetReplacementObj = new FIXEDASSET_AssetReplacementObj(driver);
+	JavascriptHelper javascripthelper = new JavascriptHelper();
+	FIXEDASSET_AssetImpairementTestDataType fixedAssetImairementTestData = jsonConfig
+			.getFixedAssetTestDataByName("Maker");
+	FIXEDASSET_fixedAssetObj fixedAssetObj = new FIXEDASSET_fixedAssetObj(driver);
+	FixedAsset_AssetCreationTestDataType fixedAsset_AssetCreationTestDataType = jsonConfig.getAssetCreationByName("Maker");
+	Map<String,String> testData= new HashMap<>();
 
 	// **********************@KUBS_FAT_UAT_008_001************************//
 
@@ -69,7 +84,13 @@ public class FIXEDASSET_AssetReplacement extends BaseClass {
 		waitHelper.waitForElement(driver, 2000, assetReplacement.fixed_FixedAssets());
 		assetReplacement.fixed_FixedAssets().click();
 	}
-
+	@And("^get the asset reference number for do asset replacement$")
+    public void get_the_asset_reference_number_for_do_asset_replacement() throws Throwable {
+		waitHelper.waitForElementVisible(fixedAssetObj.fixedAssetApprovedReferenceNumber(), 3000, 300);
+		testData.put("AssetReferemnceNumber", fixedAssetObj.fixedAssetApprovedReferenceNumber().getText());
+		System.out.println("Asset reference number is :"+testData.get("AssetReferemnceNumber"));
+		
+    }
 	@Then("^Click on Asset Replacement submodule Eye Icon$")
 	public void click_on_asset_replacement_submodule_eye_icon() throws Throwable {
 
@@ -99,7 +120,18 @@ public class FIXEDASSET_AssetReplacement extends BaseClass {
 		AssetCreation = assetReplacement.fixed_AssetGetReferenceNumber().getText();
 		System.out.println(AssetCreation);
 	}
-
+	@Then("^Enter the Asset Referance Number which we got from aset Creation module$")
+    public void enter_the_asset_referance_number_which_we_got_from_aset_creation_module() throws Throwable {
+		waitHelper.waitForElement(driver, 2000, assetReplacement.fixed_AssetReferenceNumber());
+		assetReplacement.fixed_AssetReferenceNumber().sendKeys(testData.get("AssetReferemnceNumber"));
+	//	assetReplacement.fixed_AssetReferenceNumber().sendKeys(fixedAsset_AssetCreationTestDataType.AssetCode);
+		assetReplacement.fixed_AssetReferenceNumber().sendKeys(Keys.DOWN);
+		assetReplacement.fixed_AssetReferenceNumber().sendKeys(Keys.ENTER);
+		waitHelper.waitForElement(driver, 2000, assetReplacement.fixed_AssetGetReferenceNumber());
+		AssetCreation = assetReplacement.fixed_AssetGetReferenceNumber().getText();
+		System.out.println(AssetCreation);
+		
+    }
 	@And("^Enter the Asset Item Number$")
 	public void enter_the_asset_item_number() throws Throwable {
 
@@ -127,9 +159,9 @@ public class FIXEDASSET_AssetReplacement extends BaseClass {
 		assetReplacement.fixed_AssetNewDesc().sendKeys(assetAmendmentData.itemDesc);
 	}
 
-	@Then("^save the Replacement record$")
-	public void save_the_replacement_record() throws Throwable {
-		
+	@Then("^save the Replacement recordss$")
+	public void save_the_replacement_recordss() throws Throwable {
+
 		// -----------------SAVE THE RECORD---------------//
 		waitHelper.waitForElement(driver, 3000, assetReplacement.AssetReplace_Save());
 		javaScriptHelper.JavaScriptHelper(driver);
@@ -139,7 +171,7 @@ public class FIXEDASSET_AssetReplacement extends BaseClass {
 
 	@And("^Went to Maker Notification$")
 	public void went_to_maker_notification() throws Throwable {
-		
+
 		// ------------Maker Notification icon---------//
 		waitHelper.waitForElement(driver, 2000, assetReplacement.fixed_MakerNotification());
 		assetReplacement.fixed_MakerNotification().click();
@@ -147,7 +179,7 @@ public class FIXEDASSET_AssetReplacement extends BaseClass {
 
 	@Then("^Click the first Action icon$")
 	public void click_the_first_action_icon() throws Throwable {
-		
+
 		// -----------Action Icon-----------//
 		waitHelper.waitForElement(driver, 2000, assetReplacement.fixed_ReferanceId());
 		String Referance_id = assetReplacement.fixed_ReferanceId().getText();
@@ -159,7 +191,7 @@ public class FIXEDASSET_AssetReplacement extends BaseClass {
 
 	@And("^Submit the Record in maker$")
 	public void submit_the_record_in_maker() throws Throwable {
-		
+
 		// ---------------SUBMIT RECORD--------------//
 		waitHelper.waitForElement(driver, 2000, assetReplacement.fixed_Submit());
 		assetReplacement.fixed_Submit().click();
@@ -168,7 +200,7 @@ public class FIXEDASSET_AssetReplacement extends BaseClass {
 
 	@Then("^Enter Remark and Submit it$")
 	public void enter_remark_and_submit_it() throws Throwable {
-		
+
 		// ----------ENTER THE REMARK AND SUBMIT THE RECORD-------------//
 		assetAmendmentData = jsonConfig.getAssetAmendmentByName("Asset");
 		waitHelper.waitForElement(driver, 2000, assetReplacement.fixed_Remark());
@@ -219,7 +251,7 @@ public class FIXEDASSET_AssetReplacement extends BaseClass {
 				driver.findElement(By.xpath(befr_xpath + readerData.readReferancedata() + aftr_xpath)));
 		driver.findElement(By.xpath(befr_xpath + readerData.readReferancedata() + aftr_xpath)).click();
 		javaScriptHelper.JSEClick(reviewerObj.reviewer_action_button());
-		//reviewerObj.reviewer_action_button().click();
+		// reviewerObj.reviewer_action_button().click();
 	}
 
 	@And("^Click Approve icon from Reviewer End$")
@@ -290,12 +322,21 @@ public class FIXEDASSET_AssetReplacement extends BaseClass {
 	@Then("^Click Action Icon from claimed record$")
 	public void click_action_icon_from_claimed_record() throws Throwable {
 		// ------------------CHECKER ACTION------------------//
-		waitHelper.waitForElement(driver, 3000, driver.findElement(By.xpath("//span[contains(text(),'"
+		waitHelper.waitForElementToVisibleWithFluentWait(driver,driver.findElement(By.xpath("//span[contains(text(),'"
 				+ readerData.readReferancedata()
-				+ "')]/ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell/div/ion-buttons/ion-button")));
-		driver.findElement(By.xpath("//span[contains(text(),'" + readerData.readReferancedata()
+				+ "')]/ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell/div/ion-buttons/ion-button")),60,5);
+		for (int i = 0; i <10; i++) {
+			try {
+				driver.findElement(By.xpath("//span[contains(text(),'" + readerData.readReferancedata()
 				+ "')]/ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell/div/ion-buttons/ion-button"))
 				.click();
+				break;
+			} catch (NoSuchElementException e) {
+				
+			}
+			
+		}
+		
 	}
 
 	@And("^Click Approve icon$")
@@ -341,4 +382,41 @@ public class FIXEDASSET_AssetReplacement extends BaseClass {
 		waitHelper.waitForElement(driver, 2000, driver.findElement(By.xpath(befr + AssetCreation + aftr)));
 		driver.findElement(By.xpath(befr + AssetCreation + aftr)).click();
 	}
+
+	/***** Validation and get reference number ****/
+
+	@And("^click on view button in asset replacement module$")
+	public void click_on_view_button_in_seet_replacement_module() throws Throwable {
+		Thread.sleep(1000);
+		javascripthelper.JavaScriptHelper(driver);
+		javascripthelper.scrollIntoView(assetReplacementObj.fixedAssetAAssetReplacementViewButton());
+		// waitHelper.waitForElementVisible(assetReplacementObj.fixedAssetAAssetReplacementViewButton(),
+		// 2000, 100);
+		assetReplacementObj.fixedAssetAAssetReplacementViewButton().click();
+	}
+
+	@And("^fill the required details$")
+	public void fill_the_required_details() throws Throwable {
+
+		waitHelper.waitForElementVisible(assetReplacementObj.fixedAssetReplacementReferenceNumber(), 2000, 100);
+		assetReplacementObj.fixedAssetReplacementReferenceNumber().click();
+		assetReplacementObj.fixedAssetReplacementReferenceNumber()
+				.sendKeys(fixedAssetImairementTestData.writeOffReplacementAssetReferenceNumber);
+		assetReplacementObj.fixedAssetReplacementReferenceNumber().sendKeys(Keys.ENTER);
+		assetReplacementObj.fixedAssetReplacementItemNumber().click();
+		assetReplacementObj.fixedAssetReplacementItemNumber().sendKeys(Keys.ENTER);
+		assetReplacementObj.fixedAssetReplacementNewItemNumber().click();
+		assetReplacementObj.fixedAssetReplacementNewItemNumber()
+				.sendKeys(fixedAssetImairementTestData.WriteOffNewAssetItemNumber);
+		assetReplacementObj.fixedAssetReplacementNewDescription().click();
+		assetReplacementObj.fixedAssetReplacementNewDescription()
+				.sendKeys(fixedAssetImairementTestData.WriteOffNewAssetDescription);
+
+	}
+
+    @And("^save the replacement record$")
+    public void save_the_replacement_record() throws Throwable {
+    	waitHelper.waitForElementVisible(assetReplacementObj.fixedAssetReplacementSaveButton(), 2000, 100);
+    	assetReplacementObj.fixedAssetReplacementSaveButton().click();
+    }
 }

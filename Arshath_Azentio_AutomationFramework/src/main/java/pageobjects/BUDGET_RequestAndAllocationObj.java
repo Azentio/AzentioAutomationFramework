@@ -22,7 +22,23 @@ public class BUDGET_RequestAndAllocationObj {
 	public WebElement budget_requestAndAllocation_budget_code_field() {
 		return budget_code_field;
 	}
+	
+	@FindBy(xpath = "//ion-icon[@ng-reflect-name='search']")
+	private WebElement requestAndAllocation_Budget_Search;
 
+	public WebElement requestAndAllocation_Budget_Search() {
+
+		return requestAndAllocation_Budget_Search;
+	}
+	
+	@FindBy(xpath = "//datatable-row-wrapper[1]/datatable-body-row/div/datatable-body-cell[1]//ion-button[1]")
+	private WebElement requestAndAllocation_Budget_TableEye;
+
+	public WebElement requestAndAllocation_Budget_TableEye() {
+
+		return requestAndAllocation_Budget_TableEye;
+	}
+	
 	@FindBy(xpath = "//label[@for='col1']")
 	private WebElement budget_Name_field;
 
@@ -317,7 +333,7 @@ public class BUDGET_RequestAndAllocationObj {
 		return requestAndAllocation_Alertsubmit;
 	}
 
-	@FindBy(xpath = "//div[@id='toast-container']/div/div[@role='alertdialog']")
+	@FindBy(xpath = "//div[@id='toast-container']/div/div[@role='alert']")
 	private WebElement requestAndAllocation_reviewer_id;
 
 	public WebElement requestAndAllocation_reviewer_id() {
@@ -697,7 +713,7 @@ public class BUDGET_RequestAndAllocationObj {
 	}
 
 	// TOTAST - CONTAINER
-	@FindBy(xpath = "//div[@id='toast-container']/div/div[@role='alertdialog']")
+	@FindBy(xpath = "//div[@id='toast-container']/div/div[@role='alert']")
 	private WebElement Popup_status;
 
 	public WebElement Popup_status() {
@@ -812,5 +828,49 @@ public class BUDGET_RequestAndAllocationObj {
 	public WebElement Reports_Bud_Creation_Nextbtn() {
 
 		return Reports_Bud_Creation_Nextbtn;
+	}
+	
+	@FindBy(xpath = "//ion-segment-button[@ng-reflect-value='rpt']")
+	private WebElement Reports_Bud_Creation_ReportIcon;
+
+	public WebElement Reports_Bud_Creation_ReportIcon() {
+
+		return Reports_Bud_Creation_ReportIcon;
+	}
+
+	@FindBy(xpath = "//ion-label[contains(text(),'Enquiry')]")
+	private WebElement Reports_Bud_Creation_EnquiryMenu;
+
+	public WebElement Reports_Bud_Creation_EnquiryMenu() {
+
+		return Reports_Bud_Creation_EnquiryMenu;
+	}
+	@FindBy(xpath = "//a[contains(text(),'View')]")
+	private WebElement Reports_Bud_Creation_ViewButton;
+
+	public WebElement Reports_Bud_Creation_ViewButton() {
+
+		return Reports_Bud_Creation_ViewButton;
+	}
+	@FindBy(xpath = "//ion-label[contains(text(),'Reports')]")
+	private WebElement Reports_Bud_Creation_ReportModule;
+
+	public WebElement Reports_Bud_Creation_ReportModule() {
+
+		return Reports_Bud_Creation_ReportModule;
+	}
+	@FindBy(xpath = "(//span[@class='input-calendar'])[1]")
+	private WebElement ARAP_Report_Module_Date;
+
+	public WebElement ARAP_Report_Module_Date() {
+
+		return ARAP_Report_Module_Date;
+	}
+	@FindBy(xpath = "//owl-date-time-container[1]/div[2]/owl-date-time-calendar[1]/div[1]/button[2]/span[1]")
+	private WebElement ARAP_NextMonth;
+
+	public WebElement ARAPNextMonth() {
+
+		return ARAP_NextMonth;
 	}
 }

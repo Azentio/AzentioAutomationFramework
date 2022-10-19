@@ -120,14 +120,14 @@ public class BUDGET_BudgetRequestandAllocation extends BaseClass {
 		requestAndAllocation.budget_requestAndAllocation_Budgetyear().sendKeys(Keys.DOWN);
 	}
 
-	@And("^click on save button$")
-	public void click_on_save_button() throws Throwable {
-
-		// ------------TO SAVE THE RECORD--------------------//
-		waitHelper.waitForElement(driver, 3000, requestAndAllocation.budget_requestAndAllocation_AllowSave());
-		requestAndAllocation.budget_requestAndAllocation_AllowSave().click();
-		Thread.sleep(2000);
-	}
+//	@And("^click on save button$")
+//	public void click_on_save_button() throws Throwable {
+//
+//		// ------------TO SAVE THE RECORD--------------------//
+//		waitHelper.waitForElement(driver, 3000, requestAndAllocation.budget_requestAndAllocation_AllowSave());
+//		requestAndAllocation.budget_requestAndAllocation_AllowSave().click();
+//		Thread.sleep(2000);
+//	}
 
 	@Then("^Click on Branch$")
 	public void click_on_branch() throws Throwable {
@@ -1270,8 +1270,8 @@ public class BUDGET_BudgetRequestandAllocation extends BaseClass {
 
 	@And("^Choose one branch in field$")
 	public void Choose_one_branch_in_field() throws Throwable {
-		waitHelper.waitForElement(driver, 2000, requestAndAllocation.requestAndAllocation_branch_type4());
-		requestAndAllocation.requestAndAllocation_branch_type4().click();
+		waitHelper.waitForElement(driver, 2000, requestAndAllocation.requestAndAllocation_branch_type6());
+		requestAndAllocation.requestAndAllocation_branch_type6().click();
 	}
 
 	@Then("^Choose currency type$")

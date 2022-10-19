@@ -2,7 +2,10 @@ package stepdefinitions;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.Random;
 
+import org.junit.Assert;
+import org.openqa.selenium.ElementClickInterceptedException;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 
@@ -54,7 +57,7 @@ public class Petty_Cash extends BaseClass {
 		// ------PETTY CASH CONFIGURATION-------//
 		javaScriptHelper.JavaScriptHelper(driver);
 		javaScriptHelper.scrollIntoView(pettyCashObj.Petty_Cash_Configuration());
-		waitHelper.waitForElement(driver, 2000, pettyCashObj.Petty_Cash_Configuration());
+		waitHelper.waitForElementToVisibleWithFluentWait(driver,  pettyCashObj.Petty_Cash_Configuration(), 60, 500);
 		pettyCashObj.Petty_Cash_Configuration().click();
 	}
 
@@ -63,35 +66,38 @@ public class Petty_Cash extends BaseClass {
 		// -------EXPENSE CODE LIMIT-------//
 		javaScriptHelper.JavaScriptHelper(driver);
 		javaScriptHelper.scrollIntoView(pettyCashObj.Petty_Cash_Expense_code_limit());
-		waitHelper.waitForElement(driver, 2000, pettyCashObj.Petty_Cash_Expense_code_limit());
+		waitHelper.waitForElementToVisibleWithFluentWait(driver,  pettyCashObj.Petty_Cash_Expense_code_limit(), 60, 500);
 		pettyCashObj.Petty_Cash_Expense_code_limit().click();
 	}
 
 	@Then("^Click on Add Icon in Petty cash$")
 	public void click_on_add_icon_in_petty_cash() throws Throwable {
 		// -----ADD ICON -------//
-		waitHelper.waitForElement(driver, 2000, pettyCashObj.Petty_Cash_Add());
+		waitHelper.waitForElementToVisibleWithFluentWait(driver,  pettyCashObj.Petty_Cash_Add(), 60, 500);
 		pettyCashObj.Petty_Cash_Add().click();
 	}
 
 	@And("^Enter Expense code value$")
 	public void enter_expense_code_value() throws Throwable {
 		// -------EXPENSE CODE VALUE------//
-		waitHelper.waitForElement(driver, 2000, pettyCashObj.Petty_Cash_ExpenseCode());
-		pettyCashObj.Petty_Cash_ExpenseCode().sendKeys(pettyData.ExpenseCode);
+		Random ran = new Random();
+		int random = ran.nextInt(500-50)+50;
+		//waitHelper.waitFoElementwithFluentwait(driver,  pettyCashObj.Petty_Cash_ExpenseCode());
+		waitHelper.waitForElementToVisibleWithFluentWait(driver, pettyCashObj.Petty_Cash_ExpenseCode(), 60, 500);
+		pettyCashObj.Petty_Cash_ExpenseCode().sendKeys(pettyData.ExpenseCode+random);
 	}
 
 	@Then("^Enter Expense Name Value$")
 	public void enter_expense_name_value() throws Throwable {
 		// -------EXPENSE NAME VALUE-------//
-		waitHelper.waitForElement(driver, 2000, pettyCashObj.Petty_Cash_ExpenseName());
+		waitHelper.waitForElementToVisibleWithFluentWait(driver,  pettyCashObj.Petty_Cash_ExpenseName(), 60, 500);
 		pettyCashObj.Petty_Cash_ExpenseName().sendKeys(pettyData.ExpenseName);
 	}
 
 	@And("^Choose Expense Gl$")
 	public void choose_expense_gl() throws Throwable {
 		// ------CHOOSE EXPENSE GL------//
-		waitHelper.waitForElement(driver, 2000, pettyCashObj.Petty_Cash_Expense_Gl());
+		waitHelper.waitForElementToVisibleWithFluentWait(driver,  pettyCashObj.Petty_Cash_Expense_Gl(), 60, 500);
 		pettyCashObj.Petty_Cash_Expense_Gl().click();
 		pettyCashObj.Petty_Cash_Expense_Gl().sendKeys(pettyData.ExpenseGl);
 		// pettyCashObj.Petty_Cash_Expense_Gl().sendKeys(Keys.DOWN);
@@ -101,14 +107,14 @@ public class Petty_Cash extends BaseClass {
 	@Then("^Enter Max Limit Value$")
 	public void enter_max_limit_value() throws Throwable {
 		// --------ENTER MAX LIMIT VALUE------//
-		waitHelper.waitForElement(driver, 2000, pettyCashObj.Petty_Cash_Max_Limit());
+		waitHelper.waitForElementToVisibleWithFluentWait(driver,  pettyCashObj.Petty_Cash_Max_Limit(), 60, 500);
 		pettyCashObj.Petty_Cash_Max_Limit().sendKeys(pettyData.MaxLimit);
 	}
 
 	@And("^Choose Currency value$")
 	public void choose_currency_value() throws Throwable {
 		// --------CHOOSE CURRENCY VALUE-----//
-		waitHelper.waitForElement(driver, 2000, pettyCashObj.Petty_Cash_Expense_Currency());
+		waitHelper.waitForElementToVisibleWithFluentWait(driver,  pettyCashObj.Petty_Cash_Expense_Currency(), 60, 500);
 		pettyCashObj.Petty_Cash_Expense_Currency().click();
 		pettyCashObj.Petty_Cash_Expense_Currency().sendKeys(pettyData.Currency);
 		pettyCashObj.Petty_Cash_Expense_Currency().sendKeys(Keys.ENTER);
@@ -119,8 +125,9 @@ public class Petty_Cash extends BaseClass {
 		// --------SAVE THE RECORD-------//
 //		javaScriptHelper.JavaScriptHelper(driver);
 //		javaScriptHelper.JSEClick(pettyCashObj.Petty_Cash_Expense_Save());
-		waitHelper.waitForElement(driver, 2000, pettyCashObj.Petty_Cash_Expense_Save());
+		waitHelper.waitForElementToVisibleWithFluentWait(driver,  pettyCashObj.Petty_Cash_Expense_Save(), 60, 500);
 		pettyCashObj.Petty_Cash_Expense_Save().click();
+
 	}
 
 	// *****************@KUBS_PC_UAT_001_002******************//
@@ -136,6 +143,7 @@ public class Petty_Cash extends BaseClass {
 	@And("^Choose Employee Value$")
 	public void choose_employee_value() throws Throwable {
 		// -------EMPLOYEE VALUE-------//
+		waitHelper.waitForElementToVisibleWithFluentWait(driver,  pettyCashObj.Petty_Cash_Employee(), 60, 20);
 		pettyCashObj.Petty_Cash_Employee().click();
 		pettyCashObj.Petty_Cash_Employee().sendKeys(pettyData.EmployeeValue);
 		pettyCashObj.Petty_Cash_Employee().sendKeys(Keys.DOWN);
@@ -145,6 +153,7 @@ public class Petty_Cash extends BaseClass {
 	@Then("^Enter Advance Limit$")
 	public void enter_advance_limit() throws Throwable {
 		// --------ENTER ADVANCE LIMIT-----//
+		waitHelper.waitForElementToVisibleWithFluentWait(driver,  pettyCashObj.Petty_Cash_Max_AdvanceLimit(), 60, 20);
 		pettyCashObj.Petty_Cash_Max_AdvanceLimit().click();
 		pettyCashObj.Petty_Cash_Max_AdvanceLimit().sendKeys("1000000");
 	}
@@ -152,7 +161,7 @@ public class Petty_Cash extends BaseClass {
 	@And("^Choose Employee Currency value$")
 	public void choose_employee_currency_value() throws Throwable {
 		// --------CHOOSE CURRENCY VALUE-----//
-		waitHelper.waitForElement(driver, 2000, pettyCashObj.Petty_Cash_Employee_Currancy());
+		waitHelper.waitForElementToVisibleWithFluentWait(driver,  pettyCashObj.Petty_Cash_Employee_Currancy(), 60, 20);
 		pettyCashObj.Petty_Cash_Employee_Currancy().click();
 		pettyCashObj.Petty_Cash_Employee_Currancy().sendKeys(pettyData.Currency);
 		pettyCashObj.Petty_Cash_Employee_Currancy().sendKeys(Keys.ENTER);
@@ -160,8 +169,12 @@ public class Petty_Cash extends BaseClass {
 
 	@And("^Close the Alert$")
 	public void close_the_alert() throws Throwable {
-		waitHelper.waitForElement(driver, 2000, checkerObj.checker_alert_close());
+		try {
+		waitHelper.waitForElementToVisibleWithFluentWait(driver,  checkerObj.checker_alert_close(), 60, 500);
 		checkerObj.checker_alert_close().click();
+		}catch(Exception e) {
+			
+		}
 	}
 
 	// ***************@KUBS_PC_UAT_001_003*****************//
@@ -173,6 +186,7 @@ public class Petty_Cash extends BaseClass {
 
 	@And("^Enter user name in the Custodian limit$")
 	public void enter_user_name_in_the_Custodian_limit() throws Throwable {
+		waitHelper.waitForElementToVisibleWithFluentWait(driver,  pettyCashObj.costodianLimitUserName(), 60, 500);
 		pettyCashObj.costodianLimitUserName().click();
 		pettyCashObj.costodianLimitUserName().sendKeys(pettyData.CustodianLimit);
 		pettyCashObj.costodianLimitUserName().sendKeys(Keys.ENTER);
@@ -181,18 +195,12 @@ public class Petty_Cash extends BaseClass {
 	@And("^give maximum limit$")
 	public void give_maximum_limit() throws Throwable {
 		pettyCashObj.costodianLimitMaxLimit().click();
-//    	pettyCashObj.costodianLimitMaxLimit().sendKeys("0");
-//    	pettyCashObj.costodianLimitMaxLimit().sendKeys(Keys.LEFT);
-//    	pettyCashObj.costodianLimitMaxLimit().sendKeys(Keys.LEFT);
 		pettyCashObj.costodianLimitMaxLimit().sendKeys(pettyData.MaxLimit);
 	}
 
 	@And("^give replenish limit$")
 	public void give_replenish_limit() throws Throwable {
 		pettyCashObj.costodianLimitReplenishLimit().click();
-//    	pettyCashObj.costodianLimitReplenishLimit().sendKeys("0");
-//    	pettyCashObj.costodianLimitReplenishLimit().sendKeys(Keys.LEFT);
-//    	pettyCashObj.costodianLimitReplenishLimit().sendKeys(Keys.LEFT);
 		pettyCashObj.costodianLimitReplenishLimit().sendKeys(pettyData.ReplenishLimit);
 	}
 
@@ -217,6 +225,7 @@ public class Petty_Cash extends BaseClass {
 
 	@And("^Enter Request Amount value$")
 	public void enter_request_amount_value() throws Throwable {
+		waitHelper.waitForElementToVisibleWithFluentWait(driver,  pettyCashObj.enterRequestAmout(), 60, 500);
 		pettyCashObj.enterRequestAmout().click();
 		pettyCashObj.enterRequestAmout().sendKeys(pettyData.RequestAmount);
 	}
@@ -230,13 +239,20 @@ public class Petty_Cash extends BaseClass {
 	@Then("^Click submit button and Enter Remark then submit it$")
 	public void click_submit_button_and_enter_remark_then_submit_it() throws Throwable {
 		// -------------------------TO SUBMIT THE RECORD-----------------------------//
-		waitHelper.waitForElement(driver, 2000, arapObj.ARAP_Submit());
+		waitHelper.waitForElementToVisibleWithFluentWait(driver,  arapObj.ARAP_Submit(), 60, 500);
 		arapObj.ARAP_Submit().click();
-		waitHelper.waitForElement(driver, 2000, arapObj.ARAP_Remark());
+		waitHelper.waitForElementToVisibleWithFluentWait(driver,  arapObj.ARAP_Remark(), 60, 500);
 		arapObj.ARAP_Remark().sendKeys(pettyData.Remarks);
-		waitHelper.waitForElement(driver, 5000, arapObj.ARAP_RemarkSubmit());
-		arapObj.ARAP_RemarkSubmit().click();
-		waitHelper.waitForElement(driver, 10000, arapObj.ARAP_ReviewerId());
+		for (int i = 0; i < 30; i++) {
+			try {
+				//waitHelper.waitForElementwithFluentwait(driver, arapObj.ARAP_RemarkSubmit());
+				arapObj.ARAP_RemarkSubmit().click();
+				break;
+			}
+			catch(ElementClickInterceptedException e) {
+		}
+		}
+		waitHelper.waitForElementToVisibleWithFluentWait(driver,  arapObj.ARAP_ReviewerId(), 60, 500);
 		reviwerId = arapObj.ARAP_ReviewerId().getText();
 		String trimmdReviewerID = reviwerId.substring(86);
 		StringBuffer sb = new StringBuffer(trimmdReviewerID);
@@ -251,7 +267,7 @@ public class Petty_Cash extends BaseClass {
 	public void approve_the_record_in_reviewerstage() throws Throwable {
 		// -----------------REVIEWER APPROVE---------------------//
 		readerData.addReferanceData(referance_id);
-		waitHelper.waitForElement(driver, 2000, pettyCashObj.fundRequest_Approve());
+		waitHelper.waitForElementToVisibleWithFluentWait(driver,  pettyCashObj.fundRequest_Approve(), 60, 500);
 		pettyCashObj.fundRequest_Approve().click();
 	}
 
@@ -266,6 +282,7 @@ public class Petty_Cash extends BaseClass {
 
 	@And("^Choose Cash Memo Ref number$")
 	public void choose_cash_memo_ref_number() throws Throwable {
+		waitHelper.waitForElementToVisibleWithFluentWait(driver,  pettyCashObj.Reimbursement_cashMemo(), 60, 500);
 		pettyCashObj.Reimbursement_cashMemo().click();
 		pettyCashObj.Reimbursement_cashMemo().sendKeys(Keys.DOWN);
 		pettyCashObj.Reimbursement_cashMemo().sendKeys(Keys.ENTER);
@@ -273,18 +290,22 @@ public class Petty_Cash extends BaseClass {
 
 	@Then("^Enter Advance Amount value$")
 	public void enter_advance_amount_value() throws Throwable {
+		waitHelper.waitForElementToVisibleWithFluentWait(driver,  pettyCashObj.Reimbursement_AdvanceAmount(), 60, 500);
 		String Amount = pettyCashObj.Reimbursement_AdvanceAmount().getText();
 		System.out.println(Amount);
 	}
 
 	@And("^Choose Expense Code$")
 	public void choose_expense_code() throws Throwable {
+		waitHelper.waitForElementToVisibleWithFluentWait(driver,  pettyCashObj.Reimbursement_expenseCode(), 60, 500);
 		pettyCashObj.Reimbursement_expenseCode().click();
+		waitHelper.waitForElementToVisibleWithFluentWait(driver,  pettyCashObj.Reimbursement_Expense1(), 60, 500);
 		pettyCashObj.Reimbursement_Expense1().click();
 	}
 
 	@Then("^Enter Reimbursement Amount$")
 	public void enter_reimbursement_amount() throws Throwable {
+		waitHelper.waitForElementToVisibleWithFluentWait(driver,  pettyCashObj.Reimbursement_Reimbursement_Amount(), 60, 500);
 		pettyCashObj.Reimbursement_Reimbursement_Amount().click();
 		pettyCashObj.Reimbursement_Reimbursement_Amount().clear();
 		pettyCashObj.Reimbursement_Reimbursement_Amount().sendKeys(pettyData.ReimburseAmount);
@@ -292,6 +313,7 @@ public class Petty_Cash extends BaseClass {
 
 	@And("^Enter Reimbursement Remarks$")
 	public void enter_reimbursement_remarks() throws Throwable {
+		waitHelper.waitForElementToVisibleWithFluentWait(driver,  pettyCashObj.Reimbursement_Remark(), 60, 500);
 		pettyCashObj.Reimbursement_Remark().click();
 		pettyCashObj.Reimbursement_Remark().sendKeys(pettyData.Remarks);
 	}
@@ -299,13 +321,14 @@ public class Petty_Cash extends BaseClass {
 	@Then("^Click submit button and Enter the Remark submit it$")
 	public void click_submit_button_and_enter_the_remark_submit_it() throws Throwable {
 		// -------------------------TO SUBMIT THE RECORD-----------------------------//
-		waitHelper.waitForElement(driver, 2000, arapObj.ARAP_Submit());
+		waitHelper.waitForElementToVisibleWithFluentWait(driver,  arapObj.ARAP_Submit(), 60, 500);
 		arapObj.ARAP_Submit().click();
-		waitHelper.waitForElement(driver, 2000, arapObj.ARAP_Remark());
+		Thread.sleep(1000);
+		waitHelper.waitForElementToVisibleWithFluentWait(driver,  arapObj.ARAP_Remark(), 60, 500);
 		arapObj.ARAP_Remark().sendKeys(pettyData.Remarks);
-		waitHelper.waitForElement(driver, 5000, arapObj.ARAP_RemarkSubmit());
+		waitHelper.waitForElementToVisibleWithFluentWait(driver, arapObj.ARAP_RemarkSubmit(), 60, 500);
 		arapObj.ARAP_RemarkSubmit().click();
-		waitHelper.waitForElement(driver, 10000, arapObj.ARAP_ReviewerId());
+		waitHelper.waitForElementToVisibleWithFluentWait(driver,  arapObj.ARAP_ReviewerId(), 60, 500);
 		reviwerId = arapObj.ARAP_ReviewerId().getText();
 		String trimmdReviewerID = reviwerId.substring(83);
 		StringBuffer sb = new StringBuffer(trimmdReviewerID);
@@ -319,7 +342,8 @@ public class Petty_Cash extends BaseClass {
 	@Then("^Click submit button and Enter the Remark then submit it$")
 	public void click_submit_button_and_enter_the_remark_then_submit_it() throws Throwable {
 		// --------------TO SUBMIT THE RECORD---------------//
-		waitHelper.waitForElement(driver, 10000, arapObj.ARAP_ReviewerId());
+	
+		waitHelper.waitForElementToVisibleWithFluentWait(driver, arapObj.ARAP_ReviewerId(), 60, 500);
 		reviwerId = arapObj.ARAP_ReviewerId().getText();
 		String trimmdReviewerID = reviwerId.substring(83);
 		StringBuffer sb = new StringBuffer(trimmdReviewerID);
@@ -334,20 +358,21 @@ public class Petty_Cash extends BaseClass {
 
 	@Then("^Click on Extra Add button$")
 	public void click_on_extra_add_button() throws Throwable {
-		waitHelper.waitForElement(driver, 2000, pettyCashObj.Reimbursement_ExtraAdd());
+		waitHelper.waitForElementToVisibleWithFluentWait(driver,  pettyCashObj.Reimbursement_ExtraAdd(), 60, 500);
 		pettyCashObj.Reimbursement_ExtraAdd().click();
 	}
 
 	@And("^Choose Multiple Expense Code$")
 	public void choose_multiple_expense_code() throws Throwable {
-		waitHelper.waitForElement(driver, 2000, pettyCashObj.Reimbursement_expenseCode1());
+		waitHelper.waitForElementToVisibleWithFluentWait(driver,  pettyCashObj.Reimbursement_expenseCode1(), 60, 500);
 		pettyCashObj.Reimbursement_expenseCode1().click();
+		waitHelper.waitForElementToVisibleWithFluentWait(driver,  pettyCashObj.Reimbursement_Expense2(), 60, 500);
 		pettyCashObj.Reimbursement_Expense2().click();
 	}
 
 	@Then("^Enter Multiple Reimbursement Amount$")
 	public void enter_multiple_reimbursement_amount() throws Throwable {
-		waitHelper.waitForElement(driver, 2000, pettyCashObj.Reimbursement_Reimbursement_Amount1());
+		waitHelper.waitForElementToVisibleWithFluentWait(driver,  pettyCashObj.Reimbursement_Reimbursement_Amount1(), 60, 500);
 		pettyCashObj.Reimbursement_Reimbursement_Amount1().click();
 		pettyCashObj.Reimbursement_Reimbursement_Amount1().clear();
 		pettyCashObj.Reimbursement_Reimbursement_Amount1().sendKeys(pettyData.ReimburseAmount);
@@ -355,7 +380,7 @@ public class Petty_Cash extends BaseClass {
 
 	@And("^Enter Multiple Reimbursement Remarks$")
 	public void enter_multiple_reimbursement_remarks() throws Throwable {
-		waitHelper.waitForElement(driver, 2000, pettyCashObj.Reimbursement_Remark1());
+		waitHelper.waitForElementToVisibleWithFluentWait(driver, pettyCashObj.Reimbursement_Remark1(), 60, 500);
 		pettyCashObj.Reimbursement_Remark1().click();
 		pettyCashObj.Reimbursement_Remark1().sendKeys(pettyData.Remarks);
 	}

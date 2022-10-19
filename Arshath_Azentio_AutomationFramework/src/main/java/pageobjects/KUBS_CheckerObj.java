@@ -40,15 +40,8 @@ public class KUBS_CheckerObj {
 
 	public WebElement checkerNotificationIcon() {
 		return checker_notification_icon;
-	} 
-
-	@FindBy(xpath = "//div[@id='toast-container']//button")
-	private WebElement checker_alert_close;
-
-	public WebElement checker_alert_close() {
-		return checker_alert_close;
 	}
-	
+
 	@FindBy(xpath = "//span/ion-button[3]")
 	private WebElement checker_reject_button;
 
@@ -56,7 +49,7 @@ public class KUBS_CheckerObj {
 		return checker_reject_button;
 	}
 
-	@FindBy(xpath = "//span/ion-button[1]")
+	@FindBy(xpath = "//span/ion-button[1]/span")
 	private WebElement checker_approve_button;
 
 	public WebElement checkerApproveButton() {
@@ -77,7 +70,13 @@ public class KUBS_CheckerObj {
 	public WebElement checkerGetBudgetCode() {
 		return checker_budget_code;
 	}
+	@FindBy(xpath = "//ion-col[3]//ng-select/div/div/div/span[2]")
+	private WebElement budget_type;
 
+	public WebElement budgetType() {
+		return budget_type;
+
+	}
 	@FindBy(xpath = "//ion-col[3]/app-kub-lov/span/ng-select/div/div/div[2]")
 	private WebElement checker_budget_year;
 
@@ -119,11 +118,69 @@ public class KUBS_CheckerObj {
 	public WebElement checkersubmitButton() {
 		return checker_alert_submit_button;
 	}
+
+	@FindBy(xpath = "//div[@id='toast-container']//button")
+	private WebElement checkerAlertClose;
+
+	public WebElement checkerAlertClose() {
+		return checkerAlertClose;
+	}
+
+	@FindBy(xpath = "//div[@id='toast-container']//button")
+	private WebElement checker_alert_close;
+
+	public WebElement checker_alert_close() {
+		return checker_alert_close;
+	}
+	
+	@FindBy(xpath = "//datatable-pager[1]/ul[1]/li[8]/a[1]/i[1]")
+	private WebElement checker_notification_next_button;
+
+	public WebElement checker_notification_next_button() {
+		return checker_notification_next_button;
+	}
+
+	@FindBy(xpath = "//div[@id='toast-container']/div/div[@role='alertdialog']")
+	private WebElement checker_right_corner_green_toast;
+
+	public WebElement checker_right_corner_green_toast() {
+		return checker_right_corner_green_toast;
+	}
+
+	@FindBy(xpath = "//div[@aria-label='Record REJECTED Successfully']")
+	private WebElement checker_right_corner_reject_toast;
+
+	public WebElement checker_right_corner_reject_toast() {
+		return checker_right_corner_reject_toast;
+	}
+	
+	@FindBy(xpath = "//div[@id='toast-container']/div/div[@role='alert']")
+	private WebElement checker_approval_status;
+
+	public WebElement checkerApprovalStatus() {
+		return checker_approval_status;
+	}
+
 	//TOTAST - CONTAINER
-	@FindBy(xpath="//div[@id='toast-container']/div/div[@role='alertdialog']")
+	@FindBy(xpath="//div[@id='toast-container']/div/div[@role='alert']")
 	private WebElement Popup_status;
 	public WebElement Popup_status()
 	{
 		return Popup_status;
 	}
+	
+	
+	@FindBy(xpath="//ion-header/ion-toolbar[1]/ion-buttons[2]/ion-button[4]")
+    private WebElement checker_user_name;
+    public WebElement checkerUserName()
+    {
+    	return checker_user_name;
+    }
+    @FindBy(xpath="//ion-label[contains(text(),'Logout')]")
+    private WebElement checker_logout_button;
+    public WebElement checkerLogoutButton()
+    {
+		return checker_logout_button;
+    	
+    }
 }

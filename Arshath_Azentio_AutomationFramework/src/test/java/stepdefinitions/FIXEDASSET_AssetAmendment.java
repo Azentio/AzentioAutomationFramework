@@ -1,9 +1,13 @@
 package stepdefinitions;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
@@ -19,11 +23,14 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import pageobjects.FIXEDASSET_AssetAmendmentObj;
+import pageobjects.FIXEDASSET_fixedAssetObj;
+import pageobjects.FixedAssetObj;
 import pageobjects.KUBS_CheckerObj;
 import pageobjects.KUBS_ReviewerObj;
 import resources.BaseClass;
 import resources.JsonDataReaderWriter;
 import testDataType.FIXEDASSET_AssetAmendmentData;
+import testDataType.FixedAsset_AssetCreationTestDataType;
 
 public class FIXEDASSET_AssetAmendment extends BaseClass {
 
@@ -44,7 +51,9 @@ public class FIXEDASSET_AssetAmendment extends BaseClass {
 	ClicksAndActionsHelper clickAndActionHelper = new ClicksAndActionsHelper(driver);
 	FIXEDASSET_AssetAmendmentObj assetAmendmentObj = new FIXEDASSET_AssetAmendmentObj(driver);
 	FIXEDASSET_AssetAmendmentData assetAmendmentData = jsonConfig.getAssetAmendmentByName("Asset");
-
+	FIXEDASSET_fixedAssetObj fixedAssetObj = new FIXEDASSET_fixedAssetObj(driver);
+	FixedAsset_AssetCreationTestDataType fixedAsset_AssetCreationTestDataType = jsonConfig.getAssetCreationByName("Maker");
+	Map<String,String> testData= new HashMap<>();
 	@Given("^Lauch The Azentio Url$")
 	public void lauch_the_azentio_url() throws Throwable {
 
@@ -85,7 +94,11 @@ public class FIXEDASSET_AssetAmendment extends BaseClass {
 		AssetCreation = assetAmendmentObj.fixed_AssetTableRef().getText();
 		System.out.println(AssetCreation);
 	}
-
+	@And("^get the approved asset reference number to do the asset ammendment$")
+    public void get_the_approved_asset_reference_number_to_do_the_asset_ammendment() throws Throwable {
+     waitHelper.waitForElementVisible(fixedAssetObj.fixedAssetApprovedReferenceNumber(), 3000, 300);
+     
+    }
 //document.getElementsByClassName('native-input sc-ion-input-md')[4].value
 	@Then("^Click on Asset Ammendent submodule Eye Icon$")
 	public void click_on_asset_ammendent_submodule_eye_icon() throws Throwable {
@@ -110,7 +123,8 @@ public class FIXEDASSET_AssetAmendment extends BaseClass {
 
 		// ---------ENTER THE REQUEST REFERANCE NUMBER---------//
 		waitHelper.waitForElement(driver, 2000, assetAmendmentObj.fixed_AssetReferenceNumber());
-		assetAmendmentObj.fixed_AssetReferenceNumber().sendKeys(AssetCreation);
+	//	assetAmendmentObj.fixed_AssetReferenceNumber().sendKeys(AssetCreation);
+		assetAmendmentObj.fixed_AssetReferenceNumber().sendKeys(fixedAsset_AssetCreationTestDataType.AssetCode);
 		assetAmendmentObj.fixed_AssetReferenceNumber().sendKeys(Keys.ENTER);
 	}
 
@@ -144,8 +158,19 @@ public class FIXEDASSET_AssetAmendment extends BaseClass {
 
 	@And("^Choose a current date in calender$")
 	public void choose_a_current_date_in_calender() throws Throwable {
+		waitHelper.waitForElement(driver,2000,driver.findElement(By.xpath("(//span[@class='owl-dt-control-content owl-dt-control-button-content'])[2]")) );
+    	driver.findElement(By.xpath("(//span[@class='owl-dt-control-content owl-dt-control-button-content'])[2]"))
+		.click();
+waitHelper.waitForElement(driver,2000 , driver.findElement(By.xpath("//span[text()='" + assetAmendmentData.Year  + "']")));
+driver.findElement(By.xpath("//span[text()='" + assetAmendmentData.Year  + "']")).click();
+driver.findElement(By.xpath("//span[text()='" + assetAmendmentData.Month + "']")).click();
+//tbody/tr[5]/td[@aria-label='April 30, 2022']
+waitHelper.waitForElement(driver, 2000,
+		driver.findElement(By.xpath("//td[@aria-label='"+assetAmendmentData.FullMonth+" "+assetAmendmentData.Day+", "+assetAmendmentData.Year+"']")));
+driver.findElement(By.xpath("//td[@aria-label='"+assetAmendmentData.FullMonth+" "+assetAmendmentData.Day+", "+assetAmendmentData.Year+"']")).click();
+    
 
-		// -------------CHOOSE DATE---------------//
+	/*	// -------------CHOOSE DATE---------------//
 		javaScriptHelper.JavaScriptHelper(driver);
 		while (true) {
 			try {
@@ -169,7 +194,7 @@ public class FIXEDASSET_AssetAmendment extends BaseClass {
 		
 		clickAndActionHelper.doubleClick(Click);
 		clickAndActionHelper.clickOnElement(Click);
-		
+		*/
 	}
 
 	@Then("^Save the Asset Record$")
@@ -325,12 +350,25 @@ public class FIXEDASSET_AssetAmendment extends BaseClass {
 	@Then("^Click the Action Icon from claimed record$")
 	public void click_the_action_icon_from_claimed_record() throws Throwable {
 		// ------------------CHECKER ACTION------------------//
-		waitHelper.waitForElement(driver, 3000, driver.findElement(By.xpath("//span[contains(text(),'"
-				+ readerData.readReferancedata()
-				+ "')]/ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell/div/ion-buttons/ion-button")));
-		driver.findElement(By.xpath("//span[contains(text(),'" + readerData.readReferancedata()
+	//	waitHelper.waitForElement(driver, 3000, driver.findElement(By.xpath("//span[contains(text(),'"
+	//			+ readerData.readReferancedata()
+	//			+ "')]/ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell/div/ion-buttons/ion-button")));
+		for (int i = 0; i < 9; i++) {
+			try {
+				driver.findElement(By.xpath("//span[contains(text(),'" + readerData.readReferancedata()
 				+ "')]/ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell/div/ion-buttons/ion-button"))
 				.click();
+				break;
+			} catch (NoSuchElementException e) {
+				
+			}
+			catch (StaleElementReferenceException e) {
+				
+			}
+			
+		}
+		
+		
 	}
 
 	@And("^Click on Approve icon$")
@@ -391,15 +429,15 @@ public class FIXEDASSET_AssetAmendment extends BaseClass {
 		assetAmendmentObj.fixed_ModificationType().sendKeys(Keys.ENTER);
     }
 
-	@And("^Enter Asset Life Value$")
-	public void enter_asset_life_value() throws Throwable {
-
-		// ----------------ENTER ASSET VALUE----------------//
-		waitHelper.waitForElement(driver, 2000, assetAmendmentObj.fixed_AssetLife());
-		assetAmendmentObj.fixed_AssetLife().click();
-		assetAmendmentObj.fixed_AssetLife().clear();
-		assetAmendmentObj.fixed_AssetLife().sendKeys(assetAmendmentData.assetLife);
-	}
+//	@And("^Enter Asset Life Value$")
+//	public void enter_asset_life_value() throws Throwable {
+//
+//		// ----------------ENTER ASSET VALUE----------------//
+//		waitHelper.waitForElement(driver, 2000, assetAmendmentObj.fixed_AssetLife());
+//		assetAmendmentObj.fixed_AssetLife().click();
+//		assetAmendmentObj.fixed_AssetLife().clear();
+//		assetAmendmentObj.fixed_AssetLife().sendKeys(assetAmendmentData.assetLife);
+//	}
 	
 	// ********************@KUBS_FAT_UAT_011_003***********************//
 	

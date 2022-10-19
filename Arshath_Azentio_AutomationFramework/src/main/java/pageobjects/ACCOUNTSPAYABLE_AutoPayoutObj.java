@@ -5,7 +5,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-
 public class ACCOUNTSPAYABLE_AutoPayoutObj {
 	WebDriver driver;
 	public ACCOUNTSPAYABLE_AutoPayoutObj(WebDriver driver)
@@ -62,3 +61,4 @@ public class ACCOUNTSPAYABLE_AutoPayoutObj {
 		return accountsPayable_PaymentInitiateButton;
 	}
 }
+

@@ -28,7 +28,7 @@ public class FIXEDASSET_AssetReturnObj {
 		return fixed_Transfericon;
 	}
 
-	@FindBy(xpath = "//div[@id='toast-container']/div/div[@role='alertdialog']")
+	@FindBy(xpath = "//div[@id='toast-container']/div/div[@role='alert']")
 	private WebElement fixed_Popup;
 
 	public WebElement fixed_Popup() {
@@ -137,7 +137,7 @@ public class FIXEDASSET_AssetReturnObj {
 		return fixed_RemarkSubmit;
 	}
 
-	@FindBy(xpath = "//div[@id='toast-container']/div/div[@role='alertdialog']")
+	@FindBy(xpath = "//div[@id='toast-container']/div/div[@role='alert']")
 	private WebElement fixed_ReviewerId;
 
 	public WebElement fixed_ReviewerId() {
@@ -276,4 +276,22 @@ public class FIXEDASSET_AssetReturnObj {
 
 		return fixed_AssetUndertakenEye;
 	}
+	@FindBy(xpath="//ion-button[@ng-reflect-router-link='/tabs/list/datagrid-view/125']")
+	private WebElement fixedAsset_assetReturnView;
+	public WebElement fixedAssetAssetReturnViewButton()
+	{
+		return fixedAsset_assetReturnView;
+	}
+	@FindBy(xpath="//ion-col[2]/app-kub-lov[1]/span[1]/ng-select[1]/div[1]/div[1]/div[2]/span[2]")
+	private WebElement fixed_asset_get_asset_referece_no;
+	public WebElement fixedAssetGetReferenceNo()
+	{
+		return fixed_asset_get_asset_referece_no;
+	}
+	 @FindBy(xpath="//i[@class='datatable-icon-right']")
+	    private WebElement fixed_asset_next_button;
+	    public WebElement fixedAssetNextButton()
+	    {
+	    	return fixed_asset_next_button;
+	    }
 }

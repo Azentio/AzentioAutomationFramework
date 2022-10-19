@@ -7,5 +7,6 @@ public class BUDGET_BudgetCreationTestDataType {
 	public String WarningPecentage;
 	public String BudgetName;
 	public String Remark;
-
+	
 }
+

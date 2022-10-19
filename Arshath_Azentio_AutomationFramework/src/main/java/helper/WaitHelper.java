@@ -12,6 +12,8 @@ import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.FluentWait;
+import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class WaitHelper {
@@ -79,5 +81,28 @@ public class WaitHelper {
 		return wait.until(ExpectedConditions.elementToBeClickable(element));
 
 	}
+	
+	public static WebElement waitForElementwithFluentwait(WebDriver driver, WebElement element) 
+	{ 	
+		Wait<WebDriver> wait = new FluentWait<WebDriver>(driver)
+				.withTimeout(Duration.ofSeconds(20)) 
+				.pollingEvery(Duration.ofMillis(800))
+				.ignoring(Exception.class);
+//		WebElement element1 = wait.until(ExpectedConditions.elementToBeClickable(element));
+		WebElement element1 = wait.until(ExpectedConditions.visibilityOf(element));
+		return element1;
+	}
+
+	public  WebElement waitForElementToVisibleWithFluentWait(WebDriver driver, WebElement element,int timeOut,int pollingTime) 
+	 { 
+	 Wait<WebDriver> wait = new FluentWait<WebDriver>(driver)
+	 .withTimeout(Duration.ofSeconds(timeOut)) 
+	 .pollingEvery(Duration.ofMillis(pollingTime))
+	 .ignoring(Exception.class);
+	 WebElement element1 = wait.until(ExpectedConditions.visibilityOf(element));
+	 return element1;
+	 }
+
+
 
 }

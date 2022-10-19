@@ -104,7 +104,7 @@ public class BUDGET_BudgetCreation {
 
 		@Then("^click logout button and login as a reviewer$")
 		public void click_logout_button_and_login_as_a_reviewer() throws InterruptedException {
-			budgetCreationObj.budgetCreation_LogoutButton().click();
+			//budgetCreationObj.budgetCreation_LogoutButton().click();
 			login.loginToAzentioApp(reviwerId.substring(10, 16));
 		}
 

@@ -14,24 +14,26 @@ public class KUBS_ReviewerObj {
 		PageFactory.initElements(driver, this);
 	}
 
-	@FindBy(xpath = "//ion-button[@ng-reflect-router-link='/inbox']")
+	@FindBy(xpath = "//ion-icon[@ng-reflect-name='mail-unread']")
 	private WebElement reviewer_notification_icon;
 
 	public WebElement reviewerNotidicationIcon() {
 		return reviewer_notification_icon;
-	} 
+	}
+        @FindBy(xpath = "//datatable-row-wrapper[1]/datatable-body-row/div/datatable-body-cell[1]//ion-button")
+	private WebElement reviewer_action_button1;
+
+	public WebElement reviewer_action_button1() {
+		return reviewer_action_button1;
+	}
+	
 	@FindBy(xpath = "//datatable-row-wrapper[1]/datatable-body-row/div/datatable-body-cell[1]//ion-button")
 	private WebElement reviewer_action_button;
 
 	public WebElement reviewer_action_button() {
 		return reviewer_action_button;
 	} 
-	@FindBy(xpath = "//datatable-row-wrapper[1]/datatable-body-row/div/datatable-body-cell[2]//span")
-	private WebElement reviewer_referanceid;
-
-	public WebElement reviewer_referanceid() {
-		return reviewer_referanceid;
-	}
+	
 	@FindBy(xpath = "//span/ion-button[3]")
 	private WebElement reviewer_reject_button;
 
@@ -89,20 +91,13 @@ public class KUBS_ReviewerObj {
 		return reviewer_budget_status;
 	}
 
-	@FindBy(xpath = "//textarea[@name='remarks']")
+	@FindBy(xpath = "//ion-row[1]/ion-col[1]/ion-item[1]/ion-textarea[1]/div[1]/textarea[1]")
 	private WebElement reviewer_alert_remarks;
 
 	public WebElement reviewerAlertRemarks() {
 		return reviewer_alert_remarks;
 	}
-	
-	@FindBy(xpath="//div[@id='toast-container']/div/div[@role='alertdialog']")
-	private WebElement approval_status;
-	public WebElement approvalStatus()
-	{
-		return approval_status;
-	}
-	
+
 	@FindBy(xpath = "//ion-button[contains(text(),'Submit')]")
 	private WebElement reviewer_alert_submit_button;
 
@@ -110,4 +105,75 @@ public class KUBS_ReviewerObj {
 		return reviewer_alert_submit_button;
 	}
 
+	@FindBy(xpath = "//div[contains(text(),'Record REJECTED Successfully')]")
+	private WebElement reviewer_reject_toast;
+
+	public WebElement reviewer_reject_toast() {
+		return reviewer_reject_toast;
+	}
+@FindBy(xpath = "//datatable-row-wrapper[1]/datatable-body-row/div/datatable-body-cell[1]//ion-button")
+	private WebElement reviewerActionButton;
+
+	public WebElement reviewerActionButton() {
+		return reviewerActionButton;
+
+	}
+
+	@FindBy(xpath = "//datatable-row-wrapper[1]/datatable-body-row/div/datatable-body-cell[2]//span")
+	private WebElement reviewer_reference_id;
+
+	public WebElement reviewerReferenceID() {
+		return reviewer_reference_id;
+
+	}
+
+	@FindBy(xpath="//div[@id='toast-container']/div/div[@role='alert']")
+	private WebElement reviewer_approval_status;
+	public WebElement reviewerApprovalStatus()
+	{
+		return reviewer_approval_status;
+	}
+	@FindBy(xpath="//ion-col[3]//ng-select/div/div/div/span[2]")
+	private WebElement budget_type;
+	public WebElement budgetType()
+	{
+		return budget_type;
+		
+	}
+	 @FindBy(xpath="//ion-header/ion-toolbar[1]/ion-buttons[2]/ion-button[4]")
+	    private WebElement reviewer_user_name;
+	    public WebElement reviewerUserName()
+	    {
+	    	return reviewer_user_name;
+	    }
+	    @FindBy(xpath="//ion-label[contains(text(),'Logout')]")
+	    private WebElement reviewer_logout_button;
+	    public WebElement reviewerLogoutButton()
+	    {
+			return reviewer_logout_button;
+	    	
+	    }
+	    @FindBy(xpath="//div[@id='toast-container']//button")
+		private WebElement reviewer_alert_close;
+		public WebElement reviewerAlertClose()
+		{
+			return reviewer_alert_close;
+		}
+		//---------
+		 
+		@FindBy(xpath = "//datatable-row-wrapper[1]/datatable-body-row/div/datatable-body-cell[2]//span")
+		private WebElement reviewer_referanceid;
+
+		public WebElement reviewer_referanceid() {
+			return reviewer_referanceid;
+		}
+	 
+		
+		@FindBy(xpath="//div[@id='toast-container']/div/div[@role='alert']")
+		private WebElement approval_status;
+		public WebElement approvalStatus()
+		{
+			return approval_status;
+		}
+		
 }

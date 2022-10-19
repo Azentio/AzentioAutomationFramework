@@ -1,0 +1,23 @@
+[{
+		"User": "Maker",
+		"BranchCode": "AZENTMAIN",
+		"GLCode": "IFRS-1000073-AS - AXISBANKAC987654321111",
+		
+		"GLMonth": "Feb",
+		"GLFullMonth": "February",
+		"GLDay": "1",
+		
+		"GLYear": "2023",
+		
+		"GLToMonth": "Apr",
+		"GLFullToMonth": "April",
+		"GLToDate": "19",
+		
+		"BouncedVoucher"  :"DEP-RR1234567-20220307",
+		
+		"ClearedVoucher"  :"DEP-RR88888888-20220307",
+		
+		"Voucher" : "PAN-106-2022-03-07"
+		
+	}]
+	

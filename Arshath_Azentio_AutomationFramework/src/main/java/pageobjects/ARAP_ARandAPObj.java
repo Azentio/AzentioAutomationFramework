@@ -246,7 +246,7 @@ public class ARAP_ARandAPObj {
 		return ARAP_InvoiceSave;
 	}
 
-	@FindBy(xpath = "//ion-button[@ng-reflect-router-link='/inbox']")
+	@FindBy(xpath = "//ion-header/ion-toolbar[1]/ion-buttons[2]/ion-button[2]")
 	private WebElement ARAP_MakerNotification;
 
 	public WebElement ARAP_MakerNotification() {
@@ -294,7 +294,7 @@ public class ARAP_ARandAPObj {
 		return ARAP_RemarkSubmit;
 	}
 
-	@FindBy(xpath = "//div[@id='toast-container']/div/div[@role='alertdialog']")
+	@FindBy(xpath = "//div[@id='toast-container']//div[@role='alert']")
 	private WebElement ARAP_ReviewerId;
 
 	public WebElement ARAP_ReviewerId() {
@@ -522,6 +522,14 @@ public class ARAP_ARandAPObj {
 
 	public WebElement accountsPayablePayementSettlementdisabledNext() {
 		return accountsPayable_paymentSettlementDisabledNext;
+	}
+	
+//	@FindBy(xpath = "(//datatable-footer[1]/div[1]/datatable-pager[1])[2]")
+	@FindBy(xpath = "(//div[contains(text(),'total')])[2]")
+	private WebElement accountsPayable_paymentSettlementFooter;
+	
+	public WebElement accountsPayable_paymentSettlementFooter() {
+		return accountsPayable_paymentSettlementFooter;
 	}
 
 	@FindBy(xpath = "//ion-col[3]//input")

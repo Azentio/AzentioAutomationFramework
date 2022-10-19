@@ -20,7 +20,7 @@ public class KUBS_MakerObj {
 	public WebElement kubsFinaceOption() {
 		return maker_finance_option;
 	}
-    @FindBy(xpath="//ion-item[2]/ion-radio")
+    @FindBy(xpath="//ion-label[contains(text(),'Finance')]/../ion-radio")
     private WebElement finance_option;
     public WebElement FinanceOption() {
 		return finance_option;
@@ -195,6 +195,51 @@ public class KUBS_MakerObj {
 		public WebElement budget_SupplementaryBudget_SupplementaryBudgetAddButton() {
 			return budget_SupplementaryBudget_SupplementaryBudgetAddButton;
 		}
+		@FindBy(xpath="//ion-segment//ion-segment-button[1]")
+		private WebElement segmentButton_1;
+		public WebElement segmentButton1()
+		{
+			return segmentButton_1;
+		}
 
-
+		@FindBy(xpath="//ion-item[1]/ion-radio")
+	    private WebElement configuration_Menu;
+	    public WebElement configurationMenu()
+	    {
+	    	return configuration_Menu;
+	    }
+	    
+	    @FindBy(xpath="//ion-button[@ng-reflect-router-link='/tabs/list/datagrid-view/208']")
+		private WebElement arap_Expence_configuration;
+		public WebElement arapExpenceConfiguration()
+		{
+			return arap_Expence_configuration;
+		}
+		
+		@FindBy(xpath="//span[contains(text(),'AZENTMAIN')]/ancestor::datatable-body-cell[1]/preceding-sibling::datatable-body-cell[2]//ion-button[2]")
+        private WebElement arapConfig_BranchRecord;
+		public WebElement arapConfigBranchRecord() {
+			return arapConfig_BranchRecord;
+			}
+		
+		@FindBy(xpath="//ion-row[1]/ion-col[6]//input")
+		private WebElement arapConfig_CreateFileBasisInputBox;
+		public WebElement arapConfigCreateFileBasisInputBox()
+		{
+			return arapConfig_CreateFileBasisInputBox;
+		}
+		
+		@FindBy(xpath="//ion-row[1]/ion-col[6]//ng-select[1]/div[1]/div[1]/div[2]/span[2]")
+		private WebElement arapConfig_CreateFileBasis;
+		public WebElement arapCreateFileBasis()
+		{
+			return arapConfig_CreateFileBasis;
+		}
+		
+		@FindBy(xpath="//page-payment-file-configuration-update//ion-toolbar//ion-buttons[2]//ion-button")
+		private WebElement arapConfig_PaymentFileConfigSaveButton;
+		public WebElement arapConfigPaymentFileConfigSaveButton()
+		{
+			return arapConfig_PaymentFileConfigSaveButton;
+		}
 }

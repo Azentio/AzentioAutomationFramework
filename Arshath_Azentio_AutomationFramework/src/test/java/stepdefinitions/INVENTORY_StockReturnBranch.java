@@ -40,7 +40,8 @@ public class INVENTORY_StockReturnBranch extends BaseClass {
 	JavascriptHelper javaScriptHelper = new JavascriptHelper();
 	DropDownHelper dropDownHelper = new DropDownHelper(driver);
 	JsonConfig jsonConfig = new JsonConfig();
-	INVENTORY_InventoryManagement_DataType inventoryData = jsonConfig.getStockReturnBranchByName("Maker");
+	INVENTORY_InventoryManagement_DataType inventoryData = new INVENTORY_InventoryManagement_DataType(); 
+	//INVENTORY_InventoryManagement_DataType inventoryData = jsonConfig.getStockReturnBranchByName("Maker");
 	VerificationHelper verificationHelper = new VerificationHelper();
 	String referance_id;
 	String reviwerId;
@@ -70,116 +71,116 @@ public class INVENTORY_StockReturnBranch extends BaseClass {
 		stockReturnBranchObj.inventoryTransfericon().click();
 	}
 
-	@And("^Click Inventory Management module$")
-	public void click_inventory_management_module() throws Throwable {
+//	@And("^Click Inventory Management module$")
+//	public void click_inventory_management_module() throws Throwable {
+//
+//		// ---------TO VIEW THE Inventory Management----------//
+//		javaScriptHelper.JavaScriptHelper(driver);
+//		waitHelper.waitForElement(driver, 2000, stockReturnBranchObj.inventoryManagement());
+//		stockReturnBranchObj.inventoryManagement().click();
+//		javaScriptHelper.scrollIntoView(stockReturnBranchObj.inventoryStockReturnBranchEye());
+//	}
 
-		// ---------TO VIEW THE Inventory Management----------//
-		javaScriptHelper.JavaScriptHelper(driver);
-		waitHelper.waitForElement(driver, 2000, stockReturnBranchObj.inventoryManagement());
-		stockReturnBranchObj.inventoryManagement().click();
-		javaScriptHelper.scrollIntoView(stockReturnBranchObj.inventoryStockReturnBranchEye());
-	}
+//	@And("^Click on stock return from branch SubModule Eye icon$")
+//	public void click_on_stock_return_from_branch_submodule_eye_icon() throws Throwable {
+//
+//		// ---------TO VIEW THE stock return from branch Eye icon----------//
+//		waitHelper.waitForElement(driver, 2000, stockReturnBranchObj.inventoryStockReturnBranchEye());
+//		stockReturnBranchObj.inventoryStockReturnBranchEye().click();
+//	}
 
-	@And("^Click on stock return from branch SubModule Eye icon$")
-	public void click_on_stock_return_from_branch_submodule_eye_icon() throws Throwable {
+//	@Then("^Click on stock return from branch Add icon$")
+//	public void click_on_stock_return_from_branch_add_icon() throws Throwable {
+//
+//		// ---------TO VIEW THE stock return from branch Add icon----------//
+//		waitHelper.waitForElement(driver, 2000, stockReturnBranchObj.inventoryStockReturnBranchAdd());
+//		stockReturnBranchObj.inventoryStockReturnBranchAdd().click();
+//	}
 
-		// ---------TO VIEW THE stock return from branch Eye icon----------//
-		waitHelper.waitForElement(driver, 2000, stockReturnBranchObj.inventoryStockReturnBranchEye());
-		stockReturnBranchObj.inventoryStockReturnBranchEye().click();
-	}
+//	@And("^Click on Request Referance No code$")
+//	public void click_on_request_referance_no_code() throws Throwable {
+//
+//		// ---------TO Enter Request Referance No code----------//
+//		waitHelper.waitForElement(driver, 2000, stockReturnBranchObj.inventoryRequestReferanceNumber());
+//		stockReturnBranchObj.inventoryRequestReferanceNumber().click();
+//		stockReturnBranchObj.inventoryRequestReferanceNumber().sendKeys(inventoryData.requestReferanceNo);
+//		stockReturnBranchObj.inventoryRequestReferanceNumber().sendKeys(Keys.ENTER);
+//	}
 
-	@Then("^Click on stock return from branch Add icon$")
-	public void click_on_stock_return_from_branch_add_icon() throws Throwable {
+//	@Then("^Click on Issue Referance No code$")
+//	public void click_on_issue_referance_no_code() throws Throwable {
+//
+//		// ---------TO VIEW THE Issue Referance No code----------//
+//		waitHelper.waitForElement(driver, 2000, stockReturnBranchObj.inventoryIssueReferanceNo());
+//		stockReturnBranchObj.inventoryIssueReferanceNo().click();
+//		stockReturnBranchObj.inventoryIssueReferanceNo().sendKeys(Keys.DOWN);
+//		stockReturnBranchObj.inventoryIssueReferanceNo().sendKeys(Keys.ENTER);
+//	}
 
-		// ---------TO VIEW THE stock return from branch Add icon----------//
-		waitHelper.waitForElement(driver, 2000, stockReturnBranchObj.inventoryStockReturnBranchAdd());
-		stockReturnBranchObj.inventoryStockReturnBranchAdd().click();
-	}
+//	@And("^Click on item code$")
+//	public void click_on_item_code() throws Throwable {
+//
+//		// ---------TO VIEW THE item code----------//
+//		waitHelper.waitForElement(driver, 2000, stockReturnBranchObj.inventoryItemCode());
+//		stockReturnBranchObj.inventoryItemCode().click();
+//		stockReturnBranchObj.inventoryItemCode().sendKeys(Keys.DOWN);
+//		stockReturnBranchObj.inventoryItemCode().sendKeys(Keys.ENTER);
+//		
+//	}
 
-	@And("^Click on Request Referance No code$")
-	public void click_on_request_referance_no_code() throws Throwable {
-
-		// ---------TO Enter Request Referance No code----------//
-		waitHelper.waitForElement(driver, 2000, stockReturnBranchObj.inventoryRequestReferanceNumber());
-		stockReturnBranchObj.inventoryRequestReferanceNumber().click();
-		stockReturnBranchObj.inventoryRequestReferanceNumber().sendKeys(inventoryData.requestReferanceNo);
-		stockReturnBranchObj.inventoryRequestReferanceNumber().sendKeys(Keys.ENTER);
-	}
-
-	@Then("^Click on Issue Referance No code$")
-	public void click_on_issue_referance_no_code() throws Throwable {
-
-		// ---------TO VIEW THE Issue Referance No code----------//
-		waitHelper.waitForElement(driver, 2000, stockReturnBranchObj.inventoryIssueReferanceNo());
-		stockReturnBranchObj.inventoryIssueReferanceNo().click();
-		stockReturnBranchObj.inventoryIssueReferanceNo().sendKeys(Keys.DOWN);
-		stockReturnBranchObj.inventoryIssueReferanceNo().sendKeys(Keys.ENTER);
-	}
-
-	@And("^Click on item code$")
-	public void click_on_item_code() throws Throwable {
-
-		// ---------TO VIEW THE item code----------//
-		waitHelper.waitForElement(driver, 2000, stockReturnBranchObj.inventoryItemCode());
-		stockReturnBranchObj.inventoryItemCode().click();
-		stockReturnBranchObj.inventoryItemCode().sendKeys(Keys.DOWN);
-		stockReturnBranchObj.inventoryItemCode().sendKeys(Keys.ENTER);
-		
-	}
-
-	@And("^Enter Return Quantity Stock value$")
-	public void enter_return_quantity_stock_value() throws Throwable {
-
-		// ---------TO VIEW THE Return Quantity----------//
-		waitHelper.waitForElement(driver, 2000, stockReturnBranchObj.inventoryReturnQuantity());
-		stockReturnBranchObj.inventoryReturnQuantity().click();
-		stockReturnBranchObj.inventoryReturnQuantity().sendKeys(inventoryData.returnQuantity);
-	}
+//	@And("^Enter Return Quantity Stock value$")
+//	public void enter_return_quantity_stock_value() throws Throwable {
+//
+//		// ---------TO VIEW THE Return Quantity----------//
+//		waitHelper.waitForElement(driver, 2000, stockReturnBranchObj.inventoryReturnQuantity());
+//		stockReturnBranchObj.inventoryReturnQuantity().click();
+//		stockReturnBranchObj.inventoryReturnQuantity().sendKeys(inventoryData.returnQuantity);
+//	}
 
 
     
-	@Then("^Click on Return Type and Choose Type$")
-	public void click_on_return_type_and_choose_type() throws Throwable {
+//	@Then("^Click on Return Type and Choose Type$")
+//	public void click_on_return_type_and_choose_type() throws Throwable {
+//
+//		// ---------TO VIEW THE Return Type----------//
+//		waitHelper.waitForElement(driver, 5000, stockReturnBranchObj.inventory_ReturnType());
+//		stockReturnBranchObj.inventory_ReturnType().click();
+//		stockReturnBranchObj.inventory_ReturnType().sendKeys(inventoryData.returnType);
+//		stockReturnBranchObj.inventory_ReturnType().sendKeys(Keys.ENTER);
+//	}
 
-		// ---------TO VIEW THE Return Type----------//
-		waitHelper.waitForElement(driver, 5000, stockReturnBranchObj.inventory_ReturnType());
-		stockReturnBranchObj.inventory_ReturnType().click();
-		stockReturnBranchObj.inventory_ReturnType().sendKeys(inventoryData.returnType);
-		stockReturnBranchObj.inventory_ReturnType().sendKeys(Keys.ENTER);
-	}
+//	@And("^Click on Return Reason and Choose Type$")
+//	public void click_on_return_reason_and_choose_type() throws Throwable {
+//
+//		// ---------TO VIEW THE Return Reason----------//
+//		waitHelper.waitForElement(driver, 5000, stockReturnBranchObj.inventory_ReturnReason());
+//		stockReturnBranchObj.inventory_ReturnReason().click();
+//		stockReturnBranchObj.inventory_ReturnReason().sendKeys(inventoryData.returnReason);
+//		stockReturnBranchObj.inventory_ReturnReason().sendKeys(Keys.ENTER);
+//	}
 
-	@And("^Click on Return Reason and Choose Type$")
-	public void click_on_return_reason_and_choose_type() throws Throwable {
+//	@Then("^Save the Inventory Stock Record$")
+//	public void save_the_inventory_stock_record() throws Throwable {
+//
+//		// -----------SAVE THE RECORD----------------//
+//		waitHelper.waitForElement(driver, 2000, stockReturnBranchObj.inventory_Save());
+//		stockReturnBranchObj.inventory_Save().click();
+//		Thread.sleep(3000);
+//	}
 
-		// ---------TO VIEW THE Return Reason----------//
-		waitHelper.waitForElement(driver, 5000, stockReturnBranchObj.inventory_ReturnReason());
-		stockReturnBranchObj.inventory_ReturnReason().click();
-		stockReturnBranchObj.inventory_ReturnReason().sendKeys(inventoryData.returnReason);
-		stockReturnBranchObj.inventory_ReturnReason().sendKeys(Keys.ENTER);
-	}
-
-	@Then("^Save the Inventory Stock Record$")
-	public void save_the_inventory_stock_record() throws Throwable {
-
-		// -----------SAVE THE RECORD----------------//
-		waitHelper.waitForElement(driver, 2000, stockReturnBranchObj.inventory_Save());
-		stockReturnBranchObj.inventory_Save().click();
-		Thread.sleep(3000);
-	}
-
-	@And("^goto the maker Notification icon$")
-	public void goto_the_maker_notification_icon() throws Throwable {
-
-		// ------------Maker Notification icon---------//
-		waitHelper.waitForElement(driver, 2000, stockReturnBranchObj.inventory_MakerNotification());
-		stockReturnBranchObj.inventory_MakerNotification().click();
-		waitHelper.waitForElement(driver, 2000, stockReturnBranchObj.inventory_ReferanceId());
-		String Referance_id = stockReturnBranchObj.inventory_ReferanceId().getText();
-		readerData.addReferanceData(Referance_id);
-		waitHelper.waitForElement(driver, 2000, stockReturnBranchObj.inventory_ActionButton());
-		stockReturnBranchObj.inventory_ActionButton().click();
-
-	}
+//	@And("^goto the maker Notification icon$")
+//	public void goto_the_maker_notification_icon() throws Throwable {
+//
+//		// ------------Maker Notification icon---------//
+//		waitHelper.waitForElement(driver, 2000, stockReturnBranchObj.inventory_MakerNotification());
+//		stockReturnBranchObj.inventory_MakerNotification().click();
+//		waitHelper.waitForElement(driver, 2000, stockReturnBranchObj.inventory_ReferanceId());
+//		String Referance_id = stockReturnBranchObj.inventory_ReferanceId().getText();
+//		readerData.addReferanceData(Referance_id);
+//		waitHelper.waitForElement(driver, 2000, stockReturnBranchObj.inventory_ActionButton());
+//		stockReturnBranchObj.inventory_ActionButton().click();
+//
+//	}
 
 	@Then("^Click Submit icon to Inventory Record$")
 	public void click_submit_icon_to_inventory_record() throws Throwable {
@@ -189,27 +190,27 @@ public class INVENTORY_StockReturnBranch extends BaseClass {
 		stockReturnBranchObj.inventory_Submit().click();
 	}
 
-	@And("^Give Remark and submit Inventory field$")
-	public void give_remark_and_submit_inventory_field() throws Throwable {
-
-		// ----------ENTER THE REMARK AND SUBMIT THE RECORD-------------//
-		inventoryData = jsonConfig.getStockReturnBranchByName("Maker");
-		waitHelper.waitForElement(driver, 2000, stockReturnBranchObj.inventory_Remark());
-		stockReturnBranchObj.inventory_Remark().click();
-		waitHelper.waitForElement(driver, 5000, stockReturnBranchObj.inventory_Remark());
-		stockReturnBranchObj.inventory_Remark().sendKeys(inventoryData.RemarkApprove);
-		waitHelper.waitForElement(driver, 2000, stockReturnBranchObj.inventory_RemarkSubmit());
-		stockReturnBranchObj.inventory_RemarkSubmit().click();
-		waitHelper.waitForElement(driver, 2000, stockReturnBranchObj.inventory_ReviewerId());
-		reviwerId = stockReturnBranchObj.inventory_ReviewerId().getText();
-		String ReviewerID = reviwerId.substring(85);
-		StringBuffer sb = new StringBuffer(ReviewerID);
-		StringBuffer bufferedString = sb.deleteCharAt(ReviewerID.length() - 1);
-		String filanReviewerID = bufferedString.toString();
-		readerData.addData(filanReviewerID);
-		System.out.println(reviwerId);
-
-	}
+//	@And("^Give Remark and submit Inventory field$")
+//	public void give_remark_and_submit_inventory_field() throws Throwable {
+//
+//		// ----------ENTER THE REMARK AND SUBMIT THE RECORD-------------//
+//		inventoryData = jsonConfig.getStockReturnBranchByName("Maker");
+//		waitHelper.waitForElement(driver, 2000, stockReturnBranchObj.inventory_Remark());
+//		stockReturnBranchObj.inventory_Remark().click();
+//		waitHelper.waitForElement(driver, 5000, stockReturnBranchObj.inventory_Remark());
+//		stockReturnBranchObj.inventory_Remark().sendKeys(inventoryData.RemarkApprove);
+//		waitHelper.waitForElement(driver, 2000, stockReturnBranchObj.inventory_RemarkSubmit());
+//		stockReturnBranchObj.inventory_RemarkSubmit().click();
+//		waitHelper.waitForElement(driver, 2000, stockReturnBranchObj.inventory_ReviewerId());
+//		reviwerId = stockReturnBranchObj.inventory_ReviewerId().getText();
+//		String ReviewerID = reviwerId.substring(85);
+//		StringBuffer sb = new StringBuffer(ReviewerID);
+//		StringBuffer bufferedString = sb.deleteCharAt(ReviewerID.length() - 1);
+//		String filanReviewerID = bufferedString.toString();
+//		readerData.addData(filanReviewerID);
+//		System.out.println(reviwerId);
+//
+//	}
 
 	@Given("^Login As Reviewer user$")
 	public void login_as_reviewer_user() throws Throwable {
@@ -243,7 +244,7 @@ public class INVENTORY_StockReturnBranch extends BaseClass {
 		waitHelper.waitForElement(driver, 2000,
 				driver.findElement(By.xpath(befr_xpath + readerData.readReferancedata() + aftr_xpath)));
 		driver.findElement(By.xpath(befr_xpath + readerData.readReferancedata() + aftr_xpath)).click();
-		reviewerObj.reviewer_action_button().click();
+		reviewerObj.reviewer_action_button1().click();
 	}
 
 	@And("^Approve the Record from Reviewer End$")
@@ -251,15 +252,17 @@ public class INVENTORY_StockReturnBranch extends BaseClass {
 
 		// -----------------REVIEWER APPROVE---------------------//
 		readerData.addReferanceData(referance_id);
+		Thread.sleep(2000);
 		waitHelper.waitForElement(driver, 2000, reviewerObj.reviewerApproveButton());
 		reviewerObj.reviewerApproveButton().click();
 	}
 
 	@Then("^Enter The Remark and submit from Reviewer End$")
 	public void enter_the_remark_and_submit_from_reviewer_end() throws Throwable {
-
+		INVENTORY_InventoryManagement_DataType inventoryData = jsonConfig.getStockReturnBranchByName("Maker");
 		// ---------------------SUBMIT THE REVIEWER RECORD-----------------------//
 		waitHelper.waitForElement(driver, 5000, reviewerObj.reviewerAlertRemarks());
+		reviewerObj.reviewerAlertRemarks().click();
 		reviewerObj.reviewerAlertRemarks().sendKeys(inventoryData.RemarkApprove);
 		waitHelper.waitForElement(driver, 5000, reviewerObj.reviewerAlertSubmitButton());
 		javaScriptHelper.JSEClick(reviewerObj.reviewerAlertSubmitButton());
@@ -303,8 +306,8 @@ public class INVENTORY_StockReturnBranch extends BaseClass {
 		waitHelper.waitForElement(driver, 10000,
 				driver.findElement(By.xpath(before_xpath + readerData.readReferancedata() + after_xpath_claim)));
 		driver.findElement(By.xpath(before_xpath + readerData.readReferancedata() + after_xpath_claim)).click();
-		waitHelper.waitForElement(driver, 2000, checkerObj.checker_alert_close());
-		checkerObj.checker_alert_close().click();
+		waitHelper.waitForElement(driver, 2000, checkerObj.checkerAlertClose());
+		checkerObj.checkerAlertClose().click();
 	}
 
 
@@ -359,23 +362,23 @@ public class INVENTORY_StockReturnBranch extends BaseClass {
 		Assert.assertTrue(checkerObj.Popup_status().isDisplayed());
 	}
 	
-	@Then("^Click on Inventory Maintance module$")
-    public void click_on_inventory_maintance_module() throws Throwable {
-		waitHelper.waitForElement(driver, 2000, stockReturnBranchObj.inventory_InventoryMaintenance());
-		stockReturnBranchObj.inventory_InventoryMaintenance().click();
-    }
+//	@Then("^Click on Inventory Maintance module$")
+//    public void click_on_inventory_maintance_module() throws Throwable {
+//		waitHelper.waitForElement(driver, 2000, stockReturnBranchObj.inventory_InventoryMaintenance());
+//		stockReturnBranchObj.inventory_InventoryMaintenance().click();
+//    }
 
-    @And("^click on Master Item eye icon$")
-    public void click_on_master_item_eye_icon() throws Throwable {
-    	waitHelper.waitForElement(driver, 2000, stockReturnBranchObj.inventory_MasterItemEye());
-    	stockReturnBranchObj.inventory_MasterItemEye().click();
-    }
+//    @And("^click on Master Item eye icon$")
+//    public void click_on_master_item_eye_icon() throws Throwable {
+//    	waitHelper.waitForElement(driver, 2000, stockReturnBranchObj.inventory_MasterItemEye());
+//    	stockReturnBranchObj.inventory_MasterItemEye().click();
+//    }
     
-    @Then("^click on search icon$")
-    public void click_on_search_icon() throws Throwable {
-    	waitHelper.waitForElement(driver, 2000, stockReturnBranchObj.inventory_SearchIcon());
-    	stockReturnBranchObj.inventory_SearchIcon().click();
-    }
+//    @Then("^click on search icon$")
+//    public void click_on_search_icon() throws Throwable {
+//    	waitHelper.waitForElement(driver, 2000, stockReturnBranchObj.inventory_SearchIcon());
+//    	stockReturnBranchObj.inventory_SearchIcon().click();
+//    }
 
     @And("^Give Item description value and Click Edit icon$")
     public void give_item_description_value_and_click_edit_icon() throws Throwable {

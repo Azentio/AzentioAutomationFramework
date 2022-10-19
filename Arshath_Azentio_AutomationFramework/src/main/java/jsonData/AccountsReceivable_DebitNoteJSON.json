@@ -1,0 +1,18 @@
+[
+	{
+		"User" : "Maker",
+		"ReceivableName" : "Sale of Tables",
+		"BPName" : "Bonton Agency",
+		"InvoiceNumber" : "INV-477-52022",
+		"DebitNoteAmount" : "10.00",
+		"Description" : "ok",
+		"RemarkByMaker" : "submit",
+		"RemarkByChecker" : "ApprovedByChecker",
+		
+		"PaymentOption" : "Business Partner wise",
+		"ValueDate" : "30",
+		"ValueMonth" : "Dec",
+		"ValueFullMonth" : "December",
+		"ValueYear" : "2022"
+	}
+]

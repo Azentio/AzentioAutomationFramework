@@ -88,7 +88,7 @@ public class BudgetCreation extends BaseClass{
 		javascripthelp = new JavascriptHelper();
 		waithelper.waitForElement(driver, 2000, budgetCreationObj.budgetCreation_AddButton());
 		budgetCreationObj.budgetCreation_AddButton().click();
-		budgdata = json.getBudgetdataByName("Maker");
+		//budgdata = json.getBudgetdataByName("Maker");
 		waithelper.waitForElement(driver, 2000, budgetCreationObj.budgetCreation_BudgetCode());
 		budgetCreationObj.budgetCreation_BudgetCode().sendKeys(budgdata.BudgetCode);
 		dropDownHelper = new DropDownHelper(driver);
@@ -148,7 +148,7 @@ public class BudgetCreation extends BaseClass{
 
 	@Then("^click logout button and login as a reviewer$")
 	public void click_logout_button_and_login_as_a_reviewer() throws InterruptedException {
-		budgetCreationObj.budgetCreation_LogoutButton().click();
+		//budgetCreationObj.budgetCreation_LogoutButton().click();
 		login.loginToAzentioApp(reviwerId.substring(10, 16));
 	}
 

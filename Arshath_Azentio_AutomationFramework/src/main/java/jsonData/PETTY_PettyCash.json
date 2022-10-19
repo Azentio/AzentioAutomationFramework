@@ -1,19 +1,19 @@
 [
 {
-	"UserName" 		: "Pettycash",
-	"ExpenseCode"	: "Exp001",
-	"ExpenseName"	: "Petty",
-	"ExpenseGl"		: "IFRS-AS-AS1000023 - Advances to Employee",
-	"MaxLimit"		: "1000000",
-	"Currency" 		: "INR",
-	"EmployeeValue" : "Harsha Y B",
-	"AdvanceLimit" 	: "5000000",
-	"CustodianLimit": "HK",
-	"ReplenishLimit": "20000",
-	"RequestAmount" : "1000",
-	"ReimburseAmount": "200", 
-	"Remarks"		: "Okay"
-	
-	
+    "UserName"         : "Pettycash",
+    "ExpenseCode"    : "Exp002",
+    "ExpenseName"    : "EXPINSURANCE002",
+    "ExpenseGl"        : "IFRS-AS-AS1000023 - Advances to Employee",
+    "MaxLimit"        : "1000000",
+    "Currency"         : "INR",
+    "EmployeeValue" : "Rajesh",
+    "AdvanceLimit"     : "5000000",
+    "CustodianLimit": "kkr",    
+    "ReplenishLimit": "20000",
+    "RequestAmount" : "1000",
+    "ReimburseAmount": "200",
+    "Remarks"        : "Okay"
+    
+    
 }
 ]

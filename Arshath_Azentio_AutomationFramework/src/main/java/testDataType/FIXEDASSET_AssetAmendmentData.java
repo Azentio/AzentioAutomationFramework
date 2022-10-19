@@ -35,4 +35,10 @@ public class FIXEDASSET_AssetAmendmentData {
 	public String GlToMonth;
 	public String GlToDate;
 	public String GlFullToMonth;
+	public String DeallocationRef;
+	public String ImpairedAssetRef;
+	public String AmendmentAssetRef;
+	public String SoldAssetRefNum;
+	public String returnAssetNum;
+	public String replacementAssetRefNum;
 }

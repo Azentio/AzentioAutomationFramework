@@ -1,7 +1,7 @@
 [
 	{
 		"Usertype" 				: "Asset",
-		"assetReferenceNumber"	: "ELECTRONICS-LAP001-Sony comput",
+		"assetReferenceNumber"	: "01-001-woodply28738",
 		"assetLifeRefNo"		: "",
 		"modificationType1"		: "Asset Life",
 		"modificationType2"		: "Capitalization Date",
@@ -12,26 +12,26 @@
 		
 		
 		//CALENDAR AND GL DATA
-		"Month"					: "Nov",
-		"FullMonth"				: "November",
-		"Year"					: "2022",
-		"Day"					: "4",
+		"Month"					: "Jun",
+		"FullMonth"				: "June",
+		"Year"					: "2023",
+		"Day"					: "30",
 		"branchCode"			: "AZENTMAIN-Azentio Main Branch",
 		"gLCode1"				: "IFRS-OPEXP-OE6000007 - Deprecitation for Fixed Assets",
 		"gLCode2"				: "IFRS-7000023-NOP - Loss on sale of fixed asset",
-		"GlMonth"				: "Oct",
-		"GlYear"				: "2022",
-		"GlFullMonth"			: "October",
-		"GlFullToMonth"			: "November",
-		"GlDay"					: "15",
-		"GlToMonth"				: "Nov",
-		"GlToDate"				: "4",
+		"GlMonth"				: "Apr",
+		"GlYear"				: "2023",
+		"GlFullMonth"			: "April",
+		"GlFullToMonth"			: "April",
+		"GlDay"					: "1",
+		"GlToMonth"				: "Apr",
+		"GlToDate"				: "19",
 		
 		
 		
 		//REPLACEMENT
-		"itemNumber"			: "Demo",
-		"itemDesc"				: "Demo",
+		"itemNumber"			: "Asset005",
+		"itemDesc"				: "Asset005",
 		
 		
 		//REVALUATION		
@@ -43,7 +43,14 @@
 		"Undertaking"			: "40000000",
 		"Sold" 					: "30000000",
 		"Return"				: "20000000",
-		"Replace"				: "10000000"
+		"Replace"				: "10000000",
 		
+		 //Alter value
+		"DeallocationRef":"01-ASTSBCTGRY001-Small",
+		"ImpairedAssetRef":"ELECTRONICS-LAP001-Apple_Mac_Book_AZENTMAIN_128991",
+		"AmendmentAssetRef":"ELECTRONICS-LAP001-Machines",
+		"SoldAssetRefNum":"01-001-woodply8",
+		"returnAssetNum":"MACHINARY-GENERATOR-UPS",
+		"replacementAssetRefNum":"ELECTRONICS-LAP001-SAMSUNG Lapto_AZENTMAIN_326"
 	}
 ]

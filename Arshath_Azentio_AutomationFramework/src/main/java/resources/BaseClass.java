@@ -23,9 +23,9 @@ public class BaseClass {
 	String browserName =configFileReader.getBrowser();
 	
 	if(browserName.equalsIgnoreCase("chrome")) {
-		
-		System.setProperty("webdriver.chrome.driver","Driver1/chromedriver.exe");
-		 driver = new ChromeDriver();
+		System.setProperty("webdriver.chrome.driver","Drivers/chromedriver.exe");
+		//WebDriverManager.chromedriver().setup();
+		driver = new ChromeDriver();
 		
 	}else if(browserName.equalsIgnoreCase("firefox")) {
 		

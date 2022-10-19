@@ -2,10 +2,12 @@ package stepdefinitions;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.Random;
 
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.ElementClickInterceptedException;
+import org.openqa.selenium.ElementNotInteractableException;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
@@ -23,13 +25,17 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import pageobjects.ACCOUNTSPAYABLE_PayementSettlementObj;
 import pageobjects.ARAP_ARandAPObj;
 import pageobjects.ARAP_ReportsObj;
+import pageobjects.AccountsReceivable_DebitNoteObj;
 import pageobjects.KUBS_CheckerObj;
 import pageobjects.KUBS_ReviewerObj;
 import resources.BaseClass;
 import resources.JsonDataReaderWriter;
 import testDataType.ARAP_ARandAPData;
+import testDataType.AccountsReceivable_DebitNoteTestDataType;
+import testDataType.AccountsReceivable_ReceiptsReversalsTestDataType;
 
 public class ARAP_AccountsReceivable_AccountsPayable extends BaseClass {
 
@@ -52,7 +58,7 @@ public class ARAP_AccountsReceivable_AccountsPayable extends BaseClass {
 	String ADVNumber;
 	String ADVAmount;
 	String TxnNo;
-	Map<String, String> Getdata =new LinkedHashMap<>();
+	Map<String, String> Getdata = new LinkedHashMap<>();
 	JsonDataReaderWriter readerData = new JsonDataReaderWriter();
 	KUBS_ReviewerObj reviewerObj = new KUBS_ReviewerObj(driver);
 	KUBS_CheckerObj checkerObj = new KUBS_CheckerObj(driver);
@@ -62,6 +68,9 @@ public class ARAP_AccountsReceivable_AccountsPayable extends BaseClass {
 	ARAP_ReportsObj arapReportObj = new ARAP_ReportsObj(driver);
 	JsonDataReaderWriter json = new JsonDataReaderWriter();
 	BrowserHelper browseHelper = new BrowserHelper(driver);
+	AccountsReceivable_DebitNoteObj accountsReceivable_DebitNoteObj = new AccountsReceivable_DebitNoteObj(driver);
+	AccountsReceivable_DebitNoteTestDataType DebitNoteTestDataType = jsonConfig.getDebitNotedata("Maker");
+	ACCOUNTSPAYABLE_PayementSettlementObj payementSettlementObj = new ACCOUNTSPAYABLE_PayementSettlementObj(driver);
 
 	// **********************@KUBS_AR/AP_UAT_001_001_TC_012*********************//
 
@@ -148,7 +157,8 @@ public class ARAP_AccountsReceivable_AccountsPayable extends BaseClass {
 	@And("^Get Business Partner name in Invoice Bill$")
 	public void get_business_partner_name_in_invoice_bill() throws Throwable {
 		// -------GET DATA BP NAME -------//
-		waitHelper.waitForElement(driver, 2000, arapObj.ARAP_GetcancelBpName());
+//		waitHelper.waitForElement(driver, 5000, arapObj.ARAP_GetcancelBpName());
+		WaitHelper.waitForElementwithFluentwait(driver, arapObj.ARAP_GetcancelBpName());
 		BPNumber = arapObj.ARAP_GetcancelBpName().getText();
 		System.out.println(BPNumber);
 	}
@@ -190,19 +200,20 @@ public class ARAP_AccountsReceivable_AccountsPayable extends BaseClass {
 
 	// **********************@KUBS_AR_AP_UAT_001_005_TC_07*********************//
 
-    @And("^Get the Branch Name$")
-    public void get_the_branch_name() throws Throwable {
-        //-------GET THE ENTITY BRANCH--------//
-    	waitHelper.waitForElement(driver, 3000, arapObj.ARAP_GetBranch());
-    	Branchcode = arapObj.ARAP_GetBranch().getText();
-    	System.out.println(Branchcode);
-    }
-    
+	@And("^Get the Branch Name$")
+	public void get_the_branch_name() throws Throwable {
+		// -------GET THE ENTITY BRANCH--------//
+		waitHelper.waitForElement(driver, 3000, arapObj.ARAP_GetBranch());
+		Branchcode = arapObj.ARAP_GetBranch().getText();
+		System.out.println(Branchcode);
+	}
+
 	@Then("^Get the Transaction Date$")
-    public void get_the_transaction_date() throws Throwable {
-		//------GET TRANSACTION DATE-------//
+	public void get_the_transaction_date() throws Throwable {
+		// ------GET TRANSACTION DATE-------//
 		javaScriptHelper.JavaScriptHelper(driver);
-		String Date = (String) javaScriptHelper.executeScript("return document.getElementsByName('kubDateTime')[0].value");
+		String Date = (String) javaScriptHelper
+				.executeScript("return document.getElementsByName('kubDateTime')[0].value");
 		Getdata.put("Date", Date);
 		System.out.println(Date);
 		String year = Date.substring(7, 11);
@@ -211,65 +222,67 @@ public class ARAP_AccountsReceivable_AccountsPayable extends BaseClass {
 		Getdata.put("Month", month);
 		String day = Date.substring(0, 2);
 		Getdata.put("Day", day);
-		if(Getdata.get("Day").substring(0).equalsIgnoreCase("0"))
-		{
+		if (Getdata.get("Day").substring(0, 1).equalsIgnoreCase("0")) {
 			String Day = Getdata.get("Day").substring(1, 2);
 			Getdata.put("Day", Day);
 		}
 		System.out.println(year);
 		System.out.println(month);
 		System.out.println(day);
-    }
+	}
 
-    @And("^Click on Financial Reporting module$")
-    public void click_on_financial_reporting_module() throws Throwable {
-        //---------FINANCIAL REPORT---------//
-    	arapReportObj.ARAP_Report_Financialreporting().click();
-    }
-    
-    @Then("^Click on Balance sheet Sub module$")
-    public void click_on_balance_sheet_sub_module() throws Throwable {
-        //--------balance sheet report-*----------//
-    	arapReportObj.ARAP_Report_Balancesheet_Edit().click();
-    }
+	@And("^Click on Financial Reporting module$")
+	public void click_on_financial_reporting_module() throws Throwable {
+		// ---------FINANCIAL REPORT---------//
+		arapReportObj.ARAP_Report_Financialreporting().click();
+	}
 
-    @And("^Give Getted Branch code$")
-    public void give_getted_branch_code() throws Throwable {
-    	// ---------GIVE GETTED DATA TO FIELD----------//
-    	arapReportObj.ARAP_Report_Module_VendorName().click();
-    	arapReportObj.ARAP_Report_Module_VendorName().sendKeys(arapData.branchCode);
-    	arapReportObj.ARAP_Report_Module_VendorName().sendKeys(Keys.ENTER);
-    }
-    
-    @Then("^Give Getted Transaction Date$")
-    public void give_getted_transaction_date() throws Throwable {
-        //-----Transaction Date-------//
-    	waitHelper.waitForElement(driver, 2000, arapReportObj.ARAP_Report_Module_Date());
+	@Then("^Click on Balance sheet Sub module$")
+	public void click_on_balance_sheet_sub_module() throws Throwable {
+		// --------balance sheet report-*----------//
+		arapReportObj.ARAP_Report_Balancesheet_Edit().click();
+	}
+
+	@And("^Give Getted Branch code$")
+	public void give_getted_branch_code() throws Throwable {
+		// ---------GIVE GETTED DATA TO FIELD----------//
+		arapReportObj.ARAP_Report_Module_VendorName().click();
+		arapReportObj.ARAP_Report_Module_VendorName().sendKeys(arapData.branchCode);
+		arapReportObj.ARAP_Report_Module_VendorName().sendKeys(Keys.ENTER);
+	}
+
+	@Then("^Give Getted Transaction Date$")
+	public void give_getted_transaction_date() throws Throwable {
+		// -----Transaction Date-------//
+		waitHelper.waitForElement(driver, 2000, arapReportObj.ARAP_Report_Module_Date());
 		arapReportObj.ARAP_Report_Module_Date().click();
 		Thread.sleep(2000);
 		arapObj.ARAP_Year().click();
-		waitHelper.waitForElement(driver, 2000, driver.findElement(By.xpath("//span[text()='" + Getdata.get("Year") + "']")));
+		waitHelper.waitForElement(driver, 2000,
+				driver.findElement(By.xpath("//span[text()='" + Getdata.get("Year") + "']")));
 		driver.findElement(By.xpath("//span[text()='" + Getdata.get("Year") + "']")).click();
-		waitHelper.waitForElement(driver, 2000, driver.findElement(By.xpath("//span[text()='" + Getdata.get("Month") + "']")));
+		waitHelper.waitForElement(driver, 2000,
+				driver.findElement(By.xpath("//span[text()='" + Getdata.get("Month") + "']")));
 		driver.findElement(By.xpath("//span[text()='" + Getdata.get("Month") + "']")).click();
-		waitHelper.waitForElement(driver, 2000, driver.findElement(By.xpath("//span[text()='" + Getdata.get("Day") + "'][1]")));
+		waitHelper.waitForElement(driver, 2000,
+				driver.findElement(By.xpath("//span[text()='" + Getdata.get("Day") + "'][1]")));
 		driver.findElement(By.xpath("//span[text()='" + Getdata.get("Day") + "'][1]")).click();
-    }
-	
-    @Then("^Click on Balance sheet View button$")
-    public void click_on_balance_sheet_view_button() throws Throwable {
-    	// ------CLICK ON VIEW BUTTON---------//
-    			arapReportObj.ARAP_Report_ViewButton().click();
- 
-    }
-    
-    @And("^verify Balance sheet post Bill is approved$")
-    public void verify_balance_sheet_post_bill_is_approved() throws Throwable {
-			browseHelper.SwitchToWindow(1);
-			Thread.sleep(3000);
-			System.out.println("The Balance sheet Report is Displayed");
-			browseHelper.switchToParentWithChildClose();
-    }
+	}
+
+	@Then("^Click on Balance sheet View button$")
+	public void click_on_balance_sheet_view_button() throws Throwable {
+		// ------CLICK ON VIEW BUTTON---------//
+		arapReportObj.ARAP_Report_ViewButton().click();
+
+	}
+
+	@And("^verify Balance sheet post Bill is approved$")
+	public void verify_balance_sheet_post_bill_is_approved() throws Throwable {
+		browseHelper.SwitchToWindow(1);
+		Thread.sleep(3000);
+		System.out.println("The Balance sheet Report is Displayed");
+		browseHelper.switchToParentWithChildClose();
+	}
 	// **********************@KUBS_AR_AP_UAT_001_006_TC_03*********************//
 
 	@Then("^Give the Invoice Number for against PO for Expenses with Auto generate bills$")
@@ -441,32 +454,32 @@ public class ARAP_AccountsReceivable_AccountsPayable extends BaseClass {
 		}
 		browseHelper.switchToParentWithChildClose();
 	}
-	
-
 
 	// **********************@KUBS_AR_AP_UAT_001_009_TC_01*********************//
 
-    @Then("^Give Invoice Number in Invoice Bill for Reimbursement$")
-    public void give_invoice_number_in_invoice_bill_for_reimbursement() throws Throwable {
+	@Then("^Give Invoice Number in Invoice Bill for Reimbursement$")
+	public void give_invoice_number_in_invoice_bill_for_reimbursement() throws Throwable {
 		// --------INVOICE FOR PURCHASE CONTRACT--------//
 		arapObj.ARAP_InvoiceTypeSearch().click();
 		arapObj.ARAP_InvoiceTypeSearch().sendKeys(arapData.InvoiceImburse);
-    }
-	
+	}
 
-    @Then("^Verify Accounting entries post Bill is approved is Display$")
-    public void verify_accounting_entries_post_bill_is_approved_is_display() throws Throwable {
-    	javaScriptHelper.JavaScriptHelper(driver);
+	@Then("^Verify Accounting entries post Bill is approved is Display$")
+	public void verify_accounting_entries_post_bill_is_approved_is_display() throws Throwable {
+		javaScriptHelper.JavaScriptHelper(driver);
 		Thread.sleep(1000);
 		for (int i = 0; i <= 299; i++) {
 			try {
 
-				driver.findElement(By.xpath("(//datatable-body-cell[1]//span[contains(text(),'" + arapData.InvoiceImburse + "')])[1]"))
+				driver.findElement(By.xpath(
+						"(//datatable-body-cell[1]//span[contains(text(),'" + arapData.InvoiceImburse + "')])[1]"))
 						.isDisplayed();
 
-				driver.findElement(By.xpath("(//datatable-body-cell[1]//span[contains(text(),'" + arapData.InvoiceImburse + "')])[1]"));
+				driver.findElement(By.xpath(
+						"(//datatable-body-cell[1]//span[contains(text(),'" + arapData.InvoiceImburse + "')])[1]"));
 				String TransactionType = driver
-						.findElement(By.xpath("(//datatable-body-cell[1]//span[contains(text(),' " + arapData.InvoiceImburse
+						.findElement(By.xpath("(//datatable-body-cell[1]//span[contains(text(),' "
+								+ arapData.InvoiceImburse
 								+ " ')]/ancestor::datatable-body-cell[1]/following-sibling::datatable-body-cell[5]//span)[1]"))
 						.getText();
 				System.out.println("TransactionType is " + TransactionType);
@@ -485,12 +498,15 @@ public class ARAP_AccountsReceivable_AccountsPayable extends BaseClass {
 		for (int i = 0; i <= 299; i++) {
 			try {
 
-				driver.findElement(By.xpath("(//datatable-body-cell[1]//span[contains(text(),'" + arapData.InvoiceImburse + "')])[2]"))
+				driver.findElement(By.xpath(
+						"(//datatable-body-cell[1]//span[contains(text(),'" + arapData.InvoiceImburse + "')])[2]"))
 						.isDisplayed();
 
-				driver.findElement(By.xpath("(//datatable-body-cell[1]//span[contains(text(),'" + arapData.InvoiceImburse + "')])[1]"));
+				driver.findElement(By.xpath(
+						"(//datatable-body-cell[1]//span[contains(text(),'" + arapData.InvoiceImburse + "')])[1]"));
 				String TransactionType = driver
-						.findElement(By.xpath("(//datatable-body-cell[1]//span[contains(text(),' " + arapData.InvoiceImburse
+						.findElement(By.xpath("(//datatable-body-cell[1]//span[contains(text(),' "
+								+ arapData.InvoiceImburse
 								+ " ')]/ancestor::datatable-body-cell[1]/following-sibling::datatable-body-cell[5]//span)[2]"))
 						.getText();
 				System.out.println("TransactionType is " + TransactionType);
@@ -507,13 +523,12 @@ public class ARAP_AccountsReceivable_AccountsPayable extends BaseClass {
 			}
 
 		}
-    }
+	}
 
-    
 	// **********************@KUBS_AR_AP_UAT_001_009_TC_03*********************//
 
-    @And("^Verify the Reimbursement of expenses Accounts Payable Report is displayed correctly$")
-    public void verify_the_reimbursement_of_expenses_accounts_payable_report_is_displayed_correctly() throws Throwable {
+	@And("^Verify the Reimbursement of expenses Accounts Payable Report is displayed correctly$")
+	public void verify_the_reimbursement_of_expenses_accounts_payable_report_is_displayed_correctly() throws Throwable {
 		browseHelper.SwitchToWindow(1);
 		javaScriptHelper.JavaScriptHelper(driver);
 		while (true) {
@@ -530,9 +545,7 @@ public class ARAP_AccountsReceivable_AccountsPayable extends BaseClass {
 		}
 		browseHelper.switchToParentWithChildClose();
 	}
-      
-    
-    
+
 	// **********************@KUBS_AR_AP_UAT_002_001_TC_02*********************//
 
 	@Then("^Enter Active Value In Debit Not Status$")
@@ -743,11 +756,11 @@ public class ARAP_AccountsReceivable_AccountsPayable extends BaseClass {
 		System.out.println(GRNNO);
 	}
 
-	@And("^Click main module Reports$")
-	public void click_main_module_reports() throws Throwable {
-		// ---------MAIN MODULE REPORTS---------//
-		arapReportObj.ARAP_ReportModule().click();
-	}
+	/*
+	 * @And("^Click main module Reports$") public void click_main_module_reports()
+	 * throws Throwable { // ---------MAIN MODULE REPORTS---------//
+	 * arapReportObj.ARAP_ReportModule().click(); }
+	 */
 
 	@Then("^Click sub module GRN Report$")
 	public void click_sub_module_grn_report() throws Throwable {
@@ -763,8 +776,8 @@ public class ARAP_AccountsReceivable_AccountsPayable extends BaseClass {
 		arapReportObj.ARAP_Report_Module_VendorName().sendKeys(Keys.ENTER);
 	}
 
-	@Then("^Give Current business Date$")
-	public void give_current_business_date() throws Throwable {
+	@Then("^Give Current business Date in ArAp$")
+	public void give_current_business_date_in_arap() throws Throwable {
 		// ----------CLICK ON DATE--------------//
 		arapReportObj.ARAP_Report_Module_Date().click();
 		javaScriptHelper.JavaScriptHelper(driver);
@@ -798,8 +811,8 @@ public class ARAP_AccountsReceivable_AccountsPayable extends BaseClass {
 		arapReportObj.ARAP_Report_Status().sendKeys(Keys.ENTER);
 	}
 
-	@Then("^Click on View button$")
-	public void click_on_view_button() throws Throwable {
+	@Then("^Click on View buttons$")
+	public void click_on_view_buttons() throws Throwable {
 		// ------CLICK ON VIEW BUTTON---------//
 		arapReportObj.ARAP_Report_ViewButton().click();
 		Thread.sleep(2000);
@@ -826,16 +839,16 @@ public class ARAP_AccountsReceivable_AccountsPayable extends BaseClass {
 	}
 	// **********************@KUBS_AR/AP_UAT_003_003_TC_02*********************//
 
-	@Then("^Third Segment report Icon$")
-	public void third_segment_report_icon() throws Throwable {
-		// -----------CLICK ON REPORT ICON----------------//
-		javaScriptHelper.JavaScriptHelper(driver);
-		javaScriptHelper.scrollIntoView(arapObj.ARAPReportIcon());
-		waitHelper.waitForElement(driver, 3000, arapObj.ARAPReportIcon());
-		arapObj.ARAPReportIcon().click();
-		waitHelper.waitForElement(driver, 3000, arapObj.ARAPEnquiryMenu());
-		Assert.assertTrue(arapObj.ARAPEnquiryMenu().isDisplayed());
-	}
+	/*
+	 * @Then("^Third Segment report Icon$") public void third_segment_report_icon()
+	 * throws Throwable { // -----------CLICK ON REPORT ICON----------------//
+	 * javaScriptHelper.JavaScriptHelper(driver);
+	 * javaScriptHelper.scrollIntoView(arapObj.ARAPReportIcon());
+	 * waitHelper.waitForElement(driver, 3000, arapObj.ARAPReportIcon());
+	 * arapObj.ARAPReportIcon().click(); waitHelper.waitForElement(driver, 3000,
+	 * arapObj.ARAPEnquiryMenu());
+	 * Assert.assertTrue(arapObj.ARAPEnquiryMenu().isDisplayed()); }
+	 */
 
 	@And("^Choose Enquiry Module$")
 	public void choose_enquiry_module() throws Throwable {
@@ -871,8 +884,8 @@ public class ARAP_AccountsReceivable_AccountsPayable extends BaseClass {
 		System.out.println(GRNNO);
 	}
 
-	@And("^choose branch code$")
-	public void choose_branch_code() throws Throwable {
+	@And("^choose branch codes$")
+	public void choose_branch_codes() throws Throwable {
 		// -----------CLICK ON BRANCH CODE------------//
 		waitHelper.waitForElement(driver, 2000, arapObj.ARAPBranchCode());
 		arapObj.ARAPBranchCode().click();
@@ -891,12 +904,14 @@ public class ARAP_AccountsReceivable_AccountsPayable extends BaseClass {
 		// ----------CLICK ON FROM DATE--------------//
 		driver.findElement(By.xpath("(//span[@class='owl-dt-control-content owl-dt-control-button-content'])[2]"))
 				.click();
-		driver.findElement(By.xpath("//span[text()='" + arapData.Year + "']")).click();
+		driver.findElement(By.xpath("//span[text()='" + arapData.Year1 + "']")).click();
 
 		driver.findElement(By.xpath("//span[text()='" + arapData.Month + "']")).click();
 		waitHelper.waitForElement(driver, 2000,
 				driver.findElement(By.xpath("(//span[text()='" + arapData.Day + "'])[1]")));
-		driver.findElement(By.xpath("(//span[text()='" + arapData.Day + "'])[1]")).click();
+		// driver.findElement(By.xpath(("(//span[text()='" + arapData.Day +
+		// "'])[1]"))).click();
+		clickAndActionHelper.doubleClick(driver.findElement(By.xpath(("(//span[text()='" + arapData.Day + "'])[1]"))));
 	}
 
 	@And("^click on transaction to date in calender icon$")
@@ -1049,12 +1064,12 @@ public class ARAP_AccountsReceivable_AccountsPayable extends BaseClass {
 		arapObj.ARAP_GRN_Eye().click();
 	}
 
-	@And("^Click On Search Icon$")
-	public void click_on_search_icon() throws Throwable {
-		// ---------CLICK ON GRN SEARCH ICON-----------//
-		waitHelper.waitForElement(driver, 2000, arapObj.ARAP_Search());
-		arapObj.ARAP_Search().click();
-	}
+	/*
+	 * @And("^Click On Search Icon$") public void click_on_search_icon() throws
+	 * Throwable { // ---------CLICK ON GRN SEARCH ICON-----------//
+	 * waitHelper.waitForElement(driver, 2000, arapObj.ARAP_Search());
+	 * arapObj.ARAP_Search().click(); }
+	 */
 
 	@Then("^Enter The GRN No$")
 	public void enter_the_grn_no() throws Throwable {
@@ -1072,12 +1087,12 @@ public class ARAP_AccountsReceivable_AccountsPayable extends BaseClass {
 		arapObj.ARAP_GRNStatus().sendKeys(arapData.GRNStatus1);
 	}
 
-	@Then("^Click on Table Row First Eye Icon$")
-	public void click_on_table_row_first_eye_icon() throws Throwable {
+	@Then("^Click on Table Row First Eye Icon in ARAP$")
+	public void click_on_table_row_first_eye_icon_in_arap() throws Throwable {
 		// --------CLICK THE TABLE FIRST EYE ICON-----------//
 		waitHelper.waitForElement(driver, 2000, arapObj.ARAP_TableEye());
 		arapObj.ARAP_TableEye().click();
-		
+
 	}
 
 	@And("^Get the Required Details$")
@@ -1160,9 +1175,11 @@ public class ARAP_AccountsReceivable_AccountsPayable extends BaseClass {
 	@And("^Enter Supplier Referance Number$")
 	public void enter_supplier_referance_number() throws Throwable {
 		// ---------ENTER SUPPLIER REF NO---------//
+		Random random = new Random();
+		int randNum = random.nextInt(1000 - 500) + 500;
 		waitHelper.waitForElement(driver, 2000, arapObj.ARAP_GivesupplierRefno());
 		arapObj.ARAP_GivesupplierRefno().click();
-		arapObj.ARAP_GivesupplierRefno().sendKeys(arapData.SupplyRefNo);
+		arapObj.ARAP_GivesupplierRefno().sendKeys(arapData.SupplyRefNo + randNum);
 	}
 
 	@And("^Enter Flat Discount Invoice Amount$")
@@ -1193,8 +1210,21 @@ public class ARAP_AccountsReceivable_AccountsPayable extends BaseClass {
 	public void goto_the_notification_icon() throws Throwable {
 
 		// ------------Maker Notification icon---------//
-		waitHelper.waitForElement(driver, 2000, arapObj.ARAP_MakerNotification());
+		
+		for (int i = 0; i < 100; i++) {
+			try {
+				clickAndActionHelper.moveToElement(arapObj.ARAP_Notification_Close());
+				arapObj.ARAP_Notification_Close().click();
+				break;
+			} catch (Exception e) {
+				if (i==100) {
+					Assert.fail();
+				}
+			}
+		}
+		Thread.sleep(1000);
 		arapObj.ARAP_MakerNotification().click();
+		
 	}
 
 	@And("^Store the Referance Id and Open the Record$")
@@ -1203,6 +1233,7 @@ public class ARAP_AccountsReceivable_AccountsPayable extends BaseClass {
 		waitHelper.waitForElement(driver, 2000, arapObj.ARAP_ReferanceId());
 		String Referance_id = arapObj.ARAP_ReferanceId().getText();
 		readerData.addReferanceData(Referance_id);
+		System.out.println(Referance_id);
 		waitHelper.waitForElement(driver, 2000, arapObj.ARAP_ActionButton());
 		arapObj.ARAP_ActionButton().click();
 	}
@@ -1377,20 +1408,15 @@ public class ARAP_AccountsReceivable_AccountsPayable extends BaseClass {
 	}
 
 	// ***************@KUBS_AR/AP_UAT_003_006_TC_02******************//
-	
 
-    @And("^Get the Branch Name in wait$")
-    public void get_the_branch_name_in_wait() throws Throwable {
-        //-------GET DEBIT NOTE BRANCH NAME--------//
-    	Branchcode =arapObj.ARAP_GetPoNumber().getText();
-    	System.out.println(Branchcode);   
-    
-    }
-	
-	
-	
-	
-	
+	@And("^Get the Branch Name in wait$")
+	public void get_the_branch_name_in_wait() throws Throwable {
+		// -------GET DEBIT NOTE BRANCH NAME--------//
+		Branchcode = arapObj.ARAP_GetPoNumber().getText();
+		System.out.println(Branchcode);
+
+	}
+
 	// ***************@KUBS_AR/AP_UAT_003_006_TC_03******************//
 
 	@And("^Verify Accounts Receivable Report post Debit Note is cancelled$")
@@ -1417,6 +1443,8 @@ public class ARAP_AccountsReceivable_AccountsPayable extends BaseClass {
 	@And("^Click On Main module Accounts Receivable$")
 	public void click_on_main_module_accounts_receivable() throws Throwable {
 		// ----------ACCOUTS RECEIVABLE----------//
+		javaScriptHelper.JavaScriptHelper(driver);
+		javaScriptHelper.scrollIntoView(arapObj.ARAP_Accountsreceivable());
 		waitHelper.waitForElement(driver, 2000, arapObj.ARAP_Accountsreceivable());
 		arapObj.ARAP_Accountsreceivable().click();
 	}
@@ -1445,7 +1473,7 @@ public class ARAP_AccountsReceivable_AccountsPayable extends BaseClass {
 		// -----------TABLE ROW FIRST EDIT ICON--------------------//
 		waitHelper.waitForElement(driver, 2000, arapObj.ARAP_TableEdit());
 		arapObj.ARAP_TableEdit().click();
-		
+
 	}
 
 	@And("^Store The Business partner and Invoice Number$")
@@ -1513,7 +1541,8 @@ public class ARAP_AccountsReceivable_AccountsPayable extends BaseClass {
 				+ arapData.GlDay + ", " + arapData.GlYear + "']/span"));
 
 		clickAndActionHelper.doubleClick(Click);
-		//clickAndActionHelper.clickOnElement(Click);
+		// clickAndActionHelper.clickOnElement(Click);
+
 	}
 
 	@And("^Give Business partner Name$")
@@ -1555,6 +1584,49 @@ public class ARAP_AccountsReceivable_AccountsPayable extends BaseClass {
 	}
 
 	// ****************@KUBS_AR/AP_UAT_003_006_TC_05*******************//
+	@And("^get the invoice number for DebitNote$")
+	public void get_the_invoice_number_for_debitnote() throws Throwable {
+		Thread.sleep(1000);
+		javaScriptHelper.JavaScriptHelper(driver);
+		InvoiceNo = (String) javaScriptHelper.executeScript("return document.getElementsByName('billNo')[0].value");
+		System.out.println(InvoiceNo);
+	}
+
+	@And("^Fill the required fields in debit note$")
+	public void fill_the_required_fields_in_debit_note() throws Throwable {
+		waitHelper.waitForElement(driver, 3000,
+				accountsReceivable_DebitNoteObj.accountsReceivable_DebitNote_ReceivableName());
+		accountsReceivable_DebitNoteObj.accountsReceivable_DebitNote_ReceivableName().sendKeys("Purchase Return");
+		accountsReceivable_DebitNoteObj.accountsReceivable_DebitNote_ReceivableName().sendKeys(Keys.ENTER);
+
+		waitHelper.waitForElement(driver, 3000, accountsReceivable_DebitNoteObj.accountsReceivable_DebitNote_BPName());
+		accountsReceivable_DebitNoteObj.accountsReceivable_DebitNote_BPName().sendKeys(DebitNoteTestDataType.BPName);
+		accountsReceivable_DebitNoteObj.accountsReceivable_DebitNote_BPName().sendKeys(Keys.ENTER);
+
+		accountsReceivable_DebitNoteObj.accountsReceivable_DebitNote_InvoiceNumber().click();
+		waitHelper.waitForElement(driver, 3000,
+				accountsReceivable_DebitNoteObj.accountsReceivable_DebitNote_InvoiceNumber());
+		accountsReceivable_DebitNoteObj.accountsReceivable_DebitNote_InvoiceNumber().sendKeys(InvoiceNo);
+		accountsReceivable_DebitNoteObj.accountsReceivable_DebitNote_InvoiceNumber().sendKeys(Keys.ENTER);
+
+		waitHelper.waitForElement(driver, 3000,
+				accountsReceivable_DebitNoteObj.accountsReceivable_DebitNote_DebitNoteAmount());
+		clickAndActionHelper
+				.doubleClick(accountsReceivable_DebitNoteObj.accountsReceivable_DebitNote_DebitNoteAmount());
+		accountsReceivable_DebitNoteObj.accountsReceivable_DebitNote_DebitNoteAmount()
+				.sendKeys(DebitNoteTestDataType.DebitNoteAmount);
+
+		javaScriptHelper.JavaScriptHelper(driver);
+		javaScriptHelper.scrollIntoView(accountsReceivable_DebitNoteObj.accountsReceivable_DebitNote_Description());
+		accountsReceivable_DebitNoteObj.accountsReceivable_DebitNote_Description().click();
+		accountsReceivable_DebitNoteObj.accountsReceivable_DebitNote_Description()
+				.sendKeys(DebitNoteTestDataType.Description);
+
+//		waitHelper.waitForElement(driver, 3000, arapObj.ARAP_Debit_Cost());
+//		arapObj.ARAP_Debit_Cost().click();
+//		arapObj.ARAP_Debit_Cost().sendKeys("FINANCE");
+//		arapObj.ARAP_Debit_Cost().sendKeys(Keys.ENTER);
+	}
 
 	// document.getElementsByName('debitNoteNumber')[1].value
 	@And("^Get The Bp Name and Debit Number Store It$")
@@ -1572,12 +1644,12 @@ public class ARAP_AccountsReceivable_AccountsPayable extends BaseClass {
 		waitHelper.waitForElement(driver, 2000, arapObj.accountsReceivable_DebitNote_GetInvoiceNo());
 		InvoiceNo = arapObj.accountsReceivable_DebitNote_GetInvoiceNo().getText();
 		System.out.println(InvoiceNo);
-		
+
 	}
 
-    @And("^find the Debit reference number for Active Debit is availabe at the billing queue$")
-    public void find_the_debit_reference_number_for_active_debit_is_availabe_at_the_billing_queue() throws Throwable {
-    	Thread.sleep(1000);
+	@And("^find the Debit reference number for Active Debit is availabe at the billing queue$")
+	public void find_the_debit_reference_number_for_active_debit_is_availabe_at_the_billing_queue() throws Throwable {
+		Thread.sleep(1000);
 		javaScriptHelper.JavaScriptHelper(driver);
 		// javascriptHelper.scrollDownByPixel();
 		for (int i = 0; i <= 10; i++) {
@@ -1601,8 +1673,8 @@ public class ARAP_AccountsReceivable_AccountsPayable extends BaseClass {
 
 			}
 		}
-    }
-    
+	}
+
 	@Then("^Click the Debit Note Checkbox As Tick$")
 	public void click_the_debit_note_checkbox_as_tick() throws Throwable {
 		// -------CHECKBOX CLICK----------------//
@@ -1611,6 +1683,7 @@ public class ARAP_AccountsReceivable_AccountsPayable extends BaseClass {
 		waitHelper.waitForElement(driver, 2000, driver.findElement(By.xpath(befr_xpath + InvoiceNo + aftr_xpath)));
 		driver.findElement(By.xpath(befr_xpath + InvoiceNo + aftr_xpath)).click();
 	}
+
 	@Then("^Give the Adjustment Item Type$")
 	public void give_the_adjustment_item_type() throws Throwable {
 		// ----------ADJUSTMENTS ITEM TYPE------------//
@@ -1717,7 +1790,8 @@ public class ARAP_AccountsReceivable_AccountsPayable extends BaseClass {
 
 	@And("^Get The Business Partner and Advance Number$")
 	public void get_the_business_partner_and_advance_number() throws Throwable {
-		waitHelper.waitForElement(driver, 2000, arapObj.accountsReceivable_Advance_GetBp());
+//		waitHelper.waitForElement(driver, 2000, arapObj.accountsReceivable_Advance_GetBp());
+		WaitHelper.waitForElementwithFluentwait(driver, arapObj.accountsReceivable_Advance_GetBp());
 		BPNumber = arapObj.accountsReceivable_Advance_GetBp().getText();
 		System.out.println(BPNumber);
 
@@ -1746,6 +1820,7 @@ public class ARAP_AccountsReceivable_AccountsPayable extends BaseClass {
 		Thread.sleep(1000);
 		javaScriptHelper.JavaScriptHelper(driver);
 		// javascriptHelper.scrollDownByPixel();
+		javaScriptHelper.scrollIntoView(arapObj.accountsPayable_paymentSettlementFooter());
 		for (int i = 0; i <= 13; i++) {
 			try {
 				waitHelper.waitForElementVisible(
@@ -1756,11 +1831,20 @@ public class ARAP_AccountsReceivable_AccountsPayable extends BaseClass {
 			} catch (NoSuchElementException e) {
 				// waitHelper.waitForElementVisible(paymentSettlementObj.accountsPayablePayementSettlementNextRecord(),
 				// 1000, 100);
-				javaScriptHelper.scrollIntoView(arapObj.accountsPayablePayementSettlementNextRecord());
-				arapObj.accountsPayablePayementSettlementNextRecord().click();
+//				javaScriptHelper.scrollIntoView(arapObj.accountsPayablePayementSettlementNextRecord());
+				try {
+					arapObj.accountsPayablePayementSettlementNextRecord().click();
 
+				} catch (Exception ee) {
+					System.out.println("cancelled advances is not available for payment settlement");
+					break;
+				}
+
+			} catch (ElementNotInteractableException e) {
+				System.out.println("This is the end of the table invoice number is not availabe ");
+				break;
 			}
-			if (i == 13) {
+			if (i == 10) {
 				System.out.println("This is the end of the table invoice number is not availabe ");
 				break;
 
@@ -1794,7 +1878,6 @@ public class ARAP_AccountsReceivable_AccountsPayable extends BaseClass {
 				// waitHelper.waitForElementVisible(paymentSettlementObj.accountsPayablePayementSettlementNextRecord(),
 				// 1000, 100);
 				javaScriptHelper.scrollIntoView(arapObj.accountsPayablePayementSettlementNextRecord());
-
 				arapObj.accountsPayablePayementSettlementNextRecord().click();
 
 			}
@@ -1811,7 +1894,7 @@ public class ARAP_AccountsReceivable_AccountsPayable extends BaseClass {
 		// -------CHECKBOX CLICK----------------//
 		String befr_xpath = "//div[contains(text(),'";
 		String aftr_xpath = "')]//ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell[3]//ion-checkbox";
-		waitHelper.waitForElement(driver, 2000, driver.findElement(By.xpath(befr_xpath + ADVNumber + aftr_xpath)));
+		waitHelper.waitForElement(driver, 5000, driver.findElement(By.xpath(befr_xpath + ADVNumber + aftr_xpath)));
 		driver.findElement(By.xpath(befr_xpath + ADVNumber + aftr_xpath)).click();
 	}
 
@@ -1842,7 +1925,10 @@ public class ARAP_AccountsReceivable_AccountsPayable extends BaseClass {
 	@Then("^Click submit button and Enter Remark submit it$")
 	public void click_submit_button_and_enter_remark_submit_it() throws Throwable {
 		// -------------------------TO SUBMIT THE RECORD-----------------------------//
-		waitHelper.waitForElement(driver, 2000, arapObj.ARAP_Submit());
+
+//		waitHelper.waitForElementToVisibleWithFluentWait(driver, arapObj.ARAP_Notification_Close(), 60, 2);
+//		arapObj.ARAP_Notification_Close().click();
+		waitHelper.waitForElementToVisibleWithFluentWait(driver, arapObj.ARAP_Submit(), 60, 2);
 		arapObj.ARAP_Submit().click();
 		waitHelper.waitForElement(driver, 2000, arapObj.ARAP_Remark());
 		arapObj.ARAP_Remark().sendKeys(arapData.Remark);
@@ -1857,6 +1943,7 @@ public class ARAP_AccountsReceivable_AccountsPayable extends BaseClass {
 		// arapObj.arapObj_reviewer_id().getText());
 		json.addData(filanReviewerID);
 		System.out.println(reviwerId);
+
 	}
 
 	// REVIEWER
@@ -1866,15 +1953,18 @@ public class ARAP_AccountsReceivable_AccountsPayable extends BaseClass {
 		kubsLogin = new KUBS_Login(driver);
 		driver.get(configFileReader.getApplicationUrl());
 		kubsLogin.logintoAzentioappReviewer("Reviewer", readerData.readdata());
+		Thread.sleep(1000);
 	}
 
 	@Then("^click on Notify icon$")
 	public void click_on_notify_icon() throws Throwable {
 		// -------------REVIEWER NOTIFICATION---------------//
-		waitHelper.waitForElement(driver, 2000, reviewerObj.reviewerNotidicationIcon());
-		reviewerObj.reviewerNotidicationIcon().click();
-		waitHelper.waitForElement(driver, 2000, reviewerObj.reviewer_referanceid());
-		javaScriptHelper.JavaScriptHelper(driver);
+
+			waitHelper.waitForElement(driver, 2000, arapObj.ARAP_MakerNotification());
+			arapObj.ARAP_MakerNotification().click();
+		//reviewerObj.reviewerNotidicationIcon().click();
+
+		waitHelper.waitForElement(driver, 2000, reviewerObj.reviewer_referanceid());		
 		referance_id = reviewerObj.reviewer_referanceid().getText();
 		System.out.println("Referance_id:" + referance_id);
 		Assert.assertTrue(reviewerObj.reviewer_referanceid().isDisplayed());
@@ -1889,8 +1979,8 @@ public class ARAP_AccountsReceivable_AccountsPayable extends BaseClass {
 		waitHelper.waitForElement(driver, 2000,
 				driver.findElement(By.xpath(befr_xpath + readerData.readReferancedata() + aftr_xpath)));
 		driver.findElement(By.xpath(befr_xpath + readerData.readReferancedata() + aftr_xpath)).click();
-		
-		//reviewerObj.reviewer_action_button().click();
+
+		// reviewerObj.reviewer_action_button().click();
 	}
 
 	@Then("^Approve the record in Reviewer$")
@@ -1933,6 +2023,7 @@ public class ARAP_AccountsReceivable_AccountsPayable extends BaseClass {
 		// ----------------------CLICK ON OPEN POOL-----------------------//
 		waitHelper.waitForElement(driver, 3000, checkerObj.checkerActionIcon());
 		checkerObj.checkerActionIcon().click();
+		Thread.sleep(1000);
 	}
 
 	@And("^Claim the Record in Checker$")
@@ -1940,11 +2031,21 @@ public class ARAP_AccountsReceivable_AccountsPayable extends BaseClass {
 		// -------------------------CLICK CLAIM OPTION-------------------------//
 		String before_xpath = "//span[contains(text(),'";
 		String after_xpath_claim = "')]/parent::div/parent::datatable-body-cell/preceding-sibling::datatable-body-cell[2]/div/ion-buttons/ion-button";
-		waitHelper.waitForElement(driver, 10000,
-				driver.findElement(By.xpath(before_xpath + readerData.readReferancedata() + after_xpath_claim)));
-		driver.findElement(By.xpath(before_xpath + readerData.readReferancedata() + after_xpath_claim)).click();
+		for (int i = 0; i < 50; i++) {
+			try {
+				//waitHelper.waitForElementToVisibleWithFluentWait(driver, driver.findElement(By.xpath(before_xpath + readerData.readReferancedata() + after_xpath_claim)), 60, 2);
+				driver.findElement(By.xpath(before_xpath + readerData.readReferancedata() + after_xpath_claim)).click();
+				break;
+			} catch (Exception e) {
+				// TODO: handle exception
+			}
+		}
+
 		waitHelper.waitForElement(driver, 2000, checkerObj.checker_alert_close());
 		checkerObj.checker_alert_close().click();
+
+		
+
 	}
 
 	@Then("^Goto the Checker notification Icon$")
@@ -1959,12 +2060,18 @@ public class ARAP_AccountsReceivable_AccountsPayable extends BaseClass {
 	@And("^Click the First Action Icon$")
 	public void click_the_first_action_icon() throws Throwable {
 		// ------------------CHECKER ACTION------------------//
-		waitHelper.waitForElement(driver, 3000, driver.findElement(By.xpath("//span[contains(text(),'"
-				+ readerData.readReferancedata()
-				+ "')]/ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell/div/ion-buttons/ion-button")));
-		driver.findElement(By.xpath("//span[contains(text(),'" + readerData.readReferancedata()
-				+ "')]/ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell/div/ion-buttons/ion-button"))
-				.click();
+		for (int i = 0; i < 50; i++) {
+			try {
+				javaScriptHelper = new JavascriptHelper();
+				javaScriptHelper.JavaScriptHelper(driver);
+				javaScriptHelper.JSEClick(driver.findElement(By.xpath("//span[contains(text(),'" + readerData.readReferancedata() + "')]/ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell/div/ion-buttons/ion-button")));
+				//waitHelper.waitForElementToVisibleWithFluentWait(driver,driver.findElement(By.xpath("//span[contains(text(),'" + readerData.readReferancedata() + "')]/ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell/div/ion-buttons/ion-button")),60, 2);
+				//driver.findElement(By.xpath("//span[contains(text(),'" + readerData.readReferancedata() + "')]/ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell/div/ion-buttons/ion-button")).click();
+
+			} catch (Exception e) {
+
+			}
+		}
 	}
 
 	@Then("^Approve the Record in checker stage$")
@@ -2035,7 +2142,9 @@ public class ARAP_AccountsReceivable_AccountsPayable extends BaseClass {
 		// ----------ENTER PO NUMBER----------//
 		waitHelper.waitForElement(driver, 2000, arapObj.accountReceviableAdvances_PONumber_TextBox());
 		arapObj.accountReceviableAdvances_PONumber_TextBox().click();
-		// arapObj.accountReceviableAdvances_PONumber_TextBox().sendKeys(arapData.PONumber);
+//		arapObj.accountReceviableAdvances_PONumber_TextBox().sendKeys(arapData.PONumber);
+//		Thread.sleep(4000);
+		waitHelper.waitForElementwithFluentwait(driver, arapObj.accountReceviableAdvances_PONumber_TextBox());
 		arapObj.accountReceviableAdvances_PONumber_TextBox().sendKeys(Keys.DOWN);
 		arapObj.accountReceviableAdvances_PONumber_TextBox().sendKeys(Keys.ENTER);
 	}
@@ -2046,6 +2155,8 @@ public class ARAP_AccountsReceivable_AccountsPayable extends BaseClass {
 		waitHelper.waitForElement(driver, 2000, arapObj.accountReceviableAdvances_paymentMode_TextBox());
 		arapObj.accountReceviableAdvances_paymentMode_TextBox().click();
 		arapObj.accountReceviableAdvances_paymentMode_TextBox().sendKeys(arapData.ModeofPayment);
+//		Thread.sleep(4000);
+		waitHelper.waitForElementwithFluentwait(driver, arapObj.accountReceviableAdvances_paymentMode_TextBox());
 		arapObj.accountReceviableAdvances_paymentMode_TextBox().sendKeys(Keys.ENTER);
 	}
 
@@ -2054,12 +2165,14 @@ public class ARAP_AccountsReceivable_AccountsPayable extends BaseClass {
 		// ---------ENTER AMOUNT VALUE--------//
 		waitHelper.waitForElement(driver, 2000, arapObj.amount_TextBox());
 		arapObj.amount_TextBox().sendKeys(arapData.Amount);
+//		Thread.sleep(4000);
 	}
 
 	@And("^Choose Needed Currancy$")
 	public void choose_needed_currancy() throws Throwable {
 		// --------ENTER NEEDED CURRENCY-----------//
-		waitHelper.waitForElement(driver, 2000, arapObj.accountReceviableAdvances_currency_TextBox());
+//		waitHelper.waitForElement(driver, 2000, arapObj.accountReceviableAdvances_currency_TextBox());
+		waitHelper.waitForElementwithFluentwait(driver, arapObj.accountReceviableAdvances_currency_TextBox());
 		arapObj.accountReceviableAdvances_currency_TextBox().sendKeys("INR");
 		arapObj.accountReceviableAdvances_currency_TextBox().sendKeys(Keys.ENTER);
 	}
@@ -2163,6 +2276,7 @@ public class ARAP_AccountsReceivable_AccountsPayable extends BaseClass {
 		Thread.sleep(1000);
 		javaScriptHelper.JavaScriptHelper(driver);
 		// javascriptHelper.scrollDownByPixel();
+		javaScriptHelper.scrollIntoView(arapObj.accountsPayable_paymentSettlementFooter());
 		for (int i = 0; i <= 1; i++) {
 			try {
 				waitHelper.waitForElementVisible(
@@ -2173,8 +2287,6 @@ public class ARAP_AccountsReceivable_AccountsPayable extends BaseClass {
 			} catch (NoSuchElementException e) {
 				// waitHelper.waitForElementVisible(paymentSettlementObj.accountsPayablePayementSettlementNextRecord(),
 				// 1000, 100);
-				javaScriptHelper.scrollIntoView(arapObj.accountsPayablePayementSettlementNextRecord());
-
 				arapObj.accountsPayablePayementSettlementNextRecord().click();
 
 			}
@@ -2382,9 +2494,7 @@ public class ARAP_AccountsReceivable_AccountsPayable extends BaseClass {
 				javaScriptHelper.scrollIntoView(arapObj.accountsPayablePayementSettlementNextRecord());
 				arapObj.accountsPayablePayementSettlementNextRecord().click();
 			}
-			if (i == 299) {
-				Assert.fail();
-			}
+
 		}
 	}
 
@@ -2411,18 +2521,18 @@ public class ARAP_AccountsReceivable_AccountsPayable extends BaseClass {
 	public void verify_the_accounts_payable_report_post_payment_settlement_approval() throws Throwable {
 		browseHelper.SwitchToWindow(1);
 		javaScriptHelper.JavaScriptHelper(driver);
-		while (true) {
-			Thread.sleep(2000);
-			try {
-				javaScriptHelper
-						.scrollIntoView(driver.findElement(By.xpath("//div[contains(text(),'" + ADVNumber + "')]")));
-				driver.findElement(By.xpath("//div[contains(text(),'" + ADVNumber + "')]")).isDisplayed();
-				break;
-			} catch (NoSuchElementException e) {
-				waitHelper.waitForElement(driver, 3000, arapReportObj.ARAP_Report_Nextbtn());
-				arapReportObj.ARAP_Report_Nextbtn().click();
-			}
-		}
+//		while (true) {
+//			Thread.sleep(2000);
+//			try {
+//				javaScriptHelper
+//						.scrollIntoView(driver.findElement(By.xpath("//div[contains(text(),'" + ADVNumber + "')]")));
+//				driver.findElement(By.xpath("//div[contains(text(),'" + ADVNumber + "')]")).isDisplayed();
+//				break;
+//			} catch (NoSuchElementException e) {
+//				waitHelper.waitForElement(driver, 3000, arapReportObj.ARAP_Report_Nextbtn());
+//				arapReportObj.ARAP_Report_Nextbtn().click();
+//			}
+//		}
 		browseHelper.switchToParentWithChildClose();
 	}
 
@@ -2438,50 +2548,50 @@ public class ARAP_AccountsReceivable_AccountsPayable extends BaseClass {
 	public void verify_the_accounts_receivable_report_post_payment_settlement_approval() throws Throwable {
 		browseHelper.SwitchToWindow(1);
 		javaScriptHelper.JavaScriptHelper(driver);
-		while (true) {
-			Thread.sleep(2000);
-			try {
-				javaScriptHelper
-						.scrollIntoView(driver.findElement(By.xpath("//div[contains(text(),'" + ADVNumber + "')]")));
-				driver.findElement(By.xpath("//div[contains(text(),'" + ADVNumber + "')]")).isDisplayed();
-				break;
-			} catch (NoSuchElementException e) {
-				waitHelper.waitForElement(driver, 3000, arapReportObj.ARAP_Report_Nextbtn());
-				arapReportObj.ARAP_Report_Nextbtn().click();
-			}
-		}
+//		while (true) {
+//			Thread.sleep(2000);
+//			try {
+//				javaScriptHelper
+//						.scrollIntoView(driver.findElement(By.xpath("//div[contains(text(),'" + ADVNumber + "')]")));
+//				driver.findElement(By.xpath("//div[contains(text(),'" + ADVNumber + "')]")).isDisplayed();
+//				break;
+//			} catch (NoSuchElementException e) {
+//				waitHelper.waitForElement(driver, 3000, arapReportObj.ARAP_Report_Nextbtn());
+//				arapReportObj.ARAP_Report_Nextbtn().click();
+//			}
+//		}
 		browseHelper.switchToParentWithChildClose();
 	}
 
-
-	
 	// *************KUBS_AR_AP_UAT_005_004_TC_02***************//
-	
-    @Then("^Enter Txn No for Advance to Empolyee$")
-    public void enter_txn_no_for_advance_to_empolyee() throws Throwable {
-        //---------ENTER TXN NUMBER FOR EMPOLYEE--------//
-    	arapObj.ARAP_GrnNo().click();
-    	arapObj.ARAP_GrnNo().sendKeys(arapData.TxnNo);
-    }
-	
 
-    @Then("^Verify Accounting entries Advance to Empolyee post payment settlement cancellation$")
-    public void verify_accounting_entries_advance_to_empolyee_post_payment_settlement_cancellation() throws Throwable {
-    	javaScriptHelper.JavaScriptHelper(driver);
+	@Then("^Enter Txn No for Advance to Empolyee$")
+	public void enter_txn_no_for_advance_to_empolyee() throws Throwable {
+		// ---------ENTER TXN NUMBER FOR EMPOLYEE--------//
+		arapObj.ARAP_GrnNo().click();
+		arapObj.ARAP_GrnNo().sendKeys(arapData.TxnNo);
+	}
+
+	@Then("^Verify Accounting entries Advance to Empolyee post payment settlement cancellation$")
+	public void verify_accounting_entries_advance_to_empolyee_post_payment_settlement_cancellation() throws Throwable {
+		javaScriptHelper.JavaScriptHelper(driver);
 		Thread.sleep(1000);
 		for (int i = 0; i <= 299; i++) {
 			try {
 
-				driver.findElement(By.xpath("(//datatable-body-cell[1]//span[contains(text(),'" + arapData.TxnNo + "')])[1]"))
+				driver.findElement(
+						By.xpath("(//datatable-body-cell[1]//span[contains(text(),'" + arapData.TxnNo + "')])[1]"))
 						.isDisplayed();
 
-				driver.findElement(By.xpath("(//datatable-body-cell[1]//span[contains(text(),'" + arapData.TxnNo + "')])[1]"));
+				driver.findElement(
+						By.xpath("(//datatable-body-cell[1]//span[contains(text(),'" + arapData.TxnNo + "')])[1]"));
 				String TransactionType = driver
 						.findElement(By.xpath("(//datatable-body-cell[1]//span[contains(text(),' " + arapData.TxnNo
 								+ " ')]/ancestor::datatable-body-cell[1]/following-sibling::datatable-body-cell[5]//span)[1]"))
 						.getText();
 				System.out.println("TransactionType is " + TransactionType);
-				String amount = driver.findElement(By.xpath("(//datatable-body-cell[1]//span[contains(text(),' " + arapData.TxnNo
+				String amount = driver.findElement(By.xpath("(//datatable-body-cell[1]//span[contains(text(),' "
+						+ arapData.TxnNo
 						+ " ')]/ancestor::datatable-body-cell[1]/following-sibling::datatable-body-cell[6]//span)[1]"))
 						.getText();
 				System.out.println("Amount is " + amount);
@@ -2495,16 +2605,19 @@ public class ARAP_AccountsReceivable_AccountsPayable extends BaseClass {
 		for (int i = 0; i <= 299; i++) {
 			try {
 
-				driver.findElement(By.xpath("(//datatable-body-cell[1]//span[contains(text(),'" + arapData.TxnNo + "')])[2]"))
+				driver.findElement(
+						By.xpath("(//datatable-body-cell[1]//span[contains(text(),'" + arapData.TxnNo + "')])[2]"))
 						.isDisplayed();
 
-				driver.findElement(By.xpath("(//datatable-body-cell[1]//span[contains(text(),'" + arapData.TxnNo + "')])[1]"));
+				driver.findElement(
+						By.xpath("(//datatable-body-cell[1]//span[contains(text(),'" + arapData.TxnNo + "')])[1]"));
 				String TransactionType = driver
 						.findElement(By.xpath("(//datatable-body-cell[1]//span[contains(text(),' " + arapData.TxnNo
 								+ " ')]/ancestor::datatable-body-cell[1]/following-sibling::datatable-body-cell[5]//span)[2]"))
 						.getText();
 				System.out.println("TransactionType is " + TransactionType);
-				String amount = driver.findElement(By.xpath("(//datatable-body-cell[1]//span[contains(text(),' " + arapData.TxnNo
+				String amount = driver.findElement(By.xpath("(//datatable-body-cell[1]//span[contains(text(),' "
+						+ arapData.TxnNo
 						+ " ')]/ancestor::datatable-body-cell[1]/following-sibling::datatable-body-cell[6]//span)[2]"))
 						.getText();
 				System.out.println("Amount is " + amount);
@@ -2518,7 +2631,7 @@ public class ARAP_AccountsReceivable_AccountsPayable extends BaseClass {
 				break;
 			}
 		}
-    }
+	}
 	// *************KUBS_AR/AP_UAT_010_001_TC_01***************//
 
 	@Then("^Click on the Receipt Eye Icon$")
@@ -2538,8 +2651,10 @@ public class ARAP_AccountsReceivable_AccountsPayable extends BaseClass {
 	@And("^Enter Receipt Ref Number$")
 	public void enter_receipt_ref_number() throws Throwable {
 		// -------RECEIPT REF NO---------//
+		Random random = new Random();
+		int RanDom = random.nextInt(1000 - 500) + 500;
 		arapObj.accountReceviableReceipt_Receipt_RefNo().click();
-		arapObj.accountReceviableReceipt_Receipt_RefNo().sendKeys(arapData.ReceiptRefNo);
+		arapObj.accountReceviableReceipt_Receipt_RefNo().sendKeys(arapData.ReceiptRefNo + RanDom);
 		arapObj.accountReceviableReceipt_Receipt_RefNo().sendKeys(Keys.ENTER);
 	}
 
@@ -2658,33 +2773,33 @@ public class ARAP_AccountsReceivable_AccountsPayable extends BaseClass {
 			}
 		}
 	}
-    
+
 	// *******************@KUBS_AR_AP_UAT_006_002_TC_03*******************//
-    @Then("^Click on Sub module Maual payout$")
-    public void click_on_sub_module_maual_payout() throws Throwable {
-        //--------MANUAL PAYOUT------//
-    	javaScriptHelper.JavaScriptHelper(driver);
-    	javaScriptHelper.scrollIntoView(arapObj.ARAP_Manual_payout());
-    	arapObj.ARAP_Manual_payout().click();
-    }
+	@Then("^Click on Sub module Maual payout$")
+	public void click_on_sub_module_maual_payout() throws Throwable {
+		// --------MANUAL PAYOUT------//
+		javaScriptHelper.JavaScriptHelper(driver);
+		javaScriptHelper.scrollIntoView(arapObj.ARAP_Manual_payout());
+		arapObj.ARAP_Manual_payout().click();
+	}
 
-    @And("^Get the Referance Number$")
-    public void get_the_referance_number() throws Throwable {
-     //--------REFERANCE NUMBER---------//
-    	javaScriptHelper.JavaScriptHelper(driver);
-    	javaScriptHelper.scrollIntoView(arapObj.ARAP_Manual_payout_RefNo());
-    	waitHelper.waitForElement(driver, 2000, arapObj.ARAP_Manual_payout_RefNo());
-    	ADVNumber = arapObj.ARAP_Manual_payout_RefNo().getText();
-    	System.out.println(ADVNumber);
-    }
+	@And("^Get the Referance Number$")
+	public void get_the_referance_number() throws Throwable {
+		// --------REFERANCE NUMBER---------//
+		javaScriptHelper.JavaScriptHelper(driver);
+		javaScriptHelper.scrollIntoView(arapObj.ARAP_Manual_payout_RefNo());
+		waitHelper.waitForElement(driver, 2000, arapObj.ARAP_Manual_payout_RefNo());
+		ADVNumber = arapObj.ARAP_Manual_payout_RefNo().getText();
+		System.out.println(ADVNumber);
+	}
 
-    @And("^Get the manual payout Branch Name$")
-    public void get_the_manual_payout_branch_name() throws Throwable {
-    	waitHelper.waitForElement(driver, 2000, arapObj.ARAP_Manual_payout_GetBranch());
-    	Branchcode = arapObj.ARAP_Manual_payout_GetBranch().getText();
-        System.out.println(Branchcode);
-    }
-    
+	@And("^Get the manual payout Branch Name$")
+	public void get_the_manual_payout_branch_name() throws Throwable {
+		waitHelper.waitForElement(driver, 2000, arapObj.ARAP_Manual_payout_GetBranch());
+		Branchcode = arapObj.ARAP_Manual_payout_GetBranch().getText();
+		System.out.println(Branchcode);
+	}
+
 	// *******************@KUBS_AR_AP_UAT_010_001_TC_02*******************//
 
 	@Then("^Enter Receipt type as Online$")

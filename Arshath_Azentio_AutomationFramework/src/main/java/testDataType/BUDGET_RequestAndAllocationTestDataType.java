@@ -26,5 +26,9 @@ public class BUDGET_RequestAndAllocationTestDataType {
 	public String BudgetAllocate;
 	public String BudgetCodeUat;
 	public String BudgetApprove;
+	public String Date;
+	public String Month;
+	public String Year;
+	public String FullMonth;
 
 }

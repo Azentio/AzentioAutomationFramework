@@ -22,6 +22,7 @@ public class ARAP_ARandAPData {
 	public String Month;
 	public String FullMonth;
 	public String Year;
+	public String Year1;
 	public String Day;
 	public String GlMonth;
 	public String GlFullMonth;
