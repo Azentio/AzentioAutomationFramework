@@ -576,6 +576,7 @@ public class FIXEDASSET_AssetReturn extends BaseClass {
 	 waitHelper.waitForElement(driver, 2000, assetRevaluvationObj.fixed_AssetReferenceNumber());
 	 //assetRevaluvationObj.fixed_AssetReferenceNumber().sendKeys(assetReturnTestData.assetReferenceNumberOFRevaluedAsset);
 	 assetRevaluvationObj.fixed_AssetReferenceNumber().sendKeys(assetReferenceNo.get("AssetReferenceNumberCreated"));
+	 Thread.sleep(1000);
 	 assetRevaluvationObj.fixed_AssetReferenceNumber().sendKeys(Keys.ENTER);
 	 waitHelper.waitForElement(driver, 2000, assetRevaluvationObj.fixed_AssetGetReferenceNumber());
 	 revaluedAssetReferenceNo = assetRevaluvationObj.fixed_AssetGetReferenceNumber().getText();
