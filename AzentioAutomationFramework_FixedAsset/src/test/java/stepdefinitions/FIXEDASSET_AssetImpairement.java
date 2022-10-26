@@ -516,7 +516,15 @@ public class FIXEDASSET_AssetImpairement extends BaseClass {
 
 	@And("^click on Add Icon$")
 	public void click_on_Add_Icon() throws Throwable {
-		assetImpairementObj.fixedAssetAddButton().click();
+		for (int i = 0; i <90; i++) {
+			try {
+				assetImpairementObj.fixedAssetAddButton().click();
+				break;
+			} catch (Exception e) {
+				
+			}
+		}
+		
 
 	}
 

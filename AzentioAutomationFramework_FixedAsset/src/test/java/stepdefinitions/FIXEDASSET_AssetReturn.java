@@ -555,19 +555,27 @@ public class FIXEDASSET_AssetReturn extends BaseClass {
 	@And("^choose asset reference number$")
     public void choose_asset_reference_number() throws Throwable {
 		assetReturnObj.assetReturnAssetReferenceNumber().click();
-		assetReturnObj.assetReturnAssetReferenceNumber().sendKeys(assetReturnTestData.assetReferenceNumber);
+		assetReturnObj.assetReturnAssetReferenceNumber().sendKeys(assetReferenceNo.get("AssetReferenceNumberCreated"));
 		assetReturnObj.assetReturnAssetReferenceNumber().sendKeys(Keys.DOWN);
 		assetReturnObj.assetReturnAssetReferenceNumber().sendKeys(Keys.ENTER);
 		String assetReferenceNumber=assetReturnObj.fixedAssetGetReferenceNo().getText();
 		assetReferenceNo.put("AssetReferenceNumber",assetReferenceNumber );
     }
-	
+	@Then("^Select Asset Reference Number for asset return$")
+    public void select_asset_reference_number_for_asset_return() throws Throwable {
+		Thread.sleep(2000);
+	   	waitHelper.waitForElementToVisibleWithFluentWait(driver,assetReturnObj.fixedAsset_AssetReference(),60,5);
+	   	String AssetReferenceNumber = assetReturnObj.fixedAsset_AssetReference().getText();
+	   	assetReferenceNo.put("AssetReferenceNumberCreated",AssetReferenceNumber );
+	    Thread.sleep(1000);
+    }
 	 @Then("^Give AssetReferance Number$")
 	 public void give_asset_Referance_Number() throws Throwable {
 
 	 // -----------ENTER ASSET REF NO---------------//
 	 waitHelper.waitForElement(driver, 2000, assetRevaluvationObj.fixed_AssetReferenceNumber());
-	 assetRevaluvationObj.fixed_AssetReferenceNumber().sendKeys(assetReturnTestData.assetReferenceNumberOFRevaluedAsset);
+	 //assetRevaluvationObj.fixed_AssetReferenceNumber().sendKeys(assetReturnTestData.assetReferenceNumberOFRevaluedAsset);
+	 assetRevaluvationObj.fixed_AssetReferenceNumber().sendKeys(assetReferenceNo.get("AssetReferenceNumberCreated"));
 	 assetRevaluvationObj.fixed_AssetReferenceNumber().sendKeys(Keys.ENTER);
 	 waitHelper.waitForElement(driver, 2000, assetRevaluvationObj.fixed_AssetGetReferenceNumber());
 	 revaluedAssetReferenceNo = assetRevaluvationObj.fixed_AssetGetReferenceNumber().getText();
@@ -677,6 +685,7 @@ public class FIXEDASSET_AssetReturn extends BaseClass {
 	@And("^choose item number for the asset$")
     public void choose_item_number_for_the_asset() throws Throwable {
 		assetReturnObj.assetReturnAssetItemNo().click();
+		Thread.sleep(1000);
 		assetReturnObj.assetReturnAssetItemNo().sendKeys(Keys.DOWN);
 		assetReturnObj.assetReturnAssetItemNo().sendKeys(Keys.ENTER);
     }
@@ -746,6 +755,27 @@ public class FIXEDASSET_AssetReturn extends BaseClass {
 		System.out.println("The asset reference number is"+assetReferenceNo.get("AssetReferenceNumber"));
 		waitHelper.waitForElementVisible(assetReturnObj.fixetReturnSaveButton(), 1000, 100);
 		assetReturnObj.fixetReturnSaveButton().click();
+		Thread.sleep(1400);
+		for (int i = 0; i <90; i++) {
+			try {
+				clicksAndActionHelper.moveToElement(assetReturnObj.fixedAsset_AssetReturn_WorkflowInitiated());
+				assetReturnObj.fixedAsset_AssetReturn_WorkflowInitiated().click();
+			    break;
+			} catch (Exception e) {
+				
+			}
+		}
+    	for (int i = 0; i <90; i++) {
+			try {
+				assetReturnObj.fixedAsset_AssetReturn_AlertClose().click();
+				break;
+			} catch (Exception e) {
+				if (i==29) {
+					//Assert.fail("Success message close button not clicked ");
+				}
+			}
+		}
+		
 		
     }
 	@Then("^check the approved record is displayed in de allocation list view$")

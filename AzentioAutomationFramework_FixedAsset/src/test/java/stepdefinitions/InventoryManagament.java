@@ -86,7 +86,7 @@ public class InventoryManagament extends BaseClass {
 
 	@Then("^Click on the Direction$")
 	public void click_on_direction() throws Throwable {
-//		Thread.sleep(2000);
+		Thread.sleep(1000);
 		waithelper.waitForElementwithFluentwait(driver, budgetTransferObj.budget_BudgetTransfer_DirectionIcon());
 		budgetTransferObj.budget_BudgetTransfer_DirectionIcon().click();
 
@@ -307,13 +307,14 @@ public class InventoryManagament extends BaseClass {
 		waithelper = new WaitHelper(driver);
 		reviewer = new KUBS_ReviewerObj(driver);
 		waithelper.waitForElement(driver, 2000, reviewer.reviewerNotidicationIcon());
+		clicksAndActionHelper.moveToElement(reviewer.reviewerNotidicationIcon());
 		reviewer.reviewerNotidicationIcon().click();
 		browserHelper = new BrowserHelper(driver);
 		budgetdata = jsonconfig.getBudgetdataByName("Maker");
 		javascript = new JavascriptHelper();
 		Thread.sleep(1000);
 		waithelper = new WaitHelper(driver);
-		for (int i = 1; i <= 35; i++) {
+		/*for (int i = 1; i <= 35; i++) {
 			try {
 //				waithelper.waitForElement(driver, 3000,driver.findElement(By.xpath("//span[contains(text(),'" + reader.readReferancedata() + "')]")));
 				waithelper.waitForElementwithFluentwait(driver, driver.findElement(By.xpath("//span[contains(text(),'" + reader.readReferancedata() + "')]")));
@@ -328,6 +329,7 @@ public class InventoryManagament extends BaseClass {
 					kubschecker.checker_notification_next_button().click();
 			}
 		}
+		*/
 		String before_xpath = "//span[contains(text(),'";
 		String after_xpath = "')]/ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell//ion-button";
 

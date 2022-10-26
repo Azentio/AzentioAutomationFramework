@@ -880,7 +880,7 @@ if(i==15)
 		 */
 		waitHelper.waitForElementToVisibleWithFluentWait(driver, kubsCheckerObj.checkerApprovalStatus(), 60, 500);
 		String approvalStatusForChecker = kubsCheckerObj.checkerApprovalStatus().getText();
-		Assert.assertEquals(approvalStatusForChecker, "Record APPROVED successfully");
+		Assert.assertEquals(approvalStatusForChecker, "Record approved successfully");
 	}
 
 	@Then("^logout from checker$")

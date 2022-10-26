@@ -255,6 +255,7 @@ public class InventoryMaintenance extends BaseClass{
 		        	//waithelper.waitForElement(driver, 2000, inventoryMaintenanceObj.inventoryMaintenance_InventoryItem_SubmitButton());
 		        	 for (int i = 0; i <90; i++) {
 		        		 try {
+		        			 clicksAndActionHelper.moveToElement(inventoryMaintenanceObj.inventoryMaintenance_InventoryItem_SubmitButton());
 			        		 inventoryMaintenanceObj.inventoryMaintenance_InventoryItem_SubmitButton().click();
 			        		 break;
 						} catch (Exception e) {
@@ -264,7 +265,7 @@ public class InventoryMaintenance extends BaseClass{
 						}
 					}
 		        	 
-		        	
+		        	Thread.sleep(1000);
 		        			
 		        	//Remark
 		        	javascripthelper.JavaScriptHelper(driver);
@@ -418,8 +419,16 @@ public class InventoryMaintenance extends BaseClass{
 				    	Thread.sleep(2000);
 				    	String before_xpath = "//span[contains(text(),'";
 						String after_xpath_claim = "')]/parent::div/parent::datatable-body-cell/preceding-sibling::datatable-body-cell[2]/div/ion-buttons/ion-button";
-						waithelper.waitForElement(driver, 5000, driver.findElement(By.xpath(before_xpath + reader.readReferancedata() + after_xpath_claim)));
-						driver.findElement(By.xpath(before_xpath + reader.readReferancedata() + after_xpath_claim)).click();
+					//	waithelper.waitForElement(driver, 5000, driver.findElement(By.xpath(before_xpath + reader.readReferancedata() + after_xpath_claim)));
+						for (int i = 0; i <50; i++) {
+							try {
+								driver.findElement(By.xpath(before_xpath + reader.readReferancedata() + after_xpath_claim)).click();
+								break;
+							} catch (Exception e) {
+								
+							}
+						}
+						
 						waithelper.waitForElement(driver,3000,kubschecker.checkerAlertClose());
 						kubschecker.checkerAlertClose().click();
 				 

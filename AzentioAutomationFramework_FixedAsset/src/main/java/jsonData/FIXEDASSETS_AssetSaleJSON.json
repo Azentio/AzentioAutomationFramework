@@ -1,14 +1,14 @@
 [
 	{
 		"User" : "Maker",
-		"AssetReferenceNumberForProfit" : "01-001-adjustable table_AZENTMAIN_4456",
-		"AssetReferenceNumberForLoss" : "LAND-LAND-woodply62700_AZENTMAIN_10111",
+		"AssetReferenceNumberForProfit" : "LAND-LAND-woodply84938",
+		"AssetReferenceNumberForLoss" : "LAND-LAND-woodply84938",
 		"ItemNumber" : "Asset-654",
 		"ItemNumberForLoss" : "AIN111111",
 		"SaleValue" : "1500000.00",
 		"SaleValueInLoss" : "30000.00",
 		"Currency" : "INR",
-		"ActionableBy" : "anant",
+		"ActionableBy" : "Azentio",
 		"Remark" : "ok",
 		"RemarkByMaker" : "submit by maker",
 		"CheckerRemark" : "approved by checker"

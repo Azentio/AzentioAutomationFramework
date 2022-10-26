@@ -48,7 +48,7 @@ public class KUBS_Login {
 	        waithelper.waitForElementToVisibleWithFluentWait(driver, makerobj.kubsFinaceOption(), 60, 2);
 	        clicksAndActionsHelper.clickUsingActionClass(makerobj.kubsFinaceOption(), makerobj.kubsFinaceOption());
 	        //makerobj.kubsFinaceOption().click();
-//	        Thread.sleep(2000);
+	        Thread.sleep(2000);
 	       // waithelper.waitForElementToVisibleWithFluentWait(driver, makerobj.FinanceOption(), 60, 2);
 //	        waithelper.waitForElement(driver, 4000, makerobj.FinanceOption());
 	        for (int i = 0; i <= 200; i++) {

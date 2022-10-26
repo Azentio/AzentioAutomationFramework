@@ -156,8 +156,17 @@ public class FixedAsset_AssetCategory extends BaseClass{
 	    @Then("^Click on Fixed Asset Notification$")
 	    public void click_on_fixed_asset_notification() {
 	    //Notification
-		    waithelper.waitForElementToVisibleWithFluentWait(driver,fixedAsset_AssetCategoryObj.fixedAsset_AssetCategory_WorkflowInitiated(),30,2);
-	    	fixedAsset_AssetCategoryObj.fixedAsset_AssetCategory_WorkflowInitiated().click();
+		    //waithelper.waitForElementToVisibleWithFluentWait(driver,fixedAsset_AssetCategoryObj.fixedAsset_AssetCategory_WorkflowInitiated(),30,2);
+		    for (int i = 0; i <30; i++) {
+				try {
+					clickAndActions.moveToElement(fixedAsset_AssetCategoryObj.fixedAsset_AssetCategory_WorkflowInitiated());
+				    fixedAsset_AssetCategoryObj.fixedAsset_AssetCategory_WorkflowInitiated().click();
+				    break;
+				} catch (Exception e) {
+					
+				}
+			}
+	    	
 	    	for (int i = 0; i <30; i++) {
 				try {
 					
@@ -178,9 +187,20 @@ public class FixedAsset_AssetCategory extends BaseClass{
 				
 			}
 		}
-		 	
+	 	
 	 	   	
 	      
+	    }
+	    @Then("^Click on Fixed Asset Notification icon$")
+	    public void click_on_fixed_asset_notification_icon() throws Throwable {
+	    	for (int i = 0; i <30; i++) {
+				try {
+					fixedAsset_AssetCategoryObj.fixedAsset_AssetCategory_Notification().click();
+					break;
+				} catch (Exception e) {
+					
+				}
+			}
 	    }
 
 	  	

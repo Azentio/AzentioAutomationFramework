@@ -14,7 +14,7 @@ public class KUBS_ReviewerObj {
 		PageFactory.initElements(driver, this);
 	}
 
-	@FindBy(xpath = "//ion-button[@ng-reflect-router-link='/inbox']")
+	@FindBy(xpath = "//ion-header/ion-toolbar[1]/ion-buttons[2]/ion-button[2]")
 	private WebElement reviewer_notification_icon;
 
 	public WebElement reviewerNotidicationIcon() {
@@ -98,7 +98,7 @@ public class KUBS_ReviewerObj {
 		return reviewer_alert_remarks;
 	}
 
-	@FindBy(xpath = "//ion-button[contains(text(),'Submit')]")
+	@FindBy(xpath = "//ion-button[text()='Submit']")
 	private WebElement reviewer_alert_submit_button;
 
 	public WebElement reviewerAlertSubmitButton() {

@@ -742,7 +742,6 @@ Then validate voucher number
 @KUBS_FAT_UAT_006_001
 Scenario: Check if any unused asset can be allocated to a specific resource in the branch
 #Creation
-#Creation
 Given Maker Navigate to UAT URL login
 Then Click on the Direction
 Then Click on Fixed Asset
@@ -783,7 +782,6 @@ Then Go to Checker account
 And Clam the record
 Then Click on notification and approve the record
 Given Navigate to kubs URL and user should login as a maker
-Then Click on the Finance
 Then Click on the Direction
 Then Click on Fixed Asset
 Then Click on Asset Allocation Eye button
@@ -815,7 +813,6 @@ Then click on the checker Notification
 And select the record and Approve by checker
 
 Given Navigate to kubs URL and user should login as a maker
-Then Click on the Finance
 Then Click on the Direction
 Then Click on Fixed Asset
 Then Click on Asset Allocation Eye button
@@ -969,24 +966,7 @@ And select the record and Approve by checker
 #Then click on the checker Notification 
 #And select the record and Approve by checker
 
-@KUBS_FAT_UAT_006_007 
-Scenario: Check If the asset to be transferred then it can be de-allocated
-
-Given Maker Navigate to UAT URL login
-Then Click on fixed asset deallocaion  Direction icon
-Then Click on Fixed assets field
-Then Click on asset deallocaion Eye button
-Then Click on Fixed Asset Add button
-Then Fill asset transferred deallocaion Mandatory fields
-Then Click on Fixed Asset Save button
-Then Click on Fixed Asset Notification 
-And Select and Submit the record
-Then log in to the reviewer account
-Then click on the Notification select the record and Approve 
-Then log in to the Checker Account
-And then checker claim the record
-Then click on the checker Notification 
-And select the record and Approve by checker
+ 
 
 
 @KUBS_FAT_UAT_006_008 
@@ -1012,7 +992,6 @@ And select the record and Approve by checker
 
 @KUBS_FAT_UAT_006_009 
 Scenario: Check if any impaired asset can be de-allocated
-#Creation
 #Creation
 Given Maker Navigate to UAT URL login
 Then Click on the Direction
@@ -1091,7 +1070,6 @@ And select the record and Approve by checker
 @KUBS_FAT_UAT_006_010 
 Scenario: Check if any Check if any re-valued asset can be de-allocated asset can be de-allocated
 
-#Creation
 #Creation
 Given Maker Navigate to UAT URL login
 Then Click on the Direction
@@ -1442,7 +1420,7 @@ And click on approve button in checker stage
 Then give alert remark 
 Then click on submit button on alert
 And verify the record got approved from checker
-Then logout from checker l
+Then logout from checker
 And login with Maker ID
 And click on fixed asset main module
 And go to revalued asset module

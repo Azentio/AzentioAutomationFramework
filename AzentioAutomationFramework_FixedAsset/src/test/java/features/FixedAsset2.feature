@@ -238,9 +238,9 @@ Then Click on Fixed Asset
 Then Click on Asset Creation Eye button
 And store the asset reference number to do the asset revaluation
 
-Then 	Asset Revaluvation submodule Eye Icon
-And 	Add Icon button
-Then 	Give Asset Referance Number
+Then Asset Revaluvation submodule Eye Icon
+And Add Icon button
+Then Give Asset Referance Number
 And Select Asset Item Number
 Then Alter TheBook Value
 Then save the Revaluation record

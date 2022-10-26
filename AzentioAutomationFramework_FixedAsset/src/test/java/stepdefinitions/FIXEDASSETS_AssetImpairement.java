@@ -53,8 +53,16 @@ public class FIXEDASSETS_AssetImpairement {
 	
 	@And("^click on add button for asset impairement$")
 	public void click_on_add_button_for_asset_impairement() {
-		waithelper.waitForElement(driver, 3000, fIXEDASSETS_AssetUndertakingObj.fixedAssets_AssetImpairement_AddButton());
-		fIXEDASSETS_AssetUndertakingObj.fixedAssets_AssetImpairement_AddButton().click();
+		//waithelper.waitForElement(driver, 3000, fIXEDASSETS_AssetUndertakingObj.fixedAssets_AssetImpairement_AddButton());
+		for (int i = 0; i <30; i++) {
+			try {
+				fIXEDASSETS_AssetUndertakingObj.fixedAssets_AssetImpairement_AddButton().click();
+				break;
+			} catch (Exception e) {
+				
+			}
+		}
+		
 	}
 	
 	@And("^Fill the required fields for asset impairement$")
@@ -73,6 +81,7 @@ public class FIXEDASSETS_AssetImpairement {
 		
 		waithelper.waitForElement(driver, 3000, fIXEDASSETS_AssetUndertakingObj.fixedAssets_AssetImpairement_ItemNumber());
 		fIXEDASSETS_AssetUndertakingObj.fixedAssets_AssetImpairement_ItemNumber().click();
+		Thread.sleep(1000);
 		//fIXEDASSETS_AssetUndertakingObj.fixedAssets_AssetImpairement_ItemNumber().sendKeys(fIXEDASSET_AssetImpairementTestDataType.ItemNumber);
 		fIXEDASSETS_AssetUndertakingObj.fixedAssets_AssetImpairement_ItemNumber().sendKeys(Keys.DOWN);
 		fIXEDASSETS_AssetUndertakingObj.fixedAssets_AssetImpairement_ItemNumber().sendKeys(Keys.ENTER);
@@ -90,7 +99,16 @@ public class FIXEDASSETS_AssetImpairement {
       //  waithelper.waitForElement(driver, 3000, fIXEDASSETS_AssetCreationObj.fixedAssets_AssetCreation_SaveButton());
     	javascripthelper.JavaScriptHelper(driver);
     	//Thread.sleep(2000);
-    	driver.findElement(By.xpath("//page-fixed-asset-impairment-update//ion-toolbar//ion-buttons[2]//ion-button")).click();
+    	for (int i = 0; i < 30; i++) {
+    		try {
+    			driver.findElement(By.xpath("//page-fixed-asset-impairment-update//ion-toolbar//ion-buttons[2]//ion-button")).click();
+    			break;
+			} catch (Exception e) {
+				
+			}
+    		
+		}
+    	
     //	javascripthelper.JSEClick(fIXEDASSETS_AssetCreationObj.fixedAssets_AssetCreation_SaveButton());
     	//fIXEDASSETS_AssetCreationObj.fixedAssets_AssetCreation_SaveButton().click();
     	Thread.sleep(2000);

@@ -368,11 +368,12 @@ waithelper.waitForElement(driver, 2000,
 	}
 
 	@And("^User should go to the kubs url and login as a reviewer user$")
-	public void user_should_go_to_the_kubs_url_and_login_as_a_reviewer_user() throws IOException, ParseException {
+	public void user_should_go_to_the_kubs_url_and_login_as_a_reviewer_user() throws IOException, ParseException, InterruptedException {
 		reader = new JsonDataReaderWriter();
 		login = new KUBS_Login(driver);
 		driver.get(config.getApplicationUrl());
 		login.logintoAzentioappReviewer("Reviewer", reader.readdata());
+		Thread.sleep(2000);
 	}
 
 	@Then("^Click on notification button in reviewer$")
@@ -492,8 +493,19 @@ waithelper.waitForElement(driver, 2000,
     @Then("^click on notification in checker$")
     public void click_on_notification_in_checker()  {
 //    	waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_NotificationButton());
-		waithelper.waitForElementwithFluentwait(driver, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_NotificationButton());
-    	aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_NotificationButton().click();
+		//waithelper.waitForElementwithFluentwait(driver, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_NotificationButton());
+    	for (int i = 0; i < 30; i++) {
+			try {
+				clicksAndActionHelper.moveToElement(aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_NotificationButton());
+				aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_NotificationButton().click();
+				break;
+			} catch (Exception e) {
+				if (i==29) {
+					Assert.fail("Checker notification icon not clicked");
+				}
+			}
+		}
+    	
     }
     
 	@Then("^checker should approved the contract record$")

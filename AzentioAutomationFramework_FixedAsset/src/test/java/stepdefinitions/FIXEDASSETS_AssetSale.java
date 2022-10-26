@@ -44,7 +44,8 @@ public class FIXEDASSETS_AssetSale {
 	KUBS_CheckerObj kubschecker = new KUBS_CheckerObj(driver);
 	
 	@And("^user should navigate to fixed asset menu$")
-	public void user_should_navigate_to_fixed_asset_menu() {
+	public void user_should_navigate_to_fixed_asset_menu() throws InterruptedException {
+		Thread.sleep(1000);
 		waithelper.waitForElementToVisibleWithFluentWait(driver,fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_DirectionButton(),60,5);
 		fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_DirectionButton().click();
 		waithelper.waitForElementToVisibleWithFluentWait(driver, fIXEDASSETS_AssetSaleObj.fixedAssets_Menu(),60,5);
@@ -208,15 +209,16 @@ public class FIXEDASSETS_AssetSale {
     
     @Then("^checker should approved the asset sale$")
     public void checker_should_approved_the_asset_sale() throws InterruptedException, IOException, ParseException{
+    	Thread.sleep(2000);
     	waithelper.waitForElementToVisibleWithFluentWait(driver,driver.findElement(By.xpath("//span[contains(text(),'" + jsonWriter.readReferancedata() + "')]/ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell/div/ion-buttons/ion-button")),60,5);
 		driver.findElement(By.xpath("//span[contains(text(),'" + jsonWriter.readReferancedata() + "')]/ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell/div/ion-buttons/ion-button")).click();
-    	waithelper.waitForElementToVisibleWithFluentWait(driver, fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_NotificationButton(),60,5);
-    	fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_NotificationButton().click();
-		Thread.sleep(2000);
-		waithelper.waitForElementToVisibleWithFluentWait(driver,  driver.findElement(By.xpath("//span[contains(text(),'" + jsonWriter.readReferancedata()
-		+ "')]/ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell/div/ion-buttons/ion-button")),60,5);
-		driver.findElement(By.xpath("//span[contains(text(),'" + jsonWriter.readReferancedata() + "')]/ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell/div/ion-buttons/ion-button"))
-		.click();
+//    	waithelper.waitForElementToVisibleWithFluentWait(driver, fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_NotificationButton(),60,5);
+//    	fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_NotificationButton().click();
+//		Thread.sleep(2000);
+//		waithelper.waitForElementToVisibleWithFluentWait(driver,  driver.findElement(By.xpath("//span[contains(text(),'" + jsonWriter.readReferancedata()
+//		+ "')]/ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell/div/ion-buttons/ion-button")),60,5);
+//		driver.findElement(By.xpath("//span[contains(text(),'" + jsonWriter.readReferancedata() + "')]/ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell/div/ion-buttons/ion-button"))
+//		.click();
 		
 		waithelper.waitForElementToVisibleWithFluentWait(driver, kubschecker.checkerApproveButton(),60,5);
 		kubschecker.checkerApproveButton().click();

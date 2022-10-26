@@ -1,10 +1,10 @@
 [
 	{
 		"User" : "Maker",
-		"AssetReferenceNumberForTransfer" : "01-001-woodply28738",
-		"AssetReferenceNumberImpairedForTransfer" : "01-001-woodply28738",
-		"AssetReferenceNumberRevaluedForTransfer" : "01-001-woodply28738",
-		"AssetReferenceNumberUndertaking" : "01-001-woodply28738",
+		"AssetReferenceNumberForTransfer" : "LAND-LAND-woodply84938",
+		"AssetReferenceNumberImpairedForTransfer" : "LAND-LAND-woodply84938",
+		"AssetReferenceNumberRevaluedForTransfer" : "LAND-LAND-woodply84938",
+		"AssetReferenceNumberUndertaking" : "LAND-LAND-woodply84938",
 		"RemarkByMaker" : "submit by maker",
 		"CheckerRemark" : "approved by checker",
 		"NewBranch" : "Dadar Branch" 

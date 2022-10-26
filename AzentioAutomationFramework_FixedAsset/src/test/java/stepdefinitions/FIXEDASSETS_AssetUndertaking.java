@@ -68,8 +68,16 @@ public class FIXEDASSETS_AssetUndertaking {
     @And("^click on add button for asset transfer$")
     public void click_on_add_button_for_asset_transfer()  {
     	
-    	waithelper.waitForElement(driver, 2000, fIXEDASSETS_AssetUndertakingObj.fixedAssets_AssetTransfer_AddButton());
-    	fIXEDASSETS_AssetUndertakingObj.fixedAssets_AssetTransfer_AddButton().click();
+    	//waithelper.waitForElement(driver, 2000, fIXEDASSETS_AssetUndertakingObj.fixedAssets_AssetTransfer_AddButton());
+    	for (int i = 0; i <30; i++) {
+			try {
+				fIXEDASSETS_AssetUndertakingObj.fixedAssets_AssetTransfer_AddButton().click();
+				break;
+			} catch (Exception e) {
+				
+			}
+		}
+    	
     }
 
     @And("^Fill the required fields for asset transfer$")
@@ -162,8 +170,16 @@ public class FIXEDASSETS_AssetUndertaking {
 				.toString();
 		System.out.println("Message:" + str);
     	
-    	waithelper.waitForElement(driver, 2000, fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_NotificationButton());
-    	fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_NotificationButton().click();
+    	//waithelper.waitForElement(driver, 2000, fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_NotificationButton());
+		for (int i = 0; i <30; i++) {
+			try {
+				fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_NotificationButton().click();
+				break;
+			} catch (Exception e) {
+				
+			}
+		}
+    	
     	
     	waithelper.waitForElement(driver, 2000, fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_FirstReferenceId());
     	String id=fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_FirstReferenceId().getText();
@@ -355,8 +371,15 @@ public class FIXEDASSETS_AssetUndertaking {
     
     @Then("^click on first view icon to see the transferred$")
     public void click_on_first_view_icon_to_see_the_transferred() {
+    	for (int i = 0; i <30; i++) {
+			try {
+				fIXEDASSETS_AssetUndertakingObj.fixedAssets_AssetTransfer_FirstViewButton().click();
+				break;
+			} catch (Exception e) {
+				
+			}
+		}
     	
-    	fIXEDASSETS_AssetUndertakingObj.fixedAssets_AssetTransfer_FirstViewButton().click();
     	waithelper.waitForElement(driver, 4000, fIXEDASSETS_AssetUndertakingObj.fixedAssets_AssetTransfer_ViewTransferredBranch());
     	String transferredBranch = fIXEDASSETS_AssetUndertakingObj.fixedAssets_AssetTransfer_ViewTransferredBranch().getText();
     	System.out.println("Transferred to Branch: "+transferredBranch);

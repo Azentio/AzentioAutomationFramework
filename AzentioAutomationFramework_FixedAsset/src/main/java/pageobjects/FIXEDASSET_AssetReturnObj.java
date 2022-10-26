@@ -73,7 +73,14 @@ public class FIXEDASSET_AssetReturnObj {
 	public WebElement assetReturnAssetItemNo() {
 		return asset_return_assetItemNo;
 	}
+	// Asset Reference number
+		@FindBy(xpath = "//datatable-row-wrapper[1]/datatable-body-row/div[2]/datatable-body-cell[6]/div/span")
+		private WebElement fixedAsset_AssetReference;
 
+		public WebElement fixedAsset_AssetReference() {
+		return fixedAsset_AssetReference;
+			
+		}
 	@FindBy(xpath = "(//ion-toolbar[1]/ion-buttons[2]/ion-button[1])[2]")
 	private WebElement fixed_return_save_button;
 
@@ -81,6 +88,16 @@ public class FIXEDASSET_AssetReturnObj {
 		return fixed_return_save_button;
 
 	}
+	@FindBy(xpath = "//div[@id='toast-container']//div[@role='alert']")
+	private WebElement fixedAsset_AssetReturn_WorkflowInitiated;
+    public WebElement fixedAsset_AssetReturn_WorkflowInitiated() {
+		 return fixedAsset_AssetReturn_WorkflowInitiated;
+	}
+    @FindBy(xpath = "//button[@aria-label='Close']")
+	private WebElement fixedAsset_AssetReturn_AlertClose;
+    public WebElement fixedAsset_AssetReturn_AlertClose() {
+		 return fixedAsset_AssetReturn_AlertClose;
+	}	
 
 	@FindBy(xpath = "//ion-button[@ng-reflect-router-link='/tabs/list/datagrid-view/125']")
 	private WebElement fixedAsset_assetReturn;

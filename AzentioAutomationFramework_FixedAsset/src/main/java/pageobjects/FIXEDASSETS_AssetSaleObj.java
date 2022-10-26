@@ -24,7 +24,7 @@ public class FIXEDASSETS_AssetSaleObj {
 	}
 
 	// Fixed Asset menu
-	@FindBy(xpath = "//ion-label[text()=' Fixed assets ']")
+	@FindBy(xpath = "//ion-label[text()=' Fixed assets ']/preceding-sibling::ion-icon")
 	private WebElement fixedAssets_Menu;
 
 	public WebElement fixedAssets_Menu() {

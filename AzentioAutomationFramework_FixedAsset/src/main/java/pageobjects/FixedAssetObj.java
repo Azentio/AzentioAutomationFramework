@@ -66,9 +66,21 @@ public class FixedAssetObj {
 				return fixedAsset_AssetAllocation_EmployeeID;
 			}			
 			
-			
-			
-			
+// search record 
+			//ion-icon[@title='Enable Search']
+			@FindBy(xpath = "//ion-icon[@title='Enable Search']")
+			private WebElement searchIconInApprovedListView;
+
+			public WebElement searchIconInApprovedListView() {
+				return searchIconInApprovedListView;
+			}
+	// transaction type		
+			@FindBy(xpath = "//ion-input[@ng-reflect-placeholder='Search Transaction Type']/input")
+			private WebElement searchTransactionType;
+
+			public WebElement searchTransactionType() {
+				return searchTransactionType;
+			}
 	//Add button
 		@FindBy(xpath = "//ion-icon[@ng-reflect-name='add']|//div[1]/ion-router-outlet[1]/app-data-grid[1]/ion-content[1]/ion-fab[1]/ion-fab-button[1]/ion-icon[1]")
 		private WebElement fixedAsset_AssetCreation_AddButton;
@@ -155,6 +167,16 @@ return fixedAsset_AssetCreation_SaveButton;
 		public WebElement fixedAsset_AssetCreation_SuccessMessageClose() {
 	return fixedAsset_AssetCreation_SuccessMessageClose;
 							}
+		 @FindBy(xpath = "//div[@id='toast-container']//div[@role='alert']")
+			private WebElement fixedAsset_AssetCategory_WorkflowInitiated;
+		    public WebElement fixedAsset_AssetCategory_WorkflowInitiated() {
+				 return fixedAsset_AssetCategory_WorkflowInitiated;
+			}
+		    @FindBy(xpath = "//button[@aria-label='Close']")
+			private WebElement fixedAsset_AssetCategory_AlertClose;
+		    public WebElement fixedAsset_AssetCategory_AlertClose() {
+				 return fixedAsset_AssetCategory_AlertClose;
+			}	    
 	//Fixed Asset Items
 @FindBy(xpath = "//span[2]/ion-tab-button/ion-label")
 private WebElement fixedAsset_AssetCreation_FixedAssetItems;
@@ -210,6 +232,7 @@ return Report_report_NextButton;
 		{
 			return fixedAsset_allocationSaveButton;
 		}
+		
 		//Job Scheduler Button
 		@FindBy(xpath = "//ion-label[contains(text(),'Job scheduler')]")
 		private WebElement JobScheduler_Button;

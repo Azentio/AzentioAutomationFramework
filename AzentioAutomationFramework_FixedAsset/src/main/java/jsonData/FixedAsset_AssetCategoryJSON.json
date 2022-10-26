@@ -3,14 +3,14 @@
 		"User"					: "Maker",
 		"AssetCategory"			: "Land & Building",
 		"AssetSubCategory"		: "Land",
-		"AssetItemCategory"		:	"woodply79",
-		"AssetDescription"		:	"woodply79",
+		"AssetItemCategory"		:	"woodply93",
+		"AssetDescription"		:	"woodply93",
 		"Remark"				:	"ok",
 		
 		
 		
 		
-		"AssetCode"						: "01-001-woodply79",
+		"AssetCode"						: "01-001-woodply93",
 		"AccountingModel"				: "Cost Model",
 		"AssetLifeUnit" 				: "Year",
 		"AssetLife"						: "2",

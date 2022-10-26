@@ -172,7 +172,7 @@ public class InventoryMaintenanceObj {
 		}
 		
 		//Submit
-		@FindBy(xpath = "//span[contains(text(),'Submit')]")
+		@FindBy(xpath = "//span[text()='Submit']/ancestor::ion-button")
 		private WebElement inventoryMaintenance_InventoryItem_SubmitButton;
 		public WebElement inventoryMaintenance_InventoryItem_SubmitButton() {
 			return inventoryMaintenance_InventoryItem_SubmitButton;

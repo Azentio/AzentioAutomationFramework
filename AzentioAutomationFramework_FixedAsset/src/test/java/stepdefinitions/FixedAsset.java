@@ -1,5 +1,7 @@
 package stepdefinitions;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Random;
 
 import org.openqa.selenium.By;
@@ -16,6 +18,7 @@ import helper.ClicksAndActionsHelper;
 import helper.DropDownHelper;
 import helper.JavascriptHelper;
 import helper.WaitHelper;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import pageobjects.BUDGET_BudgetTransferObj;
@@ -63,6 +66,7 @@ public class FixedAsset {
 	KUBS_CheckerObj kubschecker;
 	JavascriptHelper javascript;
 	FixedAssetObj fixedAssetObj = new FixedAssetObj(driver);
+	Map<String,String> codeConfigData= new HashMap<>();
 
 	//-------------KUBS_FAT_UAT_002_001------
 	  @Given("^Navigate to kubs URL and user should login as a maker$")
@@ -134,7 +138,16 @@ public class FixedAsset {
 	    public void save_the_filled_form() throws Throwable {
 	    	waithelper.waitForElementToVisibleWithFluentWait(driver,fixedAssetObj.fixedAsset_AssetCreation_SaveButton(),60,5);
 	    	fixedAssetObj.fixedAsset_AssetCreation_SaveButton().click();
-	    	for (int i = 0; i <30; i++) {
+	    	for (int i = 0; i <90; i++) {
+				try {
+					clicksAndActionHelper.moveToElement(fixedAssetObj.fixedAsset_AssetCategory_WorkflowInitiated());
+					fixedAssetObj.fixedAsset_AssetCategory_WorkflowInitiated().click();
+				    break;
+				} catch (Exception e) {
+					
+				}
+			}
+	    	for (int i = 0; i <90; i++) {
 				try {
 					fixedAssetObj.fixedAsset_AssetCreation_SuccessMessageClose().click();
 					break;
@@ -501,20 +514,22 @@ public class FixedAsset {
 	    	fixedAssetObj.fixedAsset_AssetAllocation_EyeButton().click();
 	    }
 	
-	
+	    
+
 	    @Then("^Fill the Allocation form with unused asset$")
 	    public void fill_the_allocation_form_with_unused_asset() throws Throwable {
 	    	fixedAssetTestDataType= jsonReader.getFixedAssetByName("Maker");
 	    	waithelper.waitForElementToVisibleWithFluentWait(driver, fixedAssetObj.fixedAsset_AssetAllocation_AssetRefferenceNumber(),60,5);
 	    	fixedAssetObj.fixedAsset_AssetAllocation_AssetRefferenceNumber().click();
-	    	Thread.sleep(50000);
 	    	//fixedAssetObj.fixedAsset_AssetAllocation_AssetRefferenceNumber().sendKeys(fixedAssetTestDataType.AssetReferenceNumber);
-	    	fixedAssetObj.fixedAsset_AssetAllocation_AssetRefferenceNumber().sendKeys(assetCreation.AssetCode);
+	    	fixedAssetObj.fixedAsset_AssetAllocation_AssetRefferenceNumber().sendKeys(assetCreation.AssetReferenceNumber);
+	    	Thread.sleep(1000);
 	    	fixedAssetObj.fixedAsset_AssetAllocation_AssetRefferenceNumber().sendKeys(Keys.DOWN);
 	    	fixedAssetObj.fixedAsset_AssetAllocation_AssetRefferenceNumber().sendKeys(Keys.ENTER);
 	    	
 	    	waithelper.waitForElementToVisibleWithFluentWait(driver, fixedAssetObj.fixedAsset_AssetAllocation_ItemNumber(),60,5);
 	    	fixedAssetObj.fixedAsset_AssetAllocation_ItemNumber().click();
+	    	Thread.sleep(1000);
 	    	fixedAssetObj.fixedAsset_AssetAllocation_ItemNumber().sendKeys(Keys.DOWN);
 	    	//fixedAssetObj.fixedAsset_AssetAllocation_ItemNumber().sendKeys(fixedAssetTestDataType.ItemNumber);
 	    	fixedAssetObj.fixedAsset_AssetAllocation_ItemNumber().sendKeys(Keys.ENTER);
@@ -530,6 +545,27 @@ public class FixedAsset {
 	    public void save_the_filled_allocation() throws Throwable {
 	    	waithelper.waitForElementToVisibleWithFluentWait(driver, fixedAssetObj.fixedAsserAllocationSaveButton(),60,5);
 	    	fixedAssetObj.fixedAsserAllocationSaveButton().click();
+	    	for (int i = 0; i <30; i++) {
+				try {
+					clicksAndActionHelper.moveToElement(fixedAssetObj.fixedAsset_AssetCategory_WorkflowInitiated());
+					fixedAssetObj.fixedAsset_AssetCategory_WorkflowInitiated().click();
+				    break;
+				} catch (Exception e) {
+					
+				}
+				
+			}
+	    	for (int i = 0; i <30; i++) {
+				try {
+					
+					clicksAndActionHelper.moveToElement(fixedAssetObj.fixedAsset_AssetCategory_AlertClose());
+					fixedAssetObj.fixedAsset_AssetCategory_AlertClose().click();
+					break;
+				} catch (Exception e) {
+					
+				}
+			}
+	    	
 	    }
 //-----------KUBS_FAT_UAT_006_002----
 	    @Then("^Fill the Allocation form with used asset details$")
@@ -543,6 +579,7 @@ public class FixedAsset {
 	    	
 	    	waithelper.waitForElementToVisibleWithFluentWait(driver, fixedAssetObj.fixedAsset_AssetAllocation_ItemNumber(),60,5);
 	    	fixedAssetObj.fixedAsset_AssetAllocation_ItemNumber().click();
+	    	Thread.sleep(1000);
 	    	fixedAssetObj.fixedAsset_AssetAllocation_ItemNumber().sendKeys(Keys.DOWN);
 	    	//fixedAssetObj.fixedAsset_AssetAllocation_ItemNumber().sendKeys(fixedAssetTestDataType.ItemNumber);
 	    	fixedAssetObj.fixedAsset_AssetAllocation_ItemNumber().sendKeys(Keys.ENTER);
@@ -554,46 +591,88 @@ public class FixedAsset {
 	    
 	    }
 	    //------------KUBS_FAT_UAT_006_003-----------
+	    @And("^User search impaired asset record$")
+	    public void user_search_impaired_asset_record() throws Throwable {
+	    	for (int i = 0; i <30; i++) {
+	    		try {
+		        	fixedAssetObj.searchIconInApprovedListView().click();
+		        	break;
+				} catch (Exception e) {
+					
+				}
+			}
+	    	for (int i = 0; i <30; i++) {
+	    		try {
+		        	fixedAssetObj.searchTransactionType().click();
+		        	fixedAssetObj.searchTransactionType().sendKeys("Impairment");
+		        	break;
+				} catch (Exception e) {
+					
+				}
+			}
+	        
+	    }
+	    @And("^get imparied asset reference number$")
+	    public void get_imparied_asset_reference_number() throws Throwable {
+	    	waithelper.waitForElementVisible(driver.findElement(By.xpath("(//span[text()=' Active ']/ancestor::datatable-body-cell)[1]/preceding::datatable-body-cell[6]")), 3000, 300);
+		     //driver.findElement(By.xpath("//datatable-row-wrapper[1]//datatable-body-cell[2]//span")).getText();
+		     codeConfigData.put("AssetCode", driver.findElement(By.xpath("(//span[text()=' Active ']/ancestor::datatable-body-cell)[1]/preceding::datatable-body-cell[6]")).getText());
+		     System.out.println( driver.findElement(By.xpath("(//span[text()=' Active ']/ancestor::datatable-body-cell)[1]/preceding::datatable-body-cell[6]")).getText());
+	    }
+	    
 	    @Then("^Fill the Allocation form with impaired asset details$")
 	    public void fill_the_allocation_form_with_impaired_asset_details() throws Throwable {
 	    	fixedAssetTestDataType= jsonReader.getFixedAssetByName("Maker");
 	    	waithelper.waitForElementToVisibleWithFluentWait(driver, fixedAssetObj.fixedAsset_AssetAllocation_AssetRefferenceNumber(),60,5);
 	    	fixedAssetObj.fixedAsset_AssetAllocation_AssetRefferenceNumber().click();
 	    //	fixedAssetObj.fixedAsset_AssetAllocation_AssetRefferenceNumber().sendKeys(fixedAssetTestDataType.AssetReferenceNumber);
-	    	fixedAssetObj.fixedAsset_AssetAllocation_AssetRefferenceNumber().sendKeys(assetCreation.AssetCode);
+	    	fixedAssetObj.fixedAsset_AssetAllocation_AssetRefferenceNumber().sendKeys(codeConfigData.get("AssetCode"));
+	    	Thread.sleep(1000);
 	    	fixedAssetObj.fixedAsset_AssetAllocation_AssetRefferenceNumber().sendKeys(Keys.ENTER);
 	    	
 	    	waithelper.waitForElementToVisibleWithFluentWait(driver, fixedAssetObj.fixedAsset_AssetAllocation_ItemNumber(),60,5);
 	    	fixedAssetObj.fixedAsset_AssetAllocation_ItemNumber().click();
+	    	Thread.sleep(1000);
 	    	fixedAssetObj.fixedAsset_AssetAllocation_ItemNumber().sendKeys(Keys.DOWN);
 	    	//fixedAssetObj.fixedAsset_AssetAllocation_ItemNumber().sendKeys(fixedAssetTestDataType.ItemNumber);
 	    	fixedAssetObj.fixedAsset_AssetAllocation_ItemNumber().sendKeys(Keys.ENTER);
 	    	
 	    	waithelper.waitForElementToVisibleWithFluentWait(driver, fixedAssetObj.fixedAsset_AssetAllocation_EmployeeID(),60,5);
 	    	fixedAssetObj.fixedAsset_AssetAllocation_EmployeeID().click();
+	    	Thread.sleep(1000);
 	    	fixedAssetObj.fixedAsset_AssetAllocation_EmployeeID().sendKeys(fixedAssetTestDataType.EmployeeID);
 	    	fixedAssetObj.fixedAsset_AssetAllocation_EmployeeID().sendKeys(Keys.ENTER);
 	     
 	    }
 	    //-------KUBS_FAT_UAT_006_004---------
-	    
+	    @And("^User get the revalued asset for allocation$")
+	    public void user_get_the_revalued_asset_for_allocation() throws Throwable {
+	    	waithelper.waitForElementVisible(driver.findElement(By.xpath("(//span[text()=' Active ']/ancestor::datatable-body-cell)[1]/preceding::datatable-body-cell[4]")), 3000, 300);
+		     //driver.findElement(By.xpath("//datatable-row-wrapper[1]//datatable-body-cell[2]//span")).getText();
+		     codeConfigData.put("AssetCode", driver.findElement(By.xpath("(//span[text()=' Active ']/ancestor::datatable-body-cell)[1]/preceding::datatable-body-cell[4]")).getText());
+		     System.out.println( driver.findElement(By.xpath("(//span[text()=' Active ']/ancestor::datatable-body-cell)[1]/preceding::datatable-body-cell[4]")).getText());
+	    }
+
 	    @Then("^Fill the Allocation form with revalued asset details$")
 	    public void fill_the_allocation_form_with_revalued_asset_details() throws Throwable {
 	    	fixedAssetTestDataType= jsonReader.getFixedAssetByName("Maker");
 	    	waithelper.waitForElementToVisibleWithFluentWait(driver, fixedAssetObj.fixedAsset_AssetAllocation_AssetRefferenceNumber(),60,5);
 	    	fixedAssetObj.fixedAsset_AssetAllocation_AssetRefferenceNumber().click();
+	    	Thread.sleep(1000);
 	   // 	fixedAssetObj.fixedAsset_AssetAllocation_AssetRefferenceNumber().sendKeys(fixedAssetTestDataType.AssetReferenceNumber);
-	    	fixedAssetObj.fixedAsset_AssetAllocation_AssetRefferenceNumber().sendKeys(assetCreation.AssetCode);
+	    	fixedAssetObj.fixedAsset_AssetAllocation_AssetRefferenceNumber().sendKeys(codeConfigData.get("AssetCode"));
 	    	fixedAssetObj.fixedAsset_AssetAllocation_AssetRefferenceNumber().sendKeys(Keys.ENTER);
 	    	
 	    	waithelper.waitForElementToVisibleWithFluentWait(driver, fixedAssetObj.fixedAsset_AssetAllocation_ItemNumber(),60,5);
 	    	fixedAssetObj.fixedAsset_AssetAllocation_ItemNumber().click();
+	    	Thread.sleep(1000);
 	    	fixedAssetObj.fixedAsset_AssetAllocation_ItemNumber().sendKeys(Keys.DOWN);
 	    	//fixedAssetObj.fixedAsset_AssetAllocation_ItemNumber().sendKeys(fixedAssetTestDataType.ItemNumber);
 	    	fixedAssetObj.fixedAsset_AssetAllocation_ItemNumber().sendKeys(Keys.ENTER);
 	    	
 	    	waithelper.waitForElementToVisibleWithFluentWait(driver, fixedAssetObj.fixedAsset_AssetAllocation_EmployeeID(),60,5);
 	    	fixedAssetObj.fixedAsset_AssetAllocation_EmployeeID().click();
+	    	Thread.sleep(1000);
 	    	fixedAssetObj.fixedAsset_AssetAllocation_EmployeeID().sendKeys(fixedAssetTestDataType.EmployeeID);
 	    	fixedAssetObj.fixedAsset_AssetAllocation_EmployeeID().sendKeys(Keys.ENTER);
 	     
