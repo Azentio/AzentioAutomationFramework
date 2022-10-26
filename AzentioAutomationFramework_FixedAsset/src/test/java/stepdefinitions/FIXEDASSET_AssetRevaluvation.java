@@ -130,6 +130,7 @@ public class FIXEDASSET_AssetRevaluvation extends BaseClass {
 		// --------------ASSET ITEM NUMBER---------------//
 		waitHelper.waitForElement(driver, 2000, assetRevaluvationObj.fixed_AssetItemCode());
 		assetRevaluvationObj.fixed_AssetItemCode().click();
+		Thread.sleep(1000);
 		assetRevaluvationObj.fixed_AssetItemCode().sendKeys(Keys.DOWN);
 		assetRevaluvationObj.fixed_AssetItemCode().sendKeys(Keys.ENTER);
 	}

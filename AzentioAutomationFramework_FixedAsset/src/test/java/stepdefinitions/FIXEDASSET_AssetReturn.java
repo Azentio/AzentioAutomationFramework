@@ -642,6 +642,7 @@ public class FIXEDASSET_AssetReturn extends BaseClass {
 	 @And("^choose asset reference number of revalued asset$")
 	    public void choose_asset_reference_number_of_revalued_asset() throws Throwable {
 		 assetReturnObj.assetReturnAssetReferenceNumber().click();
+			//assetReturnObj.assetReturnAssetReferenceNumber().sendKeys(assetReturnTestData.assetReferenceNumberOFRevaluedAsset);
 			assetReturnObj.assetReturnAssetReferenceNumber().sendKeys(assetReturnTestData.assetReferenceNumberOFRevaluedAsset);
 			assetReturnObj.assetReturnAssetReferenceNumber().sendKeys(Keys.DOWN);
 			assetReturnObj.assetReturnAssetReferenceNumber().sendKeys(Keys.ENTER);
@@ -797,13 +798,13 @@ public class FIXEDASSET_AssetReturn extends BaseClass {
     }
 	 @Then("^check the approved record is displayed in list view of returned asset$")
 	    public void check_the_approved_record_is_displayed_in_list_view_od_returned_asset() throws Throwable {
-		 System.out.println(assetReferenceNo.get("AssetReferenceNumber"));
+		 System.out.println(assetReferenceNo.get("AssetReferenceNumberCreated"));
 
 			String beforeXpath = "//span[contains(text(),'";
 			String afterXpath = "')]";
 			while (true) {
 				try {
-					driver.findElement(By.xpath(beforeXpath + assetReferenceNo.get("AssetReferenceNumber") + afterXpath))
+					driver.findElement(By.xpath(beforeXpath + assetReferenceNo.get("AssetReferenceNumberCreated") + afterXpath))
 							.isDisplayed();
 					break;
 				} catch (NoSuchElementException e) {
