@@ -389,7 +389,8 @@ public class ACCOUNTSPAYABLE_AccountspayableReport extends BaseClass {
     public void get_the_invoice_number_of_cancelled_payment_settlement_record() throws Throwable {
     	Thread.sleep(1000);
     	javascriptHelper.scrollIntoView(payementSettlementObj.paymentSettlementRecentlyApprovedInvoiceNUmber());
-    	String invoiceNumber=payementSettlementObj.paymentSettlementRecentlyApprovedInvoiceNUmber().getText(); 	
+    	String invoiceNumber=payementSettlementObj.paymentSettlementRecentlyApprovedInvoiceNUmber().getText();
+    	System.out.println(invoiceNumber);
     	testData.put("approvedInvoiceNumber", invoiceNumber);
     }
     @And("^give the status in payment settlement report section$")

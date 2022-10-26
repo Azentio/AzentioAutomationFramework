@@ -9,14 +9,16 @@ import io.cucumber.testng.CucumberOptions;
 import utilities.ExtentManager;
 import utilities.ExtentTestManager;
 
-@CucumberOptions(features = "src/test/java/features",
+@CucumberOptions(features = "src/test/java/features/ArAp4.feature",
                  glue = "stepdefinitions",
 		         //monochrome=false, //to make steps in color
 		         plugin = { "pretty",
 				            "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:",
 				            "rerun:ReRunScenarios/FailedReRun.txt"}
 //				dryRun = true //to check compilation errors
-					,  tags="@KUBS_INV_MGMT_UAT_001_001"
+				,  tags="@KUBS_AR_AP_UAT_010_002_TC_02"
+						
+						
 
 )
 public class TestApplication extends AbstractTestNGCucumberTests {

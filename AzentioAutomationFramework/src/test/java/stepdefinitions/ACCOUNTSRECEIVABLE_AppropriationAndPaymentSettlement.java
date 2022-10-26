@@ -73,7 +73,14 @@ public class ACCOUNTSRECEIVABLE_AppropriationAndPaymentSettlement extends BaseCl
 		javascriptHelper.scrollIntoViewAndClick(debitNoteObj.accountsReceivable_DebitNote_Description());
 		//debitNoteObj.accountsReceivable_DebitNote_Description().click();
 		debitNoteObj.accountsReceivable_DebitNote_Description().sendKeys("Debit note");
-
+		waitHelper.waitForElementVisible(debitNoteObj.accountsReceivable_DeliveryLocation(), 3000, 300);
+		debitNoteObj.accountsReceivable_DeliveryLocation().click();
+		waitHelper.waitForElementVisible(debitNoteObj.accountsReceivable_Punjab(), 3000, 300);
+		debitNoteObj.accountsReceivable_Punjab().click();
+		waitHelper.waitForElementVisible(debitNoteObj.accountsReceivable_ShippedFromLocation(), 3000, 300);
+		debitNoteObj.accountsReceivable_ShippedFromLocation().click();
+		waitHelper.waitForElementVisible(debitNoteObj.accountsReceivableEastZone(), 3000, 300);
+		debitNoteObj.accountsReceivableEastZone().click();
 	}
 
 	@And("^save the debit note record$")

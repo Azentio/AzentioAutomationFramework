@@ -159,7 +159,7 @@ public class ARAP_AccountsReceivable_AccountsPayable extends BaseClass {
 	public void get_business_partner_name_in_invoice_bill() throws Throwable {
 		// -------GET DATA BP NAME -------//
 //		waitHelper.waitForElement(driver, 5000, arapObj.ARAP_GetcancelBpName());
-		WaitHelper.waitForElementwithFluentwait(driver, arapObj.ARAP_GetcancelBpName());
+		waitHelper.waitForElementwithFluentwait(driver, arapObj.ARAP_GetcancelBpName());
 		BPNumber = arapObj.ARAP_GetcancelBpName().getText();
 		System.out.println(BPNumber);
 	}
@@ -1432,7 +1432,7 @@ public class ARAP_AccountsReceivable_AccountsPayable extends BaseClass {
 	public void click_on_main_module_accounts_receivable() throws Throwable {
 		// ----------ACCOUTS RECEIVABLE----------//
 		javaScriptHelper.JavaScriptHelper(driver);
-		javaScriptHelper.scrollIntoView(arapObj.ARAP_Accountsreceivable());
+		//javaScriptHelper.scrollIntoView(arapObj.ARAP_Accountsreceivable());
 		waitHelper.waitForElement(driver, 2000, arapObj.ARAP_Accountsreceivable());
 		arapObj.ARAP_Accountsreceivable().click();
 	}
@@ -1775,7 +1775,7 @@ public class ARAP_AccountsReceivable_AccountsPayable extends BaseClass {
 	@And("^Get The Business Partner and Advance Number$")
 	public void get_the_business_partner_and_advance_number() throws Throwable {
 //		waitHelper.waitForElement(driver, 2000, arapObj.accountsReceivable_Advance_GetBp());
-		WaitHelper.waitForElementwithFluentwait(driver, arapObj.accountsReceivable_Advance_GetBp());
+		waitHelper.waitForElementwithFluentwait(driver, arapObj.accountsReceivable_Advance_GetBp());
 		BPNumber = arapObj.accountsReceivable_Advance_GetBp().getText();
 		System.out.println(BPNumber);
 
@@ -2650,6 +2650,7 @@ public class ARAP_AccountsReceivable_AccountsPayable extends BaseClass {
 	public void save_receipt_record() throws Throwable {
 		// -------SAVE RECEIPT RECORD-----//
 		arapObj.accountReceviableReceipt_Receipt_Save().click();
+		Thread.sleep(4000);
 	}
 
 	@Then("^Enter Get Referance Number$")

@@ -61,6 +61,16 @@ public class ACCOUNTSRECEIVABLE_ReceiptObj {
 	{
 		return accoutsReceivable_receiptSaveButton;
 	}
+	@FindBy(xpath = "//div[@id='toast-container']//div[@role='alert']")
+    private WebElement WorkflowInitiated;
+    public WebElement WorkflowInitiated() {
+         return WorkflowInitiated;
+    }
+    @FindBy(xpath = "//button[@aria-label='Close']")
+    private WebElement AlertClose;
+    public WebElement AlertClose() {
+         return AlertClose;
+    } 
 	
 	@FindBy(xpath="//ion-col[8]//div/div/div/span[2]")
 	private WebElement accoutsReceivable_getBankAccountNumber;

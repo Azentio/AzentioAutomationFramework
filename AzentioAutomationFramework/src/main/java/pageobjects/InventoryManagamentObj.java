@@ -325,7 +325,7 @@ public class InventoryManagamentObj {
 			}
 	//Account Payable
 	 
-	 @FindBy(xpath = "//ion-content[1]/custom-side-menu[1]/ion-list[1]/ion-item[3]")
+	 @FindBy(xpath = "//ion-label[text()=' Accounts payable ']")
 		private WebElement accountPayableButton;
 		public WebElement accountPayableButton() {
 					return accountPayableButton;

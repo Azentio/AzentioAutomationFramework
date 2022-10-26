@@ -13,14 +13,26 @@ public class Azentio_ReviewerObj {
 		this.driver = driver;
 		PageFactory.initElements(driver, this);
 	}
-
+@FindBy(xpath="//div[@role='alert']")
+private WebElement alert_Message;
+public WebElement alertMessage()
+{
+	return alert_Message;
+}
+@FindBy(xpath="//button[@aria-label='Close']")
+private WebElement alert_Close;
+public WebElement alertClose()
+{
+	return alert_Close;
+}
 	@FindBy(xpath = "//ion-button[@ng-reflect-router-link='/inbox']")
 	private WebElement reviewer_notification_icon;
 
 	public WebElement reviewerNotidicationIcon() {
 		return reviewer_notification_icon;
 	}
-
+	
+	  
 	@FindBy(xpath = "//span/ion-button[3]")
 	private WebElement reviewer_reject_button;
 

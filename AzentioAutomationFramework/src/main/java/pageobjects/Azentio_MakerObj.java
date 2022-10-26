@@ -20,7 +20,7 @@ public class Azentio_MakerObj {
 	public WebElement kubsFinaceOption() {
 		return maker_finance_option;
 	}
-    @FindBy(xpath="//ion-item[2]/ion-radio")
+    @FindBy(xpath="//ion-label[contains(text(),'Finance')]/../ion-radio")
     private WebElement finance_option;
     public WebElement FinanceOption() {
 		return finance_option;

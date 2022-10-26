@@ -1,8 +1,8 @@
  Feature: AR/AP Module
-#f
-@KUBS_AR_AP_UAT_005_001_TC_06  @AR/AP
+
+@KUBS_AR_AP_UAT_005_001_TC_06  @AR/AP 
 Scenario: Verify Accounts Payable Report post canceling payment settlement cancellation
-Given Maker Navigate to UAT URL login
+Given Navigate The Azentio Url
 And click on accounts Payable module
 And Go to payment settlement module
 Then click on search
@@ -19,9 +19,9 @@ And click on the view button
 Then verify the payment settement invoice number is available in the payable report
 
 
- @KUBS_AR/AP_UAT_005_002_TC_01  @AR/AP
+ @KUBS_AR/AP_UAT_005_002_TC_01  @AR/AP @e1
   Scenario: User cancels the payment settlement transaction for multiple bills.
-    Given User should go to the kubs url and login as a maker user
+   Given Navigate The Azentio Url
     And user should navigate to accounts payable menu
     When click on eye button of payment settlement cancellation
     And click on add button for payment settlement cancellation
@@ -43,10 +43,10 @@ Then verify the payment settement invoice number is available in the payable rep
     Given User should go to the kubs url and login as a maker user
     And user should navigate to accounts payable menu
     When click on eye button of manual payout
-    Then Get the payout status
+    #Then Get the payout status
     And maker should logout
     
- @KUBS_AR/AP_UAT_005_002_TC_02  @AR/AP
+ @KUBS_AR/AP_UAT_005_002_TC_02  @AR/AP	@e2	
   Scenario: Verify cancelled payment txn is not available for payout on payout screen.
     Given User should go to the kubs url and login as a maker user
     And user should navigate to accounts payable menu
@@ -56,7 +56,7 @@ Then verify the payment settement invoice number is available in the payable rep
     
     @KUBS_AR_AP_UAT_005_002_TC_03  @AR/AP
 Scenario: Verify accounting entries post payment settlement approval.
-Given Maker Navigate to UAT URL login
+   Given Navigate The Azentio Url
 And click on accounts Payable module
 And Go to payment settlement module
 Then click on search
@@ -85,7 +85,7 @@ Then Select date in calendar
 Then Click on the View button
 Then close the report
 
- @KUBS_AR/AP_UAT_005_002TC_05  @AR/AP
+ @KUBS_AR/AP_UAT_005_002TC_05  @AR/AP @report
     Scenario: Verify Accounts Payable Report post cancelling payment settlement txn
     Given user login as Azentio Maker
    When click the Account payable Mainmodule
@@ -108,7 +108,7 @@ Then close the report
    
    
    
-    @KUBS_AR/AP_UAT_005_003_TC_01  @AR/AP
+    @KUBS_AR/AP_UAT_005_003_TC_01  @AR/AP @e3
   Scenario: Verify cancelled payment txn is not available for payout on payout screen.
     Given User should go to the kubs url and login as a maker user
     And user should navigate to accounts payable menu
@@ -137,7 +137,7 @@ And click on view button
 Then verify approved settlement reference number is available in the Gl report
 
 
- @KUBS_AR/AP_UAT_005_004_TC_01  @AR/AP
+ @KUBS_AR/AP_UAT_005_004_TC_01  @AR/AP @e4
   Scenario: Verify cancelled payment txn is not available for payout on payout screen.
     Given User should go to the kubs url and login as a maker user
     And user should navigate to accounts payable menu
@@ -169,7 +169,7 @@ Then Verify Accounting entries Advance to Empolyee post payment settlement cance
 
 
 
-#@KUBS_AR/AP_UAT_006_001_TC_01
+#@_UAT_006_001_TC_01
   #Scenario: Creating Manual payouts for approved Bills of a Vendor
    #	Given Maker Navigate to UAT URL login
 #		Then Click on Direction icon
@@ -193,7 +193,7 @@ Then Verify Accounting entries Advance to Empolyee post payment settlement cance
     #When click on eye button of manual payout
     #Then Get the payout status
    
-  @KUBS_AR/AP_UAT_006_001_TC_01_Vendor  @AR/AP
+  @KUBS_AR/AP_UAT_006_001_TC_01_Vendor  @AR/AP @e6
   Scenario: Creating Manual payouts for approved Bills of a Vendor
     Given User should go to the kubs url and login as a maker user
     And user should navigate to accounts payable menu
@@ -286,7 +286,7 @@ And click on the view button
 Then  verify approved payout reference number is available in the payout report
 
   
-  @KUBS_AR/AP_UAT_006_002_TC_01  @AR/AP
+  @KUBS_AR/AP_UAT_006_002_TC_01  @AR/AP @e5
   Scenario: Creating manual payouts for approved advances of a vendor
     Given User should go to the kubs url and login as a maker user
     And user should navigate to accounts payable menu
@@ -411,9 +411,9 @@ Then  verify approved payout reference number is available in the payout report
 
  
  
-  @KUBS_AR/AP_UAT_006_003_TC_01_Employee  @AR/AP
+  @KUBS_AR/AP_UAT_006_003_TC_01_Employee  @AR/AP @e7
   Scenario: Creating Manual payouts for approved Bills of a Vendor
-   	Given Maker Navigate to UAT URL login
+   Given User should go to the kubs url and login as a maker user
 		Then Click on Direction icon
 		Then Click on Account Payable 
     When click on eye button of manual payout
@@ -422,14 +422,14 @@ Then  verify approved payout reference number is available in the payout report
  	 	Then Click on save button to save the Record for Account Recivable
 		Then Click on Update Deposited Cheque Notification
 		And Select and Submit the Update Deposited Cheque record
-		Then log in to the reviewer account
+	And User should go to the kubs url and login as a reviewer user
 		Then click on the Notification select the Cheque record and Approve
-		Then log in to the Checker Account
+		Given User should go to the kubs url and login as a checker user
 		And then checker claim the record
 		Then click on the checker Notification 
 		And select the Cheque record and Approve by checker
     
-    Given Maker Navigate to UAT URL login
+     Given User should go to the kubs url and login as a maker user
 		Then Click on Direction icon
 		Then Click on Account Payable 
     When click on eye button of manual payout
@@ -437,7 +437,7 @@ Then  verify approved payout reference number is available in the payout report
     
 @KUBS_AR_AP_UAT_006_003_TC_02  @AR/AP
 Scenario: Verify accounting entries post payout approval
-Given Maker Navigate to UAT URL login
+ Given User should go to the kubs url and login as a maker user
 And click on accounts Payable module
 And click on view button near by manual payout module
 Then click on search
@@ -500,9 +500,9 @@ Then  verify approved payout reference number is available in the payout report
 
 
 
-@KUBS_AR/AP_UAT_007_001_TC_01  @AR/AP
+@KUBS_AR/AP_UAT_007_001_TC_01  @AR/AP @(NoDateInAutoPayout)
 Scenario: Auto payouts for approved Bills of a Vendor
-Given Navigate to kubs URL and user should login as a maker
+Given User should go to the kubs url and login as a maker user
 Then Click on the Finance
 Then Click on the Direction
 Then Click on Accounts Payable
@@ -511,22 +511,22 @@ Then Click on Auto Payout edit grid
 Then Click on action button of record which we need to verify for details
 
 
-@KUBS_AR_AP_UAT_008_001_TC_01  @AR/AP
+@KUBS_AR_AP_UAT_008_001_TC_01  @AR/AP @Fail
 Scenario: Checking of downloaded payment files for online payment where create file basis is Bank & Account Number Wise
-Given Maker Navigate to UAT URL login
+Given User should go to the kubs url and login as a maker user
 And click on arap configuration main menu
 And click on payment file generation setup sub menu
 And configure the file format as Bank & Account Number Wise
 And save the arap configure record
 Then Click on Update Deposited Cheque Notification
 And Select and Submit the Update Deposited Cheque record
-		Then log in to the reviewer account
+		And User should go to the kubs url and login as a reviewer user
 		Then click on the Notification select the Cheque record and Approve
-		Then log in to the Checker Account
+		Given User should go to the kubs url and login as a checker user
 		And then checker claim the record
 		Then click on the checker Notification 
 		And select the Cheque record and Approve by checker
-Given Maker Navigate to UAT URL login
+Given User should go to the kubs url and login as a maker user
 And click on arap configuration main menu
 And click on payment file generation setup sub menu
 And verify payment file download format is in bank and accont number wise
@@ -542,18 +542,18 @@ And click on go button
 And download the payment file
 
 
-@KUBS_AR_AP_UAT_008_001_TC_02  @AR/AP
+@KUBS_AR_AP_UAT_008_001_TC_02  @AR/AP @NA
 Scenario: Verify payment file includes only below records,Where payment mode is Wire Transfer.Beneficiary Account is NOT maintained with legal entity.
-Given Maker Navigate to UAT URL login
+Given User should go to the kubs url and login as a maker user
 And click on arap configuration main menu
 And click on payment file generation setup sub menu
 And configure the file format as Bank & Account Number Wise
 And save the arap configure record
 Then Click on Update Deposited Cheque Notification
 And Select and Submit the Update Deposited Cheque record
-		Then log in to the reviewer account
+		And User should go to the kubs url and login as a reviewer user
 		Then click on the Notification select the Cheque record and Approve
-		Then log in to the Checker Account
+		Given User should go to the kubs url and login as a checker user
 		And then checker claim the record
 		Then click on the checker Notification 
 		And select the Cheque record and Approve by checker
@@ -578,22 +578,22 @@ And verify Where payment mode is Wire Transfer
 
 
 
-@KUBS_AR_AP_UAT_008_002_TC_01  @AR/AP
+@KUBS_AR_AP_UAT_008_002_TC_01  @AR/AP @blocker
 Scenario: Checking of downloaded payment files for online payment where create file basis is Bank Wise
-Given Maker Navigate to UAT URL login
+ Given User should go to the kubs url and login as a maker user
 And click on arap configuration main menu
 And click on payment file generation setup sub menu
 And configure the file format as Bank Wise
 And save the arap configure record
 Then Click on Update Deposited Cheque Notification
 And Select and Submit the Update Deposited Cheque record
-		Then log in to the reviewer account
+			And User should go to the kubs url and login as a reviewer user
 		Then click on the Notification select the Cheque record and Approve
 		Then log in to the Checker Account
 		And then checker claim the record
 		Then click on the checker Notification 
 		And select the Cheque record and Approve by checker
-Given Maker Navigate to UAT URL login
+ Given User should go to the kubs url and login as a maker user
 And click on arap configuration main menu
 And click on payment file generation setup sub menu
 And verify payment file download format is in Bank wise wise
@@ -608,22 +608,24 @@ And enter the payout date
 And click on go button 
 And download the payment file
 
-#KUBS_AR/AP_UAT_008_002_TC_02 -Defect
+#_UAT_008_002_TC_02 -Defect
 
-#KUBS_AR/AP_UAT_008_002_TC_03 -Defect
+#_UAT_008_002_TC_03 -Defect
 
 
 
-@KUBS_AR_AP_UAT_008_003_TC01  @AR/AP
+@KUBS_AR_AP_UAT_008_003_TC01  @AR/AP @blocker
 Scenario: Verify download file is auto created basis the defined time and user is allowed to download the file.
-Given Maker Navigate to UAT URL login
+ Given User should go to the kubs url and login as a maker user
 And click on arap configuration main menu
 And click on payment file generation setup sub menu
 And configure the file format as Payout wise
 And save the arap configure record
+And validate the saved record
 Then Click on Update Deposited Cheque Notification
 And Select and Submit the Update Deposited Cheque record
 		Then log in to the reviewer account
+		
 		Then click on the Notification select the Cheque record and Approve
 		Then log in to the Checker Account
 		And then checker claim the record
@@ -650,9 +652,9 @@ And download the payment file
 
 
 
-@KUBS_AR_AP_UAT_009_001_TC_01  @AR/AP
+@KUBS_AR_AP_UAT_009_001_TC_01  @AR/AP @blocker
 Scenario: Checking of upload payment files for online payments
-Given Maker Navigate to UAT URL login
+ Given User should go to the kubs url and login as a maker user
 And click on accounts Payable module
 And click on view button near by payment file upload module
 And click on Add Icon
@@ -670,14 +672,12 @@ And Select and Submit the Update Deposited Cheque record
 		And select the Cheque record and Approve by checker
 
 
-#KUBS_AR_AP_UAT_009_001_TC_02 - NA
-
-#KUBS_AR_AP_UAT_009_001_TC_03 - NA
+#\_UAT_009_001_TC_03 - NA
 
 
 @KUBS_AR_AP_UAT_010_001_TC_01  @AR/AP
 Scenario: Record a receipt through cheque mode
-Given Navigate The Azentio Url
+ Given User should go to the kubs url and login as a maker user
 Then Choose the second Tab Segment
 And Click On Main module Accounts Receivable
 Then Click on the Receipt Eye Icon
@@ -713,9 +713,9 @@ And Click On Search Icon
 Then Enter Get Referance Number
 Then Click on Table Row First Eye Icon in ARAP
 
-@KUBS_AR_AP_UAT_010_001_TC_02  @AR/AP
+@KUBS_AR_AP_UAT_010_001_TC_02  @AR/AP @E8
 Scenario: Record a receipt through Online mode
-Given Navigate The Azentio Url
+ Given User should go to the kubs url and login as a maker user
 Then Choose the second Tab Segment
 And Click On Main module Accounts Receivable
 Then Click on the Receipt Eye Icon
@@ -785,9 +785,9 @@ Then Verify Accounting entries post receipt recording
 
 
 
-@KUBS_AR_AP_UAT_010_002_TC_01  @AR/AP
+@KUBS_AR_AP_UAT_010_002_TC_01  @AR/AP 
 Scenario: Check cheque receipts are available for the selected Bank
-Given Maker Navigate to UAT URL login
+  Given User should go to the kubs url and login as a maker user
 And goto accouts Receivable module
 And goto accouts receipt module
 And click on Add Icon
@@ -795,14 +795,13 @@ And fill the all receipt mendatory details
 And save the receipt record
 Then Click on Update Deposited Cheque Notification
 And Select and Submit the Update Deposited Cheque record
-		Then log in to the reviewer account
+				And User should go to the kubs url and login as a reviewer user
 		Then click on the Notification select the Cheque record and Approve
-		Then log in to the Checker Account
+			Given User should go to the kubs url and login as a checker user
 		And then checker claim the record
 		Then click on the checker Notification 
 		And select the Cheque record and Approve by checker
-Given Maker Navigate to UAT URL login
-
+ Given User should go to the kubs url and login as a maker user
 And goto accouts Receivable module
 And goto cheque deposite module
 And click on Add Icon
@@ -813,7 +812,7 @@ Then check our bill is appeared in the list view
 
 @KUBS_AR_AP_UAT_010_002_TC_02  @AR/AP
 Scenario: Verify status for the receipt is auto changed to Deposit
-Given Maker Navigate to UAT URL login
+ Given User should go to the kubs url and login as a maker user
 And goto accouts Receivable module
 And goto accouts receipt module
 And click on Add Icon
@@ -821,7 +820,8 @@ And fill the all receipt mendatory details
 And save the receipt record
 Then Click on Update Deposited Cheque Notification
 And Select and Submit the Update Deposited Cheque record
-		Then log in to the reviewer account
+				And User should go to the kubs url and login as a reviewer user
+
 		Then click on the Notification select the Cheque record and Approve
 		Then log in to the Checker Account
 		And then checker claim the record
@@ -873,7 +873,7 @@ And select the Cheque record and Approve by checker
     Then click on view button to view the reports and verify
  
  
-#@KUBS_AR/AP_UAT_010_002_TC_04
+#@_UAT_010_002_TC_04
 #Scenario: Verify accounting entries for cleared cheques
 #
 #Given Navigate to URL and user should login as a maker
@@ -993,7 +993,7 @@ Then Check receipt is available for Appropriation
 
 
 #Below 2 scenario are duplicates
-#@KUBS_AR/AP_UAT_010_005_TC_03  @AR/AP
+#@_UAT_010_005_TC_03  @AR/AP
 #Scenario: Verify Credit Note is not available for appropriation against receipt.
 #Given Navigate to kubs URL and user should login as a maker
 #Then Click on the Finance
@@ -1014,7 +1014,7 @@ And click on Add Icon
 And validate the credit note approved record is not available
     
 
-@KUBS_AR/AP_UAT_010_005_TC_04 @AR/AP
+@_UAT_010_005_TC_04 @AR/AP
 
 Scenario: Below amount must be correctly calculated & displayed post receipt appropriation.
  				  Receipt Outstanding, Appropriation Amount, Outstanding amount for Receivables.
@@ -1268,7 +1268,7 @@ Then Click on Accounts Recivable
 
 Then Click on receipt appropriation Reversal
 
-#KUBS_AR/AP_UAT_011_002_TC_03 - Functionality NA
+#_UAT_011_002_TC_03 - Functionality NA
 
 @KUBS_AR/AP_UAT_011_002_TC_04  @AR/AP
 Scenario: Verify Balance sheet post receipt appropriation cancellation
@@ -1299,10 +1299,10 @@ Then close the report
     And Click save button
     Then verify Receipts and receivable against cancelled appropriation must be available again for receipt appropriation
     
-    #KUBS_AR/AP_UAT_011_002_TC_06 - Functionality NA
+    #_UAT_011_002_TC_06 - Functionality NA
     
     
-    #KUBS_AR/AP_UAT_012_001_TC_01 - KUBS_AR/AP_UAT_012_003_TC_05 (Not Automatable)
+    #_UAT_012_001_TC_01 - _UAT_012_003_TC_05 (Not Automatable)
 	
 	
 	@KUBS_AR/AP_UAT_013_001_TC_01  @AR/AP
@@ -1463,7 +1463,7 @@ And fill the payment settlement record and validate the invoice number is not av
     
     @KUBS_AR/AP_UAT_013_002TC_02 @AR/AP
     Scenario: Verify Receivables once appropriated against a receipt is not adjusted against a bill on payment settlement screen.
-Given Maker Navigate to UAT URL login
+    Given User should go to the kubs url and login as a maker user
 And click on accounts Payable module
 And go to invoice bill booking module
 Then click on search
@@ -1478,13 +1478,13 @@ And fill the debit note details against that bill
 And save the debit note record 
 Then Click on Update Deposited Cheque Notification
 And Select and Submit the Update Deposited Cheque record
-		Then log in to the reviewer account
+		 And User should go to the kubs url and login as a reviewer user
 		Then click on the Notification select the Cheque record and Approve
-		Then log in to the Checker Account
+		Given User should go to the kubs url and login as a checker user
 		And then checker claim the record
 		Then click on the checker Notification 
 		And select the Cheque record and Approve by checker
-Given Maker Navigate to UAT URL login
+ Given User should go to the kubs url and login as a maker user
 
 And goto accouts Receivable module
 And click on debit note module
@@ -1495,13 +1495,13 @@ And do the appropriation for the debit note record
 And save the appropriation record 
 Then Click on Update Deposited Cheque Notification
 And Select and Submit the Update Deposited Cheque record
-		Then log in to the reviewer account
+		  And User should go to the kubs url and login as a reviewer user
 		Then click on the Notification select the Cheque record and Approve
-		Then log in to the Checker Account
+		Given User should go to the kubs url and login as a checker user
 		And then checker claim the record
 		Then click on the checker Notification 
 		And select the Cheque record and Approve by checker
-Given Maker Navigate to UAT URL login
+ Given User should go to the kubs url and login as a maker user
 Then click on second Segment button
 And click on accounts Payable module
 And Go to payment settlement module

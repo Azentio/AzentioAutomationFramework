@@ -253,10 +253,10 @@ public class InventoryManagament extends BaseClass {
 			}
 			}*/
 //		Thread.sleep(2000);
-		WebElement element=WaitHelper.waitForElementwithFluentwait(driver, budgetTransferObj.budget_BudgetTransfer_RemarkField());
+		WebElement element=waithelper.waitForElementwithFluentwait(driver, budgetTransferObj.budget_BudgetTransfer_RemarkField());
 			element.click();
 //		javahelper.JSEClick(budgetTransferObj.budget_BudgetTransfer_RemarkField());
-		WebElement element1=WaitHelper.waitForElementwithFluentwait(driver, budgetTransferObj.budget_BudgetTransfer_RemarkField());
+		WebElement element1=waithelper.waitForElementwithFluentwait(driver, budgetTransferObj.budget_BudgetTransfer_RemarkField());
 			element1.sendKeys("ok");
 
 //		budgetTransferObj.budget_BudgetTransfer_RemarkField().sendKeys("OK");
@@ -339,7 +339,7 @@ public class InventoryManagament extends BaseClass {
 	@Then("^Approve the record which we submitted from maker stage$")
 	public void approve_the_record_which_we_submitted_from_maker_stage() throws Throwable {
 //		waithelper.waitForElement(driver, 2000, reviewer.reviewerApproveButton());
-		WaitHelper.waitForElementwithFluentwait(driver, reviewer.reviewerApproveButton());
+		waithelper.waitForElementwithFluentwait(driver, reviewer.reviewerApproveButton());
 		reviewer.reviewerApproveButton().click();
 //		waithelper.waitForElement(driver, 2000, reviewer.reviewerAlertRemarks());
 		waithelper.waitForElementwithFluentwait(driver, reviewer.reviewerAlertRemarks());

@@ -115,7 +115,7 @@ AccountReceivable_AccountReceivableAdvancesTestDataType accountReceivable_Accoun
         javascripthelper.JavaScriptHelper(driver);
         String str = javascripthelper.executeScript("return document.querySelector(\"ion-toast\").shadowRoot.querySelector(\"div[class='toast-message']\").innerText").toString();
         System.out.println("Message:" +str);
-        Thread.sleep(1000);
+        Thread.sleep(4000);
     }
 
 }

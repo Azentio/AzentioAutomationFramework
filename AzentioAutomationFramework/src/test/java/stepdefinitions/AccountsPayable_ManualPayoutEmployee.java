@@ -73,27 +73,32 @@ public class AccountsPayable_ManualPayoutEmployee  extends BaseClass {
 		javascripthelper.JavaScriptHelper(driver);
 		//EntityBranch
 		waithelper.waitForElement(driver, 2000,accountsPayable_ManualPayoutEmployeeObj.accountPayable_ManualPayout_EntityBranch());
+		accountsPayable_ManualPayoutEmployeeObj.accountPayable_ManualPayout_EntityBranch().click();
 		accountsPayable_ManualPayoutEmployeeObj.accountPayable_ManualPayout_EntityBranch().sendKeys(accountsPayable_ManualPayoutEmployeeTestDataType.EntityBranch);
 		accountsPayable_ManualPayoutEmployeeObj.accountPayable_ManualPayout_EntityBranch().sendKeys(Keys.ENTER);
 		
 		//BP_Name
 		waithelper.waitForElement(driver, 2000,accountsPayable_ManualPayoutEmployeeObj.accountPayable_ManualPayout_BP_Name());
+		accountsPayable_ManualPayoutEmployeeObj.accountPayable_ManualPayout_BP_Name().click();
 		accountsPayable_ManualPayoutEmployeeObj.accountPayable_ManualPayout_BP_Name().sendKeys(accountsPayable_ManualPayoutEmployeeTestDataType.BP_Name);
 		accountsPayable_ManualPayoutEmployeeObj.accountPayable_ManualPayout_BP_Name().sendKeys(Keys.ENTER);
 		
 		//BeneficiaryName
 		accountsPayable_ManualPayoutEmployeeObj.accountPayable_ManualPayout_BeneficiaryName().click();
 		waithelper.waitForElement(driver, 2000, accountsPayable_ManualPayoutEmployeeObj.accountPayable_ManualPayout_BeneficiaryName());
+		Thread.sleep(2000);
 		accountsPayable_ManualPayoutEmployeeObj.accountPayable_ManualPayout_BeneficiaryName().sendKeys(accountsPayable_ManualPayoutEmployeeTestDataType.BeneficiaryName);
 		accountsPayable_ManualPayoutEmployeeObj.accountPayable_ManualPayout_BeneficiaryName().sendKeys(Keys.ENTER);
 	
 		//Currency
 		waithelper.waitForElement(driver, 2000, accountsPayable_ManualPayoutEmployeeObj.accountPayable_ManualPayout_Currency());
+		accountsPayable_ManualPayoutEmployeeObj.accountPayable_ManualPayout_Currency().click();
 		accountsPayable_ManualPayoutEmployeeObj.accountPayable_ManualPayout_Currency().sendKeys(accountsPayable_ManualPayoutEmployeeTestDataType.Currency);
 		accountsPayable_ManualPayoutEmployeeObj.accountPayable_ManualPayout_Currency().sendKeys(Keys.ENTER);
 		
 		//PaymentBank
 		waithelper.waitForElement(driver, 2000, accountsPayable_ManualPayoutEmployeeObj.accountPayable_ManualPayout_PaymentBank());
+		accountsPayable_ManualPayoutEmployeeObj.accountPayable_ManualPayout_PaymentBank().click();
 		accountsPayable_ManualPayoutEmployeeObj.accountPayable_ManualPayout_PaymentBank().sendKeys(accountsPayable_ManualPayoutEmployeeTestDataType.PaymentBank);
 		accountsPayable_ManualPayoutEmployeeObj.accountPayable_ManualPayout_PaymentBank().sendKeys(Keys.ENTER);
 		
@@ -101,25 +106,30 @@ public class AccountsPayable_ManualPayoutEmployee  extends BaseClass {
 		accountsPayable_ManualPayoutEmployeeObj.accountPayable_ManualPayout_BankAccountNumber().click();
 		waithelper.waitForElement(driver, 2000, accountsPayable_ManualPayoutEmployeeObj.accountPayable_ManualPayout_BankAccountNumber());
 		accountsPayable_ManualPayoutEmployeeObj.accountPayable_ManualPayout_BankAccountNumber().sendKeys(accountsPayable_ManualPayoutEmployeeTestDataType.BankAccountNumber);
+		Thread.sleep(2000);
 		accountsPayable_ManualPayoutEmployeeObj.accountPayable_ManualPayout_BankAccountNumber().sendKeys(Keys.ENTER);
 		
 		//PaymentMode
 		waithelper.waitForElement(driver, 2000, accountsPayable_ManualPayoutEmployeeObj.accountPayable_ManualPayout_PaymentMode());
+		accountsPayable_ManualPayoutEmployeeObj.accountPayable_ManualPayout_PaymentMode().click();
 		accountsPayable_ManualPayoutEmployeeObj.accountPayable_ManualPayout_PaymentMode().sendKeys(accountsPayable_ManualPayoutEmployeeTestDataType.PaymentMode);
 		accountsPayable_ManualPayoutEmployeeObj.accountPayable_ManualPayout_PaymentMode().sendKeys(Keys.ENTER);
 		
 		//ReferenceNumber
 		waithelper.waitForElement(driver, 2000, accountsPayable_ManualPayoutEmployeeObj.accountPayable_ManualPayout_ReferenceNumber());
+		accountsPayable_ManualPayoutEmployeeObj.accountPayable_ManualPayout_ReferenceNumber().click();
 		accountsPayable_ManualPayoutEmployeeObj.accountPayable_ManualPayout_ReferenceNumber().sendKeys(accountsPayable_ManualPayoutEmployeeTestDataType.ReferenceNumber);
 		
 		//ChequeNumber
 		waithelper.waitForElement(driver, 2000, accountsPayable_ManualPayoutEmployeeObj.accountPayable_ManualPayout_ChequeNumber());
+		accountsPayable_ManualPayoutEmployeeObj.accountPayable_ManualPayout_ChequeNumber().click();
 		accountsPayable_ManualPayoutEmployeeObj.accountPayable_ManualPayout_ChequeNumber().sendKeys(accountsPayable_ManualPayoutEmployeeTestDataType.ChequeNumber);
 		
 		javascripthelper.scrollIntoViewAndClick(accountsPayable_ManualPayoutEmployeeObj.accountPayable_ManualPayout_Footer());
 		
 		//Remarks
 		waithelper.waitForElement(driver, 2000,accountsPayable_ManualPayoutEmployeeObj.accountPayable_ManualPayout_Remark());
+		accountsPayable_ManualPayoutEmployeeObj.accountPayable_ManualPayout_Remark().click();
 		accountsPayable_ManualPayoutEmployeeObj.accountPayable_ManualPayout_Remark().sendKeys(accountsPayable_ManualPayoutEmployeeTestDataType.Remarks);
 		
 		//SelectPaymentTxnNumber

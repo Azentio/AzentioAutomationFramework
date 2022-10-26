@@ -61,8 +61,16 @@ public class ACCOUNTSPAYABLE_ManualPayout {
 
     @And("^click on add button for manual payout$")
     public void click_on_add_button_for_manual_payout() {
-    	waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_ManualPayoutObj.accountPayable_ManualPayout_AddButton());
+    	//waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_ManualPayoutObj.accountPayable_ManualPayout_AddButton());
+    	for (int i = 0; i < 100; i++) {
+			try {
+		
     	aCCOUNTSPAYABLE_ManualPayoutObj.accountPayable_ManualPayout_AddButton().click();
+    	break;
+			}
+			catch(Exception e) {
+			}
+			}
     }
 
     @And("^Fill the required fields for manual payout vendor$")
@@ -71,12 +79,15 @@ public class ACCOUNTSPAYABLE_ManualPayout {
 		
 		//Entity Branch name
 		waithelper.waitForElement(driver, 2000,aCCOUNTSPAYABLE_ManualPayoutObj.accountPayable_ManualPayout_EntityBranch());
+		aCCOUNTSPAYABLE_ManualPayoutObj.accountPayable_ManualPayout_EntityBranch().click();
 		aCCOUNTSPAYABLE_ManualPayoutObj.accountPayable_ManualPayout_EntityBranch().sendKeys(aCCOUNTSPAYABLE_ManualPayoutTestDataType.EntityBranch);
 		aCCOUNTSPAYABLE_ManualPayoutObj.accountPayable_ManualPayout_EntityBranch().sendKeys(Keys.ENTER);
 		
 		//bp name
 		waithelper.waitForElement(driver, 2000,aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_BP_Name());
+		aCCOUNTSPAYABLE_ManualPayoutObj.accountPayable_ManualPayout_BP_Name().click();
 		aCCOUNTSPAYABLE_ManualPayoutObj.accountPayable_ManualPayout_BP_Name().sendKeys(aCCOUNTSPAYABLE_ManualPayoutTestDataType.BP_Name);
+		Thread.sleep(2000);
 		aCCOUNTSPAYABLE_ManualPayoutObj.accountPayable_ManualPayout_BP_Name().sendKeys(Keys.ENTER);
 		
 		//benificiary name
@@ -87,41 +98,49 @@ public class ACCOUNTSPAYABLE_ManualPayout {
 		
 		//currency
 		waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_ManualPayoutObj.accountPayable_ManualPayout_Currency());
+		aCCOUNTSPAYABLE_ManualPayoutObj.accountPayable_ManualPayout_Currency().click();
 		aCCOUNTSPAYABLE_ManualPayoutObj.accountPayable_ManualPayout_Currency().sendKeys(aCCOUNTSPAYABLE_ManualPayoutTestDataType.Currency);
 		aCCOUNTSPAYABLE_ManualPayoutObj.accountPayable_ManualPayout_Currency().sendKeys(Keys.ENTER);
 		
 //		payment bank
 		waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_ManualPayoutObj.accountPayable_ManualPayout_PaymentBank());
+		aCCOUNTSPAYABLE_ManualPayoutObj.accountPayable_ManualPayout_PaymentBank().click();
 		aCCOUNTSPAYABLE_ManualPayoutObj.accountPayable_ManualPayout_PaymentBank().sendKeys(aCCOUNTSPAYABLE_ManualPayoutTestDataType.PaymentBank);
 		aCCOUNTSPAYABLE_ManualPayoutObj.accountPayable_ManualPayout_PaymentBank().sendKeys(Keys.ENTER);
 		
 		//bank account number
 		aCCOUNTSPAYABLE_ManualPayoutObj.accountPayable_ManualPayout_BankAccountNumber().click();
 		waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_ManualPayoutObj.accountPayable_ManualPayout_BankAccountNumber());
+		aCCOUNTSPAYABLE_ManualPayoutObj.accountPayable_ManualPayout_BankAccountNumber().click();
 		aCCOUNTSPAYABLE_ManualPayoutObj.accountPayable_ManualPayout_BankAccountNumber().sendKeys(aCCOUNTSPAYABLE_ManualPayoutTestDataType.BankAccountNumber);
+		Thread.sleep(2000);
 		aCCOUNTSPAYABLE_ManualPayoutObj.accountPayable_ManualPayout_BankAccountNumber().sendKeys(Keys.ENTER);
-		
+		Thread.sleep(2000);
 		waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_ManualPayoutObj.accountPayable_ManualPayout_PaymentMode());
+		aCCOUNTSPAYABLE_ManualPayoutObj.accountPayable_ManualPayout_PaymentMode().click();
 		aCCOUNTSPAYABLE_ManualPayoutObj.accountPayable_ManualPayout_PaymentMode().sendKeys(aCCOUNTSPAYABLE_ManualPayoutTestDataType.PaymentMode);
 		aCCOUNTSPAYABLE_ManualPayoutObj.accountPayable_ManualPayout_PaymentMode().sendKeys(Keys.ENTER);
 		
 		//reference number
 		waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_ManualPayoutObj.accountPayable_ManualPayout_ReferenceNumber());
+		aCCOUNTSPAYABLE_ManualPayoutObj.accountPayable_ManualPayout_ReferenceNumber().click();
 		aCCOUNTSPAYABLE_ManualPayoutObj.accountPayable_ManualPayout_ReferenceNumber().sendKeys(aCCOUNTSPAYABLE_ManualPayoutTestDataType.ReferenceNumber);
 		
 		//cheque number
 		waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_ManualPayoutObj.accountPayable_ManualPayout_ChequeNumber());
+		aCCOUNTSPAYABLE_ManualPayoutObj.accountPayable_ManualPayout_ChequeNumber().click();
 		aCCOUNTSPAYABLE_ManualPayoutObj.accountPayable_ManualPayout_ChequeNumber().sendKeys(aCCOUNTSPAYABLE_ManualPayoutTestDataType.ChequeNumber);
 		
 		javascripthelper.scrollIntoViewAndClick(aCCOUNTSPAYABLE_ManualPayoutObj.accountPayable_ManualPayout_Footer());
 		
 		waithelper.waitForElement(driver, 2000,aCCOUNTSPAYABLE_ManualPayoutObj.accountPayable_ManualPayout_Remark());
+		aCCOUNTSPAYABLE_ManualPayoutObj.accountPayable_ManualPayout_Remark().click();
 		aCCOUNTSPAYABLE_ManualPayoutObj.accountPayable_ManualPayout_Remark().sendKeys(aCCOUNTSPAYABLE_ManualPayoutTestDataType.Remarks);
-		
+		Thread.sleep(2000);
 		String beforexpath = "//div[contains(text(),'";
 		String afterxpath = "')]/../../datatable-body-cell/div/ion-checkbox";
 		driver.findElement(By.xpath(beforexpath+aCCOUNTSPAYABLE_ManualPayoutTestDataType.PaymentApprovalTxnNumber+afterxpath)).click();
-		
+		Thread.sleep(2000);
     }
     
     @Then("^Save and submit the manual payout record$")
@@ -134,7 +153,7 @@ public class ACCOUNTSPAYABLE_ManualPayout {
 				"return document.querySelector(\"ion-toast\").shadowRoot.querySelector(\"div[class='toast-message']\").innerText")
 				.toString();
 		System.out.println("Message:" + str);
-		
+		Thread.sleep(4000);
 		waithelper.waitForElement(driver, 3000, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_NotificationButton());
 		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_NotificationButton().click();
 		
@@ -231,13 +250,28 @@ public class ACCOUNTSPAYABLE_ManualPayout {
     	waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_NotificationButton());
 		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_NotificationButton().click();
 		Thread.sleep(2000);
-		waithelper.waitForElement(driver, 3000, driver.findElement(By.xpath("//span[contains(text(),'" + jsonWriter.readReferancedata()
-		+ "')]/ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell/div/ion-buttons/ion-button")));
-		driver.findElement(By.xpath("//span[contains(text(),'" + jsonWriter.readReferancedata() + "')]/ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell/div/ion-buttons/ion-button"))
-		.click();
+		//waithelper.waitForElement(driver, 3000, driver.findElement(By.xpath("//span[contains(text(),'" + jsonWriter.readReferancedata()
+		//+ "')]/ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell/div/ion-buttons/ion-button")));
+		for (int i = 0; i < 100; i++) {
+			try {
+				driver.findElement(By.xpath("//span[contains(text(),'" + jsonWriter.readReferancedata() + "')]/ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell/div/ion-buttons/ion-button"))
+				.click();
+			}
+			catch(Exception e)
+			{
+			}
+			}
+		
+	
 		
 		waithelper.waitForElement(driver, 2000, kubschecker.checkerApproveButton());
-		kubschecker.checkerApproveButton().click();
+		for (int i = 0; i < 100; i++) {
+		try {	
+			kubschecker.checkerApproveButton().click();
+			break;
+		}
+		catch(Exception e) {
+		}}
 		waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_ApprovedByReviewerRemark());
 		aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_ApprovedByReviewerRemark().sendKeys(aCCOUNTSPAYABLE_ManualPayoutTestDataType.ApprovedByChecker);
 		waithelper.waitForElement(driver, 2000, kubschecker.checkersubmitButton());
@@ -255,11 +289,19 @@ public class ACCOUNTSPAYABLE_ManualPayout {
     @Then("^Get the payout status$")
     public void get_the_payout_status()  {
     	
-    	waithelper.waitForElement(driver, 3000, aCCOUNTSPAYABLE_ManualPayoutObj.accountPayable_ManualPayout_Search());
-    	aCCOUNTSPAYABLE_ManualPayoutObj.accountPayable_ManualPayout_Search().click();
+    	//waithelper.waitForElement(driver, 3000, aCCOUNTSPAYABLE_ManualPayoutObj.accountPayable_ManualPayout_Search());
+    	for (int i = 0; i < 50; i++) {
+			try {
+		    	aCCOUNTSPAYABLE_ManualPayoutObj.accountPayable_ManualPayout_Search().click();
+		    	break;
+			}
+			catch(Exception e)
+			{
+			}
+			}
     	waithelper.waitForElement(driver, 3000, aCCOUNTSPAYABLE_ManualPayoutObj.accountPayable_ManualPayout_BusinessPartnerSearch());
     	aCCOUNTSPAYABLE_ManualPayoutObj.accountPayable_ManualPayout_BusinessPartnerSearch().sendKeys(aCCOUNTSPAYABLE_ManualPayoutTestDataType.BP_Name);
-    	System.out.println("Payout Status is - " +aCCOUNTSPAYABLE_ManualPayoutObj.accountPayable_ManualPayout_PayoutStatus().getText());
+    	//System.out.println("Payout Status is - " +aCCOUNTSPAYABLE_ManualPayoutObj.accountPayable_ManualPayout_PayoutStatus().getText());
        
     }
 

@@ -58,6 +58,36 @@ public class AccountsReceivable_DebitNoteObj {
 	public WebElement accountsReceivable_DebitNote_ReceivableName() {
 		return accountsReceivable_DebitNote_ReceivableName;
 	}
+
+	//Shipped from location
+	@FindBy(xpath = "//label[text()=' Shipped From(Location) ']//following-sibling::ng-select")
+	private WebElement accountsReceivable_ShippedFromLocation1;
+	
+	public WebElement accountsReceivable_ShippedFromLocation() {
+		return accountsReceivable_ShippedFromLocation1;
+	}
+	//Shipped from location
+		@FindBy(xpath = "//span[text()='East Zone']")
+		private WebElement accountsReceivableEastZone1;
+		
+		public WebElement accountsReceivableEastZone() {
+			return accountsReceivableEastZone1;
+		}
+	//Devivery  location
+		@FindBy(xpath = "//label[text()=' Delivery Location ']//following-sibling::ng-select")
+		private WebElement accountsReceivable_DeliveryLocation1;
+		
+		public WebElement accountsReceivable_DeliveryLocation() {
+			return accountsReceivable_DeliveryLocation1;
+		}
+
+//Devivery  location
+	@FindBy(xpath = "//span[text()='INDIA - Punjab']")
+	private WebElement accountsReceivable_Punjab1;
+	
+	public WebElement accountsReceivable_Punjab() {
+		return accountsReceivable_Punjab1;
+	}
 	
 	//BP NAme
 	@FindBy(xpath = "//ion-col[4]/app-kub-lov[1]/span[1]/ng-select[1]/div[1]/div[1]/div[2]/input[1]")

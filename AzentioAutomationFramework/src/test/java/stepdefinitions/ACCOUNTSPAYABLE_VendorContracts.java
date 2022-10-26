@@ -339,9 +339,12 @@ public class ACCOUNTSPAYABLE_VendorContracts {
 	}
 
 	@Then("^Click on notification button in reviewer$")
-	public void click_on_notification_button_in_reviewer() {
+	public void click_on_notification_button_in_reviewer() throws InterruptedException {
+		Thread.sleep(1000);
 		waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_NotificationButton());
-		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_NotificationButton().click();;
+		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_NotificationButton().click();
+		Thread.sleep(1000);
+
 	}
 
 	@And("^approve the record by reviewer user$")
@@ -402,18 +405,29 @@ public class ACCOUNTSPAYABLE_VendorContracts {
     }
 
     @Then("^Click on open pool in checker$")
-    public void click_on_open_pool_in_checker() {
+    public void click_on_open_pool_in_checker() throws InterruptedException {
     	waithelper.waitForElement(driver,3000,kubschecker.checkerActionIcon());
     	kubschecker.checkerActionIcon().click();
+    	Thread.sleep(2000);
     }
 
     @And("^Click on claim button in checker$")
-    public void click_on_claim_button_in_checker() throws IOException, ParseException  {
+    public void click_on_claim_button_in_checker() throws IOException, ParseException, InterruptedException  {
     	String before_xpath = "//span[contains(text(),'";
 		String after_xpath_claim = "')]/parent::div/parent::datatable-body-cell/preceding-sibling::datatable-body-cell[2]/div/ion-buttons/ion-button";
 		//String after_xpath = ;
-		waithelper.waitForElementwithFluentwait(driver, driver.findElement(By.xpath(before_xpath + reader.readReferancedata() + after_xpath_claim)));
-		driver.findElement(By.xpath(before_xpath + reader.readReferancedata() + after_xpath_claim)).click();
+		//waithelper.waitForElementwithFluentwait(driver, driver.findElement(By.xpath(before_xpath + reader.readReferancedata() + after_xpath_claim)));
+		for (int i = 0; i <200; i++) {
+			try {
+				driver.findElement(By.xpath(before_xpath + reader.readReferancedata() + after_xpath_claim)).click();
+break;
+			}
+			catch(Exception e)
+			{
+				
+			}
+		}
+		Thread.sleep(2000);
     }
     
     @And("^capture claimed status$")
@@ -436,8 +450,16 @@ public class ACCOUNTSPAYABLE_VendorContracts {
 	public void checker_should_approved_the_contract_record() throws IOException, ParseException, InterruptedException {
 //		waithelper.waitForElement(driver, 3000, driver.findElement(By.xpath("//span[contains(text(),'" + jsonWriter.readReferancedata() + "')]/ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell/div/ion-buttons/ion-button")));
 		Thread.sleep(2000);
-		waithelper.waitForElementwithFluentwait(driver, driver.findElement(By.xpath("//span[contains(text(),'" + jsonWriter.readReferancedata() + "')]/ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell/div/ion-buttons/ion-button")));
-		driver.findElement(By.xpath("//span[contains(text(),'" + jsonWriter.readReferancedata() + "')]/ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell/div/ion-buttons/ion-button")).click();
+		//waithelper.waitForElementwithFluentwait(driver, driver.findElement(By.xpath("//span[contains(text(),'" + jsonWriter.readReferancedata() + "')]/ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell/div/ion-buttons/ion-button")));
+		for (int i = 0; i <40; i++) {
+			try {
+				driver.findElement(By.xpath("//span[contains(text(),'" + jsonWriter.readReferancedata() + "')]/ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell/div/ion-buttons/ion-button")).click();
+			    break;
+			} catch (Exception e) {
+				
+			}
+		}
+		
 //    	waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_NotificationButton());
 //		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_NotificationButton().click();
 //		Thread.sleep(2000);

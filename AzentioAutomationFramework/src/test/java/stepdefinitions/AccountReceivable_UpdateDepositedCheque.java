@@ -211,7 +211,16 @@ public class AccountReceivable_UpdateDepositedCheque extends BaseClass {
 		jsonWriter.addData(reviewerId);
 
 	}
-
+	@And("^validate the saved record$")
+    public void validate_the_saved_record() throws Throwable {
+		waithelper = new WaitHelper(driver);
+		reviewer = new Azentio_ReviewerObj(driver);
+		waithelper.waitForElementToVisibleWithFluentWait(driver, reviewer.alertMessage(), 10, 1);
+		
+		System.out.println(reviewer.alertMessage().getText());
+		waithelper.waitForElementToVisibleWithFluentWait(driver, reviewer.alertClose(), 10,1);
+		 reviewer.alertClose().click();
+    }
 	@Then("^click on the Notification select the Cheque record and Approve$")
 	public void click_on_the_notification_select_the_cheque_record_and_approve()
 			throws InterruptedException, IOException, ParseException {
@@ -226,6 +235,7 @@ public class AccountReceivable_UpdateDepositedCheque extends BaseClass {
 		// budgetdata = jsonReader.getBudgetdataByName("Maker");
 		javascripthelper = new JavascriptHelper();
 		Thread.sleep(1000);
+		/*
 		for (int i = 1; i <= 35; i++) {
 			try {
 				waithelper.waitForElement(driver, 3000,
@@ -241,6 +251,7 @@ public class AccountReceivable_UpdateDepositedCheque extends BaseClass {
 				kubschecker.checker_notification_next_button().click();
 			}
 		}
+		*/
 		String before_xpath = "//span[contains(text(),'";
 		String after_xpath = "')]/ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell//ion-button";
 

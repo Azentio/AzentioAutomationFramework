@@ -84,6 +84,7 @@ public class ACCOUNTSPAYBLE_PaymentFileDownload extends BaseClass{
     }
     @And("^configure the file format as Payout wise$")
     public void configure_the_file_format_as_payout_wise() throws Throwable {
+    	waitHelper.waitForElementToVisibleWithFluentWait(driver, makerObj.arapConfigBranchRecord(), 20, 1);
     	makerObj.arapConfigBranchRecord().click();
     	waitHelper.waitForElementVisible(makerObj.arapConfigCreateFileBasisInputBox(), 2000, 200);
     	makerObj.arapConfigCreateFileBasisInputBox().click();
@@ -92,7 +93,9 @@ public class ACCOUNTSPAYBLE_PaymentFileDownload extends BaseClass{
     }
     @And("^save the arap configure record$")
     public void save_the_arap_configure_record() throws Throwable {
+    	waitHelper.waitForElementVisible(makerObj.arapConfigPaymentFileConfigSaveButton(), 2000, 200);
     	makerObj.arapConfigPaymentFileConfigSaveButton().click();
+    	Thread.sleep(5000);
     }
 	@And("^search the transfer as payment mode$")
     public void search_the_transfer_as_payment_mode() throws Throwable {

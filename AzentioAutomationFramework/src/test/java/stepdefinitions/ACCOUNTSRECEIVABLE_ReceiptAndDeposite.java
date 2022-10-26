@@ -36,6 +36,7 @@ public class ACCOUNTSRECEIVABLE_ReceiptAndDeposite extends BaseClass {
     
     @And("^goto accouts Receivable module$")
     public void goto_accouts_receivable_module() throws Throwable {
+    	Thread.sleep(1500);
     	makerObj.kubsDirectionIcon().click();
     	waitHelper.waitForElementVisible(makerObj.kubsAccountsReceivable(), 2000, 100);
     	makerObj.kubsAccountsReceivable().click();
@@ -61,6 +62,7 @@ public class ACCOUNTSRECEIVABLE_ReceiptAndDeposite extends BaseClass {
     	
     	receiptObj.accoutsReceivableReceiptBankAccount().click();
     	receiptObj.accoutsReceivableReceiptBankAccount().sendKeys(receipTTestData.BankAccountNumber);
+    	Thread.sleep(2000);
     	receiptObj.accoutsReceivableReceiptBankAccount().sendKeys(Keys.ENTER);
     	
     	receiptObj.accoutsReceivableReceiptPayerName().click();
@@ -75,12 +77,38 @@ public class ACCOUNTSRECEIVABLE_ReceiptAndDeposite extends BaseClass {
 
     @And("^save the receipt record$")
     public void save_the_receipt_record() throws Throwable {
+    	for (int i = 0; i < 100; i++) {
+		try {	
+	
     	String bankAccountNumber=receiptObj.accoutsReceivableGetBankAccoutNumber().getText();
     	receiptTestData.put("bankAccountNumber", bankAccountNumber);
+    	break;
+		}
+		catch(Exception e) {
+		}
+    	}
     	System.out.println("Bank account number is "+receiptTestData.get("bankAccountNumber"));
     	receiptObj.accoutsReceivableReceiptSaveButton().click();
-        
+    	Thread.sleep(1500);
+for (int i = 0; i < 30; i++) {
+	try {
+		clickAndActionHelper.moveToElement(receiptObj.WorkflowInitiated());
+		receiptObj.WorkflowInitiated().click();
+		break;
+	}
+	catch(Exception e) {
+}        
     }
+for (int i = 0; i < 30; i++) {
+	try {
+		
+		receiptObj.AlertClose().click();
+		break;
+	}
+	catch(Exception e) {
+}        
+    }
+}
     
     
     @And("^goto cheque deposite module$")
