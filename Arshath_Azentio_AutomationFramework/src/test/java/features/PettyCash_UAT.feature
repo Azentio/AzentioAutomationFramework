@@ -1,5 +1,4 @@
 Feature: to verify user can able to do transaction in petty cash module
-
 @KUBS_PC_UAT_001_001
 Scenario: Create Expense Code Limit
 Given Navigate The Azentio Url
