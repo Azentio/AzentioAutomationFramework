@@ -1,0 +1,29 @@
+[
+	{
+		"User"					: "Maker",
+		"AccountingCategory"	: "ASSET30-ASSET30",
+		"COA_NameSearch"		: "Chair15375",
+		"COA_NameSearch1"		: "lable",
+		"LeafCOA_CodeSearch"	: "IFRS-1000058-AS",
+		"ParentCOA_CodeSearch"	: "IFRS-1000059-AS",
+		"COA_Name"				: "Chair15269",
+		"ExternalMappingCode"	: "2",
+		"ParentGL"				: "105000000-Stool for bank",
+		"GL_Type"				: "Main GL",
+		"GL_TypeModifiedForUsedCOA": "Sub GL",
+		"Description"			: "chair1",
+		"BalanceType"			: "Debit/Credit",
+		"EntitySegment"			: "1",
+		"Status"				: "ACTIVE",
+		"StatusInactive"		: "INACTIVE",
+		"Remark"				: "ok",
+		"RemarkByMaker"			: "ok",
+		"ApprovedByChecker"		: "Approved",
+		"COA_Name1"				: "lable",
+		"ExternalMappingCode1"	: "1",
+		"ParentGL1"				: "IFRS-1000041-AS-PPE at Branch",
+		"GL_Type1"				: "Main GL",
+		"Description1"			: "chair53",
+		"BalanceType1"			: "Debit/Credit"
+	}
+]

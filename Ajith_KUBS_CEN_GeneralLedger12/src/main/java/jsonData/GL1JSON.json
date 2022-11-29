@@ -1,0 +1,28 @@
+[
+	{
+		"User"					: "Maker",
+		"AccountingCategory"	: "ASSETS",
+		"coaName"				: "Chair0100",
+		"parentGL"				: "105000001-Stoolfor main branch",
+		"gLType"				: "Sub GL",
+		"description"			: "gunman2010",
+		"balanceType"			: "Debit",
+		"branch"				: "west",
+		"department"			: "Non IT",
+		"costCentre"			: "FINANCE",
+		"COAnameToinactive"		: "expand",
+		"statusofCOA"			: "INACTIVE",
+		"coaName1"				: "Chair2022",
+		"parentGL1"				: "105000001-Stoolfor main branch",
+		"gLType1"				: "Sub GL",
+		"description1"			: "LIABILITY1",
+		"coaName2"				: "Chair2021",
+		"parentGL2"				: "105000001-Stoolfor main branch",
+		"gLType2"				: "Sub GL",
+		"description2"			: "LIABILITY12",
+		"coaName3"				: "Chair15",
+		"parentGL3"				: "105000001-Stoolfor main branch",
+		"gLType3"				: "Sub GL",
+		"description3"			: "LIABILITY13"
+	}
+]

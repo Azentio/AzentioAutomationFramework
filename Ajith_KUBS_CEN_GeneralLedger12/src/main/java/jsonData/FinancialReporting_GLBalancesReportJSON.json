@@ -1,0 +1,47 @@
+[
+	{
+		"User" : "Maker", 
+
+		 
+
+		"BranchCode": "AZENTMAIN-Azentio Main Branch", 
+
+		"GLCode": "IFRS-5000001-EX - Expenses", 
+
+		"GLMonth": "Apr", 
+
+		"GLDate": "10", 
+
+		"GLFullMonth": "April", 
+
+		"GLYear": "2023", 
+
+		 
+
+		"GLToMonth": "Jun", 
+
+		"GLToDate": "24", 
+
+		"GLFullToMonth": "June", 
+
+		"GLToYear": "2023", 
+
+		 
+
+		"Currency": "INR", 
+
+		 
+
+		"BranchCodeForMonthlyBalancesReport": "AZENTMAIN-Azentio Main Branch", 
+
+		"GLCodeForMonthlyBalancesReport": "IFRS-5000001-EX - Expenses", 
+
+		"GLMonthForMonthlyBalancesReport": "Apr", 
+
+		"GLDateForMonthlyBalancesReport": "10", 
+
+		"GLFullMonthForMonthlyBalancesReport": "April", 
+
+		"GLYearForMonthlyBalancesReport": "2023" 
+	}
+]
