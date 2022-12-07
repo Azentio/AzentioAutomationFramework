@@ -1,0 +1,57 @@
+[
+	{
+		"User" : "Maker", 
+
+		 
+
+		"BranchCode": "Azentio Main Branch", 
+
+		"TrialMonth": "Dec", 
+
+		"TrialFullMonth": "December", 
+
+		"TrialDate": "20", 
+
+		"TrialYear": "2022", 
+
+		 
+
+		"TrialToMonth": "Jan", 
+
+		"TrialToDate": "26", 
+
+		"TrialFullToMonth": "January", 
+
+		"TrialToYear": "2023", 
+
+		 
+
+		"Currency": "INR", 
+
+		 
+
+		"BranchCodeForTrialBalancesSummary": "Azentio Main Branch", 
+
+		"TrialMonthForTrialBalancesSummary": "Dec", 
+
+		"TrialDateForTrialBalancesSummary": "20", 
+
+		"TrialFullMonthForTrialBalancesSummary": "December", 
+
+		"TrialYearForTrialBalancesSummary": "2022", 
+
+		 
+
+		"TrialToMonthForTrialBalancesSummary": "Jan", 
+
+		"TrialToDateForTrialBalancesSummary": "22", 
+
+		"TrialToFullMonthForTrialBalancesSummary": "January", 
+
+		"TrialToYearForTrialBalancesSummary": "2023", 
+
+		 
+
+		"COA_Name": "sbi" 
+	}
+]

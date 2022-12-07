@@ -1,0 +1,86 @@
+[
+	{
+		"User"					: "ARAP",
+		"BusinesPartner"		: "Bonton Agency",
+		"GRNStatus"				: "ACTIVE",
+		"GRNStatus1"      		: "CANCELLED",
+		"InvoiceType"			: "Invoice Against PO",
+		"InvoicesubType"		: "Regular Expense",
+		"CostCenter"			: "FINANCE",
+		"SupplyRefNo"			: "SRN00078",
+		"Discount"				: "500000",
+		"ModeofPayment"			: "Cheque",
+		"Remark"				: "Approved",
+		"GRN" 					: "GRN-Agency-8-410-2862022",
+		"InvoiceNo"				: "INV-347-42022",
+		"AdjustmentType"		: "Goods Received Notes",
+		"CancelAmount"			: "5000",
+		
+		// GL DATA
+		"branchCode"			: "AZENTMAIN",
+		"gLCode"				: "IFRS-LIAB-LI3000003 - Accounts Payable",
+		"GlMonth"				: "Jan",
+		"GlFullMonth"			: "January",
+		"GlYear"				: "2023",
+		"GlDay"					: "9",
+		"GlToMonth"				: "May",
+		"GlFullToMonth"			: "May",
+		"GlToDate"				: "20",
+		"Month"					: "Apr",
+		"FullMonth"				: "April",
+		"Year"					: "2023",
+		"Year1"					: "2022",
+		"Day"					: "1",
+		
+		// ADJUSTMENTS
+		"PaymentOption"			: "Business Partner wise",
+		"Partner"				: "Bonton Agency",
+		"DebitType"				: "AR Debit Note",
+		"AdvanceType"			: "AR Advances",
+		
+		// ADVANCES
+		"RecivableName"			: "Advance Against PO",
+		"RecivableName1"		: "Advance To Employee",
+		"Partner1"				: "TRM agency",
+		"Description" 			: "Advance",
+		"PONumber" 				: "Azentio_Soft-Agency-8-PO-358",
+		"Amount"				: "100",
+		
+		// RECEIPT
+		"BankAcc" 				: "ICICIBANK-JAIPUR BRANCH-ICICI883298348348394-INR",
+		"Receiptpayer"			: "SRK",
+		"ReceiptRefNo"     	 	: "RRN2802202215",
+		"ReceiptType"			: "Cheque",
+		"ReceiptType1"			: "Wire",
+		
+		
+		// ACCOUNTS PAYABLE AND PAYMENT SETTLEMENT
+		"ContractType"			:"Purchases Contract",
+		"BusinessPartnerName"	:"Bonton Agency",
+		"HSNCode"				:"999459- Cleaning Ser",
+		"PaymentAmmount"		:"50000",
+		"CreditPeriod"			:"2",
+		"VendorContractQuantity":"100",
+		"ContractName"			:"Purchace Contract73",
+		"PaymentTerm"			:"Advance",
+		"PaymentTermPercentage"	:"3",
+		"RatePerUnit"			:"100",
+		"PaymentMode"			:"Pay Order",
+		"GRNItemDetails"		:"2",
+		"FlatDiscount"			:"0",
+		"SuplierReferenceNumber":"SUP-100513",
+		"PanNo"					:"PAN-253-2022-04-22",
+		"PanNo1"				:"PAN-254-2022-04-22",
+		"AdvNo"					:"ADV_59_2422022",
+		"TxnNo"				    :"CAN-30-2022-04-26",
+		
+		// INVOICE BILL
+		"InvoiceNoBill"			: "INV-447-52022",
+		"InvoiceNoAuto"			: "INV-450-52022",
+		"InvoiceTax"			: "INV-448-52022",
+		"InvoiceRec"			: "INV-249-32022",
+		"InvoiceImburse"		: "INV-449-52022",
+		"PanNoReport"			: "PAN-118-2022-03-09"
+		
+	}
+]
