@@ -121,4 +121,18 @@ public class InvoiceBookingObj {
 		return accountPayable_InvoiceBooking_BP_Name;
 	}
 
+	@FindBy(xpath="//datatable-row-wrapper[1]//datatable-body-cell[8]//span")
+	public WebElement invoiceBillBooking_TransactionDate;
+	public WebElement invoiceBillBookingTransactionDate()
+	{
+		return invoiceBillBooking_TransactionDate;
+	}
+	
+	@FindBy(xpath = "//input[@placeholder='Search Invoice Status']")
+	private WebElement accountPayable_search_invoiceStatus;
+
+	public WebElement accountPayableSearchInvoiceStatus() {
+		return accountPayable_search_invoiceStatus;
+	}
+	
 }

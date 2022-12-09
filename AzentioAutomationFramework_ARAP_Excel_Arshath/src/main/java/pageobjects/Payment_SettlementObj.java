@@ -123,5 +123,58 @@ public class Payment_SettlementObj {
 	public WebElement getSelectBuisnessPartner() {
 		return selectBuisnessPartner;
 	}
-    
+	  @FindBy(xpath="(//ion-toolbar[1]//ion-buttons[2])[3]")
+	  private WebElement accountsPayable_saveButton;
+	  public WebElement accountsPayableSaveButton()
+	  {
+		  return accountsPayable_saveButton;
+	  }
+	  @FindBy(xpath="//ion-button[@ng-reflect-router-link='/tabs/list/datagrid-view/195']")
+	  private WebElement accountsPayable_paymentSettlementViewIcon;
+	  public WebElement accountsPayablePayementSettlementViewIcon()
+	  {
+		  return accountsPayable_paymentSettlementViewIcon;
+	  }
+	  @FindBy(xpath="//ion-col[2]//input")
+	  private WebElement accountsPayable_paymentSettlementPaymentOption;
+	  public WebElement accountsPayablePayementSettlementPaymentOption()
+	  {
+		  return accountsPayable_paymentSettlementPaymentOption;
+	  }
+	  @FindBy(xpath="//ion-col[3]//input")
+	  private WebElement accountsPayable_paymentSettlementBpName;
+	  public WebElement accountsPayablePayementSettlementBpNAme()
+	  {
+		  return accountsPayable_paymentSettlementBpName;
+	  }
+	  @FindBy(xpath="(//i[@class='datatable-icon-right'])[2]")
+	  private WebElement accountsPayable_paymentSettlementNextRecord;
+	  public WebElement accountsPayablePayementSettlementNextRecord()
+	  {
+		  return accountsPayable_paymentSettlementNextRecord;
+	  }
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
 }
