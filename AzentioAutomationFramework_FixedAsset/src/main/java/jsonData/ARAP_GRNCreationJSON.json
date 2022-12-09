@@ -6,7 +6,9 @@
 		"ItemQuantity": "1",
 		"poStatus": "Cancelled",
 		"Quantity": "1",
-		"ApprovedPo": "Active",
-		"GRNStatus": "Active"
+		"ApprovedPo": "DELUXE 001",
+		"GRNStatus": "Active",
+		"PoNumber":"Azentio_Soft-Agency-15-PO-10",
+		"BPName":"DELUXE 001"
 	}
 ]

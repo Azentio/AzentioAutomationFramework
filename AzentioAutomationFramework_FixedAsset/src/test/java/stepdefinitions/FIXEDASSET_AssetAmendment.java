@@ -134,6 +134,7 @@ public class FIXEDASSET_AssetAmendment extends BaseClass {
 		// ----------ENTER ASSET ITEM NUMBER-----------//
 		waitHelper.waitForElement(driver, 2000, assetAmendmentObj.fixed_AssetItemCode());
 		assetAmendmentObj.fixed_AssetItemCode().click();
+		Thread.sleep(1500);
 		assetAmendmentObj.fixed_AssetItemCode().sendKeys(Keys.DOWN);
 		assetAmendmentObj.fixed_AssetItemCode().sendKeys(Keys.ENTER);
 	}
@@ -203,15 +204,33 @@ driver.findElement(By.xpath("//td[@aria-label='"+assetAmendmentData.FullMonth+" 
 
 		waitHelper.waitForElement(driver, 2000, assetAmendmentObj.AssetAmendment_Save());
 		assetAmendmentObj.AssetAmendment_Save().isDisplayed();
-		waitHelper.waitForElement(driver, 2000, assetAmendmentObj.AssetAmendment_Save());
-		assetAmendmentObj.AssetAmendment_Save().click();
+		//waitHelper.waitForElement(driver, 2000, assetAmendmentObj.AssetAmendment_Save());
+		for (int i = 0; i <30; i++) {
+			try {
+				assetAmendmentObj.AssetAmendment_Save().click();
+				break;
+			} catch (Exception e) {
+				
+			}
+		}
+		
 	}
 
 	@And("^Click on Maker Notification$")
 	public void click_on_maker_notification() throws Throwable {
 		// ------------Maker Notification icon---------//
-		waitHelper.waitForElement(driver, 2000, assetAmendmentObj.fixed_MakerNotification());
-		assetAmendmentObj.fixed_MakerNotification().click();
+		//waitHelper.waitForElement(driver, 2000, assetAmendmentObj.fixed_MakerNotification());
+		for (int i = 0; i <90; i++) {
+			try {
+				assetAmendmentObj.fixed_MakerNotification().click();
+				break;
+			} catch (Exception e) {
+				if (i==29) {
+					//Assert.fail("Success message close button not clicked ");
+				}
+			}
+		}
+		
 	}
 
 	@Then("^Select Saved record and click on action icon$")

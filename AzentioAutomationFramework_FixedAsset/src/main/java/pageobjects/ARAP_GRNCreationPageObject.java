@@ -362,7 +362,12 @@ public class ARAP_GRNCreationPageObject {
 	public WebElement accountPayable_GrnDeliveryLocation() {
 		return accountPayable_GrnDeliveryLocation;
 	}
-
+	//success message close
+			@FindBy(xpath = "//button[@aria-label='Close']")
+			private WebElement grn_SuccessMessageClose;
+			public WebElement grn_SuccessMessageClose() {
+				return grn_SuccessMessageClose;
+			}
 	// Goods Received note (GRN) PO Number textbox
 	@FindBy(xpath = "//ion-col[2]/app-kub-lov[1]/span[1]/ng-select[1]/div[1]/div[1]/div[2]/input[1]")
 	private WebElement accountPayable_GrnPONumber;

@@ -295,9 +295,17 @@ public class BUDGET_UAT_BudgetDefinition extends BaseClass {
 	public void click_notification_button() throws Throwable {
 		// After save our budget record we have to click on notification to submit our
 		// record for approvals
-		waitHelper.waitForElementToVisibleWithFluentWait(driver, budgetCreationObj.budgetCreationNotificationIcon(), 60,
-				100);
-		budgetCreationObj.budgetCreationNotificationIcon().click();
+		for (int i = 0; i <30; i++) {
+			try {
+				budgetCreationObj.budgetCreationNotificationIcon().click();
+				break;
+			} catch (Exception e) {
+				if (i==29) {
+					Assert.fail(e.getMessage());
+				}
+			}
+		}
+		
 //		Thread.sleep(1000);
 
 	}
@@ -368,8 +376,19 @@ public class BUDGET_UAT_BudgetDefinition extends BaseClass {
 	@And("^click on Submit button$")
 	public void click_on_submit_button() throws Throwable {
 		// After select the record we have to submit the record for approval
-		waitHelper.waitForElement(driver, 3000, budgetCreationObj.budgetCreation_SubmitButton());
-		budgetCreationObj.budgetCreation_SubmitButton().click();
+		waitHelper.waitForElementToVisibleWithFluentWait(driver,budgetCreationObj.budgetCreation_SubmitButton(),30,2);
+		for (int i = 0; i <200; i++) {
+			try {
+				clickAndActions.moveToElement(budgetCreationObj.budgetCreation_SubmitButton());
+				budgetCreationObj.budgetCreation_SubmitButton().click();
+				break;
+			} catch (Exception e) {
+				if (i==199) {
+					Assert.fail(e.getMessage());
+				}
+			}
+		}
+		
 
 	}
 
@@ -456,8 +475,16 @@ public class BUDGET_UAT_BudgetDefinition extends BaseClass {
 		/*
 		 * After successful login our first step is to click on the notification icon
 		 */
-		waitHelper.waitForElementToVisibleWithFluentWait(driver, kubsReviewerObj.reviewerNotidicationIcon(), 60, 500);
-		kubsReviewerObj.reviewerNotidicationIcon().click();
+		//waitHelper.waitForElementToVisibleWithFluentWait(driver, kubsReviewerObj.reviewerNotidicationIcon(), 60, 500);
+		for (int i = 0; i <30; i++) {
+			try {
+				kubsReviewerObj.reviewerNotidicationIcon().click();
+				break;
+			} catch (Exception e) {
+				
+			}
+		}
+		
 
 	}
 
@@ -770,13 +797,8 @@ if(i==15)
 		String after_xpath = "')]/ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell/div/ion-buttons/ion-button";
 		for (int i = 0; i <= 200; i++) {
 			try {
-//				waitHelper.waitForElementToVisibleWithFluentWait(driver,
-//						driver.findElement(By.xpath(before_xpath + jsonReaderWriter.readReferancedata() + after_xpath)),
-//						100, 500);
-				clickAndActions.moveToElement(driver
-						.findElement(By.xpath(before_xpath + jsonReaderWriter.readReferancedata() + after_xpath)));
-				clickAndActions.doubleClick(driver
-						.findElement(By.xpath(before_xpath + jsonReaderWriter.readReferancedata() + after_xpath)));
+
+				driver.findElement(By.xpath(before_xpath+jsonReaderWriter.readReferancedata()+after_xpath)).click();
 				break;
 			} catch (Exception e) {
 				if (i == 200) {
@@ -836,8 +858,18 @@ if(i==15)
 
 	@And("^click on approve button in checker stage$")
 	public void click_on_approve_button_in_checker_stage() throws Throwable {
-		waitHelper.waitForElementToVisibleWithFluentWait(driver, kubsCheckerObj.checkerApproveButton(), 60, 500);
-		kubsCheckerObj.checkerApproveButton().click();
+		//waitHelper.waitForElementToVisibleWithFluentWait(driver, kubsCheckerObj.checkerApproveButton(), 60, 500);
+		for (int i = 0; i <200; i++) {
+			try {
+				kubsCheckerObj.checkerApproveButton().click();
+				break;
+			} catch (Exception e) {
+				if (i==199) {
+					Assert.fail(e.getMessage());
+				}
+				
+			}
+		}	
 
 	}
 

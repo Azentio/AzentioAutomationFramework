@@ -8,9 +8,9 @@
 
 "ReceivableName":"Advance Against PO",
 "BusinessPatner":"Bonton Agency",
-"PONumber":"Azentio_Soft-Agency-8-PO-18",
+"PONumber":"Azentio_Soft-Agency-8-PO-23",
 "PaymentMode":"Cheque",
-"Amount":"100000",
+"Amount":"100",
 "Currency":"INR",
 "Description":"Payment with Cheque",
 "EntityBranch":"Azentio",

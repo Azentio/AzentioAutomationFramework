@@ -55,11 +55,11 @@ function toggleAllBoxes() {
 <body>
 <h2 align='center'>Default test</h2><table border='1' align="center">
 <tr>
-<td>Tests passed/Failed/Skipped:</td><td>1/0/0</td>
+<td>Tests passed/Failed/Skipped:</td><td>0/1/0</td>
 </tr><tr>
-<td>Started on:</td><td>Fri Oct 21 17:45:20 IST 2022</td>
+<td>Started on:</td><td>Tue Nov 15 13:00:52 IST 2022</td>
 </tr>
-<tr><td>Total time:</td><td>210 seconds (210358 ms)</td>
+<tr><td>Total time:</td><td>102 seconds (102379 ms)</td>
 </tr><tr>
 <td>Included groups:</td><td></td>
 </tr><tr>
@@ -67,17 +67,40 @@ function toggleAllBoxes() {
 </tr>
 </table><p/>
 <small><i>(Hover the method name to see the test class name)</i></small><p/>
-<table width='100%' border='1' class='invocation-passed'>
-<tr><td colspan='4' align='center'><b>PASSED TESTS</b></td></tr>
+<table width='100%' border='1' class='invocation-failed'>
+<tr><td colspan='4' align='center'><b>FAILED TESTS</b></td></tr>
 <tr><td><b>Test method</b></td>
 <td width="30%"><b>Exception</b></td>
 <td width="10%"><b>Time (seconds)</b></td>
 <td><b>Instance</b></td>
 </tr>
 <tr>
-<td title='Runner.TestApplication.runScenario()'><b>runScenario</b><br>Test class: Runner.TestApplication<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Check if the asset can be returned to its vendor", "Optional[Testing the functionalities of Asset return]"</td>
-<td></td>
-<td>183</td>
+<td title='Runner.TestApplication.runScenario()'><b>runScenario</b><br>Test class: Runner.TestApplication<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Check report for GL monthly balances", "Optional[To verify user can able to do transaction in gl2 moduyle]"</td>
+<td><div><pre>java.lang.AssertionError: java.lang.reflect.InvocationTargetException
+Build info: version: &apos;4.0.0-rc-1&apos;, revision: &apos;bc5511cbda&apos;
+System info: host: &apos;INMUVADP016585&apos;, ip: &apos;10.1.47.108&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;17.0.2&apos;
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [3ad6cf0e8b84a061edf636561d3a7498, actions {actions=[org.openqa.selenium.interactions.Sequence@3a1e5fa7]}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 105.0.5195.125, chrome: {chromedriverVersion: 105.0.5195.52 (412c95e51883..., userDataDir: C:\Users\ININDC~3\AppData\L...}, goog:chromeOptions: {debuggerAddress: localhost:49428}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), se:cdp: ws://localhost:49428/devtoo..., se:cdpVersion: 105.0.5195.125, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
+Session ID: 3ad6cf0e8b84a061edf636561d3a7498
+	at org.testng.Assert.fail(Assert.java:99)
+	at stepdefinitions.KUBS_Login.loginToAzentioApp(KUBS_Login.java:61)
+	at stepdefinitions.ACCOUNTSPAYABLE_VendorContracts.user_should_go_to_the_kubs_url_and_login_as_a_maker_user(ACCOUNTSPAYABLE_VendorContracts.java:50)
+	at ?.User should go to the kubs url and login as a maker user(file:///C:/Users/inindc00482/git/AzentioAutomationFrameworkFixedAsset/AzentioAutomationFramework_FixedAsset/src/test/java/features/GeneralLedger2_UAT.feature:294)
+</pre></div><a href='#' onClick='toggleBox("stack-trace95387183", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace95387183'><pre>java.lang.AssertionError: java.lang.reflect.InvocationTargetException
+Build info: version: &apos;4.0.0-rc-1&apos;, revision: &apos;bc5511cbda&apos;
+System info: host: &apos;INMUVADP016585&apos;, ip: &apos;10.1.47.108&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;17.0.2&apos;
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [3ad6cf0e8b84a061edf636561d3a7498, actions {actions=[org.openqa.selenium.interactions.Sequence@3a1e5fa7]}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 105.0.5195.125, chrome: {chromedriverVersion: 105.0.5195.52 (412c95e51883..., userDataDir: C:\Users\ININDC~3\AppData\L...}, goog:chromeOptions: {debuggerAddress: localhost:49428}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), se:cdp: ws://localhost:49428/devtoo..., se:cdpVersion: 105.0.5195.125, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
+Session ID: 3ad6cf0e8b84a061edf636561d3a7498
+	at org.testng.Assert.fail(Assert.java:99)
+	at stepdefinitions.KUBS_Login.loginToAzentioApp(KUBS_Login.java:61)
+	at stepdefinitions.ACCOUNTSPAYABLE_VendorContracts.user_should_go_to_the_kubs_url_and_login_as_a_maker_user(ACCOUNTSPAYABLE_VendorContracts.java:50)
+	at ?.User should go to the kubs url and login as a maker user(file:///C:/Users/inindc00482/git/AzentioAutomationFrameworkFixedAsset/AzentioAutomationFramework_FixedAsset/src/test/java/features/GeneralLedger2_UAT.feature:294)
+</pre></div></td>
+<td>87</td>
 <td>Runner.TestApplication@2d901eb0</td></tr>
 </table><p>
 </body>

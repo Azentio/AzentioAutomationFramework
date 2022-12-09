@@ -14,7 +14,7 @@ public class KUBS_ReviewerObj {
 		PageFactory.initElements(driver, this);
 	}
 
-	@FindBy(xpath = "//ion-header/ion-toolbar[1]/ion-buttons[2]/ion-button[2]")
+	@FindBy(xpath = "//ion-button[@ng-reflect-router-link='/inbox']")
 	private WebElement reviewer_notification_icon;
 
 	public WebElement reviewerNotidicationIcon() {

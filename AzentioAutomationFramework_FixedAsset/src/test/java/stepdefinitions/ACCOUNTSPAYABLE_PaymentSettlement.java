@@ -442,7 +442,7 @@ paymentSettlementObj.accountsPayableDescription().sendKeys("Ok");
 					javascriptHelper.scrollIntoView(paymentSettlementObj.accountsPayablePayementSettlementNextRecord());
 
 					paymentSettlementObj.accountsPayablePayementSettlementNextRecord().click();
-				} catch (ElementNotInteractableException e2) {
+				} catch (Exception e2) {
 					pageStatus = false;
 				}
 			}

@@ -14,7 +14,7 @@ import utilities.ExtentTestManager;
 
 
 
-@CucumberOptions(features = "src/test/java/features/FixedAssetReturn.feature",
+@CucumberOptions(features = "src/test/java/features/GeneralLedger2_UAT.feature",
                  glue = "stepdefinitions",
                  //monochrome=false, //to make steps in color
                  plugin = { "pretty",
@@ -23,7 +23,7 @@ import utilities.ExtentTestManager;
                 //dryRun = false //to check compilation errors            
                     //, tags="@AT_LE_007_Invalid_Modification"
                                 
-                  , tags="@KUBS_FAT_UAT_007_002"
+                  , tags="@KUBS_GL2_UAT_004_001"
                         
 )
 public class TestApplication extends AbstractTestNGCucumberTests {
@@ -37,7 +37,6 @@ public class TestApplication extends AbstractTestNGCucumberTests {
     public void beforeExecution() {
         System.out.println("*** Test Execution started ***");
     }
-
 
 
    @AfterSuite

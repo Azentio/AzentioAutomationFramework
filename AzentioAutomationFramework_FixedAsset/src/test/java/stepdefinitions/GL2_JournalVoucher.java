@@ -1,5 +1,6 @@
 package stepdefinitions;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
@@ -9,6 +10,7 @@ import dataProvider.JsonConfig;
 import helper.DropDownHelper;
 import helper.JavascriptHelper;
 import helper.WaitHelper;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import pageobjects.GL2_JournalVoucherObj;
 import resources.BaseClass;
@@ -70,14 +72,76 @@ public class GL2_JournalVoucher extends BaseClass {
 		gL2_JournalVoucherObj.gL2_JournalVoucher_JournalType().sendKeys(gL2_JournalVoucherTestDataType.JournalType);
 		gL2_JournalVoucherObj.gL2_JournalVoucher_JournalType().sendKeys(Keys.ENTER);
 
-		// Remark
-		waithelper.waitForElementToVisibleWithFluentWait(driver, gL2_JournalVoucherObj.gL2_JournalVoucher_Remark(), 5,
-				500);
-		gL2_JournalVoucherObj.gL2_JournalVoucher_Remark().click();
-		gL2_JournalVoucherObj.gL2_JournalVoucher_Remark().sendKeys(gL2_JournalVoucherTestDataType.Remark);
-		gL2_JournalVoucherObj.gL2_JournalVoucher_Remark().sendKeys(Keys.ENTER);
+		
 
 	}
+	 @And("^User Select the profit center$")
+	    public void user_select_the_profit_center() throws Throwable {
+	
+			waithelper.waitForElementToVisibleWithFluentWait(driver, gL2_JournalVoucherObj.gL2_JournalVoucher_ProfitCenter(),
+					5, 500);
+			gL2_JournalVoucherObj.gL2_JournalVoucher_ProfitCenter().click();
+			gL2_JournalVoucherObj.gL2_JournalVoucher_ProfitCenter().sendKeys(gL2_JournalVoucherTestDataType.ProfitCenter);
+			for (int i = 0; i <300; i++) {
+				try {
+					driver.findElement(By.xpath("//span[contains(text(),'"+gL2_JournalVoucherTestDataType.ProfitCenter+"')]")).isDisplayed();
+					break;
+				} catch (Exception e) {
+					if (i==299) {
+						Assert.fail(e.getMessage());
+					}
+				}
+			}
+			gL2_JournalVoucherObj.gL2_JournalVoucher_ProfitCenter().sendKeys(Keys.ENTER);
+			waithelper.waitForElementToVisibleWithFluentWait(driver, gL2_JournalVoucherObj.costOrDeparmentRequiredClose(),
+					5, 500);
+			gL2_JournalVoucherObj.costOrDeparmentRequiredClose().click();
+	    }
+	 @And("^User Select cost center or Department$")
+	    public void user_select_cost_center_or_department() throws Throwable {
+	       try {
+	    	   waithelper.waitForElementToVisibleWithFluentWait(driver, gL2_JournalVoucherObj.gL2_JournalVoucher_CostCenter(),
+						5, 500);
+				gL2_JournalVoucherObj.gL2_JournalVoucher_CostCenter().click();
+				gL2_JournalVoucherObj.gL2_JournalVoucher_CostCenter().sendKeys(gL2_JournalVoucherTestDataType.CostCenter);
+				for (int i = 0; i <300; i++) {
+					try {
+						driver.findElement(By.xpath("//span[contains(text(),'"+gL2_JournalVoucherTestDataType.CostCenter+"')]")).isDisplayed();
+						break;
+					} catch (Exception e) {
+						if (i==299) {
+							Assert.fail(e.getMessage());
+						}
+					}
+				}
+				gL2_JournalVoucherObj.gL2_JournalVoucher_CostCenter().sendKeys(Keys.ENTER);
+		} catch (Exception e) {
+			waithelper.waitForElementToVisibleWithFluentWait(driver, gL2_JournalVoucherObj.gL2_JournalVoucher_Department(),
+					5, 500);
+			gL2_JournalVoucherObj.gL2_JournalVoucher_Department().click();
+			gL2_JournalVoucherObj.gL2_JournalVoucher_Department().sendKeys(gL2_JournalVoucherTestDataType.Department);
+			for (int i = 0; i <300; i++) {
+			 try {
+				 driver.findElement(By.xpath("//span[contains(text(),'"+gL2_JournalVoucherTestDataType.Department+"')]")).isDisplayed();
+					break;
+			} catch (Exception e2) {
+				if (i==299) {
+					Assert.fail(e.getMessage());
+				}
+			}
+		}
+			gL2_JournalVoucherObj.gL2_JournalVoucher_Department().sendKeys(Keys.ENTER);
+		}   
+	    }
+	    @And("^User enter the remark for Journal Voucher$")
+	    public void user_enter_the_remark_for_journal_voucher() throws Throwable {
+	    	// Remark
+			waithelper.waitForElementToVisibleWithFluentWait(driver, gL2_JournalVoucherObj.gL2_JournalVoucher_Remark(), 5,
+					500);
+			gL2_JournalVoucherObj.gL2_JournalVoucher_Remark().click();
+			gL2_JournalVoucherObj.gL2_JournalVoucher_Remark().sendKeys(gL2_JournalVoucherTestDataType.Remark);
+			gL2_JournalVoucherObj.gL2_JournalVoucher_Remark().sendKeys(Keys.ENTER);
+	    }
 
 	@Then("^Add Debit credit record$")
 	public void add_debit_credit_record() throws InterruptedException {
@@ -97,8 +161,17 @@ public class GL2_JournalVoucher extends BaseClass {
 		gL2_JournalVoucherObj.gL2_JournalVoucher_GlCode().click();
 		// Thread.sleep(2000);
 		// GlCodeDebit
-		waithelper.waitForElement(driver, 2000, gL2_JournalVoucherObj.gL2_JournalVoucher_GlCodeDebit());
-		gL2_JournalVoucherObj.gL2_JournalVoucher_GlCodeDebit().click();
+		//waithelper.waitForElement(driver, 2000, gL2_JournalVoucherObj.gL2_JournalVoucher_GlCodeDebit());
+		for (int i = 0; i <50; i++) {
+			try {
+				gL2_JournalVoucherObj.gL2_JournalVoucher_GlCodeDebit().click();
+				break;
+			} catch (Exception e) {
+				if (i==49) {
+					Assert.fail(e.getMessage());
+				}
+			}
+		}
 
 		// DebitAmount
 		waithelper.waitForElementToVisibleWithFluentWait(driver, gL2_JournalVoucherObj.gL2_JournalVoucher_DebitAmount(),
@@ -121,12 +194,12 @@ public class GL2_JournalVoucher extends BaseClass {
 		// Select Credit
 		waithelper.waitForElementToVisibleWithFluentWait(driver, gL2_JournalVoucherObj.gL2_JournalVoucher_Credit(), 5,
 				500);
-		for (int i = 0; i <= 15; i++) {
+		for (int i = 0; i <= 150; i++) {
 			try {
 				gL2_JournalVoucherObj.gL2_JournalVoucher_Credit().click();
 				break;
 			} catch (Exception e) {
-				if (i == 15) {
+				if (i == 150) {
 					Assert.fail(e.getMessage());
 				}
 			}
@@ -140,7 +213,17 @@ public class GL2_JournalVoucher extends BaseClass {
 		// Thread.sleep(1000);
 		waithelper.waitForElementToVisibleWithFluentWait(driver,
 				gL2_JournalVoucherObj.gL2_JournalVoucher_GlCodeCredit(), 5, 500);
-		gL2_JournalVoucherObj.gL2_JournalVoucher_GlCodeCredit().click();
+		for (int i = 0; i <200; i++) {
+			try {
+				gL2_JournalVoucherObj.gL2_JournalVoucher_GlCodeCredit().click();
+				break;
+			} catch (Exception e) {
+				if (i==199) {
+					Assert.fail(e.getMessage());
+				}
+			}
+		}
+		
 
 		// CreditAmount
 		waithelper.waitForElementToVisibleWithFluentWait(driver,

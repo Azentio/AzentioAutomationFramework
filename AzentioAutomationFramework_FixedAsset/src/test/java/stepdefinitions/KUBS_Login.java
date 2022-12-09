@@ -53,8 +53,8 @@ public class KUBS_Login {
 //	        waithelper.waitForElement(driver, 4000, makerobj.FinanceOption());
 	        for (int i = 0; i <= 200; i++) {
 	            try {
-	                clicksAndActionsHelper.clickUsingActionClass(makerobj.FinanceOption(), makerobj.FinanceOption());
-	    //            makerobj.FinanceOption().click();
+	            	clicksAndActionsHelper.moveToElement(makerobj.FinanceOption());
+	                makerobj.FinanceOption().click();
 	                break;
 	            } catch (Exception e) {
 	                if (i == 200) {

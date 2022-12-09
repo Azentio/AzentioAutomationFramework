@@ -195,6 +195,16 @@ public class ArAp {
 	    	waithelper.waitForElement(driver, 2000,arAPobj.accountReceviableAdvances_PONumber_TextBox());
 	    	arAPobj.accountReceviableAdvances_PONumber_TextBox().click();
 	    	arAPobj.accountReceviableAdvances_PONumber_TextBox().sendKeys(arApTestDataType.PONumber);
+	    	for (int i = 0; i <50; i++) {
+				try {
+					driver.findElement(By.xpath("//span[contains(text(),'"+arApTestDataType.PONumber+"')]")).isDisplayed();
+					break;
+				} catch (Exception e) {
+					if (i==199) {
+						Assert.fail(e.getMessage());
+					}
+				}
+			}
 	    	arAPobj.accountReceviableAdvances_PONumber_TextBox().sendKeys(Keys.ENTER);
 	    	
 	    	waithelper.waitForElement(driver, 2000,arAPobj.accountReceviableAdvances_paymentMode_TextBox());
@@ -205,6 +215,7 @@ public class ArAp {
 	    	waithelper.waitForElement(driver, 2000,arAPobj.amount_TextBox());
 	    	arAPobj.amount_TextBox().click();
 	    	arAPobj.amount_TextBox().sendKeys(arApTestDataType.Amount);
+	    	Thread.sleep(500);
 	    	arAPobj.amount_TextBox().sendKeys(Keys.ENTER);
 	    	
 	    	waithelper.waitForElement(driver, 2000,arAPobj.accountReceviableAdvances_currency_TextBox());
@@ -252,6 +263,16 @@ public class ArAp {
 	    	waithelper.waitForElement(driver, 2000,arAPobj.accountReceviableAdvances_PONumber_TextBox());
 	    	arAPobj.accountReceviableAdvances_PONumber_TextBox().click();
 	    	arAPobj.accountReceviableAdvances_PONumber_TextBox().sendKeys(arApTestDataType.PONumber);
+	    	for (int i = 0; i <50; i++) {
+				try {
+					driver.findElement(By.xpath("//span[contains(text(),'"+arApTestDataType.PONumber+"')]")).isDisplayed();
+					break;
+				} catch (Exception e) {
+					if (i==199) {
+						Assert.fail(e.getMessage());
+					}
+				}
+			}
 	    	arAPobj.accountReceviableAdvances_PONumber_TextBox().sendKeys(Keys.ENTER);
 	    	
 	    	waithelper.waitForElement(driver, 2000,arAPobj.accountReceviableAdvances_paymentMode_TextBox());

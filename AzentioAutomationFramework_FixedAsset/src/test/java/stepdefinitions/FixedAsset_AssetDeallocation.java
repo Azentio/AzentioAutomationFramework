@@ -280,9 +280,9 @@ fixedAsset_AssetDeallocationTestDataType = jsonReader.getAssetDeallocationByName
 		waithelper.waitForElementToVisibleWithFluentWait(driver, fixedAsset_AssetDeallocationObj.fixedAsset_AssetAllocation_AssetRefferenceNumber(),60,5);
     	fixedAsset_AssetDeallocationObj.fixedAsset_AssetAllocation_AssetRefferenceNumber().click();
     	//AssetReferenceNumber
-    	fixedAsset_AssetDeallocationObj.fixedAsset_AssetAllocation_AssetRefferenceNumber().sendKeys(AssetReferenceNumber);
+    	//fixedAsset_AssetDeallocationObj.fixedAsset_AssetAllocation_AssetRefferenceNumber().sendKeys(AssetReferenceNumber);
+    	fixedAsset_AssetDeallocationObj.fixedAsset_AssetAllocation_AssetRefferenceNumber().sendKeys(fixedAsset_AssetCreationTestDataType.AssetCode);
     	Thread.sleep(1000);
-    //	fixedAsset_AssetDeallocationObj.fixedAsset_AssetAllocation_AssetRefferenceNumber().sendKeys(fixedAsset_AssetCreationTestDataType.AssetCode);
     	fixedAsset_AssetDeallocationObj.fixedAsset_AssetAllocation_AssetRefferenceNumber().sendKeys(Keys.ENTER);
         
         
@@ -300,6 +300,7 @@ fixedAsset_AssetDeallocationTestDataType = jsonReader.getAssetDeallocationByName
     	fixedAsset_AssetDeallocationObj.fixedAsset_AssetAllocation_EmployeeID().sendKeys(Keys.ENTER);
   
 	}
+
     @Then("^Fill Asset Allocation Form revalued$")
     public void fill_asset_allocation_form_revalued() throws InterruptedException {
 		

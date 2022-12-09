@@ -90,6 +90,12 @@ public class GL2_JournalVoucher_AccountEntryReportObj {
 	{
 		return gL2_JournalVoucher_AccountEntryReport_Total;
 	}
-	
+	// transaction ref number
+	@FindBy(xpath="//app-kub-lov[@ng-reflect-lov-label='Transaction Ref No']//input")
+	private WebElement transactionRefNo;
+	public WebElement transactionRefNo()
+	{
+		return transactionRefNo;
+	}
 
 }

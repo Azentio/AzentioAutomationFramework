@@ -1,6 +1,7 @@
 package stepdefinitions;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.junit.Assert;
@@ -105,27 +106,44 @@ public class FIXEDASSET_AssetReturn extends BaseClass {
     	//-----------CLICK ON EYE ICON---------------//
     	javaScriptHelper.JavaScriptHelper(driver);
     	javaScriptHelper.scrollIntoView(assetReturnObj.fixedAssetAssetReturnEyeButton());
-    	waitHelper.waitForElement(driver, 2000, assetReturnObj.fixedAssetAssetReturnEyeButton());
-    	assetReturnObj.fixedAssetAssetReturnEyeButton().click();
+    	//waitHelper.waitForElement(driver, 2000, assetReturnObj.fixedAssetAssetReturnEyeButton());
+    	for (int i = 0; i <30; i++) {
+			try {
+				assetReturnObj.fixedAssetAssetReturnEyeButton().click();
+				break;
+			} catch (Exception e) {
+				
+			}
+		}
+    	
     }
 
     @And("^Asset Return Add Icon button$")
     public void asset_return_add_icon_button() throws Throwable {
     	//------------CLICK ON ADD ICON-------------//
-    	waitHelper.waitForElement(driver, 2000, assetReturnObj.fixedAssetReturnAdd());
-    	assetReturnObj.fixedAssetReturnAdd().click();
+    	//waitHelper.waitForElement(driver, 2000, assetReturnObj.fixedAssetReturnAdd());
+    	for (int i = 0; i <30; i++) {
+			try {
+				assetReturnObj.fixedAssetReturnAdd().click();
+				break;
+			} catch (Exception e) {
+				
+			}
+		}
+    	
     }
 	
 
-    @Then("^Give Asset Replacement Referance Number$")
-    public void give_asset_replacement_referance_number() throws Throwable {
-        //-----------GIVE ASSET REF NO----------------//
-    	waitHelper.waitForElement(driver, 2000, assetReturnObj.assetReturnAssetReferenceNumber());
-    	assetReturnObj.assetReturnAssetReferenceNumber().click();
-    	//RefNo
-    	assetReturnObj.assetReturnAssetReferenceNumber().sendKeys("01-001-woodply28738");
-    	assetReturnObj.assetReturnAssetReferenceNumber().sendKeys(Keys.ENTER);
-    }
+	@Then("^Give Asset Replacement Referance Number$")
+	public void give_asset_replacement_referance_number() throws Throwable {
+		// -----------GIVE ASSET REF NO----------------//
+		waitHelper.waitForElement(driver, 2000, assetReturnObj.assetReturnAssetReferenceNumber());
+		assetReturnObj.assetReturnAssetReferenceNumber().click();
+		assetReturnObj.assetReturnAssetReferenceNumber().sendKeys(RefNo);
+		Thread.sleep(1500);
+		assetReturnObj.assetReturnAssetReferenceNumber().sendKeys(Keys.DOWN);
+		assetReturnObj.assetReturnAssetReferenceNumber().sendKeys(Keys.ENTER);
+	}
 
     @And("^Select Asset Return Item Number$")
     public void select_asset_return_item_number() throws Throwable {
@@ -202,8 +220,16 @@ public class FIXEDASSET_AssetReturn extends BaseClass {
     @And("^Reviewer Notification icon button$")
     public void reviewer_notification_icon_button() throws Throwable {
 		// -------------REVIEWER NOTIFICATION---------------//
-		waitHelper.waitForElement(driver, 2000, reviewerObj.reviewerNotidicationIcon());
-		reviewerObj.reviewerNotidicationIcon().click();
+		
+    	//waitHelper.waitForElementToVisibleWithFluentWait(driver,reviewerObj.reviewerNotidicationIcon(),30, 2);
+    	for (int i = 0; i <30; i++) {
+			try {
+				javascriptHelper.JSEClick(reviewerObj.reviewerNotidicationIcon());
+				break;
+			} catch (Exception e) {
+				
+			}
+		}	    
 		waitHelper.waitForElement(driver, 2000, reviewerObj.reviewer_referanceid());
 		javaScriptHelper.JavaScriptHelper(driver);
 		referance_id = reviewerObj.reviewer_referanceid().getText();
@@ -296,20 +322,29 @@ public class FIXEDASSET_AssetReturn extends BaseClass {
 //		waitHelper.waitForElement(driver, 3000, driver.findElement(By.xpath("//span[contains(text(),'"
 //				+ readerData.readReferancedata()
 //				+ "')]/ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell/div/ion-buttons/ion-button")));
-	for (int i = 0; i <10; i++) {
-		try {
-			driver.findElement(By.xpath("//span[contains(text(),'" + readerData.readReferancedata()
-			+ "')]/ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell/div/ion-buttons/ion-button"))
-			.click();
-			break;
-			
-		} catch (NoSuchElementException e) {
-			
+    	String before_xpath="//span[contains(text(),'";
+		String after_xpath="')]/ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell//ion-button";
+		for (int i = 0; i <200; i++) {
+			try {
+				driver.findElement(By.xpath(before_xpath +readerData.readReferancedata() +after_xpath)).click();
+				break;
+			} catch (Exception e) {
+				
+			}
 		}
+    	
+//	for (int i = 0; i <30; i++) {
+//		try {
+//			driver.findElement(By.xpath("//span[contains(text(),'"+readerData.readReferancedata()
+//			+"')]/ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell/div/ion-buttons/ion-button"))
+//			.click();
+//			break;
+//			
+//		} catch (NoSuchElementException e) {
+//			
+//		}
 	}
 		
-		
-    }
 
     @And("^Click Approve icon button$")
     public void click_approve_icon_button() throws Throwable {
@@ -335,8 +370,16 @@ public class FIXEDASSET_AssetReturn extends BaseClass {
     @And("^Mouse click on search icon$")
     public void mouse_click_on_search_icon() throws Throwable {
 		// ----------CLICK THE SEARCH ICON----------//
-		waitHelper.waitForElement(driver, 2000, assetReturnObj.fixed_AssetSearch());
-		assetReturnObj.fixed_AssetSearch().click();
+		//waitHelper.waitForElement(driver, 2000, assetReturnObj.fixed_AssetSearch());
+    	for (int i = 0; i <30; i++) {
+			try {
+				assetReturnObj.fixed_AssetSearch().click();
+				break;
+			} catch (Exception e) {
+				
+			}
+		}
+		
     }
     
     @Then("^Enter Asset Referance No in that field$")
@@ -488,22 +531,41 @@ public class FIXEDASSET_AssetReturn extends BaseClass {
     public void click_on_view_button_nearby_asset_return_module() throws Throwable {
 		javascriptHelper.JavaScriptHelper(driver);
 		//waitHelper.waitForElementVisible(AssetReturnObj.fixedAssetAssetReturnViewButton(), 2000, 100);
-		javascriptHelper.scrollIntoView(assetReturnObj.fixedAssetAssetReturnViewButton());
-		assetReturnObj.fixedAssetAssetReturnViewButton().click();
+		for (int i = 0; i <30; i++) {
+			try {
+				javascriptHelper.scrollIntoView(assetReturnObj.fixedAssetAssetReturnViewButton());
+				assetReturnObj.fixedAssetAssetReturnViewButton().click();
+				break;
+			} catch (Exception e) {
+				
+			}
+		}
+		
     }
 	@Then("^goto ammendent asset module$")
     public void goto_ammendent_asset_module() throws Throwable {
 		javascriptHelper.JavaScriptHelper(driver);
 		//waitHelper.waitForElementVisible(fixedAssetObj.fixedAssetAssetAmmendent(),1000, 100);
-		javascriptHelper.scrollIntoView(fixedAssetObj.fixedAssetAssetAmmendent());
-		fixedAssetObj.fixedAssetAssetAmmendent().click();
+		for (int i = 0; i <30; i++) {
+			try {
+				javascriptHelper.scrollIntoView(fixedAssetObj.fixedAssetAssetAmmendent());
+				fixedAssetObj.fixedAssetAssetAmmendent().click();
+				break;
+			} catch (Exception e) {
+				
+			}
+		}
+		
 		
     }
 	@Then("^Enter Asset Referance Number in ammendent asset$")
     public void enter_asset_referance_number_in_ammendent_asset() throws Throwable {
 		// ---------ENTER THE REQUEST REFERANCE NUMBER---------//
 		waitHelper.waitForElement(driver, 2000, assetAmmendmentObj.fixed_AssetReferenceNumber());
-		assetAmmendmentObj.fixed_AssetReferenceNumber().sendKeys(assetReturnTestData.assetReferenceNumberOFAmmendentAsset);
+		//assetAmmendmentObj.fixed_AssetReferenceNumber().sendKeys(assetReturnTestData.assetReferenceNumberOFAmmendentAsset);
+		assetAmmendmentObj.fixed_AssetReferenceNumber().click();
+		Thread.sleep(1500);
+		assetAmmendmentObj.fixed_AssetReferenceNumber().sendKeys(fixedAsset_AssetCreationTestDataType.AssetCode);
 		assetAmmendmentObj.fixed_AssetReferenceNumber().sendKeys(Keys.ENTER);
     }
 	
@@ -555,7 +617,8 @@ public class FIXEDASSET_AssetReturn extends BaseClass {
 	@And("^choose asset reference number$")
     public void choose_asset_reference_number() throws Throwable {
 		assetReturnObj.assetReturnAssetReferenceNumber().click();
-		assetReturnObj.assetReturnAssetReferenceNumber().sendKeys(assetReferenceNo.get("AssetReferenceNumberCreated"));
+		assetReturnObj.assetReturnAssetReferenceNumber().sendKeys(fixedAsset_AssetCreationTestDataType.AssetCode);
+		Thread.sleep(1500);
 		assetReturnObj.assetReturnAssetReferenceNumber().sendKeys(Keys.DOWN);
 		assetReturnObj.assetReturnAssetReferenceNumber().sendKeys(Keys.ENTER);
 		String assetReferenceNumber=assetReturnObj.fixedAssetGetReferenceNo().getText();
@@ -563,7 +626,7 @@ public class FIXEDASSET_AssetReturn extends BaseClass {
     }
 	@Then("^Select Asset Reference Number for asset return$")
     public void select_asset_reference_number_for_asset_return() throws Throwable {
-		Thread.sleep(2000);
+		Thread.sleep(1000);
 	   	waitHelper.waitForElementToVisibleWithFluentWait(driver,assetReturnObj.fixedAsset_AssetReference(),60,5);
 	   	String AssetReferenceNumber = assetReturnObj.fixedAsset_AssetReference().getText();
 	   	assetReferenceNo.put("AssetReferenceNumberCreated",AssetReferenceNumber );
@@ -575,8 +638,8 @@ public class FIXEDASSET_AssetReturn extends BaseClass {
 	 // -----------ENTER ASSET REF NO---------------//
 	 waitHelper.waitForElement(driver, 2000, assetRevaluvationObj.fixed_AssetReferenceNumber());
 	 //assetRevaluvationObj.fixed_AssetReferenceNumber().sendKeys(assetReturnTestData.assetReferenceNumberOFRevaluedAsset);
-	 assetRevaluvationObj.fixed_AssetReferenceNumber().sendKeys(assetReferenceNo.get("AssetReferenceNumberCreated"));
-	 Thread.sleep(1000);
+	 assetRevaluvationObj.fixed_AssetReferenceNumber().sendKeys(fixedAsset_AssetCreationTestDataType.AssetCode);
+	 Thread.sleep(1500);
 	 assetRevaluvationObj.fixed_AssetReferenceNumber().sendKeys(Keys.ENTER);
 	 waitHelper.waitForElement(driver, 2000, assetRevaluvationObj.fixed_AssetGetReferenceNumber());
 	 revaluedAssetReferenceNo = assetRevaluvationObj.fixed_AssetGetReferenceNumber().getText();
@@ -644,7 +707,8 @@ public class FIXEDASSET_AssetReturn extends BaseClass {
 	    public void choose_asset_reference_number_of_revalued_asset() throws Throwable {
 		 assetReturnObj.assetReturnAssetReferenceNumber().click();
 			//assetReturnObj.assetReturnAssetReferenceNumber().sendKeys(assetReturnTestData.assetReferenceNumberOFRevaluedAsset);
-			assetReturnObj.assetReturnAssetReferenceNumber().sendKeys(assetReturnTestData.assetReferenceNumberOFRevaluedAsset);
+			assetReturnObj.assetReturnAssetReferenceNumber().sendKeys(fixedAsset_AssetCreationTestDataType.AssetCode);
+			Thread.sleep(1500);
 			assetReturnObj.assetReturnAssetReferenceNumber().sendKeys(Keys.DOWN);
 			assetReturnObj.assetReturnAssetReferenceNumber().sendKeys(Keys.ENTER);
 			String assetReferenceNumber=assetReturnObj.fixedAssetGetReferenceNo().getText();
@@ -653,7 +717,9 @@ public class FIXEDASSET_AssetReturn extends BaseClass {
 	    @And("^choose asset reference number of ammendent asset$")
 	    public void choose_asset_reference_number_of_ammendent_asset() throws Throwable {
 	    	 assetReturnObj.assetReturnAssetReferenceNumber().click();
-				assetReturnObj.assetReturnAssetReferenceNumber().sendKeys(assetReturnTestData.assetReferenceNumberOFAmmendentAsset);
+				//assetReturnObj.assetReturnAssetReferenceNumber().sendKeys(assetReturnTestData.assetReferenceNumberOFAmmendentAsset);
+				assetReturnObj.assetReturnAssetReferenceNumber().sendKeys(fixedAsset_AssetCreationTestDataType.AssetCode);
+				Thread.sleep(1500);
 				assetReturnObj.assetReturnAssetReferenceNumber().sendKeys(Keys.DOWN);
 				assetReturnObj.assetReturnAssetReferenceNumber().sendKeys(Keys.ENTER);
 				String assetReferenceNumber=assetReturnObj.fixedAssetGetReferenceNo().getText();
@@ -662,7 +728,10 @@ public class FIXEDASSET_AssetReturn extends BaseClass {
 	    @And("^choose asset reference number in asset impaired module$")
 	    public void choose_asset_reference_number_in_asset_impaired_module() throws Throwable {
 	    	assetImpairementObj.fixedAssetReferenceNumber().click();
-	    	assetImpairementObj.fixedAssetReferenceNumber().sendKeys(assetReturnTestData.assetReferenceNumberOFImpairedAsset);
+	    	//assetImpairementObj.fixedAssetReferenceNumber().sendKeys(assetReturnTestData.assetReferenceNumberOFImpairedAsset);
+	    	assetImpairementObj.fixedAssetReferenceNumber().sendKeys(fixedAsset_AssetCreationTestDataType.AssetCode);
+	    	Thread.sleep(1500);
+	    	assetImpairementObj.fixedAssetReferenceNumber().sendKeys(Keys.DOWN);
 			assetImpairementObj.fixedAssetReferenceNumber().sendKeys(Keys.ENTER);
 	    }
 	    @And("^choose asset reference number of impaired asset$")
@@ -670,7 +739,8 @@ public class FIXEDASSET_AssetReturn extends BaseClass {
 	    	 assetReturnObj.assetReturnAssetReferenceNumber().click();
 			//	assetReturnObj.assetReturnAssetReferenceNumber().sendKeys(assetReturnTestData.assetReferenceNumberOFImpairedAsset);
 	    	 fixedAsset_AssetDeallocationObj.fixedAsset_AssetDeallocation_AssetReferenceNumber().sendKeys(fixedAsset_AssetCreationTestDataType.AssetCode);
-				assetReturnObj.assetReturnAssetReferenceNumber().sendKeys(Keys.DOWN);
+				Thread.sleep(1500);
+	    	 assetReturnObj.assetReturnAssetReferenceNumber().sendKeys(Keys.DOWN);
 				assetReturnObj.assetReturnAssetReferenceNumber().sendKeys(Keys.ENTER);
 				String assetReferenceNumber=assetReturnObj.fixedAssetGetReferenceNo().getText();
 				assetReferenceNo.put("AssetReferenceNumber",assetReferenceNumber );
@@ -678,7 +748,9 @@ public class FIXEDASSET_AssetReturn extends BaseClass {
 	    @And("^choose asset reference number of de allocated asset$")
 	    public void choose_asset_reference_number_of_de_allocated_asset() throws Throwable {
 	    	assetReturnObj.assetReturnAssetReferenceNumber().click();
-			assetReturnObj.assetReturnAssetReferenceNumber().sendKeys(assetReturnTestData.assetReferenceNumberOFDeallocationAsset);
+			//assetReturnObj.assetReturnAssetReferenceNumber().sendKeys(assetReturnTestData.assetReferenceNumberOFDeallocationAsset);
+	    	Thread.sleep(1500);
+	    	assetReturnObj.assetReturnAssetReferenceNumber().sendKeys(fixedAsset_AssetCreationTestDataType.AssetCode);
 			assetReturnObj.assetReturnAssetReferenceNumber().sendKeys(Keys.DOWN);
 			assetReturnObj.assetReturnAssetReferenceNumber().sendKeys(Keys.ENTER);
 			String assetReferenceNumber=assetReturnObj.fixedAssetGetReferenceNo().getText();
@@ -687,7 +759,7 @@ public class FIXEDASSET_AssetReturn extends BaseClass {
 	@And("^choose item number for the asset$")
     public void choose_item_number_for_the_asset() throws Throwable {
 		assetReturnObj.assetReturnAssetItemNo().click();
-		Thread.sleep(1000);
+		Thread.sleep(1500);
 		assetReturnObj.assetReturnAssetItemNo().sendKeys(Keys.DOWN);
 		assetReturnObj.assetReturnAssetItemNo().sendKeys(Keys.ENTER);
     }
@@ -737,7 +809,7 @@ public class FIXEDASSET_AssetReturn extends BaseClass {
         //ItemNumber
         waitHelper.waitForElement(driver, 4000,  fixedAsset_AssetDeallocationObj.fixedAsset_AssetDeallocation_ItemNumber());
         fixedAsset_AssetDeallocationObj.fixedAsset_AssetDeallocation_ItemNumber().click();
-        
+        Thread.sleep(1000);
         fixedAsset_AssetDeallocationObj.fixedAsset_AssetDeallocation_ItemNumber().sendKeys(Keys.DOWN);
         fixedAsset_AssetDeallocationObj.fixedAsset_AssetDeallocation_ItemNumber().sendKeys(Keys.ENTER);
         String getDeallocationRefNo=fixedAsset_AssetDeallocationObj.getReferenceNumberOfDeAllocation().getText();
@@ -754,42 +826,34 @@ public class FIXEDASSET_AssetReturn extends BaseClass {
 	@Then("^click on Save after fill all the asset$")
     public void click_on_save_after_fill_all_the_asset() throws Throwable {
 		
-		System.out.println("The asset reference number is"+assetReferenceNo.get("AssetReferenceNumber"));
-		waitHelper.waitForElementVisible(assetReturnObj.fixetReturnSaveButton(), 1000, 100);
-		assetReturnObj.fixetReturnSaveButton().click();
-		Thread.sleep(1400);
-		for (int i = 0; i <90; i++) {
+		//System.out.println("The asset reference number is"+assetReferenceNo.get("AssetReferenceNumber"));
+		//waitHelper.waitForElementVisible(assetReturnObj.fixetReturnSaveButton(), 1000, 100);
+		for (int i = 0; i <30; i++) {
 			try {
-				clicksAndActionHelper.moveToElement(assetReturnObj.fixedAsset_AssetReturn_WorkflowInitiated());
-				assetReturnObj.fixedAsset_AssetReturn_WorkflowInitiated().click();
-			    break;
+				assetReturnObj.fixetReturnSaveButton().click();
+				break;
 			} catch (Exception e) {
 				
 			}
 		}
-    	for (int i = 0; i <90; i++) {
-			try {
-				assetReturnObj.fixedAsset_AssetReturn_AlertClose().click();
-				break;
-			} catch (Exception e) {
-				if (i==29) {
-					//Assert.fail("Success message close button not clicked ");
-				}
-			}
-		}
+		
+		
+    	
 		
 		
     }
 	@Then("^check the approved record is displayed in de allocation list view$")
     public void check_the_approved_record_is_displayed_in_de_allocation_list_view() throws Throwable {
-		 System.out.println(assetReferenceNo.get("AssetReferenceNumber"));
+		 System.out.println(assetReferenceNo.get("AssetReferenceNumberCreated"));
 
 			String beforeXpath = "//span[contains(text(),'";
 			String afterXpath = "')]";
 			while (true) {
 				try {
-					driver.findElement(By.xpath(beforeXpath + assetReferenceNo.get("AssetReferenceNumber") + afterXpath))
-							.isDisplayed();
+					List<WebElement> deallocationrecords = driver.findElements(By.xpath(beforeXpath + assetReferenceNo.get("AssetReferenceNumberCreated") + afterXpath));
+					for (WebElement webElement : deallocationrecords) {
+						webElement.isDisplayed();
+					}	
 					break;
 				} catch (NoSuchElementException e) {
 					System.out.println(e.getMessage());
@@ -799,53 +863,60 @@ public class FIXEDASSET_AssetReturn extends BaseClass {
     }
 	 @Then("^check the approved record is displayed in list view of returned asset$")
 	    public void check_the_approved_record_is_displayed_in_list_view_od_returned_asset() throws Throwable {
-		 System.out.println(assetReferenceNo.get("AssetReferenceNumberCreated"));
+		 //System.out.println(fixedAsset_AssetCreationTestDataType.AssetCode);
 
 			String beforeXpath = "//span[contains(text(),'";
 			String afterXpath = "')]";
 			while (true) {
 				try {
-					driver.findElement(By.xpath(beforeXpath + assetReferenceNo.get("AssetReferenceNumberCreated") + afterXpath))
-							.isDisplayed();
+					List<WebElement> records = driver.findElements(By.xpath(beforeXpath+fixedAsset_AssetCreationTestDataType.AssetCode+afterXpath));
+					for (WebElement webElement : records) {
+						webElement.isDisplayed();
+					}	
 					break;
 				} catch (NoSuchElementException e) {
 					System.out.println(e.getMessage());
-					assetReturnObj.fixedAssetNextButton().click();
+					//assetReturnObj.fixedAssetNextButton().click();
 				}
 			}
 
 	    }
 	    @Then("^check the approved record is displayed in revalued asset$")
 	    public void check_the_approved_record_is_displayed_in_revalued_asset() throws Throwable {
-	    	System.out.println(assetReferenceNo.get("AssetReferenceNumber"));
-
+	    	//System.out.println(assetReferenceNo.get("AssetReferenceNumber"));
+	    	
+	    	//System.out.println(assetReferenceNo.get("AssetReferenceNumberCreated"));
 			String beforeXpath = "//span[contains(text(),'";
 			String afterXpath = "')]";
 			while (true) {
 				try {
-					driver.findElement(By.xpath(beforeXpath + assetReferenceNo.get("AssetReferenceNumber") + afterXpath))
-							.isDisplayed();
+					List<WebElement> records = driver.findElements(By.xpath(beforeXpath + fixedAsset_AssetCreationTestDataType.AssetCode + afterXpath));
+					for (WebElement webElement : records) {
+						webElement.isDisplayed();
+					}		
 					break;
 				} catch (NoSuchElementException e) {
 					System.out.println(e.getMessage());
-					assetReturnObj.fixedAssetNextButton().click();
+					//assetReturnObj.fixedAssetNextButton().click();
 				}
 			}
 	    }
 	    @Then("^check the approved record is displayed in ammendent asset$")
 	    public void check_the_approved_record_is_displayed_in_ammendent_asset() throws Throwable {
-	    	System.out.println(assetReferenceNo.get("AssetReferenceNumber"));
+	    	System.out.println(fixedAsset_AssetCreationTestDataType.AssetCode);
 
 			String beforeXpath = "//span[contains(text(),'";
 			String afterXpath = "')]";
 			while (true) {
 				try {
-					driver.findElement(By.xpath(beforeXpath + assetReferenceNo.get("AssetReferenceNumber") + afterXpath))
-							.isDisplayed();
+					List<WebElement> records = driver.findElements(By.xpath(beforeXpath+fixedAsset_AssetCreationTestDataType.AssetCode+afterXpath));
+					for (WebElement webElement : records) {
+						webElement.isDisplayed();
+					}		
 					break;
 				} catch (NoSuchElementException e) {
 					System.out.println(e.getMessage());
-					assetReturnObj.fixedAssetNextButton().click();
+					//assetReturnObj.fixedAssetNextButton().click();
 				}
 			}
 	    }

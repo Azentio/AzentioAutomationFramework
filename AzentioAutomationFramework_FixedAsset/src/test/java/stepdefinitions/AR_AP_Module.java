@@ -675,8 +675,16 @@ public class AR_AP_Module extends BaseClass {
 
 	@And("^user click search icon$")
 	public void user_click_search_icon() throws Throwable {
-		seleniumactions.getWaitHelper().waitForElement(driver, 2000, cancellationofcontract.getApserachicon());
-		seleniumactions.getClickAndActionsHelper().clickOnElement(cancellationofcontract.getApserachicon());
+		for (int i = 0; i <50; i++) {
+			try {
+				cancellationofcontract.getApserachicon().click();
+				break;
+			} catch (Exception e) {
+				if (i==49) {
+					Assert.fail(e.getMessage());
+				}
+			}
+		}
 	}
 
 	@And("^user search cancelled vendor contract$")
@@ -689,9 +697,9 @@ public class AR_AP_Module extends BaseClass {
 	@And("^user click the cancelled vendor contract eye icon$")
 	public void user_click_the_cancelled_vendor_contract_eye_icon() throws Throwable {
 		seleniumactions.getWaitHelper().waitForElement(driver, 2000,
-				cancellationofcontract.getClickSecondEyeiconInListView());
+				cancellationofcontract.getClickFirstEyeiconInListView());
 		seleniumactions.getClickAndActionsHelper()
-				.clickOnElement(cancellationofcontract.getClickSecondEyeiconInListView());
+				.clickOnElement(cancellationofcontract.getClickFirstEyeiconInListView());
 	}
 	@And("^get buisness partner name and get contract name$")
     public void get_buisness_partner_name_and_get_contract_name() throws Throwable {
@@ -714,10 +722,17 @@ public class AR_AP_Module extends BaseClass {
 
 	@And("^click vendor purchase order add ion$")
 	public void click_vendor_purchase_order_add_ion() throws Throwable {
-		seleniumactions.getWaitHelper().waitForElement(driver, 2000,
-				arpoCreationObj.accountsPayable_VendorPurchaseOrder_AddButton());
-		seleniumactions.getClickAndActionsHelper()
-				.clickOnElement(arpoCreationObj.accountsPayable_VendorPurchaseOrder_AddButton());
+		for (int i = 0; i <50; i++) {
+			try {
+				arpoCreationObj.accountsPayable_VendorPurchaseOrder_AddButton().click();
+				break;
+			} catch (Exception e) {
+				if (i==49) {
+					Assert.fail(e.getMessage());
+				}
+			}
+		}
+		
 	}
 
 	@And("^select buisness partner we get in cancelled list$")
@@ -953,7 +968,7 @@ public class AR_AP_Module extends BaseClass {
 		String beforexpath="//datatable-row-wrapper[";
     	String afterxpath ="]/datatable-body-row[1]/div[2]/datatable-body-cell[13]/div[1]/span[1]";
     	for (int j = 1; j < 6; j++) {
-    		for (int i = 1; i < 9; i++) {
+    		for (int i = 1; i <= 9; i++) {
         		// select active bill with expense as contract type
         		seleniumactions.getWaitHelper().waitForElement(driver,2000,driver.findElement(By.xpath(beforexpath+i+afterxpath)));
     			 invoiceBillStatus = driver.findElement(By.xpath(beforexpath+i+afterxpath)).getText();
@@ -1241,10 +1256,6 @@ while(true)
 	// cancelled bill is not allowed for payment settlement
 	@When("^click the invoice eye icon in accounts payable$")
 	public void click_the_invoice_eye_icon_in_accounts_payable() throws Throwable {
-		login = new AzentioLogin(driver);
-		driver.get(configreader.getApplicationUrl());
-		login.loginToAzentioApp("maker");
-		Thread.sleep(2000);
 		cancellationofcontract = new ArAp_Cancellation_of_vendorObj(driver);
 		seleniumactions.getWaitHelper().waitForElement(driver, 3000, cancellationofcontract.getOptionicon());
 		seleniumactions.getClickAndActionsHelper().clickOnElement(cancellationofcontract.getOptionicon());
@@ -1271,9 +1282,17 @@ while(true)
 
 	@And("^click the add icon in payment settlement$")
 	public void click_the_add_icon_in_payment_settlement() throws Throwable {
-		seleniumactions.getWaitHelper().waitForElement(driver, 2000,
-				paymentSettlementObj.getPaymentSettlementAddIcon());
-		seleniumactions.getClickAndActionsHelper().clickOnElement(paymentSettlementObj.getPaymentSettlementAddIcon());
+		for (int i = 0; i <50; i++) {
+			try {
+				paymentSettlementObj.getPaymentSettlementAddIcon().click();
+				break;
+				
+			} catch (Exception e) {
+				if (i==49) {
+					Assert.fail(e.getMessage());
+				}
+			}
+		}
 	}
 
 	@And("^select payment option as buisness partnerwise$")

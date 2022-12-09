@@ -96,17 +96,32 @@ public class FIXEDASSET_AssetReplacement extends BaseClass {
 
 		// -----------TO CLICK THE ASSET REPLACEMENT------------//
 		javaScriptHelper.JavaScriptHelper(driver);
-		javaScriptHelper.scrollIntoView(assetReplacement.fixed_AssetReplacementEye());
-		waitHelper.waitForElement(driver, 2000, assetReplacement.fixed_AssetReplacementEye());
-		assetReplacement.fixed_AssetReplacementEye().click();
+		for (int i = 0; i <30; i++) {
+			try {
+				javaScriptHelper.scrollIntoView(assetReplacement.fixed_AssetReplacementEye());
+				assetReplacement.fixed_AssetReplacementEye().click();
+				break;
+			} catch (Exception e) {
+				
+			}
+		}
+		
 	}
 
 	@And("^Click Add Icon button$")
 	public void click_add_icon_button() throws Throwable {
 
 		// -----------CLICK ADD ICON---------------//
-		waitHelper.waitForElement(driver, 2000, assetReplacement.fixedAssetReplacementAdd());
-		assetReplacement.fixedAssetReplacementAdd().click();
+		//waitHelper.waitForElement(driver, 2000, assetReplacement.fixedAssetReplacementAdd());
+		for (int i = 0; i <60; i++) {
+			try {
+				assetReplacement.fixedAssetReplacementAdd().click();
+				break;
+			} catch (Exception e) {
+				
+			}
+		}
+		
 	}
 
 	@Then("^Enter the Asset Referance Number$")
@@ -114,6 +129,9 @@ public class FIXEDASSET_AssetReplacement extends BaseClass {
 
 		// -----------ENTER ASSET REF NO---------------//
 		waitHelper.waitForElement(driver, 2000, assetReplacement.fixed_AssetReferenceNumber());
+		assetReplacement.fixed_AssetReferenceNumber().click();
+		assetReplacement.fixed_AssetReferenceNumber().sendKeys(fixedAsset_AssetCreationTestDataType.AssetCode);
+		Thread.sleep(1500);
 		assetReplacement.fixed_AssetReferenceNumber().sendKeys(Keys.DOWN);
 		assetReplacement.fixed_AssetReferenceNumber().sendKeys(Keys.ENTER);
 		waitHelper.waitForElement(driver, 2000, assetReplacement.fixed_AssetGetReferenceNumber());
@@ -138,6 +156,7 @@ public class FIXEDASSET_AssetReplacement extends BaseClass {
 		// --------------ASSET ITEM NUMBER---------------//
 		waitHelper.waitForElement(driver, 2000, assetReplacement.fixed_AssetItemNO());
 		assetReplacement.fixed_AssetItemNO().click();
+		Thread.sleep(900);
 		assetReplacement.fixed_AssetItemNO().sendKeys(Keys.DOWN);
 		assetReplacement.fixed_AssetItemNO().sendKeys(Keys.ENTER);
 
@@ -232,8 +251,16 @@ public class FIXEDASSET_AssetReplacement extends BaseClass {
 	@And("^Click Reviewer Notification icon$")
 	public void click_reviewer_notification_icon() throws Throwable {
 		// -------------REVIEWER NOTIFICATION---------------//
-		waitHelper.waitForElement(driver, 2000, reviewerObj.reviewerNotidicationIcon());
-		reviewerObj.reviewerNotidicationIcon().click();
+		//waitHelper.waitForElement(driver, 2000, reviewerObj.reviewerNotidicationIcon());
+		//waitHelper.waitForElementToVisibleWithFluentWait(driver, reviewerObj.reviewerNotidicationIcon(), 30, 2);
+		Thread.sleep(2000);
+				//clickAndActionHelper.moveToElement(reviewerObj.reviewerNotidicationIcon());
+				reviewerObj.reviewerNotidicationIcon().click();
+				
+				
+				
+		
+		
 		waitHelper.waitForElement(driver, 2000, reviewerObj.reviewer_referanceid());
 		javaScriptHelper.JavaScriptHelper(driver);
 		referance_id = reviewerObj.reviewer_referanceid().getText();
@@ -303,11 +330,19 @@ public class FIXEDASSET_AssetReplacement extends BaseClass {
 		// -------------------------CLICK CLAIM OPTION-------------------------//
 		String before_xpath = "//span[contains(text(),'";
 		String after_xpath_claim = "')]/parent::div/parent::datatable-body-cell/preceding-sibling::datatable-body-cell[2]/div/ion-buttons/ion-button";
-		waitHelper.waitForElement(driver, 10000,
-				driver.findElement(By.xpath(before_xpath + readerData.readReferancedata() + after_xpath_claim)));
-		driver.findElement(By.xpath(before_xpath + readerData.readReferancedata() + after_xpath_claim)).click();
+//		waitHelper.waitForElement(driver, 10000,
+//				driver.findElement(By.xpath(before_xpath + readerData.readReferancedata() + after_xpath_claim)));
+		for (int i = 0; i <30; i++) {
+			try {
+				driver.findElement(By.xpath(before_xpath + readerData.readReferancedata() + after_xpath_claim)).click();
+				break;
+			} catch (Exception e) {
+				// TODO: handle exception
+			}
+		}
 		waitHelper.waitForElement(driver, 2000, checkerObj.checker_alert_close());
 		checkerObj.checker_alert_close().click();
+		
 	}
 
 	@And("^Click Checker Notification icon$")
@@ -322,22 +357,33 @@ public class FIXEDASSET_AssetReplacement extends BaseClass {
 	@Then("^Click Action Icon from claimed record$")
 	public void click_action_icon_from_claimed_record() throws Throwable {
 		// ------------------CHECKER ACTION------------------//
-		waitHelper.waitForElementToVisibleWithFluentWait(driver,driver.findElement(By.xpath("//span[contains(text(),'"
-				+ readerData.readReferancedata()
-				+ "')]/ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell/div/ion-buttons/ion-button")),60,5);
-		for (int i = 0; i <10; i++) {
+//		waitHelper.waitForElementToVisibleWithFluentWait(driver,driver.findElement(By.xpath("//span[contains(text(),'"
+//				+ readerData.readReferancedata()
+//				+ "')]/ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell/div/ion-buttons/ion-button")),60,5);
+		String before_xpath="//span[contains(text(),'";
+		String after_xpath="')]/ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell//ion-button";
+		for (int i = 0; i <200; i++) {
 			try {
-				driver.findElement(By.xpath("//span[contains(text(),'" + readerData.readReferancedata()
-				+ "')]/ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell/div/ion-buttons/ion-button"))
-				.click();
+				driver.findElement(By.xpath(before_xpath +readerData.readReferancedata() +after_xpath)).click();
 				break;
-			} catch (NoSuchElementException e) {
+			} catch (Exception e) {
 				
 			}
-			
 		}
-		
+//		
+//		for (int i = 0; i <30; i++) {
+//			try {
+//				driver.findElement(By.xpath("//span[contains(text(),'" + readerData.readReferancedata()
+//				+ "')]/ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell/div/ion-buttons/ion-button"))
+//				.click();
+//				break;
+//			} catch (NoSuchElementException e) {
+//				
+//			}
+//			
+//		}
 	}
+	
 
 	@And("^Click Approve icon$")
 	public void click_approve_icon() throws Throwable {
@@ -362,8 +408,16 @@ public class FIXEDASSET_AssetReplacement extends BaseClass {
 	@And("^Click on the search icon$")
 	public void click_on_the_search_icon() throws Throwable {
 		// ----------CLICK THE SEARCH ICON----------//
-		waitHelper.waitForElement(driver, 2000, assetReplacement.fixed_AssetSearch());
-		assetReplacement.fixed_AssetSearch().click();
+		//waitHelper.waitForElement(driver, 2000, assetReplacement.fixed_AssetSearch());
+		for (int i = 0; i <30; i++) {
+			try {
+				assetReplacement.fixed_AssetSearch().click();
+				break;
+			} catch (Exception e) {
+				
+			}
+		}
+		
 	}
 
 	@Then("^Enter Asset Referance No$")

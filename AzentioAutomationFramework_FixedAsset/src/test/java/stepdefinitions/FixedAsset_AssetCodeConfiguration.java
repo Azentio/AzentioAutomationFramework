@@ -36,9 +36,17 @@ public class FixedAsset_AssetCodeConfiguration extends BaseClass {
     }*/
 	@And("^get the active asset code in asset category module$")
     public void get_the_active_asset_code_in_asset_category_module() throws Throwable {
-		waithelper.waitForElementVisible(driver.findElement(By.xpath("//datatable-row-wrapper[1]//datatable-body-cell[2]//span")), 3000, 300);
+		//waithelper.waitForElementVisible(driver.findElement(By.xpath("//datatable-row-wrapper[1]//datatable-body-cell[2]//span")), 3000, 300);
      //driver.findElement(By.xpath("//datatable-row-wrapper[1]//datatable-body-cell[2]//span")).getText();
-     codeConfigData.put("AssetCode", driver.findElement(By.xpath("//datatable-row-wrapper[1]//datatable-body-cell[2]//span")).getText());
+		for (int i = 0; i <30; i++) {
+			try {
+				codeConfigData.put("AssetCode", driver.findElement(By.xpath("//datatable-row-wrapper[1]//datatable-body-cell[2]//span")).getText());
+				break;
+			} catch (Exception e) {
+				
+			}
+		}
+     
      System.out.println( driver.findElement(By.xpath("//datatable-row-wrapper[1]//datatable-body-cell[2]//span")).getText());
     }
 	

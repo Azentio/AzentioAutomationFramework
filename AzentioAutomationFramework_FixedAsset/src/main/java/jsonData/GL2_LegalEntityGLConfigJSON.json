@@ -3,8 +3,8 @@
 
 
 "User": "Maker",
-"CashGL" : "IFRS-AS-AS1000034 - Cash at Bank- GPP",
-"GLCheck" : "IFRS-1000045-AS -  ICICI Bank AC ICICI883298348348394",
+"CashGL" : "IFRS-1000047-AS - Inter Branch GL",
+"GLCheck" : "IFRS-1000043-AS - HDFC Bank AC HDFC098828873723238",
 "InterBranchGL" : "IFRS-1000047-AS - Inter Branch GL",
 "PositionGL" : "IFRS-AS-AS1000017 - Non-Financial Inventories",
 "PLExchangeGainGL" : "IFRS-7000018-NOP - Loss Adjustment GL",

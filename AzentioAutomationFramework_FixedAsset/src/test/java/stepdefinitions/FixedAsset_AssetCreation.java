@@ -39,7 +39,7 @@ public class FixedAsset_AssetCreation extends BaseClass {
 
 	
 	@Then("^Fill Form asset Creation$")
-	public void fill_form_asset_Creation()  {
+	public void fill_form_asset_Creation() throws InterruptedException  {
 		fixedAsset_AssetCreationTestDataType = jsonReader.getAssetCreationByName("Maker");
 
 		waithelper.waitForElement(driver, 2000, fixedAsset_AssetCreationObj.fixedAsset_AssetCreation_BranchCode_Textbox());
@@ -55,6 +55,7 @@ public class FixedAsset_AssetCreation extends BaseClass {
 		waithelper.waitForElement(driver, 2000, fixedAsset_AssetCreationObj.fixedAsset_AssetCreation_BillReferenceNumber_Textbox());
 		fixedAsset_AssetCreationObj.fixedAsset_AssetCreation_BillReferenceNumber_Textbox().click();
 		fixedAsset_AssetCreationObj.fixedAsset_AssetCreation_BillReferenceNumber_Textbox().sendKeys(fixedAsset_AssetCreationTestDataType.BillReferenceNo);
+		Thread.sleep(900);
 		fixedAsset_AssetCreationObj.fixedAsset_AssetCreation_BillReferenceNumber_Textbox().sendKeys(Keys.ENTER);
 		
 	}

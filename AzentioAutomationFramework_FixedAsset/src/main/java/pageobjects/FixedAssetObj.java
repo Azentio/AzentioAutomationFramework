@@ -163,10 +163,9 @@ return fixedAsset_AssetCreation_SaveButton;
 	//success message close
 	@FindBy(xpath = "//button[@aria-label='Close']")
 	private WebElement fixedAsset_AssetCreation_SuccessMessageClose;
-
-		public WebElement fixedAsset_AssetCreation_SuccessMessageClose() {
-	return fixedAsset_AssetCreation_SuccessMessageClose;
-							}
+	public WebElement fixedAsset_AssetCreation_SuccessMessageClose() {
+		return fixedAsset_AssetCreation_SuccessMessageClose;
+	}
 		 @FindBy(xpath = "//div[@id='toast-container']//div[@role='alert']")
 			private WebElement fixedAsset_AssetCategory_WorkflowInitiated;
 		    public WebElement fixedAsset_AssetCategory_WorkflowInitiated() {

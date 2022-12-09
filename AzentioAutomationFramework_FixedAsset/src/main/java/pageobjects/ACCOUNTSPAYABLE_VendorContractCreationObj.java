@@ -74,6 +74,12 @@ WebDriver driver;
 	{
 		return vendorContractTempView;
 	}
+	//success message close
+		@FindBy(xpath = "//button[@aria-label='Close']")
+		private WebElement vendorContract_SuccessMessageClose;
+		public WebElement vendorContract_SuccessMessageClose() {
+			return vendorContract_SuccessMessageClose;
+		}
 	@FindBy(xpath="//datatable-row-wrapper[1]//datatable-body-cell[1]//ion-button")
 	private WebElement vendorContractFirstTemprecord;
 	public WebElement firstTempRecord()

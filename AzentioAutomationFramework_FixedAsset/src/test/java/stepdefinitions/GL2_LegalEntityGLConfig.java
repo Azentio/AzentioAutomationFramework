@@ -1,7 +1,9 @@
 package stepdefinitions;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
+import org.testng.Assert;
 
 import dataProvider.JsonConfig;
 import helper.DropDownHelper;
@@ -41,9 +43,17 @@ public class GL2_LegalEntityGLConfig extends BaseClass {
 
 	@Then("^Click on Legal Entity GL Configuration Add button$")
 	public void click_on_legal_entity_gl_configuration_add_button() {
-		waithelper.waitForElementToVisibleWithFluentWait(driver,
-				gL2_LegalEntityGLConfigObj.gL2_LegalEntityGLConfig_AddButton(), 5, 500);
-		gL2_LegalEntityGLConfigObj.gL2_LegalEntityGLConfig_AddButton().click();
+		for (int i = 0; i <30; i++) {
+			try {
+				gL2_LegalEntityGLConfigObj.gL2_LegalEntityGLConfig_AddButton().click();
+				break;
+			} catch (Exception e) {
+				if (i==29) {
+					Assert.fail(e.getMessage());
+				}
+			}
+		}
+		
 
 	}
 
@@ -55,6 +65,16 @@ public class GL2_LegalEntityGLConfig extends BaseClass {
 		gL2_LegalEntityGLConfigObj.gL2_LegalEntityGLConfig_CashGL().click();
 		gL2_LegalEntityGLConfigObj.gL2_LegalEntityGLConfig_CashGL()
 				.sendKeys(gL2_LegalEntityGLConfigTestDataType.CashGL);
+		for (int i = 0; i <300; i++) {
+			try {
+				driver.findElement(By.xpath("//span[contains(text(),'"+gL2_LegalEntityGLConfigTestDataType.CashGL+"')]")).isDisplayed();
+				break;
+			} catch (Exception e) {
+				if (i==299) {
+					Assert.fail(e.getMessage());
+				}
+			}
+		}
 		gL2_LegalEntityGLConfigObj.gL2_LegalEntityGLConfig_CashGL().sendKeys(Keys.ENTER);
 
 		// GLCheck
@@ -62,7 +82,17 @@ public class GL2_LegalEntityGLConfig extends BaseClass {
 				gL2_LegalEntityGLConfigObj.gL2_LegalEntityGLConfig_GLCheck(), 5, 500);
 		gL2_LegalEntityGLConfigObj.gL2_LegalEntityGLConfig_GLCheck().click();
 		gL2_LegalEntityGLConfigObj.gL2_LegalEntityGLConfig_GLCheck()
-				.sendKeys(gL2_LegalEntityGLConfigTestDataType.GLCheck);
+		.sendKeys(gL2_LegalEntityGLConfigTestDataType.GLCheck);
+		for (int i = 0; i <30; i++) {
+			try {
+				driver.findElement(By.xpath("//span[contains(text(),'"+gL2_LegalEntityGLConfigTestDataType.GLCheck+"')]")).isDisplayed();
+				break;
+			} catch (Exception e) {
+				if (i==29) {
+					Assert.fail(e.getMessage());
+				}
+			}
+		}
 		gL2_LegalEntityGLConfigObj.gL2_LegalEntityGLConfig_GLCheck().sendKeys(Keys.ENTER);
 
 		// InterBranchGL

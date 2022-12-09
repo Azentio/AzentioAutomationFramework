@@ -39,22 +39,25 @@ public class GL2_JournalVoucher_AccountEntryReport extends BaseClass {
 
 	@And("^fill the mandtory field for Journal vourcher$")
 	public void fill_the_mandtory_field_for_journal_vourcher() {
-		for (int i = 0; i <= 300; i++) {
+		waithelper.waitForElementToVisibleWithFluentWait(driver,gL2_JournalVoucher_AccountEntryReportObj.gL2_JournalVoucher_AccountEntryReport_BranchCode(),30, 2);
+		gL2_JournalVoucher_AccountEntryReportObj.gL2_JournalVoucher_AccountEntryReport_BranchCode()
+				.sendKeys(gL2_JournalVoucher_AccountEntryReportTestDataType.BranchCode);
+		for (int i = 0; i <50; i++) {
 			try {
-				gL2_JournalVoucher_AccountEntryReportObj.gL2_JournalVoucher_AccountEntryReport_BranchCode()
-						.sendKeys(gL2_JournalVoucher_AccountEntryReportTestDataType.BranchCode);
-				gL2_JournalVoucher_AccountEntryReportObj.gL2_JournalVoucher_AccountEntryReport_BranchCode()
-						.sendKeys(Keys.ENTER);
+				driver.findElement(By.xpath("//span[contains(text(),'"+gL2_JournalVoucher_AccountEntryReportTestDataType.BranchCode+"')]")).isDisplayed();
 				break;
-			} catch (ElementNotInteractableException e) {
-				if (i == 300) {
-					e.printStackTrace();
+			} catch (Exception e) {
+				if (i==49) {
+					Assert.fail(e.getMessage());
 				}
 			}
 		}
-		gL2_JournalVoucher_AccountEntryReportObj.gL2_JournalVoucher_AccountEntryReport_GlCode()
-				.sendKeys(gL2_JournalVoucher_AccountEntryReportTestDataType.GLCode);
-		gL2_JournalVoucher_AccountEntryReportObj.gL2_JournalVoucher_AccountEntryReport_GlCode().sendKeys(Keys.ENTER);
+		gL2_JournalVoucher_AccountEntryReportObj.gL2_JournalVoucher_AccountEntryReport_BranchCode()
+				.sendKeys(Keys.ENTER);
+		
+//		gL2_JournalVoucher_AccountEntryReportObj.gL2_JournalVoucher_AccountEntryReport_GlCode()
+//				.sendKeys(gL2_JournalVoucher_AccountEntryReportTestDataType.GLCode);
+//		gL2_JournalVoucher_AccountEntryReportObj.gL2_JournalVoucher_AccountEntryReport_GlCode().sendKeys(Keys.ENTER);
 	}
 
 	@Then("^select Transaction from date Journal vourcher$")
@@ -146,20 +149,52 @@ public class GL2_JournalVoucher_AccountEntryReport extends BaseClass {
 //		Thread.sleep(2000);
 
 	}
+	@And("^Select the Transaction Ref no for journal Voucher$")
+    public void select_the_transaction_ref_no_for_journal_voucher() throws Throwable {
+		gL2_JournalVoucher_AccountEntryReportObj.transactionRefNo().click();
+		gL2_JournalVoucher_AccountEntryReportObj.transactionRefNo().sendKeys(gL2_JournalVoucher_AccountEntryReportTestDataType.Voucher);
+		for (int i = 0; i <50; i++) {
+			try {
+				driver.findElement(By.xpath("//span[contains(text(),'"+gL2_JournalVoucher_AccountEntryReportTestDataType.Voucher+"')]")).isDisplayed();
+				gL2_JournalVoucher_AccountEntryReportObj.transactionRefNo().sendKeys(Keys.DOWN);
+				gL2_JournalVoucher_AccountEntryReportObj.transactionRefNo().sendKeys(Keys.ENTER);
+				break;
+			} catch (Exception e) {
+				if (i==199) {
+					Assert.fail(e.getMessage());
+				}
+			}
+		}
+		
+		
+    }
+	@And("^Select the Transaction Ref no for Reversal journal Voucher$")
+    public void select_the_transaction_ref_no_for_reversal_journal_voucher() throws Throwable {
+		gL2_JournalVoucher_AccountEntryReportObj.transactionRefNo().click();
+		gL2_JournalVoucher_AccountEntryReportObj.transactionRefNo().sendKeys(gL2_JournalVoucher_AccountEntryReportTestDataType.VoucherReverse);
+		for (int i = 0; i <50; i++) {
+			try {
+				driver.findElement(By.xpath("//span[contains(text(),'"+gL2_JournalVoucher_AccountEntryReportTestDataType.VoucherReverse+"')]")).isDisplayed();
+				gL2_JournalVoucher_AccountEntryReportObj.transactionRefNo().sendKeys(Keys.DOWN);
+				gL2_JournalVoucher_AccountEntryReportObj.transactionRefNo().sendKeys(Keys.ENTER);
+				break;
+			} catch (Exception e) {
+				if (i==199) {
+					Assert.fail(e.getMessage());
+				}
+			}
+		}
+		
+    }
 
 	@Then("^validate Journal vourcher number$")
 	public void validate_journal_vourcher_number() throws InterruptedException {
 		javascripthelper.JavaScriptHelper(driver);
-		javascripthelper
-				.scrollIntoView(gL2_JournalVoucher_AccountEntryReportObj.gL2_JournalVoucher_AccountEntryReport_Total());
+//		javascripthelper
+//				.scrollIntoView(gL2_JournalVoucher_AccountEntryReportObj.gL2_JournalVoucher_AccountEntryReport_Total());
 //		Thread.sleep(2000);
 		while (true) {
 			try {
-
-				waithelper.waitForElementToVisibleWithFluentWait(driver,
-						driver.findElement(By.xpath("//span[contains(text(),'"
-								+ gL2_JournalVoucher_AccountEntryReportTestDataType.Voucher + "')]")),
-						5, 500);
 				WebElement VoucherNum = driver.findElement(By.xpath("//span[contains(text(),'"
 						+ gL2_JournalVoucher_AccountEntryReportTestDataType.Voucher + "')]"));
 				Assert.assertTrue(VoucherNum.isDisplayed());
@@ -180,19 +215,14 @@ public class GL2_JournalVoucher_AccountEntryReport extends BaseClass {
 	@Then("^validate Journal vourcher Reversal number$")
 	public void validate_journal_vourcher_Reversal_number() throws InterruptedException {
 
-		javascripthelper.JavaScriptHelper(driver);
-		Thread.sleep(500);
-		javascripthelper
-				.scrollIntoView(gL2_JournalVoucher_AccountEntryReportObj.gL2_JournalVoucher_AccountEntryReport_Total());
+//		javascripthelper.JavaScriptHelper(driver);
+//		Thread.sleep(500);
+//		javascripthelper
+//				.scrollIntoView(gL2_JournalVoucher_AccountEntryReportObj.gL2_JournalVoucher_AccountEntryReport_Total());
 
 //		Thread.sleep(2000);
 		while (true) {
 			try {
-				waithelper
-						.waitForElementToVisibleWithFluentWait(driver,
-								driver.findElement(By.xpath("//span[contains(text(),'"
-										+ gL2_JournalVoucher_AccountEntryReportTestDataType.VoucherReverse + "')]")),
-								5, 500);
 				WebElement VoucherNum = driver.findElement(By.xpath("//span[contains(text(),'"
 						+ gL2_JournalVoucher_AccountEntryReportTestDataType.VoucherReverse + "')]"));
 				Assert.assertTrue(VoucherNum.isDisplayed());

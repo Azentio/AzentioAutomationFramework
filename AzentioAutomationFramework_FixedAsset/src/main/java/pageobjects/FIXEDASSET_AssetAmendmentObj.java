@@ -228,7 +228,16 @@ public class FIXEDASSET_AssetAmendmentObj {
 
 		return fixed_AssetTableRef;
 	}
-	
+	@FindBy(xpath = "//div[@id='toast-container']//div[@role='alert']")
+	private WebElement fixedAsset_AssetReturn_WorkflowInitiated;
+    public WebElement fixedAsset_AssetReturn_WorkflowInitiated() {
+		 return fixedAsset_AssetReturn_WorkflowInitiated;
+	}
+    @FindBy(xpath = "//button[@aria-label='Close']")
+	private WebElement fixedAsset_AssetReturn_AlertClose;
+    public WebElement fixedAsset_AssetReturn_AlertClose() {
+		 return fixedAsset_AssetReturn_AlertClose;
+	}	
 	
 	
 }

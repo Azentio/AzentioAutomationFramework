@@ -2,13 +2,12 @@ package stepdefinitions;
 
 import java.util.HashMap;
 import java.util.Map;
-
-import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.ElementClickInterceptedException;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
+import org.testng.Assert;
 
 import dataProvider.ConfigFileReader;
 import dataProvider.JsonConfig;
@@ -106,7 +105,15 @@ public class FIXEDASSET_AssetRevaluvation extends BaseClass {
 
 		// -----------CLICK ADD ICON---------------//
 		//waitHelper.waitForElement(driver, 2000, assetRevaluvationObj.fixedAssetRevalueAdd());
-		assetRevaluvationObj.fixedAssetRevalueAdd().click();
+		for (int i = 0; i <30; i++) {
+			try {
+				assetRevaluvationObj.fixedAssetRevalueAdd().click();
+				break;
+			} catch (Exception e) {
+				
+			}
+		}
+		
 		
 	}
 
@@ -130,7 +137,7 @@ public class FIXEDASSET_AssetRevaluvation extends BaseClass {
 		// --------------ASSET ITEM NUMBER---------------//
 		waitHelper.waitForElement(driver, 2000, assetRevaluvationObj.fixed_AssetItemCode());
 		assetRevaluvationObj.fixed_AssetItemCode().click();
-		Thread.sleep(1000);
+		Thread.sleep(2000);
 		assetRevaluvationObj.fixed_AssetItemCode().sendKeys(Keys.DOWN);
 		assetRevaluvationObj.fixed_AssetItemCode().sendKeys(Keys.ENTER);
 	}
@@ -159,14 +166,25 @@ public class FIXEDASSET_AssetRevaluvation extends BaseClass {
 			}
 		}
 		
-	}
+ 
+    	}
+		
+	
 
 	@And("^Go to Maker Notification$")
 	public void go_to_maker_notification() throws Throwable {
 
 		// ------------Maker Notification icon---------//
-		waitHelper.waitForElement(driver, 2000, assetRevaluvationObj.fixed_MakerNotification());
-		assetRevaluvationObj.fixed_MakerNotification().click();
+		//waitHelper.waitForElement(driver, 2000, assetRevaluvationObj.fixed_MakerNotification());
+		for (int i = 0; i <60; i++) {
+			try {
+				assetRevaluvationObj.fixed_MakerNotification().click();
+				break;
+			} catch (Exception e) {
+				
+			}
+		}
+		
 	}
 
 	@Then("^Select the first Action icon$")
@@ -293,9 +311,18 @@ public class FIXEDASSET_AssetRevaluvation extends BaseClass {
 		// -------------------------CLICK CLAIM OPTION-------------------------//
 		String before_xpath = "//span[contains(text(),'";
 		String after_xpath_claim = "')]/parent::div/parent::datatable-body-cell/preceding-sibling::datatable-body-cell[2]/div/ion-buttons/ion-button";
-		waitHelper.waitForElement(driver, 10000,
-				driver.findElement(By.xpath(before_xpath + readerData.readReferancedata() + after_xpath_claim)));
-		driver.findElement(By.xpath(before_xpath + readerData.readReferancedata() + after_xpath_claim)).click();
+//		waitHelper.waitForElement(driver, 10000,
+//				driver.findElement(By.xpath(before_xpath + readerData.readReferancedata() + after_xpath_claim)));
+		for (int i = 0; i <30; i++) {
+			try {
+				driver.findElement(By.xpath(before_xpath + readerData.readReferancedata() + after_xpath_claim)).click();
+				break;
+			} catch (Exception e) {
+				if (i==29) {
+					Assert.fail(e.getMessage());
+				}
+			}
+		}
 		waitHelper.waitForElement(driver, 2000, checkerObj.checker_alert_close());
 		checkerObj.checker_alert_close().click();
 	}
@@ -344,8 +371,18 @@ public class FIXEDASSET_AssetRevaluvation extends BaseClass {
 	@And("^Click search icon button$")
 	public void click_search_icon_button() throws Throwable {
 		// ----------CLICK THE SEARCH ICON----------//
-		waitHelper.waitForElement(driver, 2000, assetRevaluvationObj.fixed_AssetSearch());
-		assetRevaluvationObj.fixed_AssetSearch().click();
+		//waitHelper.waitForElement(driver, 2000, assetRevaluvationObj.fixed_AssetSearch());
+		for (int i = 0; i <60; i++) {
+			try {
+				assetRevaluvationObj.fixed_AssetSearch().click();
+				break;
+			} catch (Exception e) {
+				if (i==29) {
+					Assert.fail(e.getMessage());
+				}
+			}
+		}
+		
 	}
 
 	@Then("^Give the Asset Referance Number$")
@@ -401,7 +438,17 @@ public class FIXEDASSET_AssetRevaluvation extends BaseClass {
 		waitHelper.waitForElement(driver, 2000, assetRevaluvationObj.fixed_AssetGetReferenceNumber());
 		//javaScriptHelper.JavaScriptHelper(driver);
 		// AssetCreation = (String) javaScriptHelper.executeScript("return document.getElementsByClassName('ng-value-label')[0].innerText");
-		AssetCreation = assetRevaluvationObj.fixed_AssetGetReferenceNumber().getText();
+		for (int i = 0; i <30; i++) {
+			try {
+				AssetCreation = assetRevaluvationObj.fixed_AssetGetReferenceNumber().getText();
+				break;
+			} catch (Exception e) {
+				if (i==29) {
+					Assert.fail(e.getMessage());
+				}
+			}
+		}
+		
 		System.out.println(AssetCreation);
 	}
 
@@ -575,7 +622,8 @@ public class FIXEDASSET_AssetRevaluvation extends BaseClass {
     public void give_asset_return_referance_number() throws Throwable {
 		// -----------ENTER ASSET REF NO---------------//
 		waitHelper.waitForElement(driver, 2000, assetRevaluvationObj.fixed_AssetReferenceNumber());
-		assetRevaluvationObj.fixed_AssetReferenceNumber().sendKeys(assetAmendmentData.returnAssetNum);
+		assetRevaluvationObj.fixed_AssetReferenceNumber().sendKeys(AssetCreation);
+		Thread.sleep(1000);
 		assetRevaluvationObj.fixed_AssetReferenceNumber().sendKeys(Keys.ENTER);
     }
 

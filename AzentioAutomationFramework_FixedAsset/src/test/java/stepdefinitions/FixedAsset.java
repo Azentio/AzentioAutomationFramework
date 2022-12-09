@@ -133,31 +133,19 @@ public class FixedAsset {
 	    	fixedAssetObj.fixedAsset_AssetCreation_BillReferenceNumber_Textbox().sendKeys(Keys.ENTER);
 	    	Thread.sleep(3000);
 	    }
-
+	    @And("^User close the workflow initiated pop up$")
+	    public void user_close_the_workflow_initiated_pop_up() throws Throwable {
+	    	waithelper.waitForElementToVisibleWithFluentWait(driver,fixedAssetObj.fixedAsset_AssetCreation_SuccessMessageClose(),30, 2);
+	    	fixedAssetObj.fixedAsset_AssetCreation_SuccessMessageClose().click();
+				    
+	    }
 	    @Then("^Save the filled form$")
 	    public void save_the_filled_form() throws Throwable {
 	    	waithelper.waitForElementToVisibleWithFluentWait(driver,fixedAssetObj.fixedAsset_AssetCreation_SaveButton(),60,5);
-	    	fixedAssetObj.fixedAsset_AssetCreation_SaveButton().click();
-	    	for (int i = 0; i <90; i++) {
-				try {
-					clicksAndActionHelper.moveToElement(fixedAssetObj.fixedAsset_AssetCategory_WorkflowInitiated());
-					fixedAssetObj.fixedAsset_AssetCategory_WorkflowInitiated().click();
-				    break;
-				} catch (Exception e) {
-					
-				}
-			}
-	    	for (int i = 0; i <90; i++) {
-				try {
-					fixedAssetObj.fixedAsset_AssetCreation_SuccessMessageClose().click();
-					break;
-				} catch (Exception e) {
-					if (i==29) {
-						//Assert.fail("Success message close button not clicked ");
-					}
-				}
-			}
-	    	}
+	    	fixedAssetObj.fixedAsset_AssetCreation_SaveButton().click();	
+	    }
+			
+	    	
 
 //	    @Then("^Click on the Notification$")
 //	    public void click_on_the_notification() throws Throwable {

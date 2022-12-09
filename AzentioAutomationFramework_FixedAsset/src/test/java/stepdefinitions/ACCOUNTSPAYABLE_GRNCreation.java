@@ -5,12 +5,12 @@ package stepdefinitions;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.ElementNotInteractableException;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
+import org.testng.Assert;
 
 import dataProvider.JsonConfig;
 import helper.ClicksAndActionsHelper;
@@ -76,12 +76,22 @@ public class ACCOUNTSPAYABLE_GRNCreation extends BaseClass {
     	poCreationObj.poCreationSearchIcon().click();
     	Thread.sleep(1000);
     	//waitHelper.waitForElementVisible(poCreationObj.poStatus(), 1000, 100);
-    	javascriptHelper.scrollIntoView(poCreationObj.poStatus());
-    	poCreationObj.poStatus().click();
-    	poCreationObj.poStatus().sendKeys(grnTestData.poStatus);
-        poNumber=poCreationObj.poPoNumber().getText();
-       poBusinessPartner= poCreationObj.poBusinessPartner().getText();
-       System.out.println(poNumber+" "+poBusinessPartner+" ");
+    	for (int i = 0; i <200; i++) {
+			try {
+				javascriptHelper.scrollIntoView(poCreationObj.poStatus());
+		    	poCreationObj.poStatus().click();
+		    	poCreationObj.poStatus().sendKeys(grnTestData.poStatus);
+		        poNumber=poCreationObj.poPoNumber().getText();
+		       poBusinessPartner= poCreationObj.poBusinessPartner().getText();
+		       System.out.println(poNumber+" "+poBusinessPartner+" ");
+		       break;
+			} catch (Exception e) {
+				if (i==199) {
+					Assert.fail(e.getMessage());
+				}
+			}
+		}
+    	
        
 
     }
@@ -89,15 +99,16 @@ public class ACCOUNTSPAYABLE_GRNCreation extends BaseClass {
     @And("^check GRN can be created for that perticular po$")
     public void check_grn_can_be_created_for_that_perticular_po() throws Throwable {
     	waitHelper.waitForElementVisible(grnObject.accountPayable_GrnBpName(), 1000, 100);
-    	System.out.println("Business Partner is"+poBusinessPartner);
+    	//System.out.println("Business Partner is"+poBusinessPartner);
     	grnObject.accountPayable_GrnBpName().click();
-    	grnObject.accountPayable_GrnBpName().sendKeys(poBusinessPartner);
+    	grnObject.accountPayable_GrnBpName().sendKeys(grnTestData.BPName);
     	//grnObject.accountPayable_GRN_BPBranch().click();
 	grnObject.accountPayable_GrnBpName().sendKeys(Keys.ENTER);
 	waitHelper.waitForElementVisible(grnObject.accountPayable_GRN_BPBranch(), 2000, 100);
 	grnObject.accountPayable_GRN_BPBranch().click();
+	Thread.sleep(500);
     	grnObject.accountPayable_GRN_BPBranch().sendKeys(Keys.ENTER);
-    	grnObject.accountPayable_GrnInvoiceNumber().sendKeys(grnTestData.InvoiceNo);
+    	grnObject.accountPayable_GrnInvoiceNumber().sendKeys(grnTestData.PoNumber);
     	grnObject.accountPayable_GrnDeliveryLocation().click();
     	//grnObject.accountPayable_GrnDeliveryLocation().sendKeys(Keys.DOWN);
     	grnObject.accountPayable_GrnDeliveryLocation().sendKeys(Keys.ENTER);
@@ -105,9 +116,29 @@ public class ACCOUNTSPAYABLE_GRNCreation extends BaseClass {
     	Thread.sleep(2000);
     	//grnObject.accountPayable_GrnSaveButton().click();
     	clickAndActions.doubleClick(grnObject.accountPayable_GrnSaveButton());
-    	grnObject.grnTempView().click();
-    	waitHelper.waitForElementVisible(grnObject.grnTempViewFirstRecord(), 1000,100);
-    	grnObject.grnTempViewFirstRecord().click();
+    	for (int i = 0; i <30; i++) {
+			try {
+				grnObject.grn_SuccessMessageClose().click();
+				break;
+			} catch (Exception e) {
+				
+			}
+		}
+    	
+    	//waitHelper.waitForElementVisible(grnObject.grnTempViewFirstRecord(), 1000,100);
+    	for (int i = 0; i <50; i++) {
+			try {
+				grnObject.grnTempView().click();
+				grnObject.grnTempViewFirstRecord().click();
+			    break;
+				
+			} catch (Exception e) {
+				if (i==49) {
+					Assert.fail(e.getMessage());
+				}
+			}
+		}
+    	
     	
     	
      
@@ -127,11 +158,22 @@ public class ACCOUNTSPAYABLE_GRNCreation extends BaseClass {
     public void go_to_item_details_and_enter_po_number_for_approval() throws Throwable {
     	waitHelper.waitForElement(driver, 2000, grnObject.inventoryManagament_GRNItemDetails());
     	grnObject.inventoryManagament_GRNItemDetails().click();
-    	waitHelper.waitForElementVisible(grnObject.accountPayable_GrnPONumber(), 1000, 100);
-    	grnObject.accountPayable_GrnPONumber().click();
-    	grnObject.accountPayable_GrnPONumber().sendKeys(poNumber);
+    	//waitHelper.waitForElementVisible(grnObject.accountPayable_GrnPONumber(), 1000, 100);
+    	for (int i = 0; i <200; i++) {
+			try {
+				grnObject.accountPayable_GrnPONumber().click();
+		    	grnObject.accountPayable_GrnPONumber().sendKeys(grnTestData.PoNumber);
+		    	break;
+			} catch (Exception e) {
+				if (i==199) {
+					Assert.fail(e.getMessage());
+				}
+				
+			}
+		}
+    	Thread.sleep(500);
     	grnObject.accountPayable_GrnPONumber().sendKeys(Keys.ENTER);
-    	Thread.sleep(3000);
+    	Thread.sleep(1000);
     	
     	for(int row=1;row<5;row++)
     	{
@@ -214,7 +256,16 @@ public class ACCOUNTSPAYABLE_GRNCreation extends BaseClass {
     @And("^search for approved po$")
     public void search_for_approved_po() throws Throwable {
     	javascriptHelper.JavaScriptHelper(driver);
-    	poCreationObj.poCreationSearchIcon().click();
+    	for (int i = 0; i <50; i++) {
+			try {
+				poCreationObj.poCreationSearchIcon().click();
+				break;
+			} catch (Exception e) {
+				if (i==49) {
+					Assert.fail(e.getMessage());
+				}
+			}
+		}
     	Thread.sleep(1000);
     	//waitHelper.waitForElementVisible(poCreationObj.poStatus(), 1000, 100);
     	javascriptHelper.scrollIntoView(poCreationObj.poStatus());

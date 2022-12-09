@@ -397,6 +397,7 @@ And Reviewer Notification icon
 Then submitted record from maker
 And Approve icon from Reviewer End
 Then Enter remark and submit Record
+#Revaluation
 Given Launch Azentio Checker Url
 Then Click the Security management
 And Click the open pool Note icon
@@ -415,29 +416,6 @@ When capture Asset Grid view List
 
 @KUBS_FAT_UAT_012_005
 Scenario: Alter the Value of an existing asset (Amendent)
-#Creation
-Given Maker Navigate to UAT URL login
-Then Click on the Direction
-Then Click on Fixed Asset
-Then Click on Asset Creation Eye button
-Then Click on the add button to add new record
-Then Fill Form asset Creation
-Then Save the filled form
-Then Click on the Notification
-Then Select the record which we saved
-Then Click on Fixed Asset items
-Then Click on the add button of asset items
-Then fill the asset item details asset Creation replaced
-Then Click on save button of item details
-Then Click on Fixed Asset Notification 
-And Select and Submit the record
-Then log in to the reviewer account
-Then click on the Notification select the record and Approve 
-Then log in to the Checker Account
-And then checker claim the record
-Then click on the checker Notification 
-And select the record and Approve by checker
-
 Given Navigate the Maker Url
 Then Choose Second Segmant Icon
 And fixed Asset Module
@@ -563,35 +541,14 @@ Then Give Remark and Submit it
 
 @KUBS_FAT_UAT_012_008
 Scenario: Alter the Value of an existing asset (Return - Maker Only)
-#Creation
-Given Maker Navigate to UAT URL login
-Then Click on the Direction
-Then Click on Fixed Asset
-Then Click on Asset Creation Eye button
-Then Click on the add button to add new record
-Then Fill Form asset Creation
-Then Save the filled form
-Then Click on the Notification
-Then Select the record which we saved
-Then Click on Fixed Asset items
-Then Click on the add button of asset items
-Then fill the asset item details asset Creation replaced
-Then Click on save button of item details
-Then Click on Fixed Asset Notification 
-And Select and Submit the record
-Then log in to the reviewer account
-Then click on the Notification select the record and Approve 
-Then log in to the Checker Account
-And then checker claim the record
-Then click on the checker Notification 
-And select the record and Approve by checker
+
 
 Given Navigate the Maker Url
 Then Choose Second Segmant Icon
 And fixed Asset Module
-#Then Asset Return submodule Eye Icon
-#And Click Table Row first Eye Icon
-#Then Store the Referance No
+Then Asset Return submodule Eye Icon
+And Click Table Row first Eye Icon
+Then Store the Referance No
 Then Asset Revaluvation submodule Eye Icon
 And Add Icon button
 Then Give Asset Return Referance Number

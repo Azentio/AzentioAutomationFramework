@@ -109,7 +109,7 @@ public class FIXEDASSET_AssetRevaluvationObj {
 		return fixed_AssetGetReferenceNumber;
 	}
 
-	@FindBy(xpath = "//ion-button[@ng-reflect-router-link='/inbox']")
+	@FindBy(xpath = "//ion-header/ion-toolbar[1]/ion-buttons[2]/ion-button[2]")
 	private WebElement fixed_MakerNotification;
 
 	public WebElement fixed_MakerNotification() {
@@ -275,7 +275,17 @@ public class FIXEDASSET_AssetRevaluvationObj {
 		return fixed_AssetReturnEye;
 	}
 	
-	
+// work flow initiated
+@FindBy(xpath = "//div[@id='toast-container']//div[@role='alert']")
+private WebElement fixedAsset_AssetReturn_WorkflowInitiated;
+public WebElement fixedAsset_AssetReturn_WorkflowInitiated() {
+return fixedAsset_AssetReturn_WorkflowInitiated;
+}
+@FindBy(xpath = "//button[@aria-label='Close']")
+private WebElement fixedAsset_AssetReturn_AlertClose;
+public WebElement fixedAsset_AssetReturn_AlertClose() {
+return fixedAsset_AssetReturn_AlertClose;
+}	 
 	
 	
 	

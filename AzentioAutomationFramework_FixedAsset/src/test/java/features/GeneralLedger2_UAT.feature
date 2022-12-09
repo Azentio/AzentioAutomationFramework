@@ -1,6 +1,5 @@
 Feature: To verify user can able to do transaction in gl2 moduyle
 @KUBS_GL2_UAT_001_001 @MultiAuth @GL2
-
 Scenario: Create a ledger at entity level
 Given Maker Navigate to UAT URL login
 Then Click on Direction Left
@@ -9,6 +8,7 @@ Then Click on Legal Entity GL Configuration Eye Icon
 Then Click on Legal Entity GL Configuration Add button
 Then Fill Legal Entity GL Configuration fields
 Then save the Legal Entity GL Configuration record
+And User close the workflow initiated pop up
 And click notification button
 Then choose first record in the notification record
 And click on Submit button 
@@ -41,7 +41,6 @@ Then Click on General ledger configuration
 Then Click on Legal Entity GL Configuration Eye Icon
 
 @KUBS_GL2_UAT_001_002 @MultiAuth @GL2
-
 Scenario: Mapping the GL in side the entity level
 Given Maker Navigate to UAT URL login
 Then Click on Direction Left
@@ -50,6 +49,7 @@ Then Click on Legal Entity GL Configuration Eye Icon
 Then Click on Legal Entity GL Configuration Add button
 Then Fill Legal Entity GL Configuration fields
 Then save the Legal Entity GL Configuration record
+And User close the workflow initiated pop up
 And click notification button
 Then choose first record in the notification record
 And click on Submit button 
@@ -91,8 +91,12 @@ Then Click on General Ledger Transaction Field
 Then Click on Journal Voucher EyeIcon
 Then Click on Journal Voucher AddButton
 Then Fill the Mandatory fields of Journal Voucher
+And User Select the profit center
+And User Select cost center or Department
+And User enter the remark for Journal Voucher
 Then Add Debit credit record 
 Then save the Journal Voucher record
+And User close the workflow initiated pop up
 And click notification button
 Then choose first record in the notification record
 And click on Submit button 
@@ -134,6 +138,7 @@ Then Click on Legal Entity GL Configuration Eye Icon
 Then Click on Legal Entity GL Configuration Add button
 Then Fill Legal Entity GL Configuration fields
 Then save the Legal Entity GL Configuration record
+And User close the workflow initiated pop up
 And click notification button
 Then choose first record in the notification record
 And click on Submit button 
@@ -179,6 +184,7 @@ Then Click on Journal Voucher AddButton
 Then Fill the Mandatory fields of Journal Voucher
 Then Add one Debit multiple credit record 
 Then save the Journal Voucher record
+And User close the workflow initiated pop up
 And click notification button
 Then choose first record in the notification record
 And click on Submit button 
@@ -219,21 +225,22 @@ Then click on report segment button
 And click on equiry menu
 Then click on edit icon near fiancial transaction menu
 And fill the mandtory field for Journal vourcher
-Then select Transaction from date Journal vourcher
-Then select Transaction to date Journal vourcher
+#Then select Transaction from date Journal vourcher
+#Then select Transaction to date Journal vourcher
+And Select the Transaction Ref no for journal Voucher
 And click on view button for record
 Then validate Journal vourcher number 
 
 @KUBS_GL2_UAT_003_004 @MultiAuth @GL2
 
 Scenario: Create a Reverse Journal Voucher to undo the already generated journal Voucher
-
 Given Maker Navigate to UAT URL login
 Then Click on Direction icon
 Then Click on General Ledger Transaction Field
 Then Click on Journal Voucher Reversal EyeIcon
 Then Click on Journal Voucher Reversal Pencil Icon
 Then save the Journal Voucher record
+And User close the workflow initiated pop up
 And click notification button
 Then choose first record in the notification record
 And click on Submit button 
@@ -267,15 +274,16 @@ Then Click on Journal Voucher Reversal EyeIcon
 
 @KUBS_GL2_UAT_003_005 @MultiAuth @GL2
 
-Scenario: System should display the accounting entries for the   vourcher generated.
+Scenario: System should display the accounting entries for the vourcher generated.
 
 Given Maker Navigate to UAT URL login
 Then click on report segment button
 And click on equiry menu
 Then click on edit icon near fiancial transaction menu
 And fill the mandtory field for Journal vourcher
-Then select Transaction from date Journal vourcher
-Then select Transaction to date Journal vourcher
+#Then select Transaction from date Journal vourcher
+#Then select Transaction to date Journal vourcher
+And Select the Transaction Ref no for Reversal journal Voucher
 And click on view button for record
 Then validate Journal vourcher Reversal number
 
@@ -407,9 +415,8 @@ And Select the Gl from date
 And select the currency type in gl balance report
 And click the View button
 Then verify that available balance should equal to closing net balance in Gl balance Report
-
+@KUBS_GL2_UAT_008_005
 @GlMonthlyBalance
-
 Scenario: Check report for GL monthly balances.
 Given Maker Navigate to UAT URL login
 And click on tool icon

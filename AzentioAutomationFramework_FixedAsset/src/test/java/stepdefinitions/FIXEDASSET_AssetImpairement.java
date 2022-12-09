@@ -932,6 +932,7 @@ public class FIXEDASSET_AssetImpairement extends BaseClass {
 	@And("^choose the asset Item no$")
 	public void choose_the_asset_no() throws Throwable {
 		assetImpairementObj.fixedAssetAssetItemNo().click();
+		Thread.sleep(1500);
 		assetImpairementObj.fixedAssetAssetItemNo().sendKeys(Keys.DOWN);
 		assetImpairementObj.fixedAssetAssetItemNo().sendKeys(Keys.ENTER);
 

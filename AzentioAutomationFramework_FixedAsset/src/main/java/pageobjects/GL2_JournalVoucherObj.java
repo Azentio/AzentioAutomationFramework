@@ -64,9 +64,29 @@ public class GL2_JournalVoucherObj {
 	public WebElement gL2_JournalVoucher_JournalType() {
 		return gL2_JournalVoucher_JournalType;
 	}
+    // Profit Center
+		@FindBy(xpath = "//app-kub-lov[@ng-reflect-lov-label='Profit Center']//div/input")
+		private WebElement gL2_JournalVoucher_ProfitCenter;
 
+		public WebElement gL2_JournalVoucher_ProfitCenter() {
+			return gL2_JournalVoucher_ProfitCenter;
+		}
+	// Cost Center 
+		@FindBy(xpath = "//app-kub-lov[@ng-reflect-lov-label=' Cost Center ']//div/input")
+		private WebElement gL2_JournalVoucher_CostCenter;
+
+		public WebElement gL2_JournalVoucher_CostCenter() {
+			return gL2_JournalVoucher_CostCenter;
+		}
+	// department 
+		@FindBy(xpath = "//app-kub-lov[@ng-reflect-name='department']//div/input")
+		private WebElement gL2_JournalVoucher_Department;
+
+		public WebElement gL2_JournalVoucher_Department() {
+			return gL2_JournalVoucher_Department;
+		}
 	// Remark
-	@FindBy(xpath = "//ion-row[1]/ion-col[11]/ion-item[1]/ion-input[1]/input[1]")
+	@FindBy(xpath = "//ion-input[@ng-reflect-name='remarks']//input")
 	private WebElement gL2_JournalVoucher_Remark;
 
 	public WebElement gL2_JournalVoucher_Remark() {
@@ -215,7 +235,12 @@ public class GL2_JournalVoucherObj {
 	public WebElement gL2_JournalVoucher_Save() {
 		return gL2_JournalVoucher_Save;
 	}
-		
+	@FindBy(xpath = "//button[@aria-label='Close']")
+	private WebElement costOrDeparmentRequiredClose;
+
+	public WebElement costOrDeparmentRequiredClose() {
+		return costOrDeparmentRequiredClose;
+	}
 	
 	
 	

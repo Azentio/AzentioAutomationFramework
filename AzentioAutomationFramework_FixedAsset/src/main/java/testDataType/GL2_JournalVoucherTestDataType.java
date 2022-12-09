@@ -13,4 +13,8 @@ public class GL2_JournalVoucherTestDataType {
 	public String CreditAmount;
 	public String CreditAmountfirst;
 	public String CreditAmountSecond;
+	public String ProfitCenter;
+	public String CostCenter;
+	public String Department;
+	
 }

@@ -370,14 +370,16 @@ public class InventoryMaintenance extends BaseClass{
 					String before_xpath = "//span[contains(text(),'";
 					String after_xpath = "')]/ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell//ion-button";
 					
-					for (int i = 0; i < 50; i++) {
+					for (int i = 0; i <200; i++) {
 					try {
 					
 					//waithelper.waitForElement(driver, 5000,driver.findElement(By.xpath(before_xpath + reader.readReferancedata() + after_xpath)));
 					driver.findElement(By.xpath(before_xpath + reader.readReferancedata() + after_xpath)).click();
 					break;
 					}catch(Exception e) {
-						
+						if (i==49) {
+							Assert.fail(e.getMessage());
+						}
 					}
 					}
 					// Approve
@@ -490,7 +492,11 @@ public class InventoryMaintenance extends BaseClass{
 //						waithelper.waitForElement(driver, 2000, kubschecker.checkersubmitButton());
 						waithelper.waitForElementwithFluentwait(driver, kubschecker.checkersubmitButton());
 				    	kubschecker.checkersubmitButton().click();
-						Thread.sleep(3000);
+						
+				    	waithelper.waitForElement(driver, 3000, kubschecker.Popup_status());
+						String Text = kubschecker.Popup_status().getText();
+						System.out.println("Checker status: " + Text);
+						Assert.assertTrue(kubschecker.Popup_status().isDisplayed());
 					}
 				    
 				   

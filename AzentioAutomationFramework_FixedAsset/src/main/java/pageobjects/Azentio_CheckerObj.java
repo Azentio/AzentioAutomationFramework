@@ -131,14 +131,14 @@ public class Azentio_CheckerObj {
 	public WebElement checker_alert_close() {
 		return checker_alert_close;
 	}
-	@FindBy(xpath="//div[@id='toast-container']/div/div[@role='alertdialog']")
+	@FindBy(xpath="//div[@id='toast-container']/div/div[@role='alert']")
 	private WebElement checker_approval_status;
 	public WebElement checkerApprovalStatus()
 	{
 		return checker_approval_status;
 	}
         //TOTAST - CONTAINER
-	@FindBy(xpath="//div[@id='toast-container']/div/div[@role='alertdialog']")
+	@FindBy(xpath="//div[@id='toast-container']/div/div[@role='alert']")
 	private WebElement Popup_status;
 	public WebElement Popup_status()
 	{

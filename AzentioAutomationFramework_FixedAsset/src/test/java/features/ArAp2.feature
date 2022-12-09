@@ -1,6 +1,5 @@
 
 Feature: AR/AP Module
-
 @KUBS_AR_AP_UAT_001_009_TC_01  @AR/AP
 Scenario: Verify Accounting entries post Bill is approved
 Given Navigate The Azentio Url
@@ -246,6 +245,7 @@ Then Click on Account Recivable Advances eye button
 Then Click to add record in Account Recivable
 Then Fill the form for Account Recivable
 Then Click on save button to save the Record for Account Recivable
+And User close the workflow initiated pop up
 Then Click on inventory stock Notification 
 And Select and Submit the record
 Then log in to the reviewer account
@@ -277,22 +277,19 @@ Then Select To date in calender
 And Click View HyperLink
 Then Verify No accounting entry is generated on Active advances to Employees
 
-
-
-
 @KUBS_AR/AP_UAT_002_004_TC_01  @AR/AP
 Scenario: Create Advance against PO
-Given Navigate to kubs URL and user should login as a maker
-Then Click on the Finance
+Given Maker Navigate to UAT URL login
 Then Click on the Direction
 Then Click on Account Recivable buttonT
 Then Click on Account Recivable Advances eye buttonT
 Then Click to add record in Account RecivableT
 Then Fill the form for Account RecivableT
 Then Click on save button to save the Record for Account RecivableT
+And User close the workflow initiated pop up
 Then Click on the Notification
-Then Click on Inventory Item Save button
-Then Click on Inventory Item Notification 
+#Then Click on Inventory Item Save button
+#Then Click on Inventory Item Notification 
 And Select and Submit the record
 Then log in to the reviewer account
 Then click on the Notification select the record and Approve 
@@ -300,8 +297,7 @@ Then log in to the Checker Account
 And then checker claim the record
 Then click on the checker Notification 
 And select the record and Approve by checker
-Given Navigate to kubs URL and user should login as a maker
-Then Click on the Finance
+Given Maker Navigate to UAT URL login
 Then Click on the Direction
 Then Click on Account Recivable buttonT
 Then Click on Account Recivable Advances eye buttonT
@@ -329,10 +325,8 @@ Then Verify No accounting entry is generated on Active advances against PO
 
 @KUBS_AR/AP_UAT_002_004_TC_03  @AR/AP
 Scenario: Verify creating advane against PO with amount greater than PO amount is not allowed
-Given Navigate to kubs URL and user should login as a maker
-Then Click on the Finance
+Given Maker Navigate to UAT URL login
 Then Click on the Direction
-
 Then Click on Account Recivable buttonT
 Then Click on Account Recivable Advances eye buttonT
 Then Click to add record in Account RecivableT
@@ -356,7 +350,8 @@ Then Fill the form for Account Recivable with amount greater than PO amount
    
   @KUBS_AR/AP_UAT_003_001TC_02  @AR/AP
   Scenario: Verify creating po against cancelled order is not allowed
-    Given user navigate to the url and login as a maker
+    Given Maker Navigate to UAT URL login
+    Then Click on the Direction
     When user click Accounts Payable
     And user click Vendor Contracts eye icon
     And user click search icon
@@ -369,14 +364,16 @@ Then Fill the form for Account Recivable with amount greater than PO amount
     And select referece type as contract
     And select the contract Name
     Then verify not able to select contract and po creation is not allowed
-    
+    # Blocked unable to create po
 @KUBS_AR/AP_UAT_003_001TC_03  @AR/AP
 Scenario: check cancellation of contract is not allowed when purchase order is created against contract
-Given user navigate to the url and login as a maker for cancellation of contract is not allowed
+Given Maker Navigate to UAT URL login
+Then Click on the Direction
 And click on accounts Payable module
 And goto vendor contract module
 And click on Add Icon
 Then fill all the mendatory fields for creating vendor
+And User close the workflow initiated pop up
 And add item details for the contract
 And add the payment term for the contract
 And add the benificiory details and select auto payout as yes
@@ -462,9 +459,6 @@ And login with Maker ID
    Then verify that cancellation of contract is not allowed when po created for contract
    
    
-   
-   
-   
     @KUBS_AR/AP_UAT_003_002_TC_01  @AR/AP
   Scenario: verify contract report should display the correct info for logged in branch
   Given user login as azentio maker for contract report verification
@@ -502,8 +496,8 @@ Then verify the approved po number is availabe in the po report
 
    @KUBS_AR/AP_UAT_003_002_TC_03  @AR/AP
 Scenario: Check creating GRN against cancelled PO is not allowed
-Given Navigate The Azentio Url
-Then Choose the second Tab Segment
+Given Maker Navigate to UAT URL login
+Then Click on the Direction
 And click on accounts Payable module
 Then click on po creation module 
 And search for cancelled po
@@ -513,7 +507,7 @@ And check GRN can be created for that perticular po
 And click notification button
 Then choose first record in the notification record
 Then go to Item details and enter po number
-
+# blocked due to Po creation 
 @KUBS_AR/AP_UAT_003_002_TC_04 @AR/AP
 Scenario: Check Budget utilization is re-instated
 Given maker should navigate to the url and login with valid credentials UAT
@@ -636,17 +630,18 @@ When maker click on budget supplementary eye icon UAT
 And click on add button on budget supplementary view page UAT
 Then check the budget utilazation amount of budet code which we create the expense code after cancelling the po
 Then verify budget code budget utilization amount is re-instated after cancelling the po
-
+# GRN record unable to submit
 @KUBS_AR_AP_UAT_003_002_TC_05  @AR/AP
 Scenario: Check PO cancellation is not allowed if GRN has been approved against that PO
-Given Navigate The Azentio Url
-Then Choose the second Tab Segment
+Given Maker Navigate to UAT URL login
+Then Click on the Direction
 And click on accounts Payable module
-Then click on po creation module
-And search for approved po
+#Then click on po creation module
+#And search for approved po
 Then go to GRN module
 And click on Add Icon
 And check GRN can be created for that perticular po
+And User close the workflow initiated pop up
 Then go to Item details and enter po number for approval
 And click notification button
 Then choose first record in the notification record in GRN stage
@@ -677,9 +672,6 @@ And click on Add Icon
 Then validate the po is not available for adjustment
    
 
-   
-   
-   
    @KUBS_AR_AP_UAT_003_003_TC_01  @AR/AP
 Scenario: Check GRN Report
 Given Navigate The Azentio Url
@@ -763,7 +755,7 @@ And Verify the PO Report is correctly displayed
 
 @KUBS_AR_AP_UAT_003_003_TC_05  @AR/AP
 Scenario: Check creating Bill against cancelled GRN is not allowed
-Given Navigate The Azentio Url
+Given Maker Navigate to UAT URL login
 Then Choose the second Tab Segment
 And Click On Main module Accounts payable
 Then Click On GRN Eye Icon
@@ -787,7 +779,7 @@ Then Goto The Notification Icon
 And Store the Referance Id and Open the Record
 Then Click on AP Invoice Against PO Tab
 And Enter The PO Number and Validate
-
+#doubt
 @KUBS_AR_AP_UAT_003_003_TC_06  @AR/AP
 Scenario: Check GRN cancellation is not allowed if Bill has been approved against that GRN
 Given Navigate The Azentio Url
@@ -808,10 +800,6 @@ Then Give The Business Partner
 And Give The Adjustment Type
 Then Enter the Adjustment Item Type
 And Enter the Adjustment Ref No and Validate
-
-
-
-
 
 @KUBS_AR/AP_UAT_003_004TC_01  @AR/AP
    Scenario: verify accounting entries post bill is cancelled
@@ -868,7 +856,7 @@ And Enter the Adjustment Ref No and Validate
    And select the date
    And click the view icon
    Then verify the bill is cancelled in Accounts payable report
-   
+   #blocked due to po creation
    @KUBS_AR/AP_UAT_003_004TC_04
    Scenario: Check Budget utilization is re-instated
 Given maker should navigate to the url and login with valid credentials UAT
@@ -994,8 +982,8 @@ Then verify budget code budget utilization amount is re-instated after cancellin
    
    @KUBS_AR/AP_UAT_003_004TC_05  @AR/AP
    Scenario: verify cancelled bill is not allowed for payment settlement
-   Given Navigate The Azentio Url
-Then Choose the second Tab Segment
+   Given Maker Navigate to UAT URL login
+   Then Click on the Direction
    When click the invoice eye icon in accounts payable
    And click the search icon in invoice booking list view
    And search invoice type as expense
@@ -1006,8 +994,6 @@ Then Choose the second Tab Segment
    And select payment option as buisness partnerwise
    And select buisness partner in payment settlement
    Then verify that no bill is available for payment settlement
-   
-   
    
    
    
@@ -1139,7 +1125,7 @@ Then Give Current business Date in ArAp
 And Give Accounts Payable Status
 Then Click on View buttons
 And Verify Accounts Receivable Report post Debit Note is cancelled
-
+# failed unable to create debit note
 @KUBS_AR_AP_UAT_003_006_TC_04  @AR/AP
 Scenario: Verify Cancelled Debit Note is not available for adjustment at Payment Settlement screen
 Given Navigate The Azentio Url
@@ -1157,7 +1143,7 @@ Then Enter payment option
 And Give Business partner Name
 Then Choose value date as System current date
 And find the invoice reference number for cancelled DebitNote is availabe at the billing queue
-
+# failed unable to create debit note
 @KUBS_AR_AP_UAT_003_006_TC_05
 Scenario: Verify cancelling Debit Note is not allowed if the same has been adjusted at payment settlement
 Given user navigate to azentio url and login as maker
@@ -1234,14 +1220,6 @@ Then Give the Adjustment Item Type
 And Give the Adjustment Ref No and Validate
 
 
-
-
-
-
-
-
-
-
 @KUBS_AR/AP_UAT_003_007TC_01  @AR/AP
    Scenario: Verify Accounting entries post Credit Note is cancelled
    Given user login as Azentio Maker
@@ -1293,7 +1271,7 @@ And Give the Adjustment Ref No and Validate
    And select the date
    And click the view icon
    Then verify the Credit Note cancelled is available in the report
-   
+   # unable to create credit note 
    @KUBS_AR/AP_UAT_003_007TC_04  @AR/AP
   Scenario: verify credit cancelled is not available in payment settlement
    Given login azentio as maker
@@ -1309,7 +1287,7 @@ And Give the Adjustment Ref No and Validate
    And select payment option as buisness partnerwise for credit
    And select buisness partner in payment settlement for credit
    Then verify that invoice from credit not is not available in bill list
-   
+   # po creation blocked
     @KUBS_AR/AP_UAT_003_007_TC_05
     Scenario: Verify cancelling Credit Note is not allowed if the same has been adjusted at payment settlement
    Given user navigate to the url and login as a maker for cancellation of contract is not allowed
@@ -1524,7 +1502,6 @@ And Give The Adjustment Type
 Then Give the credit note number in Adjustment Item Type
 And Give the Adjustment Ref No and Validate
    
-
    
 @KUBS_AR/AP_UAT_003_008_TC_01  @AR/AP
 Scenario: Verify No accounting entry is generated on cancelling advances to employees

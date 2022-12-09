@@ -24,7 +24,7 @@ public class ARAP_PoCreationObj {
 	{
 		return poCreation_searchIcon;
 	}
-	@FindBy(xpath="//input[@placeholder='Search PO Status']")
+	@FindBy(xpath="//input[@placeholder='Search Business Partner']")
 	private WebElement poStatus;
 	public WebElement poStatus()
 	{

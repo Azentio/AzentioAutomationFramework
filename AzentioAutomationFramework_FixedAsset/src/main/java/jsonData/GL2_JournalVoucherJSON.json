@@ -5,10 +5,11 @@
 "Currency"  : "INR",
 "JournalType":"Manual JV",
 "Remark" : "Okk",
-
+"ProfitCenter":"MUMBAIIC-MUMBAI ICICI",
+"CostCenter":"FINANCE",
+"Department":"Information Technology",
 "DebitAmount" :1000,
 "CreditAmount" : "1000",
-
 "CreditAmountfirst" : "500",
 "CreditAmountSecond" : "500"
 

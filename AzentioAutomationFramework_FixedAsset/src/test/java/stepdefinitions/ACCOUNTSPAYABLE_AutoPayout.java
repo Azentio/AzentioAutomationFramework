@@ -64,12 +64,30 @@ public class ACCOUNTSPAYABLE_AutoPayout extends BaseClass {
         waitHelper.waitForElementVisible(vendorContractObj.vendorContractExpenceType(), 2000, 100);
         vendorContractObj.vendorContractExpenceType().click();
         vendorContractObj.vendorContractExpenceType().sendKeys(autoPayoutTestData.ContractType);
+        for (int i = 0; i <30; i++) {
+			try {
+				driver.findElement(By.xpath("//span[text()='"+autoPayoutTestData.ContractType+"']")).isDisplayed();
+				break;
+			} catch (Exception e) {
+				if (i==29) {
+					Assert.fail(e.getMessage());
+				}
+			}
+		}
         vendorContractObj.vendorContractExpenceType().sendKeys(Keys.ENTER);
-        
         vendorContractObj.vendorContractBpName().click();
         vendorContractObj.vendorContractBpName().sendKeys(autoPayoutTestData.BusinessPartnerName);
+        for (int i = 0; i <30; i++) {
+			try {
+				driver.findElement(By.xpath("//span[text()='"+autoPayoutTestData.BusinessPartnerName+"']")).isDisplayed();
+				break;
+			} catch (Exception e) {
+				if (i==29) {
+					Assert.fail(e.getMessage());
+				}
+			}
+		}
         vendorContractObj.vendorContractBpName().sendKeys(Keys.ENTER);
-        
         vendorContractObj.vendorContractContractName().click();
         vendorContractObj.vendorContractContractName().sendKeys(autoPayoutTestData.ContractName);
        
@@ -89,16 +107,45 @@ public class ACCOUNTSPAYABLE_AutoPayout extends BaseClass {
     }
     @And("^add item details for the contract$")
     public void add_item_details_for_the_contract() throws Throwable {
+    	for (int i = 0; i <30; i++) {
+			try {
+				vendorContractObj.vendorContract_SuccessMessageClose().click();
+				break;
+			} catch (Exception e) {
+				
+			}
+		}
+    	
     	waitHelper.waitForElementVisible(vendorContractObj.vendorContractTempView(), 2000, 100);
         vendorContractObj.vendorContractTempView().click();
-        waitHelper.waitForElementVisible(vendorContractObj.firstTempRecord(),2000,100);
-        vendorContractObj.firstTempRecord().click();
+        //waitHelper.waitForElementVisible(vendorContractObj.firstTempRecord(),2000,100);
+        for (int i = 0; i <50; i++) {
+			try {
+				vendorContractObj.firstTempRecord().click();
+				break;
+			} catch (Exception e) {
+				if (i==49) {
+					Assert.fail(e.getMessage());
+				}
+			}
+		}
+        
         
         waitHelper.waitForElementVisible(vendorContractObj.vendorContractItemDetails(), 2000, 100);
         vendorContractObj.vendorContractItemDetails().click();
         
-        waitHelper.waitForElementVisible(vendorContractObj.vendorContractAddButton(), 2000, 100);
-        vendorContractObj.vendorContractAddButton().click();
+       // waitHelper.waitForElementVisible(vendorContractObj.vendorContractAddButton(), 2000, 100);
+        for (int i = 0; i <50; i++) {
+			try {
+				vendorContractObj.vendorContractAddButton().click();
+				break;
+			} catch (Exception e) {
+				if (i==49) {
+					Assert.fail(e.getMessage());
+				}
+			}
+		}
+        
         
         waitHelper.waitForElementVisible(vendorContractObj.vendorContractHSNCode(), 2000, 100);
         vendorContractObj.vendorContractHSNCode().click();
@@ -106,6 +153,7 @@ public class ACCOUNTSPAYABLE_AutoPayout extends BaseClass {
         vendorContractObj.vendorContractHSNCode().sendKeys(Keys.ENTER);
         
         vendorContractObj.vendorContractExpenceCode().click();
+        Thread.sleep(500);
         vendorContractObj.vendorContractExpenceCode().sendKeys(Keys.DOWN);
         vendorContractObj.vendorContractExpenceCode().sendKeys(Keys.ENTER);
         
@@ -142,7 +190,7 @@ public class ACCOUNTSPAYABLE_AutoPayout extends BaseClass {
          vendorContractObj.paymentTermPaymentTermSaveButton().click();
          break;
     		}
-    		catch(StaleElementReferenceException e)
+    		catch(Exception e)
     		{
     			
     		}

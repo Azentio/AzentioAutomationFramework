@@ -9,4 +9,6 @@ public String Quantity;
 public String ItemQuantity; 
 public String ApprovedPo;
 public String GRNStatus;
+public String PoNumber;
+public String BPName;
 }
