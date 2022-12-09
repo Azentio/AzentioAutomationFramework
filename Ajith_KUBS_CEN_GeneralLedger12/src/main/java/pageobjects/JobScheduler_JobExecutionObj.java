@@ -72,7 +72,7 @@ public class JobScheduler_JobExecutionObj {
 	}
 	
 	//configuration
-	@FindBy(xpath = "//ion-item[1]/ion-radio")
+	@FindBy(xpath = "//ion-label[text()='Configuration']/following-sibling::ion-radio")
 	private WebElement configuration_option;
 
 	public WebElement configuration_option() {

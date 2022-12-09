@@ -418,19 +418,28 @@ Then validate Journal vourcher Reversal number
     
     @KUBS_GL2_UAT_007_001 @BatchJobConfiguration @GL2
   Scenario: Configure batch job
-    Given User should go to the kubs url and login as a maker user
-    Then Selet configuration
+  	And User Update the test data set id for Configure batch Job
+    Given Navigate to Azentio Kubs
+    Then Select configuration
     And user should navigate to job scheduler menu
     When click on temp grid button of job definition
     Then click on add button to config job
-    And fill the required fields for day end activity
+    And User Enter Job Code
+    And User Enter Jobe Name 
+    And User Enter the Application Name
+    And User Enter Module Code
+    And User Select the Process Name
+    And User Select the Job Type
+    And User Enter the number of Threads for batch job
+    And User Enter the Sequence Number 
+    And User Enter the remarks for Batch Job
     Then click on save button1
     
     
      @KUBS_GL2_UAT_007_002 @StartJobExecution @GL2
   Scenario: StartJob
     Given User should go to the kubs url and login as a maker user
-    Then Selet configuration
+    Then Select configuration
     And user should navigate to job scheduler menu
     When click on temp grid button of job execution
     And select the date to start job
@@ -464,7 +473,8 @@ And click on view button for record
 Then validate all the details for JV reversal
 @KUBS_GL2_UAT_008_004
 Scenario: verify GL balance report should display the correct balance of GL
-Given Login as a Azentio Maker
+Given Navigate to Azentio Kubs
+And Click on Finance Option for GL
 When click the Direction icon
 And click the Account Payable Main Module
 And click the Manual Payout Eye icon
@@ -476,7 +486,7 @@ And Select the currency type
 And click the calender and select the valid date
 And Select bank in manual payout
 And Select the bank Account Number
-And get the Available  balance and store
+And get the Available balance and store
 And click the notes option
 And click the financial Report
 And click the Gl balance report edit icon

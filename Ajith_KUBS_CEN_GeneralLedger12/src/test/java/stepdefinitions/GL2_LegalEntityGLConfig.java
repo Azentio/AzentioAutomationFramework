@@ -1,6 +1,7 @@
 package stepdefinitions;
 
 import java.io.IOException;
+import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Random;
 
@@ -19,6 +20,7 @@ import helper.BrowserHelper;
 import helper.ClicksAndActionsHelper;
 import helper.DropDownHelper;
 import helper.JavascriptHelper;
+import helper.Selenium_Actions;
 import helper.WaitHelper;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
@@ -29,7 +31,10 @@ import pageobjects.ACCOUNTSPAYABLE_VendorContractsObj;
 import pageobjects.ARAP_ARandAPObj;
 import pageobjects.AccountsReceivable_ReceiptsReversalsObj;
 import pageobjects.AccountsReceivable_UpdateChequeStatusObj;
+import pageobjects.Accounts_Payable;
+import pageobjects.ArAp_Cancellation_of_vendorObj;
 import pageobjects.ENQUIRY_FinancialTransactionObj;
+import pageobjects.Enquiry_Obj;
 import pageobjects.FinancialReporting_GLBalancesReportObj;
 import pageobjects.GL2_JournalVoucherObj;
 import pageobjects.GL2_JournalVoucherReversalObj;
@@ -37,6 +42,8 @@ import pageobjects.GL2_JournalVoucher_AccountEntryReportObj;
 import pageobjects.GL2_LegalEntityGLConfigObj;
 import pageobjects.GL_Accounting_Setup_Obj;
 import pageobjects.GeneralLedger2_JournalVoucherObj;
+import pageobjects.Gl_Reports_Obj1;
+import pageobjects.JobScheduler_JobExecutionObj;
 import pageobjects.KUBS_CheckerObj;
 import resources.BaseClass;
 import resources.ExcelData;
@@ -47,7 +54,9 @@ import testDataType.FinancialReporting_GLBalancesReportTestDataType;
 import testDataType.GL2_JournalVoucherTestDataType;
 import testDataType.GL2_JournalVoucher_AccountEntryReportTestDataType;
 import testDataType.GL2_LegalEntityGLConfigTestDataType;
+import testDataType.GL_ModuleTestData;
 import testDataType.GeneralLedger2_JournalVoucherTestDataType;
+import testDataType.JobScheduler_JobExecutionTestDataType;
 
 public class GL2_LegalEntityGLConfig extends BaseClass {
 	WebDriver driver = BaseClass.driver;
@@ -101,7 +110,20 @@ public class GL2_LegalEntityGLConfig extends BaseClass {
 			driver);
 	FinancialReporting_GLBalancesReportTestDataType GLBalancesReportTestDataType = jsonReader
 			.getGLBalancesReportdata("Maker");
-
+	// batch execution
+	JobScheduler_JobExecutionObj jobScheduler_JobExecutionObj = new JobScheduler_JobExecutionObj(driver);
+	JobScheduler_JobExecutionTestDataType JobExecutionTestDataType = jsonReader.getJobExecutiondata("Maker");
+	// GL Reports
+	Gl_Reports_Obj1 glReportsObj = new Gl_Reports_Obj1(driver);
+	Selenium_Actions seleniumactions = new Selenium_Actions(driver);
+	ConfigFileReader configreader = new ConfigFileReader();
+	JsonConfig jsonconfig = new JsonConfig();
+	ArAp_Cancellation_of_vendorObj cancellationofcontract = new ArAp_Cancellation_of_vendorObj(driver);
+	Accounts_Payable accounts_PayableObj = new Accounts_Payable(driver);
+	GL_ModuleTestData glModuleData = jsonconfig.getGlmoduleTestDataByName("Maker");
+	JavascriptHelper javascriphelper = new JavascriptHelper();
+	Enquiry_Obj enquiryObj = new Enquiry_Obj(driver);
+	Map<String, String> testdata = new LinkedHashMap<>();
 	
 	@Given("^Navigate as a Reviewer for GL2$")
 	    public void navigate_as_a_reviewer_for_gl2() throws Throwable {
@@ -116,6 +138,13 @@ public class GL2_LegalEntityGLConfig extends BaseClass {
 				gL2_LegalEntityGLConfigObj.gL2_Generalledgerconfiguration(), 5, 500);
 		gL2_LegalEntityGLConfigObj.gL2_Generalledgerconfiguration().click();
 
+	}
+	@When("^click the Direction icon$")
+	public void click_the_direction_icon() throws Throwable {
+		Thread.sleep(900);
+		waithelper.waitForElementToVisibleWithFluentWait(driver, cancellationofcontract.getOptionicon(), 20,
+				500);
+		clicksAndActionHelper.clickOnElement(cancellationofcontract.getOptionicon());
 	}
 
 	@Then("^Click on Legal Entity GL Configuration Eye Icon$")
@@ -1844,12 +1873,762 @@ public class GL2_LegalEntityGLConfig extends BaseClass {
 		browserHelper.switchToParentWithChildClose();
 
 	}
+	
+	// JOB Execution
+	
+	@Then("^Select configuration$")
+	public void selet_configuration() {
+		waithelper.waitForElementToVisibleWithFluentWait(driver, jobScheduler_JobExecutionObj.configuration_option(), 10,
+				500);
+		clicksAndActionHelper.moveToElement(jobScheduler_JobExecutionObj.configuration_option());
+			
+		jobScheduler_JobExecutionObj.configuration_option().click();
+	}
+	@And("^User Update the test data set id for Configure batch Job$")
+    public void user_update_the_test_data_set_id_for_configure_batch_job() throws Throwable {
+        testData = excelData.getTestdata("KUBS_GL2_UAT_007_001_D1");
+    }
+	@And("^user should navigate to job scheduler menu$")
+	public void user_should_navigate_to_job_scheduler_menu() {
+		waithelper.waitForElementToVisibleWithFluentWait(driver, jobScheduler_JobExecutionObj.JobSchedulerMenu(), 5,
+				500);
+		jobScheduler_JobExecutionObj.JobSchedulerMenu().click();
+	}
 
+	@When("^click on temp grid button of job execution$")
+	public void click_on_temp_grid_button_of_job_execution() throws Throwable {
+		waithelper.waitForElementToVisibleWithFluentWait(driver,
+				jobScheduler_JobExecutionObj.JobScheduler_JobExecution_TempGrid(), 5, 500);
+		jobScheduler_JobExecutionObj.JobScheduler_JobExecution_TempGrid().click();
+	}
 
+	@And("^select the date to start job$")
+	public void select_the_date_to_start_job() {
 
+		waithelper.waitForElementToVisibleWithFluentWait(driver,
+				jobScheduler_JobExecutionObj.JobScheduler_JobExecution_ToDate(), 5, 500);
+		jobScheduler_JobExecutionObj.JobScheduler_JobExecution_ToDate().click();
+		while (true) {
+			try {
 
+				waithelper.waitForElementToVisibleWithFluentWait(
+						driver, driver.findElement(By.xpath("//span[contains(text(),'"
+								+ JobExecutionTestDataType.ToMonth + " " + JobExecutionTestDataType.ToYear + "')]")),
+						5, 500);
+//				waithelper.waitForElement(driver, 3000, driver.findElement(By.xpath("//span[contains(text(),'"
+//						+ JobExecutionTestDataType.ToMonth + " " + JobExecutionTestDataType.ToYear + "')]")));
+				WebElement monthAndYear = driver.findElement(By.xpath("//span[contains(text(),'"
+						+ JobExecutionTestDataType.ToMonth + " " + JobExecutionTestDataType.ToYear + "')]"));
+				break;
+			}
 
+			catch (NoSuchElementException nosuchElement) {
+				jobScheduler_JobExecutionObj.JobScheduler_JobExecution_NextMonth().click();
+			}
+		}
+		WebElement FinalDay2 = driver.findElement(By.xpath("//td[@aria-label='" + JobExecutionTestDataType.ToFullMonth
+				+ " " + JobExecutionTestDataType.ToDate + ", " + JobExecutionTestDataType.ToYear + "']/span"));
+		clicksAndActionHelper.moveToElement(FinalDay2);
+		clicksAndActionHelper.doubleClick(FinalDay2);
+	}
 
+	@Then("^Click on start job$")
+	public void click_on_start_job() {
+		waithelper.waitForElementToVisibleWithFluentWait(driver,
+				jobScheduler_JobExecutionObj.JobScheduler_JobExecution_StartJobButton(), 5, 500);
+		jobScheduler_JobExecutionObj.JobScheduler_JobExecution_StartJobButton().click();
+	}
 
+// --------   Job definition
+
+	@When("^click on temp grid button of job definition$")
+	public void click_on_temp_grid_button_of_job_definition() {
+		waithelper.waitForElementToVisibleWithFluentWait(driver,
+				jobScheduler_JobExecutionObj.JobScheduler_JobDefinition_TempGrid(), 5, 500);
+		jobScheduler_JobExecutionObj.JobScheduler_JobDefinition_TempGrid().click();
+	}
+
+	@Then("^click on add button to config job$")
+	public void click_on_add_button_to_config_job() {
+		for (int i = 0; i <200; i++) {
+			try {
+				jobScheduler_JobExecutionObj.JobScheduler_JobDefinition_AddButton().click();
+				break;
+			} catch (Exception e) {
+				if (i==199) {
+					Assert.fail(e.getMessage());
+				}
+			}
+		}	
+		
+	}
+	@And("^User Enter Job Code$")
+    public void user_enter_job_code() throws Throwable {
+		Random random = new Random();
+		int RanNo1 = random.nextInt(700-10)+10;
+	    int RanNo2 = random.nextInt(90-1)+10;
+		waithelper.waitForElementToVisibleWithFluentWait(driver,
+				jobScheduler_JobExecutionObj.JobScheduler_JobDefinition_JobCode(), 50, 500);
+		jobScheduler_JobExecutionObj.JobScheduler_JobDefinition_JobCode().sendKeys(testData.get("JobCode")+RanNo1+RanNo2);
+    }
+
+    @And("^User Enter Jobe Name$")
+    public void user_enter_jobe_name() throws Throwable {
+		Random random = new Random();
+		int RanNo3 = random.nextInt(900 - 10) + 10;
+		int RanNo4 = random.nextInt(60 - 1) + 10;
+		waithelper.waitForElementToVisibleWithFluentWait(driver,
+				jobScheduler_JobExecutionObj.JobScheduler_JobDefinition_JobName(), 5, 500);
+		jobScheduler_JobExecutionObj.JobScheduler_JobDefinition_JobName()
+				.sendKeys(testData.get("JobName") + RanNo3 + RanNo4);
+    }
+
+    @And("^User Enter the Application Name$")
+    public void user_enter_the_application_name() throws Throwable {
+    	Random random = new Random();
+    	int RanNo5 = random.nextInt(500-10)+10;
+	    int RanNo6 = random.nextInt(20-1)+10;
+		waithelper.waitForElementToVisibleWithFluentWait(driver,
+				jobScheduler_JobExecutionObj.JobScheduler_JobDefinition_ApplicationName(), 5, 500);
+		jobScheduler_JobExecutionObj.JobScheduler_JobDefinition_ApplicationName()
+				.sendKeys(testData.get("ApplicationName")+RanNo5+RanNo6);
+    }
+
+    @And("^User Enter Module Code$")
+    public void user_enter_module_code() throws Throwable {
+    	Random random = new Random();
+    	int RanNo7 = random.nextInt(300-10)+10;
+	    int RanNo8 = random.nextInt(50-1)+10;
+		waithelper.waitForElementToVisibleWithFluentWait(driver,
+				jobScheduler_JobExecutionObj.JobScheduler_JobDefinition_ModuleCode(), 5, 500);
+		jobScheduler_JobExecutionObj.JobScheduler_JobDefinition_ModuleCode()
+				.sendKeys(testData.get("ModuleCode")+RanNo7+RanNo8);
+    }
+
+    @And("^User Select the Process Name$")
+    public void user_select_the_process_name() throws Throwable {
+    	waithelper.waitForElementToVisibleWithFluentWait(driver,
+				jobScheduler_JobExecutionObj.JobScheduler_JobDefinition_ProcessName(), 5, 500);
+		jobScheduler_JobExecutionObj.JobScheduler_JobDefinition_ProcessName()
+				.sendKeys(testData.get("ProcessName"));
+		for (int i = 0; i <200; i++) {
+			try {
+				driver.findElement(By.xpath("//ng-dropdown-panel//span[contains(text(),'"+testData.get("ProcessName")+"')]")).isDisplayed();
+				break;
+			} catch (Exception e) {
+				if (i==199) {
+					Assert.fail(e.getMessage());
+				}
+			}
+		}	
+		jobScheduler_JobExecutionObj.JobScheduler_JobDefinition_ProcessName().sendKeys(Keys.ENTER);
+    }
+
+    @And("^User Select the Job Type$")
+    public void user_select_the_job_type() throws Throwable {
+    	waithelper.waitForElementToVisibleWithFluentWait(driver,
+				jobScheduler_JobExecutionObj.JobScheduler_JobDefinition_JobType(), 5, 500);
+		jobScheduler_JobExecutionObj.JobScheduler_JobDefinition_JobType().sendKeys(testData.get("JobType"));
+		for (int i = 0; i <200; i++) {
+			try {
+				driver.findElement(By.xpath("//ng-dropdown-panel//span[contains(text(),'"+testData.get("JobType")+"')]")).isDisplayed();
+				break;
+			} catch (Exception e) {
+				if (i==199) {
+					Assert.fail(e.getMessage());
+				}
+			}
+		}	
+		jobScheduler_JobExecutionObj.JobScheduler_JobDefinition_JobType().sendKeys(Keys.ENTER);
+    }
+
+    @And("^User Enter the number of Threads for batch job$")
+    public void user_enter_the_number_of_threads_for_batch_job() throws Throwable {
+    	waithelper.waitForElementToVisibleWithFluentWait(driver,
+				jobScheduler_JobExecutionObj.JobScheduler_JobDefinition_NumberOfThreads(), 5, 500);
+		jobScheduler_JobExecutionObj.JobScheduler_JobDefinition_NumberOfThreads()
+				.sendKeys(testData.get("NumberOfThreads"));
+    }
+
+    @And("^User Enter the Sequence Number$")
+    public void user_enter_the_sequence_number() throws Throwable {
+    	waithelper.waitForElementToVisibleWithFluentWait(driver,
+				jobScheduler_JobExecutionObj.JobScheduler_JobDefinition_SequenceNumber(), 5, 500);
+		jobScheduler_JobExecutionObj.JobScheduler_JobDefinition_SequenceNumber()
+				.sendKeys(testData.get("SequenceNumber"));
+    }
+
+    @And("^User Enter the remarks for Batch Job$")
+    public void user_enter_the_remarks_for_batch_job() throws Throwable {
+    	waithelper.waitForElementToVisibleWithFluentWait(driver,
+				jobScheduler_JobExecutionObj.JobScheduler_JobDefinition_Remarks(), 5, 500);
+		jobScheduler_JobExecutionObj.JobScheduler_JobDefinition_Remarks().sendKeys(testData.get("Remark"));
+
+    }
+
+	@Then("^click on save button1$")
+	public void click_on_save_button1() throws InterruptedException {
+//		Thread.sleep(1000);
+		waithelper.waitForElementToVisibleWithFluentWait(driver,
+				jobScheduler_JobExecutionObj.JobScheduler_JobDefinition_SaveButton(), 5, 500);
+		jobScheduler_JobExecutionObj.JobScheduler_JobDefinition_SaveButton().click();
+
+//		Thread.sleep(1000);
+		waithelper.waitForElementToVisibleWithFluentWait(driver,
+				jobScheduler_JobExecutionObj.JobScheduler_JobDefinition_RecordStatus(), 5, 500);
+		WebElement recordstatus = jobScheduler_JobExecutionObj.JobScheduler_JobDefinition_RecordStatus();
+
+		clicksAndActionHelper.moveToElement(recordstatus);
+		String message = jobScheduler_JobExecutionObj.JobScheduler_JobDefinition_RecordStatus().getText();
+		System.out.println(message);
+		jobScheduler_JobExecutionObj.JobScheduler_JobDefinition_RecordStatus().click();
+	}
+	// GL Balances Reports
+	@Given("^Login as a Azentio Maker$")
+	public void login_as_a_azentio_maker() throws Throwable {
+		login = new KUBS_Login(driver);
+		driver.get(configreader.getApplicationUrl());
+		login.loginToAzentioAppByMaker();
 
 	}
+
+	
+
+	@Then("^verify that available balance should equal to closing net balance in Gl balance Report$")
+	public void verify_that_available_balance_should_equal_to_closing_net_balance_in_gl_balance_report()
+			throws Throwable {
+		//// *[@id="__bookmark_1"]/tbody/tr[3]/td[15]/div
+		seleniumactions.getBrowserHelper().SwitchToWindow(1);
+
+		for (int j = 1; j < 20; j++) {
+			String Glbalance = "";
+			for (int i = 3; i < 45; i++) {
+				try {
+					String xpath = "//*[@id=\"__bookmark_1\"]/tbody/tr[" + i + "]/td[15]/div";
+					javascriphelper.JavaScriptHelper(driver);
+					javascriphelper.scrollIntoView(driver.findElement(By.xpath(xpath)));
+					String amount = driver.findElement(By.xpath(xpath)).getText();
+					// System.out.println(amount);
+					String string = amount.split("[.]")[0].toString();
+					// System.out.println(string);
+					String replace = string.replace(",", "");
+					// System.out.println(replace);
+					Glbalance = replace.trim().replace(" ", "");
+					// System.out.println(Glbalance);
+					// - 5022000
+					// -5022000
+
+					// System.out.println("Verified Avaliable in the Report
+					// :"+driver.findElement(By.xpath(xpath)).getText());
+				} catch (Exception e) {
+					glReportsObj.nextPageInGlbalanceReport().click();
+				}
+				if (Glbalance.equalsIgnoreCase(testdata.get("Glbalance"))) {
+					System.out.println("Verified Gl balance in the report :" + Glbalance);
+					break;
+				}
+			}
+			if (Glbalance.equalsIgnoreCase(testdata.get("Glbalance"))) {
+				break;
+			}
+		}
+		seleniumactions.getBrowserHelper().switchToParentWithChildClose();
+	}
+
+	@And("^click the Account Payable Main Module$")
+	public void click_the_account_payable_main_module() throws Throwable {
+		seleniumactions.getWaitHelper().waitForElementToVisibleWithFluentWait(driver,
+				cancellationofcontract.getAccountspayable(), 20, 500);
+		seleniumactions.getClickAndActionsHelper().clickOnElement(cancellationofcontract.getAccountspayable());
+	}
+
+	@And("^click the Manual Payout Eye icon$")
+	public void click_the_manual_payout_eye_icon() throws Throwable {
+		javascriphelper.JavaScriptHelper(driver);
+		javascriphelper.scrollIntoView(glReportsObj.manualPayoutEyeIcon());
+		glReportsObj.manualPayoutEyeIcon().click();
+	}
+
+	@And("^click the Add icon in Manual Payout$")
+	public void click_the_add_icon_in_manual_payout() throws Throwable {
+		for (int i = 0; i <200; i++) {
+			try {
+				glReportsObj.manualPayoutAddIcon().click();
+				break;
+			} catch (Exception e) {
+				if (i==199) {
+					Assert.fail(e.getMessage());
+				}
+			}
+		}
+		
+	}
+
+	@And("^Select the entity branch$")
+	public void select_the_entity_branch() throws Throwable {
+		glReportsObj.manualPayoutSelectEntityBranch().click();
+		glReportsObj.manualPayoutSelectEntityBranch().sendKeys(glModuleData.branchCode);
+		glReportsObj.manualPayoutSelectEntityBranch().sendKeys(Keys.ENTER);
+	}
+
+	@And("^Select the Buisness Partner Name$")
+	public void select_the_buisness_partner_name() throws Throwable {
+		glReportsObj.manualPayoutSelectBp().click();
+		glReportsObj.manualPayoutSelectBp().sendKeys(Keys.ENTER);
+
+	}
+
+	@And("^Select the beneficiary name$")
+	public void select_the_beneficiary_name() throws Throwable {
+		glReportsObj.manualPayoutSelectBeneficiaryName().click();
+	}
+
+	@And("^Select the currency type$")
+	public void select_the_currency_type() throws Throwable {
+		glReportsObj.manualPayoutSelectBeneficiaryName().click();
+		glReportsObj.manualPayoutSelectBeneficiaryName().sendKeys(Keys.ENTER);
+	}
+
+	@And("^click the calender and select the valid date$")
+	public void click_the_calender_and_select_the_valid_date() throws Throwable {
+		enquiryObj.calenderInContractReport().click();
+		seleniumactions.getWaitHelper().waitForElementToVisibleWithFluentWait(driver,
+				driver.findElement(
+						By.xpath("(//span[@class='owl-dt-control-content owl-dt-control-button-content'])[2]")),
+				20, 500);
+		driver.findElement(By.xpath("(//span[@class='owl-dt-control-content owl-dt-control-button-content'])[2]"))
+				.click();
+		seleniumactions.getWaitHelper().waitForElementToVisibleWithFluentWait(driver,
+				driver.findElement(By.xpath("//span[text()='" + glModuleData.GlYear + "']")), 20, 500);
+		driver.findElement(By.xpath("//span[text()='" + glModuleData.GlYear + "']")).click();
+		driver.findElement(By.xpath("//span[text()='" + glModuleData.GlMonth + "']")).click();
+		seleniumactions.getWaitHelper()
+				.waitForElementToVisibleWithFluentWait(driver, driver.findElement(By.xpath("//td[@aria-label='"
+						+ glModuleData.GlFullMonth + " " + glModuleData.GlDay + ", " + glModuleData.GlYear + "']")), 20,
+						500);
+		driver.findElement(By.xpath("//td[@aria-label='" + glModuleData.GlFullMonth + " " + glModuleData.GlDay + ", "
+				+ glModuleData.GlYear + "']")).click();
+	}
+
+	@And("^Select bank in manual payout$")
+	public void select_bank_in_manual_payout() throws Throwable {
+		glReportsObj.manualPayoutSelectBank().click();
+		glReportsObj.manualPayoutSelectBank().sendKeys(glModuleData.PaymentBank);
+		glReportsObj.manualPayoutSelectBank().sendKeys(Keys.ENTER);
+	}
+
+	@And("^Select the bank Account Number$")
+	public void select_the_bank_account_number() throws Throwable {
+		glReportsObj.manualPayoutSelectBankAccountNumber().click();
+		glReportsObj.manualPayoutSelectBankAccountNumber().sendKeys(Keys.ENTER);
+	}
+
+	@And("^get the Available balance and store$")
+	public void get_the_available_balance_and_store() throws Throwable {
+		javascriphelper.JavaScriptHelper(driver);
+		String Availablebalance = (String) javascriphelper
+				.executeScript("return document.getElementById('availableBalance').value");
+		System.out.println(Availablebalance);
+		String[] Balance = Availablebalance.split("[.]");
+		String Glbalance = Balance[0].toString();
+		System.out.println(Glbalance);
+		String GlBalance = Glbalance.replace(",", "");
+		System.out.println(GlBalance);
+		testdata.put("Glbalance", GlBalance);
+		// String AvailabeBalance= Balance.substring(0,1)+","+Balance.substring(1,
+		// 2)+Balance.substring(3, 5)+Balance.substring(5);
+		// testdata.put("AvailableBalance", AvailabeBalance);
+		// System.out.println(AvailabeBalance);
+	}
+
+	@And("^click the notes option$")
+	public void click_the_notes_option() throws Throwable {
+		javascriphelper.JavaScriptHelper(driver);
+		javascriphelper.scrollIntoView(enquiryObj.inventoryReportIcon());
+		enquiryObj.inventoryReportIcon().click();
+
+	}
+
+	@And("^click the financial Report$")
+	public void click_the_financial_report() throws Throwable {
+		seleniumactions.getWaitHelper().waitForElementToVisibleWithFluentWait(driver, enquiryObj.financialReporting(), 20, 500);
+		enquiryObj.financialReporting().click();
+	}
+
+	@And("^click the Gl balance report edit icon$")
+	public void click_the_gl_balance_report_edit_icon() throws Throwable {
+		glReportsObj.FinancialTransactionIcon().click();
+		;
+	}
+
+	@And("^select the branch$")
+	public void select_the_branch() throws Throwable {
+		glReportsObj.glBalanceReportSelectBranch().click();
+		glReportsObj.glBalanceReportSelectBranch().sendKeys(glModuleData.branchCode);
+		glReportsObj.glBalanceReportSelectBranch().sendKeys(Keys.ENTER);
+	}
+
+	@And("^select the Gl code$")
+	public void select_the_gl_code() throws Throwable {
+		glReportsObj.glBalanceReportSelectGlcode().click();
+		glReportsObj.glBalanceReportSelectGlcode().sendKeys(glModuleData.gLCode);
+		glReportsObj.glBalanceReportSelectGlcode().sendKeys(Keys.ENTER);
+
+	}
+
+	@And("^Select the Gl from date$")
+	public void select_the_gl_from_date() throws Throwable {
+		enquiryObj.calenderInContractReport().click();
+		seleniumactions.getWaitHelper().waitForElementToVisibleWithFluentWait(driver,
+				driver.findElement(
+						By.xpath("(//span[@class='owl-dt-control-content owl-dt-control-button-content'])[2]")),
+				20, 500);
+		driver.findElement(By.xpath("(//span[@class='owl-dt-control-content owl-dt-control-button-content'])[2]"))
+				.click();
+
+		seleniumactions.getWaitHelper().waitForElementToVisibleWithFluentWait(driver,
+				driver.findElement(By.xpath("//span[text()='" + glModuleData.GlYear + "']")), 20, 500);
+		driver.findElement(By.xpath("//span[text()='" + glModuleData.GlYear + "']")).click();
+		driver.findElement(By.xpath("//span[text()='" + glModuleData.GlMonth + "']")).click();
+		seleniumactions.getWaitHelper()
+				.waitForElementToVisibleWithFluentWait(driver, driver.findElement(By.xpath("//td[@aria-label='"
+						+ glModuleData.GlFullMonth + " " + glModuleData.GlDay + ", " + glModuleData.GlYear + "']")), 20,
+						500);
+		driver.findElement(By.xpath("//td[@aria-label='" + glModuleData.GlFullMonth + " " + glModuleData.GlDay + ", "
+				+ glModuleData.GlYear + "']")).click();
+	}
+
+	@And("^Select the Gl To date$")
+	public void select_the_gl_to_date() throws Throwable {
+		enquiryObj.calenderInContractReport().click();
+		seleniumactions.getWaitHelper().waitForElementToVisibleWithFluentWait(driver,
+				driver.findElement(
+						By.xpath("(//span[@class='owl-dt-control-content owl-dt-control-button-content'])[2]")),
+				20, 500);
+		driver.findElement(By.xpath("(//span[@class='owl-dt-control-content owl-dt-control-button-content'])[2]"))
+				.click();
+
+		seleniumactions.getWaitHelper().waitForElementToVisibleWithFluentWait(driver,
+				driver.findElement(By.xpath("//span[text()='" + glModuleData.GlYear + "']")), 20, 500);
+		driver.findElement(By.xpath("//span[text()='" + glModuleData.GlYear + "']")).click();
+		driver.findElement(By.xpath("//span[text()='" + glModuleData.GlToMonth + "']")).click();
+		seleniumactions.getWaitHelper().waitForElementToVisibleWithFluentWait(driver,
+				driver.findElement(By.xpath("(//span[text()='" + glModuleData.GlToDate + "'])[1]")), 20, 500);
+		driver.findElement(By.xpath("(//span[text()='" + glModuleData.GlToDate + "'])[1]")).click();
+	}
+
+	@And("^select the currency type in gl balance report$")
+	public void select_the_currency_type_in_gl_balance_report() throws Throwable {
+		glReportsObj.glBalanceReportCurrency().click();
+		glReportsObj.glBalanceReportCurrency().sendKeys(glModuleData.CurrencyType);
+	}
+
+	@And("^click the View button$")
+	public void click_the_view_button() throws Throwable {
+		glReportsObj.glViewButton().click();
+	}
+
+	// ************************************KUBS_GL_UAT_007_001**************************************************************************
+	// Check the accounting mapping done for the accounting Scheme
+	@When("^user click the Accounting setup$")
+	public void user_click_the_accounting_setup() throws Throwable {
+		seleniumactions.getWaitHelper().waitForElementToVisibleWithFluentWait(driver, glReportsObj.accountingSetup(), 20, 500);
+		glReportsObj.accountingSetup().click();
+	}
+
+	@Then("^verify the mapping of accounintg entries to be triggered$")
+	public void verify_the_mapping_of_accounintg_entries_to_be_triggered() throws Throwable {
+		String xpath = "//ul/li/span[contains(text(),'ASSET MONTHLY DEPRECIATION')]";
+		javascriphelper.JavaScriptHelper(driver);
+		javascriphelper.scrollIntoView(driver.findElement(By.xpath(xpath)));
+		driver.findElement(By.xpath(xpath)).isDisplayed();
+	}
+
+	@And("^click the accounting scheme definition eye icon$")
+	public void click_the_accounting_scheme_definition_eye_icon() throws Throwable {
+		glReportsObj.accountingSchemeDefinitionEyeIcon().click();
+	}
+
+	@And("^click the search icon$")
+	public void click_the_search_icon() throws Throwable {
+		glReportsObj.searchIcon().click();
+	}
+
+	@And("^search the active status in list view$")
+	public void search_the_active_status_in_list_view() throws Throwable {
+		glReportsObj.searchStatusInAccountingScheme().click();
+		glReportsObj.searchStatusInAccountingScheme().sendKeys(glModuleData.statusactive);
+		glReportsObj.searchStatusInAccountingScheme().sendKeys(Keys.ENTER);
+	}
+
+	@And("^get the accounting scheme name in first list view$")
+	public void get_the_accounting_scheme_name_in_first_list_view() throws Throwable {
+		String Xpath = "//datatable-row-wrapper[1]/datatable-body-row[1]/div[2]/datatable-body-cell[2]/div[1]/span[1]";
+		String AccountingSchemeName = driver.findElement(By.xpath(Xpath)).getText();
+		testdata.put("AccountingSchemeName", AccountingSchemeName);
+	}
+
+	@And("^click the Accounting Scheme Event Mapping Eye icon$")
+	public void click_the_accounting_scheme_event_mapping_eye_icon() throws Throwable {
+		glReportsObj.accountingSchemeEventMappingEyeIcon().click();
+	}
+
+//    @And("^click add icon in Gl$")
+//    public void click_add_icon_in_gl() throws Throwable {
+//        glReportsObj.addIcon().click();
+//    }
+
+	@And("^select the event$")
+	public void select_the_event() throws Throwable {
+		glReportsObj.selectEvent().click();
+		glReportsObj.selectEvent().sendKeys(glModuleData.EventName);
+		glReportsObj.selectEvent().sendKeys(Keys.ENTER);
+	}
+
+	@And("^click the Scheme$")
+	public void click_the_scheme() throws Throwable {
+		javascriphelper.JavaScriptHelper(driver);
+		String xpath1 = "//ul/li/span[contains(text(),'" + glModuleData.SchemeName1 + "')]";
+		javascriphelper.scrollIntoView(driver.findElement(By.xpath(xpath1)));
+		driver.findElement(By.xpath(xpath1)).click();
+
+	}
+
+	@And("^click Add button$")
+	public void click_add_button() throws Throwable {
+		glReportsObj.addSchemesButton().click();
+	}
+
+	@And("^click next Scheme$")
+	public void click_next_scheme() throws Throwable {
+		String xpath2 = "//ul/li/span[contains(text(),'" + glModuleData.SchemeName2 + "')]";
+		javascriphelper.scrollIntoView(driver.findElement(By.xpath(xpath2)));
+		driver.findElement(By.xpath(xpath2)).click();
+	}
+
+	@And("^click save button in event mapping$")
+	public void click_save_button_in_event_mapping() throws Throwable {
+		glReportsObj.saveButtonInEventMapping().click();
+	}
+
+//    @And("^Click on notification icon$")
+//    public void click_on_notification_icon() throws Throwable {
+//    	Thread.sleep(1000);
+//        glReportsObj.makerNotificationIcon().click();
+//    }
+
+	@And("^select the first records$")
+	public void select_the_first_records() throws Throwable {
+		seleniumactions.getWaitHelper().waitForElementToVisibleWithFluentWait(driver, glReportsObj.firstReferenceId(), 20, 500);
+		String firtsReferenceID = glReportsObj.firstReferenceId().getText();
+		// Geting reference ID
+		jsonWriter.addReferanceData(firtsReferenceID);
+		glReportsObj.FirstRecordEditIcon().click();
+
+	}
+
+	@And("^click on submits$")
+	public void click_on_submits() throws Throwable {
+		seleniumactions.getWaitHelper().waitForElementToVisibleWithFluentWait(driver, glReportsObj.submitRemark(), 20, 500);
+		glReportsObj.submitRemark().click();
+		seleniumactions.getWaitHelper().waitForElementToVisibleWithFluentWait(driver, glReportsObj.budgetCreation_ReviewerId(),20, 500);
+		String reviwerId = glReportsObj.budgetCreation_ReviewerId().getText();
+		String trimmerReviewerID = reviwerId.substring(85);
+		StringBuffer sb = new StringBuffer(trimmerReviewerID);
+		StringBuffer finalReviewerID = sb.deleteCharAt(trimmerReviewerID.length() - 1);
+		String revID = finalReviewerID.toString();
+		// System.out.println("String buffer reviewer ID is"+finalReviewerID);
+		// System.out.println("Reviewer ID is"+revID);
+		jsonWriter.addData(revID);
+	}
+
+	@And("^click on submit buttons$")
+	public void click_on_submit_buttons() throws Throwable {
+		seleniumactions.getWaitHelper().waitForElementToVisibleWithFluentWait(driver, glReportsObj.submit(), 20, 500);
+		glReportsObj.submit().click();
+	}
+
+//    @And("^enter remark in alert tab$")
+//    public void enter_remark_in_alert_tab() throws Throwable {
+//    	Thread.sleep(2000);
+//        glReportsObj.enterRemarkInMaker().click();
+//        glReportsObj.enterRemarkInMaker().sendKeys("ok");
+//        
+//    }
+
+	@Then("^verify System should allow to map to the transaction event more than one Accounting Scheme$")
+	public void verify_system_should_allow_to_map_to_the_transaction_event_more_than_one_accounting_scheme()
+			throws Throwable {
+		seleniumactions.getWaitHelper().waitForElementToVisibleWithFluentWait(driver,
+				driver.findElement(By.xpath("//span[contains(text(),'" + glModuleData.SchemeName1 + "')]")), 20, 500);
+		driver.findElement(By.xpath("//span[contains(text(),'" + glModuleData.SchemeName1 + "')]")).isDisplayed();
+		seleniumactions.getWaitHelper().waitForElementToVisibleWithFluentWait(driver,
+				driver.findElement(By.xpath("//span[contains(text(),'" + glModuleData.SchemeName2 + "')]")), 20, 500);
+		driver.findElement(By.xpath("//span[contains(text(),'" + glModuleData.SchemeName2 + "')]")).isDisplayed();
+	}
+
+	@And("^search Event name based on which we created$")
+	public void search_event_name_based_on_which_we_created() throws Throwable {
+		seleniumactions.getWaitHelper().waitForElementToVisibleWithFluentWait(driver, glReportsObj.searchEventName(), 20, 500);
+		glReportsObj.searchEventName().click();
+		glReportsObj.searchEventName().sendKeys(glModuleData.EventName);
+	}
+
+	@And("^clck the first edit icon in list view$")
+	public void clck_the_first_edit_icon_in_list_view() throws Throwable {
+		glReportsObj.clickFirstEditIconInListView().click();
+	}
+
+	@And("^select the Status for EventMapping$")
+	public void select_the_status_for_eventmapping() throws Throwable {
+		glReportsObj.selectStatusInEventMapping().click();
+		glReportsObj.selectStatusInEventMapping().sendKeys(Keys.DOWN);
+		glReportsObj.selectStatusInEventMapping().sendKeys(Keys.ENTER);
+	}
+
+	@And("^select accounting book name$")
+	public void select_accounting_book_name() throws Throwable {
+		glReportsObj.selectAccountingBook().click();
+		glReportsObj.selectAccountingBook().sendKeys(glModuleData.AccountingBookname);
+		glReportsObj.selectAccountingBook().sendKeys(Keys.ENTER);
+	}
+
+	@And("^enter the Accounting Scheme Code$")
+	public void enter_the_accounting_scheme_code() throws Throwable {
+		Random ran = new Random();
+		int rand = ran.nextInt(500 - 10) + 10;
+		glReportsObj.enterAccountingSchemeCode().click();
+		glReportsObj.enterAccountingSchemeCode().sendKeys(glModuleData.AccountingSchemeCode + rand);
+		glReportsObj.enterAccountingSchemeCode().sendKeys(Keys.ENTER);
+	}
+
+	@And("^enter the Accounting Scheme name$")
+	public void enter_the_accounting_scheme_name() throws Throwable {
+		Random ran = new Random();
+		int rand = ran.nextInt(500 - 10) + 10;
+		glReportsObj.enterAccountingSchemeName().click();
+		glReportsObj.enterAccountingSchemeName().sendKeys(glModuleData.AccountingSchemeName + rand);
+		glReportsObj.enterAccountingSchemeName().sendKeys(Keys.ENTER);
+
+	}
+
+	@And("^select expand indicator$")
+	public void select_expand_indicator() throws Throwable {
+		glReportsObj.selectExpandIndicator().click();
+		glReportsObj.selectExpandIndicator().sendKeys(glModuleData.ExpandIndicator);
+		glReportsObj.selectExpandIndicator().sendKeys(Keys.ENTER);
+	}
+
+	@And("^select Transaction Type$")
+	public void select_transaction_type() throws Throwable {
+		glReportsObj.selectTransactionType().click();
+		glReportsObj.selectTransactionType().sendKeys(glModuleData.TransactionType);
+		glReportsObj.selectTransactionType().sendKeys(Keys.ENTER);
+
+	}
+
+	@And("^click save buttons$")
+	public void click_save_buttons() throws Throwable {
+		glReportsObj.saveButton().click();
+
+	}
+
+	@And("^click add icon in accounting scheme details$")
+	public void click_add_icon_in_accounting_scheme_details() throws Throwable {
+		seleniumactions.getWaitHelper().waitForElementToVisibleWithFluentWait(driver, glReportsObj.addAccountingSchemesDetail(),
+				20, 500);
+		glReportsObj.addAccountingSchemesDetail().click();
+	}
+
+	@And("^select GL resource$")
+	public void select_gl_resource() throws Throwable {
+		glReportsObj.selectGlSource().click();
+		glReportsObj.selectGlSource().sendKeys(glModuleData.selectGlSource);
+		glReportsObj.selectGlSource().sendKeys(Keys.ENTER);
+	}
+
+	@And("^select CrDr flag$")
+	public void select_crdr_flag() throws Throwable {
+		glReportsObj.selectCrDrFlag().click();
+		glReportsObj.selectCrDrFlag().sendKeys(glModuleData.DrFlag);
+		glReportsObj.selectCrDrFlag().sendKeys(Keys.ENTER);
+	}
+
+	@And("^select parameter String$")
+	public void select_parameter_string() throws Throwable {
+		glReportsObj.selectParameterType().click();
+		glReportsObj.selectParameterType().sendKeys(glModuleData.ParameterType);
+		glReportsObj.selectParameterType().sendKeys(Keys.ENTER);
+
+	}
+
+	@And("^select expand indicator in accounting Scheme details$")
+	public void select_expand_indicator_in_accounting_scheme_details() throws Throwable {
+		glReportsObj.selectExpandIndicatorInSchemeDetail().click();
+		glReportsObj.selectExpandIndicatorInSchemeDetail().sendKeys(glModuleData.ExpandIndicator);
+		glReportsObj.selectExpandIndicatorInSchemeDetail().sendKeys(Keys.ENTER);
+	}
+
+	@And("^select parameter$")
+	public void select_parameter() throws Throwable {
+		glReportsObj.selectParameterInAccountingSchemeDetails().click();
+		glReportsObj.selectParameterInAccountingSchemeDetails()
+				.sendKeys(glModuleData.ParameterInAccountingSchemeDetails);
+		glReportsObj.selectParameterInAccountingSchemeDetails().sendKeys(Keys.ENTER);
+	}
+
+	@And("^click add icon in table$")
+	public void click_add_icon_in_table() throws Throwable {
+		glReportsObj.addIconinAccountingSchemeDetails().click();
+	}
+
+	@And("^click save button in accounting scheme$")
+	public void click_save_button_in_accounting_scheme() throws Throwable {
+		glReportsObj.saveButtonInAccountingSchemeDetails().click();
+
+	}
+
+	@And("^click edit icon in accounting schemes$")
+	public void click_edit_icon_in_accounting_schemes() throws Throwable {
+		javascriphelper.JavaScriptHelper(driver);
+		javascriphelper.scrollIntoView(glReportsObj.editIconInAccountingSchemeDetails());
+		seleniumactions.getWaitHelper().waitForElementToVisibleWithFluentWait(driver,
+				glReportsObj.editIconInAccountingSchemeDetails(), 20, 500);
+		glReportsObj.editIconInAccountingSchemeDetails().click();
+	}
+
+	@And("^select the status in accounting Scheme details$")
+	public void select_the_status_in_accounting_scheme_details() throws Throwable {
+		glReportsObj.selectStatusInAccountingSchemes().click();
+		glReportsObj.selectStatusInAccountingSchemes().sendKeys(Keys.DOWN);
+		glReportsObj.selectStatusInAccountingSchemes().sendKeys(Keys.ENTER);
+	}
+
+	@And("^select Cr flag$")
+	public void select_cr_flag() throws Throwable {
+		glReportsObj.selectCrDrFlag().click();
+		glReportsObj.selectCrDrFlag().sendKeys(glModuleData.CrFlag);
+		glReportsObj.selectCrDrFlag().sendKeys(Keys.ENTER);
+	}
+
+	@Then("^verify System should triggered the applied rule for the accounting scheme$")
+	public void verify_system_should_triggered_the_applied_rule_for_the_accounting_scheme() throws Throwable {
+		String xpath = "//ul/li/span[contains(text(),'" + glModuleData.AccountingSchemeName + "')]";
+		javascriphelper.JavaScriptHelper(driver);
+		javascriphelper.scrollIntoView(driver.findElement(By.xpath(xpath)));
+		driver.findElement(By.xpath(xpath)).isDisplayed();
+	}
+
+
+	
+}
+
+
+
+
+
+
+
+
+
+	
