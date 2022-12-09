@@ -42,7 +42,6 @@ public class GL2_JournalVoucherObj {
 	//BranchCode
 	@FindBy(xpath = "//ion-row[1]/ion-col[2]/app-kub-lov[1]/span[1]/ng-select[1]/div[1]/div[1]/div[2]/input[1]")
 	private WebElement gL2_JournalVoucher_BranchCode;
-
 	public WebElement gL2_JournalVoucher_BranchCode() {
 		return gL2_JournalVoucher_BranchCode;
 
@@ -51,7 +50,6 @@ public class GL2_JournalVoucherObj {
 	// Currency
 	@FindBy(xpath = "//ion-row[1]/ion-col[6]/app-kub-lov[1]/span[1]/ng-select[1]/div[1]/div[1]/div[2]/input[1]")
 	private WebElement gL2_JournalVoucher_Currency;
-
 	public WebElement gL2_JournalVoucher_Currency() {
 		return gL2_JournalVoucher_Currency;
 
@@ -60,37 +58,38 @@ public class GL2_JournalVoucherObj {
 	// JournalType
 	@FindBy(xpath = "//ion-row[1]/ion-col[7]/app-kub-lov[1]/span[1]/ng-select[1]/div[1]/div[1]/div[2]/input[1]")
 	private WebElement gL2_JournalVoucher_JournalType;
-
 	public WebElement gL2_JournalVoucher_JournalType() {
 		return gL2_JournalVoucher_JournalType;
 	}
     // Profit Center
 		@FindBy(xpath = "//app-kub-lov[@ng-reflect-lov-label='Profit Center']//div/input")
 		private WebElement gL2_JournalVoucher_ProfitCenter;
-
 		public WebElement gL2_JournalVoucher_ProfitCenter() {
 			return gL2_JournalVoucher_ProfitCenter;
 		}
 	// Cost Center 
 		@FindBy(xpath = "//app-kub-lov[@ng-reflect-lov-label=' Cost Center ']//div/input")
 		private WebElement gL2_JournalVoucher_CostCenter;
-
 		public WebElement gL2_JournalVoucher_CostCenter() {
 			return gL2_JournalVoucher_CostCenter;
 		}
 	// department 
 		@FindBy(xpath = "//app-kub-lov[@ng-reflect-name='department']//div/input")
 		private WebElement gL2_JournalVoucher_Department;
-
 		public WebElement gL2_JournalVoucher_Department() {
 			return gL2_JournalVoucher_Department;
 		}
 	// Remark
 	@FindBy(xpath = "//ion-input[@ng-reflect-name='remarks']//input")
 	private WebElement gL2_JournalVoucher_Remark;
-
 	public WebElement gL2_JournalVoucher_Remark() {
 		return gL2_JournalVoucher_Remark;
+	}
+	// Journal voucher ref
+	@FindBy(xpath = "//ion-input[@name='voucherNo']//input")
+	private WebElement gL2_GetJournalVoucherRef;
+	public WebElement gL2_GetJournalVoucherRef() {
+		return gL2_GetJournalVoucherRef;
 	}
 	//-------------First record for credit-------//
 	// DrCr
@@ -151,7 +150,7 @@ public class GL2_JournalVoucherObj {
 	}
 
 	// Credit
-	@FindBy(xpath = "//ion-list[1]/ion-radio-group[1]/ion-item[2]/ion-radio[1]")
+	@FindBy(xpath = "//ion-label[text()=' Credit ']/following-sibling::ion-radio")
 	private WebElement gL2_JournalVoucher_Credit;
 
 	public WebElement gL2_JournalVoucher_Credit() {

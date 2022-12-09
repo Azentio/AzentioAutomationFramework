@@ -23,7 +23,7 @@ public class FinancialReporting_GLBalancesReportObj {
 		return FinancialReporting_GLBalancesReport_ReportIcon;
 	}
 
-	@FindBy(xpath="//ion-label[contains(text(),'Financial reporting')]")
+	@FindBy(xpath="//ion-label[text()=' Financial reporting ']")
 	private WebElement FinancialReportingMenu;
 	public WebElement FinancialReportingMenu()
 	{
@@ -54,6 +54,14 @@ public class FinancialReporting_GLBalancesReportObj {
 	public WebElement FinancialReporting_GLBalancesReport_BranchCode()
 	{
 		return FinancialReporting_GLBalancesReport_BranchCode;
+		
+	}
+	
+	@FindBy(xpath="//label[text()=' Report Type ']/following-sibling::ng-select//input")
+	private WebElement FinancialReporting_GLBalancesReport_Report_Type;
+	public WebElement FinancialReporting_GLBalancesReport_Report_Type()
+	{
+		return FinancialReporting_GLBalancesReport_Report_Type;
 		
 	}
 

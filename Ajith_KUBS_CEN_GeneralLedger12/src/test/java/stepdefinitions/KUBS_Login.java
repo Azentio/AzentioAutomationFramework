@@ -48,20 +48,11 @@ public class KUBS_Login {
 		String otp = login.Login_getOtp().getText();
 		driver.findElement(By.xpath("//ng-otp-input/div/input[1]")).sendKeys(otp.substring(7));
 		login.Login_signIn().click();
+		waithelper.waitForElementToVisibleWithFluentWait(driver,makerobj.makerLoginVerification(), 30, 2);
+		Assert.assertTrue(makerobj.makerLoginVerification().isDisplayed());
 		waithelper.waitForElementToVisibleWithFluentWait(driver, makerobj.kubsFinaceOption(), 60, 1);
-		clicksAndActionsHelper.clickUsingActionClass(makerobj.kubsFinaceOption(), makerobj.kubsFinaceOption());
-		for (int i = 0; i <= 500; i++) {
-			try {
-				clicksAndActionsHelper.moveToElement(makerobj.FinanceOption());
-				clicksAndActionsHelper.clickUsingActionClass(makerobj.FinanceOption(), makerobj.FinanceOption());
-				break;
-			} catch (Exception e) {
-				if (i == 500) {
-					Assert.fail(e.getMessage());
-				}
-			}
-		}
-
+		clicksAndActionsHelper.clickUsingActionClass(makerobj.kubsFinaceOption(),makerobj.kubsFinaceOption());
+		
 	}
 
 	public void logintoAzentioappReviewer(String id) {

@@ -68,7 +68,7 @@ public class GL2_JournalVoucher_AccountEntryReportObj {
 	{
 		return gL2_JournalVoucher_AccountEntryReport_NextMonth;
 	}
-	@FindBy(xpath="//ion-button[contains(text(),'View')]")
+	@FindBy(xpath="//span[contains(text(),'View')]/parent::ion-button")
 	private WebElement gL2_JournalVoucher_AccountEntryReport_ViewButton;
 	public WebElement gL2_JournalVoucher_AccountEntryReport_ViewButton()
 	{
@@ -91,7 +91,7 @@ public class GL2_JournalVoucher_AccountEntryReportObj {
 		return gL2_JournalVoucher_AccountEntryReport_Total;
 	}
 	// transaction ref number
-	@FindBy(xpath="//app-kub-lov[@ng-reflect-lov-label='Transaction Ref No']//input")
+	@FindBy(xpath="//label[text()=' Transaction Ref No ']//following-sibling::ng-select//input")
 	private WebElement transactionRefNo;
 	public WebElement transactionRefNo()
 	{

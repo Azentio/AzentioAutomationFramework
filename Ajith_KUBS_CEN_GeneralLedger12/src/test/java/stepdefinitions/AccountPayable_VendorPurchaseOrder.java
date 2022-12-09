@@ -60,9 +60,9 @@ public class AccountPayable_VendorPurchaseOrder extends BaseClass {
 		 @Then("^Click on Direction icon$")
 		 public void click_on_direction_icon() throws InterruptedException {
 		 waithelper = new WaitHelper(driver) ;
-		Thread.sleep(2000);
+		 Thread.sleep(2000);
 //		 waithelper.waitForElement(driver, 4000, accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_DirectionIcon());
-		 waithelper.waitForElementwithFluentwait(driver, accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_DirectionIcon());
+		 waithelper.waitForElementToVisibleWithFluentWait(driver,accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_DirectionIcon(), 30, 2);
 		 accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_DirectionIcon().click();
     
 		    }

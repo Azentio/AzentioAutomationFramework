@@ -4,17 +4,17 @@
 
 		 
 
-		"BranchCode": "AZENTMAIN-Azentio Main Branch", 
+		"BranchCode": "Azentio Main Branch", 
 
-		"GLCode": "IFRS-5000001-EX - Expenses", 
+		"GLCode": "IFRS-1000047-AS - Inter Branch GL", 
 
-		"GLMonth": "Apr", 
+		"GLMonth": "Dec", 
 
-		"GLDate": "10", 
+		"GLDate": "5", 
 
-		"GLFullMonth": "April", 
+		"GLFullMonth": "December", 
 
-		"GLYear": "2023", 
+		"GLYear": "2022", 
 
 		 
 
@@ -32,16 +32,16 @@
 
 		 
 
-		"BranchCodeForMonthlyBalancesReport": "AZENTMAIN-Azentio Main Branch", 
+		"BranchCodeForMonthlyBalancesReport": "Azentio Main Branch", 
 
-		"GLCodeForMonthlyBalancesReport": "IFRS-5000001-EX - Expenses", 
+		"GLCodeForMonthlyBalancesReport": "IFRS-LIAB-LI3000003 - Accounts Payable", 
 
-		"GLMonthForMonthlyBalancesReport": "Apr", 
+		"GLMonthForMonthlyBalancesReport": "Dec", 
 
-		"GLDateForMonthlyBalancesReport": "10", 
+		"GLDateForMonthlyBalancesReport": "5", 
 
-		"GLFullMonthForMonthlyBalancesReport": "April", 
+		"GLFullMonthForMonthlyBalancesReport": "December", 
 
-		"GLYearForMonthlyBalancesReport": "2023" 
+		"GLYearForMonthlyBalancesReport": "2022" 
 	}
 ]

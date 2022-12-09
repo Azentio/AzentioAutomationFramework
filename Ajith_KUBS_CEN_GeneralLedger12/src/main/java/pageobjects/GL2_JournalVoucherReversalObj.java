@@ -31,6 +31,15 @@ public class GL2_JournalVoucherReversalObj {
 		return gL2_JournalVoucherReversal_PencilIcon;
 
 	}
+	// Search Reversed JV yes
+	@FindBy(xpath = "//label[text()=' JV Reversed ']//parent::div//child::input")
+	private WebElement gL2_JVReversedStatus;
+
+	public WebElement gL2_JVReversedStatus() {
+		return gL2_JVReversedStatus;
+
+	}
+	
 	
 	
 	

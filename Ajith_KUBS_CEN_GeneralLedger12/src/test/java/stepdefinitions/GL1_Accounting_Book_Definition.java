@@ -135,6 +135,20 @@ public class GL1_Accounting_Book_Definition extends BaseClass {
 		kubsLogin.loginToAzentioAppByMaker();
 		
 	}
+	 @And("^Click on Finance Option for GL$")
+	    public void click_on_finance_option_for_gl() throws Throwable {
+		 for (int i = 0; i <= 500; i++) {
+				try {
+					clicksAndActionHelper.moveToElement(makerobj.FinanceOption());
+					clicksAndActionHelper.clickUsingActionClass(makerobj.FinanceOption(), makerobj.FinanceOption());
+					break;
+				} catch (Exception e) {
+					if (i == 500) {
+						Assert.fail(e.getMessage());
+					}
+				}
+			}
+	    }
 
 	@And("^Click on Accounting Setup module$")
 	public void click_on_accounting_setup_module() throws Throwable {

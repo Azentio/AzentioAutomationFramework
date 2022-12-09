@@ -2,7 +2,7 @@ Feature: To verify user can able to do transaction in gl2 module
 @KUBS_GL2_UAT_001_001_01 
 Scenario: Create a ledger at entity level
 Given Navigate to Azentio Kubs
-#Then Click on Direction Left
+And Click on Finance Option for GL
 Then Click on General ledger configuration
 Then Click on Legal Entity GL Configuration Eye Icon
 Then Click on Legal Entity GL Configuration Add button
@@ -43,16 +43,21 @@ Then Approve the Record in checker stage
 And Give Remark and Submit for GL2
 @KUBS_GL2_UAT_001_001_04
 Scenario: Verify the Created ledger in Maker list view 
+And User Update the test data set id to Create a Ledger at entity Level
 Given Navigate to Azentio Kubs
-#Then Click on Direction Left
+And Click on Finance Option for GL
 Then Click on General ledger configuration
 Then Click on Legal Entity GL Configuration Eye Icon
+Then Click on Table Row First Eye Icon
+And Verify the given data in Created Ledger
 @KUBS_GL2_UAT_001_002_01 
 Scenario: Mapping the GL in side the entity level
-Given Maker Navigate to UAT URL login
+Given Navigate to Azentio Kubs
+And Click on Finance Option for GL
 Then Click on General ledger configuration
 Then Click on Legal Entity GL Configuration Eye Icon
 Then Click on Legal Entity GL Configuration Add button
+And User Update the test data set id to Map the GL in side entity level
 And User select the cash GL 
 And User Select the Cheque GL
 And User Select the Inter branch GL
@@ -65,49 +70,97 @@ And User Select the Revaluation Notional Profit GL
 And User Select the Revaluation Notional Loss GL
 Then save the Legal Entity GL Configuration record
 And User Close the Workflow iniatiated Pop up in GL
-And click notification button
-Then choose first record in the notification record
-And click on Submit button 
-Then enter remark in confirmation alert
-Then click on submit button in alert
-And capture the reviewer ID in pop up which is open when we submit our record in maker stage
-Then logout from maker
+Then Goto The Notification Icon
+And User Update the data set id to Approve the Mapped the GL in side the entity level in Reviewer or Checker
+And Store the Referance Id and Open the Record for GL2 records
+Then Click submit button and Enter Remark submit it for GL2 Records
 @KUBS_GL2_UAT_001_002_02
 Scenario: Approve the Mapped the GL in side the entity level in Reviewer 
-And login with reviewer credentials
-Then click on notification button
-And select our record in notification records using reference ID
-Then Approve the record from reviewer
-And enter the remark in alert
-Then click on submit in alert
-Then verify the approval status of the record
-And logout from reviewer
+And User Update the data set id to Approve the Mapped the GL in side the entity level in Reviewer or Checker
+Given Navigate as a Reviewer for GL2
+Then click on Notify icon
+And Click First record Action icon for GL2
+Then Approve the record in Reviewer
+And Give Remark and Submit for GL2
 @KUBS_GL2_UAT_001_002_03
 Scenario: Approve the Mapped the GL in side the entity level in Checker
-Then login as a checker 
-And click on security management menu in checker
-Then click on action button under security management menu
-And select our record and clime using reference ID
-Then click on Notification button
-Then select our record in notification records by the help of reference ID
-And click on approve button in checker stage
-Then give alert remark 
-Then click on submit button on alert
-And verify the record got approved from checker
-Then logout from checker
+And User Update the data set id to Approve the Mapped the GL in side the entity level in Reviewer or Checker
+Given Navigate as a Checker
+Then Click module security management
+And Claim the Record in Checker for GL2
+Then Goto the Checker notification Icon
+And Click First record Action icon for GL2
+Then Approve the Record in checker stage
+And Give Remark and Submit for GL2
 @KUBS_GL2_UAT_001_002_04
 Scenario: Verify the Mapped the GL in side the entity level in Checker
-And login with Maker ID
-Then Click on Direction Left
+And User Update the test data set id to Map the GL in side entity level
+Given Navigate to Azentio Kubs
+And Click on Finance Option for GL
 Then Click on General ledger configuration
 Then Click on Legal Entity GL Configuration Eye Icon
-@KUBS_GL2_UAT_003_001 @MultiAuth @GL2
+Then Click on Table Row First Eye Icon
+And Verify the given data in Created Ledger
+@KUBS_GL2_UAT_001_003_01
+Scenario: User should have permission to do the entity level transaction
+Given Navigate to Azentio Kubs
+And Click on Finance Option for GL
+Then Click on General ledger configuration
+Then Click on Legal Entity GL Configuration Eye Icon
+Then Click on Legal Entity GL Configuration Add button
+And User Update the test data set id to do the entity level transaction
+And User select the cash GL 
+And User Select the Cheque GL
+And User Select the Inter branch GL
+And User Select the Position GL
+And User Select the PL Exchange Gain GL
+And User Select the PL Exchange Loss GL
+And User Select the Revaluation Profit GL
+And User Select the Revaluation Loss GL
+And User Select the Revaluation Notional Profit GL
+And User Select the Revaluation Notional Loss GL
+Then save the Legal Entity GL Configuration record
+And User Close the Workflow iniatiated Pop up in GL
+Then Goto The Notification Icon
+And User Update the data set id to approve the entity level transaction in reviewer or checker
+And Store the Referance Id and Open the Record for GL2 records
+Then Click submit button and Enter Remark submit it for GL2 Records
+@KUBS_GL2_UAT_001_003_02
+Scenario: Approve the entity level transaction in reviewer
+And User Update the data set id to approve the entity level transaction in reviewer or checker
+Given Navigate as a Reviewer for GL2
+Then click on Notify icon
+And Click First record Action icon for GL2
+Then Approve the record in Reviewer
+And Give Remark and Submit for GL2
+@KUBS_GL2_UAT_001_003_03
+Scenario: Approve the entity level transaction in Checker
+And User Update the data set id to approve the entity level transaction in reviewer or checker
+Given Navigate as a Checker
+Then Click module security management
+And Claim the Record in Checker for GL2
+Then Goto the Checker notification Icon
+And Click First record Action icon for GL2
+Then Approve the Record in checker stage
+And Give Remark and Submit for GL2
+@KUBS_GL2_UAT_001_003_04
+Scenario: Verify the entity level transaction in Maker
+And User Update the test data set id to do the entity level transaction
+Given Navigate to Azentio Kubs
+And Click on Finance Option for GL
+Then Click on General ledger configuration
+Then Click on Legal Entity GL Configuration Eye Icon
+Then Click on Table Row First Eye Icon
+And Verify the given data in Created Ledger
+@KUBS_GL2_UAT_003_001_01
 Scenario: Create a Journal Voucher to adjust the amount from one GL to another GL
 Given Navigate to Azentio Kubs
+And Click on Finance Option for GL
 Then Click on Direction icon
 Then Click on General Ledger Transaction Field
 Then Click on Journal Voucher EyeIcon
 Then Click on Journal Voucher AddButton
+And User Update the test data set id to create Journal Voucher
 And User Select the branch code
 And User Select the Currency
 And User Select the Journal Voucher
@@ -117,203 +170,164 @@ And User enter the remark for Journal Voucher
 Then Add Debit credit record 
 Then save the Journal Voucher record
 And User Close the Workflow iniatiated Pop up in GL
-And click notification button
-Then choose first record in the notification record
-And click on Submit button 
-Then enter remark in confirmation alert
-Then click on submit button in alert
-And capture the reviewer ID in pop up which is open when we submit our record in maker stage
-Then logout from maker
-And login with reviewer credentials
-Then click on notification button
-And select our record in notification records using reference ID
-Then Approve the record from reviewer
-And enter the remark in alert
-Then click on submit in alert
-Then verify the approval status of the record
-And logout from reviewer
-Then login as a checker 
-And click on security management menu in checker
-Then click on action button under security management menu
-And select our record and clime using reference ID
-Then click on Notification button
-Then select our record in notification records by the help of reference ID
-And click on approve button in checker stage
-Then give alert remark 
-Then click on submit button on alert
-And verify the record got approved from checker
-Then logout from checker
-And login with Maker ID
+Then Goto The Notification Icon
+And User Update test data set id to approve the Journal Voucher record in Reviewer or Checker
+And Store the Referance Id and Open the Record for Journal Voucher record
+Then Click submit button and Enter Remark submit it for GL2 Records
+@KUBS_GL2_UAT_003_001_02
+Scenario: Approve the Journal Voucher record in Reviewer
+And User Update test data set id to approve the Journal Voucher record in Reviewer or Checker
+Given Navigate as a Reviewer for GL2
+Then click on Notify icon
+And Click First record Action icon for GL2
+Then Approve the record in Reviewer
+And Give Remark and Submit for GL2
+@KUBS_GL2_UAT_003_001_03
+Scenario: Approve the Journal Voucher record in Checker
+And User Update test data set id to approve the Journal Voucher record in Reviewer or Checker
+Given Navigate as a Checker
+Then Click module security management
+And Claim the Record in Checker for GL2
+Then Goto the Checker notification Icon
+And Click First record Action icon for GL2
+Then Approve the Record in checker stage
+And Give Remark and Submit for GL2
+@KUBS_GL2_UAT_003_001_04
+Scenario: Verify the created Journal Voucher record in Maker
+Given Navigate to Azentio Kubs
+And Click on Finance Option for GL
 Then Click on Direction icon
 Then Click on General Ledger Transaction Field
 Then Click on Journal Voucher EyeIcon
+Then Click on Table Row First Eye Icon
+And User Update the test data set id to create Journal Voucher
+And User Store the Journal Voucher Reference Number
+And Verify the created Journal Voucher Record In Maker 
 
-@KUBS_GL2_UAT_001_003 @MultiAuth @GL2
-
-Scenario: User should have permission to do the entity level transaction
-Given Maker Navigate to UAT URL login
-Then Click on Direction Left
-Then Click on General ledger configuration
-Then Click on Legal Entity GL Configuration Eye Icon
-Then Click on Legal Entity GL Configuration Add button
-And User select the cash GL 
-And User Select the Cheque GL
-And User Select the Inter branch GL
-And User Select the Position GL
-And User Select the PL Exchange Gain GL
-And User Select the PL Exchange Loss GL
-And User Select the Revaluation Profit GL
-And User Select the Revaluation Loss GL
-And User Select the Revaluation Notional Profit GL
-And User Select the Revaluation Notional Loss GL
-Then save the Legal Entity GL Configuration record
-And User Close the Workflow iniatiated Pop up in GL
-And click notification button
-Then choose first record in the notification record
-And click on Submit button 
-Then enter remark in confirmation alert
-Then click on submit button in alert
-And capture the reviewer ID in pop up which is open when we submit our record in maker stage
-Then logout from maker
-And login with reviewer credentials
-Then click on notification button
-And select our record in notification records using reference ID
-Then Approve the record from reviewer
-And enter the remark in alert
-Then click on submit in alert
-Then verify the approval status of the record
-And logout from reviewer
-Then login as a checker 
-And click on security management menu in checker
-Then click on action button under security management menu
-And select our record and clime using reference ID
-Then click on Notification button
-Then select our record in notification records by the help of reference ID
-And click on approve button in checker stage
-Then give alert remark 
-Then click on submit button on alert
-And verify the record got approved from checker
-Then logout from checker
-And login with Maker ID
-Then Click on Direction Left
-Then Click on General ledger configuration
-Then Click on Legal Entity GL Configuration Eye Icon
-
-
-@KUBS_GL2_UAT_003_002 @MultiAuth @GL2
-
+@KUBS_GL2_UAT_003_002_01
 Scenario: System should generate a unique journal voucher number and accounting entries
- 					should be passed as one Debit GL and multiple credit GL amount accordingly
- 					
-Given Maker Navigate to UAT URL login
+ 					should be passed as one Debit GL and multiple credit GL amount accordingly		
+Given Navigate to Azentio Kubs
+And Click on Finance Option for GL
 Then Click on Direction icon
 Then Click on General Ledger Transaction Field
 Then Click on Journal Voucher EyeIcon
 Then Click on Journal Voucher AddButton
+And User update the test data set id to generate a unique journal voucher number
 And User Select the branch code
 And User Select the Currency
 And User Select the Journal Voucher
 And User Select the profit center
 And User Select cost center or Department
-Then Add one Debit multiple credit record 
+And User enter the remark for Journal Voucher
+And Add Debit record in JV
+And Add First Credit record in JV
+And Add Second Credit record in JV 
 Then save the Journal Voucher record
 And User Close the Workflow iniatiated Pop up in GL
-And click notification button
-Then choose first record in the notification record
-And click on Submit button 
-Then enter remark in confirmation alert
-Then click on submit button in alert
-And capture the reviewer ID in pop up which is open when we submit our record in maker stage
-Then logout from maker
-And login with reviewer credentials
-Then click on notification button
-And select our record in notification records using reference ID
-Then Approve the record from reviewer
-And enter the remark in alert
-Then click on submit in alert
-Then verify the approval status of the record
-And logout from reviewer
-Then login as a checker 
-And click on security management menu in checker
-Then click on action button under security management menu
-And select our record and clime using reference ID
-Then click on Notification button
-Then select our record in notification records by the help of reference ID
-And click on approve button in checker stage
-Then give alert remark 
-Then click on submit button on alert
-And verify the record got approved from checker
-Then logout from checker
-And login with Maker ID
+Then Goto The Notification Icon
+And User Update test data set id to approve the GL2 Journal Voucher record in Reviewer or Checker
+And Store the Referance Id and Open the Record for Journal Voucher record
+Then Click submit button and Enter Remark submit it for GL2 Records
+@KUBS_GL2_UAT_003_002_02
+Scenario: User Approve the Journal Voucher Record in Reviewer
+And User Update test data set id to approve the GL2 Journal Voucher record in Reviewer or Checker
+Given Navigate as a Reviewer for GL2
+Then click on Notify icon
+And Click First record Action icon for GL2
+Then Approve the record in Reviewer
+And Give Remark and Submit for GL2
+@KUBS_GL2_UAT_003_002_03
+Scenario: User Approve the Journal Voucher Record in Checker
+And User Update test data set id to approve the GL2 Journal Voucher record in Reviewer or Checker
+Given Navigate as a Checker
+Then Click module security management
+And Claim the Record in Checker for GL2
+Then Goto the Checker notification Icon
+And Click First record Action icon for GL2
+Then Approve the Record in checker stage
+And Give Remark and Submit for GL2
+@KUBS_GL2_UAT_003_002_04
+Scenario: Verify the approved journal voucher record in maker
+Given Navigate to Azentio Kubs
+And Click on Finance Option for GL
 Then Click on Direction icon
 Then Click on General Ledger Transaction Field
 Then Click on Journal Voucher EyeIcon
+Then Click on Table Row First Eye Icon
+And User update the test data set id to generate a unique journal voucher number
+And User Store the Journal Voucher Reference Number
+And Verify the created Journal Voucher Record In Maker 
 
 @KUBS_GL2_UAT_003_003 @MultiAuth @GL2
-
 Scenario: System should display the accounting entries for the vourcher generated.
-
-Given Maker Navigate to UAT URL login
+Given Navigate to Azentio Kubs
+And Click on Finance Option for GL
 Then click on report segment button
 And click on equiry menu
 Then click on edit icon near fiancial transaction menu
-And fill the mandtory field for Journal vourcher
+And User update the test data set id for System should display the accounting entries for the vourcher generated
+And User select branch code in financial Transaction
 #Then select Transaction from date Journal vourcher
 #Then select Transaction to date Journal vourcher
-And User Close the Workflow iniatiated Pop up in GL
+And Select the Transaction Ref no for journal Voucher
 And click on view button for record
 Then validate Journal vourcher number 
-
-@KUBS_GL2_UAT_003_004 @MultiAuth @GL2
-
+# Before execution need to run journal voucher test cases
+@KUBS_GL2_UAT_003_004_01 
 Scenario: Create a Reverse Journal Voucher to undo the already generated journal Voucher
-Given Maker Navigate to UAT URL login
+Given Navigate to Azentio Kubs
+And Click on Finance Option for GL
 Then Click on Direction icon
 Then Click on General Ledger Transaction Field
 Then Click on Journal Voucher Reversal EyeIcon
 Then Click on Journal Voucher Reversal Pencil Icon
 Then save the Journal Voucher record
 And User Close the Workflow iniatiated Pop up in GL
-And click notification button
-Then choose first record in the notification record
-And click on Submit button 
-Then enter remark in confirmation alert
-Then click on submit button in alert
-And capture the reviewer ID in pop up which is open when we submit our record in maker stage
-Then logout from maker
-And login with reviewer credentials
-Then click on notification button
-And select our record in notification records using reference ID
-Then Approve the record from reviewer
-And enter the remark in alert
-Then click on submit in alert
-Then verify the approval status of the record
-And logout from reviewer
-Then login as a checker 
-And click on security management menu in checker
-Then click on action button under security management menu
-And select our record and clime using reference ID
-Then click on Notification button
-Then select our record in notification records by the help of reference ID
-And click on approve button in checker stage
-Then give alert remark 
-Then click on submit button on alert
-And verify the record got approved from checker
-Then logout from checker
-And login with Maker ID
+Then Goto The Notification Icon
+And User Update test data set id to approve the GL2 Reverse Journal Voucher record in Reviewer or Checker
+And Store the Referance Id and Open the Record for Reverse Journal Voucher record
+Then Click submit button and Enter Remark submit it for GL2 Records
+@KUBS_GL2_UAT_003_004_02 
+Scenario: Approve the  Reversed Journal Voucher to undo the already generated journal Voucher in Reviewer
+And User Update test data set id to approve the GL2 Reverse Journal Voucher record in Reviewer or Checker
+Given Navigate as a Reviewer for GL2
+Then click on Notify icon
+And Click First record Action icon for GL2
+Then Approve the record in Reviewer
+And Give Remark and Submit for GL2
+@KUBS_GL2_UAT_003_004_03
+Scenario: Approve the Reversed Journal Voucher to undo the already generated journal Voucher in Checker
+And User Update test data set id to approve the GL2 Reverse Journal Voucher record in Reviewer or Checker
+Given Navigate as a Checker
+Then Click module security management
+And Claim the Record in Checker for GL2
+Then Goto the Checker notification Icon
+And Click First record Action icon for GL2
+Then Approve the Record in checker stage
+And Give Remark and Submit for GL2
+@KUBS_GL2_UAT_003_004_04
+Scenario: Verify the Reversed Journal Voucher in Maker list view
+And User update the test data set id to verify the Reversed Journal Voucher in Maker list view
+Given Navigate to Azentio Kubs
+And Click on Finance Option for GL
 Then Click on Direction icon
 Then Click on General Ledger Transaction Field
 Then Click on Journal Voucher Reversal EyeIcon
+And Click On Search Icon
+And User Search JV Reverse as Yes
+Then Click on Journal Voucher Reversal Pencil Icon
+And User Verify JV is reversed
 
 @KUBS_GL2_UAT_003_005 @MultiAuth @GL2
 
 Scenario: System should display the accounting entries for the vourcher generated.
-
+And User Update the test data id for display the accounting entries for the vourcher generated
 Given Maker Navigate to UAT URL login
+And Click on Finance Option for GL
 Then click on report segment button
 And click on equiry menu
 Then click on edit icon near fiancial transaction menu
-And fill the mandtory field for Journal vourcher
 #Then select Transaction from date Journal vourcher
 #Then select Transaction to date Journal vourcher
 And Select the Transaction Ref no for Reversal journal Voucher
@@ -323,51 +337,77 @@ Then validate Journal vourcher Reversal number
 
 @KUBS_GL2_UAT_004_001 @Report @GL2
   Scenario: Check report for GL monthly balances
-    Given User should go to the kubs url and login as a maker user
+    And User update the test data id for Check report for GL monthly balances
+    Given Navigate to Azentio Kubs
+    And Click on Finance Option for GL
     Then click on report icon
     And user should navigate to financial reporting menu
     Then click on temp grid button of GL monthly balances report
-    And fill the required field of GL monthly balances report
+    And User select the branch code for GL Monthly Balances
+    And User Select the report type for GL Monthly Balances
+    And User Select the GL code for GL Monthly Balances
+    And User Select the Currency for GL Monthly Balances
+    And User Choose GL Balances From Date
     Then click on view button to view the report for monthly period
     
  @KUBS_GL2_UAT_005_001 @Report @GL2
   Scenario: Check GL balance for any period
     Given User should go to the kubs url and login as a maker user
+    And Click on Finance Option for GL
     Then click on report icon
     And user should navigate to financial reporting menu
     Then click on temp grid button of GL Balances report
-    And fill the required field of GL Balances report
+    And User Select the branch code for GL Balances report
+    And User Select the report type for GL Balances report
+    And User Select the GL code for GL Balances report
+    And User Choose the GL balances From Date for GL Balances report
+    And User Select the Currency for GL Balances report
     Then click on view button to view the report for any period    
     
     
     @KUBS_GL2_UAT_006_001 @Report @GL2
   Scenario: Check the transactions as per reference number feeded
- 	  Given User should go to the kubs url and login as a maker user
-    And user should navigate to general ledger transaction menu
-    When click on eye button of journal voucher
+    And User Update the test data set id for Check the Transactions
+ 	  Given Navigate to Azentio Kubs
+ 	  And Click on Finance Option for GL
+		Then Click on Direction icon
+		Then Click on General Ledger Transaction Field
+    Then Click on Journal Voucher EyeIcon
+	  Then Click on Table Row First Eye Icon
     Then click on the record to get the voucher number
     Then click on report icon
     Then click on enquiry menu
     Then click on temp grid button of financial transaction
+    And User Update the test data set id for Check the Transactions
+    And User Select the Branch Code for  Check the Transactions 
     And fill the reference number field of financial transaction
-    Then click on view button to view the report as per reference number
+    And click on view button for record
+	  Then validate Journal vourcher number
  
   @KUBS_GL2_UAT_006_002 @Report @GL2
   Scenario: Check the transactions as per GL number feeded
- 	  Given User should go to the kubs url and login as a maker user
-    And user should navigate to general ledger transaction menu
-    When click on eye button of journal voucher
+    And User Update the test data set id for Check the Transactions as per GL
+ 	  Given Navigate to Azentio Kubs
+ 	  And Click on Finance Option for GL
+		Then Click on Direction icon
+		Then Click on General Ledger Transaction Field
+    Then Click on Journal Voucher EyeIcon
+	  Then Click on Table Row First Eye Icon
     Then click on the record to get the GL number
     Then click on report icon
     Then click on enquiry menu
     Then click on temp grid button of financial transaction
+    And User Update the test data set id for Check the Transactions as per GL
+    And User select the Branch Code for Check the transactions as per GL
     And fill the GL number field of financial transaction
     Then click on view button to view the report as per reference number
   
   @KUBS_GL2_UAT_006_003 @Report @GL2
   Scenario: Check the transactions as per dates feeded
- 	  Given User should go to the kubs url and login as a maker user
-    And user should navigate to general ledger transaction menu
+ 	  Given Navigate to Azentio Kubs
+ 	  And Click on Finance Option for GL
+		Then Click on Direction icon
+		#Then Click on General Ledger Transaction Field
     #When click on eye button of journal voucher
     #Then click on the record to get the transaction date
     Then click on report icon
@@ -399,7 +439,6 @@ Then validate Journal vourcher Reversal number
     
     @KUBS_GL2_UAT_008_002 @MultiAuth @GL2
 Scenario: The report should display all the details for JV.
-
 Given Maker Navigate to UAT URL login
 Then click on report segment button
 And click on equiry menu

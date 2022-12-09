@@ -214,7 +214,7 @@ public class GL_Accounting_Setup_Obj {
 
 		return GLAccCategory_ActionButton;
 	}
-	
+
 	// Legal Entity GL Configuratipon
 	@FindBy(xpath = "(//span[text()='LEGAL_ENTITY_GL_CONF']/ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell//ion-button)[1]")
 	private WebElement GL2LegalEntity_ActionButton;
@@ -223,7 +223,26 @@ public class GL_Accounting_Setup_Obj {
 
 		return GL2LegalEntity_ActionButton;
 	}
-    // gl coa firts edit icon
+
+	// Journal Voucher
+	@FindBy(xpath = "(//span[text()='JV_EVENT']/ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell//ion-button)[1]")
+	private WebElement GL2JournalVoucher_ActionButton;
+
+	public WebElement GL2JournalVoucher_ActionButton() {
+
+		return GL2JournalVoucher_ActionButton;
+	}
+	// Reverse Journal Voucher
+		@FindBy(xpath = "(//span[text()='JVR_EVENT']/ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell//ion-button)[1]")
+		private WebElement GL2ReverseJournalVoucher_ActionButton;
+
+		public WebElement GL2ReverseJournalVoucher_ActionButton() {
+
+			return GL2ReverseJournalVoucher_ActionButton;
+		}
+
+
+	// gl coa firts edit icon
 	@FindBy(xpath = "(//span[text()='GENERAL_LEDGER']/ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell//ion-button)[1]")
 	private WebElement GLCoa_ActionButton;
 
@@ -231,6 +250,7 @@ public class GL_Accounting_Setup_Obj {
 
 		return GLCoa_ActionButton;
 	}
+
 	@FindBy(xpath = "(//span[text()='ACCTEMP_EVENT']/ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell[1]//span)[1]")
 	private WebElement Accountingbook_ReferanceId;
 
@@ -238,13 +258,33 @@ public class GL_Accounting_Setup_Obj {
 
 		return Accountingbook_ReferanceId;
 	}
-	//Legal Entity GL
+
+	// Legal Entity GL
 	@FindBy(xpath = "(//span[text()='LEGAL_ENTITY_GL_CONF']/ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell[1]//span)[1]")
 	private WebElement GL2LegalEntity_ReferanceId;
 
 	public WebElement GL2LegalEntity_ReferanceId() {
 
 		return GL2LegalEntity_ReferanceId;
+	}
+	// journal Voucher
+
+	@FindBy(xpath = "(//span[text()='JV_EVENT']/ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell[1]//span)[1]")
+	private WebElement GL2JournalVoucher_ReferanceId;
+
+	public WebElement GL2JournalVoucher_ReferanceId() {
+
+		return GL2JournalVoucher_ReferanceId;
+	}
+
+	// Reverse journal Voucher
+
+	@FindBy(xpath = "(//span[text()='JVR_EVENT']/ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell[1]//span)[1]")
+	private WebElement GL2ReverseJournalVoucher_ReferanceId;
+
+	public WebElement GL2ReverseJournalVoucher_ReferanceId() {
+
+		return GL2ReverseJournalVoucher_ReferanceId;
 	}
 
 	@FindBy(xpath = "(//span[text()='ACCOUNTING_CATEGORY']/ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell[1]//span)[1]")
