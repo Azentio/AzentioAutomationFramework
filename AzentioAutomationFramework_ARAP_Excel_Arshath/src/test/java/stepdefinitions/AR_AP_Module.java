@@ -28,11 +28,14 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import pageobjects.ACCOUNTSPAYABLE_AccountsPayableReportObj;
 import pageobjects.ACCOUNTSPAYABLE_InvoiceBookingObj;
+import pageobjects.ACCOUNTSPAYABLE_ManualPayoutObj;
 import pageobjects.ACCOUNTSPAYABLE_VendorContractCreationObj;
+import pageobjects.ACCOUNTSPAYBLE_AccountsPayable_POCreationObj;
 import pageobjects.ACCOUNTSRECEIVABLE_AdvancesObj;
 import pageobjects.ARAP_ARandAPObj;
 import pageobjects.AccountReceivable_UpdateDepositedChequeObj;
 import pageobjects.Account_Receivable;
+import pageobjects.AccountsPayable_ManualPayoutEmployeeObj;
 import pageobjects.Accounts_Payable;
 import pageobjects.ArAp_BalanceSheetReportObj;
 import pageobjects.ArAp_Cancellation_of_vendorObj;
@@ -65,6 +68,8 @@ public class AR_AP_Module {
 	ArAp_Cancellation_of_vendorObj cancellationofcontract = new ArAp_Cancellation_of_vendorObj(driver);
 	KUBS_Login login = new KUBS_Login(driver);
 //	Map<String, String> testdata = new LinkedHashMap<>();
+	Map<String,String> autoPayout=new HashMap<>();
+	Map<String, String> accountsReceivableTestData = new HashMap<>();
 	Ar_Po_creationObj arpoCreationObj = new Ar_Po_creationObj(driver);
 	Azentio_CheckerObj kubschecker = new Azentio_CheckerObj(driver);
 	Azentio_ReviewerObj reviewer = new Azentio_ReviewerObj(driver);
@@ -73,6 +78,9 @@ public class AR_AP_Module {
 	BUDGET_SupplementaryBudgetObj bUDGET_SupplementaryBudgetObj = new BUDGET_SupplementaryBudgetObj(driver);
 	ACCOUNTSRECEIVABLE_AdvancesObj accuountsReceivableObj = new ACCOUNTSRECEIVABLE_AdvancesObj(driver);
 	AccountReceivable_UpdateDepositedChequeObj accountReceivable_UpdateDepositedChequeObj = new AccountReceivable_UpdateDepositedChequeObj(driver);
+	AccountsPayable_ManualPayoutEmployeeObj accountsPayable_ManualPayoutEmployeeObj = new AccountsPayable_ManualPayoutEmployeeObj(driver);
+	ACCOUNTSPAYABLE_ManualPayoutObj aCCOUNTSPAYABLE_ManualPayoutObj = new ACCOUNTSPAYABLE_ManualPayoutObj(driver);
+	ACCOUNTSPAYBLE_AccountsPayable_POCreationObj poCreationObj=new ACCOUNTSPAYBLE_AccountsPayable_POCreationObj(driver);
 	BUDGET_BudgetTransferObj budgetTransferObj = new BUDGET_BudgetTransferObj(driver);
 	ACCOUNTSPAYABLE_VendorContractCreationObj vendorContractObj = new ACCOUNTSPAYABLE_VendorContractCreationObj(driver);
 	ACCOUNTSPAYABLE_AccountsPayableReportObj accountsPayableReport = new ACCOUNTSPAYABLE_AccountsPayableReportObj(driver);
@@ -98,6 +106,7 @@ public class AR_AP_Module {
 	ExcelData Exceldata = new ExcelData("C:\\Users\\inindc00075\\Downloads\\KUBSTestData.xlsx","CancellationBillTestdata", "DataSet ID");
 	Map<String, String> testData;
 	Map<String, String> testdata = new HashMap<>();
+	String TxnNo;
 
 	// ****************************************@KUBS_AR/AP_UAT_003_004TC_01************************************************************************
 	// accounting entries for cancelled bill
@@ -445,18 +454,71 @@ public class AR_AP_Module {
 		}
 	}
 
+	@Then("^check the budget utilazation amount of budet code which we create the expense code after cancelling the po$")
+    public void check_the_budget_utilazation_amount_of_budet_code_which_we_create_the_expense_code_after_cancelling_the_po() throws Throwable {
+		waithelper.waitForElementVisible(supplimentoryBudgetObj.budget_SupplementaryBudget_BudgetCode(), 3000, 300);
+	     supplimentoryBudgetObj.budget_SupplementaryBudget_BudgetCode().click();	
+	     supplimentoryBudgetObj.budget_SupplementaryBudget_BudgetCode().sendKeys(testData.get("Budgetcode"));	
+	     supplimentoryBudgetObj.budget_SupplementaryBudget_BudgetCode().sendKeys(Keys.ENTER);
+	     supplimentoryBudgetObj.budget_SupplementaryBudget_BudgetYear().click();
+	     supplimentoryBudgetObj.budget_SupplementaryBudget_BudgetYear().sendKeys(testData.get("Budgetyear"));
+	     supplimentoryBudgetObj.budget_SupplementaryBudget_BudgetYear().sendKeys(Keys.ENTER);
+	     
+	     supplimentoryBudgetObj.budget_SupplementaryBudget_BudgetBranch().click();
+	     supplimentoryBudgetObj.budget_SupplementaryBudget_BudgetBranch().sendKeys(testData.get("BranchCode"));
+	     supplimentoryBudgetObj.budget_SupplementaryBudget_BudgetBranch().sendKeys(Keys.ENTER);
+	     Thread.sleep(1000);
+	     javascripthelper.JavaScriptHelper(driver);
+	     String cancellingPoAmount  =(String) javascripthelper.executeScript("return document.getElementById('utilizedAmt').value");
+	     System.out.println("Amount utilization is "+cancellingPoAmount);
+	     
+	     testData.put("cancellingPoAmount", cancellingPoAmount);
+	     
+    }
+	@Then("^verify budget code budget utilization amount is re-instated after cancelling the po$")
+    public void verify_budget_code_budget_utilization_amount_is_reinstated_after_cancelling_the_po() throws Throwable {
+		String utilizationAmountAfterCancellingPo  =(String) javascripthelper.executeScript("return document.getElementById('utilizedAmt').value");
+	//     System.out.println("Amount utilization is "+utilizationAmountAfterCancellingPo);
+	     
+	     testData.put("utilizationAmountAfterCancellingPo", utilizationAmountAfterCancellingPo);
+		//UtilizationAmountwithPo
+	//	System.out.println("Utilization amount with Po : "+testData.get("UtilizationAmountwithPo"));
+		String[] splitUtilizationAmount = testData.get("UtilizationAmountwithPo").split("[.]");
+		int spliAmount=Integer.parseInt(splitUtilizationAmount[0].replace(",", ""));
+		String[]  splittedUtilizationAmt= testData.get("CancelledPoAmount").split("[.]");
+		int spliUtilAmt=Integer.parseInt(splittedUtilizationAmt[0].replace(",", ""));
+	//	System.out.println("Utilization amount is : "+testData.get("utilizationAmountAfterCancellingPo"));
+		
+		String[] spliUtilAmtAfterCancellingPo = testData.get("utilizationAmountAfterCancellingPo").split("[.]");
+		int finalUtilAmt=Integer.parseInt(spliUtilAmtAfterCancellingPo[0].replace(",", ""));
+		int finalUtilAmtAfterCancellingPo=spliAmount-spliUtilAmt;
+		System.out.println("Calculation amount is"+spliAmount+"  "+spliUtilAmt);
+//		System.out.println("Final Utilization amount : "+finalUtilAmtAfterCancellingPo);
+		
+		System.out.println("Budget Utilization amount before cancelling the po : "+spliAmount);
+		System.out.println("Budget Utilization amount after cancelling the po : "+finalUtilAmt);
+		System.out.println("Cancelled Po Amount : "+spliUtilAmt);
+		
+		Assert.assertEquals(finalUtilAmt, finalUtilAmtAfterCancellingPo);
+		
+		
+		
+		
+		
+		//Assert.assertEquals( testData.get("UtilizationAmount"),testData.get("utilizationAmountAfterCancellingPo"));
+    }
 	@Then("^check the budget utilazation amount of budet code which we create the expense code$")
 	public void check_the_budget_utilazation_amount_of_budet_code_which_we_create_the_expense_code() throws Throwable {
 		waithelper.waitForElementVisible(supplimentoryBudgetObj.budget_SupplementaryBudget_BudgetCode(), 3000, 300);
 		supplimentoryBudgetObj.budget_SupplementaryBudget_BudgetCode().click();
-		supplimentoryBudgetObj.budget_SupplementaryBudget_BudgetCode().sendKeys("BUD174786");
+		supplimentoryBudgetObj.budget_SupplementaryBudget_BudgetCode().sendKeys(testData.get("Budgetcode"));
 		supplimentoryBudgetObj.budget_SupplementaryBudget_BudgetCode().sendKeys(Keys.ENTER);
 		supplimentoryBudgetObj.budget_SupplementaryBudget_BudgetYear().click();
-		supplimentoryBudgetObj.budget_SupplementaryBudget_BudgetYear().sendKeys("2023-2024");
+		supplimentoryBudgetObj.budget_SupplementaryBudget_BudgetYear().sendKeys(testData.get("Budgetyear"));
 		supplimentoryBudgetObj.budget_SupplementaryBudget_BudgetYear().sendKeys(Keys.ENTER);
 
 		supplimentoryBudgetObj.budget_SupplementaryBudget_BudgetBranch().click();
-		supplimentoryBudgetObj.budget_SupplementaryBudget_BudgetBranch().sendKeys("Azentio Main");
+		supplimentoryBudgetObj.budget_SupplementaryBudget_BudgetBranch().sendKeys(testData.get("BranchCode"));
 		supplimentoryBudgetObj.budget_SupplementaryBudget_BudgetBranch().sendKeys(Keys.ENTER);
 
 		javascripthelper.JavaScriptHelper(driver);
@@ -472,7 +534,116 @@ public class AR_AP_Module {
 		waithelper.waitForElementVisible(vendorContractObj.vendorContractEyeIcon(), 2000, 100);
 		vendorContractObj.vendorContractEyeIcon().click();
 	}
-
+	
+    @And("^get the contract number$")
+    public void get_the_contract_number() throws Throwable {
+      waithelper.waitForElementVisible(vendorContractObj.vendorContractApprovedContractNumber(), 2000, 100);
+      String approvedContractNumber=vendorContractObj.vendorContractApprovedContractNumber().getText();
+      autoPayout.put("approvedContractNumber", approvedContractNumber);
+    }
+    @And("^goto po creation module$")
+    public void goto_po_creation_module() throws Throwable {
+        waithelper.waitForElementVisible(poCreationObj.accountsPayable_VendorPurchaseOrder_EyeButton(), 2000, 100);
+        poCreationObj.accountsPayable_VendorPurchaseOrder_EyeButton().click();
+    }
+    
+    @And("^fill the mendatory fields for po creation$")
+    public void fill_the_mendatory_fields_for_po_creation() throws Throwable {
+       waithelper.waitForElementVisible(poCreationObj.accountsPayable_VendorPurchaseOrder_BPName(), 2000, 100);
+       poCreationObj.accountsPayable_VendorPurchaseOrder_BPName().click();
+       poCreationObj.accountsPayable_VendorPurchaseOrder_BPName().sendKeys(testData.get("BusinessPartnerName"));
+       poCreationObj.accountsPayable_VendorPurchaseOrder_BPName().sendKeys(Keys.DOWN);
+       poCreationObj.accountsPayable_VendorPurchaseOrder_BPName().sendKeys(Keys.ENTER);
+       
+       poCreationObj.accountsPayable_VendorPurchaseOrder_ReferenceType().click();
+       poCreationObj.accountsPayable_VendorPurchaseOrder_ReferenceType().sendKeys(Keys.ENTER);
+       
+       poCreationObj.accountsPayable_VendorPurchaseOrder_Contract().click();
+       poCreationObj.accountsPayable_VendorPurchaseOrder_Contract().sendKeys(testData.get("ContractName"));
+       poCreationObj.accountsPayable_VendorPurchaseOrder_Contract().sendKeys(Keys.ENTER);
+       
+      /* 
+       poCreationObj.accountsPayable_VendorPurchaseOrder_POType().click()3
+       poCreationObj.accountsPayable_VendorPurchaseOrder_POType().sendKeys("Purchace Contract3");
+       Thread.sleep(1000);
+       poCreationObj.accountsPayable_VendorPurchaseOrder_POType().sendKeys(Keys.ENTER);
+       */
+     //div[contains(text(),'Agency-8-41-28022022')]/ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell[1]//ion-checkbox   
+       Thread.sleep(1000);
+    waithelper.waitForElementVisible(driver.findElement(By.xpath("//div[contains(text(),'"+autoPayout.get("approvedContractNumber")+"')]/ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell[1]//ion-checkbox")), 2000, 100);
+    driver.findElement(By.xpath("//div[contains(text(),'"+autoPayout.get("approvedContractNumber")+"')]/ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell[1]//ion-checkbox")).click();
+    driver.findElement(By.xpath("//div[contains(text(),'"+autoPayout.get("approvedContractNumber")+"')]/parent::datatable-body-cell/following-sibling::datatable-body-cell[5]//input")).click();
+    driver.findElement(By.xpath("//div[contains(text(),'"+autoPayout.get("approvedContractNumber")+"')]/parent::datatable-body-cell/following-sibling::datatable-body-cell[5]//input")).sendKeys("1");
+    while(true)
+    {
+    try
+    {
+    //Thread.sleep(1000);
+    waithelper.waitForElementVisible(poCreationObj.vendorContractPoItemSave(), 2000,100);
+    poCreationObj.pocontractPoQuantity().click();
+    poCreationObj.vendorContractPoItemSave().click();
+    break;
+    }
+    catch(ElementClickInterceptedException e)
+    {
+    	
+    }
+    }
+    
+    waithelper.waitForElementVisible(poCreationObj.accountsPayable_VendorPurchaseOrder_POSubType(), 2000, 100);
+    poCreationObj.accountsPayable_VendorPurchaseOrder_POSubType().click();
+    //poCreationObj.accountsPayable_VendorPurchaseOrder_POSubType().sendKeys(Keys.DOWN);
+    poCreationObj.accountsPayable_VendorPurchaseOrder_POSubType().sendKeys(Keys.ENTER);
+    //waitHelper.waitForElementVisible(poCreationObj.accountsPayable_VendorPurchaseOrder_CostCenter(), 2000, 100);
+    while(true)
+    {
+    	try
+    	{
+    poCreationObj.accountsPayable_VendorPurchaseOrder_CostCenter().click();
+    poCreationObj.accountsPayable_VendorPurchaseOrder_CostCenter().sendKeys(Keys.ENTER);
+    	break;
+    	}
+    	catch(NoSuchElementException e)
+    	{
+    		
+    	}
+    	}
+    
+    poCreationObj.accountsPayable_VendorPurchaseOrder_Save().click();
+    }
+    
+    @And("^save the po creation record$")
+    public void save_the_po_creation_record() throws Throwable {
+    	poCreationObj.poCreationTempView().click();
+    	waithelper.waitForElementVisible(poCreationObj.tempViewFirstRecord(), 2000, 100);
+    	poCreationObj.tempViewFirstRecord().click();
+    }
+    @And("^save the item details for pocreation$")
+    public void save_the_item_details_for_pocreation() throws Throwable {
+    	poCreationObj.accountsPayable_VendorPurchaseOrder_ItemDetails().click();
+    	waithelper.waitForElementVisible(poCreationObj.accountsPayable_VendorPurchaseOrder_ItemDetailsRecord(), 2000, 100);
+    	poCreationObj.accountsPayable_VendorPurchaseOrder_ItemDetailsRecord().click();
+    	waithelper.waitForElementVisible(poCreationObj.accountsPayable_VendorPurchaseOrder_ShippedFromLocation(), 2000, 100);
+    	poCreationObj.accountsPayable_VendorPurchaseOrder_ShippedFromLocation().click();
+    	poCreationObj.accountsPayable_VendorPurchaseOrder_ShippedFromLocation().sendKeys(Keys.ENTER);
+    	poCreationObj.accountsPayable_VendorPurchaseOrder_DeliveryLocation().click();
+    	poCreationObj.accountsPayable_VendorPurchaseOrder_DeliveryLocation().sendKeys(Keys.ENTER);
+    	while(true)
+    	{
+    	try
+    	{
+    	poCreationObj.accountsPayable_VendorPurchaseOrder_PoItemSave().click();
+    	break;
+    	}
+    	catch(NoSuchElementException e)
+    	{
+    		
+    	}
+    	}
+    	waithelper.waitForElementVisible(poCreationObj.checkerAlertClose(), 2000, 100);
+    	poCreationObj.checkerAlertClose().click();
+    	}
+    
 	@And("^click on accounts Payable module$")
 	public void click_on_accounts_payable_module() throws Throwable {
 		Thread.sleep(1000);
@@ -497,15 +668,15 @@ public class AR_AP_Module {
 	public void fill_all_the_mendatory_fields_for_creating_vendor() throws Throwable {
 		waithelper.waitForElementVisible(vendorContractObj.vendorContractExpenceType(), 2000, 100);
 		vendorContractObj.vendorContractExpenceType().click();
-		vendorContractObj.vendorContractExpenceType().sendKeys(autoPayoutTestData.ContractType);
+		vendorContractObj.vendorContractExpenceType().sendKeys(testData.get("ContractType"));
 		vendorContractObj.vendorContractExpenceType().sendKeys(Keys.ENTER);
 
 		vendorContractObj.vendorContractBpName().click();
-		vendorContractObj.vendorContractBpName().sendKeys(autoPayoutTestData.BusinessPartnerName);
+		vendorContractObj.vendorContractBpName().sendKeys(testData.get("BusinessPartnerName"));
 		vendorContractObj.vendorContractBpName().sendKeys(Keys.ENTER);
 
 		vendorContractObj.vendorContractContractName().click();
-		vendorContractObj.vendorContractContractName().sendKeys(autoPayoutTestData.ContractName);
+		vendorContractObj.vendorContractContractName().sendKeys(testData.get("ContractName"));
 
 		vendorContractObj.vendorContractOtherDetails().click();
 		waithelper.waitForElementVisible(vendorContractObj.vendorContractAutoGenerateInvoice(), 2000, 100);
@@ -513,10 +684,10 @@ public class AR_AP_Module {
 		vendorContractObj.vendorContractAutoGenerateInvoice().sendKeys(Keys.ENTER);
 
 		vendorContractObj.vendorContractCreditPeriod().click();
-		vendorContractObj.vendorContractCreditPeriod().sendKeys(autoPayoutTestData.CreditPeriod);
+		vendorContractObj.vendorContractCreditPeriod().sendKeys(testData.get("CreditPeriod"));
 
 		vendorContractObj.vendorContractLatePaymentAmount().click();
-		vendorContractObj.vendorContractLatePaymentAmount().sendKeys(autoPayoutTestData.PaymentAmmount);
+		vendorContractObj.vendorContractLatePaymentAmount().sendKeys(testData.get("PaymentAmount"));
 		waithelper.waitForElementVisible(vendorContractObj.vendorContractSaveButton(), 2000, 100);
 		vendorContractObj.vendorContractSaveButton().click();
 
@@ -537,23 +708,23 @@ public class AR_AP_Module {
 
 		waithelper.waitForElementVisible(vendorContractObj.vendorContractHSNCode(), 2000, 100);
 		vendorContractObj.vendorContractHSNCode().click();
-		vendorContractObj.vendorContractHSNCode().sendKeys(autoPayoutTestData.budgetMapedHSNCode);
+		vendorContractObj.vendorContractHSNCode().sendKeys(testData.get("budgetMapedHSNCode"));
 		vendorContractObj.vendorContractHSNCode().sendKeys(Keys.ENTER);
 
 		vendorContractObj.vendorContractExpenceCode().click();
-		vendorContractObj.vendorContractExpenceCode().sendKeys(autoPayoutTestData.budgetMapedExpensecode);
+		vendorContractObj.vendorContractExpenceCode().sendKeys(testData.get("budgetMapedExpensecode"));
 		vendorContractObj.vendorContractExpenceCode().sendKeys(Keys.DOWN);
 		vendorContractObj.vendorContractExpenceCode().sendKeys(Keys.ENTER);
 		vendorContractObj.vendorContractCostCenter().click();
 		vendorContractObj.vendorContractCostCenter().sendKeys(Keys.ENTER);
 
 		vendorContractObj.vendorContractQuantity().click();
-		vendorContractObj.vendorContractQuantity().sendKeys(autoPayoutTestData.VendorContractQuantity);
+		vendorContractObj.vendorContractQuantity().sendKeys(testData.get("VendorContractQuantity"));
 
 		vendorContractObj.vendorContractUnit().click();
 		vendorContractObj.vendorContractUnit().sendKeys(Keys.ENTER);
 		vendorContractObj.vendorContractRatePerUnit().click();
-		vendorContractObj.vendorContractRatePerUnit().sendKeys(autoPayoutTestData.RatePerUnit);
+		vendorContractObj.vendorContractRatePerUnit().sendKeys(testData.get("RatePerUnit"));
 
 		vendorContractObj.itemDetailsSaveButton().click();
 	}
@@ -567,9 +738,9 @@ public class AR_AP_Module {
 				vendorContractObj.vendorContractAddButton().click();
 				waithelper.waitForElementVisible(vendorContractObj.paymentTermPaymentTerm(), 2000, 100);
 				vendorContractObj.paymentTermPaymentTerm().click();
-				vendorContractObj.paymentTermPaymentTerm().sendKeys(autoPayoutTestData.PaymentTerm);
+				vendorContractObj.paymentTermPaymentTerm().sendKeys(testData.get("PaymentTerm"));
 				vendorContractObj.paymentTermPaymentTermPercentage().click();
-				vendorContractObj.paymentTermPaymentTermPercentage().sendKeys(autoPayoutTestData.PaymentTermPercentage);
+				vendorContractObj.paymentTermPaymentTermPercentage().sendKeys(testData.get("PaymentTermPercentage"));
 				vendorContractObj.paymentTermPaymentTermType().click();
 				vendorContractObj.paymentTermPaymentTermType().sendKeys(Keys.ENTER);
 				vendorContractObj.paymentTermPaymentTermSaveButton().click();
@@ -594,7 +765,7 @@ public class AR_AP_Module {
 			// 2000, 100);
 			// vendorContractObj.vendorContractAddButton().click();
 		waithelper.waitForElementVisible(vendorContractObj.vendorContractBenificioryDetailsPaymentMode(), 2000, 100);
-		vendorContractObj.vendorContractBenificioryDetailsPaymentMode().sendKeys(autoPayoutTestData.PaymentMode);
+		vendorContractObj.vendorContractBenificioryDetailsPaymentMode().sendKeys(testData.get("PaymentMode"));
 		vendorContractObj.vendorContractBenificioryDetailsPaymentMode().sendKeys(Keys.ENTER);
 
 		vendorContractObj.vendorContractBenificioryDetailsAutoPayout().click();
@@ -603,6 +774,88 @@ public class AR_AP_Module {
 		vendorContractObj.vendorContractBenificioryDetailsSaveButton().click();
 	}
 
+	@Then("^check the budget utilazation amount of budet code which we create the expense code after creating po$")
+    public void check_the_budget_utilazation_amount_of_budet_code_which_we_create_the_expense_code_after_creating_po() throws Throwable {
+	     waithelper.waitForElementVisible(supplimentoryBudgetObj.budget_SupplementaryBudget_BudgetCode(), 3000, 300);
+	     supplimentoryBudgetObj.budget_SupplementaryBudget_BudgetCode().click();	
+	     supplimentoryBudgetObj.budget_SupplementaryBudget_BudgetCode().sendKeys("BUD174786");	
+	     supplimentoryBudgetObj.budget_SupplementaryBudget_BudgetCode().sendKeys(Keys.ENTER);
+	     supplimentoryBudgetObj.budget_SupplementaryBudget_BudgetYear().click();
+	     supplimentoryBudgetObj.budget_SupplementaryBudget_BudgetYear().sendKeys("2023-2024");
+	     supplimentoryBudgetObj.budget_SupplementaryBudget_BudgetYear().sendKeys(Keys.ENTER);
+	     
+	     supplimentoryBudgetObj.budget_SupplementaryBudget_BudgetBranch().click();
+	     supplimentoryBudgetObj.budget_SupplementaryBudget_BudgetBranch().sendKeys("Azentio Main");
+	     supplimentoryBudgetObj.budget_SupplementaryBudget_BudgetBranch().sendKeys(Keys.ENTER);
+	     
+	     Thread.sleep(1000);
+	     javascripthelper.JavaScriptHelper(driver);
+	     
+	     String utilizationAmountwithPo  =(String) javascripthelper.executeScript("return document.getElementById('utilizedAmt').value");
+	     System.out.println("Amount utilization is "+utilizationAmountwithPo);
+	     
+	     testData.put("UtilizationAmountwithPo", utilizationAmountwithPo);     
+    }
+	@Then("^get the approved Po number which is created newly$")
+    public void get_the_approved_po_number_which_is_created_newly() throws Throwable {
+		waithelper.waitForElementVisible(poCreationObj.poCreationApprovedPoNumber(), 3000, 300);
+		String poNumber = poCreationObj.poCreationApprovedPoNumber().getText();
+		testData.put("ApprovedPoNumber", poNumber);
+		System.out.println("Approved PoNumber is "+testData.get("ApprovedPoNumber"));
+		String ApprovedBpName = poCreationObj.poCreationApprovedBpNAme().getText();
+        testData.put("approvedBpName", ApprovedBpName);
+        System.out.println("Approved BpName is "+ testData.get("approvedBpName"));
+	}
+	@And("^click the ar ap adjustment sub module$")
+	public void click_the_ar_ap_adjustment_sub_module() throws Throwable {
+		javascriphelper.JavaScriptHelper(driver);
+		javascriphelper.scrollIntoView(arapAdjustment.ClickArApAdjustmentModule());
+		seleniumactions.getWaitHelper().waitForElement(driver, 2000, arapAdjustment.ClickArApAdjustmentModule());
+		seleniumactions.getClickAndActionsHelper().clickOnElement(arapAdjustment.ClickArApAdjustmentModule());
+	}
+	@And("^click ar ap eye icon$")
+	public void click_ar_ap_eye_icon() throws Throwable {
+		seleniumactions.getWaitHelper().waitForElement(driver, 2000, arapAdjustment.adjustmentViewButton());
+		seleniumactions.getClickAndActionsHelper().clickOnElement(arapAdjustment.adjustmentViewButton());
+	}
+	@And("^click add icon$")
+	public void click_add_icon() throws Throwable {
+		seleniumactions.getWaitHelper().waitForElement(driver, 2000, arapAdjustment.arApAddIcon());
+		seleniumactions.getClickAndActionsHelper().clickOnElement(arapAdjustment.arApAddIcon());
+	}
+	@Then("^enter business partner name and po number for cancellation$")
+    public void enter_business_partner_name_and_po_number_for_cancellation() throws Throwable {
+		javascripthelper.JavaScriptHelper(driver);
+     waithelper.waitForElementVisible(arapAdjustment.adjustmentBpName(), 3000, 300);
+     arapAdjustment.adjustmentBpName().click();
+     arapAdjustment.adjustmentBpName().sendKeys(testData.get("approvedBpName"));
+     arapAdjustment.adjustmentBpName().sendKeys(Keys.ENTER);
+     
+     arapAdjustment.adjustmentadjustmentType().click();
+     arapAdjustment.adjustmentadjustmentType().sendKeys(Keys.DOWN);
+     arapAdjustment.adjustmentadjustmentType().sendKeys(Keys.ENTER);
+
+     arapAdjustment.adjustmentItemType().click();
+     arapAdjustment.adjustmentItemType().sendKeys("Purchase Order");
+     arapAdjustment.adjustmentItemType().sendKeys(Keys.ENTER);
+     
+     arapAdjustment.adjustmentAdjustmentReference().click();
+     Thread.sleep(1000);
+     arapAdjustment.adjustmentAdjustmentReference().sendKeys(testData.get("ApprovedPoNumber"));
+     arapAdjustment.adjustmentAdjustmentReference().sendKeys(Keys.DOWN);
+     arapAdjustment.adjustmentAdjustmentReference().sendKeys(Keys.ENTER);
+     Thread.sleep(1000);
+     
+     String CancelledPo_amount = javascripthelper.executeScript("return document.getElementById('cancelledAmt').value").toString();
+     testData.put("CancelledPoAmount", CancelledPo_amount);
+     System.out.println("Cancelled Po Amount:"+testData.get("CancelledPoAmount"));
+     arapAdjustment.adjustementSaveButton().click();
+     
+	}
+	
+	
+	
+	
 	@And("^click notification button$")
 	public void click_notification_button() throws Throwable {
 
@@ -670,7 +923,13 @@ public class AR_AP_Module {
 		budgetCreationObj.budgetCreationAlertClose().click();
 
 	}
-
+	@And("^User should go to the kubs url and login as a reviewer users$")
+	public void user_should_go_to_the_kubs_url_and_login_as_a_reviewer_users() throws IOException, ParseException {
+		login = new KUBS_Login(driver);
+		driver.get(configreader.getApplicationUrl());
+		login.logintoAzentioappReviewer("Reviewer", testData.get("ReviewerID"));
+	}
+	
 	// *********************************@KUBS_AR/AP_UAT_003_004TC_05********************************************//
 
 	@Then("^Choose the second Tab Segment$")
@@ -1103,7 +1362,7 @@ public class AR_AP_Module {
 	public void enter_the_business_partner_name_for_cancelled_invoice() throws Throwable {
 		waithelper.waitForElementVisible(accountsPayableReport.accountspayableReportBpName(), 2000, 200);
 		accountsPayableReport.accountspayableReportBpName().click();
-		accountsPayableReport.accountspayableReportBpName().sendKeys(testData.get("cancelledBpName"));
+		accountsPayableReport.accountspayableReportBpName().sendKeys(testdata.get("cancelledBpName"));
 		accountsPayableReport.accountspayableReportBpName().sendKeys(Keys.ENTER);
 	}
 	@And("^click on date icon$")
@@ -1513,11 +1772,11 @@ catch(Exception e) {
 					100);
 			paymentSettlementObj.accountsPayablePayementSettlementPaymentOption().click();
 			paymentSettlementObj.accountsPayablePayementSettlementPaymentOption()
-					.sendKeys(paymentSettlementTestData.PaymentOption);
+					.sendKeys(testData.get("paymentoption"));
 			paymentSettlementObj.accountsPayablePayementSettlementPaymentOption().sendKeys(Keys.ENTER);
 			paymentSettlementObj.accountsPayablePayementSettlementBpNAme().click();
 			paymentSettlementObj.accountsPayablePayementSettlementBpNAme()
-					.sendKeys(AccoutsReceivableAdvanceTestData.BusinessPartnerNAme);
+					.sendKeys(testData.get("Buisnesspartner"));
 			paymentSettlementObj.accountsPayablePayementSettlementBpNAme().sendKeys(Keys.ENTER);
 			Thread.sleep(1000);
 			// div[contains(text(),'ADV_36_2422022')]
@@ -1563,6 +1822,10 @@ catch(Exception e) {
 	public void user_update_the_Excelsheet_Testdata_for_report() throws Throwable {
 		testData = Exceldata.getTestdata("KUBS_AR/AP_UAT_003_004_TC_03_D1");
 	}
+	@And("^user update the data set ID for Budget Utiliztion Reviewer$")
+	public void user_update_the_data_set_ID_for_Budget_Utiliztion_Reviewer() throws Throwable{
+		testData = Exceldata.getTestdata("KUBS_AR/AP_UAT_003_004_TC_04_D1");
+	}
 
 	@And("^user update the Excelsheet Testdata for paymentsettlement$")
 	public void user_update_the_Excelsheet_Testdata_for_paymentsettlement() throws Throwable {
@@ -1589,10 +1852,392 @@ catch(Exception e) {
 		testData = Exceldata.getTestdata("KUBS_AR_AP_UAT_003_005_TC_04_D1");
 	}
 	
-
-	
 	@And("^user update the exccelsheet Testdata for Advance to Employee$")
 	public void user_update_the_exccelsheet_Testdata_for_Advance_to_Employee() throws Throwable {
 		testData = Exceldata.getTestdata("KUBS_AR_AP_UAT_004_002_TC_01_D1");
 	}
+	
+	
+	//************************KUBS_AR/AP_UAT_005_003_TC_01***************************//
+	
+    @When("^click on eye button of manual payout$")
+    public void click_on_eye_button_of_manual_payoutg() throws InterruptedException {
+    	javascripthelper.JavaScriptHelper(driver);
+    	javascripthelper.scrollIntoView(accountsPayable_ManualPayoutEmployeeObj.accountPayable_ManualPayout_EyeButton());
+    	waithelper.waitForElement(driver, 3000, accountsPayable_ManualPayoutEmployeeObj.accountPayable_ManualPayout_EyeButton());
+    	accountsPayable_ManualPayoutEmployeeObj.accountPayable_ManualPayout_EyeButton().click();
+    }
+    @And("^click on add button for manual payout$")
+    public void click_on_add_button_for_manual_payout() {
+    	//waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_ManualPayoutObj.accountPayable_ManualPayout_AddButton());
+    	for (int i = 0; i < 100; i++) {
+			try {
+		
+    	aCCOUNTSPAYABLE_ManualPayoutObj.accountPayable_ManualPayout_AddButton().click();
+    	break;
+			}
+			catch(Exception e) {
+			}
+			}
+    }
+    
+	@And("^Fill the required fields for verify cancelled payment txn availability$")
+	public void fill_the_required_fields_for_verify_cancelled_payment_txn_availability() throws InterruptedException, IOException, ParseException  {
+		javascripthelper.JavaScriptHelper(driver);
+		waithelper.waitForElement(driver, 2000,aCCOUNTSPAYABLE_ManualPayoutObj.accountPayable_ManualPayout_EntityBranch());
+		aCCOUNTSPAYABLE_ManualPayoutObj.accountPayable_ManualPayout_EntityBranch().sendKeys(testData.get("BranchCode"));
+		aCCOUNTSPAYABLE_ManualPayoutObj.accountPayable_ManualPayout_EntityBranch().sendKeys(Keys.ENTER);
+//		Thread.sleep(2000);
+//		waithelper.waitForElement(driver, 2000,aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_BP_Name());
+		waithelper.waitForElementwithFluentwait(driver, aCCOUNTSPAYABLE_ManualPayoutObj.accountPayable_ManualPayout_BP_Name());
+		aCCOUNTSPAYABLE_ManualPayoutObj.accountPayable_ManualPayout_BP_Name().sendKeys(testData.get("BusinessPartnerName"));
+		aCCOUNTSPAYABLE_ManualPayoutObj.accountPayable_ManualPayout_BP_Name().sendKeys(Keys.ENTER);
+//		Thread.sleep(2000);
+		waithelper.waitForElementwithFluentwait(driver, aCCOUNTSPAYABLE_ManualPayoutObj.accountPayable_ManualPayout_BeneficiaryName());
+		aCCOUNTSPAYABLE_ManualPayoutObj.accountPayable_ManualPayout_BeneficiaryName().click();
+		waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_ManualPayoutObj.accountPayable_ManualPayout_BeneficiaryName());
+		aCCOUNTSPAYABLE_ManualPayoutObj.accountPayable_ManualPayout_BeneficiaryName().sendKeys(testData.get("BeneficiaryName"));
+		aCCOUNTSPAYABLE_ManualPayoutObj.accountPayable_ManualPayout_BeneficiaryName().sendKeys(Keys.ENTER);
+//		Thread.sleep(2000);
+//		waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_ManualPayoutObj.accountPayable_ManualPayout_Currency());
+		waithelper.waitForElementwithFluentwait(driver, aCCOUNTSPAYABLE_ManualPayoutObj.accountPayable_ManualPayout_Currency());
+		aCCOUNTSPAYABLE_ManualPayoutObj.accountPayable_ManualPayout_Currency().sendKeys(testData.get("Currency"));
+		aCCOUNTSPAYABLE_ManualPayoutObj.accountPayable_ManualPayout_Currency().sendKeys(Keys.ENTER);
+//		Thread.sleep(2000);
+//		waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_ManualPayoutObj.accountPayable_ManualPayout_PaymentBank());
+		waithelper.waitForElementwithFluentwait(driver, aCCOUNTSPAYABLE_ManualPayoutObj.accountPayable_ManualPayout_PaymentBank());
+		aCCOUNTSPAYABLE_ManualPayoutObj.accountPayable_ManualPayout_PaymentBank().sendKeys(testData.get("PaymentBank"));
+		aCCOUNTSPAYABLE_ManualPayoutObj.accountPayable_ManualPayout_PaymentBank().sendKeys(Keys.ENTER);
+//		Thread.sleep(2000);
+		waithelper.waitForElementwithFluentwait(driver, aCCOUNTSPAYABLE_ManualPayoutObj.accountPayable_ManualPayout_BankAccountNumber());
+		aCCOUNTSPAYABLE_ManualPayoutObj.accountPayable_ManualPayout_BankAccountNumber().click();
+		waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_ManualPayoutObj.accountPayable_ManualPayout_BankAccountNumber());
+		aCCOUNTSPAYABLE_ManualPayoutObj.accountPayable_ManualPayout_BankAccountNumber().sendKeys(testData.get("BankAccountNumber"));
+		aCCOUNTSPAYABLE_ManualPayoutObj.accountPayable_ManualPayout_BankAccountNumber().sendKeys(Keys.ENTER);
+//		Thread.sleep(2000);
+//		waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_ManualPayoutObj.accountPayable_ManualPayout_PaymentMode());
+		waithelper.waitForElementwithFluentwait(driver, aCCOUNTSPAYABLE_ManualPayoutObj.accountPayable_ManualPayout_PaymentMode());
+		aCCOUNTSPAYABLE_ManualPayoutObj.accountPayable_ManualPayout_PaymentMode().sendKeys(testData.get("PaymentMode"));
+		aCCOUNTSPAYABLE_ManualPayoutObj.accountPayable_ManualPayout_PaymentMode().sendKeys(Keys.ENTER);
+//		Thread.sleep(2000);
+//		waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_ManualPayoutObj.accountPayable_ManualPayout_ReferenceNumber());
+		waithelper.waitForElementwithFluentwait(driver, aCCOUNTSPAYABLE_ManualPayoutObj.accountPayable_ManualPayout_ReferenceNumber());
+		aCCOUNTSPAYABLE_ManualPayoutObj.accountPayable_ManualPayout_ReferenceNumber().sendKeys(testData.get("ReferenceNumber"));
+//		Thread.sleep(2000);
+//		waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_ManualPayoutObj.accountPayable_ManualPayout_ChequeNumber());
+		waithelper.waitForElementwithFluentwait(driver, aCCOUNTSPAYABLE_ManualPayoutObj.accountPayable_ManualPayout_ChequeNumber());
+		aCCOUNTSPAYABLE_ManualPayoutObj.accountPayable_ManualPayout_ChequeNumber().sendKeys(testData.get("ChequeNumber"));
+	
+		javascripthelper.scrollIntoViewAndClick(aCCOUNTSPAYABLE_ManualPayoutObj.accountPayable_ManualPayout_Footer());
+//		Thread.sleep(2000);
+//		waithelper.waitForElement(driver, 2000,aCCOUNTSPAYABLE_ManualPayoutObj.accountPayable_ManualPayout_Remark());
+		waithelper.waitForElementwithFluentwait(driver, aCCOUNTSPAYABLE_ManualPayoutObj.accountPayable_ManualPayout_Remark());
+		aCCOUNTSPAYABLE_ManualPayoutObj.accountPayable_ManualPayout_Remark().sendKeys(testData.get("Remarks"));
+	
+		
+//		Thread.sleep(2000);
+		javascripthelper.scrollToElemetAndClick(aCCOUNTSPAYABLE_ManualPayoutObj.accountPayable_ManualPayout_Footer());
+		
+		while(true)
+		{
+			try {
+				//div[contains(text(),'PAN-246-2022-04-19')]/../../datatable-body-cell/div/ion-checkbox
+				String beforexpath = "//div[contains(text(),'";
+				String afterxpath = "')]";
+				
+				driver.findElement(By.xpath(beforexpath+testData.get("CancelledPaymentTxnNumber")+afterxpath)).isDisplayed();
+                System.out.println("Cancelled payment txn is available");
+				Assert.fail();
+			
+				
+			}
+			catch(NoSuchElementException nosuchElement) {
+//				waithelper.waitForElement(driver, 3000, aCCOUNTSPAYABLE_ManualPayoutObj.accountPayable_ManualPayout_ClickOnNextButton());
+				try {
+//						waithelper.waitForElementwithFluentwait(driver, aCCOUNTSPAYABLE_ManualPayoutObj.accountPayable_ManualPayout_ClickOnNextButton());
+						aCCOUNTSPAYABLE_ManualPayoutObj.accountPayable_ManualPayout_ClickOnNextButton().click();
+				}
+				catch(Exception ee) {
+					System.out.println("Cancelled payment txn is not available");
+					break;
+				}
+			}
+		}
+	}
+	
+	@And("^search for approved record in view area$")
+    public void search_for_approved_record_in_view_area() throws Throwable {
+		paymentSettlementObj.paymentSettlementSearchTXNNumber().click();
+		paymentSettlementObj.paymentSettlementSearchTXNNumber().sendKeys("Active");
+    }
+	@And("^get the approved record from list view$")
+	public void get_the_approved_record_from_list_view() throws Throwable {
+		waithelper.waitForElementVisible(paymentSettlementObj.accountsPayableApprovedSettlementRefNo(), 2000, 100);
+		String approvedReferenceNumber = paymentSettlementObj.accountsPayableApprovedSettlementRefNo().getText();
+		settlementData.put("approvedReferenceNumber", approvedReferenceNumber);
+		System.out.println("Settlement Reference Number" + settlementData.get("approvedReferenceNumber"));
+	}
+	@Then("^verify approved settlement reference number is available in the Gl report$")
+	public void verify_approved_settlement_reference_number_is_available_in_the_gl_report() throws Throwable {
+		javascriptHelper.JavaScriptHelper(driver);
+		Thread.sleep(1000);
+		
+	
+driver.findElement(By.xpath("(//datatable-body-cell[1]//span[contains(text(),'"+ settlementData.get("approvedReferenceNumber") + "')])[1]")).isDisplayed();
+
+				driver.findElement(By.xpath("(//datatable-body-cell[1]//span[contains(text(),'"+ settlementData.get("approvedReferenceNumber") + "')])[1]"));
+		String TransactionType = driver.findElement(By.xpath("(//datatable-body-cell[1]//span[contains(text(),' " + settlementData.get("approvedReferenceNumber") + " ')]/ancestor::datatable-body-cell[1]/following-sibling::datatable-body-cell[5]//span)[1]")).getText();
+				System.out.println("TransactionType is " + TransactionType);
+			String amount = driver.findElement(By.xpath("(//datatable-body-cell[1]//span[contains(text(),' "+ settlementData.get("approvedReferenceNumber")+ " ')]/ancestor::datatable-body-cell[1]/following-sibling::datatable-body-cell[6]//span)[1]")).getText();
+				System.out.println("Amount is " + amount);
+					}
+	
+	
+
+	@Then("^Click sub module Payment settlement Cancellation Eye Icon$")
+	public void click_sub_module_payment_settlement_cancellation_eye_icon() throws Throwable {
+		// ------Payment settlement cancellation--------//
+		arapObj.accountsPayable_paymentSettlementcancellionViewIcon().click();
+	}
+    @Then("^Enter Txn No for Advance to Empolyee$")
+    public void enter_txn_no_for_advance_to_empolyee() throws Throwable {
+        //---------ENTER TXN NUMBER FOR EMPOLYEE--------//
+    	arapObj.ARAP_GrnNo().click();
+    	arapObj.ARAP_GrnNo().sendKeys(arapData.TxnNo);
+    }
+	
+	@And("^Get the Cancelled Txn Number$")
+	public void get_the_cancelled_txn_number() throws Throwable {
+		// --------GET THE CANCELLED RECORD--------//
+		javascripthelper.JavaScriptHelper(driver);
+		TxnNo = (String) javascripthelper.executeScript("return document.getElementsByName('cancellationNo')[0].value");
+		System.out.println(TxnNo);
+	}
+	
+    @Then("^Verify Accounting entries Advance to Empolyee post payment settlement cancellation$")
+    public void verify_accounting_entries_advance_to_empolyee_post_payment_settlement_cancellation() throws Throwable {
+    	javascripthelper.JavaScriptHelper(driver);
+		Thread.sleep(1000);
+		for (int i = 0; i <= 299; i++) {
+			try {
+
+				driver.findElement(By.xpath("(//datatable-body-cell[1]//span[contains(text(),'" + arapData.TxnNo + "')])[1]"))
+						.isDisplayed();
+
+				driver.findElement(By.xpath("(//datatable-body-cell[1]//span[contains(text(),'" + arapData.TxnNo + "')])[1]"));
+				String TransactionType = driver
+						.findElement(By.xpath("(//datatable-body-cell[1]//span[contains(text(),' " + arapData.TxnNo
+								+ " ')]/ancestor::datatable-body-cell[1]/following-sibling::datatable-body-cell[5]//span)[1]"))
+						.getText();
+				System.out.println("TransactionType is " + TransactionType);
+				String amount = driver.findElement(By.xpath("(//datatable-body-cell[1]//span[contains(text(),' " + arapData.TxnNo
+						+ " ')]/ancestor::datatable-body-cell[1]/following-sibling::datatable-body-cell[6]//span)[1]"))
+						.getText();
+				System.out.println("Amount is " + amount);
+				break;
+
+			} catch (NoSuchElementException e) {
+				javascripthelper.scrollIntoView(arapObj.accountsPayablePayementSettlementNextRecord());
+				arapObj.accountsPayablePayementSettlementNextRecord().click();
+			}
+		}
+		for (int i = 0; i <= 299; i++) {
+			try {
+
+				driver.findElement(By.xpath("(//datatable-body-cell[1]//span[contains(text(),'" + arapData.TxnNo + "')])[2]"))
+						.isDisplayed();
+
+				driver.findElement(By.xpath("(//datatable-body-cell[1]//span[contains(text(),'" + arapData.TxnNo + "')])[1]"));
+				String TransactionType = driver
+						.findElement(By.xpath("(//datatable-body-cell[1]//span[contains(text(),' " + arapData.TxnNo
+								+ " ')]/ancestor::datatable-body-cell[1]/following-sibling::datatable-body-cell[5]//span)[2]"))
+						.getText();
+				System.out.println("TransactionType is " + TransactionType);
+				String amount = driver.findElement(By.xpath("(//datatable-body-cell[1]//span[contains(text(),' " + arapData.TxnNo
+						+ " ')]/ancestor::datatable-body-cell[1]/following-sibling::datatable-body-cell[6]//span)[2]"))
+						.getText();
+				System.out.println("Amount is " + amount);
+				break;
+
+			} catch (NoSuchElementException e) {
+				javascripthelper.scrollIntoView(arapObj.accountsPayablePayementSettlementNextRecord());
+				arapObj.accountsPayablePayementSettlementNextRecord().click();
+			}
+			if (i == 299) {
+				break;
+			}
+		}
+    }
+    
+    @And("^Fill the required fields for manual payout vendor$")
+    public void fill_the_required_fields_for_manual_payout_vendor() throws InterruptedException, IOException, ParseException  {
+		javascripthelper.JavaScriptHelper(driver);
+		
+		//Entity Branch name
+		waithelper.waitForElement(driver, 2000,aCCOUNTSPAYABLE_ManualPayoutObj.accountPayable_ManualPayout_EntityBranch());
+		aCCOUNTSPAYABLE_ManualPayoutObj.accountPayable_ManualPayout_EntityBranch().click();
+		aCCOUNTSPAYABLE_ManualPayoutObj.accountPayable_ManualPayout_EntityBranch().sendKeys(aCCOUNTSPAYABLE_ManualPayoutTestDataType.EntityBranch);
+		aCCOUNTSPAYABLE_ManualPayoutObj.accountPayable_ManualPayout_EntityBranch().sendKeys(Keys.ENTER);
+		
+		//bp name
+		waithelper.waitForElement(driver, 2000,aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_BP_Name());
+		aCCOUNTSPAYABLE_ManualPayoutObj.accountPayable_ManualPayout_BP_Name().click();
+		aCCOUNTSPAYABLE_ManualPayoutObj.accountPayable_ManualPayout_BP_Name().sendKeys(aCCOUNTSPAYABLE_ManualPayoutTestDataType.BP_Name);
+		Thread.sleep(2000);
+		aCCOUNTSPAYABLE_ManualPayoutObj.accountPayable_ManualPayout_BP_Name().sendKeys(Keys.ENTER);
+		
+		//benificiary name
+		aCCOUNTSPAYABLE_ManualPayoutObj.accountPayable_ManualPayout_BeneficiaryName().click();
+		waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_ManualPayoutObj.accountPayable_ManualPayout_BeneficiaryName());
+		aCCOUNTSPAYABLE_ManualPayoutObj.accountPayable_ManualPayout_BeneficiaryName().sendKeys(aCCOUNTSPAYABLE_ManualPayoutTestDataType.BeneficiaryName);
+		aCCOUNTSPAYABLE_ManualPayoutObj.accountPayable_ManualPayout_BeneficiaryName().sendKeys(Keys.ENTER);
+		
+		//currency
+		waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_ManualPayoutObj.accountPayable_ManualPayout_Currency());
+		aCCOUNTSPAYABLE_ManualPayoutObj.accountPayable_ManualPayout_Currency().click();
+		aCCOUNTSPAYABLE_ManualPayoutObj.accountPayable_ManualPayout_Currency().sendKeys(aCCOUNTSPAYABLE_ManualPayoutTestDataType.Currency);
+		aCCOUNTSPAYABLE_ManualPayoutObj.accountPayable_ManualPayout_Currency().sendKeys(Keys.ENTER);
+		
+//		payment bank
+		waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_ManualPayoutObj.accountPayable_ManualPayout_PaymentBank());
+		aCCOUNTSPAYABLE_ManualPayoutObj.accountPayable_ManualPayout_PaymentBank().click();
+		aCCOUNTSPAYABLE_ManualPayoutObj.accountPayable_ManualPayout_PaymentBank().sendKeys(aCCOUNTSPAYABLE_ManualPayoutTestDataType.PaymentBank);
+		aCCOUNTSPAYABLE_ManualPayoutObj.accountPayable_ManualPayout_PaymentBank().sendKeys(Keys.ENTER);
+		
+		//bank account number
+		aCCOUNTSPAYABLE_ManualPayoutObj.accountPayable_ManualPayout_BankAccountNumber().click();
+		waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_ManualPayoutObj.accountPayable_ManualPayout_BankAccountNumber());
+		aCCOUNTSPAYABLE_ManualPayoutObj.accountPayable_ManualPayout_BankAccountNumber().click();
+		aCCOUNTSPAYABLE_ManualPayoutObj.accountPayable_ManualPayout_BankAccountNumber().sendKeys(aCCOUNTSPAYABLE_ManualPayoutTestDataType.BankAccountNumber);
+		Thread.sleep(2000);
+		aCCOUNTSPAYABLE_ManualPayoutObj.accountPayable_ManualPayout_BankAccountNumber().sendKeys(Keys.ENTER);
+		Thread.sleep(2000);
+		waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_ManualPayoutObj.accountPayable_ManualPayout_PaymentMode());
+		aCCOUNTSPAYABLE_ManualPayoutObj.accountPayable_ManualPayout_PaymentMode().click();
+		aCCOUNTSPAYABLE_ManualPayoutObj.accountPayable_ManualPayout_PaymentMode().sendKeys(aCCOUNTSPAYABLE_ManualPayoutTestDataType.PaymentMode);
+		aCCOUNTSPAYABLE_ManualPayoutObj.accountPayable_ManualPayout_PaymentMode().sendKeys(Keys.ENTER);
+		
+		//reference number
+		waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_ManualPayoutObj.accountPayable_ManualPayout_ReferenceNumber());
+		aCCOUNTSPAYABLE_ManualPayoutObj.accountPayable_ManualPayout_ReferenceNumber().click();
+		aCCOUNTSPAYABLE_ManualPayoutObj.accountPayable_ManualPayout_ReferenceNumber().sendKeys(aCCOUNTSPAYABLE_ManualPayoutTestDataType.ReferenceNumber);
+		
+		//cheque number
+		waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_ManualPayoutObj.accountPayable_ManualPayout_ChequeNumber());
+		aCCOUNTSPAYABLE_ManualPayoutObj.accountPayable_ManualPayout_ChequeNumber().click();
+		aCCOUNTSPAYABLE_ManualPayoutObj.accountPayable_ManualPayout_ChequeNumber().sendKeys(aCCOUNTSPAYABLE_ManualPayoutTestDataType.ChequeNumber);
+		
+		javascripthelper.scrollIntoViewAndClick(aCCOUNTSPAYABLE_ManualPayoutObj.accountPayable_ManualPayout_Footer());
+		
+		waithelper.waitForElement(driver, 2000,aCCOUNTSPAYABLE_ManualPayoutObj.accountPayable_ManualPayout_Remark());
+		aCCOUNTSPAYABLE_ManualPayoutObj.accountPayable_ManualPayout_Remark().click();
+		aCCOUNTSPAYABLE_ManualPayoutObj.accountPayable_ManualPayout_Remark().sendKeys(aCCOUNTSPAYABLE_ManualPayoutTestDataType.Remarks);
+		Thread.sleep(2000);
+		String beforexpath = "//div[contains(text(),'";
+		String afterxpath = "')]/../../datatable-body-cell/div/ion-checkbox";
+		driver.findElement(By.xpath(beforexpath+aCCOUNTSPAYABLE_ManualPayoutTestDataType.PaymentApprovalTxnNumber+afterxpath)).click();
+		Thread.sleep(2000);
+    }
+    
+    @Then("^Save and submit the manual payout record$")
+    public void save_and_submit_the_manual_payout_record() throws IOException, ParseException, InterruptedException  {
+    	waithelper.waitForElement(driver, 2000,aCCOUNTSPAYABLE_ManualPayoutObj.accountPayable_ManualPayout_SaveButton());
+		aCCOUNTSPAYABLE_ManualPayoutObj.accountPayable_ManualPayout_SaveButton().click();
+		Thread.sleep(2000);
+		javascripthelper.JavaScriptHelper(driver);
+		String str = javascripthelper.executeScript(
+				"return document.querySelector(\"ion-toast\").shadowRoot.querySelector(\"div[class='toast-message']\").innerText")
+				.toString();
+		System.out.println("Message:" + str);
+		Thread.sleep(4000);
+		waithelper.waitForElement(driver, 3000, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_NotificationButton());
+		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_NotificationButton().click();
+		
+		waithelper.waitForElement(driver, 3000, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_FirstReferenceId());
+		String id=aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_FirstReferenceId().getText();
+		jsonWriter.addReferanceData(id);
+		System.out.println("Reference ID:" +id);
+    	for (int i = 1; i <= 35; i++) {
+			try {
+		    	waithelper.waitForElement(driver, 3000,driver.findElement(By.xpath("//span[contains(text(),'" +jsonWriter.readReferancedata()+ "')]")));	
+				WebElement referanceID = driver.findElement(By.xpath("//span[contains(text(),'" +  jsonWriter.readReferancedata() + "')]"));	
+				waithelper.waitForElement(driver, i, referanceID);
+				referanceID.click();
+		    	System.out.println(referanceID);
+//				Assert.assertTrue(referanceID.isDisplayed());
+				break;
+			} catch (NoSuchElementException e) {
+				waithelper.waitForElement(driver,4000,aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_NotificationNextButton());
+				aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_NotificationNextButton().click();
+			}
+		}
+    	String before_xpath="//span[contains(text(),'";
+    	String after_xpath="')]/ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell//ion-button"; 
+    	waithelper.waitForElement(driver, 10000, driver.findElement(By.xpath(before_xpath +jsonWriter.readReferancedata()+after_xpath)));
+    	driver.findElement(By.xpath(before_xpath +jsonWriter.readReferancedata() +after_xpath)).click();
+    	
+    	waithelper.waitForElement(driver, 4000, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_SubmitButton());
+    	aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_SubmitButton().click(); 
+    	
+    	waithelper.waitForElement(driver, 4000, aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_RemarksByMaker());
+    	javascripthelper.JSEClick(aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_RemarksByMaker());
+    	aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_RemarksByMaker().sendKeys(aCCOUNTSPAYABLE_ManualPayoutTestDataType.RemarkByMaker);
+		
+    	waithelper.waitForElement(driver, 4000, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_Submit());
+    	aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_Submit().click();
+    	
+    	Thread.sleep(1000);
+    	waithelper.waitForElement(driver, 3000, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_RecordStatus());
+    	WebElement recordstatus = aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_RecordStatus();
+    	clicksAndActionHelper.moveToElement(recordstatus);
+    	
+    	String message = aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_RecordStatus().getText();
+    	System.out.println(message);
+    	aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_RecordStatus().click();
+    	String emptystring = "";
+		String ar[] = message.split(" ");
+		emptystring=ar[ar.length-1];
+		String reviewerId=emptystring.replaceAll("[/.]", "");
+		System.out.println(reviewerId);
+		jsonWriter=new JsonDataReaderWriter();
+		jsonWriter.addData(reviewerId);
+    }
+    @Then("^Get the payout status$")
+    public void get_the_payout_status()  {
+    	
+    	//waithelper.waitForElement(driver, 3000, aCCOUNTSPAYABLE_ManualPayoutObj.accountPayable_ManualPayout_Search());
+    	for (int i = 0; i < 50; i++) {
+			try {
+		    	aCCOUNTSPAYABLE_ManualPayoutObj.accountPayable_ManualPayout_Search().click();
+		    	break;
+			}
+			catch(Exception e)
+			{
+			}
+			}
+    	waithelper.waitForElement(driver, 3000, aCCOUNTSPAYABLE_ManualPayoutObj.accountPayable_ManualPayout_BusinessPartnerSearch());
+    	aCCOUNTSPAYABLE_ManualPayoutObj.accountPayable_ManualPayout_BusinessPartnerSearch().sendKeys(aCCOUNTSPAYABLE_ManualPayoutTestDataType.BP_Name);
+    	//System.out.println("Payout Status is - " +aCCOUNTSPAYABLE_ManualPayoutObj.accountPayable_ManualPayout_PayoutStatus().getText());
+       
+    }
+    
+   @And("^user update the Testdata for cancelled payout screen$")
+   public void user_update_the_Testdata_for_cancelled_payout_screen() throws Throwable{
+	   testData = Exceldata.getTestdata("KUBS_AR_AP_UAT_005_003_TC_01_D1");
+   }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 }
+  

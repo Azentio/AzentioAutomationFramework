@@ -1,6 +1,6 @@
-Feature: AR/AP Module
+Feature: AR_AP Module
 
-  @KUBS_AR/AP_UAT_001_004_TC_08  @AR/AP
+  @KUBS_AR_AP_UAT_001_004_TC_08  @AR_AP
 Scenario: Verify Accounts Payable Report post bill is approved.
 Given User should go to the kubs url and login as a maker user
 And user should navigate to accounts payable menu
@@ -18,7 +18,7 @@ And Give Accounts Payable Status
 Then Click on View buttons
 And Verify the Accounts Payable Report is correctly displayed
 
-  @KUBS_AR/AP_UAT_001_005_TC_08  @AR/AP
+  @KUBS_AR_AP_UAT_001_005_TC_08  @AR_AP
 Scenario: Verify Accounts Payable Report post bill is approved.
 Given User should go to the kubs url and login as a maker user
 And user should navigate to accounts payable menu
@@ -37,7 +37,7 @@ Then Click on View buttons
 And Verify the Accounts Payable Report is correctly displayed
 
 
-@KUBS_AR_AP_UAT_001_006_TC_06  @AR/AP
+@KUBS_AR_AP_UAT_001_006_TC_06  @AR_AP
 Scenario: Verify Accounts Payable Report post bill is approved.
 Given User should go to the kubs url and login as a maker user
 And user should navigate to accounts payable menu
@@ -56,7 +56,7 @@ Then Click on View buttons
 And Verify the Accounts Payable Report is correctly displayed
 
 
-@KUBS_AR/AP_UAT_001_007_TC_04  @AR/AP
+@KUBS_AR_AP_UAT_001_007_TC_04  @AR_AP
 Scenario: verify Accounts payable report post bill is active
 Given User should go to the kubs url and login as a maker user
 And user should navigate to accounts payable menu
@@ -74,7 +74,7 @@ And Give Accounts Payable Status
 Then Click on View buttons
 And Verify the Accounts Payable Report is correctly displayed
 
-@KUBS_AR_AP_UAT_001_008_TC_03  @AR/AP
+@KUBS_AR_AP_UAT_001_008_TC_03  @AR_AP
 Scenario: Verify Accounts Payable Report post bill is approved
 Given User should go to the kubs url and login as a maker user
 And user should navigate to accounts payable menu
@@ -93,7 +93,7 @@ Then Click on View buttons
 And Verify the Accounts Payable Report is correctly displayed
 
 
-@KUBS_AR_AP_UAT_001_009_TC_03  @AR/AP
+@KUBS_AR_AP_UAT_001_009_TC_03  @AR_AP
 Scenario: Verify Accounts Payable Report post bill is approved
 Given User should go to the kubs url and login as a maker user
 And user should navigate to accounts payable menu
@@ -111,7 +111,7 @@ And Give Accounts Payable Status
 Then Click on View buttons
 And Verify the Accounts Payable Report is correctly displayed
 
-@KUBS_AR_AP_UAT_001_010_TC_03  @AR/AP
+@KUBS_AR_AP_UAT_001_010_TC_03  @AR_AP
 Scenario: Verify Accounts Payable Report post bill is approved
 Given User should go to the kubs url and login as a maker user
 And user should navigate to accounts payable menu
@@ -131,7 +131,7 @@ And Verify the Accounts Payable Report is correctly displayed
 
 
 #Arshath
-   @KUBS_AR/AP_UAT_003_004_TC_02  @AR/AP
+   @KUBS_AR_AP_UAT_003_004_TC_02  @AR_AP
    Scenario: Verify Balance sheet post Bill is cancelled
    Given User should go to the kubs url and login as a maker user
    #When click the account payable main module 
@@ -152,7 +152,7 @@ And Verify the Accounts Payable Report is correctly displayed
    And click the view icon
    Then Verify Balance sheet should be updated correctly basis the legs impacted in accounting entries.
    
-   @KUBS_AR/AP_UAT_003_004_TC_03  @AR/AP
+   @KUBS_AR_AP_UAT_003_004_TC_03  @AR_AP
    Scenario: verify Accounts payable report post bill is cancelled
    Given User should go to the kubs url and login as a maker user
    When click the account payable main module 
@@ -172,13 +172,14 @@ And Verify the Accounts Payable Report is correctly displayed
    And click the view icon
    Then verify the bill is cancelled in Accounts payable report
 
-@KUBS_AR/AP_UAT_003_004TC_04_01
+@KUBS_AR_AP_UAT_003_004TC_04_01
 Scenario: Check Budget utilization is re-instated
 Given User should go to the kubs url and login as a maker user
 And maker should navigate to the budget module UAT 
 And maker click on budget field UAT
 When maker click on budget supplementary eye icon UAT
 And click on add button on budget supplementary view page UAT
+And user update the data set ID for Budget Utiliztion Reviewer
 Then check the budget utilazation amount of budet code which we create the expense code
 And click on accounts Payable module
 And goto vendor contract module
@@ -195,43 +196,40 @@ Then click on submit button in alert
 And capture the reviewer ID in pop up which is open when we submit our record in maker stage
 
 
-@KUBS_AR/AP_UAT_003_004TC_04_02
+@KUBS_AR_AP_UAT_003_004TC_04_02
 Scenario: user login as reviewer
-And login with reviewer credentials
-Then click on notification button
-And select our record in notification records using reference ID
-Then Approve the record from reviewer
-And enter the remark in alert
-Then click on submit in alert
-Then verify the approval status of the record
+And user update the data set ID for Budget Utiliztion Reviewer
+And User should go to the kubs url and login as a reviewer users
+Then Click on notification button in reviewer
+#Then Search Contract Creation record in List
+And approve the record by reviewer user
 
-
-@KUBS_AR/AP_UAT_003_004TC_04_03
+@KUBS_AR_AP_UAT_003_004TC_04_03
 Scenario: user login as checker
-Then login as a checker 
-And click on security management menu in checker
-Then click on action button under security management menu
-And select our record and clime using reference ID
-Then click on Notification button
-Then select our record in notification records by the help of reference ID
-And click on approve button in checker stage
-Then give alert remark 
-Then click on submit button on alert
-And verify the record got approved from checker
+And user update the data set ID for Budget Utiliztion Reviewer
+Given User should go to the kubs url and login as a checker user
+And Click on security management in checker
+Then Click on open pool in checker
+And Click on claim button in checker
+And capture claimed status
+Then click on notification in checker
+#Then Search Contract Creation record in List
+Then checker should approved the contract record
 
 
-@KUBS_AR/AP_UAT_003_004TC_04_04
+@KUBS_AR_AP_UAT_003_004TC_04_04
 Scenario: user login as Maker
-And login with Maker ID
+Given User should go to the kubs url and login as a maker user
 And click on accounts Payable module
 And goto vendor contract module
+And user update the data set ID for Budget Utiliztion Reviewer
 And get the contract number
 And goto po creation module
 And click on Add Icon
 And fill the mendatory fields for po creation 
 And save the po creation record
 And save the item details for pocreation 
-And save the benificiery details for po creation
+#And save the benificiery details for po creation
 And click notification button
 Then choose first record in the notification record
 And click on Submit button 
@@ -240,33 +238,31 @@ Then click on submit button in alert
 And capture the reviewer ID in pop up which is open when we submit our record in maker stage
 
 
-@KUBS_AR/AP_UAT_003_004TC_04_05
+@KUBS_AR_AP_UAT_003_004TC_04_05
 Scenario: user login as reviewer
-And login with reviewer credentials
-Then click on notification button
-And select our record in notification records using reference ID
-Then Approve the record from reviewer
-And enter the remark in alert
-Then click on submit in alert
-Then verify the approval status of the record
+And user update the data set ID for Budget Utiliztion Reviewer
+And User should go to the kubs url and login as a reviewer users
+Then Click on notification button in reviewer
+#Then Search Contract Creation record in List
+And approve the record by reviewer user
 
 
-@KUBS_AR/AP_UAT_003_004TC_04_06
+@KUBS_AR_AP_UAT_003_004TC_04_06
 Scenario: user login as checker
-Then login as a checker 
-And click on security management menu in checker
-Then click on action button under security management menu
-And select our record and clime using reference ID
-Then click on Notification button
-Then select our record in notification records by the help of reference ID
-And click on approve button in checker stage
-Then give alert remark 
-Then click on submit button on alert
+And user update the data set ID for Budget Utiliztion Reviewer
+Given User should go to the kubs url and login as a checker user
+And Click on security management in checker
+Then Click on open pool in checker
+And Click on claim button in checker
+And capture claimed status
+Then click on notification in checker
+#Then Search Contract Creation record in List
+Then checker should approved the contract record
 
 
-@KUBS_AR/AP_UAT_003_004TC_04_07
+@KUBS_AR_AP_UAT_003_004TC_04_07
 Scenario: user login as Maker
-Given User should go to the kubs url and login as a maker user
+	Given User should go to the kubs url and login as a maker user
 And maker should navigate to the budget module UAT 
 And maker click on budget field UAT
 When maker click on budget supplementary eye icon UAT
@@ -287,34 +283,31 @@ Then click on submit button in alert
 And capture the reviewer ID in pop up which is open when we submit our record in maker stage
 
 
-@KUBS_AR/AP_UAT_003_004TC_04_08
+@KUBS_AR_AP_UAT_003_004TC_04_08
 Scenario: user login as reviewer
-And login with reviewer credentials
-Then click on notification button
-And select our record in notification records using reference ID
-Then Approve the record from reviewer
-And enter the remark in alert
-Then click on submit in alert
-Then verify the approval status of the record
+And user update the data set ID for Budget Utiliztion Reviewer
+And User should go to the kubs url and login as a reviewer users
+Then Click on notification button in reviewer
+#Then Search Contract Creation record in List
+And approve the record by reviewer user
 
 
-@KUBS_AR/AP_UAT_003_004TC_04_09
+@KUBS_AR_AP_UAT_003_004TC_04_09
 Scenario: user login as checker
-Then login as a checker 
-And click on security management menu in checker
-Then click on action button under security management menu
-And select our record and clime using reference ID
-Then click on Notification button
-Then select our record in notification records by the help of reference ID
-And click on approve button in checker stage
-Then give alert remark 
-Then click on submit button on alert
-And verify the record got approved from checker
+And user update the data set ID for Budget Utiliztion Reviewer
+Given User should go to the kubs url and login as a checker user
+And Click on security management in checker
+Then Click on open pool in checker
+And Click on claim button in checker
+And capture claimed status
+Then click on notification in checker
+#Then Search Contract Creation record in List
+Then checker should approved the contract record
 
 
-@KUBS_AR/AP_UAT_003_004TC_04_10
+@KUBS_AR_AP_UAT_003_004TC_04_10
 Scenario: user login as Maker
-And login with Maker ID
+Given User should go to the kubs url and login as a maker user
 And maker should navigate to the budget module UAT 
 And maker click on budget field UAT
 When maker click on budget supplementary eye icon UAT
@@ -322,7 +315,7 @@ And click on add button on budget supplementary view page UAT
 Then check the budget utilazation amount of budet code which we create the expense code after cancelling the po
 Then verify budget code budget utilization amount is re-instated after cancelling the po
 
-@KUBS_AR/AP_UAT_003_004TC_05  @AR/AP
+@KUBS_AR_AP_UAT_003_004TC_05  @AR_AP
 Scenario: verify cancelled bill is not allowed for payment settlement
 Given User should go to the kubs url and login as a maker user
 Then Choose the second Tab Segment
@@ -338,7 +331,7 @@ And select payment option as buisness partnerwise
 And select buisness partner in payment settlement
 Then verify that no bill is available for payment settlement
 
-@KUBS_AR/AP_UAT_003_005_TC_01  @AR/AP
+@KUBS_AR_AP_UAT_003_005_TC_01  @AR_AP
 Scenario: Verify Accounting entries post Bill is cancelled
 Given User should go to the kubs url and login as a maker user
 Then Choose the second Tab Segment
@@ -357,7 +350,7 @@ Then choose the to date
 And click on view button
 Then verify the accounting entries for the cancelled bill
 
-@KUBS_AR/AP_UAT_003_005_TC_02  @AR/AP
+@KUBS_AR_AP_UAT_003_005_TC_02  @AR_AP
 Scenario: Verify Balance sheet post Bill is cancelled
 Given User should go to the kubs url and login as a maker user
 Then Choose the second Tab Segment
@@ -376,7 +369,7 @@ And enter the transaction date
 And click on view button
 Then Verify Balance sheet post Bill is cancelled
 
-@KUBS_AR_AP_UAT_003_005_TC_03  @AR/AP
+@KUBS_AR_AP_UAT_003_005_TC_03  @AR_AP
 Scenario: Verify Accounts Payable Report post bill is cancelled.(With PO)
 Given User should go to the kubs url and login as a maker user
 Then Choose the second Tab Segment
@@ -395,7 +388,7 @@ And enter the payable status as cancelled
 And click on view button
 Then verify the cancelled invoice number is available in the accountspayable report
 
-@KUBS_AR_AP_UAT_003_005_TC_04  @AR/AP
+@KUBS_AR_AP_UAT_003_005_TC_04  @AR_AP
 Scenario: Verify Cancelled bill is not available for payment settlement
 Given User should go to the kubs url and login as a maker user
 Then Choose the second Tab Segment
@@ -408,7 +401,7 @@ And click on Add Icon
 And fill the form for payment settlement
 And find the invoice reference number is availabe at the billing queue 
 
-@KUBS_AR_AP_UAT_004_002_TC_01  @AR/AP
+@KUBS_AR_AP_UAT_004_002_TC_01  @AR_AP
 Scenario: Verify Advance (To Employee) is available in the system for payment settlement
 Given User should go to the kubs url and login as a maker user
 And Goto accounts receivable advances module
@@ -419,13 +412,13 @@ And Save the advance record
 Then Click on Update Deposited Cheque Notification
 And Select and Submit the Update Deposited Cheque record
 
-@KUBS_AR_AP_UAT_004_002_TC_01_T1 @AR/AP
+@KUBS_AR_AP_UAT_004_002_TC_01_T1 @AR_AP
 Scenario: Verify Advance (To Employee) is available in the system for payment settlement for Reviewer
 And user update the exccelsheet Testdata for Advance to Employee
 Then log in to the reviewer account
 Then click on the Notification select the Cheque record and Approve
 
-@KUBS_AR_AP_UAT_004_002_TC_01_T2  @AR/AP
+@KUBS_AR_AP_UAT_004_002_TC_01_T2  @AR_AP
 Scenario: Verify Advance (To Employee) is available in the system for payment settlement for checker
 And user update the exccelsheet Testdata for Advance to Employee
 Then log in to the Checker Account
@@ -433,7 +426,7 @@ And then checker claim the record
 Then click on the checker Notification 
 And select the Cheque record and Approve by checker 
 
-@KUBS_AR_AP_UAT_004_002_TC_01_T3   @AR/AP
+@KUBS_AR_AP_UAT_004_002_TC_01_T3   @AR_AP
 Scenario: Verify Advance (To Employee) is available in the system for payment settlement for maker
 Given User should go to the kubs url and login as a maker user
 And Goto accounts receivable advances module
@@ -443,3 +436,86 @@ And go to aacounts payable module
 And Go to payment settlement module
 And click on Add Icon
 Then verify approved record is availabe for payment settlement
+#
+@KUBS_AR_AP_UAT_005_003_TC_01  @AR_AP @e3
+Scenario: Verify cancelled payment txn is not available for payout on payout screen.
+Given User should go to the kubs url and login as a maker user
+And user should navigate to accounts payable menu
+When click on eye button of manual payout
+And click on add button for manual payout
+And user update the Testdata for cancelled payout screen
+And Fill the required fields for verify cancelled payment txn availability
+    
+@KUBS_AR_AP_UAT_005_003_TC_02  @AR_AP
+Scenario: Verify accounting entries post payment settlement approval.
+Given User should go to the kubs url and login as a maker user
+And click on accounts Payable module
+And Go to payment settlement module
+Then click on search
+And search for approved record in view area
+And get the approved record from list view
+Then click on report segment button
+And click on equiry menu
+Then click on edit icon near by fiancial transaction menu
+And choose branch code
+And click on transaction from date calender icon 
+Then choose the from date
+And click on the transaction to date calender icon
+Then choose the to date
+#And give the refrence number which we going to see accounting entries
+And click on view button
+Then verify approved settlement reference number is available in the Gl report
+
+@KUBS_AR_AP_UAT_005_004_TC_01  @AR_AP @e4
+Scenario: Verify cancelled payment txn is not available for payout on payout screen.
+Given User should go to the kubs url and login as a maker user
+And user should navigate to accounts payable menu
+When click on eye button of manual payout
+And click on add button for manual payout
+And Fill the required fields for verify cancelled payment txn availability
+    
+@KUBS_AR_AP_UAT_005_004_TC_02  @AR_AP
+Scenario: Verify accounting entries post payment settlement cancellation
+Given User should go to the kubs url and login as a maker user
+Then Choose the second Tab Segment
+And click on accounts Payable module
+Then Click sub module Payment settlement Cancellation Eye Icon
+And Click On Search Icon
+Then Enter Txn No for Advance to Empolyee
+Then Click on Table Row First Eye Icon in ARAP
+And Get the Cancelled Txn Number
+Then Third Segment report Icon
+And Choose Enquiry Module
+Then Click Note iCon near by financial transction
+And choose branch codes
+And click on transaction from date in calender
+Then Select from date in calender
+And click on transaction to date in calender icon
+Then Select To date in calender
+And Click View HyperLink
+Then Verify Accounting entries Advance to Empolyee post payment settlement cancellation
+
+@KUBS_AR/AP_UAT_006_001_TC_01_Vendor  @AR/AP @e6
+Scenario: Creating Manual payouts for approved Bills of a Vendor
+Given User should go to the kubs url and login as a maker user
+And user should navigate to accounts payable menu
+When click on eye button of manual payout
+And click on add button for manual payout
+And Fill the required fields for manual payout vendor
+Then Save and submit the manual payout record
+    
+And user update the exccelsheet Testdata for Manual payout
+Then log in to the reviewer account
+Then click on the Notification select the Cheque record and Approve
+  	
+And user update the exccelsheet Testdata for Advance to Employee
+Then log in to the Checker Account
+And then checker claim the record
+Then click on the checker Notification 
+And select the Cheque record and Approve by checker 
+    
+Given User should go to the kubs url and login as a maker user
+And user should navigate to accounts payable menu
+When click on eye button of manual payout
+Then Get the payout status
+And maker should logout
