@@ -1,0 +1,7 @@
+MIB Bank
+"Account No.: MIBAK416697899, CHEMBUR CENTRAL AVENUE"
+"Closing Balance: INR 900.0, As On Date: 11-Apr-2023"
+As On Date: 11-Apr-2023
+Date        Chq./Ref.No.            Deposit Amt.             Withdrawal Amt.         Narration            Value Dt                Closing Balance					
+04/04/2023  rrn900001               100                                              Super Smart          04/04/2023              100.0
+04/04/2023  rrn900001               800                                              Super Smart          04/04/2023              900.0
