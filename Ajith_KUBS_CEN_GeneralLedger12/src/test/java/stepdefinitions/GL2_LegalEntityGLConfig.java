@@ -1,7 +1,10 @@
 package stepdefinitions;
 
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.Month;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
@@ -10,6 +13,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.ElementClickInterceptedException;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
@@ -29,6 +33,7 @@ import io.cucumber.java.en.When;
 import pageobjects.ACCOUNTSPAYABLE_InvoiceBookingObj;
 import pageobjects.ACCOUNTSPAYABLE_VendorContractsObj;
 import pageobjects.ARAP_ARandAPObj;
+import pageobjects.AccountingSetup_ChartOfAccountsDefinitionObj;
 import pageobjects.AccountsReceivable_ReceiptsReversalsObj;
 import pageobjects.AccountsReceivable_UpdateChequeStatusObj;
 import pageobjects.Accounts_Payable;
@@ -36,6 +41,8 @@ import pageobjects.ArAp_Cancellation_of_vendorObj;
 import pageobjects.ENQUIRY_FinancialTransactionObj;
 import pageobjects.Enquiry_Obj;
 import pageobjects.FinancialReporting_GLBalancesReportObj;
+import pageobjects.FinancialReporting_TrialBalanceReportObj;
+import pageobjects.GL2_FinancialTransactionReportObj;
 import pageobjects.GL2_JournalVoucherObj;
 import pageobjects.GL2_JournalVoucherReversalObj;
 import pageobjects.GL2_JournalVoucher_AccountEntryReportObj;
@@ -45,12 +52,15 @@ import pageobjects.GeneralLedger2_JournalVoucherObj;
 import pageobjects.Gl_Reports_Obj1;
 import pageobjects.JobScheduler_JobExecutionObj;
 import pageobjects.KUBS_CheckerObj;
+import pageobjects.KUBS_MakerObj;
 import resources.BaseClass;
 import resources.ExcelData;
 import resources.JsonDataReaderWriter;
 import testDataType.ACCOUNTSPAYABLE_InvoiceBookingTestDataType;
 import testDataType.AccountsReceivable_UpdateChequeStatusTestDataType;
 import testDataType.FinancialReporting_GLBalancesReportTestDataType;
+import testDataType.FinancialReporting_TrialBalanceReportTestDataType;
+import testDataType.GL2_FinancialTransactionReportTestDataType;
 import testDataType.GL2_JournalVoucherTestDataType;
 import testDataType.GL2_JournalVoucher_AccountEntryReportTestDataType;
 import testDataType.GL2_LegalEntityGLConfigTestDataType;
@@ -102,7 +112,7 @@ public class GL2_LegalEntityGLConfig extends BaseClass {
 	ACCOUNTSPAYABLE_InvoiceBookingTestDataType InvoiceBookingTestDataType=jsonReader.getInvoiceBookingdata("Maker");
 	JsonDataReaderWriter jsonWriter = new JsonDataReaderWriter();
 	JsonDataReaderWriter reader;
-	BrowserHelper browserHelper;
+	BrowserHelper browserHelper = new BrowserHelper(driver);
 	KUBS_CheckerObj kubschecker = new KUBS_CheckerObj(driver);
 	//Financials reports
 	
@@ -124,6 +134,21 @@ public class GL2_LegalEntityGLConfig extends BaseClass {
 	JavascriptHelper javascriphelper = new JavascriptHelper();
 	Enquiry_Obj enquiryObj = new Enquiry_Obj(driver);
 	Map<String, String> testdata = new LinkedHashMap<>();
+	// financial reports
+	KUBS_MakerObj kubsMakerObj = new KUBS_MakerObj(driver);
+	JsonConfig jsonConfig = new JsonConfig();
+	GL2_FinancialTransactionReportObj gL2_FinancialTransactionReportObj = new GL2_FinancialTransactionReportObj(driver);
+	GL2_FinancialTransactionReportTestDataType gL2_FinancialTransactionReportTestDataType = jsonReader
+			.getFinancialTransactionReportByName("Maker");
+	// trial balance report
+	
+	FinancialReporting_TrialBalanceReportObj financialReporting_TrialBalanceReportObj = new FinancialReporting_TrialBalanceReportObj(
+			driver);
+	AccountingSetup_ChartOfAccountsDefinitionObj accountingSetup_ChartOfAccountsDefinitionObj = new AccountingSetup_ChartOfAccountsDefinitionObj(
+			driver);
+	FinancialReporting_TrialBalanceReportTestDataType TrialBalanceReportTestDataType = jsonReader
+			.getTrialBalanceReportdata("Maker");
+	
 	
 	@Given("^Navigate as a Reviewer for GL2$")
 	    public void navigate_as_a_reviewer_for_gl2() throws Throwable {
@@ -284,7 +309,10 @@ public class GL2_LegalEntityGLConfig extends BaseClass {
 	    public void user_update_the_test_data_id_for_check_report_for_gl_monthly_balances() throws Throwable {
 		 testData = excelData.getTestdata("KUBS_GL2_UAT_004_001_D1");
 	    }
-
+	 @And("^User update the test data id for Check GL balance for any period$")
+	    public void user_update_the_test_data_id_for_check_gl_balance_for_any_period() throws Throwable {
+		 testData = excelData.getTestdata("KUBS_GL2_UAT_005_001_D1");
+	    }
 	 @And("^User Update the test data set id for Check the Transactions$")
 	    public void user_update_the_test_data_set_id_for_check_the_transactions() throws Throwable {
 		 testData = excelData.getTestdata("KUBS_GL2_UAT_006_001_D1");
@@ -1424,7 +1452,7 @@ public class GL2_LegalEntityGLConfig extends BaseClass {
 		String glCode=null;
 		for (int i = 0; i < 2000; i++) {
 			try {
-				glCode = driver.findElement(By.xpath("//app-kub-lov[@ng-reflect-lov-label='GL Code']//ion-select[1]")).getAttribute("aria-label");
+				glCode = driver.findElement(By.xpath("(//app-kub-lov[@ng-reflect-lov-label='GL Code']//ion-select[1])[1]")).getAttribute("aria-label");
 				break;
 			} catch (Exception e) {
 				if (i==1999) {
@@ -1435,6 +1463,89 @@ public class GL2_LegalEntityGLConfig extends BaseClass {
 		System.out.println(glCode);
 		
 		excelData.updateTestData(testData.get("Data Set ID"),"TransactionRefNumber", glCode);
+    }
+	@And("^Get all details of Journal Voucher$")
+    public void get_all_details_of_journal_voucher() throws Throwable {
+		String glCode1=null;
+		for (int i = 0; i < 2000; i++) {
+			try {
+				glCode1 = driver.findElement(By.xpath("(//app-kub-lov[@ng-reflect-lov-label='GL Code']//ion-select[1])[1]")).getAttribute("aria-label");
+				break;
+			} catch (Exception e) {
+				if (i==1999) {
+					Assert.fail(e.getMessage());
+				}
+			}
+		}
+		testdata.put("glCode1", glCode1);
+		System.out.println(glCode1);
+		String glCode2=null;
+		for (int i = 0; i < 2000; i++) {
+			try {
+				glCode2 = driver.findElement(By.xpath("(//app-kub-lov[@ng-reflect-lov-label='GL Code']//ion-select[1])[2]")).getAttribute("aria-label");
+				break;
+			} catch (Exception e) {
+				if (i==1999) {
+					Assert.fail(e.getMessage());
+				}
+			}
+		}
+		testdata.put("glCode2", glCode2);
+		System.out.println(glCode2);
+		String glCode3=null;
+		for (int i = 0; i < 2000; i++) {
+			try {
+				glCode3 = driver.findElement(By.xpath("(//app-kub-lov[@ng-reflect-lov-label='GL Code']//ion-select[1])[3]")).getAttribute("aria-label");
+				break;
+			} catch (Exception e) {
+				if (i==1999) {
+					Assert.fail(e.getMessage());
+				}
+			}
+		}
+		testdata.put("glCode3", glCode3);
+		System.out.println(glCode3);
+
+				String crDr1=null;
+				for (int i = 0; i < 2000; i++) {
+					try {
+						crDr1 = driver.findElement(By.xpath("(//app-kub-lov[@ng-reflect-lov-label='Cr/Dr']//ion-select[1])[1]")).getAttribute("aria-label");
+						break;
+					} catch (Exception e) {
+						if (i==1999) {
+							Assert.fail(e.getMessage());
+						}
+					}
+				}
+				testdata.put("crDr1", crDr1);
+				System.out.println(crDr1);
+				String crDr2=null;
+				for (int i = 0; i < 2000; i++) {
+					try {
+						crDr2 = driver.findElement(By.xpath("(//app-kub-lov[@ng-reflect-lov-label='Cr/Dr']//ion-select[1])[2]")).getAttribute("aria-label");
+						break;
+					} catch (Exception e) {
+						if (i==1999) {
+							Assert.fail(e.getMessage());
+						}
+					}
+				}
+				testdata.put("crDr2", crDr2);
+				System.out.println(crDr2);
+				String crDr3=null;
+				for (int i = 0; i < 2000; i++) {
+					try {
+						crDr3 = driver.findElement(By.xpath("(//app-kub-lov[@ng-reflect-lov-label='Cr/Dr']//ion-select[1])[3]")).getAttribute("aria-label");
+						break;
+					} catch (Exception e) {
+						if (i==1999) {
+							Assert.fail(e.getMessage());
+						}
+					}
+				}
+				testdata.put("crDr3", crDr3);
+				System.out.println(crDr3);
+		
     }
 	
 	@Then("^click on the record to get the transaction date$")
@@ -1609,10 +1720,10 @@ public class GL2_LegalEntityGLConfig extends BaseClass {
 		 waithelper.waitForElementToVisibleWithFluentWait(driver,
 					financialReporting_GLBalancesReportObj.FinancialReporting_GLBalancesReport_BranchCode(), 5, 500);
 			financialReporting_GLBalancesReportObj.FinancialReporting_GLBalancesReport_BranchCode()
-					.sendKeys(GLBalancesReportTestDataType.BranchCode);
+					.sendKeys(testData.get("Branch Code GL Balances Report"));
 			for (int i = 0; i <200; i++) {
 				try {
-					driver.findElement(By.xpath("//ng-dropdown-panel//span[contains(text(),'"+GLBalancesReportTestDataType.BranchCode+"')]")).isDisplayed();
+					driver.findElement(By.xpath("//ng-dropdown-panel//span[contains(text(),'"+testData.get("Branch Code GL Balances Report")+"')]")).isDisplayed();
 					break;
 				} catch (Exception e) {
 					if (i==199) {
@@ -1627,10 +1738,10 @@ public class GL2_LegalEntityGLConfig extends BaseClass {
     public void user_select_the_report_type_for_gl_balances_report() throws Throwable {
     	waithelper.waitForElementToVisibleWithFluentWait(driver,financialReporting_GLBalancesReportObj.FinancialReporting_GLBalancesReport_Report_Type(),30, 2);
         financialReporting_GLBalancesReportObj.FinancialReporting_GLBalancesReport_Report_Type().click();
-        financialReporting_GLBalancesReportObj.FinancialReporting_GLBalancesReport_Report_Type().sendKeys("Own branch");
+        financialReporting_GLBalancesReportObj.FinancialReporting_GLBalancesReport_Report_Type().sendKeys(testData.get("Report Type GL Balances Report"));
         for (int i = 0; i <200; i++) {
 			try {
-				driver.findElement(By.xpath("//ng-dropdown-panel//span[contains(text(),'Own branch')]")).isDisplayed();
+				driver.findElement(By.xpath("//ng-dropdown-panel//span[contains(text(),'"+testData.get("Report Type GL Balances Report")+"')]")).isDisplayed();
 				break;
 			} catch (Exception e) {
 				if (i==199) {
@@ -1646,10 +1757,10 @@ public class GL2_LegalEntityGLConfig extends BaseClass {
     	waithelper.waitForElementToVisibleWithFluentWait(driver,
 				financialReporting_GLBalancesReportObj.FinancialReporting_GLBalancesReport_GlCode(), 5, 500);
 		financialReporting_GLBalancesReportObj.FinancialReporting_GLBalancesReport_GlCode()
-				.sendKeys(GLBalancesReportTestDataType.GLCode);
+				.sendKeys(testData.get("GL Code GL Balances Report"));
 		for (int i = 0; i <200; i++) {
 			try {
-				driver.findElement(By.xpath("//ng-dropdown-panel//span[contains(text(),'"+GLBalancesReportTestDataType.GLCode+"')]")).isDisplayed();
+				driver.findElement(By.xpath("//ng-dropdown-panel//span[contains(text(),'"+testData.get("GL Code GL Balances Report")+"')]")).isDisplayed();
 				break;
 			} catch (Exception e) {
 				if (i==199) {
@@ -1671,11 +1782,11 @@ public class GL2_LegalEntityGLConfig extends BaseClass {
 			try {
 
 				waithelper.waitForElementToVisibleWithFluentWait(driver,
-						driver.findElement(By.xpath("//span[contains(text(),'" + GLBalancesReportTestDataType.GLMonth
-								+ " " + GLBalancesReportTestDataType.GLYear + "')]")),
+						driver.findElement(By.xpath("//span[contains(text(),'" + testData.get("GLToMonth GL Balances Report")
+								+ " " + testData.get("GLToYear GL Balances Report") + "')]")),
 						5, 500);
 				WebElement monthAndYear = driver.findElement(By.xpath("//span[contains(text(),'"
-						+ GLBalancesReportTestDataType.GLMonth + " " + GLBalancesReportTestDataType.GLYear + "')]"));
+						+ testData.get("GLToMonth GL Balances Report") + " " + testData.get("GLToYear GL Balances Report") + "')]"));
 				break;
 			}
 
@@ -1684,8 +1795,8 @@ public class GL2_LegalEntityGLConfig extends BaseClass {
 			}
 		}
 		WebElement FinalDay = driver.findElement(By.xpath("//td[@aria-label='"
-				+ GLBalancesReportTestDataType.GLFullMonth + " " + GLBalancesReportTestDataType.GLDate + ", "
-				+ GLBalancesReportTestDataType.GLYear + "']/span"));
+				+ testData.get("GLToFullMonth GL Balances Report") + " " + testData.get("GLToDate GL Balances Report") + ", "
+				+ testData.get("GLToYear GL Balances Report") + "']/span"));
 		clicksAndActionHelper.moveToElement(FinalDay);
 		clicksAndActionHelper.doubleClick(FinalDay);
 /*
@@ -1723,8 +1834,19 @@ public class GL2_LegalEntityGLConfig extends BaseClass {
     public void user_select_the_currency_for_gl_balances_report() throws Throwable {
     	waithelper.waitForElementToVisibleWithFluentWait(driver,
 				financialReporting_GLBalancesReportObj.FinancialReporting_GLBalancesReport_Currency(), 5, 500);
-		financialReporting_GLBalancesReportObj.FinancialReporting_GLBalancesReport_Currency()
-				.sendKeys(GLBalancesReportTestDataType.Currency);
+    	financialReporting_GLBalancesReportObj.FinancialReporting_GLBalancesReport_Currency().click();
+    	financialReporting_GLBalancesReportObj.FinancialReporting_GLBalancesReport_Currency()
+				.sendKeys(testData.get("CurrenyForGL Balances Report"));
+    	for (int i = 0; i <200; i++) {
+			try {
+				driver.findElement(By.xpath("//ng-dropdown-panel//span[contains(text(),'"+testData.get("CurrenyForGL Balances Report")+"')]")).isDisplayed();
+				break;
+			} catch (Exception e) {
+				if (i==199) {
+					Assert.fail(e.getMessage());
+				}
+			}	
+    }
 		financialReporting_GLBalancesReportObj.FinancialReporting_GLBalancesReport_Currency().sendKeys(Keys.ENTER);
 		
     }
@@ -1868,7 +1990,7 @@ public class GL2_LegalEntityGLConfig extends BaseClass {
 		waithelper.waitForElementToVisibleWithFluentWait(driver,
 				financialReporting_GLBalancesReportObj.FinancialReporting_GLBalancesReport_ViewButton(), 5, 500);
 		financialReporting_GLBalancesReportObj.FinancialReporting_GLBalancesReport_ViewButton().click();
-		browserHelper.SwitchToWindow(1);
+		//browserHelper.SwitchToWindow(1);
 		Thread.sleep(3000);
 		browserHelper.switchToParentWithChildClose();
 
@@ -1888,6 +2010,136 @@ public class GL2_LegalEntityGLConfig extends BaseClass {
     public void user_update_the_test_data_set_id_for_configure_batch_job() throws Throwable {
         testData = excelData.getTestdata("KUBS_GL2_UAT_007_001_D1");
     }
+	@And("^User Update test data set id for Income Statement report$")
+    public void user_update_test_data_set_id_for_income_statement_report() throws Throwable {
+		testData = excelData.getTestdata("KUBS_GL2_UAT_008_013_D1");
+    }
+	@And("^User Update test data set id for Cashflow statement report$")
+    public void user_update_test_data_set_id_for_cashflow_statement_report() throws Throwable {
+		testData = excelData.getTestdata("KUBS_GL2_UAT_008_012_D1");
+    }
+
+	@And("^User Update test data set id for balancesheet report$")
+	public void user_update_test_data_set_id_for_balancesheet_report() throws Throwable {
+		testData = excelData.getTestdata("KUBS_GL2_UAT_008_011_D1");
+	}
+
+	@And("^User Update test data set id for trial balance based on the given from date to till date$")
+	public void user_update_test_data_set_id_for_trial_balance_based_on_the_given_from_date_to_till_date()
+			throws Throwable {
+		testData = excelData.getTestdata("KUBS_GL2_UAT_008_010_D1");
+	}
+	@And("^User Update test data set id for trial balance$")
+    public void user_update_test_data_set_id_for_trial_balance() throws Throwable {
+		testData = excelData.getTestdata("KUBS_GL2_UAT_008_007_D1");
+    }
+	@And("^User Update test data set id for trial balance summary$")
+    public void user_update_test_data_set_id_for_trial_balance_summary() throws Throwable {
+		testData = excelData.getTestdata("KUBS_GL2_UAT_008_008_D1");
+    }
+
+	@And("^User get the system for job execution$")
+	public void user_get_the_system_for_job_execution() throws Throwable {
+		waithelper.waitForElementToVisibleWithFluentWait(driver,jobScheduler_JobExecutionObj.systemDate(), 30, 2);
+		String systemdate = jobScheduler_JobExecutionObj.systemDate().getText();
+//		System.out.println(systemdate);
+		String[] split = systemdate.split("-");
+		int date = Integer.parseInt(split[0]);
+//		System.out.println(date);
+		String month = split[1];
+//		System.out.println(month);
+		int year = Integer.parseInt(split[2]);
+//		System.out.println(year);
+		int monthNum;
+		switch (month) {
+		case "Jan":
+			monthNum = 1;
+			break;
+		case "Feb":
+			monthNum = 2;
+			break;
+		case "Mar":
+			monthNum = 3;
+			break;
+		case "Apr":
+			monthNum = 4;
+			break;
+		case "May":
+			monthNum = 5;
+			break;
+		case "Jun":
+			monthNum = 6;
+			break;
+		case "Jul":
+			monthNum = 7;
+			break;
+		case "Aug":
+			monthNum = 8;
+			break;
+		case "Sep":
+			monthNum = 9;
+			break;
+		case "Oct":
+			monthNum = 10;
+			break;
+		case "Nov":
+			monthNum = 11;
+			break;
+		case "Dec":
+			monthNum = 12;
+			break;
+		default:
+			monthNum = 0;
+			break;
+		}
+//        System.out.println(monthNum);
+
+		LocalDate Date = LocalDate.of(year, monthNum, date);
+		String JobExecutionDate = Date.plusDays(1).toString();
+//		System.out.println(JobExecutionDate);
+		String[] split2 = JobExecutionDate.split("-");
+		String yearExecution =split2[0];
+		testdata.put("yearExecution", yearExecution);
+		int jobExecutionMonth = Integer.parseInt(split2[1]);
+		String jobDate=split2[2];
+		testdata.put("jobDate", jobDate);
+		String monthString;
+        switch (jobExecutionMonth) {
+            case 1:  monthString = "Jan";       break;
+            case 2:  monthString = "Feb";      break;
+            case 3:  monthString = "Mar";         break;
+            case 4:  monthString = "Apr";         break;
+            case 5:  monthString = "May";           break;
+            case 6:  monthString = "Jun";          break;
+            case 7:  monthString = "Jul";          break;
+            case 8:  monthString = "Aug";        break;
+            case 9:  monthString = "Sep";     break;
+            case 10: monthString = "Oct";       break;
+            case 11: monthString = "Nov";      break;
+            case 12: monthString = "Dec";      break;
+            default: monthString = "Invalid month"; break;
+        }
+        testdata.put("Tomonth", monthString);
+        int jobExecutionFullMonth = Integer.parseInt(split2[1]);
+        String fullMonthString;
+        switch (jobExecutionFullMonth) {
+            case 1:  fullMonthString = "January";       break;
+            case 2:  fullMonthString = "February";      break;
+            case 3:  fullMonthString = "March";         break;
+            case 4:  fullMonthString = "April";         break;
+            case 5:  fullMonthString = "May";           break;
+            case 6:  fullMonthString = "June";          break;
+            case 7:  fullMonthString = "July";          break;
+            case 8:  fullMonthString = "August";        break;
+            case 9:  fullMonthString = "September";     break;
+            case 10: fullMonthString = "October";       break;
+            case 11: fullMonthString = "November";      break;
+            case 12: fullMonthString = "December";      break;
+            default: fullMonthString = "Invalid month"; break;
+        }
+        testdata.put("FullMonth", fullMonthString);
+		
+	}
 	@And("^user should navigate to job scheduler menu$")
 	public void user_should_navigate_to_job_scheduler_menu() {
 		waithelper.waitForElementToVisibleWithFluentWait(driver, jobScheduler_JobExecutionObj.JobSchedulerMenu(), 5,
@@ -1913,12 +2165,12 @@ public class GL2_LegalEntityGLConfig extends BaseClass {
 
 				waithelper.waitForElementToVisibleWithFluentWait(
 						driver, driver.findElement(By.xpath("//span[contains(text(),'"
-								+ JobExecutionTestDataType.ToMonth + " " + JobExecutionTestDataType.ToYear + "')]")),
+								+ testdata.get("Tomonth") + " " + testdata.get("yearExecution") + "')]")),
 						5, 500);
 //				waithelper.waitForElement(driver, 3000, driver.findElement(By.xpath("//span[contains(text(),'"
 //						+ JobExecutionTestDataType.ToMonth + " " + JobExecutionTestDataType.ToYear + "')]")));
 				WebElement monthAndYear = driver.findElement(By.xpath("//span[contains(text(),'"
-						+ JobExecutionTestDataType.ToMonth + " " + JobExecutionTestDataType.ToYear + "')]"));
+						+ testdata.get("Tomonth") + " " + testdata.get("yearExecution") + "')]"));
 				break;
 			}
 
@@ -1926,8 +2178,8 @@ public class GL2_LegalEntityGLConfig extends BaseClass {
 				jobScheduler_JobExecutionObj.JobScheduler_JobExecution_NextMonth().click();
 			}
 		}
-		WebElement FinalDay2 = driver.findElement(By.xpath("//td[@aria-label='" + JobExecutionTestDataType.ToFullMonth
-				+ " " + JobExecutionTestDataType.ToDate + ", " + JobExecutionTestDataType.ToYear + "']/span"));
+		WebElement FinalDay2 = driver.findElement(By.xpath("//td[@aria-label='" + testdata.get("FullMonth")
+				+ " " + testdata.get("jobDate") + ", " + testdata.get("yearExecution") + "']/span"));
 		clicksAndActionHelper.moveToElement(FinalDay2);
 		clicksAndActionHelper.doubleClick(FinalDay2);
 	}
@@ -2618,6 +2870,984 @@ public class GL2_LegalEntityGLConfig extends BaseClass {
 		javascriphelper.scrollIntoView(driver.findElement(By.xpath(xpath)));
 		driver.findElement(By.xpath(xpath)).isDisplayed();
 	}
+
+// Financial reports
+	@And("^click on tool icon$")
+	public void click_on_tool_icon() throws Throwable {
+		waithelper.waitForElementToVisibleWithFluentWait(driver, kubsMakerObj.kubsToolIcon(), 5, 500);
+		kubsMakerObj.kubsToolIcon().click();
+	}
+
+	@Then("^click on Financial reporting button$")
+	public void click_on_financial_reporting_button() {
+		waithelper.waitForElementToVisibleWithFluentWait(driver,
+				gL2_FinancialTransactionReportObj.gL2_FinancialTransactionReport_FinancialReport(), 5, 500);
+		gL2_FinancialTransactionReportObj.gL2_FinancialTransactionReport_FinancialReport().click();
+
+	}
+
+	@Then("^click on Financial Transaction Report$")
+	public void click_on_financial_transaction_report() {
+		waithelper.waitForElementToVisibleWithFluentWait(driver,
+				gL2_FinancialTransactionReportObj.gL2_FinancialTransactionReport(), 5, 500);
+		gL2_FinancialTransactionReportObj.gL2_FinancialTransactionReport().click();
+
+	}
+
+	@Then("^fill the input fields of Financial Transaction$")
+	public void fill_the_input_fields_of_financial_transaction() {
+		// BranchCode
+		waithelper.waitForElementToVisibleWithFluentWait(driver,
+				gL2_FinancialTransactionReportObj.gL2_FinancialTransactionReport_Branch(), 5, 500);
+		gL2_FinancialTransactionReportObj.gL2_FinancialTransactionReport_Branch().click();
+		gL2_FinancialTransactionReportObj.gL2_FinancialTransactionReport_Branch()
+				.sendKeys(gL2_FinancialTransactionReportTestDataType.BranchCode);
+		gL2_FinancialTransactionReportObj.gL2_FinancialTransactionReport_Branch().sendKeys(Keys.ENTER);
+
+		// GlCode
+		waithelper.waitForElementToVisibleWithFluentWait(driver,
+				gL2_FinancialTransactionReportObj.gL2_FinancialTransactionReport_GlCode(), 5, 500);
+		gL2_FinancialTransactionReportObj.gL2_FinancialTransactionReport_GlCode().click();
+		gL2_FinancialTransactionReportObj.gL2_FinancialTransactionReport_GlCode()
+				.sendKeys(gL2_FinancialTransactionReportTestDataType.GlCode);
+		gL2_FinancialTransactionReportObj.gL2_FinancialTransactionReport_GlCode().sendKeys(Keys.ENTER);
+	}
+
+	@Then("^Select Transaction from date Financial Transaction Report$")
+	public void select_transaction_from_date_financial_transaction_report() {
+
+		// select Transaction from date
+		waithelper.waitForElementToVisibleWithFluentWait(driver,
+				gL2_FinancialTransactionReportObj.gL2_FinancialTransactionReport_CalendarFromDate(), 5, 500);
+		gL2_FinancialTransactionReportObj.gL2_FinancialTransactionReport_CalendarFromDate().click();
+
+		javascripthelper.JavaScriptHelper(driver);
+		while (true) {
+			try {
+
+				waithelper
+						.waitForElementToVisibleWithFluentWait(driver,
+								driver.findElement(By.xpath("//span[contains(text(),'"
+										+ testdata.get("ToMonth") + " "
+										+ testdata.get("Year") + "')]")),
+								5, 500);
+
+				WebElement monthAndYear = driver.findElement(
+						By.xpath("//span[contains(text(),'" + testdata.get("ToMonth") + " "
+								+ testdata.get("Year") + "')]"));
+				break;
+			}
+
+			catch (NoSuchElementException nosuchElement) {
+				waithelper.waitForElementToVisibleWithFluentWait(driver, gL2_FinancialTransactionReportObj.gL2_FinancialTransactionReport_NextMonth(), 5, 500);
+				gL2_FinancialTransactionReportObj.gL2_FinancialTransactionReport_NextMonth().click();
+			}
+		}
+		WebElement FinalDay = driver
+				.findElement(By.xpath("//td[@aria-label='" + testdata.get("FullMonth")
+						+ " " + testdata.get("Date") + ", "
+						+ testdata.get("Year") + "']/span"));
+		clicksAndActionHelper.moveToElement(FinalDay);
+		clicksAndActionHelper.doubleClick(FinalDay);
+		
+		
+	}
+
+	@Then("^select Transaction to date Financial Transaction Report$")
+	public void select_transaction_to_date_financial_transaction_report() {
+
+		// select Transaction to date
+
+		waithelper.waitForElementToVisibleWithFluentWait(driver,
+				gL2_FinancialTransactionReportObj.gL2_FinancialTransactionReport_CalendarToDate(), 5, 500);
+		gL2_FinancialTransactionReportObj.gL2_FinancialTransactionReport_CalendarToDate().click();
+
+		while (true) {
+			try {
+
+				waithelper.waitForElementToVisibleWithFluentWait(driver,
+						driver.findElement(
+								By.xpath("//span[contains(text(),'" + gL2_FinancialTransactionReportTestDataType.ToMonth
+										+ " " + gL2_FinancialTransactionReportTestDataType.Year + "')]")),
+						5, 500);
+				WebElement monthAndYear = driver.findElement(
+						By.xpath("//span[contains(text(),'" + gL2_FinancialTransactionReportTestDataType.ToMonth + " "
+								+ gL2_FinancialTransactionReportTestDataType.Year + "')]"));
+				break;
+			}
+
+			catch (NoSuchElementException nosuchElement) {
+				gL2_FinancialTransactionReportObj.gL2_FinancialTransactionReport_NextMonth().click();
+			}
+		}
+		WebElement FinalDay2 = driver
+				.findElement(By.xpath("//td[@aria-label='" + gL2_FinancialTransactionReportTestDataType.ToFullMonth
+						+ " " + gL2_FinancialTransactionReportTestDataType.ToDate + ", "
+						+ gL2_FinancialTransactionReportTestDataType.Year + "']/span"));
+		clicksAndActionHelper.moveToElement(FinalDay2);
+		clicksAndActionHelper.doubleClick(FinalDay2);
+
+	}
+
+	@And("^click view button of report$")
+	public void click_view_button_of_report() {
+		waithelper.waitForElementToVisibleWithFluentWait(driver,
+				gL2_FinancialTransactionReportObj.gL2_FinancialTransactionReport_View(), 5, 500);
+		gL2_FinancialTransactionReportObj.gL2_FinancialTransactionReport_View().click();
+
+	}
+
+	@Then("^verify the approved invoicebill number is available in report$")
+	public void verify_the_approved_invoicebill_number_is_available_in_report() throws Throwable {
+		System.out.println("Voucher " + gL2_FinancialTransactionReportTestDataType.Voucher);
+		javascripthelper.JavaScriptHelper(driver);
+		browserHelper.SwitchToWindow(1);
+		Thread.sleep(3000);
+		browserHelper.switchToParentWithChildClose();
+	}
+
+	// ----------KUBS_GL2_UAT_008_005 GL monthly balances----------------//
+
+	@Then("^click on GL monthly balances$")
+	public void click_on_gl_monthly_balances() {
+		waithelper.waitForElementToVisibleWithFluentWait(driver,
+				gL2_FinancialTransactionReportObj.gL2_GlMonthlyBalanceReport(), 5, 500);
+		gL2_FinancialTransactionReportObj.gL2_GlMonthlyBalanceReport().click();
+
+	}
+
+	@Then("^fill the input fields of GL monthly balances$")
+	public void fill_the_input_fields_of_gl_monthly_balances() {
+		// BranchCode
+		waithelper.waitForElementToVisibleWithFluentWait(driver,
+				gL2_FinancialTransactionReportObj.gL2_GlMonthlyBalanceReport_Branch(), 5, 500);
+		gL2_FinancialTransactionReportObj.gL2_GlMonthlyBalanceReport_Branch().click();
+		gL2_FinancialTransactionReportObj.gL2_GlMonthlyBalanceReport_Branch()
+				.sendKeys(gL2_FinancialTransactionReportTestDataType.BranchCode);
+		gL2_FinancialTransactionReportObj.gL2_GlMonthlyBalanceReport_Branch().sendKeys(Keys.ENTER);
+
+		// GlCode
+		waithelper.waitForElement(driver, 3000, gL2_FinancialTransactionReportObj.gL2_GlMonthlyBalanceReport_GlCode());
+		gL2_FinancialTransactionReportObj.gL2_GlMonthlyBalanceReport_GlCode().click();
+		gL2_FinancialTransactionReportObj.gL2_GlMonthlyBalanceReport_GlCode()
+				.sendKeys(gL2_FinancialTransactionReportTestDataType.GlCode);
+		gL2_FinancialTransactionReportObj.gL2_GlMonthlyBalanceReport_GlCode().sendKeys(Keys.ENTER);
+
+		// Currency
+		waithelper.waitForElementToVisibleWithFluentWait(driver,
+				gL2_FinancialTransactionReportObj.gL2_GlMonthlyBalanceReport_Currency(), 5, 500);
+		gL2_FinancialTransactionReportObj.gL2_GlMonthlyBalanceReport_Currency().click();
+		gL2_FinancialTransactionReportObj.gL2_GlMonthlyBalanceReport_Currency()
+				.sendKeys(gL2_FinancialTransactionReportTestDataType.Currency);
+		gL2_FinancialTransactionReportObj.gL2_GlMonthlyBalanceReport_Currency().sendKeys(Keys.ENTER);
+
+	}
+
+	@Then("^verify the Record available in report$")
+	public void verify_the_record_available_in_report() throws InterruptedException {
+		javascripthelper.JavaScriptHelper(driver);
+		browserHelper.SwitchToWindow(1);
+		Thread.sleep(3000);
+		browserHelper.switchToParentWithChildClose();
+
+	}
+
+	// -----------------KUBS_GL2_UAT_008_011 Balancesheet
+	// report-------------------//
+
+	@Then("^click on balancesheet report$")
+	public void click_on_balancesheet_report() {
+		waithelper.waitForElementToVisibleWithFluentWait(driver,
+				gL2_FinancialTransactionReportObj.gL2_BalanceSheetReport(), 5, 500);
+		gL2_FinancialTransactionReportObj.gL2_BalanceSheetReport().click();
+
+	}
+	 @And("^User Select the branch code for balancesheet report$")
+	    public void user_select_the_branch_code_for_balancesheet_report() throws Throwable {
+		// BranchCode
+			waithelper.waitForElementToVisibleWithFluentWait(driver,
+					gL2_FinancialTransactionReportObj.gL2_BalanceSheetReport_BranchTextbox(), 5, 500);
+			gL2_FinancialTransactionReportObj.gL2_BalanceSheetReport_BranchTextbox().click();
+			gL2_FinancialTransactionReportObj.gL2_BalanceSheetReport_BranchTextbox()
+					.sendKeys(testData.get("BranchCode"));
+			for (int i = 0; i <200; i++) {
+				try {
+					driver.findElement(By.xpath("//ng-dropdown-panel//span[contains(text(),'"+testData.get("BranchCode")+"')]")).isDisplayed();
+					break;
+				} catch (Exception e) {
+					if (i==199) {
+						Assert.fail(e.getMessage());
+					}
+				}
+			}	
+			gL2_FinancialTransactionReportObj.gL2_BalanceSheetReport_BranchTextbox().sendKeys(Keys.DOWN);
+	    }
+	 @And("^User Select the Report Type for balancesheet report$")
+	    public void user_select_the_report_type_for_balancesheet_report() throws Throwable {
+		 gL2_FinancialTransactionReportObj.gL2_BalanceSheetReport_BranchTextbox().sendKeys(Keys.ENTER);
+			gL2_FinancialTransactionReportObj.gl2BalanceSheetReportType().click();
+			gL2_FinancialTransactionReportObj.gl2BalanceSheetReportType().sendKeys(Keys.DOWN);
+			gL2_FinancialTransactionReportObj.gl2BalanceSheetReportType().sendKeys(Keys.ENTER);
+	    }
+
+	@Then("^verify the Record available in the report$")
+	public void verify_the_record_available_in_the_report() throws Throwable {
+		javascripthelper.JavaScriptHelper(driver);
+		browserHelper.SwitchToWindow(1);
+		Thread.sleep(2000);
+//		for (int i = 0; i <= 3000; i++) {
+//			try {
+//				javascripthelper.scrollIntoView(gL2_FinancialTransactionReportObj.gL2_BalanceSheetReport_TdsReport());
+//				waithelper.waitForElementToVisibleWithFluentWait(driver,
+//						gL2_FinancialTransactionReportObj.gL2_BalanceSheetReport_TdsReport(), 5, 500);
+//				gL2_FinancialTransactionReportObj.gL2_BalanceSheetReport_TdsReport().isDisplayed();
+//				break;
+//			} catch (NoSuchElementException e) {
+//				if (i == 3000) {
+//					Assert.fail();
+//				}
+//			}
+//		}
+//		Thread.sleep(3000);
+		browserHelper.switchToParentWithChildClose();
+	}
+
+	// --------------------Cashflow statement report-----------------------//
+
+	@Then("^click on Cashflow statement report$")
+	public void click_on_cashflow_statement_report() {
+		waithelper.waitForElementToVisibleWithFluentWait(driver,
+				gL2_FinancialTransactionReportObj.gL2_CashFlowStatementReport(), 5, 500);
+		gL2_FinancialTransactionReportObj.gL2_CashFlowStatementReport().click();
+
+	}
+	@And("^User Select the branch code for Cashflow statement report$")
+    public void user_select_the_branch_code_for_cashflow_statement_report() throws Throwable {
+		// BranchCode
+				waithelper.waitForElementToVisibleWithFluentWait(driver,
+						gL2_FinancialTransactionReportObj.gL2_CashFlowStatementReport_Branch(), 5, 500);
+				gL2_FinancialTransactionReportObj.gL2_CashFlowStatementReport_Branch().click();
+				gL2_FinancialTransactionReportObj.gL2_CashFlowStatementReport_Branch()
+						.sendKeys(testData.get("BranchCode"));
+				for (int i = 0; i <200; i++) {
+					try {
+						driver.findElement(By.xpath("//ng-dropdown-panel//span[contains(text(),'"+testData.get("BranchCode")+"')]")).isDisplayed();
+						break;
+					} catch (Exception e) {
+						if (i==199) {
+							Assert.fail(e.getMessage());
+						}
+					}
+				}	
+				gL2_FinancialTransactionReportObj.gL2_CashFlowStatementReport_Branch().sendKeys(Keys.ENTER);
+    }
+
+	// -----------------Income statement report--------------------------//
+
+	@Then("^click on Income statement report$")
+	public void click_on_income_statement_report() {
+		waithelper.waitForElementToVisibleWithFluentWait(driver,
+				gL2_FinancialTransactionReportObj.gL2_IncomeStatementReport(), 5, 500);
+		gL2_FinancialTransactionReportObj.gL2_IncomeStatementReport().click();
+
+	}
+	@And("^get the system date for Income statement report$")
+    public void get_the_system_date_for_income_statement_report() throws Throwable {
+		waithelper.waitForElementToVisibleWithFluentWait(driver,jobScheduler_JobExecutionObj.systemDate(), 30, 2);
+	    String systemdate = jobScheduler_JobExecutionObj.systemDate().getText();
+	//  System.out.println(systemdate);
+	String[] split = systemdate.split("-");
+	String date = split[0];
+	testdata.put("Date", date);
+	//  System.out.println(date);
+	String month = split[1];
+	testdata.put("ToMonth", month);
+	//  System.out.println(month);
+	String year = split[2];
+	testdata.put("Year", year);
+	//  System.out.println(year);
+	String fullMonth;
+	switch (month) {
+	case "Jan":
+	fullMonth = "January";
+	break;
+	case "Feb":
+	fullMonth = "February";
+	break;
+	case "Mar":
+	fullMonth = "March";
+	break;
+	case "Apr":
+	fullMonth = "April";
+	break;
+	case "May":
+	fullMonth = "May";
+	break;
+	case "Jun":
+	fullMonth ="June";
+	break;
+	case "Jul":
+	fullMonth = "July";
+	break;
+	case "Aug":
+	fullMonth ="August";
+	break;
+	case "Sep":
+	fullMonth = "September";
+	break;
+	case "Oct":
+	fullMonth = "October";
+	break;
+	case "Nov":
+	fullMonth = "November";
+	break;
+	case "Dec":
+	fullMonth = "December";
+	break;
+	default:
+	 fullMonth = "InvalidMonth";
+	break;
+	}
+	testdata.put("FullMonth", fullMonth);
+    }
+	@And("^User select the branch code for Income Statement report$")
+    public void user_select_the_branch_code_for_income_statement_report() throws Throwable {
+		// BranchCode
+				waithelper.waitForElementToVisibleWithFluentWait(driver,
+						gL2_FinancialTransactionReportObj.gL2_IncomeStatementReport_Branch(), 5, 500);
+				gL2_FinancialTransactionReportObj.gL2_IncomeStatementReport_Branch().click();
+				gL2_FinancialTransactionReportObj.gL2_IncomeStatementReport_Branch()
+						.sendKeys(testData.get("BranchCode"));
+				for (int i = 0; i <200; i++) {
+					try {
+						driver.findElement(By.xpath("//ng-dropdown-panel//span[contains(text(),'"+testData.get("BranchCode")+"')]")).isDisplayed();
+						break;
+					} catch (Exception e) {
+						if (i==199) {
+							Assert.fail(e.getMessage());
+						}
+					}
+				}	
+				gL2_FinancialTransactionReportObj.gL2_IncomeStatementReport_Branch().sendKeys(Keys.ENTER);
+    }
+	
+	// trail balance
+	@Then("^click on temp grid button of Trial Balance report$")
+	public void click_on_temp_grid_button_of_Trial_balance_report() {
+		waithelper.waitForElement(driver, 3000,
+				financialReporting_TrialBalanceReportObj.FinancialReporting_TrialBalanceReport_TempGridButton());
+		financialReporting_TrialBalanceReportObj.FinancialReporting_TrialBalanceReport_TempGridButton().click();
+	}
+	@And("^User Select the branch for trial balance$")
+    public void user_select_the_branch_for_trial_balance() throws Throwable {
+		waithelper.waitForElement(driver, 3000,
+				financialReporting_TrialBalanceReportObj.FinancialReporting_TrialBalanceReport_BranchCode());
+		financialReporting_TrialBalanceReportObj.FinancialReporting_TrialBalanceReport_BranchCode()
+				.sendKeys(TrialBalanceReportTestDataType.BranchCode);
+		financialReporting_TrialBalanceReportObj.FinancialReporting_TrialBalanceReport_BranchCode()
+				.sendKeys(Keys.ENTER);
+
+    }
+
+    @And("^User Select the Report Type for trial balance$")
+    public void user_select_the_report_type_for_trial_balance() throws Throwable {
+    	financialReporting_TrialBalanceReportObj.financialReportingTrailBalanceReportType().sendKeys(Keys.DOWN);
+		financialReporting_TrialBalanceReportObj.financialReportingTrailBalanceReportType().sendKeys(Keys.ENTER);
+    }
+
+    @And("^User choose trial balance from date for trial balance$")
+    public void user_choose_trial_balance_from_date_for_trial_balance() throws Throwable {
+    	waithelper.waitForElement(driver, 3000,
+				financialReporting_TrialBalanceReportObj.FinancialReporting_TrialBalanceReport_TrialBalanceFromDate());
+		financialReporting_TrialBalanceReportObj.FinancialReporting_TrialBalanceReport_TrialBalanceFromDate().click();
+
+		while (true) {
+			try {
+
+				waithelper.waitForElement(driver, 3000,
+						driver.findElement(By.xpath("//span[contains(text(),'"
+								+ testdata.get("ToMonth") + " "
+								+ testdata.get("Year") + "')]")));
+				WebElement monthAndYear = driver.findElement(By.xpath(
+						"//span[contains(text(),'" + testdata.get("ToMonth")
+								+ " " + testdata.get("Year") + "')]"));
+				break;
+			}
+
+			catch (NoSuchElementException nosuchElement) {
+				eNQUIRY_FinancialTransactionObj.ENQUIRY_FinancialTransaction_NextMonth().click();
+			}
+		}
+		WebElement FinalDay = driver.findElement(
+				By.xpath("//td[@aria-label='" + testdata.get("FullMonth")
+						+ " " + testdata.get("Date") + ", "
+						+ testdata.get("Year")+ "']/span"));
+		clicksAndActionHelper.doubleClick(FinalDay);
+
+    }
+
+    @And("^User Choose trial balance To date for trial balance$")
+    public void user_choose_trial_balance_to_date_for_trial_balance() throws Throwable {
+    	waithelper.waitForElement(driver, 3000, eNQUIRY_FinancialTransactionObj.ENQUIRY_FinancialTransaction_ToDate());
+		eNQUIRY_FinancialTransactionObj.ENQUIRY_FinancialTransaction_ToDate().click();
+
+		while (true) {
+			try {
+
+				waithelper.waitForElement(driver, 3000,
+						driver.findElement(By.xpath("//span[contains(text(),'"
+								+ testdata.get("ToMonth") + " "
+								+ testdata.get("Year") + "')]")));
+				WebElement monthAndYear = driver.findElement(By.xpath(
+						"//span[contains(text(),'" + testdata.get("ToMonth")
+								+ " " + testdata.get("Year") + "')]"));
+				break;
+			}
+
+			catch (NoSuchElementException nosuchElement) {
+				waithelper.waitForElementToVisibleWithFluentWait(driver, eNQUIRY_FinancialTransactionObj.ENQUIRY_FinancialTransaction_NextMonth(), 5, 500);
+				eNQUIRY_FinancialTransactionObj.ENQUIRY_FinancialTransaction_NextMonth().click();
+			}
+		}
+		WebElement FinalDay2 = driver.findElement(
+				By.xpath("//td[@aria-label='" + testdata.get("FullMonth")
+						+ " " + testdata.get("Date") + ", "
+						+ testdata.get("Year") + "']/span"));
+		clicksAndActionHelper.doubleClick(FinalDay2);
+
+
+    }
+
+    @And("^User select the Currency type for trial balance$")
+    public void user_select_the_currency_type_for_trial_balance() throws Throwable {
+    	financialReporting_TrialBalanceReportObj.financialReportingTrialBalanceCurrencyType().click();
+		financialReporting_TrialBalanceReportObj.financialReportingTrialBalanceCurrencyType().sendKeys(Keys.DOWN);
+		financialReporting_TrialBalanceReportObj.financialReportingTrialBalanceCurrencyType().sendKeys(Keys.DOWN);
+		financialReporting_TrialBalanceReportObj.financialReportingTrialBalanceCurrencyType().sendKeys(Keys.DOWN);
+		financialReporting_TrialBalanceReportObj.financialReportingTrialBalanceCurrencyType().sendKeys(Keys.ENTER);
+    }
+
+	@And("^fill the required field of Trial Balance report$")
+	public void fill_the_required_field_of_Trial_balance_report() {
+		
+		
+		
+
+		waithelper.waitForElement(driver, 3000,
+				financialReporting_TrialBalanceReportObj.FinancialReporting_TrialBalanceReport_TrialBalanceFromDate());
+		financialReporting_TrialBalanceReportObj.FinancialReporting_TrialBalanceReport_TrialBalanceFromDate().click();
+
+		while (true) {
+			try {
+
+				waithelper.waitForElement(driver, 3000,
+						driver.findElement(
+								By.xpath("//span[contains(text(),'" + TrialBalanceReportTestDataType.TrialMonth + " "
+										+ TrialBalanceReportTestDataType.TrialYear + "')]")));
+				WebElement monthAndYear = driver
+						.findElement(By.xpath("//span[contains(text(),'" + TrialBalanceReportTestDataType.TrialMonth
+								+ " " + TrialBalanceReportTestDataType.TrialYear + "')]"));
+				break;
+			}
+
+			catch (NoSuchElementException nosuchElement) {
+				eNQUIRY_FinancialTransactionObj.ENQUIRY_FinancialTransaction_NextMonth().click();
+			}
+		}
+		WebElement FinalDay = driver.findElement(By.xpath("//td[@aria-label='"
+				+ TrialBalanceReportTestDataType.TrialFullMonth + " " + TrialBalanceReportTestDataType.TrialDate + ", "
+				+ TrialBalanceReportTestDataType.TrialYear + "']/span"));
+		clicksAndActionHelper.doubleClick(FinalDay);
+
+		waithelper.waitForElement(driver, 3000, eNQUIRY_FinancialTransactionObj.ENQUIRY_FinancialTransaction_ToDate());
+		eNQUIRY_FinancialTransactionObj.ENQUIRY_FinancialTransaction_ToDate().click();
+
+		while (true) {
+			try {
+
+				waithelper.waitForElement(driver, 3000,
+						driver.findElement(
+								By.xpath("//span[contains(text(),'" + TrialBalanceReportTestDataType.TrialToMonth + " "
+										+ TrialBalanceReportTestDataType.TrialToYear + "')]")));
+				WebElement monthAndYear = driver
+						.findElement(By.xpath("//span[contains(text(),'" + TrialBalanceReportTestDataType.TrialToMonth
+								+ " " + TrialBalanceReportTestDataType.TrialToYear + "')]"));
+				break;
+			}
+
+			catch (NoSuchElementException nosuchElement) {
+				eNQUIRY_FinancialTransactionObj.ENQUIRY_FinancialTransaction_NextMonth().click();
+			}
+		}
+		WebElement FinalDay2 = driver.findElement(By.xpath("//td[@aria-label='"
+				+ TrialBalanceReportTestDataType.TrialFullToMonth + " " + TrialBalanceReportTestDataType.TrialToDate
+				+ ", " + TrialBalanceReportTestDataType.TrialToYear + "']/span"));
+		clicksAndActionHelper.doubleClick(FinalDay2);
+
+//		waithelper.waitForElement(driver, 3000, financialReporting_TrialBalanceReportObj.FinancialReporting_TrialBalanceReport_Currency());
+//		financialReporting_TrialBalanceReportObj.FinancialReporting_TrialBalanceReport_Currency().sendKeys(TrialBalanceReportTestDataType.Currency);
+//		financialReporting_TrialBalanceReportObj.FinancialReporting_TrialBalanceReport_Currency().sendKeys(Keys.ENTER);
+	}
+
+	@And("^click on view button in trial balance report$")
+	public void click_on_view_button_in_trial_balance_report() throws Throwable {
+		waithelper.waitForElement(driver, 3000,
+				financialReporting_TrialBalanceReportObj.FinancialReporting_TrialBalanceReport_ViewButton());
+		financialReporting_TrialBalanceReportObj.FinancialReporting_TrialBalanceReport_ViewButton().click();
+	}
+
+	@Then("^click on view button to view the report of Trial balance$")
+	public void click_on_view_button_to_view_the_report_of_trial_balance() throws InterruptedException {
+		waithelper.waitForElement(driver, 3000,
+				financialReporting_TrialBalanceReportObj.FinancialReporting_TrialBalanceReport_ViewButton());
+		financialReporting_TrialBalanceReportObj.FinancialReporting_TrialBalanceReport_ViewButton().click();
+		for(int i=0;i<=3000000;i++)
+		try
+		{
+		 browserHelper.SwitchToWindow(1);
+		break;
+		}
+		catch(IndexOutOfBoundsException e)
+		{
+		if(i==3000000)
+		{
+			
+			e.printStackTrace();
+			Assert.fail("Report not openened");
+		}
+		}
+		 for (int i = 0; i <= 200; i++) {
+			try {
+				driver.findElement(By.xpath("//div[text()='TRIAL BALANCE']")).isDisplayed();
+				break;
+			} catch (NoSuchElementException e) {
+				if (i == 200) {
+					e.printStackTrace();
+				}
+
+			}
+		}
+		browserHelper.switchToParentWithChildClose();
+	}
+
+	// ------------------Trial balance Report Summary
+
+	@Then("^click on temp grid button of Trial Balance report summarized$")
+	public void click_on_temp_grid_button_of_Trial_Balance_report_summarized() {
+		waithelper.waitForElement(driver, 3000,
+				financialReporting_TrialBalanceReportObj.FinancialReporting_TrialBalanceReportSummary_TempGridButton());
+		financialReporting_TrialBalanceReportObj.FinancialReporting_TrialBalanceReportSummary_TempGridButton().click();
+	}
+	@And("^User Select the branch for trial balance summary$")
+    public void user_select_the_branch_for_trial_balance_summary() throws Throwable {
+		waithelper.waitForElement(driver, 3000,
+				financialReporting_TrialBalanceReportObj.FinancialReporting_TrialBalanceReport_BranchCode());
+		financialReporting_TrialBalanceReportObj.FinancialReporting_TrialBalanceReport_BranchCode()
+				.sendKeys(testData.get("BranchCode"));
+		for (int i = 0; i <200; i++) {
+			try {
+				driver.findElement(By.xpath("//ng-dropdown-panel//span[contains(text(),'"+testData.get("BranchCode")+"')]")).isDisplayed();
+				break;
+			} catch (Exception e) {
+				if (i==199) {
+					Assert.fail(e.getMessage());
+				}
+			}
+		}	
+		financialReporting_TrialBalanceReportObj.FinancialReporting_TrialBalanceReport_BranchCode()
+				.sendKeys(Keys.ENTER);
+    }
+
+    @And("^User Select the Report Type for trial balance summary$")
+    public void user_select_the_report_type_for_trial_balance_summary() throws Throwable {
+    	financialReporting_TrialBalanceReportObj.financialReportingTrailBalanceReportType().click();
+    	financialReporting_TrialBalanceReportObj.financialReportingTrailBalanceReportType().sendKeys(testData.get("ReportType"));
+    	for (int i = 0; i <200; i++) {
+			try {
+				driver.findElement(By.xpath("//ng-dropdown-panel//span[contains(text(),'"+testData.get("ReportType")+"')]")).isDisplayed();
+				break;
+			} catch (Exception e) {
+				if (i==199) {
+					Assert.fail(e.getMessage());
+				}
+			}
+		}	
+		
+		financialReporting_TrialBalanceReportObj.financialReportingTrailBalanceReportType().sendKeys(Keys.ENTER);
+
+    }
+
+    @And("^User select the Currency type for trial balance summary$")
+    public void user_select_the_currency_type_for_trial_balance_summary() throws Throwable {
+    	waithelper.waitForElement(driver, 3000,
+				financialReporting_TrialBalanceReportObj.financialReportingTrialBalanceCurrencyType());
+		financialReporting_TrialBalanceReportObj.financialReportingTrialBalanceCurrencyType()
+				.sendKeys(testData.get("Currency"));
+		for (int i = 0; i <200; i++) {
+			try {
+				driver.findElement(By.xpath("//ng-dropdown-panel//span[contains(text(),'"+testData.get("Currency")+"')]")).isDisplayed();
+				break;
+			} catch (Exception e) {
+				if (i==199) {
+					Assert.fail(e.getMessage());
+				}
+			}
+		}	
+		financialReporting_TrialBalanceReportObj.financialReportingTrialBalanceCurrencyType().sendKeys(Keys.ENTER);
+    }
+
+    @And("^User choose trial balance from date for trial balance summary$")
+    public void user_choose_trial_balance_from_date_for_trial_balance_summary() throws Throwable {
+    	waithelper.waitForElement(driver, 3000,
+				financialReporting_TrialBalanceReportObj.FinancialReporting_TrialBalanceReport_TrialBalanceFromDate());
+		financialReporting_TrialBalanceReportObj.FinancialReporting_TrialBalanceReport_TrialBalanceFromDate().click();
+
+		while (true) {
+			try {
+
+				waithelper.waitForElement(driver, 3000,
+						driver.findElement(By.xpath("//span[contains(text(),'"
+								+ testdata.get("ToMonth") + " "
+								+ testdata.get("Year") + "')]")));
+				WebElement monthAndYear = driver.findElement(By.xpath(
+						"//span[contains(text(),'" + testdata.get("ToMonth")
+								+ " " + testdata.get("Year") + "')]"));
+				break;
+			}
+
+			catch (NoSuchElementException nosuchElement) {
+				eNQUIRY_FinancialTransactionObj.ENQUIRY_FinancialTransaction_NextMonth().click();
+			}
+		}
+		WebElement FinalDay = driver.findElement(
+				By.xpath("//td[@aria-label='" + testdata.get("FullMonth")
+						+ " " + testdata.get("Date") + ", "
+						+ testdata.get("Year")+ "']/span"));
+		clicksAndActionHelper.doubleClick(FinalDay);
+
+    }
+
+    @And("^User Choose trial balance To date for trial balance summary$")
+    public void user_choose_trial_balance_to_date_for_trial_balance_summary() throws Throwable {
+    	waithelper.waitForElement(driver, 3000, eNQUIRY_FinancialTransactionObj.ENQUIRY_FinancialTransaction_ToDate());
+		eNQUIRY_FinancialTransactionObj.ENQUIRY_FinancialTransaction_ToDate().click();
+
+		while (true) {
+			try {
+
+				waithelper.waitForElement(driver, 3000,
+						driver.findElement(By.xpath("//span[contains(text(),'"
+								+ testdata.get("ToMonth") + " "
+								+ testdata.get("Year") + "')]")));
+				WebElement monthAndYear = driver.findElement(By.xpath(
+						"//span[contains(text(),'" + testdata.get("ToMonth")
+								+ " " + testdata.get("Year") + "')]"));
+				break;
+			}
+
+			catch (NoSuchElementException nosuchElement) {
+				waithelper.waitForElementToVisibleWithFluentWait(driver, eNQUIRY_FinancialTransactionObj.ENQUIRY_FinancialTransaction_NextMonth(), 5, 500);
+				eNQUIRY_FinancialTransactionObj.ENQUIRY_FinancialTransaction_NextMonth().click();
+			}
+		}
+		WebElement FinalDay2 = driver.findElement(
+				By.xpath("//td[@aria-label='" + testdata.get("FullMonth")
+						+ " " + testdata.get("Date") + ", "
+						+ testdata.get("Year") + "']/span"));
+		clicksAndActionHelper.doubleClick(FinalDay2);
+
+    }
+
+	
+
+	@Then("^click on view button to view the report of Trial balance summary$")
+	public void click_on_view_button_to_view_the_report_of_trial_balance_summary() throws InterruptedException {
+		waithelper.waitForElement(driver, 3000,
+				financialReporting_TrialBalanceReportObj.FinancialReporting_TrialBalanceReport_ViewButton());
+		financialReporting_TrialBalanceReportObj.FinancialReporting_TrialBalanceReport_ViewButton().click();
+		Thread.sleep(5000);
+		browserHelper.SwitchToWindow(1);
+		Thread.sleep(1000);
+		browserHelper.switchToParentWithChildClose();
+
+	}
+
+	// ----008_009 & 008_010
+
+	@And("^user should navigate to accounting setup menu$")
+	public void user_should_navigate_to_accounting_setup_menu() {
+		waithelper.waitForElement(driver, 3000, accountingSetup_ChartOfAccountsDefinitionObj.AccountingSetupMenu());
+		accountingSetup_ChartOfAccountsDefinitionObj.AccountingSetupMenu().click();
+	}
+
+	@Then("^click on eye button of chart of accounts definition submenu$")
+	public void click_on_eye_button_of_chart_of_accounts_definition_submenu() {
+		waithelper.waitForElement(driver, 3000,
+				accountingSetup_ChartOfAccountsDefinitionObj.accountingSetup_ChartOfAccountsDefinition_EyeButton());
+		accountingSetup_ChartOfAccountsDefinitionObj.accountingSetup_ChartOfAccountsDefinition_EyeButton().click();
+	}
+
+	@Then("^search coa code using coa name$")
+	public void search_coa_code_using_coa_name() {
+		waithelper.waitForElement(driver, 3000, accountingSetup_ChartOfAccountsDefinitionObj
+				.accountingSetup_ChartOfAccountsDefinition_COA_NameSearch());
+		accountingSetup_ChartOfAccountsDefinitionObj.accountingSetup_ChartOfAccountsDefinition_COA_NameSearch()
+				.sendKeys(TrialBalanceReportTestDataType.COA_Name);
+	}
+
+	@And("^get the coa code$")
+	public void get_the_coa_code() throws IOException {
+		String coacode = accountingSetup_ChartOfAccountsDefinitionObj
+				.accountingSetup_ChartOfAccountsDefinition_COA_Code().getText();
+		jsonWriter = new JsonDataReaderWriter();
+		jsonWriter.addData(coacode);
+	}
+
+	@And("^fill the required field of Trial Balance report based on leaf GL$")
+	public void fill_the_required_field_of_trial_balance_report_based_on_gl() {
+		waithelper.waitForElement(driver, 3000,
+				financialReporting_TrialBalanceReportObj.FinancialReporting_TrialBalanceReport_BranchCode());
+		financialReporting_TrialBalanceReportObj.FinancialReporting_TrialBalanceReport_BranchCode()
+				.sendKeys(TrialBalanceReportTestDataType.BranchCode);
+		financialReporting_TrialBalanceReportObj.FinancialReporting_TrialBalanceReport_BranchCode()
+				.sendKeys(Keys.ENTER);
+		financialReporting_TrialBalanceReportObj.financialReportingTrailBalanceReportType().click();
+		financialReporting_TrialBalanceReportObj.financialReportingTrailBalanceReportType().sendKeys(Keys.DOWN);
+		financialReporting_TrialBalanceReportObj.financialReportingTrailBalanceReportType().sendKeys(Keys.ENTER);
+		financialReporting_TrialBalanceReportObj.financialReportingTrialBalanceCurrencyType().click();
+		financialReporting_TrialBalanceReportObj.financialReportingTrialBalanceCurrencyType().sendKeys(Keys.DOWN);
+		financialReporting_TrialBalanceReportObj.financialReportingTrialBalanceCurrencyType().sendKeys(Keys.DOWN);
+		financialReporting_TrialBalanceReportObj.financialReportingTrialBalanceCurrencyType().sendKeys(Keys.DOWN);
+		financialReporting_TrialBalanceReportObj.financialReportingTrialBalanceCurrencyType().sendKeys(Keys.ENTER);
+
+		waithelper.waitForElement(driver, 3000,
+				financialReporting_TrialBalanceReportObj.FinancialReporting_TrialBalanceReport_TrialBalanceFromDate());
+		financialReporting_TrialBalanceReportObj.FinancialReporting_TrialBalanceReport_TrialBalanceFromDate().click();
+
+		while (true) {
+			try {
+
+				waithelper.waitForElement(driver, 3000,
+						driver.findElement(
+								By.xpath("//span[contains(text(),'" + TrialBalanceReportTestDataType.TrialMonth + " "
+										+ TrialBalanceReportTestDataType.TrialYear + "')]")));
+				WebElement monthAndYear = driver
+						.findElement(By.xpath("//span[contains(text(),'" + TrialBalanceReportTestDataType.TrialMonth
+								+ " " + TrialBalanceReportTestDataType.TrialYear + "')]"));
+				break;
+			}
+
+			catch (NoSuchElementException nosuchElement) {
+				eNQUIRY_FinancialTransactionObj.ENQUIRY_FinancialTransaction_NextMonth().click();
+			}
+		}
+		WebElement FinalDay = driver.findElement(By.xpath("//td[@aria-label='"
+				+ TrialBalanceReportTestDataType.TrialFullMonth + " " + TrialBalanceReportTestDataType.TrialDate + ", "
+				+ TrialBalanceReportTestDataType.TrialYear + "']/span"));
+		clicksAndActionHelper.doubleClick(FinalDay);
+
+		waithelper.waitForElement(driver, 3000, eNQUIRY_FinancialTransactionObj.ENQUIRY_FinancialTransaction_ToDate());
+		eNQUIRY_FinancialTransactionObj.ENQUIRY_FinancialTransaction_ToDate().click();
+
+		while (true) {
+			try {
+
+				waithelper.waitForElement(driver, 3000,
+						driver.findElement(
+								By.xpath("//span[contains(text(),'" + TrialBalanceReportTestDataType.TrialToMonth + " "
+										+ TrialBalanceReportTestDataType.TrialToYear + "')]")));
+				WebElement monthAndYear = driver
+						.findElement(By.xpath("//span[contains(text(),'" + TrialBalanceReportTestDataType.TrialToMonth
+								+ " " + TrialBalanceReportTestDataType.TrialToYear + "')]"));
+				break;
+			}
+
+			catch (NoSuchElementException nosuchElement) {
+				waithelper.waitForElementToVisibleWithFluentWait(driver, eNQUIRY_FinancialTransactionObj.ENQUIRY_FinancialTransaction_NextMonth(), 5, 500);
+				eNQUIRY_FinancialTransactionObj.ENQUIRY_FinancialTransaction_NextMonth().click();
+			}
+		}
+		WebElement FinalDay2 = driver.findElement(By.xpath("//td[@aria-label='"
+				+ TrialBalanceReportTestDataType.TrialFullToMonth + " " + TrialBalanceReportTestDataType.TrialToDate
+				+ ", " + TrialBalanceReportTestDataType.TrialToYear + "']/span"));
+		clicksAndActionHelper.doubleClick(FinalDay2);
+
+		waithelper.waitForElement(driver, 3000,
+				financialReporting_TrialBalanceReportObj.FinancialReporting_TrialBalanceReport_Currency());
+		financialReporting_TrialBalanceReportObj.FinancialReporting_TrialBalanceReport_Currency()
+				.sendKeys(TrialBalanceReportTestDataType.Currency);
+		financialReporting_TrialBalanceReportObj.FinancialReporting_TrialBalanceReport_Currency().sendKeys(Keys.ENTER);
+	}
+	@And("^User Select the branch for trial balance report$")
+    public void user_select_the_branch_for_trial_balance_report() throws Throwable {
+		waithelper.waitForElement(driver, 3000,
+				financialReporting_TrialBalanceReportObj.FinancialReporting_TrialBalanceReport_BranchCode());
+		financialReporting_TrialBalanceReportObj.FinancialReporting_TrialBalanceReport_BranchCode()
+				.sendKeys(testData.get("BranchCode"));
+		for (int i = 0; i <200; i++) {
+			try {
+				driver.findElement(By.xpath("//ng-dropdown-panel//span[contains(text(),'"+testData.get("BranchCode")+"')]")).isDisplayed();
+				break;
+			} catch (Exception e) {
+				if (i==199) {
+					Assert.fail(e.getMessage());
+				}
+			}
+		}	
+		financialReporting_TrialBalanceReportObj.FinancialReporting_TrialBalanceReport_BranchCode()
+				.sendKeys(Keys.ENTER);
+
+    }
+
+    @And("^User Select the Report Type for trial balance report$")
+    public void user_select_the_report_type_for_trial_balance_report() throws Throwable {
+    	waithelper.waitForElement(driver, 3000,
+				financialReporting_TrialBalanceReportObj.financialReportingTrailBalanceReportType());
+		financialReporting_TrialBalanceReportObj.financialReportingTrailBalanceReportType()
+				.sendKeys(testData.get("ReportType"));
+		for (int i = 0; i <200; i++) {
+			try {
+				driver.findElement(By.xpath("//ng-dropdown-panel//span[contains(text(),'"+testData.get("ReportType")+"')]")).isDisplayed();
+				break;
+			} catch (Exception e) {
+				if (i==199) {
+					Assert.fail(e.getMessage());
+				}
+			}
+		}	
+		financialReporting_TrialBalanceReportObj.financialReportingTrailBalanceReportType()
+				.sendKeys(Keys.ENTER);
+    }
+
+    @And("^User Choose the trial balance From date$")
+    public void user_choose_the_trial_balance_from_date() throws Throwable {
+    	waithelper.waitForElement(driver, 3000,
+				financialReporting_TrialBalanceReportObj.FinancialReporting_TrialBalanceReport_TrialBalanceFromDate());
+		financialReporting_TrialBalanceReportObj.FinancialReporting_TrialBalanceReport_TrialBalanceFromDate().click();
+
+		while (true) {
+			try {
+
+				waithelper.waitForElement(driver, 3000,
+						driver.findElement(
+								By.xpath("//span[contains(text(),'" + testdata.get("ToMonth") + " "
+										+ testdata.get("Year") + "')]")));
+				WebElement monthAndYear = driver
+						.findElement(By.xpath("//span[contains(text(),'" + testdata.get("ToMonth")
+								+ " " + testdata.get("Year") + "')]"));
+				break;
+			}
+
+			catch (NoSuchElementException nosuchElement) {
+				waithelper.waitForElementToVisibleWithFluentWait(driver, eNQUIRY_FinancialTransactionObj.ENQUIRY_FinancialTransaction_NextMonth(), 5, 500);
+				eNQUIRY_FinancialTransactionObj.ENQUIRY_FinancialTransaction_NextMonth().click();
+			}
+		}
+		WebElement FinalDay = driver.findElement(By.xpath("//td[@aria-label='"
+				+ testdata.get("FullMonth") + " " +testdata.get("Date")+ ", "
+				+ testdata.get("Year") + "']/span"));
+		clicksAndActionHelper.doubleClick(FinalDay);
+
+    }
+
+    @And("^User Choose the trial balance To date$")
+    public void user_choose_the_trial_balance_to_date() throws Throwable {
+    	waithelper.waitForElement(driver, 3000, eNQUIRY_FinancialTransactionObj.ENQUIRY_FinancialTransaction_ToDate());
+		eNQUIRY_FinancialTransactionObj.ENQUIRY_FinancialTransaction_ToDate().click();
+
+		while (true) {
+			try {
+
+				waithelper.waitForElement(driver, 3000,
+						driver.findElement(
+								By.xpath("//span[contains(text(),'" + testdata.get("ToMonth") + " "
+										+ testdata.get("Year") + "')]")));
+				WebElement monthAndYear = driver
+						.findElement(By.xpath("//span[contains(text(),'" + testdata.get("ToMonth")
+								+ " " + testdata.get("Year") + "')]"));
+				break;
+			}
+
+			catch (NoSuchElementException nosuchElement) {
+				eNQUIRY_FinancialTransactionObj.ENQUIRY_FinancialTransaction_NextMonth().click();
+			}
+		}
+		WebElement FinalDay2 = driver.findElement(By.xpath("//td[@aria-label='"
+				+ testdata.get("FullMonth") + " " + testdata.get("Date")
+				+ ", " + testdata.get("Year") + "']/span"));
+		clicksAndActionHelper.doubleClick(FinalDay2);
+
+    }
+
+    @And("^User Select the Currency for trial balance report$")
+    public void user_select_the_currency_for_trial_balance_report() throws Throwable {
+    	eNQUIRY_FinancialTransactionObj.trialBalanceCurrencyType().click();
+		eNQUIRY_FinancialTransactionObj.trialBalanceCurrencyType().sendKeys(testData.get("Currency"));
+		for (int i = 0; i <200; i++) {
+			try {
+				driver.findElement(By.xpath("//ng-dropdown-panel//span[contains(text(),'"+testData.get("Currency")+"')]")).isDisplayed();
+				break;
+			} catch (Exception e) {
+				if (i==199) {
+					Assert.fail(e.getMessage());
+				}
+			}
+		}	
+		eNQUIRY_FinancialTransactionObj.trialBalanceCurrencyType().sendKeys(Keys.ENTER);
+    }
+
+	@And("^check the trial balance based on the leaf gl is available$")
+	public void check_the_trial_balance_based_on_the_leaf_gl_is_available()
+			throws IOException, ParseException, InterruptedException {
+		// Thread.sleep(6000);
+//    	waithelper.waitForElement(driver, 10000, financialReporting_TrialBalanceReportObj.FinancialReporting_TrialBalanceReport_Report());
+		javascripthelper.JavaScriptHelper(driver);
+		for (int i = 0; i <= 300000; i++) {
+			try {
+				browserHelper.SwitchToWindow(1);
+				break;
+			} catch (IndexOutOfBoundsException e) {
+				if (i == 300000) {
+					e.printStackTrace();
+				}
+			}
+		}
+		String beforexpath = "//td//div[contains(text(),'";
+		String afterxpath = "')]";
+		// Thread.sleep(6000);
+//    	waithelper.waitForElement(driver, 10000, driver.findElement(By.xpath(beforexpath +jsonWriter.readdata()+ afterxpath)));
+//    	javascripthelper.scrollIntoView(driver.findElement(By.xpath(beforexpath +jsonWriter.readdata()+ afterxpath)));
+
+		System.out.println("Leaf GL is in JSON " + jsonWriter.readdata());
+//    	System.out.println("Leaf GL is"+leafGL);
+		for(int j=1;j<=3;j++)
+		{
+		for(int i=3;i<=30;i++) {
+			try {
+				//table[@id='__bookmark_2']//tr[8]//td[1]/div
+				String leafGl = driver.findElement(By.xpath("//table[@id='__bookmark_2']//tr["+i+"]//td[1]/div")).getText();
+				System.out.println("leaf GL is"+leafGl);
+				
+			if((jsonWriter.readdata().trim()).equals(leafGl.trim()));
+			{
+				break;
+			}
+			} catch (NoSuchElementException e) {
+
+				if(i==30)
+				{
+				driver.findElement(By.xpath("//input[@title='Next page']")).click();
+				}
+				} catch (StaleElementReferenceException e) {
+
+			}
+		}
+		
+		}
+		
+		browserHelper.switchToParentWithChildClose();
+	}
+
 
 
 	

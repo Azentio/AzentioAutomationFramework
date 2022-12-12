@@ -352,6 +352,7 @@ Then validate Journal vourcher Reversal number
     
  @KUBS_GL2_UAT_005_001 @Report @GL2
   Scenario: Check GL balance for any period
+    And User update the test data id for Check GL balance for any period
     Given User should go to the kubs url and login as a maker user
     And Click on Finance Option for GL
     Then click on report icon
@@ -440,6 +441,7 @@ Then validate Journal vourcher Reversal number
   Scenario: StartJob
     Given User should go to the kubs url and login as a maker user
     Then Select configuration
+    And User get the system for job execution
     And user should navigate to job scheduler menu
     When click on temp grid button of job execution
     And select the date to start job
@@ -448,15 +450,21 @@ Then validate Journal vourcher Reversal number
     
     @KUBS_GL2_UAT_008_002 @MultiAuth @GL2
 Scenario: The report should display all the details for JV.
-Given Maker Navigate to UAT URL login
-Then click on report segment button
-And click on equiry menu
-Then click on edit icon near fiancial transaction menu
-And fill the mandtory field for Journal vourcher
-Then select Transaction from date Journal vourcher
-Then select Transaction to date Journal vourcher
-And click on view button for record
-Then validate all the details for Journal vourcher 
+Given Navigate to Azentio Kubs
+And Click on Finance Option for GL
+Then Click on Direction icon
+Then Click on General Ledger Transaction Field
+Then Click on Journal Voucher EyeIcon
+Then Click on Table Row First Eye Icon
+And Get all details of Journal Voucher
+#Then click on report segment button
+#And click on equiry menu
+#Then click on edit icon near fiancial transaction menu
+#And User select the Branch Code for verify details of JV
+#Then select Transaction from date Journal vourcher
+#Then select Transaction to date Journal vourcher
+#And click on view button for record
+#Then validate all the details for Journal vourcher 
 
 @KUBS_GL2_UAT_008_003 @MultiAuth @GL2
 
@@ -529,58 +537,82 @@ Then verify the approved invoicebill number is available in report
 
 @KUBS_GL2_UAT_008_007 @Report @GL2
   Scenario: Check the trial balance
-    Given User should go to the kubs url and login as a maker user
+  And User Update test data set id for trial balance 
+    Given Navigate to Azentio Kubs
+    And Click on Finance Option for GL
+    And get the system date for Income statement report
     Then click on report icon
     And user should navigate to financial reporting menu
     Then click on temp grid button of Trial Balance report
-    And fill the required field of Trial Balance report
+    And User Select the branch for trial balance 
+    And User Select the Report Type for trial balance 
+    And User choose trial balance from date for trial balance 
+    And User Choose trial balance To date for trial balance 
+    And User select the Currency type for trial balance 
     Then click on view button to view the report of Trial balance
     
   @KUBS_GL2_UAT_008_008 @Report @GL2
   Scenario: Check the trial balance summary
-    Given User should go to the kubs url and login as a maker user
+    And User Update test data set id for trial balance summary 
+    Given Navigate to Azentio Kubs
+    And Click on Finance Option for GL
+    And get the system date for Income statement report
     Then click on report icon
     And user should navigate to financial reporting menu
     Then click on temp grid button of Trial Balance report summarized
-    And fill the required field of Trial Balance report summarized
+    And User Select the branch for trial balance summary
+    And User Select the Report Type for trial balance summary
+    And User choose trial balance from date for trial balance summary
+    And User Choose trial balance To date for trial balance summary
+    And User select the Currency type for trial balance summary
     Then click on view button to view the report of Trial balance summary
-    
+    #pending
   @KUBS_GL2_UAT_008_009 @Report @GL2
   Scenario: Check the trial balance based on the leaf GL
-    Given User should go to the kubs url and login as a maker user
+    Given Navigate to Azentio Kubs
+    And Click on Finance Option for GL
     And user should navigate to accounting setup menu 
     Then click on eye button of chart of accounts definition submenu
     Then click on search button
     Then search coa code using coa name
     And get the coa code
-    
     Then click on report icon
     And user should navigate to financial reporting menu
     Then click on temp grid button of Trial Balance report
     And fill the required field of Trial Balance report based on leaf GL
     And click on view button in trial balance report 
-  #  Then click on view button to view the report of Trial balance
     And check the trial balance based on the leaf gl is available
     
   @KUBS_GL2_UAT_008_010 @Report @GL2
   Scenario: Check the trial balance based on the given from date to till date 
   						(From date should be less than or equal to current business date)
-    Given User should go to the kubs url and login as a maker user
+    And User Update test data set id for trial balance based on the given from date to till date 
+    Given Navigate to Azentio Kubs
+    And Click on Finance Option for GL
+    And get the system date for Income statement report
     Then click on report icon
     And user should navigate to financial reporting menu
     Then click on temp grid button of Trial Balance report
-    And fill the required field of Trial Balance report based on given date
+    And User Select the branch for trial balance report
+    And User Select the Report Type for trial balance report
+    And User Choose the trial balance From date
+    And User Choose the trial balance To date
+    And User Select the Currency for trial balance report
     Then click on view button to view the report of Trial balance
 
 @KUBS_GL2_UAT_008_011 @MultiAuth @GL2
 
-Scenario: System should display the balancesheet report  
-Given Maker Navigate to UAT URL login
+Scenario: System should display the balancesheet report
+And User Update test data set id for balancesheet report  
+Given Navigate to Azentio Kubs
+And Click on Finance Option for GL
+And get the system date for Income statement report
 And click on tool icon
 Then click on report segment button
 Then click on Financial reporting button
 Then click on balancesheet report
-Then fill the input fields of balancesheet report
+And User Select the branch code for balancesheet report
+And User Select the Report Type for balancesheet report
 Then Select Transaction from date Financial Transaction Report
 And click view button of report
 Then verify the Record available in the report
@@ -589,25 +621,31 @@ Then verify the Record available in the report
 @KUBS_GL2_UAT_008_012 @MultiAuth @GL2
 
 Scenario: System should display the Cashflow statement report  
-Given Maker Navigate to UAT URL login
+And User Update test data set id for Cashflow statement report
+Given Navigate to Azentio Kubs
+And Click on Finance Option for GL
+And get the system date for Income statement report
 And click on tool icon
 Then click on report segment button
 Then click on Financial reporting button
 Then click on Cashflow statement report
-Then fill the input fields of Cashflow statement report
+And User Select the branch code for Cashflow statement report
 Then Select Transaction from date Financial Transaction Report
 And click view button of report
 Then verify the Record available in report
 
 @KUBS_GL2_UAT_008_013 @MultiAuth @GL2
 
-Scenario: System should display the Income statement report  
-Given Maker Navigate to UAT URL login
+Scenario: System should display the Income statement report
+And User Update test data set id for Income Statement report  
+Given Navigate to Azentio Kubs
+And Click on Finance Option for GL
+And get the system date for Income statement report
 And click on tool icon
 Then click on report segment button
 Then click on Financial reporting button
 Then click on Income statement report
-Then fill the input fields of Income statement report
+And User select the branch code for Income Statement report
 Then Select Transaction from date Financial Transaction Report
 And click view button of report
 Then verify the Record available in report

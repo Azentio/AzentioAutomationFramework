@@ -95,7 +95,7 @@ public class FinancialReporting_GLBalancesReportObj {
 		return FinancialReporting_GLBalancesReport_NextMonth;
 	}
 	
-	@FindBy(xpath="//ion-col[5]//input")
+	@FindBy(xpath="//label[text()=' Currency ']/following-sibling::ng-select//input")
 	private WebElement FinancialReporting_GLBalancesReport_Currency;
 	public WebElement FinancialReporting_GLBalancesReport_Currency()
 	{

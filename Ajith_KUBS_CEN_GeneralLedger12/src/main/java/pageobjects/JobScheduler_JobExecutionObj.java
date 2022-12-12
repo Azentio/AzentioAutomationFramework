@@ -78,6 +78,12 @@ public class JobScheduler_JobExecutionObj {
 	public WebElement configuration_option() {
 		return configuration_option;
 	}
+	// get system date
+	@FindBy(xpath = "//span[@class='legal-entity'][1]")
+	private WebElement systemDate;
+	public WebElement systemDate() {
+		return systemDate;
+	}
 	
 	//next month
 	@FindBy(xpath="//owl-date-time-calendar/div/button[2]")
