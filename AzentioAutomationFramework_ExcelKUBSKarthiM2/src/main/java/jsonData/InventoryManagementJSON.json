@@ -1,0 +1,83 @@
+[
+{
+"User":"Maker",
+"BranchCode":"AZENTMAIN",
+"ItemCodeDescription":"IBALL-IBALL-MOUSE",
+"RequestQty":"1",
+"Remark":"TM",
+
+"InstrumentCode":"ic023",
+"InstrumentDescription":"instrumentCode_023",
+"StartingSerialNumber":"sn023",
+
+"AccessBranchCodeForIssue":"AZENTMAIN-Azentio Main Branch",
+"InventoryBranchCodeForIssue":"BR0004-West Zone",
+
+"AccessBranchCodeForReceive":"BR0004-West Zone",
+"InventoryBranchCodeForReceive":"BR0007-Andheri Branch",
+
+"AccessBranchCodeForOrder":"BR0004-West Zone",
+"InventoryBranchCodeForOrder":"BR0003-East Zone",
+
+"AccessBranchCodeForRequest":"BR0004-West Zone",
+"InventoryBranchCodeForRequest":"AZENTMAIN-Azentio Main Branch",
+
+
+
+
+"GRNbpName":"Bonton Agency",
+"GRNbpBranch":"Corporate Branch- Panvel",
+"GRNInvoiceNumber":"INV1112",
+"GRNDeliveryLocation":"West Zone",
+
+"GRNPoNumber":"Azentio_Soft-Agency-8-PO-290",
+"GRNQtyReceived":"1",
+"GRNQtyApproved":"1",
+
+
+ 
+	"gLCode":"IFRS-AS-AS1000017",
+	"GlMonth":"Nov",
+	"GlFullMonth":"November",
+	"GlFromYear":"2022",
+	"GlYear":"2022",
+	"GlDay":"1",
+	"GlToMonth":"Nov",
+	"GlFullToMonth":"November",
+	"GlToDate":"19",
+	
+	"requestReferanceNo"    : "TRN_IR_266_20220523162811",
+		"returnQuantity"        : "1",
+		"returnType"			: "Return to inventory",
+		"returnType1"			: "Found",
+		"returnType2"			: "Lost/Misplaced",
+		"returnReason2"			: "Excess Stock",
+		"returnReason1"			: "Mismatch between requested & received",
+		"returnReason"			: "Other Reasons",
+		"RemarkApprove"			: "Approved",
+		"RemarkRejected"		: "Rejected",
+		
+		// StockConfirm
+		"requestRefNumber"		: "TRN_IR_128_20220207171025",
+		"itemCode"				: "MARKER-White boad Marker",
+		"issuerefnumber"		: "TRN_SI_22_20220204152730",
+		"Item Description"		: "Term Deposit Certificate",
+		
+		"AcceptStatus":"Yes",
+		"Description":"Dell Keyboard",
+		
+		"ItemDescriptionForInvtItemDetails":"WHITEBOARD-WHITE BOARD",
+		
+		"RequestReferenceNumber":"TRN_IR_208_20220418154738",
+		"IndentReferenceNo":"TRN_PR_109_20220417161626",
+		"IssueReferenceNo":"TRN_SI_72_20220303122459",
+		"POReference":"Azentio_Soft-Agency-8-PO-219",
+		"ReturnType":"Found",
+		"Itemdescription":"STAPLERS-STAPLERS",
+		"ReturnTypeInventory":"Return to inventory",
+		"Voucher":"ADJ-84-32022",
+		"VoucherForStockIssue":"TRN_SI_80_20220328124933"
+	 
+	 
+}
+]

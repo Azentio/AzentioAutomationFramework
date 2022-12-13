@@ -1,0 +1,28 @@
+[
+	{
+		"usertType": "Maker",
+		"warningPecentage": "28",
+		"remark": "Ok",
+		"BudgetCodePrefix": "bc27",
+		"uatYearlyBudgetCode": "BUDG400",
+		"uatMonthlyBudgetCode": "BUDGC401",
+		"uatHalfYearlyBudgetCode": "BUDGC402",
+		"uatQuarterlyBudgetCode": "BUDG403",
+		"uatCurrentFinancialBudgetCode": "BUDG0502",
+		"budgetDefenitionEventCode": "BUDGET_REGISTER",
+		"budgetRequestAndAllocationEventCode": "BUDGET_CREATION",
+		"budgetSupplimentoryEventCode": "BUDGET_SUPPLIMENT",
+		"budgetTransferEventCode": "BUDGET_TRANSFER",
+		"uatYearlyBudgetType": "Capital Budgets",
+		"uatMonthlyBudgetType": "Financial Plan",
+		"uatHalfYearlyBudgetType": "Departments",
+		"uatQuarterlyBudgetType": "Revenue Budget",
+		"approvalCommentsFromReviewer": "Approved from Reviewer",
+		"approvalCommentsFromChecker": "Approved from Checker",
+		
+		"Month": "May",
+		"FullMonth": "May",
+		"Year": "2023",
+		"Day": "19"
+	}
+]
