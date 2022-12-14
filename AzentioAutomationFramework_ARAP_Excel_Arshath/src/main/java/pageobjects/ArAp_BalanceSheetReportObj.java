@@ -68,6 +68,13 @@ public class ArAp_BalanceSheetReportObj {
 	{
 		return arAp_BalanceSheetReport_NextMonth;
 	}
+	//PreviousMonth
+	@FindBy(xpath="(//button[@type='button'])[2]")
+	private WebElement arAp_BalanceSheetReport_PreviousMonth;
+	public WebElement arAp_BalanceSheetReport_PreviousMonth()
+	{
+		return arAp_BalanceSheetReport_PreviousMonth;
+	}
 	//View Button
 	@FindBy(xpath = "//div[1]/ion-header[1]/ion-toolbar[1]/ion-buttons[1]/ion-button[1]")
 	private WebElement arAp_BalanceSheetReport_ViewButton;

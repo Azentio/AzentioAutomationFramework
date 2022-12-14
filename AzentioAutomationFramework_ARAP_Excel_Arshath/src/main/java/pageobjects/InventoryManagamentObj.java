@@ -473,7 +473,7 @@ public class InventoryManagamentObj {
 		{
 			return inventory_previous_month;
 		}
-		@FindBy(xpath="//ion-button[contains(text(),'View')]")
+		@FindBy(xpath="//span[text()='View']")
 		private WebElement inventory_view;
 		public WebElement inventoryViewButton()
 		{

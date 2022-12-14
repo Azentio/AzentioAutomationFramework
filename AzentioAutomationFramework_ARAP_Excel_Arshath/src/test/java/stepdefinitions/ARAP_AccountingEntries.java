@@ -112,9 +112,7 @@ public class ARAP_AccountingEntries {
 	public void select_from_date_in_calender() throws Throwable {
 		// ----------CLICK ON FROM DATE--------------//
 		while (true) {
-			try {
-
-	waitHelper.waitForElementwithFluentwait(driver, driver.findElement(By.xpath("//span[contains(text(),'"+testData.get("Month")+" "+testData.get("Year")+"')]")));
+			try {	
 	WebElement monthAndYear = driver.findElement(By.xpath("//span[contains(text(),'"+testData.get("Month")+" "+testData.get("Year")+"')]"));
 	Thread.sleep(2000);
 	break;
@@ -126,13 +124,11 @@ arapObj.ARAPNextMonth().click();
    }
 		
 	}
-		waitHelper.waitForElement(driver, 3000, driver.findElement(By.xpath("//td[@aria-label='"
-				+ testData.get("FullMonth") + " " + testData.get("Date") + ", " + testData.get("Year") + "']/span")));
+		waitHelper.waitForElementToVisibleWithFluentWait(driver, driver.findElement(By.xpath("//td[@aria-label='" + testData.get("FullMonth") + " "
+				+ testData.get("Date") + ", " + testData.get("Year") + "']/span")), 60, 2);
 		WebElement Click = driver.findElement(By.xpath("//td[@aria-label='" + testData.get("FullMonth") + " "
 				+ testData.get("Date") + ", " + testData.get("Year") + "']/span"));
-
 		clickAndActionHelper.doubleClick(Click);
-
 			}
 
 	@And("^click on transaction to date in calender icon$")
@@ -146,13 +142,8 @@ arapObj.ARAPNextMonth().click();
 	public void select_to_date_in_calender() throws Throwable {
 		while (true) {
 			try {
-
-				//span[contains(text(),'Oct 2022')]
-//				Thread.sleep(1000);
-//				waithelper.waitForElement(driver, 2000, driver.findElement(By.xpath("//span[contains(text(),'"+arAp_BalanceSheetReportTestDataType.Month+" "+arAp_BalanceSheetReportTestDataType.Year+"')]")));
-			waitHelper.waitForElementwithFluentwait(driver, driver.findElement(By.xpath("//span[contains(text(),'"+testData.get("Month1")+" "+testData.get("Year1")+"')]")));
+//waitHelper.waitForElementwithFluentwait(driver, driver.findElement(By.xpath("//span[contains(text(),'"+testData.get("Month1")+" "+testData.get("Year1")+"')]")));
 				WebElement monthAndYear = driver.findElement(By.xpath("//span[contains(text(),'"+testData.get("Month1")+" "+testData.get("Year1")+"')]"));
-//				Thread.sleep(2000);
 				break;
 			}
 

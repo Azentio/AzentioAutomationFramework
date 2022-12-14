@@ -153,7 +153,18 @@ public class Payment_SettlementObj {
 	  {
 		  return accountsPayable_paymentSettlementNextRecord;
 	  }
-	  
+	  @FindBy(xpath="//input[@placeholder='Search Txn Status']")
+	  private WebElement paymentSettlement_SearchTXNNumber;
+	  public WebElement paymentSettlementSearchTXNNumber()
+	  {
+		  return paymentSettlement_SearchTXNNumber;
+	  }
+	  @FindBy(xpath="//app-data-grid[1]//datatable-row-wrapper[1]//datatable-body-cell[4]//span")
+	  private WebElement accountsPayable_ApprovedSettlementReferenceNumber;
+	  public WebElement accountsPayableApprovedSettlementRefNo()
+	  {
+		  return accountsPayable_ApprovedSettlementReferenceNumber;
+	  }
 	  
 	  
 	  

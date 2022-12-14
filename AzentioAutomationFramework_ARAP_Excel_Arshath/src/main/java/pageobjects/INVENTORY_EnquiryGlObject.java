@@ -67,6 +67,12 @@ public class INVENTORY_EnquiryGlObject {
 	{
 		return inventory_next_month;
 	}
+	@FindBy(xpath="(//button[@type='button'])[1]")
+	private WebElement inventory_previous_month;
+	public WebElement inventory_previous_month()
+	{
+		return inventory_previous_month;
+	}
 	@FindBy(xpath="//ion-button[contains(text(),'View')]")
 	private WebElement inventory_view;
 	public WebElement inventoryViewButton()

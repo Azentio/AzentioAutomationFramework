@@ -150,7 +150,7 @@ And Verify the Accounts Payable Report is correctly displayed
    Then Fill branch details for report
    And select the date
    And click the view icon
-   Then Verify Balance sheet should be updated correctly basis the legs impacted in accounting entries.
+   Then Verify Balance sheet should be updated correctly basis the legs impacted in accounting entriess
    
    @KUBS_AR_AP_UAT_003_004_TC_03  @AR_AP
    Scenario: verify Accounts payable report post bill is cancelled
@@ -452,6 +452,7 @@ Given User should go to the kubs url and login as a maker user
 And click on accounts Payable module
 And Go to payment settlement module
 Then click on search
+And user update the Excelsheet testdata for payment settlement accounting Entries
 And search for approved record in view area
 And get the approved record from list view
 Then click on report segment button
@@ -472,43 +473,50 @@ Given User should go to the kubs url and login as a maker user
 And user should navigate to accounts payable menu
 When click on eye button of manual payout
 And click on add button for manual payout
+And user update the Testdata for cancelled payout txn screen
 And Fill the required fields for verify cancelled payment txn availability
     
 @KUBS_AR_AP_UAT_005_004_TC_02  @AR_AP
 Scenario: Verify accounting entries post payment settlement cancellation
 Given User should go to the kubs url and login as a maker user
-Then Choose the second Tab Segment
 And click on accounts Payable module
 Then Click sub module Payment settlement Cancellation Eye Icon
 And Click On Search Icon
+And user update the Excelsheet testdata for payment settlement cancellation accounting Entries
 Then Enter Txn No for Advance to Empolyee
 Then Click on Table Row First Eye Icon in ARAP
-And Get the Cancelled Txn Number
-Then Third Segment report Icon
-And Choose Enquiry Module
-Then Click Note iCon near by financial transction
-And choose branch codes
-And click on transaction from date in calender
-Then Select from date in calender
-And click on transaction to date in calender icon
-Then Select To date in calender
-And Click View HyperLink
+#And Get the Cancelled Txn Number
+Then click on report segment button
+And click on equiry menu
+Then click on edit icon near by fiancial transaction menu
+And choose branch code
+And click on transaction from date calender icon 
+Then choose the from date
+And click on the transaction to date calender icon
+Then choose the to date
+And click on view button
 Then Verify Accounting entries Advance to Empolyee post payment settlement cancellation
 
-@KUBS_AR/AP_UAT_006_001_TC_01_Vendor  @AR/AP @e6
+@KUBS_AR_AP_UAT_006_001_TC_01  @AR/AP @e6
 Scenario: Creating Manual payouts for approved Bills of a Vendor
 Given User should go to the kubs url and login as a maker user
 And user should navigate to accounts payable menu
 When click on eye button of manual payout
 And click on add button for manual payout
+And user update the exccelsheet Testdata for Manual payout
 And Fill the required fields for manual payout vendor
 Then Save and submit the manual payout record
-    
-And user update the exccelsheet Testdata for Manual payout
+And click notification button
+Then choose first record in the notification records
+And click on Submit button 
+Then enter remark in confirmation alert
+Then click on submit button in alert
+And capture the reviewer ID in pop up which is open when we submit our record in maker stage
+
 Then log in to the reviewer account
 Then click on the Notification select the Cheque record and Approve
   	
-And user update the exccelsheet Testdata for Advance to Employee
+
 Then log in to the Checker Account
 And then checker claim the record
 Then click on the checker Notification 
@@ -519,3 +527,76 @@ And user should navigate to accounts payable menu
 When click on eye button of manual payout
 Then Get the payout status
 And maker should logout
+
+@KUBS_AR_AP_UAT_006_001_TC_02  @AR/AP
+Scenario: Verify accounting entries post payout approval (Manual payout for multiple bill)
+Given User should go to the kubs url and login as a maker user
+And user should navigate to accounts payable menu
+When click on eye button of manual payout
+Then click on search
+And user update the Excelsheet Testdata for manual payout accounting Entries
+And search the active record in the manual pay out and get the transaction reference number
+Then click on report segment button
+And click on equiry menu
+Then click on edit icon near by fiancial transaction menu
+And choose branch code
+And click on transaction from date calender icon 
+Then choose the from date
+And click on the transaction to date calender icon
+Then choose the to date
+And click on view button
+Then verify the manual payout is appeared in the accounting entries
+
+@KUBS_AR_AP_UAT_006_001_TC_03  @AR/AP
+Scenario: Verify Balance sheet post payout approval
+Given User should go to the kubs url and login as a maker user
+And click the notes option in top
+And click the financial reporting
+And click the balance sheet report
+And user update the excelsheet Testdata for Manual payout balancesheet
+Then Fill branch details for report
+And select the date
+And click the view icon
+Then Verify Balance sheet should be updated correctly basis the legs impacted in accounting entriess
+
+@KUBS_AR_AP_UAT_006_001_TC_04  @AR/AP
+Scenario: Verify Accounts Payable Report post payout approval (Payout for multiple bills)
+Given User should go to the kubs url and login as a maker user
+And click on accounts Payable module
+When click on eye button of manual payout
+Then click on search
+And user update the Excelsheet Testdata for Account payable post payout
+And search the multiple bill payout approved reference number
+And click on that record
+And get the invoice number
+Then click on report segment button
+And click on report main menu
+And click on accouts payable report
+And enter businessPartner name for multiple record
+And click on date icon
+And give date in report
+And give status of the settlement record
+And click on view button
+Then verify the approved invoice reference number are available in the payable report
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
