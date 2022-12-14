@@ -1,0 +1,26 @@
+[
+{
+		"User": "Maker",
+		"BranchCode": "AZENTMAIN-Azentio Main Branch",
+		"GLCode": "IFRS-1000044-AS - HDFC Bank AC 1234534555",
+		
+		"GLMonth": "Oct",
+		"GLFullMonth": "October",
+		"GLDay": "22",
+		
+		"GLYear": "2022",
+		
+		"GLToMonth": "Oct",
+		"GLFullToMonth": "October",
+		"GLToDate": "22",
+		
+		"Voucher"  :"JV_AZE_OCT2022_00124",
+		
+		"Voucher1":"JV_AZE_OCT2022_00123",
+		"Voucher2":"JV_AZE_OCT2022_00125",
+		
+		"VoucherReverse"  :"JV_AZE_OCT2022_00126",
+		"VoucherReverse1"  :"JV_AZE_OCT2022_00122"
+	}
+
+]
