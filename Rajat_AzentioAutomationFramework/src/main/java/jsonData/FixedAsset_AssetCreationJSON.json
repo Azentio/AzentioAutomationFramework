@@ -1,0 +1,43 @@
+[
+	{
+		"User"					: "Maker",
+		"BranchCode"			: "AZENTMAIN",
+		"AssetCode"				: "01-001-woodply39239",
+		"BillReferenceNo"		: "INV-365-42022",
+		"Remark"				: "OK",
+		
+		"AssetItemNumber"		: "605",
+		"AssetItemNumberimpaired" : "612",
+		"AssetItemNumberRevalued" : "620",
+		"AssetItemNumberamended" : "630",
+		"AssetItemNumberReplaced" : "641",
+		"AssetItemDescription"	: "Wood box for Parcel",
+		"AssetValue"			: "95000",
+		"SalvageValue"			: "9000",
+		
+		"GlYear"				: "2023",
+		"GlDay"					: "2",
+		"GlToMonth"				: "Jun",
+		"GlFullToMonth"			: "June",
+		"GlToDate"				: "30",
+		
+		
+		
+		"GRN_ReferenceNumber" : "GRN-Agency-8-260-1242022",
+		"BillReferenceNumber" : "INV-365-42022",
+		"ExternalReferenceNumber" : "260",
+		"AssetLifeUnit" : "Year",
+		"HSNcode" : "8471- Laptop",
+		"SalvagePercentage" : "5",
+		"AssetLife" : "1",
+		"PO_Creation" : "Azentio_Soft-Agency-8-PO-323",
+		"CheckerRemark" : "Approved",
+		"CapitalizationMonth" : "Oct",
+		"CapitalizationFullMonth" : "October",
+		"CapitalizationDate" : "21",
+		"CapitalizationYear" : "2022",
+		"RemarkByMaker" : "Submit By Maker"
+		
+	}
+]
+

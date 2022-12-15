@@ -1,0 +1,12 @@
+[
+	{
+		"User" : "Maker",
+		"AssetReferenceNumberForTransfer" : "01-001-woodply28738",
+		"AssetReferenceNumberImpairedForTransfer" : "01-001-woodply28738",
+		"AssetReferenceNumberRevaluedForTransfer" : "01-001-woodply28738",
+		"AssetReferenceNumberUndertaking" : "01-001-woodply28738",
+		"RemarkByMaker" : "submit by maker",
+		"CheckerRemark" : "approved by checker",
+		"NewBranch" : "Dadar Branch" 
+	}
+]

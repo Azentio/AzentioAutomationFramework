@@ -1,0 +1,31 @@
+[	
+	{
+		"User" : "Maker",		
+		"AssetReferenceNumber" : "01-001-adjustable table_AZENTMAIN_4464",		
+		"ItemNumber" : "111-1",		
+		"CurrencyForImpairement" : "INR",		
+		"CheckerRemark" : "Approved",
+		"RemarkByMaker" : "Submit By Maker",
+		
+        "userType": "Maker",
+		"allocatedAssetRefNo": "01-001-desk_BOB667_4",
+		"writeOffAssetRefNo": "01-001-woodply10837_AZENTMAIN_101010101010101011",
+		"writeOffImpairedAssetReferenceNumber": "01-001-Study Table_AZENTMAIN_6",
+		"writeOffRevaluedAssetReferenceNumber": "01-001-Study Table_AZENTMAIN_6",
+		"writeOffAmmendentAssetReferenceNumber": "01-001-Table and Chairs_AZENTMAIN_1428",
+		"writeOffReplacementAssetReferenceNumber": "01-001-woodply10837_AZENTMAIN_101010101010101010",
+		"writeOffAllocatedAssetReferenceNumber": "01-001-plastic table_AZENTMAIN_4302",
+		"writeOffUnderTakingdAssetReferenceNumber": "01-001-Table_AZENTMAIN_9",
+		"AllocationEmployeeName": "anant",
+		"WriteOffNewAssetItemNumber": "527845",
+		"WriteOffNewAssetDescription": "New Building",
+		"allocatedAssetRefNoDeAllocate": "01-001-adjustable table_AZENTMAIN_4465",
+		"allocatedAssetRefRevalued": "01-001-woodply245_AZENTMAIN_10111",
+		"allocatedAssetRefNoAmmendent": "01-001-adjustable table_AZENTMAIN_4465",
+		"allocatedAssetRefNoReplacement": "01-001-plastic table_AZENTMAIN_4304",
+		"allocatedAssetRefNoReturn": "01-001-plastic table_AZENTMAIN_4305",
+		"allocatedAssetRefNoSale": "01-001-plastic table_AZENTMAIN_4304",
+		"allocatedAssetRefNoTransfer": "01-001-adjustable table_AZENTMAIN_4463",
+		"bookValue": "14814"
+	}
+]

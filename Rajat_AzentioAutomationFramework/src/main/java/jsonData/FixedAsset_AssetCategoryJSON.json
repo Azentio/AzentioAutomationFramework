@@ -1,0 +1,103 @@
+[
+{
+		"User"					: "Maker",
+		"AssetCategory"			: "Furnitures & Fixtures",
+		"AssetSubCategory"		: "Table & Chair",
+		"AssetItemCategory"		:	"woodply39",
+		"AssetDescription"		:	"woodply39",
+		"Remark"				:	"ok",
+		
+		
+		
+		
+		"AssetCode"						: "01-001-woodply39",
+		"AccountingModel"				: "Cost Model",
+		"AssetLifeUnit" 				: "Year",
+		"AssetLife"						: "2",
+		"BasisForDeperciation"  		: "ASSET COST",
+		"DeperciationMethod"			: "SLM",
+		"DeperciationRoundingMethod"	: "Bank",
+		
+		
+		
+		"FixedAssetGL"					: "IFRS-AS-AS1000011-Chairs & Tables",
+		"AccumulatedDepreciationGL"		: "IFRS-OPEXP-OE6000008- Accumulated Depreciation",
+		"DepreciationGL"				: "IFRS-OPEXP-OE6000007-Deprecitation for Fixed Assets",
+		"ProfitOnSaleGL"				: "IFRS-NONOPEXP-NOP7000015-Profit on sale of Asset",
+		"lossOnSaleGL"					: "IFRS-7000023-NOP-Loss on sale of fixed asset",
+		"WriteOffGL"					: "IFRS-NONOPEXP-NOP7000014-Asset Write Off",
+		"ImpairmentLossGL"				: "IFRS-7000021-NOP-Impairment Loss",
+		"AccumulatedImpairmentLossGL"	: "IFRS-7000022-NOP-Accumulated Impairment GL",
+		"RevaluationSurplusGL"			: "IFRS-4000004-IC-REVALUATION SURPLUS",
+		
+		
+		
+		"StartSerialNumber"				: "10111",
+		
+		
+		"AssetSaleCode" : "01-001-adjustable table",
+		"FromMonth"		: "Apr",
+		"FromFullMonth"	: "April",
+		"FromDay"		: "4",
+		"Year"			: "2023",
+		
+		"ReplacementReportAssetCode" : "ELECTRONICS-LAP001-Apple_Mac_Book",
+		"ReplacementReportItemNumber" : "IN7585",
+		"ReplacementFromMonth"		: "Apr",
+		"ReplacementFromFullMonth"	: "April",
+		"ReplacementFromDay"		: "19",
+		"ReplacementYear"			: "2023",
+		
+		"ImpairmentFromMonth"		: "Apr",
+		"ImpairmentFromFullMonth"	: "April",
+		"ImpairmentFromDay"			: "19",
+		"ImpairmentYear"			: "2023",
+		
+		"RevaluationFromMonth"		: "Apr",
+		"RevaluationFromFullMonth"	: "April",
+		"RevaluationFromDay"		: "26",
+		"RevaluationYear"			: "2023",
+		
+		"ReturnReportAssetCode" : "ELECTRONICS-LAP001-Apple_Mac_Book",
+		"ReturnReportItemNumber" : "IN7585",
+		"ReturnFromMonth"		: "Apr",
+		"ReturnFromFullMonth"	: "April",
+		"ReturnFromDay"		: "26",
+		"ReturnYear"			: "2023",
+		
+	"AllocationReportEmployeeID" : "Anant",
+	"AllocationReportItemNumber" : "Account12",
+	"AllocationFromMonth" : "Apr",
+	"AllocationFromFullMonth" : "April",
+	"AllocationFromDay" : "26",
+	"AllocationYear" : "2023",
+	
+	
+	"DeAllocationReportEmployeeID" : "Anant",
+	"DeAllocationFromMonth"  : "Apr",
+	"DeAllocationFromFullMonth" : "April",
+	"DeAllocationFromDay": "26", 
+	"DeAllocationYear": "2023",
+	
+	"DeAllocationToMonth": "Apr",
+	"DeAllocationToFullMonth": "April",
+	"DeAllocationToDate": "26",
+	"DeAllocationToYear": "2023",
+		
+	"AmendmentModification" : "Capitalization Date",
+	"AmendmentFromMonth"  : "Apr",
+	"AmendmentFromFullMonth" : "April",
+	"AmendmentFromDay": "26", 
+	"AmendmentYear": "2023",
+	
+	"AmendmentToMonth": "Apr",
+	"AmendmentToFullMonth": "April",
+	"AmendmentToDate": "26",
+	"AmendmentToYear": "2023"
+		
+		
+		
+		
+		
+}
+]

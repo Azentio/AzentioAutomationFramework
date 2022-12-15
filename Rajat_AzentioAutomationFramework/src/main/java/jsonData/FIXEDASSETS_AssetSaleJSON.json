@@ -1,0 +1,16 @@
+[
+	{
+		"User" : "Maker",
+		"AssetReferenceNumberForProfit" : "01-001-adjustable table_AZENTMAIN_4456",
+		"AssetReferenceNumberForLoss" : "01-001-wooden table_AZENTMAIN_5002",
+		"ItemNumber" : "Asset-654",
+		"ItemNumberForLoss" : "AIN111111",
+		"SaleValue" : "1500000.00",
+		"SaleValueInLoss" : "30000.00",
+		"Currency" : "INR",
+		"ActionableBy" : "anant",
+		"Remark" : "ok",
+		"RemarkByMaker" : "submit by maker",
+		"CheckerRemark" : "approved by checker"
+	}
+]
