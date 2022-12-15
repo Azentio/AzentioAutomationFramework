@@ -1,0 +1,25 @@
+[
+	{
+		"User"			: "Setup",
+		"Template"		: "Base Template",
+		"Template1"		: "CUSTOM_TEMPLATE",
+		"BookName"		: "Testing_50",
+		"BookName1"		: "Testing_30",
+		"Default"		: "Testing_504818",
+		"Modify"		: "Accounting_",
+		"Day"			: "3",
+		"Month"			: "Sep",
+		"Year"			: "2023",
+		"BookType"		: "IFRS Book",
+		"BookType1"		: "GAAP",
+		"Remark"		: "Okay",
+		
+	
+		
+		"CategoryCode"	: "Income10",
+		"CategoryBook"	: "Income20",
+		"CategoryCode1"	: "Expenditure10",
+		"CategoryBook1"	: "Expenditure20",
+		"GlGeneration"	: "Auto"
+	}
+]

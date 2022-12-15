@@ -1,0 +1,16 @@
+[{
+
+
+
+"User": "Maker",
+"CashGL" : "IFRS-AS-AS1000034 - Cash at Bank- GPP",
+"GLCheck" : "IFRS-1000045-AS -  ICICI Bank AC ICICI883298348348394",
+"InterBranchGL" : "IFRS-1000047-AS - Inter Branch GL",
+"PositionGL" : "IFRS-AS-AS1000017 - Non-Financial Inventories",
+"PLExchangeGainGL" : "IFRS-7000018-NOP - Loss Adjustment GL",
+"PLExchangeLossGL"  : "IFRS-7000018-NOP - Loss Adjustment GL",
+"RevaluationProfitGL" : "IFRS-NONOPEXP-NOP7000015 - Profit on sale of Asset",
+"RevaluationLossGL" : "IFRS-7000018-NOP - Loss Adjustment GL",
+"RevaluationNotionalProfitGL" : "IFRS-NONOPEXP-NOP7000015 - Profit on sale of Asset",
+"RevaluationNotionalLossGL" :"IFRS-7000018-NOP - Loss Adjustment GL"
+}]

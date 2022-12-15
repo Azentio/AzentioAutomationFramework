@@ -1,0 +1,23 @@
+[
+	{
+		"BudgetPeriod": "YEARLY",
+		"BudgetAmounT": "100000000",
+		"BudgetAmounT1": "50000"
+	},
+	{
+		"BudgetPeriod": "MONTHLY",
+		"BudgetAmounT": "100000000"
+	},
+	{
+		"BudgetPeriod": "QUARTERLY",
+		"BudgetAmounT": "100000000"
+	},
+	{
+		"BudgetPeriod": "HALFYEARLY",
+		"BudgetAmounT": "100000000"
+	},
+	{
+		"BudgetPeriod": "YEARLY",
+		"Amount":"1000000000000"
+	}
+]

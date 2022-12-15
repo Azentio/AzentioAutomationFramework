@@ -1,0 +1,37 @@
+[
+	{
+		"UserType": "Maker",
+		"Day": "28",
+		"FullMonth": "November",
+		"Month": "Nov",
+		"Year": "2022",
+		"VendorContractStatus": "Active",
+		
+		
+		// Accounts Payable Report
+		"InvoiceStatus":"Active",
+		"CancellInvoiceStatus":"Cancelled",
+		"PayableStatus":"All",
+		"CancelledPayableStatus":"Cancelled",
+		
+		// Accounting enteries
+		"ManualPayoutStatus":"Active",
+		
+		//ReceivableReport
+		"ReceivableReportStatusAll":"All",
+
+		//PoReport
+		"ApprovedPo":"Active",
+		//ReceivableStatus report
+		"ReceivableStatus":"Open",
+		"ClosedReportStatus":"Closed",
+		"advanceApprovedPayoutReferenceNumber":"PTN-901-58-1452022",
+		
+		//Payout Report
+		"PayoutStatus":"Active",
+		
+		//balance sheet 
+		"balancesheetBranchName":"Azentio Main"
+		
+	}
+]
