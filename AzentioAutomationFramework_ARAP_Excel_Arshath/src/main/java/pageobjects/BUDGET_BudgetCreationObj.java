@@ -97,6 +97,13 @@ public class BUDGET_BudgetCreationObj {
 		return budget_creation_alert_remarks;
 	}
 
+	@FindBy(xpath = "(//ion-textarea/div/textarea[@name='remarks'])[2]")
+	private WebElement budget_creation_alert_remark;
+
+	public WebElement budgetCreation_AlertRemark() {
+		return budget_creation_alert_remark;
+	}
+	
 	@FindBy(xpath = "//ion-button[@ng-reflect-router-link='/tabs/list/datagrid/36']")
 	private WebElement budget_creation_action_button;
 

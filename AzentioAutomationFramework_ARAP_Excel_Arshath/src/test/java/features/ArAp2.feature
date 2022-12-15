@@ -576,15 +576,93 @@ And enter businessPartner name for multiple record
 And click on date icon
 And give date in report
 And give status of the settlement record
-And click on view button
+And click on the view button
 Then verify the approved invoice reference number are available in the payable report
 
+@KUBS_AR_AP_UAT_006_001_TC_05  @AR/AP
+Scenario: Verify Payout Report post payout approval (Payout for multiple bills)
+Given User should go to the kubs url and login as a maker user
+And click on accounts Payable module
+When click on eye button of manual payout
+And user update the Excelsheet Testdata for post payout approval
+And get the recently approved payout reference number 
+Then click on report segment button
+And click on report main menu
+And click on the payout report
+And enter business partner name for payout report
+And click on date icon
+And give date in report
+And enter payout status in payout report
+And click on the view button
+Then  verify approved payout reference number is available in the payout report
 
+@KUBS_AR_AP_UAT_006_002_TC_01  @AR/AP @e5
+Scenario: Creating manual payouts for approved advances of a vendor
+Given User should go to the kubs url and login as a maker user
+And user should navigate to accounts payable menu
+When click on eye button of manual payout
+And click on add button for manual payout
+And user update the Excelsheeet Testdata for advance
+And Fill the required fields for manual payout vendor
+Then Save and submit the manual payout record
+And click notification button
+Then choose first record in the notification recordss
+And click on Submit button 
+Then enter remark in confirmation alert
+Then click on submit button in alert
+And capture the reviewer ID in pop up which is open when we submit our record in maker stagess
+    
+Then log in to the reviewer account
+Then click on the Notification select the Cheque record and Approve
 
+Then log in to the Checker Account
+And then checker claim the record
+Then click on the checker Notification 
+And select the Cheque record and Approve by checker 
+    
+Given User should go to the kubs url and login as a maker user
+And user should navigate to accounts payable menu
+When click on eye button of manual payout
+Then Get the payout status
+And maker should logout
 
+@KUBS_AR_AP_UAT_006_002_TC_02  @AR/AP
+Scenario: Verify accounting entries post payout approval
+Given User should go to the kubs url and login as a maker user
+And click on accounts Payable module
+When click on eye button of manual payout
+And user update the Excelsheet Testdata for payout approval accounting Entries
+And get the recently approved payout reference number 
+Then click on report segment button
+Then click on report segment button
+And click on equiry menu
+Then click on edit icon near by fiancial transaction menu
+And choose branch code
+And click on transaction from date calender icon 
+Then choose the from date
+And click on the transaction to date calender icon
+Then choose the to date
+And click on view button
+Then verify the approved payout reference number is available in the accounting entries screen
 
-
-
+@KUBS_AR_AP_UAT_006_002_TC_03  @AR/AP
+Scenario: Verify Balance sheet post payout approval
+Given User should go to the kubs url and login as a maker user
+Then Choose the second Tab Segment
+And Click On Main module Accounts payable
+Then Click on Sub module Maual payout
+Then Click on Table Row First Eye Icon in ARAP
+And Get the manual payout Branch Name
+And Get the Referance Number
+Then Get the Transaction Date
+Then Third Segment report Icon
+And Click on Financial Reporting module
+Then Click on Balance sheet Sub module
+#And Give Getted Branch code 
+Then Fill branch details for report
+Then Give Getted Transaction Date
+Then Click on Balance sheet View button
+And verify Balance sheet post Bill is approved
 
 
 
