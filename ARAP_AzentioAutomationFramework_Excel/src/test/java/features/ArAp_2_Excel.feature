@@ -197,6 +197,7 @@ And Give the Adjustment Ref No and Validate
    Scenario: Verify Balance sheet post Credit Note is cancelled
    Given User should go to the kubs url and login as a maker user
    Then select data set ID for Verify balance sheet post credit note is cancelled
+   Then Choose the second Tab Segment
    When click the Account Receivable main module
    And click the eye icon in credit note
    And click the search icon in credit note page
@@ -207,7 +208,7 @@ And Give the Adjustment Ref No and Validate
    And click the financial reporting
    And click the balance sheet report
   # And select the branch
-   Then Fill branch details for report
+   Then Fill branch details for balance sheet report
    And select the date
    And click the view icon
    Then Verify Balance sheet should be updated correctly basis the legs impacted in accounting entries.
@@ -216,6 +217,7 @@ And Give the Adjustment Ref No and Validate
    Scenario: Verify Accounts Receivable Report post credit note is cancelled
    Given User should go to the kubs url and login as a maker user
    Then select data set ID for Verify accounts receivable report post credit note is cancelled
+   Then Choose the second Tab Segment
    When click the Account Receivable main module
    And click the eye icon in credit note
    And click the search icon in credit note page
@@ -235,6 +237,7 @@ And Give the Adjustment Ref No and Validate
   Scenario: verify credit cancelled is not available in payment settlement
    Given User should go to the kubs url and login as a maker user
    Then select data set ID for verifying credit cancelled is not available
+   Then Choose the second Tab Segment
    When click the Account Receivable main module
    And click the eye icon in credit note
    And click the search icon in credit note page
@@ -248,6 +251,219 @@ And Give the Adjustment Ref No and Validate
    And select buisness partner in payment settlement for credit
    Then verify that invoice from credit not is not available in bill list
 
+ @KUBS_AR/AP_UAT_003_007_TC_05
+    Scenario: Verify cancelling Credit Note is not allowed if the same has been adjusted at payment settlement
+   Given user navigate to the url and login as a maker for cancellation of contract is not allowed
+	 And click on accounts Payable module
+	 And goto vendor contract module
+	 And click on Add Icon
+Then fill all the mendatory fields for creating vendor
+And add item details for the contract
+And add the payment term for the contract
+And add the benificiory details and select auto payout as yes
+And click notification button
+Then choose first record in the notification record
+And click on Submit button 
+Then enter remark in confirmation alert
+Then click on submit button in alert
+And capture the reviewer ID in pop up which is open when we submit our record in maker stage
+Then logout from maker
+And login with reviewer credentials
+Then click on notification button
+And select our record in notification records using reference ID
+Then Approve the record from reviewer
+And enter the remark in alert
+Then click on submit in alert
+Then verify the approval status of the record
+And logout from reviewer
+Then login as a checker 
+And click on security management menu in checker
+Then click on action button under security management menu
+And select our record and clime using reference ID
+Then click on Notification button
+Then select our record in notification records by the help of reference ID
+And click on approve button in checker stage
+Then give alert remark 
+Then click on submit button on alert
+And verify the record got approved from checker
+Then logout from checker
+And login with Maker ID
+And click on accounts Payable module
+And goto vendor contract module
+And get the contract number
+And goto po creation module
+And click on Add Icon
+And fill the mendatory fields for po creation 
+And save the po creation record
+And save the item details for pocreation 
+And save the benificiery details for po creation
+And click notification button
+Then choose first record in the notification record
+And click on Submit button 
+Then enter remark in confirmation alert
+Then click on submit button in alert
+And capture the reviewer ID in pop up which is open when we submit our record in maker stage
+Then logout from maker
+And login with reviewer credentials
+Then click on notification button
+And select our record in notification records using reference ID
+Then Approve the record from reviewer
+And enter the remark in alert
+Then click on submit in alert
+Then verify the approval status of the record
+And logout from reviewer
+Then login as a checker 
+And click on security management menu in checker
+Then click on action button under security management menu
+And select our record and clime using reference ID
+Then click on Notification button
+Then select our record in notification records by the help of reference ID
+And click on approve button in checker stage
+Then give alert remark 
+Then click on submit button on alert
+#And verify the record got approved from checker
+Then logout from checker
+And login with Maker ID
+And click on accounts Payable module
+Then click on po creation module
+And search for approved po
+Then go to GRN module
+And click on Add Icon
+And check GRN can be created for that perticular po
+Then go to Item details and enter po number for approval
+And click notification button
+Then choose first record in the notification record in GRN stage
+And click on Submit button 
+Then enter remark in confirmation alert in grn 
+And capture the reviewer ID in pop up which is open when we submit our record in maker stage
+Then logout from maker
+And login with reviewer credentials
+Then click on notification button
+And select our record in notification records using reference ID
+Then Approve the record from reviewer
+Then enter remark in confirmation alert in grn
+Then verify the approval status of the record
+And logout from reviewer
+Then login as a checker 
+And click on security management menu in checker
+Then click on action button under security management menu
+And select our record and clime using reference ID
+Then click on Notification button
+Then select our record in notification records by the help of reference ID
+And click on approve button in checker stage
+Then enter remark in confirmation alert in grn 
+And verify the record got approved from checker
+Then logout from checker
+
+And login with Maker ID
+And click on accounts Payable module
+Then click on po creation module
+And get the approved po number from approved record
+And go to invoice bill booking module
+And click on Add Icon
+And fill the invoice booking record
+And goto invoice bill booking temp view and select the record
+And fill The invoice againse po record
+And click notification button
+Then choose first record in the notification record in GRN stage
+And click on Submit button 
+Then click on the submit button which is appeared in alert box
+And capture the reviewer ID in pop up which is open when we submit our record in maker stage
+Then logout from maker
+And login with reviewer credentials
+Then click on notification button
+And select our record in notification records using reference ID
+Then Approve the record from reviewer
+Then click on the submit button which is appeared in alert box
+Then verify the approval status of the record
+And logout from reviewer
+Then login as a checker 
+And click on security management menu in checker
+Then click on action button under security management menu
+And select our record and clime using reference ID
+Then click on Notification button
+Then select our record in notification records by the help of reference ID
+And click on approve button in checker stage
+Then click on the submit button which is appeared in alert box
+And verify the record got approved from checker
+Then logout from checker
+And login with Maker ID
+And click on accounts Payable module
+And goto invoice booking module
+And select the approved record from invoice bill booking 
+And goto accouts receivable module
+And goto credit notet module
+And click on Add Icon
+And Fill the form for credit note
+And click notification button
+Then choose first record in the notification record
+And click on Submit button 
+Then click on the submit button which is appeared in alert box
+And capture the reviewer ID in pop up which is open when we submit our record in maker stage
+Then logout from maker
+And login with reviewer credentials
+Then click on notification button
+And select our record in notification records using reference ID
+Then Approve the record from reviewer
+Then click on the submit button which is appeared in alert box
+Then verify the approval status of the record
+And logout from reviewer
+Then login as a checker 
+And click on security management menu in checker
+Then click on action button under security management menu
+And select our record and clime using reference ID
+Then click on Notification button
+Then select our record in notification records by the help of reference ID
+And click on approve button in checker stage
+Then click on the submit button which is appeared in alert box
+And verify the record got approved from checker
+Then logout from checker
+And login with Maker ID
+And click on accounts Payable module
+And goto invoice booking module
+And get the approved invoice from table
+And Go to payment settlement module
+And click on Add Icon
+And fill the mendatory field for settle the payment
+And fill the calender details and description
+And Save the form
+And click notification button
+Then choose first record in the notification record
+And click on Submit button 
+Then click on the submit button which is appeared in alert box
+And capture the reviewer ID in pop up which is open when we submit our record in maker stage
+Then logout from maker
+And login with reviewer credentials
+Then click on notification button
+And select our record in notification records using reference ID
+Then Approve the record from reviewer
+Then click on submit button in alert
+Then verify the approval status of the record
+And logout from reviewer
+Then login as a checker 
+And click on security management menu in checker
+Then click on action button under security management menu
+And select our record and clime using reference ID
+Then click on Notification button
+Then select our record in notification records by the help of reference ID
+And click on approve button in checker stage
+Then click on submit button in alert
+And verify the record got approved from checker
+Then logout from checker
+And login with Maker ID
+When click the Account Receivable Main Module for verify Accounting entries
+And click the credit note eye icon
+And click the search icon in the list view of credit 
+And search the Active credit note and click the first list
+And get buisness partner name , get credit note number and get credit note date
+   
+Then Open the Adjustment ARAP module
+And Click on Adjustment ARAP Eye Icon
+And Click Add icon button
+Then Give The Business Partner according to creditnote
+And Give The Adjustment Type
+Then Give the credit note number in Adjustment Item Type
+And Give the Adjustment Ref No and Validate
 
 @KUBS_AR/AP_UAT_003_008_TC_01  @AR/AP
 Scenario: Verify No accounting entry is generated on cancelling advances to employees
@@ -286,9 +502,9 @@ And click on Submit button
 Then enter remark in confirmation alert
 Then click on submit button in alert
 And capture the reviewer ID in pop up which is open when we submit our record in maker stage
+Then logout from maker
 @KUBS_AR/AP_UAT_003_008_TC_02b  @AR/AP
 Scenario: Verify cancelled advances is not available for payment settlement
-Then logout from maker
 And login with reviewer credentials
 Then click on notification button
 And select our record in notification records using reference ID
@@ -384,7 +600,7 @@ Then Click on Accounts Receive Advances Eye Icon
 And Click On Search Icon
 Then Enter Cancelled Value In Advance Status
 Then Click on Table Row First Eye Icon in ARAP
-And Get The Business Partner and Advance Number
+And Get Business Partner and Advance Number
 Then Third Segment report Icon
 And Choose Enquiry Module
 Then Click Note iCon near by financial transction
@@ -395,3 +611,122 @@ And click on transaction to date in calender icon
 Then Select To date in calender
 And Click View HyperLink
 Then Verify No accounting entry is generated on cancelling advances against PO
+
+@KUBS_AR_AP_UAT_004_007_TC_01  @AR/AP
+Scenario: Verify Advance to employee is adjusted against the selected bill and Net Adjusted Value is correctly displayed
+Given User should go to the kubs url and login as a maker user
+Then select data set ID for advance to employee is adjusted against the selected bill
+Then Choose the second Tab Segment
+And Click On Main module Accounts Receivable
+Then Click on Accounts Receive Advances Eye Icon
+And Click Add icon button
+Then Enter the Receivable Name as Advance to employee
+And Enter Business partner Value For Employee
+#Then Enter the PO Number
+And Enter Payment mode
+Then Enter Amount value
+And Choose Needed Currancy
+Then Choose cost center
+And Enter Description value
+Then Save the Advance Record
+Then Goto The Notification Icon
+And Store the Referance Id and Open the Record
+Then Click submit button and Enter Remark submit it
+
+Given Navigate as a Reviewer
+Then click on Notify icon
+And Click First record Action icon
+Then Approve the record in Reviewer
+And Give Remark and Submit
+Given Navigate as a Checker
+Then Click module security management
+And Claim the Record in Checker
+Then Goto the Checker notification Icon
+And Click the First Action Icon
+Then Approve the Record in checker stage
+And Give the Remark and Submit it
+Given Navigate The Azentio Url
+Then Choose the second Tab Segment
+And Click On Main module Accounts Receivable
+Then Click on Accounts Receive Advances Eye Icon
+And Click On Search Icon
+Then Enter Active Value In Advance Status
+Then Click on Table Row First Eye Icon in ARAP
+And Get The Business Partner and Advance Number
+And Click On Main module Accounts payable
+Then Click sub module Payment settlement Eye Icon
+And Click Add icon button
+Then Enter payment option
+And Give stored Business partner Name
+Then Choose value date as System current date
+And find the Advance reference number and Net Adjustable value in the billing queue
+Then Click the Checkbox As Tick
+And Verify the Net Adjusted Value is correctly displayed
+
+@KUBS_AR_AP_UAT_004_007_TC_02  @AR/AP
+Scenario: Verify TDS % & amount is correctly calculated & displayed for the bill
+Given Navigate The Azentio Url
+Then Choose the second Tab Segment
+And Click On Main module Accounts Receivable
+Then Click on Accounts Receive Advances Eye Icon
+And Click On Search Icon
+Then Enter Advance to employee and Active Value In Advance Status
+Then Click on Table Row First Eye Icon in ARAP
+And Get The Business Partner and Advance Number
+And Click On Main module Accounts payable
+Then Click sub module Payment settlement Eye Icon
+And Click Add icon button
+Then Enter payment option
+And Give stored Business partner Name
+Then Choose value date as System current date
+And find the Advance reference number and Net Adjustable value in the billing queue
+Then Click the Checkbox As Tick
+And Verify the TDS % & amount is correctly calculated & displayed
+
+@KUBS_AR_AP_UAT_004_007_TC_03  @AR/AP
+Scenario: Net payable amount is correctly calculated & displayed
+Given Navigate The Azentio Url
+Then Choose the second Tab Segment
+And Click On Main module Accounts Receivable
+Then Click on Accounts Receive Advances Eye Icon
+And Click On Search Icon
+Then Enter Advance to employee and Active Value In Advance Status
+Then Click on Table Row First Eye Icon in ARAP
+And Get The Business Partner and Advance Number
+And Click On Main module Accounts payable
+Then Click sub module Payment settlement Eye Icon
+And Click Add icon button
+Then Enter payment option
+And Give stored Business partner Name
+Then Choose value date as System current date
+And find the Advance reference number and Net Adjustable value in the billing queue
+Then Click the Checkbox As Tick
+And Verify the Net payable amount is correctly calculated & displayed
+
+
+# fuctionality not available
+#@KUBS_AR_AP_UAT_004_007_TC_04
+#Scenario: Verify accounting entries post payment settlement approval
+#Given Navigate The Azentio Url
+#Then Choose the second Tab Segment
+#And Click On Main module Accounts payable
+#Then Click sub module Payment settlement Eye Icon
+#And Click On Search Icon
+#Then Enter Advance to employee and Active Value In Advance Status
+#And Enter Advance to employee Pan Number
+#Then Click on Table Row First Eye Icon in ARAP
+#Then Third Segment report Icon
+#And Choose Enquiry Module
+#Then Click Note iCon near by financial transction
+#And choose branch codes
+#And click on transaction from date in calender
+#Then Select from date in calender
+#And click on transaction to date in calender icon
+#Then Select To date in calender
+#And Click View HyperLink
+#Then Verify Accounting entries post payment settlement approval fo Advance to Employee
+
+
+
+
+

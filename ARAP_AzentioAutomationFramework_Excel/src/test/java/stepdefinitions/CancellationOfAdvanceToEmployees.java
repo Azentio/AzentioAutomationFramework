@@ -64,7 +64,7 @@ public class CancellationOfAdvanceToEmployees extends BaseClass {
 	ACCOUNTSPAYABLE_InvoiceBookingObj invoiceBookingObj = new ACCOUNTSPAYABLE_InvoiceBookingObj(driver);
 	Map<String, String> settlementTestData = new HashMap<>();
 	Map<String, String> accountsReceivableTestData = new HashMap<>();
-	ExcelData excelData = new ExcelData("C:\\Users\\inindc00091\\git\\AzentioAutomationFramework\\ARAP_Excel_priyanka0612\\AzentioAutomationFramework_ARAP_Excel\\Test-data\\KUBS_TESTDATA_V1.xlsx",
+	ExcelData excelData = new ExcelData("C:\\Users\\inindc00091\\git\\repository6\\ARAP_AzentioAutomationFramework_Excel\\Test-data\\KUBS_TESTDATA_V1.xlsx",
 			"CancellationOfAdvanceEMPData", "Data Set ID");
 	Map<String, String> testData = new HashMap<>();
 	String dataSetID;
@@ -83,6 +83,7 @@ public class CancellationOfAdvanceToEmployees extends BaseClass {
 
 	@Then("^click on search$")
 	public void click_on_search() throws Throwable {
+		waitHelper.waitForElementToVisibleWithFluentWait(driver, invoiceBookingObj.accountPayable_InvoiceBooking_Search(), 10, 2);
 		invoiceBookingObj.accountPayable_InvoiceBooking_Search().click();
 	}
 
@@ -153,11 +154,11 @@ public class CancellationOfAdvanceToEmployees extends BaseClass {
 	public void choose_the_from_date() throws Throwable {
 
 		javaScriptHelper.JavaScriptHelper(driver);
-		while (true) {
+		for(int i=0;i<20;i++) {
 			try {
-
-				waitHelper.waitForElement(driver, 3000, driver.findElement(By.xpath("//span[contains(text(),'" + testData.get("Gl Month") + " " + testData.get("Gl Year") + "')]")));
-				WebElement monthAndYear = driver.findElement(By.xpath("//span[contains(text(),'" + testData.get("Gl Month") + " " + testData.get("Gl Year") + "')]"));
+//				waitHelper.waitForElement(driver, 3000, driver.findElement(By.xpath("//span[contains(text(),'" + testData.get("Gl Month") + " " + testData.get("Gl Year") + "')]")));
+				waitHelper.waitForElementToVisibleWithFluentWait(driver, driver.findElement(By.xpath("//span[contains(text(),'" + testData.get("GL Month") + " " + testData.get("GL Year") + "')]")), 10, 2);
+				WebElement monthAndYear = driver.findElement(By.xpath("//span[contains(text(),'" + testData.get("GL Month") + " " + testData.get("GL Year") + "')]"));
 				break;
 			}
 
@@ -165,7 +166,7 @@ public class CancellationOfAdvanceToEmployees extends BaseClass {
 				inventoryEnquiryGlObj.inventoryNextMonth().click();
 			}
 		}
-		WebElement FinalDay = driver.findElement(By.xpath("//td[@aria-label='" + testData.get("Gl FullMonth") + " " + testData.get("Gl Date") + ", " + testData.get("Gl Year") + "']/span"));
+		WebElement FinalDay = driver.findElement(By.xpath("//td[@aria-label='" + testData.get("GL FullMonth") + " " + testData.get("GL Date") + ", " + testData.get("GL Year") + "']/span"));
 		clicksAndActionsHelper.doubleClick(FinalDay);
 	}
 
@@ -180,11 +181,12 @@ public class CancellationOfAdvanceToEmployees extends BaseClass {
 
 	@Then("^choose the to date$")
 	public void choose_the_to_date() throws Throwable {
-		while (true) {
+		for(int i=0;i<20;i++) {
 			try {
 
-				waitHelper.waitForElement(driver, 3000, driver.findElement(By.xpath("//span[contains(text(),'" + testData.get("Gl To Month") + " " + testData.get("Gl To Year") + "')]")));
-				WebElement monthAndYear = driver.findElement(By.xpath("//span[contains(text(),'" + testData.get("Gl To Month") + " " + testData.get("Gl To Year") + "')]"));
+//				waitHelper.waitForElement(driver, 3000, driver.findElement(By.xpath("//span[contains(text(),'" + testData.get("GL To Month") + " " + testData.get("GL To Year") + "')]")));
+				waitHelper.waitForElementToVisibleWithFluentWait(driver, driver.findElement(By.xpath("//span[contains(text(),'" + testData.get("GL To Month") + " " + testData.get("GL To Year") + "')]")), 0, 0);
+				WebElement monthAndYear = driver.findElement(By.xpath("//span[contains(text(),'" + testData.get("GL To Month") + " " + testData.get("GL To Year") + "')]"));
 				break;
 			}
 
@@ -192,7 +194,7 @@ public class CancellationOfAdvanceToEmployees extends BaseClass {
 				inventoryEnquiryGlObj.inventoryNextMonth().click();
 			}
 		}
-		WebElement FinalDay = driver.findElement(By.xpath("//td[@aria-label='" + testData.get("Gl To FullMonth") + " " + testData.get("Gl To Date") + ", " + testData.get("Gl To Year") + "']/span"));
+		WebElement FinalDay = driver.findElement(By.xpath("//td[@aria-label='" + testData.get("GL To FullMonth") + " " + testData.get("GL To Date") + ", " + testData.get("GL To Year") + "']/span"));
 		clicksAndActionsHelper.doubleClick(FinalDay);
 	}
 
@@ -667,6 +669,14 @@ public class CancellationOfAdvanceToEmployees extends BaseClass {
 		clicksAndActionsHelper.moveToElement(kubsCheckerObj.checkerLogoutButton());
 		kubsCheckerObj.checkerLogoutButton().click();
 	}
+	
+	 @And("^click on accounts Payable module$")
+	    public void click_on_accounts_payable_module() throws Throwable {
+	    	Thread.sleep(1000);
+	    	makerObj.kubsDirectionIcon().click();
+	    	waitHelper.waitForElementVisible(makerObj.kubsAccountsPayable(), 1000, 100);
+	    	makerObj.kubsAccountsPayable().click();
+	    }
 
 	@And("^Go to payment settlement module$")
 	public void go_to_payment_settlement_module() throws Throwable {
@@ -868,100 +878,6 @@ public class CancellationOfAdvanceToEmployees extends BaseClass {
 		// driver.close();
 	}
 
-	///////////////////////// 003_009_TC_01////////////////////////
-
-	@And("^goto arap adjustment main module$")
-	public void goto_arap_adjustment_main_module() throws Throwable {
-		waitHelper.waitForElementVisible(makerObj.kubsDirectionIcon(), 2000, 100);
-		makerObj.kubsDirectionIcon().click();
-	}
-
-	@Then("^Click on Accounts Receive Advances Eye Icon$")
-	public void click_on_accounts_receive_advances_eye_icon() throws Throwable {
-		// ---------------ADVANCE EYE ICON----------------//
-		waitHelper.waitForElement(driver, 2000, arapObj.accountsReceivable_Advance_Eye());
-		arapObj.accountsReceivable_Advance_Eye().click();
-	}
-
-	@Then("^Enter Cancelled Value In Advance Status$")
-	public void enter_cancelled_value_in_advance_status() throws Throwable {
-		// ----------GIVE DETAILS FOR SEARCH-----------//
-		waitHelper.waitForElement(driver, 2000, arapObj.accountsReceivable_Advance_ReceivableName());
-		arapObj.accountsReceivable_Advance_ReceivableName().click();
-		arapObj.accountsReceivable_Advance_ReceivableName().sendKeys(testData.get("ReceivableName"));
-		waitHelper.waitForElement(driver, 2000, arapObj.accountsReceivable_Advance_ADVstatus());
-		arapObj.accountsReceivable_Advance_ADVstatus().click();
-		arapObj.accountsReceivable_Advance_ADVstatus().sendKeys(testData.get("GRN Status"));
-	}
-
-	@And("^Get The Business Partner and Advance Number$")
-	public void get_the_business_partner_and_advance_number() throws Throwable {
-//		waitHelper.waitForElement(driver, 2000, arapObj.accountsReceivable_Advance_GetBp());
-		waitHelper.waitForElementwithFluentwait(driver, arapObj.accountsReceivable_Advance_GetBp());
-		BPNumber = arapObj.accountsReceivable_Advance_GetBp().getText();
-		System.out.println(BPNumber);
-
-		javaScriptHelper.JavaScriptHelper(driver);
-		ADVNumber = (String) javaScriptHelper.executeScript("return document.getElementsByName('advanceNo')[1].value");
-		System.out.println(ADVNumber);
-
-		javaScriptHelper.JavaScriptHelper(driver);
-		ADVAmount = (String) javaScriptHelper.executeScript("return document.getElementsByClassName('form__field ng-untouched ng-pristine ng-valid')[0].value");
-		System.out.println(ADVAmount);
-	}
-
-//	@Then("^Verify No accounting entry is generated on cancelling advances against PO$")
-//	public void verify_no_accounting_entry_is_generated_on_cancelling_advances_against_po() throws Throwable {
-//		javaScriptHelper.JavaScriptHelper(driver);
-//		Thread.sleep(1000);
-//		for (int i = 0; i <= 299; i++) {
-//			try {
-//
-//				driver.findElement(By.xpath("(//datatable-body-cell[1]//span[contains(text(),'" + ADVNumber + "')])[1]")).isDisplayed();
-//
-//				driver.findElement(By.xpath("(//datatable-body-cell[1]//span[contains(text(),'" + ADVNumber + "')])[1]"));
-//				String TransactionType = driver
-//						.findElement(By
-//								.xpath("(//datatable-body-cell[1]//span[contains(text(),' " + ADVNumber + " ')]/ancestor::datatable-body-cell[1]/following-sibling::datatable-body-cell[5]//span)[1]"))
-//						.getText();
-//				System.out.println("TransactionType is " + TransactionType);
-//				String amount = driver
-//						.findElement(By
-//								.xpath("(//datatable-body-cell[1]//span[contains(text(),' " + ADVNumber + " ')]/ancestor::datatable-body-cell[1]/following-sibling::datatable-body-cell[6]//span)[1]"))
-//						.getText();
-//				System.out.println("Amount is " + amount);
-//				break;
-//
-//			} catch (NoSuchElementException e) {
-//				javaScriptHelper.scrollIntoView(arapObj.accountsPayablePayementSettlementNextRecord());
-//				arapObj.accountsPayablePayementSettlementNextRecord().click();
-//			}
-//		}
-//		for (int i = 0; i <= 299; i++) {
-//			try {
-//
-//				driver.findElement(By.xpath("(//datatable-body-cell[1]//span[contains(text(),'" + ADVNumber + "')])[2]")).isDisplayed();
-//
-//				driver.findElement(By.xpath("(//datatable-body-cell[1]//span[contains(text(),'" + ADVNumber + "')])[1]"));
-//				String TransactionType = driver
-//						.findElement(By
-//								.xpath("(//datatable-body-cell[1]//span[contains(text(),' " + ADVNumber + " ')]/ancestor::datatable-body-cell[1]/following-sibling::datatable-body-cell[5]//span)[2]"))
-//						.getText();
-//				System.out.println("TransactionType is " + TransactionType);
-//				String amount = driver
-//						.findElement(By
-//								.xpath("(//datatable-body-cell[1]//span[contains(text(),' " + ADVNumber + " ')]/ancestor::datatable-body-cell[1]/following-sibling::datatable-body-cell[6]//span)[2]"))
-//						.getText();
-//				System.out.println("Amount is " + amount);
-//				break;
-//
-//			} catch (NoSuchElementException e) {
-//				javaScriptHelper.scrollIntoView(arapObj.accountsPayablePayementSettlementNextRecord());
-//				arapObj.accountsPayablePayementSettlementNextRecord().click();
-//			}
-//
-//		}
-//	}
 	
 	@Then("^select data set ID for verify no accounting entries for cancelling advance to employee$")
     public void select_data_set_id_for_verify_no_accounting_entries_for_cancelling_advance_to_employee() throws Throwable {

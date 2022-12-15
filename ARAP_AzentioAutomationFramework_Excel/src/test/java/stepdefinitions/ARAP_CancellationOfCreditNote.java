@@ -51,7 +51,7 @@ public class ARAP_CancellationOfCreditNote extends BaseClass {
 	WaitHelper waithelper = new WaitHelper(driver);
 	Payment_SettlementObj paymentSettlementObj = new Payment_SettlementObj(driver);
 	ArAp_BalanceSheetReportObj arAp_BalanceSheetReportObj = new ArAp_BalanceSheetReportObj(driver);
-	ExcelData excelData = new ExcelData("C:\\Users\\inindc00091\\git\\AzentioAutomationFramework\\ARAP_Excel_priyanka0612\\AzentioAutomationFramework_ARAP_Excel\\Test-data\\KUBS_TESTDATA_V1.xlsx",
+	ExcelData excelData = new ExcelData("C:\\Users\\inindc00091\\git\\repository6\\ARAP_AzentioAutomationFramework_Excel\\Test-data\\KUBS_TESTDATA_V1.xlsx",
 			"CancelledCreditNoteTestData", "Data Set ID");
 	Map<String, String> testData = new HashMap<>();
 	String dataSetID;
@@ -83,7 +83,8 @@ public class ARAP_CancellationOfCreditNote extends BaseClass {
 		seleniumactions.getWaitHelper().waitForElement(driver, 2000, account_Receivable.accountsReceivable_CreditNote_Status());
 		seleniumactions.getClickAndActionsHelper().clickOnElement(account_Receivable.accountsReceivable_CreditNote_Status());
 		account_Receivable.accountsReceivable_CreditNote_Status().sendKeys(testData.get("Contract Status"));
-		seleniumactions.getWaitHelper().waitForElement(driver, 2000, account_Receivable.accountsReceivable_CreditNote_StatusHead());
+//		seleniumactions.getWaitHelper().waitForElement(driver, 2000, account_Receivable.accountsReceivable_CreditNote_StatusHead());
+		seleniumactions.getWaitHelper().waitForElementToVisibleWithFluentWait(driver, account_Receivable.accountsReceivable_CreditNote_StatusHead(), 10, 2);
 		seleniumactions.getClickAndActionsHelper().clickOnElement(account_Receivable.accountsReceivable_CreditNote_StatusHead());
 	}
 
@@ -132,9 +133,9 @@ public class ARAP_CancellationOfCreditNote extends BaseClass {
 		driver.findElement(By.xpath("(//span[@class='owl-dt-control-content owl-dt-control-button-content'])[2]")).click();
 		driver.findElement(By.xpath("//span[text()='" + testData.get("Year") + "']")).click();
 		driver.findElement(By.xpath("//span[text()='" + testData.get("Month") + "']")).click();
-		seleniumactions.getWaitHelper().waitForElement(driver, 2000,
-		driver.findElement(By.xpath("//td[@aria-label='" + testData.get("Full Month") + " " + testData.get("Date") + ", " + testData.get("Year") + "']")));
-		driver.findElement(By.xpath("//td[@aria-label='" + testData.get("Full Month") + " " + testData.get("Date") + ", " + testData.get("Year") + "']")).click();
+//		seleniumactions.getWaitHelper().waitForElement(driver, 2000,
+//					driver.findElement(By.xpath("//td[@aria-label='" + testData.get("FullMonth") + " " + testData.get("Date") + ", " + testData.get("Year") + "']")));
+		driver.findElement(By.xpath("//td[@aria-label='" + testData.get("FullMonth") + " " + testData.get("Date") + ", " + testData.get("Year") + "']")).click();
 	}
 
 	@And("^choose the Transaction To date and click view option$")
@@ -182,7 +183,8 @@ public class ARAP_CancellationOfCreditNote extends BaseClass {
 
 	@And("^click the eye icon in credit note$")
 	public void click_the_eye_icon_in_credit_note() throws Throwable {
-		seleniumactions.getWaitHelper().waitForElement(driver, 2000, account_Receivable.accountsReceivable_CreditNote_Eye());
+//		seleniumactions.getWaitHelper().waitForElement(driver, 2000, account_Receivable.accountsReceivable_CreditNote_Eye());
+		seleniumactions.getWaitHelper().waitForElementToVisibleWithFluentWait(driver, account_Receivable.accountsReceivable_CreditNote_Eye(), 20, 2);
 		seleniumactions.getClickAndActionsHelper().clickOnElement(account_Receivable.accountsReceivable_CreditNote_Eye());
 	}
 
@@ -207,16 +209,34 @@ public class ARAP_CancellationOfCreditNote extends BaseClass {
 
 	@And("^get invoice number and get buisness partner name$")
 	public void get_invoice_number_and_get_buisness_partner_name() throws Throwable {
-		seleniumactions.getWaitHelper().waitForElement(driver, 20000, account_Receivable.creditNote_Buisness_Partner());
-		String buinesspartner = account_Receivable.creditNote_Buisness_Partner().getText();
-		testdata.put("buinesspartner", buinesspartner);
+		for(int i = 0;i<20;i++) {
+			try {
+				seleniumactions.getWaitHelper().waitForElement(driver, 20000, account_Receivable.creditNote_Buisness_Partner());
+				String buinesspartner = account_Receivable.creditNote_Buisness_Partner().getText();
+				testdata.put("buinesspartner", buinesspartner);
+				break;
+			} catch (Exception e) {
+				// TODO: handle exception
+			}
+		}
+		seleniumactions.getWaitHelper().waitForElement(driver, 2000, account_Receivable.creditNote_Invoice_NumberInCreditNotePage());
+		String invoicenumber = account_Receivable.creditNote_Invoice_NumberInCreditNotePage().getText();
+		testdata.put("invoicenumber", invoicenumber);
 	}
 
 	@And("^get buisness partner name , get credit note number and get credit note date$")
 	public void get_buisness_partner_name_get_credit_note_number_and_get_credit_note_date() throws Throwable {
-		seleniumactions.getWaitHelper().waitForElement(driver, 4000, account_Receivable.creditNote_Buisness_Partner());
-		String buisnessPartnerName = account_Receivable.creditNote_Buisness_Partner().getText();
-		testdata.put("buisnessPartnerName", buisnessPartnerName);
+		for (int i = 0; i < 20; i++) {
+			try {
+				seleniumactions.getWaitHelper().waitForElement(driver, 4000, account_Receivable.creditNote_Buisness_Partner());
+				String buisnessPartnerName = account_Receivable.creditNote_Buisness_Partner().getText();
+				testdata.put("buisnessPartnerName", buisnessPartnerName);
+				break;
+			} catch (Exception e) {
+				// TODO: handle exception
+			}
+		}
+		
 		javascriphelper.JavaScriptHelper(driver);
 		String contractenddate = (String) javascriphelper.executeScript("return document.getElementsByName('kubDateTime')[0].value");
 		System.out.println(contractenddate);
@@ -335,6 +355,24 @@ public class ARAP_CancellationOfCreditNote extends BaseClass {
 		seleniumactions.getClickAndActionsHelper().clickOnElement(enquiryObj.viewInContractReport());
 		Thread.sleep(5000);
 	}
+	
+	@Then("^Fill branch details for balance sheet report$")
+	public void fill_branch_details_for_balance_sheet_report() {
+
+// Thread.sleep(6000);
+
+		waithelper.waitForElement(driver, 2000, arAp_BalanceSheetReportObj.arAp_BalanceSheetReport_BranchTextbox());
+		arAp_BalanceSheetReportObj.arAp_BalanceSheetReport_BranchTextbox().click();
+		arAp_BalanceSheetReportObj.arAp_BalanceSheetReport_BranchTextbox().sendKeys(testData.get("Branch Code"));
+		arAp_BalanceSheetReportObj.arAp_BalanceSheetReport_BranchTextbox().sendKeys(Keys.ENTER);
+// arAp_BalanceSheetReportTestDataType=
+// jsonReader.getBalanceSheetReportByName("maker");
+		waithelper.waitForElement(driver, 2000, arAp_BalanceSheetReportObj.arAp_BalanceSheetReport_ReportType());
+		arAp_BalanceSheetReportObj.arAp_BalanceSheetReport_ReportType().click();
+		arAp_BalanceSheetReportObj.arAp_BalanceSheetReport_ReportType().sendKeys(testData.get("ReportType"));
+		arAp_BalanceSheetReportObj.arAp_BalanceSheetReport_ReportType().sendKeys(Keys.ENTER);
+
+	}
 
 	@Then("^Verify Balance sheet should be updated correctly basis the legs impacted in accounting entries.$")
 	public void verify_balance_sheet_should_be_updated_correctly_basis_the_legs_impacted_in_accounting_entries() throws Throwable {
@@ -375,7 +413,7 @@ public class ARAP_CancellationOfCreditNote extends BaseClass {
 	@Then("^verify the Credit Note cancelled is available in the report$")
 	public void verify_the_credit_note_cancelled_is_available_in_the_report() throws Throwable {
 		seleniumactions.getBrowserHelper().SwitchToWindow(1);
-
+		Thread.sleep(2000);
 		while (true) {
 			try {
 				javascriphelper.JavaScriptHelper(driver);
@@ -384,10 +422,10 @@ public class ARAP_CancellationOfCreditNote extends BaseClass {
 				driver.findElement(By.xpath("//div[text()='" + testdata.get("creditnotenumber") + "']")).isDisplayed();
 				String creditnumber = driver.findElement(By.xpath("//div[text()='" + testdata.get("creditnotenumber") + "']")).getText();
 				System.out.println("found the credit number :" + creditnumber);
-
 				break;
 			} catch (NoSuchElementException e) {
-				seleniumactions.getWaitHelper().waitForElement(driver, 2000, enquiryObj.nextPageInContractReport());
+//				seleniumactions.getWaitHelper().waitForElement(driver, 2000, enquiryObj.nextPageInContractReport());
+				seleniumactions.getWaitHelper().waitForElementToVisibleWithFluentWait(driver, enquiryObj.nextPageInContractReport(), 10, 2);
 				enquiryObj.nextPageInContractReport().click();
 			}
 		}
@@ -410,7 +448,9 @@ public class ARAP_CancellationOfCreditNote extends BaseClass {
 
 	@And("^click the add icon in payment settlement for credit$")
 	public void click_the_add_icon_in_payment_settlement_for_credit() throws Throwable {
-		seleniumactions.getWaitHelper().waitForElement(driver, 2000, paymentSettlementObj.getPaymentSettlementAddIcon());
+//		seleniumactions.getWaitHelper().waitForElement(driver, 2000, paymentSettlementObj.getPaymentSettlementAddIcon());
+		Thread.sleep(1000);
+		seleniumactions.getWaitHelper().waitForElementToVisibleWithFluentWait(driver, paymentSettlementObj.getPaymentSettlementAddIcon(), 10, 2);
 		seleniumactions.getClickAndActionsHelper().clickOnElement(paymentSettlementObj.getPaymentSettlementAddIcon());
 	}
 
@@ -434,7 +474,7 @@ public class ARAP_CancellationOfCreditNote extends BaseClass {
 	@Then("^verify that invoice from credit not is not available in bill list$")
 	public void verify_that_invoice_from_credit_not_is_not_available_in_bill_list() throws Throwable {
 		javascriphelper.JavaScriptHelper(driver);
-
+		
 		for (int i = 1; i <= 6; i++) {
 
 			seleniumactions.getWaitHelper().waitForElementVisible(driver.findElement(By.xpath("//div[text()=' " + testdata.get("invoicenumber") + " ']")), 1000, 100);

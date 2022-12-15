@@ -72,7 +72,7 @@ public class CancellationOfAdvanceAgainstPO extends BaseClass {
 		waitHelper.waitForElement(driver, 2000, arapObj.accountsReceivable_Advance_Eye());
 		arapObj.accountsReceivable_Advance_Eye().click();
 	}
-
+	
 	@Then("^Enter Cancelled Value In Advance Status$")
 	public void enter_cancelled_value_in_advance_status() throws Throwable {
 		// ----------GIVE DETAILS FOR SEARCH-----------//
@@ -83,9 +83,9 @@ public class CancellationOfAdvanceAgainstPO extends BaseClass {
 		arapObj.accountsReceivable_Advance_ADVstatus().click();
 		arapObj.accountsReceivable_Advance_ADVstatus().sendKeys(testData.get("GRN Status"));
 	}
-
-	@And("^Get The Business Partner and Advance Number$")
-	public void get_the_business_partner_and_advance_number() throws Throwable {
+	
+	@And("^Get Business Partner and Advance Number$")
+	public void get_business_partner_and_advance_number() throws Throwable {
 //		waitHelper.waitForElement(driver, 2000, arapObj.accountsReceivable_Advance_GetBp());
 		waitHelper.waitForElementwithFluentwait(driver, arapObj.accountsReceivable_Advance_GetBp());
 		BPNumber = arapObj.accountsReceivable_Advance_GetBp().getText();
