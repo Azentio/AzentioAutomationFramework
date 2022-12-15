@@ -61,8 +61,18 @@ public class ACCOUNTSPAYABLE_ManualPayout {
 
     @And("^click on add button for manual payout$")
     public void click_on_add_button_for_manual_payout() {
-    	waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_ManualPayoutObj.accountPayable_ManualPayout_AddButton());
-    	aCCOUNTSPAYABLE_ManualPayoutObj.accountPayable_ManualPayout_AddButton().click();
+    	//waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_ManualPayoutObj.accountPayable_ManualPayout_AddButton());
+    	for (int i = 0; i <200; i++) {
+			try {
+				aCCOUNTSPAYABLE_ManualPayoutObj.accountPayable_ManualPayout_AddButton().click();
+				break;
+			} catch (Exception e) {
+				if (i==199) {
+					Assert.fail(e.getMessage());
+				}
+			}
+		}
+    	
     }
 
     @And("^Fill the required fields for manual payout vendor$")

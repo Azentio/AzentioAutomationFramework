@@ -502,11 +502,9 @@ Then  verify approved payout reference number is available in the payout report
 
 @KUBS_AR/AP_UAT_007_001_TC_01  @AR/AP
 Scenario: Auto payouts for approved Bills of a Vendor
-Given Navigate to kubs URL and user should login as a maker
-Then Click on the Finance
+Given Maker Navigate to UAT URL login
 Then Click on the Direction
 Then Click on Accounts Payable
-
 Then Click on Auto Payout edit grid
 Then Click on action button of record which we need to verify for details
 

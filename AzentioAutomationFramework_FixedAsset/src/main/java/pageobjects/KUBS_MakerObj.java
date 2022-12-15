@@ -14,7 +14,7 @@ public class KUBS_MakerObj {
 		PageFactory.initElements(driver, this);
 	}
 
-	@FindBy(xpath = "//ion-select[@aria-label='Configuration']")
+	@FindBy(xpath = "//ion-select[@aria-label='Amlock']")
 	private WebElement maker_finance_option;
 
 	public WebElement kubsFinaceOption() {
