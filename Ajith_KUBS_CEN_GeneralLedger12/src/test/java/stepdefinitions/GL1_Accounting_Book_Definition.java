@@ -352,7 +352,20 @@ public class GL1_Accounting_Book_Definition extends BaseClass {
     public void user_update_test_data_set_id_to_verify_the_deactivated_coa_record_in_checker() throws Throwable {
     	testdata = excelData.getTestdata("KUBS_GL_UAT_005_008_4_D1");
     }
+    @And("^User update the test data set id for modified after use of COA if GL entries are passed for the COA$")
+    public void user_update_the_test_data_set_id_for_modified_after_use_of_coa_if_gl_entries_are_passed_for_the_coa() throws Throwable {
+    	testdata = excelData.getTestdata("KUBS_GL_UAT_005_006_D1");
+    }
+    @And("^User update the test data set id for modified if Gl entries are passed for the parent being mapped or changed$")
+    public void user_update_the_test_data_set_id_for_modified_if_gl_entries_are_passed_for_the_parent_being_mapped_or_changed() throws Throwable {
+    	testdata = excelData.getTestdata("KUBS_GL_UAT_005_007_D1");
+    }
 
+    @And("^User Update test data set id for COA marked as de active when accounting transaction carried out$")
+    public void user_update_test_data_set_id_for_coa_marked_as_de_active_when_accounting_transaction_carried_out() throws Throwable {
+    	testdata = excelData.getTestdata("KUBS_GL_UAT_005_009_D1");
+    }
+    
 	@Then("^Choose the Template Type of Base Template$")
 	public void choose_the_template_type_of_base_template() throws Throwable {
 		// --------TEMPLATE TYPE--------//
@@ -2473,12 +2486,22 @@ public class GL1_Accounting_Book_Definition extends BaseClass {
 
   	    @Then("^Click on search button to search COA$")
   	    public void click_on_search_button_to_search_coa() throws Throwable {
-  	    	waithelper.waitForElementToVisibleWithFluentWait(driver, gL1obj.search_Button(), 60, 500);
-  			gL1obj.search_Button().click(); 
+  	    	//waithelper.waitForElementToVisibleWithFluentWait(driver, gL1obj.search_Button(), 60, 500);
+  	    	for (int i = 0; i <200; i++) {
+				try {
+					gL1obj.search_Button().click(); 
+					break;
+				} catch (Exception e) {
+					if (i==199) {
+						Assert.fail(e.getMessage());
+					}
+				}
+			}
+  			
   			
   			waithelper.waitForElementToVisibleWithFluentWait(driver, gL1obj.cOANameSearch_Textbox(), 60, 500);
   			gL1obj.cOANameSearch_Textbox().click(); 
-  			gL1obj.cOANameSearch_Textbox().sendKeys(gL1TestDataType.COAnameToinactive);
+  			gL1obj.cOANameSearch_Textbox().sendKeys(testdata.get("COANameSearch"));
   			gL1obj.cOANameSearch_Textbox().sendKeys(Keys.ENTER);
   			
   	    }
@@ -2493,7 +2516,7 @@ public class GL1_Accounting_Book_Definition extends BaseClass {
   	    public void click_on_status_to_make_it_inactive() throws Throwable {
   	    	waithelper.waitForElementToVisibleWithFluentWait(driver, gL1obj.statusOfCOA_Textbox(), 60, 500);
   			gL1obj.statusOfCOA_Textbox().click(); 
-  			gL1obj.statusOfCOA_Textbox().sendKeys(gL1TestDataType.statusofCOA);
+  			//gL1obj.statusOfCOA_Textbox().sendKeys(gL1TestDataType.statusofCOA);
   			gL1obj.statusOfCOA_Textbox().sendKeys(Keys.ENTER);
   			
   	    }
@@ -2531,18 +2554,39 @@ public class GL1_Accounting_Book_Definition extends BaseClass {
 
   	@Then("^search used COA code for which GL entries are passed$")
   	public void search_used_COA_code_for_which_GL_entries_are_passed() {
+  		Double d = Double.valueOf(testdata.get("LeafCOA_CodeSearch"));
   		waithelper.waitForElementToVisibleWithFluentWait(driver,
   				ChartOfAccountsDefinitionObj.accountingSetup_ChartOfAccountsDefinition_COA_CodeSearch(), 60, 500);
   		ChartOfAccountsDefinitionObj.accountingSetup_ChartOfAccountsDefinition_COA_CodeSearch()
-  				.sendKeys(ChartOfAccountsDefinitionTestDataType.LeafCOA_CodeSearch);
+  				.sendKeys(String.format("%.0f", d));
   	}
+  	 @Then("^click on search button for GL$")
+     public void click_on_search_button_for_gl() throws Throwable {
+  		waithelper.waitForElementToVisibleWithFluentWait(driver,ChartOfAccountsDefinitionObj.searchIconInListView(), 30, 2);
+  		ChartOfAccountsDefinitionObj.searchIconInListView().isDisplayed();
+    	for (int i = 0; i <20000; i++) {
+			try {
+				ChartOfAccountsDefinitionObj.searchIconInListView().click();
+				break;
+			} catch (Exception e) {
+				if (i==19999) {
+					Assert.fail(e.getMessage());
+				}
+				
+			}
+		}
+     }
+
 
   	@Then("^search used parent COA code for which GL entries are passed$")
   	public void search_used_parent_COA_code_for_which_GL_entries_are_passed() {
+  		System.out.println(testdata.get("ParentCOA_CodeSearch"));
+  		Double d = Double.valueOf(testdata.get("ParentCOA_CodeSearch"));
   		waithelper.waitForElementToVisibleWithFluentWait(driver,
   				ChartOfAccountsDefinitionObj.accountingSetup_ChartOfAccountsDefinition_COA_CodeSearch(), 60, 500);
   		ChartOfAccountsDefinitionObj.accountingSetup_ChartOfAccountsDefinition_COA_CodeSearch()
-  				.sendKeys(ChartOfAccountsDefinitionTestDataType.ParentCOA_CodeSearch);
+  				.sendKeys(String.format("%.0f", d));
+  				
   	}
 
   	@Then("^click on pencil button to modify the COA$")
@@ -2933,13 +2977,13 @@ public class GL1_Accounting_Book_Definition extends BaseClass {
   		waithelper.waitForElementToVisibleWithFluentWait(driver,
   				ChartOfAccountsDefinitionObj.accountingSetup_ChartOfAccountsDefinition_GLtype(), 60, 500);
   		ChartOfAccountsDefinitionObj.accountingSetup_ChartOfAccountsDefinition_GLtype()
-  				.sendKeys(ChartOfAccountsDefinitionTestDataType.GL_TypeModifiedForUsedCOA);
+  				.sendKeys(testdata.get("GL Type"));
   		ChartOfAccountsDefinitionObj.accountingSetup_ChartOfAccountsDefinition_GLtype().sendKeys(Keys.ENTER);
   		waithelper.waitForElementToVisibleWithFluentWait(driver,
   				ChartOfAccountsDefinitionObj.accountingSetup_ChartOfAccountsDefinition_Description(), 60, 500);
   		ChartOfAccountsDefinitionObj.accountingSetup_ChartOfAccountsDefinition_Description().clear();
   		ChartOfAccountsDefinitionObj.accountingSetup_ChartOfAccountsDefinition_Description()
-  				.sendKeys(ChartOfAccountsDefinitionTestDataType.Description + rand);
+  				.sendKeys(testdata.get("Description") + rand);
 
 //      	waithelper.waitForElementwithFluentwait(driver,  ChartOfAccountsDefinitionObj.accountingSetup_ChartOfAccountsDefinition_BalanceType());
 //      	ChartOfAccountsDefinitionObj.accountingSetup_ChartOfAccountsDefinition_BalanceType().sendKeys(ChartOfAccountsDefinitionTestDataType.BalanceType);

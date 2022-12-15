@@ -474,7 +474,6 @@ public class BUSINESS_PARTNER_SETUP_BusinessPartner {
     public void click_on_search_button() throws InterruptedException {
     	waithelper.waitForElementToVisibleWithFluentWait(driver,bUSINESS_PARTNER_SETUP_BusinessPartnerObj.businessPartner_Search(), 30, 2);
     	bUSINESS_PARTNER_SETUP_BusinessPartnerObj.businessPartner_Search().isDisplayed();
-    	Thread.sleep(4000);
     	for (int i = 0; i <200; i++) {
 			try {
 				bUSINESS_PARTNER_SETUP_BusinessPartnerObj.businessPartner_Search().click();

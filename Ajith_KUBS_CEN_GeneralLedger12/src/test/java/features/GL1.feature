@@ -2,6 +2,7 @@ Feature: Check the Functionality of the GL1 Module
 @KUBS_GL_UAT_001_001_1
 Scenario: Create an accounting base templet for accounting book for legal entity
 Given Navigate to Azentio Kubs
+And Click on Finance Option for GL
 And Click on Accounting Setup module
 Then Click sub module Accounting book definition
 And Click on Add icon
@@ -39,6 +40,7 @@ And Give Remark and Submit for accounting base template reviewer
 Scenario: Verify the Approved accounting book record in maker
 And User Update the data set id for verify Base Template book created
 Given Navigate to Azentio Kubs
+And Click on Finance Option for GL
 And Click on Accounting Setup module
 Then Click sub module Accounting book definition
 Then Click on Table Row First Eye Icon
@@ -48,6 +50,7 @@ And User verify the created accounting book in maker view
 @KUBS_GL_UAT_002_001_1
 Scenario: Creation of Accounting Books for custom template
 Given Navigate to Azentio Kubs
+And Click on Finance Option for GL
 And Click on Accounting Setup module
 Then Click sub module Accounting book definition
 And Click on Add icon
@@ -84,6 +87,7 @@ And Give the Remark and Submit it
 Scenario: Verify the Approved accounting book record in maker
 And User Update the data set id for Custom Template verified in maker
 Given Navigate to Azentio Kubs
+And Click on Finance Option for GL
 And Click on Accounting Setup module
 Then Click sub module Accounting book definition
 Then Click on Table Row First Eye Icon
@@ -93,6 +97,7 @@ And User verify the created accounting book in maker view
 @KUBS_GL_UAT_002_002
 Scenario: Check the created already and trying to create same accounting book
 Given Navigate to Azentio Kubs
+And Click on Finance Option for GL
 And Click on Accounting Setup module
 Then Click sub module Accounting book definition
 And Click on Add icon
@@ -104,6 +109,7 @@ Then Validate the Message we get
 @KUBS_GL_UAT_002_004_1
 Scenario: Modify the accounting book
 Given Navigate to Azentio Kubs
+And Click on Finance Option for GL
 And Click on Accounting Setup module
 Then Click sub module Accounting book definition
 Then Click on Table Row First Edit Icons
@@ -137,6 +143,7 @@ And Give the Remark and Submit it for Modified accounting book
 Scenario: Verify the Approved accounting book record in maker
 And User Update the data set id for Modified accounting book
 Given Navigate to Azentio Kubs
+And Click on Finance Option for GL
 And Click on Accounting Setup module
 Then Click sub module Accounting book definition
 And User verify the Modified accounting book in maker view
@@ -144,6 +151,7 @@ And User verify the Modified accounting book in maker view
 @KUBS_GL_UAT_002_006_1
 Scenario: Delete the Accunting Book if COA is not created
 Given Navigate to Azentio Kubs
+And Click on Finance Option for GL
 When user click the Accounting setup
 And click the accounting book eye icon
 And Click On Search Icon
@@ -177,6 +185,7 @@ And Give Remark and Submit for delete accounting book
 Scenario: Verify the accounting book is deactivated 
 And User update the test data set id for verify accounting book is deactivated
 Given Navigate to Azentio Kubs
+And Click on Finance Option for GL
 When user click the Accounting setup
 And click the accounting book eye icon
 And Click On Search Icon
@@ -186,6 +195,7 @@ Then verify the bill is inactive or not
 @KUBS_GL_UAT_002_008_1
 Scenario: De-activate the account book
 Given Navigate to Azentio Kubs
+And Click on Finance Option for GL
 When user click the Accounting setup
 And click the accounting book eye icon
 And Click On Search Icon
@@ -219,6 +229,7 @@ And Give Remark and Submit for deactivate the accounting book
 Scenario: Verify the accounting book is deactivated
 And User update test data set id for verify the deactivated accounting book
 Given Navigate to the Azentio Url
+And Click on Finance Option for GL
 When user click the Accounting setup
 And click the accounting book eye icon
 And Click On Search Icon
@@ -227,6 +238,7 @@ Then verify the bill is inactive or not
 @KUBS_GL_UAT_001_001_1PRQ1
 Scenario: Create an accounting base templet for accounting book for legal entity
 Given Navigate to Azentio Kubs
+And Click on Finance Option for GL
 And Click on Accounting Setup module
 Then Click sub module Accounting book definition
 And Click on Add icon
@@ -264,6 +276,7 @@ And Give Remark and Submit for accounting base template reviewer
 Scenario: Verify the Approved accounting book record in maker
 And User Update the data set id for verify Base Template book created
 Given Navigate to Azentio Kubs
+And Click on Finance Option for GL
 And Click on Accounting Setup module
 Then Click sub module Accounting book definition
 Then Click on Table Row First Eye Icon
@@ -274,6 +287,7 @@ And User verify the created accounting book in maker view
 Scenario: Create a category for the accounting type based on the base accounting book for ASSETS
 And User Update the test data set id for category record Assets
 Given Navigate to the Azentio Url
+And Click on Finance Option for GL
 When user click the Accounting setup
 And click accounting category eye icon
 And click add icon in Gl
@@ -308,12 +322,14 @@ And Give Remark and Submit for category records
 Scenario: Verify the Created Category record reflected in Maker view
 And User Update the test data set id to Verify the created category in Maker
 Given Navigate to the Azentio Url
+And Click on Finance Option for GL
 When user click the Accounting setups
 And click accounting category eye icon
 Then verify the accounting category created
 @KUBS_GL_UAT_001_001_1PRQ2
 Scenario: Create an accounting base templet for accounting book for legal entity
 Given Navigate to Azentio Kubs
+And Click on Finance Option for GL
 And Click on Accounting Setup module
 Then Click sub module Accounting book definition
 And Click on Add icon
@@ -351,6 +367,7 @@ And Give Remark and Submit for accounting base template reviewer
 Scenario: Verify the Approved accounting book record in maker
 And User Update the data set id for verify Base Template book created
 Given Navigate to Azentio Kubs
+And Click on Finance Option for GL
 And Click on Accounting Setup module
 Then Click sub module Accounting book definition
 Then Click on Table Row First Eye Icon
@@ -361,6 +378,7 @@ And User verify the created accounting book in maker view
 Scenario: Create a category for the accounting type based on the base accounting book for Liability
 And User update the test data set id for category record Liability
 Given Navigate to the Azentio Url
+And Click on Finance Option for GL
 When user click the Accounting setup
 And click accounting category eye icon
 And click add icon in Gl
@@ -395,12 +413,14 @@ And Give Remark and Submit for category records
 Scenario: Verify the created category record is reflected in Maker list view 
 And User Update the test data set id to Verify the created category Liability in Maker
 Given Navigate to the Azentio Url
+And Click on Finance Option for GL
 When user click the Accounting setup
 And click accounting category eye icon
 Then verify the accounting category created for liability
 @KUBS_GL_UAT_001_001_01PRQ3
 Scenario: Create an accounting base templet for accounting book for legal entity
 Given Navigate to Azentio Kubs
+And Click on Finance Option for GL
 And Click on Accounting Setup module
 Then Click sub module Accounting book definition
 And Click on Add icon
@@ -438,6 +458,7 @@ And Give Remark and Submit for accounting base template reviewer
 Scenario: Verify the Approved accounting book record in maker
 And User Update the data set id for verify Base Template book created
 Given Navigate to Azentio Kubs
+And Click on Finance Option for GL
 And Click on Accounting Setup module
 Then Click sub module Accounting book definition
 Then Click on Table Row First Eye Icon
@@ -448,6 +469,7 @@ And User verify the created accounting book in maker view
 Scenario: Create a category for the accounting type based on the base accounting book for Income
 And User update the test data set id for category record Income
 Given Navigate to Azentio Kubs
+And Click on Finance Option for GL
 And Click on Accounting Setup module
 Then click sub module Accounting Category
 And Click on Add icon
@@ -482,12 +504,14 @@ And Give Remark and Submit for category records
 Scenario: Verify the created category record is reflected in Maker list view
 And User Update the test data set id to Verify the created category Income in Maker
 Given Navigate to Azentio Kubs
+And Click on Finance Option for GL
 And Click on Accounting Setup module
 Then click sub module Accounting Category
 Then verify the accounting category created for Income
 @KUBS_GL_UAT_001_001_01PRQ4
 Scenario: Create an accounting base templet for accounting book for legal entity
 Given Navigate to Azentio Kubs
+And Click on Finance Option for GL
 And Click on Accounting Setup module
 Then Click sub module Accounting book definition
 And Click on Add icon
@@ -525,6 +549,7 @@ And Give Remark and Submit for accounting base template reviewer
 Scenario: Verify the Approved accounting book record in maker
 And User Update the data set id for verify Base Template book created
 Given Navigate to Azentio Kubs
+And Click on Finance Option for GL
 And Click on Accounting Setup module
 Then Click sub module Accounting book definition
 Then Click on Table Row First Eye Icon
@@ -535,6 +560,7 @@ And User verify the created accounting book in maker view
 Scenario: Create a category for the accounting type based on the base accounting book for Expenditure
 And User update the test data set id for category record Expenditure
 Given Navigate to Azentio Kubs
+And Click on Finance Option for GL
 And Click on Accounting Setup module
 Then click sub module Accounting Category
 And Click on Add icon
@@ -569,6 +595,7 @@ And Give Remark and Submit for category records
 Scenario: Verify the created category record is reflected in Maker list view
 And User Update the test data set id to Verify the created category Expenditure in Maker
 Given Navigate to Azentio Kubs
+And Click on Finance Option for GL
 And Click on Accounting Setup module
 Then click sub module Accounting Category
 Then verify the accounting category created for Expenditure
@@ -576,7 +603,8 @@ Then verify the accounting category created for Expenditure
 @KUBS_GL_UAT_003_005
 Scenario: Check the category already created and trying to create same accounting book
 And User Test data set for category already created and trying to create same accounting book
-Given Navigate to URL and user should login as a maker
+Given Navigate to Azentio Kubs
+And Click on Finance Option for GL
 When user click the Accounting setup
 And click accounting category eye icon
 And click add icon in Gl
@@ -587,8 +615,8 @@ Then verify the system should through the validation message for the existing co
 @KUBS_GL_UAT_005_001_01
 Scenario: Create chart of account for Parent GL (COA)
 When User Update the Test data Set id for COA Parent GL
-Given Navigate to URL and user should login as a maker
-Then Click on the Finance
+Given Navigate to Azentio Kubs
+And Click on Finance Option for GL
 Then click on accounting setup
 Then Click on Chart of account definition
 Then Click on COA add button
@@ -624,16 +652,16 @@ Then checker should approved the COA record
 @KUBS_GL_UAT_005_001_04
 Scenario: Verify the created COA record in Maker
 When User Update the test data set id for verify created COA Parent GL
-Given Navigate to URL and user should login as a maker
-Then Click on the Finance
+Given Navigate to Azentio Kubs
+And Click on Finance Option for GL
 Then click on accounting setup
 Then Click on Chart of account definition
 Then User Verify Approved COA record for Parent GL in Maker
 @KUBS_GL_UAT_005_002_01
 Scenario: Create a leaf GL (COA) for the parent GL
 And User Update the test data set id for Creation of Leaf GL
-Given Navigate to URL and user should login as a maker
-Then Click on the Finance
+Given Navigate to Azentio Kubs
+And Click on Finance Option for GL
 Then click on accounting setup
 Then Click on Chart of account definition
 Then Click on COA add button
@@ -669,16 +697,16 @@ Then checker should approved the COA record
 @KUBS_GL_UAT_005_002_04
 Scenario: Verify the Approved the COA record for Leaf GL in Maker
 And User Update the test data set id for Verify the approved the COA record of Leaf GL in Maker
-Given Navigate to URL and user should login as a maker
-Then Click on the Finance
+Given Navigate to Azentio Kubs
+And Click on Finance Option for GL
 Then click on accounting setup
 Then Click on Chart of account definition
 Then User Verify Approved COA record for Leaf GL in Maker
 @KUBS_GL_UAT_005_003_01
 Scenario: Create different leaf gls for the node GL
 And User Update the test data set id for Node GL records
-Given Navigate to URL and user should login as a maker
-Then Click on the Finance
+Given Navigate to Azentio Kubs
+And Click on Finance Option for GL
 Then click on accounting setup
 Then Click on Chart of account definition
 Then Click on COA add button
@@ -714,8 +742,8 @@ Then checker should approved the COA record
 @KUBS_GL_UAT_005_003_04
 Scenario: Verify the approved Node GL records in Maker
 And User Update the test data set id to Verify the approved Node GL records in Maker
-Given Navigate to URL and user should login as a maker
-Then Click on the Finance
+Given Navigate to Azentio Kubs
+And Click on Finance Option for GL
 Then click on accounting setup
 Then Click on Chart of account definition
 Then User Verify Approved COA record for Node GL in Maker
@@ -723,8 +751,8 @@ Then User Verify Approved COA record for Node GL in Maker
 @KUBS_GL_UAT_005_004_01
 Scenario: Create COA for the selected branch from Main Branch as per the hierarchy
 And User Update the test data set id for Created COA Selected branch
-Given Navigate to URL and user should login as a maker
-Then Click on the Finance
+Given Navigate to Azentio Kubs
+And Click on Finance Option for GL
 Then click on accounting setup
 Then Click on Chart of account definition
 Then Click on COA add button
@@ -761,8 +789,8 @@ Then checker should approved the COA record
 @KUBS_GL_UAT_005_004_04
 Scenario: Verify the Created COA for the selected branch from Main Branch as per the hierarchy in Maker
 And User update the test data set id for verify created coa
-Given Navigate to URL and user should login as a maker
-Then Click on the Finance
+Given Navigate to Azentio Kubs
+And Click on Finance Option for GL
 Then click on accounting setup
 Then Click on Chart of account definition
 Then User Verify Approved COA record in Maker for selected branch
@@ -770,7 +798,8 @@ Then User Verify Approved COA record in Maker for selected branch
 @KUBS_GL_UAT_005_005_01
 Scenario: Modify the Chart of Account (COA)
 And User update the test data set id to Modify the Chart of Account record
-Given User should go to the kubs url and login as a maker user
+Given Navigate to Azentio Kubs
+And Click on Finance Option for GL
 And user should navigate to accounting setup menu
 Then click on eye button of chart of accounts definition submenu
 Then click on search button
@@ -806,20 +835,48 @@ Then checker should approved the COA record
 @KUBS_GL_UAT_005_005_04
 Scenario: User Verify the Modified Chart of Account (COA) in Maker
 And User update the test data set id for verify Modified coa
-Given Navigate to URL and user should login as a maker
-Then Click on the Finance
+Given Navigate to Azentio Kubs
+And Click on Finance Option for GL
 Then click on accounting setup
 Then Click on Chart of account definition
 Then User Verify Approved and Modified COA record in Maker
+
+@KUBS_GL_UAT_005_006
+Scenario: Check the created COA can be modified after use of COA if GL entries are passed for the COA
+And User update the test data set id for modified after use of COA if GL entries are passed for the COA
+Given Navigate to Azentio Kubs
+And Click on Finance Option for GL
+And user should navigate to accounting setup menu
+Then click on eye button of chart of accounts definition submenu
+Then click on search button for GL
+Then search used COA code for which GL entries are passed    
+Then click on pencil button to modify the COA
+Then modify the COA details for which GL entries are passed
+Then Save and check the modified record of used leaf COA
+
+@KUBS_GL_UAT_005_007
+Scenario: Check the created COA can be modified if Gl entries are passed for the parent being mapped or changed
+And User update the test data set id for modified if Gl entries are passed for the parent being mapped or changed
+Given Navigate to Azentio Kubs
+And Click on Finance Option for GL
+And user should navigate to accounting setup menu
+Then click on eye button of chart of accounts definition submenu
+Then click on search button for GL
+Then search used parent COA code for which GL entries are passed
+Then click on pencil button to modify the COA
+Then modify the COA details for which GL entries are passed
+Then Save and check the modified record of used parent COA
+
 
 # prerequisites KUBS_GL_UAT_005_003_01 
 @KUBS_GL_UAT_005_008_01
 Scenario: Create Chart of Account Active to De-active
 And User update the test data set id for Change Chart of Account Active to De active
-Given User should go to the kubs url and login as a maker user
+Given Navigate to Azentio Kubs
+And Click on Finance Option for GL
 And user should navigate to accounting setup menu
 Then click on eye button of chart of accounts definition submenu
-Then click on search button
+Then click on search button for GL
 Then search COA name to modify the coa1
 Then click on pencil button to modify the COA
 Then Inactive the active Chart of account
@@ -850,16 +907,31 @@ Then checker should approved the COA record
 @KUBS_GL_UAT_005_008_04
 Scenario: Verify the deactivated COA record in Checker
 And User Update test data set id to Verify the deactivated COA record in Checker
-Given User should go to the kubs url and login as a maker user
+Given Navigate to Azentio Kubs
+And Click on Finance Option for GL
 And user should navigate to accounting setup menu
 Then click on eye button of chart of accounts definition submenu
 Then click on search button
 Then search COA name to modify the coa1
 And Verify the deactivated COA record shows In active in List view
 
+@KUBS_GL_UAT_005_009
+Scenario: If COA marked as de-active when accounting transaction carried out
+And User Update test data set id for COA marked as de active when accounting transaction carried out
+Given Navigate to Azentio Kubs
+And Click on Finance Option for GL
+Then click on accounting setup
+Then Click on Chart of account definition
+Then Click on search button to search COA
+Then Click on Edit button to edit COA record
+Then Click on status to make it inactive
+Then Click on save button to save record
+Then Validation message should pop up
+
 @KUBS_GL_UAT_007_001
 Scenario: Check the accounting mapping done for the accounting Scheme
-Given Login as a Azentio Maker
+Given Navigate to Azentio Kubs
+And Click on Finance Option for GL
 When user click the Accounting setup
 And click the accounting scheme definition eye icon
 And click the search icon

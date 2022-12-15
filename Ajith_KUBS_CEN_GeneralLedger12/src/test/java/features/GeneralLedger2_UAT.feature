@@ -449,7 +449,8 @@ Then validate Journal vourcher Reversal number
     
     
     @KUBS_GL2_UAT_008_002 @MultiAuth @GL2
-Scenario: The report should display all the details for JV.
+Scenario: The report should display all the details for JV
+And User update the test data set id to display all the details for JV
 Given Navigate to Azentio Kubs
 And Click on Finance Option for GL
 Then Click on Direction icon
@@ -457,28 +458,39 @@ Then Click on General Ledger Transaction Field
 Then Click on Journal Voucher EyeIcon
 Then Click on Table Row First Eye Icon
 And Get all details of Journal Voucher
-#Then click on report segment button
-#And click on equiry menu
-#Then click on edit icon near fiancial transaction menu
-#And User select the Branch Code for verify details of JV
+Then click on report segment button
+And click on equiry menu
+Then click on edit icon near fiancial transaction menu
+And User select the Branch Code for verify details of JV
 #Then select Transaction from date Journal vourcher
 #Then select Transaction to date Journal vourcher
-#And click on view button for record
-#Then validate all the details for Journal vourcher 
+And User select the JV Transaction number to display all the details for JV
+And click on view button for record
+And click on view button for record
+Then validate all the details for Journal vourcher 
 
 @KUBS_GL2_UAT_008_003 @MultiAuth @GL2
 
 Scenario: The report should display all the details for JV reversal.
-
-Given Maker Navigate to UAT URL login
+And User update the test data set id to display all the details for JV reversal 
+Given Navigate to Azentio Kubs
+And Click on Finance Option for GL
+Then Click on Direction icon
+Then Click on General Ledger Transaction Field
+Then Click on Journal Voucher Reversal EyeIcon
+Then Click on Table Row First Eye Icon
+And Get all details of Journal Voucher Reversal
 Then click on report segment button
 And click on equiry menu
 Then click on edit icon near fiancial transaction menu
-And fill the mandtory field for Journal vourcher
-Then select Transaction from date Journal vourcher
-Then select Transaction to date Journal vourcher
+And User select the Branch Code for verify details of JV Reversal
+#Then select Transaction from date Journal vourcher
+#Then select Transaction to date Journal vourcher
+And User select the JV Transaction number to display all the details for JV reversal
+And click on view button for record
 And click on view button for record
 Then validate all the details for JV reversal
+# pending
 @KUBS_GL2_UAT_008_004
 Scenario: verify GL balance report should display the correct balance of GL
 Given Navigate to Azentio Kubs
@@ -508,12 +520,18 @@ Then verify that available balance should equal to closing net balance in Gl bal
 @KUBS_GL2_UAT_008_005
 @GlMonthlyBalance
 Scenario: Check report for GL monthly balances.
-Given Maker Navigate to UAT URL login
+And User update the test data set id for GL monthly balances  
+Given Navigate to Azentio Kubs
+And Click on Finance Option for GL
+And get the system date for Income statement report
 And click on tool icon
 Then click on report segment button
 Then click on Financial reporting button
-Then click on GL monthly balances 
-Then fill the input fields of GL monthly balances
+Then click on GL monthly balances
+And User Select the Branch Code for Check GL Monthly balances
+And User Select the Report type for Check GL Monthly balances 
+And User Select the GL Code for Check GL Monthly balances
+And User Select the Currency for Check GL Monthly balances 
 Then Select Transaction from date Financial Transaction Report
 And click view button of report
 Then verify the Record available in report
@@ -523,13 +541,17 @@ Then verify the Record available in report
 
 Scenario: Check report for Financial Transaction 
 					The report should display all the details for transaction.
-					
-Given Maker Navigate to UAT URL login
+			
+And User Update test data set id to Check Report for financial transaction
+Given Navigate to Azentio Kubs
+And Click on Finance Option for GL
+And get the system date for Income statement report
 And click on tool icon
 Then click on report segment button
 Then click on Financial reporting button
 Then click on Financial Transaction Report
-Then fill the input fields of Financial Transaction
+And User Select the branch code for Financial transaction
+#And User Select the GL Code for Financial transaction
 Then Select Transaction from date Financial Transaction Report
 Then select Transaction to date Financial Transaction Report
 And click view button of report
@@ -537,7 +559,7 @@ Then verify the approved invoicebill number is available in report
 
 @KUBS_GL2_UAT_008_007 @Report @GL2
   Scenario: Check the trial balance
-  And User Update test data set id for trial balance 
+  	And User Update test data set id for trial balance 
     Given Navigate to Azentio Kubs
     And Click on Finance Option for GL
     And get the system date for Income statement report
@@ -566,20 +588,26 @@ Then verify the approved invoicebill number is available in report
     And User Choose trial balance To date for trial balance summary
     And User select the Currency type for trial balance summary
     Then click on view button to view the report of Trial balance summary
-    #pending
+
   @KUBS_GL2_UAT_008_009 @Report @GL2
   Scenario: Check the trial balance based on the leaf GL
+    And User Update test data set id for trial balance based on the leaf GL 
     Given Navigate to Azentio Kubs
     And Click on Finance Option for GL
-    And user should navigate to accounting setup menu 
-    Then click on eye button of chart of accounts definition submenu
-    Then click on search button
-    Then search coa code using coa name
-    And get the coa code
+    And get the system date for Income statement report
+    #And user should navigate to accounting setup menu 
+    #Then click on eye button of chart of accounts definition submenu
+    #Then click on search button
+    #Then search coa code using coa name
+    #And get the coa code
     Then click on report icon
     And user should navigate to financial reporting menu
     Then click on temp grid button of Trial Balance report
-    And fill the required field of Trial Balance report based on leaf GL
+    And User Select the branch code for Check the trial balance based on the leaf GL
+    And User Select report type for Check the trial balance based on the leaf GL
+    And User Select Trial balance from date for Check the trial balance based on the leaf GL
+    And User Select Trial balance to date for Check the trial balance based on the leaf GL
+    And User Select the Currency for Check the trial balance based on the leaf GL
     And click on view button in trial balance report 
     And check the trial balance based on the leaf gl is available
     

@@ -218,6 +218,13 @@ public class AccountingSetup_ChartOfAccountsDefinitionObj {
 	public WebElement accountingSetup_ChartOfAccountsDefinition_RemarkSubmit() {
 		return accountingSetup_ChartOfAccountsDefinition_RemarkSubmit;
 	}
+	// Search icon
+		@FindBy(xpath = "//ion-header/ion-toolbar[1]/ion-buttons[2]/ion-item[1]/ion-icon[1]")
+		private WebElement searchIconInListView;
+
+		public WebElement searchIconInListView() {
+			return searchIconInListView;
+		}
 }
 
 
