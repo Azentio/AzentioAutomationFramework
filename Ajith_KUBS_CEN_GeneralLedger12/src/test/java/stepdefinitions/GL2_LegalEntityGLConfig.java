@@ -199,12 +199,12 @@ public class GL2_LegalEntityGLConfig extends BaseClass {
 	    public void click_first_record_action_icon_for_gl2() throws Throwable {
 		 String befr_xpath = "//span[contains(text(),'";
 			String aftr_xpath = "')]/parent::div/parent::datatable-body-cell/preceding-sibling::datatable-body-cell[1]//div//ion-buttons//ion-button";
-			for (int i = 0; i <200; i++) {
+			for (int i = 0; i <20000; i++) {
 				try {
 					driver.findElement(By.xpath(befr_xpath +testData.get("Reference ID")+ aftr_xpath)).click();
 					break;
 				} catch (Exception e) {
-					if (i==199) {
+					if (i==19999) {
 						Assert.fail(e.getMessage());
 					}
 				}
@@ -333,12 +333,12 @@ public class GL2_LegalEntityGLConfig extends BaseClass {
     public void verify_the_given_data_in_created_ledger() throws Throwable {
     	Thread.sleep(1000);
     	String xpath ="//span[contains(text(),'"+testData.get("GLCheque")+"')]";
-        for (int i = 0; i <200; i++) {
+        for (int i = 0; i <20000; i++) {
 			try {
 				Assert.assertTrue(driver.findElement(By.xpath(xpath)).isDisplayed());
 				break;
 			} catch (NoSuchElementException e) {
-				if (i==199) {
+				if (i==19999) {
 					Assert.fail("Approved GL Entity record is not displayed in Maker List View");
 				}
 			}
@@ -4129,7 +4129,7 @@ public class GL2_LegalEntityGLConfig extends BaseClass {
 				.sendKeys(testData.get("ReportType"));
 		for (int i = 0; i <200; i++) {
 			try {
-				driver.findElement(By.xpath("//ng-dropdown-panel//span[contains(text(),'"+testData.get("ReportType")+"')]")).isDisplayed();
+				driver.findElement(By.xpath("//ng-dropdown-panel//span[contains(text(),'"+testData.get("ReportType")+"')]")).click();
 				break;
 			} catch (Exception e) {
 				if (i==199) {
@@ -4137,8 +4137,8 @@ public class GL2_LegalEntityGLConfig extends BaseClass {
 				}
 			}
 		}	
-		financialReporting_TrialBalanceReportObj.financialReportingTrailBalanceReportType()
-				.sendKeys(Keys.ENTER);
+//		financialReporting_TrialBalanceReportObj.financialReportingTrailBalanceReportType()
+//				.sendKeys(Keys.ENTER);
     }
 
     @And("^User Select Trial balance from date for Check the trial balance based on the leaf GL$")
