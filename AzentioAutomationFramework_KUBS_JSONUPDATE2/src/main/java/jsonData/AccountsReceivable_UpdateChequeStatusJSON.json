@@ -1,0 +1,21 @@
+[
+	{
+		"User" : "Maker",
+		"ChequeNumber": "RRN101015",
+		"BranchCode": "AZENTMAIN",
+		"GLCode": "IFRS-AS-AS1000017",
+		
+		"GLMonth": "Apr",
+		"GLFullMonth": "April",
+		"GLDay": "1",
+		
+		"GLYear": "2023",
+		
+		"GLToMonth": "Apr",
+		"GLFullToMonth": "April",
+		"GLToDate": "19",
+		
+		"SlipNumber"  :"DEP-RR88888888-20220307",
+		"RemarkByMaker" : "submit by maker"
+	}
+]

@@ -1,0 +1,10 @@
+[
+{
+"UserType":"Maker",
+"PaymentMode":"Transfer",
+"PaymentFileAs":"Bank Wise",
+"PaymentFileAsBankAndBankAccountWise":"Bank  &  Acount Number Wise",
+"PaymentFileAsPayoutWise":"Payout Wise"
+
+}
+]

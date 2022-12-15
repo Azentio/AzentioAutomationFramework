@@ -1,0 +1,8 @@
+KVB Bank
+"Account No.: 3398125569, karurvysa"
+"Closing Balance: INR 8360.0, As On Date: 14-Mar-2023"
+As On Date: 14-Mar-2023
+Date        Chq./Ref.No.            Deposit Amt.             Withdrawal Amt.         Narration            Value Dt                Closing Balance					
+17/02/2023  RRN156                  7000                                             OK                   17/02/2023               7000.0
+17/02/2023  RRN444                  560                                              OK                   17/02/2023               7560.0
+13/03/2023  rrn454                  800                                              ok                   13/03/2023               8360.0
