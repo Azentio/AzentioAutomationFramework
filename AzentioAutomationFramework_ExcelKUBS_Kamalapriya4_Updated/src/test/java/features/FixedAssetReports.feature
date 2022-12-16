@@ -154,3 +154,30 @@ Then Get the system date for asset code report
 And select the depreciation method and date to check the asset codes are displaying 
 Then click in the view button to check 
 Then the report is displaying all the asset codes details for a branch 
+
+@KUBS_FAT_UAT_013_004_Depreciation
+ Scenario: Check Depreciation
+ Given User should go to the kubs url and login as a maker user
+ Then click on report icon
+ And user should navigate to reports menu
+ Then click on temp grid button of depreciation
+ And Choose the data set id for depreciation report
+ And Get the system date for the depreciation report
+ And select required fields to check the depreciation details are displaying
+ Then click in the view button to check
+ Then the report is displaying all the asset depreciation details for a branch
+ 
+  @KUBS_FAT_UAT_013_005_AssetGl
+Scenario: Check Asset GL
+Given Navigate to URL and user should login as a maker
+Then click on report segment button
+And click on equiry menu
+Then click on edit icon near by fiancial transaction menu
+And choose branch code
+And choose Gl code
+And click on transaction from date calender icon
+Then choose the from date
+And click on the transaction to date calender icon
+Then choose the to date
+And click on view button
+Then validate voucher number

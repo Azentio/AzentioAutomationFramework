@@ -53,6 +53,8 @@ public class Reports_AssetCreationCommon {
 	String excelPath = System.getProperty("user.dir") + "\\Test-data\\KUBSTestData.xlsx";
 	ExcelData excelData = new ExcelData(excelPath, "FixedAsset_AssetCodeConfig", "DataSet ID");
 	Map<String, String> assetCodeConfigTestData = new HashMap<>();
+	ExcelData excelAssetDepreciationTestData = new ExcelData(excelPath, "DepreciationReport", "DataSet ID");
+	Map<String, String> assetDepreciationTestData = new HashMap<>();
 	@And("^user should navigate to reports menu$")
 	public void user_should_navigate_to_reports_menu()  {
 		waithelper.waitForElement(driver, 3000, reports_AssetCreationCommonObj.Report_AssetCreationCommon_ReportIcon());
@@ -171,98 +173,164 @@ public class Reports_AssetCreationCommon {
 		waithelper.waitForElement(driver, 3000, reports_AssetCreationCommonObj.Report_AssetCreationCommon_DepreciationTempView());
 		reports_AssetCreationCommonObj.Report_AssetCreationCommon_DepreciationTempView().click();
 	}
+	@And("^Choose the data set id for depreciation report$")
+    public void choose_the_data_set_id_for_depreciation_report() throws Throwable {
+		assetDepreciationTestData = excelData.getTestdata("KUBS_FAT_UAT_013_004_D1");
+	
+    }
+
+    @And("^Get the system date for the depreciation report$")
+    public void get_the_system_date_for_the_depreciation_report() throws Throwable {
+    	waithelper.waitForElementToVisibleWithFluentWait(driver,reports_AssetCreationCommonObj.systemDate(), 30, 2);
+        String systemdate = reports_AssetCreationCommonObj.systemDate().getText();
+    System.out.println(systemdate);
+    String[] split = systemdate.split("-");
+    String date = split[0];
+    testdata.put("Date", date);
+    //  System.out.println(date);
+    String month = split[1];
+    testdata.put("ToMonth", month);
+    //  System.out.println(month);
+    String year = split[2];
+    testdata.put("Year", year);
+    //  System.out.println(year);
+    String fullMonth;
+    switch (month) {
+    case "Jan":
+    fullMonth = "January";
+    break;
+    case "Feb":
+    fullMonth = "February";
+    break;
+    case "Mar":
+    fullMonth = "March";
+    break;
+    case "Apr":
+    fullMonth = "April";
+    break;
+    case "May":
+    fullMonth = "May";
+    break;
+    case "Jun":
+    fullMonth ="June";
+    break;
+    case "Jul":
+    fullMonth = "July";
+    break;
+    case "Aug":
+    fullMonth ="August";
+    break;
+    case "Sep":
+    fullMonth = "September";
+    break;
+    case "Oct":
+    fullMonth = "October";
+    break;
+    case "Nov":
+    fullMonth = "November";
+    break;
+    case "Dec":
+    fullMonth = "December";
+    break;
+    default:
+     fullMonth = "InvalidMonth";
+    break;
+    }
+    testdata.put("FullMonth", fullMonth);
+    }
+
 
 	@And("^select required fields to check the depreciation details are displaying$")
 	public void select_required_fields_to_check_the_depreciation_details_are_displaying() throws InterruptedException  {
 		waithelper.waitForElement(driver, 3000, reports_AssetCreationCommonObj.Report_Depreciation_Branch());
-		reports_AssetCreationCommonObj.Report_Depreciation_Branch().sendKeys(AssetCreationCommonTestDataType.DepreciationBranch);
+		reports_AssetCreationCommonObj.Report_Depreciation_Branch().sendKeys(assetDepreciationTestData.get("DepreciationBranch"));
 		reports_AssetCreationCommonObj.Report_Depreciation_Branch().sendKeys(Keys.ENTER);
 		
 		reports_AssetCreationCommonObj.Report_AssetCreationCommon_Date().click();
 		
-		Thread.sleep(2000);
-		while(true)
-		{
-			try 
-			{
-				waithelper.waitForElement(driver, 3000, driver.findElement(By.xpath("//span[contains(text(),'"+AssetCreationCommonTestDataType.DepreciationMonth+" "+AssetCreationCommonTestDataType.DepreciationYear+"')]")));
-				WebElement birthmonthandyear=driver.findElement(By.xpath("//span[contains(text(),'"+AssetCreationCommonTestDataType.DepreciationMonth+" "+AssetCreationCommonTestDataType.DepreciationYear+"')]"));
-//				driver.findElement(By.xpath("//div/div/button")).getText().contains(bUSINESS_PARTNER_SETUP_BusinessPartnerTestDataType.BirthMonth+" "+bUSINESS_PARTNER_SETUP_BusinessPartnerTestDataType.BirthYear);
-				break;
-			}catch(NoSuchElementException nosuchElement)
-			{
-				waithelper.waitForElement(driver, 3000, bUSINESS_PARTNER_SETUP_BusinessPartnerObj.businessPartner_SelectDate());
-				bUSINESS_PARTNER_SETUP_BusinessPartnerObj.businessPartner_SelectDate().click();
-				String tablehead=bUSINESS_PARTNER_SETUP_BusinessPartnerObj.businessPartner_HeadYear().getText();
-//				String tablehead="2016 ~ 2036";
-				String headyear=tablehead.replaceAll(" ~", "");
-//				System.out.println(headyear);
-				String ar[] = headyear.split(" ");
-				int y1=Integer.parseInt(ar[0]);
-				int y2=Integer.parseInt(ar[1]);
-				int year=Integer.parseInt(AssetCreationCommonTestDataType.DepreciationYear);
-				if(year < y1 && year<y2)
-				{
-					while(true)
-					{
-						try {
-							waithelper.waitForElement(driver, 3000, driver.findElement(By.xpath("//span[contains(text(),'"+AssetCreationCommonTestDataType.DepreciationYear+"')]")));
-							WebElement Year=driver.findElement(By.xpath("//span[contains(text(),'"+AssetCreationCommonTestDataType.DepreciationYear+"')]"));
-						    break;
-						}
-						catch(NoSuchElementException nosuchElement1) {
-							waithelper.waitForElement(driver, 3000, bUSINESS_PARTNER_SETUP_BusinessPartnerObj.businessPartner_ClickOnPreviousYear());
-							bUSINESS_PARTNER_SETUP_BusinessPartnerObj.businessPartner_ClickOnPreviousYear().click();
-						}
-					}
-					waithelper.waitForElement(driver, 3000, driver.findElement(By.xpath("//span[contains(text(),'"+AssetCreationCommonTestDataType.DepreciationYear+"')]")));
-					WebElement Year=driver.findElement(By.xpath("//span[contains(text(),'"+AssetCreationCommonTestDataType.DepreciationYear+"')]"));
-					Year.click();
-					
-					waithelper.waitForElement(driver, 2000, driver.findElement(By.xpath("//td[@aria-label='"+AssetCreationCommonTestDataType.DepreciationFullMonth+" "+AssetCreationCommonTestDataType.DepreciationYear+"']")));
-					driver.findElement(By.xpath("//td[@aria-label='"+AssetCreationCommonTestDataType.DepreciationFullMonth+" "+AssetCreationCommonTestDataType.DepreciationYear+"']")).click();
-					
-				}
-				else if(year>y1 && year>y2)
-				{
-					while(true)
-					{
-						try {
-							waithelper.waitForElement(driver, 3000, driver.findElement(By.xpath("//span[contains(text(),'"+AssetCreationCommonTestDataType.DepreciationYear+"')]")));
-							WebElement Year=driver.findElement(By.xpath("//span[contains(text(),'"+AssetCreationCommonTestDataType.DepreciationYear+"')]"));
-						    break;
-						}
-						catch(NoSuchElementException nosuchElement2) {
-							waithelper.waitForElement(driver, 3000, bUSINESS_PARTNER_SETUP_BusinessPartnerObj.businessPartner_ClickOnNextYear());
-							bUSINESS_PARTNER_SETUP_BusinessPartnerObj.businessPartner_ClickOnNextYear().click();
-						}
-					}
-					waithelper.waitForElement(driver, 3000, driver.findElement(By.xpath("//span[contains(text(),'"+AssetCreationCommonTestDataType.DepreciationYear+"')]")));
-					WebElement Year=driver.findElement(By.xpath("//span[contains(text(),'"+AssetCreationCommonTestDataType.DepreciationYear+"')]"));
-					Year.click();
-					
-					waithelper.waitForElement(driver, 2000, driver.findElement(By.xpath("//td[@aria-label='"+AssetCreationCommonTestDataType.DepreciationFullMonth+" "+AssetCreationCommonTestDataType.DepreciationYear+"']")));
-					driver.findElement(By.xpath("//td[@aria-label='"+AssetCreationCommonTestDataType.DepreciationFullMonth+" "+AssetCreationCommonTestDataType.DepreciationYear+"']")).click();
-					
-				}
-				else
-				{
-					waithelper.waitForElement(driver, 3000, driver.findElement(By.xpath("//td[@aria-label='"+AssetCreationCommonTestDataType.DepreciationYear+"']")));
-					WebElement Year=driver.findElement(By.xpath("//td[@aria-label='"+AssetCreationCommonTestDataType.DepreciationYear+"']"));
-					Year.click();
-					
-					waithelper.waitForElement(driver, 2000, driver.findElement(By.xpath("//td[@aria-label='"+AssetCreationCommonTestDataType.DepreciationFullMonth+" "+AssetCreationCommonTestDataType.DepreciationYear+"']")));
-					driver.findElement(By.xpath("//td[@aria-label='"+AssetCreationCommonTestDataType.DepreciationFullMonth+" "+AssetCreationCommonTestDataType.DepreciationYear+"']")).click();
-					
-				}
-			}
-		}
-		waithelper.waitForElement(driver, 3000, driver.findElement(By.xpath("//td[@aria-label='"+AssetCreationCommonTestDataType.DepreciationFullMonth +" "+AssetCreationCommonTestDataType.DepreciationDate+", "+AssetCreationCommonTestDataType.DepreciationYear+"']/span")));	
-		WebElement BirthDate=driver.findElement(By.xpath("//td[@aria-label='"+AssetCreationCommonTestDataType.DepreciationFullMonth +" "+AssetCreationCommonTestDataType.DepreciationDate+", "+AssetCreationCommonTestDataType.DepreciationYear+"']/span"));
-		clicksAndActionHelper.doubleClick(BirthDate);
-		
+//		Thread.sleep(2000);
+//		while(true)
+//		{
+//			try 
+//			{
+//				waithelper.waitForElement(driver, 3000, driver.findElement(By.xpath("//span[contains(text(),'"+AssetCreationCommonTestDataType.DepreciationMonth+" "+AssetCreationCommonTestDataType.DepreciationYear+"')]")));
+//				WebElement birthmonthandyear=driver.findElement(By.xpath("//span[contains(text(),'"+AssetCreationCommonTestDataType.DepreciationMonth+" "+AssetCreationCommonTestDataType.DepreciationYear+"')]"));
+////				driver.findElement(By.xpath("//div/div/button")).getText().contains(bUSINESS_PARTNER_SETUP_BusinessPartnerTestDataType.BirthMonth+" "+bUSINESS_PARTNER_SETUP_BusinessPartnerTestDataType.BirthYear);
+//				break;
+//			}catch(NoSuchElementException nosuchElement)
+//			{
+//				waithelper.waitForElement(driver, 3000, bUSINESS_PARTNER_SETUP_BusinessPartnerObj.businessPartner_SelectDate());
+//				bUSINESS_PARTNER_SETUP_BusinessPartnerObj.businessPartner_SelectDate().click();
+//				String tablehead=bUSINESS_PARTNER_SETUP_BusinessPartnerObj.businessPartner_HeadYear().getText();
+////				String tablehead="2016 ~ 2036";
+//				String headyear=tablehead.replaceAll(" ~", "");
+////				System.out.println(headyear);
+//				String ar[] = headyear.split(" ");
+//				int y1=Integer.parseInt(ar[0]);
+//				int y2=Integer.parseInt(ar[1]);
+//				int year=Integer.parseInt(AssetCreationCommonTestDataType.DepreciationYear);
+//				if(year < y1 && year<y2)
+//				{
+//					while(true)
+//					{
+//						try {
+//							waithelper.waitForElement(driver, 3000, driver.findElement(By.xpath("//span[contains(text(),'"+AssetCreationCommonTestDataType.DepreciationYear+"')]")));
+//							WebElement Year=driver.findElement(By.xpath("//span[contains(text(),'"+AssetCreationCommonTestDataType.DepreciationYear+"')]"));
+//						    break;
+//						}
+//						catch(NoSuchElementException nosuchElement1) {
+//							waithelper.waitForElement(driver, 3000, bUSINESS_PARTNER_SETUP_BusinessPartnerObj.businessPartner_ClickOnPreviousYear());
+//							bUSINESS_PARTNER_SETUP_BusinessPartnerObj.businessPartner_ClickOnPreviousYear().click();
+//						}
+//					}
+//					waithelper.waitForElement(driver, 3000, driver.findElement(By.xpath("//span[contains(text(),'"+AssetCreationCommonTestDataType.DepreciationYear+"')]")));
+//					WebElement Year=driver.findElement(By.xpath("//span[contains(text(),'"+AssetCreationCommonTestDataType.DepreciationYear+"')]"));
+//					Year.click();
+//					
+//					waithelper.waitForElement(driver, 2000, driver.findElement(By.xpath("//td[@aria-label='"+AssetCreationCommonTestDataType.DepreciationFullMonth+" "+AssetCreationCommonTestDataType.DepreciationYear+"']")));
+//					driver.findElement(By.xpath("//td[@aria-label='"+AssetCreationCommonTestDataType.DepreciationFullMonth+" "+AssetCreationCommonTestDataType.DepreciationYear+"']")).click();
+//					
+//				}
+//				else if(year>y1 && year>y2)
+//				{
+//					while(true)
+//					{
+//						try {
+//							waithelper.waitForElement(driver, 3000, driver.findElement(By.xpath("//span[contains(text(),'"+AssetCreationCommonTestDataType.DepreciationYear+"')]")));
+//							WebElement Year=driver.findElement(By.xpath("//span[contains(text(),'"+AssetCreationCommonTestDataType.DepreciationYear+"')]"));
+//						    break;
+//						}
+//						catch(NoSuchElementException nosuchElement2) {
+//							waithelper.waitForElement(driver, 3000, bUSINESS_PARTNER_SETUP_BusinessPartnerObj.businessPartner_ClickOnNextYear());
+//							bUSINESS_PARTNER_SETUP_BusinessPartnerObj.businessPartner_ClickOnNextYear().click();
+//						}
+//					}
+//					waithelper.waitForElement(driver, 3000, driver.findElement(By.xpath("//span[contains(text(),'"+AssetCreationCommonTestDataType.DepreciationYear+"')]")));
+//					WebElement Year=driver.findElement(By.xpath("//span[contains(text(),'"+AssetCreationCommonTestDataType.DepreciationYear+"')]"));
+//					Year.click();
+//					
+//					waithelper.waitForElement(driver, 2000, driver.findElement(By.xpath("//td[@aria-label='"+AssetCreationCommonTestDataType.DepreciationFullMonth+" "+AssetCreationCommonTestDataType.DepreciationYear+"']")));
+//					driver.findElement(By.xpath("//td[@aria-label='"+AssetCreationCommonTestDataType.DepreciationFullMonth+" "+AssetCreationCommonTestDataType.DepreciationYear+"']")).click();
+//					
+//				}
+//				else
+//				{
+//					waithelper.waitForElement(driver, 3000, driver.findElement(By.xpath("//td[@aria-label='"+AssetCreationCommonTestDataType.DepreciationYear+"']")));
+//					WebElement Year=driver.findElement(By.xpath("//td[@aria-label='"+AssetCreationCommonTestDataType.DepreciationYear+"']"));
+//					Year.click();
+//					
+//					waithelper.waitForElement(driver, 2000, driver.findElement(By.xpath("//td[@aria-label='"+AssetCreationCommonTestDataType.DepreciationFullMonth+" "+AssetCreationCommonTestDataType.DepreciationYear+"']")));
+//					driver.findElement(By.xpath("//td[@aria-label='"+AssetCreationCommonTestDataType.DepreciationFullMonth+" "+AssetCreationCommonTestDataType.DepreciationYear+"']")).click();
+//					
+//				}
+//			}
+//		}
+//		waithelper.waitForElement(driver, 3000, driver.findElement(By.xpath("//td[@aria-label='"+AssetCreationCommonTestDataType.DepreciationFullMonth +" "+AssetCreationCommonTestDataType.DepreciationDate+", "+AssetCreationCommonTestDataType.DepreciationYear+"']/span")));	
+//		WebElement BirthDate=driver.findElement(By.xpath("//td[@aria-label='"+AssetCreationCommonTestDataType.DepreciationFullMonth +" "+AssetCreationCommonTestDataType.DepreciationDate+", "+AssetCreationCommonTestDataType.DepreciationYear+"']/span"));
+//		clicksAndActionHelper.doubleClick(BirthDate);
+//		
 		waithelper.waitForElement(driver, 3000, reports_AssetCreationCommonObj.Report_Depreciation_DepreciationPeriod());
-		reports_AssetCreationCommonObj.Report_Depreciation_DepreciationPeriod().sendKeys(AssetCreationCommonTestDataType.DepreciationPeriod);
+		reports_AssetCreationCommonObj.Report_Depreciation_DepreciationPeriod().sendKeys(assetDepreciationTestData.get("DepreciationYear"));
 		reports_AssetCreationCommonObj.Report_Depreciation_DepreciationPeriod().sendKeys(Keys.DOWN,Keys.ENTER);
 	}
 	
