@@ -2611,14 +2611,14 @@ public class AR_AP_Module {
 	@Then("^verify the approved payout reference number is available in the accounting entries screen$")
     public void verify_the_approved_payout_reference_number_is_available_in_the_accounting_entries_screen() throws Throwable {
 		javascripthelper.JavaScriptHelper(driver);
-
+		Thread.sleep(2000);
     	for(int i=0;i<299;i++)
     	{
     		try
     		{
     			//waithelper.waitForElementVisible(driver.findElement(By.xpath("//span[contains(text(),'"+mapData.get("approvedReferenceNumber")+"')]")), 2000, 100);
     			driver.findElement(By.xpath("//datatable-body-cell[1]//span[contains(text(),'"+mapData.get("approvedReferenceNumber")+"')]")).isDisplayed();
-    			
+    			break;
     	
     		}
     		catch(NoSuchElementException e)
@@ -2629,7 +2629,62 @@ public class AR_AP_Module {
     	}
     }
 	
+    @And("^Get the manual payout Branch Name$")
+    public void get_the_manual_payout_branch_name() throws Throwable {
+    	waithelper.waitForElement(driver, 2000, arapObj.ARAP_Manual_payout_GetBranch());
+    	Branchcode = arapObj.ARAP_Manual_payout_GetBranch().getText();
+        System.out.println(Branchcode);
+    }
+    @And("^Get the Referance Number$")
+    public void get_the_referance_number() throws Throwable {
+     //--------REFERANCE NUMBER---------//
+    	javascripthelper.JavaScriptHelper(driver);
+    	javascripthelper.scrollIntoView(arapObj.ARAP_Manual_payout_RefNo());
+    	waithelper.waitForElement(driver, 2000, arapObj.ARAP_Manual_payout_RefNo());
+    	ADVNumber = arapObj.ARAP_Manual_payout_RefNo().getText();
+    	System.out.println(ADVNumber);
+    }
 	
+	@Then("^Get the Transaction Date$")
+    public void get_the_transaction_date() throws Throwable {
+		//------GET TRANSACTION DATE-------//
+		javascripthelper.JavaScriptHelper(driver);
+		String Date = (String) javascripthelper.executeScript("return document.getElementsByName('kubDateTime')[0].value");
+		Getdata.put("Date", Date);
+		System.out.println(Date);
+		String year = Date.substring(7, 11);
+		Getdata.put("Year", year);
+		String month = Date.substring(3, 6);
+		Getdata.put("Month", month);
+		String day = Date.substring(0, 2);
+		Getdata.put("Day", day);
+		if(Getdata.get("Day").substring(0,1).equalsIgnoreCase("0"))
+		{
+			String Day = Getdata.get("Day").substring(1, 2);
+			Getdata.put("Day", Day);
+		}
+		System.out.println(year);
+		System.out.println(month);
+		System.out.println(day);
+    }
+    @Then("^Give Getted Transaction Date$")
+    public void give_getted_transaction_date() throws Throwable {
+        //-----Transaction Date-------//
+    	waitHelper.waitForElement(driver, 2000, arapReportObj.ARAP_Report_Module_Date());
+		arapReportObj.ARAP_Report_Module_Date().click();
+		Thread.sleep(2000);
+		arapObj.ARAP_Year().click();
+		waitHelper.waitForElement(driver, 2000, driver.findElement(By.xpath("//span[text()='" + Getdata.get("Year") + "']")));
+		driver.findElement(By.xpath("//span[text()='" + Getdata.get("Year") + "']")).click();
+		waitHelper.waitForElement(driver, 2000, driver.findElement(By.xpath("//span[text()='" + Getdata.get("Month") + "']")));
+		driver.findElement(By.xpath("//span[text()='" + Getdata.get("Month") + "']")).click();
+		waitHelper.waitForElement(driver, 2000, driver.findElement(By.xpath("//span[text()='" + Getdata.get("Day") + "'][1]")));
+		driver.findElement(By.xpath("//span[text()='" + Getdata.get("Day") + "'][1]")).click();
+    }
+    
+    
+    
+    
 	@And("^user update the Testdata for cancelled payout screen$")
 	public void user_update_the_Testdata_for_cancelled_payout_screen() throws Throwable {
 		testData = Exceldata.getTestdata("KUBS_AR_AP_UAT_005_003_TC_01_D1");
