@@ -1,4 +1,3 @@
-
 Feature: Check the Functionality of Fixed Asset 
 @KUBS_FAT_UAT_002_001_01
 Scenario: Create the asset limit1
@@ -115,6 +114,39 @@ Then click on search button
 #Then search vendor contract details by business partner name
 #And vendor contract details should display on contract creation list view
 
+########################################################################################################################################
 
+#Business Partner
+@KUBS_FAT_UAT_001_01
+ Scenario: Create a Vendor for the procurement of an asset1
+ Given User should go to the kubs url and login as a maker user
+ And user should navigate to business partner setup menu
+ When click on eye button of business partner
+ And click on add button of business partner
+ And Fill the required fields to create a vendor
+ Then Save and submit the record to create vendor
+ @KUBS_FAT_UAT_001_02
+ Scenario: Create a Vendor for the procurement of an asset2
+ And User should go to the kubs url and login as a reviewer user
+ Then Click on notification button in reviewer
+ And approve the record by the reviewer user  	
+ @KUBS_FAT_UAT_001_03
+ Scenario: Create a Vendor for the procurement of an asset3
+ Given User should go to the kubs url and login as a checker user
+ And Click on security management in checker
+ Then Click on open pool in checker
+ And Click on claim button in checker
+ And capture claimed status
+ Then click on notification in checker
+ Then checker should approved the contract record  
+ @KUBS_FAT_UAT_001_04
+ Scenario: Create a Vendor for the procurement of an asset4  
+ Given User should go to the kubs url and login as a maker user
+ And user should navigate to business partner setup menu
+ When click on eye button of business partner
+ Then click on search button
+ Then search bp details by reference code number
+ And bp details should display on business partner list view
 
+#Account Payable
 
