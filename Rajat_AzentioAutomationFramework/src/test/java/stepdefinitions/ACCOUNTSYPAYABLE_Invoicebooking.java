@@ -91,14 +91,14 @@ public class ACCOUNTSYPAYABLE_Invoicebooking extends BaseClass {
 
 		invoiceBookingObj.accountPayableIvoiceBookingExpenceSuplierReferenceNo().click();
 		invoiceBookingObj.accountPayableIvoiceBookingExpenceSuplierReferenceNo()
-				.sendKeys(paymentSettlementTestData.SuplierName);
+				.sendKeys(testData.get("SuplierName"));
 
 		invoiceBookingObj.accountPayableIvoiceBookingFLatDiscount().click();
-		invoiceBookingObj.accountPayableIvoiceBookingFLatDiscount().sendKeys(paymentSettlementTestData.FlatDiscount);
+		invoiceBookingObj.accountPayableIvoiceBookingFLatDiscount().sendKeys(testData.get("FlatDiscount"));
 
 		invoiceBookingObj.accountPayable_InvoiceBooking_ModeOfPayment().click();
 		invoiceBookingObj.accountPayable_InvoiceBooking_ModeOfPayment()
-				.sendKeys(paymentSettlementTestData.ModeOfPayment);
+				.sendKeys(testData.get("ModeOfPayment"));
 		invoiceBookingObj.accountPayable_InvoiceBooking_ModeOfPayment().sendKeys(Keys.DOWN);
 		invoiceBookingObj.accountPayable_InvoiceBooking_ModeOfPayment().sendKeys(Keys.ENTER);
 		invoiceBookingObj.accountPayable_InvoiceBooking_SaveButton().click();
