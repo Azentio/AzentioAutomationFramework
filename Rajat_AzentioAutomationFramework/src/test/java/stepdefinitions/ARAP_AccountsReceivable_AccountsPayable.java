@@ -2098,7 +2098,7 @@ public class ARAP_AccountsReceivable_AccountsPayable extends BaseClass {
 		// -------ENTER RECEIVABLE NAME---------//
 		waitHelper.waitForElement(driver, 2000, arapObj.accountReceviableAdvances_ReceivableName_TextBox());
 		arapObj.accountReceviableAdvances_ReceivableName_TextBox().click();
-		arapObj.accountReceviableAdvances_ReceivableName_TextBox().sendKeys(arapData.RecivableName);
+		arapObj.accountReceviableAdvances_ReceivableName_TextBox().sendKeys(testData.get("RecivableName"));
 		arapObj.accountReceviableAdvances_ReceivableName_TextBox().sendKeys(Keys.ENTER);
 	}
 
@@ -2107,7 +2107,7 @@ public class ARAP_AccountsReceivable_AccountsPayable extends BaseClass {
 		// -----------ENTER BUSINESS PARTNER--------//
 		waitHelper.waitForElement(driver, 2000, arapObj.accountReceviableAdvances_BusinessPatner_TextBox());
 		arapObj.accountReceviableAdvances_BusinessPatner_TextBox().click();
-		arapObj.accountReceviableAdvances_BusinessPatner_TextBox().sendKeys(arapData.BusinesPartner);
+		arapObj.accountReceviableAdvances_BusinessPatner_TextBox().sendKeys(testData.get("BusinesPartner"));
 		arapObj.accountReceviableAdvances_BusinessPatner_TextBox().sendKeys(Keys.ENTER);
 	}
 
@@ -2128,7 +2128,7 @@ public class ARAP_AccountsReceivable_AccountsPayable extends BaseClass {
 		// ----------ENTER PAYMENT AMOUNT---------//
 		waitHelper.waitForElement(driver, 2000, arapObj.accountReceviableAdvances_paymentMode_TextBox());
 		arapObj.accountReceviableAdvances_paymentMode_TextBox().click();
-		arapObj.accountReceviableAdvances_paymentMode_TextBox().sendKeys(arapData.ModeofPayment);
+		arapObj.accountReceviableAdvances_paymentMode_TextBox().sendKeys(testData.get("ModeofPayment"));
 //		Thread.sleep(4000);
 		waitHelper.waitForElementwithFluentwait(driver, arapObj.accountReceviableAdvances_paymentMode_TextBox());
 		arapObj.accountReceviableAdvances_paymentMode_TextBox().sendKeys(Keys.ENTER);
@@ -2138,7 +2138,7 @@ public class ARAP_AccountsReceivable_AccountsPayable extends BaseClass {
 	public void enter_amount_value() throws Throwable {
 		// ---------ENTER AMOUNT VALUE--------//
 		waitHelper.waitForElement(driver, 2000, arapObj.amount_TextBox());
-		arapObj.amount_TextBox().sendKeys(arapData.Amount);
+		arapObj.amount_TextBox().sendKeys(testData.get("Amount"));
 //		Thread.sleep(4000);
 	}
 
@@ -2147,7 +2147,7 @@ public class ARAP_AccountsReceivable_AccountsPayable extends BaseClass {
 		// --------ENTER NEEDED CURRENCY-----------//
 //		waitHelper.waitForElement(driver, 2000, arapObj.accountReceviableAdvances_currency_TextBox());
 		waitHelper.waitForElementwithFluentwait(driver, arapObj.accountReceviableAdvances_currency_TextBox());
-		arapObj.accountReceviableAdvances_currency_TextBox().sendKeys("INR");
+		arapObj.accountReceviableAdvances_currency_TextBox().sendKeys(testData.get("Currency"));
 		arapObj.accountReceviableAdvances_currency_TextBox().sendKeys(Keys.ENTER);
 	}
 
@@ -2156,7 +2156,7 @@ public class ARAP_AccountsReceivable_AccountsPayable extends BaseClass {
 		// --------ENTER COST CENTER-----------//
 		waitHelper.waitForElement(driver, 2000, arapObj.accountReceviableAdvances_costCenter_TextBox());
 		arapObj.accountReceviableAdvances_costCenter_TextBox().click();
-		arapObj.accountReceviableAdvances_costCenter_TextBox().sendKeys(arapData.CostCenter);
+		arapObj.accountReceviableAdvances_costCenter_TextBox().sendKeys(testData.get("CostCenter"));
 		arapObj.accountReceviableAdvances_costCenter_TextBox().sendKeys(Keys.ENTER);
 	}
 
@@ -2165,7 +2165,7 @@ public class ARAP_AccountsReceivable_AccountsPayable extends BaseClass {
 		// --------ENTER DESCRIPTION------//
 		waitHelper.waitForElement(driver, 2000, arapObj.accountReceviableAdvances_description_TextBox());
 		arapObj.accountReceviableAdvances_description_TextBox().click();
-		arapObj.accountReceviableAdvances_description_TextBox().sendKeys(arapData.Description);
+		arapObj.accountReceviableAdvances_description_TextBox().sendKeys("Description");
 	}
 
 	@Then("^Save the Advance Record$")
@@ -2181,7 +2181,7 @@ public class ARAP_AccountsReceivable_AccountsPayable extends BaseClass {
 	public void enter_txn_number_in_payment_settlement() throws Throwable {
 		// ---------ENTER TXN NUMBER----------//
 		arapObj.accountReceviableReceipt_Receipt_SearchRefNo().click();
-		arapObj.accountReceviableReceipt_Receipt_SearchRefNo().sendKeys(arapData.PanNo);
+		arapObj.accountReceviableReceipt_Receipt_SearchRefNo().sendKeys(testData.get("PanNo"));
 	}
 
 	@Then("^Verify No Accounting entries are posted post payment settlement approval$")

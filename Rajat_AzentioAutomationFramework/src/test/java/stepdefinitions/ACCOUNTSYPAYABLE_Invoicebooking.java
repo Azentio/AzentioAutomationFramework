@@ -30,6 +30,7 @@ import pageobjects.INVENTORY_EnquiryGlObject;
 import pageobjects.KUBS_MakerObj;
 import pageobjects.REPORT_ACCOUNTSPAYABLEREPORTObj;
 import resources.BaseClass;
+import resources.ExcelData;
 import testDataType.ACCOUNTSPAYABLE_ContractReportTestData;
 import testDataType.ACCOUNTSPAYABLE_PaymentSettlementTestDataType;
 
@@ -55,6 +56,10 @@ public class ACCOUNTSYPAYABLE_Invoicebooking extends BaseClass {
 			.getAccountsPayableContractReportTestDataByName("Maker");
 	ClicksAndActionsHelper clickAndActionHelper = new ClicksAndActionsHelper(driver);
 	BrowserHelper browserHelper=new BrowserHelper(driver);
+	
+	ExcelData exceldata = new ExcelData("C:\\Users\\inindc00072\\git\\AzentioAutomationFramework_KUBS\\AzentioAutomationFramework\\Test-data\\KUBSTestData_ARAP1.xlsx", "ARAP_InvoiceBooking", "DataSet ID") ;
+	Map<String, String> testData;
+	
 	
 	// ClicksAndActionsHelper clickAndActionHelper=new
 	// ClicksAndActionsHelper(driver);
@@ -112,7 +117,7 @@ public class ACCOUNTSYPAYABLE_Invoicebooking extends BaseClass {
 		invoiceBookingObj.accountPayable_InvoiceBooking_InvoiceSubType().sendKeys(Keys.ENTER);
 
 		invoiceBookingObj.billBookingExpenceBpName().click();
-		invoiceBookingObj.billBookingExpenceBpName().sendKeys(paymentSettlementTestData.BusinessPartnerName);
+		invoiceBookingObj.billBookingExpenceBpName().sendKeys(testData.get("BusinessPartnerName"));
 		invoiceBookingObj.billBookingExpenceBpName().sendKeys(Keys.ENTER);
 
 		invoiceBookingObj.billBookingExpenceSuplierName().click();
@@ -123,16 +128,16 @@ public class ACCOUNTSYPAYABLE_Invoicebooking extends BaseClass {
 		invoiceBookingObj.billBookingExpenceSuplierName().sendKeys(suplierReferenceNumber);
 
 		invoiceBookingObj.billBookingExpenceFlatDiscount().click();
-		invoiceBookingObj.billBookingExpenceFlatDiscount().sendKeys(paymentSettlementTestData.FlatDiscount);
+		invoiceBookingObj.billBookingExpenceFlatDiscount().sendKeys(testData.get("FlatDiscount"));
 
 		invoiceBookingObj.billBookingExpenceDiscountType().click();
 		invoiceBookingObj.billBookingExpenceDiscountType().sendKeys(Keys.ENTER);
 
 		invoiceBookingObj.billBookingExpenceDiscountPercent().click();
-		invoiceBookingObj.billBookingExpenceDiscountPercent().sendKeys(paymentSettlementTestData.FlatDiscountPercent);
+		invoiceBookingObj.billBookingExpenceDiscountPercent().sendKeys(testData.get("FlatDiscountPercent"));
 
 		invoiceBookingObj.billBookingExpencePaymentMode().click();
-		invoiceBookingObj.billBookingExpencePaymentMode().sendKeys(paymentSettlementTestData.ModeOfPayment);
+		invoiceBookingObj.billBookingExpencePaymentMode().sendKeys(testData.get("ModeOfPayment"));
 		invoiceBookingObj.billBookingExpencePaymentMode().sendKeys(Keys.ENTER);
 
 		invoiceBookingObj.accountPayable_InvoiceBooking_SaveButton().click();

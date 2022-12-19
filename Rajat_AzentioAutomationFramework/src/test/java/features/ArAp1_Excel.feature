@@ -309,4 +309,201 @@ And click on view button for record
 Then validate No accounting entries are posted
 
 
-   
+@KUBS_AR_AP_UAT_004_003_TC_01  @AR/AP
+Scenario: Verify Advance (Against PO) is available in the system for payment settlement
+Given Navigate The Azentio Url
+Then Choose the second Tab Segment
+And Click On Main module Accounts Receivable
+Then Click on Accounts Receive Advances Eye Icon
+And Click Add icon button
+Then Enter the Receivable Name 
+And Enter Business partner Value
+Then Enter the PO Number
+And Enter Payment mode
+Then Enter Amount value
+And Choose Needed Currancy
+Then Choose cost center
+And Enter Description value
+Then Save the Advance Record
+#Then Goto The Notification Icon
+#And Store the Referance Id and Open the Record
+#Then Click submit button and Enter Remark submit it 
+#Given Navigate as a Reviewer
+#Then click on Notify icon
+#And Click First record Action icon
+#Then Approve the record in Reviewer
+#And Give Remark and Submit
+#Given Navigate as a Checker
+#Then Click module security management
+#And Claim the Record in Checker
+#Then Goto the Checker notification Icon
+#And Click the First Action Icon
+#Then Approve the Record in checker stage
+#And Give the Remark and Submit it
+Then Click on Update Deposited Cheque Notification
+And Select and Submit the Update Deposited Cheque record
+Then log in to the reviewer account
+Then click on the Notification select the Cheque record and Approve
+Then log in to the Checker Account
+And then checker claim the record
+Then click on the checker Notification 
+And select the Cheque record and Approve by checker
+Given Navigate The Azentio Url
+Then Choose the second Tab Segment
+And Click On Main module Accounts Receivable
+Then Click on Accounts Receive Advances Eye Icon
+And Click On Search Icon
+Then Enter Active Value In Advance Status
+Then Click on Table Row First Eye Icon in ARAP
+And Get The Business Partner and Advance Number
+And Click On Main module Accounts payable
+Then Click sub module Payment settlement Eye Icon
+And Click Add icon button
+Then Enter payment option
+And Give stored Business partner Name
+Then Choose value date as System current date
+And find the Advance reference number for Active Advances is availabe at the billing queue
+#p
+@KUBS_AR_AP_UAT_004_003_TC_02  @AR/AP
+Scenario: Verify No accounting entries are posted post payment settlement approval
+Given Navigate The Azentio Url
+Then Choose the second Tab Segment
+And Click On Main module Accounts payable
+Then Click sub module Payment settlement Eye Icon
+And Click On Search Icon
+Then Enter Txn Number in payment Settlement
+Then Click on Table Row First Eye Icon in ARAP
+Then Third Segment report Icon
+And Choose Enquiry Module
+Then Click Note iCon near by financial transction
+And choose branch codes
+And click on transaction from date in calender
+Then Select from date in calender
+And click on transaction to date in calender icon
+Then Select To date in calender
+And Click View HyperLink
+Then Verify No Accounting entries are posted post payment settlement approval
+
+#p
+@KUBS_AR_AP_UAT_004_005_TC_03  @AR/AP
+Scenario: Net payable amount is correctly calculated & displayed.
+Given Maker Navigate to UAT URL login
+And click on accounts Payable module
+And goto invoice booking module
+And click on Add Icon
+And fill the mendatory field for invoice booking for expenseType invoice
+And goto invoice bill booking temp view and select the record
+And fill the second tab for expencess details
+Then Click on Update Deposited Cheque Notification
+And Select and Submit the Update Deposited Cheque record
+		Then log in to the reviewer account
+		Then click on the Notification select the Cheque record and Approve
+		Then log in to the Checker Account
+		And then checker claim the record
+		Then click on the checker Notification 
+		And select the Cheque record and Approve by checker
+
+Given Maker Navigate to UAT URL login
+And click on accounts Payable module
+And goto invoice booking module
+And select the approved record from invoice bill booking 
+
+And goto accouts receivable module
+And goto credit notet module
+And click on Add Icon
+And Fill the form for credit note
+Then Click on Update Deposited Cheque Notification
+And Select and Submit the Update Deposited Cheque record
+		Then log in to the reviewer account
+		Then click on the Notification select the Cheque record and Approve
+		Then log in to the Checker Account
+		And then checker claim the record
+		Then click on the checker Notification 
+		And select the Cheque record and Approve by checker
+Given Maker Navigate to UAT URL login
+And click on accounts Payable module
+And Go to payment settlement module
+And click on Add Icon
+And fill the mendatory field to check the the net payable ammount
+And fill the calender details and description
+And Save the form
+Then Click on Update Deposited Cheque Notification
+And Select and Submit the Update Deposited Cheque record
+		Then log in to the reviewer account
+		Then click on the Notification select the Cheque record and Approve
+		Then log in to the Checker Account
+		And then checker claim the record
+		Then click on the checker Notification 
+		And select the Cheque record and Approve by checker
+
+@KUBS_AR/AP_UAT_004_005_TC_04  @AR/AP
+Scenario: Verify accounting entries post payment settlement approval
+Given Maker Navigate to UAT URL login
+And click on accounts Payable module
+And Go to payment settlement module
+And get the approved record from list view
+Then click on report segment button
+And click on equiry menu
+Then click on edit icon near by fiancial transaction menu
+And choose branch code
+And click on transaction from date calender icon 
+Then choose the from date
+And click on the transaction to date calender icon
+Then choose the to date
+And click on view button
+Then verify approved settlement reference number is available in the Gl report
+
+ @KUBS_AR/AP_UAT_004_005TC_05  @AR/AP
+   Scenario: Verify Balance sheet post payment settlement approval.
+   Given user navigate to azentio url and login as maker
+   When click the account payable main module 
+   And click the eye icon of the payment settlement
+   And user click search icon
+   And user search active in payment settlement list view
+   And click first eye icon in list view 
+   And get the payment date
+   And click the notes option in top
+   And click the financial reporting
+   And click the balance sheet report
+   #And select the branch
+   Then Fill branch details for report
+   And select the date
+   And click the view icon
+   Then Verify Balance sheet should be updated correctly basis the legs impacted in accounting entries.
+
+@KUBS_AR_AP_UAT_004_005_TC_06  @AR/AP
+Scenario: Verify Accounts Payable Report post payment settlement approval.
+Given Maker Navigate to UAT URL login
+And click on accounts Payable module
+And Go to payment settlement module
+And open the recently payment settlement approved record
+And get the approved invoice number and business partner
+Then click on report segment button
+And click on report main menu
+And click on accouts payable report
+And enter the payment settled business partner 
+And click on date icon
+And give date in report
+And give payable status in accounts payable report for approved invoice
+And click on the view button
+Then verify the payment settlement invoice number is available in the report
+
+@KUBS_AR_AP_UAT_004_005_TC_07  @AR/AP
+Scenario: Verify Accounts Receivable Report post payment settlement approval.
+Given Maker Navigate to UAT URL login
+And click ok segment segmant button
+And goto accouts receivable module
+And goto credit notet module
+And select the approved credit note reference number
+And get the credit note amount 
+And get the business partner name from approved credit note
+Then click on report segment button
+And click on report main menu
+And click on temp view near by accounts receivable report
+And click on business partner for settled credit note
+And click on date icon
+And give date in report
+And enter active credit note status in accounts Receivable module
+And click on the view button
+Then verify the approved credit note is available in the receivable report
+
