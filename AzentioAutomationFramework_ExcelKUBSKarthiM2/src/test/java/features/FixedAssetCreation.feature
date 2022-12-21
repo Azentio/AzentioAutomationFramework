@@ -3,17 +3,17 @@ Feature: Check the Functionality of Fixed Asset
 Scenario: Create the asset limit1
 And User get the testdata for asset limit
 Given Maker Navigate to UAT URL login1
-Then Click on the Direction
-Then Click on Fixed Asset
-Then Click on Asset Creation Eye button
-Then Click on the add button to add new record
+Then Click on the Direction1
+Then Click on Fixed Asset1
+Then Click on Asset Creation Eye button1
+Then Click on the add button to add new record1
 #And User get the testdata for asset limit
 Then Fill Form
-Then Save the filled form
-Then Click on Fixed Asset Notification
+Then Save the filled form1
+Then Click on Fixed Asset Notification1
 #Then Click on the Notification
-Then Select the record which we saved
-Then Submit record
+Then Select the record which we saved1
+Then Submit record1
 
 @KUBS_FAT_UAT_002_001_02
 Scenario: Create the asset limit2
@@ -33,7 +33,7 @@ Then Click on notification and approve the record
 Scenario: Create the asset limit4
 And User get the testdata for asset limit
 Given Navigate to kubs URL and user should login as a maker1
-Then Click on the Direction
+Then Click on the Direction1
 Then Click on Fixed Asset
 Then Click on Asset Creation Eye button
 
@@ -119,6 +119,7 @@ Then click on search button
 #Business Partner
 @KUBS_FAT_UAT_001_01
  Scenario: Create a Vendor for the procurement of an asset1
+ And Get the test data for the business partner test case01
  Given User should go to the kubs url and login as a maker user
  And user should navigate to business partner setup menu
  When click on eye button of business partner
@@ -127,20 +128,23 @@ Then click on search button
  Then Save and submit the record to create vendor
  @KUBS_FAT_UAT_001_02
  Scenario: Create a Vendor for the procurement of an asset2
- And User should go to the kubs url and login as a reviewer user
+ And Get the test data for the business partner test case02
+ And User should go to the kubs url and login as a reviewer user1
  Then Click on notification button in reviewer
- And approve the record by the reviewer user  	
+ And approve the record by the reviewer user1 	
  @KUBS_FAT_UAT_001_03
  Scenario: Create a Vendor for the procurement of an asset3
+ And Get the test data for the business partner test case03
  Given User should go to the kubs url and login as a checker user
  And Click on security management in checker
  Then Click on open pool in checker
  And Click on claim button in checker
  And capture claimed status
  Then click on notification in checker
- Then checker should approved the contract record  
+ Then checker should approved the contract record1  
  @KUBS_FAT_UAT_001_04
- Scenario: Create a Vendor for the procurement of an asset4  
+ Scenario: Create a Vendor for the procurement of an asset4
+ And Get the test data for the business partner test case04 
  Given User should go to the kubs url and login as a maker user
  And user should navigate to business partner setup menu
  When click on eye button of business partner
@@ -148,5 +152,5 @@ Then click on search button
  Then search bp details by reference code number
  And bp details should display on business partner list view
 
-#Account Payable
+
 

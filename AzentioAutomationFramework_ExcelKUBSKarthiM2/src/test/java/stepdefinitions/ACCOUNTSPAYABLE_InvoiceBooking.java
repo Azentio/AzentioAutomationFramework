@@ -2,6 +2,7 @@ package stepdefinitions;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
 
 import org.json.simple.parser.ParseException;
@@ -25,6 +26,7 @@ import pageobjects.ACCOUNTSPAYABLE_InvoiceBookingObj;
 import pageobjects.ACCOUNTSPAYABLE_VendorContractsObj;
 import pageobjects.KUBS_CheckerObj;
 import resources.BaseClass;
+import resources.ExcelData;
 import resources.JsonDataReaderWriter;
 import testDataType.ACCOUNTSPAYABLE_InvoiceBookingTestDataType;
 import testDataType.ACCOUNTSPAYABLE_VendorContractsTestDataType;
@@ -45,6 +47,9 @@ public class ACCOUNTSPAYABLE_InvoiceBooking {
 	BrowserHelper browserHelper;
 	KUBS_CheckerObj kubschecker = new KUBS_CheckerObj(driver);
 	ACCOUNTSPAYABLE_VendorContractsTestDataType aCCOUNTSPAYABLE_VendorContractsTestDataType;
+	
+	ExcelData excelData = new ExcelData("C:\\Users\\inindc00071\\Downloads\\KUBSTestDataDesign.xlsx","BusinessPartnerTestData","Data Set ID");
+	Map<String, String> testData;
 	
 //--------    @KUBS_INV_MGMT_UAT_001_005  ------------
     
@@ -662,7 +667,7 @@ public class ACCOUNTSPAYABLE_InvoiceBooking {
 				waithelper.waitForElement(driver, 4000, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_Approve_Button());
 				aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_Approve_Button().click();
 				waithelper.waitForElement(driver, 4000, aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_ApprovedByReviewerRemark());
-				aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_ApprovedByReviewerRemark().sendKeys(aCCOUNTSPAYABLE_InvoiceBookingTestDataType.ApprovedByReviewer);
+				aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_ApprovedByReviewerRemark().sendKeys(testData.get("ApprovedByReviewer"));
 				waithelper.waitForElement(driver, 4000, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_Submit());
 				aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_Submit().click();
 //				Thread.sleep(2000);

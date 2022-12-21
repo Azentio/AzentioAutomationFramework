@@ -69,14 +69,14 @@ public class FixedAssetCreation_KUBSStep extends BaseClass{
 			
 	       
 	    }
-	 @Then("^Click on the Direction$")
+	 @Then("^Click on the Direction1$")
 		public void click_on_direction() throws Throwable {
 		 Thread.sleep(2000);
 			waithelper.waitForElementwithFluentwait(driver, budgetTransferObj.budget_BudgetTransfer_DirectionIcon());
 			budgetTransferObj.budget_BudgetTransfer_DirectionIcon().click();
 
 		}
-	 @Then("^Click on Fixed Asset$")
+	 @Then("^Click on Fixed Asset1$")
 		public void click_on_fixed_asset() throws Throwable {
 			
 		   
@@ -87,7 +87,7 @@ public class FixedAssetCreation_KUBSStep extends BaseClass{
 		public void click_on_asset_creation_eye_button() throws Throwable {
 			fixedAssetObj.fixedAsset_AssetCreation_EyeButton().click();
 		}
-	 @Then("^Click on the add button to add new record$")
+	 @Then("^Click on the add button to add new record1$")
 		public void click_on_the_add_button_to_add_new_record() throws Throwable {
 			for (int i = 0; i <= 200; i++) {
 				try {
@@ -128,7 +128,7 @@ public class FixedAssetCreation_KUBSStep extends BaseClass{
 			fixedAssetObj.fixedAsset_AssetCreation_BillReferenceNumber_Textbox().sendKeys(Keys.ENTER);
 
 		}
-	 @Then("^Save the filled form$")
+	 @Then("^Save the filled form1$")
 		public void save_the_filled_form() throws Throwable {
 			waithelper.waitForElementToVisibleWithFluentWait(driver, fixedAssetObj.fixedAsset_AssetCreation_SaveButton(),
 					60, 5);
@@ -153,7 +153,7 @@ public class FixedAssetCreation_KUBSStep extends BaseClass{
 				}
 			}
 		}
-	 @Then("^Click on Fixed Asset Notification$")
+	 @Then("^Click on Fixed Asset Notification1$")
 		public void click_on_fixed_asset_notification() {
 			// Notification
 			// waitHelper.waitForElementToVisibleWithFluentWait(driver,fixedAsset_AssetCategoryObj.fixedAsset_AssetCategory_WorkflowInitiated(),30,2);
@@ -189,7 +189,7 @@ public class FixedAssetCreation_KUBSStep extends BaseClass{
 			}
 
 		}
-	 @Then("^Select the record which we saved$")
+	 @Then("^Select the record which we saved1$")
 		public void select_the_record_which_we_saved() throws Throwable {
 			// Reference
 			waithelper.waitForElement(driver, 6000, budgetTransferObj.budget_BudgetTransfer_FirstReferenceId());
@@ -230,7 +230,7 @@ public class FixedAssetCreation_KUBSStep extends BaseClass{
 				}
 			}
 		}
-	 @Then("^Submit record$")
+	 @Then("^Submit record1$")
 		public void submit_record() throws Throwable {
 			// Submit button
 			// Thread.sleep(2000);

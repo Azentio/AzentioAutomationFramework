@@ -132,7 +132,7 @@ public class FixedAsset {
 		fixedAssetObj.fixedAsset_Button().click();
 	}
 
-	@Then("^Click on Asset Creation Eye button$")
+	@Then("^Click on Asset Creation Eye button1$")
 	public void click_on_asset_creation_eye_button() throws Throwable {
 		fixedAssetObj.fixedAsset_AssetCreation_EyeButton().click();
 	}
@@ -1585,7 +1585,7 @@ public class FixedAsset {
 	}
 
 //New
-	@Then("^Fill Form$")
+	@Then("^Fill Form1$")
 	public void fill_form() throws Throwable {
 		fixedAssetTestDataType = jsonReader.getFixedAssetByName("Maker");
 		waithelper.waitForElementToVisibleWithFluentWait(driver,

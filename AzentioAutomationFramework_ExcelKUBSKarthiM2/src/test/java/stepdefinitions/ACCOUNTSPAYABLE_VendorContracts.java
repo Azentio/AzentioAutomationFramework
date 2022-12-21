@@ -510,7 +510,7 @@ public class ACCOUNTSPAYABLE_VendorContracts {
 	public void user_should_go_to_the_kubs_url_and_login_as_a_reviewer_user()
 			throws IOException, ParseException, InterruptedException {
 		
-		testData = excelData.getTestdata("KUBS_FAT_UAT_001_002_01_D1");
+		//testData = excelData.getTestdata("KUBS_FAT_UAT_001_002_01_D1");
 		//reader = new JsonDataReaderWriter();
 		login = new KUBS_Login(driver);
 		driver.get(config.getApplicationUrl());
@@ -770,6 +770,7 @@ public class ACCOUNTSPAYABLE_VendorContracts {
     public void user_get_the_test_data_for_contract_creation_testcase4() throws Throwable {
    	   testData = excelData.getTestdata("KUBS_FAT_UAT_001_002_04_D1"); 
     }
+   
 
 
 }
