@@ -57,9 +57,9 @@ function toggleAllBoxes() {
 <tr>
 <td>Tests passed/Failed/Skipped:</td><td>0/1/0</td>
 </tr><tr>
-<td>Started on:</td><td>Thu Dec 15 15:32:52 IST 2022</td>
+<td>Started on:</td><td>Wed Dec 21 17:52:26 IST 2022</td>
 </tr>
-<tr><td>Total time:</td><td>104 seconds (104873 ms)</td>
+<tr><td>Total time:</td><td>99 seconds (99061 ms)</td>
 </tr><tr>
 <td>Included groups:</td><td></td>
 </tr><tr>
@@ -75,23 +75,16 @@ function toggleAllBoxes() {
 <td><b>Instance</b></td>
 </tr>
 <tr>
-<td title='Runner.TestApplication.runScenario()'><b>runScenario</b><br>Test class: Runner.TestApplication<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Verify accounting entries post payout approval", "Optional[AR_AP Module]"</td>
-<td><div><pre>org.openqa.selenium.TimeoutException: Expected condition failed: waiting for visibility of Proxy element for: DefaultElementLocator &apos;By.xpath: //ion-select[@aria-label=&apos;Amlock&apos;]&apos; (tried for 60 second(s) with 1 milliseconds interval)
-	at org.openqa.selenium.support.ui.FluentWait.timeoutException(FluentWait.java:263)
-	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:231)
-	at helper.WaitHelper.waitForElementToVisibleWithFluentWait(WaitHelper.java:102)
-	at stepdefinitions.KUBS_Login.loginToAzentioAppByMaker(KUBS_Login.java:51)
-	at stepdefinitions.ACCOUNTSPAYABLE_VendorContracts.user_should_go_to_the_kubs_url_and_login_as_a_maker_user(ACCOUNTSPAYABLE_VendorContracts.java:49)
-	at ?.User should go to the kubs url and login as a maker user(file:///C:/Users/inindc00075/git/Updated_Kubs_Arshath/AzentioAutomationFramework_ARAP_Excel_Arshath/src/test/java/features/ArAp2.feature:631)
-Caused by: org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {&quot;method&quot;:&quot;xpath&quot;,&quot;selector&quot;:&quot;//ion-select[@aria-label=&apos;Amlock&apos;]&quot;}
-  (Session info: chrome=108.0.5359.99)
+<td title='Runner.TestApplication.runScenario()'><b>runScenario</b><br>Test class: Runner.TestApplication<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Verify Accounts Receivable Report post payout approval", "Optional[AR_AP Module]"</td>
+<td><div><pre>org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {&quot;method&quot;:&quot;xpath&quot;,&quot;selector&quot;:&quot;//tbody/tr[2]/td[7]/input[1]&quot;}
+  (Session info: chrome=108.0.5359.125)
 For documentation on this error, please visit: https://selenium.dev/exceptions/#no_such_element
 Build info: version: &apos;4.0.0-rc-1&apos;, revision: &apos;bc5511cbda&apos;
-System info: host: &apos;INMUVADP014547&apos;, ip: &apos;10.1.47.111&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;17.0.1&apos;
+System info: host: &apos;DESKTOP-PSK9T3U&apos;, ip: &apos;10.200.10.202&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;17.0.4.1&apos;
 Driver info: org.openqa.selenium.chrome.ChromeDriver
-Command: [b87e96c2aaa6fc1a28c58f3edbb282f5, findElement {using=xpath, value=//ion-select[@aria-label=&apos;Amlock&apos;]}]
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 108.0.5359.99, chrome: {chromedriverVersion: 107.0.5304.62 (1eec40d3a576..., userDataDir: C:\Users\ININDC~1\AppData\L...}, goog:chromeOptions: {debuggerAddress: localhost:52860}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), se:cdp: ws://localhost:52860/devtoo..., se:cdpVersion: 108.0.5359.99, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
-Session ID: b87e96c2aaa6fc1a28c58f3edbb282f5
+Command: [d53cfc7b678cb222f66d5ed54a07011f, findElement {using=xpath, value=//tbody/tr[2]/td[7]/input[1]}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 108.0.5359.125, chrome: {chromedriverVersion: 108.0.5359.71 (1e0e3868ee06..., userDataDir: C:\Users\ININDC~1\AppData\L...}, goog:chromeOptions: {debuggerAddress: localhost:58322}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), se:cdp: ws://localhost:58322/devtoo..., se:cdpVersion: 108.0.5359.125, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
+Session ID: d53cfc7b678cb222f66d5ed54a07011f
 	at jdk.internal.reflect.GeneratedConstructorAccessor37.newInstance(Unknown Source)
 	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
 	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499)
@@ -109,80 +102,19 @@ Session ID: b87e96c2aaa6fc1a28c58f3edbb282f5
 	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:373)
 	at org.openqa.selenium.support.pagefactory.DefaultElementLocator.findElement(DefaultElementLocator.java:70)
 	at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:39)
-	at jdk.proxy2/jdk.proxy2.$Proxy46.isDisplayed(Unknown Source)
-	at org.openqa.selenium.support.ui.ExpectedConditions.elementIfVisible(ExpectedConditions.java:307)
-	at org.openqa.selenium.support.ui.ExpectedConditions.access$000(ExpectedConditions.java:40)
-	at org.openqa.selenium.support.ui.ExpectedConditions$10.apply(ExpectedConditions.java:293)
-	at org.openqa.selenium.support.ui.ExpectedConditions$10.apply(ExpectedConditions.java:290)
-	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:208)
-	at helper.WaitHelper.waitForElementToVisibleWithFluentWait(WaitHelper.java:102)
-	at stepdefinitions.KUBS_Login.loginToAzentioAppByMaker(KUBS_Login.java:51)
-	at stepdefinitions.ACCOUNTSPAYABLE_VendorContracts.user_should_go_to_the_kubs_url_and_login_as_a_maker_user(ACCOUNTSPAYABLE_VendorContracts.java:49)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
-	at io.cucumber.java.Invoker.doInvoke(Invoker.java:66)
-	at io.cucumber.java.Invoker.invoke(Invoker.java:24)
-	at io.cucumber.java.AbstractGlueDefinition.invokeMethod(AbstractGlueDefinition.java:47)
-	at io.cucumber.java.JavaStepDefinition.execute(JavaStepDefinition.java:29)
-	at io.cucumber.core.runner.CoreStepDefinition.execute(CoreStepDefinition.java:66)
-	at io.cucumber.core.runner.PickleStepDefinitionMatch.runStep(PickleStepDefinitionMatch.java:63)
-	at io.cucumber.core.runner.ExecutionMode$1.execute(ExecutionMode.java:10)
-	at io.cucumber.core.runner.TestStep.executeStep(TestStep.java:92)
-	at io.cucumber.core.runner.TestStep.run(TestStep.java:64)
-	at io.cucumber.core.runner.PickleStepTestStep.run(PickleStepTestStep.java:51)
-	at io.cucumber.core.runner.TestCase.run(TestCase.java:104)
-	at io.cucumber.core.runner.Runner.runPickle(Runner.java:71)
-	at io.cucumber.testng.TestNGCucumberRunner.lambda$runScenario$0(TestNGCucumberRunner.java:116)
-	at io.cucumber.core.runtime.CucumberExecutionContext.runTestCase(CucumberExecutionContext.java:117)
-	at io.cucumber.testng.TestNGCucumberRunner.runScenario(TestNGCucumberRunner.java:113)
-	at io.cucumber.testng.AbstractTestNGCucumberTests.runScenario(AbstractTestNGCucumberTests.java:31)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
-	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:133)
-	at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:598)
-	at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:173)
-	at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
-	at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:824)
-	at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:146)
-	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
-	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
-	at org.testng.TestRunner.privateRun(TestRunner.java:794)
-	at org.testng.TestRunner.run(TestRunner.java:596)
-	at org.testng.SuiteRunner.runTest(SuiteRunner.java:377)
-	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:371)
-	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:332)
-	at org.testng.SuiteRunner.run(SuiteRunner.java:276)
-	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
-	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
-	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1212)
-	at org.testng.TestNG.runSuitesLocally(TestNG.java:1134)
-	at org.testng.TestNG.runSuites(TestNG.java:1063)
-	at org.testng.TestNG.run(TestNG.java:1031)
-	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
-	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
-	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
-</pre></div><a href='#' onClick='toggleBox("stack-trace731546342", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
-<div class='stack-trace' id='stack-trace731546342'><pre>org.openqa.selenium.TimeoutException: Expected condition failed: waiting for visibility of Proxy element for: DefaultElementLocator &apos;By.xpath: //ion-select[@aria-label=&apos;Amlock&apos;]&apos; (tried for 60 second(s) with 1 milliseconds interval)
-	at org.openqa.selenium.support.ui.FluentWait.timeoutException(FluentWait.java:263)
-	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:231)
-	at helper.WaitHelper.waitForElementToVisibleWithFluentWait(WaitHelper.java:102)
-	at stepdefinitions.KUBS_Login.loginToAzentioAppByMaker(KUBS_Login.java:51)
-	at stepdefinitions.ACCOUNTSPAYABLE_VendorContracts.user_should_go_to_the_kubs_url_and_login_as_a_maker_user(ACCOUNTSPAYABLE_VendorContracts.java:49)
-	at ?.User should go to the kubs url and login as a maker user(file:///C:/Users/inindc00075/git/Updated_Kubs_Arshath/AzentioAutomationFramework_ARAP_Excel_Arshath/src/test/java/features/ArAp2.feature:631)
-Caused by: org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {&quot;method&quot;:&quot;xpath&quot;,&quot;selector&quot;:&quot;//ion-select[@aria-label=&apos;Amlock&apos;]&quot;}
-  (Session info: chrome=108.0.5359.99)
+	at jdk.proxy2/jdk.proxy2.$Proxy46.click(Unknown Source)
+	at stepdefinitions.AR_AP_Module.verify_the_advance_reference_number_is_available_in_the_accounts_receivable_report(AR_AP_Module.java:2757)
+	at ✽.verify the advance reference number is available in the accounts Receivable report(file:///C:/Users/ININDC00075/git/Arshath_Excel_AzentioAutomationFramework/AzentioAutomationFramework_ARAP_Excel_Arshath/src/test/java/features/ArAp2.feature:687)
+</pre></div><a href='#' onClick='toggleBox("stack-trace1333929103", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1333929103'><pre>org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {&quot;method&quot;:&quot;xpath&quot;,&quot;selector&quot;:&quot;//tbody/tr[2]/td[7]/input[1]&quot;}
+  (Session info: chrome=108.0.5359.125)
 For documentation on this error, please visit: https://selenium.dev/exceptions/#no_such_element
 Build info: version: &apos;4.0.0-rc-1&apos;, revision: &apos;bc5511cbda&apos;
-System info: host: &apos;INMUVADP014547&apos;, ip: &apos;10.1.47.111&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;17.0.1&apos;
+System info: host: &apos;DESKTOP-PSK9T3U&apos;, ip: &apos;10.200.10.202&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;17.0.4.1&apos;
 Driver info: org.openqa.selenium.chrome.ChromeDriver
-Command: [b87e96c2aaa6fc1a28c58f3edbb282f5, findElement {using=xpath, value=//ion-select[@aria-label=&apos;Amlock&apos;]}]
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 108.0.5359.99, chrome: {chromedriverVersion: 107.0.5304.62 (1eec40d3a576..., userDataDir: C:\Users\ININDC~1\AppData\L...}, goog:chromeOptions: {debuggerAddress: localhost:52860}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), se:cdp: ws://localhost:52860/devtoo..., se:cdpVersion: 108.0.5359.99, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
-Session ID: b87e96c2aaa6fc1a28c58f3edbb282f5
+Command: [d53cfc7b678cb222f66d5ed54a07011f, findElement {using=xpath, value=//tbody/tr[2]/td[7]/input[1]}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 108.0.5359.125, chrome: {chromedriverVersion: 108.0.5359.71 (1e0e3868ee06..., userDataDir: C:\Users\ININDC~1\AppData\L...}, goog:chromeOptions: {debuggerAddress: localhost:58322}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), se:cdp: ws://localhost:58322/devtoo..., se:cdpVersion: 108.0.5359.125, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
+Session ID: d53cfc7b678cb222f66d5ed54a07011f
 	at jdk.internal.reflect.GeneratedConstructorAccessor37.newInstance(Unknown Source)
 	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
 	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499)
@@ -200,66 +132,12 @@ Session ID: b87e96c2aaa6fc1a28c58f3edbb282f5
 	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:373)
 	at org.openqa.selenium.support.pagefactory.DefaultElementLocator.findElement(DefaultElementLocator.java:70)
 	at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:39)
-	at jdk.proxy2/jdk.proxy2.$Proxy46.isDisplayed(Unknown Source)
-	at org.openqa.selenium.support.ui.ExpectedConditions.elementIfVisible(ExpectedConditions.java:307)
-	at org.openqa.selenium.support.ui.ExpectedConditions.access$000(ExpectedConditions.java:40)
-	at org.openqa.selenium.support.ui.ExpectedConditions$10.apply(ExpectedConditions.java:293)
-	at org.openqa.selenium.support.ui.ExpectedConditions$10.apply(ExpectedConditions.java:290)
-	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:208)
-	at helper.WaitHelper.waitForElementToVisibleWithFluentWait(WaitHelper.java:102)
-	at stepdefinitions.KUBS_Login.loginToAzentioAppByMaker(KUBS_Login.java:51)
-	at stepdefinitions.ACCOUNTSPAYABLE_VendorContracts.user_should_go_to_the_kubs_url_and_login_as_a_maker_user(ACCOUNTSPAYABLE_VendorContracts.java:49)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
-	at io.cucumber.java.Invoker.doInvoke(Invoker.java:66)
-	at io.cucumber.java.Invoker.invoke(Invoker.java:24)
-	at io.cucumber.java.AbstractGlueDefinition.invokeMethod(AbstractGlueDefinition.java:47)
-	at io.cucumber.java.JavaStepDefinition.execute(JavaStepDefinition.java:29)
-	at io.cucumber.core.runner.CoreStepDefinition.execute(CoreStepDefinition.java:66)
-	at io.cucumber.core.runner.PickleStepDefinitionMatch.runStep(PickleStepDefinitionMatch.java:63)
-	at io.cucumber.core.runner.ExecutionMode$1.execute(ExecutionMode.java:10)
-	at io.cucumber.core.runner.TestStep.executeStep(TestStep.java:92)
-	at io.cucumber.core.runner.TestStep.run(TestStep.java:64)
-	at io.cucumber.core.runner.PickleStepTestStep.run(PickleStepTestStep.java:51)
-	at io.cucumber.core.runner.TestCase.run(TestCase.java:104)
-	at io.cucumber.core.runner.Runner.runPickle(Runner.java:71)
-	at io.cucumber.testng.TestNGCucumberRunner.lambda$runScenario$0(TestNGCucumberRunner.java:116)
-	at io.cucumber.core.runtime.CucumberExecutionContext.runTestCase(CucumberExecutionContext.java:117)
-	at io.cucumber.testng.TestNGCucumberRunner.runScenario(TestNGCucumberRunner.java:113)
-	at io.cucumber.testng.AbstractTestNGCucumberTests.runScenario(AbstractTestNGCucumberTests.java:31)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
-	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:133)
-	at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:598)
-	at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:173)
-	at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
-	at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:824)
-	at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:146)
-	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
-	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
-	at org.testng.TestRunner.privateRun(TestRunner.java:794)
-	at org.testng.TestRunner.run(TestRunner.java:596)
-	at org.testng.SuiteRunner.runTest(SuiteRunner.java:377)
-	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:371)
-	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:332)
-	at org.testng.SuiteRunner.run(SuiteRunner.java:276)
-	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
-	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
-	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1212)
-	at org.testng.TestNG.runSuitesLocally(TestNG.java:1134)
-	at org.testng.TestNG.runSuites(TestNG.java:1063)
-	at org.testng.TestNG.run(TestNG.java:1031)
-	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
-	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
-	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+	at jdk.proxy2/jdk.proxy2.$Proxy46.click(Unknown Source)
+	at stepdefinitions.AR_AP_Module.verify_the_advance_reference_number_is_available_in_the_accounts_receivable_report(AR_AP_Module.java:2757)
+	at ✽.verify the advance reference number is available in the accounts Receivable report(file:///C:/Users/ININDC00075/git/Arshath_Excel_AzentioAutomationFramework/AzentioAutomationFramework_ARAP_Excel_Arshath/src/test/java/features/ArAp2.feature:687)
 </pre></div></td>
-<td>99</td>
-<td>Runner.TestApplication@3f191845</td></tr>
+<td>68</td>
+<td>Runner.TestApplication@3ba987b8</td></tr>
 </table><p>
 </body>
 </html>
