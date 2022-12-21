@@ -147,7 +147,7 @@ public class Payment_SettlementObj {
 	  {
 		  return accountsPayable_paymentSettlementBpName;
 	  }
-	  @FindBy(xpath="(//i[@class='datatable-icon-right'])[2]")
+	  @FindBy(xpath="(//i[@class='datatable-icon-right'])[1]")
 	  private WebElement accountsPayable_paymentSettlementNextRecord;
 	  public WebElement accountsPayablePayementSettlementNextRecord()
 	  {

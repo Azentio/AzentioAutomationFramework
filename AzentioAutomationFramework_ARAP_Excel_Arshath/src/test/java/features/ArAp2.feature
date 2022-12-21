@@ -651,30 +651,34 @@ Given User should go to the kubs url and login as a maker user
 And click on accounts Payable module
 When click on eye button of manual payout
 Then Click on Table Row First Eye Icon in ARAP
+And user update the Excelsheet Testdata for Balancesheet for payout approval
 And Get the manual payout Branch Name
-And Get the Referance Number
+#And Get the Referance Number
 Then Get the Transaction Date
 Then Third Segment report Icon
 And click the financial reporting
 And click the balance sheet report
 #And Give Getted Branch code 
+And user update the Excelsheet Testdata for Balancesheet for payout approval
 Then Fill branch details for report
 Then Give Getted Transaction Date
-Then Click on Balance sheet View button
+And click the view icon
 And verify Balance sheet post Bill is approved
 
 @KUBS_AR_AP_UAT_006_002_TC_04  @AR/AP
 Scenario: Verify Accounts Receivable Report post payout approval
 Given User should go to the kubs url and login as a maker user
 And click on accounts Payable module
-And click on view button near by manual payout module
+When click on eye button of manual payout
 Then click on search
+And user update the Excelsheet Testdata for Account Receivable post Payout approval 
 And search the advance approved reference number in the reference number search column
 And get the business partner nname
 And click on the perticular suggestion record and get the advance reference number
 Then click on report segment button
 And click on report main menu
 And click on temp view near by accounts receivable report
+And user update the Excelsheet Testdata for Account Receivable post Payout approval 
 And enter the business partner name for advances to employee 
 And click on date icon
 And give date in report
@@ -686,7 +690,7 @@ Then verify the advance reference number is available in the accounts Receivable
 Scenario: Verify Accounts Payable Report post payout approval
 Given User should go to the kubs url and login as a maker user
 And click on accounts Payable module
-And click on view button near by manual payout module
+When click on eye button of manual payout
 Then click on search
 And search the payout completed reference number
 Then click on report segment button

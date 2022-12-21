@@ -37,8 +37,10 @@ import pageobjects.ACCOUNTSPAYABLE_ManualPayoutObj;
 import pageobjects.ACCOUNTSPAYABLE_VendorContractCreationObj;
 import pageobjects.ACCOUNTSPAYABLE_VendorContractsObj;
 import pageobjects.ACCOUNTSPAYBLE_AccountsPayable_POCreationObj;
+import pageobjects.ACCOUNTSRECEIVABLE_AccountsReceivableReportObj;
 import pageobjects.ACCOUNTSRECEIVABLE_AdvancesObj;
 import pageobjects.ARAP_ARandAPObj;
+import pageobjects.ARAP_ReportsObj;
 import pageobjects.AccountReceivable_UpdateDepositedChequeObj;
 import pageobjects.Account_Receivable;
 import pageobjects.AccountsPayable_ManualPayoutEmployeeObj;
@@ -78,6 +80,7 @@ public class AR_AP_Module {
 	Map<String, String> payoutData = new HashMap<>();
 	Map<String, String> mapData = new HashMap<>();
 	Map<String, String> settlementData = new HashMap<>();
+	Map<String, String> Getdata = new HashMap<>();
 	Map<String, String> accountsReceivableTestData = new HashMap<>();
 	List<String> invoiceList = new ArrayList<>();
 	Ar_Po_creationObj arpoCreationObj = new Ar_Po_creationObj(driver);
@@ -87,21 +90,17 @@ public class AR_AP_Module {
 	Payment_SettlementObj paymentSettlementObj = new Payment_SettlementObj(driver);
 	BUDGET_SupplementaryBudgetObj bUDGET_SupplementaryBudgetObj = new BUDGET_SupplementaryBudgetObj(driver);
 	ACCOUNTSPAYABLE_InvoiceBookingObj aCCOUNTSPAYABLE_InvoiceBookingObj = new ACCOUNTSPAYABLE_InvoiceBookingObj(driver);
+	ACCOUNTSRECEIVABLE_AccountsReceivableReportObj accountsReceivableReportObj=new ACCOUNTSRECEIVABLE_AccountsReceivableReportObj(driver);
 	ACCOUNTSPAYABLEREPORT_PayoutReportObj payoutReportObj = new ACCOUNTSPAYABLEREPORT_PayoutReportObj(driver);
 	ACCOUNTSRECEIVABLE_AdvancesObj accuountsReceivableObj = new ACCOUNTSRECEIVABLE_AdvancesObj(driver);
-	AccountReceivable_UpdateDepositedChequeObj accountReceivable_UpdateDepositedChequeObj = new AccountReceivable_UpdateDepositedChequeObj(
-			driver);
-	ACCOUNTSPAYABLE_VendorContractsObj aCCOUNTSPAYABLE_VendorContractsObj = new ACCOUNTSPAYABLE_VendorContractsObj(
-			driver);
-	AccountsPayable_ManualPayoutEmployeeObj accountsPayable_ManualPayoutEmployeeObj = new AccountsPayable_ManualPayoutEmployeeObj(
-			driver);
+	AccountReceivable_UpdateDepositedChequeObj accountReceivable_UpdateDepositedChequeObj = new AccountReceivable_UpdateDepositedChequeObj(driver);
+	ACCOUNTSPAYABLE_VendorContractsObj aCCOUNTSPAYABLE_VendorContractsObj = new ACCOUNTSPAYABLE_VendorContractsObj(driver);
+	AccountsPayable_ManualPayoutEmployeeObj accountsPayable_ManualPayoutEmployeeObj = new AccountsPayable_ManualPayoutEmployeeObj(driver);
 	ACCOUNTSPAYABLE_ManualPayoutObj aCCOUNTSPAYABLE_ManualPayoutObj = new ACCOUNTSPAYABLE_ManualPayoutObj(driver);
-	ACCOUNTSPAYBLE_AccountsPayable_POCreationObj poCreationObj = new ACCOUNTSPAYBLE_AccountsPayable_POCreationObj(
-			driver);
+	ACCOUNTSPAYBLE_AccountsPayable_POCreationObj poCreationObj = new ACCOUNTSPAYBLE_AccountsPayable_POCreationObj(driver);
 	BUDGET_BudgetTransferObj budgetTransferObj = new BUDGET_BudgetTransferObj(driver);
 	ACCOUNTSPAYABLE_VendorContractCreationObj vendorContractObj = new ACCOUNTSPAYABLE_VendorContractCreationObj(driver);
-	ACCOUNTSPAYABLE_AccountsPayableReportObj accountsPayableReport = new ACCOUNTSPAYABLE_AccountsPayableReportObj(
-			driver);
+	ACCOUNTSPAYABLE_AccountsPayableReportObj accountsPayableReport = new ACCOUNTSPAYABLE_AccountsPayableReportObj(driver);
 	REPORT_FinancialReportingObj financialReportObj = new REPORT_FinancialReportingObj(driver);
 	INVENTORY_EnquiryGlObject inventoryEnquiryGlObj = new INVENTORY_EnquiryGlObject(driver);
 	InventoryMaintenanceObj inventoryMaintenanceObj = new InventoryMaintenanceObj(driver);
@@ -116,16 +115,18 @@ public class AR_AP_Module {
 	Ar_Ap_AdjustmentObj arapAdjustment = new Ar_Ap_AdjustmentObj(driver);
 	Enquiry_Obj enquiryObj = new Enquiry_Obj(driver);
 	ARAP_ARandAPObj arapObj = new ARAP_ARandAPObj(driver);
+	ARAP_ReportsObj arapReportObj = new ARAP_ReportsObj(driver);
 	JavascriptHelper javascriphelper = new JavascriptHelper();
 	JavascriptHelper javascripthelper = new JavascriptHelper();
 	BrowserHelper browserHelper = new BrowserHelper(driver);
 	WaitHelper waithelper = new WaitHelper(driver);
 	ArAp_BalanceSheetReportObj arAp_BalanceSheetReportObj = new ArAp_BalanceSheetReportObj(driver);
-	ExcelData Exceldata = new ExcelData("C:\\Users\\inindc00075\\Downloads\\KUBSTestData.xlsx",
-			"CancellationBillTestdata", "DataSet ID");
+	ExcelData Exceldata = new ExcelData("C:\\Users\\inindc00075\\Downloads\\KUBSTestData.xlsx", "CancellationBillTestdata", "DataSet ID");
 	Map<String, String> testData;
 	Map<String, String> testdata = new HashMap<>();
 	String TxnNo;
+	String ADVNumber;
+	
 
 	// ****************************************@KUBS_AR/AP_UAT_003_004TC_01************************************************************************
 	// accounting entries for cancelled bill
@@ -300,6 +301,7 @@ public class AR_AP_Module {
 		waithelper.waitForElement(driver, 2000, arAp_BalanceSheetReportObj.arAp_BalanceSheetReport_BranchTextbox());
 		arAp_BalanceSheetReportObj.arAp_BalanceSheetReport_BranchTextbox().click();
 		arAp_BalanceSheetReportObj.arAp_BalanceSheetReport_BranchTextbox().sendKeys(testData.get("BranchCode"));
+		arAp_BalanceSheetReportObj.arAp_BalanceSheetReport_BranchTextbox().sendKeys(Keys.DOWN);
 		arAp_BalanceSheetReportObj.arAp_BalanceSheetReport_BranchTextbox().sendKeys(Keys.ENTER);
 		// arAp_BalanceSheetReportTestDataType=
 		// jsonReader.getBalanceSheetReportByName("maker");
@@ -2623,6 +2625,7 @@ public class AR_AP_Module {
     		}
     		catch(NoSuchElementException e)
     		{
+    			javascripthelper.scrollIntoView(paymentSettlementObj.accountsPayablePayementSettlementNextRecord());
     			paymentSettlementObj.accountsPayablePayementSettlementNextRecord().click();
     			
     		}
@@ -2632,8 +2635,9 @@ public class AR_AP_Module {
     @And("^Get the manual payout Branch Name$")
     public void get_the_manual_payout_branch_name() throws Throwable {
     	waithelper.waitForElement(driver, 2000, arapObj.ARAP_Manual_payout_GetBranch());
-    	Branchcode = arapObj.ARAP_Manual_payout_GetBranch().getText();
-        System.out.println(Branchcode);
+    	String BranchCode = arapObj.ARAP_Manual_payout_GetBranch().getText();
+    	Exceldata.updateTestData("KUBS_AR_AP_UAT_006_002_TC_03_D1", "BranchCode", BranchCode);    	
+        System.out.println(BranchCode);
     }
     @And("^Get the Referance Number$")
     public void get_the_referance_number() throws Throwable {
@@ -2642,6 +2646,7 @@ public class AR_AP_Module {
     	javascripthelper.scrollIntoView(arapObj.ARAP_Manual_payout_RefNo());
     	waithelper.waitForElement(driver, 2000, arapObj.ARAP_Manual_payout_RefNo());
     	ADVNumber = arapObj.ARAP_Manual_payout_RefNo().getText();
+    	Exceldata.updateTestData("KUBS_AR_AP_UAT_006_002_TC_03_D1", "ReferenceNumber", ADVNumber); 
     	System.out.println(ADVNumber);
     }
 	
@@ -2670,18 +2675,135 @@ public class AR_AP_Module {
     @Then("^Give Getted Transaction Date$")
     public void give_getted_transaction_date() throws Throwable {
         //-----Transaction Date-------//
-    	waitHelper.waitForElement(driver, 2000, arapReportObj.ARAP_Report_Module_Date());
+    	waithelper.waitForElementToVisibleWithFluentWait(driver, arapReportObj.ARAP_Report_Module_Date(), 60, 2);
 		arapReportObj.ARAP_Report_Module_Date().click();
 		Thread.sleep(2000);
 		arapObj.ARAP_Year().click();
-		waitHelper.waitForElement(driver, 2000, driver.findElement(By.xpath("//span[text()='" + Getdata.get("Year") + "']")));
+		waithelper.waitForElement(driver, 2000, driver.findElement(By.xpath("//span[text()='" + Getdata.get("Year") + "']")));
 		driver.findElement(By.xpath("//span[text()='" + Getdata.get("Year") + "']")).click();
-		waitHelper.waitForElement(driver, 2000, driver.findElement(By.xpath("//span[text()='" + Getdata.get("Month") + "']")));
+		waithelper.waitForElement(driver, 2000, driver.findElement(By.xpath("//span[text()='" + Getdata.get("Month") + "']")));
 		driver.findElement(By.xpath("//span[text()='" + Getdata.get("Month") + "']")).click();
-		waitHelper.waitForElement(driver, 2000, driver.findElement(By.xpath("//span[text()='" + Getdata.get("Day") + "'][1]")));
+		waithelper.waitForElement(driver, 2000, driver.findElement(By.xpath("//span[text()='" + Getdata.get("Day") + "'][1]")));
 		driver.findElement(By.xpath("//span[text()='" + Getdata.get("Day") + "'][1]")).click();
     }
     
+    @And("^verify Balance sheet post Bill is approved$")
+    public void verify_balance_sheet_post_bill_is_approved() throws Throwable {
+			browserHelper.SwitchToWindow(1);
+			Thread.sleep(3000);
+			System.out.println("The Balance sheet Report is Displayed");
+			browserHelper.switchToParentWithChildClose();
+    }
+    
+    /********* KUBS_AR_AP_UAT_006_003_TC_04 ***************/
+    @And("^search the advance approved reference number in the reference number search column$")
+    public void search_the_advance_approved_reference_number_in_the_reference_number_search_column() throws Throwable {
+    	javascripthelper.JavaScriptHelper(driver);
+    	javascripthelper.scrollIntoView(aCCOUNTSPAYABLE_ManualPayoutObj.accountsPayableSearchApprovvedPayoutNumber());
+    	aCCOUNTSPAYABLE_ManualPayoutObj.accountsPayableSearchApprovvedPayoutNumber().click();
+    	aCCOUNTSPAYABLE_ManualPayoutObj.accountsPayableSearchApprovvedPayoutNumber().sendKeys(testData.get("PayoutNumber"));
+    	
+    }
+    @And("^get the business partner nname$")
+    public void get_the_business_partner_nname() throws Throwable {
+    	String approvedBpName=aCCOUNTSPAYABLE_ManualPayoutObj.accountsPayableApprovedBpName().getText();
+    	Exceldata.updateTestData("KUBS_AR_AP_UAT_006_002_TC_04_D1", "Buisnesspartner", approvedBpName); 
+    	System.out.println(testData.get("Buisnesspartner"));
+    	
+    }
+    @And("^click on the perticular suggestion record and get the advance reference number$")
+    public void click_on_the_perticular_suggestion_record_and_get_the_advance_reference_number() throws Throwable {    	    	
+    	aCCOUNTSPAYABLE_ManualPayoutObj.accountsPayablePayoutRecord().click();
+    	Thread.sleep(1000);
+    	javascripthelper.scrollIntoView(aCCOUNTSPAYABLE_ManualPayoutObj.accountsPayableGetAdvanceReferenceNumber());
+    	String receivableReferenceNo=aCCOUNTSPAYABLE_ManualPayoutObj.accountsPayableGetAdvanceReferenceNumber().getText();
+    	//testData.put("receivableReferenceNo", receivableReferenceNo);
+    	Exceldata.updateTestData("KUBS_AR_AP_UAT_006_002_TC_04_D1", "InvoiceNo", receivableReferenceNo); 
+    	System.out.println("Receivable reference number : "+receivableReferenceNo);
+
+    }
+    @And("^click on temp view near by accounts receivable report$")
+    public void click_on_temp_view_near_by_accounts_receivable_report() throws Throwable {
+    	waithelper.waitForElementVisible(accountsReceivableReportObj.accountsReceivableReportTempView(), 2000, 200);
+    	accountsReceivableReportObj.accountsReceivableReportTempView().click();
+    	
+    }
+    @And("^enter the business partner name for advances to employee$")
+    public void enter_the_business_partner_name_for_advances_to_employee() throws Throwable {
+    	accountsReceivableReportObj.accountsReceivableReportBusinessPartnerName().click();
+    	accountsReceivableReportObj.accountsReceivableReportBusinessPartnerName().sendKeys(testData.get("Buisnesspartner"));
+    	accountsReceivableReportObj.accountsReceivableReportBusinessPartnerName().sendKeys(Keys.ENTER);
+    }
+    @And("^enter the advances to employee status active$")
+    public void enter_the_advances_to_employee_status_active() throws Throwable {
+    	accountsReceivableReportObj.accountsReceivableReportPayableStatus().click();
+    	accountsReceivableReportObj.accountsReceivableReportPayableStatus().sendKeys(testData.get("Status"));
+    	accountsReceivableReportObj.accountsReceivableReportPayableStatus().sendKeys(Keys.DOWN);
+    	accountsReceivableReportObj.accountsReceivableReportPayableStatus().sendKeys(Keys.ENTER);
+    }
+    
+    @Then("^verify the advance reference number is available in the accounts Receivable report$")
+    public void verify_the_advance_reference_number_is_available_in_the_accounts_receivable_report() throws Throwable {
+    	browserHelper.SwitchToWindow(1);
+		Thread.sleep(1000);
+		
+		while (true) {
+			try {
+				javascripthelper.scrollIntoView(driver.findElement(
+						By.xpath("//div[contains(text(),'" + testData.get("InvoiceNo") + "')]")));
+				driver.findElement(By.xpath("//div[contains(text(),'" + testData.get("InvoiceNo") + "')]"));
+				break;
+			} catch (NoSuchElementException e) {
+				accountsReceivableReportObj.accountsReceivableReportNextRecord().click();
+			} catch (StaleElementReferenceException e1) {
+
+			}
+		}
+		browserHelper.switchToParentWithChildClose();
+    }
+    
+    @And("^search the payout completed reference number$")
+    public void search_the_payout_completed_reference_number() throws Throwable {
+    	
+    	waithelper.waitForElementVisible(aCCOUNTSPAYABLE_ManualPayoutObj.accountsPayableSearchApprovvedPayoutNumber(), 2000, 200);
+    	aCCOUNTSPAYABLE_ManualPayoutObj.accountsPayableSearchApprovvedPayoutNumber().click();
+    	aCCOUNTSPAYABLE_ManualPayoutObj.accountsPayableSearchApprovvedPayoutNumber().sendKeys(reportTestData.advanceApprovedPayoutReferenceNumber);
+    	String approvedBpName=aCCOUNTSPAYABLE_ManualPayoutObj.accountsPayableApprovedBpName().getText();
+    	testData.put("approvedBpName", approvedBpName);
+    	aCCOUNTSPAYABLE_ManualPayoutObj.accountsPayablePayoutRecord().click();
+    	Thread.sleep(1000);
+    	javascripthelper.scrollIntoView(aCCOUNTSPAYABLE_ManualPayoutObj.accountsPayableGetAdvanceReferenceNumber());
+    	String advanceReferenceNumber=aCCOUNTSPAYABLE_ManualPayoutObj.accountsPayableGetAdvanceReferenceNumber().getText();
+    	testData.put("advanceReferenceNumber", advanceReferenceNumber);
+    	System.out.println("Advance reference number "+advanceReferenceNumber);
+    }
+    
+    @Then("^verify the advance record is available in the payable report section$")
+    public void verify_the_advance_record_is_available_in_the_payable_report_section() throws Throwable {
+    	browserHelper.SwitchToWindow(1);
+		Thread.sleep(1000);
+		
+		while (true) {
+			Thread.sleep(150);
+			try {
+				javascripthelper.scrollIntoView(driver.findElement(By.xpath("//div[contains(text(),'" + testData.get("advanceReferenceNumber") + "')]")));
+				driver.findElement(By.xpath("//div[contains(text(),'" + testData.get("advanceReferenceNumber") + "')]"));
+				break;
+			} catch (NoSuchElementException e) {
+				try
+				{
+				accountsPayableReport.accountsPayableReportNextRecord().click();
+				}
+				catch(ElementClickInterceptedException e2)
+				{
+					
+				}
+			} catch (StaleElementReferenceException e1) {
+
+			}
+		}
+		browserHelper.switchToParentWithChildClose();
+    }
     
     
     
@@ -2737,7 +2859,16 @@ public class AR_AP_Module {
 	
 	@And("^user update the Excelsheet Testdata for payout approval accounting Entries$")
 	public void user_update_the_Excelsheet_Testdata_for_payout_approval_accounting_Entries() throws Throwable {
-		testData = Exceldata.getTestdata("KUBS_AR_AP_UAT_006_002_TC_01_D1");
+		testData = Exceldata.getTestdata("KUBS_AR_AP_UAT_006_002_TC_02_D1");
 	}
 	
+	@And("^user update the Excelsheet Testdata for Balancesheet for payout approval$")
+	public void user_update_the_Excelsheet_Testdata_for_balancesheet_for_payout_approval() throws Throwable {
+		testData = Exceldata.getTestdata("KUBS_AR_AP_UAT_006_002_TC_03_D1");
+	}
+	
+	@And("^user update the Excelsheet Testdata for Account Receivable post Payout approval$")
+	public void user_update_the_Excelsheet_Testdata_for_account_receivable_post_payout_approval() throws Throwable {
+		testData = Exceldata.getTestdata("KUBS_AR_AP_UAT_006_002_TC_04_D1");
+	}
 }
