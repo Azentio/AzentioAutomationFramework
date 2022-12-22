@@ -37,6 +37,31 @@ Then Click on the Direction1
 Then Click on Fixed Asset
 Then Click on Asset Creation Eye button
 
+##################################################################################################################################################
+
+@KUBS_FAT_UAT_013_001 
+Scenario: Check Asset Limit Config 
+
+ Given User should go to the kubs url and login as a maker user 
+ Then click on report icon 
+ And user should navigate to master reports menu 
+ Then click on temp grid button of asset limit configuration 
+ And select the accounting standards and date to check the asset limit are displaying 
+ Then click in the view button to check 
+ Then the report is displaying all the asset codes details for a branch 
+ 
+@KUBS_FAT_UAT_013_002 
+Scenario: Check Asset Category 
+Given User should go to the kubs url and login as a maker user 
+Then click on report icon 
+And user should navigate to master reports menu 
+Then click on temp grid button of asset category 
+And select the asset category and date to check the asset category are displaying 
+Then click in the view button to check 
+Then the report is displaying all the asset codes details for a branch 
+
+
+##################################################################################################################################################
 
 #PO Creation
 @KUBS_FAT_UAT_001_003_01 
@@ -77,7 +102,7 @@ Given Navigate to kubs URL and user should login as a maker1
 Then Click on Direction icon
 Then Click on Account Payable 
 Then Click on purchase order Eye Icon
-
+###########################################################################################################################################################
 #Contract Creation
 @KUBS_FAT_UAT_001_002_01
 Scenario: Create a contract details for procuring an asset

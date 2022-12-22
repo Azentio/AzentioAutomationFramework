@@ -1,6 +1,7 @@
 Feature: AR/AP Module
 @KUBS_AR/AP_UAT_003_001_TC_03
 Scenario: check cancellation of contract is not allowed when purchase order is created against contract
+And User get the test data for the po contract cancellation test case00300103
 Given user navigate to the url and login as a maker for cancellation of contract is not allowed
 And click on accounts Payable module
 And goto vendor contract module
@@ -56,7 +57,7 @@ Then click on submit button in alert in arap
 And capture the reviewer ID in pop up which is open when we submit our record in maker stage in arap
 Then logout from maker
 
-And login with reviewer credentials
+And login with reviewer credential
 Then click on notification button
 And select our record in notification records using reference ID in arap
 Then Approve the record from reviewer
@@ -88,13 +89,13 @@ And search PO status as Active1
 And click the first eye icon in the list
 And get contract name in vendor 
 And click the vendor contract eye icon sub module
-And click the eye icon in list based on contractname
+And click the eye icon in list based on contractname in arap
 And get buisness partner name and get contract acccount code
 And click the ar ap adjustment sub module
 And click ar ap eye icon
 And click add icon
-And select bp name according to bp we get in contratc
+And select bp name according to bp we get in contract
 And select adjustment type as cancellation
-And select adjustment item type as contract
-And select adjustment reference as we get in contract account code
+And select adjustment item type as contract in arap
+And select adjustment reference as we get in contract account code in arap
 Then verify that cancellation of contract is not allowed when po created for contract

@@ -40,6 +40,7 @@ public class AzentioLogin {
 		login.Login_goButton().click();
 		waithelper.waitForElement(driver, 2000, login.Login_passWord());
 		login.Login_passWord().sendKeys(logindata.PassWord);
+		Thread.sleep(1000);
 		String otp = login.Login_getOtp().getText();
 		driver.findElement(By.xpath("//ng-otp-input/div/input[1]")).sendKeys(otp.substring(7));
 		login.Login_signIn().click();

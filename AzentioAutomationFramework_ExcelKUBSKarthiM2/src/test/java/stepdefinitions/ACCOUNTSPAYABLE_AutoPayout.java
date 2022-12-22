@@ -28,8 +28,10 @@ import pageobjects.ACCOUNTSPAYBLE_AccountsPayable_POCreationObj;
 import pageobjects.ARAP_ConfigurationObj;
 import pageobjects.ARAP_GRNCreationPageObject;
 import pageobjects.ArAp_Cancellation_of_vendorObj;
+import pageobjects.Ar_Ap_AdjustmentObj;
 import pageobjects.BUDGET_BudgetCreationObj;
 import pageobjects.INVENTORY_EnquiryGlObject;
+import pageobjects.InvoiceBookingObj;
 import pageobjects.KUBS_CheckerObj;
 import pageobjects.KUBS_ReviewerObj;
 import resources.BaseClass;
@@ -111,14 +113,23 @@ public class ACCOUNTSPAYABLE_AutoPayout extends BaseClass {
         waitHelper.waitForElementVisible(vendorContractObj.vendorContractItemDetails(), 2000, 100);
         vendorContractObj.vendorContractItemDetails().click();
         
-        waitHelper.waitForElementVisible(vendorContractObj.vendorContractAddButton(), 2000, 100);
-        vendorContractObj.vendorContractAddButton().click();
+        for(int i=0; i<20; i++) {
+        	try {
+        		 waitHelper.waitForElementVisible(vendorContractObj.vendorContractAddButton(), 2000, 100);
+        	        vendorContractObj.vendorContractAddButton().click();
+        	        break;
+			} catch (Exception e) {
+				
+			}
+        }
+       
         
         waitHelper.waitForElementVisible(vendorContractObj.vendorContractHSNCode(), 2000, 100);
         vendorContractObj.vendorContractHSNCode().click();
         vendorContractObj.vendorContractHSNCode().sendKeys(arap.get("HSNCode"));
         vendorContractObj.vendorContractHSNCode().sendKeys(Keys.ENTER);
         
+        Thread.sleep(2000);
         vendorContractObj.vendorContractExpenceCode().click();
         vendorContractObj.vendorContractExpenceCode().sendKeys(Keys.DOWN);
         vendorContractObj.vendorContractExpenceCode().sendKeys(Keys.ENTER);
@@ -134,7 +145,16 @@ public class ACCOUNTSPAYABLE_AutoPayout extends BaseClass {
         vendorContractObj.vendorContractRatePerUnit().click();
         vendorContractObj.vendorContractRatePerUnit().sendKeys(arap.get("RatePerUnit"));
         
-        vendorContractObj.itemDetailsSaveButton().click();
+        for(int i=0; i<20; i++) {
+        	try {
+        		vendorContractObj.itemDetailsSaveButton().click();
+        		break;
+			} catch (Exception e) {
+				
+			}
+        }
+        
+        
     }
 
     @And("^add the payment term for the contract$")
@@ -576,6 +596,75 @@ public class ACCOUNTSPAYABLE_AutoPayout extends BaseClass {
 		cancellationofcontract.getSearchVendorPoStatus()
 				.sendKeys(arap.get("contractstatusactive"));
 	}
+    
+    @And("^click the eye icon in list based on contractname in arap$")
+    public void click_the_eye_icon_in_list_based_on_contractname_in_arap() throws Throwable {
+    	InvoiceBookingObj invoiceBookingObj = new InvoiceBookingObj(driver);
+		//datatable-row-wrapper[1]/datatable-body-row[1]/div[2]/datatable-body-cell[4]/div[1]/span[1]
+		String contractName = null;
+		String beforexpath="//datatable-row-wrapper[";
+    	String afterxpath ="]/datatable-body-row[1]/div[2]/datatable-body-cell[4]/div[1]/span[1]";
+    	for (int j = 1; j <44; j++) {
+    		for (int i = 1; i < 9; i++) {
+        		// select active bill with expense as contract type
+        		seleniumactions.getWaitHelper().waitForElement(driver,2000,driver.findElement(By.xpath(beforexpath+i+afterxpath)));
+        		contractName = driver.findElement(By.xpath(beforexpath+i+afterxpath)).getText();
+    			System.out.println(contractName);
+    			if (contractName.equalsIgnoreCase(arap.get("ContractName"))) {
+    				//seleniumactions.getWaitHelper().waitForElement(driver,2000,driver.findElement(By.xpath("(//datatable-body-cell[1]/div/ion-buttons/ion-button[1])["+i+"]")));
+    				driver.findElement(By.xpath("(//datatable-body-cell[1]/div/ion-buttons/ion-button[1])["+i+"]")).click();
+    				break;
+    			}		
+    			
+		}
+    		if (contractName.equalsIgnoreCase(arap.get("ContractName"))) {
+				break;
+			}
+    		seleniumactions.getWaitHelper().waitForElement(driver,2000,invoiceBookingObj.nextPageInListView());
+			invoiceBookingObj.nextPageInListView().click();
+    		
+    	
+		}
+    }
+    Ar_Ap_AdjustmentObj arapAdjustment = new Ar_Ap_AdjustmentObj(driver);
+	@And("^select bp name according to bp we get in contract$")
+	public void select_bp_name_according_to_bp_we_get_in_contratc() throws Throwable {
+		
+		seleniumactions.getWaitHelper().waitForElement(driver, 2000, arapAdjustment.adjustmentBpName());
+		seleniumactions.getClickAndActionsHelper().clickOnElement(arapAdjustment.adjustmentBpName());
+		arapAdjustment.adjustmentBpName().sendKeys(arap.get("buisnessPartnerNameinCancelledContract"));
+		arapAdjustment.adjustmentBpName().sendKeys(Keys.ENTER);
+	}
+	
+	@And("^select adjustment item type as contract in arap$")
+	public void select_adjustment_item_type_as_contract_in_arap() throws Throwable {
+		seleniumactions.getWaitHelper().waitForElement(driver, 2000, arapAdjustment.adjustmentItemType());
+		seleniumactions.getClickAndActionsHelper().clickOnElement(arapAdjustment.adjustmentItemType());
+		arapAdjustment.adjustmentItemType().sendKeys(arap.get("Cancellationtype"));
+		arapAdjustment.adjustmentItemType().sendKeys(Keys.ENTER);
+	}
+	
+	@And("^select adjustment reference as we get in contract account code in arap$")
+	public void select_adjustment_reference_as_we_get_in_contract_account_code_in_arap() throws Throwable {
+		seleniumactions.getWaitHelper().waitForElement(driver, 2000, arapAdjustment.adjustmentAdjustmentReference());
+		seleniumactions.getClickAndActionsHelper().clickOnElement(arapAdjustment.adjustmentAdjustmentReference());
+		arapAdjustment.adjustmentAdjustmentReference().sendKeys(arap.get("contractacccountcode"));
+	}
+	@And("^login with reviewer credential$")
+	public void login_with_reviewer_credentials() throws Throwable {
+		
+		KUBS_Login kubsLogin = new KUBS_Login(driver);
+
+		String userType = "Reviewer";
+		/*
+		 * Then we have to login with reviewer and continue the approval process
+		 */
+		Thread.sleep(3000);
+		kubsLogin.logintoAzentioappReviewer(userType, arap.get("Reviewer ID"));
+
+	}
+
+
 
     @And("^save the benificiery details for po creation$")
     public void save_the_benificiery_details_for_po_creation() throws Throwable {
@@ -969,5 +1058,9 @@ public class ACCOUNTSPAYABLE_AutoPayout extends BaseClass {
         accoutsPayableAutoPayoutObj.accoutspYablePaymentInitiateButtonButton().click();
         waitHelper.waitForElementVisible(poCreationObj.checkerAlertClose(), 2000, 100);
         poCreationObj.checkerAlertClose().click();
+    }
+    @And("^User get the test data for the po contract cancellation test case00300103$")
+    public void user_get_the_test_data_for_the_po_contract_cancellation_test_case00300103() throws Throwable {
+        arap = excelData.getTestdata("KUBS_AR/AP_UAT_003_001_TC_03_D1");
     }
 }
