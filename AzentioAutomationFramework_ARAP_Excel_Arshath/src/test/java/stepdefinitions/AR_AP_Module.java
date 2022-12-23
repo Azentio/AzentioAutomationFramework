@@ -1116,6 +1116,7 @@ public class AR_AP_Module {
 
 	@Then("^click on search$")
 	public void click_on_search() throws Throwable {
+		waithelper.waitForElementToVisibleWithFluentWait(driver, invoiceBillBookingObj.accountPayable_InvoiceBooking_Search(), 60, 2);
 		invoiceBillBookingObj.accountPayable_InvoiceBooking_Search().click();
 	}
 
@@ -1608,6 +1609,7 @@ public class AR_AP_Module {
 	public void save_the_advance_record() throws Throwable {
 		waithelper.waitForElementVisible(paymentSettlementObj.accountsPayableSaveButton(), 2000, 100);
 		paymentSettlementObj.accountsPayableSaveButton().click();
+		
 	}
 
 	@Then("^Click on Update Deposited Cheque Notification$")
@@ -1619,8 +1621,7 @@ public class AR_AP_Module {
 	}
 
 	@And("^Select and Submit the Update Deposited Cheque record$")
-	public void select_and_submit_the_update_deposited_cheque_record()
-			throws InterruptedException, IOException, ParseException {
+	public void select_and_submit_the_update_deposited_cheque_record() throws InterruptedException, IOException, ParseException {
 
 		// Reference
 		waithelper.waitForElementToVisibleWithFluentWait(driver,
@@ -1632,10 +1633,7 @@ public class AR_AP_Module {
 		System.out.println("Reference ID:" + id);
 		for (int i = 1; i <= 35; i++) {
 			try {
-				waithelper.waitForElement(driver, 3000,
-						driver.findElement(By.xpath("//span[contains(text(),'" + testData.get("ReferenceID") + "')]")));
-				WebElement referanceID = driver
-						.findElement(By.xpath("//span[contains(text(),'" + testData.get("ReferenceID") + "')]"));
+				WebElement referanceID = driver.findElement(By.xpath("//span[contains(text(),'" + testData.get("ReferenceID") + "')]"));
 				referanceID.click();
 				System.out.println(referanceID);
 				// Assert.assertTrue(referanceID.isDisplayed());
@@ -1796,7 +1794,7 @@ public class AR_AP_Module {
 	public void click_on_the_checker_notification() throws InterruptedException {
 //	    	Thread.sleep(1000);
 //			waithelper.waitForElement(driver,3000,kubschecker.checkerNotificationIcon());
-		waithelper.waitForElementwithFluentwait(driver, kubschecker.checkerNotificationIcon());
+		waithelper.waitForElementToVisibleWithFluentWait(driver, kubschecker.checkerNotificationIcon(), 60, 2);
 		kubschecker.checkerNotificationIcon().click();
 	}
 
@@ -2545,16 +2543,37 @@ public class AR_AP_Module {
 		}
 		browserHelper.switchToParentWithChildClose();
 	}
-
+	@And("^get the recently approved payout reference numberss$")
+	public void get_the_recently_approved_payout_reference_numberss() throws Throwable {
+		waithelper.waitForElementVisible(aCCOUNTSPAYABLE_ManualPayoutObj.approvedManualPayoutReferenceNumber(), 2000,200);
+		String approvedReferenceNumber = aCCOUNTSPAYABLE_ManualPayoutObj.approvedManualPayoutReferenceNumber().getText();
+		Exceldata.updateTestData("KUBS_AR_AP_UAT_006_002_TC_02_D1", "PaymentApprovalTxnNumber", approvedReferenceNumber); 
+		//mapData.put("approvedReferenceNumber", approvedReferenceNumber);
+		String approvedBpName = aCCOUNTSPAYABLE_ManualPayoutObj.accountsPayableApprovedBpName().getText();
+		//mapData.put("ApprovedBpName", approvedBpName);
+		Exceldata.updateTestData("KUBS_AR_AP_UAT_006_002_TC_02_D1", "Buisnesspartner", approvedBpName); 
+	}
+	
 	@And("^get the recently approved payout reference number$")
 	public void get_the_recently_approved_payout_reference_number() throws Throwable {
-		waithelper.waitForElementVisible(aCCOUNTSPAYABLE_ManualPayoutObj.approvedManualPayoutReferenceNumber(), 2000,
-				200);
-		String approvedReferenceNumber = aCCOUNTSPAYABLE_ManualPayoutObj.approvedManualPayoutReferenceNumber()
-				.getText();
-		mapData.put("approvedReferenceNumber", approvedReferenceNumber);
+		waithelper.waitForElementVisible(aCCOUNTSPAYABLE_ManualPayoutObj.approvedManualPayoutReferenceNumber(), 2000,200);
+		String approvedReferenceNumber = aCCOUNTSPAYABLE_ManualPayoutObj.approvedManualPayoutReferenceNumber().getText();
+		Exceldata.updateTestData("KUBS_AR_AP_UAT_006_001_TC_05_D1", "PaymentApprovalTxnNumber", approvedReferenceNumber); 
+		//mapData.put("approvedReferenceNumber", approvedReferenceNumber);
 		String approvedBpName = aCCOUNTSPAYABLE_ManualPayoutObj.accountsPayableApprovedBpName().getText();
-		mapData.put("ApprovedBpName", approvedBpName);
+		//mapData.put("ApprovedBpName", approvedBpName);
+		Exceldata.updateTestData("KUBS_AR_AP_UAT_006_001_TC_05_D1", "Buisnesspartner", approvedBpName); 
+	}
+	
+	@And("^get the recently approved payout reference numbers$")
+	public void get_the_recently_approved_payout_reference_numbers() throws Throwable {
+		waithelper.waitForElementVisible(aCCOUNTSPAYABLE_ManualPayoutObj.approvedManualPayoutReferenceNumber(), 2000,200);
+		String approvedReferenceNumber = aCCOUNTSPAYABLE_ManualPayoutObj.approvedManualPayoutReferenceNumber().getText();
+		Exceldata.updateTestData("KUBS_AR_AP_UAT_006_002_TC_06_D1", "PaymentApprovalTxnNumber", approvedReferenceNumber); 
+		//mapData.put("approvedReferenceNumber", approvedReferenceNumber);
+		String approvedBpName = aCCOUNTSPAYABLE_ManualPayoutObj.accountsPayableApprovedBpName().getText();
+		//mapData.put("ApprovedBpName", approvedBpName);
+		Exceldata.updateTestData("KUBS_AR_AP_UAT_006_002_TC_06_D1", "Buisnesspartner", approvedBpName); 
 	}
 
 	@And("^click on the payout report$")
@@ -2565,8 +2584,9 @@ public class AR_AP_Module {
 
 	@And("^enter business partner name for payout report$")
 	public void enter_business_partner_name_for_payout_report() throws Throwable {
+		waithelper.waitForElementVisible(payoutReportObj.accountsPayablePayoutBusinessPartnerName(), 2000, 200);
 		payoutReportObj.accountsPayablePayoutBusinessPartnerName().click();
-		payoutReportObj.accountsPayablePayoutBusinessPartnerName().sendKeys(mapData.get("ApprovedBpName"));
+		payoutReportObj.accountsPayablePayoutBusinessPartnerName().sendKeys(testData.get("Buisnesspartner"));
 		payoutReportObj.accountsPayablePayoutBusinessPartnerName().sendKeys(Keys.DOWN);
 		payoutReportObj.accountsPayablePayoutBusinessPartnerName().sendKeys(Keys.ENTER);
 
@@ -2581,27 +2601,21 @@ public class AR_AP_Module {
 	}
 	@Then("^verify approved payout reference number is available in the payout report$")
 	public void verify_approved_payout_reference_number_is_available_in_the_payout_report() throws Throwable {
+    	browserHelper.SwitchToWindow(1);
 		Thread.sleep(1000);
-		javascripthelper.JavaScriptHelper(driver);
-		browserHelper.SwitchToWindow(1);
-		Thread.sleep(1000);
-		while (true) {
-			try {
-				
-				javascripthelper.scrollIntoView(driver.findElement(
-								By.xpath("//div[contains(text(),'" + mapData.get("approvedReferenceNumber") + "')]")));
-					driver.findElement(By.xpath("//div[contains(text(),'" + mapData.get("approvedReferenceNumber") + "')]")).isDisplayed();
-					break;	
-					
-		    	 }
-		    	 catch(NoSuchElementException e)
-		    	 {
-		    		 payoutReportObj.accountsPayableReportNextRecord().click(); 
-		    	 }
-
+		
+		for (int i = 0; i < 150; i++) {
 			
-
+			try {
+				javascripthelper.scrollIntoView(driver.findElement(By.xpath("//div[contains(text(),'" + testData.get("PaymentApprovalTxnNumber") + "')]")));
+				driver.findElement(By.xpath("//div[contains(text(),'" + testData.get("PaymentApprovalTxnNumber") + "')]")).isDisplayed();
+				break;
+			} catch (Exception e) {
+				if (i==150) {
+					Assert.fail();
+				}
 			}
+		}
 		browserHelper.switchToParentWithChildClose();
 		}
 	@And("^click on the view button$")
@@ -2619,7 +2633,7 @@ public class AR_AP_Module {
     		try
     		{
     			//waithelper.waitForElementVisible(driver.findElement(By.xpath("//span[contains(text(),'"+mapData.get("approvedReferenceNumber")+"')]")), 2000, 100);
-    			driver.findElement(By.xpath("//datatable-body-cell[1]//span[contains(text(),'"+mapData.get("approvedReferenceNumber")+"')]")).isDisplayed();
+    			driver.findElement(By.xpath("//datatable-body-cell[1]//span[contains(text(),'"+testData.get("PaymentApprovalTxnNumber")+"')]")).isDisplayed();
     			break;
     	
     		}
@@ -2764,17 +2778,19 @@ public class AR_AP_Module {
     
     @And("^search the payout completed reference number$")
     public void search_the_payout_completed_reference_number() throws Throwable {
-    	
-    	waithelper.waitForElementVisible(aCCOUNTSPAYABLE_ManualPayoutObj.accountsPayableSearchApprovvedPayoutNumber(), 2000, 200);
-    	aCCOUNTSPAYABLE_ManualPayoutObj.accountsPayableSearchApprovvedPayoutNumber().click();
-    	aCCOUNTSPAYABLE_ManualPayoutObj.accountsPayableSearchApprovvedPayoutNumber().sendKeys(reportTestData.advanceApprovedPayoutReferenceNumber);
-    	String approvedBpName=aCCOUNTSPAYABLE_ManualPayoutObj.accountsPayableApprovedBpName().getText();
-    	testData.put("approvedBpName", approvedBpName);
+//    	
+//    	waithelper.waitForElementVisible(aCCOUNTSPAYABLE_ManualPayoutObj.accountsPayableSearchApprovvedPayoutNumber(), 2000, 200);
+//    	aCCOUNTSPAYABLE_ManualPayoutObj.accountsPayableSearchApprovvedPayoutNumber().click();
+//    	aCCOUNTSPAYABLE_ManualPayoutObj.accountsPayableSearchApprovvedPayoutNumber().sendKeys("PTN-901-58");
+    	waithelper.waitForElementVisible(aCCOUNTSPAYABLE_ManualPayoutObj.accountsPayableApprovedBpName(), 2000, 200);
+    	String approvedBpName=aCCOUNTSPAYABLE_ManualPayoutObj.accountsPayableApprovedBpName().getText();    	
+    	Exceldata.updateTestData("KUBS_AR_AP_UAT_006_002_TC_05_D1", "Buisnesspartner", approvedBpName); 
+    	System.out.println(approvedBpName);
     	aCCOUNTSPAYABLE_ManualPayoutObj.accountsPayablePayoutRecord().click();
     	Thread.sleep(1000);
     	javascripthelper.scrollIntoView(aCCOUNTSPAYABLE_ManualPayoutObj.accountsPayableGetAdvanceReferenceNumber());
     	String advanceReferenceNumber=aCCOUNTSPAYABLE_ManualPayoutObj.accountsPayableGetAdvanceReferenceNumber().getText();
-    	testData.put("advanceReferenceNumber", advanceReferenceNumber);
+    	Exceldata.updateTestData("KUBS_AR_AP_UAT_006_002_TC_05_D1", "InvoiceNo", advanceReferenceNumber); 
     	System.out.println("Advance reference number "+advanceReferenceNumber);
     }
     
@@ -2783,28 +2799,27 @@ public class AR_AP_Module {
     	browserHelper.SwitchToWindow(1);
 		Thread.sleep(1000);
 		
-		while (true) {
-			Thread.sleep(150);
+		for (int i = 0; i < 150; i++) {
+			
 			try {
-				javascripthelper.scrollIntoView(driver.findElement(By.xpath("//div[contains(text(),'" + testData.get("advanceReferenceNumber") + "')]")));
-				driver.findElement(By.xpath("//div[contains(text(),'" + testData.get("advanceReferenceNumber") + "')]"));
+				javascripthelper.scrollIntoView(driver.findElement(By.xpath("//div[contains(text(),'" + testData.get("InvoiceNo") + "')]")));
+				driver.findElement(By.xpath("//div[contains(text(),'" + testData.get("InvoiceNo") + "')]")).isDisplayed();
 				break;
-			} catch (NoSuchElementException e) {
-				try
-				{
-				accountsPayableReport.accountsPayableReportNextRecord().click();
+			} catch (Exception e) {
+				if (i==150) {
+					Assert.fail();
 				}
-				catch(ElementClickInterceptedException e2)
-				{
-					
-				}
-			} catch (StaleElementReferenceException e1) {
-
 			}
 		}
 		browserHelper.switchToParentWithChildClose();
     }
-    
+	@And("^enter businessPartner name for multiple records$")
+	public void enter_businesspartner_name_for_multiple_records() throws Throwable {
+		waithelper.waitForElementVisible(accountsPayableReport.accountspayableReportBpName(), 2000, 200);
+		accountsPayableReport.accountspayableReportBpName().click();
+		accountsPayableReport.accountspayableReportBpName().sendKeys(testData.get("Buisnesspartner"));
+		accountsPayableReport.accountspayableReportBpName().sendKeys(Keys.ENTER);
+	}
     
     
 	@And("^user update the Testdata for cancelled payout screen$")
@@ -2870,5 +2885,13 @@ public class AR_AP_Module {
 	@And("^user update the Excelsheet Testdata for Account Receivable post Payout approval$")
 	public void user_update_the_Excelsheet_Testdata_for_account_receivable_post_payout_approval() throws Throwable {
 		testData = Exceldata.getTestdata("KUBS_AR_AP_UAT_006_002_TC_04_D1");
+	}
+	@And("^user update the Excelsheet Testdata for Account Payable post Payout approval$")
+	public void user_update_the_Excelsheet_Testdata_for_account_payable_post_payout_approval() throws Throwable {
+		testData = Exceldata.getTestdata("KUBS_AR_AP_UAT_006_002_TC_05_D1");
+	}
+	@And("^user update the Excelsheet Testdata for post payout approval for payout Report$")
+	public void user_update_the_Excelsheet_Testdata_for_post_payout_approval_for_payout_report() throws Throwable {
+		testData = Exceldata.getTestdata("KUBS_AR_AP_UAT_006_002_TC_06_D1");
 	}
 }

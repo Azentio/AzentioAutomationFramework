@@ -238,7 +238,14 @@ public class KUBS_MakerObj {
 		{
 			return arapConfig_CreateFileBasisInputBox;
 		}
-		
+
+		@FindBy(xpath = "//button[@aria-label='Close']")
+		private WebElement ARAP_Notification_Close;
+
+		public WebElement ARAP_Notification_Close() {
+
+			return ARAP_Notification_Close;
+		}
 		@FindBy(xpath="//ion-row[1]/ion-col[6]//ng-select[1]/div[1]/div[1]/div[2]/span[2]")
 		private WebElement arapConfig_CreateFileBasis;
 		public WebElement arapCreateFileBasis()

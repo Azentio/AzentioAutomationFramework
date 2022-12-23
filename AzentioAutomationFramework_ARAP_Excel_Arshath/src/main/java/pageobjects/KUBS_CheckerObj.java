@@ -77,6 +77,12 @@ public class KUBS_CheckerObj {
 		return budget_type;
 
 	}
+	@FindBy(xpath = "//ion-row[1]/ion-col[1]/ion-item[1]/ion-textarea[1]/div[1]/textarea[1]")
+	private WebElement checker_alert_remarkSecond;
+
+	public WebElement checkerRemarkSecond() {
+		return checker_alert_remarkSecond;
+	}
 	@FindBy(xpath = "//ion-col[3]/app-kub-lov/span/ng-select/div/div/div[2]")
 	private WebElement checker_budget_year;
 

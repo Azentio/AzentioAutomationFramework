@@ -589,6 +589,7 @@ And get the recently approved payout reference number
 Then click on report segment button
 And click on report main menu
 And click on the payout report
+And user update the Excelsheet Testdata for post payout approval
 And enter business partner name for payout report
 And click on date icon
 And give date in report
@@ -632,11 +633,12 @@ Given User should go to the kubs url and login as a maker user
 And click on accounts Payable module
 When click on eye button of manual payout
 And user update the Excelsheet Testdata for payout approval accounting Entries
-And get the recently approved payout reference number 
+And get the recently approved payout reference numberss 
 Then click on report segment button
 Then click on report segment button
 And click on equiry menu
 Then click on edit icon near by fiancial transaction menu
+And user update the Excelsheet Testdata for payout approval accounting Entries
 And choose branch code
 And click on transaction from date calender icon 
 Then choose the from date
@@ -686,30 +688,161 @@ And enter the advances to employee status active
 And click on the view button 
 Then verify the advance reference number is available in the accounts Receivable report
 
-@KUBS_AR_AP_UAT_006_002_TC_005  @AR/AP
+@KUBS_AR_AP_UAT_006_002_TC_05  @AR/AP
 Scenario: Verify Accounts Payable Report post payout approval
 Given User should go to the kubs url and login as a maker user
 And click on accounts Payable module
 When click on eye button of manual payout
 Then click on search
+And user update the Excelsheet Testdata for Account Payable post Payout approval 
 And search the payout completed reference number
 Then click on report segment button
 And click on report main menu
 And click on accouts payable report
-And enter businessPartner name for multiple record
+And user update the Excelsheet Testdata for Account Payable post Payout approval 
+And enter businessPartner name for multiple records
 And click on date icon
 And give date in report
 And give status of the settlement record
 And click on the view button
 And verify the advance record is available in the payable report section
 
+@KUBS_AR_AP_UAT_006_002_TC_06  @AR/AP
+Scenario: Verify Payout Report post payout approval
+Given User should go to the kubs url and login as a maker user
+And click on accounts Payable module
+When click on eye button of manual payout
+And user update the Excelsheet Testdata for post payout approval for payout Report
+And get the recently approved payout reference numbers
+Then click on report segment button
+And click on report main menu
+And click on the payout report
+And user update the Excelsheet Testdata for post payout approval for payout Report
+And enter business partner name for payout report
+And click on date icon
+And give date in report
+And enter payout status in payout report
+And click on the view button
+Then verify approved payout reference number is available in the payout report
 
+@KUBS_AR_AP_UAT_008_001_TC_01  @AR/AP
+Scenario: Checking of downloaded payment files for online payment where create file basis is Bank & Account Number Wise
+Given User should go to the kubs url and login as a maker user
+And click on arap configuration main menu
+And click on payment file generation setup sub menu
+And user update the Excelsheet Testdata for payment file download
+And configure the file format as Bank & Account Number Wise
+And save the arap configure record
+Then Click on Update Deposited Cheque Notification
+And Select and Submit the Update Deposited Cheque records
 
+@KUBS_AR_AP_UAT_008_001_TC_01_1
+Scenario: User Logain as reviewer
+And user update the Excelsheet Testdata for payment file download
+And User should go to the kubs url and login as a reviewer userr
+Then click on the Notification select the Cheque record and Approved
 
+@KUBS_AR_AP_UAT_008_001_TC_01_2
+Scenario: User Logain as checker
+And user update the Excelsheet Testdata for payment file download
+Given User should go to the kubs url and login as a checker userr
+And then checker claim the records
+Then click on the checker Notification 
+And select the Cheque record and Approve by checkers
 
+@KUBS_AR_AP_UAT_008_001_TC_01_3
+Scenario: User Logain as Maker
+Given User should go to the kubs url and login as a maker user
+And click on arap configuration main menu
+And click on payment file generation setup sub menu
+And user update the Excelsheet Testdata for payment file download
+And verify payment file download format is in bank and accont number wise
+And click on accounts Payable module
+When click on eye button of manual payout
+Then click on search
+And search the transfer as payment mode
+And goto payment file download module 
+And enter branch name
+And click on calendar in the payment file download module
+And enter the payout date
+And click on go button 
+And download the payment file
 
+@KUBS_AR_AP_UAT_008_001_TC_02  @AR/AP @NA
+Scenario: Verify payment file includes only below records,Where payment mode is Wire Transfer.Beneficiary Account is NOT maintained with legal entity.
+Given User should go to the kubs url and login as a maker user
+And click on arap configuration main menu
+And click on payment file generation setup sub menu
+And user update the Excelsheet Testdata for payment file legal
+And configure the file format as Bank & Account Number Wise
+And save the arap configure record
+Then Click on Update Deposited Cheque Notification
+And Select and Submit the Update Deposited Cheque recordss
 
+@KUBS_AR_AP_UAT_008_001_TC_02_1
+Scenario: User Logain as reviewer
+And user update the Excelsheet Testdata for payment file legal
+And User should go to the kubs url and login as a reviewer userr
+Then click on the Notification select the Cheque record and Approved
 
+@KUBS_AR_AP_UAT_008_001_TC_02_2
+Scenario: User Logain as checker
+And user update the Excelsheet Testdata for payment file legal
+Given User should go to the kubs url and login as a checker userr
+And then checker claim the records
+Then click on the checker Notification 
+And select the Cheque record and Approve by checkers
+		
+@KUBS_AR_AP_UAT_008_001_TC_02_3
+Scenario: Login as Maker
+Given User should go to the kubs url and login as a maker user
+And click on arap configuration main menu
+And click on payment file generation setup sub menu
+And user update the Excelsheet Testdata for payment file legal
+And verify payment file download format is in bank and accont number wise
+And click on accounts Payable module
+When click on eye button of manual payout
+Then click on search
+And search the transfer as payment mode
+And goto payment file download module 
+And enter branch name
+And click on calendar in the payment file download module
+And enter the payout date
+And click on go button 
+And download the payment file
+And verify Where payment mode is Wire Transfer
+
+@KUBS_AR_AP_UAT_008_002_TC_01  @AR/AP @blocker
+Scenario: Checking of downloaded payment files for online payment where create file basis is Bank Wise
+ Given User should go to the kubs url and login as a maker user
+And click on arap configuration main menu
+And click on payment file generation setup sub menu
+And configure the file format as Bank Wise
+And save the arap configure record
+Then Click on Update Deposited Cheque Notification
+And Select and Submit the Update Deposited Cheque recordsss
+
+			And User should go to the kubs url and login as a reviewer user
+		Then click on the Notification select the Cheque record and Approve
+		Then log in to the Checker Account
+		And then checker claim the record
+		Then click on the checker Notification 
+		And select the Cheque record and Approve by checker
+		
+ Given User should go to the kubs url and login as a maker user
+And click on arap configuration main menu
+And click on payment file generation setup sub menu
+And verify payment file download format is in Bank wise wise
+And click on accounts Payable module
+When click on eye button of manual payout
+Then click on search
+And search the transfer as payment mode
+And goto payment file download module 
+And enter branch name
+And click on calendar in the payment file download module
+And enter the payout date
+And click on go button 
+And download the payment file
 
 
 
