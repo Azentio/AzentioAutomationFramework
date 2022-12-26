@@ -817,21 +817,29 @@ Scenario: Checking of downloaded payment files for online payment where create f
  Given User should go to the kubs url and login as a maker user
 And click on arap configuration main menu
 And click on payment file generation setup sub menu
+And user update the Excel sheet testdata for online payment
 And configure the file format as Bank Wise
 And save the arap configure record
 Then Click on Update Deposited Cheque Notification
-And Select and Submit the Update Deposited Cheque recordsss
-
-			And User should go to the kubs url and login as a reviewer user
-		Then click on the Notification select the Cheque record and Approve
-		Then log in to the Checker Account
-		And then checker claim the record
-		Then click on the checker Notification 
-		And select the Cheque record and Approve by checker
-		
- Given User should go to the kubs url and login as a maker user
+And Select and Submit the Update Deposited Cheque recordssss
+@KUBS_AR_AP_UAT_008_002_TC_01_2
+Scenario: Login as reviewer
+And user update the Excel sheet testdata for online payment
+And User should go to the kubs url and login as a reviewer user
+Then click on the Notification select the Cheque record and Approve
+@KUBS_AR_AP_UAT_008_002_TC_01_3
+Scenario: Login as Checker 
+And user update the Excel sheet testdata for online payment
+Then log in to the Checker Account
+And then checker claim the record
+Then click on the checker Notification 
+And select the Cheque record and Approve by checker
+@KUBS_AR_AP_UAT_008_002_TC_01_4
+Scenario: Login as Maker	
+Given User should go to the kubs url and login as a maker user
 And click on arap configuration main menu
 And click on payment file generation setup sub menu
+And user update the Excel sheet testdata for online payment
 And verify payment file download format is in Bank wise wise
 And click on accounts Payable module
 When click on eye button of manual payout
@@ -843,6 +851,51 @@ And click on calendar in the payment file download module
 And enter the payout date
 And click on go button 
 And download the payment file
+
+@KUBS_AR_AP_UAT_008_003_TC01  @AR/AP @blocker
+Scenario: Verify download file is auto created basis the defined time and user is allowed to download the file.
+ Given User should go to the kubs url and login as a maker user
+And click on arap configuration main menu
+And click on payment file generation setup sub menu
+And user update the Excel sheet testdata for online payments
+And configure the file format as Payout wise
+And save the arap configure record
+And validate the saved record
+Then Click on Update Deposited Cheque Notification
+And Select and Submit the Update Deposited Cheque record1
+
+@KUBS_AR_AP_UAT_008_003_TC01_1
+Scenario: Login as reviewer
+And user update the Excel sheet testdata for online payments
+	Then log in to the reviewer account
+	Then click on the Notification select the Cheque record and Approve
+	
+	@KUBS_AR_AP_UAT_008_003_TC01_2
+	Scenario: Login as Checker
+	And user update the Excel sheet testdata for online payments
+		Then log in to the Checker Account
+		And then checker claim the record
+		Then click on the checker Notification 
+		And select the Cheque record and Approve by checker
+		
+	@KUBS_AR_AP_UAT_008_003_TC01_3
+	Scenario: Login as maker		
+Given User should go to the kubs url and login as a maker user
+And click on arap configuration main menu
+And click on payment file generation setup sub menu
+And user update the Excel sheet testdata for online payments
+And verify payment file download format is in Payout wise
+And click on accounts Payable module
+And click on view button near by manual payout module
+Then click on search
+And search the transfer as payment mode
+And goto payment file download module 
+And enter branch name
+And click on calendar in the payment file download module
+And enter the payout date
+And click on go button 
+And download the payment file
+
 
 
 

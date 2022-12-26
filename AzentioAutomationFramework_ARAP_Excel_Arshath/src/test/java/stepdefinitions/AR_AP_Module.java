@@ -1621,7 +1621,8 @@ public class AR_AP_Module {
 	}
 
 	@And("^Select and Submit the Update Deposited Cheque record$")
-	public void select_and_submit_the_update_deposited_cheque_record() throws InterruptedException, IOException, ParseException {
+	public void select_and_submit_the_update_deposited_cheque_record()
+			throws InterruptedException, IOException, ParseException {
 
 		// Reference
 		waithelper.waitForElementToVisibleWithFluentWait(driver,
@@ -1633,7 +1634,9 @@ public class AR_AP_Module {
 		System.out.println("Reference ID:" + id);
 		for (int i = 1; i <= 35; i++) {
 			try {
-				WebElement referanceID = driver.findElement(By.xpath("//span[contains(text(),'" + testData.get("ReferenceID") + "')]"));
+
+				WebElement referanceID = driver
+						.findElement(By.xpath("//span[contains(text(),'" + testData.get("ReferenceID") + "')]"));
 				referanceID.click();
 				System.out.println(referanceID);
 				// Assert.assertTrue(referanceID.isDisplayed());

@@ -144,7 +144,7 @@ public class ACCOUNTSPAYBLE_PaymentFileDownload extends BaseClass{
 
 		String id = inventoryMaintenanceObj.inventoryMaintenance_InventoryItem_ReferenceId().getText();
 		// jsonWriter.addReferanceData(id);
-		Exceldata.updateTestData("KUBS_AR_AP_UAT_008_001_TC_01_D1", "ReferenceID", id);
+		Exceldata.updateTestData("KUBS_AR_AP_UAT_008_003_TC01_D1", "ReferenceID", id);
 		System.out.println("Reference ID:" + id);
 		for (int i = 1; i <= 35; i++) {
 			try {
@@ -216,7 +216,7 @@ public class ACCOUNTSPAYBLE_PaymentFileDownload extends BaseClass{
 		System.out.println(reviewerId);
 //		jsonWriter = new JsonDataReaderWriter();
 //		jsonWriter.addData(reviewerId);
-		Exceldata.updateTestData("KUBS_AR_AP_UAT_008_001_TC_01_D1", "ReviewerID", reviewerId);
+		Exceldata.updateTestData("KUBS_AR_AP_UAT_008_003_TC01_D1", "ReviewerID", reviewerId);
 
 	}
 	
@@ -387,6 +387,91 @@ public class ACCOUNTSPAYBLE_PaymentFileDownload extends BaseClass{
 //		jsonWriter = new JsonDataReaderWriter();
 //		jsonWriter.addData(reviewerId);
 		Exceldata.updateTestData("KUBS_AR_AP_UAT_008_001_TC_02_D1", "ReviewerID", reviewerId);
+
+	}
+	
+	@And("^Select and Submit the Update Deposited Cheque recordssss$")
+	public void select_and_submit_the_update_deposited_cheque_recordssss() throws Throwable {
+
+		// Reference
+		waitHelper.waitForElementToVisibleWithFluentWait(driver,
+				inventoryMaintenanceObj.inventoryMaintenance_InventoryItem_ReferenceId(), 60, 2);
+
+		String id = inventoryMaintenanceObj.inventoryMaintenance_InventoryItem_ReferenceId().getText();
+		// jsonWriter.addReferanceData(id);
+		Exceldata.updateTestData("KUBS_AR_AP_UAT_008_002_TC_01_D1", "ReferenceID", id);
+		System.out.println("Reference ID:" + id);
+		for (int i = 1; i <= 35; i++) {
+			try {
+				waitHelper.waitForElement(driver, 3000,
+						driver.findElement(By.xpath("//span[contains(text(),'" + testData.get("ReferenceID") + "')]")));
+				WebElement referanceID = driver
+						.findElement(By.xpath("//span[contains(text(),'" + testData.get("ReferenceID") + "')]"));
+				referanceID.click();
+				System.out.println(referanceID);
+				// Assert.assertTrue(referanceID.isDisplayed());
+				break;
+			} catch (NoSuchElementException e) {
+				waitHelper.waitForElement(driver, 4000,
+						inventoryMaintenanceObj.inventoryMaintenance_InventoryItem_NotificationNext_Button());
+
+				inventoryMaintenanceObj.inventoryMaintenance_InventoryItem_NotificationNext_Button().click();
+			}
+
+		}
+		inventoryMaintenanceObj.inventoryMaintenance_InventoryItem_ReferenceId().click();
+
+		// pencil
+		String before_xpath = "//span[contains(text(),'";
+		String after_xpath = "')]/ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell//ion-button";
+
+		waitHelper.waitForElement(driver, 2000,
+				driver.findElement(By.xpath(before_xpath + testData.get("ReferenceID") + after_xpath)));
+		driver.findElement(By.xpath(before_xpath + testData.get("ReferenceID") + after_xpath)).click();
+
+		// Submit button
+		waitHelper.waitForElement(driver, 2000,
+				inventoryMaintenanceObj.inventoryMaintenance_InventoryItem_SubmitButton());
+		inventoryMaintenanceObj.inventoryMaintenance_InventoryItem_SubmitButton().click();
+
+		// Remark
+		javascripthelper.JavaScriptHelper(driver);
+		waitHelper.waitForElement(driver, 3000,accountReceivable_UpdateDepositedChequeObj.accountReceivable_UpdateDepositedCheque_RemarkField());
+		javascripthelper.JSEClick(accountReceivable_UpdateDepositedChequeObj.accountReceivable_UpdateDepositedCheque_RemarkField());
+		accountReceivable_UpdateDepositedChequeObj.accountReceivable_UpdateDepositedCheque_RemarkField().sendKeys(testData.get("Remarks"));
+		// inventoryMaintenanceTestDataType.Remark
+
+		// Remark Submit
+		waitHelper.waitForElement(driver, 2000,
+				inventoryMaintenanceObj.inventoryMaintenance_InventoryItem_SubmitByMaker());
+		inventoryMaintenanceObj.inventoryMaintenance_InventoryItem_SubmitByMaker().click();
+		Thread.sleep(3000);
+
+		// REVIEWER
+		Thread.sleep(2000);
+		WebElement recordstatus = inventoryMaintenanceObj.inventoryMaintenance_InventoryItem_RecordStatus();
+
+		clicksAndActionHelper.moveToElement(recordstatus);
+		String message = inventoryMaintenanceObj.inventoryMaintenance_InventoryItem_RecordStatus().getText();
+		System.out.println(message);
+		inventoryMaintenanceObj.inventoryMaintenance_InventoryItem_RecordStatus().click();
+		String t = "";
+		String ar[] = message.split(" ");
+		Thread.sleep(2000);
+		for (int i = ar.length - 1; i >= 0; i--) {
+			t = ar[ar.length - 1];
+		}
+		String reviewerId = "";
+		for (int i = 0; i < t.length() - 1; i++) {
+			if (t.charAt(i) == '.') {
+			} else {
+				reviewerId = reviewerId + t.charAt(i);
+			}
+		}
+		System.out.println(reviewerId);
+//		jsonWriter = new JsonDataReaderWriter();
+//		jsonWriter.addData(reviewerId);
+		Exceldata.updateTestData("KUBS_AR_AP_UAT_008_002_TC_01_D1", "ReviewerID", reviewerId);
 
 	}
 
@@ -654,7 +739,93 @@ public class ACCOUNTSPAYBLE_PaymentFileDownload extends BaseClass{
 	}
 	
 	
-	
+	@And("^Select and Submit the Update Deposited Cheque record1$")
+	public void select_and_submit_the_update_deposited_cheque_record1()
+			throws InterruptedException, IOException, ParseException {
+
+		// Reference
+		waitHelper.waitForElementToVisibleWithFluentWait(driver,
+				inventoryMaintenanceObj.inventoryMaintenance_InventoryItem_ReferenceId(), 60, 2);
+
+		String id = inventoryMaintenanceObj.inventoryMaintenance_InventoryItem_ReferenceId().getText();
+		// jsonWriter.addReferanceData(id);
+		Exceldata.updateTestData("KUBS_AR_AP_UAT_008_003_TC01_D1", "ReferenceID", id);
+		System.out.println("Reference ID:" + id);
+		for (int i = 1; i <= 35; i++) {
+			try {
+
+				WebElement referanceID = driver
+						.findElement(By.xpath("//span[contains(text(),'" + testData.get("ReferenceID") + "')]"));
+				referanceID.click();
+				System.out.println(referanceID);
+				// Assert.assertTrue(referanceID.isDisplayed());
+				break;
+			} catch (NoSuchElementException e) {
+				waitHelper.waitForElement(driver, 4000,
+						inventoryMaintenanceObj.inventoryMaintenance_InventoryItem_NotificationNext_Button());
+
+				inventoryMaintenanceObj.inventoryMaintenance_InventoryItem_NotificationNext_Button().click();
+			}
+
+		}
+		inventoryMaintenanceObj.inventoryMaintenance_InventoryItem_ReferenceId().click();
+
+		// pencil
+		String before_xpath = "//span[contains(text(),'";
+		String after_xpath = "')]/ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell//ion-button";
+
+		waitHelper.waitForElement(driver, 2000,
+				driver.findElement(By.xpath(before_xpath + testData.get("ReferenceID") + after_xpath)));
+		driver.findElement(By.xpath(before_xpath + testData.get("ReferenceID") + after_xpath)).click();
+
+		// Submit button
+		waitHelper.waitForElement(driver, 2000,
+				inventoryMaintenanceObj.inventoryMaintenance_InventoryItem_SubmitButton());
+		inventoryMaintenanceObj.inventoryMaintenance_InventoryItem_SubmitButton().click();
+
+		// Remark
+		javascripthelper.JavaScriptHelper(driver);
+		waitHelper.waitForElement(driver, 3000,
+				accountReceivable_UpdateDepositedChequeObj.accountReceivable_UpdateDepositedCheque_RemarkField());
+		javascripthelper.JSEClick(
+				accountReceivable_UpdateDepositedChequeObj.accountReceivable_UpdateDepositedCheque_RemarkField());
+		accountReceivable_UpdateDepositedChequeObj.accountReceivable_UpdateDepositedCheque_RemarkField().sendKeys("OK");
+		// inventoryMaintenanceTestDataType.Remark
+
+		// Remark Submit
+		waitHelper.waitForElement(driver, 2000,
+				inventoryMaintenanceObj.inventoryMaintenance_InventoryItem_SubmitByMaker());
+		inventoryMaintenanceObj.inventoryMaintenance_InventoryItem_SubmitByMaker().click();
+		Thread.sleep(3000);
+
+		// REVIEWER
+		Thread.sleep(2000);
+		WebElement recordstatus = inventoryMaintenanceObj.inventoryMaintenance_InventoryItem_RecordStatus();
+
+		clicksAndActionHelper.moveToElement(recordstatus);
+		String message = inventoryMaintenanceObj.inventoryMaintenance_InventoryItem_RecordStatus().getText();
+		System.out.println(message);
+		inventoryMaintenanceObj.inventoryMaintenance_InventoryItem_RecordStatus().click();
+		String t = "";
+		String ar[] = message.split(" ");
+		Thread.sleep(2000);
+		for (int i = ar.length - 1; i >= 0; i--) {
+			t = ar[ar.length - 1];
+		}
+		String reviewerId = "";
+		for (int i = 0; i < t.length() - 1; i++) {
+			if (t.charAt(i) == '.') {
+			} else {
+				reviewerId = reviewerId + t.charAt(i);
+			}
+		}
+		System.out.println(reviewerId);
+//		jsonWriter = new JsonDataReaderWriter();
+//		jsonWriter.addData(reviewerId);
+		Exceldata.updateTestData("KUBS_AR_AP_UAT_008_003_TC01_D1", "ReviewerID", reviewerId);
+
+	}
+
 	
 	
 	
@@ -692,6 +863,24 @@ public class ACCOUNTSPAYBLE_PaymentFileDownload extends BaseClass{
     	System.out.println("Payout Reference number"+payoutReferenceNumber);
      
     }
+    @And("^validate the saved record$")
+    public void validate_the_saved_record() throws Throwable {
+		waitHelper = new WaitHelper(driver);
+		reviewer = new Azentio_ReviewerObj(driver);
+		waitHelper.waitForElementToVisibleWithFluentWait(driver, reviewer.alertMessage(), 10, 1);
+		
+		System.out.println(reviewer.alertMessage().getText());
+		waitHelper.waitForElementToVisibleWithFluentWait(driver, reviewer.alertClose(), 10,1);
+		 reviewer.alertClose().click();
+    }
+    @And("^click on view button near by manual payout module$")
+    public void click_on_view_button_near_by_manual_payout_module() throws Throwable {
+		//waitHelper.waitForElementVisible(manualPayoutObj.accountsPayable_ManualPayoutViewButton(), 2000, 200);
+		javascripthelper.JavaScriptHelper(driver);
+		javascripthelper.scrollIntoView(manualPayoutObj.accountsPayable_ManualPayoutViewButton());
+		manualPayoutObj.accountsPayable_ManualPayoutViewButton().click();
+		
+    }
 	
 	@And("^user update the Excelsheet Testdata for payment file download$")
 	public void user_update_the_Excelsheet_Testdata_for_payment_file_download() throws Throwable{
@@ -702,4 +891,21 @@ public class ACCOUNTSPAYBLE_PaymentFileDownload extends BaseClass{
 	public void user_update_the_Excelsheet_Testdata_for_payment_file_legal() throws Throwable{
 		testData = Exceldata.getTestdata("KUBS_AR_AP_UAT_008_001_TC_02_D1"); 
 	}
+	@And("^user update the Excel sheet testdata for online payment$")
+    public void user_update_the_excel_sheet_testdata_for_online_payment() throws Throwable {
+       testData = Exceldata.getTestdata("KUBS_AR_AP_UAT_008_002_TC_01_D1");
+    } 
+	
+	@And("^user update the Excel sheet testdata for online payments$")
+    public void user_update_the_excel_sheet_testdata_for_online_payments() throws Throwable {
+       testData = Exceldata.getTestdata("KUBS_AR_AP_UAT_008_003_TC01_D1");
+    } 
+	
+	
+	
+	
+	
+	
+	
+	
 }
