@@ -39,7 +39,14 @@ public class KUBS_MakerObj {
 	public WebElement kubsDirectionIcon() {
 		return maker_direction_icon;
 	}
+	
+	@FindBy(xpath = "//ion-icon[@ng-reflect-name='person-circle-outline']")
+	private WebElement makerLoginVerification;
 
+	public WebElement makerLoginVerification() {
+		return makerLoginVerification;
+	}
+	
 	@FindBy(xpath = "//ion-label[contains(text(),'Business partner setup')]")
 	private WebElement maker_business_partner_setup;
 

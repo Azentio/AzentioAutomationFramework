@@ -42,7 +42,7 @@ public class GL_Module1 extends BaseClass {
 	public void login_as_a_azentio_maker() throws Throwable {
 		login = new KUBS_Login(driver);
 		driver.get(configreader.getApplicationUrl());
-		login.loginToAzentioApp("Maker");
+		login.loginToAzentioAppByMaker();
 
 	}
 

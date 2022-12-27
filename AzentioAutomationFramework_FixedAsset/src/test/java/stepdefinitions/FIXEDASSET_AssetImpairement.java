@@ -57,7 +57,7 @@ public class FIXEDASSET_AssetImpairement extends BaseClass {
 	@Given("^Navigate to KUBS URL and login with maker credentials$")
 	public void navigate_to_kubs_url_and_login_with_maker_credentials() throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
-		kubsLogin.loginToAzentioApp("Maker");
+		kubsLogin.loginToAzentioAppByMaker();
 
 	}
 
@@ -1000,7 +1000,7 @@ public class FIXEDASSET_AssetImpairement extends BaseClass {
 	@And("^login with Maker ID$")
 	public void login_with_maker_id() throws Throwable {
 		Thread.sleep(2000);
-		kubsLogin.loginToAzentioApp("Maker");
+		kubsLogin.loginToAzentioAppByMaker();
 	}
 
 	@Then("^check the approved record is displayed in appeared in maker list view stage$")

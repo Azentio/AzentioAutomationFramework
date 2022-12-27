@@ -71,7 +71,7 @@ public class FIXEDASSET_AssetReturn extends BaseClass {
 		// ---------LOGIN THE MAKER USER--------------//
 		kubsLogin = new KUBS_Login(driver);
 		driver.get(configFileReader.getApplicationUrl());
-		kubsLogin.loginToAzentioApp("Maker");
+		kubsLogin.loginToAzentioAppByMaker();
 		Thread.sleep(1000);
 	}
 
@@ -214,7 +214,7 @@ public class FIXEDASSET_AssetReturn extends BaseClass {
 		// ---------LOGIN THE REVIEWER USER--------------//
 		kubsLogin = new KUBS_Login(driver);
 		driver.get(configFileReader.getApplicationUrl());
-		kubsLogin.logintoAzentioappReviewer("Reviewer", readerData.readdata());
+		kubsLogin.logintoAzentioappReviewer(readerData.readdata());
     }
 
     @And("^Reviewer Notification icon button$")
@@ -278,7 +278,7 @@ public class FIXEDASSET_AssetReturn extends BaseClass {
 		// ---------LOGIN THE CHECKER USER--------------//
 		kubsLogin = new KUBS_Login(driver);
 		driver.get(configFileReader.getApplicationUrl());
-		kubsLogin.loginToAzentioAppAsChecker("Checker");
+		kubsLogin.loginToAzentioAppAsChecker();
     }
 
     @Then("^Main module Security management$")

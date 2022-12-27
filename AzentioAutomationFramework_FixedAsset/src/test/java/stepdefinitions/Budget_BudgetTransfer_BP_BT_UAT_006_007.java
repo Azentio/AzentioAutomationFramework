@@ -30,7 +30,7 @@ public class Budget_BudgetTransfer_BP_BT_UAT_006_007 {
     public void user_login_into_maker_stage() throws Throwable {
     	login = new KUBS_Login(driver);
 		driver.get(configFileReader.getApplicationUrl());
-		login.loginToAzentioApp("Maker");
+		login.loginToAzentioAppByMaker();
     }
 
     @Then("^user click on configuration$")

@@ -31,7 +31,7 @@ public class Budget_BusgetTransfer_BP_BT_UAT_006_001 {
     public void user_login_to_maker() throws InterruptedException  {
     	login = new KUBS_Login(driver);
 		driver.get(configFileReader.getApplicationUrl());
-		login.loginToAzentioApp("Maker");
+		login.loginToAzentioAppByMaker();
     }
 
     @Then("^click on configuration$")

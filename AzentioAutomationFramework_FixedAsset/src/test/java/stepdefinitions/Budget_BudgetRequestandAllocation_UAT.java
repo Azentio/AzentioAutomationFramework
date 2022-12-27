@@ -70,7 +70,7 @@ public class Budget_BudgetRequestandAllocation_UAT extends BaseClass {
 		// ---------LOGIN THE MAKER USER--------------//
 		login = new KUBS_Login(driver);
 		driver.get(configFileReader.getApplicationUrl());
-		login.loginToAzentioApp("Maker");
+		login.loginToAzentioAppByMaker();
 
 	}
 
@@ -80,7 +80,7 @@ public class Budget_BudgetRequestandAllocation_UAT extends BaseClass {
 		// ---------LOGIN THE REVIEWER USER--------------//
 		login = new KUBS_Login(driver);
 		driver.get(configFileReader.getApplicationUrl());
-		login.logintoAzentioappReviewer("Reviewer", json.readdata());
+		login.logintoAzentioappReviewer(json.readdata());
 	}
 
 	@Given("^Azentio Url login as checker page$")
@@ -89,7 +89,7 @@ public class Budget_BudgetRequestandAllocation_UAT extends BaseClass {
 		// ---------LOGIN THE CHECKER USER--------------//
 		login = new KUBS_Login(driver);
 		driver.get(configFileReader.getApplicationUrl());
-		login.loginToAzentioAppAsChecker("Checker");
+		login.loginToAzentioAppAsChecker();
 	}
 
 	// ---------------------------MAKER COMMON
@@ -1013,7 +1013,7 @@ requestAndAllocation.alertClose().click();
 		// ---------LOGIN THE MAKER USER--------------//
 		login = new KUBS_Login(driver);
 		driver.get(configFileReader.getApplicationUrl());
-		login.loginToAzentioApp("Maker");
+		login. loginToAzentioAppByMaker();
 
 	}
 

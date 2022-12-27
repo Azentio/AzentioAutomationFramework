@@ -14,7 +14,7 @@ import utilities.ExtentTestManager;
 
 
 
-@CucumberOptions(features = "src/test/java/features/ArAp4.feature",
+@CucumberOptions(features = "src/test/java/features/ARAPExcelUpdated.feature",
                  glue = "stepdefinitions",
                  //monochrome=false, //to make steps in color
                  plugin = { "pretty",
@@ -23,7 +23,7 @@ import utilities.ExtentTestManager;
                 //dryRun = false //to check compilation errors            
                     //, tags="@AT_LE_007_Invalid_Modification"
                                 
-                  , tags="@KUBS_AR/AP_UAT_007_001_TC_01"
+                  , tags="@KUBS_AR/AP_UAT_006_003_TC_01_02"
                         
 )
 public class TestApplication extends AbstractTestNGCucumberTests {

@@ -47,7 +47,7 @@ public class BUDGET_Auto_Auth_RequestandAllocation extends BaseClass{
 		// ---------LOGIN THE MAKER USER--------------//
 		login = new KUBS_Login(driver);
 		driver.get(configFileReader.getApplicationUrl());
-		login.loginToAzentioApp("Maker");
+		login.loginToAzentioAppByMaker();
 		Thread.sleep(2000);
 	}
 		// -------------------------MAKER COMMON STEPS--------------------------//

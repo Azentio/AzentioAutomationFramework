@@ -19,7 +19,6 @@
 		"SuplierReferenceNumber": "SUP-1005239",
 		"Remark": "Ok",
 		
-		//Manual Payout Data
 		"ManualPayoutStatus":"Active",
 		"ManualPayoutReferenceNumber":"PTN-901-59-1652022"
 		

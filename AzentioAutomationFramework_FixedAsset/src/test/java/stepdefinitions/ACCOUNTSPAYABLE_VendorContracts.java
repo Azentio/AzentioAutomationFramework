@@ -1,6 +1,7 @@
 package stepdefinitions;
 
 import java.io.IOException;
+import java.util.Iterator;
 import java.util.List;
 
 import org.json.simple.parser.ParseException;
@@ -47,7 +48,7 @@ public class ACCOUNTSPAYABLE_VendorContracts {
 	public void user_should_go_to_the_kubs_url_and_login_as_a_maker_user() throws InterruptedException  {
 		login = new KUBS_Login(driver);
 		driver.get(config.getApplicationUrl());
-		login.loginToAzentioApp("Maker");
+		login.loginToAzentioAppByMaker();
 	}
 
 	@And("^user should navigate to accounts payable menu$")
@@ -372,7 +373,7 @@ waithelper.waitForElement(driver, 2000,
 		reader = new JsonDataReaderWriter();
 		login = new KUBS_Login(driver);
 		driver.get(config.getApplicationUrl());
-		login.logintoAzentioappReviewer("Reviewer", reader.readdata());
+		login.logintoAzentioappReviewer( reader.readdata());
 		Thread.sleep(2000);
 	}
 
@@ -456,7 +457,7 @@ waithelper.waitForElement(driver, 2000,
     public void user_should_go_to_the_kubs_url_and_login_as_a_checker_user() throws InterruptedException {
 		login = new KUBS_Login(driver);
 		driver.get(config.getApplicationUrl());
-		login.loginToAzentioAppAsChecker("Checker");
+		login.loginToAzentioAppAsChecker();
     }
 	
     @And("^Click on security management in checker$")
@@ -470,17 +471,7 @@ waithelper.waitForElement(driver, 2000,
     public void click_on_open_pool_in_checker() {
     	waithelper.waitForElement(driver,3000,kubschecker.checkerActionIcon());
     	kubschecker.checkerActionIcon().click();
-    }
-
-    @And("^Click on claim button in checker$")
-    public void click_on_claim_button_in_checker() throws IOException, ParseException  {
-    	String before_xpath = "//span[contains(text(),'";
-		String after_xpath_claim = "')]/parent::div/parent::datatable-body-cell/preceding-sibling::datatable-body-cell[2]/div/ion-buttons/ion-button";
-		//String after_xpath = ;
-		waithelper.waitForElementwithFluentwait(driver, driver.findElement(By.xpath(before_xpath + jsonWriter.readReferancedata() + after_xpath_claim)));
-		driver.findElement(By.xpath(before_xpath + jsonWriter.readReferancedata() + after_xpath_claim)).click();
-    }
-    
+    } 
     @And("^capture claimed status$")
     public void capture_claimed_status() {
     	WebElement recordstatus = aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_RecordStatus();
@@ -572,8 +563,30 @@ waithelper.waitForElement(driver, 2000,
     public void checker_should_logout()  {
 		waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_ProfileName());
 		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_ProfileName().click();
-		waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_Logout());
-		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_Logout();
+		for (int i = 0; i <200; i++) {
+			try {
+				aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_Logout().click();
+				break;
+			} catch (Exception e) {
+				if (i==199) {
+					Assert.fail(e.getMessage());
+				}
+			}
+		}
+		
+    }
+	@And("^User Verify the Login Page$")
+    public void user_verify_the_login_page() throws Throwable {
+        for (int i = 0; i <20000; i++) {
+			try {
+				aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_Userid().isDisplayed();
+				break;
+			} catch (Exception e) {
+				if (i==19999) {
+					Assert.fail(e.getMessage());
+				}
+			}
+		}
     }
      
     

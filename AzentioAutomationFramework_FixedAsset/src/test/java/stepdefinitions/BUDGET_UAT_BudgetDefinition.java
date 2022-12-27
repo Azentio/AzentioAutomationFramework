@@ -64,7 +64,7 @@ public class BUDGET_UAT_BudgetDefinition extends BaseClass {
 		driver.get(configFileReader.getApplicationUrl());
 		// loginToAzentioApp is already written function, Which is written inside the
 		// same step definition package className: KUBS_Login
-		kubsLogin.loginToAzentioApp(user);
+		kubsLogin.loginToAzentioAppByMaker();
 		javascriptHelper.JavaScriptHelper(driver);
 
 	}
@@ -466,7 +466,7 @@ public class BUDGET_UAT_BudgetDefinition extends BaseClass {
 		 * Then we have to login with reviewer and continue the approval process
 		 */
 		Thread.sleep(3000);
-		kubsLogin.logintoAzentioappReviewer(userType, jsonReaderWriter.readdata());
+		kubsLogin.logintoAzentioappReviewer( jsonReaderWriter.readdata());
 
 	}
 
@@ -654,7 +654,7 @@ public class BUDGET_UAT_BudgetDefinition extends BaseClass {
 		 * By the help of following step we can login as a checker
 		 */
 		Thread.sleep(3000);
-		kubsLogin.loginToAzentioAppAsChecker("Checker");
+		kubsLogin.loginToAzentioAppAsChecker();
 
 	}
 

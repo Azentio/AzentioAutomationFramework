@@ -1,12 +1,11 @@
 package stepdefinitions;
 
-import org.junit.Assert;
 import org.openqa.selenium.By;
-import org.openqa.selenium.ElementClickInterceptedException;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.testng.Assert;
 
 import dataProvider.ConfigFileReader;
 import dataProvider.JsonConfig;
@@ -33,7 +32,7 @@ public class INVENTORY_EnquiryGl1 extends BaseClass {
 	@Given("^navigate to kubs URL and login as maker$")
 	public void navigate_to_kubs_url_and_login_as_maker() throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
-		kubsLogin.loginToAzentioApp("Maker");
+		kubsLogin.loginToAzentioAppByMaker();
 	}
 
 	/*@Then("^click on report segment button$")
@@ -69,14 +68,32 @@ public class INVENTORY_EnquiryGl1 extends BaseClass {
 
 	@And("^choose Gl code$")
 	public void choose_gl_code() throws Throwable {
-		
-		inventoryEnquiryGlObj.inventoryGlCode().sendKeys(inventoryEnquiryGlTestData.gLCode);
-		inventoryEnquiryGlObj.inventoryGlCode().sendKeys(Keys.ENTER);
+		for (int i = 0; i <200; i++) {
+			try {
+				inventoryEnquiryGlObj.inventoryGlCode().sendKeys(inventoryEnquiryGlTestData.gLCode);
+				inventoryEnquiryGlObj.inventoryGlCode().sendKeys(Keys.ENTER);
+				break;
+			} catch (Exception e) {
+				if (i==199) {
+					Assert.fail(e.getMessage());
+				}
+			}
+		}	
 	}
 
 	@And("^click on transaction from date calender icon$")
 	public void click_on_transaction_from_date_calender_icon() throws Throwable {
-		inventoryEnquiryGlObj.inventoryFromDate().click();
+		for (int i = 0; i <200; i++) {
+			try {
+				inventoryEnquiryGlObj.inventoryFromDate().click();
+				break;
+			} catch (Exception e) {
+				if (i==199) {
+					Assert.fail(e.getMessage());
+				}
+			}
+		}
+		
 
 	}
 
@@ -106,7 +123,7 @@ public class INVENTORY_EnquiryGl1 extends BaseClass {
 	@And("^click on the transaction to date calender icon$")
 	public void click_on_the_transaction_to_date_calender_icon() throws Throwable {
 
-		waitHelper.waitForElement(driver, 3000, inventoryEnquiryGlObj.inventoryToDate());
+		waitHelper.waitForElementToVisibleWithFluentWait(driver, inventoryEnquiryGlObj.inventoryToDate(),30, 2);
 		clickAndActionHelper.doubleClick(inventoryEnquiryGlObj.inventoryToDate());
 		//.click();
 	

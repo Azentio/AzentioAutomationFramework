@@ -22,6 +22,13 @@ public class AccountsPayable_ManualPayoutEmployeeObj {
 		public WebElement accountPayable_ManualPayout_EyeButton() {
 			return accountPayable_ManualPayout_EyeButton;
 		}
+		// finance option
+		@FindBy(xpath="//ion-label[text()='Finance']/following-sibling::ion-radio")
+	    private WebElement finance_option;
+	    public WebElement FinanceOption() {
+			return finance_option;
+	    	
+	    }
 		
 		// add button Manual payout
 		@FindBy(xpath = "//ion-fab-button[@id='addBtn']")
@@ -88,7 +95,7 @@ public class AccountsPayable_ManualPayoutEmployeeObj {
 		}
 		//datatable-row-wrapper[2]/datatable-body-row[1]/div[2]/datatable-body-cell[1]/div[1]/ion-checkbox[1]
 		// Select 3rd payment approval txn number
-		@FindBy(xpath = "//datatable-row-wrapper[2]/datatable-body-row[1]/div[2]/datatable-body-cell[1]/div[1]/ion-checkbox[1]")
+		@FindBy(xpath = "//datatable-row-wrapper[1]/datatable-body-row[1]/div[2]/datatable-body-cell[1]/div[1]/ion-checkbox[1]")
 		private WebElement accountPayable_ManualPayout_SelectPaymentTxnNumber;
 		
 		public WebElement accountPayable_ManualPayout_SelectPaymentTxnNumber() {

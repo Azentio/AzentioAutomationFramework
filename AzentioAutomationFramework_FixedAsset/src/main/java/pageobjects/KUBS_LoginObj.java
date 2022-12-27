@@ -23,10 +23,10 @@ public class KUBS_LoginObj {
 	}
 
 	@FindBy(xpath = "//button[text()='Continue']")
-	private WebElement go_button;
+	private WebElement ubs_continueButton;
 
-	public WebElement Login_goButton() {
-		return go_button;
+	public WebElement ubsContinueButton() {
+		return ubs_continueButton;
 
 	}
 
@@ -51,7 +51,7 @@ public class KUBS_LoginObj {
 		return sign_in;
 	}
 
-	@FindBy(xpath = "//ion-title[contains(text(),'Welcome,')]")
+	@FindBy(xpath = "//span[text()=' (AZENTMAIN) ']")
 	private WebElement login_status;
 
 	public WebElement Login_loginStatus() {

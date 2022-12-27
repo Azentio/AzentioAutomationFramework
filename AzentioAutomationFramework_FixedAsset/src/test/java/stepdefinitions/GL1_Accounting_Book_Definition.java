@@ -61,7 +61,7 @@ public class GL1_Accounting_Book_Definition extends BaseClass {
 		// ---------LOGIN THE MAKER USER--------------//
 		kubsLogin = new KUBS_Login(driver);
 		driver.get(configFileReader.getApplicationUrl());
-		kubsLogin.loginToAzentioApp("Maker");
+		kubsLogin.loginToAzentioAppByMaker();
 		
 	}
 

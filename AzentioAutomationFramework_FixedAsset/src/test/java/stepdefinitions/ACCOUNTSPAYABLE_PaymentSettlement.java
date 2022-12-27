@@ -94,7 +94,17 @@ public class ACCOUNTSPAYABLE_PaymentSettlement extends BaseClass {
 
 	@Then("^click on search$")
 	public void click_on_search() throws Throwable {
-		invoiceBillBookingObj.accountPayable_InvoiceBooking_Search().click();
+		for (int i = 0; i <200; i++) {
+			try {
+				invoiceBillBookingObj.accountPayable_InvoiceBooking_Search().click();
+				break;
+			} catch (Exception e) {
+				if (i==199) {
+					Assert.fail(e.getMessage());
+				}
+			}
+		}
+		
 	}
 
 	@And("^search for cancelled bill$")

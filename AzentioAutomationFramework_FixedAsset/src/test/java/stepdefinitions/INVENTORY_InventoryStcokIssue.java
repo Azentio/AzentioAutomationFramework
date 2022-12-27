@@ -43,7 +43,7 @@ public class INVENTORY_InventoryStcokIssue extends BaseClass {
 	@Given("^navigate to kubs URL and login as maker credentials$")
 	public void navigate_to_kubs_url_and_login_as_maker_credentials() throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
-		kubsLogin.loginToAzentioApp("Maker");
+		kubsLogin.loginToAzentioAppByMaker();
 		javascriptHelper.JavaScriptHelper(driver);
 	}
 
@@ -203,7 +203,7 @@ public class INVENTORY_InventoryStcokIssue extends BaseClass {
     public void login_with_reviewer_id() throws Throwable {
     	
     	Thread.sleep(3000);
-    	kubsLogin.logintoAzentioappReviewer("Reviewer", jsonData.readdata());
+    	kubsLogin.logintoAzentioappReviewer(jsonData.readdata());
     }
 
     @Then("^click on notification icon in reviewer$")
@@ -251,7 +251,7 @@ public class INVENTORY_InventoryStcokIssue extends BaseClass {
     @Then("^login with checker ID$")
     public void login_with_checker_id() throws Throwable {
     	Thread.sleep(3000);
-        kubsLogin.loginToAzentioAppAsChecker("Checker");
+        kubsLogin.loginToAzentioAppAsChecker();
     }
     @And("^click on Security management menu$")
     public void click_on_security_management_menu() throws Throwable {

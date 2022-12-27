@@ -50,7 +50,7 @@ public class BUDGET_BudgetRequestandAllocation extends BaseClass {
 		// ---------LOGIN THE MAKER USER--------------//
 		login = new KUBS_Login(driver);
 		driver.get(configFileReader.getApplicationUrl());
-		login.loginToAzentioApp("Maker");
+		login.loginToAzentioAppByMaker();
 		Thread.sleep(2000);
 	}
 
@@ -60,7 +60,7 @@ public class BUDGET_BudgetRequestandAllocation extends BaseClass {
 		// ----------LOGIN AS REVIEWER---------------//
 		login = new KUBS_Login(driver);
 		driver.get(configFileReader.getApplicationUrl());
-		login.logintoAzentioappReviewer("Reviewer", json.readdata());
+		login.logintoAzentioappReviewer(json.readdata());
 	}
 
 	@Given("^Navigate the Azentio Url login as checker$")
@@ -69,7 +69,7 @@ public class BUDGET_BudgetRequestandAllocation extends BaseClass {
 		// ----------LOGIN AS CHECKER----------------//
 		login = new KUBS_Login(driver);
 		driver.get(configFileReader.getApplicationUrl());
-		login.loginToAzentioAppAsChecker("Checker");
+		login.loginToAzentioAppAsChecker();
 	}
 
 	// -------------------------MAKER COMMON STEPS--------------------------//

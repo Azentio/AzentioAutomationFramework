@@ -16,6 +16,7 @@ import helper.ClicksAndActionsHelper;
 import helper.DropDownHelper;
 import helper.JavascriptHelper;
 import helper.WaitHelper;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import pageobjects.ArAp_BalanceSheetReportObj;
 import resources.BaseClass;
@@ -58,15 +59,15 @@ public class ArAp_BalanceSheetReport extends BaseClass {
 	    	  waithelper.waitForElement(driver, 2000,arAp_BalanceSheetReportObj.arAp_BalanceSheetReport_BalanceSheetReport());
 		    	arAp_BalanceSheetReportObj.arAp_BalanceSheetReport_BalanceSheetReport().click();
 	    }
-	    @Then("^Fill branch details for report$")
-	    public void fill_branch_details_for_report()  {
-	    	
-	    	//Thread.sleep(6000);
-	    	
+	    @And("^User Select branch code for Verify Balance sheet post payment settlement approval$")
+	    public void user_select_branch_code_for_verify_balance_sheet_post_payment_settlement_approval() throws Throwable {
 	    	waithelper.waitForElement(driver, 2000,arAp_BalanceSheetReportObj.arAp_BalanceSheetReport_BranchTextbox());
 	    	arAp_BalanceSheetReportObj.arAp_BalanceSheetReport_BranchTextbox().click();
 	    	arAp_BalanceSheetReportObj.arAp_BalanceSheetReport_BranchTextbox().sendKeys(arAp_BalanceSheetReportTestDataType.BranchCode);
 	    	arAp_BalanceSheetReportObj.arAp_BalanceSheetReport_BranchTextbox().sendKeys(Keys.ENTER);
+	    }
+	    @And("^User Select report type for Verify Balance sheet post payment settlement approval$")
+	    public void user_select_report_type_for_verify_balance_sheet_post_payment_settlement_approval() throws Throwable {
 	    	//arAp_BalanceSheetReportTestDataType= jsonReader.getBalanceSheetReportByName("maker");
 	    	waithelper.waitForElement(driver, 2000,arAp_BalanceSheetReportObj.arAp_BalanceSheetReport_ReportType());
 	    	arAp_BalanceSheetReportObj.arAp_BalanceSheetReport_ReportType().click();
@@ -74,6 +75,7 @@ public class ArAp_BalanceSheetReport extends BaseClass {
 	    	arAp_BalanceSheetReportObj.arAp_BalanceSheetReport_ReportType().sendKeys(Keys.ENTER);
 	    	
 	    }
+
 	    @Then("^Select date in calendar$")
 	    public void select_date_in_calendar() throws InterruptedException  {
 	    	

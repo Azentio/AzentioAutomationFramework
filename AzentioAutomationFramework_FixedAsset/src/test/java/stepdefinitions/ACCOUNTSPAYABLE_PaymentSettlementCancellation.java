@@ -1,6 +1,8 @@
 package stepdefinitions;
 
 import java.io.IOException;
+import java.util.Map;
+
 import org.json.simple.parser.ParseException;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
@@ -22,6 +24,7 @@ import pageobjects.ACCOUNTSPAYABLE_PaymentSettlementCancellationObj;
 import pageobjects.ACCOUNTSPAYABLE_VendorContractsObj;
 import pageobjects.KUBS_CheckerObj;
 import resources.BaseClass;
+import resources.ExcelData;
 import resources.JsonDataReaderWriter;
 import testDataType.ACCOUNTSPAYABLE_PaymentSettlementCancellationTestDataType;
 import testDataType.ACCOUNTSPAYABLE_VendorContractsTestDataType;
@@ -44,6 +47,9 @@ public class ACCOUNTSPAYABLE_PaymentSettlementCancellation {
 	BrowserHelper browserHelper;
 	KUBS_CheckerObj kubschecker = new KUBS_CheckerObj(driver);
 	ACCOUNTSPAYABLE_VendorContractsTestDataType aCCOUNTSPAYABLE_VendorContractsTestDataType;
+	String excelPath = System.getProperty("user.dir")+"\\Test-data\\KUBSTestData.xlsx";
+	ExcelData excelData = new ExcelData(excelPath,"ARAP_ManualPayout","Data Set ID");
+	private Map<String, String> testData;
 	
 //--------  @KUBS_AR/AP_UAT_005_002_TC_01  ------------
     
@@ -54,40 +60,48 @@ public class ACCOUNTSPAYABLE_PaymentSettlementCancellation {
     	waithelper.waitForElement(driver, 3000, aCCOUNTSPAYABLE_PaymentSettlementCancellationObj.accountPayable_PaymentSettlementCancellation_EyeButton());
     	aCCOUNTSPAYABLE_PaymentSettlementCancellationObj.accountPayable_PaymentSettlementCancellation_EyeButton().click();
     }
+    @And("^User update test data id for cancellation of payment settlement$")
+    public void user_update_test_data_id_for_cancellation_of_payment_settlement() throws Throwable {
+	 testData = excelData.getTestdata("KUBS_AR/AP_UAT_005_001_TC_01_01_D1");
+    }
 
     @And("^click on add button for payment settlement cancellation$")
     public void click_on_add_button_for_payment_settlement_cancellation() {
     	waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_PaymentSettlementCancellationObj.accountPayable_PaymentSettlementCancellation_AddButton());
     	aCCOUNTSPAYABLE_PaymentSettlementCancellationObj.accountPayable_PaymentSettlementCancellation_AddButton().click();
     }
-
-    @And("^Fill the required fields for payment settlement cancellation$")
-    public void fill_the_required_fields_for_payment_settlement_cancellation() throws InterruptedException, IOException, ParseException  {
-		javascripthelper.JavaScriptHelper(driver);
+    @And("^User Select the Entity branch for payment cancellation$")
+    public void user_select_the_entity_branch_for_payment_cancellation() throws Throwable {
+    	javascripthelper.JavaScriptHelper(driver);
 		waithelper.waitForElement(driver, 2000,aCCOUNTSPAYABLE_PaymentSettlementCancellationObj.accountPayable_PaymentSettlementCancellation_EntityBranch());
-		aCCOUNTSPAYABLE_PaymentSettlementCancellationObj.accountPayable_PaymentSettlementCancellation_EntityBranch().sendKeys(PaymentSettlementCancellationTestDataType.EntityBranch);
+		aCCOUNTSPAYABLE_PaymentSettlementCancellationObj.accountPayable_PaymentSettlementCancellation_EntityBranch().sendKeys(testData.get("EntityBranch"));
 		aCCOUNTSPAYABLE_PaymentSettlementCancellationObj.accountPayable_PaymentSettlementCancellation_EntityBranch().sendKeys(Keys.ENTER);
+    }
 
-		waithelper.waitForElement(driver, 2000,aCCOUNTSPAYABLE_PaymentSettlementCancellationObj.accountPayable_PaymentSettlementCancellation_PaymentTxnNumber());
-		aCCOUNTSPAYABLE_PaymentSettlementCancellationObj.accountPayable_PaymentSettlementCancellation_PaymentTxnNumber().sendKeys(PaymentSettlementCancellationTestDataType.PaymentTxnNumber);
-		aCCOUNTSPAYABLE_PaymentSettlementCancellationObj.accountPayable_PaymentSettlementCancellation_PaymentTxnNumber().sendKeys(Keys.ENTER);
-		
-		
-//		javascripthelper.scrollIntoViewAndClick(aCCOUNTSPAYABLE_PaymentSettlementCancellationObj.accountPayable_PaymentSettlementCancellation_Footer());
-//		
-//		waithelper.waitForElement(driver, 2000,aCCOUNTSPAYABLE_PaymentSettlementCancellationObj.accountPayable_PaymentSettlementCancellation_Remark());
-//		aCCOUNTSPAYABLE_PaymentSettlementCancellationObj.accountPayable_PaymentSettlementCancellation_Remark().sendKeys(PaymentSettlementCancellationTestDataType.Remarks);
-		
-		aCCOUNTSPAYABLE_PaymentSettlementCancellationObj.accountPayable_PaymentSettlementCancellation_ValueDateCalendar().click();
+    @And("^User Select the Transaction Number for payment cancellation$")
+    public void user_select_the_transaction_number_for_payment_cancellation() throws Throwable {
+    	waithelper.waitForElement(driver, 2000,aCCOUNTSPAYABLE_PaymentSettlementCancellationObj.accountPayable_PaymentSettlementCancellation_PaymentTxnNumber());
+		//aCCOUNTSPAYABLE_PaymentSettlementCancellationObj.accountPayable_PaymentSettlementCancellation_PaymentTxnNumber().sendKeys(testData.get("TransactionReferenceNumber"));
+    	aCCOUNTSPAYABLE_PaymentSettlementCancellationObj.accountPayable_PaymentSettlementCancellation_PaymentTxnNumber().sendKeys(Keys.DOWN);
+    	aCCOUNTSPAYABLE_PaymentSettlementCancellationObj.accountPayable_PaymentSettlementCancellation_PaymentTxnNumber().sendKeys(Keys.ENTER);
+    }
+    @And("^Store the selected Transaction number for payment cancellation$")
+    public void store_the_selected_transaction_number_for_payment_cancellation() throws Throwable {
+        
+    }
+
+    @And("^User Select the value date for payment cancellation$")
+    public void user_select_the_value_date_for_payment_cancellation() throws Throwable {
+    	aCCOUNTSPAYABLE_PaymentSettlementCancellationObj.accountPayable_PaymentSettlementCancellation_ValueDateCalendar().click();
 		Thread.sleep(2000);
 		javascripthelper.JavaScriptHelper(driver);
 		while (true) {
 			try {
 
-				waithelper.waitForElement(driver, 3000, driver.findElement(By.xpath("//span[contains(text(),'" + PaymentSettlementCancellationTestDataType.ValueMonth + " "
-						+ PaymentSettlementCancellationTestDataType.ValueYear + "')]")));
+				waithelper.waitForElement(driver, 3000, driver.findElement(By.xpath("//span[contains(text(),'" + testData.get("ValueMonth") + " "
+						+ testData.get("ValueYear") + "')]")));
 				WebElement monthAndYear = driver.findElement(By.xpath(
-						"//span[contains(text(),'" + PaymentSettlementCancellationTestDataType.ValueMonth + " " + PaymentSettlementCancellationTestDataType.ValueYear + "')]"));
+						"//span[contains(text(),'" + testData.get("ValueMonth") + " " + testData.get("ValueYear") + "')]"));
 				break;
 			}
 
@@ -95,18 +109,21 @@ public class ACCOUNTSPAYABLE_PaymentSettlementCancellation {
 				aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_ClickOnNextMonth().click();
 			}
 		}
-		WebElement ValueDate = driver.findElement(By.xpath("//td[@aria-label='" + PaymentSettlementCancellationTestDataType.ValueFullMonth + " "
-				+ PaymentSettlementCancellationTestDataType.ValueDate + ", " + PaymentSettlementCancellationTestDataType.ValueYear + "']/span"));
+		WebElement ValueDate = driver.findElement(By.xpath("//td[@aria-label='" + testData.get("ValueFullMonth") + " "
+				+ testData.get("ValueDate") + ", " + testData.get("ValueYear") + "']/span"));
 		clicksAndActionHelper.doubleClick(ValueDate);
 		
 		waithelper.waitForElement(driver, 3000, aCCOUNTSPAYABLE_PaymentSettlementCancellationObj.accountPayable_PaymentSettlementCancellation_CancellationReasonCode());
 		aCCOUNTSPAYABLE_PaymentSettlementCancellationObj.accountPayable_PaymentSettlementCancellation_CancellationReasonCode().sendKeys(PaymentSettlementCancellationTestDataType.CancellationReasonCode);
 		aCCOUNTSPAYABLE_PaymentSettlementCancellationObj.accountPayable_PaymentSettlementCancellation_CancellationReasonCode().sendKeys(Keys.ENTER);
 		
-		waithelper.waitForElement(driver, 3000, aCCOUNTSPAYABLE_PaymentSettlementCancellationObj.accountPayable_PaymentSettlementCancellation_CancellationRemark());
-		aCCOUNTSPAYABLE_PaymentSettlementCancellationObj.accountPayable_PaymentSettlementCancellation_CancellationRemark().sendKeys(PaymentSettlementCancellationTestDataType.CAncellationRemark);
+
     }
-    
+    @And("^User Enter Remarks for payment cancellation$")
+    public void user_enter_remarks_for_payment_cancellation() throws Throwable {
+    	waithelper.waitForElement(driver, 3000, aCCOUNTSPAYABLE_PaymentSettlementCancellationObj.accountPayable_PaymentSettlementCancellation_CancellationRemark());
+		aCCOUNTSPAYABLE_PaymentSettlementCancellationObj.accountPayable_PaymentSettlementCancellation_CancellationRemark().sendKeys(testData.get("Remarks"));
+    }    
     @Then("^Save and submit the payment settlement cancellation record$")
     public void save_and_submit_the_payment_settlement_cancellation_record() throws IOException, ParseException, InterruptedException  {
     	waithelper.waitForElement(driver, 2000,aCCOUNTSPAYABLE_ManualPayoutObj.accountPayable_ManualPayout_SaveButton());
@@ -125,24 +142,24 @@ public class ACCOUNTSPAYABLE_PaymentSettlementCancellation {
 		String id=aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_FirstReferenceId().getText();
 		jsonWriter.addReferanceData(id);
 		System.out.println("Reference ID:" +id);
-    	for (int i = 1; i <= 35; i++) {
-			try {
-		    	waithelper.waitForElement(driver, 3000,driver.findElement(By.xpath("//span[contains(text(),'" +jsonWriter.readReferancedata()+ "')]")));	
-				WebElement referanceID = driver.findElement(By.xpath("//span[contains(text(),'" +  jsonWriter.readReferancedata() + "')]"));	
-				waithelper.waitForElement(driver, i, referanceID);
-				referanceID.click();
-		    	System.out.println(referanceID);
+//    	for (int i = 1; i <= 35; i++) {
+//			try {
+//		    	waithelper.waitForElement(driver, 3000,driver.findElement(By.xpath("//span[contains(text(),'" +jsonWriter.readReferancedata()+ "')]")));	
+//				WebElement referanceID = driver.findElement(By.xpath("//span[contains(text(),'" +  jsonWriter.readReferancedata() + "')]"));	
+//				waithelper.waitForElement(driver, i, referanceID);
+//				referanceID.click();
+//		    	System.out.println(referanceID);
 //				Assert.assertTrue(referanceID.isDisplayed());
-				break;
-			} catch (NoSuchElementException e) {
-				waithelper.waitForElement(driver,4000,aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_NotificationNextButton());
-				aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_NotificationNextButton().click();
-			}
-		}
+//				break;
+//			} catch (NoSuchElementException e) {
+//				waithelper.waitForElement(driver,4000,aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_NotificationNextButton());
+//				aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_NotificationNextButton().click();
+//			}
+//		}
     	String before_xpath="//span[contains(text(),'";
     	String after_xpath="')]/ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell//ion-button"; 
-    	waithelper.waitForElement(driver, 10000, driver.findElement(By.xpath(before_xpath +jsonWriter.readReferancedata()+after_xpath)));
-    	driver.findElement(By.xpath(before_xpath +jsonWriter.readReferancedata() +after_xpath)).click();
+    	waithelper.waitForElement(driver, 10000, driver.findElement(By.xpath(before_xpath +testData.get("Reference ID")+after_xpath)));
+    	driver.findElement(By.xpath(before_xpath +testData.get("Reference ID") +after_xpath)).click();
     	
     	waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_SubmitButton());
     	aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_SubmitButton().click(); 
@@ -169,6 +186,7 @@ public class ACCOUNTSPAYABLE_PaymentSettlementCancellation {
 		System.out.println(reviewerId);
 		System.out.println(reviewerId);
 		jsonWriter=new JsonDataReaderWriter();
+		excelData.updateTestData("KUBS_AR/AP_UAT_005_001_TC_01_02_D1", "Reviewer ID", reviewerId);
 		jsonWriter.addData(reviewerId);
     }
     
@@ -206,11 +224,11 @@ public class ACCOUNTSPAYABLE_PaymentSettlementCancellation {
 //				+ PaymentSettlementCancellationTestDataType.ValueDate + ", " + PaymentSettlementCancellationTestDataType.ValueYear + "']/span"));
 //		clicksAndActionHelper.doubleClick(ValueDate);
 //		
-//		waithelper.waitForElement(driver, 3000, aCCOUNTSPAYABLE_PaymentSettlementCancellationObj.accountPayable_PaymentSettlementCancellation_CancellationReasonCode());
-//		aCCOUNTSPAYABLE_PaymentSettlementCancellationObj.accountPayable_PaymentSettlementCancellation_CancellationReasonCode().sendKeys(PaymentSettlementCancellationTestDataType.CancellationReasonCode);
-//		aCCOUNTSPAYABLE_PaymentSettlementCancellationObj.accountPayable_PaymentSettlementCancellation_CancellationReasonCode().sendKeys(Keys.ENTER);
-//		
-//		waithelper.waitForElement(driver, 3000, aCCOUNTSPAYABLE_PaymentSettlementCancellationObj.accountPayable_PaymentSettlementCancellation_CancellationRemark());
-//		aCCOUNTSPAYABLE_PaymentSettlementCancellationObj.accountPayable_PaymentSettlementCancellation_CancellationRemark().sendKeys(PaymentSettlementCancellationTestDataType.CAncellationRemark);
+		waithelper.waitForElement(driver, 3000, aCCOUNTSPAYABLE_PaymentSettlementCancellationObj.accountPayable_PaymentSettlementCancellation_CancellationReasonCode());
+		aCCOUNTSPAYABLE_PaymentSettlementCancellationObj.accountPayable_PaymentSettlementCancellation_CancellationReasonCode().sendKeys(PaymentSettlementCancellationTestDataType.CancellationReasonCode);
+		aCCOUNTSPAYABLE_PaymentSettlementCancellationObj.accountPayable_PaymentSettlementCancellation_CancellationReasonCode().sendKeys(Keys.ENTER);
+		
+		waithelper.waitForElement(driver, 3000, aCCOUNTSPAYABLE_PaymentSettlementCancellationObj.accountPayable_PaymentSettlementCancellation_CancellationRemark());
+		aCCOUNTSPAYABLE_PaymentSettlementCancellationObj.accountPayable_PaymentSettlementCancellation_CancellationRemark().sendKeys(PaymentSettlementCancellationTestDataType.CAncellationRemark);
     }
 }

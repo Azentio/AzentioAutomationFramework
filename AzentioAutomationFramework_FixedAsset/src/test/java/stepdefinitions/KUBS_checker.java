@@ -26,7 +26,7 @@ public class KUBS_checker extends BaseClass {
 	public void navigate_to_url_and_login_as_a_checker() throws Throwable {
 		login = new KUBS_Login(driver);
 		driver.get(config.getApplicationUrl());
-		login.loginToAzentioAppAsChecker("Checker");
+		login.loginToAzentioAppAsChecker();
 
 	}
 

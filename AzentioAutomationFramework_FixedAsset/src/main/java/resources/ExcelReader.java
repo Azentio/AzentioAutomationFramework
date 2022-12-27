@@ -46,7 +46,7 @@ public class ExcelReader {
 		else {
 			sheet = workbook.getSheetAt(index);
 			int number = sheet.getLastRowNum() + 1;
-			System.out.println(number);
+			//System.out.println(number);
 			return number;
 		}
 

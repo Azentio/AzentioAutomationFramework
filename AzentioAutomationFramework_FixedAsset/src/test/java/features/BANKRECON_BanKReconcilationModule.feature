@@ -1,5 +1,5 @@
 Feature:  To Verify user can able to do the transaction in Bank recon module
-@KUBS_TAX_UAT_07_001
+@KUBS_TAX_UAT_07_001TC_001
 Scenario: Processing Bank recon for same period, Bank and Account Number
 Given Navigate to KUBS URL and login with maker credentials
 Then click on second Segment button
@@ -10,7 +10,7 @@ And enter the bank name and account number
 And Give the recon period from date which is already processed 
 Then verify system throw the validation message or not
 
-@KUBS_TAX_UAT_07_002
+@KUBS_TAX_UAT_07_002TC_001
 Scenario: Processing bank recon with already used file.
 Given Navigate to KUBS URL and login with maker credentials
 Then click on second Segment button

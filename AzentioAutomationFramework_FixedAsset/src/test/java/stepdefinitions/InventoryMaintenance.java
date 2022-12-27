@@ -59,7 +59,7 @@ public class InventoryMaintenance extends BaseClass{
 		    public void maker_navigate_to_uat_url_login() throws InterruptedException {
 				kubsLogin = new KUBS_Login(driver);
 				driver.get(configFileReader.getApplicationUrl());
-				kubsLogin.loginToAzentioApp("Maker");
+				kubsLogin.loginToAzentioAppByMaker();
 				Thread.sleep(1000);
 		       
 		    }
@@ -323,16 +323,7 @@ public class InventoryMaintenance extends BaseClass{
 		       
 		        }
 		    
-				@Then("^log in to the reviewer account$")
-				public void log_in_to_the_reviewer_account() throws IOException, ParseException, InterruptedException {
-					reader = new JsonDataReaderWriter();
-					kubsLogin = new KUBS_Login(driver);
-					driver.get(config.getApplicationUrl());
-					kubsLogin.logintoAzentioappReviewer("Reviewer", reader.readdata());
-					Thread.sleep(1000); 
-					
-
-				}
+				
 
 				@Then("^click on the Notification select the record and Approve$")
 				public void click_on_the_notification_select_the_record_and_approve() throws InterruptedException, IOException, ParseException {
@@ -402,41 +393,11 @@ public class InventoryMaintenance extends BaseClass{
 				 public void log_in_to_the_checker_account() throws InterruptedException  {
 				    kubsLogin = new KUBS_Login(driver);
 					driver.get(configFileReader.getApplicationUrl());
-					kubsLogin.loginToAzentioAppAsChecker("Checker");
+					kubsLogin.loginToAzentioAppAsChecker();
 				       
 				    }
 				    
-				 @And("^then checker claim the record$")
-				 public void then_checker_claim_the_record() throws InterruptedException, IOException, ParseException  {
-				    	
-				    	//open pool
-				    	waithelper = new WaitHelper(driver);
-						kubschecker = new Azentio_CheckerObj(driver);
-						waithelper.waitForElement(driver,3000, kubschecker.checkerSecurityManagement());
-				    	kubschecker.checkerSecurityManagement().click();
-				    	
-				    	//claim
-				    	waithelper.waitForElement(driver,3000,kubschecker.checkerActionIcon());
-				    	kubschecker.checkerActionIcon().click();
-				    	Thread.sleep(2000);
-				    	String before_xpath = "//span[contains(text(),'";
-						String after_xpath_claim = "')]/parent::div/parent::datatable-body-cell/preceding-sibling::datatable-body-cell[2]/div/ion-buttons/ion-button";
-					//	waithelper.waitForElement(driver, 5000, driver.findElement(By.xpath(before_xpath + reader.readReferancedata() + after_xpath_claim)));
-						for (int i = 0; i <50; i++) {
-							try {
-								driver.findElement(By.xpath(before_xpath + reader.readReferancedata() + after_xpath_claim)).click();
-								break;
-							} catch (Exception e) {
-								
-							}
-						}
-						
-						waithelper.waitForElement(driver,3000,kubschecker.checkerAlertClose());
-						kubschecker.checkerAlertClose().click();
-				 
-				        
-				    }
-				    @Then("^click on the checker Notification$")
+				   @Then("^click on the checker Notification$")
 				    public void click_on_the_checker_notification() throws InterruptedException  {
 //				    	Thread.sleep(1000);
 //						waithelper.waitForElement(driver,3000,kubschecker.checkerNotificationIcon());

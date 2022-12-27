@@ -1039,7 +1039,7 @@ public class ARAP_AccountsReceivable_AccountsPayable extends BaseClass {
 		// ---------LOGIN THE MAKER USER--------------//
 		kubsLogin = new KUBS_Login(driver);
 		driver.get(configFileReader.getApplicationUrl());
-		kubsLogin.loginToAzentioApp("Maker");
+		kubsLogin.loginToAzentioAppByMaker();
 		Thread.sleep(1000);
 	}
 
@@ -1941,7 +1941,7 @@ public class ARAP_AccountsReceivable_AccountsPayable extends BaseClass {
 		// ---------LOGIN THE REVIEWER USER--------------//
 		kubsLogin = new KUBS_Login(driver);
 		driver.get(configFileReader.getApplicationUrl());
-		kubsLogin.logintoAzentioappReviewer("Reviewer", readerData.readdata());
+		kubsLogin.logintoAzentioappReviewer(readerData.readdata());
 	}
 
 	@Then("^click on Notify icon$")
@@ -1997,7 +1997,7 @@ public class ARAP_AccountsReceivable_AccountsPayable extends BaseClass {
 		// ---------LOGIN THE CHECKER USER--------------//
 		kubsLogin = new KUBS_Login(driver);
 		driver.get(configFileReader.getApplicationUrl());
-		kubsLogin.loginToAzentioAppAsChecker("Checker");
+		kubsLogin.loginToAzentioAppAsChecker();
 	}
 
 	@Then("^Click module security management$")

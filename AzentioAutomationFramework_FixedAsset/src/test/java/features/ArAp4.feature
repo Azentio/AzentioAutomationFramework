@@ -18,14 +18,12 @@ And give the status in payment settlement report section
 And click on the view button
 Then verify the payment settement invoice number is available in the payable report
 
-
  @KUBS_AR/AP_UAT_005_002_TC_01  @AR/AP
   Scenario: User cancels the payment settlement transaction for multiple bills.
     Given User should go to the kubs url and login as a maker user
     And user should navigate to accounts payable menu
     When click on eye button of payment settlement cancellation
     And click on add button for payment settlement cancellation
-    And Fill the required fields for payment settlement cancellation
     Then Save and submit the payment settlement cancellation record
     
     And User should go to the kubs url and login as a reviewer user
@@ -418,7 +416,6 @@ Then  verify approved payout reference number is available in the payout report
 		Then Click on Account Payable 
     When click on eye button of manual payout
     And click on add button for manual payout
-  	And Fill the required fields for manual payout
  	 	Then Click on save button to save the Record for Account Recivable
 		Then Click on Update Deposited Cheque Notification
 		And Select and Submit the Update Deposited Cheque record

@@ -60,7 +60,7 @@ public class FIXEDASSET_AssetAmendment extends BaseClass {
 		// ---------LOGIN THE MAKER USER--------------//
 		kubsLogin = new KUBS_Login(driver);
 		driver.get(configFileReader.getApplicationUrl());
-		kubsLogin.loginToAzentioApp("Maker");
+		kubsLogin.loginToAzentioAppByMaker();
 		Thread.sleep(1000);
 	}
 
@@ -273,7 +273,7 @@ driver.findElement(By.xpath("//td[@aria-label='"+assetAmendmentData.FullMonth+" 
 		// ---------LOGIN THE REVIEWER USER--------------//
 		kubsLogin = new KUBS_Login(driver);
 		driver.get(configFileReader.getApplicationUrl());
-		kubsLogin.logintoAzentioappReviewer("Reviewer", readerData.readdata());
+		kubsLogin.logintoAzentioappReviewer(readerData.readdata());
 	}
 
 	@And("^Click the Reviewer Notification icon$")
@@ -328,7 +328,7 @@ driver.findElement(By.xpath("//td[@aria-label='"+assetAmendmentData.FullMonth+" 
 		// ---------LOGIN THE CHECKER USER--------------//
 		kubsLogin = new KUBS_Login(driver);
 		driver.get(configFileReader.getApplicationUrl());
-		kubsLogin.loginToAzentioAppAsChecker("Checker");
+		kubsLogin.loginToAzentioAppAsChecker();
 	}
 
 	@Then("^Click the Security management module$")
