@@ -11,20 +11,27 @@ import org.openqa.selenium.ElementNotInteractableException;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 
 import dataProvider.JsonConfig;
 import helper.ClicksAndActionsHelper;
 import helper.JavascriptHelper;
+import helper.Selenium_Actions;
 import helper.WaitHelper;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
+import pageobjects.ACCOUNTRECEIVABLE_CreditNoteObj;
 import pageobjects.ACCOUNTSPAYABLE_InvoiceBookingObj;
+import pageobjects.ACCOUNTSPAYABLE_PayementSettlementObj;
+import pageobjects.ARAP_ARandAPObj;
 import pageobjects.ARAP_AdjustmentsObj;
 import pageobjects.ARAP_GRNCreationPageObject;
 import pageobjects.ARAP_PoCreationObj;
+import pageobjects.Account_Receivable;
 import pageobjects.INVENTORY_EnquiryGlObject;
 import pageobjects.KUBS_MakerObj;
 import resources.BaseClass;
+import resources.ExcelData;
 import resources.JsonDataReaderWriter;
 import testDataType.ACCOUNTSPAYABLE_PaymentSettlementTestDataType;
 import testDataType.ARAP_GRNCreationTestDataType;
@@ -49,6 +56,8 @@ public class ACCOUNTSPAYABLE_GRNCreation extends BaseClass {
 	Map<String,String> settlementTestData=new HashMap<>();
 	Map<String,String> testData=new HashMap<>();
 	//INVENTORY_EnquiryGlObject enquiryAccountingObj=new INVENTORY_EnquiryGlObject(driver);
+	   ExcelData excelData = new ExcelData("C:\\Users\\inindc00071\\Downloads\\KUBSTestDataDesign.xlsx","ARAP2TestData","Data Set ID");
+		Map<String, String> arap;
     @And("^click on accounts Payable module$")
     public void click_on_accounts_payable_module() throws Throwable {
     	Thread.sleep(1000);
@@ -98,6 +107,32 @@ public class ACCOUNTSPAYABLE_GRNCreation extends BaseClass {
 	grnObject.accountPayable_GRN_BPBranch().click();
     	grnObject.accountPayable_GRN_BPBranch().sendKeys(Keys.ENTER);
     	grnObject.accountPayable_GrnInvoiceNumber().sendKeys(grnTestData.InvoiceNo);
+    	grnObject.accountPayable_GrnDeliveryLocation().click();
+    	//grnObject.accountPayable_GrnDeliveryLocation().sendKeys(Keys.DOWN);
+    	grnObject.accountPayable_GrnDeliveryLocation().sendKeys(Keys.ENTER);
+    	//waitHelper.waitForElementVisible(grnObject.accountPayable_GrnSaveButton(), 1000, 100);
+    	Thread.sleep(2000);
+    	//grnObject.accountPayable_GrnSaveButton().click();
+    	clickAndActions.doubleClick(grnObject.accountPayable_GrnSaveButton());
+    	grnObject.grnTempView().click();
+    	waitHelper.waitForElementVisible(grnObject.grnTempViewFirstRecord(), 1000,100);
+    	grnObject.grnTempViewFirstRecord().click();
+    	
+    	
+     
+    }
+    @And("^check GRN can be created for that perticular po in arap$")
+    public void check_grn_can_be_created_for_that_perticular_po_in_arap() throws Throwable {
+    	waitHelper.waitForElementVisible(grnObject.accountPayable_GrnBpName(), 1000, 100);
+    	System.out.println("Business Partner is"+poBusinessPartner);
+    	grnObject.accountPayable_GrnBpName().click();
+    	grnObject.accountPayable_GrnBpName().sendKeys(poBusinessPartner);
+    	//grnObject.accountPayable_GRN_BPBranch().click();
+	grnObject.accountPayable_GrnBpName().sendKeys(Keys.ENTER);
+	waitHelper.waitForElementVisible(grnObject.accountPayable_GRN_BPBranch(), 2000, 100);
+	grnObject.accountPayable_GRN_BPBranch().click();
+    	grnObject.accountPayable_GRN_BPBranch().sendKeys(Keys.ENTER);
+    	grnObject.accountPayable_GrnInvoiceNumber().sendKeys(arap.get("InvoiceNo"));
     	grnObject.accountPayable_GrnDeliveryLocation().click();
     	//grnObject.accountPayable_GrnDeliveryLocation().sendKeys(Keys.DOWN);
     	grnObject.accountPayable_GrnDeliveryLocation().sendKeys(Keys.ENTER);
@@ -168,6 +203,51 @@ public class ACCOUNTSPAYABLE_GRNCreation extends BaseClass {
     	
 			
     }
+    @Then("^go to Item details and enter po number for approval in arap$")
+    public void go_to_item_details_and_enter_po_number_for_approval_in_arap() throws Throwable {
+    	waitHelper.waitForElement(driver, 2000, grnObject.inventoryManagament_GRNItemDetails());
+    	grnObject.inventoryManagament_GRNItemDetails().click();
+    	waitHelper.waitForElementVisible(grnObject.accountPayable_GrnPONumber(), 1000, 100);
+    	grnObject.accountPayable_GrnPONumber().click();
+    	grnObject.accountPayable_GrnPONumber().sendKeys(poNumber);
+    	grnObject.accountPayable_GrnPONumber().sendKeys(Keys.ENTER);
+    	Thread.sleep(3000);
+    	
+    	for(int row=1;row<5;row++)
+    	{
+    		//datatable-row-wrapper[1]/datatable-body-row[1]/div[2]/datatable-body-cell[7]/div[1]/input[1]
+    		
+    		for(int col=7;col<=8;col++)
+    		{
+    			try
+        		{
+    				//waitHelper.waitForElementVisible(driver.findElement(By.xpath("//datatable-row-wrapper["+row+"]/datatable-body-row[1]/div[2]/datatable-body-cell["+col+"]/div[1]/input[1]")), 5000, 100);
+    				boolean status=driver.findElement(By.xpath("//datatable-row-wrapper["+row+"]/datatable-body-row[1]/div[2]/datatable-body-cell["+col+"]/div[1]/input[1]")).isDisplayed();
+    				driver.findElement(By.xpath("//datatable-row-wrapper["+row+"]/datatable-body-row[1]/div[2]/datatable-body-cell["+col+"]/div[1]/input[1]")).click();
+    				driver.findElement(By.xpath("//datatable-row-wrapper["+row+"]/datatable-body-row[1]/div[2]/datatable-body-cell["+col+"]/div[1]/input[1]")).sendKeys(arap.get("ItemQuantity"));
+    				if(status==false)
+    				{
+    					break;
+    				}
+    			}
+    			catch(NoSuchElementException e)
+        		{
+        			e.getMessage();
+        		    break;
+        		}
+    			
+    		}
+    	}
+    	//javascriptHelper.JavaScriptHelper(driver);
+    	//Thread.sleep(1000);
+    	//grnObject.ItemDetailsSaveButton().click();
+    	//clickAndActions.doubleClick(grnObject.ItemDetailsSaveButton());
+    	clickAndActions.clickOnElement(grnObject.ItemDetailsSaveButton());
+    	//Thread.sleep(2000);
+    	
+    	
+			
+    }
     @Then("^choose first record in the notification record in GRN stage$")
     public void choose_first_record_in_the_notification_record_in_grn_stage() throws Throwable {
     	waitHelper.waitForElement(driver, 3000, grnObject.grnFirstReferenceId());
@@ -181,6 +261,223 @@ public class ACCOUNTSPAYABLE_GRNCreation extends BaseClass {
 		clickAndActions.clickOnElement(grnObject.grnFirstRecord());
 		//.click();
     }
+    @Then("^choose first record in the notification record in GRN stage in arap$")
+    public void choose_first_record_in_the_notification_record_in_grn_stage_in_arap() throws Throwable {
+    	waitHelper.waitForElement(driver, 3000, grnObject.grnFirstReferenceId());
+		String referenceID = grnObject.grnFirstReferenceId().getText();
+		/*
+		 * addReferanceData(referenceID) This method is a predefined method to store the
+		 * reference ID into the Json file
+		 */
+		//jsonReaderWriter.addReferanceData(referenceID);
+		excelData.updateTestData("KUBS_AR/AP_UAT_003_007_TC_05_D1","Reference ID",referenceID);
+		arap = excelData.getTestdata("KUBS_AR/AP_UAT_003_007_TC_05_D1");
+		clickAndActions.moveToElement(grnObject.grnFirstRecord());
+		clickAndActions.clickOnElement(grnObject.grnFirstRecord());
+		//.click();
+    }
+    @Then("^click on the submit button which is appeared in alert box in arap$")
+	public void click_on_the_submit_button_which_is_appeared_in_alert_box_in_arap() throws Throwable {
+		javascriptHelper.JavaScriptHelper(driver);
+		Thread.sleep(1000);
+		while (true) {
+			try {
+				javascriptHelper.JSEClick(invoiceBookingObj.accountPayable_InvoiceBooking_RemarksByMaker());
+				// clicksAndActions.doubleClick(invoiceBookingObj.AlertRemark());
+				// invoiceBookingObj.AlertRemark().click();
+				Thread.sleep(1000);
+				invoiceBookingObj.accountPayable_InvoiceBooking_RemarksByMaker()
+						.sendKeys(arap.get("remark"));
+				break;
+			} catch (ElementNotInteractableException e) {
+
+			}
+		}
+
+		waitHelper.waitForElementVisible(invoiceBookingObj.alertSubmitButton(), 2000, 100);
+
+		invoiceBookingObj.alertSubmitButton().click();
+
+	}
+    ACCOUNTRECEIVABLE_CreditNoteObj crediteNoteObj = new ACCOUNTRECEIVABLE_CreditNoteObj(driver);
+    ACCOUNTSPAYABLE_PayementSettlementObj paymentSettlementObj = new ACCOUNTSPAYABLE_PayementSettlementObj(driver);
+    INVENTORY_EnquiryGlObject inventoryEnquiryGlObj = new INVENTORY_EnquiryGlObject(driver);
+    
+    @And("^fill the calender details and description in arap$")
+	public void fill_the_calender_details_and_save_the_record_in_arap() throws Throwable {
+		javascriptHelper.JavaScriptHelper(driver);
+		// javascriptHelper.JavaScriptHelper(driver);
+		javascriptHelper.scrollIntoView(paymentSettlementObj.accountsPayablePayementSettlementValueDate());
+		paymentSettlementObj.accountsPayablePayementSettlementValueDate().click();
+		while (true) {
+			try {
+
+				waitHelper.waitForElement(driver, 3000, driver.findElement(
+						By.xpath("//span[contains(text(),'" + arap.get("MonthYear") + "')]")));
+				driver.findElement(By.xpath("//span[contains(text(),'" + arap.get("MonthYear") + "')]"));
+				break;
+			}
+
+			catch (NoSuchElementException nosuchElement) {
+				inventoryEnquiryGlObj.inventoryNextMonth().click();
+			}
+		}
+		WebElement FinalDay = driver.findElement(By.xpath("//td[@aria-label='" + arap.get("FullMonth")
+				+ " " + arap.get("Day") + ", " + arap.get("Year") + "']/span"));
+		ClicksAndActionsHelper clicksAndActions = new ClicksAndActionsHelper(driver);
+		clicksAndActions.doubleClick(FinalDay);
+		clicksAndActions.doubleClick(paymentSettlementObj.accountsPayableDescription());
+		paymentSettlementObj.accountsPayableDescription().sendKeys(arap.get("remark"));
+
+	}
+
+    @And("^Fill the form for credit note in arap$")
+	public void fill_the_form_for_credit_note_in_arap() throws Throwable {
+		javascriptHelper.JavaScriptHelper(driver);
+		waitHelper.waitForElementVisible(crediteNoteObj.accountsReceivableReceivableName(), 2000, 100);
+		crediteNoteObj.accountsReceivableReceivableName().click();
+		crediteNoteObj.accountsReceivableReceivableName().sendKeys(Keys.DOWN);
+		crediteNoteObj.accountsReceivableReceivableName().sendKeys(Keys.ENTER);
+		crediteNoteObj.accountsReceivableBpName().click();
+		crediteNoteObj.accountsReceivableBpName().sendKeys(arap.get("approvedBpName"));
+		crediteNoteObj.accountsReceivableBpName().sendKeys(Keys.DOWN);
+		crediteNoteObj.accountsReceivableBpName().sendKeys(Keys.ENTER);
+		crediteNoteObj.accountsReceivableInvoiceNumber().click();// approvedInvoiceNumber
+		crediteNoteObj.accountsReceivableInvoiceNumber().sendKeys(arap.get("approvedInvoiceNumber"));
+		crediteNoteObj.accountsReceivableInvoiceNumber().sendKeys(Keys.DOWN);
+		crediteNoteObj.accountsReceivableInvoiceNumber().sendKeys(Keys.ENTER);
+		crediteNoteObj.accountsReceivableCreditAmmount().click();
+		crediteNoteObj.accountsReceivableCreditAmmount().sendKeys(arap.get("CreditAmount"));
+		String creditAmmount = arap.get("CreditAmount");
+		String finalCreditValue = creditAmmount.substring(0, creditAmmount.length() - 2);
+		arap.put("finalCreditValue", finalCreditValue);
+		Thread.sleep(1000);
+
+		crediteNoteObj.accountsReceivableDescription().click();
+		crediteNoteObj.accountsReceivableDescription().sendKeys(arap.get("remark"));
+		waitHelper.waitForElementVisible(crediteNoteObj.accountsReceivablleSaveButton(), 2000, 100);
+		ClicksAndActionsHelper clickAndActionHelper = new ClicksAndActionsHelper(driver);
+		clickAndActionHelper.doubleClick(crediteNoteObj.accountsReceivablleSaveButton());
+		//crediteNoteObj.accountsReceivablleSaveButton().click();
+
+	}
+    
+    Selenium_Actions seleniumactions = new Selenium_Actions(driver);
+    Account_Receivable account_Receivable = new Account_Receivable(driver);
+    
+    @And("^search the Active credit note and click the first list in arap$")
+    public void search_the_active_credit_note_and_click_the_first_list_in_arap() throws Throwable {
+    	seleniumactions.getWaitHelper().waitForElement(driver, 2000,
+				account_Receivable.accountsReceivable_CreditNote_Status());
+		seleniumactions.getClickAndActionsHelper()
+				.clickOnElement(account_Receivable.accountsReceivable_CreditNote_Status());
+		account_Receivable.accountsReceivable_CreditNote_Status().sendKeys(arap.get("contractstatusactive"));
+		seleniumactions.getWaitHelper().waitForElement(driver, 2000,
+				account_Receivable.accountsReceivable_CreditNote_StatusHead());
+		seleniumactions.getClickAndActionsHelper()
+				.clickOnElement(account_Receivable.accountsReceivable_CreditNote_StatusHead());
+    }
+    
+    ARAP_ARandAPObj arapObj = new ARAP_ARandAPObj(driver);
+    
+    @Then("^Give The Business Partner according to creditnote in arap$")
+    public void give_the_business_partner_according_to_creditnote_in_arap() throws Throwable {
+		seleniumactions.getWaitHelper().waitForElement(driver, 2000, arapObj.adjustmentBpName());
+		arapObj.adjustmentBpName().click();
+		arapObj.adjustmentBpName().sendKeys(arap.get("buisnessPartnerName"));
+		arapObj.adjustmentBpName().sendKeys(Keys.ENTER);
+    }
+    @Then("^Give the credit note number in Adjustment Item Type in arap$")
+    public void give_the_credit_note_number_in_adjustment_item_type_in_arap() throws Throwable {
+		seleniumactions.getWaitHelper().waitForElement(driver, 2000, arapObj.adjustmentItemType());
+		arapObj.adjustmentItemType().click();
+		arapObj.adjustmentItemType().sendKeys(arap.get("creditnotenumber"));
+		arapObj.adjustmentItemType().sendKeys(Keys.ENTER);
+    }
+    JavascriptHelper javascriphelper = new JavascriptHelper();
+    @And("^get buisness partner name , get credit note number and get credit note date in arap$")
+    public void get_buisness_partner_name_get_credit_note_number_and_get_credit_note_date_in_arap() throws Throwable {
+    	seleniumactions.getWaitHelper().waitForElement(driver, 4000,
+				account_Receivable.creditNote_Buisness_Partner());
+		String buisnessPartnerName = account_Receivable.creditNote_Buisness_Partner()
+				.getText();
+		arap.put("buisnessPartnerName", buisnessPartnerName);
+		javascriphelper.JavaScriptHelper(driver);
+		String contractenddate = (String) javascriphelper.executeScript("return document.getElementsByName('kubDateTime')[0].value");
+		System.out.println(contractenddate);
+		String year = contractenddate.substring(7,11);
+		arap.put("year1", year);
+		String month = contractenddate.substring(3, 6);
+		arap.put("month1", month);
+		switch (month) {
+		case "Dec":
+			arap.put("fullmonth","December");
+			System.out.println(arap.get("fullmonth"));
+			break;
+		case "Jan":
+			arap.put("fullmonth","January");
+			System.out.println(arap.get("fullmonth"));
+			break;
+		case "Feb":
+			arap.put("fullmonth","Febuary");
+			System.out.println(arap.get("fullmonth"));
+			break;
+		case "Mar":
+			arap.put("fullmonth","March");
+			System.out.println(arap.get("fullmonth"));
+			break;
+		case "Apr":
+			arap.put("fullmonth","April");
+			System.out.println(arap.get("fullmonth"));
+			break;
+		case "May":
+			arap.put("fullmonth","May");
+			System.out.println(arap.get("fullmonth"));
+			break;
+		case "Jun":
+			arap.put("fullmonth","June");
+			System.out.println(arap.get("fullmonth"));
+			break;
+		case "Jul":
+			arap.put("fullmonth","July");
+			System.out.println(arap.get("fullmonth"));
+			break;
+		case "Aug":
+			arap.put("fullmonth","August");
+			System.out.println(arap.get("fullmonth"));
+			break;
+		case "Sep":
+			arap.put("fullmonth","September");
+			System.out.println(arap.get("fullmonth"));
+			break;
+		case "Oct":
+			arap.put("fullmonth","October");
+			System.out.println(arap.get("fullmonth"));
+			break;
+		case "Nov":
+			arap.put("fullmonth","November");
+			System.out.println(arap.get("fullmonth"));
+			break;
+		}
+		
+		 if (Integer.parseInt(contractenddate.substring(0, 2))>9) {
+			String day = contractenddate.substring(0,2);
+			System.out.println(day);
+			arap.put("day", day);
+		}
+		else{
+			String day = contractenddate.substring(1, 2);
+			arap.put("day", day);
+			System.out.println(day);
+		}
+		String creditnotenumber = (String) javascriphelper.executeScript("return document.getElementsByName('creditnoteNo')[1].value");
+		arap.put("creditnotenumber", creditnotenumber);
+		System.out.println(creditnotenumber);
+		System.out.println(arap.get("creditnotenumber"));
+		
+    }
+
+
     @Then("^enter remark in confirmation alert in grn$")
     public void enter_remark_in_confirmation_alert_in_grn() throws Throwable {
     	javascriptHelper.JavaScriptHelper(driver);
@@ -206,11 +503,37 @@ public class ACCOUNTSPAYABLE_GRNCreation extends BaseClass {
 	
 		invoiceBookingObj.alertSubmitButton().click();
     }
+    @Then("^enter remark in confirmation alert in grn in arap$")
+    public void enter_remark_in_confirmation_alert_in_grn_in_arap() throws Throwable {
+    	javascriptHelper.JavaScriptHelper(driver);
+		Thread.sleep(1000);
+		while(true)
+		{
+			try
+			{
+		javascriptHelper.JSEClick(invoiceBookingObj.accountPayable_InvoiceBooking_RemarksByMaker());
+	//clicksAndActions.doubleClick(invoiceBookingObj.AlertRemark());
+		//invoiceBookingObj.AlertRemark().click();
+		Thread.sleep(1000);
+		invoiceBookingObj.accountPayable_InvoiceBooking_RemarksByMaker().sendKeys(arap.get("remark"));
+		break;
+			}
+			catch(ElementNotInteractableException e)
+			{
+				
+			}
+			}
+		
+		waitHelper.waitForElementVisible(invoiceBookingObj.alertSubmitButton(),2000,100);
+	
+		invoiceBookingObj.alertSubmitButton().click();
+    }
     
     @Then("^choose the record$")
     public void choose_the_record() throws Throwable {
 
     }
+    
     @And("^search for approved po$")
     public void search_for_approved_po() throws Throwable {
     	javascriptHelper.JavaScriptHelper(driver);
@@ -227,6 +550,24 @@ public class ACCOUNTSPAYABLE_GRNCreation extends BaseClass {
        System.out.println("Po Number"+settlementTestData.get("poNumber"));
        System.out.println("Po Number"+settlementTestData.get("poBusinessPartner"));
     }
+    
+    @And("^search for approved po in arap$")
+    public void search_for_approved_po_in_arap() throws Throwable {
+    	javascriptHelper.JavaScriptHelper(driver);
+    	poCreationObj.poCreationSearchIcon().click();
+    	Thread.sleep(1000);
+    	//waitHelper.waitForElementVisible(poCreationObj.poStatus(), 1000, 100);
+    	javascriptHelper.scrollIntoView(poCreationObj.poStatus());
+    	poCreationObj.poStatus().sendKeys(arap.get("ApprovedPo"));
+        poNumber=poCreationObj.poPoNumber().getText();
+       poBusinessPartner= poCreationObj.poBusinessPartner().getText();
+       System.out.println(poNumber+" "+poBusinessPartner+" ");
+       arap.put("poNumber", poNumber);
+       arap.put("poBusinessPartner", poBusinessPartner);
+       System.out.println("Po Number"+arap.get("poNumber"));
+       System.out.println("Po Number"+arap.get("poBusinessPartner"));
+    }
+    
     @And("^goto arap adjustment main module$")
     public void goto_arap_adjustment_main_module() throws Throwable {
     	waitHelper.waitForElementVisible(makerObj.kubsDirectionIcon(), 2000, 100);

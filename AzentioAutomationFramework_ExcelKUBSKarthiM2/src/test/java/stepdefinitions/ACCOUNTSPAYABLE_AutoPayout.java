@@ -6,6 +6,7 @@ import java.util.Random;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.ElementClickInterceptedException;
+import org.openqa.selenium.ElementNotInteractableException;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.StaleElementReferenceException;
@@ -203,10 +204,12 @@ public class ACCOUNTSPAYABLE_AutoPayout extends BaseClass {
          vendorContractObj.vendorContractBenificioryDetailsPaymentMode().sendKeys(arap.get("PaymentMode"));
          vendorContractObj.vendorContractBenificioryDetailsPaymentMode().sendKeys(Keys.ENTER);
          
+         Thread.sleep(3000);
          vendorContractObj.vendorContractBenificioryDetailsAutoPayout().click();
          vendorContractObj.vendorContractBenificioryDetailsAutoPayout().sendKeys(Keys.DOWN);
          vendorContractObj.vendorContractBenificioryDetailsAutoPayout().sendKeys(Keys.ENTER);
          vendorContractObj.vendorContractBenificioryDetailsSaveButton().click();
+       
     }
 	@Then("^choose first record in the notification record in arap$")
 	public void choose_first_record_in_the_notification_record_in_arap() throws Throwable {
@@ -767,6 +770,8 @@ public class ACCOUNTSPAYABLE_AutoPayout extends BaseClass {
     	arapConfigObj.arapConfigurationSaveButton().click();
     }
     /********************   INVOICE BILL BOOKING  ****************************/    
+    
+
     @And("^fill the invoice booking record$")
     public void fill_the_invoice_booking_record() throws Throwable {
     	Random ran = new Random();
@@ -804,12 +809,57 @@ public class ACCOUNTSPAYABLE_AutoPayout extends BaseClass {
 	     
 	     invoiceBookingObj.accountPayable_InvoiceBooking_SaveButton().click();
     }
+    @And("^fill the invoice booking record in arap$")
+    public void fill_the_invoice_booking_record_in_arap() throws Throwable {
+    	Random ran = new Random();
+    	int random = ran.nextInt(1000-500)+500;
+    	waitHelper.waitForElementVisible(invoiceBookingObj.accountPayable_InvoiceBooking_InvoiceType(), 2000, 100);
+	     invoiceBookingObj.accountPayable_InvoiceBooking_InvoiceType().click();
+	     invoiceBookingObj.accountPayable_InvoiceBooking_InvoiceType().sendKeys(Keys.DOWN);
+	     invoiceBookingObj.accountPayable_InvoiceBooking_InvoiceType().sendKeys(Keys.ENTER);
+	     
+	     /*
+	     invoiceBookingObj.accountPayable_InvoiceBooking_InvoiceSubType().click();
+	     invoiceBookingObj.accountPayable_InvoiceBooking_InvoiceSubType().sendKeys(Keys.DOWN);
+	     invoiceBookingObj.accountPayable_InvoiceBooking_InvoiceSubType().sendKeys(Keys.ENTER);
+	     */
+	     invoiceBookingObj.billBookingPoBpName().click();
+	     invoiceBookingObj.billBookingPoBpName().sendKeys(arap.get("BusinessPartnerName"));
+	     invoiceBookingObj.billBookingPoBpName().sendKeys(Keys.ENTER);
+	     
+	     invoiceBookingObj.invoiceBollSuplierNAme().click();
+	     invoiceBookingObj.invoiceBollSuplierNAme().sendKeys(arap.get("SuplierReferenceNumber")+random);
+	     
+	     invoiceBookingObj.billBookingPoFlatDiscount().click();
+	     invoiceBookingObj.billBookingPoFlatDiscount().sendKeys(arap.get("FlatDiscount"));
+	     /*
+	     invoiceBookingObj.billBookingExpenceDiscountType().click();
+	     invoiceBookingObj.billBookingExpenceDiscountType().sendKeys(Keys.ENTER);
+	     
+	     invoiceBookingObj.billBookingExpenceDiscountPercent().click();
+	     invoiceBookingObj.billBookingExpenceDiscountPercent().sendKeys("2");
+	     
+	     */
+	     invoiceBookingObj.billBookingPoPaymentMode().click();
+	     invoiceBookingObj.billBookingPoPaymentMode().sendKeys(arap.get("PaymentMode"));
+	     invoiceBookingObj.billBookingPoPaymentMode().sendKeys(Keys.ENTER);
+	     
+	     invoiceBookingObj.accountPayable_InvoiceBooking_SaveButton().click();
+    }
     @And("^get the approved po number from approved record$")
     public void get_the_approved_po_number_from_approved_record() throws Throwable {
     	waitHelper.waitForElementVisible(poCreationObj.poCreationApprovedPoNumber(), 2000, 100);
     	String poNumber=poCreationObj.poCreationApprovedPoNumber().getText();
     	autoPayout.put("poNumber",poNumber);
     }
+    @And("^goto invoice bill booking temp view and select the record1$")
+	public void goto_invoice_bill_booking_temp_view_and_select_the_record() throws Throwable {
+		waitHelper.waitForElementVisible(invoiceBookingObj.accountPayableIvoiceBookingTempView(), 2000, 100);
+		invoiceBookingObj.accountPayableIvoiceBookingTempView().click();
+		Thread.sleep(2000);
+		waitHelper.waitForElementVisible(invoiceBookingObj.accountPayableIvoiceBookingRecord(), 2000, 100);
+		invoiceBookingObj.accountPayableIvoiceBookingRecord().click();
+	}
     
     @And("^fill The invoice againse po record$")
     public void fill_the_invoice_againse_po_record() throws Throwable {
@@ -821,6 +871,36 @@ public class ACCOUNTSPAYABLE_AutoPayout extends BaseClass {
     	{
     	invoiceBookingObj.accountPayable_InvoiceBooking_PONumber().click();
     	invoiceBookingObj.accountPayable_InvoiceBooking_PONumber().sendKeys(autoPayout.get("poNumber"));
+    	invoiceBookingObj.accountPayable_InvoiceBooking_PONumber().sendKeys(Keys.ENTER);
+    	{
+    	waitHelper.waitForElementVisible(invoiceBookingObj.accountPayable_InvoiceBooking_GRN_Number(), 2000, 100);
+    	invoiceBookingObj.accountPayable_InvoiceBooking_GRN_Number().click();
+    	waitHelper.waitForElementVisible(invoiceBookingObj.invoiceBookingSelectGRNRecord(), 2000, 100);
+    	invoiceBookingObj.invoiceBookingSelectGRNRecord().click();
+    	waitHelper.waitForElementVisible(invoiceBookingObj.invoiceBooingOkButton(), 2000, 100);
+    	invoiceBookingObj.invoiceBooingOkButton().click();
+    	break;
+    	}
+    	}
+    	catch(StaleElementReferenceException e)
+    	{
+    		
+    	}
+    	}
+    	invoiceBookingObj.accountPayable_InvoiceBooking_SaveExpense().click();
+    	waitHelper.waitForElementVisible(poCreationObj.checkerAlertClose(), 2000, 100);
+    	poCreationObj.checkerAlertClose().click();
+    	}
+    @And("^fill The invoice againse po record in arap$")
+    public void fill_the_invoice_againse_po_record_in_arap() throws Throwable {
+    	waitHelper.waitForElementVisible(invoiceBookingObj.accountPayable_InvoiceBooking_APInvoiceAgainstExpense(), 2000, 100);
+    	invoiceBookingObj.accountPayable_InvoiceBooking_APInvoiceAgainstExpense().click();
+    	while(true)
+    	{
+    	try
+    	{
+    	invoiceBookingObj.accountPayable_InvoiceBooking_PONumber().click();
+    	invoiceBookingObj.accountPayable_InvoiceBooking_PONumber().sendKeys(arap.get("poNumber"));
     	invoiceBookingObj.accountPayable_InvoiceBooking_PONumber().sendKeys(Keys.ENTER);
     	{
     	waitHelper.waitForElementVisible(invoiceBookingObj.accountPayable_InvoiceBooking_GRN_Number(), 2000, 100);
@@ -856,10 +936,10 @@ public class ACCOUNTSPAYABLE_AutoPayout extends BaseClass {
     	javascriptHelper.JavaScriptHelper(driver);
 		waitHelper.waitForElementVisible(paymentSettlementObj.accountsPayablePayementSettlementPaymentOption(), 2000, 100);
 		paymentSettlementObj.accountsPayablePayementSettlementPaymentOption().click();
-		paymentSettlementObj.accountsPayablePayementSettlementPaymentOption().sendKeys(CreditNoteTestData.PaymentOption);
+		paymentSettlementObj.accountsPayablePayementSettlementPaymentOption().sendKeys(arap.get("PaymentOption"));
 		paymentSettlementObj.accountsPayablePayementSettlementPaymentOption().sendKeys(Keys.ENTER);
 		paymentSettlementObj.accountsPayablePayementSettlementBpNAme().click();
-		paymentSettlementObj.accountsPayablePayementSettlementBpNAme().sendKeys(CreditNoteTestData.BusinessPartnerName);
+		paymentSettlementObj.accountsPayablePayementSettlementBpNAme().sendKeys(arap.get("BusinessPartnerName"));
 		paymentSettlementObj.accountsPayablePayementSettlementBpNAme().sendKeys(Keys.ENTER);
 		Thread.sleep(1000);
 		//div[contains(text(),'ADV_36_2422022')]
@@ -881,6 +961,46 @@ public class ACCOUNTSPAYABLE_AutoPayout extends BaseClass {
 		Assert.assertTrue(finalStatus);
 		waitHelper.waitForElementVisible(driver.findElement(By.xpath("//div[contains(text(),'"+autoPayout.get("approvedInvoiceNumber")+"')]//ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell[3]//ion-checkbox")), 5000, 100);
 		driver.findElement(By.xpath("//div[contains(text(),'"+autoPayout.get("approvedInvoiceNumber")+"')]//ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell[3]//ion-checkbox")).click();
+		break;
+		}
+		catch(NoSuchElementException e)
+		{
+			javascriptHelper.scrollIntoView(paymentSettlementObj.accountsPayablePayementSettlementNextRecord());
+			paymentSettlementObj.accountsPayablePayementSettlementNextRecord().click();
+		}
+     
+    }
+    }
+    @And("^fill the mendatory field for settle the payment in arap$")
+    public void fill_the_mendatory_field_for_settle_the_payment_in_arap() throws Throwable {
+    	javascriptHelper.JavaScriptHelper(driver);
+		waitHelper.waitForElementVisible(paymentSettlementObj.accountsPayablePayementSettlementPaymentOption(), 2000, 100);
+		paymentSettlementObj.accountsPayablePayementSettlementPaymentOption().click();
+		paymentSettlementObj.accountsPayablePayementSettlementPaymentOption().sendKeys(arap.get("PaymentOption"));
+		paymentSettlementObj.accountsPayablePayementSettlementPaymentOption().sendKeys(Keys.ENTER);
+		paymentSettlementObj.accountsPayablePayementSettlementBpNAme().click();
+		paymentSettlementObj.accountsPayablePayementSettlementBpNAme().sendKeys(arap.get("BusinessPartnerName"));
+		paymentSettlementObj.accountsPayablePayementSettlementBpNAme().sendKeys(Keys.ENTER);
+		Thread.sleep(1000);
+		//div[contains(text(),'ADV_36_2422022')]
+		for(int i=1;i<=20;i++)
+		{
+			Thread.sleep(1000);
+		if(i==20)
+		{
+			System.out.println("Data not available");
+			System.out.println("Approved record we search "+arap.get("approvedInvoiceNumber"));
+			Assert.fail("Data not available");
+		}
+		try
+		{
+			
+		waitHelper.waitForElementVisible(driver.findElement(By.xpath("//div[contains(text(),'"+arap.get("approvedInvoiceNumber")+"')]")), 2000, 100);
+		javascriptHelper.scrollToElemet(driver.findElement(By.xpath("//div[contains(text(),'"+arap.get("approvedInvoiceNumber")+"')]")));
+		boolean finalStatus=driver.findElement(By.xpath("//div[contains(text(),'"+arap.get("approvedInvoiceNumber")+"')]")).isDisplayed();
+		Assert.assertTrue(finalStatus);
+		waitHelper.waitForElementVisible(driver.findElement(By.xpath("//div[contains(text(),'"+arap.get("approvedInvoiceNumber")+"')]//ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell[3]//ion-checkbox")), 5000, 100);
+		driver.findElement(By.xpath("//div[contains(text(),'"+arap.get("approvedInvoiceNumber")+"')]//ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell[3]//ion-checkbox")).click();
 		break;
 		}
 		catch(NoSuchElementException e)
@@ -1059,6 +1179,10 @@ public class ACCOUNTSPAYABLE_AutoPayout extends BaseClass {
         waitHelper.waitForElementVisible(poCreationObj.checkerAlertClose(), 2000, 100);
         poCreationObj.checkerAlertClose().click();
     }
+    
+    
+    
+    
     @And("^User get the test data for the po contract cancellation test case00300103$")
     public void user_get_the_test_data_for_the_po_contract_cancellation_test_case00300103() throws Throwable {
         arap = excelData.getTestdata("KUBS_AR/AP_UAT_003_001_TC_03_D1");

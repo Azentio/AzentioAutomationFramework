@@ -416,6 +416,7 @@ public class ACCOUNTSPAYABLE_VendorContracts {
 				aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_BenificiaryDetailsSaveButton());
 		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_BenificiaryDetailsSaveButton().click();
 	}
+	
 
 	@Then("^Save and submit the creation contract record$")
 	public void save_and_submit_the_creation_contract_record()
@@ -607,6 +608,7 @@ public class ACCOUNTSPAYABLE_VendorContracts {
 		driver.get(config.getApplicationUrl());
 		login.loginToAzentioAppAsChecker("Checker");
 	}
+	
 
 	@And("^Click on security management in checker$")
 	public void click_on_security_management_in_checker() {
