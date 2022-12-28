@@ -232,22 +232,22 @@ public class ACCOUNTSPAYABLE_PaymentSettlement extends BaseClass {
 		Thread.sleep(1000);
 		
 	
-//				driver.findElement(By.xpath("(//datatable-body-cell[1]//span[contains(text(),'"
-//						+ settlementData.get("approvedReferenceNumber") + "')])[1]")).isDisplayed();
+			driver.findElement(By.xpath("(//datatable-body-cell[1]//span[contains(text(),'"
+						+ settlementData.get("approvedReferenceNumber") + "')])[1]")).isDisplayed();
 
-//				driver.findElement(By.xpath("(//datatable-body-cell[1]//span[contains(text(),'"
-//						+ settlementData.get("approvedReferenceNumber") + "')])[1]"));
-//				String TransactionType = driver
-//						.findElement(By.xpath("(//datatable-body-cell[1]//span[contains(text(),' "
-//								+ settlementData.get("approvedReferenceNumber")
-//								+ " ')]/ancestor::datatable-body-cell[1]/following-sibling::datatable-body-cell[5]//span)[1]"))
-//						.getText();
-//				System.out.println("TransactionType is " + TransactionType);
-//				String amount = driver.findElement(By.xpath("(//datatable-body-cell[1]//span[contains(text(),' "
-//						+ settlementData.get("approvedReferenceNumber")
-//						+ " ')]/ancestor::datatable-body-cell[1]/following-sibling::datatable-body-cell[6]//span)[1]"))
-//						.getText();
-				//System.out.println("Amount is " + amount);
+				driver.findElement(By.xpath("(//datatable-body-cell[1]//span[contains(text(),'"
+						+ settlementData.get("approvedReferenceNumber") + "')])[1]"));
+				String TransactionType = driver
+					.findElement(By.xpath("(//datatable-body-cell[1]//span[contains(text(),' "
+							+ settlementData.get("approvedReferenceNumber")
+								+ " ')]/ancestor::datatable-body-cell[1]/following-sibling::datatable-body-cell[5]//span)[1]"))
+						.getText();
+				System.out.println("TransactionType is " + TransactionType);
+				String amount = driver.findElement(By.xpath("(//datatable-body-cell[1]//span[contains(text(),' "
+						+ settlementData.get("approvedReferenceNumber")
+						+ " ')]/ancestor::datatable-body-cell[1]/following-sibling::datatable-body-cell[6]//span)[1]"))
+						.getText();
+				System.out.println("Amount is " + amount);
 					}
 
 	@And("^fill the form for payment settlement$")

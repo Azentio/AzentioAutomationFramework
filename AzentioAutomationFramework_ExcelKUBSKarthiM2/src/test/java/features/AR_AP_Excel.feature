@@ -410,19 +410,19 @@ Given Navigate The Azentio Url
 And click on accounts Payable module
 And Go to payment settlement module
 Then click on search
-And search for approved record in view area
+And search for approved record in view area in arap
 And get the approved record from list view
 Then click on report segment button
 And click on equiry menu
 Then click on edit icon near by fiancial transaction menu
-And choose branch code
+And choose branch code in arap
 And click on transaction from date calender icon 
-Then choose the from date
+Then choose the from date in arap
 And click on the transaction to date calender icon
-Then choose the to date
-And give the refrence number which we going to see accounting entries
+Then choose the to date in arap
+And give the refrence number which we going to see accounting entries in arap
 And click on view button
-Then verify approved settlement reference number is available in the Gl report
+Then verify approved settlement reference number is available in the Gl report in arap
 
 @KUBS_AR/AP_UAT_005_002_TC_04  @AR/AP
 Scenario: Verify Balance sheet post payment settlement approval.
@@ -430,8 +430,8 @@ Given Navigate to URL and user should login as a maker
 Then Click on Report button
 Then Click on Financial Reporting tab
 Then Click on Balance Sheet Report edit button
-Then Fill branch details for report
-Then Select date in calendar
+Then Fill branch details for report in arap
+Then Select date in calendar in arap
 Then Click on the View button
 Then close the report
 
@@ -441,16 +441,16 @@ Given user login as Azentio Maker
 When click the Account payable Mainmodule
 And click the eye icon of the payment settlement
 And user click search icon
-And user search active in payment settlement list view
+And user search active in payment settlement list view in arap
 And click first eye icon in list view 
 And get the transaction number from payment settlement
-And get buisness partner name and payment settlement date
+And get buisness partner name and payment settlement date in arap
 And click the Notes Option In Top
 And click the Reports Sub Module
 And click the Accounts Payable Report
-And select the vendor name 
+And select the vendor name in arap
 And select the payable status according to payment settlement
-And select the date
+And select the date in arap
 And click the view icon
 Then verify the invoice number get from payment settlement available in Account payable Report
 
