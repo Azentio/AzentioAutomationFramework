@@ -13,6 +13,7 @@ Then fill the Bank Reconciliation Format
 Then fill the Bank Reconciliation PlaceHolder
 Then Click on Inventory Item Save button
 Then Click on Inventory Maintenance Add button
+Then user update the Excel sheet testdata for BankRecon
 Then File Data matching rule
 Then Click on Inventory Item Save button
 Then click back button
@@ -51,7 +52,7 @@ Given User should go to the kubs url and login as a maker user
 Then Click on Direction Left
 Then Click on Bank Recon
 Then click on Bank Recon format eye button
-Then user update the Excel sheet testdata for BankRecon
+#Then user update the Excel sheet testdata for BankRecon
 Then history must be correctly maintained on record
 
 @KUBS_BRS_UAT_001_001_TC_004 @MultiAuth
@@ -60,20 +61,20 @@ Given User should go to the kubs url and login as a maker user
 Then Click on Direction Left
 Then Click on Bank Recon
 Then click on Bank Recon format eye button
-Then user update the Excel sheet testdata for BankRecon
+Then user update the Excel sheet testdata for BankRecon1
 Then select the active record
 Then Inactivate the record
 Then Click on Inventory Item Save button
 Then Click on Inventory Item Notification 
-And Select and Submit the record
+And Select and Submit the records
 @KUBS_BRS_UAT_001_001_TC_004_1
 Scenario: user login to reviewer
-Then user update the Excel sheet testdata for BankRecon
+Then user update the Excel sheet testdata for BankRecon1
 Then log in to the reviewer account
 Then click on the Notification select the record and Approve 
 @KUBS_BRS_UAT_001_001_TC_004_2
 Scenario: user login to Checker
-Then user update the Excel sheet testdata for BankRecon
+Then user update the Excel sheet testdata for BankRecon1
 Then log in to the Checker Account
 And then checker claim the record
 Then click on the checker Notification 

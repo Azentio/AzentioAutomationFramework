@@ -1786,7 +1786,7 @@ public class AR_AP_Module {
 		String before_xpath = "//span[contains(text(),'";
 		String after_xpath_claim = "')]/parent::div/parent::datatable-body-cell/preceding-sibling::datatable-body-cell[2]/div/ion-buttons/ion-button";
 		waithelper.waitForElement(driver, 5000,
-				driver.findElement(By.xpath(before_xpath + testData.get("ReferenceID") + after_xpath_claim)));
+		driver.findElement(By.xpath(before_xpath + testData.get("ReferenceID") + after_xpath_claim)));
 		driver.findElement(By.xpath(before_xpath + testData.get("ReferenceID") + after_xpath_claim)).click();
 		waithelper.waitForElement(driver, 3000, kubschecker.checkerAlertClose());
 		kubschecker.checkerAlertClose().click();

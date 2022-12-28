@@ -227,50 +227,42 @@ public class BankRecons {
 		Thread.sleep(2000);
 		waithelper.waitForElementToVisibleWithFluentWait(driver, bankRecon_ReconFormatObj.bankRecon_ReconFormat_Row_TextBox(), 60, 2);
 		bankRecon_ReconFormatObj.bankRecon_ReconFormat_Row_TextBox().click();
-		bankRecon_ReconFormatObj.bankRecon_ReconFormat_Row_TextBox()
-				.sendKeys(testData.get("AccNoRow"));
+		bankRecon_ReconFormatObj.bankRecon_ReconFormat_Row_TextBox().sendKeys(testData.get("AccNoRow"));
 		bankRecon_ReconFormatObj.bankRecon_ReconFormat_Row_TextBox().sendKeys(Keys.ENTER);
 
 		waithelper.waitForElementToVisibleWithFluentWait(driver, bankRecon_ReconFormatObj.bankRecon_ReconFormat_Column_TextBox(), 60, 2);
 		bankRecon_ReconFormatObj.bankRecon_ReconFormat_Column_TextBox().click();
-		bankRecon_ReconFormatObj.bankRecon_ReconFormat_Column_TextBox()
-				.sendKeys(testData.get("AccNoRow"));
+		bankRecon_ReconFormatObj.bankRecon_ReconFormat_Column_TextBox().sendKeys(testData.get("AccNoColumn"));
 		bankRecon_ReconFormatObj.bankRecon_ReconFormat_Column_TextBox().sendKeys(Keys.ENTER);
 
 		waithelper.waitForElementToVisibleWithFluentWait(driver, bankRecon_ReconFormatObj.bankRecon_ReconFormat_Length_TextBox(), 60, 2);
 		bankRecon_ReconFormatObj.bankRecon_ReconFormat_Length_TextBox().click();
-		bankRecon_ReconFormatObj.bankRecon_ReconFormat_Length_TextBox()
-				.sendKeys(testData.get("AccNoLength"));
+		bankRecon_ReconFormatObj.bankRecon_ReconFormat_Length_TextBox().sendKeys(testData.get("AccNoLength"));
 		bankRecon_ReconFormatObj.bankRecon_ReconFormat_Length_TextBox().sendKeys(Keys.ENTER);
 
 		waithelper.waitForElementToVisibleWithFluentWait(driver, bankRecon_ReconFormatObj.bankRecon_ReconFormat_StartingPosition_TextBox(), 60, 2);
 		bankRecon_ReconFormatObj.bankRecon_ReconFormat_StartingPosition_TextBox().click();
-		bankRecon_ReconFormatObj.bankRecon_ReconFormat_StartingPosition_TextBox()
-				.sendKeys(testData.get("AccNoPosition"));
+		bankRecon_ReconFormatObj.bankRecon_ReconFormat_StartingPosition_TextBox().sendKeys(testData.get("AccNoPosition"));
 		bankRecon_ReconFormatObj.bankRecon_ReconFormat_StartingPosition_TextBox().sendKeys(Keys.ENTER);
 
 		waithelper.waitForElementToVisibleWithFluentWait(driver, bankRecon_ReconFormatObj.bankRecon_ReconFormat_AsOnDateRow_TextBox(), 60, 2);
 		bankRecon_ReconFormatObj.bankRecon_ReconFormat_AsOnDateRow_TextBox().click();
-		bankRecon_ReconFormatObj.bankRecon_ReconFormat_AsOnDateRow_TextBox()
-				.sendKeys(testData.get("AsOnDateRow"));
+		bankRecon_ReconFormatObj.bankRecon_ReconFormat_AsOnDateRow_TextBox().sendKeys(testData.get("AsOnDateRow"));
 		bankRecon_ReconFormatObj.bankRecon_ReconFormat_AsOnDateRow_TextBox().sendKeys(Keys.ENTER);
 
 		waithelper.waitForElementToVisibleWithFluentWait(driver, bankRecon_ReconFormatObj.bankRecon_ReconFormat_AsOnDateColumn_TextBox(), 60, 2);
 		bankRecon_ReconFormatObj.bankRecon_ReconFormat_AsOnDateColumn_TextBox().click();
-		bankRecon_ReconFormatObj.bankRecon_ReconFormat_AsOnDateColumn_TextBox()
-				.sendKeys(testData.get("AsOnDateColumn"));
+		bankRecon_ReconFormatObj.bankRecon_ReconFormat_AsOnDateColumn_TextBox().sendKeys(testData.get("AsOnDateColumn"));
 		bankRecon_ReconFormatObj.bankRecon_ReconFormat_AsOnDateColumn_TextBox().sendKeys(Keys.ENTER);
 
 		waithelper.waitForElementToVisibleWithFluentWait(driver, bankRecon_ReconFormatObj.bankRecon_ReconFormat_AsOnDateLength_TextBox(), 60, 2);
 		bankRecon_ReconFormatObj.bankRecon_ReconFormat_AsOnDateLength_TextBox().click();
-		bankRecon_ReconFormatObj.bankRecon_ReconFormat_AsOnDateLength_TextBox()
-				.sendKeys(testData.get("AsOnDateLength"));
+		bankRecon_ReconFormatObj.bankRecon_ReconFormat_AsOnDateLength_TextBox().sendKeys(testData.get("AsOnDateLength"));
 		bankRecon_ReconFormatObj.bankRecon_ReconFormat_AsOnDateLength_TextBox().sendKeys(Keys.ENTER);
 
 		waithelper.waitForElementToVisibleWithFluentWait(driver, bankRecon_ReconFormatObj.bankRecon_ReconFormat_AsOnDateStartingPosition_TextBox(), 60, 2);
 		bankRecon_ReconFormatObj.bankRecon_ReconFormat_AsOnDateStartingPosition_TextBox().click();
-		bankRecon_ReconFormatObj.bankRecon_ReconFormat_AsOnDateStartingPosition_TextBox()
-				.sendKeys(testData.get("AsOnDatePosition"));
+		bankRecon_ReconFormatObj.bankRecon_ReconFormat_AsOnDateStartingPosition_TextBox().sendKeys(testData.get("AsOnDatePosition"));
 		bankRecon_ReconFormatObj.bankRecon_ReconFormat_AsOnDateStartingPosition_TextBox().sendKeys(Keys.ENTER);
 
 		// PlaceHolderInFile Thrid
@@ -285,32 +277,24 @@ public class BankRecons {
 		waithelper.waitForElementToVisibleWithFluentWait(driver, bankRecon_ReconFormatObj.bankRecon_ReconFormat_PlaceHolderInFile_AsOnDate_RadioButton(), 60, 2);
 		bankRecon_ReconFormatObj.bankRecon_ReconFormat_PlaceHolderInFile_AsOnDate_RadioButton().click();
 
-		waithelper.waitForElement(driver, 3000,
-				bankRecon_ReconFormatObj.bankRecon_ReconFormatAsOnDate_ClosingBalanceRow_TextBox());
+		waithelper.waitForElement(driver, 3000,bankRecon_ReconFormatObj.bankRecon_ReconFormatAsOnDate_ClosingBalanceRow_TextBox());
 		bankRecon_ReconFormatObj.bankRecon_ReconFormatAsOnDate_ClosingBalanceRow_TextBox().click();
-		bankRecon_ReconFormatObj.bankRecon_ReconFormatAsOnDate_ClosingBalanceRow_TextBox()
-				.sendKeys(testData.get("ClosingBalanceRow"));
+		bankRecon_ReconFormatObj.bankRecon_ReconFormatAsOnDate_ClosingBalanceRow_TextBox().sendKeys(testData.get("ClosingBalanceRow"));
 		bankRecon_ReconFormatObj.bankRecon_ReconFormatAsOnDate_ClosingBalanceRow_TextBox().sendKeys(Keys.ENTER);
 
-		waithelper.waitForElement(driver, 3000,
-				bankRecon_ReconFormatObj.bankRecon_ReconFormat_ClosingBalanceColumn_TextBox());
+		waithelper.waitForElement(driver, 3000,bankRecon_ReconFormatObj.bankRecon_ReconFormat_ClosingBalanceColumn_TextBox());
 		bankRecon_ReconFormatObj.bankRecon_ReconFormat_ClosingBalanceColumn_TextBox().click();
-		bankRecon_ReconFormatObj.bankRecon_ReconFormat_ClosingBalanceColumn_TextBox()
-				.sendKeys(testData.get("ClosingBalanceColumn"));
+		bankRecon_ReconFormatObj.bankRecon_ReconFormat_ClosingBalanceColumn_TextBox().sendKeys(testData.get("ClosingBalanceColumn"));
 		bankRecon_ReconFormatObj.bankRecon_ReconFormat_ClosingBalanceColumn_TextBox().sendKeys(Keys.ENTER);
 
-		waithelper.waitForElement(driver, 3000,
-				bankRecon_ReconFormatObj.bankRecon_ReconFormat_ClosingBalanceLength_TextBox());
+		waithelper.waitForElement(driver, 3000,bankRecon_ReconFormatObj.bankRecon_ReconFormat_ClosingBalanceLength_TextBox());
 		bankRecon_ReconFormatObj.bankRecon_ReconFormat_ClosingBalanceLength_TextBox().click();
-		bankRecon_ReconFormatObj.bankRecon_ReconFormat_ClosingBalanceLength_TextBox()
-				.sendKeys(testData.get("ClosingBalanceLength"));
+		bankRecon_ReconFormatObj.bankRecon_ReconFormat_ClosingBalanceLength_TextBox().sendKeys(testData.get("ClosingBalanceLength"));
 		bankRecon_ReconFormatObj.bankRecon_ReconFormat_ClosingBalanceLength_TextBox().sendKeys(Keys.ENTER);
 
-		waithelper.waitForElement(driver, 3000,
-				bankRecon_ReconFormatObj.bankRecon_ReconFormat_ClosingBalanceStartingPosition_TextBox());
+		waithelper.waitForElement(driver, 3000,bankRecon_ReconFormatObj.bankRecon_ReconFormat_ClosingBalanceStartingPosition_TextBox());
 		bankRecon_ReconFormatObj.bankRecon_ReconFormat_ClosingBalanceStartingPosition_TextBox().click();
-		bankRecon_ReconFormatObj.bankRecon_ReconFormat_ClosingBalanceStartingPosition_TextBox()
-				.sendKeys(testData.get("ClosingBalancePosition"));
+		bankRecon_ReconFormatObj.bankRecon_ReconFormat_ClosingBalanceStartingPosition_TextBox().sendKeys(testData.get("ClosingBalancePosition"));
 		bankRecon_ReconFormatObj.bankRecon_ReconFormat_ClosingBalanceStartingPosition_TextBox().sendKeys(Keys.ENTER);
 	}
 
@@ -337,8 +321,7 @@ public class BankRecons {
 
 		waithelper.waitForElement(driver, 3000, bankRecon_ReconFormatObj.bankRecon_ReconFormat_SystemDataPoint());
 		bankRecon_ReconFormatObj.bankRecon_ReconFormat_SystemDataPoint().click();
-		bankRecon_ReconFormatObj.bankRecon_ReconFormat_SystemDataPoint()
-				.sendKeys(testData.get("SystemDataPoint"));
+		bankRecon_ReconFormatObj.bankRecon_ReconFormat_SystemDataPoint().sendKeys(testData.get("SystemDataPoint"));
 		bankRecon_ReconFormatObj.bankRecon_ReconFormat_SystemDataPoint().sendKeys(Keys.ENTER);
 
 		waithelper.waitForElement(driver, 3000, bankRecon_ReconFormatObj.bankRecon_ReconFormat_DataType());
@@ -353,8 +336,7 @@ public class BankRecons {
 
 		waithelper.waitForElement(driver, 3000, bankRecon_ReconFormatObj.bankRecon_ReconFormat_FixedLength());
 		bankRecon_ReconFormatObj.bankRecon_ReconFormat_FixedLength().click();
-		bankRecon_ReconFormatObj.bankRecon_ReconFormat_FixedLength()
-				.sendKeys(testData.get("FixedLength"));
+		bankRecon_ReconFormatObj.bankRecon_ReconFormat_FixedLength().sendKeys(testData.get("FixedLength"));
 		bankRecon_ReconFormatObj.bankRecon_ReconFormat_FixedLength().sendKeys(Keys.ENTER);
 
 		waithelper.waitForElement(driver, 3000, bankRecon_ReconFormatObj.bankRecon_ReconFormat_Position());
@@ -364,14 +346,12 @@ public class BankRecons {
 
 		waithelper.waitForElement(driver, 3000, bankRecon_ReconFormatObj.bankRecon_ReconFormat_BlankSpacePadding());
 		bankRecon_ReconFormatObj.bankRecon_ReconFormat_BlankSpacePadding().click();
-		bankRecon_ReconFormatObj.bankRecon_ReconFormat_BlankSpacePadding()
-				.sendKeys(testData.get("BlankSpacePadding"));
+		bankRecon_ReconFormatObj.bankRecon_ReconFormat_BlankSpacePadding().sendKeys(testData.get("BlankSpacePadding"));
 		bankRecon_ReconFormatObj.bankRecon_ReconFormat_BlankSpacePadding().sendKeys(Keys.ENTER);
 
 		waithelper.waitForElement(driver, 3000, bankRecon_ReconFormatObj.bankRecon_ReconFormat_MatchCondition());
 		bankRecon_ReconFormatObj.bankRecon_ReconFormat_MatchCondition().click();
-		bankRecon_ReconFormatObj.bankRecon_ReconFormat_MatchCondition()
-				.sendKeys(testData.get("MatchCondition"));
+		bankRecon_ReconFormatObj.bankRecon_ReconFormat_MatchCondition().sendKeys(testData.get("MatchCondition"));
 		bankRecon_ReconFormatObj.bankRecon_ReconFormat_MatchCondition().sendKeys(Keys.ENTER);
 
 	}
@@ -519,7 +499,7 @@ public class BankRecons {
 	    	waithelper.waitForElement(driver, 2000, inventoryMaintenanceObj.inventoryMaintenance_InventoryItem_ReferenceId());
 	    	String id = inventoryMaintenanceObj.inventoryMaintenance_InventoryItem_ReferenceId().getText();
 	        //jsonWriter.addReferanceData(id);
-	    	Exceldata.updateTestData("KUBS_BRS_UAT_001_001_TC_001_03_D1", "ReferenceID", id);
+	    	Exceldata.updateTestData("KUBS_BRS_UAT_001_001_TC_001_01_D1", "ReferenceID", id);
 	        System.out.println("Reference ID:" +id);
 	        Thread.sleep(1000);
 	        for (int i = 1; i <= 35; i++) {
@@ -590,7 +570,90 @@ public class BankRecons {
 	        				}
 	        			}
 	        			System.out.println(reviewerId);
-	        			Exceldata.updateTestData("KUBS_BRS_UAT_001_001_TC_001_03_D1", "ReviewerID", reviewerId);
+	        			Exceldata.updateTestData("KUBS_BRS_UAT_001_001_TC_001_01_D1", "ReviewerID", reviewerId);
+	        			//jsonWriter = new JsonDataReaderWriter();
+	        			//jsonWriter.addData(reviewerId);
+	       
+	        }
+	 @And("^Select and Submit the records$")
+	    public void select_and_submit_the_records() throws InterruptedException, IOException, ParseException  {
+	      
+	   //Reference
+	    	waithelper.waitForElement(driver, 2000, inventoryMaintenanceObj.inventoryMaintenance_InventoryItem_ReferenceId());
+	    	String id = inventoryMaintenanceObj.inventoryMaintenance_InventoryItem_ReferenceId().getText();
+	        //jsonWriter.addReferanceData(id);
+	    	Exceldata.updateTestData("KUBS_BRS_UAT_001_001_TC_001_04_D1", "ReferenceID", id);
+	        System.out.println("Reference ID:" +id);
+	        Thread.sleep(1000);
+	        for (int i = 1; i <= 35; i++) {
+	        		try {
+	        	    	waithelper.waitForElement(driver, 3000,driver.findElement(By.xpath("//span[contains(text(),'" +testData.get("referanceID")+ "')]")));	
+	        			WebElement referanceID = driver.findElement(By.xpath("//span[contains(text(),'" +  testData.get("referanceID") + "')]"));	
+	        			referanceID.click();
+	        	    	System.out.println(referanceID);
+	        	    	//Assert.assertTrue(referanceID.isDisplayed());
+	        			break;
+	        		} catch (NoSuchElementException e) 
+	        		{
+	        			waithelper.waitForElement(driver,4000,inventoryMaintenanceObj.inventoryMaintenance_InventoryItem_NotificationNext_Button());
+	        			
+	        			inventoryMaintenanceObj.inventoryMaintenance_InventoryItem_NotificationNext_Button().click();
+	        		}
+	        	 
+	        	
+	        	
+	        	}
+	           inventoryMaintenanceObj.inventoryMaintenance_InventoryItem_ReferenceId().click();	    	
+	        	
+	        	//pencil 
+	        	 String before_xpath="//span[contains(text(),'";
+	        	 String after_xpath="')]/ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell//ion-button";
+	        	  
+	        	 waithelper.waitForElement(driver, 2000, driver.findElement(By.xpath(before_xpath +testData.get("ReferenceID")+after_xpath)));
+	        	 driver.findElement(By.xpath(before_xpath +testData.get("ReferenceID") +after_xpath)).click();
+	        	 
+	        	
+	        	// Submit button
+	        	waithelper.waitForElement(driver, 2000, inventoryMaintenanceObj.inventoryMaintenance_InventoryItem_SubmitButton());
+	        	inventoryMaintenanceObj.inventoryMaintenance_InventoryItem_SubmitButton().click();
+	        			
+	        	//Remark
+	        	javascripthelper.JavaScriptHelper(driver);
+	        	waithelper.waitForElement(driver, 3000,inventoryMaintenanceObj.inventoryMaintenance_InventoryItem_RemarkField());
+	        	javascripthelper.JSEClick(inventoryMaintenanceObj.inventoryMaintenance_InventoryItem_RemarkField());
+	        	inventoryMaintenanceObj.inventoryMaintenance_InventoryItem_RemarkField().sendKeys("OK");
+	        	//inventoryMaintenanceTestDataType.Remark
+	        			    
+	        			
+	        	//Remark Submit
+	        	waithelper.waitForElement(driver, 2000,inventoryMaintenanceObj.inventoryMaintenance_InventoryItem_SubmitByMaker());
+	        	inventoryMaintenanceObj.inventoryMaintenance_InventoryItem_SubmitByMaker().click();
+//	        	Thread.sleep(3000);
+	        	
+	        	// REVIEWER
+//	        			waithelper.waitForElement(driver, 5000, inventoryMaintenanceObj.inventoryMaintenance_InventoryItem_RecordStatus());
+	        			waithelper.waitForElementwithFluentwait(driver, inventoryMaintenanceObj.inventoryMaintenance_InventoryItem_RecordStatus());
+	        			WebElement recordstatus = inventoryMaintenanceObj.inventoryMaintenance_InventoryItem_RecordStatus();
+
+	        			clicksAndActionHelper.moveToElement(recordstatus);
+	        			String message = inventoryMaintenanceObj.inventoryMaintenance_InventoryItem_RecordStatus().getText();
+	        			System.out.println(message);
+	        			inventoryMaintenanceObj.inventoryMaintenance_InventoryItem_RecordStatus().click();
+	        			String t = "";
+	        			String ar[] = message.split(" ");
+	        			Thread.sleep(2000);
+	        			for (int i = ar.length - 1; i >= 0; i--) {
+	        				t = ar[ar.length - 1];
+	        			}
+	        			String reviewerId = "";
+	        			for (int i = 0; i < t.length() - 1; i++) {
+	        				if (t.charAt(i) == '.') {
+	        				} else {
+	        					reviewerId = reviewerId + t.charAt(i);
+	        				}
+	        			}
+	        			System.out.println(reviewerId);
+	        			Exceldata.updateTestData("KUBS_BRS_UAT_001_001_TC_001_04_D1", "ReviewerID", reviewerId);
 	        			//jsonWriter = new JsonDataReaderWriter();
 	        			//jsonWriter.addData(reviewerId);
 	       
@@ -688,6 +751,10 @@ public class BankRecons {
 	 @Then("^user update the Excel sheet testdata for BankRecon$")
 	    public void user_update_the_excel_sheet_testdata_for_bankrecon() throws Throwable {
 		 testData = Exceldata.getTestdata("KUBS_BRS_UAT_001_001_TC_001_01_D1 ");	    
+		 }
+	 @Then("^user update the Excel sheet testdata for BankRecon1$")
+	    public void user_update_the_excel_sheet_testdata_for_bankrecon1() throws Throwable {
+		 testData = Exceldata.getTestdata("KUBS_BRS_UAT_001_001_TC_001_04_D1 ");	    
 		 }
 	 @Then("^history must be correctly maintained on record$")
 	    public void history_must_be_correctly_maintained_on_record() throws Throwable {
