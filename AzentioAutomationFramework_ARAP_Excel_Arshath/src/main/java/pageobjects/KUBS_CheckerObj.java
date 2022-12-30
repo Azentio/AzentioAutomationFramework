@@ -14,11 +14,17 @@ public class KUBS_CheckerObj {
 		PageFactory.initElements(driver, this);
 	}
 
-	@FindBy(xpath = "//ion-item[1]/ion-icon[@class='mr-2 md ion-color ion-color-dark hydrated']")
+	@FindBy(xpath = "//ion-label[text()=' Security management ']")
 	private WebElement checker_security_management;
 
 	public WebElement checkerSecurityManagement() {
 		return checker_security_management;
+	}
+	@FindBy(xpath="//ion-label[text()=' Open pool ']//following-sibling::ion-buttons//ion-button[1]")
+	private WebElement kubsChecker_OpenPoolTemp;
+	public WebElement kubsCheckerOpenPoolTemp()
+	{
+		return kubsChecker_OpenPoolTemp;
 	}
 
 	@FindBy(xpath = "//ion-buttons[1]/ion-button[2]")
@@ -77,12 +83,6 @@ public class KUBS_CheckerObj {
 		return budget_type;
 
 	}
-	@FindBy(xpath = "//ion-row[1]/ion-col[1]/ion-item[1]/ion-textarea[1]/div[1]/textarea[1]")
-	private WebElement checker_alert_remarkSecond;
-
-	public WebElement checkerRemarkSecond() {
-		return checker_alert_remarkSecond;
-	}
 	@FindBy(xpath = "//ion-col[3]/app-kub-lov/span/ng-select/div/div/div[2]")
 	private WebElement checker_budget_year;
 
@@ -111,7 +111,7 @@ public class KUBS_CheckerObj {
 		return checker_budget_status;
 	}
 
-	@FindBy(xpath = "//textarea[@name='remarks']")
+	@FindBy(xpath = "//ion-label[text()='Please enter remark ']//parent::ion-item//ion-textarea/div/textarea[@name='remarks']")
 	private WebElement checker_alert_remarks;
 
 	public WebElement checkerRemarks() {
@@ -174,12 +174,7 @@ public class KUBS_CheckerObj {
 	{
 		return Popup_status;
 	}
-	@FindBy(xpath = "(//textarea[@name='remarks'])[2]")
-	private WebElement checker_alert_remarks1;
-
-	public WebElement checkerRemarks1() {
-		return checker_alert_remarks1;
-	}
+	
 	
 	@FindBy(xpath="//ion-header/ion-toolbar[1]/ion-buttons[2]/ion-button[4]")
     private WebElement checker_user_name;

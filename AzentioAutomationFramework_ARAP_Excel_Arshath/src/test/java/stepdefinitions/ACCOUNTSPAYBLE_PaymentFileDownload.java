@@ -730,8 +730,8 @@ public class ACCOUNTSPAYBLE_PaymentFileDownload extends BaseClass{
 		waitHelper.waitForElement(driver, 2000, kubschecker.checkerApproveButton());
 		kubschecker.checkerApproveButton().click();
 		Thread.sleep(2000);
-		waitHelper.waitForElement(driver, 2000, kubschecker.checkerRemarkSecond());
-		kubschecker.checkerRemarkSecond().sendKeys("OK");
+		waitHelper.waitForElement(driver, 2000, kubschecker.checkerRemarks());
+		kubschecker.checkerRemarks().sendKeys("OK");
 		Thread.sleep(2000);
 		waitHelper.waitForElement(driver, 2000, kubschecker.checkersubmitButton());
 		kubschecker.checkersubmitButton().click();

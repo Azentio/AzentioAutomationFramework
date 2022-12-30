@@ -644,9 +644,9 @@ waithelper.waitForElementwithFluentwait(driver, aCCOUNTSPAYABLE_VendorContractsO
 		waithelper.waitForElement(driver, 2000, kubschecker.checkerApproveButton());
 		kubschecker.checkerApproveButton().click();
 		Thread.sleep(1000);
-		waithelper.waitForElement(driver, 2000, kubschecker.checkerRemarks1());
-		kubschecker.checkerRemarks1().sendKeys(testData.get("ReviewerAlertRemark"));
-		kubschecker.checkerRemarks1().sendKeys(Keys.ENTER);
+		waithelper.waitForElement(driver, 2000, kubschecker.checkerRemarks());
+		kubschecker.checkerRemarks().sendKeys(testData.get("ReviewerAlertRemark"));
+		kubschecker.checkerRemarks().sendKeys(Keys.ENTER);
 		Thread.sleep(1000);
 		waithelper.waitForElement(driver, 2000, kubschecker.checkersubmitButton());
 		kubschecker.checkersubmitButton().click();
