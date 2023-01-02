@@ -38,7 +38,7 @@ public class FIXEDASSETS_AssetSaleObj {
 	public WebElement fixedAssets_AssetSale_EyeButton() {
 		return fixedAssets_AssetSale_EyeButton;
 	}
-	
+
 	// add button
 	@FindBy(xpath = "//ion-fab-button[@id='addBtn']")
 	private WebElement fixedAssets_AssetSale_AddButton;
@@ -46,71 +46,78 @@ public class FIXEDASSETS_AssetSaleObj {
 	public WebElement fixedAssets_AssetSale_AddButton() {
 		return fixedAssets_AssetSale_AddButton;
 	}
-	
+
+	@FindBy(xpath = "//datatable-row-wrapper[1]//datatable-body-cell[6]//span")
+	private WebElement fixedAsset_NewAssetReferenceNumber;
+
+	public WebElement fixedAssetNewAssetReferenceNumber() {
+		return fixedAsset_NewAssetReferenceNumber;
+	}
+
 	// Asset Reference Number
 	@FindBy(xpath = "//ion-grid[1]/ion-row/ion-col[2]/app-kub-lov/span/ng-select/div/div/div[2]/input")
 	private WebElement fixedAssets_AssetSale_AssetReferenceNumber;
-	
+
 	public WebElement fixedAssets_AssetSale_AssetReferenceNumber() {
 		return fixedAssets_AssetSale_AssetReferenceNumber;
 	}
-	
+
 	// Item Number
-	@FindBy(xpath = "//ion-grid[1]/ion-row/ion-col[5]/app-kub-lov/span/ng-select/div/div/div[2]/input")
+	@FindBy(xpath = "//label[text()=' Item Number ']//following-sibling::ng-select//input")
 	private WebElement fixedAssets_AssetSale_ItemNumber;
-	
+
 	public WebElement fixedAssets_AssetSale_ItemNumber() {
 		return fixedAssets_AssetSale_ItemNumber;
 	}
-	
+
 	// Sale Value
 	@FindBy(xpath = "//ion-col[11]/ion-item/input")
 	private WebElement fixedAssets_AssetSale_SaleValue;
-	
+
 	public WebElement fixedAssets_AssetSale_SaleValue() {
 		return fixedAssets_AssetSale_SaleValue;
 	}
-	
+
 	// Book Value
 	@FindBy(xpath = "//ion-col[9]/ion-item/input")
 	private WebElement fixedAssets_AssetSale_BookValue;
-	
+
 	public WebElement fixedAssets_AssetSale_BookValue() {
 		return fixedAssets_AssetSale_BookValue;
 	}
-	
+
 	// Profit on sale GL
 	@FindBy(xpath = "//ion-col[13]/ion-item/input")
 	private WebElement fixedAssets_AssetSale_ProfitOnSaleGL;
-	
+
 	public WebElement fixedAssets_AssetSale_ProfitOnSaleGL() {
 		return fixedAssets_AssetSale_ProfitOnSaleGL;
 	}
-	
+
 	// Loss on sale GL
 	@FindBy(xpath = "//ion-col[14]/ion-item/input")
 	private WebElement fixedAssets_AssetSale_LossOnSaleGL;
-	
+
 	public WebElement fixedAssets_AssetSale_LossOnSaleGL() {
 		return fixedAssets_AssetSale_LossOnSaleGL;
 	}
-	
+
 	// Currency
 	@FindBy(xpath = "//ion-grid[1]/ion-row/ion-col[12]/app-kub-lov/span/ng-select/div/div/div[3]/input")
 	private WebElement fixedAssets_AssetSale_Currency;
-	
+
 	public WebElement fixedAssets_AssetSale_Currency() {
 		return fixedAssets_AssetSale_Currency;
 	}
-	
+
 	// Actionable By
 	@FindBy(xpath = "//ion-grid[1]/ion-row/ion-col[15]/app-kub-lov/span/ng-select/div/div/div[2]/input")
 	private WebElement fixedAssets_AssetSale_ActionableBy;
-	
+
 	public WebElement fixedAssets_AssetSale_ActionableBy() {
 		return fixedAssets_AssetSale_ActionableBy;
 	}
-	
+
 //	// Username
 //	@FindBy(xpath = "//ion-col[16]/app-kub-display-field/ion-item/ion-input/input")
 //	private WebElement fixedAssets_AssetSale_Username;
@@ -118,27 +125,27 @@ public class FIXEDASSETS_AssetSaleObj {
 //	public WebElement fixedAssets_AssetSale_Username() {
 //		return fixedAssets_AssetSale_Username;
 //	}
-	
-	//Remark
+
+	// Remark
 	@FindBy(xpath = "//ion-col[17]/ion-item/ion-input/input")
 	private WebElement fixedAssets_AssetSale_Remark;
-	
+
 	public WebElement fixedAssets_AssetSale_Remark() {
 		return fixedAssets_AssetSale_Remark;
 	}
-	
+
 	// Save
 	@FindBy(xpath = "(//ion-buttons[2]/ion-button[1])[2]")
 	private WebElement fixedAssets_AssetSale_Save;
-	
+
 	public WebElement fixedAssets_AssetSale_Save() {
 		return fixedAssets_AssetSale_Save;
 	}
 
-	//Notification Button
+	// Notification Button
 	@FindBy(xpath = "//ion-buttons[2]/ion-button[2]")
-	private WebElement  fixedAssets_AssetSale_NotificationButton;
-	
+	private WebElement fixedAssets_AssetSale_NotificationButton;
+
 	public WebElement fixedAssets_AssetSale_NotificationButton() {
 		return fixedAssets_AssetSale_NotificationButton;
 	}
@@ -190,25 +197,34 @@ public class FIXEDASSETS_AssetSaleObj {
 	public WebElement fixedAssets_AssetSale_RecordStatus() {
 		return fixedAssets_AssetSale_RecordStatus;
 	}
-	
+
 	// First eye button [To view Earned Profit]
 	@FindBy(xpath = "//datatable-row-wrapper[1]/datatable-body-row[1]/div[2]/datatable-body-cell[1]/div/ion-buttons/ion-button[1]")
 	private WebElement fixedAssets_AssetSale_ViewEarnedProfitEyeButton;
-	
+
 	public WebElement fixedAssets_AssetSale_ViewEarnedProfitEyeButton() {
 		return fixedAssets_AssetSale_ViewEarnedProfitEyeButton;
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
+	@FindBy(xpath = "//datatable-row-wrapper[1]//span[text()='FIXED_ASSET_SALE']//ancestor::datatable-body-cell//preceding-sibling::datatable-body-cell[1]//span")
+	private WebElement assetSale_ReferenceNumber;
+
+	public WebElement assetSaleReferenceNumber() {
+		return assetSale_ReferenceNumber;
+	}
+
+	@FindBy(xpath = "//datatable-row-wrapper[1]//span[text()='FIXED_ASSET_SALE']//ancestor::datatable-body-cell//preceding-sibling::datatable-body-cell[2]//ion-button")
+	private WebElement assetSale_NotificationFirstRecord;
+
+	public WebElement assetSaleNotificationFirstRecord() {
+		return assetSale_NotificationFirstRecord;
+	}
+
+	@FindBy(xpath = "//label[text()=' Item Number ']//following-sibling::ng-select//div//div//span[2]")
+	private WebElement assetSale_ApprovedItemNumber;
+
+	public WebElement assetSaleApprovedItemNumber() {
+		return assetSale_ApprovedItemNumber;
+	}
+
 }

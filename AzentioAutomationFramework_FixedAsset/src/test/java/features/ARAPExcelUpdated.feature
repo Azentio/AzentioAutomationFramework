@@ -53,7 +53,7 @@ Feature: Testing the functionalities of  AR/AP Module
 		And User Verify the Login Page
 		@KUBS_AR_AP_UAT_006_003_TC_02  @AR/AP
 Scenario: Verify accounting entries post payout approval
-And User update test data id for Manual payouts
+And User update test data id for Verify accounting entries post payout approval
 Given Maker Navigate to UAT URL login
 Then Click on the Finance
 Then Click on Direction icon
@@ -74,19 +74,23 @@ Then verify the manual payout is appeared in the accounting entries
 
 @KUBS_AR/AP_UAT_006_003_TC_03 @Report  @AR/AP
   Scenario: Verify Balance sheet post payout approval
-    And User update test data id for Manual payouts
+    And User update test data id for Verify Balance sheet post payout approval
    	Given Maker Navigate to UAT URL login
    	Then Click on the Finance
 		Then Click on Direction icon 
     Then click on report icon
     And user should navigate to financial reporting menu
     Then click on temp grid button of Balance sheet report
-    And fill the required field of Balance sheet report
+    And User Select the branch name for Balance sheet post payout 
+    And User Select the report type for Balance sheet post payout
+    And User Select the balance sheet on date for Balance sheet post payout
+    #And fill the required field of Balance sheet report
     Then click on view button to view the balance sheet report
     Then Verify balance sheet should updated correctly
 
  @KUBS_AR_AP_UAT_006_003_TC_04  @AR/AP
  Scenario: Verify Accounts Receivable Report post payout approval
+And User update test data id for Verify Accounts Receivable Report post payout approval
 Given Maker Navigate to UAT URL login
 Then Click on the Finance
 Then Click on Direction icon
@@ -101,13 +105,14 @@ And click on report main menu
 And click on temp view near by accounts receivable report
 And enter the business partner name for advances to employee 
 And click on date icon
-And give date in report
+And Choose date for Accounts Receivable report
 And enter the advances to employee status active
 And click on the view button 
 Then verify the advance reference number is available in the accounts Receivable report
 
  @KUBS_AR_AP_UAT_006_003_TC_05  @AR/AP
  Scenario: Verify payout Report post payout approval
+And User update test data id to Verify payout Report post payout approval
 Given Maker Navigate to UAT URL login
 Then Click on the Finance
 Then Click on Direction icon
@@ -119,10 +124,10 @@ And click on report main menu
 And click on the payout report
 And enter business partner name for payout report
 And click on date icon
-And give date in report
+And Choose date for Accounts Receivable report
 And enter payout status in payout report
 And click on the view button
-Then  verify approved payout reference number is available in the payout report
+Then verify approved payout reference number is available in the payout report
 		
 		@KUBS_AR/AP_UAT_005_001_TC_01_01  @AR/AP
   	Scenario: User cancels the payment settlement transaction for multiple bills.
@@ -144,7 +149,7 @@ Then  verify approved payout reference number is available in the payout report
     @KUBS_AR/AP_UAT_005_001_TC_01_02
     Scenario: User Approve the cancelled payment settlement transaction in reviewver
     And User update test data id for Approve cancelled payment settlement transaction in reviewver
-		Then log in to the reviewer account
+		Then log in to the reviewer account for payment settlement
 		Then click on the Notification select the Cheque record and Approve
   	And maker should logout
 		And User Verify the Login Page
@@ -176,39 +181,41 @@ Then  verify approved payout reference number is available in the payout report
     And user should navigate to accounts payable menu
     When click on eye button of manual payout
     And click on add button for manual payout
-    And User Select Entity branch for Manual payout
-    And User Select BP Name for Manual payout
-    And User Select the Beneficiary Name for Manual payout 
-    And User Select the Currency for Manual payout
-    And User Select the Payment Bank for Manual Payout
-    And User select the Bank Account number for Manual Payout
-    And User select the Payment mode for Manual Payout 
-    And User select the Reference Number for Manual Payout
-    And User select the Cheque Number for Manual Payout
-    And User Enter remark for Manual Payout
+    And User Select Entity branch for Manual payout to verify cancelled payment transaction
+    And User Select BP Name for Manual payout to verify cancelled payment transaction
+    And User Select the Beneficiary Name for Manual payout to verify cancelled payment transaction
+    And User Select the Currency for Manual payout to verify cancelled payment transaction
+    And User Select the Payment Bank for Manual Payout to verify cancelled payment transaction
+    And User select the Bank Account number for Manual Payout to verify cancelled payment transaction
+    And User select the Payment mode for Manual Payout to verify cancelled payment transaction
+    And User select the Reference Number for Manual Payout to verify cancelled payment transaction
+    And User select the Cheque Number for Manual Payout to verify cancelled payment transaction
+    And User Enter remark for Manual Payout to verify cancelled payment transaction
     And Fill the required fields for verify cancelled payment txn availability
     @KUBS_AR_AP_UAT_005_001_TC_03  @AR/AP
 Scenario: Verify accounting entries post payment settlement approval.
+And User update test data id to verify accounting entries post payment settlement approval
 Given Maker Navigate to UAT URL login
 And click on accounts Payable module
 And Go to payment settlement module
 Then click on search
-And search for approved record in view area
+And search for approved record in view area for post payment settlement
 And get the approved record from list view
 Then click on report segment button
 And click on equiry menu
 Then click on edit icon near by fiancial transaction menu
 And choose branch code
 And click on transaction from date calender icon 
-Then choose the from date
+Then choose the from date to verify accounting entries post payment settlement approval
 And click on the transaction to date calender icon
-Then choose the to date
+Then choose the to date for verify accounting entries post payment settlement approval
 And give the refrence number which we going to see accounting entries
 And click on view button
 Then verify approved settlement reference number is available in the Gl report
 
 @KUBS_AR/AP_UAT_005_001_TC_04  @AR/AP
-Scenario: Verify Balance sheet post payment settlement approval.
+Scenario: Verify Balance sheet post payment settlement approval
+And User Update test data id to Verify Balance sheet post payment settlement approval
 Given Navigate to URL and user should login as a maker
 Then Click on Report button
 Then Click on Financial Reporting tab

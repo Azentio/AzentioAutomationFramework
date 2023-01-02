@@ -14,11 +14,17 @@ public class KUBS_CheckerObj {
 		PageFactory.initElements(driver, this);
 	}
 
-	@FindBy(xpath = "//ion-item[1]/ion-icon[@class='mr-2 md ion-color ion-color-dark hydrated']")
+	@FindBy(xpath = "//ion-label[text()=' Security management ']")
 	private WebElement checker_security_management;
 
 	public WebElement checkerSecurityManagement() {
 		return checker_security_management;
+	}
+	@FindBy(xpath="//ion-label[text()=' Open pool ']//following-sibling::ion-buttons//ion-button[1]")
+	private WebElement kubsChecker_OpenPoolTemp;
+	public WebElement kubsCheckerOpenPoolTemp()
+	{
+		return kubsChecker_OpenPoolTemp;
 	}
 
 	@FindBy(xpath = "//ion-buttons[1]/ion-button[2]")
@@ -105,7 +111,7 @@ public class KUBS_CheckerObj {
 		return checker_budget_status;
 	}
 
-	@FindBy(xpath = "//textarea[@name='remarks']")
+	@FindBy(xpath = "//ion-label[text()='Please enter remark ']//parent::ion-item//ion-textarea/div/textarea[@name='remarks']")
 	private WebElement checker_alert_remarks;
 
 	public WebElement checkerRemarks() {

@@ -60,11 +60,7 @@ public class INVENTORY_EnquiryGl1 extends BaseClass {
 
 	}
 
-	@And("^choose branch code$")
-	public void choose_branch_code() throws Throwable {
-		inventoryEnquiryGlObj.inventoryBranchCode().sendKeys(inventoryEnquiryGlTestData.branchCode);
-		inventoryEnquiryGlObj.inventoryBranchCode().sendKeys(Keys.ENTER);
-	}
+	
 
 	@And("^choose Gl code$")
 	public void choose_gl_code() throws Throwable {
@@ -97,28 +93,7 @@ public class INVENTORY_EnquiryGl1 extends BaseClass {
 
 	}
 
-	@Then("^choose the from date$")
-	public void choose_the_from_date() throws Throwable {
-		
-		javascriptHelper.JavaScriptHelper(driver);
-		while(true)
-        {
-		try
-		{
-		
-			waitHelper.waitForElement(driver, 3000, driver.findElement(By.xpath("//span[contains(text(),'"+inventoryEnquiryGlTestData.GlMonth+" "+inventoryEnquiryGlTestData.GlYear+"')]")));
-			WebElement monthAndYear=driver.findElement(By.xpath("//span[contains(text(),'"+inventoryEnquiryGlTestData.GlMonth+" "+inventoryEnquiryGlTestData.GlYear+"')]"));
-		    break;
-		}
-		
-		catch(NoSuchElementException nosuchElement)
-		{
-			inventoryEnquiryGlObj.inventoryNextMonth().click();
-		}
-		}
-		WebElement FinalDay=driver.findElement(By.xpath("//td[@aria-label='"+inventoryEnquiryGlTestData.GlFullMonth+" "+inventoryEnquiryGlTestData.GlDay+", "+inventoryEnquiryGlTestData.GlYear+"']/span"));
-		clickAndActionHelper.doubleClick(FinalDay);
-	}
+	
 
 	@And("^click on the transaction to date calender icon$")
 	public void click_on_the_transaction_to_date_calender_icon() throws Throwable {
@@ -129,27 +104,7 @@ public class INVENTORY_EnquiryGl1 extends BaseClass {
 	
 	}
 
-	@Then("^choose the to date$")
-	public void choose_the_to_date() throws Throwable {
-		while(true)
-        {
-		try
-		{
-		
-			waitHelper.waitForElement(driver, 3000, driver.findElement(By.xpath("//span[contains(text(),'"+inventoryEnquiryGlTestData.GlToMonth+" "+inventoryEnquiryGlTestData.GlToYear+"')]")));
-			WebElement monthAndYear=driver.findElement(By.xpath("//span[contains(text(),'"+inventoryEnquiryGlTestData.GlToMonth+" "+inventoryEnquiryGlTestData.GlToYear+"')]"));
-		    break;
-		}
-		
-		catch(NoSuchElementException nosuchElement)
-		{
-			inventoryEnquiryGlObj.inventoryNextMonth().click();
-		}
-		}
-		WebElement FinalDay=driver.findElement(By.xpath("//td[@aria-label='"+inventoryEnquiryGlTestData.GlFullToMonth+" "+inventoryEnquiryGlTestData.GlToDate+", "+inventoryEnquiryGlTestData.GlToYear+"']/span"));
-		clickAndActionHelper.doubleClick(FinalDay);
-	}
-
+	
 	/*@And("^click on view button$")
 	public void click_on_view_button() throws Throwable {
 		

@@ -90,7 +90,7 @@ public class BUDGET_BudgetCreationObj {
 
 	}
 
-	@FindBy(xpath = "//ion-textarea/div/textarea[@name='remarks']")
+	@FindBy(xpath = "//ion-label[text()='Please enter remark ']//parent::ion-item//ion-textarea/div/textarea[@name='remarks']")
 	private WebElement budget_creation_alert_remarks;
 
 	public WebElement budgetCreation_AlertRemarks() {
@@ -266,4 +266,18 @@ public class BUDGET_BudgetCreationObj {
 	{
 		return budgetCreation_approvedBudgetDate; 
 	}
+	@FindBy(xpath = "//datatable-row-wrapper[1]//span[text()='BUDGET_REGISTER']//ancestor::datatable-body-cell//preceding-sibling::datatable-body-cell[1]//span")
+	private WebElement budgetConfig_ReferenceNumber;
+
+	public WebElement budgetConfigReferenceNumber() {
+		return budgetConfig_ReferenceNumber;
+	}
+
+	@FindBy(xpath = "//datatable-row-wrapper[1]//span[text()='BUDGET_REGISTER']//ancestor::datatable-body-cell//preceding-sibling::datatable-body-cell[2]//ion-button")
+	private WebElement budgetConfig_NotificationFirstRecord;
+
+	public WebElement budgetConfigNotificationFirstRecord() {
+		return budgetConfig_NotificationFirstRecord;
+	}
+
 }

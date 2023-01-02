@@ -1,11 +1,13 @@
 package stepdefinitions;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.Map;
 
 import org.json.simple.parser.ParseException;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -21,16 +23,31 @@ import helper.WaitHelper;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import pageobjects.ACCOUNTRECEIVABLE_CreditNoteObj;
+import pageobjects.ACCOUNTSPAYABLEREPORT_PayoutReportObj;
+import pageobjects.ACCOUNTSPAYABLE_ManualPayoutObj;
+import pageobjects.ACCOUNTSPAYABLE_PayementSettlementObj;
+import pageobjects.ACCOUNTSRECEIVABLE_AccountsReceivableReportObj;
 import pageobjects.AccountReceivable_UpdateDepositedChequeObj;
 import pageobjects.AccountsPayable_ManualPayoutEmployeeObj;
 import pageobjects.Azentio_CheckerObj;
 import pageobjects.Azentio_ReviewerObj;
+import pageobjects.BUSINESS_PARTNER_SETUP_BusinessPartnerObj;
+import pageobjects.ENQUIRY_FinancialTransactionObj;
+import pageobjects.FinancialReporting_GLBalancesReportObj;
+import pageobjects.INVENTORY_EnquiryGlObject;
 import pageobjects.InventoryMaintenanceObj;
+import pageobjects.KUBS_CheckerObj;
+import pageobjects.KUBS_MakerObj;
 import resources.BaseClass;
 import resources.ExcelData;
 import resources.JsonDataReaderWriter;
+import testDataType.ACCOUNTSPAYABLE_ContractReportTestData;
+import testDataType.ACCOUTSAPAYBLE_AutoPayoutTestDataType;
 import testDataType.AccountsPayable_ManualPayoutEmployeeTestDataType;
 import testDataType.BUDGET_BudgetCreationTestDataType;
+import testDataType.FinancialReporting_BalanceSheetReportTestDataType;
+import testDataType.GeneralLedger2_JournalVoucherTestDataType;
 
 
 public class AccountsPayable_ManualPayoutEmployee  extends BaseClass { 
@@ -43,8 +60,8 @@ public class AccountsPayable_ManualPayoutEmployee  extends BaseClass {
 	AccountsPayable_ManualPayoutEmployeeObj accountsPayable_ManualPayoutEmployeeObj = new AccountsPayable_ManualPayoutEmployeeObj(driver);
 	AccountsPayable_ManualPayoutEmployeeTestDataType accountsPayable_ManualPayoutEmployeeTestDataType=jsonReader.getManualPayoutByName("Maker");
 	InventoryMaintenanceObj inventoryMaintenanceObj = new InventoryMaintenanceObj(driver);
-	AccountReceivable_UpdateDepositedChequeObj accountReceivable_UpdateDepositedChequeObj = new AccountReceivable_UpdateDepositedChequeObj(
-			driver);
+	INVENTORY_EnquiryGlObject inventoryEnquiryGlObj=new INVENTORY_EnquiryGlObject(driver);
+	AccountReceivable_UpdateDepositedChequeObj accountReceivable_UpdateDepositedChequeObj = new AccountReceivable_UpdateDepositedChequeObj(driver);
 	JavascriptHelper javascripthelper = new JavascriptHelper();
 	JsonDataReaderWriter jsonWriter = new JsonDataReaderWriter();
 	ClicksAndActionsHelper clicksAndActionHelper = new ClicksAndActionsHelper(driver);
@@ -56,9 +73,35 @@ public class AccountsPayable_ManualPayoutEmployee  extends BaseClass {
 	String user = "Maker";
 	Azentio_CheckerObj kubschecker = new Azentio_CheckerObj(driver) ;
 	BUDGET_BudgetCreationTestDataType budgetdata;
+	ACCOUNTSPAYABLE_ManualPayoutObj manualPayoutObj=new ACCOUNTSPAYABLE_ManualPayoutObj(driver);
+	WaitHelper waitHelper= new WaitHelper(driver);
+	Map<String,String> payoutData= new HashMap<>();
+	JavascriptHelper javascrtiptHelper= new JavascriptHelper();
+	JsonConfig jsonConfig = new JsonConfig();
+	ACCOUTSAPAYBLE_AutoPayoutTestDataType ManualPayoutData=jsonConfig.getAccountsPayableAutoPayoutTestDataByName("Maker");
+	ACCOUNTSPAYABLE_PayementSettlementObj paymentSettlementObj= new ACCOUNTSPAYABLE_PayementSettlementObj(driver);
 	String excelPath = System.getProperty("user.dir")+"\\Test-data\\KUBSTestData.xlsx";
 	ExcelData excelData = new ExcelData(excelPath,"ARAP_ManualPayout","Data Set ID");
 	private Map<String, String> testData;
+	
+	// Financial reporting
+	KUBS_Login login = new KUBS_Login(driver);
+	ENQUIRY_FinancialTransactionObj eNQUIRY_FinancialTransactionObj = new ENQUIRY_FinancialTransactionObj(driver);
+	FinancialReporting_GLBalancesReportObj financialReporting_GLBalancesReportObj = new FinancialReporting_GLBalancesReportObj(driver);
+	BUSINESS_PARTNER_SETUP_BusinessPartnerObj bUSINESS_PARTNER_SETUP_BusinessPartnerObj = new BUSINESS_PARTNER_SETUP_BusinessPartnerObj(driver);
+	FinancialReporting_BalanceSheetReportTestDataType BalanceSheetReportTestDataType=jsonReader.getBalanceSheetReportdata("Maker");
+	GeneralLedger2_JournalVoucherTestDataType JournalVoucherTestDataType=jsonReader.getJournalVoucherdata("Maker");
+	
+	// Account receivable report
+	KUBS_MakerObj makerObj=new KUBS_MakerObj(driver);
+	ACCOUNTRECEIVABLE_CreditNoteObj creditNoteObj=new ACCOUNTRECEIVABLE_CreditNoteObj(driver);
+	ACCOUNTSRECEIVABLE_AccountsReceivableReportObj accountsReceivableReportObj=new ACCOUNTSRECEIVABLE_AccountsReceivableReportObj(driver);
+	JavascriptHelper javascriptHelper= new JavascriptHelper();
+	ACCOUNTSPAYABLE_ContractReportTestData reportTestData= jsonConfig.getAccountsPayableContractReportTestDataByName("Maker");
+	// Account payable payout report
+	ACCOUNTSPAYABLEREPORT_PayoutReportObj payoutReportObj = new ACCOUNTSPAYABLEREPORT_PayoutReportObj(driver);
+	Map<String, String> mapData = new HashMap<>();
+	INVENTORY_EnquiryGlObject glObj=new INVENTORY_EnquiryGlObject(driver);
 	
 	@And("^User update test data id for Manual payouts$")
     public void user_update_test_data_id_for_manual_payouts() throws Throwable {
@@ -73,17 +116,22 @@ public class AccountsPayable_ManualPayoutEmployee  extends BaseClass {
 		testData = excelData.getTestdata("KUBS_AR/AP_UAT_006_003_TC_01_03_D1");
     }
 	 
-	 @And("^User update test data id for Approve cancelled payment settlement transaction in reviewver$")
-	    public void user_update_test_data_id_for_approve_cancelled_payment_settlement_transaction_in_reviewver() throws Throwable {
-		 testData = excelData.getTestdata("KUBS_AR/AP_UAT_005_001_TC_01_02_D1");  
+	 @And("^User update test data id for Verify accounting entries post payout approval$")
+	    public void user_update_test_data_id_for_verify_accounting_entries_post_payout_approval() throws Throwable {
+		 testData = excelData.getTestdata("KUBS_AR/AP_UAT_006_003_TC_03_D1");
 	    }
-	 @And("^User update test data id to verify the cancelled payment settlement transaction in Maker$")
-	    public void user_update_test_data_id_to_verify_the_cancelled_payment_settlement_transaction_in_maker() throws Throwable {
-		 testData = excelData.getTestdata("KUBS_AR/AP_UAT_005_001_TC_01_04_D1");
+	 @And("^User update test data id for Verify Balance sheet post payout approval$")
+	    public void user_update_test_data_id_for_verify_balance_sheet_post_payout_approval() throws Throwable {
+		 testData = excelData.getTestdata("KUBS_AR/AP_UAT_006_003_TC_01_03_D1");
 	    }
-	 @And("^User update test data id to verify cancelled payment txn is not available for payout on payout screen$")
-	    public void user_update_test_data_id_to_verify_cancelled_payment_txn_is_not_available_for_payout_on_payout_screen() throws Throwable {
-		 testData = excelData.getTestdata("KUBS_AR/AP_UAT_005_001_TC_02_01_D1"); 
+
+	    @And("^User update test data id for Verify Accounts Receivable Report post payout approval$")
+	    public void user_update_test_data_id_for_verify_accounts_receivable_report_post_payout_approval() throws Throwable {
+	    	testData = excelData.getTestdata("KUBS_AR/AP_UAT_006_003_TC_01_04_D1");
+	    }
+	    @And("^User update test data id to Verify payout Report post payout approval$")
+	    public void user_update_test_data_id_to_verify_payout_report_post_payout_approval() throws Throwable {
+	    	testData = excelData.getTestdata("KUBS_AR/AP_UAT_006_003_TC_01_05_D1");
 	    }
     @When("^click on eye button of manual payout$")
     public void click_on_eye_button_of_manual_payoutg() throws InterruptedException {
@@ -626,6 +674,453 @@ public class AccountsPayable_ManualPayoutEmployee  extends BaseClass {
 		kubschecker.checkersubmitButton().click();
 		Thread.sleep(2000);
 	}
+    @And("^click on view button near by manual payout module$")
+    public void click_on_view_button_near_by_manual_payout_module() throws Throwable {
+		//waitHelper.waitForElementVisible(manualPayoutObj.accountsPayable_ManualPayoutViewButton(), 2000, 200);
+		javascrtiptHelper.JavaScriptHelper(driver);
+		javascrtiptHelper.scrollIntoView(manualPayoutObj.accountsPayable_ManualPayoutViewButton());
+		manualPayoutObj.accountsPayable_ManualPayoutViewButton().click();
+		
+    }
+	@And("^search the active record in the manual pay out and get the transaction reference number$")
+    public void search_the_active_record_in_the_manual_pay_out_and_get_the_transaction_reference_number() throws Throwable {
+     //waitHelper.waitForElementVisible(manualPayoutObj.accountsPayablePayoutStatus(), 2000, 200);
+		javascrtiptHelper.JavaScriptHelper(driver);
+		javascrtiptHelper.scrollIntoView(manualPayoutObj.accountsPayablePayoutStatus());
+     manualPayoutObj.accountsPayablePayoutStatus().click();
+     manualPayoutObj.accountsPayablePayoutStatus().sendKeys(testData.get("Search Approved Record"));
+     
+     waitHelper.waitForElementVisible(manualPayoutObj.approvedManualPayoutReferenceNumber(), 2000, 200);
+     String payoutApprovedReferenceNumber=manualPayoutObj.approvedManualPayoutReferenceNumber().getText();
+     payoutData.put("approvedReferenceNumber", payoutApprovedReferenceNumber);
+     
+    }
+	@Then("^verify the manual payout is appeared in the accounting entries$")
+    public void verify_the_manual_payout_is_appeared_in_the_accounting_entries() throws Throwable {
+		Thread.sleep(1000);
+		javascrtiptHelper.JavaScriptHelper(driver);
+		// boolean pageStatus = true;
+		// javascriptHelper.scrollDownByPixel();
+		for (int i = 0; i < 299; i++) {
+			try {
+				waitHelper
+						.waitForElementVisible(
+								driver.findElement(By.xpath("//datatable-body-cell[1]//span[contains(text(),'"
+										+ payoutData.get("approvedReferenceNumber") + "')]")),
+								2000, 100);
+				driver.findElement(By.xpath("//datatable-body-cell[1]//span[contains(text(),'"
+						+ payoutData.get("approvedReferenceNumber") + "')]")).isDisplayed();
+				break;
+			} catch (NoSuchElementException e) {
+				// waitHelper.waitForElementVisible(paymentSettlementObj.accountsPayablePayementSettlementNextRecord(),
+				// 1000, 100);
+
+				javascrtiptHelper.scrollIntoView(paymentSettlementObj.accountsPayablePayementSettlementNextRecord());
+
+				paymentSettlementObj.accountsPayablePayementSettlementNextRecord().click();
+			}
+
+			if (i == 299) {
+				Assert.fail("InvoiceNumber not availabe : " + payoutData.get("approvedReferenceNumber"));
+			}
+		}
+
+	}
+
+	@And("^search the multiple bill payout approved reference number$")
+    public void search_the_multiple_bill_payout_approved_reference_number() throws Throwable {
+		
+		javascrtiptHelper.JavaScriptHelper(driver);
+		javascrtiptHelper.scrollIntoView(manualPayoutObj.accountsPayableSearchApprovvedPayoutNumber());
+       manualPayoutObj.accountsPayableSearchApprovvedPayoutNumber().click();
+       manualPayoutObj.accountsPayableSearchApprovvedPayoutNumber().sendKeys(ManualPayoutData.ManualPayoutReferenceNumber);
+       
+	}
+	@And("^choose branch code$")
+	public void choose_branch_code() throws Throwable {
+		for (int i = 0; i <200; i++) {
+			try {
+				inventoryEnquiryGlObj.inventoryBranchCode().sendKeys(testData.get("Branch Code"));
+				inventoryEnquiryGlObj.inventoryBranchCode().sendKeys(Keys.ENTER);
+				break;
+			} catch (Exception e) {
+				if (i==199) {
+					Assert.fail(e.getMessage());
+				}
+				
+			}
+		}
+		
+	}
+	@Then("^choose the from date$")
+	public void choose_the_from_date() throws Throwable {
+		
+		javascripthelper.JavaScriptHelper(driver);
+		while(true)
+        {
+		try
+		{
+		
+			waitHelper.waitForElement(driver, 3000, driver.findElement(By.xpath("//span[contains(text(),'"+testData.get("FromMonth")+" "+testData.get("FromYear")+"')]")));
+			WebElement monthAndYear=driver.findElement(By.xpath("//span[contains(text(),'"+testData.get("FromMonth")+" "+testData.get("FromYear")+"')]"));
+		    break;
+		}
+		
+		catch(NoSuchElementException nosuchElement)
+		{
+			inventoryEnquiryGlObj.inventoryNextMonth().click();
+		}
+		}
+		WebElement FinalDay=driver.findElement(By.xpath("//td[@aria-label='"+testData.get("FromFullMonth")+" "+testData.get("FromDate")+", "+testData.get("FromYear")+"']/span"));
+		clicksAndActionHelper.doubleClick(FinalDay);
+	}
+	@Then("^choose the to date$")
+	public void choose_the_to_date() throws Throwable {
+		while(true)
+        {
+		try
+		{
+		
+			waitHelper.waitForElement(driver, 3000, driver.findElement(By.xpath("//span[contains(text(),'"+testData.get("ToMonth")+" "+testData.get("ToYear")+"')]")));
+			WebElement monthAndYear=driver.findElement(By.xpath("//span[contains(text(),'"+testData.get("ToMonth")+" "+testData.get("ToYear")+"')]"));
+		    break;
+		}
+		
+		catch(NoSuchElementException nosuchElement)
+		{
+			inventoryEnquiryGlObj.inventoryNextMonth().click();
+		}
+		}
+		WebElement FinalDay=driver.findElement(By.xpath("//td[@aria-label='"+testData.get("ToFullMonth")+" "+testData.get("ToDate")+", "+testData.get("ToYear")+"']/span"));
+		clicksAndActionHelper.doubleClick(FinalDay);
+	}
+	
+	@Then("^click on temp grid button of Balance sheet report$")
+    public void click_on_temp_grid_button_of_balance_sheet_report()  {
+		waithelper.waitForElement(driver, 3000, financialReporting_GLBalancesReportObj.FinancialReporting_BalanceSheetReport_TempGridButton());
+		financialReporting_GLBalancesReportObj.FinancialReporting_BalanceSheetReport_TempGridButton().click();
+    }
+	@And("^User Select the branch name for Balance sheet post payout$")
+    public void user_select_the_branch_name_for_balance_sheet_post_payout() throws Throwable {
+		waithelper.waitForElement(driver, 3000, financialReporting_GLBalancesReportObj.FinancialReporting_BalanceSheetReport_Branch());
+		financialReporting_GLBalancesReportObj.FinancialReporting_BalanceSheetReport_Branch().sendKeys(testData.get("AZENTMAIN-Azentio Main Branch"));
+		financialReporting_GLBalancesReportObj.FinancialReporting_BalanceSheetReport_Branch().sendKeys(Keys.ENTER);
+    }
+
+    @And("^User Select the report type for Balance sheet post payout$")
+    public void user_select_the_report_type_for_balance_sheet_post_payout() throws Throwable {
+    	waithelper.waitForElement(driver, 3000, financialReporting_GLBalancesReportObj.FinancialReporting_BalanceSheetReport_ReportType());
+		financialReporting_GLBalancesReportObj.FinancialReporting_BalanceSheetReport_ReportType().sendKeys(testData.get("Report Type"));
+		financialReporting_GLBalancesReportObj.FinancialReporting_BalanceSheetReport_ReportType().sendKeys(Keys.ENTER);
+    }
+
+    @And("^User Select the balance sheet on date for Balance sheet post payout$")
+    public void user_select_the_balance_sheet_on_date_for_balance_sheet_post_payout() throws Throwable {
+    	waithelper.waitForElement(driver, 3000, financialReporting_GLBalancesReportObj.FinancialReporting_BalanceSheetReport_BalanceSheetAsOnDate());
+		financialReporting_GLBalancesReportObj.FinancialReporting_BalanceSheetReport_BalanceSheetAsOnDate().click();
+		javascripthelper.JavaScriptHelper(driver);
+		while(true)
+        {
+		try
+		{
+		
+			waithelper.waitForElement(driver, 3000, driver.findElement(By.xpath("//span[contains(text(),'"+testData.get("FromMonth")+" "+testData.get("FromYear")+"')]")));
+			WebElement monthAndYear=driver.findElement(By.xpath("//span[contains(text(),'"+testData.get("FromMonth")+" "+testData.get("FromYear")+"')]"));
+		    break;
+		}
+		
+		catch(NoSuchElementException nosuchElement)
+		{
+			inventoryEnquiryGlObj.inventoryNextMonth().click();
+		}
+		}
+		WebElement FinalDay=driver.findElement(By.xpath("//td[@aria-label='"+testData.get("FromFullMonth")+" "+testData.get("FromDate")+", "+testData.get("FromYear")+"']/span"));
+		clicksAndActionHelper.doubleClick(FinalDay);
+    }
+	
+	@And("^fill the required field of Balance sheet report$")
+	public void fill_the_required_field_of_balance_sheet_report() {
+		
+		
+		
+		
+		
+		
+		
+		while(true)
+		{
+			try 
+			{
+				waithelper.waitForElement(driver, 3000, driver.findElement(By.xpath("//span[contains(text(),'"+BalanceSheetReportTestDataType.BalanceSheetMonth+" "+BalanceSheetReportTestDataType.BalanceSheetYear+"')]")));
+				WebElement birthmonthandyear=driver.findElement(By.xpath("//span[contains(text(),'"+BalanceSheetReportTestDataType.BalanceSheetMonth+" "+BalanceSheetReportTestDataType.BalanceSheetYear+"')]"));
+//				driver.findElement(By.xpath("//div/div/button")).getText().contains(bUSINESS_PARTNER_SETUP_BusinessPartnerTestDataType.BirthMonth+" "+bUSINESS_PARTNER_SETUP_BusinessPartnerTestDataType.BirthYear);
+				break;
+			}catch(NoSuchElementException nosuchElement)
+			{
+				waithelper.waitForElement(driver, 3000, bUSINESS_PARTNER_SETUP_BusinessPartnerObj.businessPartner_SelectDate());
+				bUSINESS_PARTNER_SETUP_BusinessPartnerObj.businessPartner_SelectDate().click();
+				String tablehead=bUSINESS_PARTNER_SETUP_BusinessPartnerObj.businessPartner_HeadYear().getText();
+//				String tablehead="2016 ~ 2036";
+				String headyear=tablehead.replaceAll(" ~", "");
+//				System.out.println(headyear);
+				String ar[] = headyear.split(" ");
+				int y1=Integer.parseInt(ar[0]);
+				int y2=Integer.parseInt(ar[1]);
+				int year=Integer.parseInt(BalanceSheetReportTestDataType.BalanceSheetYear);
+				if(year < y1 && year<y2)
+				{
+					while(true)
+					{
+						try {
+							waithelper.waitForElement(driver, 3000, driver.findElement(By.xpath("//span[contains(text(),'"+BalanceSheetReportTestDataType.BalanceSheetYear+"')]")));
+							WebElement Year=driver.findElement(By.xpath("//span[contains(text(),'"+BalanceSheetReportTestDataType.BalanceSheetYear+"')]"));
+						    break;
+						}
+						catch(NoSuchElementException nosuchElement1) {
+							waithelper.waitForElement(driver, 3000, bUSINESS_PARTNER_SETUP_BusinessPartnerObj.businessPartner_ClickOnPreviousYear());
+							bUSINESS_PARTNER_SETUP_BusinessPartnerObj.businessPartner_ClickOnPreviousYear().click();
+						}
+					}
+					waithelper.waitForElement(driver, 3000, driver.findElement(By.xpath("//span[contains(text(),'"+BalanceSheetReportTestDataType.BalanceSheetYear+"')]")));
+					WebElement Year=driver.findElement(By.xpath("//span[contains(text(),'"+BalanceSheetReportTestDataType.BalanceSheetYear+"')]"));
+					Year.click();
+					
+					waithelper.waitForElement(driver, 2000, driver.findElement(By.xpath("//td[@aria-label='"+BalanceSheetReportTestDataType.BalanceSheetFullMonth+" "+BalanceSheetReportTestDataType.BalanceSheetYear+"']")));
+					driver.findElement(By.xpath("//td[@aria-label='"+BalanceSheetReportTestDataType.BalanceSheetFullMonth+" "+BalanceSheetReportTestDataType.BalanceSheetYear+"']")).click();
+					
+				}
+				else if(year>y1 && year>y2)
+				{
+					while(true)
+					{
+						try {
+							waithelper.waitForElement(driver, 3000, driver.findElement(By.xpath("//span[contains(text(),'"+BalanceSheetReportTestDataType.BalanceSheetYear+"')]")));
+							WebElement Year=driver.findElement(By.xpath("//span[contains(text(),'"+BalanceSheetReportTestDataType.BalanceSheetYear+"')]"));
+						    break;
+						}
+						catch(NoSuchElementException nosuchElement2) {
+							waithelper.waitForElement(driver, 3000, bUSINESS_PARTNER_SETUP_BusinessPartnerObj.businessPartner_ClickOnNextYear());
+							bUSINESS_PARTNER_SETUP_BusinessPartnerObj.businessPartner_ClickOnNextYear().click();
+						}
+					}
+					waithelper.waitForElement(driver, 3000, driver.findElement(By.xpath("//span[contains(text(),'"+BalanceSheetReportTestDataType.BalanceSheetYear+"')]")));
+					WebElement Year=driver.findElement(By.xpath("//span[contains(text(),'"+BalanceSheetReportTestDataType.BalanceSheetYear+"')]"));
+					clicksAndActionHelper.doubleClick(Year);
+					
+					waithelper.waitForElement(driver, 2000, driver.findElement(By.xpath("//td[@aria-label='"+BalanceSheetReportTestDataType.BalanceSheetFullMonth+" "+BalanceSheetReportTestDataType.BalanceSheetYear+"']")));
+					driver.findElement(By.xpath("//td[@aria-label='"+BalanceSheetReportTestDataType.BalanceSheetFullMonth+" "+BalanceSheetReportTestDataType.BalanceSheetYear+"']")).click();
+					
+				}
+				else
+				{
+					waithelper.waitForElement(driver, 3000, driver.findElement(By.xpath("//td[@aria-label='"+BalanceSheetReportTestDataType.BalanceSheetYear+"']")));
+					WebElement Year=driver.findElement(By.xpath("//td[@aria-label='"+BalanceSheetReportTestDataType.BalanceSheetYear+"']"));
+					Year.click();
+					
+					waithelper.waitForElement(driver, 2000, driver.findElement(By.xpath("//td[@aria-label='"+BalanceSheetReportTestDataType.BalanceSheetFullMonth+" "+BalanceSheetReportTestDataType.BalanceSheetYear+"']")));
+					driver.findElement(By.xpath("//td[@aria-label='"+BalanceSheetReportTestDataType.BalanceSheetFullMonth+" "+BalanceSheetReportTestDataType.BalanceSheetYear+"']")).click();
+					
+				}
+			}
+		}
+		waithelper.waitForElement(driver, 3000, driver.findElement(By.xpath("//td[@aria-label='"+BalanceSheetReportTestDataType.BalanceSheetFullMonth +" "+BalanceSheetReportTestDataType.BalanceSheetDate+", "+BalanceSheetReportTestDataType.BalanceSheetYear+"']/span")));	
+		WebElement BirthDate=driver.findElement(By.xpath("//td[@aria-label='"+BalanceSheetReportTestDataType.BalanceSheetFullMonth +" "+BalanceSheetReportTestDataType.BalanceSheetDate+", "+BalanceSheetReportTestDataType.BalanceSheetYear+"']/span"));
+		clicksAndActionHelper.doubleClick(BirthDate);
+		
+	}
+
+    @Then("^click on view button to view the balance sheet report$")
+    public void click_on_view_button_to_view_the_balance_sheet_report()  {
+    	waithelper.waitForElement(driver, 3000, financialReporting_GLBalancesReportObj.FinancialReporting_BalanceSheetReport_BalanceSheetReportView());
+    	financialReporting_GLBalancesReportObj.FinancialReporting_BalanceSheetReport_BalanceSheetReportView().click();
+    	
+    }
+    
+    @Then("^Verify balance sheet should updated correctly$")
+    public void Verify_balance_sheet_should_updated_correctly() throws InterruptedException  {
+    	Thread.sleep(1000);
+    	javascripthelper.JavaScriptHelper(driver);
+    	browserHelper.SwitchToWindow(1);
+    	waithelper.waitForElement(driver, 3000, financialReporting_GLBalancesReportObj.FinancialReporting_BalanceSheetReport_UpdatedData());
+    	javascripthelper.scrollIntoView(financialReporting_GLBalancesReportObj.FinancialReporting_BalanceSheetReport_UpdatedData()); 
+    	String receivableAmount = financialReporting_GLBalancesReportObj.FinancialReporting_BalanceSheetReport_UpdatedData().getText();
+    	System.out.println("Trade Receivables Advances to Employee - "+ receivableAmount);
+    	browserHelper.switchToParentWithChildClose();
+    }
+    
+    @Then("^Verify balance sheet should updated correctly post approval through online mode$")
+    public void Verify_balance_sheet_should_updated_correctly_post_approval_through_online_mode() throws InterruptedException  {
+    	Thread.sleep(1000);
+    	javascripthelper.JavaScriptHelper(driver);
+    	browserHelper.SwitchToWindow(1);
+    	waithelper.waitForElement(driver, 3000, financialReporting_GLBalancesReportObj.FinancialReporting_BalanceSheetReport_UpdatedDataReceipt());
+    	javascripthelper.scrollIntoView(financialReporting_GLBalancesReportObj.FinancialReporting_BalanceSheetReport_UpdatedDataReceipt()); 
+    	String receiptAmount = financialReporting_GLBalancesReportObj.FinancialReporting_BalanceSheetReport_UpdatedDataReceipt().getText();
+    	System.out.println("Receivables Cash Equivalents - "+ receiptAmount);
+    	browserHelper.switchToParentWithChildClose();
+    }
+    
+    @Then("^Verify balance sheet should updated correctly post cheque is cleared$")
+    public void Verify_balance_sheet_should_updated_correctly_post_cheque_is_cleared() throws InterruptedException  {
+    	Thread.sleep(1000);
+    	javascripthelper.JavaScriptHelper(driver);
+    	browserHelper.SwitchToWindow(1);
+    	waithelper.waitForElement(driver, 3000, financialReporting_GLBalancesReportObj.FinancialReporting_BalanceSheetReport_UpdatedDataReceipt());
+    	javascripthelper.scrollIntoView(financialReporting_GLBalancesReportObj.FinancialReporting_BalanceSheetReport_UpdatedDataReceipt()); 
+    	String chequeAmount = financialReporting_GLBalancesReportObj.FinancialReporting_BalanceSheetReport_UpdatedDataReceipt().getText();
+    	System.out.println("Receivables Cash Equivalents - "+ chequeAmount);
+    	browserHelper.switchToParentWithChildClose();
+    }
+    @And("^click ok segment segmant button$")
+    public void click_ok_segment_segmant_button() throws Throwable {
+    	waitHelper.waitForElementVisible(makerObj.kubsDirectionIcon(), 2000, 200);
+    	makerObj.kubsDirectionIcon().click();
+    }
+    @And("^select the approved credit note reference number$")
+    public void select_the_approved_credit_note_reference_number() throws Throwable {
+    	waitHelper.waitForElementVisible(creditNoteObj.approvedCreditNoteRecord(), 2000, 200);
+    	String approvedCreditNoteReferenceNumber=creditNoteObj.approvedCreditNoteRecord().getText();
+    	testData.put("approvedCreditNoteReferenceNumber", approvedCreditNoteReferenceNumber);
+
+    }
+
+    @And("^get the credit note amount$")
+    public void get_the_credit_note_amount() throws Throwable {
+    	String approvedCreditNoteAmount=creditNoteObj.creditNoteApprovedCreditAmount().getText();
+    	testData.put("approvedCreditNoteAmount", approvedCreditNoteAmount);
+    }
+
+    @And("^get the business partner name from approved credit note$")
+    public void get_the_business_partner_name_from_approved_credit_note() throws Throwable {
+    	String approvedCreditNoteBpName=creditNoteObj.creditNoteApprovedBusinessPartnerName().getText();
+    	testData.put("approvedCreditNoteBpName", approvedCreditNoteBpName);
+    }
+    @And("^click on temp view near by accounts receivable report$")
+    public void click_on_temp_view_near_by_accounts_receivable_report() throws Throwable {
+    	waitHelper.waitForElementVisible(accountsReceivableReportObj.accountsReceivableReportTempView(), 2000, 200);
+    	accountsReceivableReportObj.accountsReceivableReportTempView().click();
+    	
+    }
+
+    @And("^click on business partner for settled credit note$")
+    public void click_on_business_partner_for_settled_credit_note() throws Throwable {
+    	waitHelper.waitForElementVisible(accountsReceivableReportObj.accountsReceivableReportBusinessPartnerName(), 2000, 200);
+    	accountsReceivableReportObj.accountsReceivableReportBusinessPartnerName().click();
+    	accountsReceivableReportObj.accountsReceivableReportBusinessPartnerName().sendKeys(testData.get("approvedCreditNoteBpName"));
+    	accountsReceivableReportObj.accountsReceivableReportBusinessPartnerName().sendKeys(Keys.ENTER);
+    }
+
+    @And("^enter active credit note status in accounts Receivable module$")
+    public void enter_active_credit_note_status_in_accounts_receivable_module() throws Throwable {
+    	accountsReceivableReportObj.accountsReceivableReportPayableStatus().click();
+    	accountsReceivableReportObj.accountsReceivableReportPayableStatus().sendKeys(reportTestData.ReceivableReportStatusAll);
+    	accountsReceivableReportObj.accountsReceivableReportPayableStatus().sendKeys(Keys.ENTER);
+    }
+    @Then("^verify the approved credit note is available in the receivable report$")
+    public void verify_the_approved_credit_note_is_available_in_the_receivable_report() throws Throwable {
+    	browserHelper.SwitchToWindow(1);
+		Thread.sleep(1000);
+		javascriptHelper.JavaScriptHelper(driver);
+//		while (true) {
+//			try {
+//				javascriptHelper.scrollIntoView(driver.findElement(
+//						By.xpath("//div[contains(text(),'" + testData.get("approvedCreditNoteReferenceNumber") + "')]")));
+//				driver.findElement(By.xpath("//div[contains(text(),'" + testData.get("approvedCreditNoteReferenceNumber") + "')]"));
+//				break;
+//			} catch (NoSuchElementException e) {
+//				accountsReceivableReportObj.accountsReceivableReportNextRecord().click();
+//			} catch (StaleElementReferenceException e1) {
+//
+//			}
+//		}
+		browserHelper.switchToParentWithChildClose();
+    }
+
+    
+    /********* KUBS_AR_AP_UAT_006_003_TC_04 ***************/
+    @And("^search the advance approved reference number in the reference number search column$")
+    public void search_the_advance_approved_reference_number_in_the_reference_number_search_column() throws Throwable {
+    	javascriptHelper.JavaScriptHelper(driver);
+    	javascriptHelper.scrollIntoView(manualPayoutObj.accountsPayableSearchApprovvedPayoutNumber());
+    	manualPayoutObj.accountsPayableSearchApprovvedPayoutNumber().click();
+    	manualPayoutObj.accountsPayableSearchApprovvedPayoutNumber().sendKeys(testData.get("Advance Reference number"));
+  
+    }
+    @And("^Choose date for Accounts Receivable report$")
+    public void choose_date_for_accounts_receivable_report() throws Throwable {
+    	while(true)
+        {
+		try
+		{
+		
+			waithelper.waitForElement(driver, 3000, driver.findElement(By.xpath("//span[contains(text(),'"+testData.get("FromMonth")+" "+testData.get("FromYear")+"')]")));
+			WebElement monthAndYear=driver.findElement(By.xpath("//span[contains(text(),'"+testData.get("FromMonth")+" "+testData.get("FromYear")+"')]"));
+		    break;
+		}
+		
+		catch(NoSuchElementException nosuchElement)
+		{
+			inventoryEnquiryGlObj.inventoryNextMonth().click();
+		}
+		}
+		WebElement FinalDay=driver.findElement(By.xpath("//td[@aria-label='"+testData.get("FromFullMonth")+" "+testData.get("FromDate")+", "+testData.get("FromYear")+"']/span"));
+		clicksAndActionHelper.doubleClick(FinalDay);
+    }
+
+    @And("^get the business partner nname$")
+    public void get_the_business_partner_nname() throws Throwable {
+    	String approvedBpName=manualPayoutObj.accountsPayableApprovedBpName().getText();
+    	testData.put("approveBpName", approvedBpName);
+    	System.out.println(testData.get("approveBpName"));
+    	
+    }
+
+    @And("^click on the perticular suggestion record and get the advance reference number$")
+    public void click_on_the_perticular_suggestion_record_and_get_the_advance_reference_number() throws Throwable {
+    	
+    	javascriptHelper.JavaScriptHelper(driver);
+    	manualPayoutObj.accountsPayablePayoutRecord().click();
+    	Thread.sleep(1000);
+    	javascriptHelper.scrollIntoView(manualPayoutObj.accountsPayableGetAdvanceReferenceNumber());
+    	String receivableReferenceNo=manualPayoutObj.accountsPayableGetAdvanceReferenceNumber().getText();
+    	testData.put("receivableReferenceNo", receivableReferenceNo);
+    	System.out.println("Receivable reference number : "+receivableReferenceNo);
+
+    }
+    @And("^enter the business partner name for advances to employee$")
+    public void enter_the_business_partner_name_for_advances_to_employee() throws Throwable {
+    	accountsReceivableReportObj.accountsReceivableReportBusinessPartnerName().click();
+    	accountsReceivableReportObj.accountsReceivableReportBusinessPartnerName().sendKeys(testData.get("approveBpName"));
+    	accountsReceivableReportObj.accountsReceivableReportBusinessPartnerName().sendKeys(Keys.ENTER);
+    }   
+    @And("^enter the advances to employee status active$")
+    public void enter_the_advances_to_employee_status_active() throws Throwable {
+    	accountsReceivableReportObj.accountsReceivableReportPayableStatus().click();
+    	accountsReceivableReportObj.accountsReceivableReportPayableStatus().sendKeys(reportTestData.ReceivableReportStatusAll);
+    	accountsReceivableReportObj.accountsReceivableReportPayableStatus().sendKeys(Keys.ENTER);
+    }
+    @Then("^verify the advance reference number is available in the accounts Receivable report$")
+    public void verify_the_advance_reference_number_is_available_in_the_accounts_receivable_report() throws Throwable {
+    	browserHelper.SwitchToWindow(1);
+		Thread.sleep(1000);
+		javascriptHelper.JavaScriptHelper(driver);
+		while (true) {
+			try {
+				javascriptHelper.scrollIntoView(driver.findElement(
+						By.xpath("//div[contains(text(),'" + testData.get("receivableReferenceNo") + "')]")));
+				driver.findElement(By.xpath("//div[contains(text(),'" + testData.get("receivableReferenceNo") + "')]"));
+				break;
+			} catch (NoSuchElementException e) {
+				accountsReceivableReportObj.accountsReceivableReportNextRecord().click();
+			} catch (StaleElementReferenceException e1) {
+
+			}
+		}
+		browserHelper.switchToParentWithChildClose();
+    }
+
+
+
    	 
 
 

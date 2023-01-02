@@ -28,10 +28,12 @@ import io.cucumber.java.en.Then;
 import pageobjects.BUDGET_BudgetCreationObj;
 import pageobjects.BUDGET_RequestAndAllocationObj;
 import pageobjects.KUBS_CheckerObj;
+import pageobjects.KUBS_CommonWebElements;
 import pageobjects.KUBS_MakerObj;
 import pageobjects.KUBS_ReviewerObj;
 import pageobjects.MASTERREPORT_BudgetCodeReportObj;
 import resources.BaseClass;
+import resources.ExcelData;
 import resources.JsonDataReaderWriter;
 import testDataType.BUDGET_BudgetDefinitionUATTestDataType;
 
@@ -48,12 +50,17 @@ public class BUDGET_UAT_BudgetDefinition extends BaseClass {
 			.getUATBudgetDefinitionTestData(user);
 	BUDGET_BudgetCreationObj budgetCreationObj = new BUDGET_BudgetCreationObj(driver);
 	JsonDataReaderWriter jsonReaderWriter = new JsonDataReaderWriter();
-	KUBS_ReviewerObj kubsReviewerObj = new KUBS_ReviewerObj(driver);
-	KUBS_CheckerObj kubsCheckerObj = new KUBS_CheckerObj(driver);
-	ClicksAndActionsHelper clickAndActions = new ClicksAndActionsHelper(driver);
+
+	ClicksAndActionsHelper clickAndActionsHelper = new ClicksAndActionsHelper(driver);
 	BrowserHelper browserHelper = new BrowserHelper(driver);
 	Map<String, String> testData = new HashMap<>();
+	Map<String, String> budgetConfigTestData = new HashMap<>();
+	Map<String, String> budgetRequestAndAllocation;
 	BUDGET_RequestAndAllocationObj requestAndAllocationObj = new BUDGET_RequestAndAllocationObj(driver);
+	KUBS_CommonWebElements kubsCommonObj = new KUBS_CommonWebElements(driver);
+	String path = System.getProperty("user.dir") + "\\Test-data\\KUBSTestData.xlsx";
+	ExcelData excelDataForBudgetConfig = new ExcelData(path, "BudgetConfiguration", "DataSet ID");
+	ExcelData excelDataForBudgetRequestAndAllocation = new ExcelData(path, "BudgetReqAndAllocation", "DataSet ID");
 
 	@Given("^navigate to given url and login with maker credentials$")
 	public void navigate_to_given_url() throws Throwable {
@@ -87,6 +94,121 @@ public class BUDGET_UAT_BudgetDefinition extends BaseClass {
 
 	}
 
+	@And("^get the test data from excel database for creating yearly budget code$")
+	public void get_the_test_data_from_excel_database_for_creating_yearly_budget_code() throws Throwable {
+
+		budgetConfigTestData = excelDataForBudgetConfig.getTestdata("KUBS_BP_UAT_001_001_D1");
+	}
+
+    @And("^User update test data id for budgetcode Monthly$")
+    public void user_update_test_data_id_for_budgetcode_monthly() throws Throwable {
+    	budgetConfigTestData = excelDataForBudgetConfig.getTestdata("KUBS_BP_UAT_002_001_01_D1");
+    }
+    @And("^User update test data id for budgetcode Quarterly$")
+    public void user_update_test_data_id_for_budgetcode_quarterly() throws Throwable {
+    	budgetConfigTestData = excelDataForBudgetConfig.getTestdata("KUBS_BP_UAT_002_002_01_D1");
+    }
+    @And("^User update test data id for budgetcode Halfyearly$")
+    public void user_update_test_data_id_for_budgetcode_halfyearly() throws Throwable {
+    	budgetConfigTestData = excelDataForBudgetConfig.getTestdata("KUBS_BP_UAT_002_003_01_D1");
+    }
+    @And("^User update test data id for budgetcode yearly$")
+    public void user_update_test_data_id_for_budgetcode_yearly() throws Throwable {
+    	budgetConfigTestData = excelDataForBudgetConfig.getTestdata("KUBS_BP_UAT_002_004_01_D1");
+    }
+    @And("^User update test data id for budgetcode yearly1$")
+    public void user_update_test_data_id_for_budgetcode_yearly1() throws Throwable {
+    	budgetConfigTestData = excelDataForBudgetConfig.getTestdata("KUBS_BP_UAT_002_006_01_D1");
+    }
+
+    @And("^User update test data id to store reviewver id$")
+    public void user_update_test_data_id_to_store_reviewver_id() throws Throwable {
+    	budgetConfigTestData = excelDataForBudgetConfig.getTestdata("KUBS_BP_UAT_002_001_02_D1");
+    }
+    @And("^User update test data id to store reviewver id for Quarterly budget code$")
+    public void user_update_test_data_id_to_store_reviewver_id_for_quarterly_budget_code() throws Throwable {
+    	budgetConfigTestData = excelDataForBudgetConfig.getTestdata("KUBS_BP_UAT_002_002_02_D1");
+    }
+    @And("^User update test data id to store reviewver id for Halfyearly budget code$")
+    public void user_update_test_data_id_to_store_reviewver_id_for_halfyearly_budget_code() throws Throwable {
+    	budgetConfigTestData = excelDataForBudgetConfig.getTestdata("KUBS_BP_UAT_002_003_02_D1");
+    }
+    @And("^User update test data id to store reviewver id for yearly budget code$")
+    public void user_update_test_data_id_to_store_reviewver_id_for_yearly_budget_code() throws Throwable {
+    	budgetConfigTestData = excelDataForBudgetConfig.getTestdata("KUBS_BP_UAT_002_004_02_D1");
+    }
+    
+    @And("^User update test data id to store reviewver id for yearly1 budget code$")
+    public void user_update_test_data_id_to_store_reviewver_id_for_yearly1_budget_code() throws Throwable {
+    	budgetConfigTestData = excelDataForBudgetConfig.getTestdata("KUBS_BP_UAT_002_006_02_D1");
+    }
+    @And("^User update test data id to verify budget allocated for monthly budget code$")
+    public void user_update_test_data_id_to_verify_budget_allocated_for_monthly_budget_code() throws Throwable {
+    	budgetConfigTestData = excelDataForBudgetConfig.getTestdata("KUBS_BP_UAT_002_001_04_D1");
+    }
+    @And("^User update test data id to verify budget allocated for Quarterly budget code$")
+    public void user_update_test_data_id_to_verify_budget_allocated_for_quarterly_budget_code() throws Throwable {
+    	budgetConfigTestData = excelDataForBudgetConfig.getTestdata("KUBS_BP_UAT_002_002_04_D1");
+    }
+    @And("^User update test data id to verify budget allocated for Halfyearly budget code$")
+    public void user_update_test_data_id_to_verify_budget_allocated_for_halfyearly_budget_code() throws Throwable {
+    	budgetConfigTestData = excelDataForBudgetConfig.getTestdata("KUBS_BP_UAT_002_003_04_D1"); 
+    }
+    
+    @And("^User update test data id to verify budget allocated for yearly budget code$")
+    public void user_update_test_data_id_to_verify_budget_allocated_for_yearly_budget_code() throws Throwable {
+    	budgetConfigTestData = excelDataForBudgetConfig.getTestdata("KUBS_BP_UAT_002_004_04_D1");
+    }
+    
+
+    
+   
+	@And("^get the test data from excel database for creating monthly budget code$")
+	public void get_the_test_data_from_excel_database_for_creating_monthly_budget_code() throws Throwable {
+		budgetConfigTestData = excelDataForBudgetConfig.getTestdata("KUBS_BP_UAT_001_002_D1");
+	}
+
+	@And("^get the test data from excel database for creating quarterly budget code$")
+	public void get_the_test_data_from_excel_database_for_creating_quarterly_budget_code() throws Throwable {
+		budgetConfigTestData = excelDataForBudgetConfig.getTestdata("KUBS_BP_UAT_001_003_D1");
+	}
+
+	@And("^get the test data from excel database for creating half yearly budget code$")
+	public void get_the_test_data_from_excel_database_for_creating_half_yearly_budget_code() throws Throwable {
+		budgetConfigTestData = excelDataForBudgetConfig.getTestdata("KUBS_BP_UAT_001_004_D1");
+	}
+
+	@And("^get the test data from excel database for creating the current financial budget$")
+	public void get_the_test_data_from_excel_database_for_creating_the_current_financial_budget() throws Throwable {
+		budgetConfigTestData = excelDataForBudgetConfig.getTestdata("KUBS_BP_UAT_001_001_D2");
+	}
+
+	@And("^click on search button in budget config list view$")
+	public void click_on_search_button_in_budget_config_list_view() throws Throwable {
+		waitHelper.waitForElementToVisibleWithFluentWait(driver, kubsCommonObj.kubsListViewSearchButton(), 20, 1);
+		clickAndActionsHelper.moveToElement(kubsCommonObj.kubsListViewSearchButton());
+		clickAndActionsHelper.clickOnElement(kubsCommonObj.kubsListViewSearchButton());
+	}
+
+	@And("^search the approved budget code in budget config list view$")
+	public void search_the_approved_budget_code_in_budget_config_list_view() throws Throwable {
+		System.out.println("Code not yet developed");
+	}
+
+	@Then("^verify approved budget code should reflect in budget config list view$")
+	public void verify_approved_budget_code_should_reflect_in_budget_config_list_view() throws Throwable {
+		System.out.println("Code not yet developed");
+	}
+
+	@And("^store the budget code in budget request and allocation excel database for current financial year$")
+	public void store_the_budget_code_in_budget_request_and_allocation_excel_database_for_current_financial_year()
+			throws Throwable {
+		excelDataForBudgetRequestAndAllocation.updateTestData("KUBS_B&P_UAT_001_005_D1", "BudgetCode",
+				budgetConfigTestData.get("BudgetCode"));
+		excelDataForBudgetRequestAndAllocation.updateTestData("KUBS_B&P_UAT_001_005_D1", "BudgetType",
+				budgetConfigTestData.get("BudgetType"));
+	}
+
 	@And("^click on add button to create budget code$")
 	public void click_on_add_button_to_create_budget_code() throws Throwable {
 		/*
@@ -98,8 +220,8 @@ public class BUDGET_UAT_BudgetDefinition extends BaseClass {
 		// budgetCreationObj.budgetCreation_AddButton().click();
 		for (int i = 0; i <= 10; i++) {
 			try {
-				clickAndActions.moveToElement(budgetCreationObj.budgetCreation_AddButton());
-				clickAndActions.doubleClick(budgetCreationObj.budgetCreation_AddButton());
+				clickAndActionsHelper.moveToElement(budgetCreationObj.budgetCreation_AddButton());
+				clickAndActionsHelper.doubleClick(budgetCreationObj.budgetCreation_AddButton());
 				waitHelper.waitForElementToVisibleWithFluentWait(driver, budgetCreationObj.budgetCreation_BudgetCode(),
 						5, 500);
 				Assert.assertTrue(budgetCreationObj.budgetCreation_BudgetCode().isDisplayed());
@@ -122,19 +244,39 @@ public class BUDGET_UAT_BudgetDefinition extends BaseClass {
 
 		waitHelper.waitForElementToVisibleWithFluentWait(driver, budgetCreationObj.budgetCreation_BudgetCode(), 60,
 				500);
-		budgetCreationObj.budgetCreation_BudgetCode().sendKeys(budgetDefinitionUATTestData.uatYearlyBudgetCode);
+		Random random = new Random();
+		int randomNumber1 = random.nextInt(5000 - 500) + 5000;
+		int randomNumber2 = random.nextInt(10000 - 5000) + 10000;
+		String budgetCode = budgetConfigTestData.get("BudgetCodePrefix") + randomNumber1 + randomNumber2;
+		budgetCreationObj.budgetCreation_BudgetCode().sendKeys(budgetCode);
 
+		excelDataForBudgetConfig.updateTestData(budgetConfigTestData.get("DataSet ID"), "BudgetCode", budgetCode);
+
+	}
+
+	@Then("^enter Budget Code in budget configuration screen$")
+	public void enter_budget_code_in_budget_configuration_screen() throws Throwable {
+		waitHelper.waitForElementToVisibleWithFluentWait(driver, budgetCreationObj.budgetCreation_BudgetCode(), 60,
+				500);
+		Random random = new Random();
+		int randomNumber1 = random.nextInt(5000 - 500) + 5000;
+		int randomNumber2 = random.nextInt(10000 - 5000) + 10000;
+		String budgetCode = budgetConfigTestData.get("BudgetCodePrefix") + randomNumber1 + randomNumber2;
+		budgetCreationObj.budgetCreation_BudgetCode().sendKeys(budgetCode);
+
+		excelDataForBudgetConfig.updateTestData(budgetConfigTestData.get("DataSet ID"), "BudgetCode", budgetCode);
 	}
 
 	@Then("^enter the budget code  to make current/future financial budget$")
 	public void enter_the_budget_code_to_make_current_financial_budget() throws Throwable {
 		// String budgetPrefix="BUD";
 		Random random = new Random();
-		int randomNumber = random.nextInt(999999 - 100000) + 100000;
-		waitHelper.waitForElementToVisibleWithFluentWait(driver, budgetCreationObj.budgetCreation_BudgetCode(), 60,
-				500);
-		budgetCreationObj.budgetCreation_BudgetCode()
-				.sendKeys(budgetDefinitionUATTestData.BudgetCodePrefix + randomNumber);
+//		int randomNumber = random.nextInt(999999 - 100000) + 100000;
+//		waitHelper.waitForElementToVisibleWithFluentWait(driver, budgetCreationObj.budgetCreation_BudgetCode(), 60,
+//				500);
+//		budgetCreationObj.budgetCreation_BudgetCode()
+//				.sendKeys(budgetDefinitionUATTestData.BudgetCodePrefix + randomNumber);
+//		excelDataForBudgetConfig.updateTestData(path, user, path)
 
 	}
 
@@ -145,7 +287,7 @@ public class BUDGET_UAT_BudgetDefinition extends BaseClass {
 		waitHelper.waitForElementToVisibleWithFluentWait(driver, budgetCreationObj.budgetCreation_BudgetCode(), 60,
 				500);
 		budgetCreationObj.budgetCreation_BudgetCode()
-				.sendKeys(budgetDefinitionUATTestData.BudgetCodePrefix + randomNumber);
+				.sendKeys(budgetRequestAndAllocation.get("BudgetCodePrefix") + randomNumber);
 	}
 
 	@Then("^enter Budget Code for current financial yearly budget$")
@@ -182,14 +324,41 @@ public class BUDGET_UAT_BudgetDefinition extends BaseClass {
 
 	@And("^choose yearly option in budget type$")
 	public void choose_yearly_option_in_budget_type() throws Throwable {
-		waitHelper.waitForElementToVisibleWithFluentWait(driver, budgetCreationObj.budgetCreation_BudgetType(), 60,
-				500);
+		waitHelper.waitForElementToVisibleWithFluentWait(driver, budgetCreationObj.budgetCreation_BudgetType(), 60, 1);
+		String xpath = "//ng-dropdown-panel//span[text()='" + budgetConfigTestData.get("BudgetType") + "']";
 		budgetCreationObj.budgetCreation_BudgetType().click();
-		budgetCreationObj.budgetCreation_BudgetType().sendKeys(Keys.DOWN);
-		budgetCreationObj.budgetCreation_BudgetType().sendKeys(Keys.DOWN);
-		budgetCreationObj.budgetCreation_BudgetType().sendKeys(Keys.DOWN);
-		budgetCreationObj.budgetCreation_BudgetType().sendKeys(Keys.ENTER);
 
+		for (int i = 0; i <= 200; i++) {
+			try {
+				clickAndActionsHelper.moveToElement(driver.findElement(By.xpath(xpath)));
+				clickAndActionsHelper.clickOnElement(driver.findElement(By.xpath(xpath)));
+				break;
+			} catch (Exception e) {
+				if (i == 200) {
+					Assert.fail(e.getMessage());
+				}
+			}
+		}
+
+	}
+
+	@And("^choose budget type in budget configuration screen$")
+	public void choose_budget_type_in_budget_configuration_screen() throws Throwable {
+		waitHelper.waitForElementToVisibleWithFluentWait(driver, budgetCreationObj.budgetCreation_BudgetType(), 60, 1);		
+		budgetCreationObj.budgetCreation_BudgetType().click();
+		budgetCreationObj.budgetCreation_BudgetType().sendKeys(budgetConfigTestData.get("BudgetType"));
+		String xpath = "//ng-dropdown-panel//span[text()='" + budgetConfigTestData.get("BudgetType") + "']";
+		for (int i = 0; i <= 200; i++) {
+			try {
+				clickAndActionsHelper.moveToElement(driver.findElement(By.xpath(xpath)));
+				clickAndActionsHelper.clickOnElement(driver.findElement(By.xpath(xpath)));
+				break;
+			} catch (Exception e) {
+				if (i == 200) {
+					Assert.fail(e.getMessage());
+				}
+			}
+		}
 	}
 
 	@And("^choose monthly option in budget type$")
@@ -216,17 +385,22 @@ public class BUDGET_UAT_BudgetDefinition extends BaseClass {
 
 	@And("^give warning percentage$")
 	public void give_warning_percentage() throws Throwable {
-		budgetCreationObj.budgetCreation_WarningPercentage().sendKeys(budgetDefinitionUATTestData.warningPecentage);
+		budgetCreationObj.budgetCreation_WarningPercentage().sendKeys(budgetConfigTestData.get("WarningPercentage"));
 	}
 
 	@And("^enter budget name for yearly budget$")
 	public void enter_budget_name_for_yearly_budget() throws Throwable {
-		budgetCreationObj.budgetCreation_BudgetName().sendKeys(budgetDefinitionUATTestData.uatYearlyBudgetType);
+		budgetCreationObj.budgetCreation_BudgetName().sendKeys(budgetRequestAndAllocation.get("uatYearlyBudgetType"));
+	}
+
+	@And("^enter the the budget name in budget configuration screen$")
+	public void enter_the_the_budget_name_in_budget_configuration_screen() throws Throwable {
+		budgetCreationObj.budgetCreation_BudgetName().sendKeys(budgetConfigTestData.get("BudgetName"));
 	}
 
 	@And("^enter budget name for monthly budget$")
 	public void enter_budget_name_for_monthly_budget() throws Throwable {
-		budgetCreationObj.budgetCreation_BudgetName().sendKeys(budgetDefinitionUATTestData.uatMonthlyBudgetType);
+		budgetCreationObj.budgetCreation_BudgetName().sendKeys(testData.get("uatMonthlyBudgetType"));
 	}
 
 	@And("^enter budget name for Quarterly budget$")
@@ -241,8 +415,23 @@ public class BUDGET_UAT_BudgetDefinition extends BaseClass {
 
 	@Then("^enter remark$")
 	public void enter_remark() throws Throwable {
-		budgetCreationObj.budgetCreation_Remarks().sendKeys(budgetDefinitionUATTestData.remark);
+		for (int i = 0; i < 200; i++) {
+			try {
+				budgetCreationObj.budgetCreation_Remarks().sendKeys(budgetRequestAndAllocation.get("Remarks"));
+				break;
+			} catch (Exception e) {
+				if (i==199) {
+					Assert.fail(e.getMessage());
+				}
+			}
+		}
+		
 
+	}
+
+	@And("^enter the remark in budget config screen$")
+	public void enter_the_remark_in_budget_config_screen() throws Throwable {
+		budgetCreationObj.budgetCreation_Remarks().sendKeys(budgetConfigTestData.get("Remark"));
 	}
 
 	/*
@@ -254,11 +443,76 @@ public class BUDGET_UAT_BudgetDefinition extends BaseClass {
 		waitHelper.waitForElementToVisibleWithFluentWait(driver, budgetCreationObj.budgetCreation_saveButton(), 60,
 				500);
 		budgetCreationObj.budgetCreation_saveButton().click();
-		waitHelper.waitForElementToVisibleWithFluentWait(driver, budgetCreationObj.budgetCreation_ReviewerId(), 10, 1);
-		System.out.println(budgetCreationObj.budgetCreation_ReviewerId().getText());
-	Assert.assertEquals(budgetCreationObj.budgetCreation_ReviewerId().getText(), "Saved successfully, Workflow initiated kindly submit record from inbox");
-	waitHelper.waitForElementToVisibleWithFluentWait(driver, budgetCreationObj.budgetCreationAlertClose(), 10, 1);
-	budgetCreationObj.budgetCreationAlertClose().click();
+
+	}
+
+	@And("^search for budget configuration record in notification$")
+	public void search_for_budget_configuration_record_in_notification() throws Throwable {
+		waitHelper.waitForElementToVisibleWithFluentWait(driver, kubsCommonObj.kubsSearchEventCode(), 20, 1);
+		clickAndActionsHelper.moveToElement(kubsCommonObj.kubsSearchEventCode());
+		clickAndActionsHelper.clickOnElement(kubsCommonObj.kubsSearchEventCode());
+		kubsCommonObj.kubsSearchEventCode().sendKeys(budgetConfigTestData.get("ModuleCode"));
+
+	}
+
+	@And("^store the reference number of budget config record in excel database$")
+	public void store_the_reference_number_of_budget_config_record_in_excel_database() throws Throwable {
+		waitHelper.waitForElementToVisibleWithFluentWait(driver, budgetCreationObj.budgetConfigReferenceNumber(), 20,
+				1);
+		String referenceNumber = budgetCreationObj.budgetConfigReferenceNumber().getText();
+		excelDataForBudgetConfig.updateTestData(budgetConfigTestData.get("DataSet ID"),"Reference ID",
+				referenceNumber);
+
+	}
+
+	@And("^select the budget config record$")
+	public void select_the_budget_config_record() throws Throwable {
+		waitHelper.waitForElementToVisibleWithFluentWait(driver,
+				budgetCreationObj.budgetConfigNotificationFirstRecord(), 20, 1);
+		clickAndActionsHelper.moveToElement(budgetCreationObj.budgetConfigNotificationFirstRecord());
+		clickAndActionsHelper.clickOnElement(budgetCreationObj.budgetConfigNotificationFirstRecord());
+	}
+
+	@And("^click on submit in budget configuration$")
+	public void click_on_submit_in_budget_configuration() throws Throwable {
+		waitHelper.waitForElementToVisibleWithFluentWait(driver, kubsCommonObj.kubsSubmitButton(), 20, 1);
+		clickAndActionsHelper.moveToElement(kubsCommonObj.kubsSubmitButton());
+		clickAndActionsHelper.clickOnElement(kubsCommonObj.kubsSubmitButton());
+	}
+
+	@And("^enter the alert remark in budget configuration$")
+	public void enter_the_alert_remark_in_budget_configuration() throws Throwable {
+		waitHelper.waitForElementToVisibleWithFluentWait(driver, kubsCommonObj.kubsAlertRemark(), 20, 1);
+		clickAndActionsHelper.moveToElement(kubsCommonObj.kubsAlertRemark());
+		clickAndActionsHelper.clickOnElement(kubsCommonObj.kubsAlertRemark());
+		kubsCommonObj.kubsAlertRemark().sendKeys(budgetConfigTestData.get("MakerAlerRemark"));
+	}
+
+	@And("^click on alert submit in budget configuration$")
+	public void click_on_alert_submit_in_budget_configuration() throws Throwable {
+		waitHelper.waitForElementToVisibleWithFluentWait(driver, kubsCommonObj.kubsAlertSubmit(), 20, 1);
+		for (int i = 0; i <= 100; i++) {
+			try {
+
+				clickAndActionsHelper.moveToElement(kubsCommonObj.kubsAlertSubmit());
+				clickAndActionsHelper.clickOnElement(kubsCommonObj.kubsAlertSubmit());
+				break;
+			} catch (Exception e) {
+				clickAndActionsHelper.moveToElement(kubsCommonObj.kubsAlertRemark());
+				clickAndActionsHelper.clickOnElement(kubsCommonObj.kubsAlertRemark());
+				kubsCommonObj.kubsAlertRemark().sendKeys(budgetConfigTestData.get("MakerAlerRemark"));
+				if (i == 100) {
+					Assert.fail(e.getMessage());
+				}
+			}
+		}
+	}
+
+	@And("^store the reviewer id of budget configuration in excel database$")
+	public void store_the_reviewer_id_of_budget_configuration_in_excel_database() throws Throwable {
+		waitHelper.waitForElementToVisibleWithFluentWait(driver, kubsCommonObj.kubsToastAlert(), 20, 1);
+		String reviewerID = kubsCommonObj.kubsToastAlert().getText().substring(85).replace(".", "");
+		excelDataForBudgetConfig.updateTestData(budgetConfigTestData.get("DataSet ID"), "Reviewer ID", reviewerID);
 	}
 
 	@And("^enter the budget code for current financial year$")
@@ -295,17 +549,18 @@ public class BUDGET_UAT_BudgetDefinition extends BaseClass {
 	public void click_notification_button() throws Throwable {
 		// After save our budget record we have to click on notification to submit our
 		// record for approvals
-		for (int i = 0; i <30; i++) {
+		waitHelper.waitForElementToVisibleWithFluentWait(driver, budgetCreationObj.budgetCreationNotificationIcon(), 60,
+				100);
+		for (int i = 0; i <= 50; i++) {
 			try {
 				budgetCreationObj.budgetCreationNotificationIcon().click();
 				break;
 			} catch (Exception e) {
-				if (i==29) {
+				if (i == 50) {
 					Assert.fail(e.getMessage());
 				}
 			}
 		}
-		
 //		Thread.sleep(1000);
 
 	}
@@ -319,7 +574,7 @@ public class BUDGET_UAT_BudgetDefinition extends BaseClass {
 		 * checker stage
 		 */
 		waitHelper.waitForElementToVisibleWithFluentWait(driver, budgetCreationObj.budgetCreationFirstReferenceId(), 60,
-				500);
+				1);
 		String referenceID = budgetCreationObj.budgetCreationFirstReferenceId().getText();
 		/*
 		 * addReferanceData(referenceID) This method is a predefined method to store the
@@ -335,20 +590,15 @@ public class BUDGET_UAT_BudgetDefinition extends BaseClass {
 		waitHelper.waitForElementVisible(budgetCreationObj.notificationSearchIcon(), 3000, 300);
 //		javascriptHelper.JavaScriptHelper(driver);
 //		javascriptHelper.JSEClick( budgetCreationObj.notificationSearchIcon());
-		for(int i=0;i<=15;i++)
-		{
-		try
-		{
-		budgetCreationObj.notificationSearchIcon().click();
-		break;
-		}
-		catch(Exception e)
-		{
-			if(i==15)
-			{
-				Assert.fail(e.getMessage());
+		for (int i = 0; i <= 15; i++) {
+			try {
+				budgetCreationObj.notificationSearchIcon().click();
+				break;
+			} catch (Exception e) {
+				if (i == 15) {
+					Assert.fail(e.getMessage());
+				}
 			}
-		}
 		}
 	}
 
@@ -356,7 +606,7 @@ public class BUDGET_UAT_BudgetDefinition extends BaseClass {
 	public void serach_the_budget_defenition_sub_module_name() throws Throwable {
 		waitHelper.waitForElementToVisibleWithFluentWait(driver, budgetCreationObj.eventCode(), 30, 500);
 		budgetCreationObj.eventCode().click();
-		budgetCreationObj.eventCode().sendKeys(budgetDefinitionUATTestData.budgetDefenitionEventCode);
+		budgetCreationObj.eventCode().sendKeys(budgetRequestAndAllocation.get("BudgetTransferEventCode"));
 	}
 
 	@And("^serach the budget request and allocation sub module name$")
@@ -376,19 +626,9 @@ public class BUDGET_UAT_BudgetDefinition extends BaseClass {
 	@And("^click on Submit button$")
 	public void click_on_submit_button() throws Throwable {
 		// After select the record we have to submit the record for approval
-		waitHelper.waitForElementToVisibleWithFluentWait(driver,budgetCreationObj.budgetCreation_SubmitButton(),30,2);
-		for (int i = 0; i <200; i++) {
-			try {
-				clickAndActions.moveToElement(budgetCreationObj.budgetCreation_SubmitButton());
-				budgetCreationObj.budgetCreation_SubmitButton().click();
-				break;
-			} catch (Exception e) {
-				if (i==199) {
-					Assert.fail(e.getMessage());
-				}
-			}
-		}
-		
+		Thread.sleep(1000);
+		waitHelper.waitForElement(driver, 3000, budgetCreationObj.budgetCreation_SubmitButton());
+		budgetCreationObj.budgetCreation_SubmitButton().click();
 
 	}
 
@@ -397,12 +637,24 @@ public class BUDGET_UAT_BudgetDefinition extends BaseClass {
 		javascriptHelper.JavaScriptHelper(driver);
 		waitHelper.waitForElementToVisibleWithFluentWait(driver, budgetCreationObj.budgetCreation_AlertRemarks(), 60,
 				500);
-		javascriptHelper.JSEClick(budgetCreationObj.budgetCreation_AlertRemarks());
+		for (int i = 0; i <= 50; i++) {
+			try {
+				clickAndActionsHelper.moveToElement(budgetCreationObj.budgetCreation_AlertRemarks());
+
+				clickAndActionsHelper.clickUsingActionClass(budgetCreationObj.budgetCreation_AlertRemarks(),
+						budgetCreationObj.budgetCreation_AlertRemarks());
+				break;
+			} catch (Exception e) {
+				if (i == 50) {
+					Assert.fail(e.getMessage());
+				}
+			}
+		}
 		/*
 		 * After click on submit button one alert will open we have to enter the alert
 		 * remark And click on the submit button
 		 */
-		budgetCreationObj.budgetCreation_AlertRemarks().sendKeys(budgetDefinitionUATTestData.remark);
+		budgetCreationObj.budgetCreation_AlertRemarks().sendKeys(budgetRequestAndAllocation.get("Remarks"));
 
 	}
 
@@ -411,10 +663,19 @@ public class BUDGET_UAT_BudgetDefinition extends BaseClass {
 		try {
 			budgetCreationObj.budgetCreation_AlertsubmitButton().click();
 		} catch (ElementClickInterceptedException clickException) {
-//			Thread.sleep(1000);
-			budgetCreationObj.budgetCreation_AlertRemarks().click();
-			budgetCreationObj.budgetCreation_AlertRemarks().sendKeys(budgetDefinitionUATTestData.remark);
-			budgetCreationObj.budgetCreation_AlertsubmitButton().click();
+			for (int i = 0; i <= 50; i++) {
+				try {
+					clickAndActionsHelper.moveToElement(budgetCreationObj.budgetCreation_AlertRemarks());
+					clickAndActionsHelper.JSEClick(budgetCreationObj.budgetCreation_AlertRemarks());
+					budgetCreationObj.budgetCreation_AlertRemarks().sendKeys(budgetDefinitionUATTestData.remark);
+					budgetCreationObj.budgetCreation_AlertsubmitButton().click();
+					break;
+				} catch (Exception e) {
+					if (i == 50) {
+						Assert.fail(e.getMessage());
+					}
+				}
+			}
 		}
 	}
 
@@ -436,6 +697,7 @@ public class BUDGET_UAT_BudgetDefinition extends BaseClass {
 		StringBuffer finalReviewerID = sb.deleteCharAt(trimmerReviewerID.length() - 1);
 		String revID = finalReviewerID.toString();
 		System.out.println("Reviewer ID is" + revID);
+		excelDataForBudgetRequestAndAllocation.updateTestData("Reviewer ID",budgetRequestAndAllocation.get("DataSet ID"), revID);
 		jsonReaderWriter.addData(revID);
 		budgetCreationObj.budgetCreationAlertClose().click();
 
@@ -450,7 +712,7 @@ public class BUDGET_UAT_BudgetDefinition extends BaseClass {
 //		Thread.sleep(1000);		
 		waitHelper.waitForElementToVisibleWithFluentWait(driver, budgetCreationObj.budgetCreationLogoutButton(), 90,
 				500);
-		clickAndActions.moveToElement(budgetCreationObj.budgetCreationLogoutButton());
+		clickAndActionsHelper.moveToElement(budgetCreationObj.budgetCreationLogoutButton());
 		budgetCreationObj.budgetCreationLogoutButton().click();
 	}
 
@@ -470,184 +732,6 @@ public class BUDGET_UAT_BudgetDefinition extends BaseClass {
 
 	}
 
-	@Then("^click on notification button$")
-	public void click_on_notification_button() throws Throwable {
-		/*
-		 * After successful login our first step is to click on the notification icon
-		 */
-		//waitHelper.waitForElementToVisibleWithFluentWait(driver, kubsReviewerObj.reviewerNotidicationIcon(), 60, 500);
-		for (int i = 0; i <30; i++) {
-			try {
-				kubsReviewerObj.reviewerNotidicationIcon().click();
-				break;
-			} catch (Exception e) {
-				
-			}
-		}
-		
-
-	}
-
-	@And("^select our record in notification records using reference ID$")
-	public void select_our_record_in_notification_records_using_reference_id() throws Throwable {
-		/*
-		 * After click on the notification icon lot of records will shown there, We have
-		 * to select our record by the help of reference ID which is captured in maker
-		 * stage
-		 *
-		 * before_xpath and after_xpath string variable are used to customize the xpath
-		 * as per our reference ID
-		 */
-		// Thread.sleep(1000);
-		javascriptHelper.JavaScriptHelper(driver);
-		String before_xpath = "//span[contains(text(),'";
-		String after_xpath = "')]/ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell//ion-button";
-		for (int i = 0; i <= 300; i++) {
-			try {
-				waitHelper.waitForElementToVisibleWithFluentWait(driver, kubsReviewerObj.reviewerNotidicationIcon(), 60, 500);
-				kubsReviewerObj.reviewerNotidicationIcon().click();
-				waitHelper.waitForElement(driver, 3000, driver
-						.findElement(By.xpath(before_xpath + jsonReaderWriter.readReferancedata() + after_xpath)));
-				javascriptHelper.JSEClick(driver
-						.findElement(By.xpath(before_xpath + jsonReaderWriter.readReferancedata() + after_xpath)));
-				// driver.findElement(By.xpath(before_xpath +
-				// jsonReaderWriter.readReferancedata() + after_xpath)).click();
-				break;
-			} catch (Exception e) {
-				if (i == 300) {
-					Assert.fail(e.getMessage());
-				}
-			}
-		}
-	}
-
-	@Then("^verify budget data are matched whic is submited by maker$")
-	public void verify_budget_data_are_matched_whic_is_submited_by_maker() throws Throwable {
-
-		/*
-		 * After select the record we have to verify the details which is matched with
-		 * maker submitted data we can use java script locator for locating the budget
-		 * code and etc
-		 */
-//		Thread.sleep(2000);
-
-		while (true) {
-			try {
-				javascriptHelper.JavaScriptHelper(driver);
-				waitHelper.setImplicitWait(5000);
-
-				String budgetCode = (String) javascriptHelper.executeScript(
-						"return document.getElementsByClassName('native-input sc-ion-input-md')[1].value");
-				String budgetType = kubsReviewerObj.budgetType().getText();
-				String warningPercentage = (String) javascriptHelper.executeScript(
-						"return document.getElementsByClassName('native-input sc-ion-input-md')[2].value");
-				String budgetname = (String) javascriptHelper.executeScript(
-						"return document.getElementsByClassName('native-input sc-ion-input-md')[3].value");
-				String budgetRemark = (String) javascriptHelper.executeScript(
-						"return document.getElementsByClassName('native-input sc-ion-input-md')[4].value");
-
-				if (budgetType.equalsIgnoreCase("YEARLY")) {
-					Assert.assertEquals(budgetname, budgetDefinitionUATTestData.uatYearlyBudgetType);
-					Assert.assertEquals(budgetCode, budgetDefinitionUATTestData.uatYearlyBudgetCode);
-				} else if (budgetType.equalsIgnoreCase("HALFYEARLY")) {
-					Assert.assertEquals(budgetname, budgetDefinitionUATTestData.uatHalfYearlyBudgetType);
-					Assert.assertEquals(budgetCode, budgetDefinitionUATTestData.uatHalfYearlyBudgetCode);
-				} else if (budgetType.equalsIgnoreCase("MONTHLY")) {
-					Assert.assertEquals(budgetname, budgetDefinitionUATTestData.uatMonthlyBudgetType);
-					Assert.assertEquals(budgetCode, budgetDefinitionUATTestData.uatMonthlyBudgetCode);
-
-				} else if (budgetType.equalsIgnoreCase("QUARTERLY")) {
-					Assert.assertEquals(budgetname, budgetDefinitionUATTestData.uatQuarterlyBudgetType);
-					Assert.assertEquals(budgetCode, budgetDefinitionUATTestData.uatQuarterlyBudgetCode);
-				}
-
-				Assert.assertEquals(warningPercentage, budgetDefinitionUATTestData.warningPecentage);
-				Assert.assertEquals(budgetRemark, budgetDefinitionUATTestData.remark);
-				break;
-			} catch (StaleElementReferenceException staleElement) {
-				System.out.println(staleElement.getMessage());
-			} catch (JavascriptException e) {
-
-			}
-		}
-	}
-
-	@Then("^Approve the record from reviewer$")
-	public void approve_the_budget_record_from_reviewer() throws Throwable {
-		/*
-		 * after verification we have to submit the record
-		 * 
-		 * approveButton() function contains the xpath for the approve button
-		 */
-
-		waitHelper.waitForElementToVisibleWithFluentWait(driver, kubsReviewerObj.reviewerApproveButton(), 60, 500);
-		kubsReviewerObj.reviewerApproveButton().click();
-
-	}
-
-	@And("^enter the remark in alert$")
-	public void enter_the_remark_in_alert() throws Throwable {
-
-		waitHelper.waitForElement(driver, 3000, kubsReviewerObj.reviewerAlertRemarks());
-		kubsReviewerObj.reviewerAlertRemarks().click();
-		kubsReviewerObj.reviewerAlertRemarks().sendKeys(budgetDefinitionUATTestData.approvalCommentsFromReviewer);
-	}
-
-	@Then("^click on submit in alert$")
-	public void click_on_submit_in_alert() throws Throwable {
-		while (true) {
-
-			try {
-				waitHelper.waitForElement(driver, 3000, kubsReviewerObj.reviewerAlertSubmitButton());
-				kubsReviewerObj.reviewerAlertSubmitButton().click();
-				break;
-			} catch (ElementClickInterceptedException e) {
-				kubsReviewerObj.reviewerAlertRemarks().click();
-				kubsReviewerObj.reviewerAlertRemarks()
-						.sendKeys(budgetDefinitionUATTestData.approvalCommentsFromReviewer);
-			}
-		}
-	}
-
-	@Then("^verify the approval status of the record$")
-	public void verify_the_approval_status_of_the_record() throws Throwable {
-		/*
-		 * After clicked on the approve button we have to verify the record is approved
-		 * or not By the help of toast alert.
-		 * 
-		 * reviewerApprovalStatus() this function have the xpath for that particular
-		 * alert (That alert is present only 3 mins so we have to locate that and get
-		 * the text for that alert)
-		 * 
-		 * We can use assert function for verification
-		 */
-		waitHelper.waitForElement(driver, 3000, kubsReviewerObj.reviewerApprovalStatus());
-		String approval_status = kubsReviewerObj.reviewerApprovalStatus().getText();
-		Assert.assertEquals(approval_status, "Record is available in CHECKER's Open Pool with status PENDING");
-
-	}
-
-	@And("^logout from reviewer$")
-	public void logout_from_reviewer() throws Throwable {
-		/*
-		 * Then we have to logout from reviewer and start with checker approval
-		 */
-		while (true) {
-			try {
-				javascriptHelper.JavaScriptHelper(driver);
-				kubsReviewerObj.reviewerAlertClose().click();
-				kubsReviewerObj.reviewerUserName().click();
-				waitHelper.waitForElement(driver, 3000, kubsReviewerObj.reviewerLogoutButton());
-				javascriptHelper.JSEClick(kubsReviewerObj.reviewerLogoutButton());
-				break;
-			} catch (StaleElementReferenceException e) {
-
-			}
-		}
-	}
-
-	/* *** checker steps ***** */
-
 	@Then("^login as a checker$")
 	public void login_as_a_checker() throws Throwable {
 		/*
@@ -655,27 +739,6 @@ public class BUDGET_UAT_BudgetDefinition extends BaseClass {
 		 */
 		Thread.sleep(3000);
 		kubsLogin.loginToAzentioAppAsChecker();
-
-	}
-
-	@And("^click on security management menu in checker$")
-	public void click_on_security_management_menu_in_checker() throws Throwable {
-		while (true) {
-
-			try {
-				waitHelper.waitForElementVisible(kubsCheckerObj.checkerSecurityManagement(), 1000, 100);
-				kubsCheckerObj.checkerSecurityManagement().click();
-				break;
-			} catch (StaleElementReferenceException staleElement) {
-				System.out.println(staleElement.getMessage());
-			}
-		}
-	}
-
-	@Then("^click on action button under security management menu$")
-	public void click_on_action_button_under_security_management_menu() throws Throwable {
-
-		javascriptHelper.JSEClick(kubsCheckerObj.checkerActionIcon());
 
 	}
 
@@ -725,205 +788,6 @@ public class BUDGET_UAT_BudgetDefinition extends BaseClass {
 				.findElement(By.xpath("//datatable-row-wrapper[1]//datatable-body-cell[2]//span[contains(text(),' "
 						+ budgetDefinitionUATTestData.uatHalfYearlyBudgetCode + " ')]"))
 				.isDisplayed());
-	}
-
-	@And("^select our record and clime using reference ID$")
-	public void select_our_budget_record_and_clime_using_reference_id() throws Throwable {
-		/*
-		 * after click on the action button we have to clime the particular our record
-		 * by the help of reference ID
-		 * 
-		 * try catch block is used for avoid stalelementReference Exception
-		 */
-		String before_xpath = "//span[contains(text(),'";
-		String after_xpath_claim = "')]/parent::div/parent::datatable-body-cell/preceding-sibling::datatable-body-cell[2]/div/ion-buttons/ion-button";
-		javascriptHelper.JSEClick(kubsCheckerObj.checkerActionIcon());
-		for (int i = 0; i <= 200; i++) {
-			try {
-//			waitHelper.waitForElementToVisibleWithFluentWait(driver,
-//				driver.findElement(By.xpath(before_xpath + jsonReaderWriter.readReferancedata() + after_xpath_claim)),
-//				80, 500);
-				WebElement climeButton = driver
-						.findElement(By.xpath(before_xpath + jsonReaderWriter.readReferancedata() + after_xpath_claim));
-
-				boolean bool = climeButton.isDisplayed();
-				clickAndActions.clickOnElement(climeButton);
-
-				// after clicking on the clime button , clime successful message will came we
-
-				Assert.assertTrue(bool);
-				break;
-			} catch (Exception e) {
-				if (i == 200) {
-					Assert.fail(e.getMessage());
-				}
-			}
-		}
-	}
-
-	@Then("^click on Notification button$")
-	public void cliick_on_notification_button() throws Throwable {
-		javascriptHelper.JavaScriptHelper(driver);
-		waitHelper.waitForElementToVisibleWithFluentWait(driver, kubsCheckerObj.checkerAlertClose(), 80, 500);
-for(int i=0;i<=15;i++)
-{
-		try
-{
-		kubsCheckerObj.checkerAlertClose().click();
-break;
-}
-catch(Exception e)
-{
-if(i==15)
-{
-	Assert.fail(e.getMessage());
-}
-}
-}
-		waitHelper.waitForElementToVisibleWithFluentWait(driver, kubsCheckerObj.checkerNotificationIcon(), 60, 500);
-		javascriptHelper.JSEClick(kubsCheckerObj.checkerNotificationIcon());
-		// clickAndActions.clickOnElement(kubsCheckerObj.checkerNotificationIcon());
-
-	}
-
-	@Then("^select our record in notification records by the help of reference ID$")
-	public void select_our_record_in_notification_records_by_the_help_of_reference_id() throws Throwable {
-		/*
-		 * After clime our record the record will go to notification we have to capture
-		 * the our record by the help of reference ID
-		 */
-
-		String before_xpath = "//span[contains(text(),'";
-		String after_xpath = "')]/ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell/div/ion-buttons/ion-button";
-		for (int i = 0; i <= 200; i++) {
-			try {
-
-				driver.findElement(By.xpath(before_xpath+jsonReaderWriter.readReferancedata()+after_xpath)).click();
-				break;
-			} catch (Exception e) {
-				if (i == 200) {
-					Assert.fail(e.getMessage());
-				}
-			}
-		}
-	}
-
-	@And("^validate the record which is submited by maker$")
-	public void validate_the_budget_record_which_is_submited_by_maker() throws Throwable {
-		/*
-		 * After select our record we have to verify the budget data by the help of
-		 * assert statement
-		 */
-		for (int i = 0; i <= 30; i++) {
-			try {
-				waitHelper.waitForElementToVisibleWithFluentWait(driver, kubsCheckerObj.budgetType(), 60, 500);
-				String budgetType = kubsCheckerObj.budgetType().getText();
-				String budgetCode = (String) javascriptHelper.executeScript(
-						"return document.getElementsByClassName('native-input sc-ion-input-md')[1].value");
-				String warningPercentage = (String) javascriptHelper.executeScript(
-						"return document.getElementsByClassName('native-input sc-ion-input-md')[2].value");
-				String budgetname = (String) javascriptHelper.executeScript(
-						"return document.getElementsByClassName('native-input sc-ion-input-md')[3].value");
-				String budgetRemark = (String) javascriptHelper.executeScript(
-						"return document.getElementsByClassName('native-input sc-ion-input-md')[4].value");
-
-				if (budgetType.equalsIgnoreCase("YEARLY")) {
-					Assert.assertEquals(budgetname, budgetDefinitionUATTestData.uatYearlyBudgetType);
-					Assert.assertEquals(budgetCode, budgetDefinitionUATTestData.uatYearlyBudgetCode);
-				} else if (budgetType.equalsIgnoreCase("HALFYEARLY")) {
-					Assert.assertEquals(budgetname, budgetDefinitionUATTestData.uatHalfYearlyBudgetType);
-					Assert.assertEquals(budgetCode, budgetDefinitionUATTestData.uatHalfYearlyBudgetCode);
-
-				} else if (budgetType.equalsIgnoreCase("MONTHLY")) {
-					Assert.assertEquals(budgetname, budgetDefinitionUATTestData.uatMonthlyBudgetType);
-					Assert.assertEquals(budgetCode, budgetDefinitionUATTestData.uatMonthlyBudgetCode);
-
-				} else if (budgetType.equalsIgnoreCase("QUARTERLY")) {
-					Assert.assertEquals(budgetname, budgetDefinitionUATTestData.uatQuarterlyBudgetType);
-					Assert.assertEquals(budgetCode, budgetDefinitionUATTestData.uatQuarterlyBudgetCode);
-				}
-
-				Assert.assertEquals(warningPercentage, budgetDefinitionUATTestData.warningPecentage);
-
-				Assert.assertEquals(budgetRemark, budgetDefinitionUATTestData.remark);
-				break;
-			} catch (Exception e) {
-				if (i == 30) {
-					System.out.println(e.getMessage());
-
-				}
-			}
-		}
-	}
-
-	@And("^click on approve button in checker stage$")
-	public void click_on_approve_button_in_checker_stage() throws Throwable {
-		//waitHelper.waitForElementToVisibleWithFluentWait(driver, kubsCheckerObj.checkerApproveButton(), 60, 500);
-		for (int i = 0; i <200; i++) {
-			try {
-				kubsCheckerObj.checkerApproveButton().click();
-				break;
-			} catch (Exception e) {
-				if (i==199) {
-					Assert.fail(e.getMessage());
-				}
-				
-			}
-		}	
-
-	}
-
-	@Then("^give alert remark$")
-	public void give_alert_remark() throws Throwable {
-		javascriptHelper.JavaScriptHelper(driver);
-		waitHelper.waitForElementToVisibleWithFluentWait(driver, kubsCheckerObj.checkerRemarks(), 60, 500);
-		clickAndActions.clickOnElement(kubsCheckerObj.checkerRemarks());
-		kubsCheckerObj.checkerRemarks().sendKeys(budgetDefinitionUATTestData.approvalCommentsFromChecker);
-	}
-
-	@Then("^click on submit button on alert$")
-	public void click_on_submit_button_on_alert() throws Throwable {
-
-		try {
-			waitHelper.waitForElementToVisibleWithFluentWait(driver, kubsCheckerObj.checkersubmitButton(), 60, 500);
-			kubsCheckerObj.checkersubmitButton().click();
-		} catch (Exception e) {
-			waitHelper.waitForElementToVisibleWithFluentWait(driver, kubsCheckerObj.checkerRemarks(), 60, 500);
-			clickAndActions.clickOnElement(kubsCheckerObj.checkerRemarks());
-			kubsCheckerObj.checkerRemarks().sendKeys(budgetDefinitionUATTestData.approvalCommentsFromChecker);
-			waitHelper.waitForElementToVisibleWithFluentWait(driver, kubsCheckerObj.checkersubmitButton(), 60, 500);
-			kubsCheckerObj.checkersubmitButton().click();
-		}
-
-	}
-
-	@And("^verify the record got approved from checker$")
-	public void verify_the_record_got_approved_from_checker() throws Throwable {
-		/*
-		 * After clicked on the approve button we have to verify the record is approved
-		 * or not By the help of toast alert.
-		 * 
-		 * checkerApprovalStatus() this function have the xpath for that particular
-		 * alert (That alert is present only 3 mins so we have to locate that and get
-		 * the text for that alert)
-		 * 
-		 * We can use assert function for verification
-		 * 
-		 */
-		waitHelper.waitForElementToVisibleWithFluentWait(driver, kubsCheckerObj.checkerApprovalStatus(), 60, 500);
-		String approvalStatusForChecker = kubsCheckerObj.checkerApprovalStatus().getText();
-		Assert.assertEquals(approvalStatusForChecker, "Record approved successfully");
-	}
-
-	@Then("^logout from checker$")
-	public void logout_from_checker() throws Throwable {
-		waitHelper.waitForElementToVisibleWithFluentWait(driver, kubsCheckerObj.checkerAlertClose(), 60, 500);
-		kubsCheckerObj.checkerAlertClose().click();
-		waitHelper.waitForElementToVisibleWithFluentWait(driver, kubsCheckerObj.checkerUserName(), 60, 500);
-		kubsCheckerObj.checkerUserName().click();
-		waitHelper.waitForElementToVisibleWithFluentWait(driver, kubsCheckerObj.checkerLogoutButton(), 60, 500);
-		clickAndActions.moveToElement(kubsCheckerObj.checkerLogoutButton());
-		kubsCheckerObj.checkerLogoutButton().click();
 	}
 
 	@Then("^get the budget code budget type and transaction date$")
