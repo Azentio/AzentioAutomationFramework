@@ -160,9 +160,11 @@ public class BUDGET_UAT_BudgetDefinition extends BaseClass {
     	budgetConfigTestData = excelDataForBudgetConfig.getTestdata("KUBS_BP_UAT_002_004_04_D1");
     }
     
-
+    @And("^User update test data id to verify budget allocated for yearly1 budget code$")
+    public void user_update_test_data_id_to_verify_budget_allocated_for_yearly1_budget_code() throws Throwable {
+    	budgetConfigTestData = excelDataForBudgetConfig.getTestdata("KUBS_BP_UAT_002_006_04_D1");
+    }
     
-   
 	@And("^get the test data from excel database for creating monthly budget code$")
 	public void get_the_test_data_from_excel_database_for_creating_monthly_budget_code() throws Throwable {
 		budgetConfigTestData = excelDataForBudgetConfig.getTestdata("KUBS_BP_UAT_001_002_D1");
