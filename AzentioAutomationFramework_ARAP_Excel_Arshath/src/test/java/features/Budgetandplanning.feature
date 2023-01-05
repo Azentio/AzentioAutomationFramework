@@ -31,6 +31,7 @@ And click on approve button in reviewer stage
 And enter the alert remark in reviewer stage
 And click on submit in reviewer alert pop up
 Then verify record got approved in reviewer stage
+
 @KUBS_UAT_KUBS_BP_UAT_005_001_2
 Scenario: login to checker
 And user update the Excel sheet testdata for Budget and planning Allocation
@@ -167,3 +168,109 @@ And click on approve button in checker
 And give approve alert remark in checker stage
 And click on submit button in checker stage
 Then verify record got approved in checker stage
+
+@KUBS_BP_UAT_005_005_1
+Scenario: Check System should able to Reject the supplimentary requested budget
+Given navigate to given url and login with maker credentials
+And maker should navigate to the budget module UAT
+And maker click on budget field UAT
+When maker click on budget supplementary eye icon UAT
+And click on add button on budget supplementary view page UAT
+And user update the Excel sheet testdata for Budget and planning Allocation5
+Then fill the input fields UAT
+Then fill apportion amount and save the record UAT
+And click notification button 
+Then click on the search button
+And serach the budget supplimentory sub module name
+Then choose first record in the notification record
+And click on Submit button 
+Then enter remark in confirmation alert
+Then click on submit button in alert
+And capture the reviewer ID in pop up which is open when we submit our record in maker stage5
+@KUBS_BP_UAT_005_005_2
+Scenario: user login to reviewer
+And user update the Excel sheet testdata for Budget and planning Allocation5
+And User should go to the kubs url and login as a reviewer users1
+And click on notification in reviewer stage
+And select the record in notification
+And click on approve button in reviewer stage
+And enter the alert remark in reviewer stage
+And click on submit in reviewer alert pop up
+Then verify record got approved in reviewer stage
+
+@KUBS_BP_UAT_005_005_3
+Scenario: user login to checker
+And user update the Excel sheet testdata for Budget and planning Allocation5
+Then log in to the Checker Account1
+And click on security management tool
+And click on temp view near by open pool
+And user update the Excel sheet testdata for Budget and planning Allocation5
+And clime the record by the help of Record reference ID
+Then verify record got climed in checker
+And click on notification in checker stage
+And select the record in notification in checker stage
+And click on approve button in checker
+And give approve alert remark in checker stage
+And click on submit button in checker stage
+Then verify record got approved in checker stage
+
+@KUBS_BP_UAT_005_005_4
+Scenario: user login to maker
+Given navigate to given url and login with maker credentials
+And user update the Excel sheet testdata for Budget and planning Allocation5
+And maker should navigate to the budget module UAT
+And maker click on budget field UAT
+When maker click on budget supplementary eye icon UAT
+ 
+@KUBS_BP_UAT_005_006_1
+Scenario: Check if supplimentary budget rejected from HO, the requested amount can not be used
+Given navigate to given url and login with maker credentials
+And maker should navigate to the budget module UAT
+And maker click on budget field UAT
+When maker click on budget supplementary eye icon UAT
+And click on add button on budget supplementary view page UAT
+And user update the Excel sheet testdata for Budget and planning Allocation6
+Then fill the input fields UAT
+Then fill apportion amount and save the record UAT
+And click notification button 
+Then click on the search button
+And serach the budget supplimentory sub module name
+Then choose first record in the notification record
+And click on Submit button 
+Then enter remark in confirmation alert
+Then click on submit button in alert
+And capture the reviewer ID in pop up which is open when we submit our record in maker stage
+
+@KUBS_BP_UAT_005_006_2
+Scenario: user login to reviewer
+And user update the Excel sheet testdata for Budget and planning Allocation6
+And User should go to the kubs url and login as a reviewer users1
+And click on notification in reviewer stage
+And select the record in notification
+And click on approve button in reviewer stage
+And enter the alert remark in reviewer stage
+And click on submit in reviewer alert pop up
+Then verify record got approved in reviewer stage
+
+@KUBS_BP_UAT_005_006_3
+Scenario: user login to checker
+And user update the Excel sheet testdata for Budget and planning Allocation6
+Then log in to the Checker Account1
+And click on security management tool
+And click on temp view near by open pool
+And clime the record by the help of Record reference ID
+Then verify record got climed in checker
+And click on notification in checker stage
+And select the record in notification in checker stage
+And click on approve button in checker
+And give approve alert remark in checker stage
+And click on submit button in checker stage
+Then verify record got approved in checker stage
+
+@KUBS_BP_UAT_005_006_4
+Scenario: user login to maker
+And user update the Excel sheet testdata for Budget and planning Allocation6
+And maker should navigate to the budget module UAT
+And maker click on budget field UAT
+When maker click on budget supplementary eye icon UAT
+And navigate to search icon and  fill the required field1

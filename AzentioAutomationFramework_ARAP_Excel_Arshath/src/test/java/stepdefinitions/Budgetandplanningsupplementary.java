@@ -1135,6 +1135,67 @@ public class Budgetandplanningsupplementary {
 		budgetCreationObj.budgetCreationAlertClose().click();
 
 	}
+	@Then("^choose first record in the notification record$")
+	public void choose_first_record_in_the_notification_record() throws Throwable {
+		waithelper.waitForElementToVisibleWithFluentWait(driver, budgetCreationObj.budgetCreationFirstReferenceId(), 60,
+				500);
+		String referenceID = budgetCreationObj.budgetCreationFirstReferenceId().getText();
+		// jsonReaderWriter.addReferanceData(referenceID);
+		Exceldata.updateTestData("KUBS_AR/AP_UAT_003_004_TC_04_D1", "ReferenceID", referenceID);
+		budgetCreationObj.budgetCreationFirstRecord().click();
+
+	}
+
+	@And("^capture the reviewer ID in pop up which is open when we submit our record in maker stage5$")
+	public void capture_the_reviewer_id_in_pop_up_which_is_open_when_we_submit_our_record_in_maker_stage5()
+			throws Throwable {
+		waithelper.waitForElement(driver, 2000, budgetCreationObj.budgetCreation_ReviewerId());
+		String reviwerId = budgetCreationObj.budgetCreation_ReviewerId().getText();
+		System.out.println(reviwerId);
+		String trimmerReviewerID = reviwerId.substring(85);
+		StringBuffer sb = new StringBuffer(trimmerReviewerID);
+		StringBuffer finalReviewerID = sb.deleteCharAt(trimmerReviewerID.length() - 1);
+		String revID = finalReviewerID.toString();
+		System.out.println("Reviewer ID is" + revID);
+		// jsonReaderWriter.addData(revID);
+		Exceldata.updateTestData("KUBS_BP_UAT_005_005_D1", "ReviewerID", revID);
+		budgetCreationObj.budgetCreationAlertClose().click();
+
+	}
+	@And("^navigate to search icon and  fill the required field1$")
+    public void navigate_to_search_icon_and_fill_the_required_field1() throws InterruptedException  {
+	    //search icon
+		 waithelper.waitForElement(driver, 3000, bUDGET_SupplementaryBudgetObj.budget_SupplementaryBudget_SearchIcon());
+		 bUDGET_SupplementaryBudgetObj.budget_SupplementaryBudget_SearchIcon().click();
+
+		 //Budget code	
+		 //bUDGET_SupplementaryBudgetTestDataType = jsonReader.getSupplementaryBudgetByName("Maker");
+		 waithelper.waitForElement(driver, 5000, bUDGET_SupplementaryBudgetObj.budget_SupplementaryBudget_SearchBudgetCode());
+		 bUDGET_SupplementaryBudgetObj.budget_SupplementaryBudget_SearchBudgetCode().click();
+		 bUDGET_SupplementaryBudgetObj.budget_SupplementaryBudget_SearchBudgetCode().sendKeys(testData.get("BudgetCode"));
+		 bUDGET_SupplementaryBudgetObj.budget_SupplementaryBudget_SearchBudgetCode().sendKeys(Keys.ENTER);
+		 //budget name
+		 waithelper.waitForElement(driver, 3000, bUDGET_SupplementaryBudgetObj.budget_SupplementaryBudget_SearchBudgetName());
+		 bUDGET_SupplementaryBudgetObj.budget_SupplementaryBudget_SearchBudgetName().click();
+		 bUDGET_SupplementaryBudgetObj.budget_SupplementaryBudget_SearchBudgetName().sendKeys(testData.get("BudgetNameA"));
+		 bUDGET_SupplementaryBudgetObj.budget_SupplementaryBudget_SearchBudgetName().sendKeys(Keys.ENTER);
+		 //budget budget year
+		 waithelper.waitForElement(driver, 3000, bUDGET_SupplementaryBudgetObj.budget_SupplementaryBudget_SearchBudgetYear());
+		 bUDGET_SupplementaryBudgetObj.budget_SupplementaryBudget_SearchBudgetYear().click();
+		 bUDGET_SupplementaryBudgetObj.budget_SupplementaryBudget_SearchBudgetYear().sendKeys(testData.get("BudgetYear"));
+		 bUDGET_SupplementaryBudgetObj.budget_SupplementaryBudget_SearchBudgetYear().sendKeys(Keys.ENTER);
+		 //budget Type
+		 waithelper.waitForElement(driver, 3000, bUDGET_SupplementaryBudgetObj.budget_SupplementaryBudget_SearchBudgetType());
+	 	bUDGET_SupplementaryBudgetObj.budget_SupplementaryBudget_SearchBudgetType().click();
+		bUDGET_SupplementaryBudgetObj.budget_SupplementaryBudget_SearchBudgetType().sendKeys(testData.get("BudgetTypeA"));
+		bUDGET_SupplementaryBudgetObj.budget_SupplementaryBudget_SearchBudgetType().sendKeys(Keys.ENTER);
+		 //total amount
+		 waithelper.waitForElement(driver, 3000, bUDGET_SupplementaryBudgetObj.budget_SupplementaryBudget_SearchTotalAmount());
+		 bUDGET_SupplementaryBudgetObj.budget_SupplementaryBudget_SearchTotalAmount().click();
+		 bUDGET_SupplementaryBudgetObj.budget_SupplementaryBudget_SearchTotalAmount().sendKeys(testData.get("TotalAmountA"));
+		 bUDGET_SupplementaryBudgetObj.budget_SupplementaryBudget_SearchTotalAmount().sendKeys(Keys.ENTER);
+	Thread.sleep(2000);
+}
 
 	@And("^user update the Excel sheet testdata for Budget and planning Allocation$")
 	public void user_update_the_excel_sheet_testdata_for_budget_and_planning_allocation() throws Throwable {
@@ -1158,6 +1219,14 @@ public class Budgetandplanningsupplementary {
 	@And("^user update the Excel sheet testdata for Budget and planning Allocation4$")
     public void user_update_the_excel_sheet_testdata_for_budget_and_planning_allocation4() throws Throwable {
 		testData = Exceldata1.getTestdata("KUBS_BP_UAT_005_004_D1");
+    }
+	@And("^user update the Excel sheet testdata for Budget and planning Allocation5$")
+    public void user_update_the_excel_sheet_testdata_for_budget_and_planning_allocation5() throws Throwable {
+		testData = Exceldata1.getTestdata("KUBS_BP_UAT_005_005_D1");
+    }
+    @And("^user update the Excel sheet testdata for Budget and planning Allocation6$")
+    public void user_update_the_excel_sheet_testdata_for_budget_and_planning_allocation6() throws Throwable {
+		testData = Exceldata1.getTestdata("KUBS_BP_UAT_005_006_D1");
     }
 
 }
