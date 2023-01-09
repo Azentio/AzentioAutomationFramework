@@ -401,7 +401,7 @@ public class ACCOUNTSPAYBLE_PaymentFileDownload extends BaseClass{
 		// jsonWriter.addReferanceData(id);
 		Exceldata.updateTestData("KUBS_AR_AP_UAT_008_002_TC_01_D1", "ReferenceID", id);
 		System.out.println("Reference ID:" + id);
-		for (int i = 1; i <= 35; i++) {
+		/*for (int i = 1; i <= 35; i++) {
 			try {
 				waitHelper.waitForElement(driver, 3000,
 						driver.findElement(By.xpath("//span[contains(text(),'" + testData.get("ReferenceID") + "')]")));
@@ -419,7 +419,7 @@ public class ACCOUNTSPAYBLE_PaymentFileDownload extends BaseClass{
 			}
 
 		}
-		inventoryMaintenanceObj.inventoryMaintenance_InventoryItem_ReferenceId().click();
+		inventoryMaintenanceObj.inventoryMaintenance_InventoryItem_ReferenceId().click();*/
 
 		// pencil
 		String before_xpath = "//span[contains(text(),'";

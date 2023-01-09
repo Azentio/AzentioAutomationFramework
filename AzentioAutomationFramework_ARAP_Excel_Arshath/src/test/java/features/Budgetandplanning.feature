@@ -17,7 +17,7 @@ Then click on the search button
 And serach the budget defenition sub module name
 Then choose first record in the notification records1
 And click on Submit buttons 
-Then enter remark in confirmation alert
+Then enter remark in confirmation alertss
 Then click on submit button in alert
 And capture the reviewer ID in pop up which is open when we submit our record in maker stage1
 
@@ -71,7 +71,7 @@ Then click on the search button
 And serach the budget request and allocation sub module name
 Then choose first record in the notification records1
 And click on Submit button 
-Then enter remark in confirmation alert
+Then enter remark in confirmation alertss
 Then click on submit button in alert
 And capture the reviewer ID in pop up which is open when we submit our record in maker stage3
 @KUBS_UAT_KUBS_BP_UAT_005_001_4
@@ -139,9 +139,9 @@ Then click on the search button
 And serach the budget supplimentory sub module name
 Then choose first record in the notification record4
 And click on Submit button 
-Then enter remark in confirmation alert
+Then enter remark in confirmation alertss
 Then click on submit button in alert
-And capture the reviewer ID in pop up which is open when we submit our record in maker stagess
+And capture the reviewer ID in pop up which is open when we submit our record in maker stagesss
 
  @SupplementaryBudget_KUBS_BP_UAT_005_004_01
 Scenario: user click on reviwer 
@@ -184,7 +184,7 @@ Then click on the search button
 And serach the budget supplimentory sub module name
 Then choose first record in the notification record
 And click on Submit button 
-Then enter remark in confirmation alert
+Then enter remark in confirmation alertss
 Then click on submit button in alert
 And capture the reviewer ID in pop up which is open when we submit our record in maker stage5
 @KUBS_BP_UAT_005_005_2
@@ -237,7 +237,7 @@ Then click on the search button
 And serach the budget supplimentory sub module name
 Then choose first record in the notification record
 And click on Submit button 
-Then enter remark in confirmation alert
+Then enter remark in confirmation alertss
 Then click on submit button in alert
 And capture the reviewer ID in pop up which is open when we submit our record in maker stage
 

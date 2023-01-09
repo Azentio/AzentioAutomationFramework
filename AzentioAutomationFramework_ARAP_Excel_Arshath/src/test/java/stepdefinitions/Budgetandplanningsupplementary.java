@@ -215,7 +215,7 @@ public class Budgetandplanningsupplementary {
 	}
 
 	@Then("^choose first record in the notification records1$")
-	public void choose_first_record_in_the_notification_recordss() throws Throwable {
+	public void choose_first_record_in_the_notification_records1() throws Throwable {
 		waithelper.waitForElementToVisibleWithFluentWait(driver, budgetCreationObj.budgetCreationFirstReferenceId(), 60,
 				2);
 		String referenceID = budgetCreationObj.budgetCreationFirstReferenceId().getText();
@@ -226,17 +226,17 @@ public class Budgetandplanningsupplementary {
 
 	}
 
-	@And("^click on Submit button$")
+	/*@And("^click on Submit button$")
 	public void click_on_submit_button() throws Throwable {
 		// After select the record we have to submit the record for approval
 		Thread.sleep(1000);
 		waithelper.waitForElement(driver, 3000, budgetCreationObj.budgetCreation_SubmitButton());
 		budgetCreationObj.budgetCreation_SubmitButton().click();
 
-	}
+	}*/
 
-	@Then("^enter remark in confirmation alert$")
-	public void enter_remark_in_confirmation_alert() throws Throwable {
+	@Then("^enter remark in confirmation alertss$")
+	public void enter_remark_in_confirmation_alertss() throws Throwable {
 		javascriptHelper.JavaScriptHelper(driver);
 		waithelper.waitForElementToVisibleWithFluentWait(driver, budgetCreationObj.budgetCreation_AlertRemarks(), 60,
 				2);
@@ -261,7 +261,7 @@ public class Budgetandplanningsupplementary {
 
 	}
 
-	@Then("^click on submit button in alert$")
+	/*@Then("^click on submit button in alert$")
 	public void click_on_submit_button_in_alert() throws Throwable {
 		try {
 			budgetCreationObj.budgetCreation_AlertsubmitButton().click();
@@ -280,7 +280,7 @@ public class Budgetandplanningsupplementary {
 				}
 			}
 		}
-	}
+	}*/
 
 	@And("^capture the reviewer ID in pop up which is open when we submit our record in maker stage1$")
 	public void capture_the_reviewer_id_in_pop_up_which_is_open_when_we_submit_our_record_in_maker_stage1()
@@ -1109,8 +1109,8 @@ public class Budgetandplanningsupplementary {
 		bUDGET_SupplementaryBudgetObj.budget_SupplementaryBudget_EyeButton().click();
 
 	}
-	@Then("^choose first record in the notification records$")
-	public void choose_first_record_in_the_notification_records() throws Throwable {
+	@Then("^choose first record in the notification records2$")
+	public void choose_first_record_in_the_notification_records2() throws Throwable {
 		waithelper.waitForElementToVisibleWithFluentWait(driver, budgetCreationObj.budgetCreationFirstReferenceId(), 60,
 				500);
 		String referenceID = budgetCreationObj.budgetCreationFirstReferenceId().getText();
@@ -1119,8 +1119,8 @@ public class Budgetandplanningsupplementary {
 		budgetCreationObj.budgetCreationFirstRecord().click();
 
 	}
-	@And("^capture the reviewer ID in pop up which is open when we submit our record in maker stagess$")
-	public void capture_the_reviewer_id_in_pop_up_which_is_open_when_we_submit_our_record_in_maker_stagess()
+	@And("^capture the reviewer ID in pop up which is open when we submit our record in maker stagesss$")
+	public void capture_the_reviewer_id_in_pop_up_which_is_open_when_we_submit_our_record_in_maker_stagesss()
 			throws Throwable {
 		waithelper.waitForElement(driver, 2000, budgetCreationObj.budgetCreation_ReviewerId());
 		String reviwerId = budgetCreationObj.budgetCreation_ReviewerId().getText();
@@ -1135,8 +1135,8 @@ public class Budgetandplanningsupplementary {
 		budgetCreationObj.budgetCreationAlertClose().click();
 
 	}
-	@Then("^choose first record in the notification record$")
-	public void choose_first_record_in_the_notification_record() throws Throwable {
+	/*@Then("^choose first record in the notification recordss5$")
+	public void choose_first_record_in_the_notification_recordss5() throws Throwable {
 		waithelper.waitForElementToVisibleWithFluentWait(driver, budgetCreationObj.budgetCreationFirstReferenceId(), 60,
 				500);
 		String referenceID = budgetCreationObj.budgetCreationFirstReferenceId().getText();
@@ -1144,7 +1144,7 @@ public class Budgetandplanningsupplementary {
 		Exceldata.updateTestData("KUBS_AR/AP_UAT_003_004_TC_04_D1", "ReferenceID", referenceID);
 		budgetCreationObj.budgetCreationFirstRecord().click();
 
-	}
+	}*/
 
 	@And("^capture the reviewer ID in pop up which is open when we submit our record in maker stage5$")
 	public void capture_the_reviewer_id_in_pop_up_which_is_open_when_we_submit_our_record_in_maker_stage5()

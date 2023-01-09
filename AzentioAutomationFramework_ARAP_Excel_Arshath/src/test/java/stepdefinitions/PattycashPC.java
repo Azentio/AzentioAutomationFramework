@@ -45,12 +45,12 @@ public class PattycashPC {
 
 	
 	
-	@Given("^User should go to the kubs url and login as a maker user$")
+	/*@Given("^User should go to the kubs url and login as a maker user$")
 	public void user_should_go_to_the_kubs_url_and_login_as_a_maker_user() throws InterruptedException  {
 		login = new KUBS_Login(driver);
 		driver.get(config.getApplicationUrl());
 		login.loginToAzentioAppAsChecker("Maker");
-	}
+	}*/
 	 
     @Then("^click on report icon$")
     public void click_on_report_icon() throws InterruptedException {

@@ -444,8 +444,8 @@ public class AR_AP_Module {
 		bUDGET_SupplementaryBudgetObj.budget_SupplementaryBudget_BudgetField().click();
 	}
 
-	@When("^maker click on budget supplementary eye icon UAT$")
-	public void maker_click_on_budget_supplymentary_eye_icon_UAT() {
+	@When("^maker click on budget supplementary eye icon UAT1$")
+	public void maker_click_on_budget_supplymentary_eye_icon_UAT1() {
 		waithelper.waitForElementToVisibleWithFluentWait(driver,
 				bUDGET_SupplementaryBudgetObj.budget_SupplementaryBudget_EyeButton(), 60, 500);
 		bUDGET_SupplementaryBudgetObj.budget_SupplementaryBudget_EyeButton().click();

@@ -177,7 +177,7 @@ Scenario: Check Budget utilization is re-instated
 Given User should go to the kubs url and login as a maker user
 And maker should navigate to the budget module UAT 
 And maker click on budget field UAT
-When maker click on budget supplementary eye icon UAT
+When maker click on budget supplementary eye icon UAT1
 And click on add button on budget supplementary view page UAT
 And user update the data set ID for Budget Utiliztion Reviewer
 Then check the budget utilazation amount of budet code which we create the expense code
@@ -265,7 +265,7 @@ Scenario: user login as Maker
 	Given User should go to the kubs url and login as a maker user
 And maker should navigate to the budget module UAT 
 And maker click on budget field UAT
-When maker click on budget supplementary eye icon UAT
+When maker click on budget supplementary eye icon UAT1
 And click on add button on budget supplementary view page UAT
 Then check the budget utilazation amount of budet code which we create the expense code after creating po 
 And click on accounts Payable module 
@@ -310,7 +310,7 @@ Scenario: user login as Maker
 Given User should go to the kubs url and login as a maker user
 And maker should navigate to the budget module UAT 
 And maker click on budget field UAT
-When maker click on budget supplementary eye icon UAT
+When maker click on budget supplementary eye icon UAT1
 And click on add button on budget supplementary view page UAT
 Then check the budget utilazation amount of budet code which we create the expense code after cancelling the po
 Then verify budget code budget utilization amount is re-instated after cancelling the po
