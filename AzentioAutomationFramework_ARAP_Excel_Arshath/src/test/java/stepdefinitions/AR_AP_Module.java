@@ -60,7 +60,9 @@ import pageobjects.INVENTORY_EnquiryGlObject;
 import pageobjects.InventoryMaintenanceObj;
 import pageobjects.InventoryManagamentObj;
 import pageobjects.InvoiceBookingObj;
+import pageobjects.KUBS_CheckerObj;
 import pageobjects.KUBS_MakerObj;
+import pageobjects.KUBS_ReviewerObj;
 import pageobjects.Payment_SettlementObj;
 import pageobjects.REPORT_FinancialReportingObj;
 import resources.BaseClass;
@@ -87,6 +89,8 @@ public class AR_AP_Module {
 	Azentio_CheckerObj kubschecker = new Azentio_CheckerObj(driver);
 	Azentio_ReviewerObj reviewer = new Azentio_ReviewerObj(driver);
 	InvoiceBookingObj invoiceBookingObj = new InvoiceBookingObj(driver);
+	KUBS_ReviewerObj kubsReviewerObj = new KUBS_ReviewerObj(driver);
+	KUBS_CheckerObj kubsCheckerObj = new KUBS_CheckerObj(driver);
 	Payment_SettlementObj paymentSettlementObj = new Payment_SettlementObj(driver);
 	BUDGET_SupplementaryBudgetObj bUDGET_SupplementaryBudgetObj = new BUDGET_SupplementaryBudgetObj(driver);
 	ACCOUNTSPAYABLE_InvoiceBookingObj aCCOUNTSPAYABLE_InvoiceBookingObj = new ACCOUNTSPAYABLE_InvoiceBookingObj(driver);
@@ -1617,9 +1621,50 @@ public class AR_AP_Module {
 		waithelper.waitForElement(driver, 3000,
 				accountReceivable_UpdateDepositedChequeObj.accountReceivable_UpdateDepositedCheque_Notification());
 		accountReceivable_UpdateDepositedChequeObj.accountReceivable_UpdateDepositedCheque_Notification().click();
-
+		
 	}
+	@Then("^logout from maker$")
+	public void logout_from_maker() throws Throwable {
+		/*
+		 * Then we have to logout from maker
+		 */
+		budgetCreationObj.budgetCreationUserName().click();
+//		Thread.sleep(1000);		
+		waithelper.waitForElementToVisibleWithFluentWait(driver, budgetCreationObj.budgetCreationLogoutButton(), 60,2);
+		clicksAndActionHelper.moveToElement(budgetCreationObj.budgetCreationLogoutButton());
+		budgetCreationObj.budgetCreationLogoutButton().click();
+	}
+	
+	@And("^logout from reviewer$")
+	public void logout_from_reviewer() throws Throwable {
+		/*
+		 * Then we have to logout from reviewer and start with checker approval
+		 */
+		while (true) {
+			try {
+				javascripthelper.JavaScriptHelper(driver);
+				kubsReviewerObj.reviewerAlertClose().click();
+				kubsReviewerObj.reviewerUserName().click();
+				waithelper.waitForElement(driver, 3000, kubsReviewerObj.reviewerLogoutButton());
+				javascripthelper.JSEClick(kubsReviewerObj.reviewerLogoutButton());
+				break;
+			} catch (StaleElementReferenceException e) {
 
+			}
+		}
+	}
+	
+	@Then("^logout from checker$")
+	public void logout_from_checker() throws Throwable {
+		waithelper.waitForElementToVisibleWithFluentWait(driver, kubsCheckerObj.checkerAlertClose(), 60, 500);
+		kubsCheckerObj.checkerAlertClose().click();
+		waithelper.waitForElementToVisibleWithFluentWait(driver, kubsCheckerObj.checkerUserName(), 60, 500);
+		kubsCheckerObj.checkerUserName().click();
+		waithelper.waitForElementToVisibleWithFluentWait(driver, kubsCheckerObj.checkerLogoutButton(), 60, 500);
+		clicksAndActionHelper.moveToElement(kubsCheckerObj.checkerLogoutButton());
+		kubsCheckerObj.checkerLogoutButton().click();
+	}
+	
 	@And("^Select and Submit the Update Deposited Cheque record$")
 	public void select_and_submit_the_update_deposited_cheque_record()
 			throws InterruptedException, IOException, ParseException {
@@ -1631,7 +1676,7 @@ public class AR_AP_Module {
 		String id = inventoryMaintenanceObj.inventoryMaintenance_InventoryItem_ReferenceId().getText();
 		// jsonWriter.addReferanceData(id);
 		Exceldata.updateTestData("KUBS_AR_AP_UAT_004_002_TC_01_D1", "ReferenceID", id);
-		System.out.println("Reference ID:" + id);
+		//System.out.println("Reference ID:" + id);
 		for (int i = 1; i <= 35; i++) {
 			try {
 

@@ -25,6 +25,7 @@ import pageobjects.ACCOUNTSPAYABLE_ManualPayoutObj;
 import pageobjects.ACCOUNTSPAYABLE_PaymentFileDownloadObj;
 import pageobjects.AccountReceivable_UpdateDepositedChequeObj;
 import pageobjects.Azentio_ReviewerObj;
+import pageobjects.BUDGET_BudgetCreationObj;
 import pageobjects.InventoryMaintenanceObj;
 import pageobjects.KUBS_CheckerObj;
 import pageobjects.KUBS_MakerObj;
@@ -49,6 +50,7 @@ public class ACCOUNTSPAYBLE_PaymentFileDownload extends BaseClass{
 	Map<String, String>testData;
 	InventoryMaintenanceObj inventoryMaintenanceObj = new InventoryMaintenanceObj(driver);
 	AccountReceivable_UpdateDepositedChequeObj accountReceivable_UpdateDepositedChequeObj = new AccountReceivable_UpdateDepositedChequeObj(driver);
+	BUDGET_BudgetCreationObj budgetCreationObj = new BUDGET_BudgetCreationObj(driver);
 	JavascriptHelper javascripthelper = new JavascriptHelper();
 	ClicksAndActionsHelper clicksAndActionHelper = new ClicksAndActionsHelper(driver);
 	BrowserHelper browserHelper = new BrowserHelper(driver);
@@ -392,6 +394,12 @@ public class ACCOUNTSPAYBLE_PaymentFileDownload extends BaseClass{
 	
 	@And("^Select and Submit the Update Deposited Cheque recordssss$")
 	public void select_and_submit_the_update_deposited_cheque_recordssss() throws Throwable {
+		waitHelper.waitForElementToVisibleWithFluentWait(driver, budgetCreationObj.notificationSearchIcon(), 60, 2);
+		budgetCreationObj.notificationSearchIcon().click();
+		
+		waitHelper.waitForElementToVisibleWithFluentWait(driver, budgetCreationObj.eventCode(), 30, 2);
+		budgetCreationObj.eventCode().click();
+		budgetCreationObj.eventCode().sendKeys("PAYMENT_FILE_CONFIG");
 
 		// Reference
 		waitHelper.waitForElementToVisibleWithFluentWait(driver,
@@ -425,9 +433,8 @@ public class ACCOUNTSPAYBLE_PaymentFileDownload extends BaseClass{
 		String before_xpath = "//span[contains(text(),'";
 		String after_xpath = "')]/ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell//ion-button";
 
-		waitHelper.waitForElement(driver, 2000,
-				driver.findElement(By.xpath(before_xpath + testData.get("ReferenceID") + after_xpath)));
-		driver.findElement(By.xpath(before_xpath + testData.get("ReferenceID") + after_xpath)).click();
+		waitHelper.waitForElementToVisibleWithFluentWait(driver, driver.findElement(By.xpath(before_xpath + testData.get("ReferenceID") + after_xpath)), 60, 2);				
+				driver.findElement(By.xpath(before_xpath + testData.get("ReferenceID") + after_xpath)).click();
 
 		// Submit button
 		waitHelper.waitForElement(driver, 2000,
@@ -644,9 +651,7 @@ public class ACCOUNTSPAYBLE_PaymentFileDownload extends BaseClass{
 		String after_xpath = "')]/ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell//ion-button";
 		for (int i = 0; i < 100; i++) {
 			try {
-				waitHelper.waitForElement(driver, 5000,
-						driver.findElement(By.xpath(before_xpath + testData.get("ReferenceID") + after_xpath)));
-				driver.findElement(By.xpath(before_xpath + testData.get("ReferenceID") + after_xpath)).click();
+				 driver.findElement(By.xpath("//span[contains(text(),'"+testData.get("ReferenceID")+"')]/ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell//ion-button")).click();
 				break;
 			} catch (Exception e) {
 
@@ -712,16 +717,15 @@ public class ACCOUNTSPAYBLE_PaymentFileDownload extends BaseClass{
 				}
 			}
 		}
+		
+		String before_xpath = "//span[contains(text(),'";
+		String after_xpath = "')]/ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell//ion-button";
 		while (true) {
 			try {
-				String before_xpath = "//span[contains(text(),'";
-				String after_xpath = "')]/ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell//ion-button";
 
-				waitHelper.waitForElement(driver, 2000,
-						driver.findElement(By.xpath(before_xpath + testData.get("ReferenceID") + after_xpath)));
 				driver.findElement(By.xpath(before_xpath + testData.get("ReferenceID") + after_xpath)).click();
 				break;
-			} catch (StaleElementReferenceException e) {
+			} catch (Exception e) {
 
 			}
 		}
@@ -826,35 +830,12 @@ public class ACCOUNTSPAYBLE_PaymentFileDownload extends BaseClass{
 
 	}
 
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	@And("^User should go to the kubs url and login as a reviewer userss$")
+	public void user_should_go_to_the_kubs_url_and_login_as_a_reviewer_userss() throws IOException, ParseException {
+		login = new KUBS_Login(driver);
+		driver.get(config.getApplicationUrl());
+		login.logintoAzentioappReviewer("Reviewer", testData.get("ReviewerID"));
+	}
 	
     @And("^verify Where payment mode is Wire Transfer$")
     public void verify_where_payment_mode_is_wire_transfer() throws Throwable {
