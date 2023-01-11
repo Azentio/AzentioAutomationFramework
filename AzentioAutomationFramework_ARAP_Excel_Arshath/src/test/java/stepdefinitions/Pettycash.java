@@ -26,7 +26,7 @@ import resources.BaseClass;
 import resources.ExcelData;
 
 
-public class PattycashPC {
+public class Pettycash {
 	WebDriver driver = BaseClass.driver;
 	KUBS_Login login = new KUBS_Login(driver);
 	ConfigFileReader config = new ConfigFileReader();
@@ -77,89 +77,30 @@ public class PattycashPC {
 		waithelper.waitForElementToVisibleWithFluentWait(driver, ReconciliationObj.Reports_PettyCash_Calendar1(), 60, 500);
 		ReconciliationObj.Reports_PettyCash_Calendar1().click();
 		
-		
-		
-		while(true)
-		{
-			try 
-			{
-				//waithelper.waitForElementwithFluentwait(driver, driver.findElement(By.xpath("//span[contains(text(),'"+PettyCashTestDataType.FundRequisition_Month+" "+PettyCashTestDataType.FundRequisition_Year+"')]")));
-				WebElement birthmonthandyear=driver.findElement(By.xpath("//span[contains(text(),'"+testData.get("FundRequisition_Month")+" "+testData.get("FundRequisition_Year")+"')]"));
-//				driver.findElement(By.xpath("//div/div/button")).getText().contains(bUSINESS_PARTNER_SETUP_BusinessPartnerTestDataType.BirthMonth+" "+bUSINESS_PARTNER_SETUP_BusinessPartnerTestDataType.BirthYear);
+		while (true) {
+			try {
+
+				waithelper.waitForElement(driver, 3000, driver.findElement(
+						By.xpath("//span[contains(text(),'" + testData.get("FundRequisition_Month") + " " + testData.get("FundRequisition_Year") + "')]")));
+				driver.findElement(
+						By.xpath("//span[contains(text(),'" + testData.get("FundRequisition_Month") + " " + testData.get("FundRequisition_Year") + "')]"));
 				break;
-			}catch(NoSuchElementException nosuchElement)
-			{
-				//waithelper.waitForElementwithFluentwait(driver, bUSINESS_PARTNER_SETUP_BusinessPartnerObj.businessPartner_SelectDate());
-				//bUSINESS_PARTNER_SETUP_BusinessPartnerObj.businessPartner_SelectDate().click();
-				String tablehead=bUSINESS_PARTNER_SETUP_BusinessPartnerObj.businessPartner_HeadYear().getText();
-				//String tablehead="6016 ~ 6036";
-				String headyear=tablehead.replaceAll(" ~", "");
-//				System.out.println(headyear);
-				String ar[] = headyear.split(" ");
-				int y1=Integer.parseInt(ar[0]);
-				int y2=Integer.parseInt(ar[1]);
-				int year=Integer.parseInt(testData.get("FundRequisition_Year"));
-				if(year < y1 && year<y2)
-				{
-					while(true)
-					{
-						try {
-							//waithelper.waitForElementwithFluentwait(driver, driver.findElement(By.xpath("//span[contains(text(),'"+PettyCashTestDataType.FundRequisition_Year+"')]")));
-							WebElement Year=driver.findElement(By.xpath("//span[contains(text(),'"+testData.get("FundRequisition_Year")+"')]"));
-						    break;
-						}
-						catch(NoSuchElementException nosuchElement1) {
-							//waithelper.waitForElementwithFluentwait(driver, bUSINESS_PARTNER_SETUP_BusinessPartnerObj.businessPartner_ClickOnPreviousYear());
-							//bUSINESS_PARTNER_SETUP_BusinessPartnerObj.businessPartner_ClickOnPreviousYear().click();
-						}
-					}
-					waithelper.waitForElementToVisibleWithFluentWait(driver, driver.findElement(By.xpath("//span[contains(text(),'"+testData.get("FundRequisition_Year")+"')]")), 60, 500);
-					WebElement Year=driver.findElement(By.xpath("//span[contains(text(),'"+testData.get("FundRequisition_Year")+"')]"));
-					Year.click();
-					
-					waithelper.waitForElementToVisibleWithFluentWait(driver, driver.findElement(By.xpath("//td[@aria-label='"+testData.get("FundRequisition_FullMonth")+" "+testData.get("FundRequisition_Year")+"']")), 60, 500);
-					driver.findElement(By.xpath("//td[@aria-label='"+testData.get("FundRequisition_FullMonth")+" "+testData.get("FundRequisition_Year")+"']")).click();
-					
-				}
-				else if(year>y1 && year>y2)
-				{
-					while(true)
-					{
-						try {
-							//waithelper.waitForElementwithFluentwait(driver, driver.findElement(By.xpath("//span[contains(text(),'"+PettyCashTestDataType.FundRequisition_Year+"')]")));
-							WebElement Year=driver.findElement(By.xpath("//span[contains(text(),'"+testData.get("FundRequisition_Year")+"')]"));
-						    break;
-						}
-						catch(NoSuchElementException nosuchElement2) {
-							//waithelper.waitForElementwithFluentwait(driver, bUSINESS_PARTNER_SETUP_BusinessPartnerObj.businessPartner_ClickOnNextYear());
-							//bUSINESS_PARTNER_SETUP_BusinessPartnerObj.businessPartner_ClickOnNextYear().click();
-						}
-					}
-					waithelper.waitForElementToVisibleWithFluentWait(driver, driver.findElement(By.xpath("//span[contains(text(),'"+testData.get("FundRequisition_Year")+"')]")), 60, 500);
-					WebElement Year=driver.findElement(By.xpath("//span[contains(text(),'"+testData.get("FundRequisition_Year")+"')]"));
-					Year.click();
-					
-					waithelper.waitForElementToVisibleWithFluentWait(driver, driver.findElement(By.xpath("//td[@aria-label='"+testData.get("FundRequisition_FullMonth")+" "+testData.get("FundRequisition_Year")+"']")), 60, 500);
-					driver.findElement(By.xpath("//td[@aria-label='"+testData.get("FundRequisition_FullMonth")+" "+testData.get("FundRequisition_Year")+"']")).click();
-					
-				}
-				else
-				{
-					waithelper.waitForElementToVisibleWithFluentWait(driver, driver.findElement(By.xpath("//td[@aria-label='"+testData.get("FundRequisition_Year")+"']")), 60, 500);
-					WebElement Year=driver.findElement(By.xpath("//td[@aria-label='"+testData.get("FundRequisition_Year")+"']"));
-					Year.click();
-					
-					waithelper.waitForElementToVisibleWithFluentWait(driver, driver.findElement(By.xpath("//td[@aria-label='"+testData.get("FundRequisition_FullMonth")+" "+testData.get("FundRequisition_Year")+"']")), 60, 500);
-					driver.findElement(By.xpath("//td[@aria-label='"+testData.get("FundRequisition_FullMonth")+" "+testData.get("FundRequisition_Year")+"']")).click();
-					
-				}
+			}
+
+			catch (NoSuchElementException nosuchElement) {
+				ReconciliationObj.ARAPNextMonth().click();
+
 			}
 		}
-		waithelper.waitForElementToVisibleWithFluentWait(driver, driver.findElement(By.xpath("//td[@aria-label='"+testData.get("FundRequisition_FullMonth") +" "+testData.get("FundRequisition_Date")+", "+testData.get("FundRequisition_Year")+"']/span")), 60, 500);	
-		WebElement FundRequisitionDate=driver.findElement(By.xpath("//td[@aria-label='"+testData.get("FundRequisition_FullMonth") +" "+testData.get("FundRequisition_Date")+", "+testData.get("FundRequisition_Year")+"']/span"));
-		clicksAndActionHelper.doubleClick(FundRequisitionDate);
-		
+		waithelper.waitForElement(driver, 3000, driver.findElement(By.xpath("//td[@aria-label='"
+				+ testData.get("FundRequisition_FullMonth") + " " + testData.get("FundRequisition_Date") + ", " + testData.get("FundRequisition_Year") + "']/span")));
+		WebElement Click = driver.findElement(By.xpath("//td[@aria-label='" + testData.get("FundRequisition_FullMonth") + " "
+				+ testData.get("FundRequisition_Date") + ", " + testData.get("FundRequisition_Year") + "']/span"));
+
+		clicksAndActionHelper.doubleClick(Click);
+				
 	}
+	
     @Then("^click in the view button to check$")
     public void click_in_the_view_button_to_check()  {
 		waithelper.waitForElement(driver, 3000, reports_AssetCreationCommonObj.Report_AssetCreationCommon_ViewButton());
@@ -167,10 +108,21 @@ public class PattycashPC {
     }
     @Then("^the report is displaying all fund requisition details$")
 	public void the_report_is_displaying_all_fund_requisition_details() throws InterruptedException {
-		Thread.sleep(1000);
+		Thread.sleep(2000);
 		browserHelper.SwitchToWindow(1);
-		waithelper.waitForElementToVisibleWithFluentWait(driver, ReconciliationObj.Reports_PettyCash_FundRequisitionReport(), 60, 500);
-		ReconciliationObj.Reports_PettyCash_FundRequisitionReport().isDisplayed();
+
+		javascripthelper.JavaScriptHelper(driver);
+		while (true) {
+			Thread.sleep(2000);
+			try {
+				waithelper.waitForElementToVisibleWithFluentWait(driver, ReconciliationObj.Reports_PettyCash_FundRequisitionReport(), 60, 500);
+				ReconciliationObj.Reports_PettyCash_FundRequisitionReport().isDisplayed();
+				break;
+			} catch (NoSuchElementException e) {
+				waithelper.waitForElement(driver, 3000, reports_AssetCreationCommonObj.ARAP_Report_Nextbtn());
+				reports_AssetCreationCommonObj.ARAP_Report_Nextbtn().click();
+			}
+		}
 		browserHelper.switchToParentWithChildClose();
 	}
 
@@ -378,6 +330,17 @@ public class PattycashPC {
     	ReconciliationObj.Reports_PettyCash_PettyCashRegisterReport().isDisplayed();
     	browserHelper.switchToParentWithChildClose();
     }
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
     @Then("^user update the Excel sheet testdata for Pettycash$")
     public void user_update_the_excel_sheet_testdata_for_pettycash() throws Throwable {
     	 testData = Exceldata.getTestdata("KUBS_PC_UAT_006_001_D1");    

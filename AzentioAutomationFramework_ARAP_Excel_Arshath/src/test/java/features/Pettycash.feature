@@ -1,7 +1,7 @@
 Feature: user create the patty cash login details
 @KUBS_PC_UAT_006_001
 Scenario: Check report for fund requisition
-Given User should go to the kubs url and login as a maker user
+Given User should go to the kubs url and login as a maker user 
 Then click on report icon
 And user should navigate to reports menu
 Then user update the Excel sheet testdata for Pettycash

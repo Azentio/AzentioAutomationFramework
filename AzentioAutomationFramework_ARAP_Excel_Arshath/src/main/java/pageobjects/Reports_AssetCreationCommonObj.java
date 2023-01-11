@@ -344,7 +344,13 @@ public class Reports_AssetCreationCommonObj {
 
 	} 
 
- 
+	@FindBy(xpath = "//tbody/tr[2]/td[7]/input[1]")
+	private WebElement ARAP_Report_Nextbtn;
+
+	public WebElement ARAP_Report_Nextbtn() {
+
+		return ARAP_Report_Nextbtn;
+	}
 
  
 }

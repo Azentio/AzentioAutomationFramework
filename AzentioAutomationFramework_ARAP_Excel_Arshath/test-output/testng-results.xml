@@ -2,57 +2,55 @@
 <testng-results ignored="0" total="1" passed="0" failed="1" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2023-01-10T18:07:38 IST" name="Default suite" finished-at="2023-01-10T18:09:12 IST" duration-ms="93413">
+  <suite started-at="2023-01-11T17:37:57 IST" name="Default suite" finished-at="2023-01-11T17:38:29 IST" duration-ms="32659">
     <groups>
       <group name="cucumber">
         <method signature="AbstractTestNGCucumberTests.runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:Runner.TestApplication@3ba987b8]" name="runScenario" class="io.cucumber.testng.AbstractTestNGCucumberTests"/>
       </group> <!-- cucumber -->
     </groups>
-    <test started-at="2023-01-10T18:07:38 IST" name="Default test" finished-at="2023-01-10T18:09:12 IST" duration-ms="93413">
+    <test started-at="2023-01-11T17:37:57 IST" name="Default test" finished-at="2023-01-11T17:38:29 IST" duration-ms="32659">
       <class name="Runner.TestApplication">
-        <test-method is-config="true" signature="beforeExecution()[pri:0, instance:Runner.TestApplication@3ba987b8]" started-at="2023-01-10T18:07:38 IST" name="beforeExecution" finished-at="2023-01-10T18:07:38 IST" duration-ms="18" status="PASS">
+        <test-method is-config="true" signature="beforeExecution()[pri:0, instance:Runner.TestApplication@3ba987b8]" started-at="2023-01-11T17:37:57 IST" name="beforeExecution" finished-at="2023-01-11T17:37:57 IST" duration-ms="14" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeExecution -->
-        <test-method is-config="true" signature="setUpClass()[pri:0, instance:Runner.TestApplication@3ba987b8]" started-at="2023-01-10T18:07:38 IST" name="setUpClass" finished-at="2023-01-10T18:07:41 IST" duration-ms="2162" status="PASS">
+        <test-method is-config="true" signature="setUpClass()[pri:0, instance:Runner.TestApplication@3ba987b8]" started-at="2023-01-11T17:37:57 IST" name="setUpClass" finished-at="2023-01-11T17:37:59 IST" duration-ms="2538" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUpClass -->
-        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:Runner.TestApplication@3ba987b8]" started-at="2023-01-10T18:07:41 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2023-01-10T18:09:00 IST" duration-ms="78918" status="FAIL">
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:Runner.TestApplication@3ba987b8]" started-at="2023-01-11T17:37:59 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2023-01-11T17:38:23 IST" duration-ms="24170" status="FAIL">
           <params>
             <param index="0">
               <value>
-                <![CDATA["Checking of downloaded payment files for online payment where create file basis is Bank Wise"]]>
+                <![CDATA["Check report for fund requisition"]]>
               </value>
             </param>
             <param index="1">
               <value>
-                <![CDATA["Optional[AR_AP Module]"]]>
+                <![CDATA["Optional[user create the patty cash login details]"]]>
               </value>
             </param>
           </params>
-          <exception class="org.openqa.selenium.ElementNotInteractableException">
+          <exception class="org.openqa.selenium.WebDriverException">
             <message>
-              <![CDATA[element not interactable
+              <![CDATA[unknown error: net::ERR_CONNECTION_REFUSED
   (Session info: chrome=108.0.5359.125)
 Build info: version: '4.0.0-rc-1', revision: 'bc5511cbda'
 System info: host: 'DESKTOP-PSK9T3U', ip: '10.200.4.150', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.4.1'
 Driver info: org.openqa.selenium.chrome.ChromeDriver
-Command: [c1acd2fb43acb66820d4d540d2e3af16, clickElement {id=0e2e3c2d-2acb-4a40-be20-cdae7812fbfa}]
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 108.0.5359.125, chrome: {chromedriverVersion: 108.0.5359.71 (1e0e3868ee06..., userDataDir: C:\Users\ININDC~1\AppData\L...}, goog:chromeOptions: {debuggerAddress: localhost:57838}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), se:cdp: ws://localhost:57838/devtoo..., se:cdpVersion: 108.0.5359.125, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
-Element: [[ChromeDriver: chrome on WINDOWS (c1acd2fb43acb66820d4d540d2e3af16)] -> xpath: //span[contains(text(),'23')]/ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell//ion-button]
-Session ID: c1acd2fb43acb66820d4d540d2e3af16]]>
+Command: [7acb01a95f40da18ae3b714b72d693ad, get {url=http://172.27.78.245:6080/kubs-qc/}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 108.0.5359.125, chrome: {chromedriverVersion: 108.0.5359.71 (1e0e3868ee06..., userDataDir: C:\Users\ININDC~1\AppData\L...}, goog:chromeOptions: {debuggerAddress: localhost:53963}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), se:cdp: ws://localhost:53963/devtoo..., se:cdpVersion: 108.0.5359.125, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
+Session ID: 7acb01a95f40da18ae3b714b72d693ad]]>
             </message>
             <full-stacktrace>
-              <![CDATA[org.openqa.selenium.ElementNotInteractableException: element not interactable
+              <![CDATA[org.openqa.selenium.WebDriverException: unknown error: net::ERR_CONNECTION_REFUSED
   (Session info: chrome=108.0.5359.125)
 Build info: version: '4.0.0-rc-1', revision: 'bc5511cbda'
 System info: host: 'DESKTOP-PSK9T3U', ip: '10.200.4.150', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.4.1'
 Driver info: org.openqa.selenium.chrome.ChromeDriver
-Command: [c1acd2fb43acb66820d4d540d2e3af16, clickElement {id=0e2e3c2d-2acb-4a40-be20-cdae7812fbfa}]
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 108.0.5359.125, chrome: {chromedriverVersion: 108.0.5359.71 (1e0e3868ee06..., userDataDir: C:\Users\ININDC~1\AppData\L...}, goog:chromeOptions: {debuggerAddress: localhost:57838}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), se:cdp: ws://localhost:57838/devtoo..., se:cdpVersion: 108.0.5359.125, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
-Element: [[ChromeDriver: chrome on WINDOWS (c1acd2fb43acb66820d4d540d2e3af16)] -> xpath: //span[contains(text(),'23')]/ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell//ion-button]
-Session ID: c1acd2fb43acb66820d4d540d2e3af16
+Command: [7acb01a95f40da18ae3b714b72d693ad, get {url=http://172.27.78.245:6080/kubs-qc/}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 108.0.5359.125, chrome: {chromedriverVersion: 108.0.5359.71 (1e0e3868ee06..., userDataDir: C:\Users\ININDC~1\AppData\L...}, goog:chromeOptions: {debuggerAddress: localhost:53963}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), se:cdp: ws://localhost:53963/devtoo..., se:cdpVersion: 108.0.5359.125, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
+Session ID: 7acb01a95f40da18ae3b714b72d693ad
 at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
 at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77)
 at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
@@ -65,21 +63,20 @@ at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.ja
 at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:164)
 at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:139)
 at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:547)
-at org.openqa.selenium.remote.RemoteWebElement.execute(RemoteWebElement.java:251)
-at org.openqa.selenium.remote.RemoteWebElement.click(RemoteWebElement.java:77)
-at stepdefinitions.ACCOUNTSPAYBLE_PaymentFileDownload.select_and_submit_the_update_deposited_cheque_recordssss(ACCOUNTSPAYBLE_PaymentFileDownload.java:437)
-at ✽.Select and Submit the Update Deposited Cheque recordssss(file:///C:/Users/ININDC00075/git/Arshath_Excel_AzentioAutomationFramework/AzentioAutomationFramework_ARAP_Excel_Arshath/src/test/java/features/ArAp2.feature:824)
+at org.openqa.selenium.remote.RemoteWebDriver.get(RemoteWebDriver.java:326)
+at stepdefinitions.ACCOUNTSPAYABLE_VendorContracts.user_should_go_to_the_kubs_url_and_login_as_a_maker_user(ACCOUNTSPAYABLE_VendorContracts.java:48)
+at ✽.User should go to the kubs url and login as a maker user(file:///C:/Users/ININDC00075/git/Arshath_Excel_AzentioAutomationFramework/AzentioAutomationFramework_ARAP_Excel_Arshath/src/test/java/features/Pettycash.feature:4)
 ]]>
             </full-stacktrace>
-          </exception> <!-- org.openqa.selenium.ElementNotInteractableException -->
+          </exception> <!-- org.openqa.selenium.WebDriverException -->
           <reporter-output>
           </reporter-output>
         </test-method> <!-- runScenario -->
-        <test-method is-config="true" signature="tearDownClass()[pri:0, instance:Runner.TestApplication@3ba987b8]" started-at="2023-01-10T18:09:00 IST" name="tearDownClass" finished-at="2023-01-10T18:09:12 IST" duration-ms="12251" status="PASS">
+        <test-method is-config="true" signature="tearDownClass()[pri:0, instance:Runner.TestApplication@3ba987b8]" started-at="2023-01-11T17:38:23 IST" name="tearDownClass" finished-at="2023-01-11T17:38:29 IST" duration-ms="5871" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDownClass -->
-        <test-method is-config="true" signature="afterExecution()[pri:0, instance:Runner.TestApplication@3ba987b8]" started-at="2023-01-10T18:09:12 IST" name="afterExecution" finished-at="2023-01-10T18:09:12 IST" duration-ms="262" status="PASS">
+        <test-method is-config="true" signature="afterExecution()[pri:0, instance:Runner.TestApplication@3ba987b8]" started-at="2023-01-11T17:38:29 IST" name="afterExecution" finished-at="2023-01-11T17:38:30 IST" duration-ms="264" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterExecution -->

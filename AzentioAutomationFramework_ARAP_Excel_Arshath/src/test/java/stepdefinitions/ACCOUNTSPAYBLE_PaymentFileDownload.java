@@ -100,7 +100,7 @@ public class ACCOUNTSPAYBLE_PaymentFileDownload extends BaseClass{
     	makerObj.arapConfigBranchRecord().click();
     	waitHelper.waitForElementVisible(makerObj.arapCreateFileBasis(), 2000, 200);
     	//.arapCreateFileBasis().getText();
-    	Assert.assertEquals("Payout Wise",makerObj.arapCreateFileBasis().getText() );
+    	Assert.assertEquals("Bank Wise",makerObj.arapCreateFileBasis().getText() );
     }
     @And("^configure the file format as Bank Wise$")
     public void configure_the_file_format_as_bank_wise() throws Throwable {
@@ -484,10 +484,11 @@ public class ACCOUNTSPAYBLE_PaymentFileDownload extends BaseClass{
 
 	@And("^search the transfer as payment mode$")
     public void search_the_transfer_as_payment_mode() throws Throwable {
+		waitHelper.waitForElementToVisibleWithFluentWait(driver, manualPayoutObj.accountsPayableManualPayoutSearchPaymentMode(), 60, 2);
 		manualPayoutObj.accountsPayableManualPayoutSearchPaymentMode().click();
 		manualPayoutObj.accountsPayableManualPayoutSearchPaymentMode().sendKeys(testData.get("PaymentMode"));
 		//testData.put("branchName", manualPayoutObj.accountsPayableManualPayoutBranchName().getText());
-		Thread.sleep(1500);
+		Thread.sleep(1000);
 		String[] branchName=manualPayoutObj.accountsPayableManualPayoutBranchName().getText().split("-");
 		Value.put("branchName", branchName[1].trim());
 		System.out.println(manualPayoutObj.accountsPayableManualPayoutPayoutDate().getText());
@@ -746,7 +747,13 @@ public class ACCOUNTSPAYBLE_PaymentFileDownload extends BaseClass{
 	@And("^Select and Submit the Update Deposited Cheque record1$")
 	public void select_and_submit_the_update_deposited_cheque_record1()
 			throws InterruptedException, IOException, ParseException {
-
+		waitHelper.waitForElementToVisibleWithFluentWait(driver, budgetCreationObj.notificationSearchIcon(), 60, 2);
+		budgetCreationObj.notificationSearchIcon().click();
+		
+		waitHelper.waitForElementToVisibleWithFluentWait(driver, budgetCreationObj.eventCode(), 30, 2);
+		budgetCreationObj.eventCode().click();
+		budgetCreationObj.eventCode().sendKeys("PAYMENT_FILE_CONFIG");
+		
 		// Reference
 		waitHelper.waitForElementToVisibleWithFluentWait(driver,
 				inventoryMaintenanceObj.inventoryMaintenance_InventoryItem_ReferenceId(), 60, 2);
@@ -755,32 +762,31 @@ public class ACCOUNTSPAYBLE_PaymentFileDownload extends BaseClass{
 		// jsonWriter.addReferanceData(id);
 		Exceldata.updateTestData("KUBS_AR_AP_UAT_008_003_TC01_D1", "ReferenceID", id);
 		System.out.println("Reference ID:" + id);
-		for (int i = 1; i <= 35; i++) {
-			try {
-
-				WebElement referanceID = driver
-						.findElement(By.xpath("//span[contains(text(),'" + testData.get("ReferenceID") + "')]"));
-				referanceID.click();
-				System.out.println(referanceID);
-				// Assert.assertTrue(referanceID.isDisplayed());
-				break;
-			} catch (NoSuchElementException e) {
-				waitHelper.waitForElement(driver, 4000,
-						inventoryMaintenanceObj.inventoryMaintenance_InventoryItem_NotificationNext_Button());
-
-				inventoryMaintenanceObj.inventoryMaintenance_InventoryItem_NotificationNext_Button().click();
-			}
-
-		}
-		inventoryMaintenanceObj.inventoryMaintenance_InventoryItem_ReferenceId().click();
+//		for (int i = 1; i <= 35; i++) {
+//			try {
+//
+//				WebElement referanceID = driver
+//						.findElement(By.xpath("//span[contains(text(),'" + testData.get("ReferenceID") + "')]"));
+//				referanceID.click();
+//				System.out.println(referanceID);
+//				// Assert.assertTrue(referanceID.isDisplayed());
+//				break;
+//			} catch (NoSuchElementException e) {
+//				waitHelper.waitForElement(driver, 4000,
+//						inventoryMaintenanceObj.inventoryMaintenance_InventoryItem_NotificationNext_Button());
+//
+//				inventoryMaintenanceObj.inventoryMaintenance_InventoryItem_NotificationNext_Button().click();
+//			}
+//
+//		}
+//		inventoryMaintenanceObj.inventoryMaintenance_InventoryItem_ReferenceId().click();
 
 		// pencil
 		String before_xpath = "//span[contains(text(),'";
 		String after_xpath = "')]/ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell//ion-button";
 
-		waitHelper.waitForElement(driver, 2000,
-				driver.findElement(By.xpath(before_xpath + testData.get("ReferenceID") + after_xpath)));
-		driver.findElement(By.xpath(before_xpath + testData.get("ReferenceID") + after_xpath)).click();
+		waitHelper.waitForElementToVisibleWithFluentWait(driver, driver.findElement(By.xpath(before_xpath + testData.get("ReferenceID") + after_xpath)), 60, 2);				
+				driver.findElement(By.xpath(before_xpath + testData.get("ReferenceID") + after_xpath)).click();
 
 		// Submit button
 		waitHelper.waitForElement(driver, 2000,

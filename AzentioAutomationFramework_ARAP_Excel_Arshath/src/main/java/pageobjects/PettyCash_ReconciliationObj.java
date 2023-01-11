@@ -175,4 +175,26 @@ public class PettyCash_ReconciliationObj {
 		return Reports_PettyCash_PettyCashRegisterReport;
 	}
 	
+
+	@FindBy(xpath = "//owl-date-time-container[1]/div[2]/owl-date-time-calendar[1]/div[1]/button[2]/span[1]")
+	private WebElement ARAP_NextMonth;
+
+	public WebElement ARAPNextMonth() {
+
+		return ARAP_NextMonth;
+	}
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
 }

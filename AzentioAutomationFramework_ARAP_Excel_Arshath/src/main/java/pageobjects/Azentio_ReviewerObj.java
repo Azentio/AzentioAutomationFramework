@@ -13,7 +13,7 @@ public class Azentio_ReviewerObj {
 		this.driver = driver;
 		PageFactory.initElements(driver, this);
 	}
-@FindBy(xpath="//div[@role='alert']")
+@FindBy(xpath="//div[@role='alertdialog']")
 private WebElement alert_Message;
 public WebElement alertMessage()
 {
