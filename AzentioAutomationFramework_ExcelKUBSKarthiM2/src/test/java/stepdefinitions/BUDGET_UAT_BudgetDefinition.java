@@ -18,6 +18,7 @@ import org.testng.Assert;
 
 import dataProvider.ConfigFileReader;
 import dataProvider.JsonConfig;
+import helper.AlertHelper;
 import helper.BrowserHelper;
 import helper.ClicksAndActionsHelper;
 import helper.JavascriptHelper;
@@ -55,6 +56,7 @@ public class BUDGET_UAT_BudgetDefinition extends BaseClass {
 	BrowserHelper browserHelper = new BrowserHelper(driver);
 	Map<String, String> testData = new HashMap<>();
 	BUDGET_RequestAndAllocationObj requestAndAllocationObj = new BUDGET_RequestAndAllocationObj(driver);
+	AlertHelper alart = new AlertHelper(driver);
 	//
 	ExcelData excelData = new ExcelData("C:\\Users\\inindc00071\\Downloads\\KUBSTestDataDesign.xlsx","WriteOffTestData","Data Set ID");
 	Map<String, String> testData1;
@@ -88,6 +90,7 @@ public class BUDGET_UAT_BudgetDefinition extends BaseClass {
 	public void click_on_eye_icon_which_is_near_by_budget_definition_submenu() throws Throwable {
 		waitHelper.waitForElementToVisibleWithFluentWait(driver, budgetCreationObj.budgetCreation_EyeIcon(), 60, 500);
 		budgetCreationObj.budgetCreation_EyeIcon().click();
+	
 
 	}
 

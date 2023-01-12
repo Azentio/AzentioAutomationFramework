@@ -291,8 +291,8 @@ public class InventoryManagament extends BaseClass {
 
 	}
 
-	@Then("^Open Reviewer account$")
-	public void open_reviewer_account() throws Throwable {
+	@Then("^Open Reviewer account2$")
+	public void open_reviewer_account2() throws Throwable {
 		reader = new JsonDataReaderWriter();
 		login = new AzentioLogin(driver);
 		driver.get(config.getApplicationUrl());
@@ -301,8 +301,8 @@ public class InventoryManagament extends BaseClass {
 
 	}
 
-	@And("^Click on notification$")
-	public void click_on_notification() throws Throwable {
+	@And("^Click on notification2$")
+	public void click_on_notification2() throws Throwable {
 		waithelper = new WaitHelper(driver);
 		reviewer = new KUBS_ReviewerObj(driver);
 		waithelper.waitForElement(driver, 2000, reviewer.reviewerNotidicationIcon());
@@ -336,8 +336,8 @@ public class InventoryManagament extends BaseClass {
 
 	}
 
-	@Then("^Approve the record which we submitted from maker stage$")
-	public void approve_the_record_which_we_submitted_from_maker_stage() throws Throwable {
+	@Then("^Approve the record which we submitted from maker stage2$")
+	public void approve_the_record_which_we_submitted_from_maker_stage2() throws Throwable {
 //		waithelper.waitForElement(driver, 2000, reviewer.reviewerApproveButton());
 		waithelper.waitForElementwithFluentwait(driver, reviewer.reviewerApproveButton());
 		reviewer.reviewerApproveButton().click();
@@ -350,8 +350,8 @@ public class InventoryManagament extends BaseClass {
 		Thread.sleep(3000);
 	}
 
-	@Then("^Go to Checker account$")
-	public void go_to_checker_account() throws Throwable {
+	@Then("^Go to Checker account2$")
+	public void go_to_checker_account2() throws Throwable {
 		login = new AzentioLogin(driver);
 		driver.get(config.getApplicationUrl());
 		login.loginToAzentioAppAsChecker("Checker");
@@ -359,8 +359,8 @@ public class InventoryManagament extends BaseClass {
 
 	}
 
-	@And("^Clam the record$")
-	public void clam_the_record() throws Throwable {
+	@And("^Clam the record2$")
+	public void clam_the_record2() throws Throwable {
 		waithelper = new WaitHelper(driver);
 		kubschecker = new KUBS_CheckerObj(driver);
 		waithelper.waitForElement(driver, 3000, kubschecker.checkerSecurityManagement());
@@ -378,8 +378,8 @@ public class InventoryManagament extends BaseClass {
 
 	}
 
-	@Then("^Click on notification and approve the record$")
-	public void click_on_notification_and_approve_the_record() throws Throwable {
+	@Then("^Click on notification and approve the record2$")
+	public void click_on_notification_and_approve_the_record2() throws Throwable {
 		javascript = new JavascriptHelper();
 //		Thread.sleep(2000);
 //		waithelper.waitForElement(driver, 3000, kubschecker.checkerNotificationIcon());
@@ -841,8 +841,8 @@ public class InventoryManagament extends BaseClass {
 				jsonWriter.addData(reviewerId);
 
 		    }
-		    @Then("^Open the Reviewer account$")
-		    public void open_the_reviewer_account() throws Throwable {
+		    @Then("^Open the Reviewer account2$")
+		    public void open_the_reviewer_account2() throws Throwable {
 		    	reader = new JsonDataReaderWriter();
 				login = new AzentioLogin(driver);
 				driver.get(config.getApplicationUrl());

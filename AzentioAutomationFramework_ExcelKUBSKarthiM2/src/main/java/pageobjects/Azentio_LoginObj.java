@@ -37,7 +37,7 @@ public class Azentio_LoginObj {
 		return password;
 	}
 
-	@FindBy(xpath = "//p[contains(text(),'OTP')]")
+	@FindBy(xpath = "//small[contains(text(),'OTP')]")
 	private WebElement get_otp;
 
 	public WebElement Login_getOtp() {

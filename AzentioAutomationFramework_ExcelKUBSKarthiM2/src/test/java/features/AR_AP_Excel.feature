@@ -1,7 +1,7 @@
 Feature: AR/AP Module
 @KUBS_AR/AP_UAT_003_001_TC_03_01   @AR/AP
 Scenario: check cancellation of contract is not allowed when purchase order is created against contract1
-And User get the test data for the po contract cancellation test case00300103
+And User get the test data for the po contract cancellation test case1
 Given user navigate to the url and login as a maker for cancellation of contract is not allowed
 And click on accounts Payable module
 And goto vendor contract module
@@ -13,6 +13,7 @@ And add the benificiory details and select auto payout as yes
 And click notification button
 Then choose first record in the notification record in arap
 And click on Submit button 
+And User get the test data for the po contract cancellation test case1
 Then enter remark in confirmation alert in arap
 Then click on submit button in alert in arap
 And capture the reviewer ID in pop up which is open when we submit our record in maker stage in arap
@@ -20,9 +21,13 @@ Then logout from maker
 
 @KUBS_AR/AP_UAT_003_001_TC_03_02
 Scenario: Login as a Reviewer
+And User get the test data for the po contract cancellation test case1
 And login with reviewer credentials1
+#And User get the test data for the po contract cancellation test case2
 Then click on notification button
+And User get the test data for the po contract cancellation test case1
 And select our record in notification records using reference ID in arap
+And User get the test data for the po contract cancellation test case2
 Then Approve the record from reviewer
 And enter the remark in alert1
 Then click on submit in alert1
@@ -31,6 +36,7 @@ And logout from reviewer
 
 @KUBS_AR/AP_UAT_003_001_TC_03_03
 Scenario: Login as a Checker
+And User get the test data for the po contract cancellation test case3
 Then login as a checker 
 And click on security management menu in checker
 Then click on action button under security management menu
@@ -44,6 +50,7 @@ And verify the record got approved from checker
 Then logout from checker
 @KUBS_AR/AP_UAT_003_001_TC_03_04
 Scenario: check cancellation of contract is not allowed when purchase order is created against contract3
+And User get the test data for the po contract cancellation test case4
 And login with Maker ID
 And click on accounts Payable module
 And goto vendor contract module
@@ -63,7 +70,8 @@ And capture the reviewer ID in pop up which is open when we submit our record in
 Then logout from maker
 @KUBS_AR/AP_UAT_003_001_TC_03_05
 Scenario: Login as a Reviewer
-And login with reviewer credential
+And User get the test data for the po contract cancellation test case5
+And login with reviewer credentials1
 Then click on notification button
 And select our record in notification records using reference ID in arap
 Then Approve the record from reviewer
@@ -73,6 +81,7 @@ Then verify the approval status of the record
 And logout from reviewer
 @KUBS_AR/AP_UAT_003_001_TC_03_06
 Scenario: Login as a Checker
+And User get the test data for the po contract cancellation test case6
 Then login as a checker 
 And click on security management menu in checker
 Then click on action button under security management menu
@@ -87,6 +96,7 @@ And verify the record got approved from checker
 Then logout from checker
 @KUBS_AR/AP_UAT_003_001_TC_03_07
 Scenario: check cancellation of contract is not allowed when purchase order is created against contract4
+And User get the test data for the po contract cancellation test case7
 And login with Maker ID
 When click the accounts payable
 And click vendor purchase order eye ion
@@ -109,6 +119,7 @@ Then verify that cancellation of contract is not allowed when po created for con
 ###########################################################################################################################################################
 @KUBS_AR/AP_UAT_003_007_TC_05_01_01 @AR/AP
 Scenario: Verify cancelling Credit Note is not allowed if the same has been adjusted at payment settlement1
+And User get the test data for the cancelling credit note test case0101
 Given user navigate to the url and login as a maker for cancellation of contract is not allowed
 And click on accounts Payable module
 And goto vendor contract module
@@ -126,7 +137,8 @@ And capture the reviewer ID in pop up which is open when we submit our record in
 Then logout from maker
 @KUBS_AR/AP_UAT_003_007_TC_05_01_02
 Scenario: Login as a Reviewer
-And login with reviewer credentials
+And User get the test data for the cancelling credit note test case0102
+And login with reviewer credentials1
 Then click on notification button
 And select our record in notification records using reference ID in arap
 Then Approve the record from reviewer
@@ -136,6 +148,7 @@ Then verify the approval status of the record
 And logout from reviewer
 @KUBS_AR/AP_UAT_003_007_TC_05_01_03
 Scenario: Login as a Checker
+And User get the test data for the cancelling credit note test case0103
 Then login as a checker 
 And click on security management menu in checker
 Then click on action button under security management menu
@@ -150,6 +163,7 @@ Then logout from checker
 
 @KUBS_AR/AP_UAT_003_007_TC_05_02_01 @AR/AP
 Scenario: Verify cancelling Credit Note is not allowed if the same has been adjusted at payment settlement2
+And User get the test data for the cancelling credit note test case0201
 And login with Maker ID
 And click on accounts Payable module
 And goto vendor contract module
@@ -169,7 +183,8 @@ And capture the reviewer ID in pop up which is open when we submit our record in
 Then logout from maker
 @KUBS_AR/AP_UAT_003_007_TC_05_02_02
 Scenario: Login as a Reviewer
-And login with reviewer credentials
+And User get the test data for the cancelling credit note test case0202
+And login with reviewer credentials1
 Then click on notification button
 And select our record in notification records using reference ID in arap
 Then Approve the record from reviewer
@@ -179,6 +194,7 @@ Then verify the approval status of the record
 And logout from reviewer
 @KUBS_AR/AP_UAT_003_007_TC_05_02_03
 Scenario: Login as a Checker
+And User get the test data for the cancelling credit note test case0203
 Then login as a checker 
 And click on security management menu in checker
 Then click on action button under security management menu
@@ -193,6 +209,7 @@ Then logout from checker
 
 @KUBS_AR/AP_UAT_003_007_TC_05_03_01 @AR/AP
 Scenario: Verify cancelling Credit Note is not allowed if the same has been adjusted at payment settlement3
+And User get the test data for the cancelling credit note test case0301
 And login with Maker ID
 And click on accounts Payable module
 Then click on po creation module
@@ -209,7 +226,8 @@ And capture the reviewer ID in pop up which is open when we submit our record in
 Then logout from maker
 @KUBS_AR/AP_UAT_003_007_TC_05_03_02 
 Scenario: Login as a Reviewer
-And login with reviewer credential
+And User get the test data for the cancelling credit note test case0302
+And login with reviewer credentials1
 Then click on notification button
 And select our record in notification records using reference ID in arap
 Then Approve the record from reviewer
@@ -218,6 +236,7 @@ Then verify the approval status of the record
 And logout from reviewer
 @KUBS_AR/AP_UAT_003_007_TC_05_03_03 
 Scenario: Login as a checker
+And User get the test data for the cancelling credit note test case0303
 Then login as a checker 
 And click on security management menu in checker
 Then click on action button under security management menu
@@ -231,6 +250,7 @@ Then logout from checker
 
 @KUBS_AR/AP_UAT_003_007_TC_05_04_01 @AR/AP
 Scenario: Verify cancelling Credit Note is not allowed if the same has been adjusted at payment settlement4
+And User get the test data for the cancelling credit note test case0401
 And login with Maker ID
 And click on accounts Payable module
 Then click on po creation module
@@ -248,7 +268,8 @@ And capture the reviewer ID in pop up which is open when we submit our record in
 Then logout from maker
 @KUBS_AR/AP_UAT_003_007_TC_05_04_02
 Scenario: Login as a Reviewer
-And login with reviewer credentials
+And User get the test data for the cancelling credit note test case0402
+And login with reviewer credentials1
 Then click on notification button
 And select our record in notification records using reference ID in arap
 Then Approve the record from reviewer
@@ -257,6 +278,7 @@ Then verify the approval status of the record
 And logout from reviewer
 @KUBS_AR/AP_UAT_003_007_TC_05_04_03
 Scenario: Login as a Checker
+And User get the test data for the cancelling credit note test case0403
 Then login as a checker 
 And click on security management menu in checker
 Then click on action button under security management menu
@@ -270,6 +292,7 @@ Then logout from checker
 
 @KUBS_AR/AP_UAT_003_007_TC_05_05_01 @AR/AP
 Scenario: Verify cancelling Credit Note is not allowed if the same has been adjusted at payment settlement5
+And User get the test data for the cancelling credit note test case0501
 And login with Maker ID
 And click on accounts Payable module
 And goto invoice booking module
@@ -286,7 +309,8 @@ And capture the reviewer ID in pop up which is open when we submit our record in
 Then logout from maker
 @KUBS_AR/AP_UAT_003_007_TC_05_05_02 
 Scenario: Login as a Reviewer
-And login with reviewer credentials
+And User get the test data for the cancelling credit note test case0502
+And login with reviewer credentials1
 Then click on notification button
 And select our record in notification records using reference ID in arap
 Then Approve the record from reviewer
@@ -295,6 +319,7 @@ Then verify the approval status of the record
 And logout from reviewer
 @KUBS_AR/AP_UAT_003_007_TC_05_05_03 
 Scenario: Login as a Checker
+And User get the test data for the cancelling credit note test case0503
 Then login as a checker 
 And click on security management menu in checker
 Then click on action button under security management menu
@@ -308,6 +333,7 @@ Then logout from checker
 
 @KUBS_AR/AP_UAT_003_007_TC_05_06_01 @AR/AP
 Scenario: Verify cancelling Credit Note is not allowed if the same has been adjusted at payment settlement6
+And User get the test data for the cancelling credit note test case0601
 And login with Maker ID
 And click on accounts Payable module
 And goto invoice booking module
@@ -325,7 +351,8 @@ And capture the reviewer ID in pop up which is open when we submit our record in
 Then logout from maker
 @KUBS_AR/AP_UAT_003_007_TC_05_06_02
 Scenario: Login as a Reviewer
-And login with reviewer credentials
+And User get the test data for the cancelling credit note test case0602
+And login with reviewer credentials1
 Then click on notification button
 And select our record in notification records using reference ID in arap
 Then Approve the record from reviewer
@@ -334,6 +361,7 @@ Then verify the approval status of the record
 And logout from reviewer
 @KUBS_AR/AP_UAT_003_007_TC_05_06_03
 Scenario: Login as a Checker
+And User get the test data for the cancelling credit note test case0603
 Then login as a checker 
 And click on security management menu in checker
 Then click on action button under security management menu
@@ -346,6 +374,7 @@ And verify the record got approved from checker
 Then logout from checker
 @KUBS_AR/AP_UAT_003_007_TC_05_06_04
 Scenario: Verify cancelling Credit Note is not allowed if the same has been adjusted at payment settlement6
+And User get the test data for the cancelling credit note test case0604
 And login with Maker ID
 When click the Account Receivable Main Module for verify Accounting entries
 And click the credit note eye icon
@@ -364,6 +393,7 @@ And Give the Adjustment Ref No and Validate
 
     @KUBS_AR/AP_UAT_005_002_TC_01_01 @AR/AP
     Scenario: User cancels the payment settlement transaction for multiple bills.
+    And User get the test data for the payment settlement transaction test case0101
     Given Navigate The Azentio Url
     And user should navigate to accounts payable menu
     When click on eye button of payment settlement cancellation
@@ -373,13 +403,15 @@ And Give the Adjustment Ref No and Validate
     
     @KUBS_AR/AP_UAT_005_002_TC_01_02 
     Scenario: Login as a Reviewer
-    And User should go to the kubs url and login as a reviewer user
+    And User get the test data for the payment settlement transaction test case0102
+    And login with reviewer credentials1
     Then Click on notification button in reviewer
   	And approve the record by the reviewer user in arap
   	
   	
   	@KUBS_AR/AP_UAT_005_002_TC_01_03
     Scenario: Login as a Checker
+    And User get the test data for the payment settlement transaction test case0103
     Given User should go to the kubs url and login as a checker user
    	And Click on security management in checker
    	Then Click on open pool in checker
@@ -390,6 +422,7 @@ And Give the Adjustment Ref No and Validate
     
     @KUBS_AR/AP_UAT_005_002_TC_01_04
     Scenario: User cancels the payment settlement transaction for multiple bills.
+    And User get the test data for the payment settlement transaction test case0104
     Given User should go to the kubs url and login as a maker user
     And user should navigate to accounts payable menu
     When click on eye button of manual payout
@@ -398,6 +431,7 @@ And Give the Adjustment Ref No and Validate
     
 @KUBS_AR/AP_UAT_005_002_TC_02  @AR/AP
 Scenario: Verify cancelled payment txn is not available for payout on payout screen.
+And User get the test data for the payment settlement transaction test case02
 Given User should go to the kubs url and login as a maker user
 And user should navigate to accounts payable menu
 When click on eye button of manual payout
@@ -406,6 +440,7 @@ And Fill the required fields for verify cancelled payment txn availability in ar
     
 @KUBS_AR_AP_UAT_005_002_TC_03 @AR/AP
 Scenario: Verify accounting entries post payment settlement approval.
+And User get the test data for the payment settlement transaction test case03
 Given Navigate The Azentio Url
 And click on accounts Payable module
 And Go to payment settlement module
@@ -426,6 +461,7 @@ Then verify approved settlement reference number is available in the Gl report i
 
 @KUBS_AR/AP_UAT_005_002_TC_04  @AR/AP
 Scenario: Verify Balance sheet post payment settlement approval.
+And User get the test data for the payment settlement transaction test case04
 Given Navigate to URL and user should login as a maker
 Then Click on Report button
 Then Click on Financial Reporting tab
@@ -437,6 +473,7 @@ Then close the report
 
  @KUBS_AR/AP_UAT_005_002_TC_05  @AR/AP @report
 Scenario: Verify Accounts Payable Report post cancelling payment settlement txn
+And User get the test data for the payment settlement transaction test case05
 Given user login as Azentio Maker
 When click the Account payable Mainmodule
 And click the eye icon of the payment settlement

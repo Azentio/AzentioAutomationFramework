@@ -69,7 +69,7 @@ public class KUBS_Login {
 
 	public void logintoAzentioappReviewer(String user, String id) {
 		waithelper = new WaitHelper(driver);
-		KUBS_LoginTestDataType logindata = reader.getLoginCredentialsByName(user);
+		//KUBS_LoginTestDataType logindata = reader.getLoginCredentialsByName(user);
 		login = new KUBS_LoginObj(driver);
 
 		if (id.equals("12345")) {
@@ -92,7 +92,7 @@ public class KUBS_Login {
 			waithelper.waitForElement(driver, 2000, login.Login_passWord());
 			login.Login_passWord().sendKeys(ulsLoginTestData.get("Password"));
 			String otp = login.Login_getOtp().getText();
-			driver.findElement(By.xpath("//ng-otp-input/div/input[1]")).sendKeys(otp.substring(7));
+			driver.findElement(By.xpath("//ng-otp-input/div/input[1]")).sendKeys(otp.substring(4));
 			waithelper.waitForElement(driver, 2000, login.Login_signIn());
 			login.Login_signIn().click();
 			waithelper.waitForElementToVisibleWithFluentWait(driver, login.Login_loginStatus(), 20, 1);
@@ -119,7 +119,7 @@ public class KUBS_Login {
 			waithelper.waitForElementToVisibleWithFluentWait(driver, login.Login_passWord(), 20, 1);
 			login.Login_passWord().sendKeys(ulsLoginTestData.get("Password"));
 			String otp = login.Login_getOtp().getText();
-			driver.findElement(By.xpath("//ng-otp-input/div/input[1]")).sendKeys(otp.substring(7));
+			driver.findElement(By.xpath("//ng-otp-input/div/input[1]")).sendKeys(otp.substring(4));
 			waithelper.waitForElement(driver, 2000, login.Login_signIn());
 			login.Login_signIn().click();
 			waithelper.waitForElementToVisibleWithFluentWait(driver, login.Login_loginStatus(), 60, 1);
@@ -142,7 +142,7 @@ public class KUBS_Login {
 			waithelper.waitForElementToVisibleWithFluentWait(driver, login.Login_passWord(), 20, 1);
 			login.Login_passWord().sendKeys(ulsLoginTestData.get("Password"));
 			String otp = login.Login_getOtp().getText();
-			driver.findElement(By.xpath("//ng-otp-input/div/input[1]")).sendKeys(otp.substring(7));
+			driver.findElement(By.xpath("//ng-otp-input/div/input[1]")).sendKeys(otp.substring(4));
 			waithelper.waitForElementToVisibleWithFluentWait(driver, login.Login_signIn(), 20, 1);
 			login.Login_signIn().click();
 			waithelper.waitForElementToVisibleWithFluentWait(driver, login.Login_loginStatus(), 20, 1);
@@ -155,7 +155,7 @@ public class KUBS_Login {
 			waithelper.waitForElementToVisibleWithFluentWait(driver, login.Login_passWord(), 20, 1);
 			login.Login_passWord().sendKeys(ulsLoginTestData.get("Password"));
 			String otp = login.Login_getOtp().getText();
-			driver.findElement(By.xpath("//ng-otp-input/div/input[1]")).sendKeys(otp.substring(7));
+			driver.findElement(By.xpath("//ng-otp-input/div/input[1]")).sendKeys(otp.substring(4));
 			waithelper.waitForElementToVisibleWithFluentWait(driver, login.Login_signIn(), 20, 1);
 			login.Login_signIn().click();
 			waithelper.waitForElementToVisibleWithFluentWait(driver, login.Login_loginStatus(), 20, 1);
@@ -169,7 +169,7 @@ public class KUBS_Login {
 			waithelper.waitForElementToVisibleWithFluentWait(driver, login.Login_passWord(), 20, 1);
 			login.Login_passWord().sendKeys(ulsLoginTestData.get("Password"));
 			String otp = login.Login_getOtp().getText();
-			driver.findElement(By.xpath("//ng-otp-input/div/input[1]")).sendKeys(otp.substring(7));
+			driver.findElement(By.xpath("//ng-otp-input/div/input[1]")).sendKeys(otp.substring(4));
 			waithelper.waitForElementToVisibleWithFluentWait(driver, login.Login_signIn(), 20, 1);
 			login.Login_signIn().click();
 			waithelper.waitForElementToVisibleWithFluentWait(driver, login.Login_loginStatus(), 20, 1);
@@ -182,7 +182,7 @@ public class KUBS_Login {
 			waithelper.waitForElementToVisibleWithFluentWait(driver, login.Login_passWord(), 20, 1);
 			login.Login_passWord().sendKeys(ulsLoginTestData.get("Password"));
 			String otp = login.Login_getOtp().getText();
-			driver.findElement(By.xpath("//ng-otp-input/div/input[1]")).sendKeys(otp.substring(7));
+			driver.findElement(By.xpath("//ng-otp-input/div/input[1]")).sendKeys(otp.substring(4));
 			waithelper.waitForElementToVisibleWithFluentWait(driver, login.Login_signIn(), 20, 1);
 			login.Login_signIn().click();
 			waithelper.waitForElementToVisibleWithFluentWait(driver, login.Login_loginStatus(), 20, 1);
@@ -196,7 +196,7 @@ public class KUBS_Login {
 			waithelper.waitForElementToVisibleWithFluentWait(driver, login.Login_passWord(), 20, 1);
 			login.Login_passWord().sendKeys(ulsLoginTestData.get("Password"));
 			String otp = login.Login_getOtp().getText();
-			driver.findElement(By.xpath("//ng-otp-input/div/input[1]")).sendKeys(otp.substring(7));
+			driver.findElement(By.xpath("//ng-otp-input/div/input[1]")).sendKeys(otp.substring(4));
 			waithelper.waitForElementToVisibleWithFluentWait(driver, login.Login_signIn(), 20, 1);
 			login.Login_signIn().click();
 			waithelper.waitForElementToVisibleWithFluentWait(driver, login.Login_loginStatus(), 20, 1);
