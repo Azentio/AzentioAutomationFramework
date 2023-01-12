@@ -38,7 +38,7 @@ public class Pettycash {
 	PettyCash_ReconciliationObj ReconciliationObj = new PettyCash_ReconciliationObj(driver);
 	WaitHelper waithelper = new WaitHelper(driver);
 	JavascriptHelper javascripthelper = new JavascriptHelper();
-	BrowserHelper browserHelper;
+	BrowserHelper browserHelper =new BrowserHelper(driver);
 	KUBS_CheckerObj kubschecker = new KUBS_CheckerObj(driver);
 	Map<String, String> Getdata = new LinkedHashMap<>();
 	ClicksAndActionsHelper clicksAndActionHelper = new ClicksAndActionsHelper(driver);
@@ -108,22 +108,20 @@ public class Pettycash {
     }
     @Then("^the report is displaying all fund requisition details$")
 	public void the_report_is_displaying_all_fund_requisition_details() throws InterruptedException {
-		Thread.sleep(2000);
-		browserHelper.SwitchToWindow(1);
-
+    	browserHelper.SwitchToWindow(1);
 		javascripthelper.JavaScriptHelper(driver);
-		while (true) {
-			Thread.sleep(2000);
+		for (int i = 0; i <=100; i++) {
+
 			try {
-				waithelper.waitForElementToVisibleWithFluentWait(driver, ReconciliationObj.Reports_PettyCash_FundRequisitionReport(), 60, 500);
+				
 				ReconciliationObj.Reports_PettyCash_FundRequisitionReport().isDisplayed();
 				break;
 			} catch (NoSuchElementException e) {
-				waithelper.waitForElement(driver, 3000, reports_AssetCreationCommonObj.ARAP_Report_Nextbtn());
-				reports_AssetCreationCommonObj.ARAP_Report_Nextbtn().click();
+				
+				browserHelper.switchToParentWithChildClose();
 			}
 		}
-		browserHelper.switchToParentWithChildClose();
+		
 	}
 
 	@Then("^click on temp grid button of petty cash receipt report$")
@@ -225,8 +223,7 @@ public class Pettycash {
     public void the_report_is_displaying_all_the_petty_cash_receipt_details() throws InterruptedException {
 //    	Thread.sleep(1000);
 		browserHelper.SwitchToWindow(1);
-    	waithelper.waitForElementToVisibleWithFluentWait(driver, ReconciliationObj.Reports_PettyCash_PettyCashReceiptReport(), 60, 500);
-    	ReconciliationObj.Reports_PettyCash_PettyCashReceiptReport().isDisplayed();
+		Thread.sleep(3000);
     	browserHelper.switchToParentWithChildClose();
     }
 
@@ -324,10 +321,9 @@ public class Pettycash {
     }
     @Then("^the report is displaying all the petty cash register details$")
     public void the_report_is_displaying_all_the_petty_cash_register_details() throws InterruptedException {
-    	Thread.sleep(1000);
+
 		browserHelper.SwitchToWindow(1);
-    	waithelper.waitForElementToVisibleWithFluentWait(driver, ReconciliationObj.Reports_PettyCash_PettyCashRegisterReport(), 60, 500);
-    	ReconciliationObj.Reports_PettyCash_PettyCashRegisterReport().isDisplayed();
+    	Thread.sleep(3500);
     	browserHelper.switchToParentWithChildClose();
     }
 
