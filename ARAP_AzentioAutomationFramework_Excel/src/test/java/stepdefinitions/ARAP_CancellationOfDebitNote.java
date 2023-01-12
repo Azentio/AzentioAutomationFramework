@@ -93,7 +93,7 @@ public class ARAP_CancellationOfDebitNote {
 	public void click_on_main_module_accounts_receivable() throws Throwable {
 // ----------ACCOUTS RECEIVABLE----------//
 		javaScriptHelper.JavaScriptHelper(driver);
-// javaScriptHelper.scrollIntoView(arapObj.ARAP_Accountsreceivable());
+		javaScriptHelper.scrollIntoView(arapObj.ARAP_Accountsreceivable());
 		waitHelper.waitForElement(driver, 2000, arapObj.ARAP_Accountsreceivable());
 		arapObj.ARAP_Accountsreceivable().click();
 	}
@@ -309,8 +309,8 @@ public class ARAP_CancellationOfDebitNote {
 		arapReportObj.ARAP_Report_Balancesheet_Edit().click();
 	}
 
-	@Then("^Fill branch details for report$")
-	public void fill_branch_details_for_report() {
+	@Then("^Fill branch details for post debit note balance sheet report$")
+	public void fill_branch_details_for_post_debit_note_balance_sheet_report() {
 
 // Thread.sleep(6000);
 
@@ -659,7 +659,11 @@ public class ARAP_CancellationOfDebitNote {
 		// -----------Action Icon-----------//
 		waitHelper.waitForElement(driver, 2000, arapObj.ARAP_ReferanceId());
 		String Referance_id = arapObj.ARAP_ReferanceId().getText();
-		readerData.addReferanceData(Referance_id);
+		
+		excelData.updateTestData(dataSetID, "ReferenceID", Referance_id);
+		testData = excelData.getTestdata(dataSetID);
+		
+//		readerData.addReferanceData(Referance_id);
 		waitHelper.waitForElement(driver, 2000, arapObj.ARAP_ActionButton());
 		arapObj.ARAP_ActionButton().click();
 	}
@@ -713,7 +717,7 @@ public class ARAP_CancellationOfDebitNote {
 		javaScriptHelper.JavaScriptHelper(driver);
 		String befr_xpath = "//span[contains(text(),'";
 		String aftr_xpath = "')]/parent::div/parent::datatable-body-cell/preceding-sibling::datatable-body-cell[1]//div//ion-buttons//ion-button";
-		waitHelper.waitForElement(driver, 2000, driver.findElement(By.xpath(befr_xpath + readerData.readReferancedata() + aftr_xpath)));
+		waitHelper.waitForElement(driver, 2000, driver.findElement(By.xpath(befr_xpath + testData.get("ReferenceID") + aftr_xpath)));
 		driver.findElement(By.xpath(befr_xpath + readerData.readReferancedata() + aftr_xpath)).click();
 
 		// reviewerObj.reviewer_action_button().click();

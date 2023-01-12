@@ -42,9 +42,6 @@ AccountReceivable_AccountReceivableAdvancesObj accountReceivable_AccountReceivab
 ExcelData excelData = new ExcelData("C:\\Users\\inindc00089\\eclipse-workspace\\AzentioAutomationFramework_ARAP\\Test-data\\KUBSTestData.xlsx","AdvanceToEmployees", "DataSet ID");
 Map<String, String> testData = new HashMap<>();
 
-	
-	
-
 	@Then("^Click on Account Recivable button$")
 	public void click_on_account_recivable_button() throws Throwable {
 	waithelper.waitForElementToVisibleWithFluentWait(driver, accountReceivable_AccountReceivableAdvancesObj.accountReceivable_AccountReceivableAdvances_AccountReceivableButton(), 10, 1);	

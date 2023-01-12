@@ -18,6 +18,14 @@ public class ACCOUNTSRECEIVABLE_ReceiptObj {
 	{
 		return accoutsReceivable_receiptViewButton;
 	}
+	
+	@FindBy(xpath="//ion-label[text()=' Receipts ']")
+	private WebElement accoutsReceivable_receipt;
+	public WebElement accoutsReceivable_receipt()
+	{
+		return accoutsReceivable_receipt;
+	}
+	
 	@FindBy(xpath="//ion-col[3]//input")
 	private WebElement accoutsReceivable_receiptReceiptType;
 	public WebElement accoutsReceivableReceiptReceiptType()
@@ -68,4 +76,15 @@ public class ACCOUNTSRECEIVABLE_ReceiptObj {
 	{
 		return accoutsReceivable_getBankAccountNumber;
 	}
+	@FindBy(xpath = "//div[@id='toast-container']//div[@role='alert']")
+    private WebElement WorkflowInitiated;
+    public WebElement WorkflowInitiated() {
+         return WorkflowInitiated;
+    }
+    @FindBy(xpath = "//button[@aria-label='Close']")
+    private WebElement AlertClose;
+    public WebElement AlertClose() {
+         return AlertClose;
+    } 
+	
 }

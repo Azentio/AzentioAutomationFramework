@@ -520,4 +520,36 @@ public class AccountPayable_VendorPurchaseOrderObj {
 	public WebElement MessageContent() {
 		return MessageContent;
 	}
+
+	// first eye button
+	@FindBy(xpath = "//datatable-row-wrapper[1]/datatable-body-row[1]/div[2]/datatable-body-cell[1]/div/ion-buttons/ion-button[1]")
+	private WebElement accountPayable_VendorPurchaseOrder_FirstEyeButton;
+
+	public WebElement accountPayable_VendorPurchaseOrder_FirstEyeButton() {
+		return accountPayable_VendorPurchaseOrder_FirstEyeButton;
+	}
+
+	// Save item details
+	@FindBy(xpath = "//page-po-item-details-update/ion-header/ion-toolbar/ion-buttons[2]/ion-button")
+	private WebElement accountsPayable_VendorPurchaseOrder_ItemDetailsSave;
+
+	public WebElement accountsPayable_VendorPurchaseOrder_ItemDetailsSave() {
+		return accountsPayable_VendorPurchaseOrder_ItemDetailsSave;
+	}
+
+	// Beneficiary tab button
+	@FindBy(xpath = "//span[3]/ion-tab-button/ion-label")
+	private WebElement accountsPayable_VendorPurchaseOrder_BeneficiaryTab;
+
+	public WebElement accountsPayable_VendorPurchaseOrder_BeneficiaryTab() {
+		return accountsPayable_VendorPurchaseOrder_BeneficiaryTab;
+	}
+
+	// popup1 close button
+	@FindBy(xpath = "//body/div/div/div[1]/button")
+	private WebElement accountsPayable_VendorPurchaseOrder_PopUpCloseButton;
+
+	public WebElement accountsPayable_VendorPurchaseOrder_PopUpCloseButton() {
+		return accountsPayable_VendorPurchaseOrder_PopUpCloseButton;
+	}
 }

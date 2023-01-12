@@ -16,7 +16,7 @@ import utilities.ExtentTestManager;
 				            "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:",
 				            "rerun:ReRunScenarios/FailedReRun.txt"}
 ///ArAp1.feature			dryRun = true //to check compilation errors
-					,  tags="@KUBS_AR/AP_UAT_003_008_TC_01"
+					,  tags="@KUBS_AR_AP_UAT_010_002_TC_04"
 
 
 )

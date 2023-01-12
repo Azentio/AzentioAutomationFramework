@@ -198,12 +198,12 @@ public class CancellationOfAdvanceToEmployees extends BaseClass {
 		clicksAndActionsHelper.doubleClick(FinalDay);
 	}
 
-	@And("^click on view button$")
-	public void click_on_view_button() throws Throwable {
-		waitHelper.waitForElement(driver, 3000, inventoryManagamentObj.inventoryViewButton());
-		inventoryManagamentObj.inventoryViewButton().click();
-		Thread.sleep(3000);
-	}
+//	@And("^click on view button$")
+//	public void click_on_view_button() throws Throwable {
+//		waitHelper.waitForElement(driver, 3000, inventoryManagamentObj.inventoryViewButton());
+//		inventoryManagamentObj.inventoryViewButton().click();
+//		Thread.sleep(3000);
+//	}
 
 	@Then("^adjustment reference number not availabe in the GL  record$")
 	public void adjustment_reference_number_not_availabe_in_the_gl_record() throws Throwable {
