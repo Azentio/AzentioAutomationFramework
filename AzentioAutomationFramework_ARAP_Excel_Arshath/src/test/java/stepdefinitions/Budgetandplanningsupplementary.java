@@ -960,8 +960,19 @@ public class Budgetandplanningsupplementary {
 				}
 			}
 		}
-	}
 
+	for (int i = 0; i < 100; i++) {
+		try {
+			clickAndActionsHelper.moveToElement(kubsMakerObj.ARAP_Notification_Close());
+			kubsMakerObj.ARAP_Notification_Close().click();
+			break;
+		} catch (Exception e) {
+			if (i==100) {
+				Assert.fail();
+			}
+		}
+	}
+	}
 	@Then("^validate maker can submit the record UAT$")
 	public void validate_maker_can_submit_the_record_UAT() throws InterruptedException, IOException, ParseException {
 
@@ -1115,7 +1126,7 @@ public class Budgetandplanningsupplementary {
 				500);
 		String referenceID = budgetCreationObj.budgetCreationFirstReferenceId().getText();
 		// jsonReaderWriter.addReferanceData(referenceID);
-		Exceldata.updateTestData("KUBS_BP_UAT_005_004_D1", "ReferenceID", referenceID);
+		Exceldata1.updateTestData("KUBS_BP_UAT_005_004_D1", "ReferenceID", referenceID);
 		budgetCreationObj.budgetCreationFirstRecord().click();
 
 	}
@@ -1131,7 +1142,8 @@ public class Budgetandplanningsupplementary {
 		String revID = finalReviewerID.toString();
 		System.out.println("Reviewer ID is" + revID);
 		// jsonReaderWriter.addData(revID);
-		Exceldata.updateTestData("KUBS_BP_UAT_005_004_D1", "ReviewerID", reviwerId);
+		Exceldata1.updateTestData("KUBS_BP_UAT_005_004_D1", "ReviewerID", revID);
+		waithelper.waitForElementToVisibleWithFluentWait(driver, budgetCreationObj.budgetCreationAlertClose(), 60, 2);
 		budgetCreationObj.budgetCreationAlertClose().click();
 
 	}
@@ -1158,7 +1170,7 @@ public class Budgetandplanningsupplementary {
 		String revID = finalReviewerID.toString();
 		System.out.println("Reviewer ID is" + revID);
 		// jsonReaderWriter.addData(revID);
-		Exceldata.updateTestData("KUBS_BP_UAT_005_005_D1", "ReviewerID", revID);
+		Exceldata1.updateTestData("KUBS_BP_UAT_005_005_D1", "ReviewerID", revID);
 		budgetCreationObj.budgetCreationAlertClose().click();
 
 	}

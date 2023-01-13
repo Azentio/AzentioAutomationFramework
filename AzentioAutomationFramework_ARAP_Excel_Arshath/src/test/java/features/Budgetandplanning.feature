@@ -141,6 +141,7 @@ Then choose first record in the notification record4
 And click on Submit button 
 Then enter remark in confirmation alertss
 Then click on submit button in alert
+And user update the Excel sheet testdata for Budget and planning Allocation4
 And capture the reviewer ID in pop up which is open when we submit our record in maker stagesss
 
  @SupplementaryBudget_KUBS_BP_UAT_005_004_01
@@ -186,6 +187,7 @@ Then choose first record in the notification record
 And click on Submit button 
 Then enter remark in confirmation alertss
 Then click on submit button in alert
+And user update the Excel sheet testdata for Budget and planning Allocation5
 And capture the reviewer ID in pop up which is open when we submit our record in maker stage5
 @KUBS_BP_UAT_005_005_2
 Scenario: user login to reviewer

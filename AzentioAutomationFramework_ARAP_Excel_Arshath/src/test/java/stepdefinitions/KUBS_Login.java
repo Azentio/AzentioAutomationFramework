@@ -133,7 +133,7 @@ public class KUBS_Login {
 			login.Login_signIn().click();
 			waithelper.waitForElementToVisibleWithFluentWait(driver, login.Login_loginStatus(), 20, 1);
 			Assert.assertTrue(login.Login_loginStatus().isDisplayed());
-		} else if (id.equals("1002439")) {
+		} else if (id.equals("1002436")) {
 			kubsLoginTestData = excelReader.getTestdata("Reviewer5");
 			login.Login_userName().sendKeys(kubsLoginTestData.get("UserID"));
 			login.ubsContinueButton().click();
