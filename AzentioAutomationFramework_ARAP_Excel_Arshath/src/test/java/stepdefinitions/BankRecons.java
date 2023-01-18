@@ -38,8 +38,6 @@ public class BankRecons {
 	WebDriver driver = BaseClass.driver;
 	WaitHelper waithelper = new WaitHelper(driver);
 	JavascriptHelper javascripthelper = new JavascriptHelper();
-	ExcelData Exceldata = new ExcelData("C:\\Users\\inindc00075\\Downloads\\KUBSTestData.xlsx", "BankReconTestdata", "DataSet ID");
-	Map<String, String>testData;
 	BankRecon_ReconFormatObj bankRecon_ReconFormatObj = new BankRecon_ReconFormatObj(driver);
 	// BankRecon_ReconFormatTestDataType bankRecon_ReconFormatTestDataType =
 	// jsonReader.getBankReconByName("Maker");
@@ -50,8 +48,9 @@ public class BankRecons {
 	Azentio_CheckerObj kubschecker = new Azentio_CheckerObj(driver);
 	//JsonDataReaderWriter reader = new JsonDataReaderWriter();
 	Map<String, String> Getdata = new LinkedHashMap<>();
+	ExcelData Exceldata = new ExcelData("C:\\Users\\inindc00075\\Downloads\\KUBSTestData.xlsx", "BankReconTestdata", "DataSet ID");
+	Map<String, String>testData;
 	
-
 	@Then("^Click on Direction Left$")
 	public void click_on_direction_left() {
 		waithelper = new WaitHelper(driver);
@@ -118,63 +117,29 @@ public class BankRecons {
 //EffectiveDate
 		waithelper.waitForElementToVisibleWithFluentWait(driver, bankRecon_ReconFormatObj.bankRecon_ReconFormat_EffectiveDate(), 60, 2);
 		bankRecon_ReconFormatObj.bankRecon_ReconFormat_EffectiveDate().click();
-//Year Selection
-		Thread.sleep(2000);
-		String year1 = driver.findElement(By.xpath("(//button[@class='picker-opt picker-opt-selected'])[3]")).getText()
-				.toString();
-		List<WebElement> size1 = driver.findElements(By.xpath("//ion-picker-column[3]/div/button"));
-		for (WebElement webElement : size1) {
-			webElement.click();
-			String year = webElement.getText();
-			if (year.equalsIgnoreCase("2023")) {
+		while (true) {
+			try {
+
+				driver.findElement(By.xpath("//span[contains(text(),'" + testData.get("Month") + " " + testData.get("Year") + "')]"));
 				break;
 			}
-		}
-//Month selection
-		Thread.sleep(2000);
-		String month1 = driver.findElement(By.xpath("(//button[@class='picker-opt picker-opt-selected'])[2]")).getText()
-				.toString();
-		List<WebElement> size2 = driver.findElements(By.xpath("//ion-picker-column[2]/div/button"));
-		for (WebElement webElement2 : size2) {
-			try {
-				webElement2.click();
-				String month = webElement2.getText();
-				if (month.equalsIgnoreCase("Jun")) {
-					break;
-				}
-			} catch (ElementNotInteractableException ee) {
 
-			}
-
-		}
-//Date selection
-		Thread.sleep(2000);
-		String day1 = driver.findElement(By.xpath("(//button[@class='picker-opt picker-opt-selected'])[1]")).getText()
-				.toString();
-		List<WebElement> size3 = driver.findElements(By.xpath("//ion-picker-column[1]/div/button"));
-		for (WebElement webElement3 : size3) {
-			try {
-				webElement3.click();
-				String day = webElement3.getText();
-				if (day.equalsIgnoreCase("09")) {
-					break;
-				}
-			} catch (ElementNotInteractableException ee) {
+			catch (NoSuchElementException nosuchElement) {
+				bankRecon_ReconFormatObj.ARAPNextMonth().click();
 
 			}
 		}
-//EffectiveDateDoneButton
-		Thread.sleep(1500);
-		waithelper.waitForElementToVisibleWithFluentWait(driver, bankRecon_ReconFormatObj.bankRecon_ReconFormat_EffectiveDateDoneButton(), 60, 2);
-		WebElement done = bankRecon_ReconFormatObj.bankRecon_ReconFormat_EffectiveDateDoneButton();
-		clicksAndActionHelper.clickOnElement(done);
-		Thread.sleep(2000);
-
+		waithelper.waitForElementToVisibleWithFluentWait(driver, driver.findElement(By.xpath("//td[@aria-label='" + testData.get("FullMonth") + " "
+		+ testData.get("Date") + ", " + testData.get("Year") + "']/span")), 60, 2);
+		WebElement Click = driver.findElement(By.xpath("//td[@aria-label='" + testData.get("FullMonth") + " "
+				+ testData.get("Date") + ", " + testData.get("Year") + "']/span"));
+		clicksAndActionHelper.moveToElement(Click);
+		clicksAndActionHelper.doubleClick(Click);
+		
 //AllowValueDate
 		waithelper.waitForElementToVisibleWithFluentWait(driver, bankRecon_ReconFormatObj.bankRecon_ReconFormat_AllowValueDate(), 60, 2);
 		bankRecon_ReconFormatObj.bankRecon_ReconFormat_AllowValueDate().click();
-		bankRecon_ReconFormatObj.bankRecon_ReconFormat_AllowValueDate()
-				.sendKeys(testData.get("AllowValueDate"));
+		bankRecon_ReconFormatObj.bankRecon_ReconFormat_AllowValueDate().sendKeys(testData.get("AllowValueDate"));
 		bankRecon_ReconFormatObj.bankRecon_ReconFormat_AllowValueDate().sendKeys(Keys.ENTER);
 		Thread.sleep(1000);
 //SummaryLineToBeSkipped
@@ -426,20 +391,25 @@ public class BankRecons {
 		bankRecon_ReconFormatObj.bankRecon_ReconFormat_FixedLength().sendKeys(testData.get("FixedLengthDepo"));
 		bankRecon_ReconFormatObj.bankRecon_ReconFormat_FixedLength().sendKeys(Keys.ENTER);
 		
-		waithelper.waitForElement(driver, 3000, bankRecon_ReconFormatObj.bankRecon_ReconFormat_Position());
-		bankRecon_ReconFormatObj.bankRecon_ReconFormat_Position().click();
-		bankRecon_ReconFormatObj.bankRecon_ReconFormat_Position().sendKeys(testData.get("PositionDepo"));
-		bankRecon_ReconFormatObj.bankRecon_ReconFormat_Position().sendKeys(Keys.ENTER);
-		
 		waithelper.waitForElement(driver, 3000, bankRecon_ReconFormatObj.bankRecon_ReconFormat_BlankSpacePaddingNum());
 		bankRecon_ReconFormatObj.bankRecon_ReconFormat_BlankSpacePaddingNum().click();
 		bankRecon_ReconFormatObj.bankRecon_ReconFormat_BlankSpacePaddingNum().sendKeys(testData.get("BlankSpacePaddingDepo"));
 		bankRecon_ReconFormatObj.bankRecon_ReconFormat_BlankSpacePaddingNum().sendKeys(Keys.ENTER);
 		
-		waithelper.waitForElement(driver, 3000, bankRecon_ReconFormatObj.bankRecon_ReconFormat_MatchConditionNum());
-		bankRecon_ReconFormatObj.bankRecon_ReconFormat_MatchConditionNum().click();
-		bankRecon_ReconFormatObj.bankRecon_ReconFormat_MatchConditionNum().sendKeys(testData.get("MatchConditionDepo"));
-		bankRecon_ReconFormatObj.bankRecon_ReconFormat_MatchConditionNum().sendKeys(Keys.ENTER);
+		waithelper.waitForElement(driver, 3000, bankRecon_ReconFormatObj.bankRecon_ReconFormat_Position());
+		bankRecon_ReconFormatObj.bankRecon_ReconFormat_Position().click();
+		bankRecon_ReconFormatObj.bankRecon_ReconFormat_Position().sendKeys(testData.get("PositionDepo"));
+		bankRecon_ReconFormatObj.bankRecon_ReconFormat_Position().sendKeys(Keys.ENTER);
+		
+		waithelper.waitForElement(driver, 3000, bankRecon_ReconFormatObj.bankRecon_ReconFormat_Soundex());
+		bankRecon_ReconFormatObj.bankRecon_ReconFormat_Soundex().click();
+		bankRecon_ReconFormatObj.bankRecon_ReconFormat_Soundex().sendKeys(testData.get("Soundex"));
+		bankRecon_ReconFormatObj.bankRecon_ReconFormat_Soundex().sendKeys(Keys.ENTER);
+			
+		waithelper.waitForElement(driver, 3000, bankRecon_ReconFormatObj.bankRecon_ReconFormat_MatchCondition());
+		bankRecon_ReconFormatObj.bankRecon_ReconFormat_MatchCondition().click();
+		bankRecon_ReconFormatObj.bankRecon_ReconFormat_MatchCondition().sendKeys(testData.get("MatchConditionDepo"));
+		bankRecon_ReconFormatObj.bankRecon_ReconFormat_MatchCondition().sendKeys(Keys.ENTER);
 		
 		waithelper.waitForElement(driver, 3000, bankRecon_ReconFormatObj.bankRecon_ReconFormat_TranspositionCondition());
 		bankRecon_ReconFormatObj.bankRecon_ReconFormat_TranspositionCondition().click();
@@ -750,11 +720,11 @@ public class BankRecons {
 		}
 	 @Then("^user update the Excel sheet testdata for BankRecon$")
 	    public void user_update_the_excel_sheet_testdata_for_bankrecon() throws Throwable {
-		 testData = Exceldata.getTestdata("KUBS_BRS_UAT_001_001_TC_001_01_D1 ");	    
+		 testData = Exceldata.getTestdata("KUBS_BRS_UAT_001_001_TC_001_01_D1");	    
 		 }
 	 @Then("^user update the Excel sheet testdata for BankRecon1$")
 	    public void user_update_the_excel_sheet_testdata_for_bankrecon1() throws Throwable {
-		 testData = Exceldata.getTestdata("KUBS_BRS_UAT_001_001_TC_001_04_D1 ");	    
+		 testData = Exceldata.getTestdata("KUBS_BRS_UAT_001_001_TC_001_04_D1");	    
 		 }
 	 @Then("^history must be correctly maintained on record$")
 	    public void history_must_be_correctly_maintained_on_record() throws Throwable {

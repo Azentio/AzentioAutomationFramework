@@ -1,7 +1,6 @@
 Feature: To create Bank Recon details
 
 @KUBS_BRS_UAT_001_001_TC_001 @MultiAuth
-
 Scenario: Create format master and Data matching Rules for a specific Bank and Account Type
 Given User should go to the kubs url and login as a maker user
 Then Click on Direction Left

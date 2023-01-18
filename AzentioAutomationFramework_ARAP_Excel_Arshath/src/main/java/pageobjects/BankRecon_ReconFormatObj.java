@@ -94,13 +94,19 @@ public class BankRecon_ReconFormatObj {
 	}
 
 	// EffectiveDate 
-	@FindBy(xpath = "//ion-datetime[@id='field_transationDate']")
+	@FindBy(xpath = "(//span[@class='input-calendar'])[1]")
 	private WebElement bankRecon_ReconFormat_EffectiveDate;
 
 	public WebElement bankRecon_ReconFormat_EffectiveDate() {
 		return bankRecon_ReconFormat_EffectiveDate;
 	}
+	@FindBy(xpath = "//owl-date-time-container[1]/div[2]/owl-date-time-calendar[1]/div[1]/button[2]/span[1]")
+	private WebElement ARAP_NextMonth;
 
+	public WebElement ARAPNextMonth() {
+
+		return ARAP_NextMonth;
+	}
 	// EffectiveDateYearDrag
 	@FindBy(xpath = "//button[contains(text(),'2032')]")
 	private WebElement bankRecon_ReconFormat_YearDrag;

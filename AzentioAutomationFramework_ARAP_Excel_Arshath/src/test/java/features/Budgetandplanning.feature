@@ -157,10 +157,10 @@ Then verify record got approved in reviewer stage
 
  @SupplementaryBudget_KUBS_BP_UAT_005_004_02
  Scenario: user click on checker
-And user update the Excel sheet testdata for Budget and planning Allocation4
 Then log in to the Checker Account1
 And click on security management tool
 And click on temp view near by open pool
+And user update the Excel sheet testdata for Budget and planning Allocation4
 And clime the record by the help of Record reference ID
 Then verify record got climed in checker
 And click on notification in checker stage
@@ -189,6 +189,7 @@ Then enter remark in confirmation alertss
 Then click on submit button in alert
 And user update the Excel sheet testdata for Budget and planning Allocation5
 And capture the reviewer ID in pop up which is open when we submit our record in maker stage5
+
 @KUBS_BP_UAT_005_005_2
 Scenario: user login to reviewer
 And user update the Excel sheet testdata for Budget and planning Allocation5
@@ -237,11 +238,11 @@ Then fill apportion amount and save the record UAT
 And click notification button 
 Then click on the search button
 And serach the budget supplimentory sub module name
-Then choose first record in the notification record
+Then choose first record in the notification record3
 And click on Submit button 
 Then enter remark in confirmation alertss
 Then click on submit button in alert
-And capture the reviewer ID in pop up which is open when we submit our record in maker stage
+And capture the reviewer ID in pop up which is open when we submit our record in maker stage6
 
 @KUBS_BP_UAT_005_006_2
 Scenario: user login to reviewer

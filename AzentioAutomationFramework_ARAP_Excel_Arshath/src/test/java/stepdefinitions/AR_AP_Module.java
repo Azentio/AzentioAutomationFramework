@@ -906,16 +906,7 @@ public class AR_AP_Module {
 
 	}
 
-	@Then("^choose first record in the notification record$")
-	public void choose_first_record_in_the_notification_record() throws Throwable {
-		waithelper.waitForElementToVisibleWithFluentWait(driver, budgetCreationObj.budgetCreationFirstReferenceId(), 60,
-				500);
-		String referenceID = budgetCreationObj.budgetCreationFirstReferenceId().getText();
-		// jsonReaderWriter.addReferanceData(referenceID);
-		Exceldata.updateTestData("KUBS_BP_UAT_005_005_D1", "ReferenceID", referenceID);
-		budgetCreationObj.budgetCreationFirstRecord().click();
 
-	}
 
 	@Then("^choose first record in the notification records$")
 	public void choose_first_record_in_the_notification_records() throws Throwable {

@@ -226,6 +226,27 @@ public class Budgetandplanningsupplementary {
 
 	}
 
+	@Then("^choose first record in the notification record$")
+	public void choose_first_record_in_the_notification_record() throws Throwable {
+		waithelper.waitForElementToVisibleWithFluentWait(driver, budgetCreationObj.budgetCreationFirstReferenceId(), 60,
+				500);
+		String referenceID = budgetCreationObj.budgetCreationFirstReferenceId().getText();
+		// jsonReaderWriter.addReferanceData(referenceID);
+		Exceldata1.updateTestData("KUBS_BP_UAT_005_005_D1", "ReferenceID", referenceID);
+		budgetCreationObj.budgetCreationFirstRecord().click();
+
+	}
+	
+	@Then("^choose first record in the notification record3$")
+	public void choose_first_record_in_the_notification_record3() throws Throwable {
+		waithelper.waitForElementToVisibleWithFluentWait(driver, budgetCreationObj.budgetCreationFirstReferenceId(), 60,
+				500);
+		String referenceID = budgetCreationObj.budgetCreationFirstReferenceId().getText();
+		// jsonReaderWriter.addReferanceData(referenceID);
+		Exceldata1.updateTestData("KUBS_BP_UAT_005_006_D1", "ReferenceID", referenceID);
+		budgetCreationObj.budgetCreationFirstRecord().click();
+
+	}
 	/*@And("^click on Submit button$")
 	public void click_on_submit_button() throws Throwable {
 		// After select the record we have to submit the record for approval
@@ -860,9 +881,9 @@ public class Budgetandplanningsupplementary {
 				2);
 		String referenceID = budgetCreationObj.budgetCreationFirstReferenceId().getText();
 		// jsonReaderWriter.addReferanceData(referenceID);
-		Exceldata.updateTestData("KUBS_BP_UAT_005_004_D1", "ReferenceID", referenceID);
+		Exceldata1.updateTestData("KUBS_BP_UAT_005_004_D1", "ReferenceID", referenceID);
 		budgetCreationObj.budgetCreationFirstRecord().click();
-
+		System.out.println("ReferanceId :"+referenceID);
 	}
 
 	@And("^click on Submit buttons$")
@@ -1171,6 +1192,23 @@ public class Budgetandplanningsupplementary {
 		System.out.println("Reviewer ID is" + revID);
 		// jsonReaderWriter.addData(revID);
 		Exceldata1.updateTestData("KUBS_BP_UAT_005_005_D1", "ReviewerID", revID);
+		budgetCreationObj.budgetCreationAlertClose().click();
+
+	}
+	
+	@And("^capture the reviewer ID in pop up which is open when we submit our record in maker stage6$")
+	public void capture_the_reviewer_id_in_pop_up_which_is_open_when_we_submit_our_record_in_maker_stage6()
+			throws Throwable {
+		waithelper.waitForElement(driver, 2000, budgetCreationObj.budgetCreation_ReviewerId());
+		String reviwerId = budgetCreationObj.budgetCreation_ReviewerId().getText();
+		System.out.println(reviwerId);
+		String trimmerReviewerID = reviwerId.substring(85);
+		StringBuffer sb = new StringBuffer(trimmerReviewerID);
+		StringBuffer finalReviewerID = sb.deleteCharAt(trimmerReviewerID.length() - 1);
+		String revID = finalReviewerID.toString();
+		System.out.println("Reviewer ID is" + revID);
+		// jsonReaderWriter.addData(revID);
+		Exceldata1.updateTestData("KUBS_BP_UAT_005_006_D1", "ReviewerID", revID);
 		budgetCreationObj.budgetCreationAlertClose().click();
 
 	}
