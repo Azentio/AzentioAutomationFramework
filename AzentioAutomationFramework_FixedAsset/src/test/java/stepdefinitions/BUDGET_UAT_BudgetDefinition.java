@@ -58,9 +58,9 @@ public class BUDGET_UAT_BudgetDefinition extends BaseClass {
 	Map<String, String> budgetRequestAndAllocation;
 	BUDGET_RequestAndAllocationObj requestAndAllocationObj = new BUDGET_RequestAndAllocationObj(driver);
 	KUBS_CommonWebElements kubsCommonObj = new KUBS_CommonWebElements(driver);
-	String path = System.getProperty("user.dir") + "\\Test-data\\KUBSTestData.xlsx";
+	String path = System.getProperty("user.dir")+"\\Test-data\\KUBSTestData.xlsx";
 	ExcelData excelDataForBudgetConfig = new ExcelData(path, "BudgetConfiguration", "DataSet ID");
-	ExcelData excelDataForBudgetRequestAndAllocation = new ExcelData(path, "BudgetReqAndAllocation", "DataSet ID");
+	ExcelData excelDataForBudgetRequestAndAllocation = new ExcelData(path,"BudgetReqAndAllocation","DataSet ID");
 
 	@Given("^navigate to given url and login with maker credentials$")
 	public void navigate_to_given_url() throws Throwable {
@@ -102,67 +102,83 @@ public class BUDGET_UAT_BudgetDefinition extends BaseClass {
 
     @And("^User update test data id for budgetcode Monthly$")
     public void user_update_test_data_id_for_budgetcode_monthly() throws Throwable {
-    	budgetConfigTestData = excelDataForBudgetConfig.getTestdata("KUBS_BP_UAT_002_001_01_D1");
+    	budgetRequestAndAllocation = excelDataForBudgetRequestAndAllocation.getTestdata("KUBS_BP_UAT_002_001_01_D1");
     }
     @And("^User update test data id for budgetcode Quarterly$")
     public void user_update_test_data_id_for_budgetcode_quarterly() throws Throwable {
-    	budgetConfigTestData = excelDataForBudgetConfig.getTestdata("KUBS_BP_UAT_002_002_01_D1");
+    	budgetRequestAndAllocation = excelDataForBudgetRequestAndAllocation.getTestdata("KUBS_BP_UAT_002_002_01_D1");
     }
     @And("^User update test data id for budgetcode Halfyearly$")
     public void user_update_test_data_id_for_budgetcode_halfyearly() throws Throwable {
-    	budgetConfigTestData = excelDataForBudgetConfig.getTestdata("KUBS_BP_UAT_002_003_01_D1");
+    	budgetRequestAndAllocation = excelDataForBudgetRequestAndAllocation.getTestdata("KUBS_BP_UAT_002_003_01_D1");
     }
     @And("^User update test data id for budgetcode yearly$")
     public void user_update_test_data_id_for_budgetcode_yearly() throws Throwable {
-    	budgetConfigTestData = excelDataForBudgetConfig.getTestdata("KUBS_BP_UAT_002_004_01_D1");
+    	budgetRequestAndAllocation = excelDataForBudgetRequestAndAllocation.getTestdata("KUBS_BP_UAT_002_004_01_D1");
     }
     @And("^User update test data id for budgetcode yearly1$")
     public void user_update_test_data_id_for_budgetcode_yearly1() throws Throwable {
-    	budgetConfigTestData = excelDataForBudgetConfig.getTestdata("KUBS_BP_UAT_002_006_01_D1");
+    	budgetRequestAndAllocation = excelDataForBudgetRequestAndAllocation.getTestdata("KUBS_BP_UAT_002_006_01_D1");
+    }
+    @And("^User update test data id for budgetcode yearly2$")
+    public void user_update_test_data_id_for_budgetcode_yearly2() throws Throwable {
+    	budgetRequestAndAllocation = excelDataForBudgetRequestAndAllocation.getTestdata("KUBS_BP_UAT_002_007_01_D1");
+    }
+    @And("^User update test data id for budgetcode yearly3$")
+    public void user_update_test_data_id_for_budgetcode_yearly3() throws Throwable {
+    	budgetRequestAndAllocation = excelDataForBudgetRequestAndAllocation.getTestdata("KUBS_BP_UAT_002_005_01_D1");
+    }
+    @And("^User update test data id for budgetcode yearly4$")
+    public void user_update_test_data_id_for_budgetcode_yearly4() throws Throwable {
+    	budgetRequestAndAllocation = excelDataForBudgetRequestAndAllocation.getTestdata("KUBS_BP_UAT_005_002_01_D1");
     }
 
     @And("^User update test data id to store reviewver id$")
     public void user_update_test_data_id_to_store_reviewver_id() throws Throwable {
-    	budgetConfigTestData = excelDataForBudgetConfig.getTestdata("KUBS_BP_UAT_002_001_02_D1");
+    	budgetRequestAndAllocation = excelDataForBudgetRequestAndAllocation.getTestdata("KUBS_BP_UAT_002_001_02_D1");
     }
     @And("^User update test data id to store reviewver id for Quarterly budget code$")
     public void user_update_test_data_id_to_store_reviewver_id_for_quarterly_budget_code() throws Throwable {
-    	budgetConfigTestData = excelDataForBudgetConfig.getTestdata("KUBS_BP_UAT_002_002_02_D1");
+    	budgetRequestAndAllocation = excelDataForBudgetRequestAndAllocation.getTestdata("KUBS_BP_UAT_002_002_02_D1");
     }
     @And("^User update test data id to store reviewver id for Halfyearly budget code$")
     public void user_update_test_data_id_to_store_reviewver_id_for_halfyearly_budget_code() throws Throwable {
-    	budgetConfigTestData = excelDataForBudgetConfig.getTestdata("KUBS_BP_UAT_002_003_02_D1");
+    	budgetRequestAndAllocation = excelDataForBudgetRequestAndAllocation.getTestdata("KUBS_BP_UAT_002_003_02_D1");
     }
     @And("^User update test data id to store reviewver id for yearly budget code$")
     public void user_update_test_data_id_to_store_reviewver_id_for_yearly_budget_code() throws Throwable {
-    	budgetConfigTestData = excelDataForBudgetConfig.getTestdata("KUBS_BP_UAT_002_004_02_D1");
+    	budgetRequestAndAllocation = excelDataForBudgetRequestAndAllocation.getTestdata("KUBS_BP_UAT_002_004_02_D1");
     }
     
     @And("^User update test data id to store reviewver id for yearly1 budget code$")
     public void user_update_test_data_id_to_store_reviewver_id_for_yearly1_budget_code() throws Throwable {
-    	budgetConfigTestData = excelDataForBudgetConfig.getTestdata("KUBS_BP_UAT_002_006_02_D1");
+    	budgetRequestAndAllocation = excelDataForBudgetRequestAndAllocation.getTestdata("KUBS_BP_UAT_002_006_05_D1");
     }
-    @And("^User update test data id to verify budget allocated for monthly budget code$")
-    public void user_update_test_data_id_to_verify_budget_allocated_for_monthly_budget_code() throws Throwable {
-    	budgetConfigTestData = excelDataForBudgetConfig.getTestdata("KUBS_BP_UAT_002_001_04_D1");
+    @And("^User update test data id to store reviewver id for budget and allocation using yearly1 budget code$")
+    public void user_update_test_data_id_to_store_reviewver_id_for_budget_and_allocation_using_yearly1_budget_code() throws Throwable {
+    	budgetRequestAndAllocation = excelDataForBudgetRequestAndAllocation.getTestdata("KUBS_BP_UAT_002_006_02_D1");
     }
-    @And("^User update test data id to verify budget allocated for Quarterly budget code$")
-    public void user_update_test_data_id_to_verify_budget_allocated_for_quarterly_budget_code() throws Throwable {
-    	budgetConfigTestData = excelDataForBudgetConfig.getTestdata("KUBS_BP_UAT_002_002_04_D1");
+    @And("^User update test data id to store reviewver id for yearly2 budget code$")
+    public void user_update_test_data_id_to_store_reviewver_id_for_yearly2_budget_code() throws Throwable {
+    	budgetRequestAndAllocation = excelDataForBudgetRequestAndAllocation.getTestdata("KUBS_BP_UAT_002_007_02_D1");
     }
-    @And("^User update test data id to verify budget allocated for Halfyearly budget code$")
-    public void user_update_test_data_id_to_verify_budget_allocated_for_halfyearly_budget_code() throws Throwable {
-    	budgetConfigTestData = excelDataForBudgetConfig.getTestdata("KUBS_BP_UAT_002_003_04_D1"); 
+    @And("^User update test data id to store reviewver id for yearly3 budget code$")
+    public void user_update_test_data_id_to_store_reviewver_id_for_yearly3_budget_code() throws Throwable {
+    	budgetRequestAndAllocation = excelDataForBudgetRequestAndAllocation.getTestdata("KUBS_BP_UAT_002_005_05_D1");
     }
-    
-    @And("^User update test data id to verify budget allocated for yearly budget code$")
-    public void user_update_test_data_id_to_verify_budget_allocated_for_yearly_budget_code() throws Throwable {
-    	budgetConfigTestData = excelDataForBudgetConfig.getTestdata("KUBS_BP_UAT_002_004_04_D1");
+
+    @And("^User update test data id to store reviewver id for yearly4 budget code$")
+    public void user_update_test_data_id_to_store_reviewver_id_for_yearly4_budget_code() throws Throwable {
+    	budgetRequestAndAllocation = excelDataForBudgetRequestAndAllocation.getTestdata("KUBS_BP_UAT_005_002_02_D1");
     }
-    
-    @And("^User update test data id to verify budget allocated for yearly1 budget code$")
-    public void user_update_test_data_id_to_verify_budget_allocated_for_yearly1_budget_code() throws Throwable {
-    	budgetConfigTestData = excelDataForBudgetConfig.getTestdata("KUBS_BP_UAT_002_006_04_D1");
+    @And("^User update test data id to store reviewver id for budget request and allocation yearly4 budget code$")
+    public void user_update_test_data_id_to_store_reviewver_id_for_budget_request_and_allocation_yearly4_budget_code() throws Throwable {
+    	budgetRequestAndAllocation = excelDataForBudgetRequestAndAllocation.getTestdata("KUBS_BP_UAT_005_004_02_D1");
+    }
+   
+    @And("^User update test data id to verify budget allocated for yearly Rejected budget code$")
+    public void user_update_test_data_id_to_verify_budget_allocated_for_yearly_rejected_budget_code() throws Throwable {
+    	budgetRequestAndAllocation = excelDataForBudgetRequestAndAllocation.getTestdata("KUBS_BP_UAT_002_007_04_D1");
     }
     
 	@And("^get the test data from excel database for creating monthly budget code$")
@@ -282,14 +298,124 @@ public class BUDGET_UAT_BudgetDefinition extends BaseClass {
 
 	}
 
+	@And("^User fill the budget code for type Monthly$")
+	public void user_fill_the_budget_code_for_type_monthly() throws Throwable {
+		Random random = new Random();
+		int randomNumber = random.nextInt(999999 - 100000) + 100000;
+		waitHelper.waitForElementToVisibleWithFluentWait(driver, budgetCreationObj.budgetCreation_BudgetCode(), 60,
+				500);
+		String budgetCode = budgetRequestAndAllocation.get("BudgetCodePrefix") + randomNumber;
+		budgetCreationObj.budgetCreation_BudgetCode().click();
+		budgetCreationObj.budgetCreation_BudgetCode()
+				.sendKeys(budgetRequestAndAllocation.get("BudgetCodePrefix") + randomNumber);
+		excelDataForBudgetRequestAndAllocation.updateTestData("KUBS_BP_UAT_002_001_04_D1", "BudgetCodeCreated",
+				budgetCode);
+	}
+
+	@And("^User fill the budget code for type Quarterly$")
+	public void user_fill_the_budget_code_for_type_quarterly() throws Throwable {
+		Random random = new Random();
+		int randomNumber = random.nextInt(999999 - 100000) + 100000;
+		waitHelper.waitForElementToVisibleWithFluentWait(driver, budgetCreationObj.budgetCreation_BudgetCode(), 60,
+				500);
+		String budgetCode = budgetRequestAndAllocation.get("BudgetCodePrefix") + randomNumber;
+		budgetCreationObj.budgetCreation_BudgetCode().click();
+		budgetCreationObj.budgetCreation_BudgetCode()
+				.sendKeys(budgetRequestAndAllocation.get("BudgetCodePrefix") + randomNumber);
+		excelDataForBudgetRequestAndAllocation.updateTestData("KUBS_BP_UAT_002_002_04_D1", "BudgetCodeCreated",
+				budgetCode);
+	}
+
+	@And("^User fill the budget code for type Half Yearly$")
+	public void user_fill_the_budget_code_for_type_half_yearly() throws Throwable {
+		Random random = new Random();
+		int randomNumber = random.nextInt(999999 - 100000) + 100000;
+		waitHelper.waitForElementToVisibleWithFluentWait(driver, budgetCreationObj.budgetCreation_BudgetCode(), 60,
+				500);
+		String budgetCode = budgetRequestAndAllocation.get("BudgetCodePrefix") + randomNumber;
+		budgetCreationObj.budgetCreation_BudgetCode().click();
+		budgetCreationObj.budgetCreation_BudgetCode()
+				.sendKeys(budgetRequestAndAllocation.get("BudgetCodePrefix") + randomNumber);
+		excelDataForBudgetRequestAndAllocation.updateTestData("KUBS_BP_UAT_002_003_04_D1", "BudgetCodeCreated",
+				budgetCode);
+	}
+
+	@And("^User fill the budget code for type Yearly$")
+	public void user_fill_the_budget_code_for_type_yearly() throws Throwable {
+		Random random = new Random();
+		int randomNumber = random.nextInt(999999 - 100000) + 100000;
+		waitHelper.waitForElementToVisibleWithFluentWait(driver, budgetCreationObj.budgetCreation_BudgetCode(), 60,
+				500);
+		String budgetCode = budgetRequestAndAllocation.get("BudgetCodePrefix") + randomNumber;
+		budgetCreationObj.budgetCreation_BudgetCode().click();
+		budgetCreationObj.budgetCreation_BudgetCode()
+				.sendKeys(budgetRequestAndAllocation.get("BudgetCodePrefix") + randomNumber);
+		excelDataForBudgetRequestAndAllocation.updateTestData("KUBS_BP_UAT_002_004_04_D1", "BudgetCodeCreated",
+				budgetCode);
+	}
+	@And("^User fill the budget code for type yearly3$")
+    public void user_fill_the_budget_code_for_type_yearly3() throws Throwable {
+		Random random = new Random();
+		int randomNumber = random.nextInt(999999 - 100000) + 100000;
+		waitHelper.waitForElementToVisibleWithFluentWait(driver, budgetCreationObj.budgetCreation_BudgetCode(), 60,
+				500);
+		String budgetCode = budgetRequestAndAllocation.get("BudgetCodePrefix")+ randomNumber;
+		budgetCreationObj.budgetCreation_BudgetCode().click();
+		budgetCreationObj.budgetCreation_BudgetCode()
+				.sendKeys(budgetRequestAndAllocation.get("BudgetCodePrefix")+ randomNumber);
+		excelDataForBudgetRequestAndAllocation.updateTestData("KUBS_BP_UAT_002_005_04_D1","BudgetCodeCreated",budgetCode);
+    }
+	@And("^User fill the budget code for type yearly1$")
+    public void user_fill_the_budget_code_for_type_yearly1() throws Throwable {
+		Random random = new Random();
+		int randomNumber = random.nextInt(999999 - 100000) + 100000;
+		waitHelper.waitForElementToVisibleWithFluentWait(driver, budgetCreationObj.budgetCreation_BudgetCode(), 60,
+				500);
+		String budgetCode = budgetRequestAndAllocation.get("BudgetCodePrefix")+ randomNumber;
+		budgetCreationObj.budgetCreation_BudgetCode().click();
+		budgetCreationObj.budgetCreation_BudgetCode()
+				.sendKeys(budgetRequestAndAllocation.get("BudgetCodePrefix")+ randomNumber);
+		excelDataForBudgetRequestAndAllocation.updateTestData("KUBS_BP_UAT_002_006_04_D1","BudgetCodeCreated",budgetCode);
+    }
+	@And("^User fill the budget code for budgetcode yearly2$")
+    public void user_fill_the_budget_code_for_budgetcode_yearly2() throws Throwable {
+		Random random = new Random();
+		int randomNumber = random.nextInt(999999 - 100000) + 100000;
+		waitHelper.waitForElementToVisibleWithFluentWait(driver, budgetCreationObj.budgetCreation_BudgetCode(), 60,
+				500);
+		String budgetCode = budgetRequestAndAllocation.get("BudgetCodePrefix")+ randomNumber;
+		budgetCreationObj.budgetCreation_BudgetCode().click();
+		budgetCreationObj.budgetCreation_BudgetCode()
+				.sendKeys(budgetRequestAndAllocation.get("BudgetCodePrefix")+ randomNumber);
+		excelDataForBudgetRequestAndAllocation.updateTestData("KUBS_BP_UAT_002_007_04_D1","BudgetCodeCreated",budgetCode);
+    }
+	 
+	 @And("^User fill the budget code field for budgetcode yearly4$")
+	    public void user_fill_the_budget_code_field_for_budgetcode_yearly4() throws Throwable {
+		 Random random = new Random();
+			int randomNumber = random.nextInt(999999 - 100000) + 100000;
+			waitHelper.waitForElementToVisibleWithFluentWait(driver, budgetCreationObj.budgetCreation_BudgetCode(), 60,
+					500);
+			String budgetCode = budgetRequestAndAllocation.get("BudgetCodePrefix")+ randomNumber;
+			budgetCreationObj.budgetCreation_BudgetCode().click();
+			budgetCreationObj.budgetCreation_BudgetCode()
+					.sendKeys(budgetRequestAndAllocation.get("BudgetCodePrefix")+ randomNumber);
+			excelDataForBudgetRequestAndAllocation.updateTestData("KUBS_BP_UAT_002_005_04_D1","BudgetCodeCreated",budgetCode);
+	    }
 	@Then("^fill the budget code field$")
 	public void fill_the_budget_code_field() throws Throwable {
 		Random random = new Random();
 		int randomNumber = random.nextInt(999999 - 100000) + 100000;
 		waitHelper.waitForElementToVisibleWithFluentWait(driver, budgetCreationObj.budgetCreation_BudgetCode(), 60,
 				500);
+		String budgetCode = budgetRequestAndAllocation.get("BudgetCodePrefix")+ randomNumber;
+		budgetCreationObj.budgetCreation_BudgetCode().click();
 		budgetCreationObj.budgetCreation_BudgetCode()
-				.sendKeys(budgetRequestAndAllocation.get("BudgetCodePrefix") + randomNumber);
+				.sendKeys(budgetRequestAndAllocation.get("BudgetCodePrefix")+ randomNumber);
+		excelDataForBudgetRequestAndAllocation.updateTestData("KUBS_BP_UAT_002_001_04_D1","BudgetCodeCreated",budgetCode);
+		excelDataForBudgetRequestAndAllocation.updateTestData("KUBS_BP_UAT_002_002_04_D1","BudgetCodeCreated",budgetCode);
+		excelDataForBudgetRequestAndAllocation.updateTestData("KUBS_BP_UAT_002_003_04_D1","BudgetCodeCreated",budgetCode);
+		excelDataForBudgetRequestAndAllocation.updateTestData("KUBS_BP_UAT_002_004_04_D1","BudgetCodeCreated",budgetCode);
 	}
 
 	@Then("^enter Budget Code for current financial yearly budget$")
@@ -343,6 +469,15 @@ public class BUDGET_UAT_BudgetDefinition extends BaseClass {
 		}
 
 	}
+	@And("^choose yearly option in budget type for budget code creation$")
+    public void choose_yearly_option_in_budget_type_for_budget_code_creation() throws Throwable {
+		budgetCreationObj.budgetCreation_BudgetType().click();
+		budgetCreationObj.budgetCreation_BudgetType().sendKeys(Keys.DOWN);
+		budgetCreationObj.budgetCreation_BudgetType().sendKeys(Keys.DOWN);
+		budgetCreationObj.budgetCreation_BudgetType().sendKeys(Keys.DOWN);
+		budgetCreationObj.budgetCreation_BudgetType().sendKeys(Keys.ENTER);
+
+    }
 
 	@And("^choose budget type in budget configuration screen$")
 	public void choose_budget_type_in_budget_configuration_screen() throws Throwable {
@@ -387,7 +522,9 @@ public class BUDGET_UAT_BudgetDefinition extends BaseClass {
 
 	@And("^give warning percentage$")
 	public void give_warning_percentage() throws Throwable {
-		budgetCreationObj.budgetCreation_WarningPercentage().sendKeys(budgetConfigTestData.get("WarningPercentage"));
+		waitHelper.waitForElementToVisibleWithFluentWait(driver, budgetCreationObj.budgetCreation_WarningPercentage(), 30, 2);
+		budgetCreationObj.budgetCreation_WarningPercentage().click();
+		budgetCreationObj.budgetCreation_WarningPercentage().sendKeys(budgetRequestAndAllocation.get("WarningPercentage"));
 	}
 
 	@And("^enter budget name for yearly budget$")
@@ -397,22 +534,24 @@ public class BUDGET_UAT_BudgetDefinition extends BaseClass {
 
 	@And("^enter the the budget name in budget configuration screen$")
 	public void enter_the_the_budget_name_in_budget_configuration_screen() throws Throwable {
+		waitHelper.waitForElementToVisibleWithFluentWait(driver,budgetCreationObj.budgetCreation_BudgetName(),30,2);
 		budgetCreationObj.budgetCreation_BudgetName().sendKeys(budgetConfigTestData.get("BudgetName"));
+		
 	}
 
 	@And("^enter budget name for monthly budget$")
 	public void enter_budget_name_for_monthly_budget() throws Throwable {
-		budgetCreationObj.budgetCreation_BudgetName().sendKeys(testData.get("uatMonthlyBudgetType"));
+		budgetCreationObj.budgetCreation_BudgetName().sendKeys(budgetRequestAndAllocation.get("uatMonthlyBudgetType"));
 	}
 
 	@And("^enter budget name for Quarterly budget$")
 	public void enter_budget_name_for_quarterly_budget() throws Throwable {
-		budgetCreationObj.budgetCreation_BudgetName().sendKeys(budgetDefinitionUATTestData.uatQuarterlyBudgetType);
+		budgetCreationObj.budgetCreation_BudgetName().sendKeys(budgetRequestAndAllocation.get("uatQuarterlyBudgetType"));
 	}
 
 	@And("^enter budget name for half yearly$")
 	public void enter_budget_name_for_half_yearly() throws Throwable {
-		budgetCreationObj.budgetCreation_BudgetName().sendKeys(budgetDefinitionUATTestData.uatHalfYearlyBudgetType);
+		budgetCreationObj.budgetCreation_BudgetName().sendKeys(budgetRequestAndAllocation.get("uatHalfYearlyBudgetType"));
 	}
 
 	@Then("^enter remark$")
@@ -462,7 +601,7 @@ public class BUDGET_UAT_BudgetDefinition extends BaseClass {
 		waitHelper.waitForElementToVisibleWithFluentWait(driver, budgetCreationObj.budgetConfigReferenceNumber(), 20,
 				1);
 		String referenceNumber = budgetCreationObj.budgetConfigReferenceNumber().getText();
-		excelDataForBudgetConfig.updateTestData(budgetConfigTestData.get("DataSet ID"),"Reference ID",
+		excelDataForBudgetRequestAndAllocation.updateTestData(budgetRequestAndAllocation.get("DataSet ID"),"Reference ID",
 				referenceNumber);
 
 	}
@@ -512,9 +651,10 @@ public class BUDGET_UAT_BudgetDefinition extends BaseClass {
 
 	@And("^store the reviewer id of budget configuration in excel database$")
 	public void store_the_reviewer_id_of_budget_configuration_in_excel_database() throws Throwable {
+		budgetRequestAndAllocation.get("DataSet ID");
 		waitHelper.waitForElementToVisibleWithFluentWait(driver, kubsCommonObj.kubsToastAlert(), 20, 1);
 		String reviewerID = kubsCommonObj.kubsToastAlert().getText().substring(85).replace(".", "");
-		excelDataForBudgetConfig.updateTestData(budgetConfigTestData.get("DataSet ID"), "Reviewer ID", reviewerID);
+		excelDataForBudgetRequestAndAllocation.updateTestData(budgetRequestAndAllocation.get("DataSet ID"), "Reviewer ID", reviewerID);
 	}
 
 	@And("^enter the budget code for current financial year$")
@@ -604,8 +744,8 @@ public class BUDGET_UAT_BudgetDefinition extends BaseClass {
 		}
 	}
 
-	@And("^serach the budget defenition sub module name$")
-	public void serach_the_budget_defenition_sub_module_name() throws Throwable {
+	@And("^search the budget defenition sub module name$")
+	public void search_the_budget_defenition_sub_module_name() throws Throwable {
 		waitHelper.waitForElementToVisibleWithFluentWait(driver, budgetCreationObj.eventCode(), 30, 500);
 		budgetCreationObj.eventCode().click();
 		budgetCreationObj.eventCode().sendKeys(budgetRequestAndAllocation.get("BudgetTransferEventCode"));
@@ -669,7 +809,7 @@ public class BUDGET_UAT_BudgetDefinition extends BaseClass {
 				try {
 					clickAndActionsHelper.moveToElement(budgetCreationObj.budgetCreation_AlertRemarks());
 					clickAndActionsHelper.JSEClick(budgetCreationObj.budgetCreation_AlertRemarks());
-					budgetCreationObj.budgetCreation_AlertRemarks().sendKeys(budgetDefinitionUATTestData.remark);
+					budgetCreationObj.budgetCreation_AlertRemarks().sendKeys(budgetRequestAndAllocation.get("Remarks"));
 					budgetCreationObj.budgetCreation_AlertsubmitButton().click();
 					break;
 				} catch (Exception e) {
@@ -710,7 +850,18 @@ public class BUDGET_UAT_BudgetDefinition extends BaseClass {
 		/*
 		 * Then we have to logout from maker
 		 */
-		budgetCreationObj.budgetCreationUserName().click();
+		for (int i = 0; i <200; i++) {
+			try {
+				budgetCreationObj.budgetCreationUserName().click();
+				break;
+			} catch (Exception e) {
+				if (i==199) {
+					Assert.fail(e.getMessage());
+				}
+			}
+		}
+		
+		
 //		Thread.sleep(1000);		
 		waitHelper.waitForElementToVisibleWithFluentWait(driver, budgetCreationObj.budgetCreationLogoutButton(), 90,
 				500);

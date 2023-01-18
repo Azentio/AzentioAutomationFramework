@@ -56,42 +56,81 @@ public class KUBS_ReviewerUserSteps extends BaseClass {
 	@Given("^navigate to kubs url to approve the Montly budget request and allocation record$")
     public void navigate_to_kubs_url_to_approve_the_montly_budget_request_and_allocation_record() throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
-		reviewerTestData = excelDataForBudgetConfig.getTestdata("KUBS_BP_UAT_002_001_02_D1");
-		kubsLogin.logintoAzentioappReviewer( reviewerTestData.get("Reviewer ID"));
+		reviewerTestData = excelDataForBudgetReqAllocation.getTestdata("KUBS_BP_UAT_002_001_02_D1");
+		kubsLogin.logintoAzentioappReviewer(reviewerTestData.get("Reviewer ID"));
     }
 	@Given("^navigate to kubs url to approve the Quartely budget request and allocation record$")
     public void navigate_to_kubs_url_to_approve_the_quartely_budget_request_and_allocation_record() throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
-		reviewerTestData = excelDataForBudgetConfig.getTestdata("KUBS_BP_UAT_002_002_02_D1");
-		kubsLogin.logintoAzentioappReviewer( reviewerTestData.get("Reviewer ID"));
+		reviewerTestData = excelDataForBudgetReqAllocation.getTestdata("KUBS_BP_UAT_002_002_02_D1");
+		kubsLogin.logintoAzentioappReviewer(reviewerTestData.get("Reviewer ID"));
     }
 
 	@Given("^navigate to kubs url to approve the Halfyearly budget request and allocation record$")
 	public void navigate_to_kubs_url_to_approve_the_halfyearly_budget_request_and_allocation_record() throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
-		reviewerTestData = excelDataForBudgetConfig.getTestdata("KUBS_BP_UAT_002_003_02_D1");
+		reviewerTestData = excelDataForBudgetReqAllocation.getTestdata("KUBS_BP_UAT_002_003_02_D1");
 		kubsLogin.logintoAzentioappReviewer(reviewerTestData.get("Reviewer ID"));
 	}
 
 	@Given("^navigate to kubs url to approve the yearly budget request and allocation record$")
 	public void navigate_to_kubs_url_to_approve_the_yearly_budget_request_and_allocation_record() throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
-		reviewerTestData = excelDataForBudgetConfig.getTestdata("KUBS_BP_UAT_002_004_02_D1");
+		reviewerTestData = excelDataForBudgetReqAllocation.getTestdata("KUBS_BP_UAT_002_004_02_D1");
 		kubsLogin.logintoAzentioappReviewer(reviewerTestData.get("Reviewer ID"));
 	}
 	@Given("^navigate to kubs url to approve the yearly1 budget request and allocation record$")
     public void navigate_to_kubs_url_to_approve_the_yearly1_budget_request_and_allocation_record() throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
-		reviewerTestData = excelDataForBudgetConfig.getTestdata("KUBS_BP_UAT_002_006_02_D1");
+		reviewerTestData = excelDataForBudgetConfig.getTestdata("KUBS_BP_UAT_002_006_05_D1");
 		kubsLogin.logintoAzentioappReviewer(reviewerTestData.get("Reviewer ID"));
     }
+	@Given("^Navigate to KUBS url and login with checker for approve the yearly3 budget request and Allocation record$")
+    public void navigate_to_kubs_url_and_login_with_checker_for_approve_the_yearly3_budget_request_and_allocation_record() throws Throwable {
+		driver.get(configFileReader.getApplicationUrl());
+		reviewerTestData = excelDataForBudgetReqAllocation.getTestdata("KUBS_BP_UAT_002_005_05_D1");
+		kubsLogin.logintoAzentioappReviewer(reviewerTestData.get("Reviewer ID"));
+    }
+	@Given("^navigate to kubs url to approve the yearly4 budget request and allocation record$")
+    public void navigate_to_kubs_url_to_approve_the_yearly4_budget_request_and_allocation_record() throws Throwable {
+		driver.get(configFileReader.getApplicationUrl());
+		reviewerTestData = excelDataForBudgetReqAllocation.getTestdata("KUBS_BP_UAT_005_002_05_D1");
+		kubsLogin.logintoAzentioappReviewer(reviewerTestData.get("Reviewer ID"));
+    }
+	
 
 	@Given("^navigate to kubs url to approve the yearly1 budget definition$")
 	public void navigate_to_kubs_url_to_approve_the_yearly1_budget_definition() throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
-		reviewerTestData = excelDataForBudgetConfig.getTestdata("KUBS_BP_UAT_002_006_02_D1");
+		reviewerTestData = excelDataForBudgetReqAllocation.getTestdata("KUBS_BP_UAT_002_006_02_D1");
 		kubsLogin.logintoAzentioappReviewer(reviewerTestData.get("Reviewer ID"));
 	}
+	@Given("^navigate to kubs url to approve the yearly2 budget definition$")
+    public void navigate_to_kubs_url_to_approve_the_yearly2_budget_definition() throws Throwable {
+		driver.get(configFileReader.getApplicationUrl());
+		reviewerTestData = excelDataForBudgetConfig.getTestdata("KUBS_BP_UAT_002_007_02_D1");
+		kubsLogin.logintoAzentioappReviewer(reviewerTestData.get("Reviewer ID"));
+    }
+	@Given("^navigate to kubs url to approve the yearly3 budget defenition record$")
+    public void navigate_to_kubs_url_to_approve_the_yearly3_budget_defenition_record() throws Throwable {
+		driver.get(configFileReader.getApplicationUrl());
+		reviewerTestData = excelDataForBudgetReqAllocation.getTestdata("KUBS_BP_UAT_002_005_02_D1");
+		kubsLogin.logintoAzentioappReviewer(reviewerTestData.get("Reviewer ID"));
+    }
+	@Given("^navigate to kubs url to approve the yearly3 budget request and allocation record$")
+    public void navigate_to_kubs_url_to_approve_the_yearly3_budget_request_and_allocation_record() throws Throwable {
+		driver.get(configFileReader.getApplicationUrl());
+		reviewerTestData = excelDataForBudgetReqAllocation.getTestdata("KUBS_BP_UAT_002_005_05_D1");
+		kubsLogin.logintoAzentioappReviewer(reviewerTestData.get("Reviewer ID"));
+    }
+	@Given("^navigate to kubs url to approve the yearly4 budget defenition record$")
+    public void navigate_to_kubs_url_to_approve_the_yearly4_budget_defenition_record() throws Throwable {
+		driver.get(configFileReader.getApplicationUrl());
+		reviewerTestData = excelDataForBudgetReqAllocation.getTestdata("KUBS_BP_UAT_005_002_02_D1");
+		kubsLogin.logintoAzentioappReviewer(reviewerTestData.get("Reviewer ID"));
+    }
+
+	
 	
 	@Given("^navigate to kubs url to approve the monthly budget record$")
     public void navigate_to_kubs_url_to_approve_the_monthly_budget_record() throws Throwable {

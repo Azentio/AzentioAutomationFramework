@@ -5,9 +5,7 @@
     <classes>
       <class name="Runner.TestApplication">
         <methods>
-          <include name="beforeExecution"/>
           <include name="setUpClass"/>
-          <include name="afterExecution"/>
           <include name="runScenario" invocation-numbers="0"/>
           <include name="tearDownClass"/>
         </methods>

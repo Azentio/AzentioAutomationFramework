@@ -629,7 +629,7 @@ Then enter remark
 Then click on Save button
 And click notification button
 Then click on the search button
-And serach the budget defenition sub module name
+And search the budget defenition sub module name
 Then choose first record in the notification record
 And click on Submit button 
 Then enter remark in confirmation alert
@@ -788,8 +788,8 @@ Then select our record in notification records by the help of reference ID
    
   @KUBS_UAT_KUBS_BP_UAT_002_007
   
-  Scenario: Check the rejected budget can be used 
-      Given navigate to given url and login with maker credentials
+Scenario: Check the rejected budget can be used 
+Given navigate to given url and login with maker credentials
 Then click on budget configuration menu
 Then click on eye icon which is near by budget definition submenu
 And click on add button to create budget code
@@ -801,7 +801,7 @@ Then enter remark
 Then click on Save button
 And click notification button
 Then click on the search button
-And serach the budget defenition sub module name
+And search the budget defenition sub module name
 Then choose first record in the notification record
 And click on Submit button 
 Then enter remark in confirmation alert
@@ -1233,7 +1233,7 @@ And get the budget code for allocation
 	@KUBS_UAT_KUBS_BP_UAT_005_001
 	
 	Scenario: Branch requested to allocate the budget
-	 Given navigate to given url and login with maker credentials
+Given navigate to given url and login with maker credentials
 Then click on budget configuration menu
 Then click on eye icon which is near by budget definition submenu
 And click on add button to create budget code
@@ -1245,7 +1245,7 @@ Then enter remark
 Then click on Save button
 And click notification button
 Then click on the search button
-And serach the budget defenition sub module name
+And search the budget defenition sub module name
 Then choose first record in the notification record
 And click on Submit button 
 Then enter remark in confirmation alert

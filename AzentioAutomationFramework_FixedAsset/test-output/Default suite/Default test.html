@@ -55,11 +55,11 @@ function toggleAllBoxes() {
 <body>
 <h2 align='center'>Default test</h2><table border='1' align="center">
 <tr>
-<td>Tests passed/Failed/Skipped:</td><td>0/1/0</td>
+<td>Tests passed/Failed/Skipped:</td><td>1/0/0</td>
 </tr><tr>
-<td>Started on:</td><td>Thu Dec 22 16:31:21 IST 2022</td>
+<td>Started on:</td><td>Wed Jan 18 17:59:39 IST 2023</td>
 </tr>
-<tr><td>Total time:</td><td>508 seconds (508589 ms)</td>
+<tr><td>Total time:</td><td>1534 seconds (1534594 ms)</td>
 </tr><tr>
 <td>Included groups:</td><td></td>
 </tr><tr>
@@ -67,43 +67,18 @@ function toggleAllBoxes() {
 </tr>
 </table><p/>
 <small><i>(Hover the method name to see the test class name)</i></small><p/>
-<table width='100%' border='1' class='invocation-failed'>
-<tr><td colspan='4' align='center'><b>FAILED TESTS</b></td></tr>
+<table width='100%' border='1' class='invocation-passed'>
+<tr><td colspan='4' align='center'><b>PASSED TESTS</b></td></tr>
 <tr><td><b>Test method</b></td>
 <td width="30%"><b>Exception</b></td>
 <td width="10%"><b>Time (seconds)</b></td>
 <td><b>Instance</b></td>
 </tr>
 <tr>
-<td title='Runner.TestApplication.runScenario()'><b>runScenario</b><br>Test class: Runner.TestApplication<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Creating Manual payouts for approved Bills of a Vendor", "Optional[Testing the functionalities of  AR/AP Module]"</td>
-<td><div><pre>java.lang.AssertionError: no such element: Unable to locate element: {&quot;method&quot;:&quot;xpath&quot;,&quot;selector&quot;:&quot;//p[contains(text(),&apos;User ID&apos;)]&quot;}
-  (Session info: chrome=108.0.5359.125)
-For documentation on this error, please visit: https://selenium.dev/exceptions/#no_such_element
-Build info: version: &apos;4.0.0-rc-1&apos;, revision: &apos;bc5511cbda&apos;
-System info: host: &apos;DESKTOP-PSK9T3U&apos;, ip: &apos;10.200.10.201&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;17.0.2&apos;
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Command: [f7c00b2da2ac51026ad527514e1f4665, findElement {using=xpath, value=//p[contains(text(),&apos;User ID&apos;)]}]
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 108.0.5359.125, chrome: {chromedriverVersion: 108.0.5359.71 (1e0e3868ee06..., userDataDir: C:\Users\ININDC~1\AppData\L...}, goog:chromeOptions: {debuggerAddress: localhost:53341}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), se:cdp: ws://localhost:53341/devtoo..., se:cdpVersion: 108.0.5359.125, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
-Session ID: f7c00b2da2ac51026ad527514e1f4665
-	at org.testng.Assert.fail(Assert.java:99)
-	at stepdefinitions.ACCOUNTSPAYABLE_VendorContracts.user_verify_the_login_page(ACCOUNTSPAYABLE_VendorContracts.java:587)
-	at ?.User Verify the Login Page(file:///C:/Users/ININDC00482/git/AzentioAutomationFramework2/AzentioAutomationFramework_FixedAsset/src/test/java/features/ARAPExcelUpdated.feature:27)
-</pre></div><a href='#' onClick='toggleBox("stack-trace1629657803", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
-<div class='stack-trace' id='stack-trace1629657803'><pre>java.lang.AssertionError: no such element: Unable to locate element: {&quot;method&quot;:&quot;xpath&quot;,&quot;selector&quot;:&quot;//p[contains(text(),&apos;User ID&apos;)]&quot;}
-  (Session info: chrome=108.0.5359.125)
-For documentation on this error, please visit: https://selenium.dev/exceptions/#no_such_element
-Build info: version: &apos;4.0.0-rc-1&apos;, revision: &apos;bc5511cbda&apos;
-System info: host: &apos;DESKTOP-PSK9T3U&apos;, ip: &apos;10.200.10.201&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;17.0.2&apos;
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Command: [f7c00b2da2ac51026ad527514e1f4665, findElement {using=xpath, value=//p[contains(text(),&apos;User ID&apos;)]}]
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 108.0.5359.125, chrome: {chromedriverVersion: 108.0.5359.71 (1e0e3868ee06..., userDataDir: C:\Users\ININDC~1\AppData\L...}, goog:chromeOptions: {debuggerAddress: localhost:53341}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), se:cdp: ws://localhost:53341/devtoo..., se:cdpVersion: 108.0.5359.125, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
-Session ID: f7c00b2da2ac51026ad527514e1f4665
-	at org.testng.Assert.fail(Assert.java:99)
-	at stepdefinitions.ACCOUNTSPAYABLE_VendorContracts.user_verify_the_login_page(ACCOUNTSPAYABLE_VendorContracts.java:587)
-	at ?.User Verify the Login Page(file:///C:/Users/ININDC00482/git/AzentioAutomationFramework2/AzentioAutomationFramework_FixedAsset/src/test/java/features/ARAPExcelUpdated.feature:27)
-</pre></div></td>
-<td>488</td>
-<td>Runner.TestApplication@5f049ea1</td></tr>
+<td title='Runner.NewExcelTestRunner.test()'><b>test</b><br>Test class: Runner.NewExcelTestRunner</td>
+<td></td>
+<td>1531</td>
+<td>Runner.NewExcelTestRunner@663c9e7a</td></tr>
 </table><p>
 </body>
 </html>

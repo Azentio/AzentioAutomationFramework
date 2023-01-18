@@ -113,6 +113,40 @@ public class Budget_BudgetRequestandAllocation_UAT extends BaseClass {
 		clickAndActionHelper.doubleClick(requestAndAllocation.budget_requestAndAllocation_DirctionIcon());
 		
 	}
+	@And("^User update test data id to verify budget allocated for monthly budget code$")
+    public void user_update_test_data_id_to_verify_budget_allocated_for_monthly_budget_code() throws Throwable {
+		budgetReqAllocationTestData = excelDataForBudgetRequestAndAllocation.getTestdata("KUBS_BP_UAT_002_001_04_D1");
+    }
+	@And("^User update test data id to verify budget allocated for Quarterly budget code$")
+    public void user_update_test_data_id_to_verify_budget_allocated_for_quarterly_budget_code() throws Throwable {
+		budgetReqAllocationTestData = excelDataForBudgetRequestAndAllocation.getTestdata("KUBS_BP_UAT_002_002_04_D1");
+    }
+
+	@And("^User update test data id to verify budget allocated for Halfyearly budget code$")
+	public void user_update_test_data_id_to_verify_budget_allocated_for_halfyearly_budget_code() throws Throwable {
+		budgetReqAllocationTestData = excelDataForBudgetRequestAndAllocation.getTestdata("KUBS_BP_UAT_002_003_04_D1");
+	}
+
+	@And("^User update test data id to verify budget allocated for yearly budget code$")
+	public void user_update_test_data_id_to_verify_budget_allocated_for_yearly_budget_code() throws Throwable {
+		budgetReqAllocationTestData = excelDataForBudgetRequestAndAllocation.getTestdata("KUBS_BP_UAT_002_004_04_D1");
+	}
+	@And("^User update test data id to verify budget allocated for yearly3 budget code$")
+    public void user_update_test_data_id_to_verify_budget_allocated_for_yearly3_budget_code() throws Throwable {
+		budgetReqAllocationTestData = excelDataForBudgetRequestAndAllocation.getTestdata("KUBS_BP_UAT_002_005_04_D1");
+    }
+	@And("^User update test data id to verify budget allocated for yearly1 budget code$")
+    public void user_update_test_data_id_to_verify_budget_allocated_for_yearly1_budget_code() throws Throwable {
+		budgetReqAllocationTestData = excelDataForBudgetRequestAndAllocation.getTestdata("KUBS_BP_UAT_002_006_04_D1");
+    }
+	@And("^User update test data id to verify budget allocated for yearly4 budget code$")
+    public void user_update_test_data_id_to_verify_budget_allocated_for_yearly4_budget_code() throws Throwable {
+		budgetReqAllocationTestData = excelDataForBudgetRequestAndAllocation.getTestdata("KUBS_BP_UAT_005_002_04_D1");
+    }
+	@And("^User update test data id to verify budget allocated for yearly2 budget code$")
+    public void user_update_test_data_id_to_verify_budget_allocated_for_yearly2_budget_code() throws Throwable {
+		budgetReqAllocationTestData = excelDataForBudgetRequestAndAllocation.getTestdata("KUBS_BP_UAT_002_007_04_D1");
+    }
 
 	@And("^click to the Budget$")
 	public void click_to_the_budget() throws Throwable {
@@ -399,7 +433,7 @@ requestAndAllocation.alertClose().click();
 		waitHelper.waitForElement(driver, 3000, requestAndAllocation.budget_requestAndAllocation_Budgetcode());
 		requestAndAllocation.budget_requestAndAllocation_Budgetcode().click();
 		requestAndAllocation.budget_requestAndAllocation_Budgetcode()
-				.sendKeys(budgetAllocationTestData.get("budgetCode"));
+				.sendKeys(budgetReqAllocationTestData.get("BudgetCodeCreated"));
 		Thread.sleep(500);
 		requestAndAllocation.budget_requestAndAllocation_Budgetcode().sendKeys(Keys.DOWN);
 	//	requestAndAllocation.budget_requestAndAllocation_Budgetcode().sendKeys(Keys.DOWN);
@@ -424,16 +458,38 @@ requestAndAllocation.alertClose().click();
 		String budgettype = requestAndAllocation.budget_requestAndAllocation_Budgettype().getText();
 		requestAndAllocationBudtype = jsonReader.getBudtypeByName(budgettype);
 		javaHelper.JavaScriptHelper(driver);
-
+		for (int i = 0; i <12; i++) {
+			String findAmountField ="//datatable-body-cell[2]/div/app-kub-currency[@id='"+i+"']";
+			String amountXpath = "//datatable-body-cell[2]/div/app-kub-currency[@id='"+i+"']/input";
+			String remarkXpath ="//datatable-body-cell[3]/div/input[@id='"+i+"']";
+			//System.out.println(driver.findElement(By.xpath(findAmountField)).getAttribute("ng-reflect-is-disabled"));
+			try {
+			   if (driver.findElement(By.xpath(findAmountField)).getAttribute("ng-reflect-is-disabled").equalsIgnoreCase("false")) {
+				   clickAndActionHelper.moveToElement(driver.findElement(By.xpath(amountXpath)));
+				   clickAndActionHelper.clickOnElement(driver.findElement(By.xpath(amountXpath)));
+			       driver.findElement(By.xpath(amountXpath)).sendKeys(budgetReqAllocationTestData.get("BudgetAmount"));
+			       clickAndActionHelper.moveToElement(driver.findElement(By.xpath(remarkXpath)));
+				   clickAndActionHelper.clickOnElement(driver.findElement(By.xpath(remarkXpath)));
+			       driver.findElement(By.xpath(remarkXpath)).sendKeys(budgetReqAllocationTestData.get("Remarks"));
+			}
+			   
+		        
+			} catch (Exception e) {
+				
+			}
+			
+			
+		}
 		// ----------------------------THIS CODE FOR MONTHLY
 		// BUDGET-------------------------//
+		/*
 		try {
 			javaHelper.JavaScriptHelper(driver);
 			javaHelper.scrollIntoViewAndClick(requestAndAllocation.budget_requestAndAllocation_Budgetmonth12());
 			
 //			waitHelper.waitForElement(driver, 3000, requestAndAllocation.budget_requestAndAllocation_Budgetmonth12());
 			requestAndAllocation.budget_requestAndAllocation_Budgetmonth12()
-					.sendKeys(budgetReqAllocationTestData.get("BudgetAmounT"));
+					.sendKeys(budgetReqAllocationTestData.get("BudgetAmount"));
 			requestAndAllocation.budget_requestAndAllocation_Budgetmonthremark12()
 					.sendKeys(budgetReqAllocationTestData.get("Remarks"));
 
@@ -441,7 +497,7 @@ requestAndAllocation.alertClose().click();
 			javaHelper.JSEClick(requestAndAllocation.budget_requestAndAllocation_Budgetamount());
 			waitHelper.waitForElement(driver, 3000, requestAndAllocation.budget_requestAndAllocation_Budgetmonth11());
 			requestAndAllocation.budget_requestAndAllocation_Budgetmonth11()
-					.sendKeys(budgetReqAllocationTestData.get("BudgetAmounT"));
+					.sendKeys(budgetReqAllocationTestData.get("BudgetAmount"));
 			requestAndAllocation.budget_requestAndAllocation_Budgetmonthremark11()
 					.sendKeys(budgetReqAllocationTestData.get("Remarks"));
 
@@ -449,7 +505,7 @@ requestAndAllocation.alertClose().click();
 			javaHelper.JSEClick(requestAndAllocation.budget_requestAndAllocation_Budgetamount());
 			//waitHelper.waitForElement(driver, 3000, requestAndAllocation.budget_requestAndAllocation_Budgetmonth10());
 			requestAndAllocation.budget_requestAndAllocation_Budgetmonth10()
-					.sendKeys(budgetReqAllocationTestData.get("BudgetAmounT"));
+					.sendKeys(budgetReqAllocationTestData.get("BudgetAmount"));
 			requestAndAllocation.budget_requestAndAllocation_Budgetmonthremark10()
 					.sendKeys(budgetReqAllocationTestData.get("Remarks"));
 
@@ -457,7 +513,7 @@ requestAndAllocation.alertClose().click();
 			javaHelper.JSEClick(requestAndAllocation.budget_requestAndAllocation_Budgetamount());
 		//	waitHelper.waitForElement(driver, 3000, requestAndAllocation.budget_requestAndAllocation_Budgetmonth9());
 			requestAndAllocation.budget_requestAndAllocation_Budgetmonth9()
-					.sendKeys(budgetReqAllocationTestData.get("BudgetAmounT"));
+					.sendKeys(budgetReqAllocationTestData.get("BudgetAmount"));
 			requestAndAllocation.budget_requestAndAllocation_Budgetmonthremark9()
 					.sendKeys(budgetReqAllocationTestData.get("Remarks"));
 
@@ -465,7 +521,7 @@ requestAndAllocation.alertClose().click();
 			javaHelper.JSEClick(requestAndAllocation.budget_requestAndAllocation_Budgetamount());
 		//	waitHelper.waitForElement(driver, 3000, requestAndAllocation.budget_requestAndAllocation_Budgetmonth8());
 			requestAndAllocation.budget_requestAndAllocation_Budgetmonth8()
-					.sendKeys(budgetReqAllocationTestData.get("BudgetAmounT"));
+					.sendKeys(budgetReqAllocationTestData.get("BudgetAmount"));
 			requestAndAllocation.budget_requestAndAllocation_Budgetmonthremark8()
 					.sendKeys(budgetReqAllocationTestData.get("Remarks"));
 
@@ -473,13 +529,13 @@ requestAndAllocation.alertClose().click();
 			javaHelper.JSEClick(requestAndAllocation.budget_requestAndAllocation_Budgetamount());
 		//	waitHelper.waitForElement(driver, 3000, requestAndAllocation.budget_requestAndAllocation_Budgetmonth7());
 			requestAndAllocation.budget_requestAndAllocation_Budgetmonth7()
-					.sendKeys(budgetReqAllocationTestData.get("BudgetAmounT"));
+					.sendKeys(budgetReqAllocationTestData.get("BudgetAmount"));
 			requestAndAllocation.budget_requestAndAllocation_Budgetmonthremark7()
 					.sendKeys(budgetReqAllocationTestData.get("Remarks"));
 		} catch (ElementNotInteractableException e) {
 
 		}
-
+*/
 	}
 
 	// ----------------------------@KUBS_UAT_Quarterly_KUBS_BP_UAT_002_002----------------------//
