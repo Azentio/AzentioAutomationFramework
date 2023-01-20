@@ -61,6 +61,13 @@ public class BankRecon_ReconFormatObj {
 		return bankRecon_ReconFormat_BankName;
 	}
 
+	@FindBy(xpath = "//ion-row[1]/ion-col[2]/app-kub-lov[1]/span[1]/ng-select[1]/div[1]/div[1]/div[2]")
+	private WebElement bankRecon_ReconFormat_BankName1;
+
+	public WebElement bankRecon_ReconFormat_BankName1() {
+		return bankRecon_ReconFormat_BankName1;
+	}
+	
 	// ApplicableAccountType
 	@FindBy(xpath = "//fieldset[1]/ion-row[1]/ion-col[3]/app-kub-lov[1]/span[1]/ng-select[1]/div[1]/div[1]/div[2]/input[1]")
 	private WebElement bankRecon_ReconFormat_ApplicableAccountType;

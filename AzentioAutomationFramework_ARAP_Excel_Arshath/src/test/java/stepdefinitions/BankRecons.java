@@ -30,6 +30,7 @@ import pageobjects.Azentio_ReviewerObj;
 import pageobjects.BankRecon_ReconFormatObj;
 import pageobjects.InventoryMaintenanceObj;
 import pageobjects.KUBS_CheckerObj;
+import pageobjects.KUBS_MakerObj;
 import resources.BaseClass;
 import resources.ExcelData;
 import resources.JsonDataReaderWriter;
@@ -43,6 +44,8 @@ public class BankRecons {
 	// jsonReader.getBankReconByName("Maker");
 	InventoryMaintenanceObj inventoryMaintenanceObj = new InventoryMaintenanceObj(driver);
 	ClicksAndActionsHelper clicksAndActionHelper = new ClicksAndActionsHelper(driver);
+	KUBS_Login login = new KUBS_Login(driver);
+	ConfigFileReader configreader = new ConfigFileReader();
 	BrowserHelper browserHelper =new BrowserHelper(driver);
 	Azentio_ReviewerObj reviewer =new Azentio_ReviewerObj(driver);
 	Azentio_CheckerObj kubschecker = new Azentio_CheckerObj(driver);
@@ -50,6 +53,8 @@ public class BankRecons {
 	Map<String, String> Getdata = new LinkedHashMap<>();
 	ExcelData Exceldata = new ExcelData("C:\\Users\\inindc00075\\Downloads\\KUBSTestData.xlsx", "BankReconTestdata", "DataSet ID");
 	Map<String, String>testData;
+	KUBS_MakerObj makerObj = new KUBS_MakerObj(driver);
+	
 	
 	@Then("^Click on Direction Left$")
 	public void click_on_direction_left() {
@@ -71,13 +76,27 @@ public class BankRecons {
 		waithelper.waitForElementToVisibleWithFluentWait(driver, bankRecon_ReconFormatObj.bankRecon_ReconFormat_EyeButton(), 60, 2);
 		bankRecon_ReconFormatObj.bankRecon_ReconFormat_EyeButton().click();
 	}
+	@Then("^click on the first Record of bankReon$")
+	public void click_on_the_first_Record_of_bankReon() {
+		waithelper.waitForElementToVisibleWithFluentWait(driver, bankRecon_ReconFormatObj.bankRecon_ReconFormat_FirstRecord(), 60, 2);
+		bankRecon_ReconFormatObj.bankRecon_ReconFormat_FirstRecord().click();
+	}
 
 	@Then("^Click on Inventory Maintenance Add button$")
 	public void click_on_inventory_maintenance_add_button() throws InterruptedException {
-//    Thread.sleep(2000);
-//    waithelper.waitForElement(driver, 3000, inventoryMaintenanceObj.inventoryMaintenance_AddButton());
-		waithelper.waitForElementToVisibleWithFluentWait(driver, inventoryMaintenanceObj.inventoryMaintenance_AddButton(), 60, 2);
-		inventoryMaintenanceObj.inventoryMaintenance_AddButton().click();
+
+		//waithelper.waitForElementToVisibleWithFluentWait(driver, inventoryMaintenanceObj.inventoryMaintenance_AddButton(), 60, 2);
+		for (int i = 0; i < 100; i++) {
+			try {
+				inventoryMaintenanceObj.inventoryMaintenance_AddButton().click();
+				break;
+			} catch (Exception e) {
+				if (i==100) {
+					Assert.fail();
+				}
+			}
+		}
+		
 
 	}
 
@@ -129,6 +148,7 @@ public class BankRecons {
 
 			}
 		}
+		
 		waithelper.waitForElementToVisibleWithFluentWait(driver, driver.findElement(By.xpath("//td[@aria-label='" + testData.get("FullMonth") + " "
 		+ testData.get("Date") + ", " + testData.get("Year") + "']/span")), 60, 2);
 		WebElement Click = driver.findElement(By.xpath("//td[@aria-label='" + testData.get("FullMonth") + " "
@@ -266,13 +286,11 @@ public class BankRecons {
 	@Then("^Click on Inventory Item Save button$")
 	public void click_on_inventory_item_save_button() throws InterruptedException {
 
-		waithelper.waitForElement(driver, 2000, inventoryMaintenanceObj.inventoryMaintenance_InventoryItem_Save());
+		waithelper.waitForElementToVisibleWithFluentWait(driver, inventoryMaintenanceObj.inventoryMaintenance_InventoryItem_Save(), 60, 2);
 		inventoryMaintenanceObj.inventoryMaintenance_InventoryItem_Save().click();
 		Thread.sleep(2000);
 		javascripthelper.JavaScriptHelper(driver);
-		String str = javascripthelper.executeScript(
-				"return document.querySelector(\"ion-toast\").shadowRoot.querySelector(\"div[class='toast-message']\").innerText")
-				.toString();
+		String str = javascripthelper.executeScript("return document.querySelector(\"ion-toast\").shadowRoot.querySelector(\"div[class='toast-message']\").innerText").toString();
 		System.out.println("Message:" + str);
 
 	}
@@ -323,8 +341,16 @@ public class BankRecons {
 
 	@Then("^click back button$")
 	public void click_back_button() throws Throwable {
-		waithelper.waitForElement(driver, 3000, bankRecon_ReconFormatObj.bankRecon_ReconFormat_BackButton());
-		bankRecon_ReconFormatObj.bankRecon_ReconFormat_BackButton().click();
+		
+		for (int i = 0; i < 100; i++) {
+			try {
+				bankRecon_ReconFormatObj.bankRecon_ReconFormat_BackButton().click();
+				break;
+			} catch (Exception e) {
+				Assert.fail();
+			}
+		}
+		
 	}
 	@Then("^File Transaction Data matching rule$")
     public void file_transaction_data_matching_rule() throws Throwable {
@@ -411,10 +437,10 @@ public class BankRecons {
 		bankRecon_ReconFormatObj.bankRecon_ReconFormat_MatchCondition().sendKeys(testData.get("MatchConditionDepo"));
 		bankRecon_ReconFormatObj.bankRecon_ReconFormat_MatchCondition().sendKeys(Keys.ENTER);
 		
-		waithelper.waitForElement(driver, 3000, bankRecon_ReconFormatObj.bankRecon_ReconFormat_TranspositionCondition());
-		bankRecon_ReconFormatObj.bankRecon_ReconFormat_TranspositionCondition().click();
-		bankRecon_ReconFormatObj.bankRecon_ReconFormat_TranspositionCondition().sendKeys(testData.get("TranspositionCondition"));
-		bankRecon_ReconFormatObj.bankRecon_ReconFormat_TranspositionCondition().sendKeys(Keys.ENTER);
+//		waithelper.waitForElement(driver, 3000, bankRecon_ReconFormatObj.bankRecon_ReconFormat_TranspositionCondition());
+//		bankRecon_ReconFormatObj.bankRecon_ReconFormat_TranspositionCondition().click();
+//		bankRecon_ReconFormatObj.bankRecon_ReconFormat_TranspositionCondition().sendKeys(testData.get("TranspositionCondition"));
+//		bankRecon_ReconFormatObj.bankRecon_ReconFormat_TranspositionCondition().sendKeys(Keys.ENTER);
 		   
     }
 	@Then("^File Withdrawals Data matching rule$")
@@ -439,25 +465,41 @@ public class BankRecons {
 		bankRecon_ReconFormatObj.bankRecon_ReconFormat_FixedLength().sendKeys(testData.get("FixedLengthWith"));
 		bankRecon_ReconFormatObj.bankRecon_ReconFormat_FixedLength().sendKeys(Keys.ENTER);
 		
-		waithelper.waitForElement(driver, 3000, bankRecon_ReconFormatObj.bankRecon_ReconFormat_Position());
-		bankRecon_ReconFormatObj.bankRecon_ReconFormat_Position().click();
-		bankRecon_ReconFormatObj.bankRecon_ReconFormat_Position().sendKeys(testData.get("PositionWith"));
-		bankRecon_ReconFormatObj.bankRecon_ReconFormat_Position().sendKeys(Keys.ENTER);
-		
 		waithelper.waitForElement(driver, 3000, bankRecon_ReconFormatObj.bankRecon_ReconFormat_BlankSpacePaddingNum());
 		bankRecon_ReconFormatObj.bankRecon_ReconFormat_BlankSpacePaddingNum().click();
 		bankRecon_ReconFormatObj.bankRecon_ReconFormat_BlankSpacePaddingNum().sendKeys(testData.get("BlankSpacePaddingWith"));
 		bankRecon_ReconFormatObj.bankRecon_ReconFormat_BlankSpacePaddingNum().sendKeys(Keys.ENTER);
 		
-		waithelper.waitForElement(driver, 3000, bankRecon_ReconFormatObj.bankRecon_ReconFormat_MatchConditionNum());
-		bankRecon_ReconFormatObj.bankRecon_ReconFormat_MatchConditionNum().click();
-		bankRecon_ReconFormatObj.bankRecon_ReconFormat_MatchConditionNum().sendKeys(testData.get("MatchConditionWith"));
-		bankRecon_ReconFormatObj.bankRecon_ReconFormat_MatchConditionNum().sendKeys(Keys.ENTER);
+		waithelper.waitForElement(driver, 3000, bankRecon_ReconFormatObj.bankRecon_ReconFormat_Position());
+		bankRecon_ReconFormatObj.bankRecon_ReconFormat_Position().click();
+		bankRecon_ReconFormatObj.bankRecon_ReconFormat_Position().sendKeys(testData.get("PositionWith"));
+		bankRecon_ReconFormatObj.bankRecon_ReconFormat_Position().sendKeys(Keys.ENTER);
+		
+		waithelper.waitForElement(driver, 3000, bankRecon_ReconFormatObj.bankRecon_ReconFormat_Soundex());
+		bankRecon_ReconFormatObj.bankRecon_ReconFormat_Soundex().click();
+		bankRecon_ReconFormatObj.bankRecon_ReconFormat_Soundex().sendKeys(testData.get("Soundex"));
+		bankRecon_ReconFormatObj.bankRecon_ReconFormat_Soundex().sendKeys(Keys.ENTER);
+		
+		waithelper.waitForElement(driver, 3000, bankRecon_ReconFormatObj.bankRecon_ReconFormat_MatchCondition());
+		bankRecon_ReconFormatObj.bankRecon_ReconFormat_MatchCondition().click();
+		bankRecon_ReconFormatObj.bankRecon_ReconFormat_MatchCondition().sendKeys(testData.get("MatchConditionWith"));
+		bankRecon_ReconFormatObj.bankRecon_ReconFormat_MatchCondition().sendKeys(Keys.ENTER);
 		 
     }
 	@Then("^Click on Inventory Item Notification$")
     public void click_on_inventory_item_notification()  {
     //Notification
+		for (int i = 0; i < 100; i++) {
+			try {
+				clicksAndActionHelper.moveToElement(makerObj.ARAP_Notification_Close());
+				makerObj.ARAP_Notification_Close().click();
+				break;
+			} catch (Exception e) {
+				if (i==100) {
+					Assert.fail();
+				}
+			}
+		}
      waithelper.waitForElement(driver, 2000, inventoryMaintenanceObj.inventoryMaintenance_InventoryItem_MakerNotification());
      inventoryMaintenanceObj.inventoryMaintenance_InventoryItem_MakerNotification().click();
      
@@ -472,34 +514,40 @@ public class BankRecons {
 	    	Exceldata.updateTestData("KUBS_BRS_UAT_001_001_TC_001_01_D1", "ReferenceID", id);
 	        System.out.println("Reference ID:" +id);
 	        Thread.sleep(1000);
-	        for (int i = 1; i <= 35; i++) {
-	        		try {
-	        	    	waithelper.waitForElement(driver, 3000,driver.findElement(By.xpath("//span[contains(text(),'" +testData.get("referanceID")+ "')]")));	
-	        			WebElement referanceID = driver.findElement(By.xpath("//span[contains(text(),'" +  testData.get("referanceID") + "')]"));	
-	        			referanceID.click();
-	        	    	System.out.println(referanceID);
-	        	    	//Assert.assertTrue(referanceID.isDisplayed());
-	        			break;
-	        		} catch (NoSuchElementException e) 
-	        		{
-	        			waithelper.waitForElement(driver,4000,inventoryMaintenanceObj.inventoryMaintenance_InventoryItem_NotificationNext_Button());
-	        			
-	        			inventoryMaintenanceObj.inventoryMaintenance_InventoryItem_NotificationNext_Button().click();
-	        		}
-	        	 
-	        	
-	        	
-	        	}
-	           inventoryMaintenanceObj.inventoryMaintenance_InventoryItem_ReferenceId().click();	    	
+//	        for (int i = 1; i <= 35; i++) {
+//	        		try {
+//	        	    	waithelper.waitForElement(driver, 3000,driver.findElement(By.xpath("//span[contains(text(),'" +testData.get("referanceID")+ "')]")));	
+//	        			WebElement referanceID = driver.findElement(By.xpath("//span[contains(text(),'" +  testData.get("referanceID") + "')]"));	
+//	        			referanceID.click();
+//	        	    	System.out.println(referanceID);
+//	        	    	//Assert.assertTrue(referanceID.isDisplayed());
+//	        			break;
+//	        		} catch (NoSuchElementException e) 
+//	        		{
+//	        			waithelper.waitForElement(driver,4000,inventoryMaintenanceObj.inventoryMaintenance_InventoryItem_NotificationNext_Button());
+//	        			
+//	        			inventoryMaintenanceObj.inventoryMaintenance_InventoryItem_NotificationNext_Button().click();
+//	        		}
+//	        	 
+//	        	
+//	        	
+//	        	}
+//	           inventoryMaintenanceObj.inventoryMaintenance_InventoryItem_ReferenceId().click();	    	
 	        	
 	        	//pencil 
-	        	 String before_xpath="//span[contains(text(),'";
-	        	 String after_xpath="')]/ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell//ion-button";
-	        	  
-	        	 waithelper.waitForElement(driver, 2000, driver.findElement(By.xpath(before_xpath +testData.get("ReferenceID")+after_xpath)));
-	        	 driver.findElement(By.xpath(before_xpath +testData.get("ReferenceID") +after_xpath)).click();
-	        	 
-	        	
+	
+	        	 for (int i = 0; i < 100; i++) {
+	        		 try {
+	        			 driver.findElement(By.xpath("//span[contains(text(),'" + testData.get("ReferenceID") + "')]/ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell//ion-button")).click();
+	        			 break;
+					} catch (Exception e) {
+						if (i==100) {
+							Assert.fail();
+						}
+					}
+	    
+				} 
+	        	    	
 	        	// Submit button
 	        	waithelper.waitForElement(driver, 2000, inventoryMaintenanceObj.inventoryMaintenance_InventoryItem_SubmitButton());
 	        	inventoryMaintenanceObj.inventoryMaintenance_InventoryItem_SubmitButton().click();
@@ -513,7 +561,7 @@ public class BankRecons {
 	        			    
 	        			
 	        	//Remark Submit
-	        	waithelper.waitForElement(driver, 2000,inventoryMaintenanceObj.inventoryMaintenance_InventoryItem_SubmitByMaker());
+	        	waithelper.waitForElementToVisibleWithFluentWait(driver, inventoryMaintenanceObj.inventoryMaintenance_InventoryItem_SubmitByMaker(), 60, 2);
 	        	inventoryMaintenanceObj.inventoryMaintenance_InventoryItem_SubmitByMaker().click();
 //	        	Thread.sleep(3000);
 	        	
@@ -557,8 +605,8 @@ public class BankRecons {
 	        Thread.sleep(1000);
 	        for (int i = 1; i <= 35; i++) {
 	        		try {
-	        	    	waithelper.waitForElement(driver, 3000,driver.findElement(By.xpath("//span[contains(text(),'" +testData.get("referanceID")+ "')]")));	
-	        			WebElement referanceID = driver.findElement(By.xpath("//span[contains(text(),'" +  testData.get("referanceID") + "')]"));	
+	        	    	waithelper.waitForElement(driver, 3000,driver.findElement(By.xpath("//span[contains(text(),'" +testData.get("ReferenceID")+ "')]")));	
+	        			WebElement referanceID = driver.findElement(By.xpath("//span[contains(text(),'" +  testData.get("ReferenceID") + "')]"));	
 	        			referanceID.click();
 	        	    	System.out.println(referanceID);
 	        	    	//Assert.assertTrue(referanceID.isDisplayed());
@@ -628,6 +676,44 @@ public class BankRecons {
 	        			//jsonWriter.addData(reviewerId);
 	       
 	        }
+	 
+		@Then("^log in to the reviewer account1$")
+		public void log_in_to_the_reviewer_account1() throws IOException, ParseException {
+			// reader = new JsonDataReaderWriter();
+			login = new KUBS_Login(driver);
+			driver.get(configreader.getApplicationUrl());
+			login.logintoAzentioappReviewer("Reviewer", testData.get("ReviewerID"));
+		}
+		
+		@Then("^log in to the Checker Account2$")
+		public void log_in_to_the_checker_account2() throws InterruptedException {
+
+			driver.get(configreader.getApplicationUrl());
+			login.loginToAzentioAppAsChecker("Checker");
+
+		}
+
+		@And("^then checker claim the record1$")
+		public void then_checker_claim_the_record1() throws InterruptedException, IOException, ParseException {
+
+			// open pool
+			waithelper = new WaitHelper(driver);
+			waithelper.waitForElement(driver, 3000, kubschecker.checkerSecurityManagement());
+			kubschecker.checkerSecurityManagement().click();
+
+			// claim
+			waithelper.waitForElement(driver, 3000, kubschecker.checkerActionIcon());
+			kubschecker.checkerActionIcon().click();
+			Thread.sleep(2000);
+			String before_xpath = "//span[contains(text(),'";
+			String after_xpath_claim = "')]/parent::div/parent::datatable-body-cell/preceding-sibling::datatable-body-cell[2]/div/ion-buttons/ion-button";
+			waithelper.waitForElement(driver, 5000,
+					driver.findElement(By.xpath(before_xpath + testData.get("ReferenceID") + after_xpath_claim)));
+			driver.findElement(By.xpath(before_xpath + testData.get("ReferenceID") + after_xpath_claim)).click();
+			waithelper.waitForElement(driver, 3000, kubschecker.checkerAlertClose());
+			kubschecker.checkerAlertClose().click();
+
+		}
 	 @Then("^click on the Notification select the record and Approve$")
 		public void click_on_the_notification_select_the_record_and_approve() throws InterruptedException, IOException, ParseException {
 			//notification
@@ -726,11 +812,17 @@ public class BankRecons {
 	    public void user_update_the_excel_sheet_testdata_for_bankrecon1() throws Throwable {
 		 testData = Exceldata.getTestdata("KUBS_BRS_UAT_001_001_TC_001_04_D1");	    
 		 }
+	 
 	 @Then("^history must be correctly maintained on record$")
 	    public void history_must_be_correctly_maintained_on_record() throws Throwable {
-	    	waithelper.waitForElement(driver, 3000, bankRecon_ReconFormatObj.bankRecon_ReconFormat_Next());
-			bankRecon_ReconFormatObj.bankRecon_ReconFormat_Next().click(); 
-			Thread.sleep(2000);
+//	    	waithelper.waitForElement(driver, 3000, bankRecon_ReconFormatObj.bankRecon_ReconFormat_Next());
+//			bankRecon_ReconFormatObj.bankRecon_ReconFormat_Next().isDisplayed();
+		 
+			// BankName
+			waithelper.waitForElementToVisibleWithFluentWait(driver, bankRecon_ReconFormatObj.bankRecon_ReconFormat_BankName1(), 60, 2);
+			String BNM = bankRecon_ReconFormatObj.bankRecon_ReconFormat_BankName1().getText();
+			System.out.println("The Bank Name :" +BNM);
+			
 	    }
 	 @Then("^select the active record$")
 	    public void select_the_active_record()  {

@@ -32,28 +32,30 @@ Then File Withdrawals Data matching rule
 Then Click on Inventory Item Save button
 Then Click on Inventory Item Notification 
 And Select and Submit the record
+Then logout from maker
 @KUBS_BRS_UAT_001_001_TC_001_1
 Scenario: user login to Reviwer
 Then user update the Excel sheet testdata for BankRecon
-Then log in to the reviewer account
+Then log in to the reviewer account1
 Then click on the Notification select the record and Approve
+And logout from reviewer
 @KUBS_BRS_UAT_001_001_TC_001_2
 Scenario: user login to Checker
 Then user update the Excel sheet testdata for BankRecon
-Then log in to the Checker Account
-And then checker claim the record
+Then log in to the Checker Account2
+And then checker claim the record1
 Then click on the checker Notification 
 And select the record and Approve by checker
-
+Then logout from checker
 @KUBS_BRS_UAT_001_001_TC_003 @MultiAuth
 Scenario: Audit history must be correctly maintained on record.
 Given User should go to the kubs url and login as a maker user
 Then Click on Direction Left
 Then Click on Bank Recon
 Then click on Bank Recon format eye button
-#Then user update the Excel sheet testdata for BankRecon
+Then click on the first Record of bankReon
 Then history must be correctly maintained on record
-
+Then logout from maker
 @KUBS_BRS_UAT_001_001_TC_004 @MultiAuth
  Scenario: De-activating an approved record
 Given User should go to the kubs url and login as a maker user
