@@ -265,6 +265,75 @@ public class ACCOUNTSPAYABLE_AutoPayout extends BaseClass {
 		budgetCreationObj.budgetCreationFirstRecord().click();
 
 	}
+	@Then("^choose first record in the notification record in arap3$")
+	public void choose_first_record_in_the_notification_record_in_arap3() throws Throwable {
+		/*
+		 * After click on notification we can see the record which we saved now and we
+		 * have to select that along with the records reference ID We have to store the
+		 * reference ID into the JSon file so that we can call the data in reviewer and
+		 * checker stage
+		 */
+		waitHelper.waitForElementToVisibleWithFluentWait(driver, budgetCreationObj.budgetCreationFirstReferenceId(), 60,
+				1);
+		String referenceID = budgetCreationObj.budgetCreationFirstReferenceId().getText();
+		/*
+		 * addReferanceData(referenceID) This method is a predefined method to store the
+		 * reference ID into the Json file
+		 */
+		//jsonReaderWriter.addReferanceData(referenceID);
+		excelData.updateTestData("KUBS_AR/AP_UAT_003_007_TC_05_01_01_D1","Reference ID",referenceID);
+		arap = excelData.getTestdata("KUBS_AR/AP_UAT_003_007_TC_05_01_01_D1");
+		
+		budgetCreationObj.budgetCreationFirstRecord().click();
+
+	}
+
+	@Then("^choose first record in the notification record in arap1$")
+	public void choose_first_record_in_the_notification_record_in_arap1() throws Throwable {
+		/*
+		 * After click on notification we can see the record which we saved now and we
+		 * have to select that along with the records reference ID We have to store the
+		 * reference ID into the JSon file so that we can call the data in reviewer and
+		 * checker stage
+		 */
+		waitHelper.waitForElementToVisibleWithFluentWait(driver, budgetCreationObj.budgetCreationFirstReferenceId(), 60,
+				1);
+		String referenceID = budgetCreationObj.budgetCreationFirstReferenceId().getText();
+		/*
+		 * addReferanceData(referenceID) This method is a predefined method to store the
+		 * reference ID into the Json file
+		 */
+		//jsonReaderWriter.addReferanceData(referenceID);
+		excelData.updateTestData("KUBS_AR/AP_UAT_003_001_TC_03_04_D1","Reference ID",referenceID);
+		arap = excelData.getTestdata("KUBS_AR/AP_UAT_003_001_TC_03_04_D1");
+		
+		budgetCreationObj.budgetCreationFirstRecord().click();
+
+	}
+	@Then("^choose first record in the notification record in arap4$")
+	public void choose_first_record_in_the_notification_record_in_arap4() throws Throwable {
+		/*
+		 * After click on notification we can see the record which we saved now and we
+		 * have to select that along with the records reference ID We have to store the
+		 * reference ID into the JSon file so that we can call the data in reviewer and
+		 * checker stage
+		 */
+		waitHelper.waitForElementToVisibleWithFluentWait(driver, budgetCreationObj.budgetCreationFirstReferenceId(), 60,
+				1);
+		String referenceID = budgetCreationObj.budgetCreationFirstReferenceId().getText();
+		/*
+		 * addReferanceData(referenceID) This method is a predefined method to store the
+		 * reference ID into the Json file
+		 */
+		//jsonReaderWriter.addReferanceData(referenceID);
+		excelData.updateTestData("KUBS_AR/AP_UAT_003_007_TC_05_02_01_D1","Reference ID",referenceID);
+		arap = excelData.getTestdata("KUBS_AR/AP_UAT_003_007_TC_05_02_01_D1");
+		
+		budgetCreationObj.budgetCreationFirstRecord().click();
+
+	}
+
+
 	@Then("^enter remark in confirmation alert in arap$")
 	public void enter_remark_in_confirmation_alert_in_arap() throws Throwable {
 		javascriptHelper.JavaScriptHelper(driver);
@@ -336,6 +405,108 @@ public class ACCOUNTSPAYABLE_AutoPayout extends BaseClass {
 		budgetCreationObj.budgetCreationAlertClose().click();
 
 	}
+	@And("^capture the reviewer ID in pop up which is open when we submit our record in maker stage in arap5$")
+	public void capture_the_reviewer_id_in_pop_up_which_is_open_when_we_submit_our_record_in_maker_stage_in_arap5()
+			throws Throwable {
+		/*
+		 * After maker submit the record reviewer iD will get auto generated in toast
+		 * alert and we have to locate that alert and extract the ID from the alert(That
+		 * reviewer ID is extracted with one dot By the help of that string buffer class
+		 * 
+		 */
+
+		waitHelper.waitForElement(driver, 2000, budgetCreationObj.budgetCreation_ReviewerId());
+		String reviwerId = budgetCreationObj.budgetCreation_ReviewerId().getText();
+		System.out.println(reviwerId);
+		String trimmerReviewerID = reviwerId.substring(85);
+		StringBuffer sb = new StringBuffer(trimmerReviewerID);
+		StringBuffer finalReviewerID = sb.deleteCharAt(trimmerReviewerID.length() - 1);
+		String revID = finalReviewerID.toString();
+		System.out.println("Reviewer ID is" + revID);
+		excelData.updateTestData("KUBS_AR/AP_UAT_003_007_TC_05_03_01_D1","Reviewer ID",revID);
+		arap = excelData.getTestdata("KUBS_AR/AP_UAT_003_007_TC_05_03_01_D1");
+		
+		//jsonReaderWriter.addData(revID);
+		budgetCreationObj.budgetCreationAlertClose().click();
+
+	}
+	@And("^capture the reviewer ID in pop up which is open when we submit our record in maker stage in arap4$")
+	public void capture_the_reviewer_id_in_pop_up_which_is_open_when_we_submit_our_record_in_maker_stage_in_arap4()
+			throws Throwable {
+		/*
+		 * After maker submit the record reviewer iD will get auto generated in toast
+		 * alert and we have to locate that alert and extract the ID from the alert(That
+		 * reviewer ID is extracted with one dot By the help of that string buffer class
+		 * 
+		 */
+
+		waitHelper.waitForElement(driver, 2000, budgetCreationObj.budgetCreation_ReviewerId());
+		String reviwerId = budgetCreationObj.budgetCreation_ReviewerId().getText();
+		System.out.println(reviwerId);
+		String trimmerReviewerID = reviwerId.substring(85);
+		StringBuffer sb = new StringBuffer(trimmerReviewerID);
+		StringBuffer finalReviewerID = sb.deleteCharAt(trimmerReviewerID.length() - 1);
+		String revID = finalReviewerID.toString();
+		System.out.println("Reviewer ID is" + revID);
+		excelData.updateTestData("KUBS_AR/AP_UAT_003_007_TC_05_02_01_D1","Reviewer ID",revID);
+		arap = excelData.getTestdata("KUBS_AR/AP_UAT_003_007_TC_05_02_01_D1");
+		
+		//jsonReaderWriter.addData(revID);
+		budgetCreationObj.budgetCreationAlertClose().click();
+
+	}
+
+	@And("^capture the reviewer ID in pop up which is open when we submit our record in maker stage in arap1$")
+	public void capture_the_reviewer_id_in_pop_up_which_is_open_when_we_submit_our_record_in_maker_stage_in_arap1()
+			throws Throwable {
+		/*
+		 * After maker submit the record reviewer iD will get auto generated in toast
+		 * alert and we have to locate that alert and extract the ID from the alert(That
+		 * reviewer ID is extracted with one dot By the help of that string buffer class
+		 * 
+		 */
+
+		waitHelper.waitForElement(driver, 2000, budgetCreationObj.budgetCreation_ReviewerId());
+		String reviwerId = budgetCreationObj.budgetCreation_ReviewerId().getText();
+		System.out.println(reviwerId);
+		String trimmerReviewerID = reviwerId.substring(85);
+		StringBuffer sb = new StringBuffer(trimmerReviewerID);
+		StringBuffer finalReviewerID = sb.deleteCharAt(trimmerReviewerID.length() - 1);
+		String revID = finalReviewerID.toString();
+		System.out.println("Reviewer ID is" + revID);
+		excelData.updateTestData("KUBS_AR/AP_UAT_003_001_TC_03_04_D1","Reviewer ID",revID);
+		arap = excelData.getTestdata("KUBS_AR/AP_UAT_003_001_TC_03_04_D1");
+		
+		//jsonReaderWriter.addData(revID);
+		budgetCreationObj.budgetCreationAlertClose().click();
+
+	}
+	@And("^capture the reviewer ID in pop up which is open when we submit our record in maker stage in arap3$")
+	public void capture_the_reviewer_id_in_pop_up_which_is_open_when_we_submit_our_record_in_maker_stage_in_arap3()
+			throws Throwable {
+		/*
+		 * After maker submit the record reviewer iD will get auto generated in toast
+		 * alert and we have to locate that alert and extract the ID from the alert(That
+		 * reviewer ID is extracted with one dot By the help of that string buffer class
+		 * 
+		 */
+
+		waitHelper.waitForElement(driver, 2000, budgetCreationObj.budgetCreation_ReviewerId());
+		String reviwerId = budgetCreationObj.budgetCreation_ReviewerId().getText();
+		System.out.println(reviwerId);
+		String trimmerReviewerID = reviwerId.substring(85);
+		StringBuffer sb = new StringBuffer(trimmerReviewerID);
+		StringBuffer finalReviewerID = sb.deleteCharAt(trimmerReviewerID.length() - 1);
+		String revID = finalReviewerID.toString();
+		System.out.println("Reviewer ID is" + revID);
+		excelData.updateTestData("KUBS_AR/AP_UAT_003_007_TC_05_01_01_D1","Reviewer ID",revID);
+		arap = excelData.getTestdata("KUBS_AR/AP_UAT_003_007_TC_05_01_01_D1");
+		
+		//jsonReaderWriter.addData(revID);
+		budgetCreationObj.budgetCreationAlertClose().click();
+
+	}
+
 	@And("^login with reviewer credentials1$")
 	public void login_with_reviewer_credentials1() throws Throwable {
 		ConfigFileReader configreader = new ConfigFileReader();
@@ -418,6 +589,7 @@ public class ACCOUNTSPAYABLE_AutoPayout extends BaseClass {
 		 * 
 		 * try catch block is used for avoid stalelementReference Exception
 		 */
+		javascriptHelper.JavaScriptHelper(driver);
 		String before_xpath = "//span[contains(text(),'";
 		String after_xpath_claim = "')]/parent::div/parent::datatable-body-cell/preceding-sibling::datatable-body-cell[2]/div/ion-buttons/ion-button";
 		javascriptHelper.JSEClick(kubsCheckerObj.checkerActionIcon());
@@ -593,32 +765,54 @@ public class ACCOUNTSPAYABLE_AutoPayout extends BaseClass {
     
     @And("^save the po creation record$")
     public void save_the_po_creation_record() throws Throwable {
-    	poCreationObj.poCreationTempView().click();
-    	waitHelper.waitForElementVisible(poCreationObj.tempViewFirstRecord(), 2000, 100);
-    	poCreationObj.tempViewFirstRecord().click();
+    	for(int i=0; i<20; i++) {
+    		try {
+    			poCreationObj.poCreationTempView().click();
+    	    	//waitHelper.waitForElementVisible(poCreationObj.tempViewFirstRecord(), 2000, 100);
+    	    	poCreationObj.tempViewFirstRecord().click();
+    	    	break;
+			} catch (Exception e) {
+				
+			}
+    	}
+    	
     }
     @And("^save the item details for pocreation$")
     public void save_the_item_details_for_pocreation() throws Throwable {
-    	poCreationObj.accountsPayable_VendorPurchaseOrder_ItemDetails().click();
-    	waitHelper.waitForElementVisible(poCreationObj.accountsPayable_VendorPurchaseOrder_ItemDetailsRecord(), 2000, 100);
-    	poCreationObj.accountsPayable_VendorPurchaseOrder_ItemDetailsRecord().click();
-    	waitHelper.waitForElementVisible(poCreationObj.accountsPayable_VendorPurchaseOrder_ShippedFromLocation(), 2000, 100);
-    	poCreationObj.accountsPayable_VendorPurchaseOrder_ShippedFromLocation().click();
-    	poCreationObj.accountsPayable_VendorPurchaseOrder_ShippedFromLocation().sendKeys(Keys.ENTER);
-    	poCreationObj.accountsPayable_VendorPurchaseOrder_DeliveryLocation().click();
-    	poCreationObj.accountsPayable_VendorPurchaseOrder_DeliveryLocation().sendKeys(Keys.ENTER);
-    	while(true)
-    	{
-    	try
-    	{
-    	poCreationObj.accountsPayable_VendorPurchaseOrder_PoItemSave().click();
-    	break;
+    	
+    	for(int i=0; i<30; i++) {
+    		try {
+    			poCreationObj.accountsPayable_VendorPurchaseOrder_ItemDetails().click();
+    	    	//waitHelper.waitForElementVisible(poCreationObj.accountsPayable_VendorPurchaseOrder_ItemDetailsRecord(), 2000, 100);
+    	    	poCreationObj.accountsPayable_VendorPurchaseOrder_ItemDetailsRecord().click();
+    	    	//waitHelper.waitForElementVisible(poCreationObj.accountsPayable_VendorPurchaseOrder_ShippedFromLocation(), 2000, 100);
+    	    	poCreationObj.accountsPayable_VendorPurchaseOrder_ShippedFromLocation().click();
+    	    	poCreationObj.accountsPayable_VendorPurchaseOrder_ShippedFromLocation().sendKeys(Keys.ENTER);
+    	    	poCreationObj.accountsPayable_VendorPurchaseOrder_DeliveryLocation().click();
+    	    	poCreationObj.accountsPayable_VendorPurchaseOrder_DeliveryLocation().sendKeys(Keys.ENTER);
+    	    	break;
+			} catch (Exception e) {
+				if(i==30) {
+					Assert.fail(e.getMessage());
+				}
+			}
     	}
-    	catch(NoSuchElementException e)
-    	{
-    		
+    	
+    	
+    	for(int i=0; i<30; i++) {
+    		try {
+    			poCreationObj.accountsPayable_VendorPurchaseOrder_PoItemSave().click();
+    	    	break;
+			} catch (Exception e) {
+				if(i==30) {
+					Assert.fail(e.getMessage());
+				
+				}	
+			}
+				
     	}
-    	}
+    	
+    	
     	waitHelper.waitForElementVisible(poCreationObj.checkerAlertClose(), 2000, 100);
     	poCreationObj.checkerAlertClose().click();
     	}
@@ -890,11 +1084,22 @@ public class ACCOUNTSPAYABLE_AutoPayout extends BaseClass {
     }
     @And("^goto invoice bill booking temp view and select the record1$")
 	public void goto_invoice_bill_booking_temp_view_and_select_the_record() throws Throwable {
-		waitHelper.waitForElementVisible(invoiceBookingObj.accountPayableIvoiceBookingTempView(), 2000, 100);
-		invoiceBookingObj.accountPayableIvoiceBookingTempView().click();
-		Thread.sleep(2000);
-		waitHelper.waitForElementVisible(invoiceBookingObj.accountPayableIvoiceBookingRecord(), 2000, 100);
-		invoiceBookingObj.accountPayableIvoiceBookingRecord().click();
+    	for(int i=0; i<20; i++) {
+    		try {
+    			//waitHelper.waitForElementVisible(invoiceBookingObj.accountPayableIvoiceBookingTempView(), 2000, 100);
+    			invoiceBookingObj.accountPayableIvoiceBookingTempView().click();
+    			//Thread.sleep(2000);
+    			//waitHelper.waitForElementVisible(invoiceBookingObj.accountPayableIvoiceBookingRecord(), 2000, 100);
+    			invoiceBookingObj.accountPayableIvoiceBookingRecord().click();
+    			break;
+			} catch (Exception e) {
+				if(i==20) {
+					Assert.fail(e.getMessage());
+				}
+				
+			}
+    	}
+		
 	}
     
     @And("^fill The invoice againse po record$")
@@ -1260,70 +1465,45 @@ public class ACCOUNTSPAYABLE_AutoPayout extends BaseClass {
     //////////////////////////////////////////////////////////////////////////
     @And("^User get the test data for the cancelling credit note test case0101$")
     public void user_get_the_test_data_for_the_cancelling_credit_note_test_case0101() throws Throwable {
-    	arap = excelData.getTestdata("KUBS_AR/AP_UAT_003_007_TC_05_01_01");
+    	arap = excelData.getTestdata("KUBS_AR/AP_UAT_003_007_TC_05_01_01_D1");
     }
 
     @And("^User get the test data for the cancelling credit note test case0102$")
     public void user_get_the_test_data_for_the_cancelling_credit_note_test_case0102() throws Throwable {
-    	arap = excelData.getTestdata("KUBS_AR/AP_UAT_003_007_TC_05_01_02");
+    	arap = excelData.getTestdata("KUBS_AR/AP_UAT_003_007_TC_05_01_02_D1");
     }
 
     @And("^User get the test data for the cancelling credit note test case0103$")
     public void user_get_the_test_data_for_the_cancelling_credit_note_test_case0103() throws Throwable {
-    	arap = excelData.getTestdata("KUBS_AR/AP_UAT_003_007_TC_05_01_03");
+    	arap = excelData.getTestdata("KUBS_AR/AP_UAT_003_007_TC_05_01_03_D1");
     }
     
     
     
     @And("^User get the test data for the cancelling credit note test case0201$")
     public void user_get_the_test_data_for_the_cancelling_credit_note_test_case0201() throws Throwable {
-    	arap = excelData.getTestdata("KUBS_AR/AP_UAT_003_007_TC_05_02_01");
+    	arap = excelData.getTestdata("KUBS_AR/AP_UAT_003_007_TC_05_02_01_D1");
     }
 
     @And("^User get the test data for the cancelling credit note test case0202$")
     public void user_get_the_test_data_for_the_cancelling_credit_note_test_case0202() throws Throwable {
-    	arap = excelData.getTestdata("KUBS_AR/AP_UAT_003_007_TC_05_02_02");
+    	arap = excelData.getTestdata("KUBS_AR/AP_UAT_003_007_TC_05_02_02_D1");
     }
 
     @And("^User get the test data for the cancelling credit note test case0203$")
     public void user_get_the_test_data_for_the_cancelling_credit_note_test_case0203() throws Throwable {
-    	arap = excelData.getTestdata("KUBS_AR/AP_UAT_003_007_TC_05_02_03");
+    	arap = excelData.getTestdata("KUBS_AR/AP_UAT_003_007_TC_05_02_03_D1");
     }
     
     
     
-    @And("^User get the test data for the cancelling credit note test case0301$")
-    public void user_get_the_test_data_for_the_cancelling_credit_note_test_case0301() throws Throwable {
-    	arap = excelData.getTestdata("KUBS_AR/AP_UAT_003_007_TC_05_03_01");
-    }
+  
 
-    @And("^User get the test data for the cancelling credit note test case0302$")
-    public void user_get_the_test_data_for_the_cancelling_credit_note_test_case0302() throws Throwable {
-    	arap = excelData.getTestdata("KUBS_AR/AP_UAT_003_007_TC_05_03_02");
-    }
-
-    @And("^User get the test data for the cancelling credit note test case0303$")
-    public void user_get_the_test_data_for_the_cancelling_credit_note_test_case0303() throws Throwable {
-    	arap = excelData.getTestdata("KUBS_AR/AP_UAT_003_007_TC_05_03_03");
-    }
+   
     
     
     
-    @And("^User get the test data for the cancelling credit note test case0401$")
-    public void user_get_the_test_data_for_the_cancelling_credit_note_test_case0401() throws Throwable {
-    	arap = excelData.getTestdata("KUBS_AR/AP_UAT_003_007_TC_05_04_01");
-    }
-
-    @And("^User get the test data for the cancelling credit note test case0402$")
-    public void user_get_the_test_data_for_the_cancelling_credit_note_test_case0402() throws Throwable {
-    	arap = excelData.getTestdata("KUBS_AR/AP_UAT_003_007_TC_05_04_02");
-    }
-
-    @And("^User get the test data for the cancelling credit note test case0403$")
-    public void user_get_the_test_data_for_the_cancelling_credit_note_test_case0403() throws Throwable {
-    	arap = excelData.getTestdata("KUBS_AR/AP_UAT_003_007_TC_05_04_03");
-    }
-    
+        
     
     
     @And("^User get the test data for the cancelling credit note test case0501$")
@@ -1386,25 +1566,13 @@ public class ACCOUNTSPAYABLE_AutoPayout extends BaseClass {
     }
     
     
-    @And("^User get the test data for the payment settlement transaction test case02$")
-    public void user_get_the_test_data_for_the_payment_settlement_transaction_test_case02() throws Throwable {
-    	arap = excelData.getTestdata("KUBS_AR/AP_UAT_005_002_TC_02");
-    }
+  
 
-    @And("^User get the test data for the payment settlement transaction test case03$")
-    public void user_get_the_test_data_for_the_payment_settlement_transaction_test_case03() throws Throwable {
-    	arap = excelData.getTestdata("KUBS_AR/AP_UAT_005_002_TC_03");
-    }
+  
 
-    @And("^User get the test data for the payment settlement transaction test case04$")
-    public void user_get_the_test_data_for_the_payment_settlement_transaction_test_case04() throws Throwable {
-    	arap = excelData.getTestdata("KUBS_AR/AP_UAT_005_002_TC_04");
-    }
+   
 
-    @And("^User get the test data for the payment settlement transaction test case05$")
-    public void user_get_the_test_data_for_the_payment_settlement_transaction_test_case05() throws Throwable {
-    	arap = excelData.getTestdata("KUBS_AR/AP_UAT_005_002_TC_05");
-    }
+  
 
 
 

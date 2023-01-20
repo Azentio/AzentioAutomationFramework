@@ -46,7 +46,7 @@ public class KUBS_Login {
 		waithelper.waitForElement(driver, 2000, login.Login_passWord());
 		login.Login_passWord().sendKeys(ulsLoginTestData.get("Password"));
 		String otp = login.Login_getOtp().getText();
-		driver.findElement(By.xpath("//ng-otp-input/div/input[1]")).sendKeys(otp.substring(7));
+		driver.findElement(By.xpath("//ng-otp-input/div/input[1]")).sendKeys(otp.substring(4));
 		login.Login_signIn().click();
 		waithelper.waitForElementToVisibleWithFluentWait(driver, makerobj.kubsFinaceOption(), 60, 1);
 		clicksAndActionsHelper.moveToElement(makerobj.kubsFinaceOption());
@@ -218,7 +218,7 @@ public class KUBS_Login {
 		waithelper.waitForElement(driver, 2000, login.Login_passWord());
 		login.Login_passWord().sendKeys(ulsLoginTestData.get("Password"));
 		String otp = login.Login_getOtp().getText();
-		driver.findElement(By.xpath("//ng-otp-input/div/input[1]")).sendKeys(otp.substring(7));
+		driver.findElement(By.xpath("//ng-otp-input/div/input[1]")).sendKeys(otp.substring(4));
 		login.Login_signIn().click();
 
 	}

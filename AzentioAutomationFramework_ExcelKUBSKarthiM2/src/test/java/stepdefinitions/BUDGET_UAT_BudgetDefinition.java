@@ -667,6 +667,8 @@ public class BUDGET_UAT_BudgetDefinition extends BaseClass {
 		/*
 		 * By the help of following step we can login as a checker
 		 */
+		ConfigFileReader configreader = new ConfigFileReader();
+		driver.get(configreader.getApplicationUrl());
 		Thread.sleep(3000);
 		kubsLogin.loginToAzentioAppAsChecker("Checker");
 
@@ -688,7 +690,7 @@ public class BUDGET_UAT_BudgetDefinition extends BaseClass {
 
 	@Then("^click on action button under security management menu$")
 	public void click_on_action_button_under_security_management_menu() throws Throwable {
-
+		javascriptHelper.JavaScriptHelper(driver);
 		javascriptHelper.JSEClick(kubsCheckerObj.checkerActionIcon());
 
 	}

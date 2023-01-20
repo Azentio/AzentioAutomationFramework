@@ -61,7 +61,7 @@ public class INVENTORY_EnquiryGlObject {
 	{
 		return inventory_to_date;	
 	}
-	@FindBy(xpath="(//button[@type='button'])[3]")
+	@FindBy(xpath="//owl-date-time-container[1]/div[2]/owl-date-time-calendar[1]/div[1]/button[2]/span[1]")
 	private WebElement inventory_next_month;
 	public WebElement inventoryNextMonth()
 	{
@@ -85,6 +85,15 @@ public class INVENTORY_EnquiryGlObject {
 	public WebElement glTransactionReferenceNumber()
 	{
 		return gl_TransactionReferenceNumber;
+	}
+	
+	/////////////////////
+	
+	@FindBy(xpath="//span[contains(text(),'Nov 2022')]")
+	private WebElement GlMonthYear;
+	public WebElement GlMonthYear()
+	{
+		return GlMonthYear;
 	}
 	
 }

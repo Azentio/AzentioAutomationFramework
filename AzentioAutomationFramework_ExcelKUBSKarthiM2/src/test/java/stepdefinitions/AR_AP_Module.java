@@ -2168,7 +2168,7 @@ while(true)
     @And("^get the transaction number from payment settlement$")
     public void get_the_transaction_number_from_payment_settlement() throws Throwable {
     	javascriphelper.JavaScriptHelper(driver);
-        String txtnumber = (String) javascriphelper.executeScript("return document.getElementsByName('paymentNo')[1].value");
+        String txtnumber = (String) javascriphelper.executeScript("return document.getElementsByTagName('input')[13].value");
         testdata.put("txtnumber", txtnumber);
         System.out.println(txtnumber);
     }

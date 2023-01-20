@@ -236,6 +236,7 @@ public class ACCOUNTSPAYABLE_PaymentSettlementCancellation {
 	public void fill_the_required_fields_for_verify_cancelled_payment_txn_availability_in_arap() throws InterruptedException, IOException, ParseException  {
 		javascripthelper.JavaScriptHelper(driver);
 		waithelper.waitForElement(driver, 2000,aCCOUNTSPAYABLE_ManualPayoutObj.accountPayable_ManualPayout_EntityBranch());
+		System.out.println(arap.get("EntityBranch"));
 		aCCOUNTSPAYABLE_ManualPayoutObj.accountPayable_ManualPayout_EntityBranch().sendKeys(arap.get("EntityBranch"));
 		aCCOUNTSPAYABLE_ManualPayoutObj.accountPayable_ManualPayout_EntityBranch().sendKeys(Keys.ENTER);
 //		Thread.sleep(2000);
@@ -479,6 +480,35 @@ public class ACCOUNTSPAYABLE_PaymentSettlementCancellation {
 	public void choose_the_from_date_in_arap() throws Throwable {
 		
 		javascriptHelper.JavaScriptHelper(driver);
+		
+//		for(int i=0; i<30; i++) {
+//			
+//			try {
+//				waitHelper.waitForElement(driver, 3000, driver.findElement(By.xpath("//span[contains(text(),'"+arap.get("GlMonthYear")+"')]")));
+//				WebElement monthAndYear=driver.findElement(By.xpath("//span[contains(text(),'"+arap.get("GlMonthYear")+"')]"));
+//				monthAndYear.click();
+//				
+//				waitHelper.waitForElement(driver, 3000, driver.findElement(By.xpath("//span[contains(text(),'"+arap.get("GlYear")+"')]")));
+//				WebElement year=driver.findElement(By.xpath("//span[contains(text(),'"+arap.get("GlYear")+"')]"));
+//				year.click();
+//				
+//				waitHelper.waitForElement(driver, 3000, driver.findElement(By.xpath("//span[contains(text(),'"+arap.get("GlMonth")+"')]")));
+//				WebElement month=driver.findElement(By.xpath("//span[contains(text(),'"+arap.get("GlMonth")+"')]"));
+//				month.click();
+//				
+//				waitHelper.waitForElement(driver, 3000, driver.findElement(By.xpath("//span[contains(text(),'"+arap.get("GlDay")+"')]")));
+//				WebElement date=driver.findElement(By.xpath("//span[contains(text(),'"+arap.get("GlDay")+"')]"));
+//				date.click();
+//				break;
+//			} catch (Exception e) {
+//				if(i==30) {
+//					Assert.fail(e.getMessage());
+//				}
+//			}
+//		}
+		
+		
+		
 		while(true)
         {
 		try
@@ -486,12 +516,12 @@ public class ACCOUNTSPAYABLE_PaymentSettlementCancellation {
 		
 			waitHelper.waitForElement(driver, 3000, driver.findElement(By.xpath("//span[contains(text(),'"+arap.get("GlMonth")+" "+arap.get("GlYear")+"')]")));
 			WebElement monthAndYear=driver.findElement(By.xpath("//span[contains(text(),'"+arap.get("GlMonth")+" "+arap.get("GlYear")+"')]"));
-		    break;
+  	     break;
 		}
 		
 		catch(NoSuchElementException nosuchElement)
 		{
-			inventoryEnquiryGlObj.inventoryNextMonth().click();
+			//inventoryEnquiryGlObj.inventoryNextMonth().click();
 		}
 		}
 		WebElement FinalDay=driver.findElement(By.xpath("//td[@aria-label='"+arap.get("GlFullMonth")+" "+arap.get("GlDay")+", "+arap.get("GlYear")+"']/span"));
@@ -511,7 +541,7 @@ public class ACCOUNTSPAYABLE_PaymentSettlementCancellation {
 		
 		catch(NoSuchElementException nosuchElement)
 		{
-			inventoryEnquiryGlObj.inventoryNextMonth().click();
+			//inventoryEnquiryGlObj.inventoryNextMonth().click();
 		}
 		}
 		WebElement FinalDay=driver.findElement(By.xpath("//td[@aria-label='"+arap.get("GlFullToMonth")+" "+arap.get("GlToDate")+", "+arap.get("GlToYear")+"']/span"));
@@ -519,17 +549,29 @@ public class ACCOUNTSPAYABLE_PaymentSettlementCancellation {
 	}
 	@And("^give the refrence number which we going to see accounting entries in arap$")
     public void give_the_refrence_number_which_we_going_to_see_accounting_entries_in_arap() throws Throwable {
-		glObj.glTransactionReferenceNumber().click();
-		glObj.glTransactionReferenceNumber().sendKeys(arap.get("approvedReferenceNumber"));
-		glObj.glTransactionReferenceNumber().sendKeys(Keys.ENTER);
+		
+		for(int i=0; i<30; i++) {
+			try {
+				glObj.glTransactionReferenceNumber().click();
+				glObj.glTransactionReferenceNumber().sendKeys(arap.get("approvedReferenceNumber"));
+				glObj.glTransactionReferenceNumber().sendKeys(Keys.ENTER);
+				break;
+			} catch (Exception e) {
+				if(i==30) {
+					Assert.fail(e.getMessage());
+				}
+			
+			}
+		}
+		
     }
 	@Then("^verify approved settlement reference number is available in the Gl report in arap$")
 	public void verify_approved_settlement_reference_number_is_available_in_the_gl_report_in_arap() throws Throwable {
 		javascriptHelper.JavaScriptHelper(driver);
 		Thread.sleep(1000);
-		
-	
-			driver.findElement(By.xpath("(//datatable-body-cell[1]//span[contains(text(),'"
+		for(int i=0; i<20; i++) {
+			try {
+				driver.findElement(By.xpath("(//datatable-body-cell[1]//span[contains(text(),'"
 						+ arap.get("approvedReferenceNumber") + "')])[1]")).isDisplayed();
 
 				driver.findElement(By.xpath("(//datatable-body-cell[1]//span[contains(text(),'"
@@ -545,6 +587,15 @@ public class ACCOUNTSPAYABLE_PaymentSettlementCancellation {
 						+ " ')]/ancestor::datatable-body-cell[1]/following-sibling::datatable-body-cell[6]//span)[1]"))
 						.getText();
 				System.out.println("Amount is " + amount);
+				break;
+			} catch (Exception e) {
+				if(i==20) {
+					Assert.fail(e.getMessage());
+				}
+			}
+		}
+	
+			
 					}
 	@Then("^Fill branch details for report in arap$")
     public void fill_branch_details_for_report_in_arap()  {
@@ -698,38 +749,85 @@ clicksAndActionHelper.doubleClick(FinalDay);
 	
 	@And("^select the date in arap$")
     public void select_the_date_in_arap() throws Throwable {
-    	//arAp_BalanceSheetReportTestDataType = jsonReader.getBalanceSheetReportByName("maker");
-    	Thread.sleep(2000);
-    	//arAp_BalanceSheetReportTestDataType= jsonReader.getBalanceSheetReportByName("maker");
-    	
-    	
-			 waithelper.waitForElement(driver, 2000, arAp_BalanceSheetReportObj.arAp_BalanceSheetReport_CalendarButton());
-			 arAp_BalanceSheetReportObj.arAp_BalanceSheetReport_CalendarButton().click();
-			
-			 
-javascripthelper.JavaScriptHelper(driver);
-while(true)
-	{
-	try
-		{
-			//span[contains(text(),'Oct 2022')]
-			Thread.sleep(1000);
-			waithelper.waitForElement(driver, 2000, driver.findElement(By.xpath("//span[contains(text(),'"+arap.get("Month3")+" "+arap.get("Year3")+"')]")));
-			WebElement monthAndYear = driver.findElement(By.xpath("//span[contains(text(),'"+arap.get("Month3")+" "+arap.get("Year3")+"')]"));
-			Thread.sleep(2000);
-			break;
-		}
-					
-	catch(NoSuchElementException nosuchElement)
-		{
-			arAp_BalanceSheetReportObj.arAp_BalanceSheetReport_NextMonth().click();
-			
-		}
-	}
-				//td[@aria-label='November 1, 2022']/span
-	WebElement FinalDay=driver.findElement(By.xpath("//td[@aria-label='"+arap.get("FullMonth3")+" "+arap.get("Day3")+", "+arap.get("Year3")+"']/span"));
-	clicksAndActionHelper.doubleClick(FinalDay);   }
+//    	//arAp_BalanceSheetReportTestDataType = jsonReader.getBalanceSheetReportByName("maker");
+//    	Thread.sleep(2000);
+//    	//arAp_BalanceSheetReportTestDataType= jsonReader.getBalanceSheetReportByName("maker");
+//    	
+//    	
+//			 waithelper.waitForElement(driver, 2000, arAp_BalanceSheetReportObj.arAp_BalanceSheetReport_CalendarButton());
+//			 arAp_BalanceSheetReportObj.arAp_BalanceSheetReport_CalendarButton().click();
+//			
+//			 
+//javascripthelper.JavaScriptHelper(driver);
+//while(true)
+//	{
+//	try
+//		{
+//			//span[contains(text(),'Oct 2022')]
+//			Thread.sleep(1000);
+//			//waithelper.waitForElement(driver, 2000, driver.findElement(By.xpath("//span[contains(text(),'"+arap.get("Month3")+" "+arap.get("Year3")+"')]")));
+//			WebElement monthAndYear = driver.findElement(By.xpath("//span[contains(text(),'"+arap.get("Month3")+" "+arap.get("Year3")+"')]"));
+//			Thread.sleep(2000);
+//			break;
+//		}
+//					
+//	catch(NoSuchElementException nosuchElement)
+//		{
+//			//arAp_BalanceSheetReportObj.arAp_BalanceSheetReport_NextMonth().click();
+//			
+//		}
+//	}
+//				//td[@aria-label='November 1, 2022']/span
+//	WebElement FinalDay=driver.findElement(By.xpath("//td[@aria-label='"+arap.get("FullMonth3")+" "+arap.get("Day3")+", "+arap.get("Year3")+"']/span"));
+//	clicksAndActionHelper.doubleClick(FinalDay);   }
 
 
     
+		 waithelper.waitForElement(driver, 2000, arAp_BalanceSheetReportObj.arAp_BalanceSheetReport_CalendarButton());
+		 arAp_BalanceSheetReportObj.arAp_BalanceSheetReport_CalendarButton().click();
+		
+		 
+javascripthelper.JavaScriptHelper(driver);
+while(true)
+{
+try
+	{
+		//span[contains(text(),'Oct 2022')]
+//		Thread.sleep(1000);
+//		waithelper.waitForElement(driver, 2000, driver.findElement(By.xpath("//span[contains(text(),'"+arAp_BalanceSheetReportTestDataType.Month+" "+arAp_BalanceSheetReportTestDataType.Year+"')]")));
+		//waithelper.waitForElementwithFluentwait(driver, driver.findElement(By.xpath("//span[contains(text(),'"+arap.get("Month3")+" "+arap.get("Year3")+"')]")));
+		WebElement monthAndYear = driver.findElement(By.xpath("//span[contains(text(),'"+arap.get("Month3")+" "+arap.get("Year3")+"')]"));
+//		Thread.sleep(2000);
+		break;
+	}
+				
+catch(NoSuchElementException nosuchElement)
+	{
+		arAp_BalanceSheetReportObj.arAp_BalanceSheetReport_NextMonth().click();
+		
+	}
+}
+			//td[@aria-label='November 1, 2022']/span
+WebElement FinalDay=driver.findElement(By.xpath("//td[@aria-label='"+arap.get("FullMonth3")+" "+arap.get("Day3")+", "+arap.get("Year3")+"']/span"));
+clicksAndActionHelper.doubleClick(FinalDay);
+}
+
+
+
+@And("^User get the test data for the payment settlement transaction test case02$")
+public void user_get_the_test_data_for_the_payment_settlement_transaction_test_case02() throws Throwable {
+	arap = excelData.getTestdata("KUBS_AR/AP_UAT_005_002_TC_02_D1");
+}
+@And("^User get the test data for the payment settlement transaction test case03$")
+public void user_get_the_test_data_for_the_payment_settlement_transaction_test_case03() throws Throwable {
+	arap = excelData.getTestdata("KUBS_AR/AP_UAT_005_002_TC_03_D1");
+}
+@And("^User get the test data for the payment settlement transaction test case04$")
+public void user_get_the_test_data_for_the_payment_settlement_transaction_test_case04() throws Throwable {
+	arap = excelData.getTestdata("KUBS_AR/AP_UAT_005_002_TC_04_D1");
+}
+@And("^User get the test data for the payment settlement transaction test case05$")
+public void user_get_the_test_data_for_the_payment_settlement_transaction_test_case05() throws Throwable {
+	arap = excelData.getTestdata("KUBS_AR/AP_UAT_005_002_TC_05_D1");
+}
 }

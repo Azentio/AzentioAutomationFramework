@@ -1334,6 +1334,9 @@ public class FIXEDASSET_AssetImpairement extends BaseClass {
 
 	@And("^login with Maker ID$")
 	public void login_with_maker_id() throws Throwable {
+		
+		ConfigFileReader configreader = new ConfigFileReader();
+		driver.get(configreader.getApplicationUrl());
 		Thread.sleep(2000);
 		kubsLogin.loginToAzentioAppByMaker();
 	}

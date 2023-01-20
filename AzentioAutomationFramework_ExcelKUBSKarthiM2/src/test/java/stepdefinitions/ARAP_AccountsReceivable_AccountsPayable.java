@@ -1684,8 +1684,9 @@ public class ARAP_AccountsReceivable_AccountsPayable extends BaseClass {
 		arapObj.adjustmentAdjustmentReference().sendKeys(DebitNo);
 
 		try {
-			waitHelper.waitForElement(driver, 2000, arapObj.adjustment_Save());
+			//waitHelper.waitForElement(driver, 2000, arapObj.adjustment_Save());
 			arapObj.adjustment_Save().isDisplayed();
+			
 		} catch (ElementClickInterceptedException e) {
 			System.out.println("The Approved Invoice Bill Record is Not Allowed for Cancellation");
 		}

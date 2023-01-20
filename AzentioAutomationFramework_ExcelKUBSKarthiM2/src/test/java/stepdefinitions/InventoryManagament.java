@@ -1120,9 +1120,20 @@ public class InventoryManagament extends BaseClass {
 
 			@And("^click on view button$")
 			public void click_on_view_button() throws Throwable {
-				waithelper.waitForElement(driver, 3000, inventoryManagamentObj.inventoryViewButton());
-				inventoryManagamentObj.inventoryViewButton().click();
-				Thread.sleep(3000);
+				for(int i=0; i<20; i++) {
+					try {
+						//waithelper.waitForElement(driver, 3000, inventoryManagamentObj.inventoryViewButton());
+						inventoryManagamentObj.inventoryViewButton().click();
+						//Thread.sleep(3000);
+						break;
+					} catch (Exception e) {
+						if(i==20) {
+							Assert.fail(e.getMessage());
+						}
+						
+					}
+				}
+				
 			}
 		    
 		    
