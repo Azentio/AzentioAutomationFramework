@@ -44,353 +44,353 @@ public class KUBS_ChekcerSteps extends BaseClass {
 	@Given("^navigate to kubs url to approve the fixed asset replacement record as a checker$")
     public void navigate_to_kubs_url_to_approve_the_fixed_asset_replacement_record_as_a_checker() throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
-		kubsLogin.loginToAzentioAppAsChecker("Checker");
+		kubsLogin.loginToAzentioAppAsChecker();
 		checkerTestData = excelDataForAssetReplacement.getTestdata("KUBS_FAT_UAT_008_D1");
     }
 	@Given("^navigate to kubs url to approve the fixed asset replacement record in checker for prerequisite of asset revaluation$")
     public void navigate_to_kubs_url_to_approve_the_fixed_asset_replacement_record_in_checker_for_prerequisite_of_asset_revaluation() throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
-		kubsLogin.loginToAzentioAppAsChecker("Checker");
+		kubsLogin.loginToAzentioAppAsChecker();
 		checkerTestData = excelDataForAssetReplacement.getTestdata("KUBS_FAT_UAT_008_D4");
     }
 	@Given("^navigate to kubs url to approve the fixed asset replacement record in checker for asset retrurn prerequsite$")
     public void navigate_to_kubs_url_to_approve_the_fixed_asset_replacement_record_in_checker_for_asset_retrurn_prerequsite() throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
-		kubsLogin.loginToAzentioAppAsChecker("Checker");
+		kubsLogin.loginToAzentioAppAsChecker();
 		checkerTestData = excelDataForAssetReplacement.getTestdata("KUBS_FAT_UAT_008_D3");
     }
 	@Given("^navigate to kubs url to approve the fixed asset ammendment record as a checker$")
     public void navigate_to_kubs_url_to_approve_the_fixed_asset_ammendment_record_as_a_checker() throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
-		kubsLogin.loginToAzentioAppAsChecker("Checker");
+		kubsLogin.loginToAzentioAppAsChecker();
 		checkerTestData = excelDataForAssetAmmendment.getTestdata("KUBS_FAT_UAT_011_01_D1");
     }
 	@Given("^navigate to kubs url to approve the fixed asset ammendment record in checker for prerequisite for asset revaluation$")
     public void navigate_to_kubs_url_to_approve_the_fixed_asset_ammendment_record_in_checker_for_prerequisite_for_asset_revaluation() throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
-		kubsLogin.loginToAzentioAppAsChecker("Checker");
+		kubsLogin.loginToAzentioAppAsChecker();
 		checkerTestData = excelDataForAssetAmmendment.getTestdata("KUBS_FAT_UAT_011_01_D6");
     }
 	@Given("^navigate to kubs Url to approve the fixed asset Ammendment in checker to approve the asset life changes ammendment asset$")
     public void navigate_to_kubs_url_to_approve_the_fixed_asset_ammendment_in_checker_to_approve_the_asset_life_changes_ammendment_asset() throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
-		kubsLogin.loginToAzentioAppAsChecker("Checker");
+		kubsLogin.loginToAzentioAppAsChecker();
 		checkerTestData = excelDataForAssetAmmendment.getTestdata("KUBS_FAT_UAT_011_02_D1");
     }
 	@Given("^navigate to kubs Url to approve the fixed asset Ammendment in checker to approve the ammendment asset which have less that asset life which earlier exist$")
     public void navigate_to_kubs_url_to_approve_the_fixed_asset_ammendment_in_checker_to_approve_the_ammendment_asset_which_have_less_that_asset_life_which_earlier_exist() throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
-		kubsLogin.loginToAzentioAppAsChecker("Checker");
+		kubsLogin.loginToAzentioAppAsChecker();
 		checkerTestData = excelDataForAssetAmmendment.getTestdata("KUBS_FAT_UAT_011_03_D1");
     }
 	@Given("^navigate to kubs Url to approve the fixed asset Ammendment in checker to approve the ammendment asset which have Greater than asset life which earlier exist$")
     public void navigate_to_kubs_url_to_approve_the_fixed_asset_ammendment_in_checker_to_approve_the_ammendment_asset_which_have_greater_than_asset_life_which_earlier_exist() throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
-		kubsLogin.loginToAzentioAppAsChecker("Checker");
+		kubsLogin.loginToAzentioAppAsChecker();
 		checkerTestData = excelDataForAssetAmmendment.getTestdata("KUBS_FAT_UAT_011_04_D1");
     }
 	@Given("^navigate to kubs url to approve the fixed asset ammendment record in checker for asset allocation$")
     public void navigate_to_kubs_url_to_approve_the_fixed_asset_ammendment_record_in_checker_for_asset_allocation() throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
-		kubsLogin.loginToAzentioAppAsChecker("Checker");
+		kubsLogin.loginToAzentioAppAsChecker();
 		checkerTestData = excelDataForAssetAmmendment.getTestdata("KUBS_FAT_UAT_011_01_D5");
     }
 	@Given("^navigate to kubs url to approve the fixed asset ammendment record in checker for asset return prerequsite$")
     public void navigate_to_kubs_url_to_approve_the_fixed_asset_ammendment_record_in_checker_for_asset_return_prerequsite() throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
-		kubsLogin.loginToAzentioAppAsChecker("Checker");
+		kubsLogin.loginToAzentioAppAsChecker();
 		checkerTestData = excelDataForAssetAmmendment.getTestdata("KUBS_FAT_UAT_011_01_D4");
     }
 	@Given("^navigate to kubs url to approve the fixed asset ammendment record in a checker for prerequsite of asset impairment$")
     public void navigate_to_kubs_url_to_approve_the_fixed_asset_ammendment_record_in_a_checker_for_prerequsite_of_asset_impairment() throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
-		kubsLogin.loginToAzentioAppAsChecker("Checker");
+		kubsLogin.loginToAzentioAppAsChecker();
 		checkerTestData = excelDataForAssetAmmendment.getTestdata("KUBS_FAT_UAT_011_01_D3");
     }
 	@Given("^navigate to kubs url to approve the fixed asset revaluation record as a checker$")
     public void navigate_to_kubs_url_to_approve_the_fixed_asset_revaluation_record_as_a_checker() throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
-		kubsLogin.loginToAzentioAppAsChecker("Checker");
+		kubsLogin.loginToAzentioAppAsChecker();
 		checkerTestData = excelDataForAssetRevaluation.getTestdata("KUBS_FAT_UAT_012_01_D1");
     }
 	@Given("^navigate to kubs url to approve the fixed asset revaluation record in checker which is already de allocated$")
     public void navigate_to_kubs_url_to_approve_the_fixed_asset_revaluation_record_in_checker_which_is_already_de_allocated() throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
-		kubsLogin.loginToAzentioAppAsChecker("Checker");
+		kubsLogin.loginToAzentioAppAsChecker();
 		checkerTestData = excelDataForAssetRevaluation.getTestdata("KUBS_FAT_UAT_012_02_D1");
     }
 	
 	@Given("^navigate to kubs url to approve the fixed asset revaluation record in checker which is already Revalued$")
     public void navigate_to_kubs_url_to_approve_the_fixed_asset_revaluation_record_in_checker_which_is_already_revalued() throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
-		kubsLogin.loginToAzentioAppAsChecker("Checker");
+		kubsLogin.loginToAzentioAppAsChecker();
 		checkerTestData = excelDataForAssetRevaluation.getTestdata("KUBS_FAT_UAT_012_03_D1");
     }
 	@Given("^navigate to kubs url to approve the fixed asset revaluation record in checker which is already Impaired$")
     public void navigate_to_kubs_url_to_approve_the_fixed_asset_revaluation_record_in_checker_which_is_already_impaired() throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
-		kubsLogin.loginToAzentioAppAsChecker("Checker");
+		kubsLogin.loginToAzentioAppAsChecker();
 		checkerTestData = excelDataForAssetRevaluation.getTestdata("KUBS_FAT_UAT_012_04_D1");
     }
 	@Given("^navigate to kubs url to approve the fixed asset revaluation record in checker which is already done on asset ammendment$")
     public void navigate_to_kubs_url_to_approve_the_fixed_asset_revaluation_record_in_checker_which_is_already_done_on_asset_ammendment() throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
-		kubsLogin.loginToAzentioAppAsChecker("Checker");
+		kubsLogin.loginToAzentioAppAsChecker();
 		checkerTestData = excelDataForAssetRevaluation.getTestdata("KUBS_FAT_UAT_012_05_D1");
     }
 	@Given("^navigate to kubs url to approve the fixed asset revaluation record in checker which is already done on asset replacement$")
     public void navigate_to_kubs_url_to_approve_the_fixed_asset_revaluation_record_in_checker_which_is_already_done_on_asset_replacement() throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
-		kubsLogin.loginToAzentioAppAsChecker("Checker");
+		kubsLogin.loginToAzentioAppAsChecker();
 		checkerTestData = excelDataForAssetRevaluation.getTestdata("KUBS_FAT_UAT_012_09_D1");
     }
 	@Given("^navigate to kubs url to approve the fixed asset revaluation record in checker which is already done on asset undertaking$")
     public void navigate_to_kubs_url_to_approve_the_fixed_asset_revaluation_record_in_checker_which_is_already_done_on_asset_undertaking() throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
-		kubsLogin.loginToAzentioAppAsChecker("Checker");
+		kubsLogin.loginToAzentioAppAsChecker();
 		checkerTestData = excelDataForAssetRevaluation.getTestdata("KUBS_FAT_UAT_012_06_D1");
     }
 	@Given("^navigate to kubs url to approve the fixed asset revaluation record in checker which is already done on asset sale maker stage$")
     public void navigate_to_kubs_url_to_approve_the_fixed_asset_revaluation_record_in_checker_which_is_already_done_on_asset_sale_maker_stage() throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
-		kubsLogin.loginToAzentioAppAsChecker("Checker");
+		kubsLogin.loginToAzentioAppAsChecker();
 		checkerTestData = excelDataForAssetRevaluation.getTestdata("KUBS_FAT_UAT_012_07_D1");
 	}
 	@Given("^navigate to kubs url to approve the fixed asset revaluation record in checker which is already done on asset return maker stage$")
     public void navigate_to_kubs_url_to_approve_the_fixed_asset_revaluation_record_in_checker_which_is_already_done_on_asset_return_maker_stage() throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
-		kubsLogin.loginToAzentioAppAsChecker("Checker");
+		kubsLogin.loginToAzentioAppAsChecker();
 		checkerTestData = excelDataForAssetRevaluation.getTestdata("KUBS_FAT_UAT_012_08_D1");
     }
 	@Given("^navigate to kubs url to approve the fixed asset revaluation record in checker for prerequisite for asset allocation$")
     public void navigate_to_kubs_url_to_approve_the_fixed_asset_revaluation_record_in_checker_for_prerequisite_for_asset_allocation() throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
-		kubsLogin.loginToAzentioAppAsChecker("Checker");
+		kubsLogin.loginToAzentioAppAsChecker();
 		checkerTestData = excelDataForAssetRevaluation.getTestdata("KUBS_FAT_UAT_012_01_D4");
     }
 	@Given("^navigate to kubs url to approve the fixed asset revaluation record in checker for asset return prerequsite$")
     public void navigate_to_kubs_url_to_approve_the_fixed_asset_revaluation_record_in_checker_for_asset_return_prerequsite() throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
-		kubsLogin.loginToAzentioAppAsChecker("Checker");
+		kubsLogin.loginToAzentioAppAsChecker();
 		checkerTestData = excelDataForAssetRevaluation.getTestdata("KUBS_FAT_UAT_012_01_D3");
     }
 	@Given("^navigate to kubs url to approve the fixed asset revaluation record in a checker for asset impairment prerequsite$")
     public void navigate_to_kubs_url_to_approve_the_fixed_asset_revaluation_record_in_a_checker_for_asset_impairment_prerequsite() throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
-		kubsLogin.loginToAzentioAppAsChecker("Checker");
+		kubsLogin.loginToAzentioAppAsChecker();
 		checkerTestData = excelDataForAssetRevaluation.getTestdata("KUBS_FAT_UAT_012_01_D2");
     }
 	@Given("^navigate to kubs url to approve the fixed asset impairment record as a checker$")
     public void navigate_to_kubs_url_to_approve_the_fixed_asset_impairment_record_as_a_checker() throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
-		kubsLogin.loginToAzentioAppAsChecker("Checker");
+		kubsLogin.loginToAzentioAppAsChecker();
 		checkerTestData = excelDataForAssetImapirment.getTestdata("KUBS_FAT_UAT_009_001_01_D1");
     }
 	@Given("^navigate to kubs url to approve the fixed asset impairment record in checker for the prerequisite of asset revaluation$")
     public void navigate_to_kubs_url_to_approve_the_fixed_asset_impairment_record_in_checker_for_the_prerequisite_of_asset_revaluation() throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
-		kubsLogin.loginToAzentioAppAsChecker("Checker");
+		kubsLogin.loginToAzentioAppAsChecker();
 		checkerTestData = excelDataForAssetImapirment.getTestdata("KUBS_FAT_UAT_009_001_01_D3");
     }
 	@Given("^navigate to kubs url to approve the fixed asset impairment record in checker for the prerequsite of asset return$")
     public void navigate_to_kubs_url_to_approve_the_fixed_asset_impairment_record_in_checker_for_the_prerequsite_of_asset_return() throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
-		kubsLogin.loginToAzentioAppAsChecker("Checker");
+		kubsLogin.loginToAzentioAppAsChecker();
 		checkerTestData = excelDataForAssetImapirment.getTestdata("KUBS_FAT_UAT_009_001_01_D2");
     }
 	@Given("^navigate to kubs url to approve the fixed asset impairment record which is already allocated$")
     public void navigate_to_kubs_url_to_approve_the_fixed_asset_impairment_record_which_is_already_allocated() throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
-		kubsLogin.loginToAzentioAppAsChecker("Checker");
+		kubsLogin.loginToAzentioAppAsChecker();
 		checkerTestData = excelDataForAssetImapirment.getTestdata("KUBS_FAT_UAT_009_002_01_D1");
     }
 	@Given("^navigate to kubs url to approve the fixed asset impairment record which is already de allocated$")
     public void navigate_to_kubs_url_to_approve_the_fixed_asset_impairment_record_which_is_already_de_allocated() throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
-		kubsLogin.loginToAzentioAppAsChecker("Checker");
+		kubsLogin.loginToAzentioAppAsChecker();
 		checkerTestData = excelDataForAssetImapirment.getTestdata("KUBS_FAT_UAT_009_003_01_D1");
     }
 	@Given("^navigate to kubs url to approve the fixed asset impairment record which is already revalued$")
     public void navigate_to_kubs_url_to_approve_the_fixed_asset_impairment_record_which_is_already_revalued() throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
-		kubsLogin.loginToAzentioAppAsChecker("Checker");
+		kubsLogin.loginToAzentioAppAsChecker();
 		checkerTestData = excelDataForAssetImapirment.getTestdata("KUBS_FAT_UAT_009_004_01_D1");
     }
 	@Given("^navigate to kubs url to approve the fixed asset impairment record which is already ammendment$")
     public void navigate_to_kubs_url_to_approve_the_fixed_asset_impairment_record_which_is_already_ammendment() throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
-		kubsLogin.loginToAzentioAppAsChecker("Checker");
+		kubsLogin.loginToAzentioAppAsChecker();
 		checkerTestData = excelDataForAssetImapirment.getTestdata("KUBS_FAT_UAT_009_005_01_D1");
     }
 	@Given("^navigate to kubs url to approve the fixed asset impairment record which is already replaced in maker end to approve in checker$")
     public void navigate_to_kubs_url_to_approve_the_fixed_asset_impairment_record_which_is_already_replaced_in_maker_end_to_approve_in_checker() throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
-		kubsLogin.loginToAzentioAppAsChecker("Checker");
+		kubsLogin.loginToAzentioAppAsChecker();
 		checkerTestData = excelDataForAssetImapirment.getTestdata("KUBS_FAT_UAT_009_006_01_D1");
     }
 	@Given("^navigate to kubs url to approve the fixed asset impairment record which is already Return in maker end to approve in checker$")
     public void navigate_to_kubs_url_to_approve_the_fixed_asset_impairment_record_which_is_already_return_in_maker_end_to_approve_in_checker() throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
-		kubsLogin.loginToAzentioAppAsChecker("Checker");
+		kubsLogin.loginToAzentioAppAsChecker();
 		checkerTestData = excelDataForAssetImapirment.getTestdata("KUBS_FAT_UAT_009_007_01_D1");
     }
 	@Given("^navigate to kubs url to approve the fixed asset impairment record which is already Sale in maker end to approve in checker$")
     public void navigate_to_kubs_url_to_approve_the_fixed_asset_impairment_record_which_is_already_sale_in_maker_end_to_approve_in_checker() throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
-		kubsLogin.loginToAzentioAppAsChecker("Checker");
+		kubsLogin.loginToAzentioAppAsChecker();
 		checkerTestData = excelDataForAssetImapirment.getTestdata("KUBS_FAT_UAT_009_008_01_D1");
     }
 	@Given("^navigate to kubs url to approve the fixed asset impairment record which is already Transfered in maker end to approve in checker$")
     public void navigate_to_kubs_url_to_approve_the_fixed_asset_impairment_record_which_is_already_transfered_in_maker_end_to_approve_in_checker() throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
-		kubsLogin.loginToAzentioAppAsChecker("Checker");
+		kubsLogin.loginToAzentioAppAsChecker();
 		checkerTestData = excelDataForAssetImapirment.getTestdata("KUBS_FAT_UAT_009_009_01_D1");
     }
 	@Given("^Navigate to KUBS url and login with checker for approve asset category record$")
 	public void navigate_to_kubs_url_and_login_with_checker_for_approve_asset_category_record() throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
-		kubsLogin.loginToAzentioAppAsChecker("Checker");
+		kubsLogin.loginToAzentioAppAsChecker();
 		checkerTestData = excelData.getTestdata("KUBS_FAT_UAT_002_002_D1");
 	}
 	@Given("^Navigate to KUBS url and login with checker for approve asset category record for asset return$")
     public void navigate_to_kubs_url_and_login_with_checker_for_approve_asset_category_record_for_asset_return() throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
-		kubsLogin.loginToAzentioAppAsChecker("Checker");
+		kubsLogin.loginToAzentioAppAsChecker();
 		checkerTestData = excelData.getTestdata("KUBS_FAT_UAT_002_002_D3");
     }
 	@Given("^Navigate to KUBS url and login with checker for approve asset category record for asset allocation$")
     public void navigate_to_kubs_url_and_login_with_checker_for_approve_asset_category_record_for_asset_allocation() throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
-		kubsLogin.loginToAzentioAppAsChecker("Checker");
+		kubsLogin.loginToAzentioAppAsChecker();
 		checkerTestData = excelData.getTestdata("KUBS_FAT_UAT_002_002_D4");
     }
 	@Given("^Navigate to KUBS url and login with checker for approve asset category record for asset ammendment$")
     public void navigate_to_kubs_url_and_login_with_checker_for_approve_asset_category_record_for_asset_ammendment() throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
-		kubsLogin.loginToAzentioAppAsChecker("Checker");
+		kubsLogin.loginToAzentioAppAsChecker();
 		checkerTestData = excelData.getTestdata("KUBS_FAT_UAT_002_002_D5");
     }
 	@Given("^Navigate to KUBS url and login with checker for approve asset category record for asset revaluation$")
     public void navigate_to_kubs_url_and_login_with_checker_for_approve_asset_category_record_for_asset_revaluation() throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
-		kubsLogin.loginToAzentioAppAsChecker("Checker");
+		kubsLogin.loginToAzentioAppAsChecker();
 		checkerTestData = excelData.getTestdata("KUBS_FAT_UAT_002_002_D6");
     }
 	@Given("^Navigate to KUBS url and login with checker for approve asset category record for asset impairment$")
     public void navigate_to_kubs_url_and_login_with_checker_for_approve_asset_category_record_for_asset_impairment() throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
-		kubsLogin.loginToAzentioAppAsChecker("Checker");
+		kubsLogin.loginToAzentioAppAsChecker();
 		checkerTestData = excelData.getTestdata("KUBS_FAT_UAT_002_002_D2");
     }
 	@Given("^Navigate to KUBS url and login with checker for approve asset code configuration record$")
 	public void navigate_to_kubs_url_and_login_with_checker_for_approve_asset_code_configuration_record()
 			throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
-		kubsLogin.loginToAzentioAppAsChecker("Checker");
+		kubsLogin.loginToAzentioAppAsChecker();
 		checkerTestData = excelDataForAssetCodeConfig.getTestdata("KUBS_FAT_UAT_002_003_D1");
 	}
 	@Given("^Navigate to KUBS url and login with checker for approve asset code configuration record for asset ammendment$")
     public void navigate_to_kubs_url_and_login_with_checker_for_approve_asset_code_configuration_record_for_asset_ammendment() throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
-		kubsLogin.loginToAzentioAppAsChecker("Checker");
+		kubsLogin.loginToAzentioAppAsChecker();
 		checkerTestData = excelDataForAssetCodeConfig.getTestdata("KUBS_FAT_UAT_002_003_D5");
     }
 	@Given("^Navigate to KUBS url and login with checker for approve asset code configuration record for asset allocation$")
     public void navigate_to_kubs_url_and_login_with_checker_for_approve_asset_code_configuration_record_for_asset_allocation() throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
-		kubsLogin.loginToAzentioAppAsChecker("Checker");
+		kubsLogin.loginToAzentioAppAsChecker();
 		checkerTestData = excelDataForAssetCodeConfig.getTestdata("KUBS_FAT_UAT_002_003_D4");
     }
 	@Given("^Navigate to KUBS url and login with checker for approve asset code configuration record for asset revaluation$")
     public void navigate_to_kubs_url_and_login_with_checker_for_approve_asset_code_configuration_record_for_asset_revaluation() throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
-		kubsLogin.loginToAzentioAppAsChecker("Checker");
+		kubsLogin.loginToAzentioAppAsChecker();
 		checkerTestData = excelDataForAssetCodeConfig.getTestdata("KUBS_FAT_UAT_002_003_D6");
     }
 	@Given("^Navigate to KUBS url and login with checker for approve asset code configuration record to di impairment$")
     public void navigate_to_kubs_url_and_login_with_checker_for_approve_asset_code_configuration_record_to_di_impairment() throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
-		kubsLogin.loginToAzentioAppAsChecker("Checker");
+		kubsLogin.loginToAzentioAppAsChecker();
 		checkerTestData = excelDataForAssetCodeConfig.getTestdata("KUBS_FAT_UAT_002_003_D2");
     }
 	@Given("^Navigate to KUBS url and login with checker for approve asset code configuration record for asset return$")
     public void navigate_to_kubs_url_and_login_with_checker_for_approve_asset_code_configuration_record_for_asset_return() throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
-		kubsLogin.loginToAzentioAppAsChecker("Checker");
+		kubsLogin.loginToAzentioAppAsChecker();
 		checkerTestData = excelDataForAssetCodeConfig.getTestdata("KUBS_FAT_UAT_002_003_D3");
     }
 	@Given("^Navigate to KUBS url and login with checker for approve asset gl configuration record$")
 	public void navigate_to_kubs_url_and_login_with_checker_for_approve_asset_gl_configuration_record()
 			throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
-		kubsLogin.loginToAzentioAppAsChecker("Checker");
+		kubsLogin.loginToAzentioAppAsChecker();
 		checkerTestData = excelDataForAssetGlConfig.getTestdata("KUBS_FAT_UAT_002_004_D1");
 	}
 	@Given("^Navigate to KUBS url and login with checker for approve asset gl configuration record for asset ammendment$")
     public void navigate_to_kubs_url_and_login_with_checker_for_approve_asset_gl_configuration_record_for_asset_ammendment() throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
-		kubsLogin.loginToAzentioAppAsChecker("Checker");
+		kubsLogin.loginToAzentioAppAsChecker();
 		checkerTestData = excelDataForAssetGlConfig.getTestdata("KUBS_FAT_UAT_002_004_D5");
     }
 	@Given("^Navigate to KUBS url and login with checker for approve asset gl configuration record for asset allocation$")
     public void navigate_to_kubs_url_and_login_with_checker_for_approve_asset_gl_configuration_record_for_asset_allocation() throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
-		kubsLogin.loginToAzentioAppAsChecker("Checker");
+		kubsLogin.loginToAzentioAppAsChecker();
 		checkerTestData = excelDataForAssetGlConfig.getTestdata("KUBS_FAT_UAT_002_004_D4");
     }
 	@Given("^Navigate to KUBS url and login with checker for approve asset gl configuration record for asset revaluation$")
     public void navigate_to_kubs_url_and_login_with_checker_for_approve_asset_gl_configuration_record_for_asset_revaluation() throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
-		kubsLogin.loginToAzentioAppAsChecker("Checker");
+		kubsLogin.loginToAzentioAppAsChecker();
 		checkerTestData = excelDataForAssetGlConfig.getTestdata("KUBS_FAT_UAT_002_004_D6");
     }
 	@Given("^Navigate to KUBS url and login with checker for approve asset gl configuration record for asset return$")
     public void navigate_to_kubs_url_and_login_with_checker_for_approve_asset_gl_configuration_record_for_asset_return() throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
-		kubsLogin.loginToAzentioAppAsChecker("Checker");
+		kubsLogin.loginToAzentioAppAsChecker();
 		checkerTestData = excelDataForAssetGlConfig.getTestdata("KUBS_FAT_UAT_002_004_D3");
     }
 	@Given("^Navigate to KUBS url and login with checker for approve asset gl configuration record to do asset impairment$")
     public void navigate_to_kubs_url_and_login_with_checker_for_approve_asset_gl_configuration_record_to_do_asset_impairment() throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
-		kubsLogin.loginToAzentioAppAsChecker("Checker");
+		kubsLogin.loginToAzentioAppAsChecker();
 		checkerTestData = excelDataForAssetGlConfig.getTestdata("KUBS_FAT_UAT_002_004_D2");
     }
 	@Given("^Navigate to KUBS url and login with checker for approve the asset serial number setup record$")
 	public void navigate_to_kubs_url_and_login_with_checker_for_approve_the_asset_serial_number_setup_record()
 			throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
-		kubsLogin.loginToAzentioAppAsChecker("Checker");
+		kubsLogin.loginToAzentioAppAsChecker();
 		checkerTestData = excelDataForSerialNumberSetUp.getTestdata("KUBS_FAT_UAT_002_005_D1");
 	}
 	@Given("^Navigate to KUBS url and login with checker for approve the asset serial number setup record for asset ammendment$")
     public void navigate_to_kubs_url_and_login_with_checker_for_approve_the_asset_serial_number_setup_record_for_asset_ammendment() throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
-		kubsLogin.loginToAzentioAppAsChecker("Checker");
+		kubsLogin.loginToAzentioAppAsChecker();
 		checkerTestData = excelDataForSerialNumberSetUp.getTestdata("KUBS_FAT_UAT_002_005_D5");
     }
 	@Given("^Navigate to KUBS url and login with checker for approve the asset serial number setup record for asset allocation$")
     public void navigate_to_kubs_url_and_login_with_checker_for_approve_the_asset_serial_number_setup_record_for_asset_allocation() throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
-		kubsLogin.loginToAzentioAppAsChecker("Checker");
+		kubsLogin.loginToAzentioAppAsChecker();
 		checkerTestData = excelDataForSerialNumberSetUp.getTestdata("KUBS_FAT_UAT_002_005_D4");
     }
 	@Given("^Navigate to KUBS url and login with checker for approve the asset serial number setup record for asset revaluation$")
     public void navigate_to_kubs_url_and_login_with_checker_for_approve_the_asset_serial_number_setup_record_for_asset_revaluation() throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
-		kubsLogin.loginToAzentioAppAsChecker("Checker");
+		kubsLogin.loginToAzentioAppAsChecker();
 		checkerTestData = excelDataForSerialNumberSetUp.getTestdata("KUBS_FAT_UAT_002_005_D6");
     }
 	@Given("^Navigate to KUBS url and login with checker for approve the asset serial number setup record for asset return$")
     public void navigate_to_kubs_url_and_login_with_checker_for_approve_the_asset_serial_number_setup_record_for_asset_return() throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
-		kubsLogin.loginToAzentioAppAsChecker("Checker");
+		kubsLogin.loginToAzentioAppAsChecker();
 		checkerTestData = excelDataForSerialNumberSetUp.getTestdata("KUBS_FAT_UAT_002_005_D3");
     }
 	@Given("^Navigate to KUBS url and login with checker for approve the asset serial number setup record to do asset impairment$")
     public void navigate_to_kubs_url_and_login_with_checker_for_approve_the_asset_serial_number_setup_record_to_do_asset_impairment() throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
-		kubsLogin.loginToAzentioAppAsChecker("Checker");
+		kubsLogin.loginToAzentioAppAsChecker();
 		checkerTestData = excelDataForSerialNumberSetUp.getTestdata("KUBS_FAT_UAT_002_005_D2");
     }
 	@Given("^navigate to kubs url to approve the fixed asset creation record with minimum details as a checker$")
@@ -398,7 +398,7 @@ public class KUBS_ChekcerSteps extends BaseClass {
 			throws Throwable {
 
 		driver.get(configFileReader.getApplicationUrl());
-		kubsLogin.loginToAzentioAppAsChecker("Checker");
+		kubsLogin.loginToAzentioAppAsChecker();
 		checkerTestData = excelDataForAssetCreation.getTestdata("KUBS_FAT_UAT_002_006_D1");
 	}
 
@@ -406,85 +406,85 @@ public class KUBS_ChekcerSteps extends BaseClass {
 	public void navigate_to_kubs_url_to_approve_the_fixed_asset_creation_record_with_full_details_as_a_checker()
 			throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
-		kubsLogin.loginToAzentioAppAsChecker("Checker");
+		kubsLogin.loginToAzentioAppAsChecker();
 		checkerTestData = excelDataForAssetCreation.getTestdata("KUBS_FAT_UAT_002_007_D1");
 	}
 	@Given("^navigate to kubs url to approve the fixed asset creation record with full details in checker for asset ammendment prerequisite$")
     public void navigate_to_kubs_url_to_approve_the_fixed_asset_creation_record_with_full_details_in_checker_for_asset_ammendment_prerequisite() throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
-		kubsLogin.loginToAzentioAppAsChecker("Checker");
+		kubsLogin.loginToAzentioAppAsChecker();
 		checkerTestData = excelDataForAssetCreation.getTestdata("KUBS_FAT_UAT_002_007_D5");
     }
 	@Given("^navigate to kubs url to approve the fixed asset creation record with full details in checker fo the pre requiste of asset revaluation$")
     public void navigate_to_kubs_url_to_approve_the_fixed_asset_creation_record_with_full_details_in_checker_fo_the_pre_requiste_of_asset_revaluation() throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
-		kubsLogin.loginToAzentioAppAsChecker("Checker");
+		kubsLogin.loginToAzentioAppAsChecker();
 		checkerTestData = excelDataForAssetCreation.getTestdata("KUBS_FAT_UAT_002_007_D6");
     }
 	@Given("^navigate to kubs url to approve the fixed asset creation record with full details as a checker for asset allocation$")
     public void navigate_to_kubs_url_to_approve_the_fixed_asset_creation_record_with_full_details_as_a_checker_for_asset_allocation() throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
-		kubsLogin.loginToAzentioAppAsChecker("Checker");
+		kubsLogin.loginToAzentioAppAsChecker();
 		checkerTestData = excelDataForAssetCreation.getTestdata("KUBS_FAT_UAT_002_007_D4");
     }
 	@Given("^navigate to kubs url to approve the fixed asset creation record with full details as a checker to do impairment$")
     public void navigate_to_kubs_url_to_approve_the_fixed_asset_creation_record_with_full_details_as_a_checker_to_do_impairment() throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
-		kubsLogin.loginToAzentioAppAsChecker("Checker");
+		kubsLogin.loginToAzentioAppAsChecker();
 		checkerTestData = excelDataForAssetCreation.getTestdata("KUBS_FAT_UAT_002_007_D2");
     }
 	@Given("^navigate to kubs url to approve the fixed asset creation record with full details in a checker for asset return$")
     public void navigate_to_kubs_url_to_approve_the_fixed_asset_creation_record_with_full_details_in_a_checker_for_asset_return() throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
-		kubsLogin.loginToAzentioAppAsChecker("Checker");
+		kubsLogin.loginToAzentioAppAsChecker();
 		checkerTestData = excelDataForAssetCreation.getTestdata("KUBS_FAT_UAT_002_007_D3");
     }
 	@Given("^navigate to kubs url to approve the fixed asset allocation record as a checker$")
 	public void navigate_to_kubs_url_to_approve_the_fixed_asset_allocation_record_as_a_checker() throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
-		kubsLogin.loginToAzentioAppAsChecker("Checker");
+		kubsLogin.loginToAzentioAppAsChecker();
 		checkerTestData = excelDataForAssetAllocation.getTestdata("KUBS_FAT_UAT_006_001_D1");
 	}
 	@Given("^navigate to kubs url to approve the fixed asset allocation record in checker for asset revaluation prerequisite$")
     public void navigate_to_kubs_url_to_approve_the_fixed_asset_allocation_record_in_checker_for_asset_revaluation_prerequisite() throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
-		kubsLogin.loginToAzentioAppAsChecker("Checker");
+		kubsLogin.loginToAzentioAppAsChecker();
 		checkerTestData = excelDataForAssetAllocation.getTestdata("KUBS_FAT_UAT_006_003_D4");
     }
 	@Given("^navigate to kubs url to approve the fixed asset allocation record in checker which is already revalued$")
     public void navigate_to_kubs_url_to_approve_the_fixed_asset_allocation_record_in_checker_which_is_already_revalued() throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
-		kubsLogin.loginToAzentioAppAsChecker("Checker");
+		kubsLogin.loginToAzentioAppAsChecker();
 		checkerTestData = excelDataForAssetAllocation.getTestdata("KUBS_FAT_UAT_006_004_D1");
     }
 	@Given("^navigate to kubs url to approve the fixed asset allocation record in checker which is already used$")
     public void navigate_to_kubs_url_to_approve_the_fixed_asset_allocation_record_in_checker_which_is_already_used() throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
-		kubsLogin.loginToAzentioAppAsChecker("Checker");
+		kubsLogin.loginToAzentioAppAsChecker();
 		checkerTestData = excelDataForAssetAllocation.getTestdata("KUBS_FAT_UAT_006_002_D1");
     }
 	@Given("^navigate to kubs url to approve the fixed asset allocation record in checker for asset return prerequsite$")
     public void navigate_to_kubs_url_to_approve_the_fixed_asset_allocation_record_in_checker_for_asset_return_prerequsite() throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
-		kubsLogin.loginToAzentioAppAsChecker("Checker");
+		kubsLogin.loginToAzentioAppAsChecker();
 		checkerTestData = excelDataForAssetAllocation.getTestdata("KUBS_FAT_UAT_006_003_D3");
     }
 	@Given("^navigate to kubs Url to approve the fixed asset Allocation to make the asset impaired in checker$")
     public void navigate_to_kubs_url_to_approve_the_fixed_asset_allocation_to_make_the_asset_impaired_in_checker() throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
-		kubsLogin.loginToAzentioAppAsChecker("Checker");
+		kubsLogin.loginToAzentioAppAsChecker();
 		checkerTestData = excelDataForAssetAllocation.getTestdata("KUBS_FAT_UAT_006_003_D2");
     }
 	@Given("^navigate to kubs url to approve the fixed asset allocation record which is  impaired asset as a checker$")
     public void navigate_to_kubs_url_to_approve_the_fixed_asset_allocation_record_which_is_impaired_asset_as_a_checker() throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
-		kubsLogin.loginToAzentioAppAsChecker("Checker");
+		kubsLogin.loginToAzentioAppAsChecker();
 		checkerTestData = excelDataForAssetAllocation.getTestdata("KUBS_FAT_UAT_006_003_D1");
     }
 	@Given("^navigate to kubs url to approve the fixed asset allocation record which is already used asset as a checker$")
     public void navigate_to_kubs_url_to_approve_the_fixed_asset_allocation_record_which_is_already_used_asset_as_a_checker() throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
-		kubsLogin.loginToAzentioAppAsChecker("Checker");
+		kubsLogin.loginToAzentioAppAsChecker();
 		checkerTestData = excelDataForAssetAllocation.getTestdata("KUBS_FAT_UAT_006_002_D1");
     }
 	
@@ -493,7 +493,7 @@ public class KUBS_ChekcerSteps extends BaseClass {
 	public void navigate_to_kubs_url_to_approve_the_fixed_asset_sale_record_whcih_is_sold_at_high_price_as_a_checker()
 			throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
-		kubsLogin.loginToAzentioAppAsChecker("Checker");
+		kubsLogin.loginToAzentioAppAsChecker();
 		checkerTestData = excelDataForAssetSale.getTestdata("KUBS_FAT_UAT_004_001_01_D1");
 	}
 
@@ -501,76 +501,76 @@ public class KUBS_ChekcerSteps extends BaseClass {
 	public void navigate_to_kubs_url_to_approve_the_fixed_asset_sale_record_whcih_is_sold_at_low_price_as_a_checker()
 			throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
-		kubsLogin.loginToAzentioAppAsChecker("Checker");
+		kubsLogin.loginToAzentioAppAsChecker();
 		checkerTestData = excelDataForAssetSale.getTestdata("KUBS_FAT_UAT_004_003_01_D1");
 	}
 
 	@Given("^navigate to kubs url to approve the fixed asset de allocation record as a checker$")
 	public void navigate_to_kubs_url_to_approve_the_fixed_asset_de_allocation_record_as_a_checker() throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
-		kubsLogin.loginToAzentioAppAsChecker("Checker");
+		kubsLogin.loginToAzentioAppAsChecker();
 		checkerTestData = excelDataForAssetDeAllocation.getTestdata("KUBS_FAT_UAT_006_005_01_D1");
 	}
 	@Given("^navigate to kubs url to approve the fixed asset de allocation record in checker for asset return prerequsite$")
     public void navigate_to_kubs_url_to_approve_the_fixed_asset_de_allocation_record_in_checker_for_asset_return_prerequsite() throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
-		kubsLogin.loginToAzentioAppAsChecker("Checker");
+		kubsLogin.loginToAzentioAppAsChecker();
 		checkerTestData = excelDataForAssetDeAllocation.getTestdata("KUBS_FAT_UAT_006_005_01_D3");
     }
 	@Given("^navigate to kubs url to approve the fixed asset de allocation record in checker for the prerequisite of asset revaluation$")
     public void navigate_to_kubs_url_to_approve_the_fixed_asset_de_allocation_record_in_checker_for_the_prerequisite_of_asset_revaluation() throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
-		kubsLogin.loginToAzentioAppAsChecker("Checker");
+		kubsLogin.loginToAzentioAppAsChecker();
 		checkerTestData = excelDataForAssetDeAllocation.getTestdata("KUBS_FAT_UAT_006_005_01_D4");
     }
 	@Given("^navigate to kubs Url to approve the fixed asset de Allocation for asset impairmemnt in checker$")
     public void navigate_to_kubs_url_to_approve_the_fixed_asset_de_allocation_for_asset_impairmemnt_in_checker() throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
-		kubsLogin.loginToAzentioAppAsChecker("Checker");
+		kubsLogin.loginToAzentioAppAsChecker();
 		checkerTestData = excelDataForAssetDeAllocation.getTestdata("KUBS_FAT_UAT_006_005_01_D2");
     }
 	@Given("^navigate to kubs url to approve the fixed asset return record$")
 	public void navigate_to_kubs_url_to_approve_the_fixed_asset_return_record() throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
-		kubsLogin.loginToAzentioAppAsChecker("Checker");
+		kubsLogin.loginToAzentioAppAsChecker();
 		checkerTestData = excelDataForAssetReturn.getTestdata("KUBS_FAT_UAT_007_001_01_D1");
 
 	}
 	@Given("^navigate to kubs url to approve the fixed asset return record which is already revalued in checker$")
     public void navigate_to_kubs_url_to_approve_the_fixed_asset_return_record_which_is_already_revalued_in_checker() throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
-		kubsLogin.loginToAzentioAppAsChecker("Checker");
+		kubsLogin.loginToAzentioAppAsChecker();
 		checkerTestData = excelDataForAssetReturn.getTestdata("KUBS_FAT_UAT_007_002_01_D1");     
     }
 	@Given("^navigate to kubs url to approve the fixed asset return record which is already impaired in checker$")
     public void navigate_to_kubs_url_to_approve_the_fixed_asset_return_record_which_is_already_impaired_in_checker() throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
-		kubsLogin.loginToAzentioAppAsChecker("Checker");
+		kubsLogin.loginToAzentioAppAsChecker();
 		checkerTestData = excelDataForAssetReturn.getTestdata("KUBS_FAT_UAT_007_004_01_D1"); 
     }
 	
 	@Given("^navigate to kubs url to approve the fixed asset return record which is already replaced in checker$")
     public void navigate_to_kubs_url_to_approve_the_fixed_asset_return_record_which_is_already_replaced_in_checker() throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
-		kubsLogin.loginToAzentioAppAsChecker("Checker");
+		kubsLogin.loginToAzentioAppAsChecker();
 		checkerTestData = excelDataForAssetReturn.getTestdata("KUBS_FAT_UAT_007_005_01_D1");
     }
 	@Given("^navigate to kubs url to approve the fixed asset return record which is already deallocated in checker$")
     public void navigate_to_kubs_url_to_approve_the_fixed_asset_return_record_which_is_already_deallocated_in_checker() throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
-		kubsLogin.loginToAzentioAppAsChecker("Checker");
+		kubsLogin.loginToAzentioAppAsChecker();
 		checkerTestData = excelDataForAssetReturn.getTestdata("KUBS_FAT_UAT_007_006_01_D1");
     }
 	@Given("^navigate to kubs url to approve the fixed asset return record which is already undertaken in checker$")
     public void navigate_to_kubs_url_to_approve_the_fixed_asset_return_record_which_is_already_undertaken_in_checker() throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
-		kubsLogin.loginToAzentioAppAsChecker("Checker");
+		kubsLogin.loginToAzentioAppAsChecker();
 		checkerTestData = excelDataForAssetReturn.getTestdata("KUBS_FAT_UAT_007_007_01_D1");
     }
 	@Given("^navigate to kubs url to approve the fixed asset return record which is done on asset ammendment in checker$")
     public void navigate_to_kubs_url_to_approve_the_fixed_asset_return_record_which_is_done_on_asset_ammendment_in_checker() throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
-		kubsLogin.loginToAzentioAppAsChecker("Checker");
+		kubsLogin.loginToAzentioAppAsChecker();
 		checkerTestData = excelDataForAssetReturn.getTestdata("KUBS_FAT_UAT_007_003_01_D1"); 
     }
 

@@ -7,14 +7,14 @@ import io.cucumber.testng.CucumberOptions;
 import utilities.ExtentManager;
 import utilities.ExtentTestManager;
 
-@CucumberOptions(features = "src/test/java/features/FixedAsset_Temp.feature",
+@CucumberOptions(features = "src/test/java/features/FixedAssetExcel.feature",
 	
 		glue = "stepdefinitions",
 		// monochrome=false,
 		plugin = { "pretty", "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:",
 				"rerun:ReRunScenarios/FailedReRun.txt" }
 // dryRun = false
-	, tags = "@KUBS_FAT_UAT_012_004_01"
+	, tags = "@KUBS_FAT_UAT_001_004_01"
 )
 public class TestApplication extends AbstractTestNGCucumberTests {
 	/*

@@ -490,7 +490,7 @@ public class FIXEDASSET_AssetReplacement extends BaseClass {
 		// ---------LOGIN THE REVIEWER USER--------------//
 		kubsLogin = new KUBS_Login(driver);
 		driver.get(configFileReader.getApplicationUrl());
-		kubsLogin.logintoAzentioappReviewer("Reviewer", readerData.readdata());
+		kubsLogin.logintoAzentioappReviewer(readerData.readdata());
 	}
 
 	@And("^Click Reviewer Notification icon$")
@@ -545,7 +545,7 @@ public class FIXEDASSET_AssetReplacement extends BaseClass {
 		// ---------LOGIN THE CHECKER USER--------------//
 		kubsLogin = new KUBS_Login(driver);
 		driver.get(configFileReader.getApplicationUrl());
-		kubsLogin.loginToAzentioAppAsChecker("Checker");
+		kubsLogin.loginToAzentioAppAsChecker();
 	}
 
 	@Then("^Click Security management$")

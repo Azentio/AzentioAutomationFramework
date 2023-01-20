@@ -26,6 +26,12 @@ public class KUBS_MakerObj {
 		return finance_option;
     	
     }
+    @FindBy(xpath = "//ion-icon[@ng-reflect-name='person-circle-outline']")
+	private WebElement makerLoginVerification;
+
+	public WebElement makerLoginVerification() {
+		return makerLoginVerification;
+	}
 	@FindBy(xpath = "//ion-segment/ion-segment-button[1]")
 	private WebElement maker_tool_icon;
 

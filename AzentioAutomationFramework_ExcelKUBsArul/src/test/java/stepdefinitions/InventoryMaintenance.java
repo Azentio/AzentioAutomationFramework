@@ -328,7 +328,7 @@ public class InventoryMaintenance extends BaseClass{
 					reader = new JsonDataReaderWriter();
 					kubsLogin = new KUBS_Login(driver);
 					driver.get(config.getApplicationUrl());
-					kubsLogin.logintoAzentioappReviewer("Reviewer", reader.readdata());
+					kubsLogin.logintoAzentioappReviewer(reader.readdata());
 					Thread.sleep(1000); 
 					
 
@@ -400,7 +400,7 @@ public class InventoryMaintenance extends BaseClass{
 				 public void log_in_to_the_checker_account() throws InterruptedException  {
 				    kubsLogin = new KUBS_Login(driver);
 					driver.get(configFileReader.getApplicationUrl());
-					kubsLogin.loginToAzentioAppAsChecker("Checker");
+					kubsLogin.loginToAzentioAppAsChecker();
 				       
 				    }
 				    

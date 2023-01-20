@@ -218,7 +218,7 @@ public class INVENTORY_StockReturnBranch extends BaseClass {
 		// ---------LOGIN THE REVIEWER USER--------------//
 		kubsLogin = new KUBS_Login(driver);
 		driver.get(configFileReader.getApplicationUrl());
-		kubsLogin.logintoAzentioappReviewer("Reviewer", readerData.readdata());
+		kubsLogin.logintoAzentioappReviewer(readerData.readdata());
 	}
 
 	@And("^Goto the Reviewer Notification$")
@@ -281,7 +281,7 @@ public class INVENTORY_StockReturnBranch extends BaseClass {
 		// ---------LOGIN THE CHECKER USER--------------//
 		kubsLogin = new KUBS_Login(driver);
 		driver.get(configFileReader.getApplicationUrl());
-		kubsLogin.loginToAzentioAppAsChecker("Checker");
+		kubsLogin.loginToAzentioAppAsChecker();
 	}
 
 	@Then("^Click module Security management$")

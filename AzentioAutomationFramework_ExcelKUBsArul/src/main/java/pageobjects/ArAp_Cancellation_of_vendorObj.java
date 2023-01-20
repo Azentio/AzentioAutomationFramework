@@ -12,7 +12,7 @@ public class ArAp_Cancellation_of_vendorObj {
 		this.driver=driver;
 		PageFactory.initElements(driver,this);
 	}
-	@FindBy(xpath="//ion-segment/ion-segment-button[2]")
+	@FindBy(xpath="//ion-label[text()='Finance']/following-sibling::ion-radio")
 	private WebElement optionicon;
 	@FindBy(xpath="//ion-label[contains(text(),'Accounts payable')]")
 	private WebElement accountspayable;

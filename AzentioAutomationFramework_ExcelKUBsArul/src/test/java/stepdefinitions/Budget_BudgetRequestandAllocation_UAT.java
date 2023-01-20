@@ -34,6 +34,7 @@ import pageobjects.KUBS_CheckerObj;
 import pageobjects.KUBS_MakerObj;
 import pageobjects.KUBS_ReviewerObj;
 import resources.BaseClass;
+import resources.ExcelData;
 import resources.JsonDataReaderWriter;
 import testDataType.BUDGET_RequestAndAllocationTestDataType;
 import testDataType.BUDGET_RequestandallocationBUDTYPEDATA;
@@ -62,6 +63,9 @@ public class Budget_BudgetRequestandAllocation_UAT extends BaseClass {
 	ClicksAndActionsHelper clickAndActionHelper = new ClicksAndActionsHelper(driver);
 	BUDGET_BudgetCreationObj budgetCreationobj = new BUDGET_BudgetCreationObj(driver);
 	Map<String, String> budgetAllocationTestData = new HashMap<>();
+	String excelPath = System.getProperty("user.dir")+"\\Test-data\\KUBSTestDataDesign1101.xlsx";
+    ExcelData excelData = new ExcelData(excelPath,"RequestAndAllocationTestData","Data Set ID");
+    private Map<String, String> testData;
 
 	// ---------------------------LOGIN---------------------------------//
 
@@ -80,7 +84,7 @@ public class Budget_BudgetRequestandAllocation_UAT extends BaseClass {
 		// ---------LOGIN THE REVIEWER USER--------------//
 		login = new KUBS_Login(driver);
 		driver.get(configFileReader.getApplicationUrl());
-		login.logintoAzentioappReviewer("Reviewer", json.readdata());
+		login.logintoAzentioappReviewer(json.readdata());
 	}
 
 	@Given("^Azentio Url login as checker page$")
@@ -89,7 +93,7 @@ public class Budget_BudgetRequestandAllocation_UAT extends BaseClass {
 		// ---------LOGIN THE CHECKER USER--------------//
 		login = new KUBS_Login(driver);
 		driver.get(configFileReader.getApplicationUrl());
-		login.loginToAzentioAppAsChecker("Checker");
+		login.loginToAzentioAppAsChecker();
 	}
 
 	// ---------------------------MAKER COMMON
@@ -1581,9 +1585,9 @@ requestAndAllocation.alertClose().click();
 			try {
 
 				waitHelper.waitForElement(driver, 3000, driver.findElement(By.xpath("//span[contains(text(),'"
-						+ requestAndAllocationTestData.Month + " " + requestAndAllocationTestData.Year + "')]")));
-				driver.findElement(By.xpath("//span[contains(text(),'" + requestAndAllocationTestData.Month + " "
-						+ requestAndAllocationTestData.Year + "')]"));
+						+ testData.get("Month") + " " + testData.get("Year") + "')]")));
+				driver.findElement(By.xpath("//span[contains(text(),'" + testData.get("Month") + " "
+						+ testData.get("Year") + "')]"));
 				break;
 			}
 
@@ -1593,10 +1597,10 @@ requestAndAllocation.alertClose().click();
 			}
 		}
 		
-		waitHelper.waitForElementToVisibleWithFluentWait(driver, driver.findElement(By.xpath("//td[@aria-label='" + requestAndAllocationTestData.FullMonth
-				+ " " + requestAndAllocationTestData.Date + ", " + requestAndAllocationTestData.Year + "']/span")), 100, 500);
-		WebElement Click = driver.findElement(By.xpath("//td[@aria-label='" + requestAndAllocationTestData.FullMonth
-				+ " " + requestAndAllocationTestData.Date + ", " + requestAndAllocationTestData.Year + "']/span"));
+		waitHelper.waitForElementToVisibleWithFluentWait(driver, driver.findElement(By.xpath("//td[@aria-label='" + testData.get("FullMonth")
+				+ " " + testData.get("Date") + ", " + testData.get("Year") + "']/span")), 100, 500);
+		WebElement Click = driver.findElement(By.xpath("//td[@aria-label='" + testData.get("FullMonth")
+				+ " " + testData.get("Date") + ", " + testData.get("Year") + "']/span"));
 		clickAndActionHelper.moveToElement(Click);
 		clickAndActionHelper.doubleClick(Click);
 	}
@@ -1843,5 +1847,9 @@ waitHelper.waitForElementToVisibleWithFluentWait(driver, requestAndAllocation.Re
 
 		}
 	}
+	@And("^Update test data for created budget present in report$")
+    public void update_test_data_for_created_budget_present_in_report() throws Throwable {
+		testData = excelData.getTestdata("KUBS_UAT_KUBS_BP_UAT_004_002_01_D1");
+    }
 
 }

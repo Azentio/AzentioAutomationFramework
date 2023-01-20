@@ -1,6 +1,7 @@
 package stepdefinitions;
 
 import java.io.IOException;
+import java.util.Map;
 
 import org.json.simple.parser.ParseException;
 import org.openqa.selenium.By;
@@ -27,6 +28,7 @@ import pageobjects.Azentio_ReviewerObj;
 import pageobjects.BUDGET_SupplementaryBudgetObj;
 import pageobjects.KUBS_MakerObj;
 import resources.BaseClass;
+import resources.ExcelData;
 import resources.JsonDataReaderWriter;
 import testDataType.BUDGET_BudgetCreationTestDataType;
 import testDataType.BUDGET_SupplementarybudgetTestDataType;
@@ -58,6 +60,9 @@ public class BUDGET_SupplementaryBudgetUAT extends BaseClass {
 	JavascriptHelper javascripthelper = new JavascriptHelper();
 	String user = "Maker";
 	ClicksAndActionsHelper clicksAndActionHelper = new ClicksAndActionsHelper(driver);
+	String excelPath = System.getProperty("user.dir")+"\\Test-data\\KUBSTestDataDesign2912.xlsx";
+    ExcelData excelData = new ExcelData(excelPath,"SupplementoryBudgetTestData","Data Set ID");
+    private Map<String, String> testData;
 //	KUBS_MakerObj kubsMakerObj = new KUBS_MakerObj(driver);
 
 	// ----------------------------------------SupplementaryBudget_KUBS_BP_UAT_005_004---------------------------------------------//
@@ -135,7 +140,7 @@ for(int i=0;i<=10;i++)
 				bUDGET_SupplementaryBudgetObj.budget_SupplementaryBudget_BudgetCode(), 60, 500);
 		bUDGET_SupplementaryBudgetObj.budget_SupplementaryBudget_BudgetCode().click();
 		bUDGET_SupplementaryBudgetObj.budget_SupplementaryBudget_BudgetCode()
-				.sendKeys(bUDGET_SupplementaryBudgetTestDataType.BudgetCodeA);
+				.sendKeys(testData.get("BudgetCodeA"));
 		bUDGET_SupplementaryBudgetObj.budget_SupplementaryBudget_BudgetCode().sendKeys(Keys.ENTER);
 		
 		// budget year
@@ -143,21 +148,21 @@ for(int i=0;i<=10;i++)
 				bUDGET_SupplementaryBudgetObj.budget_SupplementaryBudget_BudgetCode(), 60, 500);
 		bUDGET_SupplementaryBudgetObj.budget_SupplementaryBudget_BudgetYear().click();
 		bUDGET_SupplementaryBudgetObj.budget_SupplementaryBudget_BudgetYear()
-				.sendKeys(bUDGET_SupplementaryBudgetTestDataType.BudgetYearA);
+				.sendKeys(testData.get("BudgetYearA"));
 		bUDGET_SupplementaryBudgetObj.budget_SupplementaryBudget_BudgetYear().sendKeys(Keys.ENTER);
 		// budget branch
 		waithelper.waitForElementToVisibleWithFluentWait(driver,
 				bUDGET_SupplementaryBudgetObj.budget_SupplementaryBudget_BudgetBranch(), 60, 500);
 		bUDGET_SupplementaryBudgetObj.budget_SupplementaryBudget_BudgetBranch().click();
 		bUDGET_SupplementaryBudgetObj.budget_SupplementaryBudget_BudgetBranch()
-				.sendKeys(bUDGET_SupplementaryBudgetTestDataType.BudgetBranchNameA);
+				.sendKeys(testData.get("BudgetBranchNameA"));
 		bUDGET_SupplementaryBudgetObj.budget_SupplementaryBudget_BudgetBranch().sendKeys(Keys.ENTER);
 		// currency
 		waithelper.waitForElementToVisibleWithFluentWait(driver,
 				bUDGET_SupplementaryBudgetObj.budget_SupplementaryBudget_Currency(), 60, 500);
 		bUDGET_SupplementaryBudgetObj.budget_SupplementaryBudget_Currency().click();
 		bUDGET_SupplementaryBudgetObj.budget_SupplementaryBudget_Currency()
-				.sendKeys(bUDGET_SupplementaryBudgetTestDataType.CurrencyA);
+				.sendKeys(testData.get("CurrencyA"));
 		bUDGET_SupplementaryBudgetObj.budget_SupplementaryBudget_Currency().sendKeys(Keys.DOWN, Keys.ENTER);
 		
 	}
@@ -170,7 +175,7 @@ for(int i=0;i<=10;i++)
 				bUDGET_SupplementaryBudgetObj.budget_SupplementaryBudget_SupplementaryApportionAmount(), 60, 500);
 		bUDGET_SupplementaryBudgetObj.budget_SupplementaryBudget_SupplementaryApportionAmount().click();
 		bUDGET_SupplementaryBudgetObj.budget_SupplementaryBudget_SupplementaryApportionAmount()
-				.sendKeys(bUDGET_SupplementaryBudgetTestDataType.SupplymentaryApportionAmtA);
+				.sendKeys(testData.get("SupplymentaryApportionAmtA"));
 		bUDGET_SupplementaryBudgetObj.budget_SupplementaryBudget_SupplementaryApportionAmount().sendKeys(Keys.ENTER);
 
 		// New amount
@@ -623,5 +628,8 @@ for(int i=0;i<=10;i++)
 
 		browserHelper.switchToParentWithChildClose();
 	}
-
+	@And("^Update test data for supplementory budget test case$")
+    public void update_test_data_for_supplementory_budget_test_case() throws Throwable {
+		testData = excelData.getTestdata("KUBS_UAT_KUBS_BP_UAT_004_002_01_D1");
+    }
 }

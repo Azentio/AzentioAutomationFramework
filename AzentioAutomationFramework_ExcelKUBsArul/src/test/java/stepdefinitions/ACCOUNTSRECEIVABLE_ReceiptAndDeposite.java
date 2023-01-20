@@ -20,6 +20,7 @@ import pageobjects.ACCOUNTSRECEIVABLE_ReceiptObj;
 import pageobjects.ACCOUTSRECEIVABLE_ChequeDepositeObj;
 import pageobjects.KUBS_MakerObj;
 import resources.BaseClass;
+import resources.ExcelData;
 import testDataType.ACCOUNTSRECEIVABLE_ReceiptTestData;
 
 public class ACCOUNTSRECEIVABLE_ReceiptAndDeposite extends BaseClass {
@@ -33,6 +34,9 @@ public class ACCOUNTSRECEIVABLE_ReceiptAndDeposite extends BaseClass {
     JavascriptHelper javascriptHelper=new JavascriptHelper();
     ACCOUNTSRECEIVABLE_ReceiptTestData receipTTestData=jsonConfig.getAccountsReceivableReceiptTestDataByName("Maker");
     ClicksAndActionsHelper clickAndActionHelper=new ClicksAndActionsHelper(driver);
+    String excelPath = System.getProperty("user.dir")+"\\Test-data\\KUBSTestDataDesign2912.xlsx";
+    ExcelData excelData = new ExcelData(excelPath,"ChequeTestData","Data Set ID");
+    private Map<String, String> testData;
     
     @And("^goto accouts Receivable module$")
     public void goto_accouts_receivable_module() throws Throwable {
@@ -54,20 +58,20 @@ public class ACCOUNTSRECEIVABLE_ReceiptAndDeposite extends BaseClass {
     	receiptObj.accoutsReceivableReceiptReceiptType().sendKeys(Keys.ENTER);
     	
     	receiptObj.accoutsReceivableReceiptReceiptReferenceNumber().click();
-    	receiptObj.accoutsReceivableReceiptReceiptReferenceNumber().sendKeys(receipTTestData.ReceiptReferenceNumber);
+    	receiptObj.accoutsReceivableReceiptReceiptReferenceNumber().sendKeys(testData.get("ReceiptReferenceNumber"));
     	
     	receiptObj.accoutsReceivableReceiptReceiptAmount().click();
-    	receiptObj.accoutsReceivableReceiptReceiptAmount().sendKeys(receipTTestData.ReceiptAmount);
+    	receiptObj.accoutsReceivableReceiptReceiptAmount().sendKeys(testData.get("ReceiptAmount"));
     	
     	receiptObj.accoutsReceivableReceiptBankAccount().click();
-    	receiptObj.accoutsReceivableReceiptBankAccount().sendKeys(receipTTestData.BankAccountNumber);
+    	receiptObj.accoutsReceivableReceiptBankAccount().sendKeys(testData.get("BankAccountNumber"));
     	receiptObj.accoutsReceivableReceiptBankAccount().sendKeys(Keys.ENTER);
     	
     	receiptObj.accoutsReceivableReceiptPayerName().click();
-    	receiptObj.accoutsReceivableReceiptPayerName().sendKeys(receipTTestData.ReceiptPayer);
+    	receiptObj.accoutsReceivableReceiptPayerName().sendKeys(testData.get("ReceiptPayer"));
     	
     	receiptObj.accoutsReceivableReceiptRemark().click();
-    	receiptObj.accoutsReceivableReceiptRemark().sendKeys(receipTTestData.Remark);
+    	receiptObj.accoutsReceivableReceiptRemark().sendKeys(testData.get("Remark"));
     	
     	
     	
@@ -96,7 +100,7 @@ public class ACCOUNTSRECEIVABLE_ReceiptAndDeposite extends BaseClass {
     public void enter_the_bank_account_number() throws Throwable {
     	waitHelper.waitForElementVisible(chequeDepositeObj.AccountsReceivableBankAccount(), 2000, 100);
     	chequeDepositeObj.AccountsReceivableBankAccount().click();
-    	chequeDepositeObj.AccountsReceivableBankAccount().sendKeys(receiptTestData.get("bankAccountNumber"));
+    	chequeDepositeObj.AccountsReceivableBankAccount().sendKeys(testData.get("BankAccountNumber"));
     	chequeDepositeObj.AccountsReceivableBankAccount().sendKeys(Keys.ENTER);
 
     }
@@ -109,8 +113,8 @@ public class ACCOUNTSRECEIVABLE_ReceiptAndDeposite extends BaseClass {
     	{
     		try
     		{
-    			waitHelper.waitForElement(driver, 3000, driver.findElement(By.xpath("//span[contains(text(),'"+receipTTestData.monthYear+"')]")));
-    			WebElement monthAndYear=driver.findElement(By.xpath("//span[contains(text(),'"+receipTTestData.monthYear+"')]"));
+    			waitHelper.waitForElement(driver, 3000, driver.findElement(By.xpath("//span[contains(text(),'"+testData.get("monthYear")+"')]")));
+    			WebElement monthAndYear=driver.findElement(By.xpath("//span[contains(text(),'"+testData.get("monthYear")+"')]"));
     		    break;
     		}
     		catch(NoSuchElementException e)
@@ -121,8 +125,8 @@ public class ACCOUNTSRECEIVABLE_ReceiptAndDeposite extends BaseClass {
     	
     	}
 
-		waitHelper.waitForElementVisible(driver.findElement(By.xpath("//td[@aria-label='"+receipTTestData.month+" "+receipTTestData.day+", "+receipTTestData.year+"']/span")), 2000, 100);
-		WebElement FinalDay=driver.findElement(By.xpath("//td[@aria-label='"+receipTTestData.month+" "+receipTTestData.day+", "+receipTTestData.year+"']/span"));
+		waitHelper.waitForElementVisible(driver.findElement(By.xpath("//td[@aria-label='"+testData.get("month")+" "+testData.get("day")+", "+testData.get("year")+"']/span")), 2000, 100);
+		WebElement FinalDay=driver.findElement(By.xpath("//td[@aria-label='"+testData.get("month")+" "+testData.get("day")+", "+testData.get("year")+"']/span"));
 
 		clickAndActionHelper.doubleClick(FinalDay);
     	
@@ -142,7 +146,7 @@ public class ACCOUNTSRECEIVABLE_ReceiptAndDeposite extends BaseClass {
     	{
     		try
     		{
-    			 driver.findElement(By.xpath("//div[text()=' "+receipTTestData.ReceiptReferenceNumber+" ']"));
+    			 driver.findElement(By.xpath("//div[text()=' "+testData.get("ReceiptReferenceNumber")+" ']"));
     		
     		break;
 		}
@@ -188,5 +192,24 @@ public class ACCOUNTSRECEIVABLE_ReceiptAndDeposite extends BaseClass {
     	javascriptHelper.scrollIntoView(receiptObj.accoutsReceivableReceiptSaveButton());
     	receiptObj.accoutsReceivableReceiptSaveButton().click();
     	
+    }
+    @And("^Update test data for cheque creation and submit from maker$")
+    public void update_test_data_for_cheque_creation_and_submit_from_maker() throws Throwable {
+    	testData = excelData.getTestdata("KUBS_AR_AP_UAT_010_002_TC_01_01_D1");
+    }
+
+    @And("^Update test data for cheque creation and approve from reviewer$")
+    public void update_test_data_for_cheque_creation_and_approve_from_reviewer() throws Throwable {
+    	testData = excelData.getTestdata("KUBS_AR_AP_UAT_010_002_TC_01_02_D1");
+    }
+
+    @And("^Update test data for cheque creation and approve from checker$")
+    public void update_test_data_for_cheque_creation_and_approve_from_checker() throws Throwable {
+    	testData = excelData.getTestdata("KUBS_AR_AP_UAT_010_002_TC_01_03_D1");
+    }
+
+    @And("^Update test data for approved cheque present in view list$")
+    public void update_test_data_for_approved_cheque_present_in_view_list() throws Throwable {
+    	testData = excelData.getTestdata("KUBS_AR_AP_UAT_010_002_TC_01_04_D1");
     }
 }

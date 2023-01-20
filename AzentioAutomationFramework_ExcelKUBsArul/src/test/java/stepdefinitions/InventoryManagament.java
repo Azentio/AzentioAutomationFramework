@@ -1,8 +1,11 @@
 package stepdefinitions;
 
+import java.io.IOException;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.hc.core5.util.Timeout;
+import org.json.simple.parser.ParseException;
 import org.openqa.selenium.By;
 import org.openqa.selenium.ElementClickInterceptedException;
 import org.openqa.selenium.Keys;
@@ -18,16 +21,19 @@ import helper.BrowserHelper;
 import helper.ClicksAndActionsHelper;
 import helper.JavascriptHelper;
 import helper.RadioButtonHelper;
+import helper.Selenium_Actions;
 import helper.WaitHelper;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import pageobjects.ArAp_Cancellation_of_vendorObj;
 import pageobjects.BUDGET_BudgetTransferObj;
 import pageobjects.InventoryManagamentObj;
 import pageobjects.KUBS_CheckerObj;
 import pageobjects.KUBS_ReviewerObj;
 import resources.BaseClass;
+import resources.ExcelData;
 import resources.JsonDataReaderWriter;
 import testDataType.BUDGET_BudgetDefinitionTestDataType;
 import testDataType.BUDGET_BudgetTransferTestDataType;
@@ -37,9 +43,8 @@ import utilities.ExtentTestManager;
 public class InventoryManagament extends BaseClass {
 	WebDriver driver = BaseClass.driver;
 	ConfigFileReader config = new ConfigFileReader();
-	AzentioLogin login;
 	KUBS_ReviewerObj reviewer;
-
+	KUBS_Login login = new KUBS_Login(driver);
 	JsonConfig jsonconfig = new JsonConfig();
 	BrowserHelper browserHelper = new BrowserHelper(driver);
 	BUDGET_BudgetDefinitionTestDataType budgetdata;
@@ -62,13 +67,27 @@ public class InventoryManagament extends BaseClass {
 	RadioButtonHelper radioButtonHelper = new RadioButtonHelper(driver);
 	String reviwerId;
 	String RefNo;
+	String excelPath = System.getProperty("user.dir")+"\\Test-data\\KUBSTestDataDesign1401.xlsx";
+    ExcelData excelData = new ExcelData(excelPath,"GRNTestData","Data Set ID");
+    private Map<String, String> testData;
 	// ----KUBS_INV_MGMT_UAT_001_001-----
+    
+    @And("^User should go to the kubs url and login as a reviewer user$")
+	public void user_should_go_to_the_kubs_url_and_login_as_a_reviewer_user()
+			throws IOException, ParseException, InterruptedException {
+		reader = new JsonDataReaderWriter();
+		login = new KUBS_Login(driver);
+		driver.get(config.getApplicationUrl());
+		login.logintoAzentioappReviewer(testData.get("ReviewerID"));
+		Thread.sleep(2000);
+	}
+
 
 	@Given("^Navigate to URL and user should login as a maker$")
 	public void navigate_to_url_and_user_should_login_as_a_maker() throws Throwable {
-		login = new AzentioLogin(driver);
+		login = new KUBS_Login(driver);
 		driver.get(configFileReader.getApplicationUrl());
-		login.loginToAzentioApp("Maker");
+		login.loginToAzentioAppByMaker();
 	}
 
 	/*
@@ -79,10 +98,13 @@ public class InventoryManagament extends BaseClass {
 	 * }
 	 */
 
-//	 @Then("^Click on the Finance$")
-//	    public void click_on_the_finance() throws Throwable {
-//	    	System.out.println("Click on finance");
-//	    }
+	ArAp_Cancellation_of_vendorObj cancellationofcontract = new ArAp_Cancellation_of_vendorObj(driver);
+	Selenium_Actions seleniumactions =new Selenium_Actions(driver);
+	 @Then("^Click on the Finance$")
+	    public void click_on_the_finance() throws Throwable {
+		 seleniumactions.getWaitHelper().waitForElement(driver, 3000, cancellationofcontract.getOptionicon());
+			seleniumactions.getClickAndActionsHelper().clickOnElement(cancellationofcontract.getOptionicon());
+	    }
 
 	@Then("^Click on the Direction$")
 	public void click_on_direction() throws Throwable {
@@ -309,9 +331,9 @@ public class InventoryManagament extends BaseClass {
 	@Then("^Open Reviewer account$")
 	public void open_reviewer_account() throws Throwable {
 		reader = new JsonDataReaderWriter();
-		login = new AzentioLogin(driver);
+		
 		driver.get(config.getApplicationUrl());
-		login.logintoAzentioappReviewer("Reviewer", reader.readdata());
+		login.logintoAzentioappReviewer(testData.get("Reviewer ID"));
 		ExtentTestManager.getTest().info("User Navigated to required url & login as checker1");
 
 	}
@@ -350,8 +372,8 @@ public class InventoryManagament extends BaseClass {
 
 //		waithelper.waitForElement(driver, 10000,driver.findElement(By.xpath(before_xpath + reader.readReferancedata() + after_xpath)));
 		waithelper.waitForElementwithFluentwait(driver,
-				driver.findElement(By.xpath(before_xpath + reader.readReferancedata() + after_xpath)));
-		driver.findElement(By.xpath(before_xpath + reader.readReferancedata() + after_xpath)).click();
+				driver.findElement(By.xpath(before_xpath + testData.get("Reference ID") + after_xpath)));
+		driver.findElement(By.xpath(before_xpath + testData.get("Reference ID") + after_xpath)).click();
 
 	}
 
@@ -371,9 +393,9 @@ public class InventoryManagament extends BaseClass {
 
 	@Then("^Go to Checker account$")
 	public void go_to_checker_account() throws Throwable {
-		login = new AzentioLogin(driver);
+		
 		driver.get(config.getApplicationUrl());
-		login.loginToAzentioAppAsChecker("Checker");
+		login.loginToAzentioAppAsChecker();
 		ExtentTestManager.getTest().info("User Navigated to required url & login as reviewer1");
 
 	}
@@ -391,8 +413,8 @@ public class InventoryManagament extends BaseClass {
 		String before_xpath = "//span[contains(text(),'";
 		String after_xpath_claim = "')]/parent::div/parent::datatable-body-cell/preceding-sibling::datatable-body-cell[2]/div/ion-buttons/ion-button";
 		waithelper.waitForElement(driver, 5000,
-				driver.findElement(By.xpath(before_xpath + reader.readReferancedata() + after_xpath_claim)));
-		driver.findElement(By.xpath(before_xpath + reader.readReferancedata() + after_xpath_claim)).click();
+				driver.findElement(By.xpath(before_xpath + testData.get("Reference ID") + after_xpath_claim)));
+		driver.findElement(By.xpath(before_xpath + testData.get("Reference ID") + after_xpath_claim)).click();
 		waithelper.waitForElement(driver, 3000, kubschecker.checkerAlertClose());
 		kubschecker.checkerAlertClose().click();
 
@@ -436,8 +458,8 @@ public class InventoryManagament extends BaseClass {
 
 //		waithelper.waitForElement(driver, 10000,driver.findElement(By.xpath(before_xpath + reader.readReferancedata() + after_xpath)));
 		waithelper.waitForElementwithFluentwait(driver,
-				driver.findElement(By.xpath(before_xpath + reader.readReferancedata() + after_xpath)));
-		driver.findElement(By.xpath(before_xpath + reader.readReferancedata() + after_xpath)).click();
+				driver.findElement(By.xpath(before_xpath + testData.get("Reference ID") + after_xpath)));
+		driver.findElement(By.xpath(before_xpath + testData.get("Reference ID") + after_xpath)).click();
 
 		waithelper.waitForElement(driver, 4000, kubschecker.checkerApproveButton());
 
@@ -661,36 +683,43 @@ public class InventoryManagament extends BaseClass {
 		waithelper.waitForElement(driver, 2000, inventoryManagamentObj.accountPayable_GoodsReceivedNoteGRNEyeButton());
 		inventoryManagamentObj.accountPayable_GoodsReceivedNoteGRNEyeButton().click();
 	}
-
-	@Then("^Fill the form for GRN$")
-	public void fill_the_form_for_grn() throws Throwable {
-		inventoryManagementTestDataType = jsonReader.getInventoryManagementByName("Maker");
-
+	@And("^Enter GRN Business partner name$")
+    public void enter_grn_business_partner_name() throws Throwable {
 		waithelper.waitForElement(driver, 2000, inventoryManagamentObj.accountPayable_GrnBpName());
 		inventoryManagamentObj.accountPayable_GrnBpName().click();
-
-		inventoryManagamentObj.accountPayable_GrnBpName().sendKeys(inventoryManagementTestDataType.GRNbpName);
+		inventoryManagamentObj.accountPayable_GrnBpName().sendKeys(testData.get("GRNbpName"));
 		inventoryManagamentObj.accountPayable_GrnBpName().sendKeys(Keys.ENTER);
+    }
 
-		inventoryManagamentObj.accountPayable_GRN_BPBranch().click();
+    @And("^Enter GRN Business partner branch$")
+    public void enter_grn_business_partner_branch() throws Throwable {
+    	inventoryManagamentObj.accountPayable_GRN_BPBranch().click();
 		// Thread.sleep(4000);
-		inventoryManagamentObj.accountPayable_GRN_BPBranch().sendKeys(inventoryManagementTestDataType.GRNbpBranch);
+		inventoryManagamentObj.accountPayable_GRN_BPBranch().sendKeys(testData.get("GRNbpBranch"));
 		inventoryManagamentObj.accountPayable_GRN_BPBranch().sendKeys(Keys.ENTER);
-		// Thread.sleep(4000);
-		waithelper.waitForElement(driver, 2000, inventoryManagamentObj.accountPayable_GrnInvoiceNumber());
+    }
+
+
+    @And("^Enter GRN Invoice number$")
+    public void enter_grn_invoice_number() throws Throwable {
+    	waithelper.waitForElement(driver, 2000, inventoryManagamentObj.accountPayable_GrnInvoiceNumber());
 		inventoryManagamentObj.accountPayable_GrnInvoiceNumber().click();
 
 		inventoryManagamentObj.accountPayable_GrnInvoiceNumber()
-				.sendKeys(inventoryManagementTestDataType.GRNInvoiceNumber);
+				.sendKeys(testData.get("GRNInvoiceNumber"));
+		Thread.sleep(2000);
 		inventoryManagamentObj.accountPayable_GrnInvoiceNumber().sendKeys(Keys.ENTER);
+    }
 
-		waithelper.waitForElement(driver, 2000, inventoryManagamentObj.accountPayable_GrnDeliveryLocation());
+    @And("^Enter GRN Delivery location$")
+    public void enter_grn_delivery_location() throws Throwable {
+    	waithelper.waitForElement(driver, 2000, inventoryManagamentObj.accountPayable_GrnDeliveryLocation());
 		inventoryManagamentObj.accountPayable_GrnDeliveryLocation().click();
 		inventoryManagamentObj.accountPayable_GrnDeliveryLocation()
-				.sendKeys(inventoryManagementTestDataType.GRNDeliveryLocation);
+				.sendKeys(testData.get("GRNDeliveryLocation"));
+		Thread.sleep(2000);
 		inventoryManagamentObj.accountPayable_GrnDeliveryLocation().sendKeys(Keys.ENTER);
-
-	}
+    }
 
 	@Then("^Click on save button to save the record$")
 	public void click_on_save_button_to_save_the_record() throws Throwable {
@@ -703,8 +732,17 @@ public class InventoryManagament extends BaseClass {
 	@Then("^Click on notification & open record which we created for GRN$")
 	public void click_on_notification_open_record_which_we_created_for_grn() throws Throwable {
 //		    	waithelper.waitForElement(driver, 3000, budgetTransferObj.budget_BudgetTransfer_NotificationIcon());
-		waithelper.waitForElementwithFluentwait(driver, budgetTransferObj.budget_BudgetTransfer_NotificationIcon());
-		budgetTransferObj.budget_BudgetTransfer_NotificationIcon().click();
+		//waithelper.waitForElementwithFluentwait(driver, budgetTransferObj.budget_BudgetTransfer_NotificationIcon());
+		javascripthelper.JavaScriptHelper(driver);
+		for (int i = 0; i <200; i++) {
+			try {
+				javascripthelper.JSEClick(budgetTransferObj.budget_BudgetTransfer_NotificationIcon());
+				break;
+			} catch (Exception e) {
+				Assert.fail(e.getMessage());
+			}
+		}
+		
 
 		waithelper.waitForElement(driver, 2000, budgetTransferObj.budget_BudgetTransfer_FirstReferenceId());
 		String id = budgetTransferObj.budget_BudgetTransfer_FirstReferenceId().getText();
@@ -761,7 +799,7 @@ public class InventoryManagament extends BaseClass {
 //				Thread.sleep(2000);
 
 		waithelper.waitForElementwithFluentwait(driver, inventoryManagamentObj.accountPayable_GrnPONumber());
-		inventoryManagamentObj.accountPayable_GrnPONumber().sendKeys(jsonWriter.readInventoryManagementPOnumber());
+		inventoryManagamentObj.accountPayable_GrnPONumber().sendKeys(testData.get("GRNPoNumber"));
 //		    	inventoryManagamentObj.accountPayable_GrnPONumber().sendKeys(inventoryManagementTestDataType.GRNPoNumber);
 
 		waithelper.waitForElementwithFluentwait(driver, inventoryManagamentObj.accountPayable_GrnPONumber());
@@ -823,14 +861,17 @@ public class InventoryManagament extends BaseClass {
 		// Reference
 		waithelper.waitForElement(driver, 2000, budgetTransferObj.budget_BudgetTransfer_FirstReferenceId());
 		String id = budgetTransferObj.budget_BudgetTransfer_FirstReferenceId().getText();
-		jsonWriter.addReferanceData(id);
+		//jsonWriter.addReferanceData(id);
+		excelData.updateTestData("KUBS_FAT_UAT_001_004_02_D1","Reference ID", id);
+		//testData.get("KUBS_FAT_UAT_001_004_02_D1");
+		testData = excelData.getTestdata("KUBS_FAT_UAT_001_004_02_D1");
 		System.out.println("Reference ID:" + id);
 		for (int i = 1; i <= 35; i++) {
 			try {
-				waithelper.waitForElement(driver, 3000, driver
-						.findElement(By.xpath("//span[contains(text(),'" + jsonWriter.readReferancedata() + "')]")));
+				//waithelper.waitForElement(driver, 3000, driver
+						//.findElement(By.xpath("//span[contains(text(),'" +testData.get("Reference ID")+ "')]")));
 				WebElement referanceID = driver
-						.findElement(By.xpath("//span[contains(text(),'" + jsonWriter.readReferancedata() + "')]"));
+						.findElement(By.xpath("//span[contains(text(),'" +testData.get("Reference ID")+ "')]"));
 				referanceID.click();
 				System.out.println(referanceID);
 				// Assert.assertTrue(referanceID.isDisplayed());
@@ -851,8 +892,8 @@ public class InventoryManagament extends BaseClass {
 			try {
 
 				waithelper.waitForElement(driver, 10000,
-						driver.findElement(By.xpath(before_xpath + reader.readReferancedata() + after_xpath)));
-				driver.findElement(By.xpath(before_xpath + reader.readReferancedata() + after_xpath)).click();
+						driver.findElement(By.xpath(before_xpath +testData.get("Reference ID")+ after_xpath)));
+				driver.findElement(By.xpath(before_xpath +testData.get("Reference ID")+ after_xpath)).click();
 				break;
 			} catch (Exception e) {
 				if (i == 50) {
@@ -928,15 +969,16 @@ public class InventoryManagament extends BaseClass {
 		System.out.println(reviewerId);
 		jsonWriter = new JsonDataReaderWriter();
 		jsonWriter.addData(reviewerId);
+		excelData.updateTestData("KUBS_FAT_UAT_001_004_02_D1","Reviewer ID", reviewerId);
 
 	}
 
 	@Then("^Open the Reviewer account$")
 	public void open_the_reviewer_account() throws Throwable {
 		reader = new JsonDataReaderWriter();
-		login = new AzentioLogin(driver);
+		
 		driver.get(config.getApplicationUrl());
-		login.logintoAzentioappReviewer("Reviewer", reader.readdata());
+		login.logintoAzentioappReviewer(reader.readdata());
 		waithelper = new WaitHelper(driver);
 		reviewer = new KUBS_ReviewerObj(driver);
 		waithelper.waitForElement(driver, 2000, reviewer.reviewerNotidicationIcon());
@@ -1022,9 +1064,8 @@ public class InventoryManagament extends BaseClass {
 
 	@Then("^Go to Checker login$")
 	public void go_to_checker_login() throws Throwable {
-		login = new AzentioLogin(driver);
 		driver.get(config.getApplicationUrl());
-		login.loginToAzentioAppAsChecker("Checker");
+		login.loginToAzentioAppAsChecker();
 		ExtentTestManager.getTest().info("User Navigated to required url & login as reviewer1");
 
 	}
@@ -2375,5 +2416,19 @@ public class InventoryManagament extends BaseClass {
 		browserHelper.switchToParentWithChildClose();
 
 	}
+	@And("^update test data to create GRN for generated PO$")
+    public void update_test_data_to_create_grn_for_generated_po() throws Throwable {
+		testData = excelData.getTestdata("KUBS_FAT_UAT_001_004_01_D1");
+    }
+
+    @And("^Update test data to approve GRN record in reviewer$")
+    public void update_test_data_to_approve_grn_record_in_reviewer() throws Throwable {
+    	testData = excelData.getTestdata("KUBS_FAT_UAT_001_004_02_D1");
+    }
+
+    @And("^Update test data to approve GRN record in checker$")
+    public void update_test_data_to_approve_grn_record_in_checker() throws Throwable {
+    	testData = excelData.getTestdata("KUBS_FAT_UAT_001_004_03_D1");
+    }
 
 }

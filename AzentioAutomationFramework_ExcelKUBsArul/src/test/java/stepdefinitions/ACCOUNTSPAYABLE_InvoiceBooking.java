@@ -2,6 +2,7 @@ package stepdefinitions;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
 
 import org.json.simple.parser.ParseException;
@@ -25,6 +26,7 @@ import pageobjects.ACCOUNTSPAYABLE_InvoiceBookingObj;
 import pageobjects.ACCOUNTSPAYABLE_VendorContractsObj;
 import pageobjects.KUBS_CheckerObj;
 import resources.BaseClass;
+import resources.ExcelData;
 import resources.JsonDataReaderWriter;
 import testDataType.ACCOUNTSPAYABLE_InvoiceBookingTestDataType;
 import testDataType.ACCOUNTSPAYABLE_VendorContractsTestDataType;
@@ -45,6 +47,9 @@ public class ACCOUNTSPAYABLE_InvoiceBooking {
 	BrowserHelper browserHelper;
 	KUBS_CheckerObj kubschecker = new KUBS_CheckerObj(driver);
 	ACCOUNTSPAYABLE_VendorContractsTestDataType aCCOUNTSPAYABLE_VendorContractsTestDataType;
+	String excelPath = System.getProperty("user.dir")+"\\Test-data\\KUBSTestDataDesign2712.xlsx";
+    ExcelData excelData = new ExcelData(excelPath,"BillBookingTestData","Data Set ID");
+    private Map<String, String> testData;
 	
 //--------    @KUBS_INV_MGMT_UAT_001_005  ------------
     
@@ -71,32 +76,32 @@ public class ACCOUNTSPAYABLE_InvoiceBooking {
     	Random random = new Random();
     	javascripthelper.JavaScriptHelper(driver);
     	waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_EntityBranch());
-    	aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_EntityBranch().sendKeys(aCCOUNTSPAYABLE_InvoiceBookingTestDataType.EntityBranch);
+    	aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_EntityBranch().sendKeys(testData.get("EntityBranch"));
     	aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_EntityBranch().sendKeys(Keys.ENTER);
     	
     	String invoicetype= aCCOUNTSPAYABLE_InvoiceBookingTestDataType.InvoiceType;
     	System.out.println(invoicetype);
 		if (invoicetype.equals("Expense")) {
 			waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_InvoiceType());
-			aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_InvoiceType().sendKeys(aCCOUNTSPAYABLE_InvoiceBookingTestDataType.InvoiceType);
+			aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_InvoiceType().sendKeys(testData.get("InvoiceType"));
 			aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_InvoiceType().sendKeys(Keys.ENTER);
 
 			waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_InvoiceSubType());
-			aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_InvoiceSubType().sendKeys(aCCOUNTSPAYABLE_InvoiceBookingTestDataType.InvoiceSubType);
+			aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_InvoiceSubType().sendKeys(testData.get("InvoiceSubType"));
 			aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_InvoiceSubType().sendKeys(Keys.ENTER);
 
 			waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_BP_Name());
-			aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_BP_Name().sendKeys(aCCOUNTSPAYABLE_InvoiceBookingTestDataType.BP_Name);
+			aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_BP_Name().sendKeys(testData.get("BP_Name "));
 			aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_BP_Name().sendKeys(Keys.DOWN);
 			aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_BP_Name().sendKeys(Keys.ENTER);
 
 			waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_CostCenter());
-			aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_CostCenter().sendKeys(aCCOUNTSPAYABLE_InvoiceBookingTestDataType.CostCenter);
+			aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_CostCenter().sendKeys(testData.get("CostCenter"));
 			aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_CostCenter().sendKeys(Keys.ENTER);
 
 			int randomNum=random.nextInt(5000-2500)+2500;
 			waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_SupplierReferenceNumber());
-			aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_SupplierReferenceNumber().sendKeys(aCCOUNTSPAYABLE_InvoiceBookingTestDataType.SupplierReferenceNumber+randomNum);
+			aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_SupplierReferenceNumber().sendKeys(testData.get("SupplierReferenceNumber")+randomNum);
 
 			waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_InvoiceDate());
 			aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_InvoiceDate().click();
@@ -105,10 +110,10 @@ public class ACCOUNTSPAYABLE_InvoiceBooking {
 			while (true) {
 				try {
 
-					waithelper.waitForElement(driver, 3000, driver.findElement(By.xpath("//span[contains(text(),'" + aCCOUNTSPAYABLE_InvoiceBookingTestDataType.InvoiceBillingMonth + " "
-							+ aCCOUNTSPAYABLE_InvoiceBookingTestDataType.InvoiceBillingYear + "')]")));
+					waithelper.waitForElement(driver, 3000, driver.findElement(By.xpath("//span[contains(text(),'" + testData.get("InvoiceBillingMonth") + " "
+							+ testData.get("InvoiceBillingYear") + "')]")));
 					WebElement monthAndYear = driver.findElement(By.xpath(
-							"//span[contains(text(),'" + aCCOUNTSPAYABLE_InvoiceBookingTestDataType.InvoiceBillingMonth + " " + aCCOUNTSPAYABLE_InvoiceBookingTestDataType.InvoiceBillingYear + "')]"));
+							"//span[contains(text(),'" + testData.get("InvoiceBillingMonth") + " " + testData.get("InvoiceBillingYear") + "')]"));
 					break;
 				}
 
@@ -117,8 +122,8 @@ public class ACCOUNTSPAYABLE_InvoiceBooking {
 					aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_ClickOnNextMonth().click();
 				}
 			}
-			WebElement InvoiceBillingDate = driver.findElement(By.xpath("//td[@aria-label='" + aCCOUNTSPAYABLE_InvoiceBookingTestDataType.InvoiceBillingFullMonth + " "
-					+ aCCOUNTSPAYABLE_InvoiceBookingTestDataType.InvoiceBillingDate + ", " + aCCOUNTSPAYABLE_InvoiceBookingTestDataType.InvoiceBillingYear + "']/span"));
+			WebElement InvoiceBillingDate = driver.findElement(By.xpath("//td[@aria-label='" + testData.get("InvoiceBillingFullMonth") + " "
+					+ aCCOUNTSPAYABLE_InvoiceBookingTestDataType.InvoiceBillingDate + ", " + testData.get("InvoiceBillingYear") + "']/span"));
 			clicksAndActionHelper.doubleClick(InvoiceBillingDate);
 
 //			waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_TotalInvoiceAmount());
@@ -128,30 +133,30 @@ public class ACCOUNTSPAYABLE_InvoiceBooking {
 //			aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_TaxAndGstAmount().sendKeys(aCCOUNTSPAYABLE_InvoiceBookingTestDataType.TaxAndGstAmount);
 			
 			waithelper.waitForElement(driver, 3000, aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_FlatDiscount());
-			aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_FlatDiscount().sendKeys(aCCOUNTSPAYABLE_InvoiceBookingTestDataType.FlatDiscountOnInvoice);
+			aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_FlatDiscount().sendKeys(testData.get("FlatDiscountOnInvoice"));
 
 			String discounttype = aCCOUNTSPAYABLE_InvoiceBookingTestDataType.EarlyPaymentDiscountType;
 			if (discounttype.equals("% Basis")) {
 				waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_EarlyPaymentDiscountType());
-				aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_EarlyPaymentDiscountType().sendKeys(aCCOUNTSPAYABLE_InvoiceBookingTestDataType.EarlyPaymentDiscountType);
+				aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_EarlyPaymentDiscountType().sendKeys(testData.get("EarlyPaymentDiscountType"));
 				aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_EarlyPaymentDiscountType().sendKeys(Keys.ENTER);
 
 				waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_EarlyPaymentDiscountPercentBasis());
-				aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_EarlyPaymentDiscountPercentBasis().sendKeys(aCCOUNTSPAYABLE_InvoiceBookingTestDataType.EarlyPaymentDiscountPercent);
+				aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_EarlyPaymentDiscountPercentBasis().sendKeys(testData.get("EarlyPaymentDiscountPercent "));
 
 				aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_EarlyPaymentDiscountAmount().click();
-				aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_EarlyPaymentDiscountDays().sendKeys(aCCOUNTSPAYABLE_InvoiceBookingTestDataType.EarlyPaymentDiscountDays);
+				aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_EarlyPaymentDiscountDays().sendKeys(testData.get("EarlyPaymentDiscountDays"));
 
 				waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_ModeOfPayment());
-				aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_ModeOfPayment().sendKeys(aCCOUNTSPAYABLE_InvoiceBookingTestDataType.ModeOfPayment);
+				aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_ModeOfPayment().sendKeys(testData.get("ModeOfPayment"));
 				aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_ModeOfPayment().sendKeys(Keys.ENTER);
 
 				waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_InvoiceCurrency());
-				aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_InvoiceCurrency().sendKeys(aCCOUNTSPAYABLE_InvoiceBookingTestDataType.InvoiceCurrency);
+				aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_InvoiceCurrency().sendKeys(testData.get("InvoiceCurrency"));
 				aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_InvoiceCurrency().sendKeys(Keys.ENTER);
 
 				waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_InvoicePaymentCurrency());
-				aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_InvoicePaymentCurrency().sendKeys(aCCOUNTSPAYABLE_InvoiceBookingTestDataType.InvoicePaymentCurrency);
+				aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_InvoicePaymentCurrency().sendKeys(testData.get("InvoicePaymentCurrency"));
 				aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_InvoicePaymentCurrency().sendKeys(Keys.ENTER);
 
 				aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_PaymentDate().click();
@@ -161,9 +166,9 @@ public class ACCOUNTSPAYABLE_InvoiceBooking {
 					try {
 
 						waithelper.waitForElement(driver, 3000, driver.findElement(
-								By.xpath("//span[contains(text(),'" + aCCOUNTSPAYABLE_InvoiceBookingTestDataType.PaymentMonth + " " + aCCOUNTSPAYABLE_InvoiceBookingTestDataType.PaymentYear + "')]")));
+								By.xpath("//span[contains(text(),'" + testData.get("PaymentMonth") + " " + testData.get("PaymentYear") + "')]")));
 						WebElement monthAndYear = driver.findElement(
-								By.xpath("//span[contains(text(),'" + aCCOUNTSPAYABLE_InvoiceBookingTestDataType.PaymentMonth + " " + aCCOUNTSPAYABLE_InvoiceBookingTestDataType.PaymentYear + "')]"));
+								By.xpath("//span[contains(text(),'" + testData.get("PaymentMonth") + " " + testData.get("PaymentYear") + "')]"));
 						break;
 					}
 
@@ -172,36 +177,36 @@ public class ACCOUNTSPAYABLE_InvoiceBooking {
 						aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_ClickOnNextMonth().click();
 					}
 				}
-				WebElement paymentDate = driver.findElement(By.xpath("//td[@aria-label='" + aCCOUNTSPAYABLE_InvoiceBookingTestDataType.PaymentFullMonth + " "
-						+ aCCOUNTSPAYABLE_InvoiceBookingTestDataType.PaymentDate + ", " + aCCOUNTSPAYABLE_InvoiceBookingTestDataType.PaymentYear + "']/span"));
+				WebElement paymentDate = driver.findElement(By.xpath("//td[@aria-label='" + testData.get("PaymentFullMonth") + " "
+						+ aCCOUNTSPAYABLE_InvoiceBookingTestDataType.PaymentDate + ", " + testData.get("PaymentYear") + "']/span"));
 				clicksAndActionHelper.doubleClick(paymentDate);
 
-				aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_RoundingAdjustment().sendKeys(aCCOUNTSPAYABLE_InvoiceBookingTestDataType.RoundingAdjustment);
+				aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_RoundingAdjustment().sendKeys(testData.get("RoundingAdjustment"));
 				javascripthelper.scrollIntoViewAndClick(aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_Remarks());
 //				Thread.sleep(2000);
 //				waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_Remarks());
 				waithelper.waitForElementwithFluentwait(driver, aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_Remarks());
-				aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_Remarks().sendKeys(aCCOUNTSPAYABLE_InvoiceBookingTestDataType.Remarks);
+				aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_Remarks().sendKeys(testData.get("Remarks"));
 				waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_SaveButton());
 				aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_SaveButton().click();
 			} else {
 				waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_EarlyPaymentDiscountType());
-				aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_EarlyPaymentDiscountType().sendKeys(aCCOUNTSPAYABLE_InvoiceBookingTestDataType.EarlyPaymentDiscountType);
+				aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_EarlyPaymentDiscountType().sendKeys(testData.get("EarlyPaymentDiscountType"));
 				aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_EarlyPaymentDiscountType().sendKeys(Keys.ENTER);
 				
-				aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_EarlyPaymentFlatDiscountAmount().sendKeys(aCCOUNTSPAYABLE_InvoiceBookingTestDataType.EarlyPaymentDiscountAmountFlat);
-				aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_EarlyPaymentFlatDiscountDays().sendKeys(aCCOUNTSPAYABLE_InvoiceBookingTestDataType.EarlyPaymentDiscountDays);
+				aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_EarlyPaymentFlatDiscountAmount().sendKeys(testData.get("EarlyPaymentDiscountAmountFlat"));
+				aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_EarlyPaymentFlatDiscountDays().sendKeys(testData.get("EarlyPaymentDiscountDays"));
 
 				waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_ModeOfPaymentForFlat());
-				aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_ModeOfPaymentForFlat().sendKeys(aCCOUNTSPAYABLE_InvoiceBookingTestDataType.ModeOfPayment);
+				aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_ModeOfPaymentForFlat().sendKeys(testData.get("ModeOfPayment"));
 				aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_ModeOfPaymentForFlat().sendKeys(Keys.ENTER);
 
 				waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_InvoiceCurrencyFlat());
-				aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_InvoiceCurrencyFlat().sendKeys(aCCOUNTSPAYABLE_InvoiceBookingTestDataType.InvoiceCurrency);
+				aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_InvoiceCurrencyFlat().sendKeys(testData.get("InvoiceCurrency"));
 				aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_InvoiceCurrencyFlat().sendKeys(Keys.ENTER);
 
 				waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_InvoicePaymentCurrencyFlat());
-				aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_InvoicePaymentCurrencyFlat().sendKeys(aCCOUNTSPAYABLE_InvoiceBookingTestDataType.InvoicePaymentCurrency);
+				aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_InvoicePaymentCurrencyFlat().sendKeys(testData.get("InvoicePaymentCurrency"));
 				aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_InvoicePaymentCurrencyFlat().sendKeys(Keys.ENTER);
 
 				aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_PaymentDateFlat().click();
@@ -212,9 +217,9 @@ public class ACCOUNTSPAYABLE_InvoiceBooking {
 					try {
 
 						waithelper.waitForElement(driver, 3000, driver.findElement(
-								By.xpath("//span[contains(text(),'" + aCCOUNTSPAYABLE_InvoiceBookingTestDataType.PaymentMonth + " " + aCCOUNTSPAYABLE_InvoiceBookingTestDataType.PaymentYear + "')]")));
+								By.xpath("//span[contains(text(),'" + testData.get("PaymentMonth") + " " + testData.get("PaymentYear") + "')]")));
 						WebElement monthAndYear = driver.findElement(
-								By.xpath("//span[contains(text(),'" + aCCOUNTSPAYABLE_InvoiceBookingTestDataType.PaymentMonth + " " + aCCOUNTSPAYABLE_InvoiceBookingTestDataType.PaymentYear + "')]"));
+								By.xpath("//span[contains(text(),'" + testData.get("PaymentMonth") + " " + testData.get("PaymentYear") + "')]"));
 						break;
 					}
 
@@ -224,36 +229,36 @@ public class ACCOUNTSPAYABLE_InvoiceBooking {
 						aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_ClickOnNextMonth().click();
 					}
 				}
-				WebElement paymentDate = driver.findElement(By.xpath("//td[@aria-label='" + aCCOUNTSPAYABLE_InvoiceBookingTestDataType.PaymentFullMonth + " "
-						+ aCCOUNTSPAYABLE_InvoiceBookingTestDataType.PaymentDate + ", " + aCCOUNTSPAYABLE_InvoiceBookingTestDataType.PaymentYear + "']/span"));
+				WebElement paymentDate = driver.findElement(By.xpath("//td[@aria-label='" + testData.get("PaymentFullMonth") + " "
+						+ testData.get("PaymentDate") + ", " + testData.get("PaymentYear") + "']/span"));
 				clicksAndActionHelper.doubleClick(paymentDate);
 				waithelper.waitForElementwithFluentwait(driver, aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_RoundingAdjustmentFlat());
-				aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_RoundingAdjustmentFlat().sendKeys(aCCOUNTSPAYABLE_InvoiceBookingTestDataType.RoundingAdjustment);
+				aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_RoundingAdjustmentFlat().sendKeys(testData.get("RoundingAdjustment"));
 				
 				javascripthelper.scrollIntoViewAndClick(aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_Remarks());
 //				Thread.sleep(1000);
 //				waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_Remarks());
 				waithelper.waitForElementwithFluentwait(driver, aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_Remarks());
-				aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_Remarks().sendKeys(aCCOUNTSPAYABLE_InvoiceBookingTestDataType.Remarks);
+				aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_Remarks().sendKeys(testData.get("Remarks"));
 				waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_SaveButton());
 				aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_SaveButton().click();
 
 			}
 		} else {
 			waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_InvoiceType());
-			aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_InvoiceType().sendKeys(aCCOUNTSPAYABLE_InvoiceBookingTestDataType.InvoiceType);
+			aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_InvoiceType().sendKeys(testData.get("InvoiceTypeSearch"));
 			aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_InvoiceType().sendKeys(Keys.ENTER);
 			
 			waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_BP_Name_AgainstPO());
-			aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_BP_Name_AgainstPO().sendKeys(aCCOUNTSPAYABLE_InvoiceBookingTestDataType.BP_Name);
+			aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_BP_Name_AgainstPO().sendKeys(testData.get("BP_Name"));
 			aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_BP_Name_AgainstPO().sendKeys(Keys.ENTER);
 
 			waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_CostCenterAgainstPO());
-			aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_CostCenterAgainstPO().sendKeys(aCCOUNTSPAYABLE_InvoiceBookingTestDataType.CostCenter);
+			aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_CostCenterAgainstPO().sendKeys(testData.get("CostCenter"));
 			aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_CostCenterAgainstPO().sendKeys(Keys.ENTER);
 
 			waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_SupplierReferenceNumberAgainstPO());
-			aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_SupplierReferenceNumberAgainstPO().sendKeys(aCCOUNTSPAYABLE_InvoiceBookingTestDataType.SupplierReferenceNumber);
+			aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_SupplierReferenceNumberAgainstPO().sendKeys(testData.get("SupplierReferenceNumber"));
 
 			waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_InvoiceDateAgainstPO());
 			aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_InvoiceDateAgainstPO().click();
@@ -262,10 +267,10 @@ public class ACCOUNTSPAYABLE_InvoiceBooking {
 			while (true) {
 				try {
 
-					waithelper.waitForElement(driver, 3000, driver.findElement(By.xpath("//span[contains(text(),'" + aCCOUNTSPAYABLE_InvoiceBookingTestDataType.InvoiceBillingMonth + " "
-							+ aCCOUNTSPAYABLE_InvoiceBookingTestDataType.InvoiceBillingYear + "')]")));
+					waithelper.waitForElement(driver, 3000, driver.findElement(By.xpath("//span[contains(text(),'" + testData.get("InvoiceBillingMonth") + " "
+							+ testData.get("InvoiceBillingYear") + "')]")));
 					WebElement monthAndYear = driver.findElement(By.xpath(
-							"//span[contains(text(),'" + aCCOUNTSPAYABLE_InvoiceBookingTestDataType.InvoiceBillingMonth + " " + aCCOUNTSPAYABLE_InvoiceBookingTestDataType.InvoiceBillingYear + "')]"));
+							"//span[contains(text(),'" + testData.get("InvoiceBillingMonth") + " " + testData.get("InvoiceBillingYear") + "')]"));
 					break;
 				}
 
@@ -274,8 +279,8 @@ public class ACCOUNTSPAYABLE_InvoiceBooking {
 					aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_ClickOnNextMonth().click();
 				}
 			}
-			WebElement InvoiceBillingDate = driver.findElement(By.xpath("//td[@aria-label='" + aCCOUNTSPAYABLE_InvoiceBookingTestDataType.InvoiceBillingFullMonth + " "
-					+ aCCOUNTSPAYABLE_InvoiceBookingTestDataType.InvoiceBillingDate + ", " + aCCOUNTSPAYABLE_InvoiceBookingTestDataType.InvoiceBillingYear + "']/span"));
+			WebElement InvoiceBillingDate = driver.findElement(By.xpath("//td[@aria-label='" + testData.get("InvoiceBillingFullMonth") + " "
+					+ testData.get("InvoiceBillingDate") + ", " + testData.get("InvoiceBillingYear") + "']/span"));
 			clicksAndActionHelper.doubleClick(InvoiceBillingDate);
 
 //			waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_TotalInvoiceAmountAgainstPO());
@@ -285,31 +290,31 @@ public class ACCOUNTSPAYABLE_InvoiceBooking {
 //			aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_TaxAndGstAmount().sendKeys(aCCOUNTSPAYABLE_InvoiceBookingTestDataType.TaxAndGstAmount);
 
 			waithelper.waitForElement(driver, 3000, aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_FlatDiscountAgainstPO());
-			aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_FlatDiscountAgainstPO().sendKeys(aCCOUNTSPAYABLE_InvoiceBookingTestDataType.FlatDiscountOnInvoice);
+			aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_FlatDiscountAgainstPO().sendKeys(testData.get("FlatDiscountOnInvoice"));
 			
 			String discounttype = aCCOUNTSPAYABLE_InvoiceBookingTestDataType.EarlyPaymentDiscountType;
 			if (discounttype.equals("% Basis")) {
 				waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_EarlyPaymentDiscountTypeAgainstPO());
-				aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_EarlyPaymentDiscountTypeAgainstPO().sendKeys(aCCOUNTSPAYABLE_InvoiceBookingTestDataType.EarlyPaymentDiscountType);
+				aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_EarlyPaymentDiscountTypeAgainstPO().sendKeys(testData.get("EarlyPaymentDiscountType"));
 				aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_EarlyPaymentDiscountTypeAgainstPO().sendKeys(Keys.ENTER);
 
 				waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_EarlyPaymentDiscountPercentBasisAgainstPO());
-				aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_EarlyPaymentDiscountPercentBasisAgainstPO().sendKeys(aCCOUNTSPAYABLE_InvoiceBookingTestDataType.EarlyPaymentDiscountPercent);
+				aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_EarlyPaymentDiscountPercentBasisAgainstPO().sendKeys(testData.get("EarlyPaymentDiscountPercent"));
 				//flat discount amount&days method bcoz xpath is same
 				waithelper.waitForElement(driver, 3000, aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_EarlyPaymentFlatDiscountAmount());
-				aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_EarlyPaymentFlatDiscountAmount().sendKeys(aCCOUNTSPAYABLE_InvoiceBookingTestDataType.EarlyPaymentDiscountAmount);
-				aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_EarlyPaymentFlatDiscountDays().sendKeys(aCCOUNTSPAYABLE_InvoiceBookingTestDataType.EarlyPaymentDiscountDays);
+				aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_EarlyPaymentFlatDiscountAmount().sendKeys(testData.get("EarlyPaymentDiscountAmount "));
+				aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_EarlyPaymentFlatDiscountDays().sendKeys(testData.get("EarlyPaymentDiscountDays"));
 
 				waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_ModeOfPaymentForFlat());
-				aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_ModeOfPaymentForFlat().sendKeys(aCCOUNTSPAYABLE_InvoiceBookingTestDataType.ModeOfPayment);
+				aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_ModeOfPaymentForFlat().sendKeys(testData.get("ModeOfPayment"));
 				aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_ModeOfPaymentForFlat().sendKeys(Keys.ENTER);
 
 				waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_InvoiceCurrencyFlat());
-				aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_InvoiceCurrencyFlat().sendKeys(aCCOUNTSPAYABLE_InvoiceBookingTestDataType.InvoiceCurrency);
+				aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_InvoiceCurrencyFlat().sendKeys(testData.get("InvoiceCurrency"));
 				aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_InvoiceCurrencyFlat().sendKeys(Keys.ENTER);
 
 				waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_InvoicePaymentCurrencyFlat());
-				aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_InvoicePaymentCurrencyFlat().sendKeys(aCCOUNTSPAYABLE_InvoiceBookingTestDataType.InvoicePaymentCurrency);
+				aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_InvoicePaymentCurrencyFlat().sendKeys(testData.get("InvoicePaymentCurrency"));
 				aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_InvoicePaymentCurrencyFlat().sendKeys(Keys.ENTER);
 
 				aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_PaymentDateFlat().click();
@@ -319,9 +324,9 @@ public class ACCOUNTSPAYABLE_InvoiceBooking {
 					try {
 
 						waithelper.waitForElement(driver, 3000, driver.findElement(
-								By.xpath("//span[contains(text(),'" + aCCOUNTSPAYABLE_InvoiceBookingTestDataType.PaymentMonth + " " + aCCOUNTSPAYABLE_InvoiceBookingTestDataType.PaymentYear + "')]")));
+								By.xpath("//span[contains(text(),'" + testData.get("PaymentMonth") + " " + testData.get("PaymentYear") + "')]")));
 						WebElement monthAndYear = driver.findElement(
-								By.xpath("//span[contains(text(),'" + aCCOUNTSPAYABLE_InvoiceBookingTestDataType.PaymentMonth + " " + aCCOUNTSPAYABLE_InvoiceBookingTestDataType.PaymentYear + "')]"));
+								By.xpath("//span[contains(text(),'" + testData.get("PaymentMonth") + " " + testData.get("PaymentYear") + "')]"));
 						break;
 					}
 
@@ -330,40 +335,40 @@ public class ACCOUNTSPAYABLE_InvoiceBooking {
 						aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_ClickOnNextMonth().click();
 					}
 				}
-				waithelper.waitForElement(driver, 3000, driver.findElement(By.xpath("//td[@aria-label='" + aCCOUNTSPAYABLE_InvoiceBookingTestDataType.PaymentFullMonth + " "
-						+ aCCOUNTSPAYABLE_InvoiceBookingTestDataType.PaymentDate + ", " + aCCOUNTSPAYABLE_InvoiceBookingTestDataType.PaymentYear + "']/span")));
-				WebElement paymentDate = driver.findElement(By.xpath("//td[@aria-label='" + aCCOUNTSPAYABLE_InvoiceBookingTestDataType.PaymentFullMonth + " "
-						+ aCCOUNTSPAYABLE_InvoiceBookingTestDataType.PaymentDate + ", " + aCCOUNTSPAYABLE_InvoiceBookingTestDataType.PaymentYear + "']/span"));
+				waithelper.waitForElement(driver, 3000, driver.findElement(By.xpath("//td[@aria-label='" + testData.get("PaymentFullMonth") + " "
+						+ testData.get("PaymentDate") + ", " + testData.get("PaymentYear") + "']/span")));
+				WebElement paymentDate = driver.findElement(By.xpath("//td[@aria-label='" + testData.get("PaymentFullMonth") + " "
+						+ testData.get("PaymentDate") + ", " + testData.get("PaymentYear") + "']/span"));
 				clicksAndActionHelper.doubleClick(paymentDate);
 
-				aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_RoundingAdjustmentFlat().sendKeys(aCCOUNTSPAYABLE_InvoiceBookingTestDataType.RoundingAdjustment);
+				aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_RoundingAdjustmentFlat().sendKeys(testData.get("RoundingAdjustment"));
 				javascripthelper.scrollIntoViewAndClick(aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_Remarks());
 //				Thread.sleep(1000);
 //				waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_Remarks());
 				waithelper.waitForElementwithFluentwait(driver, aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_Remarks());
-				aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_Remarks().sendKeys(aCCOUNTSPAYABLE_InvoiceBookingTestDataType.Remarks);
+				aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_Remarks().sendKeys(testData.get("Remarks"));
 				waithelper.waitForElement(driver, 3000, aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_EarlyPaymentFlatDiscountAmount());
-				aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_EarlyPaymentFlatDiscountAmount().sendKeys(aCCOUNTSPAYABLE_InvoiceBookingTestDataType.EarlyPaymentDiscountAmount);
+				aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_EarlyPaymentFlatDiscountAmount().sendKeys(testData.get("FlatDiscountOnInvoice"));
 				waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_SaveButton());
 				aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_SaveButton().click();
 			} else {
 				waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_EarlyPaymentDiscountTypeAgainstPO());
-				aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_EarlyPaymentDiscountTypeAgainstPO().sendKeys(aCCOUNTSPAYABLE_InvoiceBookingTestDataType.EarlyPaymentDiscountType);
+				aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_EarlyPaymentDiscountTypeAgainstPO().sendKeys(testData.get("EarlyPaymentDiscountType"));
 				aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_EarlyPaymentDiscountTypeAgainstPO().sendKeys(Keys.ENTER);
 				
-				aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_EarlyPaymentFlatDiscountAmountAgainstPO().sendKeys(aCCOUNTSPAYABLE_InvoiceBookingTestDataType.EarlyPaymentDiscountAmountFlat);
-				aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_EarlyPaymentFlatDiscountDaysAgainstPO().sendKeys(aCCOUNTSPAYABLE_InvoiceBookingTestDataType.EarlyPaymentDiscountDays);
+				aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_EarlyPaymentFlatDiscountAmountAgainstPO().sendKeys(testData.get("EarlyPaymentDiscountAmount"));
+				aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_EarlyPaymentFlatDiscountDaysAgainstPO().sendKeys(testData.get("EarlyPaymentDiscountDays"));
 
 				waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_ModeOfPaymentForFlatAgainstPO());
-				aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_ModeOfPaymentForFlatAgainstPO().sendKeys(aCCOUNTSPAYABLE_InvoiceBookingTestDataType.ModeOfPayment);
+				aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_ModeOfPaymentForFlatAgainstPO().sendKeys(testData.get("ModeOfPayment"));
 				aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_ModeOfPaymentForFlatAgainstPO().sendKeys(Keys.ENTER);
 
 				waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_InvoiceCurrencyFlatAgainstPO());
-				aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_InvoiceCurrencyFlatAgainstPO().sendKeys(aCCOUNTSPAYABLE_InvoiceBookingTestDataType.InvoiceCurrency);
+				aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_InvoiceCurrencyFlatAgainstPO().sendKeys(testData.get("InvoiceCurrency"));
 				aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_InvoiceCurrencyFlatAgainstPO().sendKeys(Keys.ENTER);
 
 				waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_InvoicePaymentCurrencyFlatAgainstPO());
-				aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_InvoicePaymentCurrencyFlatAgainstPO().sendKeys(aCCOUNTSPAYABLE_InvoiceBookingTestDataType.InvoicePaymentCurrency);
+				aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_InvoicePaymentCurrencyFlatAgainstPO().sendKeys(testData.get("InvoicePaymentCurrency"));
 				aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_InvoicePaymentCurrencyFlatAgainstPO().sendKeys(Keys.ENTER);
 
 				aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_PaymentDateFlatAgainstPO().click();
@@ -374,9 +379,9 @@ public class ACCOUNTSPAYABLE_InvoiceBooking {
 					try {
 
 						waithelper.waitForElement(driver, 3000, driver.findElement(
-								By.xpath("//span[contains(text(),'" + aCCOUNTSPAYABLE_InvoiceBookingTestDataType.PaymentMonth + " " + aCCOUNTSPAYABLE_InvoiceBookingTestDataType.PaymentYear + "')]")));
+								By.xpath("//span[contains(text(),'" + testData.get("PaymentMonth") + " " + testData.get("PaymentYear") + "')]")));
 						WebElement monthAndYear = driver.findElement(
-								By.xpath("//span[contains(text(),'" + aCCOUNTSPAYABLE_InvoiceBookingTestDataType.PaymentMonth + " " + aCCOUNTSPAYABLE_InvoiceBookingTestDataType.PaymentYear + "')]"));
+								By.xpath("//span[contains(text(),'" + testData.get("PaymentMonth") + " " + testData.get("PaymentYear") + "')]"));
 						break;
 					}
 
@@ -385,8 +390,10 @@ public class ACCOUNTSPAYABLE_InvoiceBooking {
 						aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_ClickOnNextMonth().click();
 					}
 				}
-				WebElement paymentDate = driver.findElement(By.xpath("//td[@aria-label='" + aCCOUNTSPAYABLE_InvoiceBookingTestDataType.PaymentFullMonth + " "
-						+ aCCOUNTSPAYABLE_InvoiceBookingTestDataType.PaymentDate + ", " + aCCOUNTSPAYABLE_InvoiceBookingTestDataType.PaymentYear + "']/span"));
+				waithelper.waitForElement(driver, 3000, driver.findElement(By.xpath("//td[@aria-label='" + testData.get("PaymentFullMonth") + " "
+						+ testData.get("PaymentDate") + ", " + testData.get("PaymentYear") + "']/span")));
+				WebElement paymentDate = driver.findElement(By.xpath("//td[@aria-label='" + testData.get("PaymentFullMonth") + " "
+						+ testData.get("PaymentDate") + ", " + testData.get("PaymentYear") + "']/span"));
 				clicksAndActionHelper.doubleClick(paymentDate);
 //				waithelper.waitForElement(driver, 3000, driver.findElement(By.xpath("//td[@aria-label='" + aCCOUNTSPAYABLE_InvoiceBookingTestDataType.PaymentFullMonth + " "
 //						+ aCCOUNTSPAYABLE_InvoiceBookingTestDataType.PaymentDate + ", " + aCCOUNTSPAYABLE_InvoiceBookingTestDataType.PaymentYear + "']/span")));
@@ -394,12 +401,12 @@ public class ACCOUNTSPAYABLE_InvoiceBooking {
 //						+ aCCOUNTSPAYABLE_InvoiceBookingTestDataType.PaymentDate + ", " + aCCOUNTSPAYABLE_InvoiceBookingTestDataType.PaymentYear + "']/span"));
 //				clicksAndActionHelper.doubleClick(paymentDate);
 
-				aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_RoundingAdjustmentFlatAgainstPO().sendKeys(aCCOUNTSPAYABLE_InvoiceBookingTestDataType.RoundingAdjustment);
+				aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_RoundingAdjustmentFlatAgainstPO().sendKeys(testData.get("RoundingAdjustment"));
 				javascripthelper.scrollIntoViewAndClick(aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_Remarks());
 //				Thread.sleep(1000);
 //				waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_Remarks());
 				waithelper.waitForElementwithFluentwait(driver, aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_Remarks());
-				aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_Remarks().sendKeys(aCCOUNTSPAYABLE_InvoiceBookingTestDataType.Remarks);
+				aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_Remarks().sendKeys("Remarks");
 				waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_SaveButton());
 				aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_SaveButton().click();
 
@@ -419,21 +426,22 @@ public class ACCOUNTSPAYABLE_InvoiceBooking {
 		waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_FirstReferenceId());
 		String id=aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_FirstReferenceId().getText();
 		jsonWriter.addReferanceData(id);
+		excelData.updateTestData("KUBS_FAT_UAT_001_005_02_D1", "C", id);
 		System.out.println("Reference ID:" +id);
-    	for (int i = 1; i <= 35; i++) {
-			try {
-		    	waithelper.waitForElement(driver, 3000,driver.findElement(By.xpath("//span[contains(text(),'" +jsonWriter.readReferancedata()+ "')]")));	
-				WebElement referanceID = driver.findElement(By.xpath("//span[contains(text(),'" +  jsonWriter.readReferancedata() + "')]"));	
-				waithelper.waitForElement(driver, i, referanceID);
-				referanceID.click();
-		    	System.out.println(referanceID);
-//				Assert.assertTrue(referanceID.isDisplayed());
-				break;
-			} catch (NoSuchElementException e) {
-				waithelper.waitForElement(driver,4000,aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_NotificationNextButton());
-				aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_NotificationNextButton().click();
-			}
-		}
+//    	for (int i = 1; i <= 35; i++) {
+//			try {
+//		    	waithelper.waitForElement(driver, 3000,driver.findElement(By.xpath("//span[contains(text(),'" +jsonWriter.readReferancedata()+ "')]")));	
+//				WebElement referanceID = driver.findElement(By.xpath("//span[contains(text(),'" +  jsonWriter.readReferancedata() + "')]"));	
+//				waithelper.waitForElement(driver, i, referanceID);
+//				referanceID.click();
+//		    	System.out.println(referanceID);
+////				Assert.assertTrue(referanceID.isDisplayed());
+//				break;
+//			} catch (NoSuchElementException e) {
+//				waithelper.waitForElement(driver,4000,aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_NotificationNextButton());
+//				aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_NotificationNextButton().click();
+//				}
+//		}
     	String before_xpath="//span[contains(text(),'";
     	String after_xpath="')]/ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell//ion-button"; 
     	waithelper.waitForElement(driver, 10000, driver.findElement(By.xpath(before_xpath +jsonWriter.readReferancedata()+after_xpath)));
@@ -458,7 +466,7 @@ public class ACCOUNTSPAYABLE_InvoiceBooking {
     	waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_ExpenseCodeForLaptop());
     	aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_ExpenseCodeForLaptop().click();
     	
-    	aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_InvoiceQuantity().sendKeys(aCCOUNTSPAYABLE_InvoiceBookingTestDataType.InvoiceQuantity);
+    	aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_InvoiceQuantity().sendKeys(testData.get("InvoiceQuantity"));
     	
     	waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_Unit());
     	aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_Unit().click();
@@ -474,7 +482,7 @@ public class ACCOUNTSPAYABLE_InvoiceBooking {
     		}
     	}
     	
-    	aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_RatePerUnit().sendKeys(aCCOUNTSPAYABLE_InvoiceBookingTestDataType.RatePerUnit);
+    	aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_RatePerUnit().sendKeys(testData.get("RatePerUnit"));
     	
     	aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_Currency();
     	javascripthelper.scrollIntoView(aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_CostCenterButton());
@@ -515,7 +523,7 @@ public class ACCOUNTSPAYABLE_InvoiceBooking {
     	waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_TaxDetails());
     	aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_TaxDetails().click();
     	waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_TaxAmount());
-    	aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_TaxAmount().sendKeys(aCCOUNTSPAYABLE_InvoiceBookingTestDataType.TaxAmount);
+    	aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_TaxAmount().sendKeys(testData.get("TaxAmount"));
     	
     	waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_TaxDetailsSaveButton());
     	aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_TaxDetailsSaveButton().click();
@@ -530,7 +538,7 @@ public class ACCOUNTSPAYABLE_InvoiceBooking {
     	aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_CostCenterTypeFinance().click();
     	
     	waithelper.waitForElementwithFluentwait(driver, aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_AmountToBeAllocated());
-    	aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_AmountToBeAllocated().sendKeys(aCCOUNTSPAYABLE_InvoiceBookingTestDataType.AmountToBeAllocated);
+    	aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_AmountToBeAllocated().sendKeys(testData.get("AmountToBeAllocated"));
     	
 //    	waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_AddCostCenter());
     	waithelper.waitForElementwithFluentwait(driver, aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_AddCostCenter());
@@ -542,7 +550,7 @@ public class ACCOUNTSPAYABLE_InvoiceBooking {
 		}
 		else {
 			waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_PONumber());
-	    	aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_PONumber().sendKeys(aCCOUNTSPAYABLE_InvoiceBookingTestDataType.PONumber);
+	    	aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_PONumber().sendKeys(testData.get("PONumber"));
 	    	aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_PONumber().sendKeys(Keys.ENTER);
 	    
 	    	waithelper.waitForElement(driver, 3000, aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_GRN_Number());
@@ -1167,6 +1175,25 @@ public class ACCOUNTSPAYABLE_InvoiceBooking {
     	jsonWriter=new JsonDataReaderWriter();
 		jsonWriter.addData(invoicenum);
        
+    }
+    @And("^Update test data for bill booking create and submit from maker$")
+    public void update_test_data_for_bill_booking_create_and_submit_from_maker() throws Throwable {
+    	testData = excelData.getTestdata("KUBS_FAT_UAT_001_005_01_D1");
+    }
+
+    @And("^Update test data for bill booking create and approve from reviewer$")
+    public void update_test_data_for_bill_booking_create_and_approve_from_reviewer() throws Throwable {
+    	testData = excelData.getTestdata("KUBS_FAT_UAT_001_005_02_D1");
+    }
+
+    @And("^Update test data for bill booking create and approve from checker$")
+    public void update_test_data_for_bill_booking_create_and_approve_from_checker() throws Throwable {
+    	testData = excelData.getTestdata("KUBS_FAT_UAT_001_005_03_D1");
+    }
+
+    @And("^Update test data for bill booking record is present in reports$")
+    public void update_test_data_for_bill_booking_record_is_present_in_reports() throws Throwable {
+    	testData = excelData.getTestdata("KUBS_FAT_UAT_001_005_05_D1");
     }
     
 }

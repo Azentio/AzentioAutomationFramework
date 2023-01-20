@@ -484,16 +484,7 @@ public class ACCOUNTSPAYABLE_VendorContracts {
 
 	}
 
-	@And("^User should go to the kubs url and login as a reviewer user$")
-	public void user_should_go_to_the_kubs_url_and_login_as_a_reviewer_user()
-			throws IOException, ParseException, InterruptedException {
-		reader = new JsonDataReaderWriter();
-		login = new KUBS_Login(driver);
-		driver.get(config.getApplicationUrl());
-		login.logintoAzentioappReviewer("Reviewer", reader.readdata());
-		Thread.sleep(2000);
-	}
-
+	
 	@Then("^Click on notification button in reviewer$")
 	public void click_on_notification_button_in_reviewer() {
 		// waithelper.waitForElement(driver, 2000,
@@ -579,7 +570,7 @@ public class ACCOUNTSPAYABLE_VendorContracts {
 	public void user_should_go_to_the_kubs_url_and_login_as_a_checker_user() throws InterruptedException {
 		login = new KUBS_Login(driver);
 		driver.get(config.getApplicationUrl());
-		login.loginToAzentioAppAsChecker("Checker");
+		login.loginToAzentioAppAsChecker();
 	}
 
 	@And("^Click on security management in checker$")
