@@ -1,0 +1,27 @@
+[
+{
+"User":"Maker",
+"BranchCode":"AZENTMAIN",
+"AssetCode":"LAND-LAND-woodply96934",
+"BillReferenceNo":"INV-12-92022",
+"Remark":"OK",
+"ModuleEventCode":"ASSET_CREATION",
+
+"AssetItemNumber" : "IN",
+"AssetItemDescription":"Laptop for work from home",
+"AssetValue":"1000000000",
+"HSNCode":"83034090- Lockers",
+
+"AssetReferenceNumber":"LAND-LAND-woodply96934",
+"ItemNumber":"111",
+"EmployeeID":"anant",
+	"GlYear":"2023",
+	"GlDay":"19",
+	"GlToMonth":"Oct",
+	"GlFullToMonth":"October",
+	"GlToDate":"30",
+	
+	"AssetLife":"Month"
+
+}
+]

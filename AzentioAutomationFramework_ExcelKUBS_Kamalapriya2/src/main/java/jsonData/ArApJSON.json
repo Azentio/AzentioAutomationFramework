@@ -1,0 +1,48 @@
+[
+{
+"User":"Maker",
+"BranchCode":"West Zone",
+
+"GRNreferenceNumber":"GRN-null-87-2122022",
+
+
+"ReceivableName":"Advance Against PO",
+"BusinessPatner":"Bonton Agency",
+"PONumber":"Azentio_Soft-Agency-8-PO-18",
+"PaymentMode":"Cheque",
+"Amount":"100000",
+"Currency":"INR",
+"Description":"Payment with Cheque",
+"EntityBranch":"Azentio",
+
+"ExcessiveAmount":"9000000",
+
+
+"EntityBranchforReversal":"Azentio Main Branch",
+"RecieptReferenceNumber":"REC_140_842022",
+"CancellationRemark":"Cancel due to Internal error",
+
+"RecieptReferenceNumberForWire":"RECAPP_61_1952022",
+
+
+"EntityBranchforApportion":"Azentio Main Branch",
+"RecieptReferenceNumberforApportion":"RECAPP_9_31122021",
+"CancellationRemarkforApportion":"Cancel due to Internal error",
+
+
+"RecieptReferenceNumberforApportionWire":"RECAPP_61_1952022",
+
+"GRNQtyReceivedExcessive":"1000",
+
+"CreditNoteInInvoiceReferenceNumber":"CN-27-2022-02-25",
+
+"VendorORemployeeeName":"Bonton Agency",
+"GRNStatus":"Active",
+
+"ClearedChequeReferenceNumber":"DEP-RR12345-20220303"
+
+
+
+
+}
+]
