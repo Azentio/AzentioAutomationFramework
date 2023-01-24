@@ -116,6 +116,7 @@ public class ACCOUNTSPAYABLE_AutoPayout extends BaseClass {
         for(int i=0; i<20; i++) {
         	try {
         		vendorContractObj.vendorContractTempView().click();
+        		// vendorContractObj.firstTempRecord().click();
         		break;
 			} catch (Exception e) {
 				
@@ -125,8 +126,22 @@ public class ACCOUNTSPAYABLE_AutoPayout extends BaseClass {
 			
 			}
         }
-        waitHelper.waitForElementVisible(vendorContractObj.firstTempRecord(),2000,100);
-        vendorContractObj.firstTempRecord().click();
+        for(int i=0; i<20; i++) {
+        	try {
+        		//vendorContractObj.vendorContractTempView().click();
+        		 vendorContractObj.firstTempRecord().click();
+        		break;
+			} catch (Exception e) {
+				
+				if(i==20) {
+					Assert.fail(e.getMessage());
+				}
+			
+			}
+        }
+        //waitHelper.waitForElementVisible(vendorContractObj.firstTempRecord(),2000,100);
+        //Thread.sleep(3000);
+        //vendorContractObj.firstTempRecord().click();
         
         waitHelper.waitForElementVisible(vendorContractObj.vendorContractItemDetails(), 2000, 100);
         vendorContractObj.vendorContractItemDetails().click();
@@ -147,7 +162,7 @@ public class ACCOUNTSPAYABLE_AutoPayout extends BaseClass {
         vendorContractObj.vendorContractHSNCode().sendKeys(arap.get("HSNCode"));
         vendorContractObj.vendorContractHSNCode().sendKeys(Keys.ENTER);
         
-        Thread.sleep(2000);
+        Thread.sleep(3000);
         vendorContractObj.vendorContractExpenceCode().click();
         vendorContractObj.vendorContractExpenceCode().sendKeys(Keys.DOWN);
         vendorContractObj.vendorContractExpenceCode().sendKeys(Keys.ENTER);
@@ -1506,41 +1521,10 @@ public class ACCOUNTSPAYABLE_AutoPayout extends BaseClass {
         
     
     
-    @And("^User get the test data for the cancelling credit note test case0501$")
-    public void user_get_the_test_data_for_the_cancelling_credit_note_test_case0501() throws Throwable {
-    	arap = excelData.getTestdata("KUBS_AR/AP_UAT_003_007_TC_05_05_01");
-    }
-
-    @And("^User get the test data for the cancelling credit note test case0502$")
-    public void user_get_the_test_data_for_the_cancelling_credit_note_test_case0502() throws Throwable {
-    	arap = excelData.getTestdata("KUBS_AR/AP_UAT_003_007_TC_05_05_02");
-    }
-
-    @And("^User get the test data for the cancelling credit note test case0503$")
-    public void user_get_the_test_data_for_the_cancelling_credit_note_test_case0503() throws Throwable {
-    	arap = excelData.getTestdata("KUBS_AR/AP_UAT_003_007_TC_05_05_03");
-    }
+ 
     
     
-    @And("^User get the test data for the cancelling credit note test case0601$")
-    public void user_get_the_test_data_for_the_cancelling_credit_note_test_case0601() throws Throwable {
-    	arap = excelData.getTestdata("KUBS_AR/AP_UAT_003_007_TC_05_06_01");
-    }
-
-    @And("^User get the test data for the cancelling credit note test case0602$")
-    public void user_get_the_test_data_for_the_cancelling_credit_note_test_case0602() throws Throwable {
-    	arap = excelData.getTestdata("KUBS_AR/AP_UAT_003_007_TC_05_06_02");
-    }
-
-    @And("^User get the test data for the cancelling credit note test case0603$")
-    public void user_get_the_test_data_for_the_cancelling_credit_note_test_case0603() throws Throwable {
-    	arap = excelData.getTestdata("KUBS_AR/AP_UAT_003_007_TC_05_06_03");
-    }
-
-    @And("^User get the test data for the cancelling credit note test case0604$")
-    public void user_get_the_test_data_for_the_cancelling_credit_note_test_case0604() throws Throwable {
-    	arap = excelData.getTestdata("KUBS_AR/AP_UAT_003_007_TC_05_06_04");
-    }
+   
     
     
     

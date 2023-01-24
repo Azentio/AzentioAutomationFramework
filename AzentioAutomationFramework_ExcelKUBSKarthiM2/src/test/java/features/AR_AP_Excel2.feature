@@ -2,7 +2,8 @@ Feature: AR/AP Module
 @KUBS_AR/AP_UAT_003_007_TC_05_01_01 @AR/AP
 Scenario: Verify cancelling Credit Note is not allowed if the same has been adjusted at payment settlement1
 And User get the test data for the cancelling credit note test case0101
-Given user navigate to the url and login as a maker for cancellation of contract is not allowed
+#Given user navigate to the url and login as a maker for cancellation of contract is not allowed
+And login with Maker ID
 And click on accounts Payable module
 And goto vendor contract module
 And click on Add Icon
@@ -145,7 +146,6 @@ And verify the record got approved from checker
 Then logout from checker
 
 
-
 @KUBS_AR/AP_UAT_003_007_TC_05_04_01 @AR/AP
 Scenario: Verify cancelling Credit Note is not allowed if the same has been adjusted at payment settlement4
 And User get the test data for the cancelling credit note test case0401
@@ -212,7 +212,7 @@ Then logout from maker
 @KUBS_AR/AP_UAT_003_007_TC_05_05_02 
 Scenario: Login as a Reviewer
 And User get the test data for the cancelling credit note test case0501
-And login with reviewer credentials1
+And login with reviewer credentials2
 Then click on notification button
 #And User get the test data for the cancelling credit note test case0501
 And select our record in notification records using reference ID in arap0402
@@ -258,7 +258,7 @@ Then logout from maker
 @KUBS_AR/AP_UAT_003_007_TC_05_06_02
 Scenario: Login as a Reviewer
 And User get the test data for the cancelling credit note test case0601
-And login with reviewer credentials1
+And login with reviewer credentials2
 Then click on notification button
 And select our record in notification records using reference ID in arap0402
 Then Approve the record from reviewer

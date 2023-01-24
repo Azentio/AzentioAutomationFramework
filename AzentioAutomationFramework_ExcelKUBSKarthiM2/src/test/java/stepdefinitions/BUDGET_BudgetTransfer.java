@@ -63,7 +63,7 @@ public class BUDGET_BudgetTransfer {
 //
 	// ConfigFileReader configFileReader = new ConfigFileReader();
 	JavascriptHelper javahelper = new JavascriptHelper();
-	BUDGET_BudgetTransferObj budgetTransferObj;
+	BUDGET_BudgetTransferObj budgetTransferObj = new BUDGET_BudgetTransferObj(driver);
 	BUDGET_BudgetTransferTestDataType budgetTransferTestDataType;
 	JsonDataReaderWriter jsonWriter = new JsonDataReaderWriter();
 	String user = "Maker";
@@ -510,8 +510,19 @@ public class BUDGET_BudgetTransfer {
 
 	@And("^Maker click on add button$")
 	public void maker_click_on_add_button() {
-		waithelper.waitForElement(driver, 3000, budgetTransferObj.budget_BudgetTransfer_AddButton());
-		budgetTransferObj.budget_BudgetTransfer_AddButton().click();
+		//waithelper.waitForElement(driver, 3000, budgetTransferObj.budget_BudgetTransfer_AddButton());
+		for(int i=0; i<20; i++) {
+			try {
+				budgetTransferObj.budget_BudgetTransfer_AddButton().click();
+				break;
+			} catch (Exception e) {
+				if(i==20) {
+					Assert.fail(e.getMessage());
+				}
+				
+			}
+		}
+		
 
 	}
 
@@ -583,8 +594,19 @@ public class BUDGET_BudgetTransfer {
 
 	@Then("^Maker  click on the notification icon$")
 	public void maker_click_on_the_notification_icon() {
-		waithelper.waitForElement(driver, 3000, budgetTransferObj.budget_BudgetTransfer_NotificationIcon());
-		budgetTransferObj.budget_BudgetTransfer_NotificationIcon().click();
+		//waithelper.waitForElement(driver, 3000, budgetTransferObj.budget_BudgetTransfer_NotificationIcon());
+		for(int i=0; i<20; i++) {
+			try {
+				budgetTransferObj.budget_BudgetTransfer_NotificationIcon().click();
+				break;
+			} catch (Exception e) {
+				if(i==20) {
+					Assert.fail(e.getMessage());
+				}
+				
+			}
+		}
+		
 
 	}
 

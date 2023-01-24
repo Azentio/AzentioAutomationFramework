@@ -34,10 +34,11 @@ public class Budget_BusgetTransfer_BP_BT_UAT_006_001 {
 	WebDriver driver = BaseClass.driver;
 	JsonConfig jsonReader = new JsonConfig();
 	ConfigFileReader configFileReader = new ConfigFileReader();
-	DropDownHelper dropDownHelper;
-	WaitHelper waithelper;
+	DropDownHelper dropDownHelper = new DropDownHelper(driver);
+	WaitHelper waithelper = new WaitHelper(driver) ;
 	JavascriptHelper javahelper = new JavascriptHelper();
-	BUDGET_BudgetTransferObj budgetTransferObj;
+	BUDGET_BudgetTransferObj budgetTransferObj = new BUDGET_BudgetTransferObj(driver);
+	
 	BUDGET_BudgetTransferTestDataType budgetTransferTestDataType;
 	KUBS_Login login;
 	
@@ -96,35 +97,40 @@ public class Budget_BusgetTransfer_BP_BT_UAT_006_001 {
 		//budgetTransferTestDataType = jsonReader.getBudgetTransferdata("Maker");
 		waithelper.waitForElement(driver, 3000, budgetTransferObj.budget_BudgetTransfer_BudgetCodeDropDown());
 		budgetTransferObj.budget_BudgetTransfer_BudgetCodeDropDown().click();
+		Thread.sleep(2000);
 		budgetTransferObj.budget_BudgetTransfer_BudgetCodeDropDown().sendKeys(budget.get("BudgetCode"));
 		budgetTransferObj.budget_BudgetTransfer_BudgetCodeDropDown().sendKeys(Keys.ENTER);
 		//budgetTransferTestDataType = jsonReader.getBudgetTransferdata("Maker");
 		waithelper.waitForElement(driver, 3000, budgetTransferObj.budget_BudgetTransfer_BudgetYearDropdown());
 		budgetTransferObj.budget_BudgetTransfer_BudgetYearDropdown().click();
+		Thread.sleep(2000);
 		budgetTransferObj.budget_BudgetTransfer_BudgetYearDropdown().sendKeys(budget.get("BudgetYear"));
 		budgetTransferObj.budget_BudgetTransfer_BudgetYearDropdown().sendKeys(Keys.ENTER);
 		//budgetTransferTestDataType = jsonReader.getBudgetTransferdata("Maker");
 		waithelper.waitForElement(driver, 2000, budgetTransferObj.budget_BudgetTransfer_Branch());
 		budgetTransferObj.budget_BudgetTransfer_Branch().click();
-
+		Thread.sleep(2000);
 		budgetTransferObj.budget_BudgetTransfer_Branch().sendKeys(budget.get("Branch"));
 		budgetTransferObj.budget_BudgetTransfer_Branch().sendKeys(Keys.DOWN, Keys.ENTER);
 
 		//budgetTransferTestDataType = jsonReader.getBudgetTransferdata("Maker");
 		waithelper.waitForElement(driver, 2000, budgetTransferObj.budget_BudgetTransfer_TransferToBudgetCode());
 		budgetTransferObj.budget_BudgetTransfer_TransferToBudgetCode().click();
+		Thread.sleep(2000);
 		budgetTransferObj.budget_BudgetTransfer_TransferToBudgetCode()
 				.sendKeys(budget.get("TransferToBudgetCode"));
 		budgetTransferObj.budget_BudgetTransfer_TransferToBudgetCode().sendKeys(Keys.DOWN, Keys.ENTER);
 		//budgetTransferTestDataType = jsonReader.getBudgetTransferdata("Maker");
 		waithelper.waitForElement(driver, 2000, budgetTransferObj.budget_BudgetTransfer_CurrencyChange());
 		budgetTransferObj.budget_BudgetTransfer_CurrencyChange().click();
+		Thread.sleep(2000);
 		budgetTransferObj.budget_BudgetTransfer_CurrencyChange().sendKeys(budget.get("Currency"));
 		budgetTransferObj.budget_BudgetTransfer_CurrencyChange().sendKeys(Keys.DOWN, Keys.ENTER);
 
 		//budgetTransferTestDataType = jsonReader.getBudgetTransferdata("Maker");
 		waithelper.waitForElement(driver, 3000, budgetTransferObj.budget_BudgetTransfer_ApportionedAmountA());
 		budgetTransferObj.budget_BudgetTransfer_ApportionedAmountA().click();
+		Thread.sleep(2000);
 		budgetTransferObj.budget_BudgetTransfer_ApportionedAmountA().sendKeys(budget.get("ApportionedAmountA"));
 		waithelper.waitForElement(driver, 3000, budgetTransferObj.budget_BudgetTransfer_fromNewAmountA());
 		budgetTransferObj.budget_BudgetTransfer_fromNewAmountA().click();
@@ -132,6 +138,7 @@ public class Budget_BusgetTransfer_BP_BT_UAT_006_001 {
 		//budgetTransferTestDataType = jsonReader.getBudgetTransferdata("Maker");
 		waithelper.waitForElement(driver, 3000, budgetTransferObj.budget_BudgetTransfer_ApportionedAmountB());
 		budgetTransferObj.budget_BudgetTransfer_ApportionedAmountB().click();
+		Thread.sleep(2000);
 		budgetTransferObj.budget_BudgetTransfer_ApportionedAmountB().sendKeys(budget.get("ApportionedAmountB"));
 		
 
@@ -143,10 +150,36 @@ public class Budget_BusgetTransfer_BP_BT_UAT_006_001 {
     @And("^save the form$")
     public void save_the_form() throws Throwable {
 
-		waithelper.waitForElement(driver, 3000, budgetTransferObj.budget_BudgetTransfer_SaveButton());
-		budgetTransferObj.budget_BudgetTransfer_SaveButton().click();
+		//waithelper.waitForElement(driver, 3000, budgetTransferObj.budget_BudgetTransfer_SaveButton());
+    	for(int i=0; i<20; i++) {
+    		try {
+    			budgetTransferObj.budget_BudgetTransfer_SaveButton().click();
+    			break;
+			} catch (Exception e) {
+				if(i==20) {
+					Assert.fail(e.getMessage());
+				}
+				
+			}
+    	}
+		
 
     }
+    @And("^login with reviewer credentials budget$")
+	public void login_with_reviewer_credentials_budget() throws Throwable {
+		ConfigFileReader configreader = new ConfigFileReader();
+		driver.get(configreader.getApplicationUrl());
+		
+		KUBS_Login kubsLogin = new KUBS_Login(driver);
+
+		String userType = "Reviewer";
+		/*
+		 * Then we have to login with reviewer and continue the approval process
+		 */
+		Thread.sleep(3000);
+		kubsLogin.logintoAzentioappReviewer(userType, budget.get("Reviewer ID"));
+
+	}
     @Then("^form should get save$")
     public void form_should_get_save() throws Throwable {
         
@@ -207,6 +240,29 @@ public class Budget_BusgetTransfer_BP_BT_UAT_006_001 {
 		budgetCreationObj.budgetCreationFirstRecord().click();
 
 	}
+    @Then("^choose first record in the notification record in budgetTransfer7$")
+	public void choose_first_record_in_the_notification_record_in_arap_budgettransfer7() throws Throwable {
+		/*
+		 * After click on notification we can see the record which we saved now and we
+		 * have to select that along with the records reference ID We have to store the
+		 * reference ID into the JSon file so that we can call the data in reviewer and
+		 * checker stage
+		 */
+		waitHelper.waitForElementToVisibleWithFluentWait(driver, budgetCreationObj.budgetCreationFirstReferenceId(), 60,
+				1);
+		String referenceID = budgetCreationObj.budgetCreationFirstReferenceId().getText();
+		/*
+		 * addReferanceData(referenceID) This method is a predefined method to store the
+		 * reference ID into the Json file
+		 */
+		//jsonReaderWriter.addReferanceData(referenceID);
+		excelData.updateTestData("KUBS_BP_UAT_006_007_01_D1","Reference ID",referenceID);
+		budget = excelData.getTestdata("KUBS_BP_UAT_006_007_01_D1");
+		
+		budgetCreationObj.budgetCreationFirstRecord().click();
+
+	}
+
 
     
     @Then("^enter remark in confirmation alert in budgetTransfer$")
@@ -252,7 +308,7 @@ public class Budget_BusgetTransfer_BP_BT_UAT_006_001 {
 		StringBuffer finalReviewerID = sb.deleteCharAt(trimmerReviewerID.length() - 1);
 		String revID = finalReviewerID.toString();
 		System.out.println("Reviewer ID is" + revID);
-		excelData.updateTestData("KUBS_BP_UAT_006_001_01_D11","Reviewer ID",revID);
+		excelData.updateTestData("KUBS_BP_UAT_006_001_01_D1","Reviewer ID",revID);
 		budget = excelData.getTestdata("KUBS_BP_UAT_006_001_01_D1");
 		
 		//jsonReaderWriter.addData(revID);
@@ -279,6 +335,31 @@ public class Budget_BusgetTransfer_BP_BT_UAT_006_001 {
 		System.out.println("Reviewer ID is" + revID);
 		excelData.updateTestData("KUBS_BP_UAT_006_004_01_D1","Reviewer ID",revID);
 		budget = excelData.getTestdata("KUBS_BP_UAT_006_004_01_D1");
+		
+		//jsonReaderWriter.addData(revID);
+		budgetCreationObj.budgetCreationAlertClose().click();
+
+	}
+    @And("^capture the reviewer ID in pop up which is open when we submit our record in maker stage in budgetTransfer7$")
+	public void capture_the_reviewer_id_in_pop_up_which_is_open_when_we_submit_our_record_in_maker_stage_in_budgettransfer7()
+			throws Throwable {
+		/*
+		 * After maker submit the record reviewer iD will get auto generated in toast
+		 * alert and we have to locate that alert and extract the ID from the alert(That
+		 * reviewer ID is extracted with one dot By the help of that string buffer class
+		 * 
+		 */
+
+		waitHelper.waitForElement(driver, 2000, budgetCreationObj.budgetCreation_ReviewerId());
+		String reviwerId = budgetCreationObj.budgetCreation_ReviewerId().getText();
+		System.out.println(reviwerId);
+		String trimmerReviewerID = reviwerId.substring(85);
+		StringBuffer sb = new StringBuffer(trimmerReviewerID);
+		StringBuffer finalReviewerID = sb.deleteCharAt(trimmerReviewerID.length() - 1);
+		String revID = finalReviewerID.toString();
+		System.out.println("Reviewer ID is" + revID);
+		excelData.updateTestData("KUBS_BP_UAT_006_007_01_D1","Reviewer ID",revID);
+		budget = excelData.getTestdata("KUBS_BP_UAT_006_007_01_D1");
 		
 		//jsonReaderWriter.addData(revID);
 		budgetCreationObj.budgetCreationAlertClose().click();
@@ -374,6 +455,7 @@ public class Budget_BusgetTransfer_BP_BT_UAT_006_001 {
 		 * 
 		 * try catch block is used for avoid stalelementReference Exception
 		 */
+		javascriptHelper.JavaScriptHelper(driver);
 		String before_xpath = "//span[contains(text(),'";
 		String after_xpath_claim = "')]/parent::div/parent::datatable-body-cell/preceding-sibling::datatable-body-cell[2]/div/ion-buttons/ion-button";
 		javascriptHelper.JSEClick(kubsCheckerObj.checkerActionIcon());
@@ -426,6 +508,21 @@ public class Budget_BusgetTransfer_BP_BT_UAT_006_001 {
 			}
 		}
 	}
+	@And("^login with reviewer credentials4$")
+	public void login_with_reviewer_credentials1() throws Throwable {
+		ConfigFileReader configreader = new ConfigFileReader();
+		driver.get(configreader.getApplicationUrl());
+		
+		KUBS_Login kubsLogin = new KUBS_Login(driver);
+
+		String userType = "Reviewer";
+		/*
+		 * Then we have to login with reviewer and continue the approval process
+		 */
+		Thread.sleep(3000);
+		kubsLogin.logintoAzentioappReviewer(userType, budget.get("Reviewer ID"));
+
+	}
 	
 	
 	@Then("^click on the submit button which is appeared in alert box in budgetTransfer$")
@@ -457,27 +554,32 @@ public class Budget_BusgetTransfer_BP_BT_UAT_006_001 {
 	@Then("^Maker fill the details and save in budgetTransfer$")
 	public void maker_fill_the_details_and_save_budgettransfer() throws InterruptedException {
 		// Budget code
+		javascripthelper.JavaScriptHelper(driver);
 		budgetTransferTestDataType = jsonReader.getBudgetTransferdata("Maker");
 		waithelper.waitForElement(driver, 3000, budgetTransferObj.budget_BudgetTransfer_BudgetCodeDropDown());
 		budgetTransferObj.budget_BudgetTransfer_BudgetCodeDropDown().click();
+		Thread.sleep(2000);
 		budgetTransferObj.budget_BudgetTransfer_BudgetCodeDropDown().sendKeys(budget.get("BudgetCode"));
 		budgetTransferObj.budget_BudgetTransfer_BudgetCodeDropDown().sendKeys(Keys.ENTER);
 
 		// Year
 		waithelper.waitForElement(driver, 3000, budgetTransferObj.budget_BudgetTransfer_BudgetYearDropdown());
 		budgetTransferObj.budget_BudgetTransfer_BudgetYearDropdown().click();
+		Thread.sleep(2000);
 		budgetTransferObj.budget_BudgetTransfer_BudgetYearDropdown().sendKeys(budget.get("BudgetYear"));
 		budgetTransferObj.budget_BudgetTransfer_BudgetYearDropdown().sendKeys(Keys.ENTER);
 
 		// Branch
 		waithelper.waitForElement(driver, 2000, budgetTransferObj.budget_BudgetTransfer_Branch());
 		budgetTransferObj.budget_BudgetTransfer_Branch().click();
+		Thread.sleep(2000);
 		budgetTransferObj.budget_BudgetTransfer_Branch().sendKeys(budget.get("Branch"));
 		budgetTransferObj.budget_BudgetTransfer_Branch().sendKeys(Keys.DOWN, Keys.ENTER);
 
 		// Transfer to Budget code
 		waithelper.waitForElement(driver, 2000, budgetTransferObj.budget_BudgetTransfer_TransferToBudgetCode());
 		budgetTransferObj.budget_BudgetTransfer_TransferToBudgetCode().click();
+		Thread.sleep(2000);
 		budgetTransferObj.budget_BudgetTransfer_TransferToBudgetCode()
 				.sendKeys(budget.get("TransferToBudgetCode"));
 		budgetTransferObj.budget_BudgetTransfer_TransferToBudgetCode().sendKeys(Keys.DOWN, Keys.ENTER);
@@ -485,12 +587,14 @@ public class Budget_BusgetTransfer_BP_BT_UAT_006_001 {
 		// Currency
 		waithelper.waitForElement(driver, 2000, budgetTransferObj.budget_BudgetTransfer_CurrencyChange());
 		budgetTransferObj.budget_BudgetTransfer_CurrencyChange().click();
+		Thread.sleep(2000);
 		budgetTransferObj.budget_BudgetTransfer_CurrencyChange().sendKeys(budget.get("Currency"));
 		budgetTransferObj.budget_BudgetTransfer_CurrencyChange().sendKeys(Keys.DOWN, Keys.ENTER);
 
 		// Apportioned Amount A
 		waithelper.waitForElement(driver, 3000, budgetTransferObj.budget_BudgetTransfer_ApportionedAmountA());
 		budgetTransferObj.budget_BudgetTransfer_ApportionedAmountA().click();
+		Thread.sleep(2000);
 		budgetTransferObj.budget_BudgetTransfer_ApportionedAmountA()
 				.sendKeys(budget.get("ApportionedAmountA"));
 
@@ -501,22 +605,49 @@ public class Budget_BusgetTransfer_BP_BT_UAT_006_001 {
 		// Apportioned Amount B
 		waithelper.waitForElement(driver, 3000, budgetTransferObj.budget_BudgetTransfer_ApportionedAmountB());
 		budgetTransferObj.budget_BudgetTransfer_ApportionedAmountB().click();
+		Thread.sleep(2000);
 		budgetTransferObj.budget_BudgetTransfer_ApportionedAmountB()
 				.sendKeys(budget.get("ApportionedAmountB"));
 
+		Thread.sleep(3000);
 		// New Amount B
 		waithelper.waitForElement(driver, 3000, budgetTransferObj.budget_BudgetTransfer_NewAmountB());
 		budgetTransferObj.budget_BudgetTransfer_NewAmountB().click();
+		
+		for(int i=0; i<20; i++) {
+			try {
+				budgetTransferObj.budget_BudgetTransfer_NewAmountB1().click();
+				budgetTransferObj.budget_BudgetTransfer_NewAmountB1().sendKeys(budget.get("ApportionedAmountB12"));
+				budgetTransferObj.budget_BudgetTransfer_NewAmountB2().click();
+				//budgetTransferObj.budget_BudgetTransfer_NewAmountB1().sendKeys(Keys.DOWN, Keys.ENTER);
+				break;
+			} catch (Exception e) {
+				if(i==20) {
+					Assert.fail(e.getMessage());
+				}
+			}
+		}
+		
 
 		// Save
-		waithelper.waitForElement(driver, 3000, budgetTransferObj.budget_BudgetTransfer_SaveButton());
+		//waithelper.waitForElement(driver, 3000, budgetTransferObj.budget_BudgetTransfer_SaveButton());
+		Thread.sleep(3000);
 		budgetTransferObj.budget_BudgetTransfer_SaveButton().click();
 		Thread.sleep(2000);
 		javascripthelper.JavaScriptHelper(driver);
-		String str = javascripthelper.executeScript(
-				"return document.querySelector(\"ion-toast\").shadowRoot.querySelector(\"div[class='toast-message']\").innerText")
-				.toString();
-		System.out.println("Message:" + str);
+//		String str = javascripthelper.executeScript(
+//				"return document.querySelector(\"ion-toast\").shadowRoot.querySelector(\"div[class='toast-message']\").innerText")
+//				.toString();
+		for(int i=0; i<20; i++) {
+			try {
+				String str = driver.findElement(By.xpath("//div[@role='alert']")).getText();
+				System.out.println("Message:" + str);
+				break; 
+			} catch (Exception e) {
+				
+			}
+		}
+		
 
 	}
 	
@@ -578,14 +709,34 @@ public class Budget_BusgetTransfer_BP_BT_UAT_006_001 {
 		Thread.sleep(2000);
 		waithelper.waitForElement(driver, 3000, budgetTransferObj.budget_BudgetTransfer_ApportionedAmountB());
 		budgetTransferObj.budget_BudgetTransfer_ApportionedAmountB().click();
+		budgetTransferObj.budget_BudgetTransfer_ApportionedAmountB().clear();
 		budgetTransferObj.budget_BudgetTransfer_ApportionedAmountB()
 				.sendKeys(budget.get("ApportionedAmountB1"));
 
 		// New Amount B
 		waithelper.waitForElement(driver, 3000, budgetTransferObj.budget_BudgetTransfer_NewAmountB());
 		budgetTransferObj.budget_BudgetTransfer_NewAmountB().click();
+		
+		for(int i=0; i<20; i++) {
+			try {
+				budgetTransferObj.budget_BudgetTransfer_NewAmountB1().click();
+				budgetTransferObj.budget_BudgetTransfer_NewAmountB1().clear();
+				budgetTransferObj.budget_BudgetTransfer_NewAmountB1().sendKeys(budget.get("ApportionedAmountB13"));
+				budgetTransferObj.budget_BudgetTransfer_NewAmountB2().click();
+				break;
+			} catch (Exception e) {
+				if(i==20) {
+					Assert.fail(e.getMessage());
+				}
+			}
+		}
+		
 
+
+		
 		// Save
+		
+		
 		waithelper.waitForElement(driver, 3000, budgetTransferObj.budget_BudgetTransfer_SaveButton());
 		budgetTransferObj.budget_BudgetTransfer_SaveButton().click();
 		Thread.sleep(2000);
@@ -599,6 +750,7 @@ public class Budget_BusgetTransfer_BP_BT_UAT_006_001 {
 	@Then("^fill the form and enter excessive budget amount to transfer in budgetTransfer$")
     public void fill_the_form_and_enter_excessive_budget_amount_to_transfer_in_budgettransfer() throws InterruptedException   {
     	dropDownHelper = new DropDownHelper(driver);
+    	
 		//budgetTransferTestDataType = jsonReader.getBudgetTransferdata("Maker");
 		waithelper.waitForElementToVisibleWithFluentWait(driver, budgetTransferObj.budget_BudgetTransfer_BudgetCodeDropDown(), 70, 500);
 		budgetTransferObj.budget_BudgetTransfer_BudgetCodeDropDown().click();
@@ -674,6 +826,71 @@ public class Budget_BusgetTransfer_BP_BT_UAT_006_001 {
 	    	}
 	    	}
 	    }
+	
+	@And("^User get the test data for budget code test case00600101$")
+    public void user_get_the_test_data_for_budget_code_test_case00600101() throws Throwable {
+		budget = excelData.getTestdata("KUBS_BP_UAT_006_001_01_D1");
+    }
+
+    @And("^User get the test data for budget code test case00600102$")
+    public void user_get_the_test_data_for_budget_code_test_case00600102() throws Throwable {
+    	budget = excelData.getTestdata("KUBS_BP_UAT_006_001_02_D1");
+    }
+
+    @And("^User get the test data for budget code test case00600103$")
+    public void user_get_the_test_data_for_budget_code_test_case00600103() throws Throwable {
+    	budget = excelData.getTestdata("KUBS_BP_UAT_006_001_03_D1");
+    }
+
+    @And("^User get the test data for budget code test case00600104$")
+    public void user_get_the_test_data_for_budget_code_test_case00600104() throws Throwable {
+    	budget = excelData.getTestdata("KUBS_BP_UAT_006_001_04_D1");
+    }
+    
+    
+    
+    @And("^User get the test data for budget code test case00600401$")
+    public void user_get_the_test_data_for_budget_code_test_case00600401() throws Throwable {
+    	budget = excelData.getTestdata("KUBS_BP_UAT_006_004_01_D1");
+    }
+
+    @And("^User get the test data for budget code test case00600402$")
+    public void user_get_the_test_data_for_budget_code_test_case00600402() throws Throwable {
+    	budget = excelData.getTestdata("KUBS_BP_UAT_006_004_02_D1");
+    }
+
+    @And("^User get the test data for budget code test case00600403$")
+    public void user_get_the_test_data_for_budget_code_test_case00600403() throws Throwable {
+    	budget = excelData.getTestdata("KUBS_BP_UAT_006_004_03_D1");
+    }
+
+    @And("^User get the test data for budget code test case00600404$")
+    public void user_get_the_test_data_for_budget_code_test_case00600404() throws Throwable {
+    	budget = excelData.getTestdata("KUBS_BP_UAT_006_004_04_D1");
+    }
+    
+    @And("^User get the test data for budget code test case00600701$")
+    public void user_get_the_test_data_for_budget_code_test_case00600701() throws Throwable {
+    	budget = excelData.getTestdata("KUBS_BP_UAT_006_007_01_D1");
+    }
+
+    @And("^User get the test data for budget code test case00600702$")
+    public void user_get_the_test_data_for_budget_code_test_case00600702() throws Throwable {
+    	budget = excelData.getTestdata("KUBS_BP_UAT_006_007_02_D1");
+    }
+
+    @And("^User get the test data for budget code test case00600703$")
+    public void user_get_the_test_data_for_budget_code_test_case00600703() throws Throwable {
+    	budget = excelData.getTestdata("KUBS_BP_UAT_006_007_03_D1");
+    }
+
+    @And("^User get the test data for budget code test case00600704$")
+    public void user_get_the_test_data_for_budget_code_test_case00600704() throws Throwable {
+    	budget = excelData.getTestdata("KUBS_BP_UAT_006_007_04_D1");
+    }
+
+
+
 
 
 

@@ -122,9 +122,33 @@ public class ACCOUNTSPAYABLE_GRNCreation extends BaseClass {
     	Thread.sleep(2000);
     	//grnObject.accountPayable_GrnSaveButton().click();
     	clickAndActions.doubleClick(grnObject.accountPayable_GrnSaveButton());
-    	grnObject.grnTempView().click();
-    	waitHelper.waitForElementVisible(grnObject.grnTempViewFirstRecord(), 1000,100);
-    	grnObject.grnTempViewFirstRecord().click();
+    	Thread.sleep(2000);
+    	for(int i=0; i<20; i++) {
+    		try {
+    			grnObject.grnTempView().click();
+    			break;
+			} catch (Exception e) {
+				if(i==20) {
+					Assert.fail(e.getMessage());
+				}
+				
+			}
+    	}
+    	//grnObject.grnTempView().click();
+    	//waitHelper.waitForElementVisible(grnObject.grnTempViewFirstRecord(), 1000,100);
+    	
+    	
+    	for(int i=0; i<20; i++) {
+    		try {
+    			grnObject.grnTempViewFirstRecord().click();
+    			break;
+			} catch (Exception e) {
+				if(i==20) {
+					Assert.fail(e.getMessage());
+				}
+				
+			}
+    	}
     	
     	
      
@@ -152,7 +176,23 @@ public class ACCOUNTSPAYABLE_GRNCreation extends BaseClass {
     			clickAndActions.doubleClick(grnObject.accountPayable_GrnSaveButton());
     	    	grnObject.grnTempView().click();
     	    	//waitHelper.waitForElementVisible(grnObject.grnTempViewFirstRecord(), 1000,100);
-    	    	grnObject.grnTempViewFirstRecord().click();
+    	    	
+    	    	break;
+			} catch (Exception e) {
+				if(i==20) {
+					Assert.fail(e.getMessage());
+				}
+				
+			}
+    	}
+    	
+    	
+    	for(int i=0; i<20; i++) {
+    		try {
+    			
+    			grnObject.grnTempViewFirstRecord().click();
+    	    	//waitHelper.waitForElementVisible(grnObject.grnTempViewFirstRecord(), 1000,100);
+    	    	
     	    	break;
 			} catch (Exception e) {
 				if(i==20) {
@@ -261,7 +301,15 @@ public class ACCOUNTSPAYABLE_GRNCreation extends BaseClass {
     	//Thread.sleep(1000);
     	//grnObject.ItemDetailsSaveButton().click();
     	//clickAndActions.doubleClick(grnObject.ItemDetailsSaveButton());
-    	clickAndActions.clickOnElement(grnObject.ItemDetailsSaveButton());
+    	for(int i=0; i<20; i++) {
+    		try {
+    			clickAndActions.clickOnElement(grnObject.ItemDetailsSaveButton());
+    			break;
+			} catch (Exception e) {
+			
+			}
+    	}
+    	
     	//Thread.sleep(2000);
     	
     	
@@ -1109,6 +1157,7 @@ public class ACCOUNTSPAYABLE_GRNCreation extends BaseClass {
     @And("^search for approved po in arap$")
     public void search_for_approved_po_in_arap() throws Throwable {
     	javascriptHelper.JavaScriptHelper(driver);
+    	Thread.sleep(2000);
     	poCreationObj.poCreationSearchIcon().click();
     	Thread.sleep(1000);
     	//waitHelper.waitForElementVisible(poCreationObj.poStatus(), 1000, 100);
@@ -1269,6 +1318,7 @@ public class ACCOUNTSPAYABLE_GRNCreation extends BaseClass {
     	int random = ran.nextInt(1000-500)+500;
     	waitHelper.waitForElementVisible(invoiceBookingObj.accountPayable_InvoiceBooking_InvoiceType(), 2000, 100);
 	     invoiceBookingObj.accountPayable_InvoiceBooking_InvoiceType().click();
+	     Thread.sleep(2000);
 	     invoiceBookingObj.accountPayable_InvoiceBooking_InvoiceType().sendKeys(Keys.DOWN);
 	     invoiceBookingObj.accountPayable_InvoiceBooking_InvoiceType().sendKeys(Keys.ENTER);
 	     
@@ -1278,13 +1328,16 @@ public class ACCOUNTSPAYABLE_GRNCreation extends BaseClass {
 	     invoiceBookingObj.accountPayable_InvoiceBooking_InvoiceSubType().sendKeys(Keys.ENTER);
 	     */
 	     invoiceBookingObj.billBookingPoBpName().click();
+	     Thread.sleep(2000);
 	     invoiceBookingObj.billBookingPoBpName().sendKeys(arap.get("BusinessPartnerName"));
 	     invoiceBookingObj.billBookingPoBpName().sendKeys(Keys.ENTER);
 	     
 	     invoiceBookingObj.invoiceBollSuplierNAme().click();
+	     Thread.sleep(2000);
 	     invoiceBookingObj.invoiceBollSuplierNAme().sendKeys(arap.get("SuplierReferenceNumber")+random);
 	     
 	     invoiceBookingObj.billBookingPoFlatDiscount().click();
+	     Thread.sleep(2000);
 	     invoiceBookingObj.billBookingPoFlatDiscount().sendKeys(arap.get("FlatDiscount"));
 	     /*
 	     invoiceBookingObj.billBookingExpenceDiscountType().click();
@@ -1295,6 +1348,7 @@ public class ACCOUNTSPAYABLE_GRNCreation extends BaseClass {
 	     
 	     */
 	     invoiceBookingObj.billBookingPoPaymentMode().click();
+	     Thread.sleep(2000);
 	     invoiceBookingObj.billBookingPoPaymentMode().sendKeys(arap.get("PaymentMode"));
 	     invoiceBookingObj.billBookingPoPaymentMode().sendKeys(Keys.ENTER);
 	     
@@ -1385,6 +1439,21 @@ public class ACCOUNTSPAYABLE_GRNCreation extends BaseClass {
     public void user_get_the_test_data_for_the_cancelling_credit_note_test_case0403() throws Throwable {
     	arap = excelData.getTestdata("KUBS_AR/AP_UAT_003_007_TC_05_04_03_D1");
     }
+    
+    @And("^User get the test data for the cancelling credit note test case0501$")
+    public void user_get_the_test_data_for_the_cancelling_credit_note_test_case0501() throws Throwable {
+    	arap = excelData.getTestdata("KUBS_AR/AP_UAT_003_007_TC_05_05_01_D1");
+    }
+
+    @And("^User get the test data for the cancelling credit note test case0502$")
+    public void user_get_the_test_data_for_the_cancelling_credit_note_test_case0502() throws Throwable {
+    	arap = excelData.getTestdata("KUBS_AR/AP_UAT_003_007_TC_05_05_02_D1");
+    }
+
+    @And("^User get the test data for the cancelling credit note test case0503$")
+    public void user_get_the_test_data_for_the_cancelling_credit_note_test_case0503() throws Throwable {
+    	arap = excelData.getTestdata("KUBS_AR/AP_UAT_003_007_TC_05_05_03_D1");
+    }
 
 
     
@@ -1400,6 +1469,26 @@ public class ACCOUNTSPAYABLE_GRNCreation extends BaseClass {
     @And("^User get the test data for the cancelling credit note test case0303$")
     public void user_get_the_test_data_for_the_cancelling_credit_note_test_case0303() throws Throwable {
     	arap = excelData.getTestdata("KUBS_AR/AP_UAT_003_007_TC_05_03_03_D1");
+    }
+    
+    @And("^User get the test data for the cancelling credit note test case0601$")
+    public void user_get_the_test_data_for_the_cancelling_credit_note_test_case0601() throws Throwable {
+    	arap = excelData.getTestdata("KUBS_AR/AP_UAT_003_007_TC_05_06_01_D1");
+    }
+
+    @And("^User get the test data for the cancelling credit note test case0602$")
+    public void user_get_the_test_data_for_the_cancelling_credit_note_test_case0602() throws Throwable {
+    	arap = excelData.getTestdata("KUBS_AR/AP_UAT_003_007_TC_05_06_02_D1");
+    }
+
+    @And("^User get the test data for the cancelling credit note test case0603$")
+    public void user_get_the_test_data_for_the_cancelling_credit_note_test_case0603() throws Throwable {
+    	arap = excelData.getTestdata("KUBS_AR/AP_UAT_003_007_TC_05_06_03_D1");
+    }
+
+    @And("^User get the test data for the cancelling credit note test case0604$")
+    public void user_get_the_test_data_for_the_cancelling_credit_note_test_case0604() throws Throwable {
+    	arap = excelData.getTestdata("KUBS_AR/AP_UAT_003_007_TC_05_06_04_D1");
     }
     
     

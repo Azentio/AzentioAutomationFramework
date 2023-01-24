@@ -125,6 +125,21 @@ public class BUDGET_BudgetTransferObj {
 		return budget_BudgetTransfer_NewAmountB;
 
 	}
+	@FindBy(xpath = "(//datatable-body-cell[4]//div//app-kub-currency//input)[5]")
+	private WebElement budget_BudgetTransfer_NewAmountB2;
+
+	public WebElement budget_BudgetTransfer_NewAmountB2() {
+		return budget_BudgetTransfer_NewAmountB2;
+
+	}
+	
+	@FindBy(xpath = "(//datatable-body-cell[3]//div//app-kub-currency//input[1])[5]")
+	private WebElement budget_BudgetTransfer_NewAmountB1;
+
+	public WebElement budget_BudgetTransfer_NewAmountB1() {
+		return budget_BudgetTransfer_NewAmountB1;
+
+	}
 
 	@FindBy(xpath = "//div[1]/ion-header[1]/ion-toolbar[1]/ion-buttons[2]/ion-button[1]")
 	private WebElement budget_BudgetTransfer_SaveButton;

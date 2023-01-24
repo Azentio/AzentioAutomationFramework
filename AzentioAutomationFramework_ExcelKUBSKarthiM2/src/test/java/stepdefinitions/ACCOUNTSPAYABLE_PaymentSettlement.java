@@ -368,13 +368,25 @@ paymentSettlementObj.accountsPayableDescription().sendKeys("Ok");
 	public void Save_the_form() throws Throwable {
 		Thread.sleep(1000);
 		// paymentSettlementObj.firstRecord().click();
-		waitHelper.waitForElementVisible(paymentSettlementObj.accountsPayableSaveButton(), 2000, 100);
-		paymentSettlementObj.accountsPayableSaveButton().click();
-		// clicksAndActionsHelper.doubleClick(paymentSettlementObj.accountsPayableSaveButton());
-		// paymentSettlementObj.accountsPayableSaveButton().click();
-		waitHelper.waitForElementVisible(paymentSettlementObj.accountsPayableAlertYes(), 2000, 100);
-		paymentSettlementObj.accountsPayableAlertYes().click();
-		Thread.sleep(1000);
+		for(int i=0; i<20; i++) {
+			try {
+				paymentSettlementObj.accountsPayableSaveButton().click();
+				paymentSettlementObj.accountsPayableAlertYes().click();
+				break;
+			} catch (Exception e) {
+				if(i==20) {
+					Assert.fail(e.getMessage());
+				}
+				
+			}
+		}
+//		waitHelper.waitForElementVisible(paymentSettlementObj.accountsPayableSaveButton(), 2000, 100);
+//		paymentSettlementObj.accountsPayableSaveButton().click();
+//		// clicksAndActionsHelper.doubleClick(paymentSettlementObj.accountsPayableSaveButton());
+//		// paymentSettlementObj.accountsPayableSaveButton().click();
+//		waitHelper.waitForElementVisible(paymentSettlementObj.accountsPayableAlertYes(), 2000, 100);
+//		paymentSettlementObj.accountsPayableAlertYes().click();
+//		Thread.sleep(1000);
 	}
 
 	@And("^find the invoice reference number for cancelled advance is not availabe at the billing queue$")
