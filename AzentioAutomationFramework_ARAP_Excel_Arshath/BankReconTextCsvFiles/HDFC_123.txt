@@ -1,0 +1,6 @@
+HDFC Bank
+"Account No.: 1234534555, CHEMBUR CENTRAL AVENUE"
+"Closing Balance: INR 21,115.2, As On Date: 01-Nov-2022"
+As On Date: 01-Nov-2022
+Date        Chq./Ref.No.            Deposit Amt.             Withdrawal Amt.         Narration            Value Dt                Closing Balance					
+01/11/2022  ARAR0001                   50000                                             OK                   01/11/2022             37159.08

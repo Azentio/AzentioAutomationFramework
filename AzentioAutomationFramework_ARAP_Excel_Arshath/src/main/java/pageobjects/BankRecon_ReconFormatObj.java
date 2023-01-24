@@ -13,15 +13,17 @@ public class BankRecon_ReconFormatObj {
 		PageFactory.initElements(driver, this);
 
 	}
+
 	@FindBy(xpath = "//ion-segment/ion-segment-button[1]")
 	private WebElement bankRecon_ReconFormat_DirectionLeft;
+
 	public WebElement bankRecon_ReconFormat_DirectionLeft() {
 		return bankRecon_ReconFormat_DirectionLeft;
 	}
-	
-	
+
 	@FindBy(xpath = "//ion-label[text()=' Bank recon ']")
 	private WebElement bankRecon_ReconFormatField;
+
 	public WebElement bankRecon_ReconFormatField() {
 		return bankRecon_ReconFormatField;
 	}
@@ -36,6 +38,7 @@ public class BankRecon_ReconFormatObj {
 
 	@FindBy(xpath = "//datatable-row-wrapper[1]/datatable-body-row[1]/div[2]/datatable-body-cell[1]/div[1]/ion-buttons[1]/ion-button[2]")
 	private WebElement bankRecon_ReconFormat_FirstRecord;
+
 	public WebElement bankRecon_ReconFormat_FirstRecord() {
 		return bankRecon_ReconFormat_FirstRecord;
 
@@ -43,17 +46,19 @@ public class BankRecon_ReconFormatObj {
 
 	@FindBy(xpath = "//ion-row[1]/ion-col[8]/app-kub-lov[1]/span[1]/ng-select[1]/div[1]/div[1]/div[3]/input[1]")
 	private WebElement bankRecon_ReconFormat_FormatStatus;
+
 	public WebElement bankRecon_ReconFormat_FormatStatus() {
 		return bankRecon_ReconFormat_FormatStatus;
 
 	}
-	@FindBy(xpath="//li[8]/a/i")
+
+	@FindBy(xpath = "//li[8]/a/i")
 	private WebElement bankRecon_ReconFormat_Next;
-	public WebElement bankRecon_ReconFormat_Next()
-	{
+
+	public WebElement bankRecon_ReconFormat_Next() {
 		return bankRecon_ReconFormat_Next;
 	}
-	
+
 	@FindBy(xpath = "//ion-row[1]/ion-col[2]/app-kub-lov[1]/span[1]/ng-select[1]/div[1]/div[1]/div[2]/input[1]")
 	private WebElement bankRecon_ReconFormat_BankName;
 
@@ -67,7 +72,14 @@ public class BankRecon_ReconFormatObj {
 	public WebElement bankRecon_ReconFormat_BankName1() {
 		return bankRecon_ReconFormat_BankName1;
 	}
-	
+
+	@FindBy(xpath = "//input[@placeholder='Search eventCode']")
+	private WebElement envent_Code;
+
+	public WebElement eventCode() {
+		return envent_Code;
+	}
+
 	// ApplicableAccountType
 	@FindBy(xpath = "//fieldset[1]/ion-row[1]/ion-col[3]/app-kub-lov[1]/span[1]/ng-select[1]/div[1]/div[1]/div[2]/input[1]")
 	private WebElement bankRecon_ReconFormat_ApplicableAccountType;
@@ -83,7 +95,7 @@ public class BankRecon_ReconFormatObj {
 	public WebElement bankRecon_ReconFormat_UploadFileExtension() {
 		return bankRecon_ReconFormat_UploadFileExtension;
 	}
-	
+
 	// Seprator
 	@FindBy(xpath = "//ion-col[5]/app-kub-lov[1]/span[1]/ng-select[1]/div[1]/div[1]/div[2]/input[1]")
 	private WebElement bankRecon_ReconFormat_Seprator;
@@ -100,13 +112,14 @@ public class BankRecon_ReconFormatObj {
 		return bankRecon_ReconFormat_AllowUnadjusted;
 	}
 
-	// EffectiveDate 
+	// EffectiveDate
 	@FindBy(xpath = "(//span[@class='input-calendar'])[1]")
 	private WebElement bankRecon_ReconFormat_EffectiveDate;
 
 	public WebElement bankRecon_ReconFormat_EffectiveDate() {
 		return bankRecon_ReconFormat_EffectiveDate;
 	}
+
 	@FindBy(xpath = "//owl-date-time-container[1]/div[2]/owl-date-time-calendar[1]/div[1]/button[2]/span[1]")
 	private WebElement ARAP_NextMonth;
 
@@ -114,6 +127,7 @@ public class BankRecon_ReconFormatObj {
 
 		return ARAP_NextMonth;
 	}
+
 	// EffectiveDateYearDrag
 	@FindBy(xpath = "//button[contains(text(),'2032')]")
 	private WebElement bankRecon_ReconFormat_YearDrag;
@@ -129,8 +143,9 @@ public class BankRecon_ReconFormatObj {
 	public WebElement bankRecon_ReconFormat_YearDrop() {
 		return bankRecon_ReconFormat_YearDrop;
 	}
-	
-	// WebElement posave = waithelper.waitForElement(driver, 2000, accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_PoItemSave());
+
+	// WebElement posave = waithelper.waitForElement(driver, 2000,
+	// accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_PoItemSave());
 	// clicksAndActionHelper.clickOnElement(posave);
 
 	// EffectiveDateDoneButton
@@ -164,8 +179,8 @@ public class BankRecon_ReconFormatObj {
 	public WebElement bankRecon_ReconFormat_FileNamePrefix() {
 		return bankRecon_ReconFormat_FileNamePrefix;
 	}
-	
-	//PlaceHolder 
+
+	// PlaceHolder
 	@FindBy(xpath = "//ion-content[1]/ion-infinite-scroll[1]/form[1]/ion-grid[2]/fieldset[1]/legend[1]/ion-button[1]")
 	private WebElement bankRecon_ReconFormat_PlaceHolder;
 
@@ -189,8 +204,7 @@ public class BankRecon_ReconFormatObj {
 		return bankRecon_ReconFormat_PlaceHolderInFile_AccountNo_RadioButton;
 	}
 
-	
-	//Row 
+	// Row
 	@FindBy(xpath = "//datatable-body-row[1]/div[2]/datatable-body-cell[3]/div[1]/input[1]")
 	private WebElement bankRecon_ReconFormat_Row_TextBox;
 
@@ -198,7 +212,7 @@ public class BankRecon_ReconFormatObj {
 		return bankRecon_ReconFormat_Row_TextBox;
 	}
 
-	//Column
+	// Column
 	@FindBy(xpath = "//datatable-body-row[1]/div[2]/datatable-body-cell[4]/div[1]/input[1]")
 	private WebElement bankRecon_ReconFormat_Column_TextBox;
 
@@ -243,201 +257,202 @@ public class BankRecon_ReconFormatObj {
 	private WebElement bankRecon_ReconFormat_PlaceHolderInFile_AsOnDate_RadioButton;
 
 	public WebElement bankRecon_ReconFormat_PlaceHolderInFile_AsOnDate_RadioButton() {
-	return bankRecon_ReconFormat_PlaceHolderInFile_AsOnDate_RadioButton;
+		return bankRecon_ReconFormat_PlaceHolderInFile_AsOnDate_RadioButton;
 	}
-	//AsOnDateRow 
-		@FindBy(xpath = "//datatable-scroller[1]/datatable-row-wrapper[2]/datatable-body-row[1]/div[2]/datatable-body-cell[3]/div[1]/input[1]")
-		private WebElement bankRecon_ReconFormat_AsOnDateRow_TextBox;
 
-		public WebElement bankRecon_ReconFormat_AsOnDateRow_TextBox() {
-			return bankRecon_ReconFormat_AsOnDateRow_TextBox;
-		}
+	// AsOnDateRow
+	@FindBy(xpath = "//datatable-scroller[1]/datatable-row-wrapper[2]/datatable-body-row[1]/div[2]/datatable-body-cell[3]/div[1]/input[1]")
+	private WebElement bankRecon_ReconFormat_AsOnDateRow_TextBox;
 
-		//AsOnDateColumn
-		@FindBy(xpath = "//datatable-scroller[1]/datatable-row-wrapper[2]/datatable-body-row[1]/div[2]/datatable-body-cell[4]/div[1]/input[1]")
-		private WebElement bankRecon_ReconFormat_AsOnDateColumn_TextBox;
+	public WebElement bankRecon_ReconFormat_AsOnDateRow_TextBox() {
+		return bankRecon_ReconFormat_AsOnDateRow_TextBox;
+	}
 
-		public WebElement bankRecon_ReconFormat_AsOnDateColumn_TextBox() {
-			return bankRecon_ReconFormat_AsOnDateColumn_TextBox;
-		}
+	// AsOnDateColumn
+	@FindBy(xpath = "//datatable-scroller[1]/datatable-row-wrapper[2]/datatable-body-row[1]/div[2]/datatable-body-cell[4]/div[1]/input[1]")
+	private WebElement bankRecon_ReconFormat_AsOnDateColumn_TextBox;
 
-		// AsOnDateLength_TextBox
-		@FindBy(xpath = "//datatable-scroller[1]/datatable-row-wrapper[2]/datatable-body-row[1]/div[2]/datatable-body-cell[5]/div[1]/input[1]")
-		private WebElement bankRecon_ReconFormat_AsOnDateLength_TextBox;
+	public WebElement bankRecon_ReconFormat_AsOnDateColumn_TextBox() {
+		return bankRecon_ReconFormat_AsOnDateColumn_TextBox;
+	}
 
-		public WebElement bankRecon_ReconFormat_AsOnDateLength_TextBox() {
-			return bankRecon_ReconFormat_AsOnDateLength_TextBox;
-		}
+	// AsOnDateLength_TextBox
+	@FindBy(xpath = "//datatable-scroller[1]/datatable-row-wrapper[2]/datatable-body-row[1]/div[2]/datatable-body-cell[5]/div[1]/input[1]")
+	private WebElement bankRecon_ReconFormat_AsOnDateLength_TextBox;
 
-		// AsOnDateStartingPosition_TextBox
-		@FindBy(xpath = "//datatable-scroller[1]/datatable-row-wrapper[2]/datatable-body-row[1]/div[2]/datatable-body-cell[6]/div[1]/input[1]")
-		private WebElement bankRecon_ReconFormat_AsOnDateStartingPosition_TextBox;
+	public WebElement bankRecon_ReconFormat_AsOnDateLength_TextBox() {
+		return bankRecon_ReconFormat_AsOnDateLength_TextBox;
+	}
 
-		public WebElement bankRecon_ReconFormat_AsOnDateStartingPosition_TextBox() {
-			return bankRecon_ReconFormat_AsOnDateStartingPosition_TextBox;
-		}
+	// AsOnDateStartingPosition_TextBox
+	@FindBy(xpath = "//datatable-scroller[1]/datatable-row-wrapper[2]/datatable-body-row[1]/div[2]/datatable-body-cell[6]/div[1]/input[1]")
+	private WebElement bankRecon_ReconFormat_AsOnDateStartingPosition_TextBox;
 
-		// AsOnDateAction_AddButton
-		@FindBy(xpath = "//datatable-row-wrapper[2]/datatable-body-row[1]/div[2]/datatable-body-cell[7]/div[1]/ion-button[1]")
-		private WebElement bankRecon_AsOnDateReconFormat_Action_AddButton;
+	public WebElement bankRecon_ReconFormat_AsOnDateStartingPosition_TextBox() {
+		return bankRecon_ReconFormat_AsOnDateStartingPosition_TextBox;
+	}
 
-		public WebElement bankRecon_AsOnDateReconFormat_Action_AddButton() {
-			return bankRecon_AsOnDateReconFormat_Action_AddButton;
-		}
-		
-		
-		// PlaceHolderInFile Third
-		@FindBy(xpath = "//datatable-scroller[1]/datatable-row-wrapper[3]/datatable-body-row[1]/div[2]/datatable-body-cell[2]/div[1]/app-kub-lov[1]/ion-select[1]")
-		private WebElement bankRecon_ReconFormat_PlaceHolderInFileThird;
+	// AsOnDateAction_AddButton
+	@FindBy(xpath = "//datatable-row-wrapper[2]/datatable-body-row[1]/div[2]/datatable-body-cell[7]/div[1]/ion-button[1]")
+	private WebElement bankRecon_AsOnDateReconFormat_Action_AddButton;
 
-		public WebElement bankRecon_ReconFormat_PlaceHolderInFileThird() {
-			return bankRecon_ReconFormat_PlaceHolderInFileThird;
-			
-		}
-		// PlaceHolderInFile_ClosingBalance_RadioButton
-		@FindBy(xpath = "//ion-select-popover[1]/ion-list[1]/ion-radio-group[1]/ion-item[3]/ion-radio[1]")
-		private WebElement bankRecon_ReconFormat_PlaceHolderInFile_ClosingBalance_RadioButton;
+	public WebElement bankRecon_AsOnDateReconFormat_Action_AddButton() {
+		return bankRecon_AsOnDateReconFormat_Action_AddButton;
+	}
 
-		public WebElement bankRecon_ReconFormat_PlaceHolderInFile_ClosingBalance_RadioButton() {
-			return bankRecon_ReconFormat_PlaceHolderInFile_ClosingBalance_RadioButton;
-		}
+	// PlaceHolderInFile Third
+	@FindBy(xpath = "//datatable-scroller[1]/datatable-row-wrapper[3]/datatable-body-row[1]/div[2]/datatable-body-cell[2]/div[1]/app-kub-lov[1]/ion-select[1]")
+	private WebElement bankRecon_ReconFormat_PlaceHolderInFileThird;
 
-		// ClosingBalanceRow
-		@FindBy(xpath = "//datatable-row-wrapper[3]/datatable-body-row[1]/div[2]/datatable-body-cell[3]/div[1]/input[1]")
-		private WebElement bankRecon_ReconFormat_ClosingBalanceRow_TextBox;
+	public WebElement bankRecon_ReconFormat_PlaceHolderInFileThird() {
+		return bankRecon_ReconFormat_PlaceHolderInFileThird;
 
-		public WebElement bankRecon_ReconFormatAsOnDate_ClosingBalanceRow_TextBox() {
-			return bankRecon_ReconFormat_ClosingBalanceRow_TextBox;
-		}
+	}
 
-		// ClosingBalanceColumn
-		@FindBy(xpath = "//datatable-row-wrapper[3]/datatable-body-row[1]/div[2]/datatable-body-cell[4]/div[1]/input[1]")
-		private WebElement bankRecon_ReconFormat_ClosingBalanceColumn_TextBox;
+	// PlaceHolderInFile_ClosingBalance_RadioButton
+	@FindBy(xpath = "//ion-select-popover[1]/ion-list[1]/ion-radio-group[1]/ion-item[3]/ion-radio[1]")
+	private WebElement bankRecon_ReconFormat_PlaceHolderInFile_ClosingBalance_RadioButton;
 
-		public WebElement bankRecon_ReconFormat_ClosingBalanceColumn_TextBox() {
-			return bankRecon_ReconFormat_ClosingBalanceColumn_TextBox;
-		}
+	public WebElement bankRecon_ReconFormat_PlaceHolderInFile_ClosingBalance_RadioButton() {
+		return bankRecon_ReconFormat_PlaceHolderInFile_ClosingBalance_RadioButton;
+	}
 
-		// ClosingBalanceLength_TextBox
-		@FindBy(xpath = "//datatable-row-wrapper[3]/datatable-body-row[1]/div[2]/datatable-body-cell[5]/div[1]/input[1]")
-		private WebElement bankRecon_ReconFormat_ClosingBalanceLength_TextBox;
+	// ClosingBalanceRow
+	@FindBy(xpath = "//datatable-row-wrapper[3]/datatable-body-row[1]/div[2]/datatable-body-cell[3]/div[1]/input[1]")
+	private WebElement bankRecon_ReconFormat_ClosingBalanceRow_TextBox;
 
-		public WebElement bankRecon_ReconFormat_ClosingBalanceLength_TextBox() {
-			return bankRecon_ReconFormat_ClosingBalanceLength_TextBox;
-		}
+	public WebElement bankRecon_ReconFormatAsOnDate_ClosingBalanceRow_TextBox() {
+		return bankRecon_ReconFormat_ClosingBalanceRow_TextBox;
+	}
 
-		// ClosingBalanceStartingPosition_TextBox
-		@FindBy(xpath = "//datatable-row-wrapper[3]/datatable-body-row[1]/div[2]/datatable-body-cell[6]/div[1]/input[1]")
-		private WebElement bankRecon_ReconFormat_ClosingBalanceStartingPosition_TextBox;
+	// ClosingBalanceColumn
+	@FindBy(xpath = "//datatable-row-wrapper[3]/datatable-body-row[1]/div[2]/datatable-body-cell[4]/div[1]/input[1]")
+	private WebElement bankRecon_ReconFormat_ClosingBalanceColumn_TextBox;
 
-		public WebElement bankRecon_ReconFormat_ClosingBalanceStartingPosition_TextBox() {
-			return bankRecon_ReconFormat_ClosingBalanceStartingPosition_TextBox;
-		}
-				
+	public WebElement bankRecon_ReconFormat_ClosingBalanceColumn_TextBox() {
+		return bankRecon_ReconFormat_ClosingBalanceColumn_TextBox;
+	}
 
-		
-		//File Name
-		@FindBy(xpath = "//ion-row[1]/ion-col[2]/app-kub-lov[1]/span[1]/ng-select[1]/div[1]/div[1]/div[2]/input[1]")
-		private WebElement bankRecon_ReconFormat_FileName;
+	// ClosingBalanceLength_TextBox
+	@FindBy(xpath = "//datatable-row-wrapper[3]/datatable-body-row[1]/div[2]/datatable-body-cell[5]/div[1]/input[1]")
+	private WebElement bankRecon_ReconFormat_ClosingBalanceLength_TextBox;
 
-		public WebElement bankRecon_ReconFormat_FileName() {
-			return bankRecon_ReconFormat_FileName;
-		}
-			
+	public WebElement bankRecon_ReconFormat_ClosingBalanceLength_TextBox() {
+		return bankRecon_ReconFormat_ClosingBalanceLength_TextBox;
+	}
 
-		//SystemDataPoint
-		@FindBy(xpath = "//ion-row[1]/ion-col[3]/app-kub-lov[1]/span[1]/ng-select[1]/div[1]/div[1]/div[2]/input[1]")
-		private WebElement bankRecon_ReconFormat_SystemDataPoint;
+	// ClosingBalanceStartingPosition_TextBox
+	@FindBy(xpath = "//datatable-row-wrapper[3]/datatable-body-row[1]/div[2]/datatable-body-cell[6]/div[1]/input[1]")
+	private WebElement bankRecon_ReconFormat_ClosingBalanceStartingPosition_TextBox;
 
-		public WebElement bankRecon_ReconFormat_SystemDataPoint() {
-			return bankRecon_ReconFormat_SystemDataPoint;
-		}
+	public WebElement bankRecon_ReconFormat_ClosingBalanceStartingPosition_TextBox() {
+		return bankRecon_ReconFormat_ClosingBalanceStartingPosition_TextBox;
+	}
 
-		// DataType
-		@FindBy(xpath = "//ion-row[1]/ion-col[4]/app-kub-lov[1]/span[1]/ng-select[1]/div[1]/div[1]/div[2]/input[1]")
-		private WebElement bankRecon_ReconFormat_DataType;
+	// File Name
+	@FindBy(xpath = "//ion-row[1]/ion-col[2]/app-kub-lov[1]/span[1]/ng-select[1]/div[1]/div[1]/div[2]/input[1]")
+	private WebElement bankRecon_ReconFormat_FileName;
 
-		public WebElement bankRecon_ReconFormat_DataType() {
-			return bankRecon_ReconFormat_DataType;
-		}
+	public WebElement bankRecon_ReconFormat_FileName() {
+		return bankRecon_ReconFormat_FileName;
+	}
 
-		
-		// DateFormate
-		@FindBy(xpath = "//ion-row[1]/ion-col[5]/app-kub-lov[1]/span[1]/ng-select[1]/div[1]/div[1]/div[2]/input[1]")
-		private WebElement bankRecon_ReconFormat_DateFormate;
+	// SystemDataPoint
+	@FindBy(xpath = "//ion-row[1]/ion-col[3]/app-kub-lov[1]/span[1]/ng-select[1]/div[1]/div[1]/div[2]/input[1]")
+	private WebElement bankRecon_ReconFormat_SystemDataPoint;
 
-		public WebElement bankRecon_ReconFormat_DateFormate() {
-			return bankRecon_ReconFormat_DateFormate;
-		}
-		//FixedLength
-		@FindBy(xpath = "//input[@class='native-input sc-ion-input-md'][@name='fixedLength']")
-		private WebElement bankRecon_ReconFormat_FixedLength;
+	public WebElement bankRecon_ReconFormat_SystemDataPoint() {
+		return bankRecon_ReconFormat_SystemDataPoint;
+	}
 
-		public WebElement bankRecon_ReconFormat_FixedLength() {
-			return bankRecon_ReconFormat_FixedLength;
-		}
-			
-		// BlankSpacePadding
+	// DataType
+	@FindBy(xpath = "//ion-row[1]/ion-col[4]/app-kub-lov[1]/span[1]/ng-select[1]/div[1]/div[1]/div[2]/input[1]")
+	private WebElement bankRecon_ReconFormat_DataType;
 
-		@FindBy(xpath = "//ion-row[1]/ion-col[7]/app-kub-lov[1]/span[1]/ng-select[1]/div[1]/div[1]/div[2]/input[1]")
-		private WebElement bankRecon_ReconFormat_BlankSpacePadding;
+	public WebElement bankRecon_ReconFormat_DataType() {
+		return bankRecon_ReconFormat_DataType;
+	}
 
-		public WebElement bankRecon_ReconFormat_BlankSpacePadding() {
-			return bankRecon_ReconFormat_BlankSpacePadding;
-		}
-		
-		// BlankSpacePadding
+	// DateFormate
+	@FindBy(xpath = "//ion-row[1]/ion-col[5]/app-kub-lov[1]/span[1]/ng-select[1]/div[1]/div[1]/div[2]/input[1]")
+	private WebElement bankRecon_ReconFormat_DateFormate;
 
-		@FindBy(xpath = "//ion-row[1]/ion-col[6]/app-kub-lov[1]/span[1]/ng-select[1]/div[1]/div[1]/div[2]/input[1]")
-		private WebElement bankRecon_ReconFormat_BlankSpacePaddingNum;
+	public WebElement bankRecon_ReconFormat_DateFormate() {
+		return bankRecon_ReconFormat_DateFormate;
+	}
 
-		public WebElement bankRecon_ReconFormat_BlankSpacePaddingNum() {
-			return bankRecon_ReconFormat_BlankSpacePaddingNum;
-		}
+	// FixedLength
+	@FindBy(xpath = "//input[@class='native-input sc-ion-input-md'][@name='fixedLength']")
+	private WebElement bankRecon_ReconFormat_FixedLength;
 
-		//Position
-		
-		@FindBy(xpath = "//input[@name='columnPosition']")
-		private WebElement bankRecon_ReconFormat_Position;
+	public WebElement bankRecon_ReconFormat_FixedLength() {
+		return bankRecon_ReconFormat_FixedLength;
+	}
 
-		public WebElement bankRecon_ReconFormat_Position() {
-			return bankRecon_ReconFormat_Position;
-		}
-		//MatchCondition
-		
-		@FindBy(xpath = "//ion-row[1]/ion-col[11]/app-kub-lov[1]/span[1]/ng-select[1]/div[1]/div[1]/div[2]/input[1]")
-		private WebElement bankRecon_ReconFormat_MatchCondition;
+	// BlankSpacePadding
 
-		public WebElement bankRecon_ReconFormat_MatchCondition() {
-			return bankRecon_ReconFormat_MatchCondition;
-		}
-		@FindBy(xpath = "//ion-row[1]/ion-col[10]/app-kub-lov[1]/span[1]/ng-select[1]/div[1]/div[1]/div[2]/input[1]")
-		private WebElement bankRecon_ReconFormat_MatchConditionNum;
+	@FindBy(xpath = "//ion-row[1]/ion-col[7]/app-kub-lov[1]/span[1]/ng-select[1]/div[1]/div[1]/div[2]/input[1]")
+	private WebElement bankRecon_ReconFormat_BlankSpacePadding;
 
-		public WebElement bankRecon_ReconFormat_MatchConditionNum() {
-			return bankRecon_ReconFormat_MatchConditionNum;
-		}
-		//Transposition Condition
-		@FindBy(xpath = "//ng-dropdown-panel[@id='ac122f62ab8f']")
-		private WebElement bankRecon_ReconFormat_TranspositionCondition;
+	public WebElement bankRecon_ReconFormat_BlankSpacePadding() {
+		return bankRecon_ReconFormat_BlankSpacePadding;
+	}
 
-		public WebElement bankRecon_ReconFormat_TranspositionCondition() {
-			return bankRecon_ReconFormat_TranspositionCondition;
-		}
-		//BackButton
-		@FindBy(xpath = "//ion-header/ion-toolbar[1]/ion-buttons[1]/ion-back-button[1]")
-		private WebElement bankRecon_ReconFormat_BackButton;
+	// BlankSpacePadding
 
-		public WebElement bankRecon_ReconFormat_BackButton() {
-			return bankRecon_ReconFormat_BackButton;
-		}
-		
-		//soundex
-		@FindBy(xpath = "//ion-row[1]/ion-col[9]/app-kub-lov[1]/span[1]/ng-select[1]/div[1]/div[1]/div[2]/input[1]")
-		private WebElement bankRecon_ReconFormat_Soundex;
+	@FindBy(xpath = "//ion-row[1]/ion-col[6]/app-kub-lov[1]/span[1]/ng-select[1]/div[1]/div[1]/div[2]/input[1]")
+	private WebElement bankRecon_ReconFormat_BlankSpacePaddingNum;
 
-		public WebElement bankRecon_ReconFormat_Soundex() {
-			return bankRecon_ReconFormat_Soundex;
-		}
-		
+	public WebElement bankRecon_ReconFormat_BlankSpacePaddingNum() {
+		return bankRecon_ReconFormat_BlankSpacePaddingNum;
+	}
+
+	// Position
+
+	@FindBy(xpath = "//input[@name='columnPosition']")
+	private WebElement bankRecon_ReconFormat_Position;
+
+	public WebElement bankRecon_ReconFormat_Position() {
+		return bankRecon_ReconFormat_Position;
+	}
+	// MatchCondition
+
+	@FindBy(xpath = "//ion-row[1]/ion-col[11]/app-kub-lov[1]/span[1]/ng-select[1]/div[1]/div[1]/div[2]/input[1]")
+	private WebElement bankRecon_ReconFormat_MatchCondition;
+
+	public WebElement bankRecon_ReconFormat_MatchCondition() {
+		return bankRecon_ReconFormat_MatchCondition;
+	}
+
+	@FindBy(xpath = "//ion-row[1]/ion-col[10]/app-kub-lov[1]/span[1]/ng-select[1]/div[1]/div[1]/div[2]/input[1]")
+	private WebElement bankRecon_ReconFormat_MatchConditionNum;
+
+	public WebElement bankRecon_ReconFormat_MatchConditionNum() {
+		return bankRecon_ReconFormat_MatchConditionNum;
+	}
+
+	// Transposition Condition
+	@FindBy(xpath = "//ng-dropdown-panel[@id='ac122f62ab8f']")
+	private WebElement bankRecon_ReconFormat_TranspositionCondition;
+
+	public WebElement bankRecon_ReconFormat_TranspositionCondition() {
+		return bankRecon_ReconFormat_TranspositionCondition;
+	}
+
+	// BackButton
+	@FindBy(xpath = "//ion-header/ion-toolbar[1]/ion-buttons[1]/ion-back-button[1]")
+	private WebElement bankRecon_ReconFormat_BackButton;
+
+	public WebElement bankRecon_ReconFormat_BackButton() {
+		return bankRecon_ReconFormat_BackButton;
+	}
+
+	// soundex
+	@FindBy(xpath = "//ion-row[1]/ion-col[9]/app-kub-lov[1]/span[1]/ng-select[1]/div[1]/div[1]/div[2]/input[1]")
+	private WebElement bankRecon_ReconFormat_Soundex;
+
+	public WebElement bankRecon_ReconFormat_Soundex() {
+		return bankRecon_ReconFormat_Soundex;
+	}
+
 }

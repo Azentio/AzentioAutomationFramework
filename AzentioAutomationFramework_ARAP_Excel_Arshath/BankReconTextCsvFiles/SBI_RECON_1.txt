@@ -1,0 +1,6 @@
+SBI Bank
+"Account No.: 4983902943, CHEMBUR CENTRAL AVENUE"
+"Closing Balance: INR 21,115.2, As On Date: 01-Nov-2022"
+As On Date: 08-Nov-2022
+Date        Chq./Ref.No.            Deposit Amt.             Withdrawal Amt.         Narration            Value Dt                Closing Balance					
+01/11/2022  RN555                   1000                                             OK                   01/11/2022              37159.08
