@@ -64,7 +64,7 @@ Then the report is displaying all the asset codes details for a branch
 ##################################################################################################################################################
 
 #PO Creation
-@KUBS_FAT_UAT_001_003_01 
+@KUBS_FAT_UAT_001_003_01
 Scenario: Create a purchase order with Unique purchase order number
 And Get the test data for the po creation test case1
 Given Maker Navigate to UAT URL login
@@ -72,7 +72,23 @@ Then Click on Direction icon
 Then Click on Account Payable 
 Then Click on purchase order Eye Icon
 Then Click on purchase order Add button
-Then Fill purchase order Mandatory fields
+#Then Fill purchase order Mandatory fields
+
+And User fill the accountsPayable_VendorPurchaseOrder_EntityBranch
+And User fill the accountsPayable_VendorPurchaseOrder_BPName
+And User fill the accountsPayable_VendorPurchaseOrder_ReferenceType
+
+And User get the test data for Contract creation Testcase4
+And User fill the accountsPayable_VendorPurchaseOrder_Contract
+
+And Get the test data for the po creation test case1
+And User fill the accountsPayable_VendorPurchaseOrder_CheckBoxPoItem
+And User fill the accountsPayable_VendorPurchaseOrder_PoQuantity
+And User save the accountsPayable_VendorPurchaseOrder_PoItemSave1
+And User fill the accountsPayable_VendorPurchaseOrder_POSubType1
+And User fill the accountsPayable_VendorPurchaseOrder_CostCenter1
+
+
 Then Click on Account Payable Save button
 Then Click on Item Details Record
 Then Edit the item details fields
@@ -83,17 +99,18 @@ And Submit the Selected record
 
 @KUBS_FAT_UAT_001_003_02
 Scenario: Create a purchase order with Unique purchase order number Reviewer
+And Get the test data for the po creation test case1
+Then log in to the reviewer account3
 And Get the test data for the po creation test case2
-Then log in to the reviewer account
-Then click on the Notification select the record and Approve
+Then click on the Notification select the record and Approve3
 
 @KUBS_FAT_UAT_001_003_03
 Scenario: Create a purchase order with Unique purchase order number Checker
 And Get the test data for the po creation test case3
 Then log in to the Checker Account
-And then checker claim the record
+And then checker claim the record3
 Then click on the checker Notification 
-And select the record and Approve by checker
+And select the record and Approve by checker3
 
 @KUBS_FAT_UAT_001_003_04
 Scenario: Create a purchase order with Unique purchase order number1
@@ -102,6 +119,11 @@ Given Navigate to kubs URL and user should login as a maker1
 Then Click on Direction icon
 Then Click on Account Payable 
 Then Click on purchase order Eye Icon
+Then click on search button
+And Get the test data for the po creation test case1
+Then search vendor contract details by business partner name
+And vendor contract PO details should display on PO creation  list view
+
 ###########################################################################################################################################################
 #Contract Creation
 @KUBS_FAT_UAT_001_002_01
@@ -147,21 +169,24 @@ And fill the accountPayable_VendorContracts_AutoPayout
 And User click the accountPayable_VendorContracts_BenificiaryDetailsSaveButton
 Then Save and submit the creation contract record1
 
-@KUBS_FAT_UAT_001_002_02 
+@KUBS_FAT_UAT_001_002_02
 Scenario: Create a contract details for procuring an asset
-And User get the test data for Contract creation Testcase2
+And User get the test data for Contract creation Testcase1
 And User should go to the kubs url and login as a reviewer user
 Then Click on notification button in reviewer
+And User get the test data for Contract creation Testcase2
 And approve the record by reviewer user
+
 @KUBS_FAT_UAT_001_002_03  
 Scenario: Create a contract details for procuring an asset
-And User get the test data for Contract creation Testcase3	
+And User get the test data for Contract creation Testcase1	
 Given User should go to the kubs url and login as a checker user
 And Click on security management in checker
 Then Click on open pool in checker
 And Click on claim button in checker
 And capture claimed status
 Then click on notification in checker
+And User get the test data for Contract creation Testcase3	
 Then checker should approved the contract record
 @KUBS_FAT_UAT_001_002_04 
 Scenario: Create a contract details for procuring an asset
@@ -170,7 +195,9 @@ Given User should go to the kubs url and login as a maker user
 And user should navigate to accounts payable menu
 When click on eye button of vendor contract
 Then click on search button
+And User get the test data for Contract creation Testcase1
 Then search vendor contract details by business partner name
+And User get the test data for Contract creation Testcase4
 And vendor contract details should display on contract creation list view
 
 ########################################################################################################################################

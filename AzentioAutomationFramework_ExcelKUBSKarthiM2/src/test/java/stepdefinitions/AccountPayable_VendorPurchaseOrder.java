@@ -62,29 +62,9 @@ public class AccountPayable_VendorPurchaseOrder extends BaseClass {
 		
 		//getVendorPurchaseOrderyByName
 		
-		 @Then("^Click on Direction icon$")
-		 public void click_on_direction_icon() throws InterruptedException {
-		 waithelper = new WaitHelper(driver) ;
-		Thread.sleep(2000);
-//		 waithelper.waitForElement(driver, 4000, accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_DirectionIcon());
-		 waithelper.waitForElementwithFluentwait(driver, accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_DirectionIcon());
-		 accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_DirectionIcon().click();
-    
-		    }
+	
 
-		 @Then("^Click on Account Payable$")
-		 public void click_on_account_payable()  {
-	     waithelper.waitForElement(driver, 4000, accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_AccountsPayableField());
-		 accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_AccountsPayableField().click();
-			
-		   }
-		 
-		 @Then("^Click on purchase order Eye Icon$")
-		 public void click_on_purchase_order_eye_icon()  {
-			 waithelper.waitForElement(driver, 2000, accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_EyeButton());
-			 accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_EyeButton().click();
-		       
-		    }
+		
 		 
 			@Then("^click on first eye button to get the po number$")
 			public void click_on_first_eye_button_to_get_the_po_number() throws InterruptedException, IOException {
@@ -100,16 +80,7 @@ public class AccountPayable_VendorPurchaseOrder extends BaseClass {
 
 			}
 
-		 @Then("^Click on purchase order Add button$")
-		 public void click_on_purchase_order_add_button() throws InterruptedException  {
-//			 waithelper.waitForElement(driver, 2000, accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_AddButton());
-			 Thread.sleep(500);
-			 waithelper.waitForElementwithFluentwait(driver, accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_AddButton());
-			 accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_AddButton().click();
-				
-		        
-		    }
-		 
+		  
 		 @Then("^Fill purchase order Mandatory fields$")
 		    public void fill_purchase_order_mandatory_fields() throws InterruptedException  {
 			 accountPayable_VendorPurchaseOrderTestDataType = jsonReader.getVendorPurchaseOrderyByName("Maker");
@@ -120,12 +91,14 @@ public class AccountPayable_VendorPurchaseOrder extends BaseClass {
 			 accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_EntityBranch().sendKeys(testData.get("EntityBranch"));
 			 accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_EntityBranch().sendKeys(Keys.ENTER);
 		    
+			 
 		     //BP Name
 			 waithelper.waitForElement(driver, 2000, accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_BPName());
 			 accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_BPName().click();
 			 accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_BPName().sendKeys(testData.get("BpName"));
 			 accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_BPName().sendKeys(Keys.ENTER);
 		    
+			 
 		     //Reference Type
 			 waithelper.waitForElement(driver, 2000, accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_ReferenceType());
 			 accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_ReferenceType().click();
@@ -140,16 +113,21 @@ public class AccountPayable_VendorPurchaseOrder extends BaseClass {
 			Thread.sleep(1000);
 			 accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_Contract().sendKeys(Keys.ENTER);
 		
+			 
+			 
 			 //CheckBox Po Item
 			 waithelper.waitForElement(driver, 2000, accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_CheckBoxPoItem());
 			 accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_CheckBoxPoItem().click();
 			
+			 
+			 
 			//Po Quantity
 			 waithelper.waitForElement(driver, 2000, accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_PoQuantity());
 			 accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_PoQuantity().click();
 			 accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_PoQuantity().sendKeys(testData.get("PoQuantity"));
 			 accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_PoQuantity().sendKeys(Keys.ENTER);
 		
+			 
 			//Po item save
 			// WebElement posave = waithelper.waitForElement(driver, 2000, accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_PoItemSave());
 			 clicksAndActionHelper.clickOnElement(accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_PoItemSave());	
@@ -159,6 +137,8 @@ public class AccountPayable_VendorPurchaseOrder extends BaseClass {
 			//accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_PONumber().sendKeys(accountPayable_VendorPurchaseOrderTestDataType.PoNumber);
 			//accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_PONumber().sendKeys(Keys.ENTER);
 		
+			 
+			 
 			 //Po Sub Type
 			 waithelper.waitForElement(driver, 2000, accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_POSubType1());
 			 accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_POSubType1().click();
@@ -175,26 +155,7 @@ public class AccountPayable_VendorPurchaseOrder extends BaseClass {
 	
 		 }
 		 
-		 @Then("^Click on Account Payable Save button$")
-		 public void click_on_account_payable_save_button() {
-	     //waithelper.waitForElement(driver, 2000, accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_Save());
-         for(int i=0; i<40; i++) {
-        	 try {
-        		 accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_Save().click();
-        		 break;
-			} catch (Exception e) {
-				
-				if(i==40) {
-					e.getMessage();
-				}
-				
-			}
-         }
-			 
-			 
-			
-		 }
-
+		 
 		/* 
 		@Then("^Click on item Details$")
 		public void click_on_item_details() throws Throwable {
@@ -205,52 +166,9 @@ public class AccountPayable_VendorPurchaseOrder extends BaseClass {
 
 		}*/
 
-		@Then("^Click on Item Details Record$")
-		public void click_on_item_details_record() throws InterruptedException {
-			
-//			Thread.sleep(2000);
-//			waithelper.waitForElement(driver, 2000,accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_ItemDetailsRecord());
-			waithelper.waitForElementwithFluentwait(driver, accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_ItemDetailsRecord());
-			accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_ItemDetailsRecord().click();
-
-			//validate msg
-			
-	  		WebElement toast = accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_VaildationMsg();
-	  		waithelper.waitForElement(driver, 3000, accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_VaildationMsg());
-	  		clicksAndActionHelper.clickOnElement(toast);;
-	    	String message = accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_VaildationMsg().getText();
-	    	System.out.println(message);
-	    	
-		}
 		
-		@Then("^Edit the item details fields$")
-		public void edit_the_item_details_fields() {
-
-			accountPayable_VendorPurchaseOrderTestDataType = jsonReader.getVendorPurchaseOrderyByName("Maker");
-
-			//Shipped from Location
-			waithelper.waitForElement(driver, 2000,accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_ShippedFromLocation());
-			accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_ShippedFromLocation().click();
-			accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_ShippedFromLocation().sendKeys(testData.get("ShippedFromLocation"));
-			accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_ShippedFromLocation().sendKeys(Keys.ENTER);
-			
-			//waithelper.waitForElementwithFluentwait(driver, accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_RatePerUnitService());
-			for (int i = 0; i <30; i++) {
-				try {
-					accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_RatePerUnitService().sendKeys(testData.get("RatePerUnit"));
-				} catch (Exception e) {
-					
-				}
-			}
-			
-			//DeliveryLocation
-			waithelper.waitForElement(driver, 2000,accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_DeliveryLocation());
-			accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_DeliveryLocation().click();
-			accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_DeliveryLocation().sendKeys(testData.get("DeliveryLocation"));
-			accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_DeliveryLocation().sendKeys(Keys.ENTER);
-
-		}
-		@Then("^Edit the item details fields po$")
+		
+				@Then("^Edit the item details fields po$")
 		public void edit_the_item_details_fields_po() {
 
 			accountPayable_VendorPurchaseOrderTestDataType = jsonReader.getVendorPurchaseOrderyByName("Maker");
@@ -277,114 +195,9 @@ public class AccountPayable_VendorPurchaseOrder extends BaseClass {
 //			waithelper.waitForElementwithFluentwait(driver, accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_Save());
 //			accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_Save().click();
 		}
-		@Then("^Click on Account Payable Notification$")
-		 public void click_on_account_payable_notification() throws InterruptedException {
-		 //waithelper.waitForElement(driver, 2000, accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_Notification());
-       Thread.sleep(2000);
-	   for (int i = 0; i <30; i++) {
-		try {
-			accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_Notification().click();
-			break;
-		} catch (Exception e) {
-			
-		}
-	}
-			
-		}
+		
 		 
-		 @Then("^Select the record from Notification$")
-		 public void select_the_record_from_notification() throws Throwable {
-			// Reference
-			waithelper.waitForElement(driver, 2000, accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_ReferenceId());
-			String id = accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_ReferenceId().getText();
-			//jsonWriter.addReferanceData(id);
-			excelData.updateTestData("KUBS_FAT_UAT_001_003_01_D1","Reference ID",id);
-			testData = excelData.getTestdata("KUBS_FAT_UAT_001_003_01_D1");
-			//testData.get("KUBS_FAT_UAT_001_003_01_D1");
-			System.out.println("Reference ID:" + id);
-//			for (int i = 1; i <= 35; i++) {
-//				try {
-//					waithelper.waitForElement(driver, 3000, driver.findElement(
-//							By.xpath("//span[contains(text(),'" +testData.get("Reference ID")+ "')]")));
-//					WebElement referanceID = driver
-//							.findElement(By.xpath("//span[contains(text(),'" +testData.get("Reference ID")+ "')]"));
-//					referanceID.click();
-//					System.out.println(referanceID);
-//					// Assert.assertTrue(referanceID.isDisplayed());
-//					break;
-//				} catch (NoSuchElementException e) {
-//					waithelper.waitForElement(driver, 4000,
-//							accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_NotificationNext_Button());
-//
-//					accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_NotificationNext_Button().click();
-//				}
-//			}
-//			accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_ReferenceId().click();
-
-			// pencil
-			String before_xpath = "//span[contains(text(),'";
-			String after_xpath = "')]/ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell//ion-button";
-			//testData = excelData.getTestdata("KUBS_FAT_UAT_001_003_01_D1");
-
-			
-			waithelper.waitForElement(driver, 2000,driver.findElement(By.xpath(before_xpath +testData.get("Reference ID")+ after_xpath)));
-			Thread.sleep(2000);
-			driver.findElement(By.xpath(before_xpath +testData.get("Reference ID")+ after_xpath)).click();
-		}
-		 
-		@And("^Submit the Selected record$")
-		public void submit_the_selected_record() throws InterruptedException, IOException {
-			
-			// Submit button
-        	waithelper.waitForElement(driver, 2000, accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_SubmitButton());
-        	accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_SubmitButton().click();
-        			
-        	//Remark
-        	javascripthelper.JavaScriptHelper(driver);
-        	waithelper.waitForElement(driver, 3000,accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_RemarkField());
-        	javascripthelper.JSEClick(accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_RemarkField());
-        	waithelper.waitForElementwithFluentwait(driver, accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_RemarkField());
-        	accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_RemarkField().sendKeys(testData.get("Remark"));
-        	//inventoryMaintenanceTestDataType.Remark
-        			    
-        			
-        	//Remark Submit
-        	
-//        	waithelper.waitForElement(driver, 2000,accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_SubmitByMaker());
-        	waithelper.waitForElementwithFluentwait(driver, accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_SubmitByMaker());
-        	accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_SubmitByMaker().click();
-//        	Thread.sleep(2000);
-        	
-        	// REVIEWER
-//        			Thread.sleep(2000);
-        			waithelper.waitForElementwithFluentwait(driver, accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_RecordStatus());
-        			WebElement recordstatus = accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_RecordStatus();
-
-        			clicksAndActionHelper.moveToElement(recordstatus);
-        			String message = accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_RecordStatus().getText();
-        			System.out.println(message);
-        			accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_RecordStatus().click();
-        			String t = "";
-        			String ar[] = message.split(" ");
-        			Thread.sleep(2000);
-        			for (int i = ar.length - 1; i >= 0; i--) {
-        				t = ar[ar.length - 1];
-        			}
-        			String reviewerId = "";
-        			for (int i = 0; i < t.length() - 1; i++) {
-        				if (t.charAt(i) == '.') {
-        				} else {
-        					reviewerId = reviewerId + t.charAt(i);
-        				}
-        			}
-        			System.out.println(reviewerId);
-        			excelData.updateTestData("KUBS_FAT_UAT_002_001_01_D1","Reviewer ID",reviewerId);
-        			testData = excelData.getTestdata("KUBS_FAT_UAT_002_001_01_D1");
-        			//jsonWriter = new JsonDataReaderWriter();
-        			//jsonWriter.addData(reviewerId);
-			
-		}
-		//------------------PO QUANTITY GREATER ---//
+		 		//------------------PO QUANTITY GREATER ---//
 				@Then("^Fill purchase order fields$")
 			    public void fill_purchase_order_fields()  {
 					accountPayable_VendorPurchaseOrderTestDataType = jsonReader.getVendorPurchaseOrderyByName("Maker");
@@ -766,18 +579,8 @@ public class AccountPayable_VendorPurchaseOrder extends BaseClass {
 			
 			    }
 			    
-			    @And("^Get the test data for the po creation test case1$")
-			    public void get_the_test_data_for_the_po_creation_test_case1() throws Throwable {
-			        
-			    	testData = excelData.getTestdata("KUBS_FAT_UAT_001_003_01_D1");
-			    	
-			    }
-			    @And("^Get the test data for the po creation test case4$")
-			    public void get_the_test_data_for_the_po_creation_test_case4() throws Throwable {
-			     
-				 testData = excelData.getTestdata("KUBS_FAT_UAT_001_003_04_D1");
-				 
-			    }
+			   
+			   
 			    
 }
 	    

@@ -14,7 +14,7 @@ import utilities.ExtentTestManager;
 		plugin = { "pretty", "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:",
 				"rerun:ReRunScenarios/FailedReRun.txt" }
 // dryRun = false
-	, tags = "@KUBS_TAX_UAT_006_001_TC_001"
+	, tags = "@KUBS_FAT_UAT_001_003_01"
 )
 public class TestApplication extends AbstractTestNGCucumberTests {
 	/*

@@ -169,6 +169,20 @@ public class ACCOUNTSPAYABLE_VendorContractsObj {
 		return accountPayable_VendorContracts_AutoGenerateInvoice;
 	}
 	
+	@FindBy(xpath="//body[1]/app-root[1]/ion-app[1]/ion-split-pane[1]/ion-router-outlet[1]/app-tabs[1]/ion-tabs[1]/div[1]/ion-router-outlet[1]/app-data-grid[1]/ion-content[1]/div[1]/ngx-datatable[1]/div[1]/datatable-body[1]/datatable-selection[1]/datatable-scroller[1]/datatable-row-wrapper[1]/datatable-body-row[1]/div[2]/datatable-body-cell[6]/div[1]/span[1]")
+    private WebElement  accountPayable_VendorContracts_verify;
+	
+	public WebElement accountPayable_VendorContracts_verify() {
+		return accountPayable_VendorContracts_verify;
+	}
+	
+	@FindBy(xpath="(//div[@class='datatable-body-cell-label']//child::span)[3]")
+    private WebElement  accountPayable_VendorContracts_ContractDes;
+	
+	public WebElement accountPayable_VendorContracts_ContractDes() {
+		return accountPayable_VendorContracts_ContractDes;
+	}
+	
 	//Credit Period
 	@FindBy(xpath = "//ion-grid[2]/fieldset/ion-row/ion-col[4]/ion-item/ion-input/input")
 	private WebElement  accountPayable_VendorContracts_CreditPeriod;

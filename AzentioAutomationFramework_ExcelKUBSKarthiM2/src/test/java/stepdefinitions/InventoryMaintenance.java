@@ -499,14 +499,7 @@ public class InventoryMaintenance extends BaseClass{
 						Thread.sleep(3000);
 					}
 				    
-				    @And("^Get the test data for the po creation test case2$")
-				    public void get_the_test_data_for_the_po_creation_test_case2() throws Throwable {
-				    	testData = excelData.getTestdata("KUBS_FAT_UAT_001_003_02_D1");
-				    }
-				    @And("^Get the test data for the po creation test case3$")
-				    public void get_the_test_data_for_the_po_creation_test_case3() throws Throwable {
-				    	testData = excelData.getTestdata("KUBS_FAT_UAT_001_003_03_D1");
-				    }
+				   
 				    
 				   
 }
