@@ -16,6 +16,7 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import pageobjects.BankReconciliation_ModuleObj;
 import resources.BaseClass;
+import resources.ExcelData;
 import testDataType.BankReconciliationTestData;
 
 public class Bank_ReconModule extends BaseClass {
@@ -28,6 +29,9 @@ public class Bank_ReconModule extends BaseClass {
 	BankReconciliationTestData bankReconData = jsonconfig.getBankReconlist("Maker");
 	JavascriptHelper javascriphelper = new JavascriptHelper();
 	Map<String,String> testdata = new LinkedHashMap<>();
+	String excelPath = System.getProperty("user.dir")+"\\Test-data\\KUBSTestDataDesign1401.xlsx";
+    ExcelData excelData = new ExcelData(excelPath,"GRNTestData","Data Set ID");
+    private Map<String, String> testData;
 	 @Then("^Displayed transactions must of current month plus unmatched records from previous month if any matched in current month where view basis is Bank to Book$")
 	    public void displayed_transactions_must_of_current_month_plus_unmatched_records_from_previous_month_if_any_matched_in_current_month_where_view_basis_is_bank_to_book() throws Throwable {
 		 int i=1;
@@ -251,7 +255,7 @@ public class Bank_ReconModule extends BaseClass {
     public void user_select_bank_name_in_bank_recon_module() throws Throwable {
         seleniumactions.getWaitHelper().waitForElement(driver,2000,bankReconObj.selectBankName());
         bankReconObj.selectBankName().click();
-        bankReconObj.selectBankName().sendKeys(bankReconData.BankName);
+        bankReconObj.selectBankName().sendKeys(testdata.get("BankName"));
         bankReconObj.selectBankName().sendKeys(Keys.ENTER);
     }
 
@@ -271,13 +275,13 @@ public class Bank_ReconModule extends BaseClass {
         Thread.sleep(1000);
 		driver.findElement(By.xpath("(//span[@class='owl-dt-control-content owl-dt-control-button-content'])[2]"))
 				.click();
-		driver.findElement(By.xpath("//span[text()='" + bankReconData.BankReconFromYear  + "']")).click();
-		driver.findElement(By.xpath("//span[text()='" + bankReconData.BankReconFromMonth + "']")).click();
+		driver.findElement(By.xpath("//span[text()='" + testdata.get("BankReconFromYear")  + "']")).click();
+		driver.findElement(By.xpath("//span[text()='" + testdata.get("BankReconFromMonth") + "']")).click();
 		seleniumactions.getWaitHelper().waitForElement(driver, 2000,
-			    driver.findElement(By.xpath("//td[@aria-label='"+bankReconData.BankReconFromFullMonth+" "
-				+bankReconData.BankReconFromDay+", "+bankReconData.BankReconFromYear+"']")));
-				driver.findElement(By.xpath("//td[@aria-label='"+bankReconData.BankReconFromFullMonth+" "
-				+bankReconData.BankReconFromDay+", "+bankReconData.BankReconFromYear+"']")).click();
+			    driver.findElement(By.xpath("//td[@aria-label='"+testdata.get("BankReconFromFullMonth")+" "
+				+testdata.get("BankReconFromDay")+", "+testdata.get("BankReconFromYear")+"']")));
+				driver.findElement(By.xpath("//td[@aria-label='"+testdata.get("BankReconFromFullMonth")+" "
+				+testdata.get("BankReconFromDay")+", "+testdata.get("BankReconFromYear")+"']")).click();
     }
 
     @And("^user click bank  recon to date and select the date$")
@@ -287,19 +291,19 @@ public class Bank_ReconModule extends BaseClass {
     	Thread.sleep(1000);
 		driver.findElement(By.xpath("(//span[@class='owl-dt-control-content owl-dt-control-button-content'])[2]"))
 				.click();
-		driver.findElement(By.xpath("//span[text()='" + bankReconData.BankReconToYear  + "']")).click();
-		driver.findElement(By.xpath("//span[text()='" + bankReconData.BankReconToMonth + "']")).click();
+		driver.findElement(By.xpath("//span[text()='" + testdata.get("BankReconToYear")  + "']")).click();
+		driver.findElement(By.xpath("//span[text()='" + testdata.get("BankReconToMonth") + "']")).click();
 		seleniumactions.getWaitHelper().waitForElement(driver, 2000,
-			    driver.findElement(By.xpath("//td[@aria-label='"+bankReconData.BankReconFullToMonth+" "
-				+bankReconData.BankReconToDay+", "+bankReconData.BankReconToYear+"']")));
-				driver.findElement(By.xpath("//td[@aria-label='"+bankReconData.BankReconFullToMonth+" "
-				+bankReconData.BankReconToDay+", "+bankReconData.BankReconToYear+"']")).click();
+			    driver.findElement(By.xpath("//td[@aria-label='"+testdata.get("BankReconFullToMonth")+" "
+				+testdata.get("BankReconToDay")+", "+testdata.get("BankReconToYear")+"']")));
+				driver.findElement(By.xpath("//td[@aria-label='"+testdata.get("BankReconFullToMonth")+" "
+				+testdata.get("BankReconToDay")+", "+testdata.get("BankReconToYear")+"']")).click();
     }
 
     @And("^user click choose file and upload the bank statement$")
     public void user_click_choose_file_and_upload_the_bank_statement() throws Throwable {
         seleniumactions.getWaitHelper().waitForElement(driver,2000,bankReconObj.chooseFile());
-        bankReconObj.chooseFile().sendKeys(bankReconData.FileLocation);
+        bankReconObj.chooseFile().sendKeys(testdata.get("FileLocation"));
     }
 
     @And("^user click save button in bank recon$")
@@ -328,17 +332,17 @@ public class Bank_ReconModule extends BaseClass {
     public void verify_unmatchedpartially_matched_and_transposition_matched_records_in_bank_statment_after_processing() throws Throwable {
     	//div[text()=' RRN156 ']
     	//datatable-row-wrapper[1]/datatable-body-row/div[2]/datatable-body-cell/div
-    	seleniumactions.getWaitHelper().waitForElement(driver,2000,driver.findElement(By.xpath("//div[text()=' "+bankReconData.ChequeReference1+" ']")));
-    	if (driver.findElement(By.xpath("//div[text()=' "+bankReconData.ChequeReference1+" ']")).isDisplayed()) {
-			System.out.println("Found the Cheque Refernce Number "+driver.findElement(By.xpath("//div[text()=' "+bankReconData.ChequeReference1+" ']")).getText());
+    	seleniumactions.getWaitHelper().waitForElement(driver,2000,driver.findElement(By.xpath("//div[text()=' "+testdata.get("ChequeReference1")+" ']")));
+    	if (driver.findElement(By.xpath("//div[text()=' "+testdata.get("ChequeReference1")+" ']")).isDisplayed()) {
+			System.out.println("Found the Cheque Refernce Number "+driver.findElement(By.xpath("//div[text()=' "+testdata.get("ChequeReference1")+" ']")).getText());
 		}
-    	seleniumactions.getWaitHelper().waitForElement(driver,2000,driver.findElement(By.xpath("//div[text()=' "+bankReconData.ChequeReference2+" ']")));
-    	if (driver.findElement(By.xpath("//div[text()=' "+bankReconData.ChequeReference2+" ']")).isDisplayed()) {
-			System.out.println("Found the Cheque Refernce Number "+driver.findElement(By.xpath("//div[text()=' "+bankReconData.ChequeReference2+" ']")).getText());
+    	seleniumactions.getWaitHelper().waitForElement(driver,2000,driver.findElement(By.xpath("//div[text()=' "+testdata.get("ChequeReference2")+" ']")));
+    	if (driver.findElement(By.xpath("//div[text()=' "+testdata.get("ChequeReference2")+" ']")).isDisplayed()) {
+			System.out.println("Found the Cheque Refernce Number "+driver.findElement(By.xpath("//div[text()=' "+testdata.get("ChequeReference2")+" ']")).getText());
 		}
-    	seleniumactions.getWaitHelper().waitForElement(driver,2000,driver.findElement(By.xpath("//div[text()=' "+bankReconData.ChequeReference3+" ']")));
-    	if (driver.findElement(By.xpath("//div[text()=' "+bankReconData.ChequeReference3+" ']")).isDisplayed()) {
-			System.out.println("Found the Cheque Refernce Number "+driver.findElement(By.xpath("//div[text()=' "+bankReconData.ChequeReference3+" ']")).getText());
+    	seleniumactions.getWaitHelper().waitForElement(driver,2000,driver.findElement(By.xpath("//div[text()=' "+testdata.get("ChequeReference3")+" ']")));
+    	if (driver.findElement(By.xpath("//div[text()=' "+testdata.get("ChequeReference3")+" ']")).isDisplayed()) {
+			System.out.println("Found the Cheque Refernce Number "+driver.findElement(By.xpath("//div[text()=' "+testdata.get("ChequeReference3")+" ']")).getText());
 		}
     	else {
 			System.out.println("Cheque Number not present in the bank statement");
@@ -402,7 +406,7 @@ public class Bank_ReconModule extends BaseClass {
     public void user_select_bank_name_in_bank_recon_module_for_csv_file() throws Throwable {
     	seleniumactions.getWaitHelper().waitForElement(driver,2000,bankReconObj.selectBankName());
         bankReconObj.selectBankName().click();
-        bankReconObj.selectBankName().sendKeys(bankReconData.CsvBankName);
+        bankReconObj.selectBankName().sendKeys(testdata.get("CsvBankName"));
         bankReconObj.selectBankName().sendKeys(Keys.ENTER);
     }
 
@@ -413,13 +417,13 @@ public class Bank_ReconModule extends BaseClass {
         Thread.sleep(1000);
 		driver.findElement(By.xpath("(//span[@class='owl-dt-control-content owl-dt-control-button-content'])[2]"))
 				.click();
-		driver.findElement(By.xpath("//span[text()='" + bankReconData.CsvBankReconFromYear  + "']")).click();
-		driver.findElement(By.xpath("//span[text()='" + bankReconData.CsvBankReconFromMonth + "']")).click();
+		driver.findElement(By.xpath("//span[text()='" + testdata.get("CsvBankReconFromYear")  + "']")).click();
+		driver.findElement(By.xpath("//span[text()='" + testdata.get("CsvBankReconFromMonth") + "']")).click();
 		seleniumactions.getWaitHelper().waitForElement(driver, 2000,
-			    driver.findElement(By.xpath("//td[@aria-label='"+bankReconData.CsvBankReconFromFullMonth+" "
-				+bankReconData.CsvBankReconFromDay+", "+bankReconData.CsvBankReconFromYear+"']")));
-				driver.findElement(By.xpath("//td[@aria-label='"+bankReconData.CsvBankReconFromFullMonth+" "
-				+bankReconData.CsvBankReconFromDay+", "+bankReconData.CsvBankReconFromYear+"']")).click();
+			    driver.findElement(By.xpath("//td[@aria-label='"+testdata.get("CsvBankReconFromFullMonth")+" "
+				+testdata.get("CsvBankReconFromDay")+", "+testdata.get("CsvBankReconFromYear")+"']")));
+				driver.findElement(By.xpath("//td[@aria-label='"+testdata.get("CsvBankReconFromFullMonth")+" "
+				+testdata.get("CsvBankReconFromDay")+", "+testdata.get("CsvBankReconFromYear")+"']")).click();
     }
 
     @And("^user click bank recon to date and select the date for csv file$")
@@ -429,13 +433,13 @@ public class Bank_ReconModule extends BaseClass {
         Thread.sleep(1000);
 		driver.findElement(By.xpath("(//span[@class='owl-dt-control-content owl-dt-control-button-content'])[2]"))
 				.click();
-		driver.findElement(By.xpath("//span[text()='" + bankReconData.CsvBankReconToYear  + "']")).click();
-		driver.findElement(By.xpath("//span[text()='" + bankReconData.CsvBankReconToMonth + "']")).click();
+		driver.findElement(By.xpath("//span[text()='" + testdata.get("CsvBankReconToYear")  + "']")).click();
+		driver.findElement(By.xpath("//span[text()='" + testdata.get("CsvBankReconToMonth") + "']")).click();
 		seleniumactions.getWaitHelper().waitForElement(driver, 2000,
-			    driver.findElement(By.xpath("//td[@aria-label='"+bankReconData.CsvBankReconFullToMonth+" "
-				+bankReconData.CsvBankReconToDay+", "+bankReconData.CsvBankReconToYear+"']")));
-				driver.findElement(By.xpath("//td[@aria-label='"+bankReconData.CsvBankReconFullToMonth+" "
-				+bankReconData.CsvBankReconToDay+", "+bankReconData.CsvBankReconToYear+"']")).click();
+			    driver.findElement(By.xpath("//td[@aria-label='"+testdata.get("CsvBankReconFullToMonth")+" "
+				+testdata.get("CsvBankReconToDay")+", "+testdata.get("CsvBankReconToYear")+"']")));
+				driver.findElement(By.xpath("//td[@aria-label='"+testdata.get("CsvBankReconFullToMonth")+" "
+				+testdata.get("CsvBankReconToDay")+", "+testdata.get("CsvBankReconToYear")+"']")).click();
         
     }
     @And("^user click choose file and upload the bank statement for csv$")
@@ -658,6 +662,48 @@ public class Bank_ReconModule extends BaseClass {
 		}
     	i++;
     }
+    }
+    @And("^Update test data for Bank recon test case one$")
+    public void update_test_data_for_bank_recon_test_case_one() throws Throwable {
+    	testData = excelData.getTestdata("KUBS_TAX_UAT_009_003TC_001_D1");
+    }
+
+    @And("^Update test data for Bank recon test case two$")
+    public void update_test_data_for_bank_recon_test_case_two() throws Throwable {
+    	testData = excelData.getTestdata("KUBS_TAX_UAT_009_003TC_002_D1");
+    }
+
+    @And("^Update test data for Bank recon test case three$")
+    public void update_test_data_for_bank_recon_test_case_three() throws Throwable {
+    	testData = excelData.getTestdata("KUBS_TAX_UAT_009_003TC_003_D1");
+    }
+    @And("^Update test data for Bank recon test case 10_001_001$")
+    public void update_test_data_for_bank_recon_test_case_10001001() throws Throwable {
+    	testData = excelData.getTestdata("KUBS_TAX_UAT_0010_001TC_001_D1");
+    }
+
+    @And("^Update test data for Bank recon test case 10_001_002$")
+    public void update_test_data_for_bank_recon_test_case_10001002() throws Throwable {
+    	testData = excelData.getTestdata("KUBS_TAX_UAT_0010_001TC_002_D1");
+    }
+
+    @And("^Update test data for Bank recon test case 10_001_003$")
+    public void update_test_data_for_bank_recon_test_case_10001003() throws Throwable {
+    	testData = excelData.getTestdata("KUBS_TAX_UAT_0010_001TC_003_D1");
+    }
+    @And("^Update test data for bank recon test case 004_001_001$")
+    public void update_test_data_for_bank_recon_test_case_004001001() throws Throwable {
+    	testData = excelData.getTestdata("KUBS_TAX_UAT_004_001TC_001_D1");
+    }
+
+    @And("^Update test data for bank recon test case 004_001_002$")
+    public void update_test_data_for_bank_recon_test_case_004001002() throws Throwable {
+    	testData = excelData.getTestdata("KUBS_TAX_UAT_004_001TC_002_D1");
+    }
+
+    @And("^Update test data for bank recon test case 004_001_003$")
+    public void update_test_data_for_bank_recon_test_case_004001003() throws Throwable {
+    	testData = excelData.getTestdata("KUBS_TAX_UAT_004_001TC_003_D1");
     }
 
     
