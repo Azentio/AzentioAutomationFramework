@@ -1924,8 +1924,10 @@ public class ARAP_AccountsReceivable_AccountsPayable extends BaseClass {
 		StringBuffer bufferedString = sb.deleteCharAt(trimmdReviewerID.length() - 1);
 		String filanReviewerID = bufferedString.toString();
 		// arapObj.arapObj_reviewer_id().getText());
-		json.addData(filanReviewerID);
-		System.out.println(reviwerId);
+		//json.addData(filanReviewerID);
+		
+		
+		System.out.println(filanReviewerID);
 	}
 
 	// REVIEWER

@@ -102,11 +102,14 @@ public class ACCOUNTSPAYABLE_VendorContracts {
 				.sendKeys(testData.get("ExpenseType"));
 		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_ExpenseType().sendKeys(Keys.ENTER);
 
+		
 		waithelper.waitForElement(driver, 3000,
 				aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_BP_Name());
 		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_BP_Name()
 				.sendKeys(testData.get("BP_Name"));
 		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_BP_Name().sendKeys(Keys.ENTER);
+		
+		
 
 		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_BP_Branch().click();
 		waithelper.waitForElement(driver, 3000,
@@ -114,7 +117,11 @@ public class ACCOUNTSPAYABLE_VendorContracts {
 		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_BP_Branch()
 				.sendKeys(testData.get("BP_Branch"));
 		Thread.sleep(1000);
+		
+		
 		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_BP_Branch().sendKeys(Keys.ENTER);
+		
+		
 
 		waithelper.waitForElement(driver, 2000,
 				aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_ContractName());
@@ -122,6 +129,8 @@ public class ACCOUNTSPAYABLE_VendorContracts {
 				.sendKeys(testData.get("ContractName"));
 		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_ContractName().sendKeys(Keys.ENTER);
 
+		
+		
 		// agreement calendar
 		waithelper.waitForElement(driver, 2000,
 				aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_AgreementCalendar());
@@ -276,14 +285,19 @@ public class ACCOUNTSPAYABLE_VendorContracts {
 				aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_Currency());
 		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_Currency()
 				.sendKeys(testData.get("Currency"));
-		;
+		
 		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_Currency().sendKeys(Keys.ENTER);
 
+		
+		
 		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_Remark()
 				.sendKeys(testData.get("Remark"));
-		;
+		
+		
 
 		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_OtherDetailsButton().click();
+		
+		
 
 		waithelper.waitForElement(driver, 2000,
 				aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_AutoGenerateInvoice());
@@ -292,29 +306,37 @@ public class ACCOUNTSPAYABLE_VendorContracts {
 		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_AutoGenerateInvoice()
 				.sendKeys(Keys.ARROW_DOWN, Keys.ENTER);
 
+		
+		
 		waithelper.waitForElement(driver, 2000,
 				aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_CreditPeriod());
 		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_CreditPeriod()
 				.sendKeys(testData.get("CreditPeriod"));
 		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_CreditPeriod().sendKeys(Keys.ENTER);
 
+		
+		
 		waithelper.waitForElement(driver, 2000,
 				aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_LatePaymentFee());
 		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_LatePaymentFee()
 				.sendKeys(testData.get("LatePaymentFee"));
 
+		
+		
 		waithelper.waitForElement(driver, 2000,
 				aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_Currency2());
 		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_Currency2()
 				.sendKeys(testData.get("Currency2"));
 		
 		// scroll down to additional details button
-		Thread.sleep(2000);
+		
 		
 
 		waithelper.waitForElement(driver, 3000,
 				aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_SaveButton());
 		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_SaveButton().click();
+		
+		
 		
 		
 
@@ -324,11 +346,17 @@ public class ACCOUNTSPAYABLE_VendorContracts {
 				aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_AddButton());
 		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_AddButton().click();
 
+		
+		
+		
 		waithelper.waitForElement(driver, 3000,
 				aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_HSN_Code());
 		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_HSN_Code()
 				.sendKeys(testData.get("HSN_Code"));
 		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_HSN_Code().sendKeys(Keys.ENTER);
+		
+		
+		
 
 		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_ExpenseCode().click();
 		waithelper.waitForElement(driver, 3000,
@@ -337,17 +365,23 @@ public class ACCOUNTSPAYABLE_VendorContracts {
 				.sendKeys(testData.get("ExpenseCode"));
 		Thread.sleep(1000);
 		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_ExpenseCode().sendKeys(Keys.ENTER);
+		
+		
 
 		waithelper.waitForElement(driver, 3000,
 				aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_Quantity());
 		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_Quantity()
 				.sendKeys(testData.get("Quantity"));
 
+		
+		
 		waithelper.waitForElement(driver, 3000,
 				aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_CostCenter());
 		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_CostCenter()
 				.sendKeys(testData.get("CostCenter"));
 		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_CostCenter().sendKeys(Keys.ENTER);
+		
+		
 
 		waithelper.waitForElement(driver, 3000,
 				aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_Unit());
@@ -355,24 +389,33 @@ public class ACCOUNTSPAYABLE_VendorContracts {
 				.sendKeys(testData.get("Unit"));
 		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_Unit().sendKeys(Keys.ENTER);
 
+		
+		
 		waithelper.waitForElement(driver, 3000,
 				aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_RatePerUnit());
 		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_RatePerUnit()
 				.sendKeys(testData.get("RatePerUnit"));
 
+		
+		
+		
 		waithelper.waitForElement(driver, 3000,
 				aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_CurrencyInItemDetail());
 		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_CurrencyInItemDetail()
 				.sendKeys(testData.get("CurrencyinItemDetails"));
 		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_CurrencyInItemDetail().sendKeys(Keys.ENTER);
 
+		
+		
 		Thread.sleep(2000);
 //		waithelper.waitForElement(driver, 3000, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_ItemDetailsSaveButton());
 		waithelper.waitForElementwithFluentwait(driver,
 				aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_ItemDetailsSaveButton());
 		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_ItemDetailsSaveButton().click();
 
-		Thread.sleep(2000);
+	
+		
+		
 //		waithelper.waitForElement(driver, 3000, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_AddButton());
 		waithelper.waitForElementwithFluentwait(driver,
 				aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_AddButton());
@@ -380,38 +423,51 @@ public class ACCOUNTSPAYABLE_VendorContracts {
 
 		Thread.sleep(2000);
 //		waithelper.waitForElement(driver, 3000, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_PaymentTermDetails());
+		
+		
 		waithelper.waitForElementwithFluentwait(driver,
 				aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_PaymentTermDetails());
 		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_PaymentTermDetails()
 				.sendKeys(testData.get("PaymentTerm"));
 
+		
+		
 		waithelper.waitForElement(driver, 3000,
 				aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_PaymentTermPercent());
 		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_PaymentTermPercent()
 				.sendKeys(testData.get("PaymentTermPercent"));
 
+		
+		
 		waithelper.waitForElement(driver, 3000,
 				aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_PaymentTermType());
 		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_PaymentTermType()
 				.sendKeys(testData.get("PaymentTermType"));
 		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_PaymentTermType().sendKeys(Keys.ENTER);
 
+		
+		
 		waithelper.waitForElement(driver, 3000,
 				aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_ItemDetailsSaveButton());
 		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_ItemDetailsSaveButton().click();
 
+		
+		
 		waithelper.waitForElement(driver, 3000,
 				aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_ModeOfPayment());
 		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_ModeOfPayment()
 				.sendKeys(testData.get("ModeOfPayment"));
 		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_ModeOfPayment().sendKeys(Keys.ENTER);
 
+		
+		
 		waithelper.waitForElement(driver, 3000,
 				aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_AutoPayout());
 		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_AutoPayout()
 				.sendKeys(testData.get("AutoPayout"));
 		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_AutoPayout().sendKeys(Keys.ENTER);
 
+		
 		waithelper.waitForElement(driver, 3000,
 				aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_BenificiaryDetailsSaveButton());
 		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_BenificiaryDetailsSaveButton().click();
@@ -753,10 +809,7 @@ public class ACCOUNTSPAYABLE_VendorContracts {
 				aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_Logout());
 		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_Logout();
 	}
-	@And("^User get the test data for Contract creation Testcase1$")
-    public void user_get_the_test_data_for_contract_creation_testcase1() throws Throwable {
-		 testData = excelData.getTestdata("KUBS_FAT_UAT_001_002_01_D1");
-    }
+
 
     @And("^User get the test data for Contract creation Testcase2$")
     public void user_get_the_test_data_for_contract_creation_testcase2() throws Throwable {

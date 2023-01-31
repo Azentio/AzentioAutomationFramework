@@ -17,8 +17,11 @@ And Process that Bank file
 And Click unmatched Tab 
 And unmatch that record and save that record
 Then verify validation message is comming or not for Bank Recon
+Then logout from maker
+
 @KUBS_TAX_UAT_006_001_TC_002
 Scenario: Check submitting Bank recon is allowed if there is any unmatched records from Bank Side
+And User get the test data for bankrecon testcase006001002
 Given navigate to given url and login with maker credentials
 Then click on second Segment button
 And click Bank Recon module
@@ -34,9 +37,11 @@ And Process that Bank file
 And Click unmatched Tab
 And unmatch that record and save that record 
 Then verify validation message is comming or not for Bank Recon
+Then logout from maker
 
 @KUBS_TAX_UAT_006_001_TC_003
 Scenario: Verify user is not allowed to submit Bank Recon with any suggested matched records
+And User get the test data for bankrecon testcase006001003
 Given navigate to given url and login with maker credentials
 Then click on second Segment button
 And click Bank Recon module
@@ -52,9 +57,11 @@ And Process that Bank file
 And Click unmatched Tab
 And unmatch that record and save that record 
 Then verify validation message is comming or not for Bank Recon
+Then logout from maker
 
 @KUBS_TAX_UAT_006_001_TC_004
 Scenario: Verify user is not allowed to submit Bank Recon with any Transposition matched records
+And User get the test data for bankrecon testcase006001004
 Given navigate to given url and login with maker credentials
 Then click on second Segment button
 And click Bank Recon module
@@ -70,9 +77,11 @@ And Process that Bank file
 And Click unmatched Tab
 And unmatch that record and save that record 
 Then verify validation message is comming or not for Bank Recon
+Then logout from maker
 
 @KUBS_TAX_UAT_006_001_TC_005
 Scenario: Verify user is not allowed to submit Bank recon if any entry is not verified.
+And User get the test data for bankrecon testcase006001005
 Given navigate to given url and login with maker credentials
 Then click on second Segment button
 And click Bank Recon module
@@ -89,9 +98,11 @@ And Click unmatched Tab
 And Click the Bank recon Details
 Then Try to submit the Record
 And Verify the Message we get
+Then logout from maker
 
-@KUBS_TAX_UAT_006_001_TC_006
+@KUBS_TAX_UAT_006_001_TC_006_01
 Scenario: Submit a bank recon from Maker Queue and check the record is available in checker queue for approval
+And User get the test data for bankrecon testcase006001006
 Given navigate to given url and login with maker credentials
 Then click on second Segment button
 And click Bank Recon module
@@ -108,17 +119,26 @@ And Click unmatched Tab
 And unmatch that record and save that record 
 Then verify validation message is comming or not for Bank Recon
 Then Goto The Notification Icon
-And Store the Referance Id and Open the Record
+And Store the Referance Id and Open the Record1
 And Click the Bank recon Statement
 And Click the Bank recon Details
-Then Click submit button and Enter Remark submit it 
-Given Navigate as a Reviewer
+Then Click submit button and Enter Remark submit it1
+Then logout from maker
+
+
+@KUBS_TAX_UAT_006_001_TC_006_02
+Scenario: Submit a bank recon from Maker Queue and check the record is available in checker queue for approval
+And login with reviewer credentials bankrecon
 Then click on Notify icon
-And Click First record Action icon
+And Click First record Action icon bankrecon
 And Click the Bank recon Statement
 And Click the Bank recon Details
 Then Approve the record in Reviewer
-And Give Remark and Submit
+And Give Remark and Submit bankrecon
+
+
+@KUBS_TAX_UAT_006_001_TC_006_03
+Scenario: Submit a bank recon from Maker Queue and check the record is available in checker queue for approval
 Given Navigate as a Checker
 Then Click module security management
 And Claim the Record in Checker
@@ -130,8 +150,9 @@ Then Approve the Record in checker stage
 And Give the Remark and Submit it
 
 
-@KUBS_TAX_UAT_006_001_TC_007
+@KUBS_TAX_UAT_006_001_TC_007_01
 Scenario: Verify checker is not allowed to do any modification on any tab
+And User get the test data for bankrecon testcase006001007
 Given navigate to given url and login with maker credentials
 Then click on second Segment button
 And click Bank Recon module
@@ -152,13 +173,22 @@ And Store the Referance Id and Open the Record
 And Click the Bank recon Statement
 And Click the Bank recon Details
 Then Click submit button and Enter Remark submit it 
-Given Navigate as a Reviewer
+Then logout from maker
+
+
+@KUBS_TAX_UAT_006_001_TC_007_02
+Scenario: Verify checker is not allowed to do any modification on any tab
+And login with reviewer credentials bankrecon
 Then click on Notify icon
 And Click First record Action icon
 And Click the Bank recon Statement
 And Click the Bank recon Details
 Then Approve the record in Reviewer
 And Give Remark and Submit
+
+
+@KUBS_TAX_UAT_006_001_TC_007_03
+Scenario: Verify checker is not allowed to do any modification on any tab
 Given Navigate as a Checker
 Then Click module security management
 And Claim the Record in Checker

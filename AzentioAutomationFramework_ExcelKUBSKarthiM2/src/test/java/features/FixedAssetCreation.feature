@@ -111,8 +111,42 @@ Given User should go to the kubs url and login as a maker user
 And user should navigate to accounts payable menu
 When click on eye button of vendor contract
 And click on add button to create contract
-And Fill the required fields to create contract
-Then Save and submit the creation contract record
+#And Fill the required fields to create contract
+
+And fill the accountPayable_VendorContracts_ExpenseType
+And fill the accountPayable_VendorContracts_BP_Name
+And fill the accountPayable_VendorContracts_BP_Branch
+And fill the accountPayable_VendorContracts_ContractName
+And fill the accountPayable_VendorContracts_AgreementCalendar
+And fill the accountPayable_VendorContracts_ContractEndDate
+And fill the accountPayable_VendorContracts_ContractSignedOnDate
+And fill the accountPayable_VendorContracts_Currency
+And fill the accountPayable_VendorContracts_Remark
+And fill the accountPayable_VendorContracts_OtherDetailsButton
+And fill the accountPayable_VendorContracts_AutoGenerateInvoice
+And fill the accountPayable_VendorContracts_CreditPeriod
+And fill the accountPayable_VendorContracts_LatePaymentFee
+And fill the accountPayable_VendorContracts_Currency2
+And User click the accountPayable_VendorContracts_SaveButton
+And User click the accountPayable_VendorContracts_AddButton
+And fill the accountPayable_VendorContracts_HSN_Code
+And fill the accountPayable_VendorContracts_ExpenseCode
+And fill the accountPayable_VendorContracts_Quantity
+And fill the accountPayable_VendorContracts_CostCenter
+And fill the accountPayable_VendorContracts_Unit
+And fill the accountPayable_VendorContracts_RatePerUnit
+And fill the accountPayable_VendorContracts_CurrencyInItemDetail
+And user click the accountPayable_VendorContracts_ItemDetailsSaveButton
+And User fill the accountPayable_VendorContracts_AddButton
+And fill the accountPayable_VendorContracts_PaymentTermDetails
+And fill the accountPayable_VendorContracts_PaymentTermPercent
+And fill the accountPayable_VendorContracts_PaymentTermType
+And user click the accountPayable_VendorContracts_ItemDetailsSaveButton
+And User fill accountPayable_VendorContracts_ModeOfPayment
+And fill the accountPayable_VendorContracts_AutoPayout
+And User click the accountPayable_VendorContracts_BenificiaryDetailsSaveButton
+Then Save and submit the creation contract record1
+
 @KUBS_FAT_UAT_001_002_02 
 Scenario: Create a contract details for procuring an asset
 And User get the test data for Contract creation Testcase2
@@ -136,8 +170,8 @@ Given User should go to the kubs url and login as a maker user
 And user should navigate to accounts payable menu
 When click on eye button of vendor contract
 Then click on search button
-#Then search vendor contract details by business partner name
-#And vendor contract details should display on contract creation list view
+Then search vendor contract details by business partner name
+And vendor contract details should display on contract creation list view
 
 ########################################################################################################################################
 

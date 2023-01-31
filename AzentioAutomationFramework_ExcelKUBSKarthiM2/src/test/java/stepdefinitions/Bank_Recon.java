@@ -88,6 +88,7 @@ public class Bank_Recon extends BaseClass {
 		bankReconObj.BANKRECONBankName().sendKeys(Keys.ENTER);
 
 		bankReconObj.BANKRECONBAnkAccountNumber().click();
+		Thread.sleep(2000);
 		bankReconObj.BANKRECONBAnkAccountNumber().sendKeys(Keys.DOWN);
 		bankReconObj.BANKRECONBAnkAccountNumber().sendKeys(Keys.ENTER);
 	}
@@ -95,7 +96,7 @@ public class Bank_Recon extends BaseClass {
 	@Then("^Upload our Barclays Bank file$")
 	public void upload_barclays_bank_our_file() throws Throwable {
 		Thread.sleep(2000);
-		bankReconObj.BANKRECON_BankReconUploadFileButton().sendKeys("C:\\Users\\ININDC00071\\Music\\HdfcBank_0024.csv");
+		bankReconObj.BANKRECON_BankReconUploadFileButton().sendKeys("C:\\Users\\ININDC00071\\Music\\MY_001.csv");
 
 	}
 
@@ -225,15 +226,15 @@ public class Bank_Recon extends BaseClass {
 			try {
 
 				driver.findElement(
-						By.xpath("//span[contains(text(),'" + recondata.Month + " " + recondata.FromYear + "')]"));
+						By.xpath("//span[contains(text(),'" + bankrecon.get("Month") + " " + bankrecon.get("FromYear") + "')]"));
 				break;
 			} catch (NoSuchElementException e) {
 				bankReconObj.calendarNextMonthButton().click();
 			}
 		}
 		Thread.sleep(2000);
-		clickAndActionHelper.doubleClick(driver.findElement(By.xpath("//td[@aria-label='" + recondata.FullMonth + " "
-				+ recondata.FromDate + ", " + recondata.FromYear + "']//span")));
+		clickAndActionHelper.doubleClick(driver.findElement(By.xpath("//td[@aria-label='" + bankrecon.get("FullMonth") + " "
+				+ bankrecon.get("FromDate") + ", " + bankrecon.get("FromYear") + "']//span")));
 	}
 
 	@And("^Give the Bank recon period to date$")
@@ -243,21 +244,21 @@ public class Bank_Recon extends BaseClass {
 			try {
 
 				driver.findElement(
-						By.xpath("//span[contains(text(),'" + recondata.Month + " " + recondata.FromYear + "')]"));
+						By.xpath("//span[contains(text(),'" +bankrecon.get("Month")+ " " +bankrecon.get("FromYear")+ "')]"));
 				break;
 			} catch (NoSuchElementException e) {
 				bankReconObj.calendarNextMonthButton().click();
 			}
 		}
 		Thread.sleep(2000);
-		clickAndActionHelper.doubleClick(driver.findElement(By.xpath("//td[@aria-label='" + recondata.FullMonth + " "
-				+ recondata.FromToDate + ", " + recondata.FromYear + "']//span")));
+		clickAndActionHelper.doubleClick(driver.findElement(By.xpath("//td[@aria-label='" + bankrecon.get("FullMonth") + " "
+				+bankrecon.get("FromToDate")+ ", " +bankrecon.get("FromYear")+ "']//span")));
 	}
 
 	@Then("^Upload our file for Indian$")
 	public void upload_our_file_for_indian() throws Throwable {
 		Thread.sleep(2000);
-		bankReconObj.BANKRECON_BankReconUploadFileButton().sendKeys("C:\\Users\\inindc00075\\Music\\Barclay_0025.csv");
+		bankReconObj.BANKRECON_BankReconUploadFileButton().sendKeys("C:\\Users\\ININDC00071\\Music\\TIB_001.csv");
 		Thread.sleep(5000);
 
 	}
@@ -270,7 +271,7 @@ public class Bank_Recon extends BaseClass {
 	public void enter_the_bank_name_and_account_numbers() throws Throwable {
 		waitHelper.waitForElementVisible(bankReconObj.BANKRECONBankName(), 3000, 300);
 		bankReconObj.BANKRECONBankName().click();
-		bankReconObj.BANKRECONBankName().sendKeys(recondata.Bankname3);
+		bankReconObj.BANKRECONBankName().sendKeys(recondata.Bankname1);
 		bankReconObj.BANKRECONBankName().sendKeys(Keys.ENTER);
 
 		bankReconObj.BANKRECONBAnkAccountNumber().click();
@@ -285,15 +286,15 @@ public class Bank_Recon extends BaseClass {
 			try {
 
 				driver.findElement(
-						By.xpath("//span[contains(text(),'" + recondata.Month + " " + recondata.FromYear + "')]"));
+						By.xpath("//span[contains(text(),'" + bankrecon.get("Month") + " " +bankrecon.get("FromYear")+ "')]"));
 				break;
 			} catch (NoSuchElementException e) {
 				bankReconObj.calendarNextMonthButton().click();
 			}
 		}
 		Thread.sleep(2000);
-		clickAndActionHelper.doubleClick(driver.findElement(By.xpath("//td[@aria-label='" + recondata.FullMonth + " "
-				+ recondata.FromDate1 + ", " + recondata.FromYear + "']//span")));
+		clickAndActionHelper.doubleClick(driver.findElement(By.xpath("//td[@aria-label='" +bankrecon.get("FullMonth")+ " "
+				+bankrecon.get("FromDate")+ ", " +bankrecon.get("FromYear")+ "']//span")));
 
 	}
 
@@ -304,21 +305,21 @@ public class Bank_Recon extends BaseClass {
 			try {
 
 				driver.findElement(
-						By.xpath("//span[contains(text(),'" + recondata.Month + " " + recondata.FromYear + "')]"));
+						By.xpath("//span[contains(text(),'" + bankrecon.get("Month") + " " +bankrecon.get("FromYear")+ "')]"));
 				break;
 			} catch (NoSuchElementException e) {
 				bankReconObj.calendarNextMonthButton().click();
 			}
 		}
 		Thread.sleep(2000);
-		clickAndActionHelper.doubleClick(driver.findElement(By.xpath("//td[@aria-label='" + recondata.FullMonth + " "
-				+ recondata.FromToDate1 + ", " + recondata.FromYear + "']//span")));
+		clickAndActionHelper.doubleClick(driver.findElement(By.xpath("//td[@aria-label='" +bankrecon.get("FullMonth")+ " "
+				+bankrecon.get("FromToDate")+ ", " +bankrecon.get("FromYear")+ "']//span")));
 	}
 
 	@Then("^Upload our Bank file$")
 	public void upload_our_bank_file() throws Throwable {
 		Thread.sleep(2000);
-		bankReconObj.BANKRECON_BankReconUploadFileButton().sendKeys("C:\\Users\\inindc00075\\Music\\PALLAV_AL12.csv");
+		bankReconObj.BANKRECON_BankReconUploadFileButton().sendKeys("C:\\Users\\ININDC00071\\Music\\TIB_001.csv");
 
 	}
 	// *****************@KUBS_TAX_UAT_006_001_TC_004******************//
@@ -330,15 +331,15 @@ public class Bank_Recon extends BaseClass {
 			try {
 
 				driver.findElement(
-						By.xpath("//span[contains(text(),'" + recondata.Month + " " + recondata.FromYear + "')]"));
+						By.xpath("//span[contains(text(),'" +bankrecon.get("Month")+ " " +bankrecon.get("FromYear")+ "')]"));
 				break;
 			} catch (NoSuchElementException e) {
 				bankReconObj.calendarNextMonthButton().click();
 			}
 		}
 		Thread.sleep(2000);
-		clickAndActionHelper.doubleClick(driver.findElement(By.xpath("//td[@aria-label='" + recondata.FullMonth + " "
-				+ recondata.FromDate1 + ", " + recondata.FromYear + "']//span")));
+		clickAndActionHelper.doubleClick(driver.findElement(By.xpath("//td[@aria-label='" +bankrecon.get("FullMonth")+ " "
+				+bankrecon.get("FromDate")+ ", " +bankrecon.get("FromYear")+ "']//span")));
 
 	}
 
@@ -349,21 +350,21 @@ public class Bank_Recon extends BaseClass {
 			try {
 
 				driver.findElement(
-						By.xpath("//span[contains(text(),'" + recondata.Month + " " + recondata.FromYear + "')]"));
+						By.xpath("//span[contains(text(),'" +bankrecon.get("Month")+ " " +bankrecon.get("FromYear")+ "')]"));
 				break;
 			} catch (NoSuchElementException e) {
 				bankReconObj.calendarNextMonthButton().click();
 			}
 		}
 		Thread.sleep(2000);
-		clickAndActionHelper.doubleClick(driver.findElement(By.xpath("//td[@aria-label='" + recondata.FullMonth + " "
-				+ recondata.FromToDate1 + ", " + recondata.FromYear + "']//span")));
+		clickAndActionHelper.doubleClick(driver.findElement(By.xpath("//td[@aria-label='" +bankrecon.get("FullMonth")+ " "
+				+bankrecon.get("FromToDate")+ ", " +bankrecon.get("FromYear")+ "']//span")));
 	}
 
 	@Then("^Upload the Bank file$")
 	public void upload_the_bank_file() throws Throwable {
 		Thread.sleep(2000);
-		bankReconObj.BANKRECON_BankReconUploadFileButton().sendKeys("C:\\Users\\inindc00075\\Music\\PALLAV_AL12.csv");
+		bankReconObj.BANKRECON_BankReconUploadFileButton().sendKeys("C:\\Users\\ININDC00071\\Music\\TIB_001.csv");
 
 	}
 
@@ -449,13 +450,13 @@ public class Bank_Recon extends BaseClass {
 	@Then("^Upload our Bank files$")
 	public void upload_our_bank_files() throws Throwable {
 		Thread.sleep(2000);
-		bankReconObj.BANKRECON_BankReconUploadFileButton().sendKeys("C:\\Users\\inindc00075\\Music\\PALLAV_AL16.csv");
+		bankReconObj.BANKRECON_BankReconUploadFileButton().sendKeys("C:\\Users\\ININDC00071\\Music\\TIB_001.csv");
 	}
 
 	@Then("^Upload our Bank file for Bank$")
 	public void upload_our_bank_file_for_bank() throws Throwable {
 		Thread.sleep(2000);
-		bankReconObj.BANKRECON_BankReconUploadFileButton().sendKeys("C:\\Users\\inindc00075\\Music\\Barclay_0025.csv");
+		bankReconObj.BANKRECON_BankReconUploadFileButton().sendKeys("C:\\Users\\ININDC00071\\Music\\TIB_001.csv");
 	}
 
 	@Then("^Try to submit the Record$")
@@ -481,6 +482,83 @@ public class Bank_Recon extends BaseClass {
 		waitHelper.waitForElementVisible(bankReconObj.BANKRECOnToastAlert(), 3000, 300);
 		String Alert = bankReconObj.BANKRECOnToastAlert().getText();
 		System.out.println(Alert);
+	}
+	
+	@And("^Store the Referance Id and Open the Record1$")
+	public void store_the_referance_id_and_open_the_record1() throws Throwable {
+		// -----------Action Icon-----------//
+		waitHelper.waitForElement(driver, 2000, arapObj.ARAP_ReferanceId());
+		String Referance_id = arapObj.ARAP_ReferanceId().getText();
+		
+		excelData.updateTestData("KUBS_TAX_UAT_006_001_TC_006_01_D1","Reference ID",Referance_id);
+		bankrecon = excelData.getTestdata("KUBS_TAX_UAT_006_001_TC_006_01_D1");
+		//readerData.addReferanceData(Referance_id);
+		waitHelper.waitForElement(driver, 2000, arapObj.ARAP_ActionButton());
+		arapObj.ARAP_ActionButton().click();
+	}
+	
+	@Then("^Click submit button and Enter Remark submit it1$")
+	public void click_submit_button_and_enter_remark_submit_it1() throws Throwable {
+		// -------------------------TO SUBMIT THE RECORD-----------------------------//
+		waitHelper.waitForElement(driver, 2000, arapObj.ARAP_Submit());
+		arapObj.ARAP_Submit().click();
+		waitHelper.waitForElement(driver, 2000, arapObj.ARAP_Remark());
+		arapObj.ARAP_Remark().sendKeys(bankrecon.get("Maker"));
+		waitHelper.waitForElement(driver, 5000, arapObj.ARAP_RemarkSubmit());
+		arapObj.ARAP_RemarkSubmit().click();
+		waitHelper.waitForElement(driver, 10000, arapObj.ARAP_ReviewerId());
+		reviwerId = arapObj.ARAP_ReviewerId().getText();
+		String trimmdReviewerID = reviwerId.substring(85);
+		StringBuffer sb = new StringBuffer(trimmdReviewerID);
+		StringBuffer bufferedString = sb.deleteCharAt(trimmdReviewerID.length() - 1);
+		String filanReviewerID = bufferedString.toString();
+		// arapObj.arapObj_reviewer_id().getText());
+		//json.addData(filanReviewerID);
+		excelData.updateTestData("KUBS_TAX_UAT_006_001_TC_006_01_D1","Reviewer ID",filanReviewerID);
+		bankrecon = excelData.getTestdata("KUBS_TAX_UAT_006_001_TC_006_01_D1");
+		
+		
+		System.out.println(filanReviewerID);
+	}
+	@And("^login with reviewer credentials bankrecon$")
+	public void login_with_reviewer_credentials_bankrecon() throws Throwable {
+		ConfigFileReader configreader = new ConfigFileReader();
+		driver.get(configreader.getApplicationUrl());
+		
+		KUBS_Login kubsLogin = new KUBS_Login(driver);
+
+		String userType = "Reviewer";
+		/*
+		 * Then we have to login with reviewer and continue the approval process
+		 */
+		Thread.sleep(3000);
+		kubsLogin.logintoAzentioappReviewer(userType, bankrecon.get("Reviewer ID"));
+
+	}
+	@And("^Click First record Action icon bankrecon$")
+	public void click_first_record_action_icon_bankrecon() throws Throwable {
+		// -----------REVIEWER ACTION-------------//
+		javaScriptHelper.JavaScriptHelper(driver);
+		String befr_xpath = "//span[contains(text(),'";
+		String aftr_xpath = "')]/parent::div/parent::datatable-body-cell/preceding-sibling::datatable-body-cell[1]//div//ion-buttons//ion-button";
+		waitHelper.waitForElement(driver, 2000,
+				driver.findElement(By.xpath(befr_xpath + bankrecon.get("Reference ID") + aftr_xpath)));
+		driver.findElement(By.xpath(befr_xpath + bankrecon.get("Reference ID") + aftr_xpath)).click();
+		
+		//reviewerObj.reviewer_action_button().click();
+	}
+	
+	@And("^Give Remark and Submit bankrecon$")
+	public void give_remark_and_submit_bankrecon() throws Throwable {
+		// ---------------------SUBMIT THE REVIEWER RECORD-----------------------//
+		waitHelper.waitForElement(driver, 5000, reviewerObj.reviewerAlertRemarks());
+		reviewerObj.reviewerAlertRemarks().sendKeys(bankrecon.get("ReviewerRemark"));
+		waitHelper.waitForElement(driver, 5000, reviewerObj.reviewerAlertSubmitButton());
+		javaScriptHelper.JSEClick(reviewerObj.reviewerAlertSubmitButton());
+		waitHelper.waitForElement(driver, 3000, reviewerObj.approvalStatus());
+		String Notification = reviewerObj.approvalStatus().getText();
+		System.out.println("Reviewer Notification: " + Notification);
+		Assert.assertTrue(reviewerObj.approvalStatus().isDisplayed());
 	}
 	
 	@And("^User get the test data for bankrecon testcase006001001$")
@@ -516,6 +594,8 @@ public class Bank_Recon extends BaseClass {
     @And("^User get the test data for bankrecon testcase006001007$")
     public void user_get_the_test_data_for_bankrecon_testcase006001007() throws Throwable {
     	bankrecon = excelData.getTestdata("KUBS_TAX_UAT_006_001_TC_007_D1");
+    	
+    	
     }
 
 
