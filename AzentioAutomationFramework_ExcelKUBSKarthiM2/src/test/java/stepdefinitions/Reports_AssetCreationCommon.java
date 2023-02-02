@@ -1069,6 +1069,16 @@ public class Reports_AssetCreationCommon {
 		browserHelper.switchToParentWithChildClose();
 
 	}
+	@And("^User get the limit config testdata for test case01$")
+    public void user_get_the_limit_config_testdata_for_test_case01() throws Throwable {
+		limitconfig=excelData.getTestdata("KUBS_FAT_UAT_013_001_D1");
+    }
+
+    @And("^User get the limit config testdata for test case02$")
+    public void user_get_the_limit_config_testdata_for_test_case02() throws Throwable {
+    	limitconfig=excelData.getTestdata("KUBS_FAT_UAT_013_002_D1");
+    }
+
 	
 
 }

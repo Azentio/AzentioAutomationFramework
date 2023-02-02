@@ -38,10 +38,10 @@ Then Click on Fixed Asset
 Then Click on Asset Creation Eye button
 
 ##################################################################################################################################################
-
+##
 @KUBS_FAT_UAT_013_001 
 Scenario: Check Asset Limit Config 
-
+ And User get the limit config testdata for test case01
  Given User should go to the kubs url and login as a maker user 
  Then click on report icon 
  And user should navigate to master reports menu 
@@ -52,6 +52,7 @@ Scenario: Check Asset Limit Config
  
 @KUBS_FAT_UAT_013_002 
 Scenario: Check Asset Category 
+And User get the limit config testdata for test case02
 Given User should go to the kubs url and login as a maker user 
 Then click on report icon 
 And user should navigate to master reports menu 
