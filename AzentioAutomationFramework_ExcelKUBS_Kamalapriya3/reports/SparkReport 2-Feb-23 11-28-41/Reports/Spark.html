@@ -1,0 +1,4183 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Automation Report HTML</title>
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/extent-framework/extent-github-cdn@b00a2d0486596e73dd7326beacf352c639623a0e/commons/img/logo.png">
+<link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/extent-framework/extent-github-cdn@b00a2d0486596e73dd7326beacf352c639623a0e/commons/img/logo.png">
+<link href="https://cdn.jsdelivr.net/gh/extent-framework/extent-github-cdn@c43b89d03a7c43dae8bb8f0f078bad1997af6b3b/spark/css/spark-style.css" rel="stylesheet" />
+<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<script src="https://cdn.rawgit.com/extent-framework/extent-github-cdn/7cc78ce/spark/js/jsontree.js"></script>
+<style type="text/css"></style></head><body class="spa bdd-report standard">
+  <div class="app">
+    <div class="layout">
+<div class="header navbar">
+<div class="vheader">
+<div class="nav-logo">
+<a href="#">
+<div class="logo" style="background-image: url('https://cdn.jsdelivr.net/gh/extent-framework/extent-github-cdn@b00a2d0486596e73dd7326beacf352c639623a0e/commons/img/logo.png')"></div>
+</a>
+</div>
+<ul class="nav-left">
+<li class="search-box">
+<a class="search-toggle" href="#">
+<i class="search-icon fa fa-search"></i>
+<i class="search-icon-close fa fa-close"></i>
+</a>
+</li>
+<li class="search-input"><input id="search-tests" class="form-control" type="text" placeholder="Search..."></li>
+</ul>
+<ul class="nav-right">
+<li class="m-r-10">
+<a href="#"><span class="badge badge-primary">Azentio Automation Suite Report</span></a>
+</li>
+<li class="m-r-10">
+<a href="#"><span class="badge badge-primary">Feb 2, 2023 11:28:41 AM</span></a>
+</li>
+</ul>
+</div>
+</div><div class="side-nav">
+<div class="side-nav-inner">
+<ul class="side-nav-menu">
+<li class="nav-item dropdown" onclick="toggleView('test-view')">
+<a id="nav-test" class="dropdown-toggle" href="#">
+<span class="ico"><i class="fa fa-list"></i></span>
+</a>
+</li>
+<li class="nav-item dropdown" onclick="toggleView('dashboard-view')">
+<a id="nav-dashboard" class="dropdown-toggle" href="#">
+<span class="ico"><i class="fa fa-bar-chart"></i></span>
+</a>
+</li>
+<li class="nav-item dropdown" onclick="toggleView('category-view')">
+<a id="nav-category" class="dropdown-toggle" href="#">
+<span class="ico"><i class="fa fa-tag"></i></span>
+</a>
+</li>
+<li class="nav-item dropdown" onclick="toggleView('exception-view')">
+<a id="nav-exception" class="dropdown-toggle" href="#">
+<span class="ico"><i class="fa fa-bug"></i></span>
+</a>
+</li>
+</ul>
+</div>
+</div>      <div class="vcontainer">
+        <div class="main-content">
+<div class="test-wrapper row view test-view">
+  <div class="test-list">
+    <div class="test-list-tools">
+<ul class="tools pull-left">
+<li><a href="#"><span class="font-size-14">Tests</span></a></li>
+</ul>
+<ul class="tools text-right">
+<li class="dropdown">
+<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-exclamation-circle"></i></a>
+<ul id="status-toggle" class="dropdown-menu dropdown-md p-v-0">
+<a class="dropdown-item" status="fail" href="#"><span>Fail</span><span class="status danger"></span></a>
+<div class="dropdown-divider"></div>
+<a status="clear" class="dropdown-item" href="#"><span>Clear</span><span class="pull-right"><i class="fa fa-close"></i></span></a>
+</ul>
+</li>
+<li class="dropdown">
+<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-tag"></i></a>
+<ul id="tag-toggle" class="dropdown-menu dropdown-md p-v-0">
+<a class="dropdown-item" href="#">@KUBS_FAT_UAT_004_002_AccountingEntries1</a><a class="dropdown-item" href="#">@KUBS_FAT_UAT_013_012_AssetUndertaking</a><a class="dropdown-item" href="#">@KUBS_FAT_UAT_013_005_AssetGl</a><a class="dropdown-item" href="#">@KUBS_FAT_UAT_013_014_AssetAllocation</a><a class="dropdown-item" href="#">@KUBS_FAT_UAT_013_003_AssetCode</a><a class="dropdown-item" href="#">@KUBS_FAT_UAT_013_017_Replacement</a><a class="dropdown-item" href="#">@KUBS_FAT_UAT_007_009_vendorpayment</a><a class="dropdown-item" href="#">@KUBS_FAT_UAT_013_013_Assetsale</a><a class="dropdown-item" href="#">@KUBS_FAT_UAT_013_011_AssetTransfer</a><a class="dropdown-item" href="#">@MultiAuth</a><a class="dropdown-item" href="#">@KUBS_FAT_UAT_013_019_Revaluation</a><a class="dropdown-item" href="#">@KUBS_FAT_UAT_013_009_AssetContract</a><a class="dropdown-item" href="#">@KUBS_FAT_UAT_004_004_AccountingEntries2</a><a class="dropdown-item" href="#">@KUBS_FAT_UAT_013_004_Depreciation</a><a class="dropdown-item" href="#">@KUBS_FAT_UAT_013_016_Return</a><a class="dropdown-item" href="#">@KUBS_FAT_UAT_013_010_AssetAmmenment</a><a class="dropdown-item" href="#">@KUBS_FAT_UAT_013_018_ImpairementLoss</a><a class="dropdown-item" href="#">@KUBS_FAT_UAT_013_015_Deallocation</a>
+</ul>
+</li>
+</ul>
+</div>    <div class="test-list-wrapper scrollable">
+      <ul class="test-list-item">
+        <li class="test-item"  status="fail" test-id="1"
+          author=""
+          tag=""
+          device="">
+          <div class="test-detail">
+            <p class="name">To verify the reports for fixed asset</p>
+            <p class="text-sm">
+              <span>11:28:44 AM</span> / <span>41:29:344</span>
+              <span class="badge fail-bg log float-right">Fail</span>
+            </p>
+          </div>
+          <div class="test-contents d-none">
+<div class="detail-head">
+<div class="p-v-10">
+<div class="info">
+<h5 class="test-status text-fail">To verify the reports for fixed asset</h5>
+<span class='badge badge-success'>02.02.2023 11:28:44</span>
+<span class='badge badge-danger'>02.02.2023 11:40:14</span>
+<span class='badge badge-default'>41:29:344</span>
+&middot; <span class='uri-anchor badge badge-default'>#test-id=1</span>
+</div>
+<div class="m-t-10 m-l-5"></div>
+</div>
+</div>
+<div class="accordion mt-4">
+  <div class="card">
+    <div class="card-header" role="tab">
+      <div class="card-title">
+        <div class="node" id="2"><span class="badge log pass-bg mr-2">Pass</span>Check Asset Revaluation Report</div>
+          <div class="status-avatar float-right mr-4">
+            <i class="fa fa-paperclip"></i>
+          </div>
+      </div>
+    </div>
+        <div class="collapse">
+          <div class="card-body">
+              <div class="step pass-bg" title="stepdefinitions.InventoryMaintenance.maker_navigate_to_uat_url_login()">
+                <span>Given Maker Navigate to UAT URL login</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="AFTER_STEP">
+                <span>stepdefinitions.HooksClass.addScreenshot(io.cucumber.java.Scenario)</span>
+      <div>screenshot
+          <div class="row mb-3"><div class="col-md-3">
+    <img data-featherlight='../Spark_Screenshots/embedded1.png' src="../Spark_Screenshots/embedded1.png">
+    
+    </div></div>
+</div>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinitions.ArAp_BalanceSheetReport.click_on_repoet_button()">
+                <span>Then Click on Report button</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="AFTER_STEP">
+                <span>stepdefinitions.HooksClass.addScreenshot(io.cucumber.java.Scenario)</span>
+      <div>screenshot
+          <div class="row mb-3"><div class="col-md-3">
+    <img data-featherlight='../Spark_Screenshots/embedded2.png' src="../Spark_Screenshots/embedded2.png">
+    
+    </div></div>
+</div>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinitions.FixedAsset_Reports.click_on_transaction_reports_tab()">
+                <span>Then Click on Transaction Reports tab</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="AFTER_STEP">
+                <span>stepdefinitions.HooksClass.addScreenshot(io.cucumber.java.Scenario)</span>
+      <div>screenshot
+          <div class="row mb-3"><div class="col-md-3">
+    <img data-featherlight='../Spark_Screenshots/embedded3.png' src="../Spark_Screenshots/embedded3.png">
+    
+    </div></div>
+</div>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinitions.FixedAsset_Reports.click_on_revaluation_report_edit_button()">
+                <span>Then Click on Revaluation Report edit button</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="AFTER_STEP">
+                <span>stepdefinitions.HooksClass.addScreenshot(io.cucumber.java.Scenario)</span>
+      <div>screenshot
+          <div class="row mb-3"><div class="col-md-3">
+    <img data-featherlight='../Spark_Screenshots/embedded4.png' src="../Spark_Screenshots/embedded4.png">
+    
+    </div></div>
+</div>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinitions.FixedAsset_Reports.get_the_system_data()">
+                <span>And Get the system data</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="AFTER_STEP">
+                <span>stepdefinitions.HooksClass.addScreenshot(io.cucumber.java.Scenario)</span>
+      <div>screenshot
+          <div class="row mb-3"><div class="col-md-3">
+    <img data-featherlight='../Spark_Screenshots/embedded5.png' src="../Spark_Screenshots/embedded5.png">
+    
+    </div></div>
+</div>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinitions.FixedAsset_Reports.select_revaluation_date_in_calendar()">
+                <span>Then Select Revaluation date in calendar</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="AFTER_STEP">
+                <span>stepdefinitions.HooksClass.addScreenshot(io.cucumber.java.Scenario)</span>
+      <div>screenshot
+          <div class="row mb-3"><div class="col-md-3">
+    <img data-featherlight='../Spark_Screenshots/embedded6.png' src="../Spark_Screenshots/embedded6.png">
+    
+    </div></div>
+</div>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinitions.ArAp_BalanceSheetReport.click_on_the_view_button()">
+                <span>Then Click on the View button</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="AFTER_STEP">
+                <span>stepdefinitions.HooksClass.addScreenshot(io.cucumber.java.Scenario)</span>
+      <div>screenshot
+          <div class="row mb-3"><div class="col-md-3">
+    <img data-featherlight='../Spark_Screenshots/embedded7.png' src="../Spark_Screenshots/embedded7.png">
+    
+    </div></div>
+</div>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinitions.ArAp_BalanceSheetReport.close_the_report()">
+                <span>Then close the report</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="AFTER_STEP">
+                <span>stepdefinitions.HooksClass.addScreenshot(io.cucumber.java.Scenario)</span>
+      <div>screenshot
+          <div class="row mb-3"><div class="col-md-3">
+    <img data-featherlight='../Spark_Screenshots/embedded8.png' src="../Spark_Screenshots/embedded8.png">
+    
+    </div></div>
+</div>
+      <div>
+      </div>
+              </div>
+          </div>
+        </div>
+  </div>
+  <div class="card">
+    <div class="card-header" role="tab">
+      <div class="card-title">
+        <div class="node" id="22"><span class="badge log pass-bg mr-2">Pass</span>Check Asset replacement Report</div>
+          <div class="status-avatar float-right mr-4">
+            <i class="fa fa-paperclip"></i>
+          </div>
+      </div>
+    </div>
+        <div class="collapse">
+          <div class="card-body">
+              <div class="step pass-bg" title="stepdefinitions.InventoryMaintenance.maker_navigate_to_uat_url_login()">
+                <span>Given Maker Navigate to UAT URL login</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="AFTER_STEP">
+                <span>stepdefinitions.HooksClass.addScreenshot(io.cucumber.java.Scenario)</span>
+      <div>screenshot
+          <div class="row mb-3"><div class="col-md-3">
+    <img data-featherlight='../Spark_Screenshots/embedded9.png' src="../Spark_Screenshots/embedded9.png">
+    
+    </div></div>
+</div>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinitions.ArAp_BalanceSheetReport.click_on_repoet_button()">
+                <span>Then Click on Report button</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="AFTER_STEP">
+                <span>stepdefinitions.HooksClass.addScreenshot(io.cucumber.java.Scenario)</span>
+      <div>screenshot
+          <div class="row mb-3"><div class="col-md-3">
+    <img data-featherlight='../Spark_Screenshots/embedded10.png' src="../Spark_Screenshots/embedded10.png">
+    
+    </div></div>
+</div>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinitions.FixedAsset_Reports.click_on_transaction_reports_tab()">
+                <span>Then Click on Transaction Reports tab</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="AFTER_STEP">
+                <span>stepdefinitions.HooksClass.addScreenshot(io.cucumber.java.Scenario)</span>
+      <div>screenshot
+          <div class="row mb-3"><div class="col-md-3">
+    <img data-featherlight='../Spark_Screenshots/embedded11.png' src="../Spark_Screenshots/embedded11.png">
+    
+    </div></div>
+</div>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinitions.FixedAsset_Reports.click_on_asset_replacement_report_edit_button()">
+                <span>Then Click on Asset replacement Report edit button</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="AFTER_STEP">
+                <span>stepdefinitions.HooksClass.addScreenshot(io.cucumber.java.Scenario)</span>
+      <div>screenshot
+          <div class="row mb-3"><div class="col-md-3">
+    <img data-featherlight='../Spark_Screenshots/embedded12.png' src="../Spark_Screenshots/embedded12.png">
+    
+    </div></div>
+</div>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinitions.FixedAsset_Reports.choose_the_data_set_id_for_asset_replacement_report()">
+                <span>Then Choose the data set id for asset replacement report</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="AFTER_STEP">
+                <span>stepdefinitions.HooksClass.addScreenshot(io.cucumber.java.Scenario)</span>
+      <div>screenshot
+          <div class="row mb-3"><div class="col-md-3">
+    <img data-featherlight='../Spark_Screenshots/embedded13.png' src="../Spark_Screenshots/embedded13.png">
+    
+    </div></div>
+</div>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinitions.FixedAsset_Reports.get_the_system_data()">
+                <span>And Get the system data</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="AFTER_STEP">
+                <span>stepdefinitions.HooksClass.addScreenshot(io.cucumber.java.Scenario)</span>
+      <div>screenshot
+          <div class="row mb-3"><div class="col-md-3">
+    <img data-featherlight='../Spark_Screenshots/embedded14.png' src="../Spark_Screenshots/embedded14.png">
+    
+    </div></div>
+</div>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinitions.FixedAsset_Reports.fill_details_for_report()">
+                <span>Then Fill details for report</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="AFTER_STEP">
+                <span>stepdefinitions.HooksClass.addScreenshot(io.cucumber.java.Scenario)</span>
+      <div>screenshot
+          <div class="row mb-3"><div class="col-md-3">
+    <img data-featherlight='../Spark_Screenshots/embedded15.png' src="../Spark_Screenshots/embedded15.png">
+    
+    </div></div>
+</div>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinitions.FixedAsset_Reports.select_date_from_calendar()">
+                <span>Then Select date from calendar</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="AFTER_STEP">
+                <span>stepdefinitions.HooksClass.addScreenshot(io.cucumber.java.Scenario)</span>
+      <div>screenshot
+          <div class="row mb-3"><div class="col-md-3">
+    <img data-featherlight='../Spark_Screenshots/embedded16.png' src="../Spark_Screenshots/embedded16.png">
+    
+    </div></div>
+</div>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinitions.ArAp_BalanceSheetReport.click_on_the_view_button()">
+                <span>Then Click on the View button</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="AFTER_STEP">
+                <span>stepdefinitions.HooksClass.addScreenshot(io.cucumber.java.Scenario)</span>
+      <div>screenshot
+          <div class="row mb-3"><div class="col-md-3">
+    <img data-featherlight='../Spark_Screenshots/embedded17.png' src="../Spark_Screenshots/embedded17.png">
+    
+    </div></div>
+</div>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinitions.ArAp_BalanceSheetReport.close_the_report()">
+                <span>Then close the report</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="AFTER_STEP">
+                <span>stepdefinitions.HooksClass.addScreenshot(io.cucumber.java.Scenario)</span>
+      <div>screenshot
+          <div class="row mb-3"><div class="col-md-3">
+    <img data-featherlight='../Spark_Screenshots/embedded18.png' src="../Spark_Screenshots/embedded18.png">
+    
+    </div></div>
+</div>
+      <div>
+      </div>
+              </div>
+          </div>
+        </div>
+  </div>
+  <div class="card">
+    <div class="card-header" role="tab">
+      <div class="card-title">
+        <div class="node" id="46"><span class="badge log pass-bg mr-2">Pass</span>Check Asset return Report</div>
+          <div class="status-avatar float-right mr-4">
+            <i class="fa fa-paperclip"></i>
+          </div>
+      </div>
+    </div>
+        <div class="collapse">
+          <div class="card-body">
+              <div class="step pass-bg" title="stepdefinitions.InventoryMaintenance.maker_navigate_to_uat_url_login()">
+                <span>Given Maker Navigate to UAT URL login</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="AFTER_STEP">
+                <span>stepdefinitions.HooksClass.addScreenshot(io.cucumber.java.Scenario)</span>
+      <div>screenshot
+          <div class="row mb-3"><div class="col-md-3">
+    <img data-featherlight='../Spark_Screenshots/embedded19.png' src="../Spark_Screenshots/embedded19.png">
+    
+    </div></div>
+</div>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinitions.ArAp_BalanceSheetReport.click_on_repoet_button()">
+                <span>Then Click on Report button</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="AFTER_STEP">
+                <span>stepdefinitions.HooksClass.addScreenshot(io.cucumber.java.Scenario)</span>
+      <div>screenshot
+          <div class="row mb-3"><div class="col-md-3">
+    <img data-featherlight='../Spark_Screenshots/embedded20.png' src="../Spark_Screenshots/embedded20.png">
+    
+    </div></div>
+</div>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinitions.FixedAsset_Reports.click_on_transaction_reports_tab()">
+                <span>Then Click on Transaction Reports tab</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="AFTER_STEP">
+                <span>stepdefinitions.HooksClass.addScreenshot(io.cucumber.java.Scenario)</span>
+      <div>screenshot
+          <div class="row mb-3"><div class="col-md-3">
+    <img data-featherlight='../Spark_Screenshots/embedded21.png' src="../Spark_Screenshots/embedded21.png">
+    
+    </div></div>
+</div>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinitions.FixedAsset_Reports.click_on_return_report_edit_button()">
+                <span>Then Click on return Report edit button</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="AFTER_STEP">
+                <span>stepdefinitions.HooksClass.addScreenshot(io.cucumber.java.Scenario)</span>
+      <div>screenshot
+          <div class="row mb-3"><div class="col-md-3">
+    <img data-featherlight='../Spark_Screenshots/embedded22.png' src="../Spark_Screenshots/embedded22.png">
+    
+    </div></div>
+</div>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinitions.FixedAsset_Reports.choose_the_data_set_for_asset_return_report()">
+                <span>Then choose the data set for asset return report</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="AFTER_STEP">
+                <span>stepdefinitions.HooksClass.addScreenshot(io.cucumber.java.Scenario)</span>
+      <div>screenshot
+          <div class="row mb-3"><div class="col-md-3">
+    <img data-featherlight='../Spark_Screenshots/embedded23.png' src="../Spark_Screenshots/embedded23.png">
+    
+    </div></div>
+</div>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinitions.FixedAsset_Reports.fill_details_for_return_report()">
+                <span>Then Fill details for return report</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="AFTER_STEP">
+                <span>stepdefinitions.HooksClass.addScreenshot(io.cucumber.java.Scenario)</span>
+      <div>screenshot
+          <div class="row mb-3"><div class="col-md-3">
+    <img data-featherlight='../Spark_Screenshots/embedded24.png' src="../Spark_Screenshots/embedded24.png">
+    
+    </div></div>
+</div>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinitions.FixedAsset_Reports.get_the_system_data()">
+                <span>And Get the system data</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="AFTER_STEP">
+                <span>stepdefinitions.HooksClass.addScreenshot(io.cucumber.java.Scenario)</span>
+      <div>screenshot
+          <div class="row mb-3"><div class="col-md-3">
+    <img data-featherlight='../Spark_Screenshots/embedded25.png' src="../Spark_Screenshots/embedded25.png">
+    
+    </div></div>
+</div>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinitions.FixedAsset_Reports.select_return_date_in_calendar()">
+                <span>Then Select return date in calendar</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="AFTER_STEP">
+                <span>stepdefinitions.HooksClass.addScreenshot(io.cucumber.java.Scenario)</span>
+      <div>screenshot
+          <div class="row mb-3"><div class="col-md-3">
+    <img data-featherlight='../Spark_Screenshots/embedded26.png' src="../Spark_Screenshots/embedded26.png">
+    
+    </div></div>
+</div>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinitions.ArAp_BalanceSheetReport.click_on_the_view_button()">
+                <span>Then Click on the View button</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="AFTER_STEP">
+                <span>stepdefinitions.HooksClass.addScreenshot(io.cucumber.java.Scenario)</span>
+      <div>screenshot
+          <div class="row mb-3"><div class="col-md-3">
+    <img data-featherlight='../Spark_Screenshots/embedded27.png' src="../Spark_Screenshots/embedded27.png">
+    
+    </div></div>
+</div>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinitions.ArAp_BalanceSheetReport.close_the_report()">
+                <span>Then close the report</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="AFTER_STEP">
+                <span>stepdefinitions.HooksClass.addScreenshot(io.cucumber.java.Scenario)</span>
+      <div>screenshot
+          <div class="row mb-3"><div class="col-md-3">
+    <img data-featherlight='../Spark_Screenshots/embedded28.png' src="../Spark_Screenshots/embedded28.png">
+    
+    </div></div>
+</div>
+      <div>
+      </div>
+              </div>
+          </div>
+        </div>
+  </div>
+  <div class="card">
+    <div class="card-header" role="tab">
+      <div class="card-title">
+        <div class="node" id="70"><span class="badge log pass-bg mr-2">Pass</span>Check Impairement Loss booking Report</div>
+          <div class="status-avatar float-right mr-4">
+            <i class="fa fa-paperclip"></i>
+          </div>
+      </div>
+    </div>
+        <div class="collapse">
+          <div class="card-body">
+              <div class="step pass-bg" title="stepdefinitions.InventoryMaintenance.maker_navigate_to_uat_url_login()">
+                <span>Given Maker Navigate to UAT URL login</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="AFTER_STEP">
+                <span>stepdefinitions.HooksClass.addScreenshot(io.cucumber.java.Scenario)</span>
+      <div>screenshot
+          <div class="row mb-3"><div class="col-md-3">
+    <img data-featherlight='../Spark_Screenshots/embedded29.png' src="../Spark_Screenshots/embedded29.png">
+    
+    </div></div>
+</div>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinitions.ArAp_BalanceSheetReport.click_on_repoet_button()">
+                <span>Then Click on Report button</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="AFTER_STEP">
+                <span>stepdefinitions.HooksClass.addScreenshot(io.cucumber.java.Scenario)</span>
+      <div>screenshot
+          <div class="row mb-3"><div class="col-md-3">
+    <img data-featherlight='../Spark_Screenshots/embedded30.png' src="../Spark_Screenshots/embedded30.png">
+    
+    </div></div>
+</div>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinitions.FixedAsset_Reports.click_on_transaction_reports_tab()">
+                <span>Then Click on Transaction Reports tab</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="AFTER_STEP">
+                <span>stepdefinitions.HooksClass.addScreenshot(io.cucumber.java.Scenario)</span>
+      <div>screenshot
+          <div class="row mb-3"><div class="col-md-3">
+    <img data-featherlight='../Spark_Screenshots/embedded31.png' src="../Spark_Screenshots/embedded31.png">
+    
+    </div></div>
+</div>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinitions.FixedAsset_Reports.click_on_impairement_report_edit_button()">
+                <span>Then Click on Impairement Report edit button</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="AFTER_STEP">
+                <span>stepdefinitions.HooksClass.addScreenshot(io.cucumber.java.Scenario)</span>
+      <div>screenshot
+          <div class="row mb-3"><div class="col-md-3">
+    <img data-featherlight='../Spark_Screenshots/embedded32.png' src="../Spark_Screenshots/embedded32.png">
+    
+    </div></div>
+</div>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinitions.FixedAsset_Reports.get_the_system_data()">
+                <span>And Get the system data</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="AFTER_STEP">
+                <span>stepdefinitions.HooksClass.addScreenshot(io.cucumber.java.Scenario)</span>
+      <div>screenshot
+          <div class="row mb-3"><div class="col-md-3">
+    <img data-featherlight='../Spark_Screenshots/embedded33.png' src="../Spark_Screenshots/embedded33.png">
+    
+    </div></div>
+</div>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinitions.FixedAsset_Reports.select_impairement_loss_date_in_calendar()">
+                <span>Then Select Impairement loss date in calendar</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="AFTER_STEP">
+                <span>stepdefinitions.HooksClass.addScreenshot(io.cucumber.java.Scenario)</span>
+      <div>screenshot
+          <div class="row mb-3"><div class="col-md-3">
+    <img data-featherlight='../Spark_Screenshots/embedded34.png' src="../Spark_Screenshots/embedded34.png">
+    
+    </div></div>
+</div>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinitions.ArAp_BalanceSheetReport.click_on_the_view_button()">
+                <span>Then Click on the View button</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="AFTER_STEP">
+                <span>stepdefinitions.HooksClass.addScreenshot(io.cucumber.java.Scenario)</span>
+      <div>screenshot
+          <div class="row mb-3"><div class="col-md-3">
+    <img data-featherlight='../Spark_Screenshots/embedded35.png' src="../Spark_Screenshots/embedded35.png">
+    
+    </div></div>
+</div>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinitions.ArAp_BalanceSheetReport.close_the_report()">
+                <span>Then close the report</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="AFTER_STEP">
+                <span>stepdefinitions.HooksClass.addScreenshot(io.cucumber.java.Scenario)</span>
+      <div>screenshot
+          <div class="row mb-3"><div class="col-md-3">
+    <img data-featherlight='../Spark_Screenshots/embedded36.png' src="../Spark_Screenshots/embedded36.png">
+    
+    </div></div>
+</div>
+      <div>
+      </div>
+              </div>
+          </div>
+        </div>
+  </div>
+  <div class="card">
+    <div class="card-header" role="tab">
+      <div class="card-title">
+        <div class="node" id="90"><span class="badge log pass-bg mr-2">Pass</span>Check Asset Allocation Report</div>
+          <div class="status-avatar float-right mr-4">
+            <i class="fa fa-paperclip"></i>
+          </div>
+      </div>
+    </div>
+        <div class="collapse">
+          <div class="card-body">
+              <div class="step pass-bg" title="stepdefinitions.InventoryMaintenance.maker_navigate_to_uat_url_login()">
+                <span>Given Maker Navigate to UAT URL login</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="AFTER_STEP">
+                <span>stepdefinitions.HooksClass.addScreenshot(io.cucumber.java.Scenario)</span>
+      <div>screenshot
+          <div class="row mb-3"><div class="col-md-3">
+    <img data-featherlight='../Spark_Screenshots/embedded37.png' src="../Spark_Screenshots/embedded37.png">
+    
+    </div></div>
+</div>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinitions.ArAp_BalanceSheetReport.click_on_repoet_button()">
+                <span>Then Click on Report button</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="AFTER_STEP">
+                <span>stepdefinitions.HooksClass.addScreenshot(io.cucumber.java.Scenario)</span>
+      <div>screenshot
+          <div class="row mb-3"><div class="col-md-3">
+    <img data-featherlight='../Spark_Screenshots/embedded38.png' src="../Spark_Screenshots/embedded38.png">
+    
+    </div></div>
+</div>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinitions.FixedAsset_Reports.click_on_transaction_reports_tab()">
+                <span>Then Click on Transaction Reports tab</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="AFTER_STEP">
+                <span>stepdefinitions.HooksClass.addScreenshot(io.cucumber.java.Scenario)</span>
+      <div>screenshot
+          <div class="row mb-3"><div class="col-md-3">
+    <img data-featherlight='../Spark_Screenshots/embedded39.png' src="../Spark_Screenshots/embedded39.png">
+    
+    </div></div>
+</div>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinitions.FixedAsset_Reports.click_on_allocation_report_edit_button()">
+                <span>Then Click on Allocation Report edit button</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="AFTER_STEP">
+                <span>stepdefinitions.HooksClass.addScreenshot(io.cucumber.java.Scenario)</span>
+      <div>screenshot
+          <div class="row mb-3"><div class="col-md-3">
+    <img data-featherlight='../Spark_Screenshots/embedded40.png' src="../Spark_Screenshots/embedded40.png">
+    
+    </div></div>
+</div>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinitions.FixedAsset_Reports.choose_the_data_set_id_for_asset_allocation_report()">
+                <span>Then Choose the data set id for asset allocation report</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="AFTER_STEP">
+                <span>stepdefinitions.HooksClass.addScreenshot(io.cucumber.java.Scenario)</span>
+      <div>screenshot
+          <div class="row mb-3"><div class="col-md-3">
+    <img data-featherlight='../Spark_Screenshots/embedded41.png' src="../Spark_Screenshots/embedded41.png">
+    
+    </div></div>
+</div>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinitions.FixedAsset_Reports.get_the_system_data()">
+                <span>And Get the system data</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="AFTER_STEP">
+                <span>stepdefinitions.HooksClass.addScreenshot(io.cucumber.java.Scenario)</span>
+      <div>screenshot
+          <div class="row mb-3"><div class="col-md-3">
+    <img data-featherlight='../Spark_Screenshots/embedded42.png' src="../Spark_Screenshots/embedded42.png">
+    
+    </div></div>
+</div>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinitions.FixedAsset_Reports.fill_allocation_report_details()">
+                <span>Then fill Allocation Report details</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="AFTER_STEP">
+                <span>stepdefinitions.HooksClass.addScreenshot(io.cucumber.java.Scenario)</span>
+      <div>screenshot
+          <div class="row mb-3"><div class="col-md-3">
+    <img data-featherlight='../Spark_Screenshots/embedded43.png' src="../Spark_Screenshots/embedded43.png">
+    
+    </div></div>
+</div>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinitions.FixedAsset_Reports.select_allocation_date_in_calendar()">
+                <span>Then Select Allocation date in calendar</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="AFTER_STEP">
+                <span>stepdefinitions.HooksClass.addScreenshot(io.cucumber.java.Scenario)</span>
+      <div>screenshot
+          <div class="row mb-3"><div class="col-md-3">
+    <img data-featherlight='../Spark_Screenshots/embedded44.png' src="../Spark_Screenshots/embedded44.png">
+    
+    </div></div>
+</div>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinitions.ArAp_BalanceSheetReport.click_on_the_view_button()">
+                <span>Then Click on the View button</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="AFTER_STEP">
+                <span>stepdefinitions.HooksClass.addScreenshot(io.cucumber.java.Scenario)</span>
+      <div>screenshot
+          <div class="row mb-3"><div class="col-md-3">
+    <img data-featherlight='../Spark_Screenshots/embedded45.png' src="../Spark_Screenshots/embedded45.png">
+    
+    </div></div>
+</div>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinitions.ArAp_BalanceSheetReport.close_the_report()">
+                <span>Then close the report</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="AFTER_STEP">
+                <span>stepdefinitions.HooksClass.addScreenshot(io.cucumber.java.Scenario)</span>
+      <div>screenshot
+          <div class="row mb-3"><div class="col-md-3">
+    <img data-featherlight='../Spark_Screenshots/embedded46.png' src="../Spark_Screenshots/embedded46.png">
+    
+    </div></div>
+</div>
+      <div>
+      </div>
+              </div>
+          </div>
+        </div>
+  </div>
+  <div class="card">
+    <div class="card-header" role="tab">
+      <div class="card-title">
+        <div class="node" id="114"><span class="badge log pass-bg mr-2">Pass</span>Check Asset DeAllocation Report</div>
+          <div class="status-avatar float-right mr-4">
+            <i class="fa fa-paperclip"></i>
+          </div>
+      </div>
+    </div>
+        <div class="collapse">
+          <div class="card-body">
+              <div class="step pass-bg" title="stepdefinitions.InventoryMaintenance.maker_navigate_to_uat_url_login()">
+                <span>Given Maker Navigate to UAT URL login</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="AFTER_STEP">
+                <span>stepdefinitions.HooksClass.addScreenshot(io.cucumber.java.Scenario)</span>
+      <div>screenshot
+          <div class="row mb-3"><div class="col-md-3">
+    <img data-featherlight='../Spark_Screenshots/embedded47.png' src="../Spark_Screenshots/embedded47.png">
+    
+    </div></div>
+</div>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinitions.ArAp_BalanceSheetReport.click_on_repoet_button()">
+                <span>Then Click on Report button</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="AFTER_STEP">
+                <span>stepdefinitions.HooksClass.addScreenshot(io.cucumber.java.Scenario)</span>
+      <div>screenshot
+          <div class="row mb-3"><div class="col-md-3">
+    <img data-featherlight='../Spark_Screenshots/embedded48.png' src="../Spark_Screenshots/embedded48.png">
+    
+    </div></div>
+</div>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinitions.FixedAsset_Reports.click_on_transaction_reports_tab()">
+                <span>Then Click on Transaction Reports tab</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="AFTER_STEP">
+                <span>stepdefinitions.HooksClass.addScreenshot(io.cucumber.java.Scenario)</span>
+      <div>screenshot
+          <div class="row mb-3"><div class="col-md-3">
+    <img data-featherlight='../Spark_Screenshots/embedded49.png' src="../Spark_Screenshots/embedded49.png">
+    
+    </div></div>
+</div>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinitions.FixedAsset_Reports.click_on_deallocation_report_edit_button()">
+                <span>Then Click on DeAllocation Report edit button</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="AFTER_STEP">
+                <span>stepdefinitions.HooksClass.addScreenshot(io.cucumber.java.Scenario)</span>
+      <div>screenshot
+          <div class="row mb-3"><div class="col-md-3">
+    <img data-featherlight='../Spark_Screenshots/embedded50.png' src="../Spark_Screenshots/embedded50.png">
+    
+    </div></div>
+</div>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinitions.FixedAsset_Reports.choose_the_data_set_id_for_asset_allocation_report()">
+                <span>Then Choose the data set id for asset allocation report</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="AFTER_STEP">
+                <span>stepdefinitions.HooksClass.addScreenshot(io.cucumber.java.Scenario)</span>
+      <div>screenshot
+          <div class="row mb-3"><div class="col-md-3">
+    <img data-featherlight='../Spark_Screenshots/embedded51.png' src="../Spark_Screenshots/embedded51.png">
+    
+    </div></div>
+</div>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinitions.FixedAsset_Reports.fill_deallocation_report_details()">
+                <span>Then fill DeAllocation Report details</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="AFTER_STEP">
+                <span>stepdefinitions.HooksClass.addScreenshot(io.cucumber.java.Scenario)</span>
+      <div>screenshot
+          <div class="row mb-3"><div class="col-md-3">
+    <img data-featherlight='../Spark_Screenshots/embedded52.png' src="../Spark_Screenshots/embedded52.png">
+    
+    </div></div>
+</div>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinitions.FixedAsset_Reports.get_the_system_data()">
+                <span>And Get the system data</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="AFTER_STEP">
+                <span>stepdefinitions.HooksClass.addScreenshot(io.cucumber.java.Scenario)</span>
+      <div>screenshot
+          <div class="row mb-3"><div class="col-md-3">
+    <img data-featherlight='../Spark_Screenshots/embedded53.png' src="../Spark_Screenshots/embedded53.png">
+    
+    </div></div>
+</div>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinitions.FixedAsset_Reports.select_deallocation_from_date_in_calendar()">
+                <span>Then Select DeAllocation from date in calendar</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="AFTER_STEP">
+                <span>stepdefinitions.HooksClass.addScreenshot(io.cucumber.java.Scenario)</span>
+      <div>screenshot
+          <div class="row mb-3"><div class="col-md-3">
+    <img data-featherlight='../Spark_Screenshots/embedded54.png' src="../Spark_Screenshots/embedded54.png">
+    
+    </div></div>
+</div>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinitions.FixedAsset_Reports.select_deallocation_to_date_in_calendar()">
+                <span>Then Select DeAllocation to date in calendar</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="AFTER_STEP">
+                <span>stepdefinitions.HooksClass.addScreenshot(io.cucumber.java.Scenario)</span>
+      <div>screenshot
+          <div class="row mb-3"><div class="col-md-3">
+    <img data-featherlight='../Spark_Screenshots/embedded55.png' src="../Spark_Screenshots/embedded55.png">
+    
+    </div></div>
+</div>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinitions.ArAp_BalanceSheetReport.click_on_the_view_button()">
+                <span>Then Click on the View button</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="AFTER_STEP">
+                <span>stepdefinitions.HooksClass.addScreenshot(io.cucumber.java.Scenario)</span>
+      <div>screenshot
+          <div class="row mb-3"><div class="col-md-3">
+    <img data-featherlight='../Spark_Screenshots/embedded56.png' src="../Spark_Screenshots/embedded56.png">
+    
+    </div></div>
+</div>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinitions.ArAp_BalanceSheetReport.close_the_report()">
+                <span>Then close the report</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="AFTER_STEP">
+                <span>stepdefinitions.HooksClass.addScreenshot(io.cucumber.java.Scenario)</span>
+      <div>screenshot
+          <div class="row mb-3"><div class="col-md-3">
+    <img data-featherlight='../Spark_Screenshots/embedded57.png' src="../Spark_Screenshots/embedded57.png">
+    
+    </div></div>
+</div>
+      <div>
+      </div>
+              </div>
+          </div>
+        </div>
+  </div>
+  <div class="card">
+    <div class="card-header" role="tab">
+      <div class="card-title">
+        <div class="node" id="140"><span class="badge log fail-bg mr-2">Fail</span>Map the various GLs for created asset code</div>
+          <div class="status-avatar float-right mr-4">
+            <i class="fa fa-paperclip"></i>
+          </div>
+      </div>
+    </div>
+        <div class="">
+          <div class="card-body">
+              <div class="step pass-bg" title="stepdefinitions.InventoryMaintenance.maker_navigate_to_uat_url_login()">
+                <span>Given Maker Navigate to UAT URL login</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="AFTER_STEP">
+                <span>stepdefinitions.HooksClass.addScreenshot(io.cucumber.java.Scenario)</span>
+      <div>screenshot
+          <div class="row mb-3"><div class="col-md-3">
+    <img data-featherlight='../Spark_Screenshots/embedded58.png' src="../Spark_Screenshots/embedded58.png">
+    
+    </div></div>
+</div>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinitions.InventoryManagament.click_on_report_segment_button()">
+                <span>Then click on report segment button</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="AFTER_STEP">
+                <span>stepdefinitions.HooksClass.addScreenshot(io.cucumber.java.Scenario)</span>
+      <div>screenshot
+          <div class="row mb-3"><div class="col-md-3">
+    <img data-featherlight='../Spark_Screenshots/embedded59.png' src="../Spark_Screenshots/embedded59.png">
+    
+    </div></div>
+</div>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinitions.BUDGET_SupplementaryBudgetUAT.click_on_report_field()">
+                <span>Then Click on Report field</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="AFTER_STEP">
+                <span>stepdefinitions.HooksClass.addScreenshot(io.cucumber.java.Scenario)</span>
+      <div>screenshot
+          <div class="row mb-3"><div class="col-md-3">
+    <img data-featherlight='../Spark_Screenshots/embedded60.png' src="../Spark_Screenshots/embedded60.png">
+    
+    </div></div>
+</div>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinitions.FixedAsset_AssetSaleReport.choose_the_data_set_id_for_asset_sale_report()">
+                <span>And Choose the data set id for asset sale report</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="AFTER_STEP">
+                <span>stepdefinitions.HooksClass.addScreenshot(io.cucumber.java.Scenario)</span>
+      <div>screenshot
+          <div class="row mb-3"><div class="col-md-3">
+    <img data-featherlight='../Spark_Screenshots/embedded61.png' src="../Spark_Screenshots/embedded61.png">
+    
+    </div></div>
+</div>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinitions.FixedAsset_AssetSaleReport.click_on_asset_sale_report()">
+                <span>Then click on Asset Sale Report</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="AFTER_STEP">
+                <span>stepdefinitions.HooksClass.addScreenshot(io.cucumber.java.Scenario)</span>
+      <div>screenshot
+          <div class="row mb-3"><div class="col-md-3">
+    <img data-featherlight='../Spark_Screenshots/embedded62.png' src="../Spark_Screenshots/embedded62.png">
+    
+    </div></div>
+</div>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinitions.FixedAsset_AssetSaleReport.select_the_asset_sale_code()">
+                <span>Then Select the Asset Sale Code</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="AFTER_STEP">
+                <span>stepdefinitions.HooksClass.addScreenshot(io.cucumber.java.Scenario)</span>
+      <div>screenshot
+          <div class="row mb-3"><div class="col-md-3">
+    <img data-featherlight='../Spark_Screenshots/embedded63.png' src="../Spark_Screenshots/embedded63.png">
+    
+    </div></div>
+</div>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinitions.FixedAsset_AssetSaleReport.get_the_system_data_for_asset_sale()">
+                <span>And Get the system data for asset sale</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="AFTER_STEP">
+                <span>stepdefinitions.HooksClass.addScreenshot(io.cucumber.java.Scenario)</span>
+      <div>screenshot
+          <div class="row mb-3"><div class="col-md-3">
+    <img data-featherlight='../Spark_Screenshots/embedded64.png' src="../Spark_Screenshots/embedded64.png">
+    
+    </div></div>
+</div>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinitions.FixedAsset_AssetSaleReport.select_the_date_asset_sale()">
+                <span>Then Select the date Asset Sale</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="AFTER_STEP">
+                <span>stepdefinitions.HooksClass.addScreenshot(io.cucumber.java.Scenario)</span>
+      <div>screenshot
+          <div class="row mb-3"><div class="col-md-3">
+    <img data-featherlight='../Spark_Screenshots/embedded65.png' src="../Spark_Screenshots/embedded65.png">
+    
+    </div></div>
+</div>
+      <div>
+      </div>
+              </div>
+              <div class="step fail-bg" title="stepdefinitions.BUDGET_SupplementaryBudgetUAT.click_on_view_button_of_report()">
+                <span>And click on view button of report</span>
+      <div>
+        <textarea disabled class="code-block">org.openqa.selenium.ElementClickInterceptedException: element click intercepted: Element <a _ngcontent-exk-c857="" target="_blank">...</a> is not clickable at point (1884, 88). Other element would receive the click: <div class="cdk-overlay-backdrop cdk-overlay-transparent-backdrop {background-color:#f00;} cdk-overlay-backdrop-showing"></div>
+  (Session info: chrome=108.0.5359.126)
+Build info: version: '4.0.0-rc-1', revision: 'bc5511cbda'
+System info: host: 'DESKTOP-PSK9T3U', ip: '10.200.4.60', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '19.0.1'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [314edd53ef474e49053c07284501ae6b, clickElement {id=6932f792-a108-4fe5-8da5-fd0029924189}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 108.0.5359.126, chrome: {chromedriverVersion: 108.0.5359.71 (1e0e3868ee06..., userDataDir: C:\Users\ININDC~1\AppData\L...}, goog:chromeOptions: {debuggerAddress: localhost:58059}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), se:cdp: ws://localhost:58059/devtoo..., se:cdpVersion: 108.0.5359.126, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
+Element: [[ChromeDriver: chrome on WINDOWS (314edd53ef474e49053c07284501ae6b)] -> xpath: //a[contains(text(),'View')]]
+Session ID: 314edd53ef474e49053c07284501ae6b
+	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:67)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:500)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:484)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:200)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:133)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:53)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:184)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:164)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:139)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:547)
+	at org.openqa.selenium.remote.RemoteWebElement.execute(RemoteWebElement.java:251)
+	at org.openqa.selenium.remote.RemoteWebElement.click(RemoteWebElement.java:77)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:578)
+	at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:52)
+	at jdk.proxy2/jdk.proxy2.$Proxy46.click(Unknown Source)
+	at stepdefinitions.BUDGET_SupplementaryBudgetUAT.click_on_view_button_of_report(BUDGET_SupplementaryBudgetUAT.java:610)
+	at ✽.click on view button of report(file:///C:/Users/ININDC00073/git/KamalaPriya_ExcelUpdated_KUBS/AzentioAutomationFramework_ExcelKUBS_Kamalapriya2/src/test/java/features/FixedAssetReports.feature:90)
+</textarea>
+      
+      </div>
+              </div>
+              <div class="step pass-bg" title="AFTER_STEP">
+                <span>stepdefinitions.HooksClass.addScreenshot(io.cucumber.java.Scenario)</span>
+      <div>screenshot
+          <div class="row mb-3"><div class="col-md-3">
+    <img data-featherlight='../Spark_Screenshots/embedded66.png' src="../Spark_Screenshots/embedded66.png">
+    
+    </div></div>
+</div>
+      <div>
+      </div>
+              </div>
+              <div class="step skip-bg" title="stepdefinitions.FixedAsset_AssetSaleReport.verify_the_asset_sale_report()">
+                <span>Then verify the Asset Sale report</span>
+      <div>Step skipped
+      </div>
+              </div>
+          </div>
+        </div>
+  </div>
+  <div class="card">
+    <div class="card-header" role="tab">
+      <div class="card-title">
+        <div class="node" id="164"><span class="badge log pass-bg mr-2">Pass</span>Check Asset Undertaking</div>
+          <div class="status-avatar float-right mr-4">
+            <i class="fa fa-paperclip"></i>
+          </div>
+      </div>
+    </div>
+        <div class="collapse">
+          <div class="card-body">
+              <div class="step pass-bg" title="stepdefinitions.ACCOUNTSPAYABLE_VendorContracts.user_should_go_to_the_kubs_url_and_login_as_a_maker_user()">
+                <span>Given User should go to the kubs url and login as a maker user</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="AFTER_STEP">
+                <span>stepdefinitions.HooksClass.addScreenshot(io.cucumber.java.Scenario)</span>
+      <div>screenshot
+          <div class="row mb-3"><div class="col-md-3">
+    <img data-featherlight='../Spark_Screenshots/embedded67.png' src="../Spark_Screenshots/embedded67.png">
+    
+    </div></div>
+</div>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinitions.FixedAsset_AssetCreation.click_on_report_icon()">
+                <span>Then click on report icon</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="AFTER_STEP">
+                <span>stepdefinitions.HooksClass.addScreenshot(io.cucumber.java.Scenario)</span>
+      <div>screenshot
+          <div class="row mb-3"><div class="col-md-3">
+    <img data-featherlight='../Spark_Screenshots/embedded68.png' src="../Spark_Screenshots/embedded68.png">
+    
+    </div></div>
+</div>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinitions.Reports_AssetCreationCommon.user_should_navigate_to_reports_menu()">
+                <span>And user should navigate to reports menu</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="AFTER_STEP">
+                <span>stepdefinitions.HooksClass.addScreenshot(io.cucumber.java.Scenario)</span>
+      <div>screenshot
+          <div class="row mb-3"><div class="col-md-3">
+    <img data-featherlight='../Spark_Screenshots/embedded69.png' src="../Spark_Screenshots/embedded69.png">
+    
+    </div></div>
+</div>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinitions.Reports_AssetCreationCommon.click_on_temp_grid_button_of_asset_transfer()">
+                <span>Then click on temp grid button of asset transfer</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="AFTER_STEP">
+                <span>stepdefinitions.HooksClass.addScreenshot(io.cucumber.java.Scenario)</span>
+      <div>screenshot
+          <div class="row mb-3"><div class="col-md-3">
+    <img data-featherlight='../Spark_Screenshots/embedded70.png' src="../Spark_Screenshots/embedded70.png">
+    
+    </div></div>
+</div>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinitions.Reports_AssetCreationCommon.choose_the_data_set_id_for_asset_undertaking_report()">
+                <span>And choose the data set id for asset undertaking report</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="AFTER_STEP">
+                <span>stepdefinitions.HooksClass.addScreenshot(io.cucumber.java.Scenario)</span>
+      <div>screenshot
+          <div class="row mb-3"><div class="col-md-3">
+    <img data-featherlight='../Spark_Screenshots/embedded71.png' src="../Spark_Screenshots/embedded71.png">
+    
+    </div></div>
+</div>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinitions.Reports_AssetCreationCommon.get_the_system_date_for_asset_undertaking()">
+                <span>And Get the system date for asset undertaking</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="AFTER_STEP">
+                <span>stepdefinitions.HooksClass.addScreenshot(io.cucumber.java.Scenario)</span>
+      <div>screenshot
+          <div class="row mb-3"><div class="col-md-3">
+    <img data-featherlight='../Spark_Screenshots/embedded72.png' src="../Spark_Screenshots/embedded72.png">
+    
+    </div></div>
+</div>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinitions.Reports_AssetCreationCommon.select_the_asset_code_and_date_to_check_the_asset_undertaking_details_are_displaying()">
+                <span>And select the asset code and date to check the asset undertaking details are displaying</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="AFTER_STEP">
+                <span>stepdefinitions.HooksClass.addScreenshot(io.cucumber.java.Scenario)</span>
+      <div>screenshot
+          <div class="row mb-3"><div class="col-md-3">
+    <img data-featherlight='../Spark_Screenshots/embedded73.png' src="../Spark_Screenshots/embedded73.png">
+    
+    </div></div>
+</div>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinitions.Reports_AssetCreationCommon.click_in_the_view_button_to_check()">
+                <span>Then click in the view button to check</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="AFTER_STEP">
+                <span>stepdefinitions.HooksClass.addScreenshot(io.cucumber.java.Scenario)</span>
+      <div>screenshot
+          <div class="row mb-3"><div class="col-md-3">
+    <img data-featherlight='../Spark_Screenshots/embedded74.png' src="../Spark_Screenshots/embedded74.png">
+    
+    </div></div>
+</div>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinitions.Reports_AssetCreationCommon.the_report_is_displaying_all_the_asset_undertaking_details_for_a_branch()">
+                <span>Then the report is displaying all the asset undertaking details for a branch</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="AFTER_STEP">
+                <span>stepdefinitions.HooksClass.addScreenshot(io.cucumber.java.Scenario)</span>
+      <div>screenshot
+          <div class="row mb-3"><div class="col-md-3">
+    <img data-featherlight='../Spark_Screenshots/embedded75.png' src="../Spark_Screenshots/embedded75.png">
+    
+    </div></div>
+</div>
+      <div>
+      </div>
+              </div>
+          </div>
+        </div>
+  </div>
+  <div class="card">
+    <div class="card-header" role="tab">
+      <div class="card-title">
+        <div class="node" id="186"><span class="badge log pass-bg mr-2">Pass</span>Check Asset Transfer</div>
+          <div class="status-avatar float-right mr-4">
+            <i class="fa fa-paperclip"></i>
+          </div>
+      </div>
+    </div>
+        <div class="collapse">
+          <div class="card-body">
+              <div class="step pass-bg" title="stepdefinitions.ACCOUNTSPAYABLE_VendorContracts.user_should_go_to_the_kubs_url_and_login_as_a_maker_user()">
+                <span>Given User should go to the kubs url and login as a maker user</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="AFTER_STEP">
+                <span>stepdefinitions.HooksClass.addScreenshot(io.cucumber.java.Scenario)</span>
+      <div>screenshot
+          <div class="row mb-3"><div class="col-md-3">
+    <img data-featherlight='../Spark_Screenshots/embedded76.png' src="../Spark_Screenshots/embedded76.png">
+    
+    </div></div>
+</div>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinitions.FixedAsset_AssetCreation.click_on_report_icon()">
+                <span>Then click on report icon</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="AFTER_STEP">
+                <span>stepdefinitions.HooksClass.addScreenshot(io.cucumber.java.Scenario)</span>
+      <div>screenshot
+          <div class="row mb-3"><div class="col-md-3">
+    <img data-featherlight='../Spark_Screenshots/embedded77.png' src="../Spark_Screenshots/embedded77.png">
+    
+    </div></div>
+</div>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinitions.Reports_AssetCreationCommon.user_should_navigate_to_reports_menu()">
+                <span>And user should navigate to reports menu</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="AFTER_STEP">
+                <span>stepdefinitions.HooksClass.addScreenshot(io.cucumber.java.Scenario)</span>
+      <div>screenshot
+          <div class="row mb-3"><div class="col-md-3">
+    <img data-featherlight='../Spark_Screenshots/embedded78.png' src="../Spark_Screenshots/embedded78.png">
+    
+    </div></div>
+</div>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinitions.Reports_AssetCreationCommon.click_on_temp_grid_button_of_asset_transfer()">
+                <span>Then click on temp grid button of asset transfer</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="AFTER_STEP">
+                <span>stepdefinitions.HooksClass.addScreenshot(io.cucumber.java.Scenario)</span>
+      <div>screenshot
+          <div class="row mb-3"><div class="col-md-3">
+    <img data-featherlight='../Spark_Screenshots/embedded79.png' src="../Spark_Screenshots/embedded79.png">
+    
+    </div></div>
+</div>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinitions.Reports_AssetCreationCommon.choose_the_data_set_id_for_asset_transfer_report()">
+                <span>Then choose the data set id for asset transfer report</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="AFTER_STEP">
+                <span>stepdefinitions.HooksClass.addScreenshot(io.cucumber.java.Scenario)</span>
+      <div>screenshot
+          <div class="row mb-3"><div class="col-md-3">
+    <img data-featherlight='../Spark_Screenshots/embedded80.png' src="../Spark_Screenshots/embedded80.png">
+    
+    </div></div>
+</div>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinitions.Reports_AssetCreationCommon.get_the_system_date_for_asset_undertaking()">
+                <span>And Get the system date for asset undertaking</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="AFTER_STEP">
+                <span>stepdefinitions.HooksClass.addScreenshot(io.cucumber.java.Scenario)</span>
+      <div>screenshot
+          <div class="row mb-3"><div class="col-md-3">
+    <img data-featherlight='../Spark_Screenshots/embedded81.png' src="../Spark_Screenshots/embedded81.png">
+    
+    </div></div>
+</div>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinitions.Reports_AssetCreationCommon.select_the_asset_code_and_date_to_check_the_asset_transfer_details_are_displaying()">
+                <span>And select the asset code and date to check the asset transfer details are displaying</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="AFTER_STEP">
+                <span>stepdefinitions.HooksClass.addScreenshot(io.cucumber.java.Scenario)</span>
+      <div>screenshot
+          <div class="row mb-3"><div class="col-md-3">
+    <img data-featherlight='../Spark_Screenshots/embedded82.png' src="../Spark_Screenshots/embedded82.png">
+    
+    </div></div>
+</div>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinitions.Reports_AssetCreationCommon.click_in_the_view_button_to_check()">
+                <span>Then click in the view button to check</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="AFTER_STEP">
+                <span>stepdefinitions.HooksClass.addScreenshot(io.cucumber.java.Scenario)</span>
+      <div>screenshot
+          <div class="row mb-3"><div class="col-md-3">
+    <img data-featherlight='../Spark_Screenshots/embedded83.png' src="../Spark_Screenshots/embedded83.png">
+    
+    </div></div>
+</div>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinitions.Reports_AssetCreationCommon.the_report_is_displaying_all_the_asset_transfer_details_for_a_branch()">
+                <span>Then the report is displaying all the asset transfer details for a branch</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="AFTER_STEP">
+                <span>stepdefinitions.HooksClass.addScreenshot(io.cucumber.java.Scenario)</span>
+      <div>screenshot
+          <div class="row mb-3"><div class="col-md-3">
+    <img data-featherlight='../Spark_Screenshots/embedded84.png' src="../Spark_Screenshots/embedded84.png">
+    
+    </div></div>
+</div>
+      <div>
+      </div>
+              </div>
+          </div>
+        </div>
+  </div>
+  <div class="card">
+    <div class="card-header" role="tab">
+      <div class="card-title">
+        <div class="node" id="208"><span class="badge log pass-bg mr-2">Pass</span>Check Asset Contract</div>
+          <div class="status-avatar float-right mr-4">
+            <i class="fa fa-paperclip"></i>
+          </div>
+      </div>
+    </div>
+        <div class="collapse">
+          <div class="card-body">
+              <div class="step pass-bg" title="stepdefinitions.ACCOUNTSPAYABLE_VendorContracts.user_should_go_to_the_kubs_url_and_login_as_a_maker_user()">
+                <span>Given User should go to the kubs url and login as a maker user</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="AFTER_STEP">
+                <span>stepdefinitions.HooksClass.addScreenshot(io.cucumber.java.Scenario)</span>
+      <div>screenshot
+          <div class="row mb-3"><div class="col-md-3">
+    <img data-featherlight='../Spark_Screenshots/embedded85.png' src="../Spark_Screenshots/embedded85.png">
+    
+    </div></div>
+</div>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinitions.FixedAsset_AssetCreation.click_on_report_icon()">
+                <span>Then click on report icon</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="AFTER_STEP">
+                <span>stepdefinitions.HooksClass.addScreenshot(io.cucumber.java.Scenario)</span>
+      <div>screenshot
+          <div class="row mb-3"><div class="col-md-3">
+    <img data-featherlight='../Spark_Screenshots/embedded86.png' src="../Spark_Screenshots/embedded86.png">
+    
+    </div></div>
+</div>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinitions.Reports_AssetCreationCommon.user_should_navigate_to_reports_menu()">
+                <span>And user should navigate to reports menu</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="AFTER_STEP">
+                <span>stepdefinitions.HooksClass.addScreenshot(io.cucumber.java.Scenario)</span>
+      <div>screenshot
+          <div class="row mb-3"><div class="col-md-3">
+    <img data-featherlight='../Spark_Screenshots/embedded87.png' src="../Spark_Screenshots/embedded87.png">
+    
+    </div></div>
+</div>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinitions.Reports_AssetCreationCommon.get_the_data_set_id_for_the_report_of_asset_contract()">
+                <span>Then Get the data set id for the report of asset contract</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="AFTER_STEP">
+                <span>stepdefinitions.HooksClass.addScreenshot(io.cucumber.java.Scenario)</span>
+      <div>screenshot
+          <div class="row mb-3"><div class="col-md-3">
+    <img data-featherlight='../Spark_Screenshots/embedded88.png' src="../Spark_Screenshots/embedded88.png">
+    
+    </div></div>
+</div>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinitions.Reports_AssetCreationCommon.click_on_temp_grid_button_of_asset_contract()">
+                <span>Then click on temp grid button of asset contract</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="AFTER_STEP">
+                <span>stepdefinitions.HooksClass.addScreenshot(io.cucumber.java.Scenario)</span>
+      <div>screenshot
+          <div class="row mb-3"><div class="col-md-3">
+    <img data-featherlight='../Spark_Screenshots/embedded89.png' src="../Spark_Screenshots/embedded89.png">
+    
+    </div></div>
+</div>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinitions.Reports_AssetCreationCommon.get_the_system_date_for_asset_undertaking()">
+                <span>And Get the system date for asset undertaking</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="AFTER_STEP">
+                <span>stepdefinitions.HooksClass.addScreenshot(io.cucumber.java.Scenario)</span>
+      <div>screenshot
+          <div class="row mb-3"><div class="col-md-3">
+    <img data-featherlight='../Spark_Screenshots/embedded90.png' src="../Spark_Screenshots/embedded90.png">
+    
+    </div></div>
+</div>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinitions.Reports_AssetCreationCommon.select_the_contract_ref_number_and_date_to_check_asset_contract_details_are_displaying()">
+                <span>And select the contract ref number and date to check asset contract details are displaying</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="AFTER_STEP">
+                <span>stepdefinitions.HooksClass.addScreenshot(io.cucumber.java.Scenario)</span>
+      <div>screenshot
+          <div class="row mb-3"><div class="col-md-3">
+    <img data-featherlight='../Spark_Screenshots/embedded91.png' src="../Spark_Screenshots/embedded91.png">
+    
+    </div></div>
+</div>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinitions.Reports_AssetCreationCommon.click_in_the_view_button_to_check()">
+                <span>Then click in the view button to check</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="AFTER_STEP">
+                <span>stepdefinitions.HooksClass.addScreenshot(io.cucumber.java.Scenario)</span>
+      <div>screenshot
+          <div class="row mb-3"><div class="col-md-3">
+    <img data-featherlight='../Spark_Screenshots/embedded92.png' src="../Spark_Screenshots/embedded92.png">
+    
+    </div></div>
+</div>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinitions.Reports_AssetCreationCommon.the_report_is_displaying_all_the_asset_contract_details_for_a_branch()">
+                <span>Then the report is displaying all the asset contract details for a branch</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="AFTER_STEP">
+                <span>stepdefinitions.HooksClass.addScreenshot(io.cucumber.java.Scenario)</span>
+      <div>screenshot
+          <div class="row mb-3"><div class="col-md-3">
+    <img data-featherlight='../Spark_Screenshots/embedded93.png' src="../Spark_Screenshots/embedded93.png">
+    
+    </div></div>
+</div>
+      <div>
+      </div>
+              </div>
+          </div>
+        </div>
+  </div>
+  <div class="card">
+    <div class="card-header" role="tab">
+      <div class="card-title">
+        <div class="node" id="230"><span class="badge log pass-bg mr-2">Pass</span>Check Asset Amendment Report</div>
+          <div class="status-avatar float-right mr-4">
+            <i class="fa fa-paperclip"></i>
+          </div>
+      </div>
+    </div>
+        <div class="collapse">
+          <div class="card-body">
+              <div class="step pass-bg" title="stepdefinitions.InventoryMaintenance.maker_navigate_to_uat_url_login()">
+                <span>Given Maker Navigate to UAT URL login</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="AFTER_STEP">
+                <span>stepdefinitions.HooksClass.addScreenshot(io.cucumber.java.Scenario)</span>
+      <div>screenshot
+          <div class="row mb-3"><div class="col-md-3">
+    <img data-featherlight='../Spark_Screenshots/embedded94.png' src="../Spark_Screenshots/embedded94.png">
+    
+    </div></div>
+</div>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinitions.ArAp_BalanceSheetReport.click_on_repoet_button()">
+                <span>Then Click on Report button</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="AFTER_STEP">
+                <span>stepdefinitions.HooksClass.addScreenshot(io.cucumber.java.Scenario)</span>
+      <div>screenshot
+          <div class="row mb-3"><div class="col-md-3">
+    <img data-featherlight='../Spark_Screenshots/embedded95.png' src="../Spark_Screenshots/embedded95.png">
+    
+    </div></div>
+</div>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinitions.FixedAsset_Reports.click_on_transaction_reports_tab()">
+                <span>Then Click on Transaction Reports tab</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="AFTER_STEP">
+                <span>stepdefinitions.HooksClass.addScreenshot(io.cucumber.java.Scenario)</span>
+      <div>screenshot
+          <div class="row mb-3"><div class="col-md-3">
+    <img data-featherlight='../Spark_Screenshots/embedded96.png' src="../Spark_Screenshots/embedded96.png">
+    
+    </div></div>
+</div>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinitions.FixedAsset_Reports.click_on_amendment_report_edit_button()">
+                <span>Then Click on Amendment Report edit button</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="AFTER_STEP">
+                <span>stepdefinitions.HooksClass.addScreenshot(io.cucumber.java.Scenario)</span>
+      <div>screenshot
+          <div class="row mb-3"><div class="col-md-3">
+    <img data-featherlight='../Spark_Screenshots/embedded97.png' src="../Spark_Screenshots/embedded97.png">
+    
+    </div></div>
+</div>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinitions.FixedAsset_Reports.choose_the_data_set_id_for_asset_amenment_report()">
+                <span>Then Choose the data set id for asset amenment report</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="AFTER_STEP">
+                <span>stepdefinitions.HooksClass.addScreenshot(io.cucumber.java.Scenario)</span>
+      <div>screenshot
+          <div class="row mb-3"><div class="col-md-3">
+    <img data-featherlight='../Spark_Screenshots/embedded98.png' src="../Spark_Screenshots/embedded98.png">
+    
+    </div></div>
+</div>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinitions.FixedAsset_Reports.fill_amendment_report_details()">
+                <span>Then fill Amendment Report details</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="AFTER_STEP">
+                <span>stepdefinitions.HooksClass.addScreenshot(io.cucumber.java.Scenario)</span>
+      <div>screenshot
+          <div class="row mb-3"><div class="col-md-3">
+    <img data-featherlight='../Spark_Screenshots/embedded99.png' src="../Spark_Screenshots/embedded99.png">
+    
+    </div></div>
+</div>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinitions.FixedAsset_Reports.get_the_system_date_for_asset_ammenment_report()">
+                <span>Then Get the system date for asset ammenment report</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="AFTER_STEP">
+                <span>stepdefinitions.HooksClass.addScreenshot(io.cucumber.java.Scenario)</span>
+      <div>screenshot
+          <div class="row mb-3"><div class="col-md-3">
+    <img data-featherlight='../Spark_Screenshots/embedded100.png' src="../Spark_Screenshots/embedded100.png">
+    
+    </div></div>
+</div>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinitions.FixedAsset_Reports.select_amendment_from_date_in_calendar()">
+                <span>Then Select Amendment from date in calendar</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="AFTER_STEP">
+                <span>stepdefinitions.HooksClass.addScreenshot(io.cucumber.java.Scenario)</span>
+      <div>screenshot
+          <div class="row mb-3"><div class="col-md-3">
+    <img data-featherlight='../Spark_Screenshots/embedded101.png' src="../Spark_Screenshots/embedded101.png">
+    
+    </div></div>
+</div>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinitions.FixedAsset_Reports.select_amendment_to_date_in_calendar()">
+                <span>Then Select Amendment to date in calendar</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="AFTER_STEP">
+                <span>stepdefinitions.HooksClass.addScreenshot(io.cucumber.java.Scenario)</span>
+      <div>screenshot
+          <div class="row mb-3"><div class="col-md-3">
+    <img data-featherlight='../Spark_Screenshots/embedded102.png' src="../Spark_Screenshots/embedded102.png">
+    
+    </div></div>
+</div>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinitions.ArAp_BalanceSheetReport.click_on_the_view_button()">
+                <span>Then Click on the View button</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="AFTER_STEP">
+                <span>stepdefinitions.HooksClass.addScreenshot(io.cucumber.java.Scenario)</span>
+      <div>screenshot
+          <div class="row mb-3"><div class="col-md-3">
+    <img data-featherlight='../Spark_Screenshots/embedded103.png' src="../Spark_Screenshots/embedded103.png">
+    
+    </div></div>
+</div>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinitions.ArAp_BalanceSheetReport.close_the_report()">
+                <span>Then close the report</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="AFTER_STEP">
+                <span>stepdefinitions.HooksClass.addScreenshot(io.cucumber.java.Scenario)</span>
+      <div>screenshot
+          <div class="row mb-3"><div class="col-md-3">
+    <img data-featherlight='../Spark_Screenshots/embedded104.png' src="../Spark_Screenshots/embedded104.png">
+    
+    </div></div>
+</div>
+      <div>
+      </div>
+              </div>
+          </div>
+        </div>
+  </div>
+  <div class="card">
+    <div class="card-header" role="tab">
+      <div class="card-title">
+        <div class="node" id="256"><span class="badge log pass-bg mr-2">Pass</span>Check Asset Codes</div>
+          <div class="status-avatar float-right mr-4">
+            <i class="fa fa-paperclip"></i>
+          </div>
+      </div>
+    </div>
+        <div class="collapse">
+          <div class="card-body">
+              <div class="step pass-bg" title="stepdefinitions.ACCOUNTSPAYABLE_VendorContracts.user_should_go_to_the_kubs_url_and_login_as_a_maker_user()">
+                <span>Given User should go to the kubs url and login as a maker user</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="AFTER_STEP">
+                <span>stepdefinitions.HooksClass.addScreenshot(io.cucumber.java.Scenario)</span>
+      <div>screenshot
+          <div class="row mb-3"><div class="col-md-3">
+    <img data-featherlight='../Spark_Screenshots/embedded105.png' src="../Spark_Screenshots/embedded105.png">
+    
+    </div></div>
+</div>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinitions.FixedAsset_AssetCreation.click_on_report_icon()">
+                <span>Then click on report icon</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="AFTER_STEP">
+                <span>stepdefinitions.HooksClass.addScreenshot(io.cucumber.java.Scenario)</span>
+      <div>screenshot
+          <div class="row mb-3"><div class="col-md-3">
+    <img data-featherlight='../Spark_Screenshots/embedded106.png' src="../Spark_Screenshots/embedded106.png">
+    
+    </div></div>
+</div>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinitions.Reports_AssetCreationCommon.user_should_navigate_to_master_reports_menu()">
+                <span>And user should navigate to master reports menu</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="AFTER_STEP">
+                <span>stepdefinitions.HooksClass.addScreenshot(io.cucumber.java.Scenario)</span>
+      <div>screenshot
+          <div class="row mb-3"><div class="col-md-3">
+    <img data-featherlight='../Spark_Screenshots/embedded107.png' src="../Spark_Screenshots/embedded107.png">
+    
+    </div></div>
+</div>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinitions.Reports_AssetCreationCommon.click_on_temp_grid_button_of_asset_code()">
+                <span>Then click on temp grid button of asset code</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="AFTER_STEP">
+                <span>stepdefinitions.HooksClass.addScreenshot(io.cucumber.java.Scenario)</span>
+      <div>screenshot
+          <div class="row mb-3"><div class="col-md-3">
+    <img data-featherlight='../Spark_Screenshots/embedded108.png' src="../Spark_Screenshots/embedded108.png">
+    
+    </div></div>
+</div>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinitions.Reports_AssetCreationCommon.choose_the_data_set_for_asset_code_report()">
+                <span>Then Choose the data set for asset code report</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="AFTER_STEP">
+                <span>stepdefinitions.HooksClass.addScreenshot(io.cucumber.java.Scenario)</span>
+      <div>screenshot
+          <div class="row mb-3"><div class="col-md-3">
+    <img data-featherlight='../Spark_Screenshots/embedded109.png' src="../Spark_Screenshots/embedded109.png">
+    
+    </div></div>
+</div>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinitions.Reports_AssetCreationCommon.get_the_system_date_for_asset_code_report()">
+                <span>Then Get the system date for asset code report</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="AFTER_STEP">
+                <span>stepdefinitions.HooksClass.addScreenshot(io.cucumber.java.Scenario)</span>
+      <div>screenshot
+          <div class="row mb-3"><div class="col-md-3">
+    <img data-featherlight='../Spark_Screenshots/embedded110.png' src="../Spark_Screenshots/embedded110.png">
+    
+    </div></div>
+</div>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinitions.Reports_AssetCreationCommon.select_the_depreciation_method_and_date_to_check_the_asset_codes_are_displaying()">
+                <span>And select the depreciation method and date to check the asset codes are displaying</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="AFTER_STEP">
+                <span>stepdefinitions.HooksClass.addScreenshot(io.cucumber.java.Scenario)</span>
+      <div>screenshot
+          <div class="row mb-3"><div class="col-md-3">
+    <img data-featherlight='../Spark_Screenshots/embedded111.png' src="../Spark_Screenshots/embedded111.png">
+    
+    </div></div>
+</div>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinitions.Reports_AssetCreationCommon.click_in_the_view_button_to_check()">
+                <span>Then click in the view button to check</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="AFTER_STEP">
+                <span>stepdefinitions.HooksClass.addScreenshot(io.cucumber.java.Scenario)</span>
+      <div>screenshot
+          <div class="row mb-3"><div class="col-md-3">
+    <img data-featherlight='../Spark_Screenshots/embedded112.png' src="../Spark_Screenshots/embedded112.png">
+    
+    </div></div>
+</div>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinitions.Reports_AssetCreationCommon.the_report_is_displaying_all_the_asset_codes_details_for_a_branch()">
+                <span>Then the report is displaying all the asset codes details for a branch</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="AFTER_STEP">
+                <span>stepdefinitions.HooksClass.addScreenshot(io.cucumber.java.Scenario)</span>
+      <div>screenshot
+          <div class="row mb-3"><div class="col-md-3">
+    <img data-featherlight='../Spark_Screenshots/embedded113.png' src="../Spark_Screenshots/embedded113.png">
+    
+    </div></div>
+</div>
+      <div>
+      </div>
+              </div>
+          </div>
+        </div>
+  </div>
+  <div class="card">
+    <div class="card-header" role="tab">
+      <div class="card-title">
+        <div class="node" id="278"><span class="badge log fail-bg mr-2">Fail</span>Check Depreciation</div>
+          <div class="status-avatar float-right mr-4">
+            <i class="fa fa-paperclip"></i>
+          </div>
+      </div>
+    </div>
+        <div class="">
+          <div class="card-body">
+              <div class="step pass-bg" title="stepdefinitions.ACCOUNTSPAYABLE_VendorContracts.user_should_go_to_the_kubs_url_and_login_as_a_maker_user()">
+                <span>Given User should go to the kubs url and login as a maker user</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="AFTER_STEP">
+                <span>stepdefinitions.HooksClass.addScreenshot(io.cucumber.java.Scenario)</span>
+      <div>screenshot
+          <div class="row mb-3"><div class="col-md-3">
+    <img data-featherlight='../Spark_Screenshots/embedded114.png' src="../Spark_Screenshots/embedded114.png">
+    
+    </div></div>
+</div>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinitions.FixedAsset_AssetCreation.click_on_report_icon()">
+                <span>Then click on report icon</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="AFTER_STEP">
+                <span>stepdefinitions.HooksClass.addScreenshot(io.cucumber.java.Scenario)</span>
+      <div>screenshot
+          <div class="row mb-3"><div class="col-md-3">
+    <img data-featherlight='../Spark_Screenshots/embedded115.png' src="../Spark_Screenshots/embedded115.png">
+    
+    </div></div>
+</div>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinitions.Reports_AssetCreationCommon.user_should_navigate_to_reports_menu()">
+                <span>And user should navigate to reports menu</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="AFTER_STEP">
+                <span>stepdefinitions.HooksClass.addScreenshot(io.cucumber.java.Scenario)</span>
+      <div>screenshot
+          <div class="row mb-3"><div class="col-md-3">
+    <img data-featherlight='../Spark_Screenshots/embedded116.png' src="../Spark_Screenshots/embedded116.png">
+    
+    </div></div>
+</div>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinitions.Reports_AssetCreationCommon.click_on_temp_grid_button_of_depreciation()">
+                <span>Then click on temp grid button of depreciation</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="AFTER_STEP">
+                <span>stepdefinitions.HooksClass.addScreenshot(io.cucumber.java.Scenario)</span>
+      <div>screenshot
+          <div class="row mb-3"><div class="col-md-3">
+    <img data-featherlight='../Spark_Screenshots/embedded117.png' src="../Spark_Screenshots/embedded117.png">
+    
+    </div></div>
+</div>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinitions.Reports_AssetCreationCommon.choose_the_data_set_id_for_depreciation_report()">
+                <span>And Choose the data set id for depreciation report</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="AFTER_STEP">
+                <span>stepdefinitions.HooksClass.addScreenshot(io.cucumber.java.Scenario)</span>
+      <div>screenshot
+          <div class="row mb-3"><div class="col-md-3">
+    <img data-featherlight='../Spark_Screenshots/embedded118.png' src="../Spark_Screenshots/embedded118.png">
+    
+    </div></div>
+</div>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinitions.Reports_AssetCreationCommon.get_the_system_date_for_the_depreciation_report()">
+                <span>And Get the system date for the depreciation report</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="AFTER_STEP">
+                <span>stepdefinitions.HooksClass.addScreenshot(io.cucumber.java.Scenario)</span>
+      <div>screenshot
+          <div class="row mb-3"><div class="col-md-3">
+    <img data-featherlight='../Spark_Screenshots/embedded119.png' src="../Spark_Screenshots/embedded119.png">
+    
+    </div></div>
+</div>
+      <div>
+      </div>
+              </div>
+              <div class="step fail-bg" title="stepdefinitions.Reports_AssetCreationCommon.select_required_fields_to_check_the_depreciation_details_are_displaying()">
+                <span>And select required fields to check the depreciation details are displaying</span>
+      <div>
+        <textarea disabled class="code-block">java.lang.IllegalArgumentException: Keys to send should be a not null CharSequence
+	at org.openqa.selenium.remote.RemoteWebElement.sendKeys(RemoteWebElement.java:92)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:578)
+	at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:52)
+	at jdk.proxy2/jdk.proxy2.$Proxy46.sendKeys(Unknown Source)
+	at stepdefinitions.Reports_AssetCreationCommon.select_required_fields_to_check_the_depreciation_details_are_displaying(Reports_AssetCreationCommon.java:249)
+	at ✽.select required fields to check the depreciation details are displaying(file:///C:/Users/ININDC00073/git/KamalaPriya_ExcelUpdated_KUBS/AzentioAutomationFramework_ExcelKUBS_Kamalapriya2/src/test/java/features/FixedAssetReports.feature:166)
+</textarea>
+      
+      </div>
+              </div>
+              <div class="step pass-bg" title="AFTER_STEP">
+                <span>stepdefinitions.HooksClass.addScreenshot(io.cucumber.java.Scenario)</span>
+      <div>screenshot
+          <div class="row mb-3"><div class="col-md-3">
+    <img data-featherlight='../Spark_Screenshots/embedded120.png' src="../Spark_Screenshots/embedded120.png">
+    
+    </div></div>
+</div>
+      <div>
+      </div>
+              </div>
+              <div class="step skip-bg" title="stepdefinitions.Reports_AssetCreationCommon.click_in_the_view_button_to_check()">
+                <span>Then click in the view button to check</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="stepdefinitions.Reports_AssetCreationCommon.the_report_is_displaying_all_the_asset_depreciation_details_for_a_branch()">
+                <span>Then the report is displaying all the asset depreciation details for a branch</span>
+      <div>Step skipped
+      </div>
+              </div>
+          </div>
+        </div>
+  </div>
+  <div class="card">
+    <div class="card-header" role="tab">
+      <div class="card-title">
+        <div class="node" id="300"><span class="badge log pass-bg mr-2">Pass</span>Check Asset GL</div>
+          <div class="status-avatar float-right mr-4">
+            <i class="fa fa-paperclip"></i>
+          </div>
+      </div>
+    </div>
+        <div class="collapse">
+          <div class="card-body">
+              <div class="step pass-bg" title="stepdefinitions.InventoryMaintenance.maker_navigate_to_uat_url_login()">
+                <span>Given Maker Navigate to UAT URL login</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="AFTER_STEP">
+                <span>stepdefinitions.HooksClass.addScreenshot(io.cucumber.java.Scenario)</span>
+      <div>screenshot
+          <div class="row mb-3"><div class="col-md-3">
+    <img data-featherlight='../Spark_Screenshots/embedded121.png' src="../Spark_Screenshots/embedded121.png">
+    
+    </div></div>
+</div>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinitions.InventoryManagament.click_on_report_segment_button()">
+                <span>Then click on report segment button</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="AFTER_STEP">
+                <span>stepdefinitions.HooksClass.addScreenshot(io.cucumber.java.Scenario)</span>
+      <div>screenshot
+          <div class="row mb-3"><div class="col-md-3">
+    <img data-featherlight='../Spark_Screenshots/embedded122.png' src="../Spark_Screenshots/embedded122.png">
+    
+    </div></div>
+</div>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinitions.InventoryManagament.click_on_equiry_menu()">
+                <span>And click on equiry menu</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="AFTER_STEP">
+                <span>stepdefinitions.HooksClass.addScreenshot(io.cucumber.java.Scenario)</span>
+      <div>screenshot
+          <div class="row mb-3"><div class="col-md-3">
+    <img data-featherlight='../Spark_Screenshots/embedded123.png' src="../Spark_Screenshots/embedded123.png">
+    
+    </div></div>
+</div>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinitions.INVENTORY_EnquiryGl1.click_on_edit_icon_near_by_fiancial_transaction_menu()">
+                <span>Then click on edit icon near by fiancial transaction menu</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="AFTER_STEP">
+                <span>stepdefinitions.HooksClass.addScreenshot(io.cucumber.java.Scenario)</span>
+      <div>screenshot
+          <div class="row mb-3"><div class="col-md-3">
+    <img data-featherlight='../Spark_Screenshots/embedded124.png' src="../Spark_Screenshots/embedded124.png">
+    
+    </div></div>
+</div>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinitions.INVENTORY_EnquiryGl1.choose_branch_code()">
+                <span>And choose branch code</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="AFTER_STEP">
+                <span>stepdefinitions.HooksClass.addScreenshot(io.cucumber.java.Scenario)</span>
+      <div>screenshot
+          <div class="row mb-3"><div class="col-md-3">
+    <img data-featherlight='../Spark_Screenshots/embedded125.png' src="../Spark_Screenshots/embedded125.png">
+    
+    </div></div>
+</div>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinitions.INVENTORY_EnquiryGl1.choose_gl_code()">
+                <span>And choose Gl code</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="AFTER_STEP">
+                <span>stepdefinitions.HooksClass.addScreenshot(io.cucumber.java.Scenario)</span>
+      <div>screenshot
+          <div class="row mb-3"><div class="col-md-3">
+    <img data-featherlight='../Spark_Screenshots/embedded126.png' src="../Spark_Screenshots/embedded126.png">
+    
+    </div></div>
+</div>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinitions.FixedAsset_Reports.get_the_system_date_for_asset_ammenment_report()">
+                <span>Then Get the system date for asset ammenment report</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="AFTER_STEP">
+                <span>stepdefinitions.HooksClass.addScreenshot(io.cucumber.java.Scenario)</span>
+      <div>screenshot
+          <div class="row mb-3"><div class="col-md-3">
+    <img data-featherlight='../Spark_Screenshots/embedded127.png' src="../Spark_Screenshots/embedded127.png">
+    
+    </div></div>
+</div>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinitions.INVENTORY_EnquiryGl1.click_on_transaction_from_date_calender_icon()">
+                <span>And click on transaction from date calender icon</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="AFTER_STEP">
+                <span>stepdefinitions.HooksClass.addScreenshot(io.cucumber.java.Scenario)</span>
+      <div>screenshot
+          <div class="row mb-3"><div class="col-md-3">
+    <img data-featherlight='../Spark_Screenshots/embedded128.png' src="../Spark_Screenshots/embedded128.png">
+    
+    </div></div>
+</div>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinitions.FixedAsset_Reports.choose_the_from_date()">
+                <span>Then choose the from date</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="AFTER_STEP">
+                <span>stepdefinitions.HooksClass.addScreenshot(io.cucumber.java.Scenario)</span>
+      <div>screenshot
+          <div class="row mb-3"><div class="col-md-3">
+    <img data-featherlight='../Spark_Screenshots/embedded129.png' src="../Spark_Screenshots/embedded129.png">
+    
+    </div></div>
+</div>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinitions.INVENTORY_EnquiryGl1.click_on_the_transaction_to_date_calender_icon()">
+                <span>And click on the transaction to date calender icon</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="AFTER_STEP">
+                <span>stepdefinitions.HooksClass.addScreenshot(io.cucumber.java.Scenario)</span>
+      <div>screenshot
+          <div class="row mb-3"><div class="col-md-3">
+    <img data-featherlight='../Spark_Screenshots/embedded130.png' src="../Spark_Screenshots/embedded130.png">
+    
+    </div></div>
+</div>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinitions.FixedAsset_Reports.choose_the_to_date()">
+                <span>Then choose the to date</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="AFTER_STEP">
+                <span>stepdefinitions.HooksClass.addScreenshot(io.cucumber.java.Scenario)</span>
+      <div>screenshot
+          <div class="row mb-3"><div class="col-md-3">
+    <img data-featherlight='../Spark_Screenshots/embedded131.png' src="../Spark_Screenshots/embedded131.png">
+    
+    </div></div>
+</div>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinitions.InventoryManagament.click_on_view_button()">
+                <span>And click on view button</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="AFTER_STEP">
+                <span>stepdefinitions.HooksClass.addScreenshot(io.cucumber.java.Scenario)</span>
+      <div>screenshot
+          <div class="row mb-3"><div class="col-md-3">
+    <img data-featherlight='../Spark_Screenshots/embedded132.png' src="../Spark_Screenshots/embedded132.png">
+    
+    </div></div>
+</div>
+      <div>
+      </div>
+              </div>
+          </div>
+        </div>
+  </div>
+  <div class="card">
+    <div class="card-header" role="tab">
+      <div class="card-title">
+        <div class="node" id="328"><span class="badge log pass-bg mr-2">Pass</span>Check If If asset is required to return after vendor payment</div>
+          <div class="status-avatar float-right mr-4">
+            <i class="fa fa-paperclip"></i>
+          </div>
+      </div>
+    </div>
+        <div class="collapse">
+          <div class="card-body">
+              <div class="step pass-bg" title="stepdefinitions.InventoryMaintenance.maker_navigate_to_uat_url_login()">
+                <span>Given Maker Navigate to UAT URL login</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="AFTER_STEP">
+                <span>stepdefinitions.HooksClass.addScreenshot(io.cucumber.java.Scenario)</span>
+      <div>screenshot
+          <div class="row mb-3"><div class="col-md-3">
+    <img data-featherlight='../Spark_Screenshots/embedded133.png' src="../Spark_Screenshots/embedded133.png">
+    
+    </div></div>
+</div>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinitions.FIXEDASSET_AssetReturn.click_third_segment_button()">
+                <span>Then click Third Segment button</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="AFTER_STEP">
+                <span>stepdefinitions.HooksClass.addScreenshot(io.cucumber.java.Scenario)</span>
+      <div>screenshot
+          <div class="row mb-3"><div class="col-md-3">
+    <img data-featherlight='../Spark_Screenshots/embedded134.png' src="../Spark_Screenshots/embedded134.png">
+    
+    </div></div>
+</div>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinitions.FIXEDASSET_AssetReturn.click_on_enquiry_main_module()">
+                <span>And Click on Enquiry main module</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="AFTER_STEP">
+                <span>stepdefinitions.HooksClass.addScreenshot(io.cucumber.java.Scenario)</span>
+      <div>screenshot
+          <div class="row mb-3"><div class="col-md-3">
+    <img data-featherlight='../Spark_Screenshots/embedded135.png' src="../Spark_Screenshots/embedded135.png">
+    
+    </div></div>
+</div>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinitions.FIXEDASSET_AssetReturn.click_on_financial_sub_module_edit_icon()">
+                <span>Then Click on Financial sub module Edit icon</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="AFTER_STEP">
+                <span>stepdefinitions.HooksClass.addScreenshot(io.cucumber.java.Scenario)</span>
+      <div>screenshot
+          <div class="row mb-3"><div class="col-md-3">
+    <img data-featherlight='../Spark_Screenshots/embedded136.png' src="../Spark_Screenshots/embedded136.png">
+    
+    </div></div>
+</div>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinitions.FixedAsset_Reports.choose_the_data_set_id_to_return_after_vendor_payment()">
+                <span>And choose the data set id to return after vendor payment</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="AFTER_STEP">
+                <span>stepdefinitions.HooksClass.addScreenshot(io.cucumber.java.Scenario)</span>
+      <div>screenshot
+          <div class="row mb-3"><div class="col-md-3">
+    <img data-featherlight='../Spark_Screenshots/embedded137.png' src="../Spark_Screenshots/embedded137.png">
+    
+    </div></div>
+</div>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinitions.FixedAsset_Reports.choose_branch_code_Ids()">
+                <span>And choose branch code Ids</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="AFTER_STEP">
+                <span>stepdefinitions.HooksClass.addScreenshot(io.cucumber.java.Scenario)</span>
+      <div>screenshot
+          <div class="row mb-3"><div class="col-md-3">
+    <img data-featherlight='../Spark_Screenshots/embedded138.png' src="../Spark_Screenshots/embedded138.png">
+    
+    </div></div>
+</div>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinitions.FixedAsset_Reports.select_gl_code_as_fixed_asset_code()">
+                <span>Then Select GL code as Fixed asset code</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="AFTER_STEP">
+                <span>stepdefinitions.HooksClass.addScreenshot(io.cucumber.java.Scenario)</span>
+      <div>screenshot
+          <div class="row mb-3"><div class="col-md-3">
+    <img data-featherlight='../Spark_Screenshots/embedded139.png' src="../Spark_Screenshots/embedded139.png">
+    
+    </div></div>
+</div>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinitions.FixedAsset_Reports.choose_the_data_set_id_for_vendorpayment()">
+                <span>And Choose the data set id for vendorpayment</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="AFTER_STEP">
+                <span>stepdefinitions.HooksClass.addScreenshot(io.cucumber.java.Scenario)</span>
+      <div>screenshot
+          <div class="row mb-3"><div class="col-md-3">
+    <img data-featherlight='../Spark_Screenshots/embedded140.png' src="../Spark_Screenshots/embedded140.png">
+    
+    </div></div>
+</div>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinitions.FixedAsset_Reports.choose_calender_from_date()">
+                <span>And Choose calender From date</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="AFTER_STEP">
+                <span>stepdefinitions.HooksClass.addScreenshot(io.cucumber.java.Scenario)</span>
+      <div>screenshot
+          <div class="row mb-3"><div class="col-md-3">
+    <img data-featherlight='../Spark_Screenshots/embedded141.png' src="../Spark_Screenshots/embedded141.png">
+    
+    </div></div>
+</div>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinitions.FixedAsset_Reports.choose_calender_to_dates()">
+                <span>Then Choose Calender To dates</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="AFTER_STEP">
+                <span>stepdefinitions.HooksClass.addScreenshot(io.cucumber.java.Scenario)</span>
+      <div>screenshot
+          <div class="row mb-3"><div class="col-md-3">
+    <img data-featherlight='../Spark_Screenshots/embedded142.png' src="../Spark_Screenshots/embedded142.png">
+    
+    </div></div>
+</div>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinitions.InventoryManagament.click_on_view_button_to_see_the_record()">
+                <span>And click on view button to see the Record</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="AFTER_STEP">
+                <span>stepdefinitions.HooksClass.addScreenshot(io.cucumber.java.Scenario)</span>
+      <div>screenshot
+          <div class="row mb-3"><div class="col-md-3">
+    <img data-featherlight='../Spark_Screenshots/embedded143.png' src="../Spark_Screenshots/embedded143.png">
+    
+    </div></div>
+</div>
+      <div>
+      </div>
+              </div>
+          </div>
+        </div>
+  </div>
+  <div class="card">
+    <div class="card-header" role="tab">
+      <div class="card-title">
+        <div class="node" id="354"><span class="badge log pass-bg mr-2">Pass</span>Check the accounting Entries</div>
+          <div class="status-avatar float-right mr-4">
+            <i class="fa fa-paperclip"></i>
+          </div>
+      </div>
+    </div>
+        <div class="collapse">
+          <div class="card-body">
+              <div class="step pass-bg" title="stepdefinitions.InventoryMaintenance.maker_navigate_to_uat_url_login()">
+                <span>Given Maker Navigate to UAT URL login</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="AFTER_STEP">
+                <span>stepdefinitions.HooksClass.addScreenshot(io.cucumber.java.Scenario)</span>
+      <div>screenshot
+          <div class="row mb-3"><div class="col-md-3">
+    <img data-featherlight='../Spark_Screenshots/embedded144.png' src="../Spark_Screenshots/embedded144.png">
+    
+    </div></div>
+</div>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinitions.InventoryManagament.click_on_report_button()">
+                <span>Then click on report button</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="AFTER_STEP">
+                <span>stepdefinitions.HooksClass.addScreenshot(io.cucumber.java.Scenario)</span>
+      <div>screenshot
+          <div class="row mb-3"><div class="col-md-3">
+    <img data-featherlight='../Spark_Screenshots/embedded145.png' src="../Spark_Screenshots/embedded145.png">
+    
+    </div></div>
+</div>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinitions.InventoryManagament.click_Enquiry_menu()">
+                <span>And click Enquiry menu</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="AFTER_STEP">
+                <span>stepdefinitions.HooksClass.addScreenshot(io.cucumber.java.Scenario)</span>
+      <div>screenshot
+          <div class="row mb-3"><div class="col-md-3">
+    <img data-featherlight='../Spark_Screenshots/embedded146.png' src="../Spark_Screenshots/embedded146.png">
+    
+    </div></div>
+</div>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinitions.InventoryManagament.click_on_edit_icon_near_by_financial_transaction()">
+                <span>Then click on Edit icon near by financial transaction</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="AFTER_STEP">
+                <span>stepdefinitions.HooksClass.addScreenshot(io.cucumber.java.Scenario)</span>
+      <div>screenshot
+          <div class="row mb-3"><div class="col-md-3">
+    <img data-featherlight='../Spark_Screenshots/embedded147.png' src="../Spark_Screenshots/embedded147.png">
+    
+    </div></div>
+</div>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinitions.FixedAsset_Reports.choose_the_data_set_id_for_the_accounting_entries()">
+                <span>And Choose the data set id for the accounting entries</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="AFTER_STEP">
+                <span>stepdefinitions.HooksClass.addScreenshot(io.cucumber.java.Scenario)</span>
+      <div>screenshot
+          <div class="row mb-3"><div class="col-md-3">
+    <img data-featherlight='../Spark_Screenshots/embedded148.png' src="../Spark_Screenshots/embedded148.png">
+    
+    </div></div>
+</div>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinitions.FixedAsset_Reports.choose_branch_code_Ids()">
+                <span>And choose branch code Ids</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="AFTER_STEP">
+                <span>stepdefinitions.HooksClass.addScreenshot(io.cucumber.java.Scenario)</span>
+      <div>screenshot
+          <div class="row mb-3"><div class="col-md-3">
+    <img data-featherlight='../Spark_Screenshots/embedded149.png' src="../Spark_Screenshots/embedded149.png">
+    
+    </div></div>
+</div>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinitions.FixedAsset_Reports.choose_the_gl_code_ids()">
+                <span>Then choose the Gl code Ids</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="AFTER_STEP">
+                <span>stepdefinitions.HooksClass.addScreenshot(io.cucumber.java.Scenario)</span>
+      <div>screenshot
+          <div class="row mb-3"><div class="col-md-3">
+    <img data-featherlight='../Spark_Screenshots/embedded150.png' src="../Spark_Screenshots/embedded150.png">
+    
+    </div></div>
+</div>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinitions.FixedAsset_Reports.get_the_system_date_for_accounting_entries()">
+                <span>Then Get the system date for accounting entries</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="AFTER_STEP">
+                <span>stepdefinitions.HooksClass.addScreenshot(io.cucumber.java.Scenario)</span>
+      <div>screenshot
+          <div class="row mb-3"><div class="col-md-3">
+    <img data-featherlight='../Spark_Screenshots/embedded151.png' src="../Spark_Screenshots/embedded151.png">
+    
+    </div></div>
+</div>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinitions.InventoryManagament.click_on_transaction_from_date_calender_in_calender_icon()">
+                <span>And click on transaction from date in calender icon</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="AFTER_STEP">
+                <span>stepdefinitions.HooksClass.addScreenshot(io.cucumber.java.Scenario)</span>
+      <div>screenshot
+          <div class="row mb-3"><div class="col-md-3">
+    <img data-featherlight='../Spark_Screenshots/embedded152.png' src="../Spark_Screenshots/embedded152.png">
+    
+    </div></div>
+</div>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinitions.FixedAsset_Reports.choose_from_date_in_the_calenders()">
+                <span>Then choose from date in the calenders</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="AFTER_STEP">
+                <span>stepdefinitions.HooksClass.addScreenshot(io.cucumber.java.Scenario)</span>
+      <div>screenshot
+          <div class="row mb-3"><div class="col-md-3">
+    <img data-featherlight='../Spark_Screenshots/embedded153.png' src="../Spark_Screenshots/embedded153.png">
+    
+    </div></div>
+</div>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinitions.InventoryManagament.click_on_the_transaction_to_date_calender_in_calender_icon()">
+                <span>And click on the transaction to date in calender icon</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="AFTER_STEP">
+                <span>stepdefinitions.HooksClass.addScreenshot(io.cucumber.java.Scenario)</span>
+      <div>screenshot
+          <div class="row mb-3"><div class="col-md-3">
+    <img data-featherlight='../Spark_Screenshots/embedded154.png' src="../Spark_Screenshots/embedded154.png">
+    
+    </div></div>
+</div>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinitions.FixedAsset_Reports.choose_the_to_date_in_the_calenders()">
+                <span>Then choose the To date in the calenders</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="AFTER_STEP">
+                <span>stepdefinitions.HooksClass.addScreenshot(io.cucumber.java.Scenario)</span>
+      <div>screenshot
+          <div class="row mb-3"><div class="col-md-3">
+    <img data-featherlight='../Spark_Screenshots/embedded155.png' src="../Spark_Screenshots/embedded155.png">
+    
+    </div></div>
+</div>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinitions.InventoryManagament.click_on_view_button_to_see_the_record()">
+                <span>And click on view button to see the Record</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="AFTER_STEP">
+                <span>stepdefinitions.HooksClass.addScreenshot(io.cucumber.java.Scenario)</span>
+      <div>screenshot
+          <div class="row mb-3"><div class="col-md-3">
+    <img data-featherlight='../Spark_Screenshots/embedded156.png' src="../Spark_Screenshots/embedded156.png">
+    
+    </div></div>
+</div>
+      <div>
+      </div>
+              </div>
+          </div>
+        </div>
+  </div>
+  <div class="card">
+    <div class="card-header" role="tab">
+      <div class="card-title">
+        <div class="node" id="384"><span class="badge log pass-bg mr-2">Pass</span>Check the accounting Entries</div>
+          <div class="status-avatar float-right mr-4">
+            <i class="fa fa-paperclip"></i>
+          </div>
+      </div>
+    </div>
+        <div class="collapse">
+          <div class="card-body">
+              <div class="step pass-bg" title="stepdefinitions.InventoryMaintenance.maker_navigate_to_uat_url_login()">
+                <span>Given Maker Navigate to UAT URL login</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="AFTER_STEP">
+                <span>stepdefinitions.HooksClass.addScreenshot(io.cucumber.java.Scenario)</span>
+      <div>screenshot
+          <div class="row mb-3"><div class="col-md-3">
+    <img data-featherlight='../Spark_Screenshots/embedded157.png' src="../Spark_Screenshots/embedded157.png">
+    
+    </div></div>
+</div>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinitions.InventoryManagament.click_on_report_button()">
+                <span>Then click on report button</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="AFTER_STEP">
+                <span>stepdefinitions.HooksClass.addScreenshot(io.cucumber.java.Scenario)</span>
+      <div>screenshot
+          <div class="row mb-3"><div class="col-md-3">
+    <img data-featherlight='../Spark_Screenshots/embedded158.png' src="../Spark_Screenshots/embedded158.png">
+    
+    </div></div>
+</div>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinitions.InventoryManagament.click_Enquiry_menu()">
+                <span>And click Enquiry menu</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="AFTER_STEP">
+                <span>stepdefinitions.HooksClass.addScreenshot(io.cucumber.java.Scenario)</span>
+      <div>screenshot
+          <div class="row mb-3"><div class="col-md-3">
+    <img data-featherlight='../Spark_Screenshots/embedded159.png' src="../Spark_Screenshots/embedded159.png">
+    
+    </div></div>
+</div>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinitions.InventoryManagament.click_on_edit_icon_near_by_financial_transaction()">
+                <span>Then click on Edit icon near by financial transaction</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="AFTER_STEP">
+                <span>stepdefinitions.HooksClass.addScreenshot(io.cucumber.java.Scenario)</span>
+      <div>screenshot
+          <div class="row mb-3"><div class="col-md-3">
+    <img data-featherlight='../Spark_Screenshots/embedded160.png' src="../Spark_Screenshots/embedded160.png">
+    
+    </div></div>
+</div>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinitions.FixedAsset_Reports.choose_the_data_set_id_for_accountinmg_entries()">
+                <span>Then Choose the data set id for accountinmg entries</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="AFTER_STEP">
+                <span>stepdefinitions.HooksClass.addScreenshot(io.cucumber.java.Scenario)</span>
+      <div>screenshot
+          <div class="row mb-3"><div class="col-md-3">
+    <img data-featherlight='../Spark_Screenshots/embedded161.png' src="../Spark_Screenshots/embedded161.png">
+    
+    </div></div>
+</div>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinitions.FixedAsset_Reports.choose_branch_code_Ids()">
+                <span>And choose branch code Ids</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="AFTER_STEP">
+                <span>stepdefinitions.HooksClass.addScreenshot(io.cucumber.java.Scenario)</span>
+      <div>screenshot
+          <div class="row mb-3"><div class="col-md-3">
+    <img data-featherlight='../Spark_Screenshots/embedded162.png' src="../Spark_Screenshots/embedded162.png">
+    
+    </div></div>
+</div>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinitions.FixedAsset_Reports.choose_the_gl_code_ids()">
+                <span>Then choose the Gl code Ids</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="AFTER_STEP">
+                <span>stepdefinitions.HooksClass.addScreenshot(io.cucumber.java.Scenario)</span>
+      <div>screenshot
+          <div class="row mb-3"><div class="col-md-3">
+    <img data-featherlight='../Spark_Screenshots/embedded163.png' src="../Spark_Screenshots/embedded163.png">
+    
+    </div></div>
+</div>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinitions.FixedAsset_Reports.get_the_system_date_for_accounting_entries()">
+                <span>Then Get the system date for accounting entries</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="AFTER_STEP">
+                <span>stepdefinitions.HooksClass.addScreenshot(io.cucumber.java.Scenario)</span>
+      <div>screenshot
+          <div class="row mb-3"><div class="col-md-3">
+    <img data-featherlight='../Spark_Screenshots/embedded164.png' src="../Spark_Screenshots/embedded164.png">
+    
+    </div></div>
+</div>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinitions.InventoryManagament.click_on_transaction_from_date_calender_in_calender_icon()">
+                <span>And click on transaction from date in calender icon</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="AFTER_STEP">
+                <span>stepdefinitions.HooksClass.addScreenshot(io.cucumber.java.Scenario)</span>
+      <div>screenshot
+          <div class="row mb-3"><div class="col-md-3">
+    <img data-featherlight='../Spark_Screenshots/embedded165.png' src="../Spark_Screenshots/embedded165.png">
+    
+    </div></div>
+</div>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinitions.FixedAsset_Reports.choose_from_date_in_the_calenders()">
+                <span>Then choose from date in the calenders</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="AFTER_STEP">
+                <span>stepdefinitions.HooksClass.addScreenshot(io.cucumber.java.Scenario)</span>
+      <div>screenshot
+          <div class="row mb-3"><div class="col-md-3">
+    <img data-featherlight='../Spark_Screenshots/embedded166.png' src="../Spark_Screenshots/embedded166.png">
+    
+    </div></div>
+</div>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinitions.InventoryManagament.click_on_the_transaction_to_date_calender_in_calender_icon()">
+                <span>And click on the transaction to date in calender icon</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="AFTER_STEP">
+                <span>stepdefinitions.HooksClass.addScreenshot(io.cucumber.java.Scenario)</span>
+      <div>screenshot
+          <div class="row mb-3"><div class="col-md-3">
+    <img data-featherlight='../Spark_Screenshots/embedded167.png' src="../Spark_Screenshots/embedded167.png">
+    
+    </div></div>
+</div>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinitions.FixedAsset_Reports.choose_the_to_date_in_the_calenders()">
+                <span>Then choose the To date in the calenders</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="AFTER_STEP">
+                <span>stepdefinitions.HooksClass.addScreenshot(io.cucumber.java.Scenario)</span>
+      <div>screenshot
+          <div class="row mb-3"><div class="col-md-3">
+    <img data-featherlight='../Spark_Screenshots/embedded168.png' src="../Spark_Screenshots/embedded168.png">
+    
+    </div></div>
+</div>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinitions.InventoryManagament.click_on_view_button_to_see_the_record()">
+                <span>And click on view button to see the Record</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="AFTER_STEP">
+                <span>stepdefinitions.HooksClass.addScreenshot(io.cucumber.java.Scenario)</span>
+      <div>screenshot
+          <div class="row mb-3"><div class="col-md-3">
+    <img data-featherlight='../Spark_Screenshots/embedded169.png' src="../Spark_Screenshots/embedded169.png">
+    
+    </div></div>
+</div>
+      <div>
+      </div>
+              </div>
+          </div>
+        </div>
+  </div>
+</div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+<div class="test-content scrollable">
+<div class="test-content-tools">
+<ul><li><a class="back-to-test" href="#"><i class="fa fa-arrow-left"></i></a></li></ul>
+</div>
+<div class="test-content-detail"><div class="detail-body"></div></div>
+</div></div>
+<div class="container-fluid p-4 view dashboard-view">
+<div class="row">
+<div class="col-md-3">
+<div class="card"><div class="card-body">
+<p class="m-b-0">Started</p>
+<h3>Feb 2, 2023 11:28:41 AM</h3>
+</div></div>
+</div>
+<div class="col-md-3">
+<div class="card"><div class="card-body">
+<p class="m-b-0">Ended</p>
+<h3>Feb 2, 2023 11:40:14 AM</h3>
+</div></div>
+</div>
+<div class="col-md-3">
+<div class="card"><div class="card-body">
+<p class="m-b-0 text-pass">Features Passed</p>
+<h3>0</h3>
+</div></div>
+</div>
+<div class="col-md-3">
+<div class="card"><div class="card-body">
+<p class="m-b-0 text-fail">Features Failed</p>
+<h3>1</h3>
+</div></div>
+</div>
+</div>
+<div class="row">
+<div class="col-md-4">
+<div class="card">
+<div class="card-header">
+<h6 class="card-title">Features</h6>
+</div>
+<div class="card-body">
+<div class="">
+<canvas id='parent-analysis' width='115' height='90'></canvas>
+</div>
+</div>
+<div class="card-footer">
+<div><small data-tooltip='0%'>
+<b>0</b> features passed
+</small>
+</div>
+<div>
+<small data-tooltip='100%'><b>1</b> features failed,
+<b>0</b> skipped, <b data-tooltip='0%'>0</b> others
+</small>
+</div>
+</div>
+</div>
+</div>
+<div class="col-md-4">
+<div class="card">
+<div class="card-header">
+<h6 class="card-title">Scenarios</h6>
+</div>
+<div class="card-body">
+<div class="">
+<canvas id='child-analysis' width='115' height='90'></canvas>
+</div>
+</div>
+<div class="card-footer">
+<div><small data-tooltip='88%'><b>15</b> scenarios passed</small></div>
+<div>
+<small data-tooltip='11%'><b>2</b> scenarios failed,
+<b>0</b> skipped, <b data-tooltip='%'>0</b> others
+</small>
+</div>
+</div>
+</div>
+</div>
+<div class="col-md-4">
+<div class="card">
+<div class="card-header">
+<h6 class="card-title">Steps</h6>
+</div>
+<div class="card-body">
+<div class="">
+<canvas id='grandchild-analysis' width='115' height='90'></canvas>
+</div>
+</div>
+<div class="card-footer">
+<div><small data-tooltip='98%'><b>336</b> steps passed</small></div>
+<div>
+<small data-tooltip='0%'><b>2</b> steps failed,
+<b>3</b> skipped, <b data-tooltip='%'>0</b> others
+</small>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="row"><div class="col-md-12">
+<div class="card"><div class="card-header"><p>Timeline</p></div>
+<div class="card-body pt-0"><div>
+<canvas id="timeline" height="120"></canvas>
+</div></div>
+</div>
+</div></div>
+<script>
+var timeline = {
+"To verify the reports for fixed asset":689.344
+};
+</script>
+<div class="row">
+<div class="col-md-4 category-container">
+<div class="card">
+<div class="card-header"><p>Tags</p></div>
+<div class="card-body pb-0 pt-0"><table class="table table-sm table-bordered">
+<thead><tr class="bg-gray"><th>Name</th><th>Passed</th><th>Failed</th><th>Skipped</th><th>Others</th><th>Passed %</th></tr></thead><tbody>
+<tr>
+<td>@KUBS_FAT_UAT_004_002_AccountingEntries1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>@KUBS_FAT_UAT_013_012_AssetUndertaking</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>@KUBS_FAT_UAT_013_005_AssetGl</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>@KUBS_FAT_UAT_013_014_AssetAllocation</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>@KUBS_FAT_UAT_013_003_AssetCode</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>@KUBS_FAT_UAT_013_017_Replacement</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>@KUBS_FAT_UAT_007_009_vendorpayment</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>@KUBS_FAT_UAT_013_013_Assetsale</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0%</td>
+</tr>
+<tr>
+<td>@KUBS_FAT_UAT_013_011_AssetTransfer</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>@MultiAuth</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0%</td>
+</tr>
+<tr>
+<td>@KUBS_FAT_UAT_013_019_Revaluation</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>@KUBS_FAT_UAT_013_009_AssetContract</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>@KUBS_FAT_UAT_004_004_AccountingEntries2</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>@KUBS_FAT_UAT_013_004_Depreciation</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0%</td>
+</tr>
+<tr>
+<td>@KUBS_FAT_UAT_013_016_Return</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>@KUBS_FAT_UAT_013_010_AssetAmmenment</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>@KUBS_FAT_UAT_013_018_ImpairementLoss</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>@KUBS_FAT_UAT_013_015_Deallocation</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>100%</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<div class="col-md-4 sysenv-container">
+<div class="card">
+<div class="card-header"><p>System/Environment</p></div>
+<div class="card-body pb-0 pt-0"><table class="table table-sm table-bordered">
+<thead><tr class="bg-gray"><th>Name</th><th>Value</th></tr></thead>
+<tbody>
+<tr>
+<td>version</td>
+<td>10</td>
+</tr>
+<tr>
+<td>os</td>
+<td>windows</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+</div>
+</div>
+<script>
+var statusGroup = {
+parentCount: 5,
+passParent: 0,
+failParent: 1,
+warningParent: 0,
+skipParent: 0,
+childCount: 5,
+passChild: 15,
+failChild: 2,
+warningChild: 0,
+skipChild: 0,
+infoChild: 0,
+grandChildCount: 5,
+passGrandChild: 336,
+failGrandChild: 2,
+warningGrandChild: 0,
+skipGrandChild: 3,
+infoGrandChild: 0,
+eventsCount: 5,
+};
+</script><div class="test-wrapper row view category-view attributes-view">
+<div class="test-list">
+<div class="test-list-tools">
+<ul class="tools pull-left"><li><a href=""><span class="font-size-14">Category</span></a></li></ul>
+<ul class="tools text-right"><li><a href="#"><span class="badge badge-primary">18</span></a></li></ul>
+</div>
+<div class="test-list-wrapper scrollable">
+<ul class="test-list-item">
+<li class="test-item">
+<div class="test-detail">
+<span class="meta">
+<span class='badge log pass-bg'>1</span>
+</span>
+<p class="name">@KUBS_FAT_UAT_004_002_AccountingEntries1</p>
+<p class="duration text-sm">1 tests</p>
+</div>
+<div class="test-contents d-none">
+<div class="info">
+<h4>@KUBS_FAT_UAT_004_002_AccountingEntries1</h4>
+<span status="pass" class='badge log pass-bg'>1 passed</span>
+</div>
+<table class='table table-sm mt-4'>
+<thead>
+<tr>
+<th class="status-col">Status</th>
+<th class="timestamp-col">Timestamp</th>
+<th>TestName</th>
+</tr>
+</thead>
+<tbody>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>11:39:00 AM</td>
+<td>
+<a href="#" class="linked" test-id='1' id='354'>Check the accounting Entries</a>
+<div class="">
+<span class="badge badge-default">To verify the reports for fixed asset.Check the accounting Entries</span>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li>
+<li class="test-item">
+<div class="test-detail">
+<span class="meta">
+<span class='badge log pass-bg'>1</span>
+</span>
+<p class="name">@KUBS_FAT_UAT_013_012_AssetUndertaking</p>
+<p class="duration text-sm">1 tests</p>
+</div>
+<div class="test-contents d-none">
+<div class="info">
+<h4>@KUBS_FAT_UAT_013_012_AssetUndertaking</h4>
+<span status="pass" class='badge log pass-bg'>1 passed</span>
+</div>
+<table class='table table-sm mt-4'>
+<thead>
+<tr>
+<th class="status-col">Status</th>
+<th class="timestamp-col">Timestamp</th>
+<th>TestName</th>
+</tr>
+</thead>
+<tbody>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>11:34:21 AM</td>
+<td>
+<a href="#" class="linked" test-id='1' id='164'>Check Asset Undertaking</a>
+<div class="">
+<span class="badge badge-default">To verify the reports for fixed asset.Check Asset Undertaking</span>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li>
+<li class="test-item">
+<div class="test-detail">
+<span class="meta">
+<span class='badge log pass-bg'>1</span>
+</span>
+<p class="name">@KUBS_FAT_UAT_013_005_AssetGl</p>
+<p class="duration text-sm">1 tests</p>
+</div>
+<div class="test-contents d-none">
+<div class="info">
+<h4>@KUBS_FAT_UAT_013_005_AssetGl</h4>
+<span status="pass" class='badge log pass-bg'>1 passed</span>
+</div>
+<table class='table table-sm mt-4'>
+<thead>
+<tr>
+<th class="status-col">Status</th>
+<th class="timestamp-col">Timestamp</th>
+<th>TestName</th>
+</tr>
+</thead>
+<tbody>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>11:37:56 AM</td>
+<td>
+<a href="#" class="linked" test-id='1' id='300'>Check Asset GL</a>
+<div class="">
+<span class="badge badge-default">To verify the reports for fixed asset.Check Asset GL</span>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li>
+<li class="test-item">
+<div class="test-detail">
+<span class="meta">
+<span class='badge log pass-bg'>1</span>
+</span>
+<p class="name">@KUBS_FAT_UAT_013_014_AssetAllocation</p>
+<p class="duration text-sm">1 tests</p>
+</div>
+<div class="test-contents d-none">
+<div class="info">
+<h4>@KUBS_FAT_UAT_013_014_AssetAllocation</h4>
+<span status="pass" class='badge log pass-bg'>1 passed</span>
+</div>
+<table class='table table-sm mt-4'>
+<thead>
+<tr>
+<th class="status-col">Status</th>
+<th class="timestamp-col">Timestamp</th>
+<th>TestName</th>
+</tr>
+</thead>
+<tbody>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>11:32:30 AM</td>
+<td>
+<a href="#" class="linked" test-id='1' id='90'>Check Asset Allocation Report</a>
+<div class="">
+<span class="badge badge-default">To verify the reports for fixed asset.Check Asset Allocation Report</span>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li>
+<li class="test-item">
+<div class="test-detail">
+<span class="meta">
+<span class='badge log pass-bg'>1</span>
+</span>
+<p class="name">@KUBS_FAT_UAT_013_003_AssetCode</p>
+<p class="duration text-sm">1 tests</p>
+</div>
+<div class="test-contents d-none">
+<div class="info">
+<h4>@KUBS_FAT_UAT_013_003_AssetCode</h4>
+<span status="pass" class='badge log pass-bg'>1 passed</span>
+</div>
+<table class='table table-sm mt-4'>
+<thead>
+<tr>
+<th class="status-col">Status</th>
+<th class="timestamp-col">Timestamp</th>
+<th>TestName</th>
+</tr>
+</thead>
+<tbody>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>11:36:50 AM</td>
+<td>
+<a href="#" class="linked" test-id='1' id='256'>Check Asset Codes</a>
+<div class="">
+<span class="badge badge-default">To verify the reports for fixed asset.Check Asset Codes</span>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li>
+<li class="test-item">
+<div class="test-detail">
+<span class="meta">
+<span class='badge log pass-bg'>1</span>
+</span>
+<p class="name">@KUBS_FAT_UAT_013_017_Replacement</p>
+<p class="duration text-sm">1 tests</p>
+</div>
+<div class="test-contents d-none">
+<div class="info">
+<h4>@KUBS_FAT_UAT_013_017_Replacement</h4>
+<span status="pass" class='badge log pass-bg'>1 passed</span>
+</div>
+<table class='table table-sm mt-4'>
+<thead>
+<tr>
+<th class="status-col">Status</th>
+<th class="timestamp-col">Timestamp</th>
+<th>TestName</th>
+</tr>
+</thead>
+<tbody>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>11:29:53 AM</td>
+<td>
+<a href="#" class="linked" test-id='1' id='22'>Check Asset replacement Report</a>
+<div class="">
+<span class="badge badge-default">To verify the reports for fixed asset.Check Asset replacement Report</span>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li>
+<li class="test-item">
+<div class="test-detail">
+<span class="meta">
+<span class='badge log pass-bg'>1</span>
+</span>
+<p class="name">@KUBS_FAT_UAT_007_009_vendorpayment</p>
+<p class="duration text-sm">1 tests</p>
+</div>
+<div class="test-contents d-none">
+<div class="info">
+<h4>@KUBS_FAT_UAT_007_009_vendorpayment</h4>
+<span status="pass" class='badge log pass-bg'>1 passed</span>
+</div>
+<table class='table table-sm mt-4'>
+<thead>
+<tr>
+<th class="status-col">Status</th>
+<th class="timestamp-col">Timestamp</th>
+<th>TestName</th>
+</tr>
+</thead>
+<tbody>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>11:38:29 AM</td>
+<td>
+<a href="#" class="linked" test-id='1' id='328'>Check If If asset is required to return after vendor payment</a>
+<div class="">
+<span class="badge badge-default">To verify the reports for fixed asset.Check If If asset is required to return after vendor payment</span>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li>
+<li class="test-item">
+<div class="test-detail">
+<span class="meta">
+<span class='badge log badge-danger'>1</span>
+</span>
+<p class="name">@KUBS_FAT_UAT_013_013_Assetsale</p>
+<p class="duration text-sm">1 tests</p>
+</div>
+<div class="test-contents d-none">
+<div class="info">
+<h4>@KUBS_FAT_UAT_013_013_Assetsale</h4>
+<span status="fail" class='badge log badge-danger'>1 failed</span>
+</div>
+<table class='table table-sm mt-4'>
+<thead>
+<tr>
+<th class="status-col">Status</th>
+<th class="timestamp-col">Timestamp</th>
+<th>TestName</th>
+</tr>
+</thead>
+<tbody>
+<tr class="tag-test-status" status="fail">
+<td><span class="badge log fail-bg">Fail</span></td>
+<td>11:33:49 AM</td>
+<td>
+<a href="#" class="linked" test-id='1' id='140'>Map the various GLs for created asset code</a>
+<div class="">
+<span class="badge badge-default">To verify the reports for fixed asset.Map the various GLs for created asset code</span>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li>
+<li class="test-item">
+<div class="test-detail">
+<span class="meta">
+<span class='badge log pass-bg'>1</span>
+</span>
+<p class="name">@KUBS_FAT_UAT_013_011_AssetTransfer</p>
+<p class="duration text-sm">1 tests</p>
+</div>
+<div class="test-contents d-none">
+<div class="info">
+<h4>@KUBS_FAT_UAT_013_011_AssetTransfer</h4>
+<span status="pass" class='badge log pass-bg'>1 passed</span>
+</div>
+<table class='table table-sm mt-4'>
+<thead>
+<tr>
+<th class="status-col">Status</th>
+<th class="timestamp-col">Timestamp</th>
+<th>TestName</th>
+</tr>
+</thead>
+<tbody>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>11:35:04 AM</td>
+<td>
+<a href="#" class="linked" test-id='1' id='186'>Check Asset Transfer</a>
+<div class="">
+<span class="badge badge-default">To verify the reports for fixed asset.Check Asset Transfer</span>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li>
+<li class="test-item">
+<div class="test-detail">
+<span class="meta">
+<span class='badge log badge-danger'>1</span>
+</span>
+<p class="name">@MultiAuth</p>
+<p class="duration text-sm">1 tests</p>
+</div>
+<div class="test-contents d-none">
+<div class="info">
+<h4>@MultiAuth</h4>
+<span status="fail" class='badge log badge-danger'>1 failed</span>
+</div>
+<table class='table table-sm mt-4'>
+<thead>
+<tr>
+<th class="status-col">Status</th>
+<th class="timestamp-col">Timestamp</th>
+<th>TestName</th>
+</tr>
+</thead>
+<tbody>
+<tr class="tag-test-status" status="fail">
+<td><span class="badge log fail-bg">Fail</span></td>
+<td>11:33:49 AM</td>
+<td>
+<a href="#" class="linked" test-id='1' id='140'>Map the various GLs for created asset code</a>
+<div class="">
+<span class="badge badge-default">To verify the reports for fixed asset.Map the various GLs for created asset code</span>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li>
+<li class="test-item">
+<div class="test-detail">
+<span class="meta">
+<span class='badge log pass-bg'>1</span>
+</span>
+<p class="name">@KUBS_FAT_UAT_013_019_Revaluation</p>
+<p class="duration text-sm">1 tests</p>
+</div>
+<div class="test-contents d-none">
+<div class="info">
+<h4>@KUBS_FAT_UAT_013_019_Revaluation</h4>
+<span status="pass" class='badge log pass-bg'>1 passed</span>
+</div>
+<table class='table table-sm mt-4'>
+<thead>
+<tr>
+<th class="status-col">Status</th>
+<th class="timestamp-col">Timestamp</th>
+<th>TestName</th>
+</tr>
+</thead>
+<tbody>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>11:28:44 AM</td>
+<td>
+<a href="#" class="linked" test-id='1' id='2'>Check Asset Revaluation Report</a>
+<div class="">
+<span class="badge badge-default">To verify the reports for fixed asset.Check Asset Revaluation Report</span>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li>
+<li class="test-item">
+<div class="test-detail">
+<span class="meta">
+<span class='badge log pass-bg'>1</span>
+</span>
+<p class="name">@KUBS_FAT_UAT_013_009_AssetContract</p>
+<p class="duration text-sm">1 tests</p>
+</div>
+<div class="test-contents d-none">
+<div class="info">
+<h4>@KUBS_FAT_UAT_013_009_AssetContract</h4>
+<span status="pass" class='badge log pass-bg'>1 passed</span>
+</div>
+<table class='table table-sm mt-4'>
+<thead>
+<tr>
+<th class="status-col">Status</th>
+<th class="timestamp-col">Timestamp</th>
+<th>TestName</th>
+</tr>
+</thead>
+<tbody>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>11:35:36 AM</td>
+<td>
+<a href="#" class="linked" test-id='1' id='208'>Check Asset Contract</a>
+<div class="">
+<span class="badge badge-default">To verify the reports for fixed asset.Check Asset Contract</span>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li>
+<li class="test-item">
+<div class="test-detail">
+<span class="meta">
+<span class='badge log pass-bg'>1</span>
+</span>
+<p class="name">@KUBS_FAT_UAT_004_004_AccountingEntries2</p>
+<p class="duration text-sm">1 tests</p>
+</div>
+<div class="test-contents d-none">
+<div class="info">
+<h4>@KUBS_FAT_UAT_004_004_AccountingEntries2</h4>
+<span status="pass" class='badge log pass-bg'>1 passed</span>
+</div>
+<table class='table table-sm mt-4'>
+<thead>
+<tr>
+<th class="status-col">Status</th>
+<th class="timestamp-col">Timestamp</th>
+<th>TestName</th>
+</tr>
+</thead>
+<tbody>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>11:39:38 AM</td>
+<td>
+<a href="#" class="linked" test-id='1' id='384'>Check the accounting Entries</a>
+<div class="">
+<span class="badge badge-default">To verify the reports for fixed asset.Check the accounting Entries</span>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li>
+<li class="test-item">
+<div class="test-detail">
+<span class="meta">
+<span class='badge log badge-danger'>1</span>
+</span>
+<p class="name">@KUBS_FAT_UAT_013_004_Depreciation</p>
+<p class="duration text-sm">1 tests</p>
+</div>
+<div class="test-contents d-none">
+<div class="info">
+<h4>@KUBS_FAT_UAT_013_004_Depreciation</h4>
+<span status="fail" class='badge log badge-danger'>1 failed</span>
+</div>
+<table class='table table-sm mt-4'>
+<thead>
+<tr>
+<th class="status-col">Status</th>
+<th class="timestamp-col">Timestamp</th>
+<th>TestName</th>
+</tr>
+</thead>
+<tbody>
+<tr class="tag-test-status" status="fail">
+<td><span class="badge log fail-bg">Fail</span></td>
+<td>11:37:29 AM</td>
+<td>
+<a href="#" class="linked" test-id='1' id='278'>Check Depreciation</a>
+<div class="">
+<span class="badge badge-default">To verify the reports for fixed asset.Check Depreciation</span>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li>
+<li class="test-item">
+<div class="test-detail">
+<span class="meta">
+<span class='badge log pass-bg'>1</span>
+</span>
+<p class="name">@KUBS_FAT_UAT_013_016_Return</p>
+<p class="duration text-sm">1 tests</p>
+</div>
+<div class="test-contents d-none">
+<div class="info">
+<h4>@KUBS_FAT_UAT_013_016_Return</h4>
+<span status="pass" class='badge log pass-bg'>1 passed</span>
+</div>
+<table class='table table-sm mt-4'>
+<thead>
+<tr>
+<th class="status-col">Status</th>
+<th class="timestamp-col">Timestamp</th>
+<th>TestName</th>
+</tr>
+</thead>
+<tbody>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>11:30:31 AM</td>
+<td>
+<a href="#" class="linked" test-id='1' id='46'>Check Asset return Report</a>
+<div class="">
+<span class="badge badge-default">To verify the reports for fixed asset.Check Asset return Report</span>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li>
+<li class="test-item">
+<div class="test-detail">
+<span class="meta">
+<span class='badge log pass-bg'>1</span>
+</span>
+<p class="name">@KUBS_FAT_UAT_013_010_AssetAmmenment</p>
+<p class="duration text-sm">1 tests</p>
+</div>
+<div class="test-contents d-none">
+<div class="info">
+<h4>@KUBS_FAT_UAT_013_010_AssetAmmenment</h4>
+<span status="pass" class='badge log pass-bg'>1 passed</span>
+</div>
+<table class='table table-sm mt-4'>
+<thead>
+<tr>
+<th class="status-col">Status</th>
+<th class="timestamp-col">Timestamp</th>
+<th>TestName</th>
+</tr>
+</thead>
+<tbody>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>11:36:14 AM</td>
+<td>
+<a href="#" class="linked" test-id='1' id='230'>Check Asset Amendment Report</a>
+<div class="">
+<span class="badge badge-default">To verify the reports for fixed asset.Check Asset Amendment Report</span>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li>
+<li class="test-item">
+<div class="test-detail">
+<span class="meta">
+<span class='badge log pass-bg'>1</span>
+</span>
+<p class="name">@KUBS_FAT_UAT_013_018_ImpairementLoss</p>
+<p class="duration text-sm">1 tests</p>
+</div>
+<div class="test-contents d-none">
+<div class="info">
+<h4>@KUBS_FAT_UAT_013_018_ImpairementLoss</h4>
+<span status="pass" class='badge log pass-bg'>1 passed</span>
+</div>
+<table class='table table-sm mt-4'>
+<thead>
+<tr>
+<th class="status-col">Status</th>
+<th class="timestamp-col">Timestamp</th>
+<th>TestName</th>
+</tr>
+</thead>
+<tbody>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>11:32:01 AM</td>
+<td>
+<a href="#" class="linked" test-id='1' id='70'>Check Impairement Loss booking Report</a>
+<div class="">
+<span class="badge badge-default">To verify the reports for fixed asset.Check Impairement Loss booking Report</span>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li>
+<li class="test-item">
+<div class="test-detail">
+<span class="meta">
+<span class='badge log pass-bg'>1</span>
+</span>
+<p class="name">@KUBS_FAT_UAT_013_015_Deallocation</p>
+<p class="duration text-sm">1 tests</p>
+</div>
+<div class="test-contents d-none">
+<div class="info">
+<h4>@KUBS_FAT_UAT_013_015_Deallocation</h4>
+<span status="pass" class='badge log pass-bg'>1 passed</span>
+</div>
+<table class='table table-sm mt-4'>
+<thead>
+<tr>
+<th class="status-col">Status</th>
+<th class="timestamp-col">Timestamp</th>
+<th>TestName</th>
+</tr>
+</thead>
+<tbody>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>11:33:04 AM</td>
+<td>
+<a href="#" class="linked" test-id='1' id='114'>Check Asset DeAllocation Report</a>
+<div class="">
+<span class="badge badge-default">To verify the reports for fixed asset.Check Asset DeAllocation Report</span>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="test-content scrollable">
+<div class="test-content-detail">
+<div class="detail-body"></div>
+</div>
+</div>
+</div><div class="test-wrapper row view exception-view attributes-view">
+<div class="test-list">
+<div class="test-list-tools">
+<ul class="tools pull-left"><li><a href=""><span class="font-size-14">Exception</span></a></li></ul>
+<ul class="tools text-right"><li><a href="#"><span class="badge badge-primary">2</span></a></li></ul>
+</div>
+<div class="test-list-wrapper scrollable">
+<ul class="test-list-item">
+<li class="test-item">
+<div class="test-detail">
+<span class="meta">
+<span class='badge log badge-danger'>1</span>
+</span>
+<p class="name">org.openqa.selenium.ElementClickInterceptedException</p>
+<p class="duration text-sm">1 tests</p>
+</div>
+<div class="test-contents d-none">
+<div class="info">
+<h4>org.openqa.selenium.ElementClickInterceptedException</h4>
+<span status="fail" class='badge log badge-danger'>1 failed</span>
+</div>
+<table class='table table-sm mt-4'>
+<thead>
+<tr>
+<th class="status-col">Status</th>
+<th class="timestamp-col">Timestamp</th>
+<th>TestName</th>
+</tr>
+</thead>
+<tbody>
+<tr class="tag-test-status" status="fail">
+<td><span class="badge log fail-bg">Fail</span></td>
+<td>11:34:20 AM</td>
+<td>
+<a href="#" class="linked" test-id='1' id='159'>And click on view button of report</a>
+<div class="">
+<span class="badge badge-default">To verify the reports for fixed asset.Map the various GLs for created asset code.And click on view button of report</span>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li>
+<li class="test-item">
+<div class="test-detail">
+<span class="meta">
+<span class='badge log badge-danger'>1</span>
+</span>
+<p class="name">java.lang.IllegalArgumentException</p>
+<p class="duration text-sm">1 tests</p>
+</div>
+<div class="test-contents d-none">
+<div class="info">
+<h4>java.lang.IllegalArgumentException</h4>
+<span status="fail" class='badge log badge-danger'>1 failed</span>
+</div>
+<table class='table table-sm mt-4'>
+<thead>
+<tr>
+<th class="status-col">Status</th>
+<th class="timestamp-col">Timestamp</th>
+<th>TestName</th>
+</tr>
+</thead>
+<tbody>
+<tr class="tag-test-status" status="fail">
+<td><span class="badge log fail-bg">Fail</span></td>
+<td>11:37:55 AM</td>
+<td>
+<a href="#" class="linked" test-id='1' id='293'>And select required fields to check the depreciation details are displaying</a>
+<div class="">
+<span class="badge badge-default">To verify the reports for fixed asset.Check Depreciation.And select required fields to check the depreciation details are displaying</span>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="test-content scrollable">
+<div class="test-content-detail">
+<div class="detail-body"></div>
+</div>
+</div>
+</div>        </div>
+      </div>
+    </div>
+  </div>
+<script src="https://cdn.jsdelivr.net/gh/extent-framework/extent-github-cdn@14e9bb345ef7e2ed3a102f271d84e9f0267c88e7/spark/js/spark-script.js"></script>
+<script type="text/javascript"></script></body>
+</html>

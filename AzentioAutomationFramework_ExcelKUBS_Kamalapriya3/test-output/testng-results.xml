@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2023-02-03T11:08:23 IST" name="Default suite" finished-at="2023-02-03T11:09:28 IST" duration-ms="65274">
+    <groups>
+      <group name="cucumber">
+        <method signature="AbstractTestNGCucumberTests.runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:Runner.TestApplication@1c5920df]" name="runScenario" class="io.cucumber.testng.AbstractTestNGCucumberTests"/>
+      </group> <!-- cucumber -->
+    </groups>
+    <test started-at="2023-02-03T11:08:23 IST" name="Default test" finished-at="2023-02-03T11:09:28 IST" duration-ms="65274">
+      <class name="Runner.TestApplication">
+        <test-method is-config="true" signature="beforeExecution()[pri:0, instance:Runner.TestApplication@1c5920df]" started-at="2023-02-03T11:08:23 IST" name="beforeExecution" finished-at="2023-02-03T11:08:23 IST" duration-ms="10" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeExecution -->
+        <test-method is-config="true" signature="setUpClass()[pri:0, instance:Runner.TestApplication@1c5920df]" started-at="2023-02-03T11:08:23 IST" name="setUpClass" finished-at="2023-02-03T11:08:25 IST" duration-ms="1596" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUpClass -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:Runner.TestApplication@1c5920df]" started-at="2023-02-03T11:08:25 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2023-02-03T11:09:18 IST" duration-ms="52842" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["Check the accounting Entries"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Optional[To verify the reports for fixed asset]"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method is-config="true" signature="tearDownClass()[pri:0, instance:Runner.TestApplication@1c5920df]" started-at="2023-02-03T11:09:18 IST" name="tearDownClass" finished-at="2023-02-03T11:09:28 IST" duration-ms="10734" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDownClass -->
+        <test-method is-config="true" signature="afterExecution()[pri:0, instance:Runner.TestApplication@1c5920df]" started-at="2023-02-03T11:09:28 IST" name="afterExecution" finished-at="2023-02-03T11:09:29 IST" duration-ms="242" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterExecution -->
+      </class> <!-- Runner.TestApplication -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>

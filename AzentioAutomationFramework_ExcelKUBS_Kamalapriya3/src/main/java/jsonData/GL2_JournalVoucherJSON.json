@@ -1,0 +1,17 @@
+[{
+
+"User":"Maker",
+"BranchCode" : "AZENTMAIN-Azentio Main Branch",
+"Currency"  : "INR",
+"JournalType":"Manual JV",
+"Remark" : "Okk",
+
+"DebitAmount" :1000,
+"CreditAmount" : "1000",
+
+"CreditAmountfirst" : "500",
+"CreditAmountSecond" : "500"
+
+
+
+}]

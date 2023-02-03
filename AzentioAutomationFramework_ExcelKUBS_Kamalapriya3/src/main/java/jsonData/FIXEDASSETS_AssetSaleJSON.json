@@ -1,0 +1,16 @@
+[
+	{
+		"User" : "Maker",
+		"AssetReferenceNumberForProfit" : "LAND-LAND-woodply84938",
+		"AssetReferenceNumberForLoss" : "LAND-LAND-woodply84938",
+		"ItemNumber" : "Asset-654",
+		"ItemNumberForLoss" : "AIN111111",
+		"SaleValue" : "1500000.00",
+		"SaleValueInLoss" : "30000.00",
+		"Currency" : "INR",
+		"ActionableBy" : "Azentio",
+		"Remark" : "ok",
+		"RemarkByMaker" : "submit by maker",
+		"CheckerRemark" : "approved by checker"
+	}
+]
