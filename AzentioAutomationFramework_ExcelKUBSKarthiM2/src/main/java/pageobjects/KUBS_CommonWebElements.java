@@ -131,4 +131,10 @@ public class KUBS_CommonWebElements {
 	{
 		return kubs_DropdownNoItemFound;
 	}
+	@FindBy(xpath="//button[@aria-label='Choose month and year']")
+	private WebElement kubs_calendarMonthYearOption;
+
+	public WebElement kubsCalendarMonthYearOption() {
+		return kubs_calendarMonthYearOption;
+	}
 }

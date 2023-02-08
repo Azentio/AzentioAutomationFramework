@@ -291,6 +291,36 @@ public class Reports_AssetCreationCommonObj {
 		return Report_AssetSerialNumber_TempView;
 
 	}
+	@FindBy(xpath="//ion-menu/ion-content/custom-side-menu/ion-list/ion-item[6]/ion-icon[1]")
+	private WebElement FixedAssertConfigButton;
+
+	public WebElement FixedAssertConfigButton()
+
+	{
+
+		return FixedAssertConfigButton;
+
+	}
+	@FindBy(xpath="//ion-menu/ion-content/custom-side-menu/ion-list/div[6]/ion-menu-toggle[5]/ion-item/ion-buttons/ion-button[2]")
+	private WebElement AssertSerialNumberSetup;
+
+	public WebElement AssertSerialNumberSetup()
+
+	{
+
+		return AssertSerialNumberSetup;
+
+	}
+	@FindBy(xpath="//div[1]/ngx-datatable[1]/div[1]/datatable-body[1]/datatable-selection[1]/datatable-scroller[1]/datatable-row-wrapper[1]/datatable-body-row[1]/div[2]/datatable-body-cell[2]/div[1]/span[1]")
+	private WebElement AssertReport_AssertCode;
+
+	public WebElement AssertReport_AssertCode()
+
+	{
+
+		return AssertReport_AssertCode;
+
+	}
 
 	@FindBy(xpath = "//ion-label[contains(text(),'Master reports')]")
 

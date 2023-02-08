@@ -1,6 +1,8 @@
 package stepdefinitions;
 
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Map;
 
 import org.json.simple.parser.ParseException;
@@ -9,6 +11,7 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.testng.Assert;
 
 import dataProvider.ConfigFileReader;
 import dataProvider.JsonConfig;
@@ -20,6 +23,7 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import pageobjects.BUSINESS_PARTNER_SETUP_BusinessPartnerObj;
 import pageobjects.KUBS_CheckerObj;
+import pageobjects.KUBS_CommonWebElements;
 import pageobjects.Reports_AssetCreationCommonObj;
 import resources.BaseClass;
 import resources.ExcelData;
@@ -39,11 +43,14 @@ public class Reports_AssetCreationCommon {
 	JavascriptHelper javascripthelper = new JavascriptHelper();
 	JsonDataReaderWriter jsonWriter = new JsonDataReaderWriter();
 	ClicksAndActionsHelper clicksAndActionHelper = new ClicksAndActionsHelper(driver);
+	KUBS_CommonWebElements kubsCommonObj = new KUBS_CommonWebElements(driver);
 	KUBS_CheckerObj kubschecker = new KUBS_CheckerObj(driver);
 	BrowserHelper browserHelper = new BrowserHelper(driver);
 	
 	ExcelData excelData = new ExcelData("C:\\Users\\inindc00071\\Downloads\\KUBSTestDataDesign.xlsx","LimitConfigCataTestData","Data Set ID");
 	Map<String, String> limitconfig;
+	ExcelData excelDataCheckAssertSerialNum = new ExcelData("C:\\Users\\inindc00071\\Downloads\\KUBSTestDataDesign.xlsx","CheckAssSerialNumTestData","Data Set ID");
+	Map<String, String> checkAssertSerialNum;
 	
 	@And("^user should navigate to reports menu$")
 	public void user_should_navigate_to_reports_menu()  {
@@ -858,57 +865,207 @@ public class Reports_AssetCreationCommon {
 				.sendKeys(AssetCreationCommonTestDataType.AssetSerialAssetCode);
 
 		reports_AssetCreationCommonObj.Report_MasterReports_DepreciationMethod().sendKeys(Keys.ENTER);
+		
+		
 
 		waithelper.waitForElement(driver, 3000, reports_AssetCreationCommonObj.Report_AssetLimit_StartSerialNumber());
 
 		reports_AssetCreationCommonObj.Report_AssetLimit_StartSerialNumber()
 				.sendKeys(AssetCreationCommonTestDataType.AssetStartSerialNumber);
+		
+		
 
-		waithelper.waitForElement(driver, 3000, reports_AssetCreationCommonObj.Report_AssetCreationCommon_Date());
-
-		reports_AssetCreationCommonObj.Report_AssetCreationCommon_Date().click();
-
-		Thread.sleep(1000);
-
-		while (true)
-
-		{
-
-			try
-
-			{
-
-				waithelper.waitForElement(driver, 3000,
-						driver.findElement(
-								By.xpath("//span[contains(text(),'" + AssetCreationCommonTestDataType.AssetSerialToMonth
-										+ " " + AssetCreationCommonTestDataType.AssetSerialToYear + "')]")));
-
-				WebElement monthAndYear = driver.findElement(
-						By.xpath("//span[contains(text(),'" + AssetCreationCommonTestDataType.AssetSerialToMonth + " "
-								+ AssetCreationCommonTestDataType.AssetSerialToYear + "')]"));
-
-				break;
-
-			}
-
-			catch (NoSuchElementException nosuchElement)
-
-			{
-
-				reports_AssetCreationCommonObj.Report_AssetCreationCommon_NextMonth().click();
-
-			}
-
-		}
-
-		WebElement FinalDay2 = driver
-				.findElement(By.xpath("//td[@aria-label='" + AssetCreationCommonTestDataType.AssetSerialToFullMonth
-						+ " " + AssetCreationCommonTestDataType.AssetSerialToDate + ", "
-						+ AssetCreationCommonTestDataType.AssetSerialToYear + "']/span"));
-
-		clicksAndActionHelper.doubleClick(FinalDay2);
+//		waithelper.waitForElement(driver, 3000, reports_AssetCreationCommonObj.Report_AssetCreationCommon_Date());
+//
+//		reports_AssetCreationCommonObj.Report_AssetCreationCommon_Date().click();
+//
+//		Thread.sleep(1000);
+//
+//		while (true)
+//
+//		{
+//
+//			try
+//
+//			{
+//
+//				waithelper.waitForElement(driver, 3000,
+//						driver.findElement(
+//								By.xpath("//span[contains(text(),'" + AssetCreationCommonTestDataType.AssetSerialToMonth
+//										+ " " + AssetCreationCommonTestDataType.AssetSerialToYear + "')]")));
+//
+//				WebElement monthAndYear = driver.findElement(
+//						By.xpath("//span[contains(text(),'" + AssetCreationCommonTestDataType.AssetSerialToMonth + " "
+//								+ AssetCreationCommonTestDataType.AssetSerialToYear + "')]"));
+//
+//				break;
+//
+//			}
+//
+//			catch (NoSuchElementException nosuchElement)
+//
+//			{
+//
+//				reports_AssetCreationCommonObj.Report_AssetCreationCommon_NextMonth().click();
+//
+//			}
+//
+//		}
+//
+//		WebElement FinalDay2 = driver
+//				.findElement(By.xpath("//td[@aria-label='" + AssetCreationCommonTestDataType.AssetSerialToFullMonth
+//						+ " " + AssetCreationCommonTestDataType.AssetSerialToDate + ", "
+//						+ AssetCreationCommonTestDataType.AssetSerialToYear + "']/span"));
+//
+//		clicksAndActionHelper.doubleClick(FinalDay2);
 
 	}
+	@And("^User enter the assert code$")
+    public void user_enter_the_assert_code() throws Throwable {
+		
+		waithelper.waitForElement(driver, 3000,
+				reports_AssetCreationCommonObj.Report_MasterReports_DepreciationMethod());
+
+		reports_AssetCreationCommonObj.Report_MasterReports_DepreciationMethod()
+				.sendKeys(checkAssertSerialNum.get("AssertCode"));
+
+		reports_AssetCreationCommonObj.Report_MasterReports_DepreciationMethod().sendKeys(Keys.ENTER);
+    }
+
+    @And("^User enter the start assert serial number$")
+    public void user_enter_the_start_assert_serial_number() throws Throwable {
+    	
+    	waithelper.waitForElement(driver, 3000, reports_AssetCreationCommonObj.Report_AssetLimit_StartSerialNumber());
+
+		reports_AssetCreationCommonObj.Report_AssetLimit_StartSerialNumber()
+				.sendKeys(checkAssertSerialNum.get("AssetStartSerialNumber"));
+        
+    }
+
+    @And("^User select the date in assert report$")
+    public void user_select_the_date_in_assert_report() throws Throwable {
+    	
+    	waithelper.waitForElement(driver, 3000, reports_AssetCreationCommonObj.Report_AssetCreationCommon_Date());
+    
+    	reports_AssetCreationCommonObj.Report_AssetCreationCommon_Date().click();
+    	waithelper.waitForElementToVisibleWithFluentWait(driver, kubsCommonObj.kubsCalendarMonthYearOption(), 20, 1);
+    	clicksAndActionHelper.moveToElement(kubsCommonObj.kubsCalendarMonthYearOption());
+    	clicksAndActionHelper.clickOnElement(kubsCommonObj.kubsCalendarMonthYearOption());
+    	
+    	
+    	DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MMM/uuuu");
+    	
+    	DateTimeFormatter dtf1 = DateTimeFormatter.ofPattern("dd/MMMM/uuuu");
+    	
+    	LocalDate localDate = LocalDate.now();
+    	//System.out.println(dtf.format(localDate));
+    	String Date = dtf.format(localDate);
+    	 String Date1 = dtf1.format(localDate);
+    	String[] DateSplit = Date.split("[/]");
+    	String[] DateSplit1 = Date1.split("[/]");
+    	 Integer DateNum = Integer.valueOf(DateSplit[0]);
+    	String Month = DateSplit[1];
+    	 String FullMonth = DateSplit1[1];
+    	 Integer yearNum = Integer.valueOf(DateSplit[2]);
+    	 
+//    	 for(int i=0; i<50; i++) {
+//    		 try {
+//    			 WebElement FinalDay2 = driver.findElement(By.xpath("//td[@aria-label='" + FullMonth + " " + DateNum + ", "+ yearNum + "']/span"));
+//
+//    		 		clicksAndActionHelper.doubleClick(FinalDay2);
+//    		 		break;
+//			} catch (Exception e) {
+//				if(i==50) {
+//					Assert.fail(e.getMessage());
+//				}
+//				
+//			}
+//    	 }
+    	 String yearXpath = "//span[contains(text(),'" + yearNum + "')]//ancestor::td";
+ 		for (int i = 0; i <= 500; i++) {
+ 			try {
+ 				driver.findElement(By.xpath(yearXpath)).click();
+ 				break;
+ 			} catch (Exception e) {
+ 				if (i == 500) {
+ 					Assert.fail(e.getLocalizedMessage());
+ 				}
+ 			}
+ 		}
+
+ 		String monthXpath = "//span[contains(text(),'" + Month + "')]//ancestor::td";
+ 		for (int i = 0; i <= 500; i++) {
+ 			try {
+ 				driver.findElement(By.xpath(monthXpath)).click();
+ 				break;
+ 			} catch (Exception e) {
+ 				if (i == 500) {
+ 					Assert.fail(e.getLocalizedMessage());
+ 				}
+ 			}
+ 		}
+
+ 		 for(int i=0; i<50; i++) {
+    		 try {
+   			 WebElement FinalDay2 = driver.findElement(By.xpath("//td[@aria-label='" + FullMonth + " " + DateNum + ", "+ yearNum + "']/span"));
+
+    		 		clicksAndActionHelper.doubleClick(FinalDay2);
+    		 		break;
+			} catch (Exception e) {
+				if(i==50) {
+					Assert.fail(e.getMessage());
+				}
+				
+			}
+    	 }
+
+    
+
+
+        
+    }
+
+	
+	@And("^User click the fixed assert config button$")
+    public void user_click_the_fixed_assert_config_button() throws Throwable {
+		 
+		waithelper.waitForElement(driver, 3000, reports_AssetCreationCommonObj.FixedAssertConfigButton());
+		reports_AssetCreationCommonObj.FixedAssertConfigButton().click();
+	
+		
+        
+    }
+
+    @And("^User click the assert serial number setup tempview$")
+    public void user_click_the_assert_serial_number_setup_tempview() throws Throwable {
+    	
+    	waithelper.waitForElement(driver, 3000, reports_AssetCreationCommonObj.AssertSerialNumberSetup());
+		reports_AssetCreationCommonObj.AssertSerialNumberSetup().click();
+        
+    }
+
+    @And("^User get the assert code in fixed assert config$")
+    public void user_get_the_assert_code_in_fixed_assert_config() throws Throwable {
+    	
+    	
+    	
+    	waithelper.waitForElement(driver, 3000, reports_AssetCreationCommonObj.AssertReport_AssertCode());
+		String AssertCode = reports_AssetCreationCommonObj.AssertReport_AssertCode().getText();
+		System.out.println(reports_AssetCreationCommonObj.AssertReport_AssertCode().getText());
+		
+		excelDataCheckAssertSerialNum.updateTestData("KUBS_FAT_UAT_013_006_D1", "AssertCode", AssertCode);
+		
+		checkAssertSerialNum = excelDataCheckAssertSerialNum.getTestdata("KUBS_FAT_UAT_013_006_D1");
+		
+		
+		
+    }
+    @And("^User get the test data for check assert serial number$")
+    public void user_get_the_test_data_for_check_assert_serial_number() throws Throwable {
+    	checkAssertSerialNum=excelDataCheckAssertSerialNum.getTestdata("KUBS_FAT_UAT_013_006_D1");
+    }
+
+
 
 	// ------- Check Asset limit configuration
 

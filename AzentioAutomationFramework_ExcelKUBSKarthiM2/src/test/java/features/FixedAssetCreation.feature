@@ -61,6 +61,23 @@ And select the asset category and date to check the asset category are displayin
 Then click in the view button to check 
 Then the report is displaying all the asset codes details for a branch 
 
+@KUBS_FAT_UAT_013_006 
+Scenario: Check Asset Serial Number
+And User get the test data for check assert serial number 
+Given User should go to the kubs url and login as a maker user
+And User click the fixed assert config button
+And User click the assert serial number setup tempview
+And User get the assert code in fixed assert config
+#And User click the report button
+Then click on report icon 
+And user should navigate to master reports menu 
+Then click on temp grid button of asset serial number 
+And User enter the assert code
+And User enter the start assert serial number
+And User select the date in assert report
+#And select the asset code and serial number and date to check the asset serial number are displaying 
+Then click in the view button to check 
+Then the report is displaying all the asset codes details for a branch
 
 ##################################################################################################################################################
 
