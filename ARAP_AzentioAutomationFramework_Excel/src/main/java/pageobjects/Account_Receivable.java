@@ -20,7 +20,7 @@ public class Account_Receivable {
 		return accountreceivable;
 	}
 
-	@FindBy(xpath = "//ion-button[@ng-reflect-router-link=\"/tabs/list/datagrid-view/158\"]")
+	@FindBy(xpath = "//ion-button[@ng-reflect-router-link='/tabs/list/datagrid-view/158']")
 	private WebElement accountsReceivable_Creditnote_Eye;
 
 	public WebElement accountsReceivable_CreditNote_Eye() {

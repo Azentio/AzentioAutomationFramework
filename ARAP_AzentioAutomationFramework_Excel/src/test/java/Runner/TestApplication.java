@@ -9,7 +9,7 @@ import io.cucumber.testng.CucumberOptions;
 import utilities.ExtentManager;
 import utilities.ExtentTestManager;
 
-@CucumberOptions(features = "src/test/java/features",
+@CucumberOptions(features = "src/test/java/features/ArAp_AccountingEntries.feature",
                  glue = "stepdefinitions",
 		         //monochrome=false, //to make steps in color
 		         plugin = { "pretty",
@@ -17,7 +17,6 @@ import utilities.ExtentTestManager;
 				            "rerun:ReRunScenarios/FailedReRun.txt"}
 ///ArAp1.feature			dryRun = true //to check compilation errors
 					,  tags="@KUBS_AR_AP_UAT_010_002_TC_04"
-
 
 )
 public class TestApplication extends AbstractTestNGCucumberTests {

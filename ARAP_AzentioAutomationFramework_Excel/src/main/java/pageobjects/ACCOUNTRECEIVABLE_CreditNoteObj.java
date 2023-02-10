@@ -72,5 +72,13 @@ public class ACCOUNTRECEIVABLE_CreditNoteObj {
 	{
 		return crditNote_ApprovedCreditAmount;
 	}
+
+	// record status
+	@FindBy(xpath = "//body/div/div/div/button")
+	private WebElement crditNote_ConfirmationMessageCloseButton;
+
+	public WebElement crditNote_ConfirmationMessageCloseButton() {
+		return crditNote_ConfirmationMessageCloseButton;
+	}
 	
 }

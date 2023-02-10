@@ -214,4 +214,12 @@ WebDriver driver;
 	{
 		return vendorContract_approvedViewButton;
 	}
+	
+	@FindBy(xpath = "//div[@id='toast-container']//button")
+	private WebElement vendorContract_AlertClose;
+	public WebElement vendorContract_AlertClose() {
+		return vendorContract_AlertClose;
+	}
+	
+	
 }

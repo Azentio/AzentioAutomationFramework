@@ -2,6 +2,7 @@ package stepdefinitions;
 
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import org.json.simple.parser.ParseException;
 import org.openqa.selenium.By;
@@ -59,7 +60,7 @@ public class InventoryManagement_InventoryRequest extends BaseClass {
 	ConfigFileReader config = new ConfigFileReader();
 
 	ExcelData excelData = new ExcelData("C:\\Users\\ININDC00091\\git\\AzentioAutomationFramework\\DeveshFW_Excel\\ARAP_AzentioAutomationFramework_Excel\\Test-data\\KUBS_InventoryMgmt_TestData.xlsx",
-			"InventoryRequestTestData", "Data Set ID");
+			"InventoryManagementTestData", "Data Set ID");
 	Map<String, String> testData = new HashMap<>();
 	String dataSetID;
 
@@ -83,7 +84,7 @@ public class InventoryManagement_InventoryRequest extends BaseClass {
 	public void click_on_add_button() throws Throwable {
 //			waithelper.waitForElement(driver, 2000,inventoryManagamentObj.inventoryManagament_InventoryRequest_AddButton());
 //			inventoryManagamentObj.inventoryManagament_InventoryRequest_AddButton().click();
-		Thread.sleep(1000);
+		Thread.sleep(2000);
 		waithelper.waitForElementwithFluentwait(driver, inventoryManagamentObj.inventoryManagament_InventoryRequest_AddButton());
 		inventoryManagamentObj.inventoryManagament_InventoryRequest_AddButton().click();
 	}
@@ -92,33 +93,33 @@ public class InventoryManagement_InventoryRequest extends BaseClass {
 	public void fill_all_the_mandatory_fields() throws Throwable {
 //		inventoryManagementTestDataType = jsonReader.getInventoryManagementByName("Maker");
 
-		waithelper.waitForElement(driver, 2000, inventoryManagamentObj.inventoryManagament_InventoryRequest_BranchCode());
+//		waithelper.waitForElement(driver, 2000, inventoryManagamentObj.inventoryManagament_InventoryRequest_BranchCode());
+		waithelper.waitForElementToVisibleWithFluentWait(driver, inventoryManagamentObj.inventoryManagament_InventoryRequest_BranchCode(), 20, 2);
 		inventoryManagamentObj.inventoryManagament_InventoryRequest_BranchCode().click();
 		inventoryManagamentObj.inventoryManagament_InventoryRequest_BranchCode().sendKeys(testData.get("BranchCode"));
 		inventoryManagamentObj.inventoryManagament_InventoryRequest_BranchCode().sendKeys(Keys.ENTER);
 		waithelper.waitForElement(driver, 2000, inventoryManagamentObj.inventoryManagament_InventoryRequest_ItemCodeDescriptionButton());
 		inventoryManagamentObj.inventoryManagament_InventoryRequest_ItemCodeDescriptionButton().click();
 		Thread.sleep(1000);
-//			waithelper.waitForElement(driver, 2000,inventoryManagamentObj.inventoryManagament_InventoryRequest_SavingAccountChequeRadioButton());
-//			inventoryManagamentObj.inventoryManagament_InventoryRequest_SavingAccountChequeRadioButton().click();
 
-		radioButtonHelper.radioButton(testData.get("ItemCodeDescription"));
-//			String beforexpath = "//ion-radio-group/ion-item[";
-//			String afterxpath = "]/ion-label";
-//			List<WebElement> radioitem= driver.findElements(By.xpath("//ion-radio-group/ion-item"));
-//			int size = radioitem.size();
-//			System.out.println(size);
-//			for (int i = 1; i <= size ; i++) {
-//				if(driver.findElement(By.xpath(beforexpath+ i + afterxpath)).getText().equals(inventoryManagementTestDataType.ItemCodeDescription))
-//				{
-//					String beforexpath1 = "//ion-item[";
-//					String afterxpath1 = "]/ion-radio";
-//					driver.findElement(By.xpath(beforexpath1 + i + afterxpath1)).click();
-//					break;
-//				}
-//			}
+//		radioButtonHelper.radioButton(testData.get("ItemCodeDescription"));
+		String beforexpath = "//button[";
+		String afterxpath = "]/div/div[2]";
+		List<WebElement> radioitem = driver.findElements(By.xpath("//button/div/div[1]"));
+		int size = radioitem.size();
+		System.out.println(size);
+		for (int i = 1; i <= size; i++) {
+			if (driver.findElement(By.xpath(beforexpath + i + afterxpath)).getText().equals(testData.get("ItemCodeDescription"))) {
+				String beforexpath1 = "//button[";
+				String afterxpath1 = "]/div/div[1]";
+				driver.findElement(By.xpath(beforexpath1 + i + afterxpath1)).click();
+				break;
+			}
+		}
 
-//			waithelper.waitForElement(driver, 4000,inventoryManagamentObj.inventoryManagament_InventoryRequest_RequestTypeButton());
+		waithelper.waitForElementwithFluentwait(driver, inventoryManagamentObj.inventoryManagament_InventoryRequest_AlertOkButton());
+		inventoryManagamentObj.inventoryManagament_InventoryRequest_AlertOkButton().click();
+			
 		waithelper.waitForElementwithFluentwait(driver, inventoryManagamentObj.inventoryManagament_InventoryRequest_RequestTypeButton());
 		inventoryManagamentObj.inventoryManagament_InventoryRequest_RequestTypeButton().click();
 //			Thread.sleep(1000);
@@ -127,6 +128,8 @@ public class InventoryManagement_InventoryRequest extends BaseClass {
 			try {
 				waithelper.waitForElementwithFluentwait(driver, inventoryManagamentObj.inventoryManagament_InventoryRequest_RequestTypeNormalRadioButton());
 				inventoryManagamentObj.inventoryManagament_InventoryRequest_RequestTypeNormalRadioButton().click();
+				waithelper.waitForElementwithFluentwait(driver, inventoryManagamentObj.inventoryManagament_InventoryRequest_AlertOkButton());
+				inventoryManagamentObj.inventoryManagament_InventoryRequest_AlertOkButton().click();
 				break;
 			} catch (StaleElementReferenceException se) {
 
@@ -143,12 +146,18 @@ public class InventoryManagement_InventoryRequest extends BaseClass {
 	@Then("^Click on save button$")
 	public void click_on_save_button() throws Throwable {
 
-		waithelper.waitForElement(driver, 2000, inventoryManagamentObj.inventoryManagament_InventoryRequest_SaveButton());
+//		waithelper.waitForElement(driver, 2000, inventoryManagamentObj.inventoryManagament_InventoryRequest_SaveButton());
+		waithelper.waitForElementwithFluentwait(driver, inventoryManagamentObj.inventoryManagament_InventoryRequest_SaveButton());
 		inventoryManagamentObj.inventoryManagament_InventoryRequest_SaveButton().click();
-
-		waithelper.waitForElement(driver, 2000, inventoryManagamentObj.inventoryManagament_InventoryRequest_PopupCloseButton());
+		
+//		waithelper.waitForElement(driver, 2000, inventoryManagamentObj.inventoryManagament_InventoryRequest_PopupCloseButton());
+		waithelper.waitForElementToVisibleWithFluentWait(driver, inventoryManagamentObj.inventoryManagament_InventoryRequest_PopupCloseButton2(), 20, 2);
+		inventoryManagamentObj.inventoryManagament_InventoryRequest_PopupCloseButton2().click();
+		
+		waithelper.waitForElementToVisibleWithFluentWait(driver, inventoryManagamentObj.inventoryManagament_InventoryRequest_PopupCloseButton(), 20, 2);
 		inventoryManagamentObj.inventoryManagament_InventoryRequest_PopupCloseButton().click();
-
+		
+		
 		// javascripthelper.JavaScriptHelper(driver);
 		// String str = javascripthelper.executeScript("return
 		// document.querySelector(\"ion-toast\").shadowRoot.querySelector(\"div[class='toast-message']\").innerText").toString();
@@ -158,7 +167,8 @@ public class InventoryManagement_InventoryRequest extends BaseClass {
 
 	@Then("^Click Notification button$")
 	public void click_notification_button() throws Throwable {
-		waithelper.waitForElement(driver, 3000, budgetTransferObj.budget_BudgetTransfer_NotificationIcon());
+//		Thread.sleep(2000);
+		waithelper.waitForElementwithFluentwait(driver, budgetTransferObj.budget_BudgetTransfer_NotificationIcon());
 		budgetTransferObj.budget_BudgetTransfer_NotificationIcon().click();
 
 	}
@@ -203,8 +213,8 @@ public class InventoryManagement_InventoryRequest extends BaseClass {
 		waithelper.waitForElement(driver, 10000, driver.findElement(By.xpath(before_xpath + testData.get("ReferenceID") + after_xpath)));
 		driver.findElement(By.xpath(before_xpath + testData.get("ReferenceID") + after_xpath)).click();
 
-		waithelper.waitForElementwithFluentwait(driver, inventoryManagamentObj.inventoryManagament_InventoryRequest_PopupCloseButton());
-		inventoryManagamentObj.inventoryManagament_InventoryRequest_PopupCloseButton().click();
+//		waithelper.waitForElementwithFluentwait(driver, inventoryManagamentObj.inventoryManagament_InventoryRequest_PopupCloseButton());
+//		inventoryManagamentObj.inventoryManagament_InventoryRequest_PopupCloseButton().click();
 
 	}
 
@@ -213,7 +223,8 @@ public class InventoryManagement_InventoryRequest extends BaseClass {
 
 		// Submit button
 		// Thread.sleep(2000);
-		waithelper.waitForElement(driver, 2000, inventoryManagamentObj.accountPayable_SubmitButton());
+//		waithelper.waitForElement(driver, 2000, inventoryManagamentObj.accountPayable_SubmitButton());
+		waithelper.waitForElementwithFluentwait(driver, inventoryManagamentObj.accountPayable_SubmitButton());
 		inventoryManagamentObj.accountPayable_SubmitButton().click();
 		// budgetTransferObj.budget_BudgetTransfer_Submit().click();
 		javaScriptHelper.JavaScriptHelper(driver);
@@ -249,19 +260,23 @@ public class InventoryManagement_InventoryRequest extends BaseClass {
 		String message = budgetTransferObj.budget_BudgetTransfer_RecordStatus().getText();
 		System.out.println(message);
 		budgetTransferObj.budget_BudgetTransfer_RecordStatus().click();
-		String t = "";
+		String emptystring = "";
 		String ar[] = message.split(" ");
-		Thread.sleep(2000);
-		for (int i = ar.length - 1; i >= 0; i--) {
-			t = ar[ar.length - 1];
-		}
-		String reviewerId = "";
-		for (int i = 0; i < t.length() - 1; i++) {
-			if (t.charAt(i) == '.') {
-			} else {
-				reviewerId = reviewerId + t.charAt(i);
-			}
-		}
+		emptystring = ar[ar.length - 1];
+		String reviewerId = emptystring.replaceAll("[/.]", "");
+//		String t = "";
+//		String ar[] = message.split(" ");
+//		Thread.sleep(2000);
+//		for (int i = ar.length - 1; i >= 0; i--) {
+//			t = ar[ar.length - 1];
+//		}
+//		String reviewerId = "";
+//		for (int i = 0; i < t.length() - 1; i++) {
+//			if (t.charAt(i) == '.') {
+//			} else {
+//				reviewerId = reviewerId + t.charAt(i);
+//			}
+//		}
 		System.out.println(reviewerId);
 		
 		excelData.updateTestData(dataSetID, "ReviewerID", reviewerId);
@@ -287,12 +302,13 @@ public class InventoryManagement_InventoryRequest extends BaseClass {
 		waithelper = new WaitHelper(driver);
 		reviewer = new KUBS_ReviewerObj(driver);
 //			waithelper.waitForElement(driver, 2000, reviewer.reviewerNotidicationIcon());
+		Thread.sleep(1000);
 		waithelper.waitForElementwithFluentwait(driver, reviewer.reviewerNotidicationIcon());
 		reviewer.reviewerNotidicationIcon().click();
 		browserHelper = new BrowserHelper(driver);
 //		budgetdata = jsonconfig.getBudgetdataByName("Maker");
 		javaScriptHelper = new JavascriptHelper();
-		Thread.sleep(1000);
+//		Thread.sleep(1000);
 		waithelper = new WaitHelper(driver);
 		for (int i = 1; i <= 35; i++) {
 			try {
@@ -414,7 +430,17 @@ public class InventoryManagement_InventoryRequest extends BaseClass {
 
 	@Then("^select data set ID for Inventory Request$")
 	public void select_data_set_id_for_inventory_request() throws Throwable {
-		dataSetID = "KUBS_AR_AP_UAT_003_006_TC_01_D1";
+		dataSetID = "KUBS_INV_MGMT_UAT_001_001_D1";
+		testData = excelData.getTestdata(dataSetID);
+	}
+	@Then("^update data set ID for Inventory Request for reviewer$")
+	public void update_data_set_id_for_inventory_request_for_reviewer() throws Throwable {
+		dataSetID = "KUBS_INV_MGMT_UAT_001_001_D1";
+		testData = excelData.getTestdata(dataSetID);
+	}
+	@Then("^update data set ID for Inventory Request for checker$")
+	public void update_data_set_id_for_inventory_request_for_checker() throws Throwable {
+		dataSetID = "KUBS_INV_MGMT_UAT_001_001_D1";
 		testData = excelData.getTestdata(dataSetID);
 	}
 

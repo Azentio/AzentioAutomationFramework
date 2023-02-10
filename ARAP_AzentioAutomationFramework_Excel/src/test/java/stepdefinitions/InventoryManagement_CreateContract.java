@@ -35,7 +35,7 @@ public class InventoryManagement_CreateContract {
 	ClicksAndActionsHelper clicksAndActionHelper = new ClicksAndActionsHelper(driver);
 	BrowserHelper browserHelper;
 
-	ExcelData excelData = new ExcelData("C:\\Users\\ININDC00091\\git\\AzentioAutomationFramework\\DeveshFW_Excel\\ARAP_AzentioAutomationFramework_Excel\\Test-data\\KUBS_InventoryMgmt_TestData.xlsx", "ARAP_VendorContracts", "DataSet ID");
+	ExcelData excelData = new ExcelData("C:\\Users\\ININDC00091\\git\\AzentioAutomationFramework\\DeveshFW_Excel\\ARAP_AzentioAutomationFramework_Excel\\Test-data\\KUBS_InventoryMgmt_TestData.xlsx", "VendorContractTestData", "Data Set ID");
 	Map<String, String> testData = new HashMap<>();
 	String dataSetID;
 
@@ -95,14 +95,15 @@ public class InventoryManagement_CreateContract {
 		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_ContractName().sendKeys(Keys.ENTER);
 
 		// agreement calendar
-		waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_AgreementCalendar());
+//		waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_AgreementCalendar());
+		waithelper.waitForElementwithFluentwait(driver, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_AgreementCalendar());
 		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_AgreementCalendar().click();
 		Thread.sleep(2000);
 		javascripthelper.JavaScriptHelper(driver);
 		while (true) {
 			try {
 
-				waithelper.waitForElement(driver, 3000, driver.findElement(By.xpath("//span[contains(text(),'" + testData.get("AgreementMonth") + " " + testData.get("AgreementYear") + "')]")));
+//				waithelper.waitForElement(driver, 3000, driver.findElement(By.xpath("//span[contains(text(),'" + testData.get("AgreementMonth") + " " + testData.get("AgreementYear") + "')]")));
 				WebElement monthAndYear = driver.findElement(By.xpath("//span[contains(text(),'" + testData.get("AgreementMonth") + " " + testData.get("AgreementYear") + "')]"));
 				break;
 			}
@@ -115,14 +116,15 @@ public class InventoryManagement_CreateContract {
 				.findElement(By.xpath("//td[@aria-label='" + testData.get("AgreementFullMonth") + " " + testData.get("AgreementDate") + ", " + testData.get("AgreementYear") + "']/span"));
 		clicksAndActionHelper.doubleClick(FinalDay);
 
-		Thread.sleep(1000);
+		Thread.sleep(2000);
 		// ContractEndDate calendar
-		waithelper.waitForElement(driver, 3000, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_ContractEndDate());
+//		waithelper.waitForElement(driver, 3000, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_ContractEndDate());
+		waithelper.waitForElementwithFluentwait(driver, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_ContractEndDate());
 		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_ContractEndDate().click();
 		while (true) {
 			try {
 
-				waithelper.waitForElement(driver, 3000, driver.findElement(By.xpath("//span[contains(text(),'" + testData.get("ContractEndMonth") + " " + testData.get("ContractEndYear") + "')]")));
+//				waithelper.waitForElement(driver, 3000, driver.findElement(By.xpath("//span[contains(text(),'" + testData.get("ContractEndMonth") + " " + testData.get("ContractEndYear") + "')]")));
 				WebElement monthAndYear = driver.findElement(By.xpath("//span[contains(text(),'" + testData.get("ContractEndMonth") + " " + testData.get("ContractEndYear") + "')]"));
 				break;
 			}
@@ -165,7 +167,9 @@ public class InventoryManagement_CreateContract {
 //		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_Currency().sendKeys(Keys.ENTER);
 //		
 		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_Remark().sendKeys(testData.get("Remark"));
-
+		javascripthelper.JavaScriptHelper(driver);
+		javascripthelper.scrollIntoView(aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_OtherDetailsButton());
+		waithelper.waitForElementwithFluentwait(driver, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_OtherDetailsButton());
 		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_OtherDetailsButton().click();
 
 		waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_AutoGenerateInvoice());
@@ -176,14 +180,16 @@ public class InventoryManagement_CreateContract {
 		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_CreditPeriod().sendKeys(testData.get("CreditPeriod"));
 		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_CreditPeriod().sendKeys(Keys.ENTER);
 
-		waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_LatePaymentFee());
+//		waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_LatePaymentFee());
+		waithelper.waitForElementwithFluentwait(driver, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_LatePaymentFee());
 		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_LatePaymentFee().sendKeys(testData.get("LatePaymentFee"));
 
 //		waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_Currency2());
 //		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_Currency2().sendKeys(aCCOUNTSPAYABLE_VendorContractsTestDataType.Currency2);;
 //		//scroll down to additional details button
 
-		waithelper.waitForElement(driver, 3000, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_SaveButton());
+//		waithelper.waitForElement(driver, 3000, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_SaveButton());
+		waithelper.waitForElementwithFluentwait(driver, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_SaveButton());
 		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_SaveButton().click();
 		while (true) {
 			try {
@@ -196,7 +202,7 @@ public class InventoryManagement_CreateContract {
 			} catch (Exception e) {
 			}
 		}
-//		Thread.sleep(1000);
+		Thread.sleep(1000);
 //		waithelper.waitForElement(driver, 3000, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_AddButton());
 		waithelper.waitForElementwithFluentwait(driver, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_AddButton());
 		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_AddButton().click();
@@ -212,7 +218,8 @@ public class InventoryManagement_CreateContract {
 			} catch (Exception e) {
 			}
 		}
-		waithelper.waitForElement(driver, 3000, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_HSN_Code());
+//		waithelper.waitForElement(driver, 3000, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_HSN_Code());
+		waithelper.waitForElementwithFluentwait(driver, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_HSN_Code());
 		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_HSN_Code().click();
 		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_HSN_Code().sendKeys(testData.get("HSNCode"));
 		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_HSN_Code().sendKeys(Keys.ENTER);
@@ -280,8 +287,8 @@ public class InventoryManagement_CreateContract {
 		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_AutoPayout().sendKeys(testData.get("AutoPayout"));
 		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_AutoPayout().sendKeys(Keys.ENTER);
 
-//		waithelper.waitForElement(driver, 3000, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_BenificiaryDetailsSaveButton());
-//		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_BenificiaryDetailsSaveButton().click();		
+		waithelper.waitForElement(driver, 3000, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_BenificiaryDetailsSaveButton());
+		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_BenificiaryDetailsSaveButton().click();		
 	}
 
 //	@And("^Save the Record from maker$")
@@ -437,7 +444,7 @@ public class InventoryManagement_CreateContract {
 		waithelper.waitForElement(driver, 2000, driver.findElement(By.xpath(before_xpath + testData.get("ReferenceID") + after_xpath)));
 		driver.findElement(By.xpath(before_xpath + testData.get("ReferenceID") + after_xpath)).click();
 
-//    	Thread.sleep(2000);
+    	Thread.sleep(2000);
 //    	waithelper.waitForElement(driver, 3000, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_SubmitButton());
 		waithelper.waitForElementwithFluentwait(driver, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_SubmitButton());
 		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_SubmitButton().click();
@@ -700,10 +707,11 @@ public class InventoryManagement_CreateContract {
 
 	@Then("^click on first eye button to get an unique contract code$")
 	public void click_on_first_eye_button_to_get_an_unique_contract_code() throws InterruptedException {
-
-		waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_ContractCodeEyeButton());
+//		waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_ContractCodeEyeButton());
+		waithelper.waitForElementwithFluentwait(driver, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_ContractCodeEyeButton());
 		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_ContractCodeEyeButton().click();
 		Thread.sleep(2000);
+		javascripthelper.JavaScriptHelper(driver);
 		String uniquecode = javascripthelper.executeScript("return document.getElementsByClassName('native-input sc-ion-input-md')[2].value").toString();
 		System.out.println("Contract Unique code: " + uniquecode);
 
@@ -743,7 +751,19 @@ public class InventoryManagement_CreateContract {
 	
 	@Then("^select data set ID for create contract$")
 	public void select_data_set_id_for_create_contract() throws Throwable {
-		dataSetID = "KUBS_INV_MGMT_UAT_001_002";
+		dataSetID = "KUBS_INV_MGMT_UAT_001_003_D1";
+		testData = excelData.getTestdata(dataSetID);
+	}
+	
+	@Then("^update data set ID for create contract for reviewer$")
+	public void update_data_set_id_for_create_contract_for_reviewer() throws Throwable {
+		dataSetID = "KUBS_INV_MGMT_UAT_001_003_D1";
+		testData = excelData.getTestdata(dataSetID);
+	}
+	
+	@Then("^update data set ID for create contract for checker$")
+	public void update_data_set_id_for_create_contract_for_checker() throws Throwable {
+		dataSetID = "KUBS_INV_MGMT_UAT_001_003_D1";
 		testData = excelData.getTestdata(dataSetID);
 	}
 

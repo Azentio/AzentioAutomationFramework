@@ -76,6 +76,7 @@ public class ARAP_ClearingReceiptViaChequeMode extends BaseClass {
 	Azentio_ReviewerObj reviewer;
 	ARAP_ARandAPObj arapObj = new ARAP_ARandAPObj(driver);
 	KUBS_MakerObj makerObj = new KUBS_MakerObj(driver);
+	ArAp_BalanceSheetReportObj arAp_BalanceSheetReportObj = new ArAp_BalanceSheetReportObj(driver);
 	InventoryMaintenanceObj inventoryMaintenanceObj = new InventoryMaintenanceObj(driver);
 	AccountsReceivable_ReceiptsReversalsObj accountsReceivable_ReceiptsReversalsObj = new AccountsReceivable_ReceiptsReversalsObj(driver);
 	AccountsReceivable_UpdateChequeStatusObj accountsReceivable_UpdateChequeStatusObj = new AccountsReceivable_UpdateChequeStatusObj(driver);
@@ -108,7 +109,7 @@ public class ARAP_ClearingReceiptViaChequeMode extends BaseClass {
 		javaScriptHelper.JavaScriptHelper(driver);
 		javaScriptHelper.scrollIntoView(receiptObj.accoutsReceivableReceiptViewButton());
 //		waitHelper.waitForElementVisible(receiptObj.accoutsReceivableReceiptViewButton(), 2000, 100);
-		waitHelper.waitForElementToVisibleWithFluentWait(driver, receiptObj.accoutsReceivableReceiptViewButton(), 60,2);
+		waitHelper.waitForElementToVisibleWithFluentWait(driver, receiptObj.accoutsReceivableReceiptViewButton(), 20,2);
 		receiptObj.accoutsReceivableReceiptViewButton().click();
 	}
 
@@ -689,7 +690,8 @@ public class ARAP_ClearingReceiptViaChequeMode extends BaseClass {
 	@Then("^click on view button to view the reports and verify$")
 	public void click_on_view_button_to_view_the_reports_and_verify() throws InterruptedException, IOException, ParseException {
 		javaScriptHelper.JavaScriptHelper(driver);
-		waitHelper.waitForElement(driver, 3000, eNQUIRY_FinancialTransactionObj.ENQUIRY_FinancialTransaction_ViewButton());
+//		waitHelper.waitForElement(driver, 3000, eNQUIRY_FinancialTransactionObj.ENQUIRY_FinancialTransaction_ViewButton());
+		waitHelper.waitForElementToVisibleWithFluentWait(driver, eNQUIRY_FinancialTransactionObj.ENQUIRY_FinancialTransaction_ViewButton(), 20, 2);
 		eNQUIRY_FinancialTransactionObj.ENQUIRY_FinancialTransaction_ViewButton().click();
 		Thread.sleep(2000);
 		javaScriptHelper.scrollIntoView(eNQUIRY_FinancialTransactionObj.ENQUIRY_FinancialTransaction_NextPage());
@@ -699,7 +701,7 @@ public class ARAP_ClearingReceiptViaChequeMode extends BaseClass {
 		// span[contains(text(),' Debit
 		// ')]/../../../datatable-body-cell[1]/div/span[contains(text(),' ')]
 //	    	while(!driver.findElement(By.xpath(beforexpath+UpdateChequeStatusTestDataType.SlipNumber+afterxpath)).getText().equals(jsonWriter.readdata()))
-		while (true) {
+		for(int i=0;i<=70;i++)  {
 			try {
 //				driver.findElement(By.xpath(beforexpath + jsonWriter.readdata() + afterxpath));
 				driver.findElement(By.xpath(beforexpath + testData.get("SlipNumber") + afterxpath));
@@ -719,6 +721,50 @@ public class ARAP_ClearingReceiptViaChequeMode extends BaseClass {
 	
 	/////////////////////////KUBS_AR_AP_UAT_010_002_TC_05////////////////////////////////////
 	
+	@Then("^Fill branch details for Balance sheet report post cheque is cleared$")
+	public void fill_branch_details_for_Balance_sheet_report_post_cheque_is_cleared() {
+
+		waitHelper.waitForElement(driver, 2000, arAp_BalanceSheetReportObj.arAp_BalanceSheetReport_BranchTextbox());
+		arAp_BalanceSheetReportObj.arAp_BalanceSheetReport_BranchTextbox().click();
+		arAp_BalanceSheetReportObj.arAp_BalanceSheetReport_BranchTextbox().sendKeys(testData.get("BranchCode"));
+		arAp_BalanceSheetReportObj.arAp_BalanceSheetReport_BranchTextbox().sendKeys(Keys.ENTER);
+// arAp_BalanceSheetReportTestDataType=
+// jsonReader.getBalanceSheetReportByName("maker");
+		waitHelper.waitForElement(driver, 2000, arAp_BalanceSheetReportObj.arAp_BalanceSheetReport_ReportType());
+		arAp_BalanceSheetReportObj.arAp_BalanceSheetReport_ReportType().click();
+		arAp_BalanceSheetReportObj.arAp_BalanceSheetReport_ReportType().sendKeys(testData.get("ReportType"));
+		arAp_BalanceSheetReportObj.arAp_BalanceSheetReport_ReportType().sendKeys(Keys.ENTER);
+
+	}
+	
+	@Then("^Select balance sheet as on date$")
+	public void select_balance_sheet_as_on_date() throws InterruptedException {
+		waitHelper.waitForElement(driver, 2000, arAp_BalanceSheetReportObj.arAp_BalanceSheetReport_CalendarButton());
+		arAp_BalanceSheetReportObj.arAp_BalanceSheetReport_CalendarButton().click();
+		javaScriptHelper.JavaScriptHelper(driver);
+		for(int i=0;i<=30;i++) {
+			try {
+				// span[contains(text(),'Oct 2022')]
+			Thread.sleep(1000);
+//			waithelper.waitForElement(driver, 2000, driver.findElement(By.xpath("//span[contains(text(),'"+arAp_BalanceSheetReportTestDataType.Month+" "+arAp_BalanceSheetReportTestDataType.Year+"')]")));
+				waitHelper.waitForElementwithFluentwait(driver,
+						driver.findElement(By.xpath("//span[contains(text(),'" + testData.get("Gl Month") + " " + testData.get("Gl Year") + "')]")));
+				WebElement monthAndYear = driver.findElement(By.xpath("//span[contains(text(),'" + testData.get("Gl Month") + " " + testData.get("Gl Year") + "')]"));
+//			Thread.sleep(2000);
+				break;
+			}
+
+			catch (NoSuchElementException nosuchElement) {
+				arAp_BalanceSheetReportObj.arAp_BalanceSheetReport_NextMonth().click();
+
+			}
+		}
+		// td[@aria-label='November 1, 2022']/span
+		WebElement FinalDay = driver.findElement(By.xpath(
+				"//td[@aria-label='" + testData.get("Gl FullMonth") + " " + testData.get("Gl Date") + ", " + testData.get("Gl Year") + "']/span"));
+		clicksAndActionHelper.doubleClick(FinalDay);
+	}
+	
 	@Then("^Verify balance sheet should updated correctly post cheque is cleared$")
     public void Verify_balance_sheet_should_updated_correctly_post_cheque_is_cleared() throws InterruptedException  {
     	Thread.sleep(1000);
@@ -730,9 +776,23 @@ public class ARAP_ClearingReceiptViaChequeMode extends BaseClass {
     	System.out.println("Receivables Cash Equivalents - "+ chequeAmount);
     	browserHelper.switchToParentWithChildClose();
     }
-
+	
+//////////////////////////////////////////////////////////////////////////////////
+	
 	@Then("^select data set ID for verify status of the receipt is auto changed to deposit$")
 	public void select_data_set_id_for_verify_status_of_the_receipt_is_auto_changed_to_deposit() throws Throwable {
+		dataSetID = "KUBS_AR_AP_UAT_010_002_TC_02_01_D1";
+		testData = excelData.getTestdata(dataSetID);
+	}
+	
+	@Then("^update data set ID for verify status of receipt is auto changed to deposit for reviewer$")
+    public void update_data_set_id_for_verify_status_of_receipt_is_auto_changed_to_deposit_for_reviewer() throws Throwable {
+		dataSetID = "KUBS_AR_AP_UAT_010_002_TC_02_01_D1";
+		testData = excelData.getTestdata(dataSetID);
+    }
+	
+	@Then("^update data set ID for verify status of receipt is auto changed to deposit for checker$")
+	public void update_data_set_id_for_verify_status_of_receipt_is_auto_changed_to_deposit_for_checker() throws Throwable {
 		dataSetID = "KUBS_AR_AP_UAT_010_002_TC_02_01_D1";
 		testData = excelData.getTestdata(dataSetID);
 	}
@@ -760,5 +820,11 @@ public class ARAP_ClearingReceiptViaChequeMode extends BaseClass {
 		dataSetID = "KUBS_AR_AP_UAT_010_002_TC_04_D1";
 		testData = excelData.getTestdata(dataSetID);
 	}
+	
+	@Then("^select data set ID for Verify Balance sheet post cheque is cleared$")
+    public void select_data_set_id_for_verify_balance_sheet_post_cheque_is_cleared() throws Throwable {
+		dataSetID = "KUBS_AR_AP_UAT_010_002_TC_05_D1";
+		testData = excelData.getTestdata(dataSetID);
+    }
 
 }

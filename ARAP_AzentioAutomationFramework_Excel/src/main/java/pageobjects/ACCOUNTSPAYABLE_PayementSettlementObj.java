@@ -73,6 +73,14 @@ public class ACCOUNTSPAYABLE_PayementSettlementObj {
   {
 	  return accountsPayable_alertYes;
   }
+  
+	@FindBy(xpath = "//div[@id='toast-container']//button")
+	private WebElement accountsPayable_AlertClose;
+
+	public WebElement accountsPayable_AlertClose() {
+		return accountsPayable_AlertClose;
+	}
+  
   @FindBy(xpath="(//ion-toolbar[1]//ion-buttons[2])[3]")
   private WebElement accountsPayable_saveButton;
   public WebElement accountsPayableSaveButton()

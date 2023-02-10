@@ -84,7 +84,8 @@ public class ENQUIRY_FinancialTransactionObj {
 		return ENQUIRY_FinancialTransaction_NextMonth;
 	}
 	
-	@FindBy(xpath="//ion-button[contains(text(),'View')]")
+//	@FindBy(xpath="//ion-button[contains(text(),'View')]")
+	@FindBy(xpath="//ion-button[1]/span[1]")
 	private WebElement ENQUIRY_FinancialTransaction_ViewButton;
 	public WebElement ENQUIRY_FinancialTransaction_ViewButton()
 	{

@@ -44,7 +44,7 @@ public class InventoryManagement_AccountingEntries {
 	InventoryManagamentObj inventoryManagamentObj = new InventoryManagamentObj(driver);
 
 	ExcelData excelData = new ExcelData("C:\\Users\\ININDC00091\\git\\AzentioAutomationFramework\\DeveshFW_Excel\\ARAP_AzentioAutomationFramework_Excel\\Test-data\\KUBS_InventoryMgmt_TestData.xlsx",
-			"AccountingEntriesTestData", "DataSet ID");
+			"AccountingEntriesTestData", "Data Set ID");
 	Map<String, String> testData = new HashMap<>();
 	String dataSetID;
 
@@ -80,7 +80,7 @@ public class InventoryManagement_AccountingEntries {
 	public void choose_from_date() throws Throwable {
 //		inventoryManagementTestDataType = jsonReader.getInventoryManagementByName("Maker");
 		javascripthelper.JavaScriptHelper(driver);
-		Thread.sleep(500);
+//		Thread.sleep(500);
 		while (true) {
 			try {
 
@@ -121,13 +121,22 @@ public class InventoryManagement_AccountingEntries {
 				inventoryManagamentObj.inventoryNextMonth().click();
 			}
 		}
-		WebElement FinalDay = driver.findElement(By.xpath("//td[@aria-label='" + testData.get("GL Full To Month") + " " + testData.get("GL To Date") + ", " + testData.get("GL To Year") + "']/span"));
+		WebElement FinalDay = driver.findElement(By.xpath("//td[@aria-label='" + testData.get("GL To FullMonth") + " " + testData.get("GL To Date") + ", " + testData.get("GL To Year") + "']/span"));
 		clicksAndActionHelper.doubleClick(FinalDay);
 	}
+	
+	@Then("^Fill Transaction Ref No to check GL$")
+    public void fill_transaction_ref_no_to_check_gl() throws Throwable {
+		waithelper.waitForElementwithFluentwait(driver, inventoryManagamentObj.inventory_TransactionRefNo());
+		inventoryManagamentObj.inventory_TransactionRefNo().sendKeys(testData.get("Transaction Ref No"));
+		inventoryManagamentObj.inventory_TransactionRefNo().sendKeys(Keys.ENTER);
+		
+    }
 
 	@And("^click on view button$")
 	public void click_on_view_button() throws Throwable {
-		waithelper.waitForElement(driver, 3000, inventoryManagamentObj.inventoryViewButton());
+//		waithelper.waitForElement(driver, 3000, inventoryManagamentObj.inventoryViewButton());
+		waithelper.waitForElementToVisibleWithFluentWait(driver, inventoryManagamentObj.inventoryViewButton(), 20, 2);
 		inventoryManagamentObj.inventoryViewButton().click();
 		Thread.sleep(3000);
 	}
@@ -241,12 +250,13 @@ public class InventoryManagement_AccountingEntries {
 	public void validate_voucher_number() throws Throwable {
 		Thread.sleep(2000);
 
-		while (true) {
+		for(int i=0;i<=30;i++) {
 			try {
 
 				waithelper.waitForElement(driver, 3000, driver.findElement(By.xpath("//span[contains(text(),'" + testData.get("Voucher") + "')]")));
 
 				WebElement VoucherNum = driver.findElement(By.xpath("//span[contains(text(),'" + testData.get("Voucher") + "')]"));
+				System.out.println("Record is present in the list");
 				break;
 
 			}
@@ -263,19 +273,18 @@ public class InventoryManagement_AccountingEntries {
 
 		}
 
-		System.out.println("Record is present in the list");
 
 	}
 
 	@Then("^select data set ID for checking accounting entries$")
 	public void select_data_set_id_for_checking_accounting_entries() throws Throwable {
-		dataSetID = "KUBS_INV_MGMT_UAT_001_008";
+		dataSetID = "KUBS_INV_MGMT_UAT_001_008_D1";
 		testData = excelData.getTestdata(dataSetID);
 	}
 	
 	@Then("^select data set ID for checking GL$")
 	public void select_data_set_id_for_checking_gl() throws Throwable {
-		dataSetID = "KUBS_INV_MGMT_UAT_006_002";
+		dataSetID = "KUBS_INV_MGMT_UAT_006_002_D1";
 		testData = excelData.getTestdata(dataSetID);
 	}
 

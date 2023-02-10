@@ -263,8 +263,10 @@ public void edit_the_item_details_fields() throws InterruptedException {
 	public void click_on_account_payable_notification() {
 	for (int i = 1; i <= 35; i++) {
 				try {
-		waithelper.waitForElementToVisibleWithFluentWait(driver, accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_ShippedFromLocation(), 15, 1);
-        accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_Notification().click();
+//		waithelper.waitForElementToVisibleWithFluentWait(driver, accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_ShippedFromLocation(), 15, 1);
+		waithelper.waitForElementwithFluentwait(driver, accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_Notification());
+		accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_Notification().click();
+		
 		break;}
 				catch(Exception e) {}}
 	}

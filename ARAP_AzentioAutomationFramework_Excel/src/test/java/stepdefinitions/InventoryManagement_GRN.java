@@ -38,7 +38,7 @@ public class InventoryManagement_GRN {
 	WebDriver driver = BaseClass.driver;
 	KUBS_Login login = new KUBS_Login(driver);
 	KUBS_CheckerObj kubschecker = new KUBS_CheckerObj(driver);
-	Azentio_ReviewerObj reviewer;
+	Azentio_ReviewerObj reviewer = new Azentio_ReviewerObj(driver);;
 	ConfigFileReader config = new ConfigFileReader();
 	ACCOUNTSPAYABLE_VendorContractsObj aCCOUNTSPAYABLE_VendorContractsObj = new ACCOUNTSPAYABLE_VendorContractsObj(driver);
 	WaitHelper waithelper = new WaitHelper(driver);
@@ -52,7 +52,7 @@ public class InventoryManagement_GRN {
 	BUDGET_BudgetTransferObj budgetTransferObj = new BUDGET_BudgetTransferObj(driver);
 
 	ExcelData excelData = new ExcelData("C:\\Users\\ININDC00091\\git\\AzentioAutomationFramework\\DeveshFW_Excel\\ARAP_AzentioAutomationFramework_Excel\\Test-data\\KUBS_InventoryMgmt_TestData.xlsx",
-			"ARAP_VendorContracts", "DataSet ID");
+			"GRNTestData", "Data Set ID");
 	Map<String, String> testData = new HashMap<>();
 	String dataSetID;
 
@@ -216,20 +216,13 @@ public class InventoryManagement_GRN {
 
 	@Then("^Click on GRN item save button$")
 	public void click_on_grn_item_save_button() throws Throwable {
-//		inventoryManagementTestDataType = jsonReader.getInventoryManagementByName("Maker");
-//	    	waithelper.waitForElement(driver, 2000,inventoryManagamentObj.accountPayable_GrnQtyApproved());
-		waithelper.waitForElementwithFluentwait(driver, inventoryManagamentObj.accountPayable_GrnQtyApproved());
-		inventoryManagamentObj.accountPayable_GrnQtyApproved().click();
-		inventoryManagamentObj.accountPayable_GrnQtyApproved().sendKeys(testData.get("QtyApproved"));
-		inventoryManagamentObj.accountPayable_GrnQtyApproved().sendKeys(Keys.ENTER);
-//			Thread.sleep(2000);
-//			waithelper.waitForElement(driver, 2000,inventoryManagamentObj.accountPayable_GrnSaveButton());
 		waithelper.waitForElementwithFluentwait(driver, inventoryManagamentObj.accountPayable_GrnSaveButton());
 		WebElement save = inventoryManagamentObj.accountPayable_GrnSaveButton();
 		clicksAndActionHelper.moveToElement(save);
 		inventoryManagamentObj.accountPayable_GrnSaveButton().click();
-		// clicksAndActionHelper.clickOnElement(save);
-		Thread.sleep(2000);
+		waithelper.waitForElementwithFluentwait(driver, accountsPayable_GRNObj.ConfirmationMessageCloseButton());
+		accountsPayable_GRNObj.ConfirmationMessageCloseButton().click();
+//		Thread.sleep(2000);
 	}
 
 	@Then("^Click on the Notification$")
@@ -356,9 +349,9 @@ public class InventoryManagement_GRN {
 	@Then("^Approve the record which we submitted from maker$")
 	public void approve_the_record_which_we_submitted_from_maker() throws Throwable {
 //	    	Thread.sleep(2000);
-		browserHelper = new BrowserHelper(driver);
+//		browserHelper = new BrowserHelper(driver);
 //		budgetdata = jsonReader.getBudgetdataByName("Maker");
-		javascripthelper = new JavascriptHelper();
+//		javascripthelper = new JavascriptHelper();
 		javascripthelper.JavaScriptHelper(driver);
 		Thread.sleep(1000);
 		for (int i = 1; i <= 35; i++) {
@@ -399,8 +392,8 @@ public class InventoryManagement_GRN {
 
 	}
 
-	@Then("^Clam record$")
-	public void clam_record() throws Throwable {
+	@Then("^Claim grn record$")
+	public void claim_grn_record() throws Throwable {
 		waithelper = new WaitHelper(driver);
 		kubschecker = new KUBS_CheckerObj(driver);
 		waithelper.waitForElement(driver, 3000, kubschecker.checkerSecurityManagement());
@@ -459,6 +452,18 @@ public class InventoryManagement_GRN {
 		Thread.sleep(3000);
 
 	}
+	
+	@Then("^click on first eye button to get a GRN number$")
+	public void click_on_first_eye_button_to_get_a_grn_number() throws InterruptedException {
+//		waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_ContractCodeEyeButton());
+		waithelper.waitForElementwithFluentwait(driver, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_ContractCodeEyeButton());
+		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_ContractCodeEyeButton().click();
+		Thread.sleep(2000);
+		javascripthelper.JavaScriptHelper(driver);
+		String grnNo = javascripthelper.executeScript("return document.getElementsByClassName('native-input sc-ion-input-md')[2].value").toString();
+		System.out.println("GRN Number: " + grnNo);
+
+	}
 
 	@Then("^Open the Reviewer account$")
 	public void open_the_reviewer_account() throws Throwable {
@@ -479,7 +484,19 @@ public class InventoryManagement_GRN {
 
 	@Then("^select data set ID for GRN$")
 	public void select_data_set_id_for_grn() throws Throwable {
-		dataSetID = "KUBS_INV_MGMT_UAT_001_005";
+		dataSetID = "KUBS_INV_MGMT_UAT_001_005_D1";
+		testData = excelData.getTestdata(dataSetID);
+	}
+	
+	@Then("^update data set ID for GRN for reviewer$")
+	public void update_data_set_id_for_grn_for_reviewer() throws Throwable {
+		dataSetID = "KUBS_INV_MGMT_UAT_001_005_D1";
+		testData = excelData.getTestdata(dataSetID);
+	}
+	
+	@Then("^update data set ID for GRN for checker$")
+	public void update_data_set_id_for_grn_for_checker() throws Throwable {
+		dataSetID = "KUBS_INV_MGMT_UAT_001_005_D1";
 		testData = excelData.getTestdata(dataSetID);
 	}
 

@@ -82,6 +82,13 @@ public class InventoryManagamentObj {
 	public WebElement inventoryManagament_InventoryRequest_ItemCodeDescriptionButton() {
 		return inventoryManagament_InventoryRequest_ItemCodeDescriptionButton;
 	}
+	
+	@FindBy(xpath = "//span[contains(text(),'OK')]")
+	private WebElement inventoryManagament_InventoryRequest_AlertOkButton;
+	
+	public WebElement inventoryManagament_InventoryRequest_AlertOkButton() {
+		return inventoryManagament_InventoryRequest_AlertOkButton;
+	}
 
 	// Saving Account Cheque Radio Button
 	@FindBy(xpath = "//ion-radio-group[1]/ion-item[2]/ion-radio[1]")
@@ -100,7 +107,8 @@ public class InventoryManagamentObj {
 	}
 
 	// RequestType Normal Radio Button
-	@FindBy(xpath = "//ion-radio-group[1]/ion-item[2]/ion-radio[1]")
+//	@FindBy(xpath = "//ion-radio-group[1]/ion-item[2]/ion-radio[1]")
+	@FindBy(xpath = "//button[2]/div/div[1]")
 	private WebElement inventoryManagament_InventoryRequest_RequestTypeNormalRadioButton;
 
 	public WebElement inventoryManagament_InventoryRequest_RequestTypeNormalRadioButton() {
@@ -157,12 +165,21 @@ public class InventoryManagamentObj {
 		
 		
 		// Popup close Button
-				@FindBy(xpath = "//*[@id=\"toast-container\"]/div/button")
+				@FindBy(xpath = "//*[@id=\"toast-container\"]/div[1]/button")
 				private WebElement inventoryManagament_InventoryRequest_PopupCloseButton;
 
 				public WebElement inventoryManagament_InventoryRequest_PopupCloseButton() {
 					return inventoryManagament_InventoryRequest_PopupCloseButton;
 				}
+				
+				// Popup close Button 2
+				@FindBy(xpath = "//*[@id=\"toast-container\"]/div[2]/button")
+				private WebElement inventoryManagament_InventoryRequest_PopupCloseButton2;
+				
+				public WebElement inventoryManagament_InventoryRequest_PopupCloseButton2() {
+					return inventoryManagament_InventoryRequest_PopupCloseButton2;
+				}
+				
 		
 	// Inventory maintenance
 	@FindBy(xpath = "//ion-app[1]/ion-split-pane[1]/ion-menu[1]/ion-content[1]/custom-side-menu[1]/ion-list[1]/ion-item[7]/ion-icon[1]")
@@ -446,14 +463,23 @@ public class InventoryManagamentObj {
 			
 		}
 		
+		@FindBy(xpath="//ion-col[6]/app-kub-lov[1]/span[1]/ng-select[1]/div[1]/div[1]/div[2]/input[1]")
+		private WebElement inventory_TransactionRefNo;
+		public WebElement inventory_TransactionRefNo()
+		{
+			return inventory_TransactionRefNo;
+			
+		}
 		
-		@FindBy(xpath="//app-inventory-items-details[1]/ion-content[1]/form[1]/ion-grid[1]/ion-row[1]/ion-col[2]/app-kub-date-time[1]/ion-item[1]/div[1]/span[1]")
+		
+		@FindBy(xpath = "//app-inventory-items-details[1]/ion-content[1]/form[1]/ion-grid[1]/ion-row[1]/ion-col[2]/app-kub-date-time[1]/ion-item[1]/div[1]/span[1]")
 		private WebElement inventoryItemCalandar_report;
-		public WebElement inventoryItemCalandar_report()
-				{
-					return inventoryItemCalandar_report;
-					
-				}
+
+		public WebElement inventoryItemCalandar_report() {
+			return inventoryItemCalandar_report;
+
+		}
+		
 		@FindBy(xpath="(//span[@class='input-calendar'])[2]")
 		private WebElement inventory_to_date;
 		public WebElement inventoryToDate()
@@ -474,7 +500,8 @@ public class InventoryManagamentObj {
 		{
 			return inventory_previous_month;
 		}
-		@FindBy(xpath="//ion-button[contains(text(),'View')]")
+//		@FindBy(xpath="//span[contains(text(),'View')]")
+		@FindBy(xpath="//ion-button[1]/span[1]")
 		private WebElement inventory_view;
 		public WebElement inventoryViewButton()
 		{
@@ -482,16 +509,21 @@ public class InventoryManagamentObj {
 		}
 		
 		
-		@FindBy(xpath="//app-inventory-items-details[1]/div[1]/ion-header[1]/ion-toolbar[1]/ion-buttons[1]/ion-button[1]")
+//		@FindBy(xpath="//app-inventory-items-details[1]/div[1]/ion-header[1]/ion-toolbar[1]/ion-buttons[1]/ion-button[1]")
+		@FindBy(xpath="//ion-button[1]/a")
 		private WebElement report_viewButton;
 		public WebElement report_viewButton()
 		{
 			return report_viewButton;
 		}
 		
-		
-		
-		
+		// Report_report button
+		@FindBy(xpath = "//ion-label[text()=' Master reports ']")
+		private WebElement report_MasterReportsTab;
+
+		public WebElement report_MasterReportsTab() {
+			return report_MasterReportsTab;
+		}
 		
 
 		@FindBy(xpath="//ion-list[1]/div[1]/ion-menu-toggle[15]/ion-item[1]/ion-buttons[1]/ion-button[1]")
@@ -501,8 +533,34 @@ public class InventoryManagamentObj {
 			return report_inventoryItemDetail_EditButton;
 		}
 		
+		@FindBy(xpath="//ion-list[1]/div[5]/ion-menu-toggle[11]/ion-item[1]/ion-buttons[1]/ion-button[1]")
+		private WebElement report_inventoryAccessDetails_EditButton;
+		public WebElement report_inventoryAccessDetails_EditButton()
+		{
+			return report_inventoryAccessDetails_EditButton;
+		}
 		
+		@FindBy(xpath="//ion-col[1]/app-kub-lov[1]/span[1]/ng-select[1]/div[1]/div[1]/div[2]/input[1]")
+		private WebElement report_inventoryAccessDetail_BranchName;
+		public WebElement report_inventoryAccessDetail_BranchName()
+		{
+			return report_inventoryAccessDetail_BranchName;
+		}
 		
+		@FindBy(xpath="//ion-col[2]/app-kub-date-time[1]/ion-item[1]/div[1]/span[1]")
+		private WebElement report_inventoryAccessDetail_calender;
+		public WebElement report_inventoryAccessDetail_calender()
+		{
+			return report_inventoryAccessDetail_calender;
+		}
+		
+//		@FindBy(xpath="//div[text()='Inventory Access Detail Report']")
+		@FindBy(xpath="//td[2]/div/div/div[1]/table/tbody/tr[2]/td/div[1]")
+		private WebElement report_AutoGeneratedDocument;
+		public WebElement report_AutoGeneratedDocument()
+		{
+			return report_AutoGeneratedDocument;
+		}
 		
 		@FindBy(xpath="//ion-row[1]/ion-col[1]/app-kub-lov[1]/span[1]/ng-select[1]/div[1]/div[1]/div[2]/input[1]")
 		private WebElement report_inventoryItemDetail_ItemDescription;
@@ -510,6 +568,7 @@ public class InventoryManagamentObj {
 		{
 			return report_inventoryItemDetail_ItemDescription;
 		}
+		
 		
 		
 		@FindBy(xpath="//ion-menu[1]/ion-content[1]/custom-side-menu[1]/ion-list[1]/div[1]/ion-menu-toggle[16]/ion-item[1]/ion-buttons[1]/ion-button[1]")

@@ -146,7 +146,8 @@ public class Enquiry_Obj {
 	public WebElement transactionRefNo() {
 		return transactionRefNo;
 	}
-	@FindBy(xpath = "//ion-button[@ng-reflect-shape='round']")
+//	@FindBy(xpath = "//ion-button[@ng-reflect-shape='round']")
+	@FindBy(xpath = "//ion-button[1]/span[1]")
 	private WebElement inventory_ViewButton;
 
 	public WebElement inventoryViewButton() {

@@ -90,7 +90,8 @@ public WebElement alertClose()
 		return reviewer_budget_status;
 	}
 
-	@FindBy(xpath = "//textarea[@name='remarks']")
+//	@FindBy(xpath = "//textarea[@name='remarks']")
+	@FindBy(xpath = "//ion-row[1]/ion-col[1]/ion-item[1]/ion-textarea[1]/div[1]/textarea[1]")
 	private WebElement reviewer_alert_remarks;
 
 	public WebElement reviewerAlertRemarks() {

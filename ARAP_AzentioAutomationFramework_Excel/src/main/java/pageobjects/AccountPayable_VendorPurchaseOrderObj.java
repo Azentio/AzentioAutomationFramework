@@ -552,4 +552,12 @@ public class AccountPayable_VendorPurchaseOrderObj {
 	public WebElement accountsPayable_VendorPurchaseOrder_PopUpCloseButton() {
 		return accountsPayable_VendorPurchaseOrder_PopUpCloseButton;
 	}
+	
+	// popup2 close button
+	@FindBy(xpath = "//body/div/div/div[2]/button")
+	private WebElement accountsPayable_VendorPurchaseOrder_PopUp2CloseButton;
+	
+	public WebElement accountsPayable_VendorPurchaseOrder_PopUp2CloseButton() {
+		return accountsPayable_VendorPurchaseOrder_PopUp2CloseButton;
+	}
 }

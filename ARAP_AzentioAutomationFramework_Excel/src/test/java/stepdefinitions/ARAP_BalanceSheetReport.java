@@ -176,8 +176,11 @@ public class ARAP_BalanceSheetReport {
 
 	    @And("^click the balance sheet report$")
 	    public void click_the_balance_sheet_report() throws Throwable {
-	    	waitHelper.waitForElement(driver, 2000,arAp_BalanceSheetReportObj.arAp_BalanceSheetReport_BalanceSheetReport());
-		    	arAp_BalanceSheetReportObj.arAp_BalanceSheetReport_BalanceSheetReport().click();
+//	    	waitHelper.waitForElement(driver, 2000,arAp_BalanceSheetReportObj.arAp_BalanceSheetReport_BalanceSheetReport());
+	    	javaScriptHelper.JavaScriptHelper(driver);
+	    	javaScriptHelper.scrollIntoView(arAp_BalanceSheetReportObj.arAp_BalanceSheetReport_BalanceSheetReport());
+	    	waitHelper.waitForElementwithFluentwait(driver, arAp_BalanceSheetReportObj.arAp_BalanceSheetReport_BalanceSheetReport());
+	    	arAp_BalanceSheetReportObj.arAp_BalanceSheetReport_BalanceSheetReport().click();
 	    }
 	    
 	    

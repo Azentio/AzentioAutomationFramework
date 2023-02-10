@@ -23,6 +23,7 @@ import io.cucumber.java.en.When;
 import pageobjects.ACCOUNTSPAYABLE_InvoiceBookingObj;
 import pageobjects.ACCOUNTSPAYABLE_VendorContractsObj;
 import pageobjects.AccountPayable_VendorPurchaseOrderObj;
+import pageobjects.Azentio_CheckerObj;
 import pageobjects.Azentio_ReviewerObj;
 import pageobjects.BUDGET_BudgetTransferObj;
 import pageobjects.INVENTORY_MANAGEMENT_PurchaseRequitionConfirmationObj;
@@ -40,6 +41,7 @@ public class InventoryManagement_InventoryStockReceivedFromVendor {
 	WebDriver driver = BaseClass.driver;
 	KUBS_Login login = new KUBS_Login(driver);
 	KUBS_CheckerObj kubschecker = new KUBS_CheckerObj(driver);
+	Azentio_ReviewerObj reviewer = new Azentio_ReviewerObj(driver);;
 	ConfigFileReader config = new ConfigFileReader();
 	ACCOUNTSPAYABLE_VendorContractsObj aCCOUNTSPAYABLE_VendorContractsObj = new ACCOUNTSPAYABLE_VendorContractsObj(driver);
 	WaitHelper waithelper = new WaitHelper(driver);
@@ -56,7 +58,7 @@ public class InventoryManagement_InventoryStockReceivedFromVendor {
 	BUDGET_BudgetTransferObj budgetTransferObj = new BUDGET_BudgetTransferObj(driver);
 
 	ExcelData excelData = new ExcelData("C:\\Users\\ININDC00091\\git\\AzentioAutomationFramework\\DeveshFW_Excel\\ARAP_AzentioAutomationFramework_Excel\\Test-data\\KUBS_InventoryMgmt_TestData.xlsx",
-			"ARAP_VendorContracts", "DataSet ID");
+			"InventoryStockReceivedTestData", "Data Set ID");
 	Map<String, String> testData = new HashMap<>();
 	String dataSetID;
 
@@ -107,7 +109,8 @@ public class InventoryManagement_InventoryStockReceivedFromVendor {
 	public void fill_inventory_stock_mandatory_fields() throws IOException, ParseException {
 //		inventoryManagement_InventoryStockReceiptTestDataType = jsonReader.getInventoryStockReceiptByName("Maker");
 		// GRN Number
-		waithelper.waitForElement(driver, 3000, inventoryManagement_InventoryStockReceiptObj.inventoryManagement_InventoryStockReceipt_GRNNumber());
+//		waithelper.waitForElement(driver, 3000, inventoryManagement_InventoryStockReceiptObj.inventoryManagement_InventoryStockReceipt_GRNNumber());
+		waithelper.waitForElementwithFluentwait(driver, inventoryManagement_InventoryStockReceiptObj.inventoryManagement_InventoryStockReceipt_GRNNumber());
 		inventoryManagement_InventoryStockReceiptObj.inventoryManagement_InventoryStockReceipt_GRNNumber().click();
 		inventoryManagement_InventoryStockReceiptObj.inventoryManagement_InventoryStockReceipt_GRNNumber().sendKeys(testData.get("grnNumber"));
 		inventoryManagement_InventoryStockReceiptObj.inventoryManagement_InventoryStockReceipt_GRNNumber().sendKeys(Keys.ENTER);
@@ -126,9 +129,9 @@ public class InventoryManagement_InventoryStockReceivedFromVendor {
 		waithelper.waitForElementwithFluentwait(driver, inventoryManagement_InventoryStockReceiptObj.inventoryManagement_InventoryStockReceipt_Save());
 		inventoryManagement_InventoryStockReceiptObj.inventoryManagement_InventoryStockReceipt_Save().click();
 
-//  	waithelper.waitForElementwithFluentwait(driver, inventoryManagement_InventoryStockReceiptObj.inventoryManagament_InventoryRequest_PopupCloseButton());
-//  	inventoryManagement_InventoryStockReceiptObj.inventoryManagament_InventoryRequest_PopupCloseButton().click();
-//  	
+  	waithelper.waitForElementwithFluentwait(driver, inventoryManagement_InventoryStockReceiptObj.inventoryStockReceipt_PopUpCloseButton());
+  	inventoryManagement_InventoryStockReceiptObj.inventoryStockReceipt_PopUpCloseButton().click();
+  	
 	}
 
 	@Then("^Click on inventory stock Notification$")
@@ -221,11 +224,144 @@ public class InventoryManagement_InventoryStockReceivedFromVendor {
 		testData = excelData.getTestdata(dataSetID);
 
 	}
+	
+	@Then("^log in to the reviewer account to approve stock receipt record$")
+	public void log_in_to_the_reviewer_account_to_approve_stock_receipt_record() throws IOException, ParseException {
+//		reader = new JsonDataReaderWriter();
+		login = new KUBS_Login(driver);
+		driver.get(config.getApplicationUrl());
+		login.logintoAzentioappReviewer("Reviewer", testData.get("ReviewerID"));
+
+	}
+	
+	@Then("^click on the Notification select the stock receipt record and Approve$")
+	public void click_on_the_notification_select_the_stock_receipt_record_and_approve() throws InterruptedException, IOException, ParseException {
+		// notification
+		waithelper = new WaitHelper(driver);
+		reviewer = new Azentio_ReviewerObj(driver);
+		waithelper.waitForElement(driver, 2000, reviewer.reviewerNotidicationIcon());
+		reviewer.reviewerNotidicationIcon().click();
+
+		// select the record
+		browserHelper = new BrowserHelper(driver);
+//		budgetdata = jsonReader.getBudgetdataByName("Maker");
+		javascripthelper = new JavascriptHelper();
+		Thread.sleep(1000);
+		for (int i = 1; i <= 35; i++) {
+			try {
+				waithelper.waitForElement(driver, 3000, driver.findElement(By.xpath("//span[text()='" + testData.get("ReferenceID") + "']")));
+				WebElement referanceID = driver.findElement(By.xpath("//span[text()='" + testData.get("ReferenceID") + "']"));
+				referanceID.click();
+				Assert.assertTrue(referanceID.isDisplayed());
+				break;
+			} catch (NoSuchElementException e) {
+				waithelper.waitForElement(driver, 4000, kubschecker.checker_notification_next_button());
+
+				kubschecker.checker_notification_next_button().click();
+			}
+		}
+		String before_xpath = "//span[text()='";
+		String after_xpath = "']/ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell//ion-button";
+
+		waithelper.waitForElement(driver, 5000, driver.findElement(By.xpath(before_xpath + testData.get("ReferenceID") + after_xpath)));
+		driver.findElement(By.xpath(before_xpath + testData.get("ReferenceID") + after_xpath)).click();
+
+		// Approve
+//			waithelper.waitForElement(driver, 4000, reviewer.reviewerApproveButton());
+		waithelper.waitForElementwithFluentwait(driver, reviewer.reviewerApproveButton());
+		reviewer.reviewerApproveButton().click();
+
+//			waithelper.waitForElement(driver, 2000, reviewer.reviewerAlertRemarks());
+		waithelper.waitForElementwithFluentwait(driver, reviewer.reviewerAlertRemarks());
+		clicksAndActionHelper.JSEClick(reviewer.reviewerAlertRemarks());
+		reviewer.reviewerAlertRemarks().sendKeys("ok");
+
+//			waithelper.waitForElement(driver, 2000, reviewer.reviewerAlertSubmitButton());
+		waithelper.waitForElementwithFluentwait(driver, reviewer.reviewerAlertSubmitButton());
+		reviewer.reviewerAlertSubmitButton().click();
+		Thread.sleep(2000);
+
+	}
+	
+	@And("^then checker claim the stock receipt record$")
+	public void then_checker_claim_the_stock_receipt_record() throws InterruptedException, IOException, ParseException {
+
+		// open pool
+		waithelper = new WaitHelper(driver);
+		kubschecker = new KUBS_CheckerObj(driver);
+//		waitHelper.waitForElement(driver, 3000, kubschecker.checkerSecurityManagement());
+		waithelper.waitForElementToVisibleWithFluentWait(driver, kubschecker.checkerSecurityManagement(), 20, 2);
+		kubschecker.checkerSecurityManagement().click();
+
+		// claim
+		waithelper.waitForElement(driver, 3000, kubschecker.checkerActionIcon());
+		kubschecker.checkerActionIcon().click();
+		Thread.sleep(2000);
+		String before_xpath = "//span[contains(text(),'";
+		String after_xpath_claim = "')]/parent::div/parent::datatable-body-cell/preceding-sibling::datatable-body-cell[2]/div/ion-buttons/ion-button";
+		waithelper.waitForElement(driver, 5000, driver.findElement(By.xpath(before_xpath + testData.get("ReferenceID") + after_xpath_claim)));
+		driver.findElement(By.xpath(before_xpath + testData.get("ReferenceID") + after_xpath_claim)).click();
+		waithelper.waitForElement(driver, 3000, kubschecker.checkerAlertClose());
+		kubschecker.checkerAlertClose().click();
+
+	}
+	
+	@And("^select the stock receipt record and Approve by checker$")
+	public void select_the_stock_receipt_record_and_approve_by_checker() throws InterruptedException, IOException, ParseException {
+		waithelper.waitForElementwithFluentwait(driver, kubschecker.checkerNotificationIcon());
+		kubschecker.checkerNotificationIcon().click();
+		Thread.sleep(1000);
+		for (int i = 1; i <= 35; i++) {
+			try {
+				waithelper.waitForElement(driver, 3000, driver.findElement(By.xpath("//span[text()='" + testData.get("ReferenceID") + "']")));
+				WebElement referanceID = driver.findElement(By.xpath("//span[text()='" + testData.get("ReferenceID") + "']"));
+				referanceID.click();
+
+				Assert.assertTrue(referanceID.isDisplayed());
+				break;
+			} catch (NoSuchElementException e) {
+				waithelper.waitForElement(driver, 4000, kubschecker.checker_notification_next_button());
+
+				kubschecker.checker_notification_next_button().click();
+			}
+		}
+		String before_xpath = "//span[text()='";
+		String after_xpath = "']/ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell//ion-button";
+
+		waithelper.waitForElement(driver, 10000, driver.findElement(By.xpath(before_xpath + testData.get("ReferenceID") + after_xpath)));
+		driver.findElement(By.xpath(before_xpath + testData.get("ReferenceID") + after_xpath)).click();
+
+//			waithelper.waitForElement(driver, 4000, kubschecker.checkerApproveButton());
+		waithelper.waitForElementwithFluentwait(driver, kubschecker.checkerApproveButton());
+		kubschecker.checkerApproveButton().click();
+//			waithelper.waitForElement(driver, 2000, reviewer.reviewerAlertRemarks());
+		waithelper.waitForElementwithFluentwait(driver, reviewer.reviewerAlertRemarks());
+		reviewer.reviewerAlertRemarks().sendKeys("ok");
+//			Thread.sleep(1000);
+//			waithelper.waitForElement(driver, 2000, reviewer.reviewerAlertSubmitButton());
+		waithelper.waitForElementwithFluentwait(driver, reviewer.reviewerAlertSubmitButton());
+		reviewer.reviewerAlertSubmitButton().click();
+		Thread.sleep(3000);
+	}
+	
+	/////////////////////////////////////////////////////////////////////////////////////////
 
 	@Then("^select data set ID for inventory stock received from vendor$")
 	public void select_data_set_id_for_inventory_stock_received_from_vendor() throws Throwable {
-		dataSetID = "KUBS_INV_MGMT_UAT_001_006";
+		dataSetID = "KUBS_INV_MGMT_UAT_001_006_TC_01_D1";
 		testData = excelData.getTestdata(dataSetID);
 	}
+	
+	@Then("^update data set ID for inventory stock received from vendor for reviewer$")
+    public void update_data_set_id_for_inventory_stock_received_from_vendor_for_reviewer() throws Throwable {
+		dataSetID = "KUBS_INV_MGMT_UAT_001_006_TC_01_D1";
+		testData = excelData.getTestdata(dataSetID);
+    }
+
+    @Then("^update data set ID for inventory stock received from vendor for checker$")
+    public void update_data_set_id_for_inventory_stock_received_from_vendor_for_checker() throws Throwable {
+    	dataSetID = "KUBS_INV_MGMT_UAT_001_006_TC_01_D1";
+		testData = excelData.getTestdata(dataSetID);
+    }
 
 }

@@ -54,6 +54,13 @@ public class ARAP_AdjustmentsObj {
 	{
 		return adjustment_AdjustmentSaveButton;
 	}
+	
+	@FindBy(xpath = "//div[@id='toast-container']//button")
+	private WebElement adjustment_AlertClose;
+
+	public WebElement adjustment_AlertClose() {
+		return adjustment_AlertClose;
+	}
 	@FindBy(xpath="//div[contains(text(),'No items found')]")
 	private WebElement adjustment_AdjustmentReference;
 	public WebElement adjustmentAdjustmentReferenceNodata()

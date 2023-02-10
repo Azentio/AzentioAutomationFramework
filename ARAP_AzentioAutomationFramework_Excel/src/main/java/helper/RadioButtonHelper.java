@@ -39,7 +39,7 @@ public class RadioButtonHelper {
 //		System.out.println(size);
 		for (int i = 1; i <= size ; i++) {
 			if(driver.findElement(By.xpath(beforexpath+ i + afterxpath)).getText().equals(element))
-			{
+			{	//ion-item[]/ion-radio
 				String beforexpath1 = "//ion-item[";
 				String afterxpath1 = "]/ion-radio";
 				waithelper.waitForElementwithFluentwait(driver, driver.findElement(By.xpath(beforexpath1 + i + afterxpath1)));

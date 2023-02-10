@@ -27,6 +27,7 @@ import pageobjects.KUBS_CheckerObj;
 import resources.BaseClass;
 import resources.ExcelData;
 import resources.JsonDataReaderWriter;
+import utilities.ExtentTestManager;
 
 public class InventoryManagement_PurchaseRequisitionConfirmation {
 	WebDriver driver = BaseClass.driver;
@@ -41,9 +42,8 @@ public class InventoryManagement_PurchaseRequisitionConfirmation {
 	INVENTORY_MANAGEMENT_PurchaseRequitionConfirmationObj iNVENTORY_MANAGEMENT_PurchaseRequitionConfirmationObj = new INVENTORY_MANAGEMENT_PurchaseRequitionConfirmationObj(driver);
 	AccountPayable_VendorPurchaseOrderObj accountPayable_VendorPurchaseOrderObj = new AccountPayable_VendorPurchaseOrderObj(driver);
 
-
 	ExcelData excelData = new ExcelData("C:\\Users\\ININDC00091\\git\\AzentioAutomationFramework\\DeveshFW_Excel\\ARAP_AzentioAutomationFramework_Excel\\Test-data\\KUBS_InventoryMgmt_TestData.xlsx",
-			"PurchaseRequisitionConfTestData", "DataSet ID");
+			"PurchaseRequisitionConfTestData", "Data Set ID");
 	Map<String, String> testData = new HashMap<>();
 	String dataSetID;
 
@@ -59,7 +59,10 @@ public class InventoryManagement_PurchaseRequisitionConfirmation {
 
 	@When("^click on eye button of purchase requisition confirmation$")
 	public void click_on_eye_button_of_purchase_requisition_confirmation() {
-		waithelper.waitForElement(driver, 2000, iNVENTORY_MANAGEMENT_PurchaseRequitionConfirmationObj.inventoryManagement_PurchaseRequisitionConfirmation_EyeButton());
+//		waithelper.waitForElement(driver, 2000, iNVENTORY_MANAGEMENT_PurchaseRequitionConfirmationObj.inventoryManagement_PurchaseRequisitionConfirmation_EyeButton());
+		javascripthelper.JavaScriptHelper(driver);
+		javascripthelper.scrollIntoView(iNVENTORY_MANAGEMENT_PurchaseRequitionConfirmationObj.inventoryManagement_PurchaseRequisitionConfirmation_EyeButton());
+		waithelper.waitForElementwithFluentwait(driver, iNVENTORY_MANAGEMENT_PurchaseRequitionConfirmationObj.inventoryManagement_PurchaseRequisitionConfirmation_EyeButton());
 		iNVENTORY_MANAGEMENT_PurchaseRequitionConfirmationObj.inventoryManagement_PurchaseRequisitionConfirmation_EyeButton().click();
 	}
 
@@ -72,8 +75,9 @@ public class InventoryManagement_PurchaseRequisitionConfirmation {
 
 	@And("^Fill the required fields to purchase req$")
 	public void fill_the_required_fields_to_purchase_req() {
-		waithelper.waitForElement(driver, 2000, iNVENTORY_MANAGEMENT_PurchaseRequitionConfirmationObj.inventoryManagement_PurchaseRequisitionConfirmation_ItemCode());
-		iNVENTORY_MANAGEMENT_PurchaseRequitionConfirmationObj.inventoryManagement_PurchaseRequisitionConfirmation_ItemCode().sendKeys(testData.get("ItemCode"));
+//		waithelper.waitForElement(driver, 2000, iNVENTORY_MANAGEMENT_PurchaseRequitionConfirmationObj.inventoryManagement_PurchaseRequisitionConfirmation_ItemCode());
+		waithelper.waitForElementwithFluentwait(driver, iNVENTORY_MANAGEMENT_PurchaseRequitionConfirmationObj.inventoryManagement_PurchaseRequisitionConfirmation_ItemCode());
+		iNVENTORY_MANAGEMENT_PurchaseRequitionConfirmationObj.inventoryManagement_PurchaseRequisitionConfirmation_ItemCode().sendKeys(testData.get("ItemCodeDescription"));
 		iNVENTORY_MANAGEMENT_PurchaseRequitionConfirmationObj.inventoryManagement_PurchaseRequisitionConfirmation_ItemCode().sendKeys(Keys.ENTER);
 	}
 
@@ -94,13 +98,16 @@ public class InventoryManagement_PurchaseRequisitionConfirmation {
 		System.out.println(message0);
 		waithelper.waitForElementwithFluentwait(driver, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_RecordStatus());
 		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_RecordStatus().click();
+		
+		waithelper.waitForElementwithFluentwait(driver, aCCOUNTSPAYABLE_VendorContractsObj.ConfirmationMessageCloseButton2());
+		aCCOUNTSPAYABLE_VendorContractsObj.ConfirmationMessageCloseButton2().click();
 
 //		waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_NotificationButton());
 		waithelper.waitForElementwithFluentwait(driver, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_NotificationButton());
 		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_NotificationButton().click();
 
-		waithelper.waitForElementwithFluentwait(driver, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_RecordStatus());
-		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_RecordStatus().click();
+//		waithelper.waitForElementwithFluentwait(driver, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_RecordStatus());
+//		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_RecordStatus().click();
 
 //		waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_FirstReferenceId());
 		waithelper.waitForElementwithFluentwait(driver, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_FirstReferenceId());
@@ -212,6 +219,16 @@ public class InventoryManagement_PurchaseRequisitionConfirmation {
 
 	}
 	
+	@Then("^Open Reviewer account for purchase requisition confirmation$")
+	public void open_reviewer_account_for_purchase_requisition_confirmation() throws Throwable {
+//		reader = new JsonDataReaderWriter();
+		login = new KUBS_Login(driver);
+		driver.get(config.getApplicationUrl());
+		login.logintoAzentioappReviewer("Reviewer", testData.get("ReviewerID"));
+		ExtentTestManager.getTest().info("User Navigated to required url & login as checker1");
+
+	}
+	
 	@And("^approve the purchase requisition confirmation record by reviewer user$")
 	public void approve_the_purchase_requisition_confirmation_record_by_reviewer_user() throws InterruptedException, IOException, ParseException {
 		browserHelper = new BrowserHelper(driver);
@@ -255,6 +272,21 @@ public class InventoryManagement_PurchaseRequisitionConfirmation {
 		String message = aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_RecordStatus().getText();
 		System.out.println(message);
 		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_RecordStatus().click();
+
+	}
+	
+	@And("^Click on claim button in checker of purchase reqisition confirmation record$")
+	public void click_on_claim_button_in_checker_of_purchase_reqisition_confirmation_record() throws IOException, ParseException, InterruptedException {
+		// testData = excelData.getTestdata("KUBS_AR/AP_UAT_001_001_TC_001_01_D1");
+		String before_xpath = "//span[contains(text(),'";
+		String after_xpath_claim = "')]/parent::div/parent::datatable-body-cell/preceding-sibling::datatable-body-cell[2]/div/ion-buttons/ion-button";
+		// String after_xpath = ;
+		// waithelper.waitForElementwithFluentwait(driver,
+		// driver.findElement(By.xpath(before_xpath + reader.readReferancedata() +
+		// after_xpath_claim)));
+		Thread.sleep(1000);
+
+		driver.findElement(By.xpath(before_xpath + testData.get("ReferenceID") + after_xpath_claim)).click();
 
 	}
 
@@ -325,8 +357,19 @@ public class InventoryManagement_PurchaseRequisitionConfirmation {
 	
 	@Then("^select data set ID for purchase requisition confirmation creation$")
     public void select_data_set_id_for_purchase_requisition_confirmation_creation() throws Throwable {
-		dataSetID = "KUBS_INV_MGMT_UAT_001_002";
+		dataSetID = "KUBS_INV_MGMT_UAT_001_002_D1";
 		testData = excelData.getTestdata(dataSetID);
     }
+	
+	@Then("^update data set ID for Purchase Requisition Confirmation for reviewer$")
+    public void update_data_set_id_for_purchase_requisition_confirmation_for_reviewer() throws Throwable {
+		dataSetID = "KUBS_INV_MGMT_UAT_001_002_D1";
+		testData = excelData.getTestdata(dataSetID);
+	}
 
+	@Then("^update data set ID for Purchase Requisition Confirmation for checker$")
+	public void update_data_set_id_for_purchase_requisition_confirmation_for_checker() throws Throwable {
+		dataSetID = "KUBS_INV_MGMT_UAT_001_002_D1";
+		testData = excelData.getTestdata(dataSetID);
+	}
 }

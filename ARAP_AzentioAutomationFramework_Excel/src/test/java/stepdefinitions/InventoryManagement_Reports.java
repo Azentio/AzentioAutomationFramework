@@ -39,14 +39,14 @@ public class InventoryManagement_Reports {
 	WaitHelper waithelper = new WaitHelper(driver);
 	JavascriptHelper javascripthelper = new JavascriptHelper();
 	ClicksAndActionsHelper clicksAndActionHelper = new ClicksAndActionsHelper(driver);
-	BrowserHelper browserHelper;
+	BrowserHelper browserHelper=new BrowserHelper(driver);
 	BUDGET_RequestAndAllocationObj requestAndAllocation = new BUDGET_RequestAndAllocationObj(driver);
 //	INVENTORY_MANAGEMENT_PurchaseRequitionConfirmationObj iNVENTORY_MANAGEMENT_PurchaseRequitionConfirmationObj = new INVENTORY_MANAGEMENT_PurchaseRequitionConfirmationObj(driver);
 //	AccountPayable_VendorPurchaseOrderObj accountPayable_VendorPurchaseOrderObj = new AccountPayable_VendorPurchaseOrderObj(driver);
 	InventoryManagamentObj inventoryManagamentObj = new InventoryManagamentObj(driver);
 
 	ExcelData excelData = new ExcelData("C:\\Users\\ININDC00091\\git\\AzentioAutomationFramework\\DeveshFW_Excel\\ARAP_AzentioAutomationFramework_Excel\\Test-data\\KUBS_InventoryMgmt_TestData.xlsx",
-			"ReportsTestData", "DataSet ID");
+			"ReportsTestData", "Data Set ID");
 	Map<String, String> testData = new HashMap<>();
 	String dataSetID;
 
@@ -57,8 +57,8 @@ public class InventoryManagement_Reports {
 		// waithelper.waitForElement(driver, 2000,
 		// inventoryManagamentObj.report_inventoryItemDetail_EditButton());
 
-		javascripthelper.scrollIntoView(inventoryManagamentObj.report_inventoryItemDetail_EditButton());
-		inventoryManagamentObj.report_inventoryItemDetail_EditButton().click();
+		javascripthelper.scrollIntoView(inventoryManagamentObj.report_inventoryAccessDetails_EditButton());
+		inventoryManagamentObj.report_inventoryAccessDetails_EditButton().click();
 	}
 
 	@Then("^Fill the form for  Inventory access detail report$")
@@ -66,14 +66,17 @@ public class InventoryManagement_Reports {
 
 //		inventoryManagementTestDataType = jsonReader.getInventoryManagementByName("Maker");
 
-		waithelper.waitForElement(driver, 2000, inventoryManagamentObj.report_inventoryItemDetail_ItemDescription());
-		inventoryManagamentObj.report_inventoryItemDetail_ItemDescription().click();
-		inventoryManagamentObj.report_inventoryItemDetail_ItemDescription().sendKeys(testData.get("ItemDescriptionForInvtItemDetails"));
-		inventoryManagamentObj.report_inventoryItemDetail_ItemDescription().sendKeys(Keys.ENTER);
+//		waithelper.waitForElement(driver, 2000, inventoryManagamentObj.report_inventoryItemDetail_ItemDescription());
+//		inventoryManagamentObj.report_inventoryItemDetail_ItemDescription().click();
+//		inventoryManagamentObj.report_inventoryItemDetail_ItemDescription().sendKeys(testData.get("ItemDescriptionForInvtItemDetails"));
+//		inventoryManagamentObj.report_inventoryItemDetail_ItemDescription().sendKeys(Keys.ENTER);
+		waithelper.waitForElementwithFluentwait(driver, inventoryManagamentObj.report_inventoryAccessDetail_BranchName());
+		inventoryManagamentObj.report_inventoryAccessDetail_BranchName().sendKeys(testData.get("BranchName"));
+		inventoryManagamentObj.report_inventoryAccessDetail_BranchName().sendKeys(Keys.ENTER);
 		// Calendar
 		Thread.sleep(2000);
-		waithelper.waitForElement(driver, 2000, inventoryManagamentObj.inventoryItemCalandar_report());
-		inventoryManagamentObj.inventoryItemCalandar_report().click();
+		waithelper.waitForElement(driver, 2000, inventoryManagamentObj.report_inventoryAccessDetail_calender());
+		inventoryManagamentObj.report_inventoryAccessDetail_calender().click();
 		// waithelper.waitForElement(driver, 3000,
 		// inventoryManagamentObj.inventoryToDate());
 		// inventoryManagamentObj.inventoryToDate().click();
@@ -99,7 +102,14 @@ public class InventoryManagement_Reports {
 	public void click_on_view_button_to_view_report() throws Throwable {
 		waithelper.waitForElement(driver, 3000, inventoryManagamentObj.report_viewButton());
 		inventoryManagamentObj.report_viewButton().click();
-		Thread.sleep(3000);
+//		Thread.sleep(3000);
+	}
+	
+	@Then("^Click on Master reports Tab$")
+	public void click_on_master_reports_Tab() throws Throwable {
+//		waithelper.waitForElement(driver, 2000, inventoryManagamentObj.report_MasterReportsTab());
+		waithelper.waitForElementwithFluentwait(driver, inventoryManagamentObj.report_MasterReportsTab());
+		inventoryManagamentObj.report_MasterReportsTab().click();
 	}
 
 	// ------------------KUBS_INV_MGMT_UAT_007_002-------------------//
@@ -123,8 +133,9 @@ public class InventoryManagement_Reports {
 		inventoryManagamentObj.report_inventoryRequest_RequestReferenceNo().sendKeys(testData.get("RequestReferenceNumber"));
 		inventoryManagamentObj.report_inventoryRequest_RequestReferenceNo().sendKeys(Keys.ENTER);
 		// Calendar
-		Thread.sleep(2000);
-		waithelper.waitForElement(driver, 2000, inventoryManagamentObj.report_inventoryRequest_calanderbutton());
+//		Thread.sleep(2000);
+//		waithelper.waitForElement(driver, 2000, inventoryManagamentObj.report_inventoryRequest_calanderbutton());
+		waithelper.waitForElementwithFluentwait(driver, inventoryManagamentObj.report_inventoryRequest_calanderbutton());
 		inventoryManagamentObj.report_inventoryRequest_calanderbutton().click();
 
 //		inventoryManagementTestDataType = jsonReader.getInventoryManagementByName("Maker");
@@ -149,7 +160,7 @@ public class InventoryManagement_Reports {
 
 		waithelper.waitForElement(driver, 3000, inventoryManagamentObj.report_inventoryRequest_viewbutton());
 		inventoryManagamentObj.report_inventoryRequest_viewbutton().click();
-		Thread.sleep(3000);
+//		Thread.sleep(3000);
 
 	}
 
@@ -175,10 +186,11 @@ public class InventoryManagement_Reports {
 		inventoryManagamentObj.report_PurchaseRequsition_IndentReferenceNo().sendKeys(testData.get("IndentReferenceNo"));
 		inventoryManagamentObj.report_PurchaseRequsition_IndentReferenceNo().sendKeys(Keys.ENTER);
 		// Calendar
-		Thread.sleep(2000);
-		waithelper.waitForElement(driver, 2000, inventoryManagamentObj.report_PurchaseRequsition_calanderbutton());
+//		Thread.sleep(2000);
+//		waithelper.waitForElement(driver, 2000, inventoryManagamentObj.report_PurchaseRequsition_calanderbutton());
+		waithelper.waitForElementwithFluentwait(driver, inventoryManagamentObj.report_PurchaseRequsition_calanderbutton());
 		inventoryManagamentObj.report_PurchaseRequsition_calanderbutton().click();
-		Thread.sleep(2000);
+//		Thread.sleep(2000);
 
 //		inventoryManagementTestDataType = jsonReader.getInventoryManagementByName("Maker");
 		while (true) {
@@ -203,7 +215,7 @@ public class InventoryManagement_Reports {
 	public void click_on_view_button_to_view_report_of_purchase_requisition_report() throws Throwable {
 		waithelper.waitForElement(driver, 3000, inventoryManagamentObj.report_PurchaseRequsition_viewbutton());
 		inventoryManagamentObj.report_PurchaseRequsition_viewbutton().click();
-		Thread.sleep(3000);
+//		Thread.sleep(3000);
 	}
 
 //----------  KUBS_INV_MGMT_UAT_007_004-----------------//
@@ -228,10 +240,10 @@ public class InventoryManagement_Reports {
 		inventoryManagamentObj.report_StockIssuance_IssuanceReffrenceNo().sendKeys(testData.get("IssueReferenceNo"));
 		inventoryManagamentObj.report_StockIssuance_IssuanceReffrenceNo().sendKeys(Keys.ENTER);
 		// Calendar
-		Thread.sleep(2000);
+//		Thread.sleep(2000);
 		waithelper.waitForElement(driver, 2000, inventoryManagamentObj.report_PurchaseRequsition_calanderbutton());
 		inventoryManagamentObj.report_PurchaseRequsition_calanderbutton().click();
-		Thread.sleep(2000);
+//		Thread.sleep(2000);
 
 //		inventoryManagementTestDataType = jsonReader.getInventoryManagementByName("Maker");
 		while (true) {
@@ -256,7 +268,7 @@ public class InventoryManagement_Reports {
 	public void click_on_view_button_to_view_report_of_stock_issuance_report() throws Throwable {
 		waithelper.waitForElement(driver, 3000, inventoryManagamentObj.report_StockIssuance_ViewButton());
 		inventoryManagamentObj.report_StockIssuance_ViewButton().click();
-		Thread.sleep(3000);
+//		Thread.sleep(3000);
 	}
 	
 //----------KUBS_INV_MGMT_UAT_007_005------------------//
@@ -278,6 +290,24 @@ public class InventoryManagement_Reports {
 //			inventoryManagementTestDataType = jsonReader.getInventoryManagementByName("Maker");
 			inventoryManagamentObj.Report_report_StockConfirmationReport_acceptStatus().sendKeys(testData.get("AcceptStatus"));
 			inventoryManagamentObj.Report_report_StockConfirmationReport_acceptStatus().sendKeys(Keys.ENTER);
+			
+			waithelper.waitForElement(driver, 2000, inventoryManagamentObj.report_PurchaseRequsition_calanderbutton());
+			inventoryManagamentObj.report_PurchaseRequsition_calanderbutton().click();
+			
+			while (true) {
+				try {
+
+					waithelper.waitForElement(driver, 3000, driver.findElement(By.xpath("//span[contains(text(),'" + testData.get("GL Month") + " " + testData.get("GL Year") + "')]")));
+					WebElement monthAndYear = driver.findElement(By.xpath("//span[contains(text(),'" + testData.get("GL Month") + " " + testData.get("GL Year") + "')]"));
+					break;
+				}
+
+				catch (NoSuchElementException nosuchElement) {
+					inventoryManagamentObj.inventoryNextMonth().click();
+				}
+			}
+			WebElement FinalDay = driver.findElement(By.xpath("//td[@aria-label='" + testData.get("GL FullMonth") + " " + testData.get("GL Date") + ", " + testData.get("GL Year") + "']/span"));
+			clicksAndActionHelper.doubleClick(FinalDay);
 	    }
 	    
 //	    @Then("^click on view button$")
@@ -345,61 +375,69 @@ public class InventoryManagement_Reports {
 		waithelper.waitForElement(driver, 2000, inventoryManagamentObj.report_inventoryStockReceipt_ViewButton());
 		inventoryManagamentObj.report_inventoryStockReceipt_ViewButton().click();
 	}
+	
 
 	@Then("^verify the approved record is available in the report$")
 	public void verify_the_approved_record_is_available_in_the_report() throws Throwable {
-		System.out.println("Approved invoice number " + testData.get("Voucher"));
-		javascripthelper.JavaScriptHelper(driver);
+//		Thread.sleep(2000);
+		try {
+			browserHelper.SwitchToWindow(1);
+			waithelper.waitForElementwithFluentwait(driver, inventoryManagamentObj.report_AutoGeneratedDocument());
+			boolean result = inventoryManagamentObj.report_AutoGeneratedDocument().isDisplayed();
+			System.out.println("Report is generated : "+ result);
 
-		browserHelper.SwitchToWindow(1);
-		Thread.sleep(3000);
-//	while(true)
-//	{
-//	try
-//	{
-//	javascripthelper.scrollIntoView(driver.findElement(By.xpath("//div[contains(text(),'+inventoryManagementTestDataType.Voucher+')]")));
-//	driver.findElement(By.xpath("//div[contains(text(),'+inventoryManagementTestDataType.Voucher+')]")).isDisplayed();
-//	break;
-//	}
-//	catch(NoSuchElementException e)
-//	{
-//		inventoryManagamentObj.Report_report_NextButton().click();
-//	}
-//	catch(StaleElementReferenceException e1)
-//	{
-//	}
-//	}
+		} catch (Exception e) {
+			Assert.fail("Report is not generated");
+		}
 		browserHelper.switchToParentWithChildClose();
+		
+	}
+	
+	@Then("^click on report button$")
+	public void click_on_report_button() throws Throwable {
+		// -----------CLICK ON REPORT ICON----------------//
+		Thread.sleep(500);
+		waithelper.waitForElementwithFluentwait(driver, inventoryManagamentObj.inventoryReportIcon());
+		inventoryManagamentObj.inventoryReportIcon().click();
+		waithelper.waitForElement(driver, 3000, inventoryManagamentObj.inventoryEnquiryMenu());
+		Assert.assertTrue(inventoryManagamentObj.inventoryEnquiryMenu().isDisplayed());
+
 	}
 
 //--------------------------------------------------------------------------//
 	@Then("^select data set ID for inventory access details report$")
 	public void select_data_set_id_for_inventory_access_details_report() throws Throwable {
-		dataSetID = "KUBS_INV_MGMT_UAT_007_001";
+		dataSetID = "KUBS_INV_MGMT_UAT_007_001_D1";
 		testData = excelData.getTestdata(dataSetID);
 	}
 
 	@Then("^select data set ID for inventory request report$")
 	public void select_data_set_id_for_inventory_request_report() throws Throwable {
-		dataSetID = "KUBS_INV_MGMT_UAT_007_002";
+		dataSetID = "KUBS_INV_MGMT_UAT_007_002_D1";
 		testData = excelData.getTestdata(dataSetID);
 	}
 
 	@Then("^select data set ID for Purchase requisition report$")
 	public void select_data_set_id_for_purchase_requisition_report() throws Throwable {
-		dataSetID = "KUBS_INV_MGMT_UAT_007_003";
+		dataSetID = "KUBS_INV_MGMT_UAT_007_003_D1";
 		testData = excelData.getTestdata(dataSetID);
 	}
 
 	@Then("^select data set ID for stock issuance report$")
 	public void select_data_set_id_for_stock_issuance_report() throws Throwable {
-		dataSetID = "KUBS_INV_MGMT_UAT_007_004";
+		dataSetID = "KUBS_INV_MGMT_UAT_007_004_D1";
 		testData = excelData.getTestdata(dataSetID);
 	}
 
 	@Then("^select data set ID for stock confirmation report$")
 	public void select_data_set_id_for_stock_confirmation_report() throws Throwable {
-		dataSetID = "KUBS_INV_MGMT_UAT_007_005";
+		dataSetID = "KUBS_INV_MGMT_UAT_007_005_D1";
+		testData = excelData.getTestdata(dataSetID);
+	}
+	
+	@Then("^select data set ID for stock return report$")
+	public void select_data_set_id_for_stock_return_report() throws Throwable {
+		dataSetID = "KUBS_INV_MGMT_UAT_007_006_D1";
 		testData = excelData.getTestdata(dataSetID);
 	}
 

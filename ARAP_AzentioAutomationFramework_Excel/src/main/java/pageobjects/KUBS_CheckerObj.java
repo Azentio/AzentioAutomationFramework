@@ -105,7 +105,8 @@ public class KUBS_CheckerObj {
 		return checker_budget_status;
 	}
 
-	@FindBy(xpath = "//textarea[@name='remarks']")
+	@FindBy(xpath = "//ion-row[1]/ion-col[1]/ion-item[1]/ion-textarea[1]/div[1]/textarea[1]")
+//	@FindBy(xpath = "//textarea[@name='remarks']")
 	private WebElement checker_alert_remarks;
 
 	public WebElement checkerRemarks() {

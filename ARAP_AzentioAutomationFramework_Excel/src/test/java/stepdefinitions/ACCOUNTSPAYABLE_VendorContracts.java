@@ -731,8 +731,24 @@ public class ACCOUNTSPAYABLE_VendorContracts {
 	}
 
 	@And("^maker should logout$")
-	public void checker_should_logout() {
+	public void maker_should_logout() {
 
+		waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_ProfileName());
+		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_ProfileName().click();
+		waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_Logout());
+		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_Logout();
+	}
+	@And("^reviewer should logout$")
+	public void reviewer_should_logout() {
+		
+		waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_ProfileName());
+		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_ProfileName().click();
+		waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_Logout());
+		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_Logout();
+	}
+	@And("^checker should logout$")
+	public void checker_should_logout() {
+		
 		waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_ProfileName());
 		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_ProfileName().click();
 		waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_Logout());

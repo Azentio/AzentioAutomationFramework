@@ -60,10 +60,12 @@ public class ARAP_AutoPayoutPaymentSettlement extends BaseClass {
 	WaitHelper waitHelper = new WaitHelper(driver);
 	Map<String, String> autoPayout = new HashMap<>();
 	Azentio_ReviewerObj reviewer;
+	KUBS_Login login;
 	String poNumber;
 	String poBusinessPartner;
 	Map<String, String> settlementTestData = new HashMap<>();
 	Map<String, String> settlementData = new HashMap<>();
+	ARAP_ARandAPObj arapObj = new ARAP_ARandAPObj(driver);
 	ARAP_PoCreationObj ArAp_poCreationObj = new ARAP_PoCreationObj(driver);
 	ARAP_GRNCreationPageObject grnObject = new ARAP_GRNCreationPageObject(driver);
 	INVENTORY_EnquiryGlObject inventoryEnquiryGlObj = new INVENTORY_EnquiryGlObject(driver);
@@ -100,7 +102,10 @@ public class ARAP_AutoPayoutPaymentSettlement extends BaseClass {
 
 		vendorContractObj.vendorContractContractName().click();
 		vendorContractObj.vendorContractContractName().sendKeys(testData.get("ContractName"));
-
+		
+		javaScriptHelper.JavaScriptHelper(driver);
+		javaScriptHelper.scrollIntoView(vendorContractObj.vendorContractOtherDetails());
+//		waitHelper.waitForElementToVisibleWithFluentWait(driver, vendorContractObj.vendorContractOtherDetails(), 20, 2);
 		vendorContractObj.vendorContractOtherDetails().click();
 		waitHelper.waitForElementVisible(vendorContractObj.vendorContractAutoGenerateInvoice(), 2000, 100);
 		vendorContractObj.vendorContractAutoGenerateInvoice().click();
@@ -123,10 +128,13 @@ public class ARAP_AutoPayoutPaymentSettlement extends BaseClass {
 		waitHelper.waitForElementVisible(vendorContractObj.firstTempRecord(), 2000, 100);
 		vendorContractObj.firstTempRecord().click();
 
-		waitHelper.waitForElementVisible(vendorContractObj.vendorContractItemDetails(), 2000, 100);
+//		waitHelper.waitForElementVisible(vendorContractObj.vendorContractItemDetails(), 2000, 100);
+		waitHelper.waitForElementToVisibleWithFluentWait(driver, vendorContractObj.vendorContractItemDetails(), 20, 2);
 		vendorContractObj.vendorContractItemDetails().click();
 
-		waitHelper.waitForElementVisible(vendorContractObj.vendorContractAddButton(), 2000, 100);
+//		waitHelper.waitForElementVisible(vendorContractObj.vendorContractAddButton(), 2000, 100);
+		Thread.sleep(1000);
+		waitHelper.waitForElementToVisibleWithFluentWait(driver, vendorContractObj.vendorContractAddButton(), 20, 2);
 		vendorContractObj.vendorContractAddButton().click();
 
 		waitHelper.waitForElementVisible(vendorContractObj.vendorContractHSNCode(), 2000, 100);
@@ -154,8 +162,10 @@ public class ARAP_AutoPayoutPaymentSettlement extends BaseClass {
 
 	@And("^add the payment term for the contract$")
 	public void add_the_payment_term_for_the_contract() throws Throwable {
+		Thread.sleep(1000);
 		while (true) {
 			try {
+				waitHelper.waitForElementToVisibleWithFluentWait(driver, vendorContractObj.vendorContractPaymentTerm(), 20,2);
 				vendorContractObj.vendorContractPaymentTerm().click();
 				waitHelper.waitForElementVisible(vendorContractObj.vendorContractAddButton(), 2000, 100);
 				vendorContractObj.vendorContractAddButton().click();
@@ -195,13 +205,17 @@ public class ARAP_AutoPayoutPaymentSettlement extends BaseClass {
 		vendorContractObj.vendorContractBenificioryDetailsAutoPayout().sendKeys(Keys.DOWN);
 		vendorContractObj.vendorContractBenificioryDetailsAutoPayout().sendKeys(Keys.ENTER);
 		vendorContractObj.vendorContractBenificioryDetailsSaveButton().click();
+		
+//		waitHelper.waitForElementToVisibleWithFluentWait(driver, vendorContractObj.vendorContract_AlertClose(), 20, 2);
+//		vendorContractObj.vendorContract_AlertClose().click();
 	}
 
 	@Then("^Click on Update Deposited Cheque Notification$")
 	public void click_on_update_deposited_cheque_notification() {
-		waitHelper.waitForElement(driver, 3000, accountReceivable_UpdateDepositedChequeObj.accountReceivable_UpdateDepositedCheque_Notification());
+//		waitHelper.waitForElement(driver, 3000, accountReceivable_UpdateDepositedChequeObj.accountReceivable_UpdateDepositedCheque_Notification());
+		waitHelper.waitForElementToVisibleWithFluentWait(driver, accountReceivable_UpdateDepositedChequeObj.accountReceivable_UpdateDepositedCheque_Notification(), 0, 0);
 		accountReceivable_UpdateDepositedChequeObj.accountReceivable_UpdateDepositedCheque_Notification().click();
-
+		
 	}
 
 	@And("^Select and Submit the Update Deposited Cheque record$")
@@ -241,7 +255,8 @@ public class ARAP_AutoPayoutPaymentSettlement extends BaseClass {
 		driver.findElement(By.xpath(before_xpath + testData.get("ReferenceID") + after_xpath)).click();
 
 		// Submit button
-		waitHelper.waitForElement(driver, 2000, inventoryMaintenanceObj.inventoryMaintenance_InventoryItem_SubmitButton());
+//		waitHelper.waitForElement(driver, 2000, inventoryMaintenanceObj.inventoryMaintenance_InventoryItem_SubmitButton());
+		waitHelper.waitForElementToVisibleWithFluentWait(driver, inventoryMaintenanceObj.inventoryMaintenance_InventoryItem_SubmitButton(), 20, 2);
 		inventoryMaintenanceObj.inventoryMaintenance_InventoryItem_SubmitButton().click();
 
 		// Remark
@@ -284,6 +299,13 @@ public class ARAP_AutoPayoutPaymentSettlement extends BaseClass {
 //		jsonWriter = new JsonDataReaderWriter();
 //		jsonWriter.addData(reviewerId);
 
+	}
+	
+	@Given("^User login as a reviewer user to approve the record by reviewer$")
+	public void user_login_as_a_reviewer_user_to_approve_the_record_by_reviewer() throws IOException, ParseException {
+		login = new KUBS_Login(driver);
+		driver.get(configreader.getApplicationUrl());
+		login.logintoAzentioappReviewer("Reviewer", testData.get("ReviewerID"));
 	}
 
 	@And("^validate the saved record$")
@@ -395,7 +417,8 @@ public class ARAP_AutoPayoutPaymentSettlement extends BaseClass {
 		// open pool
 		waitHelper = new WaitHelper(driver);
 		kubschecker = new Azentio_CheckerObj(driver);
-		waitHelper.waitForElement(driver, 3000, kubschecker.checkerSecurityManagement());
+//		waitHelper.waitForElement(driver, 3000, kubschecker.checkerSecurityManagement());
+		waitHelper.waitForElementToVisibleWithFluentWait(driver, kubschecker.checkerSecurityManagement(), 20, 2);
 		kubschecker.checkerSecurityManagement().click();
 
 		// claim
@@ -448,6 +471,7 @@ public class ARAP_AutoPayoutPaymentSettlement extends BaseClass {
 	public void fill_the_mendatory_fields_for_po_creation() throws Throwable {
 		waitHelper.waitForElementVisible(poCreationObj.accountsPayable_VendorPurchaseOrder_BPName(), 2000, 100);
 		poCreationObj.accountsPayable_VendorPurchaseOrder_BPName().click();
+		waitHelper.waitForElementToVisibleWithFluentWait(driver, poCreationObj.accountsPayable_VendorPurchaseOrder_BPName(), 20, 2);
 		poCreationObj.accountsPayable_VendorPurchaseOrder_BPName().sendKeys(testData.get("BusinessPartnerName"));
 		poCreationObj.accountsPayable_VendorPurchaseOrder_BPName().sendKeys(Keys.DOWN);
 		poCreationObj.accountsPayable_VendorPurchaseOrder_BPName().sendKeys(Keys.ENTER);
@@ -506,10 +530,15 @@ public class ARAP_AutoPayoutPaymentSettlement extends BaseClass {
 		}
 
 		poCreationObj.accountsPayable_VendorPurchaseOrder_Save().click();
+		
+		waitHelper.waitForElementToVisibleWithFluentWait(driver, poCreationObj.checkerAlertClose(), 20, 2);
+		poCreationObj.checkerAlertClose().click();
 	}
 
 	@And("^save the po creation record$")
 	public void save_the_po_creation_record() throws Throwable {
+		Thread.sleep(1000);
+		waitHelper.waitForElementToVisibleWithFluentWait(driver, poCreationObj.poCreationTempView(), 20, 2);
 		poCreationObj.poCreationTempView().click();
 		waitHelper.waitForElementVisible(poCreationObj.tempViewFirstRecord(), 2000, 100);
 		poCreationObj.tempViewFirstRecord().click();
@@ -517,24 +546,33 @@ public class ARAP_AutoPayoutPaymentSettlement extends BaseClass {
 
 	@And("^save the item details for pocreation$")
 	public void save_the_item_details_for_pocreation() throws Throwable {
+		waitHelper.waitForElementToVisibleWithFluentWait(driver, poCreationObj.accountsPayable_VendorPurchaseOrder_ItemDetails(), 20, 2);
 		poCreationObj.accountsPayable_VendorPurchaseOrder_ItemDetails().click();
-		waitHelper.waitForElementVisible(poCreationObj.accountsPayable_VendorPurchaseOrder_ItemDetailsRecord(), 2000, 100);
+//		waitHelper.waitForElementVisible(poCreationObj.accountsPayable_VendorPurchaseOrder_ItemDetailsRecord(), 2000, 100);
+		Thread.sleep(1000);
+		waitHelper.waitForElementToVisibleWithFluentWait(driver, poCreationObj.accountsPayable_VendorPurchaseOrder_ItemDetailsRecord(), 20, 2);
 		poCreationObj.accountsPayable_VendorPurchaseOrder_ItemDetailsRecord().click();
 		waitHelper.waitForElementVisible(poCreationObj.accountsPayable_VendorPurchaseOrder_ShippedFromLocation(), 2000, 100);
 		poCreationObj.accountsPayable_VendorPurchaseOrder_ShippedFromLocation().click();
 		poCreationObj.accountsPayable_VendorPurchaseOrder_ShippedFromLocation().sendKeys(Keys.ENTER);
 		poCreationObj.accountsPayable_VendorPurchaseOrder_DeliveryLocation().click();
 		poCreationObj.accountsPayable_VendorPurchaseOrder_DeliveryLocation().sendKeys(Keys.ENTER);
+		waitHelper.waitForElementToVisibleWithFluentWait(driver, poCreationObj.checkerAlertClose(), 20, 2);
+		poCreationObj.checkerAlertClose().click();
+//		Thread.sleep(3000);
 		while (true) {
 			try {
+				waitHelper.waitForElementToVisibleWithFluentWait(driver, poCreationObj.accountsPayable_VendorPurchaseOrder_PoItemSave(), 20, 2);
 				poCreationObj.accountsPayable_VendorPurchaseOrder_PoItemSave().click();
 				break;
 			} catch (NoSuchElementException e) {
 
 			}
 		}
-		waitHelper.waitForElementVisible(poCreationObj.checkerAlertClose(), 2000, 100);
-		poCreationObj.checkerAlertClose().click();
+//		waitHelper.waitForElementVisible(poCreationObj.checkerAlertClose(), 2000, 100);
+//		waitHelper.waitForElementToVisibleWithFluentWait(driver, poCreationObj.checkerAlertClose(), 20, 2);
+//		poCreationObj.checkerAlertClose().click();
+		
 	}
 
 	@And("^save the benificiery details for po creation$")
@@ -545,6 +583,7 @@ public class ARAP_AutoPayoutPaymentSettlement extends BaseClass {
 	@Then("^click on po creation module$")
 	public void click_on_po_creation_module() throws Throwable {
 		// grnObject.accountPayable_GoodsReceivedNoteGRNEyeButton().click();
+		waitHelper.waitForElementwithFluentwait(driver, ArAp_poCreationObj.poCreationViewButton());
 		ArAp_poCreationObj.poCreationViewButton().click();
 
 	}
@@ -585,8 +624,11 @@ public class ARAP_AutoPayoutPaymentSettlement extends BaseClass {
 		grnObject.accountPayable_GRN_BPBranch().click();
 		grnObject.accountPayable_GRN_BPBranch().sendKeys(Keys.ENTER);
 		grnObject.accountPayable_GrnInvoiceNumber().sendKeys(testData.get("InvoiceNo"));
+		waitHelper.waitForElementToVisibleWithFluentWait(driver, grnObject.accountPayable_GrnDeliveryLocation(), 20, 2);
 		grnObject.accountPayable_GrnDeliveryLocation().click();
 		// grnObject.accountPayable_GrnDeliveryLocation().sendKeys(Keys.DOWN);
+//		grnObject.accountPayable_GrnDeliveryLocation().sendKeys(Keys.ENTER);
+		grnObject.accountPayable_GrnDeliveryLocation().sendKeys(testData.get("DeliveryLocation"));
 		grnObject.accountPayable_GrnDeliveryLocation().sendKeys(Keys.ENTER);
 		// waitHelper.waitForElementVisible(grnObject.accountPayable_GrnSaveButton(),
 		// 1000, 100);
@@ -647,6 +689,9 @@ public class ARAP_AutoPayoutPaymentSettlement extends BaseClass {
 		// grnObject.ItemDetailsSaveButton().click();
 		// clickAndActions.doubleClick(grnObject.ItemDetailsSaveButton());
 		clicksAndActionHelper.clickOnElement(grnObject.ItemDetailsSaveButton());
+		
+		waitHelper.waitForElementToVisibleWithFluentWait(driver, vendorContractObj.vendorContract_AlertClose(), 20, 2);
+		vendorContractObj.vendorContract_AlertClose().click();
 		// Thread.sleep(2000);
 	}
 
@@ -679,6 +724,7 @@ public class ARAP_AutoPayoutPaymentSettlement extends BaseClass {
 
 			}
 		}
+		waitHelper.waitForElementToVisibleWithFluentWait(driver, invoiceBookingObj.accountPayable_InvoiceBooking_SaveExpense(), 20, 2);
 		invoiceBookingObj.accountPayable_InvoiceBooking_SaveExpense().click();
 		waitHelper.waitForElementVisible(poCreationObj.checkerAlertClose(), 2000, 100);
 		poCreationObj.checkerAlertClose().click();
@@ -879,6 +925,7 @@ public class ARAP_AutoPayoutPaymentSettlement extends BaseClass {
 	@And("^fill the mendatory fields for auto payout record$")
 	public void fill_the_mendatory_fields_for_auto_payout_record() throws Throwable {
 		javaScriptHelper.JavaScriptHelper(driver);
+		waitHelper.waitForElementToVisibleWithFluentWait(driver, accoutsPayableAutoPayoutObj.accoutspYablePaymentBank(), 20, 2);
 		accoutsPayableAutoPayoutObj.accoutspYablePaymentBank().click();
 		accoutsPayableAutoPayoutObj.accoutspYablePaymentBank().sendKeys(Keys.DOWN);
 		accoutsPayableAutoPayoutObj.accoutspYablePaymentBank().sendKeys(Keys.ENTER);
@@ -927,8 +974,8 @@ public class ARAP_AutoPayoutPaymentSettlement extends BaseClass {
 		for(int i=0;i<20;i++) {
 			try {
 //				waitHelper.waitForElement(driver, 3000, driver.findElement(By.xpath("//span[contains(text(),'" + testData.get("Gl Month") + " " + testData.get("Gl Year") + "')]")));
-				waitHelper.waitForElementToVisibleWithFluentWait(driver, driver.findElement(By.xpath("//span[contains(text(),'" + testData.get("GL Month") + " " + testData.get("GL Year") + "')]")), 10, 2);
-				WebElement monthAndYear = driver.findElement(By.xpath("//span[contains(text(),'" + testData.get("GL Month") + " " + testData.get("GL Year") + "')]"));
+				waitHelper.waitForElementToVisibleWithFluentWait(driver, driver.findElement(By.xpath("//span[text()='" + testData.get("GL Month") + " " + testData.get("GL Year") + "']")), 10, 2);
+				WebElement monthAndYear = driver.findElement(By.xpath("//span[text()='" + testData.get("GL Month") + " " + testData.get("GL Year") + "']"));
 				break;
 			}
 
@@ -946,8 +993,8 @@ public class ARAP_AutoPayoutPaymentSettlement extends BaseClass {
 			try {
 
 //				waitHelper.waitForElement(driver, 3000, driver.findElement(By.xpath("//span[contains(text(),'" + testData.get("GL To Month") + " " + testData.get("GL To Year") + "')]")));
-				waitHelper.waitForElementToVisibleWithFluentWait(driver, driver.findElement(By.xpath("//span[contains(text(),'" + testData.get("GL To Month") + " " + testData.get("GL To Year") + "')]")), 0, 0);
-				WebElement monthAndYear = driver.findElement(By.xpath("//span[contains(text(),'" + testData.get("GL To Month") + " " + testData.get("GL To Year") + "')]"));
+				waitHelper.waitForElementToVisibleWithFluentWait(driver, driver.findElement(By.xpath("//span[text()='" + testData.get("GL To Month") + " " + testData.get("GL To Year") + "']")), 0, 0);
+				WebElement monthAndYear = driver.findElement(By.xpath("//span[text()='" + testData.get("GL To Month") + " " + testData.get("GL To Year") + "']"));
 				break;
 			}
 
@@ -963,26 +1010,60 @@ public class ARAP_AutoPayoutPaymentSettlement extends BaseClass {
 	public void verify_approved_settlement_reference_number_is_available_in_the_gl_report() throws Throwable {
 		javaScriptHelper.JavaScriptHelper(driver);
 		Thread.sleep(1000);
-//				driver.findElement(By.xpath("(//datatable-body-cell[1]//span[contains(text(),'"
-//						+ settlementData.get("approvedReferenceNumber") + "')])[1]")).isDisplayed();
+		for (int i = 0; i <= 70; i++) {
+			try {
 
-//				driver.findElement(By.xpath("(//datatable-body-cell[1]//span[contains(text(),'"
-//						+ settlementData.get("approvedReferenceNumber") + "')])[1]"));
-//				String TransactionType = driver
-//						.findElement(By.xpath("(//datatable-body-cell[1]//span[contains(text(),' "
-//								+ settlementData.get("approvedReferenceNumber")
-//								+ " ')]/ancestor::datatable-body-cell[1]/following-sibling::datatable-body-cell[5]//span)[1]"))
-//						.getText();
-//				System.out.println("TransactionType is " + TransactionType);
-//				String amount = driver.findElement(By.xpath("(//datatable-body-cell[1]//span[contains(text(),' "
-//						+ settlementData.get("approvedReferenceNumber")
-//						+ " ')]/ancestor::datatable-body-cell[1]/following-sibling::datatable-body-cell[6]//span)[1]"))
-//						.getText();
-		// System.out.println("Amount is " + amount);
+				driver.findElement(By.xpath("(//datatable-body-cell[1]//span[contains(text(),'"
+						+ settlementData.get("approvedReferenceNumber") + "')])[1]")).isDisplayed();
+
+				driver.findElement(By.xpath("(//datatable-body-cell[1]//span[contains(text(),'"
+						+ settlementData.get("approvedReferenceNumber") + "')])[1]"));
+				String TransactionType = driver
+						.findElement(By.xpath("(//datatable-body-cell[1]//span[contains(text(),' "
+								+ settlementData.get("approvedReferenceNumber")
+								+ " ')]/ancestor::datatable-body-cell[1]/following-sibling::datatable-body-cell[5]//span)[1]"))
+						.getText();
+				System.out.println("TransactionType is " + TransactionType);
+				String amount = driver.findElement(By.xpath("(//datatable-body-cell[1]//span[contains(text(),' "
+						+ settlementData.get("approvedReferenceNumber")
+						+ " ')]/ancestor::datatable-body-cell[1]/following-sibling::datatable-body-cell[6]//span)[1]"))
+						.getText();
+				 System.out.println("Amount is " + amount);
+			}catch (NoSuchElementException e) {
+					javaScriptHelper.scrollIntoView(arapObj.accountsPayablePayementSettlementNextRecord());
+					arapObj.accountsPayablePayementSettlementNextRecord().click();
+				}
+		}
 	}
+	
+	@Given("^User login as a reviewer user for verify settlement for the bill is auto approved$")
+	public void user_login_as_a_reviewer_user_for_verify_settlement_for_the_bill_is_auto_approved() throws IOException, ParseException {
+		login = new KUBS_Login(driver);
+		driver.get(configreader.getApplicationUrl());
+		login.logintoAzentioappReviewer("Reviewer", testData.get("ReviewerID"));
+	}
+	
+	@Given("^User login as a checker user for verify settlement for the bill is auto approved$")
+    public void user_login_as_a_checker_user_for_verify_settlement_for_the_bill_is_auto_approved() throws InterruptedException {
+		login = new KUBS_Login(driver);
+		driver.get(configreader.getApplicationUrl());
+		login.loginToAzentioAppAsChecker("Checker");
+    }
 
 	@Then("^select data set ID for verify settlement for the bill is auto approved$")
 	public void select_data_set_id_for_verify_settlement_for_the_bill_is_auto_approved() throws Throwable {
+		dataSetID = "KUBS_AR_AP_UAT_004_008_TC_01_D1";
+		testData = excelData.getTestdata(dataSetID);
+	}
+	
+	@Then("^update data set ID for verify settlement for the bill is auto approved reviewer$")
+	public void update_data_set_id_for_verify_settlement_for_the_bill_is_auto_approved_reviewer() throws Throwable {
+		dataSetID = "KUBS_AR_AP_UAT_004_008_TC_01_D1";
+		testData = excelData.getTestdata(dataSetID);
+	}
+
+	@Then("^update data set ID for verify settlement for the bill is auto approved checker$")
+	public void update_data_set_id_for_verify_settlement_for_the_bill_is_auto_approved_checker() throws Throwable {
 		dataSetID = "KUBS_AR_AP_UAT_004_008_TC_01_D1";
 		testData = excelData.getTestdata(dataSetID);
 	}

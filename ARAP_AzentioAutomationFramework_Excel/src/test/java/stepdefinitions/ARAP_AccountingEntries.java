@@ -117,8 +117,8 @@ public class ARAP_AccountingEntries {
 		while (true) {
 			try {
 
-				waitHelper.waitForElementwithFluentwait(driver, driver.findElement(By.xpath("//span[contains(text(),'" + testData.get("Month") + " " + testData.get("Year") + "')]")));
-				WebElement monthAndYear = driver.findElement(By.xpath("//span[contains(text(),'" + testData.get("Month") + " " + testData.get("Year") + "')]"));
+				waitHelper.waitForElementwithFluentwait(driver, driver.findElement(By.xpath("//span[text()='" + testData.get("Month") + " " + testData.get("Year") + "']")));
+				WebElement monthAndYear = driver.findElement(By.xpath("//span[text()='" + testData.get("Month") + " " + testData.get("Year") + "']"));
 				Thread.sleep(2000);
 				break;
 			}
@@ -151,8 +151,8 @@ public class ARAP_AccountingEntries {
 				// span[contains(text(),'Oct 2022')]
 //				Thread.sleep(1000);
 //				waithelper.waitForElement(driver, 2000, driver.findElement(By.xpath("//span[contains(text(),'"+arAp_BalanceSheetReportTestDataType.Month+" "+arAp_BalanceSheetReportTestDataType.Year+"')]")));
-				waitHelper.waitForElementwithFluentwait(driver, driver.findElement(By.xpath("//span[contains(text(),'" + testData.get("Month1") + " " + testData.get("Year1") + "')]")));
-				WebElement monthAndYear = driver.findElement(By.xpath("//span[contains(text(),'" + testData.get("Month1") + " " + testData.get("Year1") + "')]"));
+				waitHelper.waitForElementwithFluentwait(driver, driver.findElement(By.xpath("//span[text()='" + testData.get("Month1") + " " + testData.get("Year1") + "']")));
+				WebElement monthAndYear = driver.findElement(By.xpath("//span[text()='" + testData.get("Month1") + " " + testData.get("Year1") + "']"));
 //				Thread.sleep(2000);
 				break;
 			}

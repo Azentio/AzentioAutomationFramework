@@ -1,7 +1,10 @@
 package stepdefinitions;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+
+import org.json.simple.parser.ParseException;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.ElementClickInterceptedException;
@@ -12,10 +15,13 @@ import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+
+import dataProvider.ConfigFileReader;
 import helper.ClicksAndActionsHelper;
 import helper.JavascriptHelper;
 import helper.WaitHelper;
 import io.cucumber.java.en.And;
+import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import pageobjects.ACCOUNTSPAYABLE_InvoiceBookingObj;
 import pageobjects.ACCOUNTSPAYABLE_PayementSettlementObj;
@@ -44,6 +50,7 @@ public class CancellationOfAdvanceToEmployees extends BaseClass {
 	KUBS_Login kubsLogin = new KUBS_Login(driver);
 	KUBS_ReviewerObj kubsReviewerObj = new KUBS_ReviewerObj(driver);
 	KUBS_CheckerObj kubsCheckerObj = new KUBS_CheckerObj(driver);
+	ConfigFileReader configreader = new ConfigFileReader();
 	String poNumber;
 	String poBusinessPartner;
 	String BPNumber;
@@ -64,14 +71,16 @@ public class CancellationOfAdvanceToEmployees extends BaseClass {
 	ACCOUNTSPAYABLE_InvoiceBookingObj invoiceBookingObj = new ACCOUNTSPAYABLE_InvoiceBookingObj(driver);
 	Map<String, String> settlementTestData = new HashMap<>();
 	Map<String, String> accountsReceivableTestData = new HashMap<>();
-	ExcelData excelData = new ExcelData("C:\\Users\\inindc00091\\git\\repository6\\ARAP_AzentioAutomationFramework_Excel\\Test-data\\KUBS_TESTDATA_V1.xlsx",
+	ExcelData excelData = new ExcelData("C:\\Users\\ININDC00091\\git\\AzentioAutomationFramework\\DeveshFW_Excel\\ARAP_AzentioAutomationFramework_Excel\\Test-data\\KUBS_TESTDATA_V1.xlsx",
 			"CancellationOfAdvanceEMPData", "Data Set ID");
 	Map<String, String> testData = new HashMap<>();
 	String dataSetID;
 
 	@Then("^go to ar ap adjustment module$")
 	public void go_to_ar_ap_adjustment_module() throws Throwable {
-		Thread.sleep(2000);
+//		Thread.sleep(2000);
+		javaScriptHelper.JavaScriptHelper(driver);
+		javaScriptHelper.scrollIntoView(makerObj.kubsToolIcon());
 		waitHelper.waitForElementToVisibleWithFluentWait(driver, makerObj.kubsToolIcon(), 5, 500);
 		makerObj.kubsToolIcon().click();
 		waitHelper.waitForElementVisible(makerObj.kubsDirectionIcon(), 2000, 100);
@@ -157,8 +166,8 @@ public class CancellationOfAdvanceToEmployees extends BaseClass {
 		for(int i=0;i<20;i++) {
 			try {
 //				waitHelper.waitForElement(driver, 3000, driver.findElement(By.xpath("//span[contains(text(),'" + testData.get("Gl Month") + " " + testData.get("Gl Year") + "')]")));
-				waitHelper.waitForElementToVisibleWithFluentWait(driver, driver.findElement(By.xpath("//span[contains(text(),'" + testData.get("GL Month") + " " + testData.get("GL Year") + "')]")), 10, 2);
-				WebElement monthAndYear = driver.findElement(By.xpath("//span[contains(text(),'" + testData.get("GL Month") + " " + testData.get("GL Year") + "')]"));
+				waitHelper.waitForElementToVisibleWithFluentWait(driver, driver.findElement(By.xpath("//span[text()='" + testData.get("GL Month") + " " + testData.get("GL Year") + "']")), 10, 2);
+				WebElement monthAndYear = driver.findElement(By.xpath("//span[text()='" + testData.get("GL Month") + " " + testData.get("GL Year") + "']"));
 				break;
 			}
 
@@ -185,8 +194,8 @@ public class CancellationOfAdvanceToEmployees extends BaseClass {
 			try {
 
 //				waitHelper.waitForElement(driver, 3000, driver.findElement(By.xpath("//span[contains(text(),'" + testData.get("GL To Month") + " " + testData.get("GL To Year") + "')]")));
-				waitHelper.waitForElementToVisibleWithFluentWait(driver, driver.findElement(By.xpath("//span[contains(text(),'" + testData.get("GL To Month") + " " + testData.get("GL To Year") + "')]")), 0, 0);
-				WebElement monthAndYear = driver.findElement(By.xpath("//span[contains(text(),'" + testData.get("GL To Month") + " " + testData.get("GL To Year") + "')]"));
+				waitHelper.waitForElementToVisibleWithFluentWait(driver, driver.findElement(By.xpath("//span[text()='" + testData.get("GL To Month") + " " + testData.get("GL To Year") + "']")), 0, 0);
+				WebElement monthAndYear = driver.findElement(By.xpath("//span[text()='" + testData.get("GL To Month") + " " + testData.get("GL To Year") + "']"));
 				break;
 			}
 
@@ -209,7 +218,7 @@ public class CancellationOfAdvanceToEmployees extends BaseClass {
 	public void adjustment_reference_number_not_availabe_in_the_gl_record() throws Throwable {
 		javaScriptHelper.JavaScriptHelper(driver);
 
-		for (int i = 0; i < 299; i++) {
+		for (int i = 0; i < 70; i++) {
 			try {
 				waitHelper.waitForElementVisible(driver.findElement(By.xpath("//span[contains(text(),'" + settlementTestData.get("adjustmentNumber") + "')]")), 2000, 100);
 				boolean result = driver.findElement(By.xpath("//span[contains(text(),'" + settlementTestData.get("adjustmentNumber") + "')]")).isDisplayed();
@@ -232,8 +241,11 @@ public class CancellationOfAdvanceToEmployees extends BaseClass {
 		waitHelper.waitForElementVisible(makerObj.kubsDirectionIcon(), 1000, 100);
 		Thread.sleep(2000);
 		makerObj.kubsDirectionIcon().click();
-		Thread.sleep(2000);
+//		Thread.sleep(2000);
+		waitHelper.waitForElementwithFluentwait(driver, makerObj.kubsAccountsReceivable());
 		makerObj.kubsAccountsReceivable().click();
+		javaScriptHelper.JavaScriptHelper(driver);
+		javaScriptHelper.scrollIntoView(accuountsReceivableObj.accountsreceivableAdvancesViewIcon());
 		waitHelper.waitForElementVisible(accuountsReceivableObj.accountsreceivableAdvancesViewIcon(), 1000, 100);
 		accuountsReceivableObj.accountsreceivableAdvancesViewIcon().click();
 
@@ -247,7 +259,9 @@ public class CancellationOfAdvanceToEmployees extends BaseClass {
 		 * addReferanceData(referenceID) This method is a predefined method to store the
 		 * reference ID into the Json file
 		 */
-		jsonReaderWriter.addReferanceData(referenceID);
+//		jsonReaderWriter.addReferanceData(referenceID);
+		excelData.updateTestData(dataSetID, "ReferenceID", referenceID);
+		testData = excelData.getTestdata(dataSetID);
 		clicksAndActionsHelper.moveToElement(grnObject.grnFirstRecord());
 		clicksAndActionsHelper.clickOnElement(grnObject.grnFirstRecord());
 		// .click();
@@ -261,8 +275,14 @@ public class CancellationOfAdvanceToEmployees extends BaseClass {
 
 		String advNumber = accuountsReceivableObj.accountsreceivableAdvancesADVNumber().getText();
 		accountsReceivableTestData.put("advNumber", advNumber);
+		excelData.updateTestData(dataSetID, "AdvNumber", advNumber);
+		testData = excelData.getTestdata(dataSetID);
+		
 		String BpName = accuountsReceivableObj.accountsreceivableAdvancesPoNumber().getText();
 		accountsReceivableTestData.put("BpName", BpName);
+		excelData.updateTestData(dataSetID, "BPName", BpName);
+		testData = excelData.getTestdata(dataSetID);
+		
 		System.out.println(accountsReceivableTestData.get("advNumber"));
 		System.out.println(accountsReceivableTestData.get("BpName"));
 	}
@@ -295,6 +315,8 @@ public class CancellationOfAdvanceToEmployees extends BaseClass {
 		arapAdjustment.adjustmentAdjustmentReference().sendKeys(accountsReceivableTestData.get("advNumber"));
 		arapAdjustment.adjustmentAdjustmentReference().sendKeys(Keys.ENTER);
 		arapAdjustment.adjustmentSaveButton().click();
+		waitHelper.waitForElementwithFluentwait(driver, arapAdjustment.adjustment_AlertClose());
+		arapAdjustment.adjustment_AlertClose().click();
 
 	}
 
@@ -311,7 +333,7 @@ public class CancellationOfAdvanceToEmployees extends BaseClass {
 	@And("^click on Submit button$")
 	public void click_on_submit_button() throws Throwable {
 		// After select the record we have to submit the record for approval
-		waitHelper.waitForElement(driver, 3000, budgetCreationObj.budgetCreation_SubmitButton());
+		waitHelper.waitForElementToVisibleWithFluentWait(driver, budgetCreationObj.budgetCreation_SubmitButton(),20,2);
 		budgetCreationObj.budgetCreation_SubmitButton().click();
 
 	}
@@ -358,7 +380,10 @@ public class CancellationOfAdvanceToEmployees extends BaseClass {
 		StringBuffer finalReviewerID = sb.deleteCharAt(trimmerReviewerID.length() - 1);
 		String revID = finalReviewerID.toString();
 		System.out.println("Reviewer ID is" + revID);
-		jsonReaderWriter.addData(revID);
+//		jsonReaderWriter.addData(revID);
+		excelData.updateTestData(dataSetID, "ReviewerID", revID);
+		testData = excelData.getTestdata(dataSetID);
+		waitHelper.waitForElementwithFluentwait(driver, budgetCreationObj.budgetCreationAlertClose());
 		budgetCreationObj.budgetCreationAlertClose().click();
 
 	}
@@ -382,11 +407,27 @@ public class CancellationOfAdvanceToEmployees extends BaseClass {
 		/*
 		 * Then we have to login with reviewer and continue the approval process
 		 */
-		Thread.sleep(3000);
-		kubsLogin.logintoAzentioappReviewer(userType, jsonReaderWriter.readdata());
+		Thread.sleep(2000);
+//		kubsLogin = new KUBS_Login(driver);
+//		driver.get(configreader.getApplicationUrl());
+		kubsLogin.logintoAzentioappReviewer(userType, testData.get("ReviewerID"));
 
 	}
+	
+	@Given("^login with reviewer credentials for cancelled advance record$")
+    public void login_with_reviewer_credentials_for_cancelled_advance_record() throws Throwable {
+		kubsLogin = new KUBS_Login(driver);
+		driver.get(configreader.getApplicationUrl());
+		kubsLogin.logintoAzentioappReviewer("Reviewer", testData.get("ReviewerID"));
+    }
 
+    @Given("^login with checker credentials for cancelled advance record$")
+    public void login_with_checker_credentials_for_cancelled_advance_record() throws Throwable {
+    	kubsLogin = new KUBS_Login(driver);
+		driver.get(configreader.getApplicationUrl());
+		kubsLogin.loginToAzentioAppAsChecker("Checker");
+    }
+	
 	@Then("^click on notification button$")
 	public void click_on_notification_button() throws Throwable {
 		/*
@@ -407,14 +448,14 @@ public class CancellationOfAdvanceToEmployees extends BaseClass {
 		 * before_xpath and after_xpath string variable are used to customize the xpath
 		 * as per our reference ID
 		 */
-		// Thread.sleep(1000);
+		 Thread.sleep(2000);
 		javaScriptHelper.JavaScriptHelper(driver);
 		String before_xpath = "//span[contains(text(),'";
 		String after_xpath = "')]/ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell//ion-button";
 		for (int i = 0; i <= 300; i++) {
 			try {
-				waitHelper.waitForElement(driver, 3000, driver.findElement(By.xpath(before_xpath + jsonReaderWriter.readReferancedata() + after_xpath)));
-				javaScriptHelper.JSEClick(driver.findElement(By.xpath(before_xpath + jsonReaderWriter.readReferancedata() + after_xpath)));
+//				waitHelper.waitForElement(driver, 3000, driver.findElement(By.xpath(before_xpath + testData.get("ReferenceID") + after_xpath)));
+				javaScriptHelper.JSEClick(driver.findElement(By.xpath(before_xpath + testData.get("ReferenceID") + after_xpath)));
 				// driver.findElement(By.xpath(before_xpath +
 				// jsonReaderWriter.readReferancedata() + after_xpath)).click();
 				break;
@@ -488,6 +529,7 @@ public class CancellationOfAdvanceToEmployees extends BaseClass {
 		while (true) {
 			try {
 				javaScriptHelper.JavaScriptHelper(driver);
+				waitHelper.waitForElementToVisibleWithFluentWait(driver, kubsReviewerObj.reviewerAlertClose(), 20, 2);
 				kubsReviewerObj.reviewerAlertClose().click();
 				kubsReviewerObj.reviewerUserName().click();
 				waitHelper.waitForElement(driver, 3000, kubsReviewerObj.reviewerLogoutButton());
@@ -506,7 +548,7 @@ public class CancellationOfAdvanceToEmployees extends BaseClass {
 		/*
 		 * By the help of following step we can login as a checker
 		 */
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 		kubsLogin.loginToAzentioAppAsChecker("Checker");
 
 	}
@@ -527,7 +569,7 @@ public class CancellationOfAdvanceToEmployees extends BaseClass {
 
 	@Then("^click on action button under security management menu$")
 	public void click_on_action_button_under_security_management_menu() throws Throwable {
-
+		javaScriptHelper.JavaScriptHelper(driver);
 		javaScriptHelper.JSEClick(kubsCheckerObj.checkerActionIcon());
 
 	}
@@ -548,7 +590,7 @@ public class CancellationOfAdvanceToEmployees extends BaseClass {
 //			waitHelper.waitForElementToVisibleWithFluentWait(driver,
 //				driver.findElement(By.xpath(before_xpath + jsonReaderWriter.readReferancedata() + after_xpath_claim)),
 //				80, 500);
-				WebElement climeButton = driver.findElement(By.xpath(before_xpath + jsonReaderWriter.readReferancedata() + after_xpath_claim));
+				WebElement climeButton = driver.findElement(By.xpath(before_xpath + testData.get("ReferenceID") + after_xpath_claim));
 
 				boolean bool = climeButton.isDisplayed();
 				clicksAndActionsHelper.clickOnElement(climeButton);
@@ -568,7 +610,7 @@ public class CancellationOfAdvanceToEmployees extends BaseClass {
 	@Then("^click on Notification button$")
 	public void cliick_on_notification_button() throws Throwable {
 		javaScriptHelper.JavaScriptHelper(driver);
-		waitHelper.waitForElementToVisibleWithFluentWait(driver, kubsCheckerObj.checkerAlertClose(), 80, 500);
+		waitHelper.waitForElementToVisibleWithFluentWait(driver, kubsCheckerObj.checkerAlertClose(), 20, 500);
 		for (int i = 0; i <= 15; i++) {
 			try {
 				kubsCheckerObj.checkerAlertClose().click();
@@ -599,8 +641,8 @@ public class CancellationOfAdvanceToEmployees extends BaseClass {
 //				waitHelper.waitForElementToVisibleWithFluentWait(driver,
 //						driver.findElement(By.xpath(before_xpath + jsonReaderWriter.readReferancedata() + after_xpath)),
 //						100, 500);
-				clicksAndActionsHelper.moveToElement(driver.findElement(By.xpath(before_xpath + jsonReaderWriter.readReferancedata() + after_xpath)));
-				clicksAndActionsHelper.doubleClick(driver.findElement(By.xpath(before_xpath + jsonReaderWriter.readReferancedata() + after_xpath)));
+				clicksAndActionsHelper.moveToElement(driver.findElement(By.xpath(before_xpath + testData.get("ReferenceID") + after_xpath)));
+				clicksAndActionsHelper.doubleClick(driver.findElement(By.xpath(before_xpath + testData.get("ReferenceID") + after_xpath)));
 				break;
 			} catch (Exception e) {
 				if (i == 100) {
@@ -656,7 +698,8 @@ public class CancellationOfAdvanceToEmployees extends BaseClass {
 		 */
 		waitHelper.waitForElementToVisibleWithFluentWait(driver, kubsCheckerObj.checkerApprovalStatus(), 60, 500);
 		String approvalStatusForChecker = kubsCheckerObj.checkerApprovalStatus().getText();
-		Assert.assertEquals(approvalStatusForChecker, "Record APPROVED successfully");
+		Assert.assertEquals(approvalStatusForChecker, "Record approved successfully");
+		
 	}
 
 	@Then("^logout from checker$")
@@ -680,6 +723,8 @@ public class CancellationOfAdvanceToEmployees extends BaseClass {
 
 	@And("^Go to payment settlement module$")
 	public void go_to_payment_settlement_module() throws Throwable {
+		javaScriptHelper.JavaScriptHelper(driver);
+		javaScriptHelper.scrollIntoView(paymentSettlementObj.accountsPayablePayementSettlementViewIcon());
 		waitHelper.waitForElementVisible(paymentSettlementObj.accountsPayablePayementSettlementViewIcon(), 1000, 100);
 		paymentSettlementObj.accountsPayablePayementSettlementViewIcon().click();
 		Thread.sleep(1000);
@@ -690,10 +735,12 @@ public class CancellationOfAdvanceToEmployees extends BaseClass {
 	public void fill_the_form_for_cancelled_advances() throws Throwable {
 		waitHelper.waitForElementVisible(paymentSettlementObj.accountsPayablePayementSettlementPaymentOption(), 1000, 100);
 		paymentSettlementObj.accountsPayablePayementSettlementPaymentOption().click();
+		System.out.println(testData.get("PaymentOptionForCancelledAdvance"));
 		paymentSettlementObj.accountsPayablePayementSettlementPaymentOption().sendKeys(testData.get("PaymentOptionForCancelledAdvance"));
 		paymentSettlementObj.accountsPayablePayementSettlementPaymentOption().sendKeys(Keys.ENTER);
 		paymentSettlementObj.accountsPayablePayementSettlementBpNAme().click();
-		paymentSettlementObj.accountsPayablePayementSettlementBpNAme().sendKeys(accountsReceivableTestData.get("BpName"));
+//		paymentSettlementObj.accountsPayablePayementSettlementBpNAme().sendKeys(accountsReceivableTestData.get("BpName"));
+		paymentSettlementObj.accountsPayablePayementSettlementBpNAme().sendKeys(testData.get("BPName"));
 		paymentSettlementObj.accountsPayablePayementSettlementBpNAme().sendKeys(Keys.DOWN);
 		paymentSettlementObj.accountsPayablePayementSettlementBpNAme().sendKeys(Keys.ENTER);
 		Thread.sleep(1000);
@@ -706,8 +753,10 @@ public class CancellationOfAdvanceToEmployees extends BaseClass {
 		// javaScriptHelper.scrollDownByPixel();
 		for (int i = 0; i <= 30; i++) {
 			try {
-				waitHelper.waitForElementVisible(driver.findElement(By.xpath("//div[contains(text(),'" + accountsReceivableTestData.get("advNumber") + "')]")), 1000, 100);
-				driver.findElement(By.xpath("//div[contains(text(),'" + accountsReceivableTestData.get("advNumber") + "')]")).isDisplayed();
+//				waitHelper.waitForElementVisible(driver.findElement(By.xpath("//div[contains(text(),'" + accountsReceivableTestData.get("advNumber") + "')]")), 1000, 100);
+//				driver.findElement(By.xpath("//div[contains(text(),'" + accountsReceivableTestData.get("advNumber") + "')]")).isDisplayed();
+				waitHelper.waitForElementVisible(driver.findElement(By.xpath("//div[contains(text(),'" + testData.get("AdvNumber") + "')]")), 1000, 100);
+				driver.findElement(By.xpath("//div[contains(text(),'" + testData.get("AdvNumber") + "')]")).isDisplayed();
 				// Assert.assertFalse(result);
 
 			} catch (NoSuchElementException e) {
@@ -738,12 +787,12 @@ public class CancellationOfAdvanceToEmployees extends BaseClass {
 		// input[@placeholder='Search Receivable Name']
 		waitHelper.waitForElementVisible(accuountsReceivableObj.accountsReceivablereceivableName(), 2000, 100);
 		accuountsReceivableObj.accountsReceivablereceivableName().click();
-		accuountsReceivableObj.accountsReceivablereceivableName().sendKeys(testData.get("RecevableName"));
+		accuountsReceivableObj.accountsReceivablereceivableName().sendKeys(testData.get("ReceivableName"));
 		for (int row = 1; row < 7; row++) {
 			// datatable-row-wrapper[1]/datatable-body-row[1]//datatable-body-cell[8]/div[1]/span[1]
 			waitHelper.waitForElementVisible(driver.findElement(By.xpath("//datatable-row-wrapper[" + row + "]/datatable-body-row[1]//datatable-body-cell[8]/div[1]/span[1]")), 2000, 100);
 			String receivableStatus = driver.findElement(By.xpath("//datatable-row-wrapper[" + row + "]/datatable-body-row[1]//datatable-body-cell[8]/div[1]/span[1]")).getText();
-			System.out.println("Receivable STatus is " + receivableStatus);
+			System.out.println("Receivable Status is " + receivableStatus);
 
 			try {
 				Assert.assertEquals(receivableStatus, "Active");
@@ -752,6 +801,12 @@ public class CancellationOfAdvanceToEmployees extends BaseClass {
 				String bpName = driver.findElement(By.xpath("//datatable-row-wrapper[" + row + "]/datatable-body-row[1]//datatable-body-cell[5]/div[1]/span[1]")).getText();
 				accountsReceivableTestData.put("advNumber", advNumber);
 				accountsReceivableTestData.put("BpName", bpName);
+				
+				excelData.updateTestData(dataSetID, "AdvNumber", advNumber);
+				testData = excelData.getTestdata(dataSetID);
+				excelData.updateTestData(dataSetID, "BPName", bpName);
+				testData = excelData.getTestdata(dataSetID);
+				
 				System.out.println(accountsReceivableTestData.get("advNumber"));
 				System.out.println(accountsReceivableTestData.get("BpName"));
 				break;
@@ -764,6 +819,8 @@ public class CancellationOfAdvanceToEmployees extends BaseClass {
 
 	@And("^go to aacounts payable module$")
 	public void go_to_aacounts_payable_module() throws Throwable {
+		javaScriptHelper.JavaScriptHelper(driver);
+		javaScriptHelper.scrollIntoView(makerObj.kubsDirectionIcon());
 		waitHelper.waitForElementVisible(makerObj.kubsDirectionIcon(), 2000, 100);
 		makerObj.kubsDirectionIcon().click();
 		waitHelper.waitForElementVisible(makerObj.kubsAccountsPayable(), 2000, 100);
@@ -839,6 +896,10 @@ public class CancellationOfAdvanceToEmployees extends BaseClass {
 		waitHelper.waitForElementVisible(paymentSettlementObj.accountsPayableAlertYes(), 2000, 100);
 		paymentSettlementObj.accountsPayableAlertYes().click();
 		Thread.sleep(1000);
+		
+		waitHelper.waitForElementToVisibleWithFluentWait(driver, paymentSettlementObj.accountsPayable_AlertClose(), 20, 2);
+		paymentSettlementObj.accountsPayable_AlertClose().click();
+		
 	}
 
 	@Then("^choose first record in the notification record$")
@@ -855,7 +916,10 @@ public class CancellationOfAdvanceToEmployees extends BaseClass {
 		 * addReferanceData(referenceID) This method is a predefined method to store the
 		 * reference ID into the Json file
 		 */
-		jsonReaderWriter.addReferanceData(referenceID);
+//		jsonReaderWriter.addReferanceData(referenceID);
+		excelData.updateTestData(dataSetID, "ReviewerID", referenceID);
+		testData = excelData.getTestdata(dataSetID);
+		
 		budgetCreationObj.budgetCreationFirstRecord().click();
 
 	}
@@ -863,7 +927,7 @@ public class CancellationOfAdvanceToEmployees extends BaseClass {
 	@Then("^check the settlement completed advance can be cancelled$")
 	public void check_the_settlement_completed_advance_can_be_cancelled() throws Throwable {
 		waitHelper.waitForElementVisible(arapAdjustment.adjustmentBpName(), 1000, 100);
-		arapAdjustment.adjustmentBpName().sendKeys(accountsReceivableTestData.get("BpName"));
+		arapAdjustment.adjustmentBpName().sendKeys(testData.get("BPName"));
 		arapAdjustment.adjustmentBpName().sendKeys(Keys.ENTER);
 		arapAdjustment.adjustmentadjustmentType().click();
 		arapAdjustment.adjustmentadjustmentType().sendKeys(Keys.ENTER);
@@ -871,7 +935,7 @@ public class CancellationOfAdvanceToEmployees extends BaseClass {
 		arapAdjustment.adjustmentItemType().sendKeys(testData.get("AdjustementItemType"));
 		arapAdjustment.adjustmentItemType().sendKeys(Keys.ENTER);
 		arapAdjustment.adjustmentAdjustmentReference().click();
-		arapAdjustment.adjustmentAdjustmentReference().sendKeys(accountsReceivableTestData.get("advNumber"));
+		arapAdjustment.adjustmentAdjustmentReference().sendKeys(testData.get("AdvNumber"));
 		waitHelper.waitForElementVisible(arapAdjustment.adjustmentAdjustmentReferenceNodata(), 2000, 100);
 		boolean result = arapAdjustment.adjustmentAdjustmentReferenceNodata().isDisplayed();
 		Assert.assertTrue(result);
@@ -885,14 +949,38 @@ public class CancellationOfAdvanceToEmployees extends BaseClass {
 		testData = excelData.getTestdata(dataSetID);
     }
 	
-	@Then("^select data set ID for verify cancelled adcance is not available for payment settlement$")
-	public void select_data_set_id_for_verify_cancelled_adcance_is_not_available_for_payment_settlement() throws Throwable {
+	@Then("^select data set ID for verify cancelled advance is not available for payment settlement$")
+	public void select_data_set_id_for_verify_cancelled_advance_is_not_available_for_payment_settlement() throws Throwable {
+		dataSetID = "KUBS_AR_AP_UAT_003_008_TC_02_D1";
+		testData = excelData.getTestdata(dataSetID);
+	}
+	
+	@Then("^update data set ID for verify cancelled advance is not available for payment settlement for reviewer$")
+	public void update_data_set_id_for_verify_cancelled_advance_is_not_available_for_payment_settlement_for_reviewer() throws Throwable {
+		dataSetID = "KUBS_AR_AP_UAT_003_008_TC_02_D1";
+		testData = excelData.getTestdata(dataSetID);
+	}
+	
+	@Then("^update data set ID for verify cancelled advance is not available for payment settlement for checker$")
+	public void update_data_set_id_for_verify_cancelled_advance_is_not_available_for_payment_settlement_for_checker() throws Throwable {
 		dataSetID = "KUBS_AR_AP_UAT_003_008_TC_02_D1";
 		testData = excelData.getTestdata(dataSetID);
 	}
 	
 	@Then("^select data set ID for Verify cancelling Advance To employee is not allowed if the same has been adjusted$")
 	public void select_data_set_id_for_verify_cancelling_advance_to_employee_is_not_allowed_if_the_same_has_been_adjusted() throws Throwable {
+		dataSetID = "KUBS_AR_AP_UAT_003_008_TC_03_D1";
+		testData = excelData.getTestdata(dataSetID);
+	}
+	
+	@Then("^update data set ID for Verify cancelling Advance To employee is not allowed if the same has been adjusted for reviewer$")
+	public void update_data_set_id_for_verify_cancelling_advance_to_employee_is_not_allowed_if_the_same_has_been_adjusted_for_reviewer() throws Throwable {
+		dataSetID = "KUBS_AR_AP_UAT_003_008_TC_03_D1";
+		testData = excelData.getTestdata(dataSetID);
+	}
+	
+	@Then("^update data set ID for Verify cancelling Advance To employee is not allowed if the same has been adjusted for checker$")
+	public void update_data_set_id_for_verify_cancelling_advance_to_employee_is_not_allowed_if_the_same_has_been_adjusted_for_checker() throws Throwable {
 		dataSetID = "KUBS_AR_AP_UAT_003_008_TC_03_D1";
 		testData = excelData.getTestdata(dataSetID);
 	}

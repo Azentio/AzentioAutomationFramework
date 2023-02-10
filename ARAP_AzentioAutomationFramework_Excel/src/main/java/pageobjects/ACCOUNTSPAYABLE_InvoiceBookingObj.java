@@ -610,6 +610,14 @@ public class ACCOUNTSPAYABLE_InvoiceBookingObj {
 		return accountPayable_InvoiceBooking_SaveExpense;
 	}
 	
+	//approved po number
+	@FindBy(xpath="//app-data-grid[1]//datatable-row-wrapper[1]//datatable-body-cell[3]//span[1]")
+	private WebElement poCreation_approvedPoNumber;
+	public WebElement poCreation_ApprovedPoNumber()
+	{
+		return poCreation_approvedPoNumber;
+	}
+	
 	// Tax Details button
 	@FindBy(xpath = "//datatable-body-cell[12]/div/ion-buttons/ion-button")
 	private WebElement accountPayable_InvoiceBooking_TaxDetails;
@@ -985,7 +993,7 @@ public class ACCOUNTSPAYABLE_InvoiceBookingObj {
 		return invoiceBooking_poPaymentMode;
 	}
 	
-	@FindBy(xpath="//ion-alert[1]/div[1]/div[3]/button[1]/div[1]/div[1]")
+	@FindBy(xpath="//ion-alert[1]/div[2]/div[3]/button[1]/div[1]/div[1]")
 	private WebElement invoiceBooking_selectGRNRecord;
 	public WebElement invoiceBookingSelectGRNRecord()
 	{

@@ -53,7 +53,7 @@ public class CancellationOfAdvanceAgainstPO extends BaseClass {
 	ARAP_ARandAPObj arapObj = new ARAP_ARandAPObj(driver);
 	Map<String, String> settlementTestData = new HashMap<>();
 	Map<String, String> accountsReceivableTestData = new HashMap<>();
-	ExcelData excelData = new ExcelData("C:\\Users\\inindc00091\\git\\AzentioAutomationFramework\\ARAP_Excel_priyanka0612\\AzentioAutomationFramework_ARAP_Excel\\Test-data\\KUBS_TESTDATA_V1.xlsx",
+	ExcelData excelData = new ExcelData("C:\\Users\\ININDC00091\\git\\AzentioAutomationFramework\\DeveshFW_Excel\\ARAP_AzentioAutomationFramework_Excel\\Test-data\\KUBS_TESTDATA_V1.xlsx",
 			"CancellationOfAdvanceAgainstPO", "Data Set ID");
 	Map<String, String> testData = new HashMap<>();
 	String dataSetID;
@@ -69,7 +69,10 @@ public class CancellationOfAdvanceAgainstPO extends BaseClass {
 	@Then("^Click on Accounts Receive Advances Eye Icon$")
 	public void click_on_accounts_receive_advances_eye_icon() throws Throwable {
 		// ---------------ADVANCE EYE ICON----------------//
-		waitHelper.waitForElement(driver, 2000, arapObj.accountsReceivable_Advance_Eye());
+//		waitHelper.waitForElement(driver, 2000, arapObj.accountsReceivable_Advance_Eye());
+		javaScriptHelper.JavaScriptHelper(driver);
+		javaScriptHelper.scrollIntoView(arapObj.accountsReceivable_Advance_Eye());
+		waitHelper.waitForElementwithFluentwait(driver, arapObj.accountsReceivable_Advance_Eye());
 		arapObj.accountsReceivable_Advance_Eye().click();
 	}
 	
@@ -104,7 +107,7 @@ public class CancellationOfAdvanceAgainstPO extends BaseClass {
 	public void verify_no_accounting_entry_is_generated_on_cancelling_advances_against_po() throws Throwable {
 		javaScriptHelper.JavaScriptHelper(driver);
 		Thread.sleep(1000);
-		for (int i = 0; i <= 299; i++) {
+		for (int i = 0; i <= 70; i++) {
 			try {
 
 				driver.findElement(By.xpath("(//datatable-body-cell[1]//span[contains(text(),'" + ADVNumber + "')])[1]")).isDisplayed();
@@ -127,7 +130,7 @@ public class CancellationOfAdvanceAgainstPO extends BaseClass {
 				arapObj.accountsPayablePayementSettlementNextRecord().click();
 			}
 		}
-		for (int i = 0; i <= 299; i++) {
+		for (int i = 0; i <= 70; i++) {
 			try {
 
 				driver.findElement(By.xpath("(//datatable-body-cell[1]//span[contains(text(),'" + ADVNumber + "')])[2]")).isDisplayed();
@@ -151,6 +154,66 @@ public class CancellationOfAdvanceAgainstPO extends BaseClass {
 			}
 
 		}
+	}
+	
+	@Then("^Select from date in calender to verify no accounting entries$")
+	public void select_from_date_in_calender_to_verify_no_accounting_entries() throws Throwable {
+		// ----------CLICK ON FROM DATE--------------//
+		for(int i=0;i<=70;i++) {
+			try {
+
+				waitHelper.waitForElementwithFluentwait(driver, driver.findElement(By.xpath("//span[text()='" + testData.get("Month") + " " + testData.get("Year") + "']")));
+				WebElement monthAndYear = driver.findElement(By.xpath("//span[text()='" + testData.get("Month") + " " + testData.get("Year") + "']"));
+				Thread.sleep(2000);
+				break;
+			}
+
+			catch (NoSuchElementException nosuchElement) {
+				arapObj.ARAPNextMonth().click();
+
+			}
+
+		}
+		waitHelper.waitForElement(driver, 3000, driver.findElement(By.xpath("//td[@aria-label='" + testData.get("FullMonth") + " " + testData.get("Date") + ", " + testData.get("Year") + "']/span")));
+		WebElement Click = driver.findElement(By.xpath("//td[@aria-label='" + testData.get("FullMonth") + " " + testData.get("Date") + ", " + testData.get("Year") + "']/span"));
+
+		clicksAndActionsHelper.doubleClick(Click);
+
+	}
+	
+	@Then("^Select To date in calender to verify no accounting entries$")
+	public void select_to_date_in_calender_to_verify_no_accounting_entries() throws Throwable {
+		for(int i=0;i<=70;i++) {
+			try {
+
+				// span[contains(text(),'Oct 2022')]
+//				Thread.sleep(1000);
+//				waithelper.waitForElement(driver, 2000, driver.findElement(By.xpath("//span[contains(text(),'"+arAp_BalanceSheetReportTestDataType.Month+" "+arAp_BalanceSheetReportTestDataType.Year+"')]")));
+				waitHelper.waitForElementwithFluentwait(driver, driver.findElement(By.xpath("//span[text()='" + testData.get("Month1") + " " + testData.get("Year1") + "']")));
+				WebElement monthAndYear = driver.findElement(By.xpath("//span[text()='" + testData.get("Month1") + " " + testData.get("Year1") + "']"));
+//				Thread.sleep(2000);
+				break;
+			}
+
+			catch (NoSuchElementException nosuchElement) {
+				arapObj.ARAPNextMonth().click();
+			}
+		}
+		waitHelper.waitForElement(driver, 3000,
+				driver.findElement(By.xpath("//td[@aria-label='" + testData.get("FullMonth1") + " " + testData.get("Date1") + ", " + testData.get("Year1") + "']/span")));
+		WebElement Click = driver.findElement(By.xpath("//td[@aria-label='" + testData.get("FullMonth1") + " " + testData.get("Date1") + ", " + testData.get("Year1") + "']/span"));
+
+		clicksAndActionsHelper.doubleClick(Click);
+
+	}
+	
+	@And("^choose branch codes to verify accounting entries$")
+	public void choose_branch_codes_to_verify_accounting_entries() throws Throwable {
+		// -----------CLICK ON BRANCH CODE------------//
+		waitHelper.waitForElement(driver, 2000, arapObj.ARAPBranchCode());
+		arapObj.ARAPBranchCode().click();
+		arapObj.ARAPBranchCode().sendKeys(testData.get("BranchCode"));
+		arapObj.ARAPBranchCode().sendKeys(Keys.ENTER);
 	}
 
 	@Then("^select data set ID for Verify No accounting entry is generated on cancelling advances against PO$")

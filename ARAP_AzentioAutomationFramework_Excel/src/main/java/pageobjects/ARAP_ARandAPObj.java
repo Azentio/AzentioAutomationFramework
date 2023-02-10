@@ -525,10 +525,10 @@ public class ARAP_ARandAPObj {
 		return ARAP_NextMonth;
 	}
 
-//	@FindBy(xpath = "(//span[contains(text(),'View')])[1]/../..//ion-button")
+	@FindBy(xpath = "//ion-button[1]/span[1]")
 //	@FindBy(xpath = "//span[contains(text(),'View')]")
 //	@FindBy(xpath = "//*[@id=\"main-content\"]/app-tabs/ion-tabs/div/ion-router-outlet/app-financial-transaction/ion-header/ion-toolbar/ion-buttons/ion-button")
-	@FindBy(xpath = "//app-financial-transaction/ion-header/ion-toolbar/ion-buttons")
+//	@FindBy(xpath = "//app-financial-transaction/ion-header/ion-toolbar/ion-buttons")
 	private WebElement ARAP_ViewButton;
 
 	public WebElement ARAPViewButton() {
@@ -933,6 +933,12 @@ public class ARAP_ARandAPObj {
 	public WebElement accountReceviableReceipt_Receipt_Save() {
 
 		return accountReceviableReceipt_Receipt_Save;
+	}
+	
+	@FindBy(xpath = "//div[@id='toast-container']//button")
+	private WebElement accountReceviableReceipt_AlertClose;
+	public WebElement accountReceviableReceipt_AlertClose() {
+		return accountReceviableReceipt_AlertClose;
 	}
 
 	@FindBy(xpath = "//datatable-header[1]/div[1]/div[2]/datatable-header-cell[4]/div[1]/ion-input[1]/input[1]")

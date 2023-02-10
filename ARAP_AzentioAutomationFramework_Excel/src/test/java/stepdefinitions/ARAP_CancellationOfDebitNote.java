@@ -74,7 +74,7 @@ public class ARAP_CancellationOfDebitNote {
 	ArAp_Cancellation_of_vendorObj cancellationofcontract = new ArAp_Cancellation_of_vendorObj(driver);
 	AccountsReceivable_DebitNoteObj accountsReceivable_DebitNoteObj = new AccountsReceivable_DebitNoteObj(driver);
 	ACCOUNTSPAYABLE_PayementSettlementObj payementSettlementObj = new ACCOUNTSPAYABLE_PayementSettlementObj(driver);
-	ExcelData excelData = new ExcelData("C:\\Users\\inindc00091\\git\\repository6\\ARAP_AzentioAutomationFramework_Excel\\Test-data\\KUBS_TESTDATA_V1.xlsx",
+	ExcelData excelData = new ExcelData("C:\\Users\\ININDC00091\\git\\AzentioAutomationFramework\\DeveshFW_Excel\\ARAP_AzentioAutomationFramework_Excel\\Test-data\\KUBS_TESTDATA_V1.xlsx",
 			"CancelledDebitNoteTestData", "Data Set ID");
 	Map<String, String> testData = new HashMap<>();
 	String dataSetID;
@@ -161,12 +161,11 @@ public class ARAP_CancellationOfDebitNote {
 	@Then("^Select from date in calender for cancelled debit note$")
 	public void select_from_date_in_calender_for_cancelled_debit_note() throws Throwable {
 // ----------CLICK ON FROM DATE--------------//
-		while (true) {
+		for(int i=0;i<30;i++) {
 			try {
-
-				waitHelper.waitForElementwithFluentwait(driver, driver.findElement(By.xpath("//span[contains(text(),'" + testData.get("FromMonth") + " " + testData.get("FromYear") + "')]")));
-				WebElement monthAndYear = driver.findElement(By.xpath("//span[contains(text(),'" + testData.get("FromMonth") + " " + testData.get("FromYear") + "')]"));
-				Thread.sleep(2000);
+				waitHelper.waitForElementwithFluentwait(driver, driver.findElement(By.xpath("//span[text()='" + testData.get("FromMonth") + " " + testData.get("FromYear") + "']")));
+				WebElement monthAndYear = driver.findElement(By.xpath("//span[text()='" + testData.get("FromMonth") + " " + testData.get("FromYear") + "']"));
+//				Thread.sleep(2000);
 				break;
 			}
 
@@ -186,14 +185,14 @@ public class ARAP_CancellationOfDebitNote {
 
 	@Then("^Select To date in calender for cancelled debit note$")
 	public void select_to_date_in_calender_for_cancelled_debit_note() throws Throwable {
-		while (true) {
+		for(int i=0;i<=30;i++) {
 			try {
 
 // span[contains(text(),'Oct 2022')]
 //	Thread.sleep(1000);
 //	waithelper.waitForElement(driver, 2000, driver.findElement(By.xpath("//span[contains(text(),'"+arAp_BalanceSheetReportTestDataType.Month+" "+arAp_BalanceSheetReportTestDataType.Year+"')]")));
-				waitHelper.waitForElementwithFluentwait(driver, driver.findElement(By.xpath("//span[contains(text(),'" + testData.get("ToMonth") + " " + testData.get("ToYear") + "')]")));
-				WebElement monthAndYear = driver.findElement(By.xpath("//span[contains(text(),'" + testData.get("ToMonth") + " " + testData.get("ToYear") + "')]"));
+				waitHelper.waitForElementwithFluentwait(driver, driver.findElement(By.xpath("//span[text()='" + testData.get("ToMonth") + " " + testData.get("ToYear") + "']")));
+				WebElement monthAndYear = driver.findElement(By.xpath("//span[text()='" + testData.get("ToMonth") + " " + testData.get("ToYear") + "']"));
 //	Thread.sleep(2000);
 				break;
 			}
@@ -206,8 +205,8 @@ public class ARAP_CancellationOfDebitNote {
 				driver.findElement(By.xpath("//td[@aria-label='" + testData.get("ToFullMonth") + " " + testData.get("ToDate") + ", " + testData.get("ToYear") + "']/span")));
 		WebElement Click = driver.findElement(By.xpath("//td[@aria-label='" + testData.get("ToFullMonth") + " " + testData.get("ToDate") + ", " + testData.get("ToYear") + "']/span"));
 
-//		clickAndActionHelper.doubleClick(Click);
-		Click.click();
+		clickAndActionHelper.doubleClick(Click);
+//		Click.click();
 	}
 
 	@Then("^Verify Accounting entries post Debit Note is cancelled$")
@@ -300,12 +299,16 @@ public class ARAP_CancellationOfDebitNote {
 	@And("^Click on Financial Reporting module$")
 	public void click_on_financial_reporting_module() throws Throwable {
 // ---------FINANCIAL REPORT---------//
+		waitHelper.waitForElementwithFluentwait(driver, arapReportObj.ARAP_Report_Financialreporting());
 		arapReportObj.ARAP_Report_Financialreporting().click();
 	}
 
 	@Then("^Click on Balance sheet Sub module$")
 	public void click_on_balance_sheet_sub_module() throws Throwable {
 // --------balance sheet report-*----------//
+		javaScriptHelper.JavaScriptHelper(driver);
+		javaScriptHelper.scrollIntoView(arapReportObj.ARAP_Report_Balancesheet_Edit());
+		waitHelper.waitForElementwithFluentwait(driver, arapReportObj.ARAP_Report_Balancesheet_Edit());
 		arapReportObj.ARAP_Report_Balancesheet_Edit().click();
 	}
 
@@ -384,7 +387,7 @@ public class ARAP_CancellationOfDebitNote {
 		// ----------CLICK ON DATE--------------//
 		arapReportObj.ARAP_Report_Module_Date().click();
 		javaScriptHelper.JavaScriptHelper(driver);
-		while (true) {
+		for(int i=0;i<=30;i++) {
 			try {
 
 				waitHelper.waitForElement(driver, 3000, driver.findElement(By.xpath("//span[contains(text(),'" + testData.get("Month") + " " + testData.get("Year") + "')]")));
@@ -446,7 +449,10 @@ public class ARAP_CancellationOfDebitNote {
 	@Then("^Click sub module Payment settlement Eye Icon$")
 	public void click_sub_module_payment_settlement_eye_icon() throws Throwable {
 		// ------------PAYMENT SETTLEMENT EYE ICON---------------//
-		waitHelper.waitForElement(driver, 2000, arapObj.accountsPayablePayementSettlementViewIcon());
+		javaScriptHelper.JavaScriptHelper(driver);
+		javaScriptHelper.scrollIntoView(arapObj.accountsPayablePayementSettlementViewIcon());
+//		waitHelper.waitForElement(driver, 2000, arapObj.accountsPayablePayementSettlementViewIcon());
+		waitHelper.waitForElementwithFluentwait(driver, arapObj.accountsPayablePayementSettlementViewIcon());
 		arapObj.accountsPayablePayementSettlementViewIcon().click();
 
 	}
@@ -650,7 +656,8 @@ public class ARAP_CancellationOfDebitNote {
 	public void goto_the_notification_icon() throws Throwable {
 
 		// ------------Maker Notification icon---------//
-		waitHelper.waitForElement(driver, 2000, arapObj.ARAP_MakerNotification());
+//		waitHelper.waitForElement(driver, 2000, arapObj.ARAP_MakerNotification());
+		waitHelper.waitForElementToVisibleWithFluentWait(driver, arapObj.ARAP_MakerNotification(), 20, 2);
 		arapObj.ARAP_MakerNotification().click();
 	}
 
@@ -718,7 +725,7 @@ public class ARAP_CancellationOfDebitNote {
 		String befr_xpath = "//span[contains(text(),'";
 		String aftr_xpath = "')]/parent::div/parent::datatable-body-cell/preceding-sibling::datatable-body-cell[1]//div//ion-buttons//ion-button";
 		waitHelper.waitForElement(driver, 2000, driver.findElement(By.xpath(befr_xpath + testData.get("ReferenceID") + aftr_xpath)));
-		driver.findElement(By.xpath(befr_xpath + readerData.readReferancedata() + aftr_xpath)).click();
+		driver.findElement(By.xpath(befr_xpath + testData.get("ReferenceID") + aftr_xpath)).click();
 
 		// reviewerObj.reviewer_action_button().click();
 	}
@@ -895,7 +902,10 @@ public class ARAP_CancellationOfDebitNote {
 	@Then("^Open the Adjustment ARAP module$")
 	public void open_the_adjustment_arap_module() throws Throwable {
 		// ----------adjustment ARAP---------//
-		waitHelper.waitForElement(driver, 2000, arapObj.adjustment_ARAP());
+		javaScriptHelper.JavaScriptHelper(driver);
+		javaScriptHelper.scrollIntoView(arapObj.adjustment_ARAP());
+//		waitHelper.waitForElement(driver, 2000, arapObj.adjustment_ARAP());
+		waitHelper.waitForElementwithFluentwait(driver, arapObj.adjustment_ARAP());
 		arapObj.adjustment_ARAP().click();
 	}
 

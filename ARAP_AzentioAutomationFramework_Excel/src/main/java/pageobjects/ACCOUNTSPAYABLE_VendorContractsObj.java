@@ -303,10 +303,24 @@ public class ACCOUNTSPAYABLE_VendorContractsObj {
 	public WebElement ConfirmationMessageCloseButton() {
 		return ConfirmationMessageCloseButton;
 	}
+	
+	@FindBy(xpath = "//body/div/div/div[2]/button")
+	private WebElement ConfirmationMessageCloseButton2;
+	
+	public WebElement ConfirmationMessageCloseButton2() {
+		return ConfirmationMessageCloseButton2;
+	}
 
+//	@FindBy(xpath = "//div[@id='toast-container']/div[1]/button")
+//	private WebElement popupCloseButton;
+//
+//	public WebElement popupCloseButton() {
+//		return popupCloseButton;
+//	}
+	
 	@FindBy(xpath = "//div[@id='toast-container']/div[1]")
 	private WebElement MessageContent;
-
+	
 	public WebElement MessageContent() {
 		return MessageContent;
 	}
@@ -492,10 +506,11 @@ public class ACCOUNTSPAYABLE_VendorContractsObj {
 	// record status
 	@FindBy(xpath = "//body/div/div/div/div[1]")
 	private WebElement accountPayable_VendorContracts_RecordStatus;
-
+	
 	public WebElement accountPayable_VendorContracts_RecordStatus() {
 		return accountPayable_VendorContracts_RecordStatus;
 	}
+	
 
 	// reject button
 	@FindBy(xpath = "//span/ion-button[3]")

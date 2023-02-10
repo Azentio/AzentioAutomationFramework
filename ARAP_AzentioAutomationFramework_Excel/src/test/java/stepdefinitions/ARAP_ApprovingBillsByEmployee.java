@@ -454,7 +454,10 @@ public class ARAP_ApprovingBillsByEmployee extends BaseClass {
 
 	@Then("^Click on Balance Sheet Report edit button$")
 	public void click_on_balance_sheet_report_edit_button() {
-		waitHelper.waitForElement(driver, 2000, arAp_BalanceSheetReportObj.arAp_BalanceSheetReport_BalanceSheetReport());
+//		waitHelper.waitForElement(driver, 2000, arAp_BalanceSheetReportObj.arAp_BalanceSheetReport_BalanceSheetReport());
+		javaScriptHelper.JavaScriptHelper(driver);
+		javaScriptHelper.scrollIntoView(arAp_BalanceSheetReportObj.arAp_BalanceSheetReport_BalanceSheetReport());
+		waitHelper.waitForElementwithFluentwait(driver, arAp_BalanceSheetReportObj.arAp_BalanceSheetReport_BalanceSheetReport());
 		arAp_BalanceSheetReportObj.arAp_BalanceSheetReport_BalanceSheetReport().click();
 	}
 
@@ -463,14 +466,14 @@ public class ARAP_ApprovingBillsByEmployee extends BaseClass {
 		waitHelper.waitForElement(driver, 2000, arAp_BalanceSheetReportObj.arAp_BalanceSheetReport_CalendarButton());
 		arAp_BalanceSheetReportObj.arAp_BalanceSheetReport_CalendarButton().click();
 		javaScriptHelper.JavaScriptHelper(driver);
-		while (true) {
+		Thread.sleep(2000);
+		for(int i=0;i<=30;i++) {
 			try {
 				// span[contains(text(),'Oct 2022')]
-//			Thread.sleep(1000);
 //			waithelper.waitForElement(driver, 2000, driver.findElement(By.xpath("//span[contains(text(),'"+arAp_BalanceSheetReportTestDataType.Month+" "+arAp_BalanceSheetReportTestDataType.Year+"')]")));
 				waitHelper.waitForElementwithFluentwait(driver,
-						driver.findElement(By.xpath("//span[contains(text(),'" + testData.get("Month") + " " + testData.get("Year") + "')]")));
-				WebElement monthAndYear = driver.findElement(By.xpath("//span[contains(text(),'" + testData.get("Month") + " " + testData.get("Year") + "')]"));
+						driver.findElement(By.xpath("//span[text()='" + testData.get("Month") + " " + testData.get("Year") + "']")));
+				WebElement monthAndYear = driver.findElement(By.xpath("//span[text()='" + testData.get("Month") + " " + testData.get("Year") + "']"));
 //			Thread.sleep(2000);
 				break;
 			}
@@ -488,7 +491,8 @@ public class ARAP_ApprovingBillsByEmployee extends BaseClass {
 
 	@Then("^Click on the View button$")
 	public void click_on_the_view_button() {
-		waitHelper.waitForElement(driver, 2000, arAp_BalanceSheetReportObj.arAp_BalanceSheetReport_ViewButton());
+//		waitHelper.waitForElement(driver, 2000, arAp_BalanceSheetReportObj.arAp_BalanceSheetReport_ViewButton());
+		waitHelper.waitForElementwithFluentwait(driver, arAp_BalanceSheetReportObj.arAp_BalanceSheetReport_ViewButton());
 		arAp_BalanceSheetReportObj.arAp_BalanceSheetReport_ViewButton().click();
 	}
 	// ****************@KUBS_AR_AP_UAT_004_007_TC_06*************//

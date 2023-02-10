@@ -66,6 +66,8 @@ public class ARAP_RecordingReceipt extends BaseClass {
 	WaitHelper waithelper = new WaitHelper(driver);
 	Map<String, String> autoPayout = new HashMap<>();
 	Azentio_ReviewerObj reviewer;
+	KUBS_Login login;
+	String reviwerId;
 	String poNumber;
 	String poBusinessPartner;
 	String GRNNO;
@@ -96,7 +98,7 @@ public class ARAP_RecordingReceipt extends BaseClass {
 	Azentio_CheckerObj kubschecker = new Azentio_CheckerObj(driver);
 
 	ExcelData excelData = new ExcelData("C:\\Users\\ININDC00091\\git\\AzentioAutomationFramework\\DeveshFW_Excel\\ARAP_AzentioAutomationFramework_Excel\\Test-data\\KUBS_TESTDATA_V1.xlsx",
-			"AutoPayoutTestData", "Data Set ID");
+			"RecordingReceiptTestData", "Data Set ID");
 	Map<String, String> testData = new HashMap<>();
 	String dataSetID;
 
@@ -105,6 +107,9 @@ public class ARAP_RecordingReceipt extends BaseClass {
 	@Then("^Click on the Receipt Eye Icon$")
 	public void click_on_the_receipt_eye_icon() throws Throwable {
 		// --------RECEIPT EYE ICON--------//
+		javaScriptHelper.JavaScriptHelper(driver);
+		javaScriptHelper.scrollIntoView(arapObj.accountReceviableReceipt_Eye());
+		waithelper.waitForElementToVisibleWithFluentWait(driver, arapObj.accountReceviableReceipt_Eye(), 20, 2);
 		arapObj.accountReceviableReceipt_Eye().click();
 	}
 
@@ -162,7 +167,9 @@ public class ARAP_RecordingReceipt extends BaseClass {
 	public void save_receipt_record() throws Throwable {
 		// -------SAVE RECEIPT RECORD-----//
 		arapObj.accountReceviableReceipt_Receipt_Save().click();
-		Thread.sleep(4000);
+		waithelper.waitForElementToVisibleWithFluentWait(driver, arapObj.accountReceviableReceipt_AlertClose(), 20, 2);
+		arapObj.accountReceviableReceipt_AlertClose().click();
+//		Thread.sleep(4000);
 	}
 
 	@Then("^Enter Get Referance Number$")
@@ -185,6 +192,28 @@ public class ARAP_RecordingReceipt extends BaseClass {
 //		readerData.addReferanceData(Referance_id);
 		waithelper.waitForElement(driver, 2000, arapObj.ARAP_ActionButton());
 		arapObj.ARAP_ActionButton().click();
+	}
+	
+	@Then("^Click submit button and Enter Remark and submit it$")
+	public void click_submit_button_and_enter_remark_and_submit_it() throws Throwable {
+		// -------------------------TO SUBMIT THE RECORD-----------------------------//
+		waithelper.waitForElement(driver, 2000, arapObj.ARAP_Submit());
+		arapObj.ARAP_Submit().click();
+		waithelper.waitForElement(driver, 2000, arapObj.ARAP_Remark());
+		arapObj.ARAP_Remark().sendKeys(testData.get("Remark"));
+		waithelper.waitForElement(driver, 5000, arapObj.ARAP_RemarkSubmit());
+		arapObj.ARAP_RemarkSubmit().click();
+		waithelper.waitForElement(driver, 10000, arapObj.ARAP_ReviewerId());
+		reviwerId = arapObj.ARAP_ReviewerId().getText();
+		String trimmdReviewerID = reviwerId.substring(85);
+		StringBuffer sb = new StringBuffer(trimmdReviewerID);
+		StringBuffer bufferedString = sb.deleteCharAt(trimmdReviewerID.length() - 1);
+		String filanReviewerID = bufferedString.toString();
+		// arapObj.arapObj_reviewer_id().getText());
+//		json.addData(filanReviewerID);
+		System.out.println(reviwerId);
+		excelData.updateTestData(dataSetID, "ReviewerID", filanReviewerID);
+		testData = excelData.getTestdata(dataSetID);
 	}
 	
 	@And("^Store the Referance Id and Open the wire mode receipt Record$")
@@ -240,6 +269,32 @@ public class ARAP_RecordingReceipt extends BaseClass {
 		System.out.println("Checker status: " + Text);
 		Assert.assertTrue(checkerObj.Popup_status().isDisplayed());
 	}
+	
+	@Given("^User login as a reviewer user for recording receipt record$")
+	public void user_login_as_a_reviewer_user_for_recording_receipt_record() throws IOException, ParseException {
+		login = new KUBS_Login(driver);
+		driver.get(configreader.getApplicationUrl());
+		login.logintoAzentioappReviewer("Reviewer", testData.get("ReviewerID"));
+	}
+	
+	@Given("^User login as a checker user for recording receipt record$")
+    public void user_login_as_a_checker_user_for_recording_receipt_record() throws InterruptedException {
+		login = new KUBS_Login(driver);
+		driver.get(configreader.getApplicationUrl());
+		login.loginToAzentioAppAsChecker("Checker");
+    }
+	
+	@And("^Click First receipt record Action icon$")
+	public void click_first_receipt_record_action_icon() throws Throwable {
+		// -----------REVIEWER ACTION-------------//
+		javaScriptHelper.JavaScriptHelper(driver);
+		String befr_xpath = "//span[contains(text(),'";
+		String aftr_xpath = "')]/parent::div/parent::datatable-body-cell/preceding-sibling::datatable-body-cell[1]//div//ion-buttons//ion-button";
+		waithelper.waitForElement(driver, 2000, driver.findElement(By.xpath(befr_xpath + testData.get("ReferenceID") + aftr_xpath)));
+		driver.findElement(By.xpath(befr_xpath + testData.get("ReferenceID") + aftr_xpath)).click();
+
+		// reviewerObj.reviewer_action_button().click();
+	}
 
 	// *******************@KUBS_AR_AP_UAT_010_001_TC_02*******************//
 
@@ -281,11 +336,11 @@ public class ARAP_RecordingReceipt extends BaseClass {
 	@Then("^Select from date in calender to verify accounting entries post receipt recording$")
 	public void select_from_date_in_calender_to_verify_accounting_entries_post_receipt_recording() throws Throwable {
 		// ----------CLICK ON FROM DATE--------------//
-		while (true) {
+		for(int i=0;i<=70;i++) {
 			try {
 
-				waithelper.waitForElementwithFluentwait(driver, driver.findElement(By.xpath("//span[contains(text(),'" + testData.get("Month") + " " + testData.get("Year") + "')]")));
-				WebElement monthAndYear = driver.findElement(By.xpath("//span[contains(text(),'" + testData.get("Month") + " " + testData.get("Year") + "')]"));
+				waithelper.waitForElementwithFluentwait(driver, driver.findElement(By.xpath("//span[text()='" + testData.get("Month") + " " + testData.get("Year") + "']")));
+				WebElement monthAndYear = driver.findElement(By.xpath("//span[text()='" + testData.get("Month") + " " + testData.get("Year") + "']"));
 				Thread.sleep(2000);
 				break;
 			}
@@ -305,14 +360,14 @@ public class ARAP_RecordingReceipt extends BaseClass {
 
 	@Then("^Select To date in calender to verify accounting entries post receipt recording$")
 	public void select_to_date_in_calender_to_verify_accounting_entries_post_receipt_recording() throws Throwable {
-		while (true) {
+		for(int i=0;i<=70;i++)  {
 			try {
 
 				// span[contains(text(),'Oct 2022')]
 //				Thread.sleep(1000);
 //				waithelper.waitForElement(driver, 2000, driver.findElement(By.xpath("//span[contains(text(),'"+arAp_BalanceSheetReportTestDataType.Month+" "+arAp_BalanceSheetReportTestDataType.Year+"')]")));
-				waithelper.waitForElementwithFluentwait(driver, driver.findElement(By.xpath("//span[contains(text(),'" + testData.get("Month1") + " " + testData.get("Year1") + "')]")));
-				WebElement monthAndYear = driver.findElement(By.xpath("//span[contains(text(),'" + testData.get("Month1") + " " + testData.get("Year1") + "')]"));
+				waithelper.waitForElementwithFluentwait(driver, driver.findElement(By.xpath("//span[text()='" + testData.get("To Month") + " " + testData.get("To Year") + "']")));
+				WebElement monthAndYear = driver.findElement(By.xpath("//span[text()='" + testData.get("To Month") + " " + testData.get("To Year") + "']"));
 //				Thread.sleep(2000);
 				break;
 			}
@@ -322,8 +377,8 @@ public class ARAP_RecordingReceipt extends BaseClass {
 			}
 		}
 		waithelper.waitForElement(driver, 3000,
-				driver.findElement(By.xpath("//td[@aria-label='" + testData.get("FullMonth1") + " " + testData.get("Date1") + ", " + testData.get("Year1") + "']/span")));
-		WebElement Click = driver.findElement(By.xpath("//td[@aria-label='" + testData.get("FullMonth1") + " " + testData.get("Date1") + ", " + testData.get("Year1") + "']/span"));
+				driver.findElement(By.xpath("//td[@aria-label='" + testData.get("To FullMonth") + " " + testData.get("To Date") + ", " + testData.get("To Year") + "']/span")));
+		WebElement Click = driver.findElement(By.xpath("//td[@aria-label='" + testData.get("To FullMonth") + " " + testData.get("To Date") + ", " + testData.get("To Year") + "']/span"));
 
 		clicksAndActionHelper.doubleClick(Click);
 
@@ -334,7 +389,7 @@ public class ARAP_RecordingReceipt extends BaseClass {
 	public void verify_accounting_entries_post_receipt_recording() throws Throwable {
 		javaScriptHelper.JavaScriptHelper(driver);
 		Thread.sleep(1000);
-		for (int i = 0; i <= 299; i++) {
+		for (int i = 0; i <= 50; i++) {
 			try {
 
 				driver.findElement(By.xpath("(//datatable-body-cell[1]//span[contains(text(),'" + TxnNo + "')])[1]")).isDisplayed();
@@ -357,7 +412,7 @@ public class ARAP_RecordingReceipt extends BaseClass {
 				arapObj.accountsPayablePayementSettlementNextRecord().click();
 			}
 		}
-		for (int i = 0; i <= 299; i++) {
+		for (int i = 0; i <= 50; i++) {
 			try {
 
 				driver.findElement(By.xpath("(//datatable-body-cell[1]//span[contains(text(),'" + TxnNo + "')])[2]")).isDisplayed();
@@ -399,7 +454,9 @@ public class ARAP_RecordingReceipt extends BaseClass {
 
 	@Then("^click on temp grid button of Balance sheet report$")
 	public void click_on_temp_grid_button_of_balance_sheet_report() {
-		waithelper.waitForElement(driver, 3000, financialReporting_GLBalancesReportObj.FinancialReporting_BalanceSheetReport_TempGridButton());
+//		waithelper.waitForElement(driver, 3000, financialReporting_GLBalancesReportObj.FinancialReporting_BalanceSheetReport_TempGridButton());
+		javaScriptHelper.scrollIntoView(financialReporting_GLBalancesReportObj.FinancialReporting_BalanceSheetReport_TempGridButton());
+		waithelper.waitForElementToVisibleWithFluentWait(driver, financialReporting_GLBalancesReportObj.FinancialReporting_BalanceSheetReport_TempGridButton(), 20, 2);
 		financialReporting_GLBalancesReportObj.FinancialReporting_BalanceSheetReport_TempGridButton().click();
 	}
 
@@ -407,7 +464,7 @@ public class ARAP_RecordingReceipt extends BaseClass {
 	public void fill_the_required_field_of_balance_sheet_report() {
 
 		waithelper.waitForElement(driver, 3000, financialReporting_GLBalancesReportObj.FinancialReporting_BalanceSheetReport_Branch());
-		financialReporting_GLBalancesReportObj.FinancialReporting_BalanceSheetReport_Branch().sendKeys(testData.get("Branch"));
+		financialReporting_GLBalancesReportObj.FinancialReporting_BalanceSheetReport_Branch().sendKeys(testData.get("BranchCode"));
 		financialReporting_GLBalancesReportObj.FinancialReporting_BalanceSheetReport_Branch().sendKeys(Keys.ENTER);
 
 		waithelper.waitForElement(driver, 3000, financialReporting_GLBalancesReportObj.FinancialReporting_BalanceSheetReport_ReportType());
@@ -525,27 +582,52 @@ public class ARAP_RecordingReceipt extends BaseClass {
 		browserHelper.switchToParentWithChildClose();
 	}
 	
+//--------------------------
 	@Then("^select data set ID for Record a receipt through cheque mode$")
     public void select_data_set_id_for_record_a_receipt_through_cheque_mode() throws Throwable {
-		dataSetID = "KUBS_AR_AP_UAT_010_001_TC_01";
+		dataSetID = "KUBS_AR_AP_UAT_010_001_TC_01_D1";
 		testData = excelData.getTestdata(dataSetID);
     }
 	
+	@Then("^update data set ID for Record a receipt through cheque mode for reviewer$")
+	public void update_data_set_id_for_Record_a_receipt_through_cheque_mode_for_reviewer() throws Throwable {
+		dataSetID = "KUBS_AR_AP_UAT_010_001_TC_01_D1";
+		testData = excelData.getTestdata(dataSetID);
+	}
+
+	@Then("^update data set ID for Record a receipt through cheque mode for checker$")
+	public void update_data_set_id_for_Record_a_receipt_through_cheque_mode_for_checker() throws Throwable {
+		dataSetID = "KUBS_AR_AP_UAT_010_001_TC_01_D1";
+		testData = excelData.getTestdata(dataSetID);
+	}
+//--------------------------
 	@Then("^select data set ID for Record a receipt through Online mode$")
     public void select_data_set_id_for_record_a_receipt_through_online_mode() throws Throwable {
-		dataSetID = "KUBS_AR_AP_UAT_010_001_TC_02";
+		dataSetID = "KUBS_AR_AP_UAT_010_001_TC_02_D1";
 		testData = excelData.getTestdata(dataSetID);
     }
 	
+	@Then("^update data set ID for Record a receipt through Online mode for reviewer$")
+    public void update_data_set_id_for_record_a_receipt_through_online_mode_for_reviewer() throws Throwable {
+		dataSetID = "KUBS_AR_AP_UAT_010_001_TC_02_D1";
+		testData = excelData.getTestdata(dataSetID);
+    }
+
+    @Then("^update data set ID for Record a receipt through Online mode for checker$")
+    public void update_data_set_id_for_record_a_receipt_through_online_mode_for_checker() throws Throwable {
+    	dataSetID = "KUBS_AR_AP_UAT_010_001_TC_02_D1";
+		testData = excelData.getTestdata(dataSetID);
+    }
+//--------------------------
 	@Then("^select data set ID for Verify accounting entries post receipt recording$")
 	public void select_data_set_id_for_verify_accounting_entries_post_receipt_recording() throws Throwable {
-		dataSetID = "KUBS_AR_AP_UAT_010_001_TC_03";
+		dataSetID = "KUBS_AR_AP_UAT_010_001_TC_03_D1";
 		testData = excelData.getTestdata(dataSetID);
 	}
 	
 	@Then("^select data set ID for Verify Balance sheet post approval through online mode$")
     public void select_data_set_id_for_verify_balance_sheet_post_approval_through_online_mode() throws Throwable {
-		dataSetID = "KUBS_AR_AP_UAT_010_001_TC_04";
+		dataSetID = "KUBS_AR_AP_UAT_010_001_TC_04_D1";
 		testData = excelData.getTestdata(dataSetID);
     }
 

@@ -56,6 +56,14 @@ public class InventoryManagement_InventoryStockReceiptObj {
 		return inventoryManagement_InventoryStockReceipt_Save;
 		
 	}
+	
+	//Save Confirmation message
+	@FindBy(xpath = "//body/div/div/div/button")
+	private WebElement  inventoryStockReceipt_PopUpCloseButton;
+
+	public WebElement inventoryStockReceipt_PopUpCloseButton() {
+		return inventoryStockReceipt_PopUpCloseButton;
+	}
 			
 	//Notification
 	@FindBy(xpath = "//ion-header/ion-toolbar[1]/ion-buttons[2]/ion-button[2]")	

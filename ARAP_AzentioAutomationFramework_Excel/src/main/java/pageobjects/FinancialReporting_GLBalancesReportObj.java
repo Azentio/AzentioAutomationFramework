@@ -165,7 +165,8 @@ public class FinancialReporting_GLBalancesReportObj {
 	}
 	
 	// balance sheet report updated data(post approval through online mode)
-	@FindBy(xpath="//tr[23]/td[1]/div/../../td[2]")
+	@FindBy(xpath="//div[contains(text(),'Cash Equivalents')]/../../td[3]")
+//	@FindBy(xpath="//tr[23]/td[1]/div/../../td[2]")
 	private WebElement FinancialReporting_BalanceSheetReport_UpdatedDataReceipt; 
 	public WebElement FinancialReporting_BalanceSheetReport_UpdatedDataReceipt()
 	{
