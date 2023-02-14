@@ -55,14 +55,14 @@ public class InventoryMaintenance extends BaseClass{
 		Azentio_CheckerObj kubschecker = new Azentio_CheckerObj(driver) ;
 		BUDGET_BudgetDefinitionTestDataType budgetdata;
 		
-		 @Given("^Maker Navigate to UAT URL login$")
-		    public void maker_navigate_to_uat_url_login() throws InterruptedException {
-				kubsLogin = new KUBS_Login(driver);
-				driver.get(configFileReader.getApplicationUrl());
-				kubsLogin.loginToAzentioAppByMaker();
-				Thread.sleep(1000);
-		       
-		    }
+//		 @Given("^Maker Navigate to UAT URL login$")
+//		    public void maker_navigate_to_uat_url_login() throws InterruptedException {
+//				kubsLogin = new KUBS_Login(driver);
+//				driver.get(configFileReader.getApplicationUrl());
+//				kubsLogin.loginToAzentioAppByMaker();
+//				Thread.sleep(1000);
+//		       
+//		    }
 		 
 		//getVendorPurchaseOrderyByName
 			

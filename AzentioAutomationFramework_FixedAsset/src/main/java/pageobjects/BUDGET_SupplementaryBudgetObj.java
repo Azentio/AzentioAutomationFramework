@@ -50,6 +50,7 @@ public class BUDGET_SupplementaryBudgetObj {
 		return budget_SupplementaryBudget_AddButton;
 
 	}
+	
 
 	// Select existing budget code
 	@FindBy(xpath = "(//input[@type='text'])[1]")
@@ -123,6 +124,13 @@ public class BUDGET_SupplementaryBudgetObj {
 	public WebElement budget_SupplementaryBudget_NewAmount() {
 		return budget_SupplementaryBudget_NewAmount;
 	}
+	
+	@FindBy(xpath = "(//app-kub-currency)[2]")
+	private WebElement budget_SupplementaryBudget_StoreNewAmount;
+
+	public WebElement budget_SupplementaryBudget_StoreNewAmount() {
+		return budget_SupplementaryBudget_StoreNewAmount;
+	}
 
 	// Save supplementary budget
 	//@FindBy(xpath = "//ion-icon[@name='save']")
@@ -153,6 +161,22 @@ public class BUDGET_SupplementaryBudgetObj {
 		public WebElement budget_BudgetTransfer_SupplementaryFirstReferenceId()
 		{
 			return  budget_BudgetTransfer_SupplementaryFirstReferenceId;
+			
+		}
+		
+		@FindBy(xpath="//datatable-row-wrapper[1]/datatable-body-row[1]/div[2]/datatable-body-cell[1]/div[1]/ion-buttons[1]/ion-button[1]")
+		private WebElement  budget_BudgetTransfer_SupplementaryFirstEyeIconApprovedRecord;
+		public WebElement budget_BudgetTransfer_SupplementaryFirstEyeIconApprovedRecord()
+		{
+			return  budget_BudgetTransfer_SupplementaryFirstEyeIconApprovedRecord;
+			
+		}
+		
+		@FindBy(xpath="//ion-header/ion-toolbar[1]/ion-buttons[2]/ion-item[1]/ion-icon[1]")
+		private WebElement  budget_BudgetTransfer_SupplementarySearchIconInApprovedListView;
+		public WebElement budget_BudgetTransfer_SupplementarySearchIconInApprovedListView()
+		{
+			return  budget_BudgetTransfer_SupplementarySearchIconInApprovedListView;
 			
 		}
 	

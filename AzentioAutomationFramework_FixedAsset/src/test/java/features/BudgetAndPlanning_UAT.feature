@@ -1,5 +1,5 @@
 Feature: To verify user can able to create the transaction in budget and planning module 
-#budget definition
+budget definition
 @Yearly_budget
 Scenario: To verify user can able to create budget code for yearly budget
 Given navigate to given url and login with maker credentials
@@ -1400,7 +1400,7 @@ And logout from reviewer
 Then login as a checker
 Then click on open pool UAT
 And Verify for claming the record UAT
-#Then User should click on notification icon on reviewer2 home page UAT
+Then User should click on notification icon on reviewer2 home page UAT
 Then click on Notification button
 Then select our record in notification records by the help of reference ID
 Then Claim and reject the record UAT

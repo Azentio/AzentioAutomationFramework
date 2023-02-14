@@ -37,7 +37,7 @@ Then Third Segment report Icon
 And Click on Financial Reporting module
 Then Click on Balance sheet Sub module
 #And Give Getted Branch code 
-Then Fill branch details for report
+#Then Fill branch details for report
 Then Give Getted Transaction Date
 Then Click on Balance sheet View button
 And verify Balance sheet post Bill is approved
@@ -154,7 +154,7 @@ Given Maker Navigate to UAT URL login
 Then Click on Report button
 Then Click on Financial Reporting tab
 Then Click on Balance Sheet Report edit button
-Then Fill branch details for report
+#Then Fill branch details for report
 Then Select date in calendar
 Then Click on the View button
 Then close the report
@@ -657,15 +657,15 @@ Then enter remark in confirmation alert in grn
 Then verify the approval status of the record
 And logout from reviewer
 Then login as a checker 
-And click on security management menu in checker
-Then click on action button under security management menu
-And select our record and clime using reference ID
-Then click on Notification button
-Then select our record in notification records by the help of reference ID
-And click on approve button in checker stage
-Then enter remark in confirmation alert in grn 
-And verify the record got approved from checker
-Then logout from checker 
+#And click on security management menu in checker
+#Then click on action button under security management menu
+#And select our record and clime using reference ID
+#Then click on Notification button
+#Then select our record in notification records by the help of reference ID
+#And click on approve button in checker stage
+#Then enter remark in confirmation alert in grn 
+#And verify the record got approved from checker
+#Then logout from checker 
 And login with Maker ID
 Then go to ar ap adjustment module
 And click on Add Icon

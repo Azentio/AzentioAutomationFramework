@@ -32,11 +32,11 @@ public class BUDGETT_TRANSFER_BudgetTransferReport extends BaseClass {
 	JsonConfig jsonConfig = new JsonConfig();
 	BUDGET_BudgetDefinitionUATTestDataType BudgetAndPlanningUATTestData= jsonConfig.getUATBudgetDefinitionTestData("Maker");
 	ClicksAndActionsHelper clickAndActionHelper = new ClicksAndActionsHelper(driver);
-	@And("^click on budget main menu$")
-	public void click_on_budget_main_menu() throws Throwable {
-		makerObj.kubsBudget().click();
-		// budgetTransferObj
-	}
+//	@And("^click on budget main menu$")
+//	public void click_on_budget_main_menu() throws Throwable {
+//		makerObj.kubsBudget().click();
+//		// budgetTransferObj
+//	}
 
 	@And("^click on view button near by budget transfer menu$")
 	public void click_on_view_button_near_by_budget_transfer_menu() throws Throwable {

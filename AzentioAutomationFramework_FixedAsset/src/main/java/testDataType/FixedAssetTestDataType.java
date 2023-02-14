@@ -6,7 +6,7 @@ public class FixedAssetTestDataType {
 	public String AssetCode;
 	public String BillReferenceNo;
 	public String Remark;
-	
+	public String ModuleEventCode;
 	public String AssetItemNumber;
 	public String AssetItemDescription;
 	public String AssetValue;

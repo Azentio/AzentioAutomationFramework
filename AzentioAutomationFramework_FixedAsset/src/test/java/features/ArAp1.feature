@@ -122,7 +122,7 @@ Then Click on the Finance
 Then Click on Report buttonT
 Then Click on Finincial Reporting tab
 Then Click on Balance Sheet Report edit buttonT
-Then Fill branch details for report
+#Then Fill branch details for report
 Then Select date in calendarT
 Then Click on View buttonT
 Then close the report

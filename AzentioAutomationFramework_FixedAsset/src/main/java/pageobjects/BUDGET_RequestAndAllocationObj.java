@@ -245,8 +245,7 @@ public class BUDGET_RequestAndAllocationObj {
 		return requestAndAllocation_branch_type7;
 	}
 
-	@FindBy(xpath = "//ion-alert[1]/div/div[3]/button[8]") // ion-alert[1]/div/div[3]/button[4] -- //
-// //ion-alert[1]/div/div[3]/button[5]
+	@FindBy(xpath = "//ion-alert[1]/div/div[3]/button[8]")
 	private WebElement requestAndAllocation_branch_type8;
 
 	public WebElement requestAndAllocation_branch_type8() {
@@ -878,4 +877,48 @@ public class BUDGET_RequestAndAllocationObj {
 
 		return ARAP_NextMonth;
 	}
+	@FindBy(xpath = "//datatable-row-wrapper[1]//span[text()='BUDGET_CREATION']//ancestor::datatable-body-cell//preceding-sibling::datatable-body-cell[2]//ion-button")
+	private WebElement budgetRequestAndAllocation_NotificationFirstRecord;
+
+	public WebElement budgetRequestAndAllocationNotificationFirstRecord() {
+		return budgetRequestAndAllocation_NotificationFirstRecord;
+	}
+	@FindBy(xpath = "//datatable-row-wrapper[1]//span[text()='BUDGET_CREATION']//ancestor::datatable-body-cell//preceding-sibling::datatable-body-cell[1]//span")
+	private WebElement budgetRequestAndAllocation_ReferenceNumber;
+
+	public WebElement budgetRequestAndAllocationReferenceNumber() {
+		return budgetRequestAndAllocation_ReferenceNumber;
+	}
+	@FindBy(xpath = "//ion-toolbar//ion-buttons[2]//span[1]")
+	private WebElement requestAndAllocation_SystemDate;
+
+	public WebElement requestAndAllocationSystemDate() {
+		return requestAndAllocation_SystemDate;
+	}
+	@FindBy(xpath="//datatable-row-wrapper[1]//datatable-body-cell[2]//app-kub-currency")
+	private WebElement budgetRequestAndAlocation_QuarterluBudgetAmountField_One;
+	public WebElement budgetRequestAndAllocationQuarterlyBudgetAmontFieldOne()
+	{
+		return budgetRequestAndAlocation_QuarterluBudgetAmountField_One;
+	}
+	@FindBy(xpath="//datatable-row-wrapper[2]//datatable-body-cell[2]//app-kub-currency")
+	private WebElement budgetRequestAndAlocation_QuarterluBudgetAmountField_Two;
+	public WebElement budgetRequestAndAllocationQuarterlyBudgetAmontFieldTwo()
+	{
+		return budgetRequestAndAlocation_QuarterluBudgetAmountField_Two;
+	}
+	@FindBy(xpath="//datatable-row-wrapper[3]//datatable-body-cell[2]//app-kub-currency")
+	private WebElement budgetRequestAndAlocation_QuarterluBudgetAmountField_Three;
+	public WebElement budgetRequestAndAllocationQuarterlyBudgetAmontFieldThree()
+	{
+		return budgetRequestAndAlocation_QuarterluBudgetAmountField_Three;
+	}
+	@FindBy(xpath="//datatable-row-wrapper[4]//datatable-body-cell[2]//app-kub-currency")
+	private WebElement budgetRequestAndAlocation_QuarterluBudgetAmountField_Four;
+	public WebElement budgetRequestAndAllocationQuarterlyBudgetAmontFieldFour()
+	{
+		return budgetRequestAndAlocation_QuarterluBudgetAmountField_Four;
+	}
+
+
 }

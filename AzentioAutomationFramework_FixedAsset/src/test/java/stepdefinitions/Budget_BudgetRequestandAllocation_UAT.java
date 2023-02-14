@@ -1,12 +1,6 @@
 package stepdefinitions;
-
-import java.awt.Robot;
-import java.awt.event.KeyEvent;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Set;
-
-import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.ElementClickInterceptedException;
 import org.openqa.selenium.ElementNotInteractableException;
@@ -16,6 +10,7 @@ import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.testng.Assert;
 
 import dataProvider.ConfigFileReader;
 import dataProvider.JsonConfig;
@@ -31,6 +26,7 @@ import io.cucumber.java.en.When;
 import pageobjects.BUDGET_BudgetCreationObj;
 import pageobjects.BUDGET_RequestAndAllocationObj;
 import pageobjects.KUBS_CheckerObj;
+import pageobjects.KUBS_CommonWebElements;
 import pageobjects.KUBS_MakerObj;
 import pageobjects.KUBS_ReviewerObj;
 import resources.BaseClass;
@@ -52,6 +48,7 @@ public class Budget_BudgetRequestandAllocation_UAT extends BaseClass {
 	BUDGET_RequestAndAllocationTestDataType requestAndAllocationTestData = jsonReader.getAllowcationByName("Maker");
 	DropDownHelper dropDownHelper = new DropDownHelper(driver);
 	BUDGET_RequestandallocationBUDTYPEDATA requestAndAllocationBudtype = new BUDGET_RequestandallocationBUDTYPEDATA();
+	ClicksAndActionsHelper clickAndActionsHelper = new ClicksAndActionsHelper(driver);
 	JavascriptHelper javaHelper = new JavascriptHelper();
 	JsonDataReaderWriter json = new JsonDataReaderWriter();
 	KUBS_ReviewerObj reviewerObj = new KUBS_ReviewerObj(driver);
@@ -62,10 +59,13 @@ public class Budget_BudgetRequestandAllocation_UAT extends BaseClass {
 	KUBS_CheckerObj kubsChecker = new KUBS_CheckerObj(driver);
 	ClicksAndActionsHelper clickAndActionHelper = new ClicksAndActionsHelper(driver);
 	BUDGET_BudgetCreationObj budgetCreationobj = new BUDGET_BudgetCreationObj(driver);
+	KUBS_CommonWebElements kubsCommonObj = new KUBS_CommonWebElements(driver);
 	Map<String, String> budgetAllocationTestData = new HashMap<>();
 	String path = System.getProperty("user.dir") + "\\Test-data\\KUBSTestData.xlsx";
 	ExcelData excelDataForBudgetRequestAndAllocation = new ExcelData(path, "BudgetReqAndAllocation", "DataSet ID");
+	ExcelData excelDataForBudgetSupplementary = new ExcelData(path,"BudgetSupplimentory","DataSet ID");
 	Map<String, String> budgetReqAllocationTestData;
+	Map<String, String> budgetSupplementaryTestData;
 	// ---------------------------LOGIN---------------------------------//
 
 	@Given("^Navigate to the Azentio Url$")
@@ -139,14 +139,46 @@ public class Budget_BudgetRequestandAllocation_UAT extends BaseClass {
     public void user_update_test_data_id_to_verify_budget_allocated_for_yearly1_budget_code() throws Throwable {
 		budgetReqAllocationTestData = excelDataForBudgetRequestAndAllocation.getTestdata("KUBS_BP_UAT_002_006_04_D1");
     }
+	@And("^get the test data for allocate the budget for future finacial year$")
+	public void get_the_test_data_for_allocate_the_budget_for_future_finacial_year() throws Throwable {
+		budgetAllocationTestData = excelDataForBudgetRequestAndAllocation.getTestdata("KUBS_B&P_UAT_001_006_D1");
+	}
 	@And("^User update test data id to verify budget allocated for yearly4 budget code$")
     public void user_update_test_data_id_to_verify_budget_allocated_for_yearly4_budget_code() throws Throwable {
-		budgetReqAllocationTestData = excelDataForBudgetRequestAndAllocation.getTestdata("KUBS_BP_UAT_005_002_04_D1");
+		budgetSupplementaryTestData = excelDataForBudgetSupplementary.getTestdata("KUBS_BP_UAT_005_001_04_D1");
     }
 	@And("^User update test data id to verify budget allocated for yearly2 budget code$")
     public void user_update_test_data_id_to_verify_budget_allocated_for_yearly2_budget_code() throws Throwable {
 		budgetReqAllocationTestData = excelDataForBudgetRequestAndAllocation.getTestdata("KUBS_BP_UAT_002_007_04_D1");
     }
+	@And("^User update test data id to verify budget allocated for yearly Rejected budget code$")
+    public void user_update_test_data_id_to_verify_budget_allocated_for_yearly_rejected_budget_code() throws Throwable {
+		budgetReqAllocationTestData = excelDataForBudgetRequestAndAllocation.getTestdata("KUBS_BP_UAT_002_007_04_D1");
+    }
+	@And("^get the test data for allocate the budget for current finacial year$")
+	public void get_the_test_data_for_allocate_the_budget_for_current_finacial_year() throws Throwable {
+		budgetAllocationTestData = excelDataForBudgetRequestAndAllocation.getTestdata("KUBS_B&P_UAT_001_005_D1");
+	}
+	@And("^get the test data for modify budget after HO approval$")
+	public void get_the_test_data_for_modify_budget_after_ho_approval() throws Throwable {
+		budgetAllocationTestData = excelDataForBudgetRequestAndAllocation.getTestdata("KUBS_B&P_UAT_003_002_D1");
+	}
+	@And("^get the test data for allocate the budget for validate the monthy budget amount field$")
+	public void get_the_test_data_for_allocate_the_budget_for_validate_the_monthy_budget_amount_field()
+			throws Throwable {
+		budgetAllocationTestData = excelDataForBudgetRequestAndAllocation.getTestdata("KUBS_B&P_UAT_003_003_D1");
+	}
+	@And("^get the test data for allocate the budget for validate the quarterly budget amount field$")
+	public void get_the_test_data_for_allocate_the_budget_for_validate_the_quarterly_budget_amount_field()
+			throws Throwable {
+		budgetAllocationTestData = excelDataForBudgetRequestAndAllocation.getTestdata("KUBS_B&P_UAT_003_004_D1");
+	}
+	@And("^get the test data for allocate the budget for validate the half yearly budget amount field$")
+	public void get_the_test_data_for_allocate_the_budget_for_validate_the_half_yearly_budget_amount_field()
+			throws Throwable {
+		budgetAllocationTestData = excelDataForBudgetRequestAndAllocation.getTestdata("KUBS_B&P_UAT_003_005_D1");
+	}
+
 
 	@And("^click to the Budget$")
 	public void click_to_the_budget() throws Throwable {
@@ -170,8 +202,18 @@ public class Budget_BudgetRequestandAllocation_UAT extends BaseClass {
 	public void click_on_the_add_icon_in_request_and_allocation() throws Throwable {
 
 		// ----------TO CREATE A NEW BUDGET AMOUNT------------//
-		waitHelper.waitForElementToVisibleWithFluentWait(driver,requestAndAllocation.budget_requestAndAllocation_Addicon(), 60, 500);
-		requestAndAllocation.budget_requestAndAllocation_Addicon().click();
+		//waitHelper.waitForElementToVisibleWithFluentWait(driver,requestAndAllocation.budget_requestAndAllocation_Addicon(), 60, 500);
+		for (int i = 0; i <100; i++) {
+			try {
+				requestAndAllocation.budget_requestAndAllocation_Addicon().click();
+				break;
+			} catch (Exception e) {
+				if (i==99) {
+					Assert.fail(e.getMessage());
+				}
+			}
+		}
+		
 	}
 
 	@Then("^click on the Branch$")
@@ -188,6 +230,42 @@ public class Budget_BudgetRequestandAllocation_UAT extends BaseClass {
 		// budgetCreationobj.budgetCreationApprovedBudgetCode().getText();
 		budgetAllocationTestData.put("budgetCode", budgetCreationobj.budgetCreationApprovedBudgetCode().getText());
 		System.out.println("Budget code is : " + budgetAllocationTestData.get("budgetCode"));
+	}
+	@And("^select the budget record in request and allocation screen$")
+	public void select_the_budget_record_in_request_and_allocation_screen() throws Throwable {
+		String xpath = "//span[contains(text(),'" + budgetAllocationTestData.get("BudgetCode")
+				+ "')]//ancestor::datatable-body-cell//preceding-sibling::datatable-body-cell//ion-button[1]";
+		for (int i = 0; i <= 100; i++) {
+			try {
+				clickAndActionsHelper.moveToElement(driver.findElement(By.xpath(xpath)));
+
+				clickAndActionsHelper.clickOnElement(driver.findElement(By.xpath(xpath)));
+				break;
+
+			} catch (Exception e) {
+				if (i == 100) {
+					Assert.fail(e.getMessage());
+				}
+			}
+		}
+	}
+	@And("^update the budget code in request and allocation$")
+	public void update_the_budget_code_in_request_and_allocation() throws Throwable {
+		String xpath = "//app-kub-currency[@id='0']//input";
+		for (int i = 0; i < 12; i++) {
+			try {
+				driver.findElement(By.xpath("//app-kub-currency[@id='" + i + "']//input")).click();
+				driver.findElement(By.xpath("//app-kub-currency[@id='" + i + "']//input")).clear();
+				driver.findElement(By.xpath("//app-kub-currency[@id='" + i + "']//input"))
+						.sendKeys(budgetAllocationTestData.get("UpdatedBudgetAmount"));
+				driver.findElement(By.xpath("//input[@id='" + i + "']")).click();
+				driver.findElement(By.xpath("//input[@id='" + i + "']")).clear();
+				driver.findElement(By.xpath("//input[@id='" + i + "']"))
+						.sendKeys(budgetAllocationTestData.get("Remark"));
+			} catch (Exception e) {
+
+			}
+		}
 	}
 
 	@And("^select the Budget Year$")
@@ -213,6 +291,12 @@ public class Budget_BudgetRequestandAllocation_UAT extends BaseClass {
 	}
 	}
 					// requestAndAllocation.budget_requestAndAllocation_Budgetyear().sendKeys(Keys.DOWN);
+	}
+	@And("^select the budget year as future financial year$")
+	public void select_the_budget_year_as_future_financial_year() throws Throwable {
+		waitHelper.waitForElementToVisibleWithFluentWait(driver,
+				requestAndAllocation.budget_requestAndAllocation_Budgetyear(), 20, 1);
+		dropDownHelper.SelectUsingIndex(requestAndAllocation.budget_requestAndAllocation_Budgetyear(), 2);
 	}
 
 	@And("^select the Budget Year fo future$")
@@ -277,29 +361,38 @@ public class Budget_BudgetRequestandAllocation_UAT extends BaseClass {
 	public void click_on_the_save_button() throws Throwable {
 
 		// ------------TO SAVE THE RECORD--------------------//
-		waitHelper.waitForElement(driver, 3000, requestAndAllocation.budget_requestAndAllocation_AllowSave());
-		requestAndAllocation.budget_requestAndAllocation_AllowSave().click();
-
-		javaHelper.JavaScriptHelper(driver);
-		String output = "";
-		for (int i = 0; i <= 200; i++) {
+		for (int i = 0; i <200; i++) {
 			try {
-				output = (String) javaHelper.executeScript(
-						"return document.querySelector('ion-toast').shadowRoot.querySelector('div[class=toast-message]').innerText");
-				System.out.println(output);
+				requestAndAllocation.budget_requestAndAllocation_AllowSave().click();
 				break;
-			} catch (JavascriptException e) {
-				if(i==200)
-				{
-				//e.printStackTrace();
-				Assert.fail(e.getMessage());
+			} catch (Exception e) {
+				if (i==199) {
+					Assert.fail(e.getMessage());
 				}
-				}
+			}
 		}
-waitHelper.waitForElementToVisibleWithFluentWait(driver, requestAndAllocation.requestAndAllocation_reviewer_id(), 10, 1);
-System.out.println(requestAndAllocation.requestAndAllocation_reviewer_id().getText());
-waitHelper.waitForElementToVisibleWithFluentWait(driver, requestAndAllocation.alertClose(), 10, 1);
-requestAndAllocation.alertClose().click();
+		
+
+//		javaHelper.JavaScriptHelper(driver);
+//		String output = "";
+//		for (int i = 0; i <= 200; i++) {
+//			try {
+//				output = (String) javaHelper.executeScript(
+//						"return document.querySelector('ion-toast').shadowRoot.querySelector('div[class=toast-message]').innerText");
+//				System.out.println(output);
+//				break;
+//			} catch (JavascriptException e) {
+//				if(i==200)
+//				{
+//				//e.printStackTrace();
+//				Assert.fail(e.getMessage());
+//				}
+//				}
+//		}
+//waitHelper.waitForElementToVisibleWithFluentWait(driver, requestAndAllocation.requestAndAllocation_reviewer_id(), 10, 1);
+//System.out.println(requestAndAllocation.requestAndAllocation_reviewer_id().getText());
+//waitHelper.waitForElementToVisibleWithFluentWait(driver, requestAndAllocation.alertClose(), 10, 1);
+//requestAndAllocation.alertClose().click();
 	}
 
 	@And("^click on the Record submit$")
@@ -424,6 +517,43 @@ requestAndAllocation.alertClose().click();
 				.click();
 	}
 	// ------------------------@KUBS_UAT_Monthly_KUBS_BP_UAT_002_001----------------------//
+	@Then("^select the Budget Code1$")
+    public void select_the_budget_code1() throws Throwable {
+		// ----------TO SELECT THE BUDGET CODE----------------//
+				requestAndAllocationTestData = jsonReader.getAllowcationByName("Maker");
+				waitHelper.waitForElement(driver, 3000, requestAndAllocation.budget_requestAndAllocation_Budgetcode());
+				requestAndAllocation.budget_requestAndAllocation_Budgetcode().click();
+				requestAndAllocation.budget_requestAndAllocation_Budgetcode()
+						.sendKeys(budgetSupplementaryTestData.get("BudgetCodeCreated"));
+				Thread.sleep(500);
+				requestAndAllocation.budget_requestAndAllocation_Budgetcode().sendKeys(Keys.DOWN);
+			//	requestAndAllocation.budget_requestAndAllocation_Budgetcode().sendKeys(Keys.DOWN);
+				requestAndAllocation.budget_requestAndAllocation_Budgetcode().sendKeys(Keys.ENTER);
+    }
+
+    @And("^select the Budget Year1$")
+    public void select_the_budget_year1() throws Throwable {
+    	// ----------TO SELECT THE BUDGET YEAR-------------//
+    	for(int i=0;i<=200;i++)
+    	{
+    	try
+    	{
+    		waitHelper.waitForElementToVisibleWithFluentWait(driver,requestAndAllocation.budget_requestAndAllocation_Budgetyear(), 5, 500);
+    				dropDownHelper.SelectUsingVisibleText(requestAndAllocation.budget_requestAndAllocation_Budgetyear(),
+    						budgetSupplementaryTestData.get("BudgetYear"));
+    					requestAndAllocation.budget_requestAndAllocation_Budgetyear().sendKeys(Keys.ENTER);
+    	break;
+    	}
+    	catch(Exception e)
+    	{
+    	if(i==200)
+    	{
+    		Assert.fail(e.getMessage());
+    	}
+    	}
+    	}
+    					// requestAndAllocation.budget_requestAndAllocation_Budgetyear().sendKeys(Keys.DOWN);
+    }
 
 	@Then("^select the Budget Code$")
 	public void select_the_budget_code() throws Throwable {
@@ -471,6 +601,7 @@ requestAndAllocation.alertClose().click();
 			       clickAndActionHelper.moveToElement(driver.findElement(By.xpath(remarkXpath)));
 				   clickAndActionHelper.clickOnElement(driver.findElement(By.xpath(remarkXpath)));
 			       driver.findElement(By.xpath(remarkXpath)).sendKeys(budgetReqAllocationTestData.get("Remarks"));
+			       
 			}
 			   
 		        
@@ -572,25 +703,48 @@ requestAndAllocation.alertClose().click();
 
 		// ----------------------------THIS CODE FOR QUARTERLY
 		// BUDGET---------------------------//
-		try {
-			javaHelper.JavaScriptHelper(driver);
-			waitHelper.waitForElement(driver, 3000, requestAndAllocation.budget_requestAndAllocation_Budgetamount());
-			javaHelper.JSEClick(requestAndAllocation.budget_requestAndAllocation_Budgetamount());
-			waitHelper.waitForElement(driver, 3000, requestAndAllocation.budget_requestAndAllocation_BudgetQuaterly3());
-			requestAndAllocation.budget_requestAndAllocation_BudgetQuaterly3()
-					.sendKeys(budgetReqAllocationTestData.get("BudgetAmounT"));
-			requestAndAllocation.budget_requestAndAllocation_BudgetQuaterlyremark3()
-					.sendKeys(budgetReqAllocationTestData.get("Remarks"));
-
-			waitHelper.waitForElement(driver, 3000, requestAndAllocation.budget_requestAndAllocation_Budgetamount());
-			javaHelper.JSEClick(requestAndAllocation.budget_requestAndAllocation_Budgetamount());
-			waitHelper.waitForElement(driver, 3000, requestAndAllocation.budget_requestAndAllocation_BudgetQuaterly2());
-			requestAndAllocation.budget_requestAndAllocation_BudgetQuaterly2()
-					.sendKeys(budgetReqAllocationTestData.get("BudgetAmounT"));
-			requestAndAllocation.budget_requestAndAllocation_BudgetQuaterlyremark2()
-					.sendKeys(budgetReqAllocationTestData.get("Remarks"));
-		} catch (ElementNotInteractableException e) {
-
+//		try {
+//			javaHelper.JavaScriptHelper(driver);
+//			waitHelper.waitForElement(driver, 3000, requestAndAllocation.budget_requestAndAllocation_Budgetamount());
+//			javaHelper.JSEClick(requestAndAllocation.budget_requestAndAllocation_Budgetamount());
+//			waitHelper.waitForElement(driver, 3000, requestAndAllocation.budget_requestAndAllocation_BudgetQuaterly3());
+//			requestAndAllocation.budget_requestAndAllocation_BudgetQuaterly3()
+//					.sendKeys(budgetReqAllocationTestData.get("BudgetAmounT"));
+//			requestAndAllocation.budget_requestAndAllocation_BudgetQuaterlyremark3()
+//					.sendKeys(budgetReqAllocationTestData.get("Remarks"));
+//
+//			waitHelper.waitForElement(driver, 3000, requestAndAllocation.budget_requestAndAllocation_Budgetamount());
+//			javaHelper.JSEClick(requestAndAllocation.budget_requestAndAllocation_Budgetamount());
+//			waitHelper.waitForElement(driver, 3000, requestAndAllocation.budget_requestAndAllocation_BudgetQuaterly2());
+//			requestAndAllocation.budget_requestAndAllocation_BudgetQuaterly2()
+//					.sendKeys(budgetReqAllocationTestData.get("BudgetAmounT"));
+//			requestAndAllocation.budget_requestAndAllocation_BudgetQuaterlyremark2()
+//					.sendKeys(budgetReqAllocationTestData.get("Remarks"));
+//		} catch (ElementNotInteractableException e) {
+//
+//		}
+		for (int i = 0; i <12; i++) {
+			String findAmountField ="//datatable-body-cell[2]/div/app-kub-currency[@id='"+i+"']";
+			String amountXpath = "//datatable-body-cell[2]/div/app-kub-currency[@id='"+i+"']/input";
+			String remarkXpath ="//datatable-body-cell[3]/div/input[@id='"+i+"']";
+			//System.out.println(driver.findElement(By.xpath(findAmountField)).getAttribute("ng-reflect-is-disabled"));
+			try {
+			   if (driver.findElement(By.xpath(findAmountField)).getAttribute("ng-reflect-is-disabled").equalsIgnoreCase("false")) {
+				   clickAndActionHelper.moveToElement(driver.findElement(By.xpath(amountXpath)));
+				   clickAndActionHelper.clickOnElement(driver.findElement(By.xpath(amountXpath)));
+			       driver.findElement(By.xpath(amountXpath)).sendKeys(budgetReqAllocationTestData.get("BudgetAmount"));
+			       clickAndActionHelper.moveToElement(driver.findElement(By.xpath(remarkXpath)));
+				   clickAndActionHelper.clickOnElement(driver.findElement(By.xpath(remarkXpath)));
+			       driver.findElement(By.xpath(remarkXpath)).sendKeys(budgetReqAllocationTestData.get("Remarks"));
+			       
+			}
+			   
+		        
+			} catch (Exception e) {
+				
+			}
+			
+			
 		}
 	}
 
@@ -629,14 +783,36 @@ requestAndAllocation.alertClose().click();
 		// ---------------------------------THIS CODE FOR HALFYEARLY
 		// BUDGET-------------------------//
 
-		javaHelper.JavaScriptHelper(driver);
-		waitHelper.waitForElement(driver, 3000, requestAndAllocation.budget_requestAndAllocation_Budgetamount());
-		javaHelper.scrollToElemet(requestAndAllocation.budget_requestAndAllocation_Budgetamount());
-		javaHelper.JSEClick(requestAndAllocation.budget_requestAndAllocation_Budgetamount());
-		waitHelper.waitForElement(driver, 3000, requestAndAllocation.budget_requestAndAllocation_BudgetHy2());
-		requestAndAllocation.budget_requestAndAllocation_BudgetHy2().sendKeys(requestAndAllocationBudtype.BudgetAmounT);
-		requestAndAllocation.budget_requestAndAllocation_BudgetHyremark2()
-				.sendKeys(requestAndAllocationTestData.Remark);
+//		javaHelper.JavaScriptHelper(driver);
+//		waitHelper.waitForElement(driver, 3000, requestAndAllocation.budget_requestAndAllocation_Budgetamount());
+//		javaHelper.scrollToElemet(requestAndAllocation.budget_requestAndAllocation_Budgetamount());
+//		javaHelper.JSEClick(requestAndAllocation.budget_requestAndAllocation_Budgetamount());
+//		waitHelper.waitForElement(driver, 3000, requestAndAllocation.budget_requestAndAllocation_BudgetHy2());
+//		requestAndAllocation.budget_requestAndAllocation_BudgetHy2().sendKeys(requestAndAllocationBudtype.BudgetAmounT);
+//		requestAndAllocation.budget_requestAndAllocation_BudgetHyremark2()
+//				.sendKeys(requestAndAllocationTestData.Remark);
+		for (int i = 0; i <12; i++) {
+			String findAmountField ="//datatable-body-cell[2]/div/app-kub-currency[@id='"+i+"']";
+			String amountXpath = "//datatable-body-cell[2]/div/app-kub-currency[@id='"+i+"']/input";
+			String remarkXpath ="//datatable-body-cell[3]/div/input[@id='"+i+"']";
+			//System.out.println(driver.findElement(By.xpath(findAmountField)).getAttribute("ng-reflect-is-disabled"));
+			try {
+			   if (driver.findElement(By.xpath(findAmountField)).getAttribute("ng-reflect-is-disabled").equalsIgnoreCase("false")) {
+				   clickAndActionHelper.moveToElement(driver.findElement(By.xpath(amountXpath)));
+				   clickAndActionHelper.clickOnElement(driver.findElement(By.xpath(amountXpath)));
+			       driver.findElement(By.xpath(amountXpath)).sendKeys(budgetReqAllocationTestData.get("BudgetAmount"));
+			       clickAndActionHelper.moveToElement(driver.findElement(By.xpath(remarkXpath)));
+				   clickAndActionHelper.clickOnElement(driver.findElement(By.xpath(remarkXpath)));
+			       driver.findElement(By.xpath(remarkXpath)).sendKeys(budgetReqAllocationTestData.get("Remarks"));
+			       
+			}
+			   
+		        
+			} catch (Exception e) {
+				
+			}
+		}
+
 	}
 
 	// ---------------------------@KUBS_UAT_yearly_KUBS_BP_UAT_002_004--------------------//
@@ -680,9 +856,52 @@ requestAndAllocation.alertClose().click();
 	public void choose_to_the_one_branch() throws Throwable {
 
 		// ---------------------TO SELECT ONE BRANCH CHECKBOX-----------------------//
-		waitHelper.waitForElement(driver, 2000, requestAndAllocation.requestAndAllocation_branch_type1());
-		requestAndAllocation.requestAndAllocation_branch_type1().click();
+		waitHelper.waitForElement(driver, 2000, requestAndAllocation.requestAndAllocation_branch_type8());
+		requestAndAllocation.requestAndAllocation_branch_type8().click();
 	}
+	@And("^Enter the Amount for yearly Budget type1$")
+    public void enter_the_amount_for_yearly_budget_type1() throws Throwable {
+		// -------------------HERE WE ENTER BUDGET AMOUNT FOR EVERY BUDGET
+				// TYPE----------------------//
+				requestAndAllocationBudtype = new BUDGET_RequestandallocationBUDTYPEDATA();
+				waitHelper.waitForElement(driver, 3000, requestAndAllocation.budget_requestAndAllocation_Budgettype());
+				String budgettype = requestAndAllocation.budget_requestAndAllocation_Budgettype().getText();
+				requestAndAllocationBudtype = jsonReader.getBudtypeByName(budgettype);
+				javaHelper.JavaScriptHelper(driver);
+
+				// ---------------------------THIS CODE FOR YEARLY
+				// BUDGET--------------------------//
+
+//				waitHelper.waitForElement(driver, 3000, requestAndAllocation.budget_requestAndAllocation_Budgetamount());
+//				javaHelper.JavaScriptHelper(driver);
+//				javaHelper.JSEClick(requestAndAllocation.budget_requestAndAllocation_Budgetamount());
+//				waitHelper.waitForElement(driver, 3000, requestAndAllocation.budget_requestAndAllocation_Budgetyearly());
+//				requestAndAllocation.budget_requestAndAllocation_Budgetyearly()
+//						.sendKeys(requestAndAllocationBudtype.BudgetAmounT);
+//				requestAndAllocation.budget_requestAndAllocation_Budgetremark().sendKeys(requestAndAllocationTestData.Remark);
+				for (int i = 0; i <12; i++) {
+					String findAmountField ="//datatable-body-cell[2]/div/app-kub-currency[@id='"+i+"']";
+					String amountXpath = "//datatable-body-cell[2]/div/app-kub-currency[@id='"+i+"']/input";
+					String remarkXpath ="//datatable-body-cell[3]/div/input[@id='"+i+"']";
+					//System.out.println(driver.findElement(By.xpath(findAmountField)).getAttribute("ng-reflect-is-disabled"));
+					try {
+					   if (driver.findElement(By.xpath(findAmountField)).getAttribute("ng-reflect-is-disabled").equalsIgnoreCase("false")) {
+						   clickAndActionHelper.moveToElement(driver.findElement(By.xpath(amountXpath)));
+						   clickAndActionHelper.clickOnElement(driver.findElement(By.xpath(amountXpath)));
+					       driver.findElement(By.xpath(amountXpath)).sendKeys(budgetSupplementaryTestData.get("BudgetAmount"));
+					       clickAndActionHelper.moveToElement(driver.findElement(By.xpath(remarkXpath)));
+						   clickAndActionHelper.clickOnElement(driver.findElement(By.xpath(remarkXpath)));
+					       driver.findElement(By.xpath(remarkXpath)).sendKeys(budgetSupplementaryTestData.get("Remarks"));
+					       
+					}
+					   
+				        
+					} catch (Exception e) {
+						
+					}
+				}
+
+    }
 
 	@And("^Enter the Amount for yearly Budget type$")
 	public void enter_the_amount_for_yearly_budget_type() throws Throwable {
@@ -698,13 +917,34 @@ requestAndAllocation.alertClose().click();
 		// ---------------------------THIS CODE FOR YEARLY
 		// BUDGET--------------------------//
 
-		waitHelper.waitForElement(driver, 3000, requestAndAllocation.budget_requestAndAllocation_Budgetamount());
-		javaHelper.JavaScriptHelper(driver);
-		javaHelper.JSEClick(requestAndAllocation.budget_requestAndAllocation_Budgetamount());
-		waitHelper.waitForElement(driver, 3000, requestAndAllocation.budget_requestAndAllocation_Budgetyearly());
-		requestAndAllocation.budget_requestAndAllocation_Budgetyearly()
-				.sendKeys(requestAndAllocationBudtype.BudgetAmounT);
-		requestAndAllocation.budget_requestAndAllocation_Budgetremark().sendKeys(requestAndAllocationTestData.Remark);
+//		waitHelper.waitForElement(driver, 3000, requestAndAllocation.budget_requestAndAllocation_Budgetamount());
+//		javaHelper.JavaScriptHelper(driver);
+//		javaHelper.JSEClick(requestAndAllocation.budget_requestAndAllocation_Budgetamount());
+//		waitHelper.waitForElement(driver, 3000, requestAndAllocation.budget_requestAndAllocation_Budgetyearly());
+//		requestAndAllocation.budget_requestAndAllocation_Budgetyearly()
+//				.sendKeys(requestAndAllocationBudtype.BudgetAmounT);
+//		requestAndAllocation.budget_requestAndAllocation_Budgetremark().sendKeys(requestAndAllocationTestData.Remark);
+		for (int i = 0; i <12; i++) {
+			String findAmountField ="//datatable-body-cell[2]/div/app-kub-currency[@id='"+i+"']";
+			String amountXpath = "//datatable-body-cell[2]/div/app-kub-currency[@id='"+i+"']/input";
+			String remarkXpath ="//datatable-body-cell[3]/div/input[@id='"+i+"']";
+			//System.out.println(driver.findElement(By.xpath(findAmountField)).getAttribute("ng-reflect-is-disabled"));
+			try {
+			   if (driver.findElement(By.xpath(findAmountField)).getAttribute("ng-reflect-is-disabled").equalsIgnoreCase("false")) {
+				   clickAndActionHelper.moveToElement(driver.findElement(By.xpath(amountXpath)));
+				   clickAndActionHelper.clickOnElement(driver.findElement(By.xpath(amountXpath)));
+			       driver.findElement(By.xpath(amountXpath)).sendKeys(budgetReqAllocationTestData.get("BudgetAmount"));
+			       clickAndActionHelper.moveToElement(driver.findElement(By.xpath(remarkXpath)));
+				   clickAndActionHelper.clickOnElement(driver.findElement(By.xpath(remarkXpath)));
+			       driver.findElement(By.xpath(remarkXpath)).sendKeys(budgetReqAllocationTestData.get("Remarks"));
+			       
+			}
+			   
+		        
+			} catch (Exception e) {
+				
+			}
+		}
 	}
 
 	// --------------------------@KUBS_UAT_BudgetApprove_KUBS_BP_UAT_002_005------------------------//
@@ -1051,13 +1291,25 @@ requestAndAllocation.alertClose().click();
 		kubsChecker.checkerRejectButton().click();
 	}
 
+	@Then("^Submit the Rejecting Record in checker for supplementary record$")
+	public void submit_the_rejecting_record_in_checker_for_supplementary_record() throws Throwable {
+		// -----------------SUBMIT THE REJECT RECORD-----------------------//
+//		waitHelper.waitForElement(driver, 2000, kubsChecker.checkerRemarks());
+//		kubsChecker.checkerRemarks().sendKeys(budgetSupplementaryTestData.get("Remarks"));
+		// waithelper.waitForElement(driver, 10000, kubschecker.checkersubmitButton());
+		kubsChecker.checkersubmitButton().click();
+		waitHelper.waitForElementVisible(kubsChecker.Popup_status(), 2000, 2000);
+		Assert.assertTrue(kubsChecker.Popup_status().isDisplayed());
+	}
+
+
 	@Then("^Submit the Rejecting Record in checker$")
 	public void Submit_the_Rejecting_Record_in_checker() throws Throwable {
 
 		// -----------------SUBMIT THE REJECT RECORD-----------------------//
-		waitHelper.waitForElement(driver, 2000, kubsChecker.checkerRemarks());
-		kubsChecker.checkerRemarks().sendKeys(budgetReqAllocationTestData.get("Remarks"));
-		// waithelper.waitForElement(driver, 10000, kubschecker.checkersubmitButton());
+//		waitHelper.waitForElement(driver, 2000, kubsChecker.checkerRemarks());
+//		kubsChecker.checkerRemarks().sendKeys(budgetReqAllocationTestData.get("Remarks"));
+		waitHelper.waitForElementToVisibleWithFluentWait(driver,kubsChecker.checkersubmitButton(),30,2);
 		kubsChecker.checkersubmitButton().click();
 		waitHelper.waitForElementVisible(kubsChecker.Popup_status(), 2000, 2000);
 		Assert.assertTrue(kubsChecker.Popup_status().isDisplayed());
@@ -1902,5 +2154,375 @@ waitHelper.waitForElementToVisibleWithFluentWait(driver, requestAndAllocation.Re
 
 		}
 	}
+	@And("^search the budget request and allocation sub module name1$")
+    public void search_the_budget_request_and_allocation_sub_module_name1() throws Throwable {
+		waitHelper.waitForElementVisible(budgetCreationobj.eventCode(), 3000, 300);
+		budgetCreationobj.eventCode().click();
+		budgetCreationobj.eventCode().sendKeys(budgetSupplementaryTestData.get("BudgetTransferEventCode"));
+    }
+
+	@And("^search the budget request and allocation sub module name$")
+    public void search_the_budget_request_and_allocation_sub_module_name() throws Throwable {
+		waitHelper.waitForElementVisible(budgetCreationobj.eventCode(), 3000, 300);
+		budgetCreationobj.eventCode().click();
+		budgetCreationobj.eventCode().sendKeys(budgetReqAllocationTestData.get("BudgetTransferEventCode"));
+    }
+	
+
+	@And("^enter the budget code for budget request and allocation screen$")
+	public void enter_the_budget_code_for_budget_request_and_allocation_screen() throws Throwable {
+		waitHelper.waitForElementToVisibleWithFluentWait(driver,
+				requestAndAllocation.budget_requestAndAllocation_Budgetcode(), 20, 1);
+		requestAndAllocation.budget_requestAndAllocation_Budgetcode().click();
+		requestAndAllocation.budget_requestAndAllocation_Budgetcode()
+				.sendKeys(budgetAllocationTestData.get("BudgetCode"));
+		String xpath = "//ng-dropdown-panel//span[contains(text(),'" + budgetAllocationTestData.get("BudgetCode")
+				+ "')]";
+		for (int i = 0; i <= 200; i++) {
+			try {
+				clickAndActionsHelper.moveToElement(driver.findElement(By.xpath(xpath)));
+				clickAndActionsHelper.clickOnElement(driver.findElement(By.xpath(xpath)));
+				break;
+			} catch (Exception e) {
+				if (i == 200) {
+					Assert.fail(e.getMessage());
+				}
+			}
+		}
+	}
+
+
+@And("^select the budget year as current financial year$")
+	public void select_the_budget_year_as_current_financial_year() throws Throwable {
+		waitHelper.waitForElementToVisibleWithFluentWait(driver,
+				requestAndAllocation.budget_requestAndAllocation_Budgetyear(), 20, 1);
+
+		dropDownHelper.SelectUsingIndex(requestAndAllocation.budget_requestAndAllocation_Budgetyear(), 0);
+
+	}
+
+@And("^select the branch in budget request and allocation screen$")
+	public void select_the_branch_in_budget_request_and_allocation_screen() throws Throwable {
+		javaHelper.JavaScriptHelper(driver);
+		waitHelper.waitForElementToVisibleWithFluentWait(driver,
+				requestAndAllocation.budget_requestAndAllocation_Budgetbranch(), 20, 1);
+		requestAndAllocation.budget_requestAndAllocation_Budgetbranch().click();
+		String xpath = "(//div[contains(text(),'" + budgetAllocationTestData.get("Branch")
+				+ "')]//ancestor::button//div/div[1])[1]";
+		for (int i = 0; i <= 100; i++) {
+			try {
+				javaHelper.scrollIntoView(driver.findElement(By.xpath(xpath)));
+				driver.findElement(By.xpath(xpath)).click();
+				break;
+			} catch (Exception e) {
+				if (i == 100) {
+					Assert.fail(e.getMessage());
+				}
+			}
+		}
+		waitHelper.waitForElementToVisibleWithFluentWait(driver,
+				requestAndAllocation.budget_requestAndAllocation_branchOK(), 20, 1);
+		requestAndAllocation.budget_requestAndAllocation_branchOK().click();
+	}
+
+
+@And("^enter the currency in budget request and allocation screen$")
+	public void enter_the_currency_in_budget_request_and_allocation_screen() throws Throwable {
+
+		waitHelper.waitForElementToVisibleWithFluentWait(driver,
+				requestAndAllocation.budget_requestAndAllocation_Amountcurruncy(), 20, 1);
+		requestAndAllocation.budget_requestAndAllocation_Amountcurruncy().click();
+		requestAndAllocation.budget_requestAndAllocation_Amountcurruncy()
+				.sendKeys(budgetAllocationTestData.get("Currency"));
+		String xpath = "//ng-dropdown-panel//span[text()='" + budgetAllocationTestData.get("Currency") + "']";
+		for (int i = 0; i <= 200; i++) {
+			try {
+				clickAndActionsHelper.moveToElement(driver.findElement(By.xpath(xpath)));
+				clickAndActionsHelper.clickOnElement(driver.findElement(By.xpath(xpath)));
+				break;
+			} catch (Exception e) {
+				if (i == 200) {
+					Assert.fail(e.getMessage());
+				}
+			}
+		}
+
+	}
+
+@And("^enter the amount in budget request and allocation screen$")
+	public void enter_the_amount_in_budget_request_and_allocation_screen() throws Throwable {
+	System.out.println(budgetAllocationTestData.get("BudgetAmount"));
+		String fieldStatus = "";
+		for (int i = 0; i < 12; i++) {
+			for (int k = 0; k <= 100; k++) {
+				try {
+					fieldStatus = driver.findElement(By.xpath("//app-kub-currency[@id='" + i + "']"))
+							.getAttribute("ng-reflect-is-disabled");
+					System.out.println("Field Status is" + fieldStatus);
+					break;
+				} catch (Exception e) {
+
+				}
+			}
+			if (fieldStatus.equalsIgnoreCase("false")) {
+				for (int j = 0; j <= 100; j++) {
+					try {
+						driver.findElement(By.xpath("//app-kub-currency[@id='" + i + "']//input")).click();
+						driver.findElement(By.xpath("//app-kub-currency[@id='" + i + "']//input"))
+								.sendKeys(budgetAllocationTestData.get("BudgetAmount"));
+						driver.findElement(By.xpath("//input[@id='" + i + "']")).click();
+						driver.findElement(By.xpath("//input[@id='" + i + "']"))
+								.sendKeys(budgetAllocationTestData.get("Remark"));
+						break;
+					} catch (Exception e) {
+
+					}
+				}
+			}
+		}
+	}
+@And("^search for budget request and allocation record in notification$")
+	public void search_for_budget_request_and_allocation_record_in_notification() throws Throwable {
+		waitHelper.waitForElementToVisibleWithFluentWait(driver, kubsCommonObj.kubsSearchEventCode(), 20, 1);
+		clickAndActionsHelper.moveToElement(kubsCommonObj.kubsSearchEventCode());
+		clickAndActionsHelper.clickOnElement(kubsCommonObj.kubsSearchEventCode());
+		kubsCommonObj.kubsSearchEventCode().sendKeys(budgetAllocationTestData.get("ModuleCode"));
+	}
+
+@And("^store the record reference number of budget allocation record request and allocation excel database$")
+	public void store_the_record_reference_number_of_budget_allocation_record_request_and_allocation_excel_database()
+			throws Throwable {
+		waitHelper.waitForElementToVisibleWithFluentWait(driver,
+				requestAndAllocation.budgetRequestAndAllocationReferenceNumber(), 20, 1);
+		String referenceNumber = requestAndAllocation.budgetRequestAndAllocationReferenceNumber().getText();
+		excelDataForBudgetRequestAndAllocation.updateTestData(budgetAllocationTestData.get("DataSet ID"),
+				"Reference ID", referenceNumber);
+	}
+
+@And("^select the request and allocation notification record$")
+	public void select_the_request_and_allocation_notification_record() throws Throwable {
+		waitHelper.waitForElementToVisibleWithFluentWait(driver,
+				requestAndAllocation.budgetRequestAndAllocationNotificationFirstRecord(), 20, 1);
+		clickAndActionsHelper.moveToElement(requestAndAllocation.budgetRequestAndAllocationNotificationFirstRecord());
+		clickAndActionsHelper.clickOnElement(requestAndAllocation.budgetRequestAndAllocationNotificationFirstRecord());
+	}
+@And("^enter the alert remark in request and allocation$")
+	public void enter_the_alert_remark_in_request_and_allocation() throws Throwable {
+		//waitHelper.waitForElementToVisibleWithFluentWait(driver, kubsCommonObj.kubsAlertRemark(), 20, 1);
+		
+	for (int i = 0; i <200; i++) {
+		try {
+			clickAndActionsHelper.clickOnElement(kubsCommonObj.kubsAlertRemark());
+			kubsCommonObj.kubsAlertRemark().sendKeys(budgetAllocationTestData.get("MakerAlertRemark"));
+			break;
+		} catch (Exception e) {
+			if (i==199) {
+				Assert.fail(e.getMessage());
+			}
+		}
+	}
+		
+		
+	}
+@And("^click on alert submit in request and allocation$")
+	public void click_on_alert_submit_in_request_and_allocation() throws Throwable {
+		waitHelper.waitForElementToVisibleWithFluentWait(driver, kubsCommonObj.kubsAlertSubmit(), 20, 1);
+		for (int i = 0; i <= 50; i++) {
+			try {
+				kubsCommonObj.kubsAlertSubmit().click();
+				break;
+			} catch (Exception e) {
+
+				if (i == 50) {
+					Assert.fail(e.getMessage());
+				} else if (i != 50) {
+					clickAndActionsHelper.clickOnElement(kubsCommonObj.kubsAlertRemark());
+
+					kubsCommonObj.kubsAlertRemark().sendKeys(budgetAllocationTestData.get("MakerAlertRemark"));
+				}
+
+			}
+		}
+	}
+
+@And("^store the reviewer ID in request and allocation excel database$")
+	public void store_the_reviewer_id_in_request_and_allocation_excel_database() throws Throwable {
+		waitHelper.waitForElementToVisibleWithFluentWait(driver, kubsCommonObj.kubsToastAlert(), 20, 1);
+		String reviewerID = kubsCommonObj.kubsToastAlert().getText().substring(85).replace(".", "");
+		excelDataForBudgetRequestAndAllocation.updateTestData(budgetAllocationTestData.get("DataSet ID"), "Reviewer ID",
+				reviewerID);
+		waitHelper.waitForElementToVisibleWithFluentWait(driver, kubsCommonObj.kubsAlertClose(), 20, 1);
+		kubsCommonObj.kubsAlertClose().click();
+	}
+@And("^click on search button in busget request and allocation screen$")
+public void click_on_search_button_in_busget_request_and_allocation_screen() throws Throwable {
+	waitHelper.waitForElementToVisibleWithFluentWait(driver, kubsCommonObj.kubsListViewSearchButton(), 20, 1);
+	kubsCommonObj.kubsListViewSearchButton().click();
+
+}
+@And("^search for approved budget in budgte request and allocation screen$")
+public void search_for_approved_budget_in_budgte_request_and_allocation_screen() throws Throwable {
+	waitHelper.waitForElementToVisibleWithFluentWait(driver,
+			requestAndAllocation.budget_requestAndAllocation_Budgetcodesearch(), 20, 1);
+	clickAndActionsHelper.moveToElement(requestAndAllocation.budget_requestAndAllocation_Budgetcodesearch());
+	clickAndActionsHelper.clickOnElement(requestAndAllocation.budget_requestAndAllocation_Budgetcodesearch());
+	requestAndAllocation.budget_requestAndAllocation_Budgetcodesearch()
+			.sendKeys(budgetAllocationTestData.get("BudgetCode"));
+}
+@Then("^verify approved budget code should reflect in budget request and allocation screen$")
+public void verify_approved_budget_code_should_reflect_in_budget_request_and_allocation_screen() throws Throwable {
+	String xpath = "//span[contains(text(),' " + budgetAllocationTestData.get("BudgetCode")
+			+ " ')]//ancestor::datatable-row-wrapper[1]";
+	for (int i = 0; i <= 100; i++) {
+		try {
+			driver.findElement(By.xpath(xpath)).isDisplayed();
+			break;
+		} catch (Exception e) {
+			if (i == 100) {
+				Assert.fail(e.getMessage());
+			}
+		}
+	}
+	
+}
+@And("^store the budget code in after HO approval scenario excel database$")
+public void store_the_budget_code_in_after_ho_approval_scenario_excel_database() throws Throwable {
+	excelDataForBudgetRequestAndAllocation.updateTestData("KUBS_B&P_UAT_003_002_D1", "BudgetCode",
+			budgetAllocationTestData.get("BudgetCode"));
+}
+
+@And("^click on submit in request and allocation screen$")
+public void click_on_submit_in_request_and_allocation_screen() throws Throwable {
+	waitHelper.waitForElementToVisibleWithFluentWait(driver, kubsCommonObj.kubsSubmitButton(), 20, 1);
+	kubsCommonObj.kubsSubmitButton().click();
+}
+@Then("^validate the amount field should populate as per the financial period$")
+public void validate_the_amount_field_should_populate_as_per_the_financial_period() throws Throwable {
+	waitHelper.waitForElementToVisibleWithFluentWait(driver, requestAndAllocation.requestAndAllocationSystemDate(),
+			20, 1);
+	String systemDate = requestAndAllocation.requestAndAllocationSystemDate().getText();
+	String[] splitSystemDate = systemDate.split("-");
+	System.out.println("Month " + splitSystemDate[1]);
+	String xpath = "//div[contains(text(),'" + splitSystemDate[1]
+			+ "')]//parent::datatable-body-cell//following-sibling::datatable-body-cell[1]//app-kub-currency";
+	String currencyFieldValidation = driver.findElement(By.xpath(xpath)).getAttribute("ng-reflect-is-disabled");
+	if (currencyFieldValidation.equalsIgnoreCase("false")) {
+		System.out.println("Its getting populatted");
+	} else {
+		Assert.fail("Currency field not getting populatted currectly");
+	}
+}
+@Then("^validate the budget amount field of quarterly budget record$")
+public void validate_the_budget_amount_field_of_quarterly_budget_record() throws Throwable {
+	waitHelper.waitForElementToVisibleWithFluentWait(driver, requestAndAllocation.requestAndAllocationSystemDate(),
+			20, 1);
+	String systemDate = requestAndAllocation.requestAndAllocationSystemDate().getText();
+	String[] spliSystemDate = systemDate.split("-");
+	String splitMonth = spliSystemDate[1];
+	if (splitMonth.equalsIgnoreCase("Apr") || splitMonth.equalsIgnoreCase("May")
+			|| splitMonth.equalsIgnoreCase("Jun")) {
+		waitHelper.waitForElementToVisibleWithFluentWait(driver,
+				requestAndAllocation.budgetRequestAndAllocationQuarterlyBudgetAmontFieldOne(), 20, 1);
+		Assert.assertEquals(requestAndAllocation.budgetRequestAndAllocationQuarterlyBudgetAmontFieldOne()
+				.getAttribute("ng-reflect-is-disabled"), "false");
+		waitHelper.waitForElementToVisibleWithFluentWait(driver,
+				requestAndAllocation.budgetRequestAndAllocationQuarterlyBudgetAmontFieldTwo(), 20, 1);
+		Assert.assertEquals(requestAndAllocation.budgetRequestAndAllocationQuarterlyBudgetAmontFieldTwo()
+				.getAttribute("ng-reflect-is-disabled"), "false");
+		waitHelper.waitForElementToVisibleWithFluentWait(driver,
+				requestAndAllocation.budgetRequestAndAllocationQuarterlyBudgetAmontFieldThree(), 20, 1);
+		Assert.assertEquals(requestAndAllocation.budgetRequestAndAllocationQuarterlyBudgetAmontFieldThree()
+				.getAttribute("ng-reflect-is-disabled"), "false");
+		waitHelper.waitForElementToVisibleWithFluentWait(driver,
+				requestAndAllocation.budgetRequestAndAllocationQuarterlyBudgetAmontFieldFour(), 20, 1);
+		Assert.assertEquals(requestAndAllocation.budgetRequestAndAllocationQuarterlyBudgetAmontFieldFour()
+				.getAttribute("ng-reflect-is-disabled"), "false");
+	} else if (splitMonth.equalsIgnoreCase("Jul") || splitMonth.equalsIgnoreCase("Aug")
+			|| splitMonth.equalsIgnoreCase("Sep")) {
+		waitHelper.waitForElementToVisibleWithFluentWait(driver,
+				requestAndAllocation.budgetRequestAndAllocationQuarterlyBudgetAmontFieldOne(), 20, 1);
+		Assert.assertEquals(requestAndAllocation.budgetRequestAndAllocationQuarterlyBudgetAmontFieldOne()
+				.getAttribute("ng-reflect-is-disabled"), "true");
+		waitHelper.waitForElementToVisibleWithFluentWait(driver,
+				requestAndAllocation.budgetRequestAndAllocationQuarterlyBudgetAmontFieldTwo(), 20, 1);
+		Assert.assertEquals(requestAndAllocation.budgetRequestAndAllocationQuarterlyBudgetAmontFieldTwo()
+				.getAttribute("ng-reflect-is-disabled"), "false");
+		waitHelper.waitForElementToVisibleWithFluentWait(driver,
+				requestAndAllocation.budgetRequestAndAllocationQuarterlyBudgetAmontFieldThree(), 20, 1);
+		Assert.assertEquals(requestAndAllocation.budgetRequestAndAllocationQuarterlyBudgetAmontFieldThree()
+				.getAttribute("ng-reflect-is-disabled"), "false");
+		waitHelper.waitForElementToVisibleWithFluentWait(driver,
+				requestAndAllocation.budgetRequestAndAllocationQuarterlyBudgetAmontFieldFour(), 20, 1);
+		Assert.assertEquals(requestAndAllocation.budgetRequestAndAllocationQuarterlyBudgetAmontFieldFour()
+				.getAttribute("ng-reflect-is-disabled"), "false");
+	} else if (splitMonth.equalsIgnoreCase("Oct") || splitMonth.equalsIgnoreCase("Nov")
+			|| splitMonth.equalsIgnoreCase("Dec")) {
+		waitHelper.waitForElementToVisibleWithFluentWait(driver,
+				requestAndAllocation.budgetRequestAndAllocationQuarterlyBudgetAmontFieldOne(), 20, 1);
+		Assert.assertEquals(requestAndAllocation.budgetRequestAndAllocationQuarterlyBudgetAmontFieldOne()
+				.getAttribute("ng-reflect-is-disabled"), "true");
+		waitHelper.waitForElementToVisibleWithFluentWait(driver,
+				requestAndAllocation.budgetRequestAndAllocationQuarterlyBudgetAmontFieldTwo(), 20, 1);
+		Assert.assertEquals(requestAndAllocation.budgetRequestAndAllocationQuarterlyBudgetAmontFieldTwo()
+				.getAttribute("ng-reflect-is-disabled"), "true");
+		waitHelper.waitForElementToVisibleWithFluentWait(driver,
+				requestAndAllocation.budgetRequestAndAllocationQuarterlyBudgetAmontFieldThree(), 20, 1);
+		Assert.assertEquals(requestAndAllocation.budgetRequestAndAllocationQuarterlyBudgetAmontFieldThree()
+				.getAttribute("ng-reflect-is-disabled"), "false");
+		waitHelper.waitForElementToVisibleWithFluentWait(driver,
+				requestAndAllocation.budgetRequestAndAllocationQuarterlyBudgetAmontFieldFour(), 20, 1);
+		Assert.assertEquals(requestAndAllocation.budgetRequestAndAllocationQuarterlyBudgetAmontFieldFour()
+				.getAttribute("ng-reflect-is-disabled"), "false");
+	} else if (splitMonth.equalsIgnoreCase("Jan") || splitMonth.equalsIgnoreCase("Feb")
+			|| splitMonth.equalsIgnoreCase("Mar")) {
+		waitHelper.waitForElementToVisibleWithFluentWait(driver,
+				requestAndAllocation.budgetRequestAndAllocationQuarterlyBudgetAmontFieldOne(), 20, 1);
+		Assert.assertEquals(requestAndAllocation.budgetRequestAndAllocationQuarterlyBudgetAmontFieldOne()
+				.getAttribute("ng-reflect-is-disabled"), "true");
+		waitHelper.waitForElementToVisibleWithFluentWait(driver,
+				requestAndAllocation.budgetRequestAndAllocationQuarterlyBudgetAmontFieldTwo(), 20, 1);
+		Assert.assertEquals(requestAndAllocation.budgetRequestAndAllocationQuarterlyBudgetAmontFieldTwo()
+				.getAttribute("ng-reflect-is-disabled"), "true");
+		waitHelper.waitForElementToVisibleWithFluentWait(driver,
+				requestAndAllocation.budgetRequestAndAllocationQuarterlyBudgetAmontFieldThree(), 20, 1);
+		Assert.assertEquals(requestAndAllocation.budgetRequestAndAllocationQuarterlyBudgetAmontFieldThree()
+				.getAttribute("ng-reflect-is-disabled"), "true");
+		waitHelper.waitForElementToVisibleWithFluentWait(driver,
+				requestAndAllocation.budgetRequestAndAllocationQuarterlyBudgetAmontFieldFour(), 20, 1);
+		Assert.assertEquals(requestAndAllocation.budgetRequestAndAllocationQuarterlyBudgetAmontFieldFour()
+				.getAttribute("ng-reflect-is-disabled"), "false");
+	}
+}
+@Then("^validate the budget amount field of half yearly budget record$")
+public void validate_the_budget_amount_field_of_half_yearly_budget_record() throws Throwable {
+	String systemDate = requestAndAllocation.requestAndAllocationSystemDate().getText();
+	String[] spliSystemDate = systemDate.split("-");
+	String splitMonth = spliSystemDate[1];
+	if (splitMonth.equalsIgnoreCase("Apr") || splitMonth.equalsIgnoreCase("May")
+			|| splitMonth.equalsIgnoreCase("Jun") || splitMonth.equalsIgnoreCase("Jul")
+			|| splitMonth.equalsIgnoreCase("Aug") || splitMonth.equalsIgnoreCase("Sep")) {
+		waitHelper.waitForElementToVisibleWithFluentWait(driver,
+				requestAndAllocation.budgetRequestAndAllocationQuarterlyBudgetAmontFieldOne(), 20, 1);
+		Assert.assertEquals(requestAndAllocation.budgetRequestAndAllocationQuarterlyBudgetAmontFieldOne()
+				.getAttribute("ng-reflect-is-disabled"), "false");
+		waitHelper.waitForElementToVisibleWithFluentWait(driver,
+				requestAndAllocation.budgetRequestAndAllocationQuarterlyBudgetAmontFieldTwo(), 20, 1);
+		Assert.assertEquals(requestAndAllocation.budgetRequestAndAllocationQuarterlyBudgetAmontFieldTwo()
+				.getAttribute("ng-reflect-is-disabled"), "false");
+	} else if (splitMonth.equalsIgnoreCase("Oct") || splitMonth.equalsIgnoreCase("Nov")
+			|| splitMonth.equalsIgnoreCase("Dec") || splitMonth.equalsIgnoreCase("Jan")
+			|| splitMonth.equalsIgnoreCase("Feb") || splitMonth.equalsIgnoreCase("Mar")) {
+		waitHelper.waitForElementToVisibleWithFluentWait(driver,
+				requestAndAllocation.budgetRequestAndAllocationQuarterlyBudgetAmontFieldOne(), 20, 1);
+		Assert.assertEquals(requestAndAllocation.budgetRequestAndAllocationQuarterlyBudgetAmontFieldOne()
+				.getAttribute("ng-reflect-is-disabled"), "true");
+		waitHelper.waitForElementToVisibleWithFluentWait(driver,
+				requestAndAllocation.budgetRequestAndAllocationQuarterlyBudgetAmontFieldTwo(), 20, 1);
+		Assert.assertEquals(requestAndAllocation.budgetRequestAndAllocationQuarterlyBudgetAmontFieldTwo()
+				.getAttribute("ng-reflect-is-disabled"), "false");
+	}
+}
+
+	
 
 }

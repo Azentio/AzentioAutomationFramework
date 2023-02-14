@@ -272,12 +272,25 @@ public class BUDGET_BudgetCreationObj {
 	public WebElement budgetConfigReferenceNumber() {
 		return budgetConfig_ReferenceNumber;
 	}
+	
+	@FindBy(xpath = "//datatable-row-wrapper[1]//span[text()='BUDGET_CREATION']//ancestor::datatable-body-cell//preceding-sibling::datatable-body-cell[1]//span")
+	private WebElement budgetReqAndAllocation_ReferenceNumber;
+
+	public WebElement budgetReqAndAllocation_ReferenceNumber() {
+		return budgetReqAndAllocation_ReferenceNumber;
+	}
 
 	@FindBy(xpath = "//datatable-row-wrapper[1]//span[text()='BUDGET_REGISTER']//ancestor::datatable-body-cell//preceding-sibling::datatable-body-cell[2]//ion-button")
 	private WebElement budgetConfig_NotificationFirstRecord;
 
 	public WebElement budgetConfigNotificationFirstRecord() {
 		return budgetConfig_NotificationFirstRecord;
+	}
+	@FindBy(xpath = "//input[@placeholder='Search Budget Code']")
+	private WebElement budgetConfig_ListViewSearchBudgetCode;
+
+	public WebElement budgetConfigListViewSearchBudgetCode() {
+		return budgetConfig_ListViewSearchBudgetCode;
 	}
 
 }

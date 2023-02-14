@@ -43,6 +43,10 @@ public class KUBS_ChekcerSteps extends BaseClass {
 	ExcelData excelDataForAssetReplacement = new ExcelData(excelPath, "FixedAsset_AssetReplacement", "DataSet ID");
 	ExcelData excelDataForAssetWriteOff = new ExcelData(excelPath, "FixedAsset_WriteOff", "DataSet ID");
 	ExcelData excelDataForBudgetRequestAndAllocation = new ExcelData(excelPath, "BudgetReqAndAllocation","DataSet ID");
+	ExcelData excelDataForBudgetSupplementary = new ExcelData(excelPath,"BudgetSupplimentory","DataSet ID");
+	ExcelData excelDataForBudgetConfig = new ExcelData(excelPath, "BudgetConfiguration", "DataSet ID");
+	ExcelData excelDataForBudgetDefenition = new ExcelData(excelPath, "BudgetConfiguration", "DataSet ID");
+	ExcelData excelDataForBudgetReqAndAllocation = new ExcelData(excelPath, "BudgetReqAndAllocation", "DataSet ID");
 	@Given("^navigate to kubs url to approve the fixed asset replacement record as a checker$")
 	public void navigate_to_kubs_url_to_approve_the_fixed_asset_replacement_record_as_a_checker() throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
@@ -155,6 +159,13 @@ public class KUBS_ChekcerSteps extends BaseClass {
 		driver.get(configFileReader.getApplicationUrl());
 		kubsLogin.loginToAzentioAppAsChecker();
 		checkerTestData = excelDataForAssetRevaluation.getTestdata("KUBS_FAT_UAT_012_01_D11");
+	}
+	@Given("^Navigate to KUBS url and login with checker for approve the budget allocation record for future financial budget$")
+	public void navigate_to_kubs_url_and_login_with_checker_for_approve_the_budget_allocation_record_for_future_financial_budget()
+			throws Throwable {
+		driver.get(configFileReader.getApplicationUrl());
+		kubsLogin.loginToAzentioAppAsChecker();
+		checkerTestData = excelDataForBudgetReqAndAllocation.getTestdata("KUBS_B&P_UAT_001_006_D1");
 	}
 
 	@Given("^navigate to kubs url to approve the fixed asset revaluation record in checker for the prerequisite of asset transfer undertaking$")
@@ -628,7 +639,7 @@ public class KUBS_ChekcerSteps extends BaseClass {
     public void navigate_to_kubs_url_and_login_with_checker_for_approve_the_yearly_budget_record() throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
 		kubsLogin.loginToAzentioAppAsChecker();
-		checkerTestData = excelDataForSerialNumberSetUp.getTestdata("KUBS_BP_UAT_001_001_D1");
+		checkerTestData = excelDataForBudgetConfig.getTestdata("KUBS_BP_UAT_001_001_D1");
     }
 	@Given("^Navigate to KUBS url and login with checker for approve the Monthly budget request and Allocation record$")
     public void navigate_to_kubs_url_and_login_with_checker_for_approve_the_monthly_budget_request_and_allocation_record() throws Throwable {
@@ -662,6 +673,12 @@ public class KUBS_ChekcerSteps extends BaseClass {
 		kubsLogin.loginToAzentioAppAsChecker();
 		checkerTestData = excelDataForBudgetRequestAndAllocation.getTestdata("KUBS_BP_UAT_002_006_02_D1");
 	}
+	@Given("^Navigate to KUBS url and login with checker for approve the yearly3 budget request and Allocation record$")
+    public void navigate_to_kubs_url_and_login_with_checker_for_approve_the_yearly3_budget_request_and_allocation_record() throws Throwable {
+		driver.get(configFileReader.getApplicationUrl());
+		kubsLogin.loginToAzentioAppAsChecker();
+		checkerTestData = excelDataForBudgetRequestAndAllocation.getTestdata("KUBS_BP_UAT_002_005_05_D1");
+    }
 	@Given("^Navigate to KUBS url and login with checker for reject the yearly1 budget request and Allocation record$")
     public void navigate_to_kubs_url_and_login_with_checker_for_reject_the_yearly1_budget_request_and_allocation_record() throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
@@ -674,13 +691,30 @@ public class KUBS_ChekcerSteps extends BaseClass {
 		kubsLogin.loginToAzentioAppAsChecker();
 		checkerTestData = excelDataForBudgetRequestAndAllocation.getTestdata("KUBS_BP_UAT_002_007_02_D1");
     }
-	@Given("^Navigate to KUBS url and login with checker for reject the yearly4 budget request and Allocation record$")
-    public void navigate_to_kubs_url_and_login_with_checker_for_reject_the_yearly4_budget_request_and_allocation_record() throws Throwable {
+	@Given("^Navigate to KUBS url and login with checker for approve the yearly4 budget request and Allocation record$")
+    public void navigate_to_kubs_url_and_login_with_checker_for_approve_the_yearly4_budget_request_and_allocation_record() throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
 		kubsLogin.loginToAzentioAppAsChecker();
-		checkerTestData = excelDataForBudgetRequestAndAllocation.getTestdata("KUBS_BP_UAT_005_002_05_D1");
+		checkerTestData = excelDataForBudgetSupplementary.getTestdata("KUBS_BP_UAT_005_001_05_D1");
     }
-	
+	@Given("^Navigate to KUBS url and login with checker for approve the Budget Supplementary record for Yearly Budget Code$")
+    public void navigate_to_kubs_url_and_login_with_checker_for_approve_the_budget_supplementary_record_for_yearly_budget_code() throws Throwable {
+		driver.get(configFileReader.getApplicationUrl());
+		kubsLogin.loginToAzentioAppAsChecker();
+		checkerTestData = excelDataForBudgetSupplementary.getTestdata("KUBS_BP_UAT_005_004_02_D1");
+    }
+	@Given("^Navigate to KUBS url and login with checker for reject Budget Supplementary record for Yearly Budget Code$")
+    public void navigate_to_kubs_url_and_login_with_checker_for_reject_budget_supplementary_record_for_yearly_budget_code() throws Throwable {
+		driver.get(configFileReader.getApplicationUrl());
+		kubsLogin.loginToAzentioAppAsChecker();
+		checkerTestData = excelDataForBudgetSupplementary.getTestdata("KUBS_BP_UAT_005_005_02_D1");
+    }
+	@Given("^Navigate to KUBS url and login with checker for reject HO Budget Supplementary record for Yearly Budget Code$")
+    public void navigate_to_kubs_url_and_login_with_checker_for_reject_ho_budget_supplementary_record_for_yearly_budget_code() throws Throwable {
+		driver.get(configFileReader.getApplicationUrl());
+		kubsLogin.loginToAzentioAppAsChecker();
+		checkerTestData = excelDataForBudgetSupplementary.getTestdata("KUBS_BP_UAT_005_006_02_D1");
+    }
 	@Given("^Navigate to KUBS url and login with checker for approve the yearly3 budget defenition record$")
     public void navigate_to_kubs_url_and_login_with_checker_for_approve_the_yearly3_budget_defenition_record() throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
@@ -693,7 +727,7 @@ public class KUBS_ChekcerSteps extends BaseClass {
 			throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
 		kubsLogin.loginToAzentioAppAsChecker();
-		checkerTestData = excelDataForBudgetRequestAndAllocation.getTestdata("KUBS_BP_UAT_005_002_02_D1");
+		checkerTestData = excelDataForBudgetSupplementary.getTestdata("KUBS_BP_UAT_005_001_02_D1");
 	}
 
 
@@ -702,26 +736,26 @@ public class KUBS_ChekcerSteps extends BaseClass {
     public void navigate_to_kubs_url_and_login_with_checker_for_approve_the_monthly_budget_record() throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
 		kubsLogin.loginToAzentioAppAsChecker();
-		checkerTestData = excelDataForSerialNumberSetUp.getTestdata("KUBS_BP_UAT_001_002_D1");
+		checkerTestData = excelDataForBudgetConfig.getTestdata("KUBS_BP_UAT_001_002_D1");
     }
 
 	@Given("^Navigate to KUBS url and login with checker for approve the quarterly budget record$")
     public void navigate_to_kubs_url_and_login_with_checker_for_approve_the_quarterly_budget_record() throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
 		kubsLogin.loginToAzentioAppAsChecker();
-		checkerTestData = excelDataForSerialNumberSetUp.getTestdata("KUBS_BP_UAT_001_003_D1");
+		checkerTestData = excelDataForBudgetConfig.getTestdata("KUBS_BP_UAT_001_003_D1");
     }
 	@Given("^Navigate to KUBS url and login with checker for approve the half yearly budget record$")
     public void navigate_to_kubs_url_and_login_with_checker_for_approve_the_half_yearly_budget_record() throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
 		kubsLogin.loginToAzentioAppAsChecker();
-		checkerTestData = excelDataForSerialNumberSetUp.getTestdata("KUBS_BP_UAT_001_004_D1");
+		checkerTestData = excelDataForBudgetConfig.getTestdata("KUBS_BP_UAT_001_004_D1");
     }
 	@Given("^Navigate to KUBS url and login with checker for current financial budget$")
     public void navigate_to_kubs_url_and_login_with_checker_for_current_financial_budget() throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
 		kubsLogin.loginToAzentioAppAsChecker();
-		checkerTestData = excelDataForSerialNumberSetUp.getTestdata("KUBS_BP_UAT_001_001_D2");
+		checkerTestData = excelDataForBudgetConfig.getTestdata("KUBS_BP_UAT_001_001_D2");
     }
 	@Given("^navigate to kubs url to approve the fixed asset creation record with minimum details as a checker$")
 	public void navigate_to_kubs_url_to_approve_the_fixed_asset_creation_record_with_minimum_details_as_a_checker()
@@ -921,6 +955,13 @@ public class KUBS_ChekcerSteps extends BaseClass {
 		checkerTestData = excelDataForAssetReturn.getTestdata("KUBS_FAT_UAT_007_001_01_D1");
 
 	}
+	@Given("^Navigate to KUBS url and login with checker for future financial budget$")
+	public void navigate_to_kubs_url_and_login_with_checker_for_future_financial_budget() throws Throwable {
+		driver.get(configFileReader.getApplicationUrl());
+		kubsLogin.loginToAzentioAppAsChecker();
+		checkerTestData = excelDataForBudgetDefenition.getTestdata("KUBS_BP_UAT_001_001_D3");
+	}
+
 
 	@Given("^navigate to kubs url to approve the fixed asset return record which is already revalued in checker$")
 	public void navigate_to_kubs_url_to_approve_the_fixed_asset_return_record_which_is_already_revalued_in_checker()
@@ -967,6 +1008,57 @@ public class KUBS_ChekcerSteps extends BaseClass {
 		kubsLogin.loginToAzentioAppAsChecker();
 		checkerTestData = excelDataForAssetReturn.getTestdata("KUBS_FAT_UAT_007_003_01_D1");
 	}
+	@Given("^Navigate to KUBS url and login with checker for approve the budget allocation record for current financial budget$")
+	public void navigate_to_kubs_url_and_login_with_checker_for_approve_the_budget_allocation_record_for_current_financial_budget()
+			throws Throwable {
+		driver.get(configFileReader.getApplicationUrl());
+		kubsLogin.loginToAzentioAppAsChecker();
+		checkerTestData = excelDataForBudgetRequestAndAllocation.getTestdata("KUBS_B&P_UAT_001_005_D1");
+	}
+	@Given("^Navigate to KUBS url and login with checker for approve the monthly budget record for validate the budget amount fields for current financial budget$")
+	public void navigate_to_kubs_url_and_login_with_checker_for_approve_the_monthly_budget_record_for_validate_the_budget_amount_fields_for_current_financial_budget()
+			throws Throwable {
+		driver.get(configFileReader.getApplicationUrl());
+		kubsLogin.loginToAzentioAppAsChecker();
+		checkerTestData = excelDataForBudgetDefenition.getTestdata("KUBS_BP_UAT_001_001_D4");
+	}
+	@Given("^Navigate to KUBS url and login with checker for approve the budget request and allocation record for monthly field validation$")
+	public void navigate_to_kubs_url_and_login_with_checker_for_approve_the_budget_request_and_allocation_record_for_monthly_field_validation()
+			throws Throwable {
+		driver.get(configFileReader.getApplicationUrl());
+		kubsLogin.loginToAzentioAppAsChecker();
+		checkerTestData = excelDataForBudgetReqAndAllocation.getTestdata("KUBS_B&P_UAT_003_003_D1");
+	}
+	@Given("^Navigate to KUBS url and login with checker for approve the quarterly budget record to validate the budget amount field$")
+	public void navigate_to_kubs_url_and_login_with_checker_for_approve_the_quarterly_budget_record_to_validate_the_budget_amount_field()
+			throws Throwable {
+		driver.get(configFileReader.getApplicationUrl());
+		kubsLogin.loginToAzentioAppAsChecker();
+		checkerTestData = excelDataForBudgetDefenition.getTestdata("KUBS_BP_UAT_001_001_D5");
+	}
+	@Given("^Navigate to KUBS url and login with checker for approve the budget request and allocation record for half yearly field validation$")
+	public void navigate_to_kubs_url_and_login_with_checker_for_approve_the_budget_request_and_allocation_record_for_half_yearly_field_validation()
+			throws Throwable {
+		driver.get(configFileReader.getApplicationUrl());
+		kubsLogin.loginToAzentioAppAsChecker();
+		checkerTestData = excelDataForBudgetReqAndAllocation.getTestdata("KUBS_B&P_UAT_003_005_D1");
+	}
+	@Given("^Navigate to KUBS url and login with checker for approve the budget request and allocation record for quarterly field validation$")
+	public void navigate_to_kubs_url_and_login_with_checker_for_approve_the_budget_request_and_allocation_record_for_quarterly_field_validation()
+			throws Throwable {
+		driver.get(configFileReader.getApplicationUrl());
+		kubsLogin.loginToAzentioAppAsChecker();
+		checkerTestData = excelDataForBudgetReqAndAllocation.getTestdata("KUBS_B&P_UAT_003_004_D1");
+	}
+	@Given("^Navigate to KUBS url and login with checker for approve the half yearly budget record to validate the budget amount field$")
+	public void navigate_to_kubs_url_and_login_with_checker_for_approve_the_half_yearly_budget_record_to_validate_the_budget_amount_field()
+			throws Throwable {
+		driver.get(configFileReader.getApplicationUrl());
+		kubsLogin.loginToAzentioAppAsChecker();
+		checkerTestData = excelDataForBudgetDefenition.getTestdata("KUBS_BP_UAT_001_001_D6");
+	}
+
+
 
 	@And("^click on security management tool$")
 	public void click_on_security_management_tool() throws Throwable {
@@ -1084,6 +1176,15 @@ public class KUBS_ChekcerSteps extends BaseClass {
 		clicksAndActionsHelper.clickUsingActionClass(kubsCommonObj.kubsAlertRemark(), kubsCommonObj.kubsAlertRemark());
 		kubsCommonObj.kubsAlertRemark().sendKeys(checkerTestData.get("CheckerAlertRemark"));
 	}
+
+	@And("^User Enter remarks for Checker Reject$")
+	public void user_enter_remarks_for_checker_reject() throws Throwable {
+		waitHelper.waitForElementToVisibleWithFluentWait(driver, kubsCommonObj.kubsAlertRemark(), 20, 1);
+		clicksAndActionsHelper.moveToElement(kubsCommonObj.kubsAlertRemark());
+		clicksAndActionsHelper.clickUsingActionClass(kubsCommonObj.kubsAlertRemark(), kubsCommonObj.kubsAlertRemark());
+		kubsCommonObj.kubsAlertRemark().sendKeys(checkerTestData.get("CheckerAlertRemark"));
+	}
+
 
 	@And("^click on submit button in checker stage$")
 	public void click_on_submit_button_in_checker_stage() throws Throwable {

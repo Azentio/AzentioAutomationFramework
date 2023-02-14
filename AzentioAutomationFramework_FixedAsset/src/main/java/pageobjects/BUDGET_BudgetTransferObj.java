@@ -496,5 +496,18 @@ public class BUDGET_BudgetTransferObj {
 		return budget_BudgetTransfer_fromNewAmountQuarter;
 
 	}
-    
+	@FindBy(xpath = "(//datatable-body-cell[3]//div//app-kub-currency//input[1])[5]")
+	private WebElement budget_BudgetTransfer_NewAmountB1;
+
+	public WebElement budget_BudgetTransfer_NewAmountB1() {
+		return budget_BudgetTransfer_NewAmountB1;
+
+	}
+	@FindBy(xpath = "(//datatable-body-cell[4]//div//app-kub-currency//input)[5]")
+	private WebElement budget_BudgetTransfer_NewAmountB2;
+
+	public WebElement budget_BudgetTransfer_NewAmountB2() {
+		return budget_BudgetTransfer_NewAmountB2;
+
+	}
 }

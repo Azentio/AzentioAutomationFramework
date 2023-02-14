@@ -1,6 +1,9 @@
 package stepdefinitions;
 
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.Map;
 
 import org.json.simple.parser.ParseException;
 import org.openqa.selenium.By;
@@ -24,9 +27,11 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import pageobjects.Azentio_CheckerObj;
 import pageobjects.Azentio_ReviewerObj;
+import pageobjects.BUDGET_BudgetCreationObj;
 import pageobjects.BUDGET_SupplementaryBudgetObj;
 import pageobjects.KUBS_MakerObj;
 import resources.BaseClass;
+import resources.ExcelData;
 import resources.JsonDataReaderWriter;
 import testDataType.BUDGET_BudgetCreationTestDataType;
 import testDataType.BUDGET_SupplementarybudgetTestDataType;
@@ -43,6 +48,7 @@ public class BUDGET_SupplementaryBudgetUAT extends BaseClass {
 	AzentioLogin login = new AzentioLogin(driver);
 	BUDGET_SupplementaryBudgetObj bUDGET_SupplementaryBudgetObj = new BUDGET_SupplementaryBudgetObj(driver);
 	BUDGET_SupplementarybudgetTestDataType bUDGET_SupplementaryBudgetTestDataType;
+	BUDGET_BudgetCreationObj budgetCreationObj = new BUDGET_BudgetCreationObj(driver);
 	// Checker//
 	JsonDataReaderWriter reader = new JsonDataReaderWriter();
 	Azentio_CheckerObj kubschecker = new Azentio_CheckerObj(driver);
@@ -58,11 +64,72 @@ public class BUDGET_SupplementaryBudgetUAT extends BaseClass {
 	JavascriptHelper javascripthelper = new JavascriptHelper();
 	String user = "Maker";
 	ClicksAndActionsHelper clicksAndActionHelper = new ClicksAndActionsHelper(driver);
+	String path = System.getProperty("user.dir")+"\\Test-data\\KUBSTestData.xlsx";
+	ExcelData excelDataForBudgetSupplementary = new ExcelData(path,"BudgetSupplimentory","DataSet ID");
+	Map<String, String> budgetSupplementaryTestData;
 //	KUBS_MakerObj kubsMakerObj = new KUBS_MakerObj(driver);
 
 	// ----------------------------------------SupplementaryBudget_KUBS_BP_UAT_005_004---------------------------------------------//
 	// ----------------------------------------------Budget Record
+	@And("^User Update test data id to verify budget supplementary approved record$")
+    public void user_update_test_data_id_to_verify_budget_supplementary_approved_record() throws Throwable {
+		budgetSupplementaryTestData = excelDataForBudgetSupplementary.getTestdata("KUBS_BP_UAT_005_004_04_D1");
+    }
+	@And("^User Update test data id to verify budget supplementary record$")
+	public void user_update_test_data_id_to_verify_budget_supplementary_record() throws Throwable {
+		budgetSupplementaryTestData = excelDataForBudgetSupplementary.getTestdata("KUBS_BP_UAT_005_006_04_D1");
+	}
+	@And("^User Update test data id to verify budget supplementary Rejected record$")
+    public void user_update_test_data_id_to_verify_budget_supplementary_rejected_record() throws Throwable {
+		budgetSupplementaryTestData = excelDataForBudgetSupplementary.getTestdata("KUBS_BP_UAT_005_005_04_D1");
+    }
 
+	@And("^User update test data id to do Budget supplementary for yearly4 budget code$")
+    public void user_update_test_data_id_to_do_budget_supplementary_for_yearly4_budget_code() throws Throwable {
+		budgetSupplementaryTestData=excelDataForBudgetSupplementary.getTestdata("KUBS_BP_UAT_005_004_01_D1");
+    }
+	@And("^User Update test data id to store new Amount for Verification$")
+    public void user_update_test_data_id_to_store_new_amount_for_verification() throws Throwable {
+		budgetSupplementaryTestData=excelDataForBudgetSupplementary.getTestdata("KUBS_BP_UAT_005_004_04_D1");
+    }
+
+    @And("^User Update test data id to store new Amount for Verification rejected$")
+    public void user_update_test_data_id_to_store_new_amount_for_verification_rejected() throws Throwable {
+    	budgetSupplementaryTestData=excelDataForBudgetSupplementary.getTestdata("KUBS_BP_UAT_005_005_04_D1");
+    }
+    @And("^User Update test data id to store new Amount for Verification rejected HO$")
+    public void user_update_test_data_id_to_store_new_amount_for_verification_rejected_ho() throws Throwable {
+    	budgetSupplementaryTestData=excelDataForBudgetSupplementary.getTestdata("KUBS_BP_UAT_005_006_04_D1");
+    }
+
+    @And("^User update test data id to do More amount of Budget supplementary for yearly budget code$")
+    public void user_update_test_data_id_to_do_more_amount_of_budget_supplementary_for_yearly_budget_code() throws Throwable {
+    	budgetSupplementaryTestData=excelDataForBudgetSupplementary.getTestdata("KUBS_BP_UAT_005_002_D1");
+    }
+    @And("^User Update Test data id to Modify Budget Supplimentary for Yearly Budget Code$")
+    public void user_update_test_data_id_to_modify_budget_supplimentary_for_yearly_budget_code() throws Throwable {
+    	budgetSupplementaryTestData=excelDataForBudgetSupplementary.getTestdata("KUBS_BP_UAT_005_003_D1");
+    }
+    @And("^User update test data id to do Budget supplementary Rejection for yearly4 budget code$")
+    public void user_update_test_data_id_to_do_budget_supplementary_rejection_for_yearly4_budget_code() throws Throwable {
+    	budgetSupplementaryTestData=excelDataForBudgetSupplementary.getTestdata("KUBS_BP_UAT_005_005_01_D1");
+    }
+    @And("^User update test data id to Reject Budget supplementary  for yearly4 budget code$")
+    public void user_update_test_data_id_to_reject_budget_supplementary_for_yearly4_budget_code() throws Throwable {
+    	budgetSupplementaryTestData=excelDataForBudgetSupplementary.getTestdata("KUBS_BP_UAT_005_006_01_D1");
+    }
+    @And("^User update test data id to store reviewver id for budget supplementary yearly4 budget code$")
+    public void user_update_test_data_id_to_store_reviewver_id_for_budget_supplementary_yearly4_budget_code() throws Throwable {
+    	budgetSupplementaryTestData=excelDataForBudgetSupplementary.getTestdata("KUBS_BP_UAT_005_005_02_D1");
+    }
+    @And("^User update test data id to store reviewver id for budget supplementary yearly budget code$")
+    public void user_update_test_data_id_to_store_reviewver_id_for_budget_supplementary_yearly_budget_code() throws Throwable {
+    	budgetSupplementaryTestData=excelDataForBudgetSupplementary.getTestdata("KUBS_BP_UAT_005_004_02_D1");
+    }
+    @And("^User update test data id to store reviewver id for HO budget supplementary yearly budget code$")
+    public void user_update_test_data_id_to_store_reviewver_id_for_ho_budget_supplementary_yearly_budget_code() throws Throwable {
+    	budgetSupplementaryTestData=excelDataForBudgetSupplementary.getTestdata("KUBS_BP_UAT_005_006_02_D1");
+    }
 	@Given("^maker should navigate to the url and login with valid credentials UAT$")
 	public void maker_should_navigate_to_the_url_and_login_with_valid_credentials_UAT() throws InterruptedException {
 		login = new AzentioLogin(driver);
@@ -101,6 +168,51 @@ public class BUDGET_SupplementaryBudgetUAT extends BaseClass {
 		bUDGET_SupplementaryBudgetObj.budget_SupplementaryBudget_EyeButton().click();
 
 	}
+	@Then("^click on the search button budget supplementary approved record$")
+    public void click_on_the_search_button_budget_supplementary_approved_record() throws Throwable {
+		waithelper.waitForElementToVisibleWithFluentWait(driver,
+				bUDGET_SupplementaryBudgetObj.budget_BudgetTransfer_SupplementarySearchIconInApprovedListView(), 60, 500);
+		bUDGET_SupplementaryBudgetObj.budget_BudgetTransfer_SupplementarySearchIconInApprovedListView().click();
+    }
+	@And("^User Search the Budget Code to verify Budget Supplementary$")
+    public void user_search_the_budget_code_to_verify_budget_supplementary() throws Throwable {
+		waithelper.waitForElementToVisibleWithFluentWait(driver,
+				bUDGET_SupplementaryBudgetObj.budget_SupplementaryBudget_SearchBudgetCode(), 60, 500);
+		bUDGET_SupplementaryBudgetObj.budget_SupplementaryBudget_SearchBudgetCode().click();
+		bUDGET_SupplementaryBudgetObj.budget_SupplementaryBudget_SearchBudgetCode().sendKeys(budgetSupplementaryTestData.get("BudgetCodeCreated"));
+		
+    }
+	@And("^User Click First view icon of Budget Supplementary record$")
+    public void user_click_first_view_icon_of_budget_supplementary_record() throws Throwable {
+		waithelper.waitForElementToVisibleWithFluentWait(driver,
+				bUDGET_SupplementaryBudgetObj.budget_BudgetTransfer_SupplementaryFirstEyeIconApprovedRecord(), 60, 500);
+		bUDGET_SupplementaryBudgetObj.budget_BudgetTransfer_SupplementaryFirstEyeIconApprovedRecord().click();
+    }
+
+	@And("^User Verify Budget Supplementary Amount is Not Reflected$")
+	public void user_verify_budget_supplementary_amount_is_not_reflected() throws Throwable {
+		javascripthelper.JavaScriptHelper(driver);
+		String SupplementaryAmount = (String) javascripthelper.executeScript("return document.getElementsByTagName('input')[12].value");
+		System.out.println(SupplementaryAmount);
+		String NewAmount = bUDGET_SupplementaryBudgetObj.budget_SupplementaryBudget_StoreNewAmount().getAttribute("ng-reflect-selected-value");
+		System.out.println(NewAmount);
+		Assert.assertFalse(NewAmount.equalsIgnoreCase(budgetSupplementaryTestData.get("NewAmount")));
+	}
+	@And("^User Verify Budget Supplementary Amount is Reflected$")
+    public void user_verify_budget_supplementary_amount_is_reflected() throws Throwable {
+		String NewAmount = null;
+		for (int i = 0; i <200; i++) {
+			try {
+				 NewAmount =  bUDGET_SupplementaryBudgetObj.budget_SupplementaryBudget_StoreNewAmount().getAttribute("ng-reflect-selected-value");
+				 break;
+			} catch (Exception e) {
+				if (i==199) {
+					Assert.fail("New Amount Values not Stored");
+				}
+			}
+		}
+		Assert.assertTrue(NewAmount.split("[.]")[0].equalsIgnoreCase(budgetSupplementaryTestData.get("NewAmount")));
+    }
 
 	@And("^click on add button on budget supplementary view page UAT$")
 	public void click_on_add_button_on_budget_supplementary_view_page_UAT() throws InterruptedException {
@@ -126,165 +238,254 @@ for(int i=0;i<=10;i++)
 	}
 	}
 	}
-	@Then("^fill the input fields UAT$")
-	public void fill_the_input_fields_UAT() {
+	 @And("^User Select the Budget code to do supplementary of Yearly budget code$")
+	    public void user_select_the_budget_code_to_do_supplementary_of_yearly_budget_code() throws Throwable {
 		// budget code
-		
+			
+				bUDGET_SupplementaryBudgetTestDataType = jsonReader.getSupplementaryBudgetByName("Maker");
+			waithelper.waitForElementToVisibleWithFluentWait(driver,
+					bUDGET_SupplementaryBudgetObj.budget_SupplementaryBudget_BudgetCode(), 60, 500);
+			bUDGET_SupplementaryBudgetObj.budget_SupplementaryBudget_BudgetCode().click();
+			bUDGET_SupplementaryBudgetObj.budget_SupplementaryBudget_BudgetCode()
+					.sendKeys(budgetSupplementaryTestData.get("BudgetCodeCreated"));
+			bUDGET_SupplementaryBudgetObj.budget_SupplementaryBudget_BudgetCode().sendKeys(Keys.ENTER);
+	    }
+
+	    @And("^User Select the Budget Year to do supplementary of Yearly budget code$")
+	    public void user_select_the_budget_year_to_do_supplementary_of_yearly_budget_code() throws Throwable {
+	    	// budget year
+			waithelper.waitForElementToVisibleWithFluentWait(driver,
+					bUDGET_SupplementaryBudgetObj.budget_SupplementaryBudget_BudgetCode(), 60, 500);
+			bUDGET_SupplementaryBudgetObj.budget_SupplementaryBudget_BudgetYear().click();
+			bUDGET_SupplementaryBudgetObj.budget_SupplementaryBudget_BudgetYear()
+					.sendKeys(budgetSupplementaryTestData.get("BudgetYear"));
+			bUDGET_SupplementaryBudgetObj.budget_SupplementaryBudget_BudgetYear().sendKeys(Keys.ENTER);
+	    }
+
+	    @And("^User Select the Budget Branch to do supplementary of Yearly budget code$")
+	    public void user_select_the_budget_branch_to_do_supplementary_of_yearly_budget_code() throws Throwable {
+	    	// budget branch
+			waithelper.waitForElementToVisibleWithFluentWait(driver,
+					bUDGET_SupplementaryBudgetObj.budget_SupplementaryBudget_BudgetBranch(), 60, 500);
+			bUDGET_SupplementaryBudgetObj.budget_SupplementaryBudget_BudgetBranch().click();
+			bUDGET_SupplementaryBudgetObj.budget_SupplementaryBudget_BudgetBranch()
+					.sendKeys(budgetSupplementaryTestData.get("Branch"));
+			bUDGET_SupplementaryBudgetObj.budget_SupplementaryBudget_BudgetBranch().sendKeys(Keys.ENTER);
+	    }
+
+	    @And("^User Select the Currency Type to do supplementary of Yearly budget code$")
+	    public void user_select_the_currency_type_to_do_supplementary_of_yearly_budget_code() throws Throwable {
+	    	// currency
+			waithelper.waitForElementToVisibleWithFluentWait(driver,
+					bUDGET_SupplementaryBudgetObj.budget_SupplementaryBudget_Currency(), 60, 500);
+			bUDGET_SupplementaryBudgetObj.budget_SupplementaryBudget_Currency().click();
+			bUDGET_SupplementaryBudgetObj.budget_SupplementaryBudget_Currency()
+					.sendKeys(budgetSupplementaryTestData.get("Currency"));
+			bUDGET_SupplementaryBudgetObj.budget_SupplementaryBudget_Currency().sendKeys(Keys.DOWN, Keys.ENTER);
+			
+	    }
+
+	    @And("^User Enter Supplementary Appropriation Amount$")
+	    public void user_enter_supplementary_appropriation_amount() throws Throwable {
+	    	// Supplementary apportion amount
 			bUDGET_SupplementaryBudgetTestDataType = jsonReader.getSupplementaryBudgetByName("Maker");
-		waithelper.waitForElementToVisibleWithFluentWait(driver,
-				bUDGET_SupplementaryBudgetObj.budget_SupplementaryBudget_BudgetCode(), 60, 500);
-		bUDGET_SupplementaryBudgetObj.budget_SupplementaryBudget_BudgetCode().click();
-		bUDGET_SupplementaryBudgetObj.budget_SupplementaryBudget_BudgetCode()
-				.sendKeys(bUDGET_SupplementaryBudgetTestDataType.BudgetCodeA);
-		bUDGET_SupplementaryBudgetObj.budget_SupplementaryBudget_BudgetCode().sendKeys(Keys.ENTER);
-		
-		// budget year
-		waithelper.waitForElementToVisibleWithFluentWait(driver,
-				bUDGET_SupplementaryBudgetObj.budget_SupplementaryBudget_BudgetCode(), 60, 500);
-		bUDGET_SupplementaryBudgetObj.budget_SupplementaryBudget_BudgetYear().click();
-		bUDGET_SupplementaryBudgetObj.budget_SupplementaryBudget_BudgetYear()
-				.sendKeys(bUDGET_SupplementaryBudgetTestDataType.BudgetYearA);
-		bUDGET_SupplementaryBudgetObj.budget_SupplementaryBudget_BudgetYear().sendKeys(Keys.ENTER);
-		// budget branch
-		waithelper.waitForElementToVisibleWithFluentWait(driver,
-				bUDGET_SupplementaryBudgetObj.budget_SupplementaryBudget_BudgetBranch(), 60, 500);
-		bUDGET_SupplementaryBudgetObj.budget_SupplementaryBudget_BudgetBranch().click();
-		bUDGET_SupplementaryBudgetObj.budget_SupplementaryBudget_BudgetBranch()
-				.sendKeys(bUDGET_SupplementaryBudgetTestDataType.BudgetBranchNameA);
-		bUDGET_SupplementaryBudgetObj.budget_SupplementaryBudget_BudgetBranch().sendKeys(Keys.ENTER);
-		// currency
-		waithelper.waitForElementToVisibleWithFluentWait(driver,
-				bUDGET_SupplementaryBudgetObj.budget_SupplementaryBudget_Currency(), 60, 500);
-		bUDGET_SupplementaryBudgetObj.budget_SupplementaryBudget_Currency().click();
-		bUDGET_SupplementaryBudgetObj.budget_SupplementaryBudget_Currency()
-				.sendKeys(bUDGET_SupplementaryBudgetTestDataType.CurrencyA);
-		bUDGET_SupplementaryBudgetObj.budget_SupplementaryBudget_Currency().sendKeys(Keys.DOWN, Keys.ENTER);
-		
-	}
+			waithelper.waitForElementToVisibleWithFluentWait(driver,
+					bUDGET_SupplementaryBudgetObj.budget_SupplementaryBudget_SupplementaryApportionAmount(), 60, 500);
+			bUDGET_SupplementaryBudgetObj.budget_SupplementaryBudget_SupplementaryApportionAmount().click();
+			bUDGET_SupplementaryBudgetObj.budget_SupplementaryBudget_SupplementaryApportionAmount()
+					.sendKeys(budgetSupplementaryTestData.get("Suplementary Appropriation"));
+			bUDGET_SupplementaryBudgetObj.budget_SupplementaryBudget_SupplementaryApportionAmount().sendKeys(Keys.ENTER);
+	    }
 
-	@Then("fill apportion amount and save the record UAT")
-	public void fill_apportion_amount_and_save_the_record_uat() throws InterruptedException {
-		// Supplementary apportion amount
-		bUDGET_SupplementaryBudgetTestDataType = jsonReader.getSupplementaryBudgetByName("Maker");
-		waithelper.waitForElementToVisibleWithFluentWait(driver,
-				bUDGET_SupplementaryBudgetObj.budget_SupplementaryBudget_SupplementaryApportionAmount(), 60, 500);
-		bUDGET_SupplementaryBudgetObj.budget_SupplementaryBudget_SupplementaryApportionAmount().click();
-		bUDGET_SupplementaryBudgetObj.budget_SupplementaryBudget_SupplementaryApportionAmount()
-				.sendKeys(bUDGET_SupplementaryBudgetTestDataType.SupplymentaryApportionAmtA);
-		bUDGET_SupplementaryBudgetObj.budget_SupplementaryBudget_SupplementaryApportionAmount().sendKeys(Keys.ENTER);
+	    @And("^User Enter New Amount for supplementary$")
+	    public void user_enter_new_amount_for_supplementary() throws Throwable {
+	    	// New amount
+			waithelper.waitForElementToVisibleWithFluentWait(driver,
+					bUDGET_SupplementaryBudgetObj.budget_SupplementaryBudget_NewAmount(), 60, 500);
+			bUDGET_SupplementaryBudgetObj.budget_SupplementaryBudget_NewAmount().click();
+	    }
 
-		// New amount
-		waithelper.waitForElementToVisibleWithFluentWait(driver,
-				bUDGET_SupplementaryBudgetObj.budget_SupplementaryBudget_NewAmount(), 60, 500);
-		bUDGET_SupplementaryBudgetObj.budget_SupplementaryBudget_NewAmount().click();
+	    @And("^User Store New Amount for Verification$")
+	    public void user_store_new_amount_for_verification() throws Throwable {
+	    	waithelper.waitForElementToVisibleWithFluentWait(driver,
+					bUDGET_SupplementaryBudgetObj.budget_SupplementaryBudget_StoreNewAmount(), 60, 500);
+			String NewAmount = bUDGET_SupplementaryBudgetObj.budget_SupplementaryBudget_StoreNewAmount().getAttribute("ng-reflect-selected-value");
+			System.out.println(NewAmount);
+			excelDataForBudgetSupplementary.updateTestData(budgetSupplementaryTestData.get("DataSet ID"),"NewAmount",
+					NewAmount);
+	    }
+	    @And("^User Modify Supplementary Appropriation Amount$")
+	    public void user_modify_supplementary_appropriation_amount() throws Throwable {
+	    	// Modify Supplementary apportion amount
+	    				bUDGET_SupplementaryBudgetTestDataType = jsonReader.getSupplementaryBudgetByName("Maker");
+	    				waithelper.waitForElementToVisibleWithFluentWait(driver,
+	    						bUDGET_SupplementaryBudgetObj.budget_SupplementaryBudget_SupplementaryApportionAmount(), 60, 500);
+	    				bUDGET_SupplementaryBudgetObj.budget_SupplementaryBudget_SupplementaryApportionAmount().click();
+	    				bUDGET_SupplementaryBudgetObj.budget_SupplementaryBudget_SupplementaryApportionAmount().clear();
+	    				bUDGET_SupplementaryBudgetObj.budget_SupplementaryBudget_SupplementaryApportionAmount()
+	    						.sendKeys(bUDGET_SupplementaryBudgetTestDataType.SupplymentaryApportionAmtA);
+	    				bUDGET_SupplementaryBudgetObj.budget_SupplementaryBudget_SupplementaryApportionAmount().sendKeys(Keys.ENTER);
+	    }
 
-		// save button
-		waithelper.waitForElementToVisibleWithFluentWait(driver,
-				bUDGET_SupplementaryBudgetObj.budget_SupplementaryBudget_SupplementaryBudgetSave(), 60, 500);
-		bUDGET_SupplementaryBudgetObj.budget_SupplementaryBudget_SupplementaryBudgetSave().click();
+	    @And("^User Modify New Amount for supplementary$")
+	    public void user_modify_new_amount_for_supplementary() throws Throwable {
+	    	// New amount
+	    				waithelper.waitForElementToVisibleWithFluentWait(driver,
+	    						bUDGET_SupplementaryBudgetObj.budget_SupplementaryBudget_NewAmount(), 60, 500);
+	    				bUDGET_SupplementaryBudgetObj.budget_SupplementaryBudget_NewAmount().click();
+	    }
 
-		for (int i = 0; i <= 30; i++) {
-			javascripthelper.JavaScriptHelper(driver);
-			try {
-				String str = javascripthelper.executeScript(
-						"return document.querySelector(\"ion-toast\").shadowRoot.querySelector(\"div[class='toast-message']\").innerText")
-						.toString();
-				System.out.println("Message:" + str);
-				break;
-			} catch (JavascriptException e) {
-				if (i == 30) {
-					e.printStackTrace();
+	    @And("^User Click save button for Modified Supplementary Records$")
+	    public void user_click_save_button_for_modified_supplementary_records() throws Throwable {
+	    	// save button
+	    				waithelper.waitForElementToVisibleWithFluentWait(driver,
+	    						bUDGET_SupplementaryBudgetObj.budget_SupplementaryBudget_SupplementaryBudgetSave(), 60, 500);
+	    				bUDGET_SupplementaryBudgetObj.budget_SupplementaryBudget_SupplementaryBudgetSave().click();
+
+	    				for (int i = 0; i <= 30; i++) {
+	    					javascripthelper.JavaScriptHelper(driver);
+	    					try {
+	    						String str = javascripthelper.executeScript(
+	    								"return document.querySelector(\"ion-toast\").shadowRoot.querySelector(\"div[class='toast-message']\").innerText")
+	    								.toString();
+	    						System.out.println("Message:" + str);
+	    						break;
+	    					} catch (JavascriptException e) {
+	    						if (i == 30) {
+	    							e.printStackTrace();
+	    						}
+	    					}
+	    				}
+	    }
+
+
+	    @And("^User Click save button for Supplementary Records$")
+	    public void user_click_save_button_for_supplementary_records() throws Throwable {
+	    	// save button
+			waithelper.waitForElementToVisibleWithFluentWait(driver,
+					bUDGET_SupplementaryBudgetObj.budget_SupplementaryBudget_SupplementaryBudgetSave(), 60, 500);
+			bUDGET_SupplementaryBudgetObj.budget_SupplementaryBudget_SupplementaryBudgetSave().click();
+
+			for (int i = 0; i <= 30; i++) {
+				javascripthelper.JavaScriptHelper(driver);
+				try {
+					String str = javascripthelper.executeScript(
+							"return document.querySelector(\"ion-toast\").shadowRoot.querySelector(\"div[class='toast-message']\").innerText")
+							.toString();
+					System.out.println("Message:" + str);
+					break;
+				} catch (JavascriptException e) {
+					if (i == 30) {
+						e.printStackTrace();
+					}
 				}
 			}
-		}
-	}
+	    }
+	    @And("^User Click Maker Notification$")
+	    public void user_click_maker_notification() throws Throwable {
+	    	// Notification
+			waithelper.waitForElementToVisibleWithFluentWait(driver,
+					bUDGET_SupplementaryBudgetObj.budget_SupplementaryBudget_SupplementaryNotification(), 60, 500);
+			bUDGET_SupplementaryBudgetObj.budget_SupplementaryBudget_SupplementaryNotification().click();
+	    }
+	    @And("^search the budget Supplementary record name$")
+	    public void search_the_budget_supplementary_record_name() throws Throwable {
+	    	waithelper.waitForElementToVisibleWithFluentWait(driver, budgetCreationObj.eventCode(), 30, 500);
+			budgetCreationObj.eventCode().click();
+			budgetCreationObj.eventCode().sendKeys(budgetSupplementaryTestData.get("BudgetTransferEventCode"));
+	    }
 
-	@Then("^validate maker can submit the record UAT$")
-	public void validate_maker_can_submit_the_record_UAT() throws InterruptedException, IOException, ParseException {
+	    @And("^User store reference id for budget supplementary record$")
+	    public void user_store_reference_id_for_budget_supplementary_record() throws Throwable {
+	    	// Reference
+			waithelper.waitForElementToVisibleWithFluentWait(driver,
+					bUDGET_SupplementaryBudgetObj.budget_SupplementaryBudget_SupplementaryFirstReferenceId(), 60, 500);
+			String id = bUDGET_SupplementaryBudgetObj.budget_SupplementaryBudget_SupplementaryFirstReferenceId().getText();
+			excelDataForBudgetSupplementary.updateTestData(budgetSupplementaryTestData.get("DataSet ID"),"Reference ID",
+					id);
+			//jsonWriter.addReferanceData(id);
+			System.out.println("Reference ID:" + id);
+	    }
 
-		// Notification
-		waithelper.waitForElementToVisibleWithFluentWait(driver,
-				bUDGET_SupplementaryBudgetObj.budget_SupplementaryBudget_SupplementaryNotification(), 60, 500);
-		bUDGET_SupplementaryBudgetObj.budget_SupplementaryBudget_SupplementaryNotification().click();
+	    @And("^User Click action for budget supplementary record$")
+	    public void user_click_action_for_budget_supplementary_record() throws Throwable {
+			//bUDGET_SupplementaryBudgetObj.budget_SupplementaryBudget_SupplementaryFirstReferenceId().click();
 
-		// Reference
-		waithelper.waitForElementToVisibleWithFluentWait(driver,
-				bUDGET_SupplementaryBudgetObj.budget_SupplementaryBudget_SupplementaryFirstReferenceId(), 60, 500);
-		String id = bUDGET_SupplementaryBudgetObj.budget_SupplementaryBudget_SupplementaryFirstReferenceId().getText();
-		jsonWriter.addReferanceData(id);
-		System.out.println("Reference ID:" + id);
-		for (int i = 1; i <= 35; i++) {
-			try {
+			// Action-Pencil
+			String before_xpath = "//span[contains(text(),'";
+			String after_xpath = "')]/ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell//ion-button";
 
-				WebElement referanceID = driver
-						.findElement(By.xpath("//span[contains(text(),'" + jsonWriter.readReferancedata() + "')]"));
-				referanceID.click();
-				System.out.println(referanceID);
-				// Assert.assertTrue(referanceID.isDisplayed());
-				break;
-			} catch (NoSuchElementException e) {
-				waithelper.waitForElement(driver, 4000, bUDGET_SupplementaryBudgetObj.maker_notification_next_button());
-
-				bUDGET_SupplementaryBudgetObj.maker_notification_next_button().click();
+			for (int i = 0; i <200; i++) {
+				try {
+					driver.findElement(By.xpath(before_xpath + budgetSupplementaryTestData.get("Reference ID") + after_xpath)).click();
+					break;
+				} catch (Exception e) {
+					if (i==199) {
+						Assert.fail(e.getMessage());
+					}
+				}
 			}
+			
 
-		}
-		bUDGET_SupplementaryBudgetObj.budget_SupplementaryBudget_SupplementaryFirstReferenceId().click();
+	    }
 
-		// Action-Pencil
-		String before_xpath = "//span[contains(text(),'";
-		String after_xpath = "')]/ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell//ion-button";
+	    @And("^User Click the Submit button for budget supplementary record$")
+	    public void user_click_the_submit_button_for_budget_supplementary_record() throws Throwable {
+	    	// Submit button
+			waithelper.waitForElementToVisibleWithFluentWait(driver,
+					bUDGET_SupplementaryBudgetObj.budget_SupplementaryBudget_SubmitButton(), 60, 500);
+			bUDGET_SupplementaryBudgetObj.budget_SupplementaryBudget_SubmitButton().click();
+	    }
 
-		waithelper.waitForElementToVisibleWithFluentWait(driver,
-				driver.findElement(By.xpath(before_xpath + reader.readReferancedata() + after_xpath)), 60, 500);
-		driver.findElement(By.xpath(before_xpath + reader.readReferancedata() + after_xpath)).click();
+	    @And("^User Enter remark for budget supplementary record$")
+	    public void user_enter_remark_for_budget_supplementary_record() throws Throwable {
+	    	// Remark
+			javahelper.JavaScriptHelper(driver);
+			waithelper.waitForElementToVisibleWithFluentWait(driver,
+					bUDGET_SupplementaryBudgetObj.budget_SupplementaryBudget_RemarkField(), 60, 500);
+			javahelper.JSEClick(bUDGET_SupplementaryBudgetObj.budget_SupplementaryBudget_RemarkField());
+			//bUDGET_SupplementaryBudgetTestDataType = jsonReader.getSupplementaryBudgetByName("Maker");
+			bUDGET_SupplementaryBudgetObj.budget_SupplementaryBudget_RemarkField().sendKeys(budgetSupplementaryTestData.get("Remarks"));
 
-		// Submit button
-		waithelper.waitForElementToVisibleWithFluentWait(driver,
-				bUDGET_SupplementaryBudgetObj.budget_SupplementaryBudget_SubmitButton(), 60, 500);
-		bUDGET_SupplementaryBudgetObj.budget_SupplementaryBudget_SubmitButton().click();
+			// Remark Submit
 
-		// Remark
-		javahelper.JavaScriptHelper(driver);
-		waithelper.waitForElementToVisibleWithFluentWait(driver,
-				bUDGET_SupplementaryBudgetObj.budget_SupplementaryBudget_RemarkField(), 60, 500);
-		javahelper.JSEClick(bUDGET_SupplementaryBudgetObj.budget_SupplementaryBudget_RemarkField());
-		bUDGET_SupplementaryBudgetTestDataType = jsonReader.getSupplementaryBudgetByName("Maker");
-		bUDGET_SupplementaryBudgetObj.budget_SupplementaryBudget_RemarkField().sendKeys("OK");
+			waithelper.waitForElementToVisibleWithFluentWait(driver,
+					bUDGET_SupplementaryBudgetObj.budget_SupplementaryBudget_SubmitByMaker(), 60, 500);
+			bUDGET_SupplementaryBudgetObj.budget_SupplementaryBudget_SubmitByMaker().click();
 
-		// Remark Submit
+	    }
+	    
 
-		waithelper.waitForElementToVisibleWithFluentWait(driver,
-				bUDGET_SupplementaryBudgetObj.budget_SupplementaryBudget_SubmitByMaker(), 60, 500);
-		bUDGET_SupplementaryBudgetObj.budget_SupplementaryBudget_SubmitByMaker().click();
+	    @And("^User Store reviewver id to submit budget supplementary record in reviewver$")
+	    public void user_store_reviewver_id_to_submit_budget_supplementary_record_in_reviewver() throws Throwable {
+	    	// REVIEWER
+			waithelper.waitForElementToVisibleWithFluentWait(driver,
+					bUDGET_SupplementaryBudgetObj.budget_SupplementaryBudget_RecordStatus(), 60, 500);
+			WebElement recordstatus = bUDGET_SupplementaryBudgetObj.budget_SupplementaryBudget_RecordStatus();
 
-		// REVIEWER
-		waithelper.waitForElementToVisibleWithFluentWait(driver,
-				bUDGET_SupplementaryBudgetObj.budget_SupplementaryBudget_RecordStatus(), 60, 500);
-		WebElement recordstatus = bUDGET_SupplementaryBudgetObj.budget_SupplementaryBudget_RecordStatus();
+			clicksAndActionHelper.moveToElement(recordstatus);
+			String message = bUDGET_SupplementaryBudgetObj.budget_SupplementaryBudget_RecordStatus().getText();
+			System.out.println(message);
+			bUDGET_SupplementaryBudgetObj.budget_SupplementaryBudget_RecordStatus().click();
+			String t = "";
+			String ar[] = message.split(" ");
 
-		clicksAndActionHelper.moveToElement(recordstatus);
-		String message = bUDGET_SupplementaryBudgetObj.budget_SupplementaryBudget_RecordStatus().getText();
-		System.out.println(message);
-		bUDGET_SupplementaryBudgetObj.budget_SupplementaryBudget_RecordStatus().click();
-		String t = "";
-		String ar[] = message.split(" ");
-
-		for (int i = ar.length - 1; i >= 0; i--) {
-			t = ar[ar.length - 1];
-		}
-		String reviewerId = "";
-		for (int i = 0; i < t.length() - 1; i++) {
-			if (t.charAt(i) == '.') {
-			} else {
-				reviewerId = reviewerId + t.charAt(i);
+			for (int i = ar.length - 1; i >= 0; i--) {
+				t = ar[ar.length - 1];
 			}
-		}
-		System.out.println(reviewerId);
-		jsonWriter = new JsonDataReaderWriter();
-		jsonWriter.addData(reviewerId);
-
-	}
+			String reviewerId = "";
+			for (int i = 0; i < t.length() - 1; i++) {
+				if (t.charAt(i) == '.') {
+				} else {
+					reviewerId = reviewerId + t.charAt(i);
+				}
+			}
+			System.out.println(reviewerId);
+			jsonWriter = new JsonDataReaderWriter();
+			excelDataForBudgetSupplementary.updateTestData(budgetSupplementaryTestData.get("DataSet ID"),"Reviewer ID", reviewerId);
+			//jsonWriter.addData(reviewerId);
+	    }
+	    
 	// -----------SupplementaryBudget_KUBS_BP_UAT_005_004-------------------------------//
 
 	@Then("^user login to checker1 UAT$")
@@ -570,9 +771,22 @@ for(int i=0;i<=10;i++)
 
 	@Then("^Select the date$")
 	public void select_the_date() {
-
+		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MMM/uuuu");
+		DateTimeFormatter dtf1 = DateTimeFormatter.ofPattern("dd/MMMM/uuuu");
+		LocalDate localDate = LocalDate.now();
+		//System.out.println(dtf.format(localDate));
+		String Date = dtf.format(localDate);
+		String Date1 = dtf1.format(localDate);
+		String[] DateSplit = Date.split("[/]");
+		String[] DateSplit1 = Date1.split("[/]");
+		Integer DateNum = Integer.valueOf(DateSplit[0]);
+		String Month = DateSplit[1];
+		String FullMonth = DateSplit1[1];
+		Integer yearNum = Integer.valueOf(DateSplit[2]);
+		//System.out.println("Date :"+DateNum +"Month :"+Month +"  "+ FullMonth+"Year :"+yearNum);
+		
 		bUDGET_SupplementaryBudgetTestDataType = jsonReader.getSupplementaryBudgetByName("Maker");
-
+		
 		// select Transaction from date
 		waithelper.waitForElementToVisibleWithFluentWait(driver,
 				bUDGET_SupplementaryBudgetObj.budget_SupplementaryBudget_CalendarFromDate(), 60, 500);
@@ -584,12 +798,12 @@ for(int i=0;i<=10;i++)
 
 				waithelper.waitForElementToVisibleWithFluentWait(driver,
 						driver.findElement(
-								By.xpath("//span[contains(text(),'" + bUDGET_SupplementaryBudgetTestDataType.FromMonth
-										+ " " + bUDGET_SupplementaryBudgetTestDataType.Year + "')]")),
+								By.xpath("//span[contains(text(),'" + Month
+										+ " " + yearNum + "')]")),
 						60, 500);
 				WebElement monthAndYear = driver.findElement(
-						By.xpath("//span[contains(text(),'" + bUDGET_SupplementaryBudgetTestDataType.FromMonth + " "
-								+ bUDGET_SupplementaryBudgetTestDataType.Year + "')]"));
+						By.xpath("//span[contains(text(),'" + Month + " "
+								+ yearNum + "')]"));
 				break;
 			}
 
@@ -598,9 +812,9 @@ for(int i=0;i<=10;i++)
 			}
 		}
 		WebElement FinalDay = driver
-				.findElement(By.xpath("//td[@aria-label='" + bUDGET_SupplementaryBudgetTestDataType.FromFullMonth + " "
-						+ bUDGET_SupplementaryBudgetTestDataType.FromDay + ", "
-						+ bUDGET_SupplementaryBudgetTestDataType.Year + "']/span"));
+				.findElement(By.xpath("//td[@aria-label='" + FullMonth + " "
+						+ DateNum + ", "
+						+ yearNum + "']/span"));
 		clicksAndActionHelper.doubleClick(FinalDay);
 	}
 

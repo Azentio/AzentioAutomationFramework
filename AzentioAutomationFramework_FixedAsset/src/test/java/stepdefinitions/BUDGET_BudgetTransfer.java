@@ -23,6 +23,7 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import pageobjects.BUDGET_BudgetTransferObj;
 import pageobjects.BUDGET_SupplementaryBudgetObj;
+import pageobjects.KUBS_MakerObj;
 import pageobjects.Azentio_CheckerObj;
 import pageobjects.Azentio_ReviewerObj;
 import resources.BaseClass;
@@ -46,6 +47,7 @@ public class BUDGET_BudgetTransfer {
 			.getSupplementaryBudgetByName("Maker");
 	BUDGET_SupplementaryBudgetObj bUDGET_SupplementaryBudgetObj = new BUDGET_SupplementaryBudgetObj(driver);
 	BUDGET_BudgetTransferObj budgetTransferobj = new BUDGET_BudgetTransferObj(driver);
+	KUBS_MakerObj makerObj = new KUBS_MakerObj(driver);
 	AzentioLogin login;
 	ConfigFileReader config = new ConfigFileReader();
 	Azentio_ReviewerObj reviewer = new Azentio_ReviewerObj(driver);
@@ -1178,4 +1180,11 @@ public class BUDGET_BudgetTransfer {
 		}
 		Assert.assertTrue(res);
 	}
+	// Budget Transfer Karthi
+	@And("^click on budget main menu$")
+	public void click_on_budget_main_menu() throws Throwable {
+		makerObj.kubsBudget().click();
+		// budgetTransferObj//
+	}
+	
 }
