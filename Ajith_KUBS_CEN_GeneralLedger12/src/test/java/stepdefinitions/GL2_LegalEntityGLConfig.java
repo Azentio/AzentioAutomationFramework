@@ -2,15 +2,12 @@ package stepdefinitions;
 
 import java.io.IOException;
 import java.time.LocalDate;
-import java.time.Month;
 import java.util.LinkedHashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
 import org.json.simple.parser.ParseException;
 import org.openqa.selenium.By;
-import org.openqa.selenium.ElementClickInterceptedException;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.StaleElementReferenceException;
@@ -80,7 +77,7 @@ public class GL2_LegalEntityGLConfig extends BaseClass {
 	KUBS_Login kubsLogin;
 	ConfigFileReader configFileReader = new ConfigFileReader();
 	ClicksAndActionsHelper clickAndActionHelper = new ClicksAndActionsHelper(driver);
-	String excelPath = System.getProperty("user.dir")+"\\Test-data\\GLTestData.xlsx";
+	String excelPath = System.getProperty("user.dir")+"\\Test-data\\KUBSTestData.xlsx";
 	ExcelData excelData = new ExcelData(excelPath,"GL2TestData","Data Set ID");
 	private Map<String, String> testData;
 	GL2_LegalEntityGLConfigObj gL2_LegalEntityGLConfigObj = new GL2_LegalEntityGLConfigObj(driver);
@@ -914,7 +911,7 @@ public class GL2_LegalEntityGLConfig extends BaseClass {
 		String JvRefNum = null;
 		for (int i = 0; i <200; i++) {
 			try {
-				 JvRefNum = javascripthelper.executeScript("return document.getElementsByName('voucherNo')[1].value").toString();
+				JvRefNum = javascripthelper.executeScript("return document.getElementsByName('remarks')[2].value").toString();
 				System.out.println(JvRefNum);
 				break;
 			} catch (Exception e) {

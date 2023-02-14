@@ -77,7 +77,7 @@ public class GL1_Accounting_Book_Definition extends BaseClass {
 	GL_Accounting_Setup_Obj accSetupObj = new GL_Accounting_Setup_Obj(driver);
 	GL1_Accounting_Setup_Data acc_Setup_Data = jsonConfig.getAccsetupByName("Setup");
 	ARAP_ARandAPObj arapObj = new ARAP_ARandAPObj(driver);
-	String excelPath = System.getProperty("user.dir")+"\\Test-data\\GLTestData.xlsx";
+	String excelPath = System.getProperty("user.dir")+"\\Test-data\\KUBSTestData.xlsx";
 	ExcelData excelData = new ExcelData(excelPath,"GLTestData","Data Set ID");
 	private Map<String, String> testdata;
 	KUBS_MakerObj kubsMakerObj = new KUBS_MakerObj(driver);
@@ -359,6 +359,7 @@ public class GL1_Accounting_Book_Definition extends BaseClass {
     @And("^User update the test data set id for modified if Gl entries are passed for the parent being mapped or changed$")
     public void user_update_the_test_data_set_id_for_modified_if_gl_entries_are_passed_for_the_parent_being_mapped_or_changed() throws Throwable {
     	testdata = excelData.getTestdata("KUBS_GL_UAT_005_007_D1");
+    	System.out.println(testdata.get("ParentCOA_CodeSearch"));
     }
 
     @And("^User Update test data set id for COA marked as de active when accounting transaction carried out$")

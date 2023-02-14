@@ -1,4 +1,5 @@
 Feature: Check the Functionality of AR/AP Module
+
 @KUBS_AR_AP_UAT_001_001_TC_012
 Scenario: Verify Accounting entries post Bill is approved
 Given Navigate The Azentio Url
