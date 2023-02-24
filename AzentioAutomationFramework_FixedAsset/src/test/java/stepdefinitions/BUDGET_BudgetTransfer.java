@@ -487,7 +487,7 @@ public class BUDGET_BudgetTransfer {
 		login.loginToAzentioApp("Maker");
 	}
 
-	@And("^Maker click on  the direction tab$")
+	@And("^Maker click on the direction tab$")
 	public void maker_click_on_the_direction_tab() {
 		waithelper = new WaitHelper(driver);
 		budgetTransferObj = new BUDGET_BudgetTransferObj(driver);
@@ -583,7 +583,7 @@ public class BUDGET_BudgetTransfer {
 
 	}
 
-	@Then("^Maker  click on the notification icon$")
+	@Then("^Maker click on the notification icon$")
 	public void maker_click_on_the_notification_icon() {
 		waithelper.waitForElement(driver, 3000, budgetTransferObj.budget_BudgetTransfer_NotificationIcon());
 		budgetTransferObj.budget_BudgetTransfer_NotificationIcon().click();

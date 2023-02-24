@@ -236,9 +236,20 @@ public class BUDGET_UAT_BudgetDefinition extends BaseClass {
     }
 	@And("^click on search button in budget config list view$")
 	public void click_on_search_button_in_budget_config_list_view() throws Throwable {
-		waitHelper.waitForElementToVisibleWithFluentWait(driver, kubsCommonObj.kubsListViewSearchButton(), 20, 1);
-		clickAndActionsHelper.moveToElement(kubsCommonObj.kubsListViewSearchButton());
-		clickAndActionsHelper.clickOnElement(kubsCommonObj.kubsListViewSearchButton());
+		for (int i = 0; i <500; i++) {
+			try {
+				clickAndActionsHelper.moveToElement(kubsCommonObj.kubsListViewSearchButton());
+				clickAndActionsHelper.clickOnElement(kubsCommonObj.kubsListViewSearchButton());
+				break;
+			} catch (Exception e) {
+				if (i==499) {
+					Assert.fail(e.getMessage());
+				}
+				
+			}
+		}
+		
+		
 	}
 
 	@And("^search the approved budget code in budget config list view$")
@@ -747,7 +758,7 @@ public class BUDGET_UAT_BudgetDefinition extends BaseClass {
 
 	@And("^search for budget configuration record in notification$")
 	public void search_for_budget_configuration_record_in_notification() throws Throwable {
-		waitHelper.waitForElementToVisibleWithFluentWait(driver, kubsCommonObj.kubsSearchEventCode(), 20, 1);
+		waitHelper.waitForElementToVisibleWithFluentWait(driver,kubsCommonObj.kubsSearchEventCode(),30,2);
 		clickAndActionsHelper.moveToElement(kubsCommonObj.kubsSearchEventCode());
 		clickAndActionsHelper.clickOnElement(kubsCommonObj.kubsSearchEventCode());
 		kubsCommonObj.kubsSearchEventCode().sendKeys(budgetConfigTestData.get("ModuleCode"));
@@ -989,7 +1000,7 @@ public class BUDGET_UAT_BudgetDefinition extends BaseClass {
 
 	@And("^search the budget defenition sub module name$")
 	public void search_the_budget_defenition_sub_module_name() throws Throwable {
-		waitHelper.waitForElementToVisibleWithFluentWait(driver, budgetCreationObj.eventCode(), 30, 500);
+		waitHelper.waitForElementToVisibleWithFluentWait(driver,budgetCreationObj.eventCode(), 30, 500);
 		budgetCreationObj.eventCode().click();
 		budgetCreationObj.eventCode().sendKeys(budgetRequestAndAllocation.get("BudgetTransferEventCode"));
 	}

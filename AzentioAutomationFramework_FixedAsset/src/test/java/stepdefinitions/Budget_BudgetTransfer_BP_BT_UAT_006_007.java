@@ -21,9 +21,9 @@ public class Budget_BudgetTransfer_BP_BT_UAT_006_007 {
 	JsonConfig jsonReader = new JsonConfig();
 	ConfigFileReader configFileReader = new ConfigFileReader();
 	DropDownHelper dropDownHelper;
-	WaitHelper waithelper;
+	WaitHelper waithelper = new WaitHelper(driver);
 	JavascriptHelper javahelper = new JavascriptHelper();
-	BUDGET_BudgetTransferObj budgetTransferObj;
+	BUDGET_BudgetTransferObj budgetTransferObj = new BUDGET_BudgetTransferObj(driver);
 	BUDGET_BudgetTransferTestDataType budgetTransferTestDataType;
 	KUBS_Login login;
     @When("^user login into maker stage$")
@@ -35,8 +35,6 @@ public class Budget_BudgetTransfer_BP_BT_UAT_006_007 {
 
     @Then("^user click on configuration$")
     public void user_click_on_configuration()  {
-    	waithelper = new WaitHelper(driver);
-		budgetTransferObj = new BUDGET_BudgetTransferObj(driver);
 		waithelper.waitForElement(driver, 3000, budgetTransferObj.budget_BudgetTransfer_DirectionIcon());
 		budgetTransferObj.budget_BudgetTransfer_DirectionIcon().click();
 

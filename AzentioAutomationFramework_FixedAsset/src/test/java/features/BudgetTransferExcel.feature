@@ -2,10 +2,12 @@ Feature: To verify the budget and planning UAT flow
 @KUBS_BP_UAT_006_001_01
 Scenario: UAT_006_001 System should transfer the requested budgeted code amount to the another budget code
 And User get the test data for budget code test case00600101
-When User login to maker
+Given navigate to given url and login with maker credentials
 #Then click on configuration
 Then Click on the Finance
-And Maker click on  the direction tab
+And Maker click on the direction tab
+And click on budget main menu
+Then click on configuration
 And click on budget main menu
 Then Click on budget transfer eye button
 Then click on add buttion
@@ -56,7 +58,7 @@ And User get the test data for budget code test case00600104
 When User login to maker
 #Then click on configuration
 Then Click on the Finance
-And Maker click on  the direction tab
+And Maker click on the direction tab
 And click on budget main menu
 Then Click on budget transfer eye button
 
@@ -65,18 +67,19 @@ Then Click on budget transfer eye button
 @KUBS_BP_UAT_006_004_01
 Scenario: Check when transfered budget from one budget code to another budget can modify the amount
 And User get the test data for budget code test case00600401
-#Given Maker login
-#And Maker click on  the direction tab
 When User login to maker
-#Then click on configuration
 Then Click on the Finance
-And Maker click on  the direction tab
+And Maker click on the direction tab
+Then click on configuration
+And Maker click on the direction tab
 And click on budget main menu
 Then Maker click on  budget transfer eye button
 And Maker click on add button
 Then Maker fill the details and save in budgetTransfer
-Then Maker  click on the notification icon
+And User close the workflow initiated pop up
+Then Maker click on the notification icon
 Then Maker modify the amount in budgetTransfer
+And User close the workflow initiated pop up
 And click notification button
 Then choose first record in the notification record in budgetTransfer1
 And click on Submit button 
@@ -122,7 +125,7 @@ And User get the test data for budget code test case00600404
 When User login to maker
 #Then click on configuration
 Then Click on the Finance
-And Maker click on  the direction tab
+And Maker click on the direction tab
 And click on budget main menu
 Then Click on budget transfer eye button
 
@@ -130,9 +133,10 @@ Then Click on budget transfer eye button
 @KUBS_BP_UAT_006_007_01
 Scenario: UAT_006_007 If transfering budget code does not have sufficeint amount to transfer for the month
 And User get the test data for budget code test case00600701
-Given Maker login
+Given navigate to given url and login with maker credentials
 #Then user click on configuration
 Then Click on the Finance
+And Maker click on the direction tab
 And click on budget main menu
 Then click on transfer eye button
 Then click on add button in transfer
@@ -141,7 +145,8 @@ And User get the test data for budget code test case00600401
 Then Maker click on  budget transfer eye button
 And Maker click on add button
 Then Maker fill the details and save in budgetTransfer
-Then Maker  click on the notification icon
+And User close the workflow initiated pop up
+Then Maker click on the notification icon
 Then choose first record in the notification record in budgetTransfer7
 And click on Submit button 
 Then enter remark in confirmation alert in budgetTransfer
@@ -183,10 +188,10 @@ Then logout from checker
 @KUBS_BP_UAT_006_007_04
 Scenario: UAT_006_007 If transfering budget code does not have sufficeint amount to transfer for the month
 And User get the test data for budget code test case00600704
-When User login to maker
+Given navigate to given url and login with maker credentials
 #Then click on configuration
 Then Click on the Finance
-And Maker click on  the direction tab
+And Maker click on the direction tab
 And click on budget main menu
 Then Click on budget transfer eye button
 

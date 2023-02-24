@@ -171,6 +171,7 @@ Then logout from maker
 @KUBS_BP_UAT_001_003_04
 Scenario: To verify aproved budget code should visible in budget config list view
 Given navigate to given url and login with maker credentials
+Then Click on the Finance
 Then click on budget configuration menu
 Then click on eye icon which is near by budget definition submenu
 And get the test data from excel database for creating quarterly budget code

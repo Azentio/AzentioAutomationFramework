@@ -97,8 +97,19 @@ public class Budget_BusgetTransfer_BP_BT_UAT_006_001 {
 
     @Then("^click on add buttion$")
     public void click_on_add_buttion()   {
-    	waithelper.waitForElement(driver, 3000, budgetTransferObj.budget_BudgetTransfer_AddButton());
-		budgetTransferObj.budget_BudgetTransfer_AddButton().click();
+    	//waithelper.waitForElement(driver, 3000, budgetTransferObj.budget_BudgetTransfer_AddButton());
+    	for (int i = 0; i <200; i++) {
+			try {
+				budgetTransferObj.budget_BudgetTransfer_AddButton().click();
+				break;
+			} catch (Exception e) {
+				if (i==199) {
+					Assert.fail(e.getMessage());
+				}
+				
+			}
+		}
+		
     }
 
     @Then("^fill the form$")

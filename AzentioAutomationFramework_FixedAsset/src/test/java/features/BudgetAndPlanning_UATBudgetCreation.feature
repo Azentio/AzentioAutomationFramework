@@ -444,7 +444,7 @@ And capture the reviewer ID in pop up which is open when we submit our record in
 Then logout from maker
 
 @KUBS_BP_UAT_002_006_05
-Scenario: To verify reviewer user can able to approve the budget defenition record
+Scenario: To verify reviewer user can able to approve the budget Allocation record
 Given navigate to kubs url to approve the yearly1 budget request and allocation record
 And click on notification in reviewer stage
 And select the record in notification
@@ -993,4 +993,81 @@ Then verify approved budget code should reflect in budget request and allocation
 And click on user profile icon
 And click on logout button
 Then verify user profile got logout
-  
+@KUBS_UAT_KUBS_BP_UAT_004_001
+Scenario: Check to cancel the wrongly created budget code
+Given navigate to given url and login with maker credentials
+Then Click on the Finance
+Then click on budget configuration menu
+Then click on eye icon which is near by budget definition submenu
+And click on add button to create budget code
+And User update test data id for budgetcode Monthly
+And User fill the budget code for type Monthly
+And choose budget type in budget configuration for budget request and allocation
+And give warning percentage
+And enter budget name for monthly budget
+Then enter remark
+Then click on Save button
+And User close the workflow initiated pop up
+And click notification button
+Then click on the search button
+And search the budget defenition sub module name
+And User update test data id to store reviewver id
+And store the reference number of budget config record in excel database
+Then choose first record in the notification record
+And click on Submit button 
+Then enter remark in confirmation alert
+Then click on submit button in alert
+And store the reviewer id of budget configuration in excel database
+Then logout from maker
+@KUBS_UAT_KUBS_BP_UAT_004_002
+Scenario: Check to cancel the wrongly created budget code reviewer
+Given navigate to kubs url to approve the Montly budget request and allocation record
+And click on notification in reviewer stage
+And select the record in notification
+And click on approve button in reviewer stage
+And enter the alert remark in reviewer stage
+And click on submit in reviewer alert pop up
+Then verify record got approved in reviewer stage
+@KUBS_UAT_KUBS_BP_UAT_004_003
+Scenario: To verify checker user can able to approve the budget defenition record
+Given Navigate to KUBS url and login with checker for approve the Monthly budget request and Allocation record
+And click on security management tool
+And click on temp view near by open pool
+And clime the record by the help of Record reference ID
+Then verify record got climed in checker
+And click on notification in checker stage
+And select the record in notification in checker stage
+And click on approve button in checker
+And give approve alert remark in checker stage
+And click on submit button in checker stage
+Then verify record got approved in checker stage
+@KUBS_UAT_KUBS_BP_UAT_004_004
+Scenario: Check to cancel the wrongly created budget code list view validation
+Given navigate to given url and login with maker credentials
+Then Click on the Finance
+Then Click on Direction icon
+And get the test data to cancel the wrongly created budget code list view validation
+And click to the Budget
+Then click on the Budget Sub module Budget Request and Allocation Near Eye Icon
+And click on the Add icon in Request and Allocation
+Then select the Budget Code  
+And select the Budget Year
+Then click on the Branch
+And Choose to the one Branch
+Then click on the Branch ok button
+Then select one currency we need
+And Enter the Amount for yearly Budget type
+And click on the save button
+And User close the workflow initiated pop up
+And click notification button 
+Then click on the search button
+And User update test data id to verify budget allocated for yearly3 budget code
+And search the budget request and allocation sub module name
+And select the request and allocation notification record
+And Click the Cancel button
+#And click on alert submit in request and allocation
+Then enter remark in confirmation alert
+Then click on submit button in alert
+And click on user profile icon
+And click on logout button
+Then verify user profile got logout 

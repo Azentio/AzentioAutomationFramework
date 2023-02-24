@@ -20,6 +20,7 @@ public class NewExcelTestRunner {
 
 					"src/test/java/features/BugetAndPlanningDefinition_UATFEATURE.feature",
 					"src\\test\\java\\features\\BudgetAndPlanning_UATBudgetCreation.feature",
+					"src\\test\\java\\features\\BudgetAndPlanning_UATBudgetSupplementary.feature",
 					"--glue", "stepdefinitions",
 
 					"--plugin", "pretty", 
@@ -76,14 +77,14 @@ public class NewExcelTestRunner {
 		ExcelTest excelTest = new ExcelTest(path, "TestExecution", "Sequence");
 //		List<String> testCaseTagsfromExcel = excelTest.getTestCaseTagsfromExcel();
 		List<String> testCaseTagsfromExcel1 = new LinkedList<String>();
-		testCaseTagsfromExcel1.add("KUBS_UAT_KUBS_BP_UAT_003_004_PreReq01");
-		testCaseTagsfromExcel1.add("KUBS_UAT_KUBS_BP_UAT_003_004_PreReq02");
-		testCaseTagsfromExcel1.add("KUBS_UAT_KUBS_BP_UAT_003_004_PreReq03");
-		testCaseTagsfromExcel1.add("KUBS_UAT_KUBS_BP_UAT_003_004_PreReq04");
-		testCaseTagsfromExcel1.add("KUBS_UAT_KUBS_BP_UAT_003_004_01");
-		testCaseTagsfromExcel1.add("KUBS_UAT_KUBS_BP_UAT_003_004_02");
-		testCaseTagsfromExcel1.add("KUBS_UAT_KUBS_BP_UAT_003_004_03");
-		testCaseTagsfromExcel1.add("KUBS_UAT_KUBS_BP_UAT_003_004_04");
+		testCaseTagsfromExcel1.add("KUBS_BP_UAT_001_002_02");
+		testCaseTagsfromExcel1.add("KUBS_BP_UAT_001_002_03");
+		testCaseTagsfromExcel1.add("KUBS_BP_UAT_001_002_04");
+//		testCaseTagsfromExcel1.add("KUBS_UAT_KUBS_BP_UAT_003_004_PreReq04");
+//		testCaseTagsfromExcel1.add("KUBS_UAT_KUBS_BP_UAT_003_004_01");
+//		testCaseTagsfromExcel1.add("KUBS_UAT_KUBS_BP_UAT_003_004_02");
+//		testCaseTagsfromExcel1.add("KUBS_UAT_KUBS_BP_UAT_003_004_03");
+//		testCaseTagsfromExcel1.add("KUBS_UAT_KUBS_BP_UAT_003_004_04");
 //		testCaseTagsfromExcel1.add("KUBS_BP_UAT_001_003_01");
 //		testCaseTagsfromExcel1.add("KUBS_BP_UAT_001_003_02");
 //		testCaseTagsfromExcel1.add("KUBS_BP_UAT_001_003_03");

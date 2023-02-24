@@ -170,9 +170,20 @@ public class BUDGET_SupplementaryBudgetUAT extends BaseClass {
 	}
 	@Then("^click on the search button budget supplementary approved record$")
     public void click_on_the_search_button_budget_supplementary_approved_record() throws Throwable {
-		waithelper.waitForElementToVisibleWithFluentWait(driver,
-				bUDGET_SupplementaryBudgetObj.budget_BudgetTransfer_SupplementarySearchIconInApprovedListView(), 60, 500);
-		bUDGET_SupplementaryBudgetObj.budget_BudgetTransfer_SupplementarySearchIconInApprovedListView().click();
+//		waithelper.waitForElementToVisibleWithFluentWait(driver,
+//				bUDGET_SupplementaryBudgetObj.budget_BudgetTransfer_SupplementarySearchIconInApprovedListView(), 60, 500);
+		for (int i = 0; i <200; i++) {
+			try {
+				bUDGET_SupplementaryBudgetObj.budget_BudgetTransfer_SupplementarySearchIconInApprovedListView().click();
+				break;
+			} catch (Exception e) {
+				if (i==199) {
+					Assert.fail(e.getMessage());
+				}
+				
+			}
+		}
+		
     }
 	@And("^User Search the Budget Code to verify Budget Supplementary$")
     public void user_search_the_budget_code_to_verify_budget_supplementary() throws Throwable {
@@ -192,9 +203,31 @@ public class BUDGET_SupplementaryBudgetUAT extends BaseClass {
 	@And("^User Verify Budget Supplementary Amount is Not Reflected$")
 	public void user_verify_budget_supplementary_amount_is_not_reflected() throws Throwable {
 		javascripthelper.JavaScriptHelper(driver);
-		String SupplementaryAmount = (String) javascripthelper.executeScript("return document.getElementsByTagName('input')[12].value");
+		String SupplementaryAmount=null;
+		for (int i = 0; i <200; i++) {
+			try {
+			 SupplementaryAmount = (String) javascripthelper.executeScript("return document.getElementsByTagName('input')[12].value");
+			 break;
+			} catch (Exception e) {
+				if (i==199) {
+					Assert.fail(e.getMessage());
+				}
+			}
+		}
+		
 		System.out.println(SupplementaryAmount);
-		String NewAmount = bUDGET_SupplementaryBudgetObj.budget_SupplementaryBudget_StoreNewAmount().getAttribute("ng-reflect-selected-value");
+		String NewAmount=null;
+		for (int i = 0; i <200; i++) {
+			try {
+			 NewAmount = bUDGET_SupplementaryBudgetObj.budget_SupplementaryBudget_StoreNewAmount().getAttribute("ng-reflect-selected-value");
+			 break;
+			} catch (Exception e) {
+				if (i==199) {
+					Assert.fail(e.getMessage());
+				}
+			}
+		}
+		
 		System.out.println(NewAmount);
 		Assert.assertFalse(NewAmount.equalsIgnoreCase(budgetSupplementaryTestData.get("NewAmount")));
 	}
@@ -232,9 +265,9 @@ for(int i=0;i<=10;i++)
 	}
 	catch(Exception e)
 	{
-		waithelper.waitForElementToVisibleWithFluentWait(driver,
-				bUDGET_SupplementaryBudgetObj.budget_SupplementaryBudget_AddButton(), 6, 500);
-		bUDGET_SupplementaryBudgetObj.budget_SupplementaryBudget_AddButton().click();	
+//		waithelper.waitForElementToVisibleWithFluentWait(driver,
+//				bUDGET_SupplementaryBudgetObj.budget_SupplementaryBudget_AddButton(), 6, 500);
+//		bUDGET_SupplementaryBudgetObj.budget_SupplementaryBudget_AddButton().click();	
 	}
 	}
 	}
@@ -248,6 +281,15 @@ for(int i=0;i<=10;i++)
 			bUDGET_SupplementaryBudgetObj.budget_SupplementaryBudget_BudgetCode().click();
 			bUDGET_SupplementaryBudgetObj.budget_SupplementaryBudget_BudgetCode()
 					.sendKeys(budgetSupplementaryTestData.get("BudgetCodeCreated"));
+			String xpath ="//span[text()='"+budgetSupplementaryTestData.get("BudgetCodeCreated")+"']";
+			for (int i = 0; i <200; i++) {
+				try {
+					driver.findElement(By.xpath(xpath)).isDisplayed();
+					break;
+				} catch (Exception e) {
+					
+				}
+			}
 			bUDGET_SupplementaryBudgetObj.budget_SupplementaryBudget_BudgetCode().sendKeys(Keys.ENTER);
 	    }
 
@@ -259,6 +301,15 @@ for(int i=0;i<=10;i++)
 			bUDGET_SupplementaryBudgetObj.budget_SupplementaryBudget_BudgetYear().click();
 			bUDGET_SupplementaryBudgetObj.budget_SupplementaryBudget_BudgetYear()
 					.sendKeys(budgetSupplementaryTestData.get("BudgetYear"));
+			String xpath ="//span[text()='"+budgetSupplementaryTestData.get("BudgetYear")+"']";
+			for (int i = 0; i <200; i++) {
+				try {
+					driver.findElement(By.xpath(xpath)).isDisplayed();
+					break;
+				} catch (Exception e) {
+					
+				}
+			}
 			bUDGET_SupplementaryBudgetObj.budget_SupplementaryBudget_BudgetYear().sendKeys(Keys.ENTER);
 	    }
 
@@ -384,9 +435,17 @@ for(int i=0;i<=10;i++)
 	    @And("^User Click Maker Notification$")
 	    public void user_click_maker_notification() throws Throwable {
 	    	// Notification
-			waithelper.waitForElementToVisibleWithFluentWait(driver,
-					bUDGET_SupplementaryBudgetObj.budget_SupplementaryBudget_SupplementaryNotification(), 60, 500);
-			bUDGET_SupplementaryBudgetObj.budget_SupplementaryBudget_SupplementaryNotification().click();
+			for (int i = 0; i <200; i++) {
+				try {
+					bUDGET_SupplementaryBudgetObj.budget_SupplementaryBudget_SupplementaryNotification().click();
+					break;
+				} catch (Exception e) {
+					if (i==199) {
+						Assert.fail(e.getMessage());
+					}
+				}
+			}
+			
 	    }
 	    @And("^search the budget Supplementary record name$")
 	    public void search_the_budget_supplementary_record_name() throws Throwable {
@@ -412,12 +471,14 @@ for(int i=0;i<=10;i++)
 			//bUDGET_SupplementaryBudgetObj.budget_SupplementaryBudget_SupplementaryFirstReferenceId().click();
 
 			// Action-Pencil
-			String before_xpath = "//span[contains(text(),'";
-			String after_xpath = "')]/ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell//ion-button";
+			String before_xpath = "//span[text()='";
+			String after_xpath = "']/ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell//ion-button";
 
 			for (int i = 0; i <200; i++) {
 				try {
-					driver.findElement(By.xpath(before_xpath + budgetSupplementaryTestData.get("Reference ID") + after_xpath)).click();
+					WebElement actionIcon = driver.findElement(By.xpath(before_xpath + budgetSupplementaryTestData.get("Reference ID") + after_xpath));
+					clicksAndActionHelper.moveToElement(actionIcon);
+					clicksAndActionHelper.doubleClick(actionIcon);
 					break;
 				} catch (Exception e) {
 					if (i==199) {

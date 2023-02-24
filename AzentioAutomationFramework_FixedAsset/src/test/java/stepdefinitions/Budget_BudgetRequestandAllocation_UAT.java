@@ -178,6 +178,10 @@ public class Budget_BudgetRequestandAllocation_UAT extends BaseClass {
 			throws Throwable {
 		budgetAllocationTestData = excelDataForBudgetRequestAndAllocation.getTestdata("KUBS_B&P_UAT_003_005_D1");
 	}
+	@And("^get the test data to cancel the wrongly created budget code list view validation$")
+    public void get_the_test_data_to_cancel_the_wrongly_created_budget_code_list_view_validation() throws Throwable {
+		budgetReqAllocationTestData = excelDataForBudgetRequestAndAllocation.getTestdata("KUBS_BP_UAT_002_001_04_D1");
+    }
 
 
 	@And("^click to the Budget$")
@@ -2207,15 +2211,16 @@ waitHelper.waitForElementToVisibleWithFluentWait(driver, requestAndAllocation.Re
 		waitHelper.waitForElementToVisibleWithFluentWait(driver,
 				requestAndAllocation.budget_requestAndAllocation_Budgetbranch(), 20, 1);
 		requestAndAllocation.budget_requestAndAllocation_Budgetbranch().click();
-		String xpath = "(//div[contains(text(),'" + budgetAllocationTestData.get("Branch")
-				+ "')]//ancestor::button//div/div[1])[1]";
-		for (int i = 0; i <= 100; i++) {
+		String xpath ="//div[contains(text(),'"+budgetAllocationTestData.get("Branch")+"')]/preceding-sibling::div";
+//		String xpath = "(//div[contains(text(),'" + budgetAllocationTestData.get("Branch")
+//				+ "')]//ancestor::button//div/div[1])[1]";
+		for (int i = 0; i <= 200; i++) {
 			try {
 				javaHelper.scrollIntoView(driver.findElement(By.xpath(xpath)));
 				driver.findElement(By.xpath(xpath)).click();
 				break;
 			} catch (Exception e) {
-				if (i == 100) {
+				if (i == 200) {
 					Assert.fail(e.getMessage());
 				}
 			}
@@ -2252,34 +2257,56 @@ waitHelper.waitForElementToVisibleWithFluentWait(driver, requestAndAllocation.Re
 @And("^enter the amount in budget request and allocation screen$")
 	public void enter_the_amount_in_budget_request_and_allocation_screen() throws Throwable {
 	System.out.println(budgetAllocationTestData.get("BudgetAmount"));
-		String fieldStatus = "";
-		for (int i = 0; i < 12; i++) {
-			for (int k = 0; k <= 100; k++) {
-				try {
-					fieldStatus = driver.findElement(By.xpath("//app-kub-currency[@id='" + i + "']"))
-							.getAttribute("ng-reflect-is-disabled");
-					System.out.println("Field Status is" + fieldStatus);
-					break;
-				} catch (Exception e) {
-
-				}
-			}
-			if (fieldStatus.equalsIgnoreCase("false")) {
-				for (int j = 0; j <= 100; j++) {
-					try {
-						driver.findElement(By.xpath("//app-kub-currency[@id='" + i + "']//input")).click();
-						driver.findElement(By.xpath("//app-kub-currency[@id='" + i + "']//input"))
-								.sendKeys(budgetAllocationTestData.get("BudgetAmount"));
-						driver.findElement(By.xpath("//input[@id='" + i + "']")).click();
-						driver.findElement(By.xpath("//input[@id='" + i + "']"))
-								.sendKeys(budgetAllocationTestData.get("Remark"));
-						break;
-					} catch (Exception e) {
-
-					}
-				}
-			}
+	for (int i = 0; i <12; i++) {
+		String findAmountField ="//datatable-body-cell[2]/div/app-kub-currency[@id='"+i+"']";
+		String amountXpath = "//datatable-body-cell[2]/div/app-kub-currency[@id='"+i+"']/input";
+		String remarkXpath ="//datatable-body-cell[3]/div/input[@id='"+i+"']";
+		//System.out.println(driver.findElement(By.xpath(findAmountField)).getAttribute("ng-reflect-is-disabled"));
+		try {
+		   if (driver.findElement(By.xpath(findAmountField)).getAttribute("ng-reflect-is-disabled").equalsIgnoreCase("false")) {
+			   clickAndActionHelper.moveToElement(driver.findElement(By.xpath(amountXpath)));
+			   clickAndActionHelper.clickOnElement(driver.findElement(By.xpath(amountXpath)));
+		       driver.findElement(By.xpath(amountXpath)).sendKeys(budgetAllocationTestData.get("BudgetAmount"));
+		       clickAndActionHelper.moveToElement(driver.findElement(By.xpath(remarkXpath)));
+			   clickAndActionHelper.clickOnElement(driver.findElement(By.xpath(remarkXpath)));
+		       driver.findElement(By.xpath(remarkXpath)).sendKeys(budgetAllocationTestData.get("Remarks"));
+		       
 		}
+		   
+	        
+		} catch (Exception e) {
+			
+		}
+	}
+	//***Anandh code**
+//		String fieldStatus = "";
+//		for (int i = 0; i < 12; i++) {
+//			for (int k = 0; k <= 100; k++) {
+//				try {
+//					fieldStatus = driver.findElement(By.xpath("//app-kub-currency[@id='" + i + "']"))
+//							.getAttribute("ng-reflect-is-disabled");
+//					System.out.println("Field Status is" + fieldStatus);
+//					break;
+//				} catch (Exception e) {
+//
+//				}
+//			}
+//			if (fieldStatus.equalsIgnoreCase("false")) {
+//				for (int j = 0; j <= 100; j++) {
+//					try {
+//						driver.findElement(By.xpath("//app-kub-currency[@id='" + i + "']//input")).click();
+//						driver.findElement(By.xpath("//app-kub-currency[@id='" + i + "']//input"))
+//								.sendKeys(budgetAllocationTestData.get("BudgetAmount"));
+//						driver.findElement(By.xpath("//input[@id='" + i + "']")).click();
+//						driver.findElement(By.xpath("//input[@id='" + i + "']"))
+//								.sendKeys(budgetAllocationTestData.get("Remark"));
+//						break;
+//					} catch (Exception e) {
+//
+//					}
+//				}
+//			}
+//		}
 	}
 @And("^search for budget request and allocation record in notification$")
 	public void search_for_budget_request_and_allocation_record_in_notification() throws Throwable {
@@ -2356,8 +2383,18 @@ waitHelper.waitForElementToVisibleWithFluentWait(driver, requestAndAllocation.Re
 	}
 @And("^click on search button in busget request and allocation screen$")
 public void click_on_search_button_in_busget_request_and_allocation_screen() throws Throwable {
-	waitHelper.waitForElementToVisibleWithFluentWait(driver, kubsCommonObj.kubsListViewSearchButton(), 20, 1);
-	kubsCommonObj.kubsListViewSearchButton().click();
+	//waitHelper.waitForElementToVisibleWithFluentWait(driver, kubsCommonObj.kubsListViewSearchButton(), 20, 1);
+	for (int i = 0; i <200; i++) {
+		try {
+			kubsCommonObj.kubsListViewSearchButton().click();
+			break;
+		} catch (Exception e) {
+			if (i==199) {
+				Assert.fail(e.getMessage());
+			}
+		}
+	}
+	
 
 }
 @And("^search for approved budget in budgte request and allocation screen$")

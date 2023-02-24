@@ -171,8 +171,9 @@ public class BUDGET_SupplementaryBudgetObj {
 			return  budget_BudgetTransfer_SupplementaryFirstEyeIconApprovedRecord;
 			
 		}
-		
-		@FindBy(xpath="//ion-header/ion-toolbar[1]/ion-buttons[2]/ion-item[1]/ion-icon[1]")
+		//ion-icon[@name='search']
+		//ion-header/ion-toolbar[1]/ion-buttons[2]/ion-item[1]/ion-icon[1]
+		@FindBy(xpath="//ion-icon[@name='search']")
 		private WebElement  budget_BudgetTransfer_SupplementarySearchIconInApprovedListView;
 		public WebElement budget_BudgetTransfer_SupplementarySearchIconInApprovedListView()
 		{
