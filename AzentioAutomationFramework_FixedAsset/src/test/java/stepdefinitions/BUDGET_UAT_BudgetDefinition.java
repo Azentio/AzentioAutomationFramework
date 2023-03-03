@@ -117,7 +117,7 @@ public class BUDGET_UAT_BudgetDefinition extends BaseClass {
 
     @And("^User update test data id for budgetcode Monthly$")
     public void user_update_test_data_id_for_budgetcode_monthly() throws Throwable {
-    	budgetRequestAndAllocation = excelDataForBudgetRequestAndAllocation.getTestdata("KUBS_BP_UAT_002_001_01_D1");
+    	budgetRequestAndAllocation = excelDataForBudgetRequestAndAllocation.getTestdata("KUBS_UAT_KUBS_BP_UAT_004_001_D1");
     	
     }
     @And("^User update test data id for budgetcode Quarterly$")
@@ -154,6 +154,11 @@ public class BUDGET_UAT_BudgetDefinition extends BaseClass {
     public void user_update_test_data_id_to_store_reviewver_id() throws Throwable {
     	budgetRequestAndAllocation = excelDataForBudgetRequestAndAllocation.getTestdata("KUBS_BP_UAT_002_001_02_D1");
     }
+    @And("^User update test data id to store reviewver id for wrongly created budget code$")
+    public void user_update_test_data_id_to_store_reviewver_id_for_wrongly_created_budget_code() throws Throwable {
+    	budgetRequestAndAllocation = excelDataForBudgetRequestAndAllocation.getTestdata("KUBS_UAT_KUBS_BP_UAT_004_002_D1");
+    }
+
     @And("^User update test data id to store reviewver id for Quarterly budget code$")
     public void user_update_test_data_id_to_store_reviewver_id_for_quarterly_budget_code() throws Throwable {
     	budgetRequestAndAllocation = excelDataForBudgetRequestAndAllocation.getTestdata("KUBS_BP_UAT_002_002_02_D1");
@@ -400,6 +405,9 @@ public class BUDGET_UAT_BudgetDefinition extends BaseClass {
 				.sendKeys(budgetCode);
 		excelDataForBudgetRequestAndAllocation.updateTestData("KUBS_BP_UAT_002_001_04_D1", "BudgetCodeCreated",
 				budgetCode);
+		excelDataForBudgetRequestAndAllocation.updateTestData("KUBS_UAT_KUBS_BP_UAT_004_004_D1", "BudgetCodeCreated",
+				budgetCode);
+		
 	}
 
 	@And("^User fill the budget code for type Quarterly$")

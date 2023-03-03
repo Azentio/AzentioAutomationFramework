@@ -637,7 +637,7 @@ And click on logout button
 Then verify user profile got logout
 
 @KUBS_BP_UAT_003_003_01
-Scenario: Check for the budget request for monthly on  current financial year  accounting period is Jan to Dec and current month is on April
+Scenario: Check for the budget request for monthly on  current financial year accounting period is Jan to Dec and current month is on April
 Given navigate to given url and login with maker credentials
 Then Click on the Finance
 And click on configuration section
@@ -695,7 +695,7 @@ And click on user profile icon
 And click on logout button
 Then verify user profile got logout
 @KUBS_BP_UAT_003_003_04
-Scenario: To verify approved busget request allocation of current financial budget should reflect in budget request and allocation screen
+Scenario: To verify approved budget request allocation of current financial budget should reflect in budget request and allocation screen
 Given navigate to given url and login with maker credentials
 Then Click on the Finance
 And click on configuration section
@@ -1011,7 +1011,7 @@ And User close the workflow initiated pop up
 And click notification button
 Then click on the search button
 And search the budget defenition sub module name
-And User update test data id to store reviewver id
+And User update test data id to store reviewver id for wrongly created budget code
 And store the reference number of budget config record in excel database
 Then choose first record in the notification record
 And click on Submit button 
@@ -1061,12 +1061,12 @@ And click on the save button
 And User close the workflow initiated pop up
 And click notification button 
 Then click on the search button
-And User update test data id to verify budget allocated for yearly3 budget code
+#And User update test data id to verify budget allocated for yearly3 budget code
 And search the budget request and allocation sub module name
 And select the request and allocation notification record
 And Click the Cancel button
-#And click on alert submit in request and allocation
-Then enter remark in confirmation alert
+And Enter remark for wrongly created budget code
+#Then enter remark in confirmation alert
 Then click on submit button in alert
 And click on user profile icon
 And click on logout button

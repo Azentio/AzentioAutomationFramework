@@ -645,7 +645,7 @@ public class KUBS_ChekcerSteps extends BaseClass {
     public void navigate_to_kubs_url_and_login_with_checker_for_approve_the_monthly_budget_request_and_allocation_record() throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
 		kubsLogin.loginToAzentioAppAsChecker();
-		checkerTestData = excelDataForBudgetRequestAndAllocation.getTestdata("KUBS_BP_UAT_002_001_02_D1");
+		checkerTestData = excelDataForBudgetRequestAndAllocation.getTestdata("KUBS_UAT_KUBS_BP_UAT_004_002_D1");
     }
 	@Given("^Navigate to KUBS url and login with checker for approve the Quarterly budget request and Allocation record$")
     public void navigate_to_kubs_url_and_login_with_checker_for_approve_the_quarterly_budget_request_and_allocation_record() throws Throwable {

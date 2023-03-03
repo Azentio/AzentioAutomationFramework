@@ -52,6 +52,8 @@ Scenario: To do Budget allocation in maker stage
 Given navigate to given url and login with maker credentials
 Then Click on the Finance
 Then Click on Direction icon
+Then click on configuration
+Then Click on Direction icon
 And User update test data id to verify budget allocated for yearly4 budget code
 And click to the Budget
 Then click on the Budget Sub module Budget Request and Allocation Near Eye Icon

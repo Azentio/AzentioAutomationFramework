@@ -180,7 +180,7 @@ public class Budget_BudgetRequestandAllocation_UAT extends BaseClass {
 	}
 	@And("^get the test data to cancel the wrongly created budget code list view validation$")
     public void get_the_test_data_to_cancel_the_wrongly_created_budget_code_list_view_validation() throws Throwable {
-		budgetReqAllocationTestData = excelDataForBudgetRequestAndAllocation.getTestdata("KUBS_BP_UAT_002_001_04_D1");
+		budgetReqAllocationTestData = excelDataForBudgetRequestAndAllocation.getTestdata("KUBS_UAT_KUBS_BP_UAT_004_004_D1");
     }
 
 
@@ -274,6 +274,7 @@ public class Budget_BudgetRequestandAllocation_UAT extends BaseClass {
 
 	@And("^select the Budget Year$")
 	public void select_the_budget_year() throws Throwable {
+		System.out.println(budgetReqAllocationTestData.get("BudgetYear"));
 
 		// ----------TO SELECT THE BUDGET YEAR-------------//
 	for(int i=0;i<=200;i++)
@@ -2336,7 +2337,6 @@ waitHelper.waitForElementToVisibleWithFluentWait(driver, requestAndAllocation.Re
 @And("^enter the alert remark in request and allocation$")
 	public void enter_the_alert_remark_in_request_and_allocation() throws Throwable {
 		//waitHelper.waitForElementToVisibleWithFluentWait(driver, kubsCommonObj.kubsAlertRemark(), 20, 1);
-		
 	for (int i = 0; i <200; i++) {
 		try {
 			clickAndActionsHelper.clickOnElement(kubsCommonObj.kubsAlertRemark());
@@ -2348,9 +2348,23 @@ waitHelper.waitForElementToVisibleWithFluentWait(driver, requestAndAllocation.Re
 			}
 		}
 	}
-		
-		
+	
 	}
+@And("^Enter remark for wrongly created budget code$")
+public void enter_remark_for_wrongly_created_budget_code() throws Throwable {
+	for (int i = 0; i <200; i++) {
+		try {
+			clickAndActionsHelper.clickOnElement(kubsCommonObj.kubsAlertRemark());
+			kubsCommonObj.kubsAlertRemark().sendKeys(budgetReqAllocationTestData.get("MakerAlertRemark"));
+			break;
+		} catch (Exception e) {
+			if (i==199) {
+				Assert.fail(e.getMessage());
+			}
+		}
+	}
+}
+
 @And("^click on alert submit in request and allocation$")
 	public void click_on_alert_submit_in_request_and_allocation() throws Throwable {
 		waitHelper.waitForElementToVisibleWithFluentWait(driver, kubsCommonObj.kubsAlertSubmit(), 20, 1);

@@ -58,7 +58,7 @@ public class KUBS_ReviewerUserSteps extends BaseClass {
 	@Given("^navigate to kubs url to approve the Montly budget request and allocation record$")
     public void navigate_to_kubs_url_to_approve_the_montly_budget_request_and_allocation_record() throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
-		reviewerTestData = excelDataForBudgetReqAllocation.getTestdata("KUBS_BP_UAT_002_001_02_D1");
+		reviewerTestData = excelDataForBudgetReqAllocation.getTestdata("KUBS_UAT_KUBS_BP_UAT_004_002_D1");
 		kubsLogin.logintoAzentioappReviewer(reviewerTestData.get("Reviewer ID"));
     }
 	@Given("^navigate to kubs url to approve the Quartely budget request and allocation record$")
