@@ -425,6 +425,7 @@ Then logout from maker
   	Then logout from maker
   @KUBS_GL2_UAT_006_003 @Report @GL2
   Scenario: Check the transactions as per dates feeded
+  	And User Update the test data set id for Check the Transactions as per dates feeded
  	  Given Navigate to Azentio Kubs
  	  And Click on Finance Option for GL
 		Then Click on Direction icon
@@ -434,6 +435,7 @@ Then logout from maker
     Then click on report icon
     Then click on enquiry menu
     Then click on temp grid button of financial transaction
+    #And User Select the branch code
     And fill the date field of financial transaction
     Then click on view button to view the report as per reference number
     Then logout from maker
@@ -677,6 +679,7 @@ Then click on report segment button
 Then click on Financial reporting button
 Then click on Cashflow statement report
 And User Select the branch code for Cashflow statement report
+And User Select Report type for Cashflow statement report
 Then Select Transaction from date Financial Transaction Report
 And click view button of report
 Then verify the Record available in report
@@ -693,6 +696,7 @@ Then click on report segment button
 Then click on Financial reporting button
 Then click on Income statement report
 And User select the branch code for Income Statement report
+And User Select Report type for Income statement report
 Then Select Transaction from date Financial Transaction Report
 And click view button of report
 Then verify the Record available in report

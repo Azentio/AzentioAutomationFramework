@@ -83,6 +83,12 @@ public class ENQUIRY_FinancialTransactionObj {
 	{
 		return ENQUIRY_FinancialTransaction_NextMonth;
 	}
+	@FindBy(xpath="//owl-date-time-calendar/div/button[1]")
+	private WebElement ENQUIRY_FinancialTransaction_PreviousMonth;
+	public WebElement ENQUIRY_FinancialTransaction_PreviousMonth()
+	{
+		return ENQUIRY_FinancialTransaction_PreviousMonth;
+	}
 	
 	@FindBy(xpath="//span[contains(text(),'View')]/parent::ion-button")
 	private WebElement ENQUIRY_FinancialTransaction_ViewButton;
@@ -110,5 +116,11 @@ public class ENQUIRY_FinancialTransactionObj {
 	{
 		return 	trialBalance_currencyType;
 
+	}
+	// get system date
+	@FindBy(xpath = "//span[@class='legal-entity'][1]")
+	private WebElement systemDate;
+	public WebElement systemDate() {
+	return systemDate;
 	}
 }

@@ -2,6 +2,7 @@ package stepdefinitions;
 
 import java.io.IOException;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Random;
@@ -323,9 +324,11 @@ public class GL2_LegalEntityGLConfig extends BaseClass {
 	    public void user_update_the_data_set_id_to_approve_the_mapped_the_gl_in_side_the_entity_level_in_reviewer_or_checker() throws Throwable {
 		 testData = excelData.getTestdata("KUBS_GL2_UAT_001_002_02_D1");
 	    }
+	 @And("^User Update the test data set id for Check the Transactions as per dates feeded$")
+	    public void user_update_the_test_data_set_id_for_check_the_transactions_as_per_dates_feeded() throws Throwable {
+		 testData = excelData.getTestdata("KUBS_GL2_UAT_006_003_D1");
+	    }
 	 
-
-
     @And("^Verify the given data in Created Ledger$")
     public void verify_the_given_data_in_created_ledger() throws Throwable {
     	Thread.sleep(1000);
@@ -651,7 +654,7 @@ public class GL2_LegalEntityGLConfig extends BaseClass {
 					try {
 						driver.findElement(By.xpath(xpath)).isDisplayed();
 						break;
-					} catch (NoSuchElementException e) {
+					} catch (Exception e) {
 						if (i==199) {
 							Assert.fail("Branch code is not displayed in Dropdown");
 						}
@@ -672,7 +675,7 @@ public class GL2_LegalEntityGLConfig extends BaseClass {
 					try {
 						driver.findElement(By.xpath(xpath)).isDisplayed();
 						break;
-					} catch (NoSuchElementException e) {
+					} catch (Exception e) {
 						if (i==199) {
 							Assert.fail("Currency is not displayed in Dropdown");
 						}
@@ -693,7 +696,7 @@ public class GL2_LegalEntityGLConfig extends BaseClass {
 					try {
 						driver.findElement(By.xpath(xpath)).isDisplayed();
 						break;
-					} catch (NoSuchElementException e) {
+					} catch (Exception e) {
 						if (i==199) {
 							Assert.fail("Journal Type is not displayed in Dropdown");
 						}
@@ -780,25 +783,39 @@ public class GL2_LegalEntityGLConfig extends BaseClass {
 		// Select Debit
 		waithelper.waitForElementToVisibleWithFluentWait(driver, gL2_JournalVoucherObj.gL2_JournalVoucher_Debit(), 5,
 				500);
-		gL2_JournalVoucherObj.gL2_JournalVoucher_Debit().click();
+		javascriphelper.JavaScriptHelper(driver);
+		javascriphelper.JSEClick(gL2_JournalVoucherObj.gL2_JournalVoucher_Debit());
+		// OK
+		waithelper.waitForElementToVisibleWithFluentWait(driver, gL2_JournalVoucherObj.gL2_JournalVoucher_CreditDebitOk(), 5,
+				500);
+		gL2_JournalVoucherObj.gL2_JournalVoucher_CreditDebitOk().click();
 
 		// Glcode
 		waithelper.waitForElementToVisibleWithFluentWait(driver, gL2_JournalVoucherObj.gL2_JournalVoucher_GlCode(), 5,
 				500);
 		gL2_JournalVoucherObj.gL2_JournalVoucher_GlCode().click();
+		
 		// Thread.sleep(2000);
 		// GlCodeDebit
 		//waithelper.waitForElement(driver, 2000, gL2_JournalVoucherObj.gL2_JournalVoucher_GlCodeDebit());
-		for (int i = 0; i <50; i++) {
+		String xpath = "//div[text()=' 1110101001 - Furniture and Fixtures ']/preceding-sibling::div";
+		for (int i = 0; i <200; i++) {
 			try {
-				gL2_JournalVoucherObj.gL2_JournalVoucher_GlCodeDebit().click();
+				WebElement GlCode = driver.findElement(By.xpath(xpath));
+				javascriphelper.JavaScriptHelper(driver);
+				javascriphelper.JSEClick(GlCode);
+				//gL2_JournalVoucherObj.gL2_JournalVoucher_GlCodeDebit().click();
 				break;
 			} catch (Exception e) {
-				if (i==49) {
+				if (i==199) {
 					Assert.fail(e.getMessage());
 				}
 			}
 		}
+		// OK
+				waithelper.waitForElementToVisibleWithFluentWait(driver, gL2_JournalVoucherObj.gL2_JournalVoucher_CreditDebitOk(), 5,
+						500);
+				gL2_JournalVoucherObj.gL2_JournalVoucher_CreditDebitOk().click();
 		// DebitAmount
 		waithelper.waitForElementToVisibleWithFluentWait(driver, gL2_JournalVoucherObj.gL2_JournalVoucher_DebitAmount(),
 				5, 500);
@@ -822,7 +839,8 @@ public class GL2_LegalEntityGLConfig extends BaseClass {
 				500);
 		for (int i = 0; i <= 150; i++) {
 			try {
-				gL2_JournalVoucherObj.gL2_JournalVoucher_Credit().click();
+				javascriphelper.JSEClick(gL2_JournalVoucherObj.gL2_JournalVoucher_Credit());
+				//gL2_JournalVoucherObj.gL2_JournalVoucher_Credit().click();
 				break;
 			} catch (Exception e) {
 				if (i == 150) {
@@ -830,6 +848,10 @@ public class GL2_LegalEntityGLConfig extends BaseClass {
 				}
 			}
 		}
+		// OK
+		waithelper.waitForElementToVisibleWithFluentWait(driver,
+				gL2_JournalVoucherObj.gL2_JournalVoucher_CreditDebitOk(), 5, 500);
+		gL2_JournalVoucherObj.gL2_JournalVoucher_CreditDebitOk().click();
 		// Glcode-Second
 		waithelper.waitForElementToVisibleWithFluentWait(driver,
 				gL2_JournalVoucherObj.gL2_JournalVoucher_GlCodeSecond(), 5, 500);
@@ -837,11 +859,13 @@ public class GL2_LegalEntityGLConfig extends BaseClass {
 
 		// GlCode-Credit
 		// Thread.sleep(1000);
-		waithelper.waitForElementToVisibleWithFluentWait(driver,
-				gL2_JournalVoucherObj.gL2_JournalVoucher_GlCodeCredit(), 5, 500);
+//		waithelper.waitForElementToVisibleWithFluentWait(driver,
+//				gL2_JournalVoucherObj.gL2_JournalVoucher_GlCodeCredit(), 5, 500);
+		String xpath1 = "//div[text()=' 1110101001 - Furniture and Fixtures ']/preceding-sibling::div";
 		for (int i = 0; i <200; i++) {
 			try {
-				gL2_JournalVoucherObj.gL2_JournalVoucher_GlCodeCredit().click();
+				driver.findElement(By.xpath(xpath1)).click();
+				//gL2_JournalVoucherObj.gL2_JournalVoucher_GlCodeCredit().click();
 				break;
 			} catch (Exception e) {
 				if (i==199) {
@@ -849,6 +873,10 @@ public class GL2_LegalEntityGLConfig extends BaseClass {
 				}
 			}
 		}
+		// OK
+		waithelper.waitForElementToVisibleWithFluentWait(driver,
+				gL2_JournalVoucherObj.gL2_JournalVoucher_CreditDebitOk(), 5, 500);
+		gL2_JournalVoucherObj.gL2_JournalVoucher_CreditDebitOk().click();
 
 		// CreditAmount
 		waithelper.waitForElementToVisibleWithFluentWait(driver,
@@ -925,8 +953,7 @@ public class GL2_LegalEntityGLConfig extends BaseClass {
 
     @And("^Add Debit record in JV$")
     public void add_debit_record_in_jv() throws Throwable {
-    	// ----------------DebitRecord----------//
-    			// DrCr
+    	// DrCr
     			waithelper.waitForElementToVisibleWithFluentWait(driver, gL2_JournalVoucherObj.gL2_JournalVoucher_DrCr(), 5,
     					500);
     			gL2_JournalVoucherObj.gL2_JournalVoucher_DrCr().click();
@@ -934,18 +961,30 @@ public class GL2_LegalEntityGLConfig extends BaseClass {
     			// Select Debit
     			waithelper.waitForElementToVisibleWithFluentWait(driver, gL2_JournalVoucherObj.gL2_JournalVoucher_Debit(), 5,
     					500);
-    			gL2_JournalVoucherObj.gL2_JournalVoucher_Debit().click();
+    			javascriphelper.JavaScriptHelper(driver);
+    			javascriphelper.JSEClick(gL2_JournalVoucherObj.gL2_JournalVoucher_Debit());
+    			// OK
+    			waithelper.waitForElementToVisibleWithFluentWait(driver, gL2_JournalVoucherObj.gL2_JournalVoucher_CreditDebitOk(), 5,
+    					500);
+    			javascriphelper.JSEClick(gL2_JournalVoucherObj.gL2_JournalVoucher_CreditDebitOk());
+    			//gL2_JournalVoucherObj.gL2_JournalVoucher_CreditDebitOk().click();
 
     			// Glcode
     			waithelper.waitForElementToVisibleWithFluentWait(driver, gL2_JournalVoucherObj.gL2_JournalVoucher_GlCode(), 5,
     					500);
-    			gL2_JournalVoucherObj.gL2_JournalVoucher_GlCode().click();
-
+    			javascriphelper.JSEClick(gL2_JournalVoucherObj.gL2_JournalVoucher_GlCode());
+    			//gL2_JournalVoucherObj.gL2_JournalVoucher_GlCode().click();
+    			
+    			// Thread.sleep(2000);
     			// GlCodeDebit
     			//waithelper.waitForElement(driver, 2000, gL2_JournalVoucherObj.gL2_JournalVoucher_GlCodeDebit());
+    			String xpath = "//div[text()=' 1110101001 - Furniture and Fixtures ']/preceding-sibling::div";
     			for (int i = 0; i <200; i++) {
     				try {
-    					gL2_JournalVoucherObj.gL2_JournalVoucher_GlCodeDebit().click();
+    					WebElement GlCode = driver.findElement(By.xpath(xpath));
+    					javascriphelper.JavaScriptHelper(driver);
+    					javascriphelper.JSEClick(GlCode);
+    					//gL2_JournalVoucherObj.gL2_JournalVoucher_GlCodeDebit().click();
     					break;
     				} catch (Exception e) {
     					if (i==199) {
@@ -953,7 +992,11 @@ public class GL2_LegalEntityGLConfig extends BaseClass {
     					}
     				}
     			}
-    			
+    			// OK
+    					waithelper.waitForElementToVisibleWithFluentWait(driver, gL2_JournalVoucherObj.gL2_JournalVoucher_CreditDebitOk(), 5,
+    							500);
+    					javascriphelper.JSEClick(gL2_JournalVoucherObj.gL2_JournalVoucher_CreditDebitOk());
+    					//gL2_JournalVoucherObj.gL2_JournalVoucher_CreditDebitOk().click();
     			// DebitAmount
     			waithelper.waitForElementToVisibleWithFluentWait(driver, gL2_JournalVoucherObj.gL2_JournalVoucher_DebitAmount(),
     					5, 500);
@@ -975,40 +1018,40 @@ public class GL2_LegalEntityGLConfig extends BaseClass {
     			waithelper.waitForElementToVisibleWithFluentWait(driver, gL2_JournalVoucherObj.gL2_JournalVoucher_DrCrSecond(),
     					5, 500);
     			gL2_JournalVoucherObj.gL2_JournalVoucher_DrCrSecond().click();
-
     			// Select Credit
-    			for (int i = 0; i <200; i++) {
+//    			waithelper.waitForElementToVisibleWithFluentWait(driver, gL2_JournalVoucherObj.gL2_JournalVoucher_Credit(), 5,
+//    					500);
+    			for (int i = 0; i <= 150; i++) {
     				try {
-    					clickAndActionHelper.moveToElement(gL2_JournalVoucherObj.gL2_JournalVoucher_Credit());
-    					clickAndActionHelper.clickOnElement(gL2_JournalVoucherObj.gL2_JournalVoucher_Credit());
-    					
+    					javascriphelper.JavaScriptHelper(driver);
+    					javascriphelper.JSEClick(gL2_JournalVoucherObj.gL2_JournalVoucher_Credit());
+    					//gL2_JournalVoucherObj.gL2_JournalVoucher_Credit().click();
     					break;
     				} catch (Exception e) {
-    					if (i==199) {
+    					if (i == 150) {
     						Assert.fail(e.getMessage());
     					}
     				}
     			}
-    			
-
+    			// OK
+    			waithelper.waitForElementToVisibleWithFluentWait(driver,
+    					gL2_JournalVoucherObj.gL2_JournalVoucher_CreditDebitOk(), 5, 500);
+    			javascriphelper.JSEClick(gL2_JournalVoucherObj.gL2_JournalVoucher_CreditDebitOk());
     			// Glcode-Second
-    			for (int i = 0; i <200; i++) {
-    				try {
-    					gL2_JournalVoucherObj.gL2_JournalVoucher_GlCodeSecond().click();
-    					break;
-    				} catch (Exception e) {
-    					if (i==199) {
-    						Assert.fail(e.getMessage());
-    					}
-    				}
-    			}
-    			
+    			waithelper.waitForElementToVisibleWithFluentWait(driver,
+    					gL2_JournalVoucherObj.gL2_JournalVoucher_GlCodeSecond(), 5, 500);
+    			javascriphelper.JSEClick(gL2_JournalVoucherObj.gL2_JournalVoucher_GlCodeSecond());
 
     			// GlCode-Credit
-
+    			// Thread.sleep(1000);
+//    			waithelper.waitForElementToVisibleWithFluentWait(driver,
+//    					gL2_JournalVoucherObj.gL2_JournalVoucher_GlCodeCredit(), 5, 500);
+    			String xpath1 = "//div[text()=' 1110101001 - Furniture and Fixtures ']/preceding-sibling::div";
     			for (int i = 0; i <200; i++) {
     				try {
-    					gL2_JournalVoucherObj.gL2_JournalVoucher_GlCodeCredit().click();
+    					WebElement GlCode1 = driver.findElement(By.xpath(xpath1));
+    					javascriphelper.JSEClick(GlCode1);
+    					//gL2_JournalVoucherObj.gL2_JournalVoucher_GlCodeCredit().click();
     					break;
     				} catch (Exception e) {
     					if (i==199) {
@@ -1016,14 +1059,16 @@ public class GL2_LegalEntityGLConfig extends BaseClass {
     					}
     				}
     			}
-    			
+    			// OK
+    			waithelper.waitForElementToVisibleWithFluentWait(driver,
+    					gL2_JournalVoucherObj.gL2_JournalVoucher_CreditDebitOk(), 5, 500);
+    			javascriphelper.JSEClick(gL2_JournalVoucherObj.gL2_JournalVoucher_CreditDebitOk());
 
     			// CreditAmount
     			waithelper.waitForElementToVisibleWithFluentWait(driver,
     					gL2_JournalVoucherObj.gL2_JournalVoucher_CreditAmount(), 5, 500);
     			gL2_JournalVoucherObj.gL2_JournalVoucher_CreditAmount().click();
-    			gL2_JournalVoucherObj.gL2_JournalVoucher_CreditAmount()
-    					.sendKeys(testData.get("CreditAmountfirst"));
+    			gL2_JournalVoucherObj.gL2_JournalVoucher_CreditAmount().sendKeys(testData.get("CreditAmountfirst"));
     			gL2_JournalVoucherObj.gL2_JournalVoucher_CreditAmount().sendKeys(Keys.ENTER);
 
     }
@@ -1031,72 +1076,68 @@ public class GL2_LegalEntityGLConfig extends BaseClass {
     @And("^Add Second Credit record in JV$")
     public void add_second_credit_record_in_jv() throws Throwable {
     	// ActionButton
-    			waithelper.waitForElementToVisibleWithFluentWait(driver,
-    					gL2_JournalVoucherObj.gL2_JournalVoucher_CreditAmount(), 5, 500);
-    			gL2_JournalVoucherObj.gL2_JournalVoucher_ActionButtonSecond().click();
+		waithelper.waitForElementToVisibleWithFluentWait(driver,
+				gL2_JournalVoucherObj.gL2_JournalVoucher_ActionButton(), 5, 500);
+		gL2_JournalVoucherObj.gL2_JournalVoucher_ActionButton().click();
 
-    			// -----------------------------CreditRecordSecond--------------------------//
-    			// DrCrSecond
-    			for (int i = 0; i <200; i++) {
-    				try {
-    					clickAndActionHelper.moveToElement(gL2_JournalVoucherObj.gL2_JournalVoucher_DrCrThird());
-    					clickAndActionHelper.clickOnElement(gL2_JournalVoucherObj.gL2_JournalVoucher_DrCrThird());
-    					break;
-    				} catch (Exception e) {
-    					if (i==199) {
-    						Assert.fail(e.getMessage());
-    					}
-    				}
-    			}
+		// -----------------------------CreditRecordFirst--------------------------//
+		// DrCrSecond
+		waithelper.waitForElementToVisibleWithFluentWait(driver, gL2_JournalVoucherObj.gL2_JournalVoucher_DrCrThird(),
+				5, 500);
+		gL2_JournalVoucherObj.gL2_JournalVoucher_DrCrThird().click();
+		// Select Credit
+//		waithelper.waitForElementToVisibleWithFluentWait(driver, gL2_JournalVoucherObj.gL2_JournalVoucher_Credit(), 5,
+//				500);
+		for (int i = 0; i <= 150; i++) {
+			try {
+				javascriphelper.JavaScriptHelper(driver);
+				javascriphelper.JSEClick(gL2_JournalVoucherObj.gL2_JournalVoucher_Credit());
+				//gL2_JournalVoucherObj.gL2_JournalVoucher_Credit().click();
+				break;
+			} catch (Exception e) {
+				if (i == 150) {
+					Assert.fail(e.getMessage());
+				}
+			}
+		}
+		// OK
+		waithelper.waitForElementToVisibleWithFluentWait(driver,
+				gL2_JournalVoucherObj.gL2_JournalVoucher_CreditDebitOk(), 5, 500);
+		javascriphelper.JSEClick(gL2_JournalVoucherObj.gL2_JournalVoucher_CreditDebitOk());
+		// Glcode-Second
+		waithelper.waitForElementToVisibleWithFluentWait(driver,
+				gL2_JournalVoucherObj.gL2_JournalVoucher_GlCodeSecond(), 5, 500);
+		javascriphelper.JSEClick(gL2_JournalVoucherObj.gL2_JournalVoucher_GlCodeSecond());
+
+		// GlCode-Credit
+		// Thread.sleep(1000);
+//		waithelper.waitForElementToVisibleWithFluentWait(driver,
+//				gL2_JournalVoucherObj.gL2_JournalVoucher_GlCodeCredit(), 5, 500);
+		String xpath1 = "//div[text()=' 1110101001 - Furniture and Fixtures ']/preceding-sibling::div";
+		for (int i = 0; i <200; i++) {
+			try {
+				WebElement GlCode1 = driver.findElement(By.xpath(xpath1));
+				javascriphelper.JSEClick(GlCode1);
+				//gL2_JournalVoucherObj.gL2_JournalVoucher_GlCodeCredit().click();
+				break;
+			} catch (Exception e) {
+				if (i==199) {
+					Assert.fail(e.getMessage());
+				}
+			}
+		}
+		// OK
+		waithelper.waitForElementToVisibleWithFluentWait(driver,
+				gL2_JournalVoucherObj.gL2_JournalVoucher_CreditDebitOk(), 5, 500);
+		javascriphelper.JSEClick(gL2_JournalVoucherObj.gL2_JournalVoucher_CreditDebitOk());
+		// CreditAmount
+		waithelper.waitForElementToVisibleWithFluentWait(driver,
+				gL2_JournalVoucherObj.gL2_JournalVoucher_CreditAmount(), 5, 500);
+		gL2_JournalVoucherObj.gL2_JournalVoucher_CreditAmount().click();
+		gL2_JournalVoucherObj.gL2_JournalVoucher_CreditAmount().sendKeys(testData.get("CreditAmountSecond"));
+		gL2_JournalVoucherObj.gL2_JournalVoucher_CreditAmount().sendKeys(Keys.ENTER);
+
     			
-
-    			// Select Credit
-    			for (int i = 0; i <200; i++) {
-    				try {
-    					clickAndActionHelper.moveToElement(gL2_JournalVoucherObj.gL2_JournalVoucher_Credit());
-    					clickAndActionHelper.clickOnElement(gL2_JournalVoucherObj.gL2_JournalVoucher_Credit());
-    					break;
-    				} catch (Exception e) {
-    					if (i==199) {
-    						Assert.fail(e.getMessage());
-    					}
-    				}
-    			}
-    			
-
-    			// Glcode-Third
-    			for (int i = 0; i <200; i++) {
-    				try {
-    					gL2_JournalVoucherObj.gL2_JournalVoucher_GlCodeThird().click();
-    					break;
-    				} catch (Exception e) {
-    					if (i==199) {
-    						Assert.fail(e.getMessage());
-    					}
-    				}
-    			}
-    			
-
-    			// GlCode-CreditSecond
-
-    			for (int i = 0; i <200; i++) {
-    				try {
-    					gL2_JournalVoucherObj.gL2_JournalVoucher_GlCodeCreditSecond().click();
-    					break;
-    				} catch (Exception e) {
-    					if (i==199) {
-    						Assert.fail(e.getMessage());
-    					}
-    				}
-    			}
-    			
-    			// CreditAmountSecond
-    			waithelper.waitForElementToVisibleWithFluentWait(driver,
-    					gL2_JournalVoucherObj.gL2_JournalVoucher_CreditAmountSecond(), 5, 500);
-    			gL2_JournalVoucherObj.gL2_JournalVoucher_CreditAmountSecond().click();
-    			gL2_JournalVoucherObj.gL2_JournalVoucher_CreditAmountSecond()
-    					.sendKeys(testData.get("CreditAmountSecond"));
-    			gL2_JournalVoucherObj.gL2_JournalVoucher_CreditAmountSecond().sendKeys(Keys.ENTER);
 
     }
     @And("^User select the JV Transaction number to display all the details for JV$")
@@ -1195,7 +1236,7 @@ public class GL2_LegalEntityGLConfig extends BaseClass {
 				break;
 			}
 
-			catch (NoSuchElementException nosuchElement) {
+			catch (Exception nosuchElement) {
 				gL2_JournalVoucher_AccountEntryReportObj.gL2_JournalVoucher_AccountEntryReport_NextMonth().click();
 			}
 		}
@@ -1230,7 +1271,7 @@ public class GL2_LegalEntityGLConfig extends BaseClass {
 				break;
 			}
 
-			catch (NoSuchElementException nosuchElement) {
+			catch (Exception nosuchElement) {
 				waithelper.waitForElementToVisibleWithFluentWait(driver, gL2_JournalVoucher_AccountEntryReportObj.gL2_JournalVoucher_AccountEntryReport_NextMonth(), 5, 500);
 				gL2_JournalVoucher_AccountEntryReportObj.gL2_JournalVoucher_AccountEntryReport_NextMonth().click();
 			}
@@ -1365,7 +1406,7 @@ public class GL2_LegalEntityGLConfig extends BaseClass {
 				break;
 			}
 
-			catch (NoSuchElementException nosuchElement) {
+			catch (Exception nosuchElement) {
 
 				gL2_JournalVoucher_AccountEntryReportObj.gL2_JournalVoucher_AccountEntryReport_Next().click();
 			}
@@ -1619,7 +1660,7 @@ public class GL2_LegalEntityGLConfig extends BaseClass {
 		String JvRefNum = null;
 		for (int i = 0; i <200; i++) {
 			try {
-				JvRefNum = javascripthelper.executeScript("return document.getElementsByName('voucherNo')[1].value").toString();
+				JvRefNum = javascripthelper.executeScript("return document.getElementsByName('remarks')[2].value").toString();
 				System.out.println(JvRefNum);
 				break;
 			} catch (Exception e) {
@@ -2025,50 +2066,133 @@ public class GL2_LegalEntityGLConfig extends BaseClass {
 	@And("^fill the date field of financial transaction$")
 	public void fill_the_date_field_of_financial_transaction() throws IOException, ParseException {
 		waithelper.waitForElement(driver, 3000, eNQUIRY_FinancialTransactionObj.ENQUIRY_FinancialTransaction_BranchCode());
-		eNQUIRY_FinancialTransactionObj.ENQUIRY_FinancialTransaction_BranchCode().sendKeys(JournalVoucherTestDataType.BranchCode);
+		eNQUIRY_FinancialTransactionObj.ENQUIRY_FinancialTransaction_BranchCode().sendKeys(testData.get("BranchCode"));
+		String xpath ="//span[contains(text(),'"+testData.get("BranchCode")+"')]";
+        for (int i = 0; i <200; i++) {
+			try {
+				driver.findElement(By.xpath(xpath)).isDisplayed();
+				break;
+			} catch (Exception e) {
+				if (i==199) {
+					Assert.fail("Branch code is not displayed in Dropdown");
+				}
+			}
+		}
 		eNQUIRY_FinancialTransactionObj.ENQUIRY_FinancialTransaction_BranchCode().sendKeys(Keys.ENTER);
-		
+		waithelper.waitForElementToVisibleWithFluentWait(driver,jobScheduler_JobExecutionObj.systemDate(), 30, 2);
+		String systemdate = jobScheduler_JobExecutionObj.systemDate().getText();
+//		    System.out.println(systemdate);
+		String[] split = systemdate.split("-");
+		int date = Integer.parseInt(split[0]);
+//		    System.out.println(date);
+		String month = split[1];
+//		    System.out.println(month);
+		int year = Integer.parseInt(split[2]);
+//		    System.out.println(year);
+		int monthNum;
+		switch (month) {
+		case "Jan":
+		monthNum = 1;
+		break;
+		case "Feb":
+		monthNum = 2;
+		break;
+		case "Mar":
+		monthNum = 3;
+		break;
+		case "Apr":
+		monthNum = 4;
+		break;
+		case "May":
+		monthNum = 5;
+		break;
+		case "Jun":
+		monthNum = 6;
+		break;
+		case "Jul":
+		monthNum = 7;
+		break;
+		case "Aug":
+		monthNum = 8;
+		break;
+		case "Sep":
+		monthNum = 9;
+		break;
+		case "Oct":
+		monthNum = 10;
+		break;
+		case "Nov":
+		monthNum = 11;
+		break;
+		case "Dec":
+		monthNum = 12;
+		break;
+		default:
+		monthNum = 0;
+		break;
+		}
+//		        System.out.println(monthNum);
 		waithelper.waitForElement(driver, 3000, eNQUIRY_FinancialTransactionObj.ENQUIRY_FinancialTransaction_FromDate());
 		eNQUIRY_FinancialTransactionObj.ENQUIRY_FinancialTransaction_FromDate().click();
-		
-		while(true)
-        {
-		try
-		{
-		
-			waithelper.waitForElement(driver, 3000, driver.findElement(By.xpath("//span[contains(text(),'"+UpdateChequeStatusTestDataType.GLMonth+" "+UpdateChequeStatusTestDataType.GLYear+"')]")));
-			WebElement monthAndYear=driver.findElement(By.xpath("//span[contains(text(),'"+UpdateChequeStatusTestDataType.GLMonth+" "+UpdateChequeStatusTestDataType.GLYear+"')]"));
-		    break;
+		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MMM/uuuu");
+		DateTimeFormatter dtf1 = DateTimeFormatter.ofPattern("dd/MMMM/uuuu");
+		LocalDate localDate = LocalDate.of(year, monthNum, date);
+		LocalDate minusMonths = localDate.minusMonths(1);
+		//System.out.println(dtf.format(localDate));
+		String Date = dtf.format(minusMonths);
+		String Date1 = dtf1.format(minusMonths);
+		String[] DateSplit = Date.split("[/]");
+		String[] DateSplit1 = Date1.split("[/]");
+		Integer DateNum = Integer.valueOf(DateSplit[0]);
+		String Month = DateSplit[1];
+		String FullMonth = DateSplit1[1];
+		Integer yearNum = Integer.valueOf(DateSplit[2]);
+		System.out.println("Date :"+DateNum +"Month :"+Month +"  "+ FullMonth+"Year :"+yearNum);
+		 while(true){
+			try
+			{
+			
+				waithelper.waitForElement(driver, 3000, driver.findElement(By.xpath("//span[contains(text(),'"+Month+" "+yearNum+"')]")));
+				WebElement monthAndYear=driver.findElement(By.xpath("//span[contains(text(),'"+Month+" "+yearNum+"')]"));
+			    break;
+			}
+			
+			catch(Exception nosuchElement)
+			{
+				waithelper.waitForElementToVisibleWithFluentWait(driver, eNQUIRY_FinancialTransactionObj.ENQUIRY_FinancialTransaction_PreviousMonth(), 5, 500);
+				eNQUIRY_FinancialTransactionObj.ENQUIRY_FinancialTransaction_PreviousMonth().click();
+			}
 		}
-		
-		catch(NoSuchElementException nosuchElement)
-		{
-			waithelper.waitForElementToVisibleWithFluentWait(driver, eNQUIRY_FinancialTransactionObj.ENQUIRY_FinancialTransaction_NextMonth(), 5, 500);
-			eNQUIRY_FinancialTransactionObj.ENQUIRY_FinancialTransaction_NextMonth().click();
-		}
-		}
-		WebElement FinalDay=driver.findElement(By.xpath("//td[@aria-label='"+UpdateChequeStatusTestDataType.GLFullMonth+" "+UpdateChequeStatusTestDataType.GLDay+", "+UpdateChequeStatusTestDataType.GLYear+"']/span"));
+        
+		WebElement FinalDay=driver.findElement(By.xpath("//td[@aria-label='"+FullMonth+" "+DateNum+", "+yearNum+"']/span"));
 		clicksAndActionHelper.doubleClick(FinalDay);
-    	
+		String ToDate = dtf.format(localDate);
+		String ToDate1 = dtf1.format(localDate);
+		String[] ToDateSplit = ToDate.split("[/]");
+		String[] ToDateSplit1 = ToDate1.split("[/]");
+		Integer ToDateNum = Integer.valueOf(ToDateSplit[0]);
+		String ToMonth = ToDateSplit[1];
+		String ToFullMonth = ToDateSplit1[1];
+		Integer ToyearNum = Integer.valueOf(ToDateSplit[2]);
     	waithelper.waitForElement(driver, 3000, eNQUIRY_FinancialTransactionObj.ENQUIRY_FinancialTransaction_ToDate());
     	eNQUIRY_FinancialTransactionObj.ENQUIRY_FinancialTransaction_ToDate().click();
     	
-    	while(true)
-        {
-		try
-		{
+    	while(true){
+    		try
+    		{
+    		
+    			waithelper.waitForElement(driver, 3000, driver.findElement(By.xpath("//span[contains(text(),'"+ToMonth+" "+ToyearNum+"')]")));
+    			WebElement monthAndYear=driver.findElement(By.xpath("//span[contains(text(),'"+ToMonth+" "+ToyearNum+"')]"));
+    		    break;
+    		}
+    		
+    		catch(Exception nosuchElement)
+    		{
+    			eNQUIRY_FinancialTransactionObj.ENQUIRY_FinancialTransaction_NextMonth().click();
+    		}
+    		}
 		
-			waithelper.waitForElement(driver, 3000, driver.findElement(By.xpath("//span[contains(text(),'"+UpdateChequeStatusTestDataType.GLToMonth+" "+UpdateChequeStatusTestDataType.GLYear+"')]")));
-			WebElement monthAndYear=driver.findElement(By.xpath("//span[contains(text(),'"+UpdateChequeStatusTestDataType.GLToMonth+" "+UpdateChequeStatusTestDataType.GLYear+"')]"));
-		    break;
-		}
-		
-		catch(NoSuchElementException nosuchElement)
-		{
-			eNQUIRY_FinancialTransactionObj.ENQUIRY_FinancialTransaction_NextMonth().click();
-		}
-		}
-		WebElement FinalDay2=driver.findElement(By.xpath("//td[@aria-label='"+UpdateChequeStatusTestDataType.GLFullToMonth+" "+UpdateChequeStatusTestDataType.GLToDate+", "+UpdateChequeStatusTestDataType.GLYear+"']/span"));
+		WebElement FinalDay2=driver.findElement(By.xpath("//td[@aria-label='"+ToFullMonth+" "+ToDateNum+", "+ToyearNum+"']/span"));
 		clicksAndActionHelper.doubleClick(FinalDay2);
 
 	}
@@ -2170,7 +2294,7 @@ public class GL2_LegalEntityGLConfig extends BaseClass {
 				break;
 			}
 
-			catch (NoSuchElementException nosuchElement) {
+			catch (Exception nosuchElement) {
 				eNQUIRY_FinancialTransactionObj.ENQUIRY_FinancialTransaction_NextMonth().click();
 			}
 		}
@@ -2349,7 +2473,7 @@ public class GL2_LegalEntityGLConfig extends BaseClass {
 				break;
 			}
 
-			catch (NoSuchElementException nosuchElement) {
+			catch (Exception nosuchElement) {
 				eNQUIRY_FinancialTransactionObj.ENQUIRY_FinancialTransaction_NextMonth().click();
 			}
 		}
@@ -2562,26 +2686,94 @@ public class GL2_LegalEntityGLConfig extends BaseClass {
 		waithelper.waitForElementToVisibleWithFluentWait(driver,
 				jobScheduler_JobExecutionObj.JobScheduler_JobExecution_ToDate(), 5, 500);
 		jobScheduler_JobExecutionObj.JobScheduler_JobExecution_ToDate().click();
+		waithelper.waitForElementToVisibleWithFluentWait(driver,jobScheduler_JobExecutionObj.systemDate(), 30, 2);
+		String systemdate = jobScheduler_JobExecutionObj.systemDate().getText();
+//		    System.out.println(systemdate);
+		String[] split = systemdate.split("-");
+		int date = Integer.parseInt(split[0]);
+//		    System.out.println(date);
+		String month = split[1];
+//		    System.out.println(month);
+		int year = Integer.parseInt(split[2]);
+//		    System.out.println(year);
+		int monthNum;
+		switch (month) {
+		case "Jan":
+		monthNum = 1;
+		break;
+		case "Feb":
+		monthNum = 2;
+		break;
+		case "Mar":
+		monthNum = 3;
+		break;
+		case "Apr":
+		monthNum = 4;
+		break;
+		case "May":
+		monthNum = 5;
+		break;
+		case "Jun":
+		monthNum = 6;
+		break;
+		case "Jul":
+		monthNum = 7;
+		break;
+		case "Aug":
+		monthNum = 8;
+		break;
+		case "Sep":
+		monthNum = 9;
+		break;
+		case "Oct":
+		monthNum = 10;
+		break;
+		case "Nov":
+		monthNum = 11;
+		break;
+		case "Dec":
+		monthNum = 12;
+		break;
+		default:
+		monthNum = 0;
+		break;
+		}
+		waithelper.waitForElement(driver, 3000, eNQUIRY_FinancialTransactionObj.ENQUIRY_FinancialTransaction_FromDate());
+		eNQUIRY_FinancialTransactionObj.ENQUIRY_FinancialTransaction_FromDate().click();
+		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MMM/uuuu");
+		DateTimeFormatter dtf1 = DateTimeFormatter.ofPattern("dd/MMMM/uuuu");
+		LocalDate localDate = LocalDate.of(year, monthNum, date);
+		LocalDate plusDays = localDate.plusDays(1);
+		//System.out.println(dtf.format(localDate));
+		String Date = dtf.format(plusDays);
+		String Date1 = dtf1.format(plusDays);
+		String[] DateSplit = Date.split("[/]");
+		String[] DateSplit1 = Date1.split("[/]");
+		Integer DateNum = Integer.valueOf(DateSplit[0]);
+		String Month = DateSplit[1];
+		String FullMonth = DateSplit1[1];
+		Integer yearNum = Integer.valueOf(DateSplit[2]);
+		System.out.println("Date :"+DateNum +"Month :"+Month +"  "+ FullMonth+"Year :"+yearNum);
 		while (true) {
 			try {
 
 				waithelper.waitForElementToVisibleWithFluentWait(
 						driver, driver.findElement(By.xpath("//span[contains(text(),'"
-								+ testdata.get("Tomonth") + " " + testdata.get("yearExecution") + "')]")),
+								+ Month + " " + yearNum + "')]")),
 						5, 500);
 //				waithelper.waitForElement(driver, 3000, driver.findElement(By.xpath("//span[contains(text(),'"
 //						+ JobExecutionTestDataType.ToMonth + " " + JobExecutionTestDataType.ToYear + "')]")));
 				WebElement monthAndYear = driver.findElement(By.xpath("//span[contains(text(),'"
-						+ testdata.get("Tomonth") + " " + testdata.get("yearExecution") + "')]"));
+						+ Month + " " + yearNum + "')]"));
 				break;
 			}
 
-			catch (NoSuchElementException nosuchElement) {
+			catch (Exception nosuchElement) {
 				jobScheduler_JobExecutionObj.JobScheduler_JobExecution_NextMonth().click();
 			}
 		}
-		WebElement FinalDay2 = driver.findElement(By.xpath("//td[@aria-label='" + testdata.get("FullMonth")
-				+ " " + testdata.get("jobDate") + ", " + testdata.get("yearExecution") + "']/span"));
+		WebElement FinalDay2 = driver.findElement(By.xpath("//td[@aria-label='" + FullMonth
+				+ " " + DateNum + ", " + yearNum + "']/span"));
 		clicksAndActionHelper.moveToElement(FinalDay2);
 		clicksAndActionHelper.doubleClick(FinalDay2);
 	}
@@ -3348,33 +3540,88 @@ public class GL2_LegalEntityGLConfig extends BaseClass {
 		gL2_FinancialTransactionReportObj.gL2_FinancialTransactionReport_CalendarFromDate().click();
 
 		javascripthelper.JavaScriptHelper(driver);
-		while (true) {
-			try {
-
-				waithelper
-						.waitForElementToVisibleWithFluentWait(driver,
-								driver.findElement(By.xpath("//span[contains(text(),'"
-										+ testdata.get("ToMonth") + " "
-										+ testdata.get("Year") + "')]")),
-								5, 500);
-
-				WebElement monthAndYear = driver.findElement(
-						By.xpath("//span[contains(text(),'" + testdata.get("ToMonth") + " "
-								+ testdata.get("Year") + "')]"));
-				break;
-			}
-
-			catch (NoSuchElementException nosuchElement) {
-				waithelper.waitForElementToVisibleWithFluentWait(driver, gL2_FinancialTransactionReportObj.gL2_FinancialTransactionReport_NextMonth(), 5, 500);
-				gL2_FinancialTransactionReportObj.gL2_FinancialTransactionReport_NextMonth().click();
-			}
+		String systemdate = jobScheduler_JobExecutionObj.systemDate().getText();
+//	    System.out.println(systemdate);
+	String[] split = systemdate.split("-");
+	int date = Integer.parseInt(split[0]);
+//	    System.out.println(date);
+	String month = split[1];
+//	    System.out.println(month);
+	int year = Integer.parseInt(split[2]);
+//	    System.out.println(year);
+	int monthNum;
+	switch (month) {
+	case "Jan":
+	monthNum = 1;
+	break;
+	case "Feb":
+	monthNum = 2;
+	break;
+	case "Mar":
+	monthNum = 3;
+	break;
+	case "Apr":
+	monthNum = 4;
+	break;
+	case "May":
+	monthNum = 5;
+	break;
+	case "Jun":
+	monthNum = 6;
+	break;
+	case "Jul":
+	monthNum = 7;
+	break;
+	case "Aug":
+	monthNum = 8;
+	break;
+	case "Sep":
+	monthNum = 9;
+	break;
+	case "Oct":
+	monthNum = 10;
+	break;
+	case "Nov":
+	monthNum = 11;
+	break;
+	case "Dec":
+	monthNum = 12;
+	break;
+	default:
+	monthNum = 0;
+	break;
+	}
+	DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MMM/uuuu");
+	DateTimeFormatter dtf1 = DateTimeFormatter.ofPattern("dd/MMMM/uuuu");
+	LocalDate localDate = LocalDate.of(year, monthNum, date);
+	//System.out.println(dtf.format(localDate));
+	String Date = dtf.format(localDate);
+	String Date1 = dtf1.format(localDate);
+	String[] DateSplit = Date.split("[/]");
+	String[] DateSplit1 = Date1.split("[/]");
+	Integer DateNum = Integer.valueOf(DateSplit[0]);
+	String Month = DateSplit[1];
+	String FullMonth = DateSplit1[1];
+	Integer yearNum = Integer.valueOf(DateSplit[2]);
+	System.out.println("Date :"+DateNum +"Month :"+Month +"  "+ FullMonth+"Year :"+yearNum);
+	 while(true){
+		try
+		{
+		
+			waithelper.waitForElement(driver, 3000, driver.findElement(By.xpath("//span[contains(text(),'"+Month+" "+yearNum+"')]")));
+			WebElement monthAndYear=driver.findElement(By.xpath("//span[contains(text(),'"+Month+" "+yearNum+"')]"));
+		    break;
 		}
-		WebElement FinalDay = driver
-				.findElement(By.xpath("//td[@aria-label='" + testdata.get("FullMonth")
-						+ " " + testdata.get("Date") + ", "
-						+ testdata.get("Year") + "']/span"));
-		clicksAndActionHelper.moveToElement(FinalDay);
-		clicksAndActionHelper.doubleClick(FinalDay);
+		
+		catch(Exception nosuchElement)
+		{
+			waithelper.waitForElementToVisibleWithFluentWait(driver, eNQUIRY_FinancialTransactionObj.ENQUIRY_FinancialTransaction_PreviousMonth(), 5, 500);
+			eNQUIRY_FinancialTransactionObj.ENQUIRY_FinancialTransaction_PreviousMonth().click();
+		}
+	}
+    
+	WebElement FinalDay=driver.findElement(By.xpath("//td[@aria-label='"+FullMonth+" "+DateNum+", "+yearNum+"']/span"));
+	clicksAndActionHelper.doubleClick(FinalDay);
 		
 		
 	}
@@ -3384,33 +3631,90 @@ public class GL2_LegalEntityGLConfig extends BaseClass {
 		// select Transaction to date
 		waithelper.waitForElement(driver, 3000, eNQUIRY_FinancialTransactionObj.ENQUIRY_FinancialTransaction_ToDate());
 		eNQUIRY_FinancialTransactionObj.ENQUIRY_FinancialTransaction_ToDate().click();
-
-		while (true) {
-			try {
-
-				waithelper.waitForElement(driver, 3000,
-						driver.findElement(By.xpath("//span[contains(text(),'"
-								+ testdata.get("ToMonth") + " "
-								+ testdata.get("Year") + "')]")));
-				WebElement monthAndYear = driver.findElement(By.xpath(
-						"//span[contains(text(),'" + testdata.get("ToMonth")
-								+ " " + testdata.get("Year") + "')]"));
-				break;
+				javascripthelper.JavaScriptHelper(driver);
+				String systemdate = jobScheduler_JobExecutionObj.systemDate().getText();
+//			    System.out.println(systemdate);
+			String[] split = systemdate.split("-");
+			int date = Integer.parseInt(split[0]);
+//			    System.out.println(date);
+			String month = split[1];
+//			    System.out.println(month);
+			int year = Integer.parseInt(split[2]);
+//			    System.out.println(year);
+			int monthNum;
+			switch (month) {
+			case "Jan":
+			monthNum = 1;
+			break;
+			case "Feb":
+			monthNum = 2;
+			break;
+			case "Mar":
+			monthNum = 3;
+			break;
+			case "Apr":
+			monthNum = 4;
+			break;
+			case "May":
+			monthNum = 5;
+			break;
+			case "Jun":
+			monthNum = 6;
+			break;
+			case "Jul":
+			monthNum = 7;
+			break;
+			case "Aug":
+			monthNum = 8;
+			break;
+			case "Sep":
+			monthNum = 9;
+			break;
+			case "Oct":
+			monthNum = 10;
+			break;
+			case "Nov":
+			monthNum = 11;
+			break;
+			case "Dec":
+			monthNum = 12;
+			break;
+			default:
+			monthNum = 0;
+			break;
 			}
-
-			catch (NoSuchElementException nosuchElement) {
-				waithelper.waitForElementToVisibleWithFluentWait(driver, eNQUIRY_FinancialTransactionObj.ENQUIRY_FinancialTransaction_NextMonth(), 5, 500);
-				eNQUIRY_FinancialTransactionObj.ENQUIRY_FinancialTransaction_NextMonth().click();
+			DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MMM/uuuu");
+			DateTimeFormatter dtf1 = DateTimeFormatter.ofPattern("dd/MMMM/uuuu");
+			LocalDate localDate = LocalDate.of(year, monthNum, date);
+			//System.out.println(dtf.format(localDate));
+			String Date = dtf.format(localDate);
+			String Date1 = dtf1.format(localDate);
+			String[] DateSplit = Date.split("[/]");
+			String[] DateSplit1 = Date1.split("[/]");
+			Integer DateNum = Integer.valueOf(DateSplit[0]);
+			String Month = DateSplit[1];
+			String FullMonth = DateSplit1[1];
+			Integer yearNum = Integer.valueOf(DateSplit[2]);
+			System.out.println("Date :"+DateNum +"Month :"+Month +"  "+ FullMonth+"Year :"+yearNum);
+			 while(true){
+				try
+				{
+				
+					waithelper.waitForElement(driver, 3000, driver.findElement(By.xpath("//span[contains(text(),'"+Month+" "+yearNum+"')]")));
+					WebElement monthAndYear=driver.findElement(By.xpath("//span[contains(text(),'"+Month+" "+yearNum+"')]"));
+				    break;
+				}
+				
+				catch(Exception nosuchElement)
+				{
+					waithelper.waitForElementToVisibleWithFluentWait(driver, eNQUIRY_FinancialTransactionObj.ENQUIRY_FinancialTransaction_PreviousMonth(), 5, 500);
+					eNQUIRY_FinancialTransactionObj.ENQUIRY_FinancialTransaction_PreviousMonth().click();
+				}
 			}
-		}
-		WebElement FinalDay2 = driver.findElement(
-				By.xpath("//td[@aria-label='" + testdata.get("FullMonth")
-						+ " " + testdata.get("Date") + ", "
-						+ testdata.get("Year") + "']/span"));
-		clicksAndActionHelper.doubleClick(FinalDay2);
-
+		    
+			WebElement FinalDay=driver.findElement(By.xpath("//td[@aria-label='"+FullMonth+" "+DateNum+", "+yearNum+"']/span"));
+			clicksAndActionHelper.doubleClick(FinalDay);
 	}
-
 	@And("^click view button of report$")
 	public void click_view_button_of_report() {
 		waithelper.waitForElementToVisibleWithFluentWait(driver,
@@ -3554,14 +3858,28 @@ public class GL2_LegalEntityGLConfig extends BaseClass {
 				}
 			}	
 			gL2_FinancialTransactionReportObj.gL2_BalanceSheetReport_BranchTextbox().sendKeys(Keys.DOWN);
+			gL2_FinancialTransactionReportObj.gL2_BalanceSheetReport_BranchTextbox().sendKeys(Keys.ENTER);
 	    }
 	 @And("^User Select the Report Type for balancesheet report$")
 	    public void user_select_the_report_type_for_balancesheet_report() throws Throwable {
-		 gL2_FinancialTransactionReportObj.gL2_BalanceSheetReport_BranchTextbox().sendKeys(Keys.ENTER);
+		    
 			gL2_FinancialTransactionReportObj.gl2BalanceSheetReportType().click();
 			gL2_FinancialTransactionReportObj.gl2BalanceSheetReportType().sendKeys(Keys.DOWN);
 			gL2_FinancialTransactionReportObj.gl2BalanceSheetReportType().sendKeys(Keys.ENTER);
 	    }
+	 @And("^User Select Report type for Cashflow statement report$")
+	    public void user_select_report_type_for_cashflow_statement_report() throws Throwable {
+			gL2_FinancialTransactionReportObj.gl2BalanceSheetReportType().click();
+			gL2_FinancialTransactionReportObj.gl2BalanceSheetReportType().sendKeys(Keys.DOWN);
+			gL2_FinancialTransactionReportObj.gl2BalanceSheetReportType().sendKeys(Keys.ENTER);
+	    }
+
+		@And("^User Select Report type for Income statement report$")
+		public void user_select_report_type_for_income_statement_report() throws Throwable {
+			gL2_FinancialTransactionReportObj.gl2BalanceSheetReportType().click();
+			gL2_FinancialTransactionReportObj.gl2BalanceSheetReportType().sendKeys(Keys.DOWN);
+			gL2_FinancialTransactionReportObj.gl2BalanceSheetReportType().sendKeys(Keys.ENTER);
+		}
 
 	@Then("^verify the Record available in the report$")
 	public void verify_the_record_available_in_the_report() throws Throwable {
@@ -3769,7 +4087,7 @@ public class GL2_LegalEntityGLConfig extends BaseClass {
 				break;
 			}
 
-			catch (NoSuchElementException nosuchElement) {
+			catch (Exception nosuchElement) {
 				eNQUIRY_FinancialTransactionObj.ENQUIRY_FinancialTransaction_NextMonth().click();
 			}
 		}
@@ -3799,7 +4117,7 @@ public class GL2_LegalEntityGLConfig extends BaseClass {
 				break;
 			}
 
-			catch (NoSuchElementException nosuchElement) {
+			catch (Exception nosuchElement) {
 				waithelper.waitForElementToVisibleWithFluentWait(driver, eNQUIRY_FinancialTransactionObj.ENQUIRY_FinancialTransaction_NextMonth(), 5, 500);
 				eNQUIRY_FinancialTransactionObj.ENQUIRY_FinancialTransaction_NextMonth().click();
 			}
@@ -3845,7 +4163,7 @@ public class GL2_LegalEntityGLConfig extends BaseClass {
 				break;
 			}
 
-			catch (NoSuchElementException nosuchElement) {
+			catch (Exception nosuchElement) {
 				eNQUIRY_FinancialTransactionObj.ENQUIRY_FinancialTransaction_NextMonth().click();
 			}
 		}
@@ -3870,7 +4188,7 @@ public class GL2_LegalEntityGLConfig extends BaseClass {
 				break;
 			}
 
-			catch (NoSuchElementException nosuchElement) {
+			catch (Exception nosuchElement) {
 				eNQUIRY_FinancialTransactionObj.ENQUIRY_FinancialTransaction_NextMonth().click();
 			}
 		}
@@ -3915,7 +4233,7 @@ public class GL2_LegalEntityGLConfig extends BaseClass {
 			try {
 				driver.findElement(By.xpath("//div[text()='TRIAL BALANCE']")).isDisplayed();
 				break;
-			} catch (NoSuchElementException e) {
+			} catch (Exception e) {
 				if (i == 200) {
 					e.printStackTrace();
 				}
@@ -4010,7 +4328,7 @@ public class GL2_LegalEntityGLConfig extends BaseClass {
 				break;
 			}
 
-			catch (NoSuchElementException nosuchElement) {
+			catch (Exception nosuchElement) {
 				eNQUIRY_FinancialTransactionObj.ENQUIRY_FinancialTransaction_NextMonth().click();
 			}
 		}
@@ -4040,7 +4358,7 @@ public class GL2_LegalEntityGLConfig extends BaseClass {
 				break;
 			}
 
-			catch (NoSuchElementException nosuchElement) {
+			catch (Exception nosuchElement) {
 				waithelper.waitForElementToVisibleWithFluentWait(driver, eNQUIRY_FinancialTransactionObj.ENQUIRY_FinancialTransaction_NextMonth(), 5, 500);
 				eNQUIRY_FinancialTransactionObj.ENQUIRY_FinancialTransaction_NextMonth().click();
 			}
@@ -4157,7 +4475,7 @@ public class GL2_LegalEntityGLConfig extends BaseClass {
 				break;
 			}
 
-			catch (NoSuchElementException nosuchElement) {
+			catch (Exception nosuchElement) {
 				waithelper.waitForElementToVisibleWithFluentWait(driver, eNQUIRY_FinancialTransactionObj.ENQUIRY_FinancialTransaction_NextMonth(), 5, 500);
 				eNQUIRY_FinancialTransactionObj.ENQUIRY_FinancialTransaction_NextMonth().click();
 			}
@@ -4187,7 +4505,7 @@ public class GL2_LegalEntityGLConfig extends BaseClass {
 				break;
 			}
 
-			catch (NoSuchElementException nosuchElement) {
+			catch (Exception nosuchElement) {
 				eNQUIRY_FinancialTransactionObj.ENQUIRY_FinancialTransaction_NextMonth().click();
 			}
 		}
@@ -4275,7 +4593,7 @@ public class GL2_LegalEntityGLConfig extends BaseClass {
 				break;
 			}
 
-			catch (NoSuchElementException nosuchElement) {
+			catch (Exception nosuchElement) {
 				waithelper.waitForElementToVisibleWithFluentWait(driver, eNQUIRY_FinancialTransactionObj.ENQUIRY_FinancialTransaction_NextMonth(), 5, 500);
 				eNQUIRY_FinancialTransactionObj.ENQUIRY_FinancialTransaction_NextMonth().click();
 			}
@@ -4305,7 +4623,7 @@ public class GL2_LegalEntityGLConfig extends BaseClass {
 				break;
 			}
 
-			catch (NoSuchElementException nosuchElement) {
+			catch (Exception nosuchElement) {
 				eNQUIRY_FinancialTransactionObj.ENQUIRY_FinancialTransaction_NextMonth().click();
 			}
 		}

@@ -101,13 +101,19 @@ public class GL2_JournalVoucherObj {
 	}
 
 	// Debit
-	@FindBy(xpath = "//ion-list[1]/ion-radio-group[1]/ion-item[1]/ion-radio[1]")
+	@FindBy(xpath = "//div[text()=' Debit ']/preceding-sibling::div")
 	private WebElement gL2_JournalVoucher_Debit;
 
 	public WebElement gL2_JournalVoucher_Debit() {
 		return gL2_JournalVoucher_Debit;
 	}
+	
+	@FindBy(xpath = "//span[text()='OK']/parent::button")
+	private WebElement gL2_JournalVoucher_CreditDebitOk;
 
+	public WebElement gL2_JournalVoucher_CreditDebitOk() {
+		return gL2_JournalVoucher_CreditDebitOk;
+	}
 	// GlCode
 	@FindBy(xpath = "//datatable-body-cell[2]/div[1]/app-kub-lov[1]/ion-select[1]")
 	private WebElement gL2_JournalVoucher_GlCode;
@@ -150,7 +156,7 @@ public class GL2_JournalVoucherObj {
 	}
 
 	// Credit
-	@FindBy(xpath = "//ion-label[text()=' Credit ']/following-sibling::ion-radio")
+	@FindBy(xpath = "//div[text()=' Credit ']/preceding-sibling::div")
 	private WebElement gL2_JournalVoucher_Credit;
 
 	public WebElement gL2_JournalVoucher_Credit() {

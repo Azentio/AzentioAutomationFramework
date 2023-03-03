@@ -425,12 +425,23 @@ public class BUDGET_UAT_BudgetDefinition extends BaseClass {
 		/*
 		 * Then we have to logout from maker
 		 */
-		budgetCreationObj.budgetCreationUserName().click();
+		for (int i = 0; i <200; i++) {
+			try {
+				javascriptHelper.JavaScriptHelper(driver);
+				javascriptHelper.JSEClick(budgetCreationObj.budgetCreationUserName());
+				break;
+			} catch (Exception e) {
+				Assert.fail(e.getMessage());
+			}
+		}
+		
 //		Thread.sleep(1000);		
 		waitHelper.waitForElementToVisibleWithFluentWait(driver, budgetCreationObj.budgetCreationLogoutButton(), 90,
 				500);
-		clickAndActions.moveToElement(budgetCreationObj.budgetCreationLogoutButton());
-		budgetCreationObj.budgetCreationLogoutButton().click();
+				javascriptHelper.JavaScriptHelper(driver);
+				javascriptHelper.JSEClick(budgetCreationObj.budgetCreationLogoutButton());
+			
+		
 	}
 
 	/*
