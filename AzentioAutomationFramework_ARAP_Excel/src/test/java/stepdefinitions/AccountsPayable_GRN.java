@@ -18,8 +18,10 @@ import helper.JavascriptHelper;
 import helper.WaitHelper;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
-
+import pageobjects.ARAP_GRNCreationPageObject;
+import pageobjects.ARAP_PoCreationObj;
 import pageobjects.AccountsPayable_GrnObj;
+import pageobjects.BUDGET_BudgetCreationObj;
 import pageobjects.KUBS_CheckerObj;
 import resources.BaseClass;
 import resources.ExcelData;
@@ -35,9 +37,13 @@ public class AccountsPayable_GRN {
 	WaitHelper waithelper = new WaitHelper(driver);
 	JavascriptHelper javascripthelper = new JavascriptHelper();
 	ClicksAndActionsHelper clicksAndActionHelper = new ClicksAndActionsHelper(driver);
+	ARAP_GRNCreationPageObject grnObject=new ARAP_GRNCreationPageObject(driver);
 	BrowserHelper browserHelper;
-	
-	ExcelData excelData = new ExcelData("C:\\Users\\inindc00089\\eclipse-workspace\\AzentioAutomationFramework_ARAP\\Test-data\\KUBSTestData.xlsx","ARAP_GoodsReceivedNote_GRN", "DataSet ID");
+	String poNumber;
+	String poBusinessPartner;
+	ARAP_PoCreationObj poCreationObj=new ARAP_PoCreationObj(driver);
+	BUDGET_BudgetCreationObj budgetCreationObj = new BUDGET_BudgetCreationObj(driver);
+	ExcelData excelData = new ExcelData("C:\\Users\\ININDC00089\\git\\AzentioAutomationFramework\\ArAp\\AzentioAutomationFramework_ARAP_Excel\\Test-data\\KUBSTestData.xlsx","ARAP_GoodsReceivedNote_GRN", "DataSet ID");
 	Map<String, String> testData = new HashMap<>();
 	
 	
@@ -449,6 +455,200 @@ public class AccountsPayable_GRN {
     }
 
    	
+    //------------------------//
     
+    @Then("^update data set id for grn auto populated1$")
+    public void update_data_set_id_for_grn_auto_populated1() throws Throwable {
+    	testData = excelData.getTestdata("KUBS_AR/AP_UAT_001_004_TC_04_D1");   
+    }
+    @Then("^update data set id for grn auto populated2$")
+    public void update_data_set_id_for_grn_auto_populated2() throws Throwable {
+    	testData = excelData.getTestdata("KUBS_AR/AP_UAT_001_005_TC_04_D1");   
+    }
 
+    @Then("^click on search$")
+	public void click_on_search() throws Throwable {
+		for(int i=1; i<=20; i++) {
+			try{
+				waithelper.waitForElementVisible(accountsPayable_GRNObj.accountPayable_grn_Search(), 2000, 100);
+				accountsPayable_GRNObj.accountPayable_grn_Search().click();
+				break;
+			}
+			catch(Exception e) {}
+
+		}
+	}
+    
+    @Then("^open the record$")
+    public void open_the_record() throws Throwable {
+	waithelper.waitForElement(driver, 2000, accountsPayable_GRNObj.accountsPayable_GrnNumber());
+	accountsPayable_GRNObj.accountsPayable_GrnNumber().click();   
+	accountsPayable_GRNObj.accountsPayable_GrnNumber().sendKeys(testData.get("GrnReferenceNumber"));
+	accountsPayable_GRNObj.accountsPayable_GrnNumber().sendKeys(Keys.ENTER);
+	
+	//
+	waithelper.waitForElement(driver, 2000, accountsPayable_GRNObj.accountsPayable_Grn_SelectRecord());
+	accountsPayable_GRNObj.accountsPayable_Grn_SelectRecord().click(); 
+	
+		
+    }
+	
+    @Then("^Click on the item Details tab$")
+	public void click_on_the_item_details_tab() throws InterruptedException {
+		Thread.sleep(2000);
+		waithelper.waitForElement(driver, 2000, accountsPayable_GRNObj.Grn_ItemDetails());
+		accountsPayable_GRNObj.Grn_ItemDetails().click();
+
+	}
+	
+	
+	 @Then("^Click on Account Payable$")
+	 public void click_on_account_payable()  {
+     waithelper.waitForElement(driver, 4000, accountsPayable_GRNObj.accountPayableMenu());
+     accountsPayable_GRNObj.accountPayableMenu().click();
+		
+	   }
+	 
+	 @Then("^Click on Inventory Management$")
+	    public void click_on_inventory_management() {
+//		waithelper.waitForElement(driver, 3000, accountsPayable_GRNObj.inventoryManagement_InventoryStockReceipt_InventoryManagementField());
+		javascripthelper.JavaScriptHelper(driver);
+//		waithelper.waitForElementwithFluentwait(driver, accountsPayable_GRNObj.inventoryManagement_InventoryStockReceipt_InventoryManagementField());
+		javascripthelper.scrollIntoViewAndClick(accountsPayable_GRNObj.inventoryManagement_InventoryStockReceipt_InventoryManagementField());
+//		accountsPayable_GRNObj.inventoryManagement_InventoryStockReceipt_InventoryManagementField().click();
+	        
+	    }
+	 @Then("^Click on inventory stock receipt Eye Icon$")
+	    public void click_on_inventory_stock_receipt_eye_icon() throws InterruptedException  {
+//	    Thread.sleep(2000);
+	    waithelper.waitForElementwithFluentwait(driver, accountsPayable_GRNObj.inventoryManagement_InventoryStockReceipt_EyeButton());
+	    WebElement EyeIcon = accountsPayable_GRNObj.inventoryManagement_InventoryStockReceipt_EyeButton();
+	    waithelper.waitForElement(driver, 3000, accountsPayable_GRNObj.inventoryManagement_InventoryStockReceipt_EyeButton());
+	  	Assert.assertTrue(accountsPayable_GRNObj.inventoryManagement_InventoryStockReceipt_EyeButton().isDisplayed());
+	  	clicksAndActionHelper.moveToElement(EyeIcon);
+	  	accountsPayable_GRNObj.inventoryManagement_InventoryStockReceipt_EyeButton().click();
+	    	
+		       
+	    }
+	 @Then("^Click on inventory stock Add button$")
+	    public void click_on_inventory_stock_add_button() throws InterruptedException  {
+//	    Thread.sleep(2000);
+//	    waithelper.waitForElement(driver, 3000, accountsPayable_GRNObj.inventoryManagement_InventoryStockReceipt_AddButton());
+	    	for(int i=1; i<=20; i++) {
+				try{
+	    	waithelper.waitForElementwithFluentwait(driver, accountsPayable_GRNObj.inventoryManagement_InventoryStockReceipt_AddButton());
+	    accountsPayable_GRNObj.inventoryManagement_InventoryStockReceipt_AddButton().click();
+		     break;
+				}
+				catch(Exception e) {}}
+	       
+	    }
+
+	    @Then("^enter GRN reference check details auto populated$")
+	    public void enter_grn_reference_check_details_auto_populated() throws InterruptedException {
+	        
+	     //GRN Number
+	 	  waithelper.waitForElement(driver, 3000, accountsPayable_GRNObj.inventoryManagement_InventoryStockReceipt_GRNNumber());
+	 	 accountsPayable_GRNObj.inventoryManagement_InventoryStockReceipt_GRNNumber().click();
+	 	 accountsPayable_GRNObj.inventoryManagement_InventoryStockReceipt_GRNNumber().sendKeys(testData.get("GrnReferenceNumber"));
+	 	 accountsPayable_GRNObj.inventoryManagement_InventoryStockReceipt_GRNNumber().sendKeys(Keys.ENTER);
+	 	 Thread.sleep(2000);
+	    
+	    }
+	    //--------------------//
+
+	    @And("^user update the data set ID for GRN against cancelled PO$")
+	    public void user_update_the_data_set_id_for_grn_against_cancelled_po() throws Throwable {
+	    	testData = excelData.getTestdata("KUBS_AR/AP_UAT_003_002_TC_03_D1");  
+	    }
+	    
+	    @And("^search for cancelled po$")
+	    public void search_for_cancelled_po() throws Throwable {
+	    	javascripthelper.JavaScriptHelper(driver);
+	    	poCreationObj.poCreationSearchIcon().click();
+	    	Thread.sleep(1000);
+	    	//waitHelper.waitForElementVisible(poCreationObj.poStatus(), 1000, 100);
+//	    	clicksAndActionHelper.moveToElement(poCreationObj.poStatus());
+//	    	javascripthelper.scrollIntoView(poCreationObj.poStatus());
+//	    	poCreationObj.poStatus().click();
+	    	
+	    	javascripthelper.JavaScriptHelper(driver);
+	    	javascripthelper.scrollIntoView(poCreationObj.poStatus());
+			poCreationObj.poStatus().click();
+			poCreationObj.poStatus().sendKeys(testData.get("PoStatus"));
+	        poNumber=poCreationObj.poPoNumber().getText();
+	       poBusinessPartner= poCreationObj.poBusinessPartner().getText();
+	       System.out.println(poNumber+" "+poBusinessPartner+" ");
+	       
+
+	    }
+
+	    @And("^check GRN can be created for that perticular po$")
+	    public void check_grn_can_be_created_for_that_perticular_po() throws Throwable {
+	    	waithelper.waitForElementVisible(grnObject.accountPayable_GrnBpName(), 1000, 100);
+	    	System.out.println("Business Partner is"+poBusinessPartner);
+	    	grnObject.accountPayable_GrnBpName().click();
+	    	grnObject.accountPayable_GrnBpName().sendKeys(poBusinessPartner);
+	    	Thread.sleep(2000);
+	    	//grnObject.accountPayable_GRN_BPBranch().click();
+		grnObject.accountPayable_GrnBpName().sendKeys(Keys.ENTER);
+		waithelper.waitForElementVisible(grnObject.accountPayable_GRN_BPBranch(), 2000, 100);
+		grnObject.accountPayable_GRN_BPBranch().click();
+	    	grnObject.accountPayable_GRN_BPBranch().sendKeys(Keys.ENTER);
+	    	grnObject.accountPayable_GrnInvoiceNumber().sendKeys(testData.get("InvoiceNo"));
+	    	grnObject.accountPayable_GrnDeliveryLocation().click();
+	    	//grnObject.accountPayable_GrnDeliveryLocation().sendKeys(Keys.DOWN);
+	    	grnObject.accountPayable_GrnDeliveryLocation().sendKeys(Keys.ENTER);
+	    	//waitHelper.waitForElementVisible(grnObject.accountPayable_GrnSaveButton(), 1000, 100);
+	    	Thread.sleep(2000);
+	    	//grnObject.accountPayable_GrnSaveButton().click();
+	    	clicksAndActionHelper.doubleClick(grnObject.accountPayable_GrnSaveButton());
+	    	grnObject.grnTempView().click();
+	    	waithelper.waitForElementVisible(grnObject.grnTempViewFirstRecord(), 1000,100);
+	    	grnObject.grnTempViewFirstRecord().click();
+	    	
+	    	
+	     
+	    }
+	    @And("^click notification button$")
+		public void click_notification_button() throws Throwable {
+			// After save our budget record we have to click on notification to submit our
+			// record for approvals
+	    	waithelper.waitForElementToVisibleWithFluentWait(driver, budgetCreationObj.budgetCreationNotificationIcon(), 60,
+					100);
+			budgetCreationObj.budgetCreationNotificationIcon().click();
+//			Thread.sleep(1000);
+
+		}
+	    @Then("^choose first record in the notification record$")
+		public void choose_first_record_in_the_notification_record() throws Throwable {
+			/*
+			 * After click on notification we can see the record which we saved now and we
+			 * have to select that along with the records reference ID We have to store the
+			 * reference ID into the JSon file so that we can call the data in reviewer and
+			 * checker stage
+			 */
+	    	waithelper.waitForElementToVisibleWithFluentWait(driver, budgetCreationObj.budgetCreationFirstReferenceId(), 60,
+					500);
+			String referenceID = budgetCreationObj.budgetCreationFirstReferenceId().getText();
+			/*
+			 * addReferanceData(referenceID) This method is a predefined method to store the
+			 * reference ID into the Json file
+			 */
+			
+			budgetCreationObj.budgetCreationFirstRecord().click();
+
+		}
+	    
+	    @Then("^go to Item details and enter po number$")
+	    public void go_to_item_details_and_enter_po_number() throws Throwable {
+	    	Thread.sleep(1000);
+	    	waithelper.waitForElement(driver, 2000, grnObject.inventoryManagament_GRNItemDetails());
+	    	grnObject.inventoryManagament_GRNItemDetails().click();
+	    	waithelper.waitForElementVisible(grnObject.accountPayable_GrnPONumber(), 1000, 100);
+	    	grnObject.accountPayable_GrnPONumber().click();
+	    	grnObject.accountPayable_GrnPONumber().sendKeys(poNumber);
+	    	boolean result=grnObject.poNoSuctDataFromDropdown().isDisplayed();
+	    	Assert.assertTrue(result);
+	    }
 }

@@ -335,6 +335,50 @@ public class AccountsPayable_GrnObj {
 		return accountsPayable_Grn_SelectRecord;
 
 	}
+	//ItemDetails tab
+		@FindBy(xpath = "//ion-label[contains(text(),'Item Details')]")
+		private WebElement Grn_ItemDetails;
+
+		public WebElement Grn_ItemDetails() {
+		return Grn_ItemDetails;
+
+		}
+	// Account Payable Menu
+		@FindBy(xpath = "//ion-label[text()=' Accounts payable ']")
+		private WebElement accountPayableMenu;
+
+		public WebElement accountPayableMenu() {
+			return accountPayableMenu;
+		}
+		@FindBy(xpath = "//ion-label[text()=' Inventory management ']")
+		private WebElement inventoryManagement_InventoryStockReceipt_InventoryManagementField;
+		public WebElement inventoryManagement_InventoryStockReceipt_InventoryManagementField() {
+			return inventoryManagement_InventoryStockReceipt_InventoryManagementField;
+		}
+		
+		@FindBy(xpath = "//ion-button[@ng-reflect-router-link='/tabs/list/datagrid-view/6']")
+		private WebElement inventoryManagement_InventoryStockReceipt_EyeButton;
+
+		public WebElement inventoryManagement_InventoryStockReceipt_EyeButton() {
+			return inventoryManagement_InventoryStockReceipt_EyeButton;
+
+		}
+		
+		@FindBy(xpath = "//ion-fab-button[@id='addBtn']")
+		private WebElement inventoryManagement_InventoryStockReceipt_AddButton;
+		public WebElement inventoryManagement_InventoryStockReceipt_AddButton() {
+			return inventoryManagement_InventoryStockReceipt_AddButton;
+
+		}
+		
+		//GRN Number
+		@FindBy(xpath = "//ion-col[1]/app-kub-lov[1]/span[1]/ng-select[1]/div[1]/div[1]/div[2]/input")
+		private WebElement inventoryManagement_InventoryStockReceipt_GRNNumber;
+		public WebElement inventoryManagement_InventoryStockReceipt_GRNNumber() {
+			return inventoryManagement_InventoryStockReceipt_GRNNumber;
+
+		}
+
 
 	// BpName
 	@FindBy(xpath = "//ion-col[2]/app-kub-lov[1]/span[1]/ng-select[1]/div[1]/div[1]/div[2]/input")
@@ -463,5 +507,13 @@ public class AccountsPayable_GrnObj {
 	public WebElement accountsPayable_Grn_GrnReference() {
 		return accountsPayable_Grn_GrnReference;
 	}
+	
+	// Search icon
+		@FindBy(xpath = "(//ion-buttons/ion-item/ion-icon)[2]")
+		private WebElement accountPayable_grn_Search;
+
+		public WebElement accountPayable_grn_Search() {
+			return accountPayable_grn_Search;
+		}
 
 }

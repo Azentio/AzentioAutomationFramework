@@ -514,7 +514,7 @@ public class ACCOUNTSPAYABLE_InvoiceBookingObj {
 	}
 	
 	// Invoice Qty
-	@FindBy(xpath = "//datatable-body-cell[5]/div/input")
+	@FindBy(xpath = "//datatable-body-row[1]/div[2]/datatable-body-cell[5]/div[1]/input[1]")
 	private WebElement accountPayable_InvoiceBooking_InvoiceQuantity;
 	
 	public WebElement accountPayable_InvoiceBooking_InvoiceQuantity() {
@@ -530,7 +530,7 @@ public class ACCOUNTSPAYABLE_InvoiceBookingObj {
 	}
 	
 	// Unit(Boxes) radio button
-	@FindBy(xpath = "//ion-item[1]/ion-radio")
+	@FindBy(xpath = "//ion-app[1]/ion-alert[1]/div[2]/div[3]/button[1]/div[1]/div[1]")
 	private WebElement accountPayable_InvoiceBooking_UnitBoxes;
 	
 	public WebElement accountPayable_InvoiceBooking_UnitBoxes() {
@@ -858,14 +858,22 @@ public class ACCOUNTSPAYABLE_InvoiceBookingObj {
 		return accountPayable_invoiceBookingExpenceSuplierReferenceNo;
 	}
 
-	@FindBy(xpath = "//ion-radio-group[1]/ion-item[2]/ion-radio[1]")
+	@FindBy(xpath = "//ion-app[1]/ion-alert[1]/div[2]/div[3]/button[1]/div[1]/div[1]")
 	private WebElement accountPayable_invoiceBookingExpenceExpence11Code;
 
 	public WebElement accountPayableIvoiceBookingExpenceExpense11Code() {
 		return accountPayable_invoiceBookingExpenceExpence11Code;
 	}
+	
 
-	@FindBy(xpath = "//ion-radio-group[1]/ion-item[2]/ion-radio[1]")
+	@FindBy(xpath = "//app-root[1]/ion-app[1]/ion-alert[1]/div[2]/div[4]/button[2]")
+	private WebElement accountPayable_invoiceBookingExpenceExpenceCode_OK;
+
+	public WebElement accountPayable_invoiceBookingExpenceExpenceCode_OK() {
+		return accountPayable_invoiceBookingExpenceExpenceCode_OK;
+	}
+	
+	@FindBy(xpath = "//ion-app[1]/ion-alert[1]/div[2]/div[3]/button[1]/div[1]/div[1]")
 	private WebElement accountPayable_invoiceBookingDeleveryLocationPunjab;
 
 	public WebElement accountPayableIvoiceBookingDeleveryLocationPunjab() {

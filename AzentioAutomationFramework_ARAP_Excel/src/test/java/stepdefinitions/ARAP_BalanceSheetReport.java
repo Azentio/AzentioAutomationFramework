@@ -65,7 +65,7 @@ public class ARAP_BalanceSheetReport {
 	AccountsReceivable_DebitNoteObj accountsReceivable_DebitNoteObj = new AccountsReceivable_DebitNoteObj(driver);
 	ArAp_BalanceSheetReportObj arAp_BalanceSheetReportObj = new ArAp_BalanceSheetReportObj(driver);
 
-	ExcelData excelData = new ExcelData("C:\\Users\\inindc00089\\eclipse-workspace\\AzentioAutomationFramework_ARAP\\Test-data\\KUBSTestData.xlsx","BalanceSheetReport", "DataSet ID");
+	ExcelData excelData = new ExcelData("C:\\Users\\ININDC00089\\git\\AzentioAutomationFramework\\ArAp\\AzentioAutomationFramework_ARAP_Excel\\Test-data\\KUBSTestData.xlsx","BalanceSheetReport", "DataSet ID");
 	Map<String, String> testData = new HashMap<>();
 	
 	@And("^Update the data set id for Balance sheet Report b1$")
@@ -137,7 +137,10 @@ public class ARAP_BalanceSheetReport {
     public void update_the_data_set_id_for_balance_sheet_report_b15() {
 		testData = excelData.getTestdata("KUBS_AR/AP_UAT_002_002_TC_03_D1");     
     }
-	
+	@And("^Update the data set id for Balance sheet Report b16$")
+    public void update_the_data_set_id_for_balance_sheet_report_b16() {
+		testData = excelData.getTestdata("KUBS_AR_AP_UAT_003_003_TC_03_D1");     
+    }
 	@And("^search and get the active GRN code$")
     public void search_and_get_the_active_grn_code() throws Throwable {
     	waitHelper.waitForElementVisible(grnObject.grnSearchGRNStatus(), 2000, 200);
@@ -149,8 +152,21 @@ public class ARAP_BalanceSheetReport {
 	
 	@And("^search invoice type as expense$")
 	public void search_invoice_type_as_expense() throws Throwable {
+//		while(true)
+//		{
+//		try
+//			{
+		clickAndActionHelper.moveToElement(arapObj.ARAP_InvoiceTypeSearch());
 		arapObj.ARAP_InvoiceTypeSearch().click();
 		arapObj.ARAP_InvoiceTypeSearch().sendKeys(testData.get("InvoiceType"));
+//		break;
+//			}
+//						
+//		catch(Exception e)
+//			{
+//			}
+//				
+//			}
 	}
 	@And("^get the buisness partner name and invoice number from the bill viewed$")
     public void get_the_buisness_partner_name_and_invoice_number_from_the_bill_viewed() throws Throwable {
@@ -176,8 +192,14 @@ public class ARAP_BalanceSheetReport {
 
 	    @And("^click the balance sheet report$")
 	    public void click_the_balance_sheet_report() throws Throwable {
+	    	for(int i=1; i<=10; i++) {
+				try {
+					clickAndActionHelper.moveToElement(arAp_BalanceSheetReportObj.arAp_BalanceSheetReport_BalanceSheetReport());	
 	    	waitHelper.waitForElement(driver, 2000,arAp_BalanceSheetReportObj.arAp_BalanceSheetReport_BalanceSheetReport());
 		    	arAp_BalanceSheetReportObj.arAp_BalanceSheetReport_BalanceSheetReport().click();
+		    	break;}
+				catch(Exception e) {}
+			}
 	    }
 	    
 	    

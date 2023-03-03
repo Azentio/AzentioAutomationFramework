@@ -111,8 +111,14 @@ public class KUBS_CheckerObj {
 	public WebElement checkerRemarks() {
 		return checker_alert_remarks;
 	}
+	
+	@FindBy(xpath = "(//textarea[@name='remarks'])[2]")
+	private WebElement checkerRemarks2;
 
-	@FindBy(xpath = "//ion-button[contains(text(),'Submit')]")
+	public WebElement checkerRemarks2() {
+		return checkerRemarks2;
+	}
+    @FindBy(xpath = "//ion-button[contains(text(),'Submit')]")
 	private WebElement checker_alert_submit_button;
 
 	public WebElement checkersubmitButton() {

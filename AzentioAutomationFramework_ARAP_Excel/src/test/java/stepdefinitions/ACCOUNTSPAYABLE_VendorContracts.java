@@ -32,13 +32,14 @@ public class ACCOUNTSPAYABLE_VendorContracts {
 	KUBS_Login login = new KUBS_Login(driver);
 	KUBS_CheckerObj kubschecker = new KUBS_CheckerObj(driver);
 	ConfigFileReader config = new ConfigFileReader();
+	
 	ACCOUNTSPAYABLE_VendorContractsObj aCCOUNTSPAYABLE_VendorContractsObj = new ACCOUNTSPAYABLE_VendorContractsObj(driver);
 	WaitHelper waithelper = new WaitHelper(driver);
 	JavascriptHelper javascripthelper = new JavascriptHelper();
 	ClicksAndActionsHelper clicksAndActionHelper = new ClicksAndActionsHelper(driver);
 	BrowserHelper browserHelper;
 	
-	ExcelData excelData = new ExcelData("C:\\Users\\inindc00089\\eclipse-workspace\\AzentioAutomationFramework_ARAP\\Test-data\\KUBSTestData.xlsx","ARAP_VendorContracts", "DataSet ID");
+	ExcelData excelData = new ExcelData("C:\\Users\\ININDC00089\\git\\AzentioAutomationFramework\\ArAp\\AzentioAutomationFramework_ARAP_Excel\\Test-data\\KUBSTestData.xlsx","ARAP_VendorContracts", "DataSet ID");
 	Map<String, String> testData = new HashMap<>();
 	
 //--------	 @KUBS_INV_MGMT_UAT_001_002  ------------
@@ -55,6 +56,8 @@ public class ACCOUNTSPAYABLE_VendorContracts {
 //		waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_DirectionButton());
 		waithelper.waitForElementwithFluentwait(driver, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_DirectionButton());
 		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_DirectionButton().click();
+		
+		
 		waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_VendorContractsObj.accountPayableMenu());
 		aCCOUNTSPAYABLE_VendorContractsObj.accountPayableMenu().click();
 		
@@ -178,6 +181,7 @@ public class ACCOUNTSPAYABLE_VendorContracts {
 //		
 		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_Remark().sendKeys(testData.get("Remark"));
 		
+		clicksAndActionHelper.moveToElement(aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_OtherDetailsButton());
 		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_OtherDetailsButton().click();
 		
 		waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_AutoGenerateInvoice());
@@ -576,9 +580,13 @@ waithelper.waitForElementwithFluentwait(driver, aCCOUNTSPAYABLE_VendorContractsO
 	
     @And("^Click on security management in checker$")
     public void click_on_security_management_in_checker() {
+    	for(int i=1; i<=10; i++) {
+			try {
     	waithelper.waitForElement(driver,3000, kubschecker.checkerSecurityManagement());
     	kubschecker.checkerSecurityManagement().click();
-    	
+    	break;
+			}
+			catch(Exception e) {}}
     }
 
     @Then("^Click on open pool in checker$")
@@ -595,10 +603,13 @@ waithelper.waitForElementwithFluentwait(driver, aCCOUNTSPAYABLE_VendorContractsO
 		//String after_xpath = ;
 		//waithelper.waitForElementwithFluentwait(driver, driver.findElement(By.xpath(before_xpath + reader.readReferancedata() + after_xpath_claim)));
 		Thread.sleep(1000);
-		
+		for(int i=1; i<=10; i++) {
+			try {
 		driver.findElement(By.xpath(before_xpath+testData.get("ReferenceID")+after_xpath_claim)).click();
     
-		
+		break;
+			}
+			catch(Exception e) {}}
     }
     
     @And("^capture claimed status$")

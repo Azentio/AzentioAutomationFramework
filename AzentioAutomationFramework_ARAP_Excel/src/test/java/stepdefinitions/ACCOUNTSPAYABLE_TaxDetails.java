@@ -44,13 +44,43 @@ public class ACCOUNTSPAYABLE_TaxDetails {
 	FixedAsset_AssetCreationObj fixedAsset_AssetCreationObj = new FixedAsset_AssetCreationObj(driver);
 	
 	KUBS_CheckerObj kubschecker = new KUBS_CheckerObj(driver);
-	ExcelData excelData = new ExcelData("C:\\Users\\inindc00089\\eclipse-workspace\\AzentioAutomationFramework_ARAP\\Test-data\\KUBSTestData.xlsx","ARAP_InvoiceBoooking", "DataSet ID");
+	ExcelData excelData = new ExcelData("C:\\Users\\ININDC00089\\git\\AzentioAutomationFramework\\ArAp\\AzentioAutomationFramework_ARAP_Excel\\Test-data\\KUBSTestData.xlsx","ARAP_InvoiceBoooking", "DataSet ID");
 	Map<String, String> testData = new HashMap<>();
 
-	@And("^user update the data set ID for invoice booking Tax Details$")
-	  public void user_update_the_data_set_id_for_invoice_booking_tax_details() {
-	  testData = excelData.getTestdata("KUBS_AR/AP_UAT_001_001_TC_010_01_D2");   
+	
+	@And("^user update the data set ID for Tax1$")
+	  public void user_update_the_data_set_id_for_tax1() {
+	  testData = excelData.getTestdata("KUBS_AR/AP_UAT_001_001_TC_009_01_D1");   
 	  }
+	@And("^user update the data set ID for Tax2$")
+	  public void user_update_the_data_set_id_for_tax2() {
+	  testData = excelData.getTestdata("KUBS_AR/AP_UAT_001_001_TC_010_01_D1");   
+	  }
+	
+	@And("^user update the data set ID for Tax3$")
+	  public void user_update_the_data_set_id_for_tax3() {
+	  testData = excelData.getTestdata("KUBS_AR/AP_UAT_001_003_TC_01_D1");   
+	  }
+	
+	@And("^user update the data set ID for Tax4$")
+	  public void user_update_the_data_set_id_for_tax4() {
+	  testData = excelData.getTestdata("KUBS_AR/AP_UAT_001_004_TC_05_D1");   
+	  }
+	
+	@And("^user update the data set ID for Tax5$")
+	  public void user_update_the_data_set_id_for_tax5() {
+	  testData = excelData.getTestdata("KUBS_AR/AP_UAT_001_005_TC_05_D1");   
+	  }
+	
+	@And("^user update the data set ID for Tax6$")
+	  public void user_update_the_data_set_id_for_tax6() {
+	  testData = excelData.getTestdata("KUBS_AR_AP_UAT_001_006_TC_02_D1");   
+	  }
+	@And("^user update the data set ID for Tax7$")
+	  public void user_update_the_data_set_id_for_tax7() {
+	  testData = excelData.getTestdata("KUBS_AR/AP_UAT_001_007_TC_01_D1");   
+	  }
+	
 	@Then("^Get the tax details and check$")
 	public void get_the_tax_details_and_check() throws InterruptedException {
 		javascripthelper.JavaScriptHelper(driver);

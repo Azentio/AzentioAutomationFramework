@@ -39,7 +39,7 @@ BrowserHelper browserHelper;
 JavascriptHelper javascripthelper = new JavascriptHelper();
 	
 AccountReceivable_AccountReceivableAdvancesObj accountReceivable_AccountReceivableAdvancesObj = new AccountReceivable_AccountReceivableAdvancesObj(driver);
-ExcelData excelData = new ExcelData("C:\\Users\\inindc00089\\eclipse-workspace\\AzentioAutomationFramework_ARAP\\Test-data\\KUBSTestData.xlsx","AdvanceToEmployees", "DataSet ID");
+ExcelData excelData = new ExcelData("C:\\Users\\ININDC00089\\git\\AzentioAutomationFramework\\ArAp\\AzentioAutomationFramework_ARAP_Excel\\Test-data\\KUBSTestData.xlsx","AdvanceToEmployees", "DataSet ID");
 Map<String, String> testData = new HashMap<>();
 
 	
@@ -53,6 +53,7 @@ Map<String, String> testData = new HashMap<>();
 
     @Then("^Click on Account Recivable Advances eye button$")
     public void click_on_account_recivable_advances_eye_button() throws Throwable {
+    	clicksAndActionHelper.moveToElement( accountReceivable_AccountReceivableAdvancesObj.accountReceivable_AccountReceivableAdvances_EyeButton());
    waithelper.waitForElementToVisibleWithFluentWait(driver, accountReceivable_AccountReceivableAdvancesObj.accountReceivable_AccountReceivableAdvances_EyeButton(), 10, 1);	
    accountReceivable_AccountReceivableAdvancesObj.accountReceivable_AccountReceivableAdvances_EyeButton().click();
     }

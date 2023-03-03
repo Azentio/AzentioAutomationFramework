@@ -38,7 +38,7 @@ public class ARAP_GrnReport {
 	ClicksAndActionsHelper clickAndActionHelper = new ClicksAndActionsHelper(driver);
 	ArApObj arAPobj = new ArApObj(driver);
 	BrowserHelper browseHelper = new BrowserHelper(driver);
-	ExcelData excelData = new ExcelData("C:\\Users\\inindc00089\\eclipse-workspace\\AzentioAutomationFramework_ARAP\\Test-data\\KUBSTestData.xlsx","ArAP_GrnReport", "DataSet ID");
+	ExcelData excelData = new ExcelData("C:\\Users\\ININDC00089\\git\\AzentioAutomationFramework\\ArAp\\AzentioAutomationFramework_ARAP_Excel\\Test-data\\KUBSTestData.xlsx","ArAP_GrnReport", "DataSet ID");
 	Map<String, String> testData = new HashMap<>();
 	
 	
@@ -50,7 +50,10 @@ public class ARAP_GrnReport {
     }
 	
 	
-	
+	@Then("^update data set Id for GRN Report2$")
+    public void update_data_set_id_for_grn_report2() throws Throwable {
+		testData = excelData.getTestdata("KUBS_AR_AP_UAT_003_003_TC_01_D1");   
+    }
 	
 	 @Then("^Click on Report Tab$")
 	    public void click_on_report_tabT() throws Throwable {
@@ -110,7 +113,7 @@ public class ARAP_GrnReport {
 	    	arAPobj.report_Report_GRNReport_GRNStatus().click();
 	    	arAPobj.report_Report_GRNReport_GRNStatus().sendKeys(testData.get("GRNStatus"));
 	    	arAPobj.report_Report_GRNReport_GRNStatus().sendKeys(Keys.ENTER);
-	    	Thread.sleep(5000);
+	    	Thread.sleep(1000);
 	    }
 	    @Then("^Click on View buttonT$")
 	    public void click_on_view_buttonT() throws Throwable {
@@ -122,7 +125,7 @@ public class ARAP_GrnReport {
 	    javaScriptHelper.JavaScriptHelper(driver);
 
 	    browseHelper.SwitchToWindow(1);
-	    Thread.sleep(1500);
+	    Thread.sleep(1000);
 		/*
 		 * while(true) { try {
 		 * javascripthelper.scrollIntoView(driver.findElement(By.xpath(

@@ -42,12 +42,13 @@ public class KUBS_Login {
 		waithelper.waitForElement(driver, 2000, login.Login_passWord());
 		login.Login_passWord().sendKeys(kubsLoginTestData.get("Password"));
 		String otp = login.Login_getOtp().getText();
-		driver.findElement(By.xpath("//ng-otp-input/div/input[1]")).sendKeys(otp.substring(7));
+		driver.findElement(By.xpath("//ng-otp-input/div/input[1]")).sendKeys(otp.substring(4));
 		login.Login_signIn().click();
 		waithelper.waitForElementToVisibleWithFluentWait(driver, makerobj.kubsFinaceOption(), 60, 2);
 		clicksAndActionsHelper.clickUsingActionClass(makerobj.kubsFinaceOption(), makerobj.kubsFinaceOption());
 		for (int i = 0; i <= 200; i++) {
 			try {
+				waithelper.waitForElementToVisibleWithFluentWait(driver, makerobj.FinanceOption(), 10, 2);
 				clicksAndActionsHelper.clickUsingActionClass(makerobj.FinanceOption(), makerobj.FinanceOption());
 				break;
 			} catch (Exception e) {
@@ -112,7 +113,7 @@ public class KUBS_Login {
 			waithelper.waitForElementToVisibleWithFluentWait(driver, login.Login_passWord(), 20, 1);
 			login.Login_passWord().sendKeys(kubsLoginTestData.get("Password"));
 			String otp = login.Login_getOtp().getText();
-			driver.findElement(By.xpath("//ng-otp-input/div/input[1]")).sendKeys(otp.substring(7));
+			driver.findElement(By.xpath("//ng-otp-input/div/input[1]")).sendKeys(otp.substring(4));
 			waithelper.waitForElement(driver, 2000, login.Login_signIn());
 			login.Login_signIn().click();
 //			waithelper.waitForElementToVisibleWithFluentWait(driver, login.Login_loginStatus(), 20, 1);
@@ -169,7 +170,7 @@ public class KUBS_Login {
 		waithelper.waitForElement(driver, 2000, login.Login_passWord());
 		login.Login_passWord().sendKeys(kubsLoginTestData.get("Password"));
 		String otp = login.Login_getOtp().getText();
-		driver.findElement(By.xpath("//ng-otp-input/div/input[1]")).sendKeys(otp.substring(7));
+		driver.findElement(By.xpath("//ng-otp-input/div/input[1]")).sendKeys(otp.substring(4));
 		login.Login_signIn().click();
 
 	}

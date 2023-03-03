@@ -19,7 +19,30 @@ public class ACCOUNTSPAYBLE_AccountsPayable_POCreationObj {
 	{
 	return poCreation_approvedBpName;
 	}
-
+	@FindBy(xpath="//input[@placeholder='Search PO Status']")
+	private WebElement poStatus;
+	public WebElement poStatus()
+	{
+		return poStatus;
+	}
+	@FindBy(xpath="//datatable-row-wrapper[1]//datatable-body-cell[3]//span")
+	private WebElement approved_PoNumber;
+	public WebElement approvedPoNumber()
+	{
+		return approved_PoNumber;
+	}
+	@FindBy(xpath="//datatable-row-wrapper[1]//datatable-body-cell[7]//span")
+	private WebElement approved_BpName;
+	public WebElement approvedBpName()
+	{
+		return approved_BpName;
+	}
+	@FindBy(xpath="//datatable-row-wrapper[1]//datatable-body-cell[6]//span")
+	private WebElement approvedPo_ContractNumber;
+	public WebElement approvedPoContractNumber()
+	{
+		return approvedPo_ContractNumber;
+	}
 	@FindBy(xpath = "//ion-segment/ion-segment-button[2]")
 	private WebElement accountsPayable_VendorPurchaseOrder_DirectionIcon;
 

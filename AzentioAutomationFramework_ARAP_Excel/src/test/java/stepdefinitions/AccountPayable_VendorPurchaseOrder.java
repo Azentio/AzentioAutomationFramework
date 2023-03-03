@@ -2,6 +2,7 @@ package stepdefinitions;
 
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.NoSuchElementException;
 
@@ -15,11 +16,14 @@ import helper.BrowserHelper;
 import helper.ClicksAndActionsHelper;
 import helper.DropDownHelper;
 import helper.JavascriptHelper;
+import helper.Selenium_Actions;
 import helper.WaitHelper;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 
 import pageobjects.AccountPayable_VendorPurchaseOrderObj;
+import pageobjects.ArAp_Cancellation_of_vendorObj;
+import pageobjects.Ar_Po_creationObj;
 import pageobjects.KUBS_CheckerObj;
 import resources.BaseClass;
 import resources.ExcelData;
@@ -39,11 +43,14 @@ public class AccountPayable_VendorPurchaseOrder extends BaseClass {
 	JavascriptHelper javascripthelper = new JavascriptHelper();
 	AccountPayable_VendorPurchaseOrderObj accountPayable_VendorPurchaseOrderObj = new AccountPayable_VendorPurchaseOrderObj(driver);
 	ClicksAndActionsHelper clicksAndActionHelper = new ClicksAndActionsHelper(driver);
-
+	Selenium_Actions seleniumactions = new Selenium_Actions(driver);
+	ArAp_Cancellation_of_vendorObj cancellationofcontract = new ArAp_Cancellation_of_vendorObj(driver);
+	Map<String, String> testdata = new LinkedHashMap<>();
+	Ar_Po_creationObj arpoCreationObj = new Ar_Po_creationObj(driver);
 	BrowserHelper browserHelper;
 	String referance_id;
 	String user = "Maker";
-	ExcelData excelData = new ExcelData("C:\\Users\\inindc00089\\eclipse-workspace\\AzentioAutomationFramework_ARAP\\Test-data\\KUBSTestData.xlsx","ARAP_VendorPurchaseOrders", "DataSet ID");
+	ExcelData excelData = new ExcelData("C:\\Users\\ININDC00089\\git\\AzentioAutomationFramework\\ArAp\\AzentioAutomationFramework_ARAP_Excel\\Test-data\\KUBSTestData.xlsx","ARAP_VendorPurchaseOrders", "DataSet ID");
 	Map<String, String> testData = new HashMap<>();
 		
 	@Then("^Click on purchase order Eye Icon$")
@@ -487,6 +494,90 @@ public void edit_the_item_details_fields() throws InterruptedException {
 			System.out.println("Contract Status - " +accountPayable_VendorPurchaseOrderObj.accountPayable_VendorPurchaseOrder_POStatus().getText());
 			
 	    }
+	    
+	    
+	    
+	    //---------------KUBS_AR/AP_UAT_003_001_TC_02------------------------//
+	    
+	    @And("^user click search icon$")
+		public void user_click_search_icon() throws Throwable {
+			seleniumactions.getWaitHelper().waitForElement(driver, 2000, cancellationofcontract.getApserachicon());
+			seleniumactions.getClickAndActionsHelper().clickOnElement(cancellationofcontract.getApserachicon());
+		}
+	    @And("^user update the data set ID for po against cancelled order$")
+	    public void user_update_the_data_set_id_for_po_against_cancelled_order() throws Throwable {
+	    	testData = excelData.getTestdata("KUBS_AR/AP_UAT_003_001_TC_02_D1");
+	    }
+			
+		
+	    
+	    @And("^user search cancelled vendor contract$")
+		public void user_search_cancelled_vendor_contract() throws Throwable {
+			seleniumactions.getWaitHelper().waitForElement(driver, 2000, cancellationofcontract.getSearchcontractstatus());
+			seleniumactions.getClickAndActionsHelper().clickOnElement(cancellationofcontract.getSearchcontractstatus());
+			
+			cancellationofcontract.getSearchcontractstatus().sendKeys(testData.get("Contractstatus"));
+		}
+	    @And("^user click the cancelled vendor contract eye icon$")
+		public void user_click_the_cancelled_vendor_contract_eye_icon() throws Throwable {
+			seleniumactions.getWaitHelper().waitForElement(driver, 2000,
+					cancellationofcontract.getClickFirstEyeiconInListView());
+			seleniumactions.getClickAndActionsHelper()
+					.clickOnElement(cancellationofcontract.getClickFirstEyeiconInListView());
+//			Thread.sleep(4000);
+//			javascripthelper.scrollToElemet(cancellationofcontract.getClickFirstEyeiconInListView());
+//			clicksAndActionHelper.moveToElement(cancellationofcontract.getClickFirstEyeiconInListView());
+//			cancellationofcontract.getClickFirstEyeiconInListView().click();
+		}
+	    @And("^get buisness partner name and get contract name$")
+	    public void get_buisness_partner_name_and_get_contract_name() throws Throwable {
+			seleniumactions.getWaitHelper().waitForElement(driver, 2000,
+					cancellationofcontract.getBuisnessPartnerNameinContract());
+			String buisnessPartnerNameinCancelledContract = cancellationofcontract.getBuisnessPartnerNameinContract()
+					.getText();
+			testdata.put("buisnessPartnerNameinCancelledContract", buisnessPartnerNameinCancelledContract);
+			javascripthelper.JavaScriptHelper(driver);
+			String contractname = (String) javascripthelper.executeScript("return document.getElementsByName('contractName')[1].value");
+	        testdata.put("contractname", contractname);
+		}
+	    
+	    @And("^select buisness partner we get in cancelled list$")
+		public void select_buisness_partner_we_get_in_cancelled_list() throws Throwable {
+			seleniumactions.getWaitHelper().waitForElement(driver, 2000,
+					arpoCreationObj.accountsPayable_VendorPurchaseOrder_BPName());
+			seleniumactions.getClickAndActionsHelper()
+					.clickOnElement(arpoCreationObj.accountsPayable_VendorPurchaseOrder_BPName());
+			arpoCreationObj.accountsPayable_VendorPurchaseOrder_BPName()
+					.sendKeys(testdata.get("buisnessPartnerNameinCancelledContract"));
+			arpoCreationObj.accountsPayable_VendorPurchaseOrder_BPName().sendKeys(Keys.ENTER);
+		}
+	    
+	    @And("^select referece type as contract$")
+		public void select_referece_type_as_contract() throws Throwable {
+			seleniumactions.getWaitHelper().waitForElement(driver, 2000,
+					arpoCreationObj.accountsPayable_VendorPurchaseOrder_ReferenceType());
+			seleniumactions.getClickAndActionsHelper()
+					.clickOnElement(arpoCreationObj.accountsPayable_VendorPurchaseOrder_ReferenceType());
+			arpoCreationObj.accountsPayable_VendorPurchaseOrder_ReferenceType().sendKeys(Keys.ENTER);
+		}
+	    @And("^select the contract Name$")
+	    public void select_the_contract_name() throws Throwable {
+	        cancellationofcontract.selectContractName().click();
+	        cancellationofcontract.selectContractName().sendKeys(testdata.get("contractname"));
+	        cancellationofcontract.selectContractName().sendKeys(Keys.ENTER);
+	    }
+	    
+	    @Then("^verify not able to select contract and po creation is not allowed$")
+		public void verify_not_able_to_select_contract_and_po_creation_is_not_allowed() throws Throwable {
+			seleniumactions.getWaitHelper().waitForElement(driver, 2000,
+					arpoCreationObj.accountsPayable_VendorPurchaseOrder_Contract());
+			seleniumactions.getClickAndActionsHelper()
+					.clickOnElement(arpoCreationObj.accountsPayable_VendorPurchaseOrder_Contract());
+			Thread.sleep(3000);
+			System.out.println("No items found and not able to create purchase order for cancelled contract");
+
+		}
+	    
 
 }
 	    

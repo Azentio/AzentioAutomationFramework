@@ -33,7 +33,7 @@ public class ArAp_BalanceSheetReportObj {
 	}
 	
 	// balanceSheetReport Button
-	@FindBy(xpath = "//ion-list[1]/div[2]/ion-menu-toggle[6]/ion-item[1]/ion-buttons[1]/ion-button[1]")
+	@FindBy(xpath = "//ion-label[contains(text(), 'Balance sheet report')]/../..//ion-button")
 	private WebElement arAp_BalanceSheetReport_BalanceSheetReport;
 
 	public WebElement arAp_BalanceSheetReport_BalanceSheetReport() {

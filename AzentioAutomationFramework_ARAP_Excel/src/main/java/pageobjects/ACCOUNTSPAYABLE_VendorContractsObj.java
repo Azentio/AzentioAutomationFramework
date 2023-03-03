@@ -523,6 +523,14 @@ public class ACCOUNTSPAYABLE_VendorContractsObj {
 		return accountPayable_VendorContracts_ApproveRemarkByReviewer;
 	}
 
+	// textarea[@name='remarks']
+		@FindBy(xpath = "(//textarea[@name='remarks'])[2]")
+		private WebElement accountPayable_VendorContracts_ApproveRemarkByReviewer1;
+
+		public WebElement accountPayable_VendorContracts_ApproveRemarkByReviewer1() {
+			return accountPayable_VendorContracts_ApproveRemarkByReviewer1;
+		}
+		
 	// return button
 	@FindBy(xpath = "//span/ion-button[2]")
 	private WebElement accountPayable_VendorContracts_Return_Button;

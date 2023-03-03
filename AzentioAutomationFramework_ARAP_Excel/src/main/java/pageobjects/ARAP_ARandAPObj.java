@@ -525,7 +525,7 @@ public class ARAP_ARandAPObj {
 		return ARAP_NextMonth;
 	}
 
-	@FindBy(xpath = "(//span[contains(text(),'View')])[1]/../..//ion-button")
+	@FindBy(xpath = "//ion-button[1]/span[1]")
 	private WebElement ARAP_ViewButton;
 
 	public WebElement ARAPViewButton() {
