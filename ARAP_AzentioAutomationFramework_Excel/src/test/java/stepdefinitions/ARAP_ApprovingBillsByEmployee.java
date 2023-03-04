@@ -86,7 +86,7 @@ public class ARAP_ApprovingBillsByEmployee extends BaseClass {
 		// -------ADVANCE TO EMPOLYEE----------//
 		waitHelper.waitForElement(driver, 2000, arapObj.accountReceviableAdvances_ReceivableName_TextBox());
 		arapObj.accountReceviableAdvances_ReceivableName_TextBox().click();
-		arapObj.accountReceviableAdvances_ReceivableName_TextBox().sendKeys(testData.get("RecivableName"));
+		arapObj.accountReceviableAdvances_ReceivableName_TextBox().sendKeys(testData.get("ReceivableName"));
 		arapObj.accountReceviableAdvances_ReceivableName_TextBox().sendKeys(Keys.ENTER);
 	}
 
@@ -95,7 +95,7 @@ public class ARAP_ApprovingBillsByEmployee extends BaseClass {
 		// -----------ENTER BUSINESS PARTNER--------//
 		waitHelper.waitForElement(driver, 2000, arapObj.accountReceviableAdvances_BusinessPatner_TextBox());
 		arapObj.accountReceviableAdvances_BusinessPatner_TextBox().click();
-		arapObj.accountReceviableAdvances_BusinessPatner_TextBox().sendKeys(testData.get("Partner"));
+		arapObj.accountReceviableAdvances_BusinessPatner_TextBox().sendKeys(testData.get("BusinessPartner"));
 		arapObj.accountReceviableAdvances_BusinessPatner_TextBox().sendKeys(Keys.ENTER);
 	}
 
@@ -114,7 +114,7 @@ public class ARAP_ApprovingBillsByEmployee extends BaseClass {
 	public void enter_amount_value() throws Throwable {
 		// ---------ENTER AMOUNT VALUE--------//
 		waitHelper.waitForElement(driver, 2000, arapObj.amount_TextBox());
-		arapObj.amount_TextBox().sendKeys(testData.get("ModeofPayment"));
+		arapObj.amount_TextBox().sendKeys(testData.get("Amount"));
 //		Thread.sleep(4000);
 	}
 
@@ -163,6 +163,8 @@ public class ARAP_ApprovingBillsByEmployee extends BaseClass {
 		// ------SAVE THE RECORD----------//
 		waitHelper.waitForElement(driver, 2000, arapObj.accountReceviableAdvances_Save_Button());
 		arapObj.accountReceviableAdvances_Save_Button().click();
+		waitHelper.waitForElementwithFluentwait(driver, arapObj.accountReceviableAdvances_AlertClose());
+		arapObj.accountReceviableAdvances_AlertClose().click();
 	}
 	
 	@And("^Click First record of advance to employee Action icon$")
@@ -175,6 +177,39 @@ public class ARAP_ApprovingBillsByEmployee extends BaseClass {
 		driver.findElement(By.xpath(befr_xpath + testData.get("ReferenceID") + aftr_xpath)).click();
 
 		// reviewerObj.reviewer_action_button().click();
+	}
+	
+	@Then("^Click on the submit button and Enter Remark submit it$")
+	public void click_on_the_submit_button_and_enter_remark_submit_it() throws Throwable {
+		// -------------------------TO SUBMIT THE RECORD-----------------------------//
+		waitHelper.waitForElement(driver, 2000, arapObj.ARAP_Submit());
+		arapObj.ARAP_Submit().click();
+		waitHelper.waitForElement(driver, 2000, arapObj.ARAP_Remark());
+		arapObj.ARAP_Remark().sendKeys(testData.get("Remark"));
+		waitHelper.waitForElement(driver, 5000, arapObj.ARAP_RemarkSubmit());
+		arapObj.ARAP_RemarkSubmit().click();
+		waitHelper.waitForElement(driver, 10000, arapObj.ARAP_ReviewerId());
+		reviwerId = arapObj.ARAP_ReviewerId().getText();
+		String trimmdReviewerID = reviwerId.substring(85);
+		StringBuffer sb = new StringBuffer(trimmdReviewerID);
+		StringBuffer bufferedString = sb.deleteCharAt(trimmdReviewerID.length() - 1);
+		String filanReviewerID = bufferedString.toString();
+		// arapObj.arapObj_reviewer_id().getText());
+//		json.addData(filanReviewerID);
+		System.out.println(reviwerId);
+		excelData.updateTestData(dataSetID, "ReviewerID", filanReviewerID);
+		testData = excelData.getTestdata(dataSetID);
+	}
+	
+	@And("^Claim the Record in Checker for advance to employee$")
+	public void claim_the_record_in_checker_for_advance_to_employee() throws Throwable {
+		// -------------------------CLICK CLAIM OPTION-------------------------//
+		String before_xpath = "//span[contains(text(),'";
+		String after_xpath_claim = "')]/parent::div/parent::datatable-body-cell/preceding-sibling::datatable-body-cell[2]/div/ion-buttons/ion-button";
+		waitHelper.waitForElement(driver, 10000, driver.findElement(By.xpath(before_xpath + testData.get("ReferenceID") + after_xpath_claim)));
+		driver.findElement(By.xpath(before_xpath + testData.get("ReferenceID") + after_xpath_claim)).click();
+		waitHelper.waitForElement(driver, 2000, checkerObj.checker_alert_close());
+		checkerObj.checker_alert_close().click();
 	}
 
 	@Then("^Enter Active Value In Advance Status$")
@@ -317,7 +352,7 @@ public class ARAP_ApprovingBillsByEmployee extends BaseClass {
 //			waitHelper.waitForElement(driver, 3000, driver.findElement(By.xpath("//span[contains(text(),'" + readerData.readReferancedata() + "')]/ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell/div/ion-buttons/ion-button")));
 //			waitHelper.waitForElementwithFluentwait(driver, driver.findElement(By.xpath("//span[contains(text(),'" + readerData.readReferancedata()	+ "')]/ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell/div/ion-buttons/ion-button")));
 		driver.findElement(
-				By.xpath("//span[contains(text(),'" + readerData.readReferancedata() + "')]/ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell/div/ion-buttons/ion-button")).click();
+				By.xpath("//span[contains(text(),'" + testData.get("ReferenceID") + "')]/ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell/div/ion-buttons/ion-button")).click();
 	}
 	
 	@Then("^Enter payment option for verify$")
@@ -326,6 +361,19 @@ public class ARAP_ApprovingBillsByEmployee extends BaseClass {
 		waitHelper.waitForElement(driver, 2000, arapObj.accountsPayablePayementSettlementPaymentOption());
 		arapObj.accountsPayablePayementSettlementPaymentOption().sendKeys(testData.get("PaymentOption"));
 		arapObj.accountsPayablePayementSettlementPaymentOption().sendKeys(Keys.ENTER);
+	}
+	
+	@And("^Give the Remark and Submit it from checker user$")
+	public void give_the_remark_and_submit_it_from_checker_user() throws Throwable {
+		// -----------------------SUBMIT THE RECORD------------------------//
+		waitHelper.waitForElement(driver, 2000, checkerObj.checkerRemarks());
+		checkerObj.checkerRemarks().sendKeys(testData.get("Remark"));
+		waitHelper.waitForElement(driver, 2000, checkerObj.checkersubmitButton());
+		checkerObj.checkersubmitButton().click();
+		waitHelper.waitForElement(driver, 3000, checkerObj.Popup_status());
+		String Text = checkerObj.Popup_status().getText();
+		System.out.println("Checker status: " + Text);
+		Assert.assertTrue(checkerObj.Popup_status().isDisplayed());
 	}
 
 	// ****************@KUBS_AR_AP_UAT_004_007_TC_02*************//
@@ -497,6 +545,23 @@ public class ARAP_ApprovingBillsByEmployee extends BaseClass {
 	}
 	// ****************@KUBS_AR_AP_UAT_004_007_TC_06*************//
 
+	@And("^Get Business Partner name from the payment settlement record$")
+	public void get_business_partner_from_the_payment_settlement_record() throws Throwable {
+		// -------GET DATA BP NAME -------//
+//		waitHelper.waitForElement(driver, 5000, arapObj.ARAP_GetcancelBpName());
+		waitHelper.waitForElementwithFluentwait(driver, arapObj.ARAP_GetcancelBpName());
+		BPNumber = arapObj.ARAP_GetcancelBpName().getText();
+		System.out.println(BPNumber);
+	}
+	
+	@And("^fill Getted Business Partner Name$")
+	public void fill_getted_business_partner_name() throws Throwable {
+		// ---------GIVE GETTED DATA TO FIELD----------//
+		// arapReportObj.ARAP_Report_Module_VendorName().click();
+		arapReportObj.ARAP_Report_Module_VendorName().sendKeys(BPNumber);
+		arapReportObj.ARAP_Report_Module_VendorName().sendKeys(Keys.ENTER);
+	}
+	
 	@When("^Store the Advance Number$")
 	public void store_the_advance_number() throws Throwable {
 		// -----store the payment settlement approved Ref No--------//
@@ -509,18 +574,19 @@ public class ARAP_ApprovingBillsByEmployee extends BaseClass {
 	public void verify_the_accounts_payable_report_post_payment_settlement_approval() throws Throwable {
 		browseHelper.SwitchToWindow(1);
 		javaScriptHelper.JavaScriptHelper(driver);
-//		while (true) {
+		for(int i = 0;i<=30;i++) {
 //			Thread.sleep(2000);
-//			try {
-//				javaScriptHelper
-//						.scrollIntoView(driver.findElement(By.xpath("//div[contains(text(),'" + ADVNumber + "')]")));
-//				driver.findElement(By.xpath("//div[contains(text(),'" + ADVNumber + "')]")).isDisplayed();
-//				break;
-//			} catch (NoSuchElementException e) {
-//				waitHelper.waitForElement(driver, 3000, arapReportObj.ARAP_Report_Nextbtn());
-//				arapReportObj.ARAP_Report_Nextbtn().click();
-//			}
-//		}
+			try {
+				javaScriptHelper
+						.scrollIntoView(driver.findElement(By.xpath("//div[contains(text(),'" + ADVNumber + "')]")));
+				driver.findElement(By.xpath("//div[contains(text(),'" + ADVNumber + "')]")).isDisplayed();
+				break;
+			} catch (NoSuchElementException e) {
+				javaScriptHelper.scrollIntoView(arapReportObj.ARAP_Report_Nextbtn());
+				waitHelper.waitForElementwithFluentwait(driver, arapReportObj.ARAP_Report_Nextbtn());
+				arapReportObj.ARAP_Report_Nextbtn().click();
+			}
+		}
 		browseHelper.switchToParentWithChildClose();
 	}
 
@@ -535,13 +601,13 @@ public class ARAP_ApprovingBillsByEmployee extends BaseClass {
 		// ----------CLICK ON DATE--------------//
 		arapReportObj.ARAP_Report_Module_Date().click();
 		javaScriptHelper.JavaScriptHelper(driver);
-		while (true) {
+		while(true) {
 			try {
-
 				waitHelper.waitForElement(driver, 3000, driver.findElement(
-						By.xpath("//span[contains(text(),'" + testData.get("Month") + " " + testData.get("Year") + "')]")));
+						By.xpath("//span[text()='" + testData.get("Month") + " " + testData.get("Year") + " " +"']")));
 				driver.findElement(
-						By.xpath("//span[contains(text(),'" + testData.get("Month") + " " + testData.get("Year") + "')]"));
+						By.xpath("//span[text()='" + testData.get("Month") + " " + testData.get("Year") + " " +"']"));
+				Thread.sleep(2000);
 				break;
 			}
 
@@ -550,21 +616,24 @@ public class ARAP_ApprovingBillsByEmployee extends BaseClass {
 
 			}
 		}
-		waitHelper.waitForElement(driver, 3000, driver.findElement(By.xpath("//td[@aria-label='"
+//		waitHelper.waitForElement(driver, 3000, driver.findElement(By.xpath("//td[@aria-label='"
+//				+ testData.get("FullMonth") + " " + testData.get("Date") + ", " + testData.get("Year") + "']/span")));
+		waitHelper.waitForElementwithFluentwait(driver, driver.findElement(By.xpath("//td[@aria-label='"
 				+ testData.get("FullMonth") + " " + testData.get("Date") + ", " + testData.get("Year") + "']/span")));
 		WebElement Click = driver.findElement(By.xpath("//td[@aria-label='" + testData.get("FullMonth") + " "
 				+ testData.get("Date") + ", " + testData.get("Year") + "']/span"));
 
 		clickAndActionHelper.doubleClick(Click);
+	
 	}
 
-
-//	@And("^Give Accounts Payable Status$")
-//	public void give_accounts_payable_status() throws Throwable {
-//		// --------ACCOUNTS PAYABLE STATUS------//
-//		arapReportObj.ARAP_Report_Status().sendKeys(Keys.DOWN);
-//		arapReportObj.ARAP_Report_Status().sendKeys(Keys.ENTER);
-//	}
+	@And("^Give Accounts Payable Status for approving bills by employee$")
+	public void give_accounts_payable_status_for_approving_bills_by_employee() throws Throwable {
+		// --------ACCOUNTS PAYABLE STATUS------//
+		arapReportObj.ARAP_Report_Status().click();
+		arapReportObj.ARAP_Report_Status().sendKeys(Keys.DOWN);
+		arapReportObj.ARAP_Report_Status().sendKeys(Keys.ENTER);
+	}
 
 	// *************@ KUBS_AR_AP_UAT_004_007_TC_07***************//
 
@@ -600,6 +669,18 @@ public class ARAP_ApprovingBillsByEmployee extends BaseClass {
 		dataSetID = "KUBS_AR_AP_UAT_004_007_TC_01_D1";
 		testData = excelData.getTestdata(dataSetID);
 	}
+	
+	@Then("^update data set ID for advance to employee is adjusted against the selected bill for reviewer$")
+	public void update_data_set_id_for_advance_to_employee_is_adjusted_against_the_selected_bill_for_reviewer() throws Throwable {
+		dataSetID = "KUBS_AR_AP_UAT_004_007_TC_01_D1";
+		testData = excelData.getTestdata(dataSetID);
+	}
+	
+	@Then("^update data set ID for advance to employee is adjusted against the selected bill for checker$")
+	public void update_data_set_id_for_advance_to_employee_is_adjusted_against_the_selected_bill_for_checker() throws Throwable {
+		dataSetID = "KUBS_AR_AP_UAT_004_007_TC_01_D1";
+		testData = excelData.getTestdata(dataSetID);
+	}
 
 	@Then("^select data set ID for Verify TDS percentage and amount is correctly calculated$")
 	public void select_data_set_id_for_verify_tds_percentage_and_amount_is_correctly_calculated() throws Throwable {
@@ -623,6 +704,7 @@ public class ARAP_ApprovingBillsByEmployee extends BaseClass {
 	public void select_data_set_id_for_accounts_payable_report_post_payment_settlement_approval() throws Throwable {
 		dataSetID = "KUBS_AR_AP_UAT_004_007_TC_06_D1";
 		testData = excelData.getTestdata(dataSetID);
+		System.out.println(testData);
 	}
 
 	@Then("^select data set ID for verify accounts receivalable report post payment settlement$")

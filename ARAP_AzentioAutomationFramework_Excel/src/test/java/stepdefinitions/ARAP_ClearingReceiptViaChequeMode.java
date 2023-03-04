@@ -145,6 +145,10 @@ public class ARAP_ClearingReceiptViaChequeMode extends BaseClass {
 
 				String bankAccountNumber = receiptObj.accoutsReceivableGetBankAccoutNumber().getText();
 				receiptTestData.put("bankAccountNumber", bankAccountNumber);
+				
+				excelData.updateTestData(dataSetID, "BankAccountNumber", bankAccountNumber);
+				testData = excelData.getTestdata(dataSetID);
+				
 				break;
 			} catch (Exception e) {
 			}
@@ -220,10 +224,11 @@ public class ARAP_ClearingReceiptViaChequeMode extends BaseClass {
 		// Remark Submit
 		waitHelper.waitForElement(driver, 2000, inventoryMaintenanceObj.inventoryMaintenance_InventoryItem_SubmitByMaker());
 		inventoryMaintenanceObj.inventoryMaintenance_InventoryItem_SubmitByMaker().click();
-		Thread.sleep(3000);
+//		Thread.sleep(3000);
 
 		// REVIEWER
-		Thread.sleep(2000);
+//		Thread.sleep(2000);
+		waitHelper.waitForElementwithFluentwait(driver, inventoryMaintenanceObj.inventoryMaintenance_InventoryItem_RecordStatus());
 		WebElement recordstatus = inventoryMaintenanceObj.inventoryMaintenance_InventoryItem_RecordStatus();
 
 		clicksAndActionHelper.moveToElement(recordstatus);
@@ -251,6 +256,103 @@ public class ARAP_ClearingReceiptViaChequeMode extends BaseClass {
 //		jsonWriter.addData(reviewerId);
 
 	}
+	
+	@Then("^click on the Notification and select the receipt record and Approve$")
+	public void click_on_the_notification_and_select_the_receipt_record_and_approve() throws InterruptedException, IOException, ParseException {
+		// notification
+		waitHelper = new WaitHelper(driver);
+		reviewer = new Azentio_ReviewerObj(driver);
+		waitHelper.waitForElement(driver, 2000, reviewer.reviewerNotidicationIcon());
+		reviewer.reviewerNotidicationIcon().click();
+
+		// select the record
+		browserHelper = new BrowserHelper(driver);
+		// budgetdata = jsonReader.getBudgetdataByName("Maker");
+		javaScriptHelper = new JavascriptHelper();
+		Thread.sleep(1000);
+		/*
+		 * for (int i = 1; i <= 35; i++) { try { waithelper.waitForElement(driver, 3000,
+		 * driver.findElement(By.xpath("//span[contains(text(),'" +
+		 * reader.readReferancedata() + "')]"))); WebElement referanceID = driver
+		 * .findElement(By.xpath("//span[contains(text(),'" + reader.readReferancedata()
+		 * + "')]")); referanceID.click(); Assert.assertTrue(referanceID.isDisplayed());
+		 * break; } catch (NoSuchElementException e) { waithelper.waitForElement(driver,
+		 * 4000, kubschecker.checker_notification_next_button());
+		 * 
+		 * kubschecker.checker_notification_next_button().click(); } }
+		 */
+		String before_xpath = "//span[contains(text(),'";
+		String after_xpath = "')]/ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell//ion-button";
+		System.out.println(testData.get("ReferenceID"));
+		waitHelper.waitForElement(driver, 5000, driver.findElement(By.xpath(before_xpath + testData.get("ReferenceID") + after_xpath)));
+		driver.findElement(By.xpath(before_xpath + testData.get("ReferenceID") + after_xpath)).click();
+
+		// Approve
+		waitHelper.waitForElement(driver, 4000, reviewer.reviewerApproveButton());
+		reviewer.reviewerApproveButton().click();
+		waitHelper.waitForElement(driver, 2000, reviewer.reviewerAlertRemarkSecond());
+		reviewer.reviewerAlertRemarkSecond().sendKeys("ok");
+		waitHelper.waitForElement(driver, 2000, reviewer.reviewerAlertSubmitButton());
+		reviewer.reviewerAlertSubmitButton().click();
+//		Thread.sleep(3000);
+
+	}
+	
+	@And("^select the receipt record and Approve by checker$")
+	public void select_the_receipt_record_and_approve_by_checker() throws InterruptedException, IOException, ParseException {
+		Thread.sleep(1000);
+		for (int i = 1; i <= 35; i++) {
+			try {
+				waitHelper.waitForElement(driver, 3000, driver.findElement(By.xpath("//span[contains(text(),'" + testData.get("ReferenceID") + "')]")));
+				WebElement referanceID = driver.findElement(By.xpath("//span[contains(text(),'" + testData.get("ReferenceID") + "')]"));
+				referanceID.click();
+				Assert.assertTrue(referanceID.isDisplayed());
+				break;
+			} catch (NoSuchElementException e) {
+				waitHelper.waitForElement(driver, 4000, kubschecker.checker_notification_next_button());
+				kubschecker.checker_notification_next_button().click();
+			} catch (StaleElementReferenceException e) {
+				if (i == 35) {
+					Assert.fail("Data not found");
+				}
+			}
+		}
+		while (true) {
+			try {
+				String before_xpath = "//span[contains(text(),'";
+				String after_xpath = "')]/ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell//ion-button";
+
+				waitHelper.waitForElement(driver, 2000, driver.findElement(By.xpath(before_xpath + testData.get("ReferenceID") + after_xpath)));
+				driver.findElement(By.xpath(before_xpath + testData.get("ReferenceID") + after_xpath)).click();
+				break;
+			} catch (StaleElementReferenceException e) {
+
+			}
+		}
+
+		// Approve
+		waitHelper.waitForElement(driver, 2000, kubschecker.checkerApproveButton());
+		kubschecker.checkerApproveButton().click();
+		Thread.sleep(2000);
+		waitHelper.waitForElement(driver, 2000, kubschecker.checkerRemarkSecond());
+		kubschecker.checkerRemarkSecond().sendKeys("OK");
+		Thread.sleep(2000);
+		waitHelper.waitForElement(driver, 2000, kubschecker.checkersubmitButton());
+		kubschecker.checkersubmitButton().click();
+		Thread.sleep(2000);
+	}
+	
+	@And("^Claim the Record in Checker for cheque mode receipt record$")
+	public void claim_the_record_in_checker_for_cheque_mode_receipt_record() throws Throwable {
+		// -------------------------CLICK CLAIM OPTION-------------------------//
+		String before_xpath = "//span[contains(text(),'";
+		String after_xpath_claim = "')]/parent::div/parent::datatable-body-cell/preceding-sibling::datatable-body-cell[2]/div/ion-buttons/ion-button";
+//		waitHelper.waitForElement(driver, 10000, driver.findElement(By.xpath(before_xpath + testData.get("ReferenceID") + after_xpath_claim)));
+		waitHelper.waitForElementwithFluentwait(driver, driver.findElement(By.xpath(before_xpath + testData.get("ReferenceID") + after_xpath_claim)));
+		driver.findElement(By.xpath(before_xpath + testData.get("ReferenceID") + after_xpath_claim)).click();
+		waitHelper.waitForElement(driver, 2000, checkerObj.checker_alert_close());
+		checkerObj.checker_alert_close().click();
+	}
 
 
 	//////////////////////// KUBS_AR_AP_UAT_010_002_TC_03/////////////////////////
@@ -268,7 +370,7 @@ public class ARAP_ClearingReceiptViaChequeMode extends BaseClass {
 	public void enter_the_bank_account_number() throws Throwable {
 		waitHelper.waitForElementVisible(chequeDepositeObj.AccountsReceivableBankAccount(), 2000, 100);
 		chequeDepositeObj.AccountsReceivableBankAccount().click();
-		chequeDepositeObj.AccountsReceivableBankAccount().sendKeys(receiptTestData.get("bankAccountNumber"));
+		chequeDepositeObj.AccountsReceivableBankAccount().sendKeys(testData.get("BankAccountNumber"));
 		chequeDepositeObj.AccountsReceivableBankAccount().sendKeys(Keys.ENTER);
 
 	}
@@ -386,7 +488,8 @@ public class ARAP_ClearingReceiptViaChequeMode extends BaseClass {
 	public void select_and_submit_the_update_deposited_cheque_record_as_cleared() throws InterruptedException, IOException, ParseException {
 
 		// Reference
-		waitHelper.waitForElement(driver, 2000, inventoryMaintenanceObj.inventoryMaintenance_InventoryItem_ReferenceId());
+//		waitHelper.waitForElement(driver, 2000, inventoryMaintenanceObj.inventoryMaintenance_InventoryItem_ReferenceId());
+		waitHelper.waitForElementwithFluentwait(driver, inventoryMaintenanceObj.inventoryMaintenance_InventoryItem_ReferenceId());
 		String id = inventoryMaintenanceObj.inventoryMaintenance_InventoryItem_ReferenceId().getText();
 //		jsonWriter.addReferanceData(id);
 		
@@ -432,10 +535,11 @@ public class ARAP_ClearingReceiptViaChequeMode extends BaseClass {
 		// Remark Submit
 		waitHelper.waitForElement(driver, 2000, inventoryMaintenanceObj.inventoryMaintenance_InventoryItem_SubmitByMaker());
 		inventoryMaintenanceObj.inventoryMaintenance_InventoryItem_SubmitByMaker().click();
-		Thread.sleep(3000);
+//		Thread.sleep(3000);
 
 		// REVIEWER
-		Thread.sleep(2000);
+//		Thread.sleep(2000);
+		waitHelper.waitForElementwithFluentwait(driver, inventoryMaintenanceObj.inventoryMaintenance_InventoryItem_RecordStatus());
 		WebElement recordstatus = inventoryMaintenanceObj.inventoryMaintenance_InventoryItem_RecordStatus();
 
 		clicksAndActionHelper.moveToElement(recordstatus);

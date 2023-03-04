@@ -121,11 +121,12 @@ public class InventoryManagement_CreateContract {
 //		waithelper.waitForElement(driver, 3000, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_ContractEndDate());
 		waithelper.waitForElementwithFluentwait(driver, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_ContractEndDate());
 		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_ContractEndDate().click();
-		while (true) {
+		Thread.sleep(2000);
+		for(int i=0;i<=35;i++) {
 			try {
 
 //				waithelper.waitForElement(driver, 3000, driver.findElement(By.xpath("//span[contains(text(),'" + testData.get("ContractEndMonth") + " " + testData.get("ContractEndYear") + "')]")));
-				WebElement monthAndYear = driver.findElement(By.xpath("//span[contains(text(),'" + testData.get("ContractEndMonth") + " " + testData.get("ContractEndYear") + "')]"));
+				WebElement monthAndYear = driver.findElement(By.xpath("//span[text()='" + testData.get("ContractEndMonth") + " " + testData.get("ContractEndYear") + " ']"));
 				break;
 			}
 
@@ -133,8 +134,8 @@ public class InventoryManagement_CreateContract {
 				aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_ClickOnNextMonth().click();
 			}
 		}
-		waithelper.waitForElement(driver, 3000,
-				driver.findElement(By.xpath("//td[@aria-label='" + testData.get("ContractEndFullMonth") + " " + testData.get("ContractEndDate") + ", " + testData.get("ContractEndYear") + "']/span")));
+//		waithelper.waitForElement(driver, 3000,
+//				driver.findElement(By.xpath("//td[@aria-label='" + testData.get("ContractEndFullMonth") + " " + testData.get("ContractEndDate") + ", " + testData.get("ContractEndYear") + "']/span")));
 		WebElement EndDay = driver
 				.findElement(By.xpath("//td[@aria-label='" + testData.get("ContractEndFullMonth") + " " + testData.get("ContractEndDate") + ", " + testData.get("ContractEndYear") + "']/span"));
 		clicksAndActionHelper.doubleClick(EndDay);
@@ -259,7 +260,7 @@ public class InventoryManagement_CreateContract {
 		waithelper.waitForElementwithFluentwait(driver, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_ItemDetailsSaveButton());
 		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_ItemDetailsSaveButton().click();
 
-//		Thread.sleep(1000);
+		Thread.sleep(1000);
 //		waithelper.waitForElement(driver, 3000, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_AddButton());
 		waithelper.waitForElementwithFluentwait(driver, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_AddButton());
 		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_AddButton().click();

@@ -298,10 +298,10 @@ public class InventoryManagement_BillBooking {
 			while (true) {
 				try {
 
-					waithelper.waitForElement(driver, 3000, driver.findElement(By.xpath("//span[contains(text(),'" + testData.get("InvoiceBillingMonth") + " "
-							+ testData.get("InvoiceBillingYear") + "')]")));
+//					waithelper.waitForElement(driver, 3000, driver.findElement(By.xpath("//span[contains(text(),'" + testData.get("InvoiceBillingMonth") + " "
+//							+ testData.get("InvoiceBillingYear") + "')]")));
 					WebElement monthAndYear = driver.findElement(By.xpath(
-							"//span[contains(text(),'" + testData.get("InvoiceBillingMonth") + " " + testData.get("InvoiceBillingYear") + "')]"));
+							"//span[text()='" + testData.get("InvoiceBillingMonth") + " " + testData.get("InvoiceBillingYear") + " ']"));
 					break;
 				}
 
@@ -413,10 +413,12 @@ public class InventoryManagement_BillBooking {
 				while (true) {
 					try {
 
-						waithelper.waitForElement(driver, 3000, driver.findElement(
-								By.xpath("//span[contains(text(),'" + testData.get("PaymentMonth") + " " + testData.get("PaymentYear") + "')]")));
+//						waithelper.waitForElement(driver, 3000, driver.findElement(
+//								By.xpath("//span[contains(text(),'" + testData.get("PaymentMonth") + " " + testData.get("PaymentYear") + "')]")));
+						waithelper.waitForElementwithFluentwait(driver, driver.findElement(
+								By.xpath("//span[text()='" + testData.get("PaymentMonth") + " " + testData.get("PaymentYear") + " ']")));
 						WebElement monthAndYear = driver.findElement(
-								By.xpath("//span[contains(text(),'" + testData.get("PaymentMonth") + " " + testData.get("PaymentYear") + "')]"));
+								By.xpath("//span[text()='" + testData.get("PaymentMonth") + " " + testData.get("PaymentYear") + " ']"));
 						break;
 					}
 
@@ -457,7 +459,7 @@ public class InventoryManagement_BillBooking {
 		waithelper.waitForElementwithFluentwait(driver, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_RecordStatus());
 		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_RecordStatus().click();
 		
-		for (int i = 0; i < 10; i++) {
+		for (int i = 0; i < 50; i++) {
 			try {
 				waithelper.waitForElementwithFluentwait(driver, aCCOUNTSPAYABLE_VendorContractsObj.ConfirmationMessageCloseButton());
 				aCCOUNTSPAYABLE_VendorContractsObj.ConfirmationMessageCloseButton().click();
@@ -466,7 +468,7 @@ public class InventoryManagement_BillBooking {
 				// TODO: handle exception
 			}
 		}
-		for (int i = 0; i < 10; i++) {
+		for (int i = 0; i < 50; i++) {
 			try {
 				waithelper.waitForElementwithFluentwait(driver, aCCOUNTSPAYABLE_VendorContractsObj.ConfirmationMessageCloseButton());
 				aCCOUNTSPAYABLE_VendorContractsObj.ConfirmationMessageCloseButton().click();
@@ -491,21 +493,21 @@ public class InventoryManagement_BillBooking {
 		System.out.println("Reference ID:" +id);
     	for (int i = 1; i <= 35; i++) {
 			try {
-		    	waithelper.waitForElement(driver, 3000,driver.findElement(By.xpath("//span[text()='" +testData.get("ReferenceID")+ "']")));	
+//		    	waithelper.waitForElement(driver, 3000,driver.findElement(By.xpath("//span[text()='" +testData.get("ReferenceID")+ "']")));	
 				WebElement referanceID = driver.findElement(By.xpath("//span[text()='" +  testData.get("ReferenceID") + "']"));	
-				waithelper.waitForElement(driver, i, referanceID);
+//				waithelper.waitForElement(driver, i, referanceID);
 				referanceID.click();
 		    	System.out.println(referanceID);
 //				Assert.assertTrue(referanceID.isDisplayed());
 				break;
 			} catch (NoSuchElementException e) {
-				waithelper.waitForElement(driver,4000,aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_NotificationNextButton());
+//				waithelper.waitForElement(driver,4000,aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_NotificationNextButton());
 				aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_NotificationNextButton().click();
 			}
 		}
     	String before_xpath="//span[text()='";
     	String after_xpath="']/ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell//ion-button"; 
-    	waithelper.waitForElement(driver, 10000, driver.findElement(By.xpath(before_xpath +testData.get("ReferenceID")+after_xpath)));
+//    	waithelper.waitForElement(driver, 10000, driver.findElement(By.xpath(before_xpath +testData.get("ReferenceID")+after_xpath)));
     	driver.findElement(By.xpath(before_xpath +testData.get("ReferenceID") +after_xpath)).click();
     	
 //    	Thread.sleep(2000);

@@ -44,6 +44,7 @@ import pageobjects.Azentio_ReviewerObj;
 import pageobjects.Enquiry_Obj;
 import pageobjects.INVENTORY_EnquiryGlObject;
 import pageobjects.InventoryMaintenanceObj;
+import pageobjects.KUBS_CheckerObj;
 import pageobjects.Payment_SettlementObj;
 import resources.BaseClass;
 import resources.ExcelData;
@@ -66,6 +67,7 @@ public class ARAP_AutoPayoutPaymentSettlement extends BaseClass {
 	Map<String, String> settlementTestData = new HashMap<>();
 	Map<String, String> settlementData = new HashMap<>();
 	ARAP_ARandAPObj arapObj = new ARAP_ARandAPObj(driver);
+	KUBS_CheckerObj checkerObj = new KUBS_CheckerObj(driver);
 	ARAP_PoCreationObj ArAp_poCreationObj = new ARAP_PoCreationObj(driver);
 	ARAP_GRNCreationPageObject grnObject = new ARAP_GRNCreationPageObject(driver);
 	INVENTORY_EnquiryGlObject inventoryEnquiryGlObj = new INVENTORY_EnquiryGlObject(driver);
@@ -269,10 +271,11 @@ public class ARAP_AutoPayoutPaymentSettlement extends BaseClass {
 		// Remark Submit
 		waitHelper.waitForElement(driver, 2000, inventoryMaintenanceObj.inventoryMaintenance_InventoryItem_SubmitByMaker());
 		inventoryMaintenanceObj.inventoryMaintenance_InventoryItem_SubmitByMaker().click();
-		Thread.sleep(3000);
+//		Thread.sleep(3000);
 
 		// REVIEWER
-		Thread.sleep(2000);
+//		Thread.sleep(2000);
+		waitHelper.waitForElementwithFluentwait(driver, inventoryMaintenanceObj.inventoryMaintenance_InventoryItem_RecordStatus());
 		WebElement recordstatus = inventoryMaintenanceObj.inventoryMaintenance_InventoryItem_RecordStatus();
 
 		clicksAndActionHelper.moveToElement(recordstatus);
@@ -356,7 +359,7 @@ public class ARAP_AutoPayoutPaymentSettlement extends BaseClass {
 		reviewer.reviewerAlertRemarkSecond().sendKeys("ok");
 		waitHelper.waitForElement(driver, 2000, reviewer.reviewerAlertSubmitButton());
 		reviewer.reviewerAlertSubmitButton().click();
-		Thread.sleep(3000);
+//		Thread.sleep(3000);
 
 	}
 
@@ -410,7 +413,7 @@ public class ARAP_AutoPayoutPaymentSettlement extends BaseClass {
 		String approvedContractNumber = vendorContractObj.vendorContractApprovedContractNumber().getText();
 		autoPayout.put("approvedContractNumber", approvedContractNumber);
 	}
-
+	
 	@And("^then checker claim the record$")
 	public void then_checker_claim_the_record() throws InterruptedException, IOException, ParseException {
 

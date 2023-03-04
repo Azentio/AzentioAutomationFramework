@@ -170,6 +170,7 @@ public class ARAP_AccountsPayableReport {
 		arapObj.ARAP_Report().click();
 		javaScriptHelper.JavaScriptHelper(driver);
 		javaScriptHelper.scrollIntoView(arapReportObj.ARAP_Report_Acc_pay_Module_Edit());
+		waitHelper.waitForElementwithFluentwait(driver, arapReportObj.ARAP_Report_Acc_pay_Module_Edit());
 		arapReportObj.ARAP_Report_Acc_pay_Module_Edit().click();
 	}
 	@And("^Give Getted Business Partner Name$")
@@ -211,6 +212,7 @@ public class ARAP_AccountsPayableReport {
 	@And("^Give Accounts Payable Status$")
 	public void give_accounts_payable_status() throws Throwable {
 		// --------ACCOUNTS PAYABLE STATUS------//
+		arapReportObj.ARAP_Report_Status().click();
 		arapReportObj.ARAP_Report_Status().sendKeys(Keys.DOWN);
 		arapReportObj.ARAP_Report_Status().sendKeys(Keys.ENTER);
 	}

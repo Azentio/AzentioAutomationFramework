@@ -231,6 +231,17 @@ public class ARAP_RecordingReceipt extends BaseClass {
 		arapObj.ARAP_ActionButton().click();
 	}
 	
+	@And("^Claim the Record in Checker for online mode receipt record$")
+	public void claim_the_record_in_checker_for_online_mode_receipt_record() throws Throwable {
+		// -------------------------CLICK CLAIM OPTION-------------------------//
+		String before_xpath = "//span[contains(text(),'";
+		String after_xpath_claim = "')]/parent::div/parent::datatable-body-cell/preceding-sibling::datatable-body-cell[2]/div/ion-buttons/ion-button";
+		waithelper.waitForElement(driver, 10000, driver.findElement(By.xpath(before_xpath + testData.get("ReferenceID") + after_xpath_claim)));
+		driver.findElement(By.xpath(before_xpath + testData.get("ReferenceID") + after_xpath_claim)).click();
+		waithelper.waitForElement(driver, 2000, checkerObj.checker_alert_close());
+		checkerObj.checker_alert_close().click();
+	}
+	
 	@And("^Give Remark and Submit the cheque mode receipt Record$")
 	public void give_remark_and_submit_the_cheque_mode_receipt_record() throws Throwable {
 		// ---------------------SUBMIT THE REVIEWER RECORD-----------------------//
@@ -275,6 +286,16 @@ public class ARAP_RecordingReceipt extends BaseClass {
 		login = new KUBS_Login(driver);
 		driver.get(configreader.getApplicationUrl());
 		login.logintoAzentioappReviewer("Reviewer", testData.get("ReviewerID"));
+	}
+	
+	@And("^Click the First Action Icon of the record$")
+	public void click_the_first_action_icon_of_the_record() throws Throwable {
+		// ------------------CHECKER ACTION------------------//
+		Thread.sleep(2000);
+//			waitHelper.waitForElement(driver, 3000, driver.findElement(By.xpath("//span[contains(text(),'" + readerData.readReferancedata() + "')]/ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell/div/ion-buttons/ion-button")));
+//			waitHelper.waitForElementwithFluentwait(driver, driver.findElement(By.xpath("//span[contains(text(),'" + readerData.readReferancedata()	+ "')]/ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell/div/ion-buttons/ion-button")));
+		driver.findElement(
+				By.xpath("//span[contains(text(),'" + testData.get("ReferenceID") + "')]/ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell/div/ion-buttons/ion-button")).click();
 	}
 	
 	@Given("^User login as a checker user for recording receipt record$")

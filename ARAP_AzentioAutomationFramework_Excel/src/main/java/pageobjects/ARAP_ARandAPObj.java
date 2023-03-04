@@ -861,6 +861,13 @@ public class ARAP_ARandAPObj {
 	public WebElement accountReceviableAdvances_Save_Button() {
 		return accountReceviableAdvances_Save_Button;
 	}
+	
+	@FindBy(xpath="//div[@id='toast-container']//button")
+	private WebElement accountReceviableAdvances_AlertClose;
+	public WebElement accountReceviableAdvances_AlertClose()
+	{
+		return accountReceviableAdvances_AlertClose;
+	}
 
 	// *****RECEIPT OBJECTS*****//
 

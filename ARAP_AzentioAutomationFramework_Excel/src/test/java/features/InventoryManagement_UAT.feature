@@ -1,70 +1,70 @@
 Feature: Check the Functionality of Inventory
 
-#@KUBS_INV_MGMT_UAT_001_001_TC_01
-#Scenario: Create a request for inventory
-#Given User should go to the kubs url and login as a maker user
-#Then select data set ID for Inventory Request
-#Then Choose the second Tab Segment
-#Then Click on Inventory Management
-#And Click on the eye icon of Inventory Request
-#Then Click on Add button
-#And Fill all the mandatory fields
-#Then Click on save button
-#Then Click Notification button
-#And Select record which we saved
-#And Submit the record
-#@KUBS_INV_MGMT_UAT_001_001_TC_02
-#Scenario: verify reviewer approve the inventory request record
-#Then update data set ID for Inventory Request for reviewer
-#Then Open Reviewer account
-#And Click on notification
-#Then Approve the record which we submitted from maker stage
-#@KUBS_INV_MGMT_UAT_001_001_TC_03
-#Scenario: verify Checker approve the inventory request record
-#Then update data set ID for Inventory Request for checker
-#Then Go to Checker account
-#And Clam the record
-#Then Click on notification and approve the record
-#@KUBS_INV_MGMT_UAT_001_001_TC_04
-#Scenario: verify record from the maker stage after approval
-#Given User should go to the kubs url and login as a maker user
-#Then select data set ID for Inventory Request
-#Then Choose the second Tab Segment
-#Then Click on Inventory Management
-#And Click on the eye icon of Inventory Request
-#
-#	@KUBS_INV_MGMT_UAT_001_002_TC_01
-#	Scenario: Purchase Requisition Confirmation
-    #Given User should go to the kubs url and login as a maker user
-    #Then select data set ID for purchase requisition confirmation creation
-    #And user should navigate to inventory management
-    #When click on eye button of purchase requisition confirmation
-    #And click on add button  of purchase requisition confirmation
-    #And Fill the required fields to purchase req
-    #Then Save and submit the purchase req confirmation
-#	@KUBS_INV_MGMT_UAT_001_002_TC_02
-#	Scenario: verify reviewer approve the Purchase Requisition Confirmation record
-#		Then update data set ID for Purchase Requisition Confirmation for reviewer
-    #And Open Reviewer account for purchase requisition confirmation
-    #Then Click on notification button in reviewer
-  #	And approve the purchase requisition confirmation record by reviewer user
-#	@KUBS_INV_MGMT_UAT_001_002_TC_03
-#	Scenario: verify Checker approve the Purchase Requisition Confirmation record
-#		Then update data set ID for Purchase Requisition Confirmation for checker
-    #Then Go to Checker account
-   #	And Click on security management in checker
-   #	Then Click on open pool in checker
-   #	And Click on claim button in checker of purchase reqisition confirmation record
-   #	And capture claimed status
-   #	Then click on notification in checker
-    #Then checker should approved the purchase requisition confirmation record
-#	@KUBS_INV_MGMT_UAT_001_002_TC_04
-#	Scenario: verify record from the maker stage after approval
-    #Given User should go to the kubs url and login as a maker user
-    #And user should navigate to inventory management
-    #When click on eye button of purchase requisition confirmation
-    #Then click on first eye button to get the indent reference number
-    #And maker should logout
+@KUBS_INV_MGMT_UAT_001_001_TC_01
+Scenario: Create a request for inventory
+Given User should go to the kubs url and login as a maker user
+Then select data set ID for Inventory Request
+Then Choose the second Tab Segment
+Then Click on Inventory Management
+And Click on the eye icon of Inventory Request
+Then Click on Add button
+And Fill all the mandatory fields
+Then Click on save button
+Then Click Notification button
+And Select record which we saved
+And Submit the record
+@KUBS_INV_MGMT_UAT_001_001_TC_02
+Scenario: verify reviewer approve the inventory request record
+Then update data set ID for Inventory Request for reviewer
+Then Open Reviewer account
+And Click on notification
+Then Approve the record which we submitted from maker stage
+@KUBS_INV_MGMT_UAT_001_001_TC_03
+Scenario: verify Checker approve the inventory request record
+Then update data set ID for Inventory Request for checker
+Then Go to Checker account
+And Clam the record
+Then Click on notification and approve the record
+@KUBS_INV_MGMT_UAT_001_001_TC_04
+Scenario: verify record from the maker stage after approval
+Given User should go to the kubs url and login as a maker user
+Then select data set ID for Inventory Request
+Then Choose the second Tab Segment
+Then Click on Inventory Management
+And Click on the eye icon of Inventory Request
+
+	@KUBS_INV_MGMT_UAT_001_002_TC_01
+	Scenario: Purchase Requisition Confirmation
+    Given User should go to the kubs url and login as a maker user
+    Then select data set ID for purchase requisition confirmation creation
+    And user should navigate to inventory management
+    When click on eye button of purchase requisition confirmation
+    And click on add button  of purchase requisition confirmation
+    And Fill the required fields to purchase req
+    Then Save and submit the purchase req confirmation
+	@KUBS_INV_MGMT_UAT_001_002_TC_02
+	Scenario: verify reviewer approve the Purchase Requisition Confirmation record
+		Then update data set ID for Purchase Requisition Confirmation for reviewer
+    And Open Reviewer account for purchase requisition confirmation
+    Then Click on notification button in reviewer
+  	And approve the purchase requisition confirmation record by reviewer user
+	@KUBS_INV_MGMT_UAT_001_002_TC_03
+	Scenario: verify Checker approve the Purchase Requisition Confirmation record
+		Then update data set ID for Purchase Requisition Confirmation for checker
+    Then Go to Checker account
+   	And Click on security management in checker
+   	Then Click on open pool in checker
+   	And Click on claim button in checker of purchase reqisition confirmation record
+   	And capture claimed status
+   	Then click on notification in checker
+    Then checker should approved the purchase requisition confirmation record
+	@KUBS_INV_MGMT_UAT_001_002_TC_04
+	Scenario: verify record from the maker stage after approval
+    Given User should go to the kubs url and login as a maker user
+    And user should navigate to inventory management
+    When click on eye button of purchase requisition confirmation
+    Then click on first eye button to get the indent reference number
+    And maker should logout
 
 
 @KUBS_INV_MGMT_UAT_001_003_TC_01

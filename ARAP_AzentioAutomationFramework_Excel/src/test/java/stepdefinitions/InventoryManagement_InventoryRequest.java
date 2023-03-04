@@ -2,6 +2,7 @@ package stepdefinitions;
 
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import org.json.simple.parser.ParseException;
@@ -299,18 +300,15 @@ public class InventoryManagement_InventoryRequest extends BaseClass {
 
 	@And("^Click on notification$")
 	public void click_on_notification() throws Throwable {
-		waithelper = new WaitHelper(driver);
 		reviewer = new KUBS_ReviewerObj(driver);
-//			waithelper.waitForElement(driver, 2000, reviewer.reviewerNotidicationIcon());
 		Thread.sleep(1000);
 		waithelper.waitForElementwithFluentwait(driver, reviewer.reviewerNotidicationIcon());
 		reviewer.reviewerNotidicationIcon().click();
 		browserHelper = new BrowserHelper(driver);
-//		budgetdata = jsonconfig.getBudgetdataByName("Maker");
 		javaScriptHelper = new JavascriptHelper();
-//		Thread.sleep(1000);
 		waithelper = new WaitHelper(driver);
-		for (int i = 1; i <= 35; i++) {
+//		Thread.sleep(2000);
+		for (int i = 1; i <= 50; i++) {
 			try {
 //					waithelper.waitForElement(driver, 3000,driver.findElement(By.xpath("//span[text()='" + reader.readReferancedata() + "']")));
 				waithelper.waitForElementwithFluentwait(driver, driver.findElement(By.xpath("//span[text()='" + testData.get("ReferenceID") + "']")));
@@ -321,8 +319,8 @@ public class InventoryManagement_InventoryRequest extends BaseClass {
 				break;
 			} catch (NoSuchElementException e) {
 //					waithelper.waitForElement(driver, 4000, kubschecker.checker_notification_next_button());
-				waithelper.waitForElementwithFluentwait(driver, kubschecker.checker_notification_next_button());
-				kubschecker.checker_notification_next_button().click();
+//				waithelper.waitForElementwithFluentwait(driver, kubschecker.checker_notification_next_button());
+//				kubschecker.checker_notification_next_button().click();
 			}
 		}
 		String before_xpath = "//span[text()='";

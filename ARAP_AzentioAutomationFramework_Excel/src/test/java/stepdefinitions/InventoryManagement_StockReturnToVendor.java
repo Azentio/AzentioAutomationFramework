@@ -159,7 +159,7 @@ public class InventoryManagement_StockReturnToVendor {
 		String Referance_id = inventoryManagamentObj.inventory_ReferanceId().getText();
 		//JsonDataReaderWriter readerData;
 //		readerData.addReferanceData(Referance_id);
-		
+		System.out.println(Referance_id);
 		excelData.updateTestData(dataSetID, "ReferenceID", Referance_id);
 		testData = excelData.getTestdata(dataSetID);
 		

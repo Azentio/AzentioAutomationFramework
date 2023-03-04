@@ -442,7 +442,9 @@ public class ARAP_CancellationOfDebitNote {
 	@And("^Click On Main module Accounts payable$")
 	public void click_on_main_module_accounts_payable() throws Throwable {
 		// ---------CLICK ON ACCOUNTS PAYABLE MODULE------------//
-		waitHelper.waitForElement(driver, 2000, arapObj.ARAP_Accountspayable());
+		javaScriptHelper.JavaScriptHelper(driver);
+		javaScriptHelper.scrollIntoView(arapObj.ARAP_SegmentButton_ReportIcon());
+		waitHelper.waitForElementwithFluentwait(driver, arapObj.ARAP_Accountspayable());
 		arapObj.ARAP_Accountspayable().click();
 	}
 
@@ -733,7 +735,7 @@ public class ARAP_CancellationOfDebitNote {
 	@Then("^Approve the record in Reviewer$")
 	public void approve_the_record_in_reviewer() throws Throwable {
 		// -----------------REVIEWER APPROVE---------------------//
-		readerData.addReferanceData(referance_id);
+//		readerData.addReferanceData(referance_id);
 		waitHelper.waitForElement(driver, 2000, reviewerObj.reviewerApproveButton());
 		reviewerObj.reviewerApproveButton().click();
 	}
@@ -777,8 +779,8 @@ public class ARAP_CancellationOfDebitNote {
 		// -------------------------CLICK CLAIM OPTION-------------------------//
 		String before_xpath = "//span[contains(text(),'";
 		String after_xpath_claim = "')]/parent::div/parent::datatable-body-cell/preceding-sibling::datatable-body-cell[2]/div/ion-buttons/ion-button";
-		waitHelper.waitForElement(driver, 10000, driver.findElement(By.xpath(before_xpath + readerData.readReferancedata() + after_xpath_claim)));
-		driver.findElement(By.xpath(before_xpath + readerData.readReferancedata() + after_xpath_claim)).click();
+		waitHelper.waitForElement(driver, 10000, driver.findElement(By.xpath(before_xpath + testData.get("ReferenceID") + after_xpath_claim)));
+		driver.findElement(By.xpath(before_xpath + testData.get("ReferenceID") + after_xpath_claim)).click();
 		waitHelper.waitForElement(driver, 2000, checkerObj.checker_alert_close());
 		checkerObj.checker_alert_close().click();
 	}
@@ -799,7 +801,7 @@ public class ARAP_CancellationOfDebitNote {
 //			waitHelper.waitForElement(driver, 3000, driver.findElement(By.xpath("//span[contains(text(),'" + readerData.readReferancedata() + "')]/ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell/div/ion-buttons/ion-button")));
 //			waitHelper.waitForElementwithFluentwait(driver, driver.findElement(By.xpath("//span[contains(text(),'" + readerData.readReferancedata()	+ "')]/ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell/div/ion-buttons/ion-button")));
 		driver.findElement(
-				By.xpath("//span[contains(text(),'" + readerData.readReferancedata() + "')]/ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell/div/ion-buttons/ion-button")).click();
+				By.xpath("//span[contains(text(),'" + testData.get("ReferenceID") + "')]/ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell/div/ion-buttons/ion-button")).click();
 	}
 
 	@Then("^Approve the Record in checker stage$")
