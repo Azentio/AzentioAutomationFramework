@@ -18,6 +18,7 @@ And User Close the Workflow iniatiated Pop up in GL
 Then Goto The Notification Icon
 And Store the Referance Id and Open the Record for Base Template Accounting Book
 Then Click submit button and Enter Remark submit it for Gl Record
+Then logout from maker
 @KUBS_GL_UAT_001_001_2
 Scenario: Approve the Created accounting base templet record in reviewer
 And User Update the data set id for Base Template Accounting Book Reviewer submit
@@ -26,6 +27,7 @@ Then click on Notify icon
 And Click First record Action icon for accounting book
 Then Approve the record in Reviewer
 And Give Remark and Submit for accounting base template reviewer
+Then logout from maker
 @KUBS_GL_UAT_001_001_3
 Scenario: Approve the Created accounting base templet record in Checker
 And User Update the data set id for Base Template Accounting Book Reviewer submit
@@ -36,6 +38,7 @@ Then Goto the Checker notification Icon
 And Click the  Action Icon for accounting book record
 Then Approve the Record in checker stage
 And Give Remark and Submit for accounting base template reviewer
+Then logout from maker
 @KUBS_GL_UAT_001_001_4
 Scenario: Verify the Approved accounting book record in maker
 And User Update the data set id for verify Base Template book created
@@ -47,6 +50,7 @@ Then Click on Table Row First Eye Icon
 And System should Generate unique code
 Then Click sub module Accounting book definition
 And User verify the created accounting book in maker view
+Then logout from maker
 @KUBS_GL_UAT_002_001_1
 Scenario: Creation of Accounting Books for custom template
 Given Navigate to Azentio Kubs
@@ -65,6 +69,7 @@ And User Close the Workflow iniatiated Pop up in GL
 Then Goto The Notification Icon
 And Store the Referance Id and Open the Record for custom template
 Then Click submit button and Enter Remark submit it for custom template
+Then logout from maker
 @KUBS_GL_UAT_002_001_2
 Scenario: Approve the Created accounting base template record in reviewer
 And User Update the data set id for Custom Template Accounting Book Reviewer submit
@@ -73,6 +78,7 @@ Then click on Notify icon
 And Click First record Action icon for custom template accounting book
 Then Approve the record in Reviewer
 And Give Remark and Submit
+Then logout from maker
 @KUBS_GL_UAT_002_001_3
 Scenario: Approve the Created accounting custom template record in Checker
 And User Update the data set id for Custom Template Accounting Book Reviewer submit
@@ -83,6 +89,7 @@ Then Goto the Checker notification Icon
 And Click the  Action Icon for accounting book record
 Then Approve the Record in checker stage
 And Give the Remark and Submit it
+Then logout from maker
 @KUBS_GL_UAT_002_001_4
 Scenario: Verify the Approved accounting book record in maker
 And User Update the data set id for Custom Template verified in maker
@@ -94,6 +101,7 @@ Then Click on Table Row First Eye Icon
 And System should Generate unique code
 Then Click sub module Accounting book definition
 And User verify the created accounting book in maker view
+Then logout from maker
 @KUBS_GL_UAT_002_002
 Scenario: Check the created already and trying to create same accounting book
 Given Navigate to Azentio Kubs
@@ -106,6 +114,7 @@ Then Choose the Template Type of Custom Template
 And Enter Another Book Name
 Then Enter the Remark for already created record
 Then Validate the Message we get
+Then logout from maker
 @KUBS_GL_UAT_002_004_1
 Scenario: Modify the accounting book
 Given Navigate to Azentio Kubs
@@ -121,6 +130,7 @@ And User Close the Workflow iniatiated Pop up in GL
 Then Goto The Notification Icon
 And Store the Referance Id and Open the Record for Modify accounting book
 Then Click submit button and Enter Remark submit it for modified accounting book
+Then logout from maker
 @KUBS_GL_UAT_002_004_2
 Scenario: Approve the Modified accounting book record in reviewer
 And User Update the data set id for Modified Accounting Book Reviewer submit
@@ -129,6 +139,7 @@ Then click on Notify icon
 And Click First record Action icon for modified Accounting book
 Then Approve the record in Reviewer
 And Give Remark and Submit
+Then logout from maker
 @KUBS_GL_UAT_002_004_3
 Scenario: Approve the Modified accounting book record in checker
 And User Update the data set id for Modified Accounting Book Reviewer submit
@@ -139,6 +150,7 @@ Then Goto the Checker notification Icon
 And Click the  Action Icon for accounting book record
 Then Approve the Record in checker stage
 And Give the Remark and Submit it for Modified accounting book
+Then logout from maker
 @KUBS_GL_UAT_002_004_4
 Scenario: Verify the Approved accounting book record in maker
 And User Update the data set id for Modified accounting book
@@ -147,7 +159,59 @@ And Click on Finance Option for GL
 And Click on Accounting Setup module
 Then Click sub module Accounting book definition
 And User verify the Modified accounting book in maker view
-# for individual execution need to run accounting book creation base template
+Then logout from maker
+@KUBS_GL_UAT_001_001_1_Prq1
+Scenario: Create an accounting base templet for accounting book for legal entity
+Given Navigate to Azentio Kubs
+And Click on Finance Option for GL
+And Click on Accounting Setup module
+Then Click sub module Accounting book definition
+And Click on Add icon
+And User Update the data set id for Base Template
+Then Choose the Template Type of Base Template
+And Enter Book Name1
+And User Update the data set id for Base Template
+Then Select system date as Effective date
+And Choose the Book Type what you Need
+Then Enter the Remark
+And Save the Record
+And User Close the Workflow iniatiated Pop up in GL
+Then Goto The Notification Icon
+And Store the Referance Id and Open the Record for Base Template Accounting Book
+Then Click submit button and Enter Remark submit it for Gl Record
+Then logout from maker
+@KUBS_GL_UAT_001_001_2_Prq2
+Scenario: Approve the Created accounting base templet record in reviewer
+And User Update the data set id for Base Template Accounting Book Reviewer submit
+Given Navigate as a Reviewer for GL
+Then click on Notify icon
+And Click First record Action icon for accounting book
+Then Approve the record in Reviewer
+And Give Remark and Submit for accounting base template reviewer
+Then logout from maker
+@KUBS_GL_UAT_001_001_3_Prq3
+Scenario: Approve the Created accounting base templet record in Checker
+And User Update the data set id for Base Template Accounting Book Reviewer submit
+Given Navigate as a Checker
+Then Click module security management
+And Claim the Record in Checker for GL
+Then Goto the Checker notification Icon
+And Click the  Action Icon for accounting book record
+Then Approve the Record in checker stage
+And Give Remark and Submit for accounting base template reviewer
+Then logout from maker
+@KUBS_GL_UAT_001_001_4_Prq4
+Scenario: Verify the Approved accounting book record in maker
+And User Update the data set id for verify Base Template book created
+Given Navigate to Azentio Kubs
+And Click on Finance Option for GL
+And Click on Accounting Setup module
+Then Click sub module Accounting book definition
+Then Click on Table Row First Eye Icon
+And System should Generate unique code
+Then Click sub module Accounting book definition
+And User verify the created accounting book in maker view
+Then logout from maker
 @KUBS_GL_UAT_002_006_1
 Scenario: Delete the Accunting Book if COA is not created
 Given Navigate to Azentio Kubs
@@ -196,6 +260,57 @@ And User Search the deactivated Book name
 Then verify the bill is inactive or not 
 Then logout from maker
 #Before scenario need to execute custom Template Accounting book creation
+@KUBS_GL_UAT_002_001_1_CTPRQ1
+Scenario: Creation of Accounting Books for custom template
+Given Navigate to Azentio Kubs
+And Click on Finance Option for GL
+And Click on Accounting Setup module
+Then Click sub module Accounting book definition
+And Click on Add icon
+And User Update the data set id for Custom Template
+Then Choose the Template Type of Custom Template
+And Enter Book Name1 for custom template record
+Then Select system date as Effective date
+And Choose the Book Type what you Need for custom template
+Then Enter the Remark for custom template
+And Save the Record
+And User Close the Workflow iniatiated Pop up in GL
+Then Goto The Notification Icon
+And Store the Referance Id and Open the Record for custom template
+Then Click submit button and Enter Remark submit it for custom template
+Then logout from maker
+@KUBS_GL_UAT_002_001_2_CTPRQ1
+Scenario: Approve the Created accounting base template record in reviewer
+And User Update the data set id for Custom Template Accounting Book Reviewer submit
+Given Navigate as a Reviewer for GL
+Then click on Notify icon
+And Click First record Action icon for custom template accounting book
+Then Approve the record in Reviewer
+And Give Remark and Submit
+Then logout from maker
+@KUBS_GL_UAT_002_001_3_CTPRQ1
+Scenario: Approve the Created accounting custom template record in Checker
+And User Update the data set id for Custom Template Accounting Book Reviewer submit
+Given Navigate as a Checker
+Then Click module security management
+And Claim the Record in Checker for GL
+Then Goto the Checker notification Icon
+And Click the  Action Icon for accounting book record
+Then Approve the Record in checker stage
+And Give the Remark and Submit it
+Then logout from maker
+@KUBS_GL_UAT_002_001_4_CTPRQ1
+Scenario: Verify the Approved accounting book record in maker
+And User Update the data set id for Custom Template verified in maker
+Given Navigate to Azentio Kubs
+And Click on Finance Option for GL
+And Click on Accounting Setup module
+Then Click sub module Accounting book definition
+Then Click on Table Row First Eye Icon
+And System should Generate unique code
+Then Click sub module Accounting book definition
+And User verify the created accounting book in maker view
+Then logout from maker
 @KUBS_GL_UAT_002_008_1
 Scenario: De-activate the account book
 Given Navigate to Azentio Kubs
@@ -252,7 +367,7 @@ Then Click sub module Accounting book definition
 And Click on Add icon
 And User Update the data set id for Base Template
 Then Choose the Template Type of Base Template
-And Enter Book Name 
+And Enter Book Name2
 And User Update the data set id for Base Template
 Then Select system date as Effective date
 And Choose the Book Type what you Need
@@ -351,7 +466,7 @@ Then Click sub module Accounting book definition
 And Click on Add icon
 And User Update the data set id for Base Template
 Then Choose the Template Type of Base Template
-And Enter Book Name 
+And Enter Book Name3
 And User Update the data set id for Base Template
 Then Select system date as Effective date
 And Choose the Book Type what you Need
@@ -450,7 +565,7 @@ Then Click sub module Accounting book definition
 And Click on Add icon
 And User Update the data set id for Base Template
 Then Choose the Template Type of Base Template
-And Enter Book Name 
+And Enter Book Name4
 And User Update the data set id for Base Template
 Then Select system date as Effective date
 And Choose the Book Type what you Need
@@ -549,7 +664,7 @@ Then Click sub module Accounting book definition
 And Click on Add icon
 And User Update the data set id for Base Template
 Then Choose the Template Type of Base Template
-And Enter Book Name 
+And Enter Book Name5
 And User Update the data set id for Base Template
 Then Select system date as Effective date
 And Choose the Book Type what you Need
@@ -640,6 +755,58 @@ Then click sub module Accounting Category
 Then verify the accounting category created for Expenditure
 Then logout from maker
 # before execution Preq liablitiy test case need to execute
+@KUBS_GL_UAT_001_001_01PRQ5
+Scenario: Create an accounting base templet for accounting book for legal entity
+Given Navigate to Azentio Kubs
+And Click on Finance Option for GL
+And Click on Accounting Setup module
+Then Click sub module Accounting book definition
+And Click on Add icon
+And User Update the data set id for Base Template
+Then Choose the Template Type of Base Template
+And Enter Book Name6
+And User Update the data set id for Base Template
+Then Select system date as Effective date
+And Choose the Book Type what you Need
+Then Enter the Remark
+And Save the Record
+And User Close the Workflow iniatiated Pop up in GL
+Then Goto The Notification Icon
+And Store the Referance Id and Open the Record for Base Template Accounting Book
+Then Click submit button and Enter Remark submit it for Gl Record
+Then logout from maker
+@KUBS_GL_UAT_001_001_02PRQ5
+Scenario: Approve the Created accounting base templet record in reviewer
+And User Update the data set id for Base Template Accounting Book Reviewer submit
+Given Navigate as a Reviewer for GL
+Then click on Notify icon
+And Click First record Action icon for accounting book
+Then Approve the record in Reviewer
+And Give Remark and Submit for accounting base template reviewer
+Then logout from maker
+@KUBS_GL_UAT_001_001_03PRQ5
+Scenario: Approve the Created accounting base templet record in Checker
+And User Update the data set id for Base Template Accounting Book Reviewer submit
+Given Navigate as a Checker
+Then Click module security management
+And Claim the Record in Checker for GL
+Then Goto the Checker notification Icon
+And Click the  Action Icon for accounting book record
+Then Approve the Record in checker stage
+And Give Remark and Submit for accounting base template reviewer
+Then logout from maker
+@KUBS_GL_UAT_001_001_04PRQ5
+Scenario: Verify the Approved accounting book record in maker
+And User Update the data set id for verify Base Template book created
+Given Navigate to Azentio Kubs
+And Click on Finance Option for GL
+And Click on Accounting Setup module
+Then Click sub module Accounting book definition
+Then Click on Table Row First Eye Icon
+And System should Generate unique code
+Then Click sub module Accounting book definition
+And User verify the created accounting book in maker view
+Then logout from maker
 @KUBS_GL_UAT_003_005
 Scenario: Check the category already created and trying to create same accounting book
 And User Test data set for category already created and trying to create same accounting book

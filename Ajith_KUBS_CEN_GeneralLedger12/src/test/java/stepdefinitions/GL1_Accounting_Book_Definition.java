@@ -384,17 +384,71 @@ public class GL1_Accounting_Book_Definition extends BaseClass {
 	    int RanNo2 = random.nextInt(90-1)+10;
 	    String bookName =testdata.get("Book Name")+RanNo2+RanNo1;
 	    excelData.updateTestData("KUBS_GL_UAT_001_001_4_D1", "Book NameCreated", bookName);
-	    excelData.updateTestData("KUBS_GL_UAT_002_006_1_D1", "Book NameCreated", bookName);
-	    excelData.updateTestData("KUBS_GL_UAT_002_006_4_D1", "Book NameCreated", bookName);
-	    excelData.updateTestData("KUBS_GL_UAT_003_001_1_D1", "Accounting BookName", bookName);
-	    excelData.updateTestData("KUBS_GL_UAT_003_002_1_D1", "Accounting BookName", bookName);
-	    excelData.updateTestData("KUBS_GL_UAT_003_003_1_D1", "Accounting BookName", bookName);
-	    excelData.updateTestData("KUBS_GL_UAT_003_004_1_D1", "Accounting BookName", bookName);
-	    excelData.updateTestData("KUBS_GL_UAT_003_005_D1", "Accounting BookName", bookName);
 		waitHelper.waitForElementToVisibleWithFluentWait(driver,  accSetupObj.Accounting_book_definition_BookName(), 60, 500);
 		accSetupObj.Accounting_book_definition_BookName().click();
 		accSetupObj.Accounting_book_definition_BookName().sendKeys(bookName);
 	}
+
+	@And("^Enter Book Name1$")
+	public void enter_book_name1() throws Throwable {
+		Random random = new Random();
+		int RanNo1 = random.nextInt(700 - 10) + 10;
+		int RanNo2 = random.nextInt(90 - 1) + 10;
+		String bookName = testdata.get("Book Name") + RanNo2 + RanNo1;
+		excelData.updateTestData("KUBS_GL_UAT_002_006_1_D1", "Book NameCreated", bookName);
+		excelData.updateTestData("KUBS_GL_UAT_002_006_4_D1", "Book NameCreated", bookName);
+	}
+	@And("^Enter Book Name2$")
+    public void enter_book_name2() throws Throwable {
+		// ------BOOK NAME-------//
+				Random random = new Random();
+			    int RanNo1 = random.nextInt(700-10)+10;
+			    int RanNo2 = random.nextInt(90-1)+10;
+			    String bookName =testdata.get("Book Name")+RanNo2+RanNo1;
+			    excelData.updateTestData("KUBS_GL_UAT_003_001_1_D1", "Accounting BookName", bookName);
+    }
+	@And("^Enter Book Name3$")
+    public void enter_book_name3() throws Throwable {
+		// ------BOOK NAME-------//
+				Random random = new Random();
+			    int RanNo1 = random.nextInt(700-10)+10;
+			    int RanNo2 = random.nextInt(90-1)+10;
+			    String bookName =testdata.get("Book Name")+RanNo2+RanNo1;
+			    excelData.updateTestData("KUBS_GL_UAT_003_002_1_D1", "Accounting BookName", bookName);
+    }
+	@And("^Enter Book Name4$")
+    public void enter_book_name4() throws Throwable {
+		// ------BOOK NAME-------//
+				Random random = new Random();
+			    int RanNo1 = random.nextInt(700-10)+10;
+			    int RanNo2 = random.nextInt(90-1)+10;
+			    String bookName =testdata.get("Book Name")+RanNo2+RanNo1;
+			    excelData.updateTestData("KUBS_GL_UAT_003_003_1_D1", "Accounting BookName", bookName);
+    }
+	@And("^Enter Book Name5$")
+    public void enter_book_name5() throws Throwable {
+		// ------BOOK NAME-------//
+		Random random = new Random();
+	    int RanNo1 = random.nextInt(700-10)+10;
+	    int RanNo2 = random.nextInt(90-1)+10;
+	    String bookName =testdata.get("Book Name")+RanNo2+RanNo1;
+	    excelData.updateTestData("KUBS_GL_UAT_003_004_1_D1", "Accounting BookName", bookName);
+    }
+
+	@And("^Enter Book Name6$")
+	public void enter_book_name6() throws Throwable {
+		// ------BOOK NAME-------//
+				Random random = new Random();
+			    int RanNo1 = random.nextInt(700-10)+10;
+			    int RanNo2 = random.nextInt(90-1)+10;
+			    String bookName =testdata.get("Book Name")+RanNo2+RanNo1;
+			    excelData.updateTestData("KUBS_GL_UAT_003_005_D1", "Accounting BookName", bookName);
+				waitHelper.waitForElementToVisibleWithFluentWait(driver,  accSetupObj.Accounting_book_definition_BookName(), 60, 500);
+				accSetupObj.Accounting_book_definition_BookName().click();
+				accSetupObj.Accounting_book_definition_BookName().sendKeys(bookName);
+	}
+
+
 	@And("^Enter Book Name for custom template record$")
     public void enter_book_name_for_custom_template_record() throws Throwable {
 		Random random = new Random();
@@ -403,10 +457,17 @@ public class GL1_Accounting_Book_Definition extends BaseClass {
 	    String bookName =testdata.get("Book Name")+RanNo2+RanNo1;
 	    excelData.updateTestData("KUBS_GL_UAT_002_001_4_D1", "Book NameCreated", bookName);
 	    excelData.updateTestData("KUBS_GL_UAT_002_002_D1", "Book NameCreated", bookName);
-	    excelData.updateTestData("KUBS_GL_UAT_002_008_1_D1", "Book NameCreated", bookName);
 		waitHelper.waitForElementToVisibleWithFluentWait(driver,  accSetupObj.Accounting_book_definition_BookName(), 60, 500);
 		accSetupObj.Accounting_book_definition_BookName().click();
 		accSetupObj.Accounting_book_definition_BookName().sendKeys(bookName);
+    }
+	@And("^Enter Book Name1 for custom template record$")
+    public void enter_book_name1_for_custom_template_record() throws Throwable {
+		Random random = new Random();
+	    int RanNo1 = random.nextInt(700-10)+10;
+	    int RanNo2 = random.nextInt(90-1)+10;
+	    String bookName =testdata.get("Book Name")+RanNo2+RanNo1;
+	    excelData.updateTestData("KUBS_GL_UAT_002_008_1_D1", "Book NameCreated", bookName);
     }
 
 	@Then("^Select system date as Effective date$")
@@ -1956,8 +2017,8 @@ public class GL1_Accounting_Book_Definition extends BaseClass {
         	javascriptHelper.scrollIntoView(glObj.searchAccountingBookName());    	
         	glObj.searchAccountingBookName().click();  	
         	glObj.searchAccountingBookName().sendKeys(testdata.get("Book NameCreated"));
-        	waitHelper.waitForElementToVisibleWithFluentWait(driver,glObj.clickFirstEditIconInListView(),30, 2);
-        	glObj.clickFirstEditIconInListView().click();
+//        	waitHelper.waitForElementToVisibleWithFluentWait(driver,glObj.clickFirstEditIconInListView(),30, 2);
+//        	glObj.clickFirstEditIconInListView().click();
         	
         		
         		
@@ -1990,9 +2051,9 @@ public class GL1_Accounting_Book_Definition extends BaseClass {
     }
     @Then("^verify the bill is inactive or not$")
     public void verify_the_bill_is_inactive_or_not() throws Throwable {
-    	javascriptHelper.JavaScriptHelper(driver);
-    	glObj.accountingBookDefenitionSearchBookName().click();
-    	glObj.accountingBookDefenitionSearchBookName().sendKeys(testdata.get("Book NameCreated"));
+//    	javascriptHelper.JavaScriptHelper(driver);
+//    	glObj.accountingBookDefenitionSearchBookName().click();
+//    	glObj.accountingBookDefenitionSearchBookName().sendKeys(testdata.get("Book NameCreated"));
     	javascriptHelper.scrollIntoView(glObj.getAccountingBookNameStatus());
     	System.out.println(glObj.getAccountingBookNameStatus().getText());   	
     	Assert.assertEquals(glObj.getAccountingBookNameStatus().getText(),"In-Active");
