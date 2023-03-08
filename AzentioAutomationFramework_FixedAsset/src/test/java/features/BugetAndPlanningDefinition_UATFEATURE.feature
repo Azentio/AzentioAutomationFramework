@@ -1,4 +1,4 @@
-Feature: To test the budget and planning module
+Feature: To test the budget and planning Definition Module
 @KUBS_BP_UAT_001_001_01
 Scenario: To verify user can able to submit the yearly budget record
 Given navigate to given url and login with maker credentials

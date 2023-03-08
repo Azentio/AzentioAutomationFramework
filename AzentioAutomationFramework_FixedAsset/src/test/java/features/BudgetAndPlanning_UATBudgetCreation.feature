@@ -1,4 +1,4 @@
-Feature: To test the budget and planning module
+Feature: To test the Functionalities of budget and planning Creation module
 #Budget Request AndAllocation Monthly
 @KUBS_BP_UAT_002_001_01
 Scenario: budget for Budgetcode type monthly

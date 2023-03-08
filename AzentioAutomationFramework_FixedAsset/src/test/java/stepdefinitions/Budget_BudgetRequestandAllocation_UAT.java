@@ -64,8 +64,10 @@ public class Budget_BudgetRequestandAllocation_UAT extends BaseClass {
 	String path = System.getProperty("user.dir") + "\\Test-data\\KUBSTestData.xlsx";
 	ExcelData excelDataForBudgetRequestAndAllocation = new ExcelData(path, "BudgetReqAndAllocation", "DataSet ID");
 	ExcelData excelDataForBudgetSupplementary = new ExcelData(path,"BudgetSupplimentory","DataSet ID");
+	ExcelData excelDataForBudgetTranfer = new ExcelData(path,"BudgetTransfer","Data Set ID");
 	Map<String, String> budgetReqAllocationTestData;
 	Map<String, String> budgetSupplementaryTestData;
+	Map<String, String> budgetTransferTestData;
 	// ---------------------------LOGIN---------------------------------//
 
 	@Given("^Navigate to the Azentio Url$")
@@ -146,6 +148,10 @@ public class Budget_BudgetRequestandAllocation_UAT extends BaseClass {
 	@And("^User update test data id to verify budget allocated for yearly4 budget code$")
     public void user_update_test_data_id_to_verify_budget_allocated_for_yearly4_budget_code() throws Throwable {
 		budgetSupplementaryTestData = excelDataForBudgetSupplementary.getTestdata("KUBS_BP_UAT_005_001_04_D1");
+    }
+	@And("^User update test data id to verify budget allocated for yearly budget code for transfer1$")
+    public void user_update_test_data_id_to_verify_budget_allocated_for_yearly_budget_code_for_transfer1() throws Throwable {
+		budgetTransferTestData = excelDataForBudgetTranfer.getTestdata("KUBS_BP_UAT_006_001_01_D1");
     }
 	@And("^User update test data id to verify budget allocated for yearly2 budget code$")
     public void user_update_test_data_id_to_verify_budget_allocated_for_yearly2_budget_code() throws Throwable {
@@ -300,8 +306,18 @@ public class Budget_BudgetRequestandAllocation_UAT extends BaseClass {
 	@And("^select the budget year as future financial year$")
 	public void select_the_budget_year_as_future_financial_year() throws Throwable {
 		waitHelper.waitForElementToVisibleWithFluentWait(driver,
-				requestAndAllocation.budget_requestAndAllocation_Budgetyear(), 20, 1);
-		dropDownHelper.SelectUsingIndex(requestAndAllocation.budget_requestAndAllocation_Budgetyear(), 2);
+				requestAndAllocation.budget_requestAndAllocation_Budgetyear(), 30, 2);
+		for (int i = 0; i <200; i++) {
+			try {
+				dropDownHelper.SelectUsingIndex(requestAndAllocation.budget_requestAndAllocation_Budgetyear(), 2);
+				break;
+			} catch (Exception e) {
+			if (i==199) {
+				Assert.fail(e.getMessage());
+			}	
+			}
+		}
+		
 	}
 
 	@And("^select the Budget Year fo future$")
@@ -535,29 +551,49 @@ public class Budget_BudgetRequestandAllocation_UAT extends BaseClass {
 			//	requestAndAllocation.budget_requestAndAllocation_Budgetcode().sendKeys(Keys.DOWN);
 				requestAndAllocation.budget_requestAndAllocation_Budgetcode().sendKeys(Keys.ENTER);
     }
+	@Then("^select the Budget Code for transfer1$")
+    public void select_the_budget_code_for_transfer1() throws Throwable {
+		// ----------TO SELECT THE BUDGET CODE----------------//
+		requestAndAllocationTestData = jsonReader.getAllowcationByName("Maker");
+		waitHelper.waitForElement(driver, 3000, requestAndAllocation.budget_requestAndAllocation_Budgetcode());
+		requestAndAllocation.budget_requestAndAllocation_Budgetcode().click();
+		requestAndAllocation.budget_requestAndAllocation_Budgetcode()
+				.sendKeys(budgetTransferTestData.get("BudgetCode"));
+		Thread.sleep(500);
+		requestAndAllocation.budget_requestAndAllocation_Budgetcode().sendKeys(Keys.DOWN);
+	//	requestAndAllocation.budget_requestAndAllocation_Budgetcode().sendKeys(Keys.DOWN);
+		requestAndAllocation.budget_requestAndAllocation_Budgetcode().sendKeys(Keys.ENTER);
+    }
 
+    @Then("^select the Budget Code for transfer2$")
+    public void select_the_budget_code_for_transfer2() throws Throwable {
+    	// ----------TO SELECT THE BUDGET CODE----------------//
+    			requestAndAllocationTestData = jsonReader.getAllowcationByName("Maker");
+    			waitHelper.waitForElement(driver, 3000, requestAndAllocation.budget_requestAndAllocation_Budgetcode());
+    			requestAndAllocation.budget_requestAndAllocation_Budgetcode().click();
+    			requestAndAllocation.budget_requestAndAllocation_Budgetcode()
+    					.sendKeys(budgetTransferTestData.get("TransferToBudgetCode"));
+    			Thread.sleep(500);
+    			requestAndAllocation.budget_requestAndAllocation_Budgetcode().sendKeys(Keys.DOWN);
+    		//	requestAndAllocation.budget_requestAndAllocation_Budgetcode().sendKeys(Keys.DOWN);
+    			requestAndAllocation.budget_requestAndAllocation_Budgetcode().sendKeys(Keys.ENTER);
+    }
     @And("^select the Budget Year1$")
     public void select_the_budget_year1() throws Throwable {
     	// ----------TO SELECT THE BUDGET YEAR-------------//
-    	for(int i=0;i<=200;i++)
-    	{
-    	try
-    	{
-    		waitHelper.waitForElementToVisibleWithFluentWait(driver,requestAndAllocation.budget_requestAndAllocation_Budgetyear(), 5, 500);
-    				dropDownHelper.SelectUsingVisibleText(requestAndAllocation.budget_requestAndAllocation_Budgetyear(),
-    						budgetSupplementaryTestData.get("BudgetYear"));
-    					requestAndAllocation.budget_requestAndAllocation_Budgetyear().sendKeys(Keys.ENTER);
-    	break;
-    	}
-    	catch(Exception e)
-    	{
-    	if(i==200)
-    	{
-    		Assert.fail(e.getMessage());
-    	}
-    	}
-    	}
-    					// requestAndAllocation.budget_requestAndAllocation_Budgetyear().sendKeys(Keys.DOWN);
+    	waitHelper.waitForElementToVisibleWithFluentWait(driver,
+				requestAndAllocation.budget_requestAndAllocation_Budgetyear(), 30, 2);
+		for (int i = 0; i <200; i++) {
+			try {
+				dropDownHelper.SelectUsingIndex(requestAndAllocation.budget_requestAndAllocation_Budgetyear(), 1);
+				break;
+			} catch (Exception e) {
+			if (i==199) {
+				Assert.fail(e.getMessage());
+			}	
+			}
+		}
+    	
     }
 
 	@Then("^select the Budget Code$")
@@ -2213,15 +2249,13 @@ waitHelper.waitForElementToVisibleWithFluentWait(driver, requestAndAllocation.Re
 				requestAndAllocation.budget_requestAndAllocation_Budgetbranch(), 20, 1);
 		requestAndAllocation.budget_requestAndAllocation_Budgetbranch().click();
 		String xpath ="//div[contains(text(),'"+budgetAllocationTestData.get("Branch")+"')]/preceding-sibling::div";
-//		String xpath = "(//div[contains(text(),'" + budgetAllocationTestData.get("Branch")
-//				+ "')]//ancestor::button//div/div[1])[1]";
-		for (int i = 0; i <= 200; i++) {
+		for (int i = 0; i <= 300; i++) {
 			try {
 				javaHelper.scrollIntoView(driver.findElement(By.xpath(xpath)));
 				driver.findElement(By.xpath(xpath)).click();
 				break;
 			} catch (Exception e) {
-				if (i == 200) {
+				if (i == 300) {
 					Assert.fail(e.getMessage());
 				}
 			}

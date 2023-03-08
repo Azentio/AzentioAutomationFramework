@@ -1183,8 +1183,9 @@ public class BUDGET_BudgetTransfer {
 	// Budget Transfer Karthi
 	@And("^click on budget main menu$")
 	public void click_on_budget_main_menu() throws Throwable {
-		makerObj.kubsBudget().click();
-		// budgetTransferObj//
+		waithelper.waitForElementToVisibleWithFluentWait(driver,makerObj.kubsBudget() , 30, 2);
+		javahelper.JavaScriptHelper(driver);
+		javahelper.JSEClick(makerObj.kubsBudget());
 	}
 	
 }

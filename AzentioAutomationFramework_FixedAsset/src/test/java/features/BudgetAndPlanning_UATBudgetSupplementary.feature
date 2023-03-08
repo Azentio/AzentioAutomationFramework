@@ -1,4 +1,4 @@
-Feature: To test the budget and planning module
+Feature: To test the functionalities of  budget and planning Supplementary Module
 @KUBS_BP_UAT_005_001_01
 Scenario: Branch requested to allocate the budget
 Given navigate to given url and login with maker credentials
@@ -78,7 +78,6 @@ Then enter remark in confirmation alert1
 Then click on submit button in alert
 And capture the reviewer ID in pop up which is open when we submit our record in maker stage1
 Then logout from maker
-
 @KUBS_BP_UAT_005_001_05
 Scenario: To verify reviewer user can able to approve budget request and allocation record
 Given navigate to kubs url to approve the yearly4 budget request and allocation record
@@ -88,7 +87,6 @@ And click on approve button in reviewer stage
 And enter the alert remark in reviewer stage
 And click on submit in reviewer alert pop up
 Then verify record got approved in reviewer stage
-
 @KUBS_BP_UAT_005_001_06
 Scenario: To verify checker user can able to Approve the budget Allocation record
 Given Navigate to KUBS url and login with checker for approve the yearly4 budget request and Allocation record

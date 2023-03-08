@@ -302,6 +302,7 @@ for(int i=0;i<=10;i++)
 			bUDGET_SupplementaryBudgetObj.budget_SupplementaryBudget_BudgetYear()
 					.sendKeys(budgetSupplementaryTestData.get("BudgetYear"));
 			String xpath ="//span[text()='"+budgetSupplementaryTestData.get("BudgetYear")+"']";
+			System.out.println(budgetSupplementaryTestData.get("BudgetYear"));
 			for (int i = 0; i <200; i++) {
 				try {
 					driver.findElement(By.xpath(xpath)).isDisplayed();

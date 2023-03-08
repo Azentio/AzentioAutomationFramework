@@ -1,19 +1,224 @@
-Feature: To verify the budget and planning UAT flow
+Feature: To verify the Functionalities of  budget and planning tranfer Module
+@KUBS_BP_UAT_005_001_01_PRQ1
+Scenario: Branch requested to allocate the budget
+Given navigate to given url and login with maker credentials
+Then Click on the Finance
+Then click on budget configuration menu
+Then click on eye icon which is near by budget definition submenu
+And click on add button to create budget code
+And User update test data id for budgetcode yearly4
+And User fill the budget code field for budgetcode yearly for transfer1
+And choose budget type in budget configuration for budget request and allocation1
+And give warning percentage for Budget configuration supplementary
+And enter budget name for yearly budget1
+Then enter remark for Budget configuration Supplementary records
+Then click on Save button
+And User close the workflow initiated pop up
+And click notification button
+Then click on the search button
+And search the budget defenition sub module name1
+And User update test data id to store reviewver id for yearly4 budget code
+And store the reference number of budget config record in excel database1
+Then choose first record in the notification record
+And click on Submit button 
+Then enter remark in confirmation alert1
+Then click on submit button in alert
+And capture the reviewer ID in pop up which is open when we submit our record in maker stage1
+Then logout from maker
+@KUBS_BP_UAT_005_001_02_PRQ1
+Scenario: To verify reviewer user can able to approve the budget defenition record
+Given navigate to kubs url to approve the yearly4 budget definition record
+And click on notification in reviewer stage
+And select the record in notification
+And click on approve button in reviewer stage
+And enter the alert remark in reviewer stage
+And click on submit in reviewer alert pop up
+Then verify record got approved in reviewer stage
+Then logout from maker
+@KUBS_BP_UAT_005_001_03_PRQ1
+Scenario: To verify checker user can able to approve the budget defenition record
+Given Navigate to KUBS url and login with checker for approve the yearly4 budget defenition record
+And click on security management tool
+And click on temp view near by open pool
+And clime the record by the help of Record reference ID
+Then verify record got climed in checker
+And click on notification in checker stage
+And select the record in notification in checker stage
+And click on approve button in checker
+And give approve alert remark in checker stage
+And click on submit button in checker stage
+Then verify record got approved in checker stage
+Then logout from maker
+@KUBS_BP_UAT_005_001_04_PRQ1
+Scenario: To do Budget allocation in maker stage
+Given navigate to given url and login with maker credentials
+Then Click on the Finance
+Then Click on Direction icon
+Then click on configuration
+Then Click on Direction icon
+And User update test data id to verify budget allocated for yearly budget code for transfer1
+And click to the Budget
+Then click on the Budget Sub module Budget Request and Allocation Near Eye Icon
+And click on the Add icon in Request and Allocation
+Then select the Budget Code for transfer1 
+And User update test data id to verify budget allocated for yearly4 budget code
+And select the Budget Year1
+Then click on the Branch
+And Choose to the one Branch
+Then click on the Branch ok button
+Then select one currency we need
+And Enter the Amount for yearly Budget type1
+And click on the save button
+And User close the workflow initiated pop up
+And click notification button 
+Then click on the search button
+And search the budget request and allocation sub module name1
+And User update test data id to store reviewver id for budget request and allocation yearly4 budget code
+And store the reference number of budget Creation record in excel database1
+Then choose first record in the notification record
+And click on Submit button 
+Then enter remark in confirmation alert1
+Then click on submit button in alert
+And capture the reviewer ID in pop up which is open when we submit our record in maker stage1
+Then logout from maker
+@KUBS_BP_UAT_005_001_05_PRQ1
+Scenario: To verify reviewer user can able to approve budget request and allocation record
+Given navigate to kubs url to approve the yearly4 budget request and allocation record
+And click on notification in reviewer stage
+And select the record in notification
+And click on approve button in reviewer stage
+And enter the alert remark in reviewer stage
+And click on submit in reviewer alert pop up
+Then verify record got approved in reviewer stage
+@KUBS_BP_UAT_005_001_06_PRQ1
+Scenario: To verify checker user can able to Approve the budget Allocation record
+Given Navigate to KUBS url and login with checker for approve the yearly4 budget request and Allocation record
+And click on security management tool
+And click on temp view near by open pool
+And clime the record by the help of Record reference ID
+Then verify record got climed in checker
+And click on notification in checker stage
+And select the record in notification in checker stage
+And click on approve button in checker
+And give approve alert remark in checker stage
+And click on submit button in checker stage
+Then verify record got approved in checker stage
+@KUBS_BP_UAT_005_001_01_PRQ2
+Scenario: Branch requested to allocate the budget
+Given navigate to given url and login with maker credentials
+Then Click on the Finance
+Then click on budget configuration menu
+Then click on eye icon which is near by budget definition submenu
+And click on add button to create budget code
+And User update test data id for budgetcode yearly4
+And User fill the budget code field for budgetcode yearly for transfer2
+And choose budget type in budget configuration for budget request and allocation1
+And give warning percentage for Budget configuration supplementary
+And enter budget name for yearly budget1
+Then enter remark for Budget configuration Supplementary records
+Then click on Save button
+And User close the workflow initiated pop up
+And click notification button
+Then click on the search button
+And search the budget defenition sub module name1
+And User update test data id to store reviewver id for yearly4 budget code
+And store the reference number of budget config record in excel database1
+Then choose first record in the notification record
+And click on Submit button 
+Then enter remark in confirmation alert1
+Then click on submit button in alert
+And capture the reviewer ID in pop up which is open when we submit our record in maker stage1
+Then logout from maker
+@KUBS_BP_UAT_005_001_02_PRQ2
+Scenario: To verify reviewer user can able to approve the budget defenition record
+Given navigate to kubs url to approve the yearly4 budget definition record
+And click on notification in reviewer stage
+And select the record in notification
+And click on approve button in reviewer stage
+And enter the alert remark in reviewer stage
+And click on submit in reviewer alert pop up
+Then verify record got approved in reviewer stage
+@KUBS_BP_UAT_005_001_03_PRQ2
+Scenario: To verify checker user can able to approve the budget defenition record
+Given Navigate to KUBS url and login with checker for approve the yearly4 budget defenition record
+And click on security management tool
+And click on temp view near by open pool
+And clime the record by the help of Record reference ID
+Then verify record got climed in checker
+And click on notification in checker stage
+And select the record in notification in checker stage
+And click on approve button in checker
+And give approve alert remark in checker stage
+And click on submit button in checker stage
+Then verify record got approved in checker stage
+@KUBS_BP_UAT_005_001_04_PRQ2
+Scenario: To do Budget allocation in maker stage
+Given navigate to given url and login with maker credentials
+Then Click on the Finance
+Then Click on Direction icon
+Then click on configuration
+Then Click on Direction icon
+And User update test data id to verify budget allocated for yearly budget code for transfer1
+And click to the Budget
+Then click on the Budget Sub module Budget Request and Allocation Near Eye Icon
+And click on the Add icon in Request and Allocation
+Then select the Budget Code for transfer2
+And User update test data id to verify budget allocated for yearly4 budget code 
+And select the Budget Year1
+Then click on the Branch
+And Choose to the one Branch
+Then click on the Branch ok button
+Then select one currency we need
+And Enter the Amount for yearly Budget type1
+And click on the save button
+And User close the workflow initiated pop up
+And click notification button 
+Then click on the search button
+And search the budget request and allocation sub module name1
+And User update test data id to store reviewver id for budget request and allocation yearly4 budget code
+And store the reference number of budget Creation record in excel database1
+Then choose first record in the notification record
+And click on Submit button 
+Then enter remark in confirmation alert1
+Then click on submit button in alert
+And capture the reviewer ID in pop up which is open when we submit our record in maker stage1
+Then logout from maker
+@KUBS_BP_UAT_005_001_05_PRQ2
+Scenario: To verify reviewer user can able to approve budget request and allocation record
+Given navigate to kubs url to approve the yearly4 budget request and allocation record
+And click on notification in reviewer stage
+And select the record in notification
+And click on approve button in reviewer stage
+And enter the alert remark in reviewer stage
+And click on submit in reviewer alert pop up
+Then verify record got approved in reviewer stage
+@KUBS_BP_UAT_005_001_06_PRQ2
+Scenario: To verify checker user can able to Approve the budget Allocation record
+Given Navigate to KUBS url and login with checker for approve the yearly4 budget request and Allocation record
+And click on security management tool
+And click on temp view near by open pool
+And clime the record by the help of Record reference ID
+Then verify record got climed in checker
+And click on notification in checker stage
+And select the record in notification in checker stage
+And click on approve button in checker
+And give approve alert remark in checker stage
+And click on submit button in checker stage
+Then verify record got approved in checker stage
 @KUBS_BP_UAT_006_001_01
 Scenario: UAT_006_001 System should transfer the requested budgeted code amount to the another budget code
 And User get the test data for budget code test case00600101
 Given navigate to given url and login with maker credentials
-#Then click on configuration
 Then Click on the Finance
 And Maker click on the direction tab
-And click on budget main menu
 Then click on configuration
+And Maker click on the direction tab
 And click on budget main menu
 Then Click on budget transfer eye button
 Then click on add buttion
 Then fill the form
 And save the form
-Then form should get save
+And User close the workflow initiated pop up
 And click notification button
 Then choose first record in the notification record in budgetTransfer
 And click on Submit button 
@@ -21,8 +226,6 @@ Then enter remark in confirmation alert in budgetTransfer
 Then click on submit button in alert in budgetTransfer
 And capture the reviewer ID in pop up which is open when we submit our record in maker stage in budgetTransfer
 Then logout from maker
-
-
 @KUBS_BP_UAT_006_001_02
 Scenario: Login as a Reviewer
 And User get the test data for budget code test case00600101
@@ -58,6 +261,8 @@ And User get the test data for budget code test case00600104
 When User login to maker
 #Then click on configuration
 Then Click on the Finance
+And Maker click on the direction tab
+Then click on configuration
 And Maker click on the direction tab
 And click on budget main menu
 Then Click on budget transfer eye button
@@ -123,19 +328,21 @@ Then logout from checker
 Scenario: Check when transfered budget from one budget code to another budget can modify the amount
 And User get the test data for budget code test case00600404
 When User login to maker
-#Then click on configuration
 Then Click on the Finance
+And Maker click on the direction tab
+Then click on configuration
 And Maker click on the direction tab
 And click on budget main menu
 Then Click on budget transfer eye button
 
 #######################################
 @KUBS_BP_UAT_006_007_01
-Scenario: UAT_006_007 If transfering budget code does not have sufficeint amount to transfer for the month
+Scenario: UAT_006_007 If transfering budget code does not have sufficient amount to transfer for the month
 And User get the test data for budget code test case00600701
 Given navigate to given url and login with maker credentials
-#Then user click on configuration
 Then Click on the Finance
+And Maker click on the direction tab
+Then user click on configuration
 And Maker click on the direction tab
 And click on budget main menu
 Then click on transfer eye button
@@ -189,8 +396,9 @@ Then logout from checker
 Scenario: UAT_006_007 If transfering budget code does not have sufficeint amount to transfer for the month
 And User get the test data for budget code test case00600704
 Given navigate to given url and login with maker credentials
-#Then click on configuration
 Then Click on the Finance
+And Maker click on the direction tab
+Then click on configuration
 And Maker click on the direction tab
 And click on budget main menu
 Then Click on budget transfer eye button

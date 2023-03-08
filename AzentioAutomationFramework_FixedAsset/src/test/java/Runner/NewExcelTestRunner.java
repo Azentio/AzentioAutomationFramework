@@ -21,8 +21,8 @@ public class NewExcelTestRunner {
 					"src/test/java/features/BugetAndPlanningDefinition_UATFEATURE.feature",
 					"src\\test\\java\\features\\BudgetAndPlanning_UATBudgetCreation.feature",
 					"src\\test\\java\\features\\BudgetAndPlanning_UATBudgetSupplementary.feature",
+					"src\\test\\java\\features\\BudgetTransferExcel.feature",
 					"--glue", "stepdefinitions",
-
 					"--plugin", "pretty", 
 					"--plugin","com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:", 
 					"--plugin",
@@ -77,16 +77,22 @@ public class NewExcelTestRunner {
 		ExcelTest excelTest = new ExcelTest(path, "TestExecution", "Sequence");
 //		List<String> testCaseTagsfromExcel = excelTest.getTestCaseTagsfromExcel();
 		List<String> testCaseTagsfromExcel1 = new LinkedList<String>();
-		testCaseTagsfromExcel1.add("KUBS_BP_UAT_001_002_02");
-		testCaseTagsfromExcel1.add("KUBS_BP_UAT_001_002_03");
-		testCaseTagsfromExcel1.add("KUBS_BP_UAT_001_002_04");
-//		testCaseTagsfromExcel1.add("KUBS_UAT_KUBS_BP_UAT_003_004_PreReq04");
-//		testCaseTagsfromExcel1.add("KUBS_UAT_KUBS_BP_UAT_003_004_01");
-//		testCaseTagsfromExcel1.add("KUBS_UAT_KUBS_BP_UAT_003_004_02");
-//		testCaseTagsfromExcel1.add("KUBS_UAT_KUBS_BP_UAT_003_004_03");
-//		testCaseTagsfromExcel1.add("KUBS_UAT_KUBS_BP_UAT_003_004_04");
-//		testCaseTagsfromExcel1.add("KUBS_BP_UAT_001_003_01");
-//		testCaseTagsfromExcel1.add("KUBS_BP_UAT_001_003_02");
+//		testCaseTagsfromExcel1.add("KUBS_BP_UAT_005_001_01_PRQ1");
+//		testCaseTagsfromExcel1.add("KUBS_BP_UAT_005_001_02_PRQ1");
+//		testCaseTagsfromExcel1.add("KUBS_BP_UAT_005_001_03_PRQ1");
+//		testCaseTagsfromExcel1.add("KUBS_BP_UAT_005_001_04_PRQ1");
+//		testCaseTagsfromExcel1.add("KUBS_BP_UAT_005_001_05_PRQ1");
+//		testCaseTagsfromExcel1.add("KUBS_BP_UAT_005_001_06_PRQ1");
+//		testCaseTagsfromExcel1.add("KUBS_BP_UAT_005_001_01_PRQ2");
+//		testCaseTagsfromExcel1.add("KUBS_BP_UAT_005_001_02_PRQ2");
+//		testCaseTagsfromExcel1.add("KUBS_BP_UAT_005_001_03_PRQ2");
+//		testCaseTagsfromExcel1.add("KUBS_BP_UAT_005_001_04_PRQ2");
+//		testCaseTagsfromExcel1.add("KUBS_BP_UAT_005_001_05_PRQ2");
+//		testCaseTagsfromExcel1.add("KUBS_BP_UAT_005_001_06_PRQ2");
+		testCaseTagsfromExcel1.add("KUBS_BP_UAT_006_001_01");
+		testCaseTagsfromExcel1.add("KUBS_BP_UAT_006_001_02");
+		testCaseTagsfromExcel1.add("KUBS_BP_UAT_006_001_03");
+		testCaseTagsfromExcel1.add("KUBS_BP_UAT_006_001_04");
 //		testCaseTagsfromExcel1.add("KUBS_BP_UAT_001_003_03");
 //		testCaseTagsfromExcel1.add("KUBS_BP_UAT_001_003_04");
 //		testCaseTagsfromExcel1.add("KUBS_BP_UAT_001_004_01");

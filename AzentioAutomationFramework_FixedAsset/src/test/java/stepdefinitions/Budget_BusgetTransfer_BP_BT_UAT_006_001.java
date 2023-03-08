@@ -125,7 +125,7 @@ public class Budget_BusgetTransfer_BP_BT_UAT_006_001 {
 		waithelper.waitForElement(driver, 3000, budgetTransferObj.budget_BudgetTransfer_BudgetYearDropdown());
 		budgetTransferObj.budget_BudgetTransfer_BudgetYearDropdown().click();
 		Thread.sleep(2000);
-		budgetTransferObj.budget_BudgetTransfer_BudgetYearDropdown().sendKeys(budget.get("BudgetYear"));
+		//budgetTransferObj.budget_BudgetTransfer_BudgetYearDropdown().sendKeys(budget.get("BudgetYear"));
 		budgetTransferObj.budget_BudgetTransfer_BudgetYearDropdown().sendKeys(Keys.ENTER);
 		//budgetTransferTestDataType = jsonReader.getBudgetTransferdata("Maker");
 		waithelper.waitForElement(driver, 2000, budgetTransferObj.budget_BudgetTransfer_Branch());
