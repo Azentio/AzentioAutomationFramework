@@ -715,6 +715,7 @@ public class Budget_BusgetTransfer_BP_BT_UAT_006_001 {
 		// Apportioned Amount A
 		waithelper.waitForElement(driver, 3000, budgetTransferObj.budget_BudgetTransfer_ApportionedAmountA());
 		budgetTransferObj.budget_BudgetTransfer_ApportionedAmountA().click();
+		budgetTransferObj.budget_BudgetTransfer_ApportionedAmountA().clear();
 		budgetTransferObj.budget_BudgetTransfer_ApportionedAmountA()
 				.sendKeys(budget.get("ApportionedAmountA1"));
 

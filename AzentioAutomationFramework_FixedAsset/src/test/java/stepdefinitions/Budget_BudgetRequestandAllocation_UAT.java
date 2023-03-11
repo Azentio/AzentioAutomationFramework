@@ -585,7 +585,7 @@ public class Budget_BudgetRequestandAllocation_UAT extends BaseClass {
 				requestAndAllocation.budget_requestAndAllocation_Budgetyear(), 30, 2);
 		for (int i = 0; i <200; i++) {
 			try {
-				dropDownHelper.SelectUsingIndex(requestAndAllocation.budget_requestAndAllocation_Budgetyear(), 1);
+				dropDownHelper.SelectUsingIndex(requestAndAllocation.budget_requestAndAllocation_Budgetyear(), 2);
 				break;
 			} catch (Exception e) {
 			if (i==199) {

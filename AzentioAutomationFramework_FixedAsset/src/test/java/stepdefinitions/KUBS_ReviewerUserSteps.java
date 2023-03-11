@@ -1296,13 +1296,13 @@ public class KUBS_ReviewerUserSteps extends BaseClass {
 				+ "']//ancestor::datatable-body-cell//preceding-sibling::datatable-body-cell[1]//ion-button";
 		for (int i = 0; i <= 200; i++) {
 			try {
-//				if (i > 100 && i < 200) {
-//					cliksAndActionsHelper.moveToElement(kubsCommonObj.kubsNotificationIcon());
-//					cliksAndActionsHelper.clickOnElement(kubsCommonObj.kubsNotificationIcon());
-//					cliksAndActionsHelper.moveToElement(driver.findElement(By.xpath(xpath)));
-//					cliksAndActionsHelper.clickOnElement(driver.findElement(By.xpath(xpath)));
-//					break;
-//				}
+				if (i > 100 && i < 200) {
+					cliksAndActionsHelper.moveToElement(kubsCommonObj.kubsNotificationIcon());
+					cliksAndActionsHelper.clickOnElement(kubsCommonObj.kubsNotificationIcon());
+					cliksAndActionsHelper.moveToElement(driver.findElement(By.xpath(xpath)));
+					cliksAndActionsHelper.clickOnElement(driver.findElement(By.xpath(xpath)));
+					break;
+				}
 				cliksAndActionsHelper.moveToElement(driver.findElement(By.xpath(xpath)));
 				cliksAndActionsHelper.clickOnElement(driver.findElement(By.xpath(xpath)));
 				break;
