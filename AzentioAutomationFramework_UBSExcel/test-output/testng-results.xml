@@ -1,0 +1,1756 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="101" passed="101" failed="0" skipped="0">
+  <reporter-output>
+  </reporter-output>
+<<<<<<< AnandhNewUBSExcel
+  <suite started-at="2023-03-11T16:25:25 IST" name="Default suite" finished-at="2023-03-11T17:58:40 IST" duration-ms="5594764">
+=======
+  <suite started-at="2023-03-07T17:25:55 IST" name="Default suite" finished-at="2023-03-07T17:46:50 IST" duration-ms="1254937">
+>>>>>>> 5088067 Commit on 11 Mar 2023
+    <groups>
+      <group name="cucumber">
+        <method signature="AbstractTestNGCucumberTests.runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:Runner.TestApplication@1c5920df]" name="runScenario" class="io.cucumber.testng.AbstractTestNGCucumberTests"/>
+      </group> <!-- cucumber -->
+    </groups>
+<<<<<<< AnandhNewUBSExcel
+    <test started-at="2023-03-11T16:25:25 IST" name="Default test" finished-at="2023-03-11T17:58:40 IST" duration-ms="5594764">
+=======
+    <test started-at="2023-03-07T17:25:55 IST" name="Default test" finished-at="2023-03-07T17:46:50 IST" duration-ms="1254937">
+>>>>>>> 5088067 Commit on 11 Mar 2023
+      <class name="Runner.TestApplication">
+<<<<<<< AnandhNewUBSExcel
+        <test-method is-config="true" signature="beforeExecution()[pri:0, instance:Runner.TestApplication@1c5920df]" started-at="2023-03-11T16:25:25 IST" name="beforeExecution" finished-at="2023-03-11T16:25:25 IST" duration-ms="11" status="PASS">
+=======
+        <test-method is-config="true" signature="beforeExecution()[pri:0, instance:Runner.TestApplication@1c5920df]" started-at="2023-03-07T17:25:55 IST" name="beforeExecution" finished-at="2023-03-07T17:25:55 IST" duration-ms="13" status="PASS">
+>>>>>>> 5088067 Commit on 11 Mar 2023
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeExecution -->
+<<<<<<< AnandhNewUBSExcel
+        <test-method is-config="true" signature="setUpClass()[pri:0, instance:Runner.TestApplication@1c5920df]" started-at="2023-03-11T16:25:25 IST" name="setUpClass" finished-at="2023-03-11T16:25:26 IST" duration-ms="1399" status="PASS">
+=======
+        <test-method is-config="true" signature="setUpClass()[pri:0, instance:Runner.TestApplication@1c5920df]" started-at="2023-03-07T17:25:55 IST" name="setUpClass" finished-at="2023-03-07T17:25:56 IST" duration-ms="1100" status="PASS">
+>>>>>>> 5088067 Commit on 11 Mar 2023
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUpClass -->
+<<<<<<< AnandhNewUBSExcel
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:Runner.TestApplication@1c5920df]" started-at="2023-03-11T16:25:27 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2023-03-11T16:26:43 IST" duration-ms="76360" status="PASS">
+=======
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:Runner.TestApplication@1c5920df]" started-at="2023-03-07T17:25:56 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2023-03-07T17:27:51 IST" duration-ms="114320" status="PASS">
+>>>>>>> 5088067 Commit on 11 Mar 2023
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["Create an asset category"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Optional[To test the asset return module in fixed asset]"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+<<<<<<< AnandhNewUBSExcel
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:Runner.TestApplication@1c5920df]" started-at="2023-03-11T16:26:43 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2023-03-11T16:27:26 IST" duration-ms="43607" status="PASS">
+=======
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:Runner.TestApplication@1c5920df]" started-at="2023-03-07T17:27:51 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2023-03-07T17:28:26 IST" duration-ms="35084" status="PASS">
+>>>>>>> 5088067 Commit on 11 Mar 2023
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["To verify reviewer user can able to approve the asset category record"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Optional[To test the asset return module in fixed asset]"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+<<<<<<< AnandhNewUBSExcel
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:Runner.TestApplication@1c5920df]" started-at="2023-03-11T16:27:26 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2023-03-11T16:28:07 IST" duration-ms="40504" status="PASS">
+=======
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:Runner.TestApplication@1c5920df]" started-at="2023-03-07T17:28:26 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2023-03-07T17:29:05 IST" duration-ms="39484" status="PASS">
+>>>>>>> 5088067 Commit on 11 Mar 2023
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["To verify checker user can able to approve the asset category record"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Optional[To test the asset return module in fixed asset]"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+<<<<<<< AnandhNewUBSExcel
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:Runner.TestApplication@1c5920df]" started-at="2023-03-11T16:28:07 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2023-03-11T16:28:44 IST" duration-ms="36624" status="PASS">
+=======
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:Runner.TestApplication@1c5920df]" started-at="2023-03-07T17:29:05 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2023-03-07T17:29:42 IST" duration-ms="36968" status="PASS">
+>>>>>>> 5088067 Commit on 11 Mar 2023
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["To verify approved asset category record should visible in asset category list view"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Optional[To test the asset return module in fixed asset]"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+<<<<<<< AnandhNewUBSExcel
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:Runner.TestApplication@1c5920df]" started-at="2023-03-11T16:28:44 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2023-03-11T16:29:38 IST" duration-ms="54301" status="PASS">
+=======
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:Runner.TestApplication@1c5920df]" started-at="2023-03-07T17:29:42 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2023-03-07T17:30:53 IST" duration-ms="70251" status="PASS">
+>>>>>>> 5088067 Commit on 11 Mar 2023
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["Configure the asset category for asset code creation"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Optional[To test the asset return module in fixed asset]"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+<<<<<<< AnandhNewUBSExcel
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:Runner.TestApplication@1c5920df]" started-at="2023-03-11T16:29:38 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2023-03-11T16:30:24 IST" duration-ms="45725" status="PASS">
+=======
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:Runner.TestApplication@1c5920df]" started-at="2023-03-07T17:30:53 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2023-03-07T17:31:29 IST" duration-ms="36493" status="PASS">
+>>>>>>> 5088067 Commit on 11 Mar 2023
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["To verify reviewer user can able to approve the asset code configuration record"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Optional[To test the asset return module in fixed asset]"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+<<<<<<< AnandhNewUBSExcel
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:Runner.TestApplication@1c5920df]" started-at="2023-03-11T16:30:24 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2023-03-11T16:31:05 IST" duration-ms="41115" status="PASS">
+=======
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:Runner.TestApplication@1c5920df]" started-at="2023-03-07T17:31:29 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2023-03-07T17:32:11 IST" duration-ms="42212" status="PASS">
+>>>>>>> 5088067 Commit on 11 Mar 2023
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["To verify checker user can able to approve the asset code configuration record"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Optional[To test the asset return module in fixed asset]"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+<<<<<<< AnandhNewUBSExcel
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:Runner.TestApplication@1c5920df]" started-at="2023-03-11T16:31:05 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2023-03-11T16:31:47 IST" duration-ms="42271" status="PASS">
+=======
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:Runner.TestApplication@1c5920df]" started-at="2023-03-07T17:32:11 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2023-03-07T17:32:50 IST" duration-ms="39185" status="PASS">
+>>>>>>> 5088067 Commit on 11 Mar 2023
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["To verify approved asset code config record should available in maker list viewe"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Optional[To test the asset return module in fixed asset]"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+<<<<<<< AnandhNewUBSExcel
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:Runner.TestApplication@1c5920df]" started-at="2023-03-11T16:31:47 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2023-03-11T16:32:43 IST" duration-ms="56419" status="PASS">
+=======
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:Runner.TestApplication@1c5920df]" started-at="2023-03-07T17:32:50 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2023-03-07T17:33:42 IST" duration-ms="51979" status="PASS">
+>>>>>>> 5088067 Commit on 11 Mar 2023
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["Map the various GLs for created asset code"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Optional[To test the asset return module in fixed asset]"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+<<<<<<< AnandhNewUBSExcel
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:Runner.TestApplication@1c5920df]" started-at="2023-03-11T16:32:43 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2023-03-11T16:33:18 IST" duration-ms="34272" status="PASS">
+=======
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:Runner.TestApplication@1c5920df]" started-at="2023-03-07T17:33:42 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2023-03-07T17:34:46 IST" duration-ms="63317" status="PASS">
+>>>>>>> 5088067 Commit on 11 Mar 2023
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["To verify reviewer user can able to approve the  asset code gl configuration"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Optional[To test the asset return module in fixed asset]"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+<<<<<<< AnandhNewUBSExcel
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:Runner.TestApplication@1c5920df]" started-at="2023-03-11T16:33:18 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2023-03-11T16:33:58 IST" duration-ms="40476" status="PASS">
+=======
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:Runner.TestApplication@1c5920df]" started-at="2023-03-07T17:34:46 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2023-03-07T17:35:28 IST" duration-ms="42463" status="PASS">
+>>>>>>> 5088067 Commit on 11 Mar 2023
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["To verify checker user can able to approve the asset code gl configuration"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Optional[To test the asset return module in fixed asset]"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+<<<<<<< AnandhNewUBSExcel
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:Runner.TestApplication@1c5920df]" started-at="2023-03-11T16:33:58 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2023-03-11T16:34:43 IST" duration-ms="44354" status="PASS">
+=======
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:Runner.TestApplication@1c5920df]" started-at="2023-03-07T17:35:28 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2023-03-07T17:36:01 IST" duration-ms="32940" status="PASS">
+>>>>>>> 5088067 Commit on 11 Mar 2023
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["To verify approved asset gl configuration record should visible in maker list view"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Optional[To test the asset return module in fixed asset]"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+<<<<<<< AnandhNewUBSExcel
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:Runner.TestApplication@1c5920df]" started-at="2023-03-11T16:34:43 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2023-03-11T16:35:33 IST" duration-ms="50437" status="PASS">
+=======
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:Runner.TestApplication@1c5920df]" started-at="2023-03-07T17:36:01 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2023-03-07T17:36:39 IST" duration-ms="37436" status="PASS">
+>>>>>>> 5088067 Commit on 11 Mar 2023
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["Allocate the serial number for the asset"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Optional[To test the asset return module in fixed asset]"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+<<<<<<< AnandhNewUBSExcel
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:Runner.TestApplication@1c5920df]" started-at="2023-03-11T16:35:33 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2023-03-11T16:36:24 IST" duration-ms="51492" status="PASS">
+=======
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:Runner.TestApplication@1c5920df]" started-at="2023-03-07T17:36:39 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2023-03-07T17:37:39 IST" duration-ms="59929" status="PASS">
+>>>>>>> 5088067 Commit on 11 Mar 2023
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["To verify reviewer user can able to approve the fixed asset serial number setup record"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Optional[To test the asset return module in fixed asset]"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+<<<<<<< AnandhNewUBSExcel
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:Runner.TestApplication@1c5920df]" started-at="2023-03-11T16:36:24 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2023-03-11T16:37:01 IST" duration-ms="36514" status="PASS">
+=======
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:Runner.TestApplication@1c5920df]" started-at="2023-03-07T17:37:39 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2023-03-07T17:38:12 IST" duration-ms="33180" status="PASS">
+>>>>>>> 5088067 Commit on 11 Mar 2023
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["To verify checker user can able to approve the fixed asset serial number setup record"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Optional[To test the asset return module in fixed asset]"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+<<<<<<< AnandhNewUBSExcel
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:Runner.TestApplication@1c5920df]" started-at="2023-03-11T16:37:01 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2023-03-11T16:37:45 IST" duration-ms="44184" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["To verify approved serial number record should visible in maker list view"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Optional[To test the asset return module in fixed asset]"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:Runner.TestApplication@1c5920df]" started-at="2023-03-11T16:37:45 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2023-03-11T16:38:53 IST" duration-ms="67453" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["Creation of the registered asset with full details"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Optional[To test the asset return module in fixed asset]"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:Runner.TestApplication@1c5920df]" started-at="2023-03-11T16:38:53 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2023-03-11T16:39:27 IST" duration-ms="34445" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["To verify reviewer user can able to approve the asset creation record with full details record"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Optional[To test the asset return module in fixed asset]"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:Runner.TestApplication@1c5920df]" started-at="2023-03-11T16:39:27 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2023-03-11T16:40:04 IST" duration-ms="37125" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["To verify checker user can able to approve the fixed asset creation with minimum details record"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Optional[To test the asset return module in fixed asset]"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:Runner.TestApplication@1c5920df]" started-at="2023-03-11T16:40:04 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2023-03-11T16:40:47 IST" duration-ms="42768" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["To verify maker user can able to see the approved asset reference number in maker list view"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Optional[To test the asset return module in fixed asset]"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:Runner.TestApplication@1c5920df]" started-at="2023-03-11T16:40:47 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2023-03-11T16:41:44 IST" duration-ms="56998" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["To verify user can able to create asset return record"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Optional[To test the asset return module in fixed asset]"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:Runner.TestApplication@1c5920df]" started-at="2023-03-11T16:41:44 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2023-03-11T16:42:23 IST" duration-ms="38516" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["To verify reviewer user can able to approve the asset return record"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Optional[To test the asset return module in fixed asset]"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:Runner.TestApplication@1c5920df]" started-at="2023-03-11T16:42:23 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2023-03-11T16:43:05 IST" duration-ms="42191" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["To verify checker user can able to approve the asset return record"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Optional[To test the asset return module in fixed asset]"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:Runner.TestApplication@1c5920df]" started-at="2023-03-11T16:43:05 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2023-03-11T16:43:51 IST" duration-ms="46065" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["To verify approved asset reference number of return record should available in maker list view"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Optional[To test the asset return module in fixed asset]"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:Runner.TestApplication@1c5920df]" started-at="2023-03-11T16:43:51 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2023-03-11T16:44:28 IST" duration-ms="37664" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["Check If asset required to retun before vendor payment"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Optional[To test the asset return module in fixed asset]"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:Runner.TestApplication@1c5920df]" started-at="2023-03-11T16:44:28 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2023-03-11T16:45:37 IST" duration-ms="68960" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["Creation of the registered asset with full details"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Optional[To test the asset return module in fixed asset]"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:Runner.TestApplication@1c5920df]" started-at="2023-03-11T16:45:37 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2023-03-11T16:46:12 IST" duration-ms="34867" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["To verify reviewer user can able to approve the asset creation record with full details record"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Optional[To test the asset return module in fixed asset]"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:Runner.TestApplication@1c5920df]" started-at="2023-03-11T16:46:12 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2023-03-11T16:46:50 IST" duration-ms="37629" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["To verify checker user can able to approve the fixed asset creation with minimum details record"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Optional[To test the asset return module in fixed asset]"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:Runner.TestApplication@1c5920df]" started-at="2023-03-11T16:46:50 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2023-03-11T16:47:30 IST" duration-ms="39636" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["To verify maker user can able to see the approved asset reference number in maker list view"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Optional[To test the asset return module in fixed asset]"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:Runner.TestApplication@1c5920df]" started-at="2023-03-11T16:47:30 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2023-03-11T16:48:29 IST" duration-ms="59177" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["To verify maker user can able to create the asset revaluation record"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Optional[To test the asset return module in fixed asset]"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:Runner.TestApplication@1c5920df]" started-at="2023-03-11T16:48:29 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2023-03-11T16:49:04 IST" duration-ms="34862" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["To verify reviewer user can able to approve the asset revaluation record"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Optional[To test the asset return module in fixed asset]"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:Runner.TestApplication@1c5920df]" started-at="2023-03-11T16:49:04 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2023-03-11T16:49:41 IST" duration-ms="37312" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["To verify checker user can able to approve the fixed asset creation with minimum details record"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Optional[To test the asset return module in fixed asset]"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:Runner.TestApplication@1c5920df]" started-at="2023-03-11T16:49:41 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2023-03-11T16:50:21 IST" duration-ms="40454" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["To verify approved asset revaluation record should visisble in revaluation list view"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Optional[To test the asset return module in fixed asset]"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:Runner.TestApplication@1c5920df]" started-at="2023-03-11T16:50:21 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2023-03-11T16:51:18 IST" duration-ms="56223" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["To verify user can able to create asset return record"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Optional[To test the asset return module in fixed asset]"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:Runner.TestApplication@1c5920df]" started-at="2023-03-11T16:51:18 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2023-03-11T16:51:59 IST" duration-ms="41777" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["To verify reviewer user can able to approve the asset return record"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Optional[To test the asset return module in fixed asset]"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:Runner.TestApplication@1c5920df]" started-at="2023-03-11T16:51:59 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2023-03-11T16:52:31 IST" duration-ms="31505" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["To verify checker user can able to approve the asset return record"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Optional[To test the asset return module in fixed asset]"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:Runner.TestApplication@1c5920df]" started-at="2023-03-11T16:52:31 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2023-03-11T16:53:05 IST" duration-ms="34013" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["To verify approved asset reference number of return record should available in maker list view"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Optional[To test the asset return module in fixed asset]"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:Runner.TestApplication@1c5920df]" started-at="2023-03-11T16:53:05 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2023-03-11T16:54:01 IST" duration-ms="56032" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["Creation of the registered asset with full details"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Optional[To test the asset return module in fixed asset]"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:Runner.TestApplication@1c5920df]" started-at="2023-03-11T16:54:01 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2023-03-11T16:54:27 IST" duration-ms="25905" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["To verify reviewer user can able to approve the asset creation record with full details record"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Optional[To test the asset return module in fixed asset]"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:Runner.TestApplication@1c5920df]" started-at="2023-03-11T16:54:27 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2023-03-11T16:55:11 IST" duration-ms="44157" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["To verify checker user can able to approve the fixed asset creation with minimum details record"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Optional[To test the asset return module in fixed asset]"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:Runner.TestApplication@1c5920df]" started-at="2023-03-11T16:55:11 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2023-03-11T16:55:57 IST" duration-ms="45862" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["To verify maker user can able to see the approved asset reference number in maker list view"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Optional[To test the asset return module in fixed asset]"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:Runner.TestApplication@1c5920df]" started-at="2023-03-11T16:55:57 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2023-03-11T16:56:52 IST" duration-ms="55457" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["Create an amendment to modify an asset for capitalization date"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Optional[To test the asset return module in fixed asset]"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:Runner.TestApplication@1c5920df]" started-at="2023-03-11T16:56:52 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2023-03-11T16:57:21 IST" duration-ms="28775" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["To verify reviewer user can able to approve the asset ammendment record"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Optional[To test the asset return module in fixed asset]"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:Runner.TestApplication@1c5920df]" started-at="2023-03-11T16:57:21 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2023-03-11T16:57:53 IST" duration-ms="31527" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["To verify checker user can able to approve the fixed asset Ammendment record"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Optional[To test the asset return module in fixed asset]"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:Runner.TestApplication@1c5920df]" started-at="2023-03-11T16:57:53 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2023-03-11T16:58:43 IST" duration-ms="50236" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["To verify maker can able to see the approved asset reference number of ammendment record in approved list view"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Optional[To test the asset return module in fixed asset]"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:Runner.TestApplication@1c5920df]" started-at="2023-03-11T16:58:43 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2023-03-11T16:59:34 IST" duration-ms="51531" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["Check if the amended asset can be returned to its vendor"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Optional[To test the asset return module in fixed asset]"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:Runner.TestApplication@1c5920df]" started-at="2023-03-11T16:59:34 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2023-03-11T17:00:07 IST" duration-ms="32859" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["To verify reviewer user can able to approve the asset return record which is done asset ammendment"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Optional[To test the asset return module in fixed asset]"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:Runner.TestApplication@1c5920df]" started-at="2023-03-11T17:00:07 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2023-03-11T17:00:44 IST" duration-ms="36851" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["To verify checker user can able to approve the asset return record which is done asset ammendment"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Optional[To test the asset return module in fixed asset]"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:Runner.TestApplication@1c5920df]" started-at="2023-03-11T17:00:44 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2023-03-11T17:01:24 IST" duration-ms="39811" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["To verify approved asset reference number of return record should available in maker list view(Ammendment asset)"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Optional[To test the asset return module in fixed asset]"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:Runner.TestApplication@1c5920df]" started-at="2023-03-11T17:01:24 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2023-03-11T17:02:29 IST" duration-ms="65247" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["Creation of the registered asset with full details"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Optional[To test the asset return module in fixed asset]"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:Runner.TestApplication@1c5920df]" started-at="2023-03-11T17:02:29 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2023-03-11T17:03:02 IST" duration-ms="32828" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["To verify reviewer user can able to approve the asset creation record with full details record"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Optional[To test the asset return module in fixed asset]"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:Runner.TestApplication@1c5920df]" started-at="2023-03-11T17:03:02 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2023-03-11T17:03:37 IST" duration-ms="35015" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["To verify checker user can able to approve the fixed asset creation with minimum details record"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Optional[To test the asset return module in fixed asset]"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:Runner.TestApplication@1c5920df]" started-at="2023-03-11T17:03:37 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2023-03-11T17:04:17 IST" duration-ms="40352" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["To verify maker user can able to see the approved asset reference number in maker list view"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Optional[To test the asset return module in fixed asset]"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:Runner.TestApplication@1c5920df]" started-at="2023-03-11T17:04:17 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2023-03-11T17:05:18 IST" duration-ms="61031" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["Check the impairement of asset"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Optional[To test the asset return module in fixed asset]"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:Runner.TestApplication@1c5920df]" started-at="2023-03-11T17:05:18 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2023-03-11T17:06:03 IST" duration-ms="44244" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["To verify reviewer user can able to approve the asset impairment record"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Optional[To test the asset return module in fixed asset]"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:Runner.TestApplication@1c5920df]" started-at="2023-03-11T17:06:03 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2023-03-11T17:06:44 IST" duration-ms="41352" status="PASS">
+=======
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:Runner.TestApplication@1c5920df]" started-at="2023-03-07T17:38:12 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2023-03-07T17:38:59 IST" duration-ms="47640" status="PASS">
+>>>>>>> 5088067 Commit on 11 Mar 2023
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["To verify checker user can able to approve the fixed asset impairment"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Optional[To test the asset return module in fixed asset]"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+<<<<<<< AnandhNewUBSExcel
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:Runner.TestApplication@1c5920df]" started-at="2023-03-11T17:06:44 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2023-03-11T17:07:22 IST" duration-ms="38333" status="PASS">
+=======
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:Runner.TestApplication@1c5920df]" started-at="2023-03-07T17:38:59 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2023-03-07T17:39:34 IST" duration-ms="35046" status="PASS">
+>>>>>>> 5088067 Commit on 11 Mar 2023
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["To verify approved asset reference number of asset impairment should visisble in maker list view"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Optional[To test the asset return module in fixed asset]"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+<<<<<<< AnandhNewUBSExcel
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:Runner.TestApplication@1c5920df]" started-at="2023-03-11T17:07:22 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2023-03-11T17:08:09 IST" duration-ms="46344" status="PASS">
+=======
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:Runner.TestApplication@1c5920df]" started-at="2023-03-07T17:39:34 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2023-03-07T17:40:33 IST" duration-ms="58665" status="PASS">
+>>>>>>> 5088067 Commit on 11 Mar 2023
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["To verify user can not able to create asset return record(Impaired asset)"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Optional[To test the asset return module in fixed asset]"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+<<<<<<< AnandhNewUBSExcel
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:Runner.TestApplication@1c5920df]" started-at="2023-03-11T17:08:09 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2023-03-11T17:09:10 IST" duration-ms="61186" status="PASS">
+=======
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:Runner.TestApplication@1c5920df]" started-at="2023-03-07T17:40:33 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2023-03-07T17:41:09 IST" duration-ms="35420" status="PASS">
+>>>>>>> 5088067 Commit on 11 Mar 2023
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["Creation of the registered asset with full details"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Optional[To test the asset return module in fixed asset]"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+<<<<<<< AnandhNewUBSExcel
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:Runner.TestApplication@1c5920df]" started-at="2023-03-11T17:09:10 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2023-03-11T17:09:44 IST" duration-ms="34469" status="PASS">
+=======
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:Runner.TestApplication@1c5920df]" started-at="2023-03-07T17:41:09 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2023-03-07T17:41:49 IST" duration-ms="40176" status="PASS">
+>>>>>>> 5088067 Commit on 11 Mar 2023
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["To verify reviewer user can able to approve the asset creation record with full details record"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Optional[To test the asset return module in fixed asset]"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+<<<<<<< AnandhNewUBSExcel
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:Runner.TestApplication@1c5920df]" started-at="2023-03-11T17:09:44 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2023-03-11T17:10:18 IST" duration-ms="34100" status="PASS">
+=======
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:Runner.TestApplication@1c5920df]" started-at="2023-03-07T17:41:49 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2023-03-07T17:42:32 IST" duration-ms="43728" status="PASS">
+>>>>>>> 5088067 Commit on 11 Mar 2023
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["To verify checker user can able to approve the fixed asset creation with minimum details record"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Optional[To test the asset return module in fixed asset]"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+<<<<<<< AnandhNewUBSExcel
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:Runner.TestApplication@1c5920df]" started-at="2023-03-11T17:10:18 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2023-03-11T17:10:54 IST" duration-ms="35810" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["To verify maker user can able to see the approved asset reference number in maker list view"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Optional[To test the asset return module in fixed asset]"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:Runner.TestApplication@1c5920df]" started-at="2023-03-11T17:10:54 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2023-03-11T17:11:44 IST" duration-ms="50064" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["Check the asset for its replacement (any)"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Optional[To test the asset return module in fixed asset]"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:Runner.TestApplication@1c5920df]" started-at="2023-03-11T17:11:44 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2023-03-11T17:12:24 IST" duration-ms="39877" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["To verify reviewer user can able to approve the asset creation record with full details record"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Optional[To test the asset return module in fixed asset]"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:Runner.TestApplication@1c5920df]" started-at="2023-03-11T17:12:24 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2023-03-11T17:13:00 IST" duration-ms="36287" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["To verify checker user can able to approve the fixed asset creation with minimum details record"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Optional[To test the asset return module in fixed asset]"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:Runner.TestApplication@1c5920df]" started-at="2023-03-11T17:13:00 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2023-03-11T17:13:44 IST" duration-ms="43675" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["To verify maker user can able to see the approved replacement item number in list view of asset replacement"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Optional[To test the asset return module in fixed asset]"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:Runner.TestApplication@1c5920df]" started-at="2023-03-11T17:13:44 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2023-03-11T17:14:36 IST" duration-ms="52180" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["To verify user can able to create asset return record(Replacement asset)"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Optional[To test the asset return module in fixed asset]"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:Runner.TestApplication@1c5920df]" started-at="2023-03-11T17:14:36 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2023-03-11T17:15:15 IST" duration-ms="38220" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["To verify reviewer user can able to approve the asset return record(Replacement asset)"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Optional[To test the asset return module in fixed asset]"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:Runner.TestApplication@1c5920df]" started-at="2023-03-11T17:15:15 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2023-03-11T17:15:56 IST" duration-ms="41215" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["To verify checker user can able to approve the asset return record(Replacement asset)"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Optional[To test the asset return module in fixed asset]"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:Runner.TestApplication@1c5920df]" started-at="2023-03-11T17:15:56 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2023-03-11T17:16:43 IST" duration-ms="47664" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["To verify approved asset reference number of return record should available in maker list view(Replacement asset)"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Optional[To test the asset return module in fixed asset]"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:Runner.TestApplication@1c5920df]" started-at="2023-03-11T17:16:43 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2023-03-11T17:17:48 IST" duration-ms="64560" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["Creation of the registered asset with full details"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Optional[To test the asset return module in fixed asset]"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:Runner.TestApplication@1c5920df]" started-at="2023-03-11T17:17:48 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2023-03-11T17:18:26 IST" duration-ms="37708" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["To verify reviewer user can able to approve the asset creation record with full details record"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Optional[To test the asset return module in fixed asset]"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:Runner.TestApplication@1c5920df]" started-at="2023-03-11T17:18:26 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2023-03-11T17:19:02 IST" duration-ms="36375" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["To verify checker user can able to approve the fixed asset creation with minimum details record"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Optional[To test the asset return module in fixed asset]"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:Runner.TestApplication@1c5920df]" started-at="2023-03-11T17:19:02 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2023-03-11T17:19:39 IST" duration-ms="36600" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["To verify maker user can able to see the approved asset reference number in maker list view"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Optional[To test the asset return module in fixed asset]"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:Runner.TestApplication@1c5920df]" started-at="2023-03-11T17:19:39 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2023-03-11T17:20:31 IST" duration-ms="52761" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["To verify maker user can able to create the asset allocation record"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Optional[To test the asset return module in fixed asset]"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:Runner.TestApplication@1c5920df]" started-at="2023-03-11T17:20:31 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2023-03-11T17:21:07 IST" duration-ms="35756" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["To verify reviewer user can able to approve the asset allocation record"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Optional[To test the asset return module in fixed asset]"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:Runner.TestApplication@1c5920df]" started-at="2023-03-11T17:21:07 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2023-03-11T17:21:41 IST" duration-ms="33603" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["To verify checker user can able to approve the fixed asset allocation record"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Optional[To test the asset return module in fixed asset]"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:Runner.TestApplication@1c5920df]" started-at="2023-03-11T17:21:41 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2023-03-11T17:22:51 IST" duration-ms="70646" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["To verify approved asset allocation record should visible in maker approved list view"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Optional[To test the asset return module in fixed asset]"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:Runner.TestApplication@1c5920df]" started-at="2023-03-11T17:22:51 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2023-03-11T17:23:52 IST" duration-ms="60881" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["To verify user can able to de allocate the asset"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Optional[To test the asset return module in fixed asset]"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:Runner.TestApplication@1c5920df]" started-at="2023-03-11T17:23:52 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2023-03-11T17:24:26 IST" duration-ms="33913" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["To verify reviewer user can able to approve the asset allocation record"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Optional[To test the asset return module in fixed asset]"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:Runner.TestApplication@1c5920df]" started-at="2023-03-11T17:24:26 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2023-03-11T17:25:05 IST" duration-ms="38424" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["To verify checker user can able to approve the fixed asset de allocation record"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Optional[To test the asset return module in fixed asset]"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:Runner.TestApplication@1c5920df]" started-at="2023-03-11T17:25:05 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2023-03-11T17:25:48 IST" duration-ms="43206" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["To verify approved asset de allocation asset reference number should reflect in maker approved list view"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Optional[To test the asset return module in fixed asset]"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:Runner.TestApplication@1c5920df]" started-at="2023-03-11T17:25:48 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2023-03-11T17:26:41 IST" duration-ms="53491" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["To verify user can able to create asset return record(Deallocation asset)"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Optional[To test the asset return module in fixed asset]"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:Runner.TestApplication@1c5920df]" started-at="2023-03-11T17:26:41 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2023-03-11T17:27:31 IST" duration-ms="49596" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["To verify reviewer user can able to approve the asset return record(Deallocated asset)"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Optional[To test the asset return module in fixed asset]"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:Runner.TestApplication@1c5920df]" started-at="2023-03-11T17:27:31 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2023-03-11T17:28:08 IST" duration-ms="37115" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["To verify checker user can able to approve the asset return record(Deallocated asset)"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Optional[To test the asset return module in fixed asset]"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:Runner.TestApplication@1c5920df]" started-at="2023-03-11T17:28:08 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2023-03-11T17:28:52 IST" duration-ms="44076" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["To verify approved asset reference number of return record should available in maker list view(Deallocated asset)"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Optional[To test the asset return module in fixed asset]"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:Runner.TestApplication@1c5920df]" started-at="2023-03-11T17:28:52 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2023-03-11T17:29:54 IST" duration-ms="62106" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["Creation of the registered asset with full details"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Optional[To test the asset return module in fixed asset]"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:Runner.TestApplication@1c5920df]" started-at="2023-03-11T17:29:54 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2023-03-11T17:30:23 IST" duration-ms="29108" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["To verify reviewer user can able to approve the asset creation record with full details record"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Optional[To test the asset return module in fixed asset]"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:Runner.TestApplication@1c5920df]" started-at="2023-03-11T17:30:23 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2023-03-11T17:31:00 IST" duration-ms="37106" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["To verify checker user can able to approve the fixed asset creation with minimum details record"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Optional[To test the asset return module in fixed asset]"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:Runner.TestApplication@1c5920df]" started-at="2023-03-11T17:31:00 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2023-03-11T17:31:38 IST" duration-ms="37284" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["To verify maker user can able to see the approved asset reference number in maker list view"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Optional[To test the asset return module in fixed asset]"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:Runner.TestApplication@1c5920df]" started-at="2023-03-11T17:31:38 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2023-03-11T17:32:35 IST" duration-ms="57655" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["To Transfer the asset one branch to another branch"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Optional[To test the asset return module in fixed asset]"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:Runner.TestApplication@1c5920df]" started-at="2023-03-11T17:32:35 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2023-03-11T17:33:11 IST" duration-ms="35749" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["To verify stage 1 user can able to approve the asset transfer record"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Optional[To test the asset return module in fixed asset]"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:Runner.TestApplication@1c5920df]" started-at="2023-03-11T17:33:11 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2023-03-11T17:33:55 IST" duration-ms="43943" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["To verify stage 2 user can able to approve the asset transfer record"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Optional[To test the asset return module in fixed asset]"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:Runner.TestApplication@1c5920df]" started-at="2023-03-11T17:33:55 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2023-03-11T17:34:26 IST" duration-ms="30801" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["To verify stage 3 user can able to approve the asset transfer record"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Optional[To test the asset return module in fixed asset]"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:Runner.TestApplication@1c5920df]" started-at="2023-03-11T17:34:26 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2023-03-11T17:35:06 IST" duration-ms="39724" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["To verify maker user can able to see the approved undertaking record in maker approved list view"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Optional[To test the asset return module in fixed asset]"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:Runner.TestApplication@1c5920df]" started-at="2023-03-11T17:35:06 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2023-03-11T17:35:54 IST" duration-ms="48298" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["To verify user can able to create asset return record"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Optional[To test the asset return module in fixed asset]"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:Runner.TestApplication@1c5920df]" started-at="2023-03-11T17:35:54 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2023-03-11T17:36:26 IST" duration-ms="31907" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["To verify reviewer user can able to approve the asset return record"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Optional[To test the asset return module in fixed asset]"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:Runner.TestApplication@1c5920df]" started-at="2023-03-11T17:36:26 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2023-03-11T17:37:05 IST" duration-ms="39464" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["To verify checker user can able to approve the asset return record"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Optional[To test the asset return module in fixed asset]"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:Runner.TestApplication@1c5920df]" started-at="2023-03-11T17:37:05 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2023-03-11T17:37:49 IST" duration-ms="43340" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["To verify approved asset reference number of return record should available in maker list view"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Optional[To test the asset return module in fixed asset]"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:Runner.TestApplication@1c5920df]" started-at="2023-03-11T17:37:49 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2023-03-11T17:38:24 IST" duration-ms="35124" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["Check If asset required to retun after vendor payment"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Optional[To test the asset return module in fixed asset]"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:Runner.TestApplication@1c5920df]" started-at="2023-03-11T17:38:24 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2023-03-11T17:39:08 IST" duration-ms="44614" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["Check Asset return"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Optional[To test the asset return module in fixed asset]"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method is-config="true" signature="tearDownClass()[pri:0, instance:Runner.TestApplication@1c5920df]" started-at="2023-03-11T17:39:08 IST" name="tearDownClass" finished-at="2023-03-11T17:58:40 IST" duration-ms="1171443" status="PASS">
+=======
+        <test-method is-config="true" signature="tearDownClass()[pri:0, instance:Runner.TestApplication@1c5920df]" started-at="2023-03-07T17:42:32 IST" name="tearDownClass" finished-at="2023-03-07T17:46:50 IST" duration-ms="257831" status="PASS">
+>>>>>>> 5088067 Commit on 11 Mar 2023
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDownClass -->
+<<<<<<< AnandhNewUBSExcel
+        <test-method is-config="true" signature="afterExecution()[pri:0, instance:Runner.TestApplication@1c5920df]" started-at="2023-03-11T17:58:40 IST" name="afterExecution" finished-at="2023-03-11T17:58:40 IST" duration-ms="263" status="PASS">
+=======
+        <test-method is-config="true" signature="afterExecution()[pri:0, instance:Runner.TestApplication@1c5920df]" started-at="2023-03-07T17:46:50 IST" name="afterExecution" finished-at="2023-03-07T17:46:50 IST" duration-ms="143" status="PASS">
+>>>>>>> 5088067 Commit on 11 Mar 2023
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterExecution -->
+      </class> <!-- Runner.TestApplication -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>

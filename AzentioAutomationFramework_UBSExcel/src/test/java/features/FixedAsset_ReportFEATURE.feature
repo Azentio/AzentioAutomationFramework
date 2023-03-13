@@ -1,0 +1,21 @@
+Feature: Test the fixed asset report test cases
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
