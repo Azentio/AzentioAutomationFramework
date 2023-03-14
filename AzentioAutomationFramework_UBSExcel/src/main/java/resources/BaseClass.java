@@ -25,14 +25,14 @@ public class BaseClass {
 	
 	ConfigFileReader configFileReader=new ConfigFileReader();
 	String browserName =configFileReader.getBrowser();
-	String phntomDriverPath=System.getProperty("user.dir")+"\\phantomjs-2.1.1-windows\\bin\\phantomjs.exe";
 	if(browserName.equalsIgnoreCase("chrome")) {
 		System.setProperty("webdriver.chrome.driver","Drivers/chromedriver.exe");
 		ChromeOptions options = new ChromeOptions(); 
 		
-		//WebDriverManager.chromedriver().setup();
+		WebDriverManager.chromedriver().setup();
 		
-		options.addArguments("--incognito");
+	  options.addArguments("--incognito");
+	  options.addArguments("--remote-allow-origins=*");
 		driver = new ChromeDriver(options);
 		
 	}else if(browserName.equalsIgnoreCase("firefox")) {
