@@ -56,7 +56,7 @@ public class FIXEDASSET_AssetReplacement extends BaseClass {
 
 	FIXEDASSET_AssetReplacementObj assetReplacementObj = new FIXEDASSET_AssetReplacementObj(driver);
 	JavascriptHelper javascripthelper = new JavascriptHelper();
-BrowserHelper browserHelper= new BrowserHelper(driver);
+	BrowserHelper browserHelper = new BrowserHelper(driver);
 	FIXEDASSET_fixedAssetObj fixedAssetObj = new FIXEDASSET_fixedAssetObj(driver);
 
 	Map<String, String> testData = new HashMap<>();
@@ -658,13 +658,15 @@ BrowserHelper browserHelper= new BrowserHelper(driver);
 		javaScriptHelper.JavaScriptHelper(driver);
 		for (int i = 0; i <= 500; i++) {
 			try {
-				String assetCode = javaScriptHelper.executeScript(
-						"return document.getElementsByClassName('sc-ion-input-md-h sc-ion-input-md-s md hydrated has-value')[1].value")
-						.toString();
+				String assetCode = assetReplacementObj.assetReplacementApprovedAssetCode()
+						.getAttribute("ng-reflect-value");
 				assetReplacementReportTestData.put("ReplacementAssetCode", assetCode);
-				System.out
-						.println("Replacement asset Code" + assetReplacementReportTestData.get("ReplacementAssetCode"));
-				break;
+
+				if (!(assetReplacementReportTestData.get("ReplacementAssetCode").equals(null))) {
+					System.out.println(
+							"Replacement asset Code" + assetReplacementReportTestData.get("ReplacementAssetCode"));
+					break;
+				}
 			} catch (Exception e) {
 				if (i == 500) {
 					Assert.fail(e.getMessage());
@@ -845,26 +847,23 @@ BrowserHelper browserHelper= new BrowserHelper(driver);
 			}
 		}
 	}
+
 	@Then("^verify the replaced asset referene number should avaiable in repacement report$")
-    public void verify_the_replaced_asset_referene_number_should_avaiable_in_repacement_report() throws Throwable {
+	public void verify_the_replaced_asset_referene_number_should_avaiable_in_repacement_report() throws Throwable {
 		browserHelper.SwitchToWindow(1);
-      String xpath="//div[contains(text(),'"+assetReplacementReportTestData.get("approvedAssetReferenceNumber")+"')]";
-      for(int i=0;i<=500;i++)
-      {
-    	  try
-    	  {
-    		  boolean validation = driver.findElement(By.xpath(xpath)).isDisplayed();
-    		  Assert.assertTrue(validation);
-    		  break;
-    	  }
-    	  catch(Exception e)
-    	  {
-    		  if(i==500)
-    		  {
-    			  Assert.fail(e.getMessage());
-    		  }
-    	  }
-      }
-      browserHelper.switchToParentWithChildClose();
-    }
+		String xpath = "//div[contains(text(),'" + assetReplacementReportTestData.get("approvedAssetReferenceNumber")
+				+ "')]";
+		for (int i = 0; i <= 500; i++) {
+			try {
+				boolean validation = driver.findElement(By.xpath(xpath)).isDisplayed();
+				Assert.assertTrue(validation);
+				break;
+			} catch (Exception e) {
+				if (i == 500) {
+					Assert.fail(e.getMessage());
+				}
+			}
+		}
+		browserHelper.switchToParentWithChildClose();
+	}
 }

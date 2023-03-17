@@ -316,6 +316,12 @@ public class FIXEDASSET_AssetReplacementObj {
 	{
 		return assetReplacement_ReportItemNumber;
 	}
+	@FindBy(xpath="//ion-label[contains(text(),' Asset Code')]//following-sibling::ion-input")
+	private WebElement assetReplacement_ApprovedAssetCode;
+	public WebElement assetReplacementApprovedAssetCode()
+	{
+		return assetReplacement_ApprovedAssetCode;
+	}
 	@FindBy(xpath="//span[@class='input-calendar']")
 	private WebElement assetReplacement_ReportCreatedCalendar;
 	public WebElement assetReplacementReportCreatedCalendar()

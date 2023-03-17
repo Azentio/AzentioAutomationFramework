@@ -1688,7 +1688,8 @@ public class FixedAsset {
 		int randomNumber1 = random.nextInt(100 - 1) + 100;
 		int randomNumber2 = random.nextInt(200 - 100) + 200;
 		int randomNumber3 = random.nextInt(1000 - 500) + 1000;
-		String assetItemNumber = assetCreationTestData.get("AssetItemNumber") + randomNumber1 + randomNumber2+randomNumber3;
+		String assetItemNumber = assetCreationTestData.get("AssetItemNumber") + randomNumber1 + randomNumber2
+				+ randomNumber3;
 		excelDataForAssetCreation.updateTestData(assetCreationTestData.get("DataSet ID"), "UpdatedItemNumber",
 				assetItemNumber);
 		waithelper.waitForElementToVisibleWithFluentWait(driver,
@@ -2851,6 +2852,21 @@ public class FixedAsset {
 		String systemDate = kubsCommonWebObj.kUBSSystemDate().getText();
 		assetCreationReportTestData.put("systemDate", systemDate);
 		System.out.println("System Date" + assetCreationReportTestData.get("systemDate"));
+
+		for (int i = 0; i <= 500; i++) {
+			try {
+				String assetAsOnDate = javascripthelper
+						.executeScript("return document.getElementsByClassName('form-control p-0')[0].value")
+						.toString();
+				assetCreationReportTestData.put("assetAsOnDate", assetAsOnDate);
+				break;
+			} catch (Exception e) {
+				if (i == 500) {
+					Assert.fail(e.getMessage());
+				}
+
+			}
+		}
 	}
 
 	@And("^give the capitalization date in asset creation item wise report$")
@@ -2961,23 +2977,64 @@ public class FixedAsset {
 				fixedAssetObj.assetcreationLReportAssetCreationAsOnDateCalendar(), 20, 1);
 		fixedAssetObj.assetcreationLReportAssetCreationAsOnDateCalendar().click();
 
-		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MMM/uuuu");
-		DateTimeFormatter dtf1 = DateTimeFormatter.ofPattern("dd/MMMM/uuuu");
-		LocalDate localDate = LocalDate.now();
-
-		String Date = dtf.format(localDate);
-		String Date1 = dtf1.format(localDate);
-		String[] DateSplit = Date.split("[/]");
-		String[] DateSplit1 = Date1.split("[/]");
-		Integer DateNum = Integer.valueOf(DateSplit[0]);
-		String Month = DateSplit[1];
-		String FullMonth = DateSplit1[1];
-		Integer yearNum = Integer.valueOf(DateSplit[2]);
-
 		waithelper.waitForElementToVisibleWithFluentWait(driver, kubsCommonWebObj.kubsCalendarMonthYearOption(), 20, 1);
 		clicksAndActionHelper.moveToElement(kubsCommonWebObj.kubsCalendarMonthYearOption());
 		clicksAndActionHelper.clickOnElement(kubsCommonWebObj.kubsCalendarMonthYearOption());
-		String yearXpath = "//span[contains(text(),'" + yearNum + "')]//ancestor::td";
+		System.out.println("Created date" + assetCreationReportTestData.get("systemDate"));
+		String[] splitDate = assetCreationReportTestData.get("systemDate").split("-");
+		String date = "";
+		if (splitDate[0].charAt(0) == '0') {
+			date = splitDate[0].substring(1);
+		} else {
+			date = splitDate[0];
+		}
+		Month months = null;
+		String month = splitDate[1];
+		switch (month) {
+		case "Jan":
+			months = months.JANUARY;
+			break;
+		case "Feb":
+			months = months.FEBRUARY;
+			break;
+		case "Mar":
+			months = months.MARCH;
+			break;
+		case "Apr":
+			months = months.APRIL;
+			break;
+		case "May":
+			months = months.MAY;
+			break;
+		case "Jun":
+			months = months.JUNE;
+			break;
+		case "Jul":
+			months = months.JULY;
+			break;
+		case "Aug":
+			months = months.AUGUST;
+			break;
+		case "Sep":
+			months = months.SEPTEMBER;
+			break;
+		case "Oct":
+			months = months.OCTOBER;
+			break;
+		case "Nov":
+			months = months.NOVEMBER;
+			break;
+		case "Dec":
+			months = months.DECEMBER;
+			break;
+
+		}
+		String stringMonth = months.toString();
+		String finalMonth = stringMonth.substring(1).toLowerCase();
+		System.out.println("Final Month is : " + finalMonth);
+		stringMonth.substring(0, 1);
+		System.out.println("Final Full month:" + stringMonth.substring(0, 1) + finalMonth);
+		String yearXpath = "//span[contains(text(),'" + splitDate[2] + "')]//ancestor::td";
 		for (int i = 0; i <= 500; i++) {
 			try {
 				driver.findElement(By.xpath(yearXpath)).click();
@@ -2989,7 +3046,7 @@ public class FixedAsset {
 			}
 		}
 
-		String monthXpath = "//span[contains(text(),'" + Month + "')]//ancestor::td";
+		String monthXpath = "//span[contains(text(),'" + splitDate[1] + "')]//ancestor::td";
 		for (int i = 0; i <= 500; i++) {
 			try {
 				driver.findElement(By.xpath(monthXpath)).click();
@@ -3001,17 +3058,16 @@ public class FixedAsset {
 			}
 		}
 
-		WebElement FinalDay = driver
-				.findElement(By.xpath("//td[@aria-label='" + FullMonth + " " + DateNum + ", " + yearNum + "']/span"));
+		String dayXapath = "//td[@aria-label='" + stringMonth.substring(0, 1) + finalMonth + " " + date + ", "
+				+ splitDate[2] + "']";
 
 		for (int i = 0; i <= 500; i++) {
 			try {
-				clicksAndActionHelper.doubleClick(FinalDay);
+				driver.findElement(By.xpath(dayXapath)).click();
 				break;
 			} catch (Exception e) {
 				if (i == 500) {
 					Assert.fail(e.getLocalizedMessage());
-
 				}
 			}
 		}

@@ -2158,6 +2158,3 @@ Then verify the asset code of Revaluation asset should reflect in report section
 And click on user profile in maker
 And click on logout button
 Then verify user profile got logout
-And click on user profile in maker
-And click on logout button
-Then verify user profile got logout

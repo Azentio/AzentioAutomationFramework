@@ -46,12 +46,11 @@ public class KUBS_Login {
 				login = new KUBS_LoginObj(driver);
 				login.Login_userName().sendKeys(ulsLoginTestData.get("UserID"));
 				login.ubsContinueButton().click();
-				waithelper.waitForElement(driver, 2000, login.Login_passWord());
+				waithelper.waitForElementToVisibleWithFluentWait(driver, login.Login_passWord(), 10, 1);
 				login.Login_passWord().sendKeys(ulsLoginTestData.get("Password"));
 				String otp = login.Login_getOtp().getText();
 				driver.findElement(By.xpath("//ng-otp-input/div/input[1]")).sendKeys(otp.substring(3));
 				login.Login_signIn().click();
-
 				waithelper.waitForElementToVisibleWithFluentWait(driver, login.Login_loginStatus(), 15, 1);
 				Assert.assertTrue(login.Login_loginStatus().isDisplayed());
 				break;

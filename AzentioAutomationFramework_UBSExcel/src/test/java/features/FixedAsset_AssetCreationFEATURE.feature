@@ -399,31 +399,7 @@ Then verify approved asset creation record is visible under asset creation list 
 And click on user profile in maker
 And click on logout button
 Then verify user profile got logout
-@KUBS_FAT_UAT_013_001
-Scenario: Check Asset Limit Config
-Given Maker Navigate to UAT URL login
-And click on configuration section
-And click on transaction section
-Then Click on Fixed Asset
-Then Click on Asset Creation Eye button
-And store the asset branch for asset creation common report
-And store the asset code and seet reference number for asset creation report
-And seelect the asset creation approved record in list view
-And store the asset life in for asset creation report validation
-And click on asset Item tab in asset creation
-And click on asset Item tab in asset creation
-And select the item record in list view of item details
-And store the capitalization date and created date for asset creation report
-Then click on report button
-And click on master report main module
-And click on temp view of asset limit report
-And enter the accounting standard in asset limit report
-And enter the limit as on date in asset limit report
-And click on view button in loss booking report screen
-Then verify asset limit report should generate
-And click on user profile in maker
-And click on logout button
-Then verify user profile got logout
+
 @KUBS_FAT_UAT_002_008_01
 Scenario: To verify user can able to create the asset with GRN number
 Given Maker Navigate to UAT URL login
@@ -652,6 +628,31 @@ Then validate the asset reference number should reflect in asset depriciation re
 And click on user profile in maker
 And click on logout button
 Then verify user profile got logout
+@KUBS_FAT_UAT_013_001
+Scenario: Check Asset Limit Config
+Given Maker Navigate to UAT URL login
+And click on configuration section
+And click on transaction section
+Then Click on Fixed Asset
+Then Click on Asset Creation Eye button
+And store the asset branch for asset creation common report
+And store the asset code and seet reference number for asset creation report
+And seelect the asset creation approved record in list view
+And store the asset life in for asset creation report validation
+And click on asset Item tab in asset creation
+And click on asset Item tab in asset creation
+And select the item record in list view of item details
+And store the capitalization date and created date for asset creation report
+Then click on report button
+And click on master report main module
+And click on temp view of asset limit report
+And enter the accounting standard in asset limit report
+And enter the limit as on date in asset limit report
+And click on view button in loss booking report screen
+Then verify asset limit report should generate
+And click on user profile in maker
+And click on logout button
+Then verify user profile got logout
 @KUBS_FAT_UAT_002_007_01_AssetSale
 Scenario: Creation of the registered asset with full details
 Given Maker Navigate to UAT URL login
@@ -802,6 +803,26 @@ And get the test data for asset sale with high price from excel database
 Then verify maker user can able to see the approved asset sale record which is sold at high price in maker list view
 Then verify approved Asset item number is available in approved asset sale record
 And click on user profile in maker
+And click on logout button
+Then verify user profile got logout
+@KUBS_FAT_UAT_004_002
+Scenario: Check the accounting Entries (Sold at high price)
+Given Maker Navigate to UAT URL login
+Then Click on Fixed Asset Direction icon
+Then Click on Fixed assets configuration 
+Then Click on Asset GL configuration Eye button
+And get the testData for fixed asset gl configuration module for asset sold accounting entries
+And click on search button ion gl list view
+And search the asset code in gl list view
+Then store the gl code for verify accounnt entries
+Then click on report button
+And click Enquiry menu
+Then click on Edit icon near by financial transaction
+And choose branch as azentio main in accounting entries screen
+And enter the accounting gl in accounting entries screen
+And click on view button in accounting entries screen
+Then verify the sold at high price asset gl code should populate in accounting entries screen
+And click on user profile in checker
 And click on logout button
 Then verify user profile got logout
 @KUBS_FAT_UAT_013_013
@@ -961,7 +982,7 @@ And click on user profile in checker
 And click on logout button
 Then verify user profile got logout
 @KUBS_FAT_UAT_004_003_04
-Scenario: To verify maker user can able to see the approved asset sale record which is sold at high price in maker list view
+Scenario: To verify maker user can able to see the approved asset sale record which is sold at low price in maker list view
 Given Maker Navigate to UAT URL login
 And click on configuration section
 And click on transaction section
@@ -971,6 +992,26 @@ And get the test data for asset sale with low price from excel database
 Then verify maker user can able to see the approved asset sale record which is sold at high price in maker list view
 Then verify approved Asset item number is available in approved asset sale record
 And click on user profile in maker
+And click on logout button
+Then verify user profile got logout
+@KUBS_FAT_UAT_004_004
+Scenario: Check the accounting Entries (Sold at Low price)
+Given Maker Navigate to UAT URL login
+Then Click on Fixed Asset Direction icon
+Then Click on Fixed assets configuration 
+Then Click on Asset GL configuration Eye button
+And get the testData for fixed asset gl configuration module for asset sold accounting entries
+And click on search button ion gl list view
+And search the asset code in gl list view
+Then store the gl code for verify accounnt entries
+Then click on report button
+And click Enquiry menu
+Then click on Edit icon near by financial transaction
+And choose branch as azentio main in accounting entries screen
+And enter the accounting gl in accounting entries screen
+And click on view button in accounting entries screen
+Then verify the sold at high price asset gl code should populate in accounting entries screen
+And click on user profile in checker
 And click on logout button
 Then verify user profile got logout
 
@@ -1153,28 +1194,9 @@ And click on user profile in maker
 And click on logout button
 Then verify user profile got logout
 
-@KUBS_FAT_UAT_004_002
-Scenario: Check the accounting Entries (Sold at high price)
-Given Maker Navigate to UAT URL login
-Then Click on Fixed Asset Direction icon
-Then Click on Fixed assets configuration 
-Then Click on Asset GL configuration Eye button
-And get the testData for fixed asset gl configuration module for asset sold accounting entries
-And click on search button ion gl list view
-And search the asset code in gl list view
-Then store the gl code for verify accounnt entries
-Then click on report button
-And click Enquiry menu
-Then click on Edit icon near by financial transaction
-And choose branch as azentio main in accounting entries screen
-And enter the accounting gl in accounting entries screen
-And click on view button in accounting entries screen
-Then verify the sold at high price asset gl code should populate in accounting entries screen
-And click on user profile in checker
-And click on logout button
-Then verify user profile got logout
-@KUBS_FAT_UAT_004_004
-Scenario: Check the accounting Entries (Sold at Low price)
+
+@KUBS_FAT_UAT_004_005
+Scenario: Check the Tax/GST on asset sale accordingly
 Given Maker Navigate to UAT URL login
 Then Click on Fixed Asset Direction icon
 Then Click on Fixed assets configuration 
