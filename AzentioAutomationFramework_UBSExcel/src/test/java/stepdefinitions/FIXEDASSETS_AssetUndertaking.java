@@ -3,6 +3,9 @@ package stepdefinitions;
 import static org.testng.Assert.fail;
 
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.Month;
+import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.Map;
 import org.json.simple.parser.ParseException;
@@ -52,13 +55,14 @@ public class FIXEDASSETS_AssetUndertaking {
 	JsonDataReaderWriter jsonWriter = new JsonDataReaderWriter();
 	ClicksAndActionsHelper clicksAndActionHelper = new ClicksAndActionsHelper(driver);
 	JsonDataReaderWriter reader;
-	BrowserHelper browserHelper;
+	BrowserHelper browserHelper = new BrowserHelper(driver);
 	KUBS_CheckerObj kubschecker = new KUBS_CheckerObj(driver);
 	ACCOUNTSPAYABLE_VendorContractsObj aCCOUNTSPAYABLE_VendorContractsObj = new ACCOUNTSPAYABLE_VendorContractsObj(
 			driver);
 	ACCOUNTSPAYABLE_InvoiceBookingObj aCCOUNTSPAYABLE_InvoiceBookingObj = new ACCOUNTSPAYABLE_InvoiceBookingObj(driver);
 	Map<String, String> asetTransferTestData = new HashMap<>();
 	Map<String, String> accountingEntriesTransferTestData = new HashMap<>();
+	Map<String, String> assetTransferReportTestData = new HashMap<>();
 	KUBS_CommonWebElements kubsCommonObj = new KUBS_CommonWebElements(driver);
 	KUBS_AccountingEntriesObj kubsAccountingEntriesObj = new KUBS_AccountingEntriesObj(driver);
 	String path = System.getProperty("user.dir") + "\\Test-data\\KUBSTestData.xlsx";
@@ -73,7 +77,7 @@ public class FIXEDASSETS_AssetUndertaking {
 
 	@And("^user should navigate to fixed assets menu$")
 	public void user_should_navigate_to_fixed_assets_menu() throws InterruptedException {
-		Thread.sleep(2000);
+		
 		waithelper.waitForElement(driver, 2000,
 				fIXEDASSETS_AssetUndertakingObj.fixedAssets_AssetUndertaking_DirectionButton());
 		fIXEDASSETS_AssetUndertakingObj.fixedAssets_AssetUndertaking_DirectionButton().click();
@@ -611,6 +615,142 @@ public class FIXEDASSETS_AssetUndertaking {
 		}
 	}
 
+	@And("^get the asset code for asset transfer report$")
+	public void get_the_asset_code_for_asset_transfer_report() throws Throwable {
+		waithelper.waitForElementToVisibleWithFluentWait(driver,
+				fIXEDASSETS_AssetUndertakingObj.assetTransferApprovedAssetCode(), 20, 1);
+		String approvedAssetCode = fIXEDASSETS_AssetUndertakingObj.assetTransferApprovedAssetCode().getText();
+		assetTransferReportTestData.put("approvedAssetCode", approvedAssetCode);
+		waithelper.waitForElementToVisibleWithFluentWait(driver,
+				fIXEDASSETS_AssetUndertakingObj.assetTransferApprovedAssetReferenceNumber(), 20, 1);
+		String approvedAssetReferenceNumber = fIXEDASSETS_AssetUndertakingObj
+				.assetTransferApprovedAssetReferenceNumber().getText();
+		assetTransferReportTestData.put("approvedAssetReferenceNumber", approvedAssetReferenceNumber);
+	}
+
+	@And("^click on temp view of asset transfer report$")
+	public void click_on_temp_view_of_asset_transfer_report() throws Throwable {
+		waithelper.waitForElementToVisibleWithFluentWait(driver,
+				fIXEDASSETS_AssetUndertakingObj.assetTransferAssetTransferReporTempView(), 20, 1);
+		clicksAndActionHelper.moveToElement(fIXEDASSETS_AssetUndertakingObj.assetTransferAssetTransferReporTempView());
+		clicksAndActionHelper.clickOnElement(fIXEDASSETS_AssetUndertakingObj.assetTransferAssetTransferReporTempView());
+	}
+
+	@And("^enter the asset code in asset trasfer report$")
+	public void enter_the_asset_code_in_asset_trasfer_report() throws Throwable {
+		waithelper.waitForElementToVisibleWithFluentWait(driver,
+				fIXEDASSETS_AssetUndertakingObj.assetTransferReportAssetCodeInputBox(), 20, 1);
+		fIXEDASSETS_AssetUndertakingObj.assetTransferReportAssetCodeInputBox().click();
+		fIXEDASSETS_AssetUndertakingObj.assetTransferReportAssetCodeInputBox()
+				.sendKeys(assetTransferReportTestData.get("approvedAssetCode"));
+		String xpath = "//ng-dropdown-panel//span[contains(text(),'"
+				+ assetTransferReportTestData.get("approvedAssetCode") + "')]";
+		for (int i = 0; i <= 500; i++) {
+			try {
+				clicksAndActionHelper.moveToElement(driver.findElement(By.xpath(xpath)));
+				clicksAndActionHelper.clickOnElement(driver.findElement(By.xpath(xpath)));
+				break;
+			} catch (Exception e) {
+
+				if (i == 500) {
+					Assert.fail(e.getMessage());
+				}
+			}
+		}
+	}
+
+	@And("^enter the asset transfer date$")
+	public void enter_the_asset_transfer_date() throws Throwable {
+		String systemDate = kubsCommonObj.kUBSSystemDate().getText();
+		assetTransferReportTestData.put("systemDate", systemDate);
+		waithelper.waitForElementToVisibleWithFluentWait(driver,
+				fIXEDASSETS_AssetUndertakingObj.assetTransferReportInputcalendar(), 20, 1);
+		fIXEDASSETS_AssetUndertakingObj.assetTransferReportInputcalendar().click();
+
+		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MMM/uuuu");
+		DateTimeFormatter dtf1 = DateTimeFormatter.ofPattern("dd/MMMM/uuuu");
+		LocalDate localDate = LocalDate.now();
+
+		String Date = dtf.format(localDate);
+		String Date1 = dtf1.format(localDate);
+		String[] DateSplit = Date.split("[/]");
+		String[] DateSplit1 = Date1.split("[/]");
+		Integer DateNum = Integer.valueOf(DateSplit[0]);
+		String Month = DateSplit[1];
+		String FullMonth = DateSplit1[1];
+		Integer yearNum = Integer.valueOf(DateSplit[2]);
+		waithelper.waitForElementToVisibleWithFluentWait(driver, kubsCommonObj.kubsCalendarMonthYearOption(), 20, 1);
+		clicksAndActionHelper.moveToElement(kubsCommonObj.kubsCalendarMonthYearOption());
+		clicksAndActionHelper.clickOnElement(kubsCommonObj.kubsCalendarMonthYearOption());
+		String yearXpath = "//span[contains(text(),'" + yearNum + "')]//ancestor::td";
+		for (int i = 0; i <= 500; i++) {
+			try {
+				driver.findElement(By.xpath(yearXpath)).click();
+				break;
+			} catch (Exception e) {
+				if (i == 500) {
+					Assert.fail(e.getLocalizedMessage());
+				}
+			}
+		}
+
+		String monthXpath = "//span[contains(text(),'" + Month + "')]//ancestor::td";
+		for (int i = 0; i <= 500; i++) {
+			try {
+				driver.findElement(By.xpath(monthXpath)).click();
+				break;
+			} catch (Exception e) {
+				if (i == 500) {
+					Assert.fail(e.getLocalizedMessage());
+				}
+			}
+		}
+
+		WebElement FinalDay = driver
+				.findElement(By.xpath("//td[@aria-label='" + FullMonth + " " + DateNum + ", " + yearNum + "']/span"));
+
+		for (int i = 0; i <= 500; i++) {
+			try {
+				clicksAndActionHelper.doubleClick(FinalDay);
+				break;
+			} catch (Exception e) {
+				if (i == 500) {
+					Assert.fail(e.getLocalizedMessage());
+
+				}
+			}
+		}
+	}
+
+	@Then("^validate the asset reference number of transfered asset should reflect in asset transfer report$")
+	public void validate_the_asset_reference_number_of_transfered_asset_should_reflect_in_asset_transfer_report()
+			throws Throwable {
+		for (int i = 0; i <= 50; i++) {
+			try {
+				browserHelper.SwitchToWindow(1);
+				break;
+			} catch (Exception e) {
+				if (i == 50) {
+					Assert.fail(e.getMessage());
+				}
+			}
+		}
+		String validatioXpath = "//div[contains(text(),'"
+				+ assetTransferReportTestData.get("approvedAssetReferenceNumber") + "')]";
+		for (int i = 0; i <= 500; i++) {
+			try {
+				boolean validation = driver.findElement(By.xpath(validatioXpath)).isDisplayed();
+				Assert.assertTrue(validation);
+				break;
+			} catch (Exception e) {
+				if (i == 500) {
+					Assert.fail(e.getMessage());
+				}
+			}
+		}
+		browserHelper.switchToParentWithChildClose();
+
+	}
 	// End
 
 	@And("^Maker user should received the transferred asset$")
@@ -620,7 +760,7 @@ public class FIXEDASSETS_AssetUndertaking {
 //		driver.findElement(By.xpath("//span[contains(text(),'" + jsonWriter.readReferancedata() + "')]/ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell/div/ion-buttons/ion-button")).click();
 		waithelper.waitForElement(driver, 2000, fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_NotificationButton());
 		fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_NotificationButton().click();
-		Thread.sleep(2000);
+		
 		waithelper.waitForElement(driver, 3000, driver.findElement(By.xpath("//span[contains(text(),'"
 				+ jsonWriter.readReferancedata()
 				+ "')]/ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell/div/ion-buttons/ion-button")));
@@ -637,10 +777,10 @@ public class FIXEDASSETS_AssetUndertaking {
 
 		waithelper.waitForElement(driver, 2000, fIXEDASSETS_AssetUndertakingObj.fixedAssets_AssetTransfer_SaveButton());
 		fIXEDASSETS_AssetUndertakingObj.fixedAssets_AssetTransfer_SaveButton().click();
-		Thread.sleep(2000);
+		
 		waithelper.waitForElement(driver, 4000, fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_NotificationButton());
 		fIXEDASSETS_AssetSaleObj.fixedAssets_AssetSale_NotificationButton().click();
-		Thread.sleep(2000);
+		
 		waithelper.waitForElement(driver, 3000, driver.findElement(By.xpath("//span[contains(text(),'"
 				+ jsonWriter.readReferancedata()
 				+ "')]/ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell/div/ion-buttons/ion-button")));

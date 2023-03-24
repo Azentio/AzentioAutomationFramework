@@ -60,6 +60,7 @@ public class VendorContractsStep {
 				aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_ExpenseType());
 		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_ExpenseType()
 				.sendKeys(testData.get("ExpenseType"));
+		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_ExpenseType().sendKeys(Keys.DOWN);
 		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_ExpenseType().sendKeys(Keys.ENTER);
 
 	}
@@ -70,6 +71,7 @@ public class VendorContractsStep {
 		waithelper.waitForElementwithFluentwait(driver,
 				aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_BP_Name());
 		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_BP_Name().sendKeys(testData.get("BP_Name"));
+		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_BP_Name().sendKeys(Keys.DOWN);
 		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_BP_Name().sendKeys(Keys.ENTER);
 
 	}
@@ -104,9 +106,9 @@ public class VendorContractsStep {
 		waithelper.waitForElementwithFluentwait(driver,
 				aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_AgreementCalendar());
 		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_AgreementCalendar().click();
-//    			Thread.sleep(2000);
+//    			
 		javascripthelper.JavaScriptHelper(driver);
-		Thread.sleep(2000);
+		
 		driver.findElement(By.xpath("(//span[@class='owl-dt-control-content owl-dt-control-button-content'])[2]"))
 				.click();
 		driver.findElement(By.xpath("//span[text()='" + testData.get("AgreementYear") + "']")).click();
@@ -125,7 +127,7 @@ public class VendorContractsStep {
 		waithelper.waitForElementwithFluentwait(driver,
 				aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_ContractEndDate());
 		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_ContractEndDate().click();
-		Thread.sleep(2000);
+		
 		driver.findElement(By.xpath("(//span[@class='owl-dt-control-content owl-dt-control-button-content'])[2]"))
 				.click();
 		driver.findElement(By.xpath("//span[text()='" + testData.get("ContractEndYear") + "']")).click();
@@ -144,7 +146,7 @@ public class VendorContractsStep {
 		waithelper.waitForElementwithFluentwait(driver,
 				aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_ContractSignedOnDate());
 		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_ContractSignedOnDate().click();
-		Thread.sleep(2000);
+		
 		driver.findElement(By.xpath("(//span[@class='owl-dt-control-content owl-dt-control-button-content'])[2]"))
 				.click();
 		driver.findElement(By.xpath("//span[text()='" + testData.get("ContractSignedOnYear") + "']")).click();
@@ -267,7 +269,7 @@ public class VendorContractsStep {
 		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_ExpenseCode().click();
 		waithelper.waitForElementwithFluentwait(driver,
 				aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_ExpenseCode());
-		Thread.sleep(500);
+		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_ExpenseCode().sendKeys(Keys.DOWN);
 		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_ExpenseCode().sendKeys(Keys.ENTER);
 
 	}
@@ -288,6 +290,7 @@ public class VendorContractsStep {
 				aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_CostCenter());
 		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_CostCenter()
 				.sendKeys(testData.get("CostCenter"));
+		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_CostCenter().sendKeys(Keys.DOWN);
 		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_CostCenter().sendKeys(Keys.ENTER);
 
 	}
@@ -298,6 +301,7 @@ public class VendorContractsStep {
 		waithelper.waitForElementwithFluentwait(driver,
 				aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_Unit());
 		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_Unit().sendKeys(testData.get("Unit"));
+		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_Unit().sendKeys(Keys.DOWN);
 		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_Unit().sendKeys(Keys.ENTER);
 
 	}
@@ -379,6 +383,7 @@ public class VendorContractsStep {
 				aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_PaymentTermType());
 		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_PaymentTermType()
 				.sendKeys(testData.get("PaymentTermType"));
+		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_PaymentTermType().sendKeys(Keys.DOWN);
 		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_PaymentTermType().sendKeys(Keys.ENTER);
 
 	}
@@ -390,6 +395,7 @@ public class VendorContractsStep {
 				aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_ModeOfPayment());
 		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_ModeOfPayment()
 				.sendKeys(testData.get("ModeOfPayment"));
+		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_ModeOfPayment().sendKeys(Keys.DOWN);
 		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_ModeOfPayment().sendKeys(Keys.ENTER);
 
 	}
@@ -401,6 +407,7 @@ public class VendorContractsStep {
 				aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_AutoPayout());
 		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_AutoPayout()
 				.sendKeys(testData.get("AutoPayout"));
+		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_AutoPayout().sendKeys(Keys.DOWN);
 		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_AutoPayout().sendKeys(Keys.ENTER);
 
 	}
@@ -460,7 +467,7 @@ public class VendorContractsStep {
 				driver.findElement(By.xpath(before_xpath + testData.get("Reference ID") + after_xpath)));
 		driver.findElement(By.xpath(before_xpath + testData.get("Reference ID") + after_xpath)).click();
 
-//    	Thread.sleep(2000);
+//    	
 //    	waithelper.waitForElement(driver, 3000, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_SubmitButton());
 		waithelper.waitForElementwithFluentwait(driver,
 				aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_SubmitButton());
@@ -478,7 +485,7 @@ public class VendorContractsStep {
 				aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_Submit());
 		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_Submit().click();
 
-//    	Thread.sleep(1000);
+
 //    	waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_RecordStatus());
 		waithelper.waitForElementwithFluentwait(driver,
 				aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_RecordStatus());
@@ -522,6 +529,7 @@ public class VendorContractsStep {
 				aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_BusinessPartnerSearch());
 		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_BusinessPartnerSearch()
 				.sendKeys(testData.get("BP_Name"));
+		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_BusinessPartnerSearch().sendKeys(Keys.DOWN);
 		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_BusinessPartnerSearch().sendKeys(Keys.ENTER);
 
 	}
@@ -547,8 +555,8 @@ public class VendorContractsStep {
 
 		excelData.updateTestData("KUBS_FAT_UAT_001_002_04_D1", "ContractDes", ContractDes);
 		testData = excelData.getTestdata("KUBS_FAT_UAT_001_002_04_D1");
-		waithelper.waitForElementToVisibleWithFluentWait(driver,
-				aCCOUNTSPAYABLE_VendorContractsObj.accountPayableVendorContractsApprovedBpName(), 20, 1);
+		waithelper.waitForElementwithFluentwait(driver,
+				aCCOUNTSPAYABLE_VendorContractsObj.accountPayableVendorContractsApprovedBpName());
 		String approvedBpname = aCCOUNTSPAYABLE_VendorContractsObj.accountPayableVendorContractsApprovedBpName()
 				.getText();
 		System.out.println("Bp Name : " + approvedBpname);
@@ -560,13 +568,10 @@ public class VendorContractsStep {
 	@And("^User should go to the kubs url and login as a reviewer user$")
 	public void user_should_go_to_the_kubs_url_and_login_as_a_reviewer_user()
 			throws IOException, ParseException, InterruptedException {
-
-		// testData = excelData.getTestdata("KUBS_FAT_UAT_001_002_01_D1");
-		// reader = new JsonDataReaderWriter();
 		login = new KUBS_Login(driver);
 		driver.get(config.getApplicationUrl());
 		login.logintoAzentioappReviewer("Reviewer", testData.get("Reviewer ID"));
-		Thread.sleep(2000);
+		
 	}
 
 	@And("^approve the record by reviewer user$")
@@ -575,9 +580,8 @@ public class VendorContractsStep {
 		String before_xpath = "//datatable-row-wrapper[";
 		String after_xpath = "]/datatable-body-row/div/datatable-body-cell[2]";
 		String after_xpath_for_action = "]/datatable-body-row/div/datatable-body-cell[1]/div/ion-buttons/ion-button";
-		Thread.sleep(1000);
+	
 		for (int i = 1; i < 10; i++) {
-//			waithelper.waitForElementwithFluentwait(driver, 10000, driver.findElement(By.xpath(before_xpath + i + after_xpath)));
 			String referance_id = null;
 			for (int j = 0; j < 30; j++) {
 				try {
@@ -587,13 +591,7 @@ public class VendorContractsStep {
 
 				}
 			}
-			// waithelper.waitForElementwithFluentwaitwithFluentwait(driver,
-			// driver.findElement(By.xpath(before_xpath + i + after_xpath)));
 
-//			waithelper.waitForElementwithFluentwait(driver, 10000, driver.findElement(By.xpath(before_xpath + i
-//					+ after_xpath_for_action)));
-//			waithelper.waitForElementwithFluentwaitwithFluentwait(driver, driver.findElement(By.xpath(before_xpath + i
-//					+ after_xpath_for_action)));
 			for (int j = 0; j < 30; j++) {
 				try {
 					driver.findElement(By.xpath(before_xpath + i + after_xpath_for_action)).click();
@@ -604,26 +602,20 @@ public class VendorContractsStep {
 			}
 			excelData.updateTestData("KUBS_FAT_UAT_001_002_01_D1", "Reference ID", referance_id);
 			testData = excelData.getTestdata("KUBS_FAT_UAT_001_002_01_D1");
-
-			// reader.addReferanceData(referance_id);
-
-//				waithelper.waitForElementwithFluentwait(driver, 2000, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_Approve_Button());
 			waithelper.waitForElementwithFluentwait(driver,
 					aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_Approve_Button());
 			aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_Approve_Button().click();
-//				waithelper.waitForElementwithFluentwait(driver, 3000, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_ApproveRemarkByReviewer());
 			waithelper.waitForElementwithFluentwait(driver,
 					aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_ApproveRemarkByReviewer());
 			aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_ApproveRemarkByReviewer().click();
 			waithelper.waitForElementwithFluentwait(driver,
 					aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_ApproveRemarkByReviewer());
 			aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_ApproveRemarkByReviewer()
-					.sendKeys("Approved by reviewer");
-//				waithelper.waitForElementwithFluentwait(driver, 3000, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_Submit());
+					.sendKeys(testData.get("ReviewerAlertRemark"));
 			waithelper.waitForElementwithFluentwait(driver,
 					aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_Submit());
 			aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_Submit().click();
-//				Thread.sleep(2000);
+//				
 			waithelper.waitForElementwithFluentwait(driver,
 					aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_RecordStatus());
 			WebElement recordstatus = aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_RecordStatus();
@@ -660,8 +652,8 @@ public class VendorContractsStep {
 	}
 
 	@When("^click on eye button of vendor contract$")
-	public void click_on_eye_button_of_vendor_contract() throws InterruptedException {
-		// Thread.sleep(2000);
+	public void click_on_eye_button_of_vendor_contract() throws InterruptedException, IOException {
+		// 
 		waithelper.waitForElementwithFluentwait(driver,
 				aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_EyeButton());
 		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_EyeButton().click();
@@ -669,7 +661,7 @@ public class VendorContractsStep {
 
 	@And("^click on add button to create contract$")
 	public void click_on_add_button_to_create_contract() throws InterruptedException {
-		Thread.sleep(1000);
+		
 //		waithelper.waitForElementwithFluentwait(driver, 2000, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_AddButton());
 		// waithelper.waitForElementwithFluentwaitwithFluentwait(driver,
 		// aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_AddButton());
@@ -685,8 +677,8 @@ public class VendorContractsStep {
 	}
 
 	@And("^user should navigate to accounts payable menu$")
-	public void user_should_navigate_to_accounts_payable_menu() throws InterruptedException {
-		Thread.sleep(2000);
+	public void user_should_navigate_to_accounts_payable_menu() throws InterruptedException, IOException {
+		
 //		waithelper.waitForElementwithFluentwait(driver, 2000, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_DirectionButton());
 		waithelper.waitForElementwithFluentwait(driver,
 				aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_DirectionButton());
@@ -709,14 +701,14 @@ public class VendorContractsStep {
 	}
 
 	@And("^Click on security management in checker$")
-	public void click_on_security_management_in_checker() {
+	public void click_on_security_management_in_checker() throws IOException {
 		waithelper.waitForElementwithFluentwait(driver, kubschecker.checkerSecurityManagement());
 		kubschecker.checkerSecurityManagement().click();
 
 	}
 
 	@Then("^Click on open pool in checker$")
-	public void click_on_open_pool_in_checker() {
+	public void click_on_open_pool_in_checker() throws IOException {
 		waithelper.waitForElementwithFluentwait(driver, kubschecker.checkerActionIcon());
 		kubschecker.checkerActionIcon().click();
 	}
@@ -770,13 +762,7 @@ public class VendorContractsStep {
 
 	@Then("^checker should approved the contract record$")
 	public void checker_should_approved_the_contract_record() throws IOException, ParseException, InterruptedException {
-//		waithelper.waitForElementwithFluentwait(driver, 3000, driver.findElement(By.xpath("//span[contains(text(),'" + jsonWriter.readReferancedata() + "')]/ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell/div/ion-buttons/ion-button")));
-		Thread.sleep(2000);
-		// waithelper.waitForElementwithFluentwait(driver,
-		// driver.findElement(By.xpath("//span[contains(text(),'"
-		// + testData.get("Reference ID")
-		// +
-		// "')]/ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell/div/ion-buttons/ion-button")));
+
 		for (int i = 0; i <= 20; i++) {
 			try {
 				driver.findElement(By.xpath("//span[contains(text(),'" + testData.get("Reference ID")
@@ -791,24 +777,13 @@ public class VendorContractsStep {
 			}
 		}
 
-//    	waithelper.waitForElementwithFluentwait(driver, 2000, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_NotificationButton());
-//		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_NotificationButton().click();
-//		Thread.sleep(2000);
-//		waithelper.waitForElementwithFluentwait(driver, 3000, driver.findElement(By.xpath("//span[contains(text(),'" + jsonWriter.readReferancedata()
-//		+ "')]/ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell/div/ion-buttons/ion-button")));
-//		driver.findElement(By.xpath("//span[contains(text(),'" + jsonWriter.readReferancedata() + "')]/ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell/div/ion-buttons/ion-button"))
-//		.click();
-
-//		waithelper.waitForElementwithFluentwait(driver, 2000, kubschecker.checkerApproveButton());
 		waithelper.waitForElementwithFluentwait(driver, kubschecker.checkerApproveButton());
 		kubschecker.checkerApproveButton().click();
-//		waithelper.waitForElementwithFluentwait(driver, 2000, kubschecker.checkerRemarks());
 		waithelper.waitForElementwithFluentwait(driver, kubschecker.checkerRemarks());
 		kubschecker.checkerRemarks().sendKeys("Approved by checker");
-//		waithelper.waitForElementwithFluentwait(driver, 2000, kubschecker.checkersubmitButton());
 		waithelper.waitForElementwithFluentwait(driver, kubschecker.checkersubmitButton());
 		kubschecker.checkersubmitButton().click();
-		Thread.sleep(2000);
+		
 		waithelper.waitForElementwithFluentwait(driver,
 				aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_RecordStatus());
 		WebElement recordstatus = aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_RecordStatus();
@@ -829,7 +804,8 @@ public class VendorContractsStep {
 		accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_Contract().click();
 		accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_Contract()
 				.sendKeys(testData.get("ContractDes"));
-		Thread.sleep(500);
+
+		accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_Contract().sendKeys(Keys.DOWN);
 		accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_Contract().sendKeys(Keys.ENTER);
 
 	}
@@ -837,8 +813,8 @@ public class VendorContractsStep {
 //Contract report
 	@And("^get the business partner name for contract report$")
 	public void get_the_business_partner_name_for_contract_report() throws Throwable {
-		waithelper.waitForElementToVisibleWithFluentWait(driver,
-				aCCOUNTSPAYABLE_VendorContractsObj.accountPayableVendorContractsApprovedContractBpName(), 20, 1);
+		waithelper.waitForElementwithFluentwait(driver,
+				aCCOUNTSPAYABLE_VendorContractsObj.accountPayableVendorContractsApprovedContractBpName());
 		String BpName = aCCOUNTSPAYABLE_VendorContractsObj.accountPayableVendorContractsApprovedContractBpName()
 				.getText();
 		contractReportTestdata.put("BpName", BpName);
@@ -847,8 +823,8 @@ public class VendorContractsStep {
 
 	@And("^get the contract number for contract report$")
 	public void get_the_contract_number_for_contract_report() throws Throwable {
-		waithelper.waitForElementToVisibleWithFluentWait(driver,
-				aCCOUNTSPAYABLE_VendorContractsObj.accountPayableVendorContractsApprovedContractNumber(), 20, 1);
+		waithelper.waitForElementwithFluentwait(driver,
+				aCCOUNTSPAYABLE_VendorContractsObj.accountPayableVendorContractsApprovedContractNumber());
 		String ContractNumber = aCCOUNTSPAYABLE_VendorContractsObj.accountPayableVendorContractsApprovedContractNumber()
 				.getText();
 		contractReportTestdata.put("ContractNumber", ContractNumber);
@@ -856,8 +832,8 @@ public class VendorContractsStep {
 
 	@And("^get the created date for contract report$")
 	public void get_the_created_date_for_contract_report() throws Throwable {
-		waithelper.waitForElementToVisibleWithFluentWait(driver,
-				aCCOUNTSPAYABLE_VendorContractsObj.accountPayableVendorContractsApprovedContractAsOndate(), 20, 1);
+		waithelper.waitForElementwithFluentwait(driver,
+				aCCOUNTSPAYABLE_VendorContractsObj.accountPayableVendorContractsApprovedContractAsOndate());
 		String contractAsOnDate = aCCOUNTSPAYABLE_VendorContractsObj
 				.accountPayableVendorContractsApprovedContractAsOndate().getText();
 		contractReportTestdata.put("contractAsOnDate", contractAsOnDate);
@@ -865,8 +841,8 @@ public class VendorContractsStep {
 
 	@And("^get the contract status for contract report$")
 	public void get_the_contract_status_for_contract_report() throws Throwable {
-		waithelper.waitForElementToVisibleWithFluentWait(driver,
-				aCCOUNTSPAYABLE_VendorContractsObj.accountPayableVendorContractsApprovedContractStatus(), 20, 1);
+		waithelper.waitForElementwithFluentwait(driver,
+				aCCOUNTSPAYABLE_VendorContractsObj.accountPayableVendorContractsApprovedContractStatus());
 		String contractStatus = aCCOUNTSPAYABLE_VendorContractsObj.accountPayableVendorContractsApprovedContractStatus()
 				.getText();
 		contractReportTestdata.put("contractStatus", contractStatus);
@@ -874,20 +850,20 @@ public class VendorContractsStep {
 
 	@And("^click on reports main module$")
 	public void click_on_reports_main_module() throws Throwable {
-		waithelper.waitForElementToVisibleWithFluentWait(driver, kubsComonObj.kubsReportsMainModule(), 20, 1);
+		waithelper.waitForElementwithFluentwait(driver, kubsComonObj.kubsReportsMainModule());
 		kubsComonObj.kubsReportsMainModule().click();
 	}
 
 	@And("^click on temp view of contract report$")
 	public void click_on_temp_view_of_contract_report() throws Throwable {
-		waithelper.waitForElementToVisibleWithFluentWait(driver, kubsComonObj.kubsContractReportTempView(), 20, 1);
+		waithelper.waitForElementwithFluentwait(driver, kubsComonObj.kubsContractReportTempView());
 		kubsComonObj.kubsContractReportTempView().click();
 	}
 
 	@And("^enter the contract bp name in contract report$")
 	public void enter_the_contract_bp_name_in_contract_report() throws Throwable {
-		waithelper.waitForElementToVisibleWithFluentWait(driver,
-				aCCOUNTSPAYABLE_VendorContractsObj.accountPayableVendorContractsReportsVendorEmployeeName(), 20, 1);
+		waithelper.waitForElementwithFluentwait(driver,
+				aCCOUNTSPAYABLE_VendorContractsObj.accountPayableVendorContractsReportsVendorEmployeeName());
 		aCCOUNTSPAYABLE_VendorContractsObj.accountPayableVendorContractsReportsVendorEmployeeName().click();
 		aCCOUNTSPAYABLE_VendorContractsObj.accountPayableVendorContractsReportsVendorEmployeeName()
 				.sendKeys(contractReportTestdata.get("BpName"));
@@ -898,10 +874,10 @@ public class VendorContractsStep {
 
 	@And("^enter the contract as on date in contract report$")
 	public void enter_the_contract_as_on_date_in_contract_report() throws Throwable {
-		waithelper.waitForElementToVisibleWithFluentWait(driver,
-				aCCOUNTSPAYABLE_VendorContractsObj.accountPayableVendorContractsReportsContractAsOnDate(), 20, 1);
+		waithelper.waitForElementwithFluentwait(driver,
+				aCCOUNTSPAYABLE_VendorContractsObj.accountPayableVendorContractsReportsContractAsOnDate());
 		aCCOUNTSPAYABLE_VendorContractsObj.accountPayableVendorContractsReportsContractAsOnDate().click();
-		waithelper.waitForElementToVisibleWithFluentWait(driver, kubsComonObj.kubsCalendarMonthYearOption(), 20, 1);
+		waithelper.waitForElementwithFluentwait(driver, kubsComonObj.kubsCalendarMonthYearOption());
 		clicksAndActionHelper.moveToElement(kubsComonObj.kubsCalendarMonthYearOption());
 		clicksAndActionHelper.clickOnElement(kubsComonObj.kubsCalendarMonthYearOption());
 		System.out.println("Created date" + contractReportTestdata.get("contractAsOnDate"));
@@ -999,8 +975,8 @@ public class VendorContractsStep {
 
 	@And("^enter the contract status in contract report$")
 	public void enter_the_contract_status_in_contract_report() throws Throwable {
-		waithelper.waitForElementToVisibleWithFluentWait(driver,
-				aCCOUNTSPAYABLE_VendorContractsObj.accountPayableVendorContractsReportsContractStatus(), 20, 1);
+		waithelper.waitForElementwithFluentwait(driver,
+				aCCOUNTSPAYABLE_VendorContractsObj.accountPayableVendorContractsReportsContractStatus());
 		aCCOUNTSPAYABLE_VendorContractsObj.accountPayableVendorContractsReportsContractStatus().click();
 		aCCOUNTSPAYABLE_VendorContractsObj.accountPayableVendorContractsReportsContractStatus()
 				.sendKeys(contractReportTestdata.get("contractStatus"));

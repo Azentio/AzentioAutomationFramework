@@ -1,7 +1,10 @@
 package helper;
 
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.time.Duration;
 import java.util.NoSuchElementException;
+import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
 import org.apache.logging.log4j.LogManager;
@@ -19,7 +22,9 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class WaitHelper {
 	private WebDriver driver;
 	Logger Log = LogManager.getLogger(WaitHelper.class.getName());
-
+	String propertyFilePath=System.getProperty("user.dir")+"\\configs\\data.properties";
+    FileInputStream fileInputStream;
+    Properties property;
 	// wait helper constrcutor
 	public WaitHelper(WebDriver driver) {
 		this.driver = driver;
@@ -82,11 +87,16 @@ public class WaitHelper {
 
 	}
 	
-	public  WebElement waitForElementwithFluentwait(WebDriver driver, WebElement element) 
-	{ 	
+	public  WebElement waitForElementwithFluentwait(WebDriver driver, WebElement element) throws IOException 
+	{
+		fileInputStream= new FileInputStream(propertyFilePath);
+		property= new Properties();
+		property.load(fileInputStream);
+		int timeOuts=Integer.parseInt(property.getProperty("Timeouts"));
+		int pollingSeconds=Integer.parseInt(property.getProperty("PollingSeconds"));
 		Wait<WebDriver> wait = new FluentWait<WebDriver>(driver)
-				.withTimeout(Duration.ofSeconds(20)) 
-				.pollingEvery(Duration.ofMillis(800))
+				.withTimeout(Duration.ofSeconds(timeOuts)) 
+				.pollingEvery(Duration.ofMillis(pollingSeconds))
 				.ignoring(Exception.class);
 //		WebElement element1 = wait.until(ExpectedConditions.elementToBeClickable(element));
 		WebElement element1 = wait.until(ExpectedConditions.visibilityOf(element));

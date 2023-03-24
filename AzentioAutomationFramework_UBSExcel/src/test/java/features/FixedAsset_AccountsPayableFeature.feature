@@ -134,14 +134,10 @@ Given User should go to the kubs url and login as a maker user
 And user should navigate to accounts payable menu
 When click on eye button of vendor contract
 And click on add button to create contract
-#And Fill the required fields to create contract
 And fill the accountPayable_VendorContracts_ExpenseType
 And fill the accountPayable_VendorContracts_BP_Name
 And fill the accountPayable_VendorContracts_BP_Branch
 And fill the accountPayable_VendorContracts_ContractName
-#And fill the accountPayable_VendorContracts_AgreementCalendar
-#And fill the accountPayable_VendorContracts_ContractEndDate
-#And fill the accountPayable_VendorContracts_ContractSignedOnDate
 And fill the accountPayable_VendorContracts_Currency
 And fill the accountPayable_VendorContracts_Remark
 And fill the accountPayable_VendorContracts_OtherDetailsButton
@@ -238,7 +234,6 @@ Then Click on Direction icon
 Then Click on Account Payable 
 Then Click on purchase order Eye Icon
 Then Click on purchase order Add button
-#Then Fill purchase order Mandatory fields
 And User fill the accountsPayable_VendorPurchaseOrder_BPName
 And User fill the accountsPayable_VendorPurchaseOrder_ReferenceType
 
@@ -321,7 +316,7 @@ And click on user profile icon
 And click on logout button
 Then verify user profile got logout
 @KUBS_FAT_UAT_001_004_02
-Scenario: To verify reviewer user can able to approve the asset write off record
+Scenario: To verify reviewer user can able to approve the GRN record
 Given navigate to kubs Url to approve the GRN record in reviewer
 And click on notification in reviewer stage
 And select the record in notification
@@ -333,7 +328,7 @@ And click on user profile icon
 And click on logout button
 Then verify user profile got logout
 @KUBS_FAT_UAT_001_004_03
-Scenario: To verify checker user can able to approve the fixed asset impairment
+Scenario: To verify checker user can able to approve the GRN record
 Given navigate to kubs url to approve the GRN record in checker
 And click on security management tool
 And click on temp view near by open pool
@@ -385,7 +380,7 @@ And click on user profile icon
 And click on logout button
 Then verify user profile got logout
 @KUBS_FAT_UAT_001_005_02
-Scenario: To verify reviewer user can able to approve the asset write off record
+Scenario: To verify reviewer user can able to approve the invoice booking record
 Given navigate to kubs Url to approve the invoice against po record in reviewer
 And click on notification in reviewer stage
 And select the record in notification
@@ -397,7 +392,7 @@ And click on user profile icon
 And click on logout button
 Then verify user profile got logout
 @KUBS_FAT_UAT_001_005_03
-Scenario: To verify checker user can able to approve the fixed asset impairment
+Scenario: To verify checker user can able to approve the invoice booking record
 Given navigate to kubs url to approve the the invoice against po record in checker
 And click on security management tool
 And click on temp view near by open pool

@@ -37,7 +37,6 @@ public class VendorPurchaseOrder_PO {
 	ConfigFileReader config = new ConfigFileReader();
 	DropDownHelper dropDownHelper;
 	WaitHelper waithelper = new WaitHelper(driver);
-	// maker//
 	JavascriptHelper javascripthelper = new JavascriptHelper();
 
 	AccountPayable_VendorPurchaseOrderObj accountPayable_VendorPurchaseOrderObj = new AccountPayable_VendorPurchaseOrderObj(
@@ -72,8 +71,6 @@ public class VendorPurchaseOrder_PO {
 
 	@And("^User fill the accountsPayable_VendorPurchaseOrder_BPName$")
 	public void user_fill_the_accountspayablevendorpurchaseorderbpname() throws Throwable {
-
-		// BP Name
 		waithelper.waitForElementwithFluentwait(driver,
 				accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_BPName());
 		accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_BPName().click();
@@ -86,14 +83,12 @@ public class VendorPurchaseOrder_PO {
 
 	@And("^User fill the accountsPayable_VendorPurchaseOrder_ReferenceType$")
 	public void user_fill_the_accountspayablevendorpurchaseorderreferencetype() throws Throwable {
-
-		// Reference Type
 		waithelper.waitForElementwithFluentwait(driver,
 				accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_ReferenceType());
 		accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_ReferenceType().click();
 		accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_ReferenceType()
 				.sendKeys(testData.get("ReferenceType"));
-		Thread.sleep(500);
+	
 		accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_ReferenceType().sendKeys(Keys.DOWN);
 		accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_ReferenceType().sendKeys(Keys.ENTER);
 
@@ -111,8 +106,6 @@ public class VendorPurchaseOrder_PO {
 
 	@And("^User fill the accountsPayable_VendorPurchaseOrder_PoQuantity$")
 	public void user_fill_the_accountspayablevendorpurchaseorderpoquantity() throws Throwable {
-
-		// Po Quantity
 		waithelper.waitForElementwithFluentwait(driver,
 				accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_PoQuantity());
 		accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_PoQuantity().click();
@@ -133,36 +126,32 @@ public class VendorPurchaseOrder_PO {
 
 	@And("^User fill the accountsPayable_VendorPurchaseOrder_POSubType1$")
 	public void user_fill_the_accountspayablevendorpurchaseorderposubtype1() throws Throwable {
-
-		// Po Sub Type
 		waithelper.waitForElementwithFluentwait(driver,
 				accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_POSubType1());
 		accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_POSubType1().click();
 		accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_POSubType1()
 				.sendKeys(testData.get("PoSubType"));
-		Thread.sleep(500);
+	
+		accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_POSubType1().sendKeys(Keys.DOWN);
 		accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_POSubType1().sendKeys(Keys.ENTER);
 
 	}
 
 	@And("^User fill the accountsPayable_VendorPurchaseOrder_CostCenter1$")
 	public void user_fill_the_accountspayablevendorpurchaseordercostcenter1() throws Throwable {
-
-		// cost Center
-		waithelper.waitForElementwithFluentwait(driver,
+		waithelper.waitForElementwithFluentwait	(driver,
 				accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_CostCenter1());
 		accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_CostCenter1().click();
 		accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_CostCenter1()
 				.sendKeys(testData.get("CostCenter"));
+		accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_CostCenter1().sendKeys(Keys.DOWN);
 		accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_CostCenter1().sendKeys(Keys.ENTER);
 
 	}
 
 	@Then("^Click on Direction icon$")
-	public void click_on_direction_icon() throws InterruptedException {
+	public void click_on_direction_icon() throws InterruptedException, IOException {
 		waithelper = new WaitHelper(driver);
-		Thread.sleep(2000);
-//		 waithelper.waitForElement(driver, 4000, accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_DirectionIcon());
 		waithelper.waitForElementwithFluentwait(driver,
 				accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_DirectionIcon());
 		accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_DirectionIcon().click();
@@ -170,25 +159,21 @@ public class VendorPurchaseOrder_PO {
 	}
 
 	@Then("^Click on Account Payable$")
-	public void click_on_account_payable() {
-		waithelper.waitForElement(driver, 4000,
-				accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_AccountsPayableField());
+	public void click_on_account_payable() throws IOException {
+		waithelper.waitForElementwithFluentwait(driver, accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_AccountsPayableField());
 		accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_AccountsPayableField().click();
 
 	}
 
 	@Then("^Click on purchase order Eye Icon$")
-	public void click_on_purchase_order_eye_icon() {
-		waithelper.waitForElement(driver, 2000,
-				accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_EyeButton());
+	public void click_on_purchase_order_eye_icon() throws IOException {
+		waithelper.waitForElementwithFluentwait(driver, accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_EyeButton());
 		accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_EyeButton().click();
 
 	}
 
 	@Then("^Click on purchase order Add button$")
-	public void click_on_purchase_order_add_button() throws InterruptedException {
-//			 waithelper.waitForElement(driver, 2000, accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_AddButton());
-		Thread.sleep(500);
+	public void click_on_purchase_order_add_button() throws InterruptedException, IOException {
 		waithelper.waitForElementwithFluentwait(driver,
 				accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_AddButton());
 		accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_AddButton().click();
@@ -197,8 +182,7 @@ public class VendorPurchaseOrder_PO {
 
 	@Then("^Click on Account Payable Save button$")
 	public void click_on_account_payable_save_button() {
-		// waithelper.waitForElement(driver, 2000,
-		// accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_Save());
+		
 		for (int i = 0; i < 40; i++) {
 			try {
 				accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_Save().click();
@@ -216,9 +200,8 @@ public class VendorPurchaseOrder_PO {
 
 	@Then("^Click on Account Payable Notification$")
 	public void click_on_account_payable_notification() throws InterruptedException {
-		// waithelper.waitForElement(driver, 2000,
-		// accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_Notification());
-		Thread.sleep(2000);
+		
+		
 		for (int i = 0; i < 30; i++) {
 			try {
 				accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_Notification().click();
@@ -233,8 +216,7 @@ public class VendorPurchaseOrder_PO {
 	@Then("^Click on Item Details Record$")
 	public void click_on_item_details_record() throws InterruptedException {
 
-//				Thread.sleep(2000);
-//				waithelper.waitForElement(driver, 2000,accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_ItemDetailsRecord());
+
 		for (int i = 0; i <= 500; i++) {
 			try {
 				accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_ItemDetailsRecord().click();
@@ -245,33 +227,24 @@ public class VendorPurchaseOrder_PO {
 				}
 			}
 		}
-		// validate msg
-
-//		WebElement toast = accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_VaildationMsg();
-//		waithelper.waitForElement(driver, 3000,
-//				accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_VaildationMsg());
-//		clicksAndActionHelper.clickOnElement(toast);
-//		;
-//		String message = accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_VaildationMsg()
-//				.getText();
-//		System.out.println(message);
+	
 
 	}
 
 	@Then("^Edit the item details fields$")
-	public void edit_the_item_details_fields() {
+	public void edit_the_item_details_fields() throws IOException {
 
-		// Shipped from Location
-		waithelper.waitForElement(driver, 2000,
-				accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_ShippedFromLocation());
+		
+		waithelper.waitForElementwithFluentwait(driver, accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_ShippedFromLocation());
 		accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_ShippedFromLocation().click();
 		accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_ShippedFromLocation()
 				.sendKeys(testData.get("ShippedFromLocation"));
 		accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_ShippedFromLocation()
+		.sendKeys(Keys.DOWN);
+		accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_ShippedFromLocation()
 				.sendKeys(Keys.ENTER);
 
-		// waithelper.waitForElementwithFluentwait(driver,
-		// accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_RatePerUnitService());
+
 		for (int i = 0; i < 30; i++) {
 			try {
 				accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_RatePerUnitService()
@@ -281,12 +254,13 @@ public class VendorPurchaseOrder_PO {
 			}
 		}
 
-		// DeliveryLocation
-		waithelper.waitForElement(driver, 2000,
-				accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_DeliveryLocation());
+
+		waithelper.waitForElementwithFluentwait(driver, accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_DeliveryLocation());
 		accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_DeliveryLocation().click();
 		accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_DeliveryLocation()
 				.sendKeys(testData.get("DeliveryLocation"));
+		accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_DeliveryLocation()
+		.sendKeys(Keys.DOWN);
 		accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_DeliveryLocation()
 				.sendKeys(Keys.ENTER);
 
@@ -294,68 +268,40 @@ public class VendorPurchaseOrder_PO {
 
 	@Then("^Select the record from Notification$")
 	public void select_the_record_from_notification() throws Throwable {
-		// Reference
-		waithelper.waitForElement(driver, 2000,
-				accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_ReferenceId());
+
+		waithelper.waitForElementwithFluentwait(driver, accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_ReferenceId());
 		String id = accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_ReferenceId().getText();
-		// jsonWriter.addReferanceData(id);
+
 		excelData.updateTestData("KUBS_FAT_UAT_001_003_01_D1", "Reference ID", id);
 		testData = excelData.getTestdata("KUBS_FAT_UAT_001_003_01_D1");
-		// testData.get("KUBS_FAT_UAT_001_003_01_D1");
-		System.out.println("Reference ID:" + id);
-//			for (int i = 1; i <= 35; i++) {
-//				try {
-//					waithelper.waitForElement(driver, 3000, driver.findElement(
-//							By.xpath("//span[contains(text(),'" +testData.get("Reference ID")+ "')]")));
-//					WebElement referanceID = driver
-//							.findElement(By.xpath("//span[contains(text(),'" +testData.get("Reference ID")+ "')]"));
-//					referanceID.click();
-//					System.out.println(referanceID);
-//					// Assert.assertTrue(referanceID.isDisplayed());
-//					break;
-//				} catch (NoSuchElementException e) {
-//					waithelper.waitForElement(driver, 4000,
-//							accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_NotificationNext_Button());
-//
-//					accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_NotificationNext_Button().click();
-//				}
-//			}
-//			accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_ReferenceId().click();
 
-		// pencil
+		System.out.println("Reference ID:" + id);
+
 		String before_xpath = "//span[contains(text(),'";
 		String after_xpath = "')]/ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell//ion-button";
-		// testData = excelData.getTestdata("KUBS_FAT_UAT_001_003_01_D1");
 
-		waithelper.waitForElement(driver, 2000,
-				driver.findElement(By.xpath(before_xpath + testData.get("Reference ID") + after_xpath)));
-		Thread.sleep(2000);
+
+		waithelper.waitForElementwithFluentwait(driver, driver.findElement(By.xpath(before_xpath + testData.get("Reference ID") + after_xpath)));
+	
 		driver.findElement(By.xpath(before_xpath + testData.get("Reference ID") + after_xpath)).click();
 	}
 
 	@And("^Submit the Selected record$")
 	public void submit_the_selected_record() throws InterruptedException, IOException {
 
-		// Submit button
-		waithelper.waitForElement(driver, 2000,
-				accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_SubmitButton());
+		waithelper.waitForElementwithFluentwait(driver, accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_SubmitButton());
 		accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_SubmitButton().click();
 
-		// Remark
+
 		javascripthelper.JavaScriptHelper(driver);
-		waithelper.waitForElement(driver, 3000,
-				accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_RemarkField());
+		waithelper.waitForElementwithFluentwait(driver, accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_RemarkField());
 		javascripthelper
 				.JSEClick(accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_RemarkField());
 		waithelper.waitForElementwithFluentwait(driver,
 				accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_RemarkField());
 		accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_RemarkField()
 				.sendKeys(testData.get("Remark"));
-		// inventoryMaintenanceTestDataType.Remark
 
-		// Remark Submit
-
-//        	waithelper.waitForElement(driver, 2000,accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_SubmitByMaker());
 		for (int i = 0; i <= 500; i++) {
 			try {
 				accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_SubmitByMaker().click();
@@ -366,10 +312,7 @@ public class VendorPurchaseOrder_PO {
 				}
 			}
 		}
-		// Thread.sleep(2000);
 
-		// REVIEWER
-//        			Thread.sleep(2000);
 		waithelper.waitForElementwithFluentwait(driver,
 				accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_RecordStatus());
 		WebElement recordstatus = accountPayable_VendorPurchaseOrderObj
@@ -382,7 +325,7 @@ public class VendorPurchaseOrder_PO {
 		accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_RecordStatus().click();
 		String t = "";
 		String ar[] = message.split(" ");
-		Thread.sleep(2000);
+	
 		for (int i = ar.length - 1; i >= 0; i--) {
 			t = ar[ar.length - 1];
 		}
@@ -395,8 +338,7 @@ public class VendorPurchaseOrder_PO {
 		}
 		System.out.println(reviewerId);
 		excelData.updateTestData("KUBS_FAT_UAT_001_003_01_D1", "Reviewer ID", reviewerId);
-		// jsonWriter = new JsonDataReaderWriter();
-		// jsonWriter.addData(reviewerId);
+
 
 	}
 
@@ -413,43 +355,26 @@ public class VendorPurchaseOrder_PO {
 	@Then("^click on the Notification select the record and Approve3$")
 	public void click_on_the_notification_select_the_record_and_approve3()
 			throws InterruptedException, IOException, ParseException {
-		// notification
+
 		waithelper = new WaitHelper(driver);
 		reviewer = new Azentio_ReviewerObj(driver);
-		// waithelper.waitForElement(driver, 2000, reviewer.reviewerNotidicationIcon());
-		// waithelper.waitForElementToVisibleWithFluentWait(driver,reviewer.reviewerNotidicationIcon(),30,
-		// 2);
-		waithelper.waitForElementToVisibleWithFluentWait(driver, reviewer.reviewerNotidicationIcon(), 20, 1);
+
+		waithelper.waitForElementwithFluentwait(driver, reviewer.reviewerNotidicationIcon());
 
 		reviewer.reviewerNotidicationIcon().click();
 
-		// select the record
-		browserHelper = new BrowserHelper(driver);
-		// budgetdata = jsonReader.getBudgetdataByName("Maker");
 
-//				for (int i = 0; i < 35; i++) {
-//					try {
-//						//waithelper.waitForElement(driver, 3000, driver.findElement(By.xpath("//span[contains(text(),'" + reader.readReferancedata() + "')]")));
-//						WebElement referanceID = driver.findElement(By.xpath("//span[contains(text(),'" + reader.readReferancedata() + "')]"));
-//						referanceID.click();
-//						Assert.assertTrue(referanceID.isDisplayed());
-//
-//						break;
-//					} catch (NoSuchElementException e) {
-//						//waithelper.waitForElement(driver, 4000, kubschecker.checker_notification_next_button());
-//						kubschecker.checker_notification_next_button().click();
-//						
-//					}
-//				}
+		browserHelper = new BrowserHelper(driver);
+
+
+
 		String before_xpath = "//span[contains(text(),'";
 		String after_xpath = "')]/ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell//ion-button";
 		System.out.println("Reference ID " + testData.get("Reference ID"));
 		for (int i = 0; i < 500; i++) {
 			try {
 
-				// waithelper.waitForElement(driver,
-				// 5000,driver.findElement(By.xpath(before_xpath + reader.readReferancedata() +
-				// after_xpath)));
+	
 				driver.findElement(By.xpath(before_xpath + testData.get("Reference ID") + after_xpath)).click();
 				break;
 			} catch (Exception e) {
@@ -459,18 +384,15 @@ public class VendorPurchaseOrder_PO {
 
 			}
 		}
-		// Approve
-//				waithelper.waitForElement(driver, 4000, reviewer.reviewerApproveButton());
-		waithelper.waitForElementToVisibleWithFluentWait(driver, reviewer.reviewerApproveButton(), 30, 2);
+	
+		waithelper.waitForElementwithFluentwait(driver, reviewer.reviewerApproveButton());
 		reviewer.reviewerApproveButton().click();
 
-//				waithelper.waitForElement(driver, 2000, reviewer.reviewerAlertRemarks());
 		waithelper.waitForElementwithFluentwait(driver, reviewer.reviewerAlertRemarks());
 		clicksAndActionHelper.moveToElement(reviewer.reviewerAlertRemarks());
 		clicksAndActionHelper.moveToElement(reviewer.reviewerAlertRemarks());
-		reviewer.reviewerAlertRemarks().sendKeys("Approved by reviewer");
+		reviewer.reviewerAlertRemarks().sendKeys(testData.get("ReviewerAlertRemark"));
 
-//				waithelper.waitForElement(driver, 2000, reviewer.reviewerAlertSubmitButton());
 		for (int i = 0; i <= 500; i++) {
 			try {
 				waithelper.waitForElementwithFluentwait(driver, reviewer.reviewerAlertSubmitButton());
@@ -482,26 +404,24 @@ public class VendorPurchaseOrder_PO {
 				}
 			}
 		}
-		Thread.sleep(3000);
+
 
 	}
 
 	@Then("^log in to the reviewer account3$")
 	public void log_in_to_the_reviewer_account3() throws IOException, ParseException, InterruptedException {
-		// reader = new JsonDataReaderWriter();
+		
 		KUBS_Login kubsLogin;
-		// testData = excelData.getTestdata("KUBS_FAT_UAT_001_003_01_D1");
+		
 		kubsLogin = new KUBS_Login(driver);
 		driver.get(config.getApplicationUrl());
 		kubsLogin.logintoAzentioappReviewer("Reviewer", testData.get("Reviewer ID"));
-		Thread.sleep(1000);
-
+	
 	}
 
 	@Then("^click on the checker Notification$")
-	public void click_on_the_checker_notification() throws InterruptedException {
-//	    	Thread.sleep(1000);
-//			waithelper.waitForElement(driver,3000,kubschecker.checkerNotificationIcon());
+	public void click_on_the_checker_notification() throws InterruptedException, IOException {
+
 		waithelper.waitForElementwithFluentwait(driver, kubschecker.checkerNotificationIcon());
 		kubschecker.checkerNotificationIcon().click();
 	}
@@ -509,21 +429,19 @@ public class VendorPurchaseOrder_PO {
 	@And("^then checker claim the record3$")
 	public void then_checker_claim_the_record3() throws InterruptedException, IOException, ParseException {
 
-		// open pool
+	
 		waithelper = new WaitHelper(driver);
 		kubschecker = new Azentio_CheckerObj(driver);
-		waithelper.waitForElementToVisibleWithFluentWait(driver, kubschecker.checkerSecurityManagement(), 20, 1);
+		waithelper.waitForElementwithFluentwait(driver, kubschecker.checkerSecurityManagement());
 		kubschecker.checkerSecurityManagement().click();
 		System.out.println("Security management clicked");
-		// claim
-		waithelper.waitForElementToVisibleWithFluentWait(driver, kubschecker.checkerActionIcon(), 20, 1);
+	
+		waithelper.waitForElementwithFluentwait(driver, kubschecker.checkerActionIcon());
 		kubschecker.checkerActionIcon().click();
 		System.out.println("Checker clicked on open pool temp view");
 		String before_xpath = "//span[contains(text(),'";
 		String after_xpath_claim = "')]/parent::div/parent::datatable-body-cell/preceding-sibling::datatable-body-cell[2]/div/ion-buttons/ion-button";
-		// waithelper.waitForElement(driver, 5000,
-		// driver.findElement(By.xpath(before_xpath + reader.readReferancedata() +
-		// after_xpath_claim)));
+	
 		for (int i = 0; i < 50; i++) {
 			try {
 				driver.findElement(By.xpath(before_xpath + testData.get("Reference ID") + after_xpath_claim)).click();
@@ -535,7 +453,7 @@ public class VendorPurchaseOrder_PO {
 
 			}
 		}
-		waithelper.waitForElementToVisibleWithFluentWait(driver, kubschecker.checkerAlertClose(), 20, 1);
+		waithelper.waitForElementwithFluentwait(driver, kubschecker.checkerAlertClose());
 		clicksAndActionHelper.moveToElement(kubschecker.checkerAlertClose());
 		clicksAndActionHelper.clickOnElement(kubschecker.checkerAlertClose());
 	}
@@ -543,29 +461,11 @@ public class VendorPurchaseOrder_PO {
 
 	@And("^select the record and Approve by checker3$")
 	public void select_the_record_and_approve_by_checker3() throws InterruptedException, IOException, ParseException {
-		// Thread.sleep(2000);
-		/*
-		 * for (int i = 1; i <= 35; i++) { try { // waithelper.waitForElement(driver,
-		 * 3000,driver.findElement(By.xpath("//span[contains(text(),'"
-		 * +reader.readReferancedata()+ "')]")));
-		 * waithelper.waitForElementwithFluentwait(driver,
-		 * driver.findElement(By.xpath("//span[contains(text(),'"
-		 * +reader.readReferancedata()+ "')]"))); WebElement referanceID =
-		 * driver.findElement(By.xpath("//span[contains(text(),'" +
-		 * reader.readReferancedata() + "')]")); referanceID.click();
-		 * Assert.assertTrue(referanceID.isDisplayed()); break; } catch
-		 * (NoSuchElementException e) {
-		 * waithelper.waitForElement(driver,4000,kubschecker.
-		 * checker_notification_next_button());
-		 * kubschecker.checker_notification_next_button().click(); } }
-		 */
+	
 		String before_xpath = "//span[contains(text(),'";
 		String after_xpath = "')]/ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell//ion-button";
 
-//				waithelper.waitForElement(driver, 2000, driver.findElement(By.xpath(before_xpath +reader.readReferancedata()+after_xpath)));
-		// waithelper.waitForElementwithFluentwait(driver,
-		// driver.findElement(By.xpath(before_xpath +reader.readReferancedata()
-		// +after_xpath)));
+
 		for (int i = 0; i < 200; i++) {
 			try {
 				driver.findElement(By.xpath(before_xpath + testData.get("Reference ID") + after_xpath)).click();
@@ -575,21 +475,18 @@ public class VendorPurchaseOrder_PO {
 			}
 		}
 
-		// Approve
-//		    	waithelper.waitForElement(driver,2000,kubschecker.checkerApproveButton());
+
 		waithelper.waitForElementwithFluentwait(driver, kubschecker.checkerApproveButton());
 		kubschecker.checkerApproveButton().click();
-//		    	Thread.sleep(1000);
-//		    	waithelper.waitForElement(driver, 2000, kubschecker.checkerRemarks());
+
 		waithelper.waitForElementwithFluentwait(driver, kubschecker.checkerRemarks());
 		clicksAndActionHelper.moveToElement(kubschecker.checkerRemarks());
 		clicksAndActionHelper.clickOnElement(kubschecker.checkerRemarks());
-		kubschecker.checkerRemarks().sendKeys("Approved by checker");
-//				Thread.sleep(2000);
-//				waithelper.waitForElement(driver, 2000, kubschecker.checkersubmitButton());
+		kubschecker.checkerRemarks().sendKeys(testData.get("CheckerAlertRemark"));
+
 		waithelper.waitForElementwithFluentwait(driver, kubschecker.checkersubmitButton());
 		kubschecker.checkersubmitButton().click();
-		waithelper.waitForElementToVisibleWithFluentWait(driver, kubschecker.checker_right_corner_green_toast(), 20, 1);
+		waithelper.waitForElementwithFluentwait(driver, kubschecker.checker_right_corner_green_toast());
 
 		String toastAlert = kubschecker.checker_right_corner_green_toast().getText();
 		System.out.println(toastAlert);
@@ -605,17 +502,14 @@ public class VendorPurchaseOrder_PO {
 	ACCOUNTSPAYABLE_VendorContractsObj aCCOUNTSPAYABLE_VendorContractsObj = new ACCOUNTSPAYABLE_VendorContractsObj(
 			driver);
 
-//	@Then("^search the business partner in po list view$")
-//    public void search_the_business_partner_in_po_list_view() throws Throwable {
-//        throw new PendingException();
-//    }
+
 	@And("^vendor contract PO details should display on PO creation  list view$")
 	public void vendor_contract_po_details_should_display_on_po_creation_list_view() throws Throwable {
 
 		System.out.println("Bp Name" + testData.get("BpName"));
 		String bpName = testData.get("BpName");
-		waithelper.waitForElementToVisibleWithFluentWait(driver,
-				aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_verify(), 60, 5);
+		waithelper.waitForElementwithFluentwait(driver,
+				aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_verify());
 		Assert.assertEquals(bpName,
 				aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_verify().getText());
 		System.out.println(aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_verify().getText());
@@ -624,8 +518,8 @@ public class VendorPurchaseOrder_PO {
 
 	@And("^store the Po number in GRN excel database$")
 	public void store_the_po_number_in_grn_excel_database() throws Throwable {
-		waithelper.waitForElementToVisibleWithFluentWait(driver,
-				accountPayable_VendorPurchaseOrderObj.accountPayableVendorPurchaseOrderapprovedPo(), 20, 1);
+		waithelper.waitForElementwithFluentwait(driver,
+				accountPayable_VendorPurchaseOrderObj.accountPayableVendorPurchaseOrderapprovedPo());
 		String poNumber = accountPayable_VendorPurchaseOrderObj.accountPayableVendorPurchaseOrderapprovedPo().getText();
 		String bpName = accountPayable_VendorPurchaseOrderObj.accounstPayablePoCreationBpName().getText();
 		System.out.println("Aopproved Bp Name " + bpName);
@@ -644,6 +538,7 @@ public class VendorPurchaseOrder_PO {
 				aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_BusinessPartnerSearch());
 		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_BusinessPartnerSearch()
 				.sendKeys(testData.get("BP_Name"));
+		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_BusinessPartnerSearch().sendKeys(Keys.DOWN);
 		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_BusinessPartnerSearch().sendKeys(Keys.ENTER);
 
 	}

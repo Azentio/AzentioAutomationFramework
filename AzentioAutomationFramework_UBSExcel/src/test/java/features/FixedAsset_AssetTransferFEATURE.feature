@@ -852,6 +852,26 @@ And verify asset reference number should visible in asset transfer list view
 And click on user profile in maker
 And click on logout button
 Then verify user profile got logout
+
+@KUBS_FAT_UAT_013_011
+Scenario: Check Asset Transfer
+Given Maker Navigate to UAT URL login
+And click on configuration section
+And click on transaction section
+Then Click on Fixed Asset
+When click on eye button of asset transfer
+And get the asset code for asset transfer report
+Then click on report button
+And click on reports main module
+And click on temp view of asset transfer report
+And enter the asset code in asset trasfer report
+And enter the asset transfer date
+And click on view button in loss booking report screen
+Then validate the asset reference number of transfered asset should reflect in asset transfer report
+And click on user profile in maker
+And click on logout button
+Then verify user profile got logout
+
 @KUBS_FAT_UAT_005_004
 Scenario: To verify accounting entries post asset transfer
 Given Maker Navigate to UAT URL login

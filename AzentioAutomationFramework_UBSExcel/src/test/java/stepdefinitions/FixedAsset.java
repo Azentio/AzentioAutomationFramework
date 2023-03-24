@@ -128,7 +128,6 @@ public class FixedAsset {
 		waithelper.waitForElementToVisibleWithFluentWait(driver, kubsCommonWebObj.kubsConfigurationSection(), 20, 1);
 		clicksAndActionHelper.moveToElement(kubsCommonWebObj.kubsConfigurationSection());
 		clicksAndActionHelper.clickOnElement(kubsCommonWebObj.kubsConfigurationSection());
-		Thread.sleep(300);
 		waithelper.waitForElementToVisibleWithFluentWait(driver, kubsCommonWebObj.kubsTransactionSection(), 20, 1);
 		clicksAndActionHelper.moveToElement(kubsCommonWebObj.kubsTransactionSection());
 		clicksAndActionHelper.clickOnElement(kubsCommonWebObj.kubsTransactionSection());

@@ -309,5 +309,36 @@ public class FIXEDASSETS_AssetUndertakingObj {
 	public WebElement assetTransferSearchAssetReferenceNumber() {
 		return assetTransfer_SearchAssetReferenceNumber;
 	}
+	@FindBy(xpath="(//span[contains(text(),' TR ')]//ancestor::datatable-body-cell//preceding-sibling::datatable-body-cell[3]//span)[1]")
+	private WebElement assetTransfer_ApprovedAssetCode;
+	public WebElement assetTransferApprovedAssetCode()
+	{
+		return assetTransfer_ApprovedAssetCode;
+	}
+	@FindBy(xpath="//label[contains(text(),' Asset Code')]//following-sibling::ng-select//input")
+	private WebElement assetTransferReport_AssetCodeInputBox;
+	public WebElement assetTransferReportAssetCodeInputBox()
+	{
+		return assetTransferReport_AssetCodeInputBox;
+	}
+	@FindBy(xpath="//span[@class='input-calendar']")
+	private WebElement assetTransferReport_Inputcalendar;
+	public WebElement assetTransferReportInputcalendar()
+	{
+		return assetTransferReport_Inputcalendar;
+	}
+	@FindBy(xpath="(//span[contains(text(),' TR ')]//ancestor::datatable-body-cell//preceding-sibling::datatable-body-cell[2]//span)[1]")
+	private WebElement assetTransfer_ApprovedAssetReferenceNumber;
+	public WebElement assetTransferApprovedAssetReferenceNumber()
+	{
+		return assetTransfer_ApprovedAssetReferenceNumber;
+	}
+	@FindBy(xpath="//ion-label[contains(text(),' Asset transfer ')]//parent::ion-item//following-sibling::ion-buttons//ion-button")
+	private WebElement assetTransfer_AssetTransferReporTempView;
+	public WebElement assetTransferAssetTransferReporTempView()
+	{
+		return assetTransfer_AssetTransferReporTempView;
+	}
+
 
 }

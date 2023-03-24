@@ -42,25 +42,6 @@ public class FixedAsset_AssetDeallocation extends BaseClass {
 	ExcelData excelDataForAssetWriteOff = new ExcelData(path, "FixedAsset_WriteOff", "DataSet ID");
 	Map<String, String> assetDeAllocationTestData = new HashMap<>();
 	Map<String, String> assetDeAllocationReportTestData = new HashMap<>();
-//    @Then("^Click on fixed asset deallocaion  Direction icon$")
-//    public void click_on_fixed_asset_deallocaion_direction_icon()  {
-//    //Direction	
-//    waithelper.waitForElementToVisisbleWithFluentWait(driver,  fixedAsset_AssetDeallocationObj.fixedAsset_AssetDeallocation_DirectionIcon());
-//    fixedAsset_AssetDeallocationObj.fixedAsset_AssetDeallocation_DirectionIcon().click();
-//    	
-//       
-//    }
-
-//    @Then("^Click on Fixed assets field$")
-//    public void click_on_fixed_assets_field() {
-//    //Fixed Assets
-//    waithelper.waitForElementToVisisbleWithFluentWait(driver,  fixedAsset_AssetDeallocationObj.fixedAsset_AssetDeallocation_FixedAssetsField());
-//    fixedAsset_AssetDeallocationObj.fixedAsset_AssetDeallocation_FixedAssetsField().click();
-//        	
-//         
-//      
-//    }
-
 	@And("^get the allocated asset reference number in asset allocation module$")
 	public void get_the_allocated_asset_reference_number_in_asset_allocation_module() throws Throwable {
 		waithelper.waitForElementToVisibleWithFluentWait(driver,
@@ -348,12 +329,12 @@ public class FixedAsset_AssetDeallocation extends BaseClass {
 	// Asset Reference Number
 	@Then("^Select Asset Reference Number$")
 	public void select_asset_reference_number() throws InterruptedException {
-		Thread.sleep(2000);
+	
 		waithelper.waitForElementToVisibleWithFluentWait(driver,
 				fixedAsset_AssetDeallocationObj.fixedAsset_AssetReference(), 60, 5);
 		AssetReferenceNumber = fixedAsset_AssetDeallocationObj.fixedAsset_AssetReference().getText();
 		System.out.println(AssetReferenceNumber);
-		Thread.sleep(1000);
+	
 	}
 
 	@Then("^Click on Asset Impairment Eye button$")
@@ -363,7 +344,7 @@ public class FixedAsset_AssetDeallocation extends BaseClass {
 		waithelper.waitForElementToVisibleWithFluentWait(driver,
 				fixedAsset_AssetDeallocationObj.fixedAsset_AssetImpairement_EyeIcon(), 60, 5);
 		fixedAsset_AssetDeallocationObj.fixedAsset_AssetImpairement_EyeIcon().click();
-		Thread.sleep(1000);
+		
 	}
 
 	@Then("^fill the form for Asset Impairment$")
@@ -374,7 +355,7 @@ public class FixedAsset_AssetDeallocation extends BaseClass {
 		fixedAsset_AssetDeallocationObj.fixedAsset_AssetImpairement_AssetReferenceNumber().click();
 		fixedAsset_AssetDeallocationObj.fixedAsset_AssetImpairement_AssetReferenceNumber()
 				.sendKeys(AssetReferenceNumber);
-		Thread.sleep(1000);
+	
 		// fixedAsset_AssetDeallocationObj.fixedAsset_AssetImpairement_AssetReferenceNumber().sendKeys(fixedAsset_AssetCreationTestDataType.AssetCode);
 		fixedAsset_AssetDeallocationObj.fixedAsset_AssetImpairement_AssetReferenceNumber().sendKeys(Keys.ENTER);
 
@@ -382,7 +363,7 @@ public class FixedAsset_AssetDeallocation extends BaseClass {
 		waithelper.waitForElementToVisibleWithFluentWait(driver,
 				fixedAsset_AssetDeallocationObj.fixedAsset_AssetImpairement_TransactionType(), 60, 5);
 		fixedAsset_AssetDeallocationObj.fixedAsset_AssetImpairement_TransactionType().click();
-		Thread.sleep(1000);
+		
 		// impairement
 		waithelper.waitForElementToVisibleWithFluentWait(driver,
 				fixedAsset_AssetDeallocationObj.fixedAsset_AssetImpairement_Impairement(), 60, 5);
@@ -393,7 +374,7 @@ public class FixedAsset_AssetDeallocation extends BaseClass {
 				fixedAsset_AssetDeallocationObj.fixedAsset_AssetImpairement_ItemNumber(), 60, 5);
 		fixedAsset_AssetDeallocationObj.fixedAsset_AssetImpairement_ItemNumber().click();
 		// fixedAsset_AssetDeallocationObj.fixedAsset_AssetImpairement_ItemNumber().sendKeys(fixedAsset_AssetDeallocationTestDataType.AssetItemNumberimpaired);
-		Thread.sleep(1000);
+	
 		fixedAsset_AssetDeallocationObj.fixedAsset_AssetImpairement_ItemNumber().sendKeys(Keys.DOWN);
 		fixedAsset_AssetDeallocationObj.fixedAsset_AssetImpairement_ItemNumber().sendKeys(Keys.ENTER);
 
@@ -406,7 +387,7 @@ public class FixedAsset_AssetDeallocation extends BaseClass {
 		waithelper.waitForElementToVisibleWithFluentWait(driver,
 				fixedAsset_AssetDeallocationObj.fixedAsset_RevaluedAsset_EyeIcon(), 60, 5);
 		fixedAsset_AssetDeallocationObj.fixedAsset_RevaluedAsset_EyeIcon().click();
-		Thread.sleep(1000);
+		
 	}
 
 	@Then("^Click on amended asset Eye button$")
@@ -416,7 +397,7 @@ public class FixedAsset_AssetDeallocation extends BaseClass {
 		waithelper.waitForElementToVisibleWithFluentWait(driver,
 				fixedAsset_AssetDeallocationObj.fixedAsset_AmendedAsset_EyeIcon(), 60, 5);
 		fixedAsset_AssetDeallocationObj.fixedAsset_AmendedAsset_EyeIcon().click();
-		Thread.sleep(1000);
+		
 	}
 
 	// ----------asset replacement deallocaion ------------//
@@ -428,7 +409,7 @@ public class FixedAsset_AssetDeallocation extends BaseClass {
 		waithelper.waitForElementToVisibleWithFluentWait(driver,
 				fixedAsset_AssetDeallocationObj.fixedAsset_AssetReplacement_EyeIcon(), 60, 5);
 		fixedAsset_AssetDeallocationObj.fixedAsset_AssetReplacement_EyeIcon().click();
-		Thread.sleep(1000);
+		
 	}
 
 	@And("^open the list view record in de allocation list view$")

@@ -67,10 +67,8 @@ public class FIXEDASSETS_AssetImpairement {
 	@Then("^Save and submit the asset impairement$")
 	public void save_and_submit_the_asset_creation_record() throws InterruptedException, IOException, ParseException {
 
-		// waithelper.waitForElement(driver, 3000,
-		// fIXEDASSETS_AssetCreationObj.fixedAssets_AssetCreation_SaveButton());
 		javascripthelper.JavaScriptHelper(driver);
-		// Thread.sleep(2000);
+		
 		for (int i = 0; i < 30; i++) {
 			try {
 				driver.findElement(
