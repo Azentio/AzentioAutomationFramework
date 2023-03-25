@@ -20,7 +20,7 @@ public class KUBS_checker extends BaseClass {
 	KUBS_CheckerObj kubschecker= new KUBS_CheckerObj(driver);;
 	WaitHelper waithelper= new WaitHelper(driver);;
 	JsonDataReaderWriter reader = new JsonDataReaderWriter();
-	JavascriptHelper javascript;
+	JavascriptHelper javascript=new JavascriptHelper(driver);
 
 	@Given("^Navigate to Url and login as a Checker$")
 	public void navigate_to_url_and_login_as_a_checker() throws Throwable {
@@ -65,8 +65,6 @@ public class KUBS_checker extends BaseClass {
 
 	@Then("^click on notification$")
 	public void click_on_notification() throws Throwable {
-		javascript=new JavascriptHelper();
-		javascript.JavaScriptHelper(driver);
 		Thread.sleep(3000);
 		waithelper.waitForElement(driver,3000,kubschecker.checkerNotificationIcon());
 		javascript.JSEClick(kubschecker.checkerNotificationIcon());

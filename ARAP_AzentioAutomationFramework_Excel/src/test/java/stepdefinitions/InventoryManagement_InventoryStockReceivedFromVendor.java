@@ -45,15 +45,13 @@ public class InventoryManagement_InventoryStockReceivedFromVendor {
 	ConfigFileReader config = new ConfigFileReader();
 	ACCOUNTSPAYABLE_VendorContractsObj aCCOUNTSPAYABLE_VendorContractsObj = new ACCOUNTSPAYABLE_VendorContractsObj(driver);
 	WaitHelper waithelper = new WaitHelper(driver);
-	JavascriptHelper javascripthelper = new JavascriptHelper();
+	JavascriptHelper javascripthelper = new JavascriptHelper(driver);
 	ClicksAndActionsHelper clicksAndActionHelper = new ClicksAndActionsHelper(driver);
 	BrowserHelper browserHelper;
 	InventoryMaintenanceObj inventoryMaintenanceObj = new InventoryMaintenanceObj(driver);
 	InventoryManagement_InventoryStockReceiptObj inventoryManagement_InventoryStockReceiptObj = new InventoryManagement_InventoryStockReceiptObj(driver);
-//	INVENTORY_MANAGEMENT_PurchaseRequitionConfirmationObj iNVENTORY_MANAGEMENT_PurchaseRequitionConfirmationObj = new INVENTORY_MANAGEMENT_PurchaseRequitionConfirmationObj(driver);
 	AccountPayable_VendorPurchaseOrderObj accountPayable_VendorPurchaseOrderObj = new AccountPayable_VendorPurchaseOrderObj(driver);
 	ACCOUNTSPAYABLE_InvoiceBookingObj aCCOUNTSPAYABLE_InvoiceBookingObj = new ACCOUNTSPAYABLE_InvoiceBookingObj(driver);
-
 	InventoryManagamentObj inventoryManagamentObj = new InventoryManagamentObj(driver);
 	BUDGET_BudgetTransferObj budgetTransferObj = new BUDGET_BudgetTransferObj(driver);
 
@@ -64,21 +62,17 @@ public class InventoryManagement_InventoryStockReceivedFromVendor {
 
 	@Then("^Click on Accounts Payable$")
 	public void click_on_accounts_payable() throws Throwable {
-//    	waithelper.waitForElement(driver, 2000,inventoryManagamentObj.accountPayableButton());
 		waithelper.waitForElementwithFluentwait(driver, inventoryManagamentObj.accountPayableButton());
 		inventoryManagamentObj.accountPayableButton().click();
 	}
 
 	@Then("^click on first eye button to get the grn number$")
 	public void click_on_first_eye_button_to_get_the_grn_number() throws InterruptedException, IOException {
-
-		javascripthelper.JavaScriptHelper(driver);
-		waithelper.waitForElement(driver, 2000, inventoryManagement_InventoryStockReceiptObj.inventoryManagement_InventoryStockReceipt_FirstEyeButton());
+		waithelper.waitForElementwithFluentwait(driver, inventoryManagement_InventoryStockReceiptObj.inventoryManagement_InventoryStockReceipt_FirstEyeButton());
 		inventoryManagement_InventoryStockReceiptObj.inventoryManagement_InventoryStockReceipt_FirstEyeButton().click();
-		Thread.sleep(2000);
+//		Thread.sleep(2000);
 		String grnnumber = javascripthelper.executeScript("return document.getElementsByClassName('native-input sc-ion-input-md')[2].value").toString();
 		System.out.println("GRN Number: " + grnnumber);
-//		jsonWriter.addInventoryManagementGRNnumber(grnnumber);
 		excelData.updateTestData(dataSetID, "grnNumber", grnnumber);
 		testData = excelData.getTestdata(dataSetID);
 
@@ -86,34 +80,31 @@ public class InventoryManagement_InventoryStockReceivedFromVendor {
 
 	@Then("^Click on inventory stock receipt Eye Icon$")
 	public void click_on_inventory_stock_receipt_eye_icon() throws InterruptedException {
-//    Thread.sleep(2000);
 		waithelper.waitForElementwithFluentwait(driver, inventoryManagement_InventoryStockReceiptObj.inventoryManagement_InventoryStockReceipt_EyeButton());
 		WebElement EyeIcon = inventoryManagement_InventoryStockReceiptObj.inventoryManagement_InventoryStockReceipt_EyeButton();
-		waithelper.waitForElement(driver, 3000, inventoryManagement_InventoryStockReceiptObj.inventoryManagement_InventoryStockReceipt_EyeButton());
+		waithelper.waitForElementwithFluentwait(driver, inventoryManagement_InventoryStockReceiptObj.inventoryManagement_InventoryStockReceipt_EyeButton());
 		Assert.assertTrue(inventoryManagement_InventoryStockReceiptObj.inventoryManagement_InventoryStockReceipt_EyeButton().isDisplayed());
 		clicksAndActionHelper.moveToElement(EyeIcon);
+		waithelper.waitForElementwithFluentwait(driver, inventoryManagement_InventoryStockReceiptObj.inventoryManagement_InventoryStockReceipt_EyeButton());
 		inventoryManagement_InventoryStockReceiptObj.inventoryManagement_InventoryStockReceipt_EyeButton().click();
 
 	}
 
 	@Then("^Click on inventory stock Add button$")
 	public void click_on_inventory_stock_add_button() throws InterruptedException {
-//    Thread.sleep(2000);
-//    waithelper.waitForElement(driver, 3000, inventoryManagement_InventoryStockReceiptObj.inventoryManagement_InventoryStockReceipt_AddButton());
 		waithelper.waitForElementwithFluentwait(driver, inventoryManagement_InventoryStockReceiptObj.inventoryManagement_InventoryStockReceipt_AddButton());
 		inventoryManagement_InventoryStockReceiptObj.inventoryManagement_InventoryStockReceipt_AddButton().click();
 
 	}
 
 	@Then("^Fill inventory stock Mandatory fields$")
-	public void fill_inventory_stock_mandatory_fields() throws IOException, ParseException {
-//		inventoryManagement_InventoryStockReceiptTestDataType = jsonReader.getInventoryStockReceiptByName("Maker");
+	public void fill_inventory_stock_mandatory_fields() throws IOException, ParseException, InterruptedException {
 		// GRN Number
-//		waithelper.waitForElement(driver, 3000, inventoryManagement_InventoryStockReceiptObj.inventoryManagement_InventoryStockReceipt_GRNNumber());
 		waithelper.waitForElementwithFluentwait(driver, inventoryManagement_InventoryStockReceiptObj.inventoryManagement_InventoryStockReceipt_GRNNumber());
 		inventoryManagement_InventoryStockReceiptObj.inventoryManagement_InventoryStockReceipt_GRNNumber().click();
 		inventoryManagement_InventoryStockReceiptObj.inventoryManagement_InventoryStockReceipt_GRNNumber().sendKeys(testData.get("grnNumber"));
-		inventoryManagement_InventoryStockReceiptObj.inventoryManagement_InventoryStockReceipt_GRNNumber().sendKeys(Keys.DOWN,Keys.ENTER);
+//		Thread.sleep(1000);
+		inventoryManagement_InventoryStockReceiptObj.inventoryManagement_InventoryStockReceipt_GRNNumber().sendKeys(Keys.ENTER);
 
 		// Accepted Quantity
 //    waithelper.waitForElement(driver, 3000, inventoryManagement_InventoryStockReceiptObj.inventoryManagement_InventoryStockReceipt_AcceptedQuantity());
@@ -125,18 +116,17 @@ public class InventoryManagement_InventoryStockReceivedFromVendor {
 
 	@Then("^Click on inventory stock Save button$")
 	public void click_on_inventory_stock_save_button() {
-//  	waithelper.waitForElement(driver, 3000, inventoryManagement_InventoryStockReceiptObj.inventoryManagement_InventoryStockReceipt_Save());
 		waithelper.waitForElementwithFluentwait(driver, inventoryManagement_InventoryStockReceiptObj.inventoryManagement_InventoryStockReceipt_Save());
 		inventoryManagement_InventoryStockReceiptObj.inventoryManagement_InventoryStockReceipt_Save().click();
 
-  	waithelper.waitForElementwithFluentwait(driver, inventoryManagement_InventoryStockReceiptObj.inventoryStockReceipt_PopUpCloseButton());
-  	inventoryManagement_InventoryStockReceiptObj.inventoryStockReceipt_PopUpCloseButton().click();
+		waithelper.waitForElementwithFluentwait(driver, inventoryManagement_InventoryStockReceiptObj.inventoryStockReceipt_PopUpCloseButton());
+		inventoryManagement_InventoryStockReceiptObj.inventoryStockReceipt_PopUpCloseButton().click();
   	
 	}
 
 	@Then("^Click on inventory stock Notification$")
 	public void click_on_inventory_stock_notification() {
-		waithelper.waitForElement(driver, 3000, inventoryManagement_InventoryStockReceiptObj.inventoryManagement_InventoryStockReceipt_MakerNotification());
+		waithelper.waitForElementwithFluentwait(driver, inventoryManagement_InventoryStockReceiptObj.inventoryManagement_InventoryStockReceipt_MakerNotification());
 		inventoryManagement_InventoryStockReceiptObj.inventoryManagement_InventoryStockReceipt_MakerNotification().click();
 
 	}
@@ -145,80 +135,62 @@ public class InventoryManagement_InventoryStockReceivedFromVendor {
 	public void select_and_submit_the_record() throws InterruptedException, IOException, ParseException {
 
 		// Reference
-		waithelper.waitForElement(driver, 2000, inventoryMaintenanceObj.inventoryMaintenance_InventoryItem_ReferenceId());
+		waithelper.waitForElementwithFluentwait(driver, inventoryMaintenanceObj.inventoryMaintenance_InventoryItem_ReferenceId());
 		String id = inventoryMaintenanceObj.inventoryMaintenance_InventoryItem_ReferenceId().getText();
-//		jsonWriter.addReferanceData(id);
 		
 		excelData.updateTestData(dataSetID, "ReferenceID", id);
 		testData = excelData.getTestdata(dataSetID);
 		
 		System.out.println("Reference ID:" + id);
-		Thread.sleep(1000);
-		for (int i = 1; i <= 35; i++) {
+//		Thread.sleep(2000);
+		for (int i = 1; i <= 50; i++) {
 			try {
-				waithelper.waitForElement(driver, 3000, driver.findElement(By.xpath("//span[text()='" + testData.get("ReferenceID") + "']")));
+				waithelper.waitForElementwithFluentwait(driver, driver.findElement(By.xpath("//span[text()='" + testData.get("ReferenceID") + "']")));
 				WebElement referanceID = driver.findElement(By.xpath("//span[text()='" + testData.get("ReferenceID") + "']"));
 				referanceID.click();
 				System.out.println(referanceID);
 				// Assert.assertTrue(referanceID.isDisplayed());
 				break;
 			} catch (NoSuchElementException e) {
-				waithelper.waitForElement(driver, 4000, inventoryMaintenanceObj.inventoryMaintenance_InventoryItem_NotificationNext_Button());
-
+				waithelper.waitForElementwithFluentwait(driver, inventoryMaintenanceObj.inventoryMaintenance_InventoryItem_NotificationNext_Button());
 				inventoryMaintenanceObj.inventoryMaintenance_InventoryItem_NotificationNext_Button().click();
 			}
-
 		}
+		waithelper.waitForElementwithFluentwait(driver, inventoryMaintenanceObj.inventoryMaintenance_InventoryItem_ReferenceId());
 		inventoryMaintenanceObj.inventoryMaintenance_InventoryItem_ReferenceId().click();
 
 		// pencil
 		String before_xpath = "//span[text()='";
 		String after_xpath = "']/ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell//ion-button";
 
-		waithelper.waitForElement(driver, 2000, driver.findElement(By.xpath(before_xpath + testData.get("ReferenceID") + after_xpath)));
+		waithelper.waitForElementwithFluentwait(driver, driver.findElement(By.xpath(before_xpath + testData.get("ReferenceID") + after_xpath)));
 		driver.findElement(By.xpath(before_xpath + testData.get("ReferenceID") + after_xpath)).click();
 
 		// Submit button
-		waithelper.waitForElement(driver, 2000, inventoryMaintenanceObj.inventoryMaintenance_InventoryItem_SubmitButton());
+		waithelper.waitForElementwithFluentwait(driver, inventoryMaintenanceObj.inventoryMaintenance_InventoryItem_SubmitButton());
 		inventoryMaintenanceObj.inventoryMaintenance_InventoryItem_SubmitButton().click();
 
 		// Remark
-		javascripthelper.JavaScriptHelper(driver);
-		waithelper.waitForElement(driver, 3000, inventoryMaintenanceObj.inventoryMaintenance_InventoryItem_RemarkField());
+		waithelper.waitForElementwithFluentwait(driver, inventoryMaintenanceObj.inventoryMaintenance_InventoryItem_RemarkField());
 		javascripthelper.JSEClick(inventoryMaintenanceObj.inventoryMaintenance_InventoryItem_RemarkField());
 		inventoryMaintenanceObj.inventoryMaintenance_InventoryItem_RemarkField().sendKeys("OK");
-		// inventoryMaintenanceTestDataType.Remark
 
 		// Remark Submit
-		waithelper.waitForElement(driver, 2000, inventoryMaintenanceObj.inventoryMaintenance_InventoryItem_SubmitByMaker());
+		waithelper.waitForElementwithFluentwait(driver, inventoryMaintenanceObj.inventoryMaintenance_InventoryItem_SubmitByMaker());
 		inventoryMaintenanceObj.inventoryMaintenance_InventoryItem_SubmitByMaker().click();
-//        	Thread.sleep(3000);
 
 		// REVIEWER
-//        			waithelper.waitForElement(driver, 5000, inventoryMaintenanceObj.inventoryMaintenance_InventoryItem_RecordStatus());
 		waithelper.waitForElementwithFluentwait(driver, inventoryMaintenanceObj.inventoryMaintenance_InventoryItem_RecordStatus());
 		WebElement recordstatus = inventoryMaintenanceObj.inventoryMaintenance_InventoryItem_RecordStatus();
-
 		clicksAndActionHelper.moveToElement(recordstatus);
 		String message = inventoryMaintenanceObj.inventoryMaintenance_InventoryItem_RecordStatus().getText();
 		System.out.println(message);
 		inventoryMaintenanceObj.inventoryMaintenance_InventoryItem_RecordStatus().click();
-		String t = "";
+		String emptystring = "";
 		String ar[] = message.split(" ");
-		Thread.sleep(2000);
-		for (int i = ar.length - 1; i >= 0; i--) {
-			t = ar[ar.length - 1];
-		}
-		String reviewerId = "";
-		for (int i = 0; i < t.length() - 1; i++) {
-			if (t.charAt(i) == '.') {
-			} else {
-				reviewerId = reviewerId + t.charAt(i);
-			}
-		}
+		emptystring = ar[ar.length - 1];
+		String reviewerId = emptystring.replaceAll("[/.]", "");
 		System.out.println(reviewerId);
-//		jsonWriter = new JsonDataReaderWriter();
-//		jsonWriter.addData(reviewerId);
 		
 		excelData.updateTestData(dataSetID, "ReviewerID", reviewerId);
 		testData = excelData.getTestdata(dataSetID);
@@ -227,7 +199,6 @@ public class InventoryManagement_InventoryStockReceivedFromVendor {
 	
 	@Then("^log in to the reviewer account to approve stock receipt record$")
 	public void log_in_to_the_reviewer_account_to_approve_stock_receipt_record() throws IOException, ParseException {
-//		reader = new JsonDataReaderWriter();
 		login = new KUBS_Login(driver);
 		driver.get(config.getApplicationUrl());
 		login.logintoAzentioappReviewer("Reviewer", testData.get("ReviewerID"));
@@ -239,47 +210,41 @@ public class InventoryManagement_InventoryStockReceivedFromVendor {
 		// notification
 		waithelper = new WaitHelper(driver);
 		reviewer = new Azentio_ReviewerObj(driver);
-		waithelper.waitForElement(driver, 2000, reviewer.reviewerNotidicationIcon());
+		waithelper.waitForElementwithFluentwait(driver, reviewer.reviewerNotidicationIcon());
 		reviewer.reviewerNotidicationIcon().click();
 
 		// select the record
 		browserHelper = new BrowserHelper(driver);
-//		budgetdata = jsonReader.getBudgetdataByName("Maker");
-		javascripthelper = new JavascriptHelper();
-		Thread.sleep(1000);
-		for (int i = 1; i <= 35; i++) {
+//		Thread.sleep(2000);
+		for (int i = 1; i <= 50; i++) {
 			try {
-				waithelper.waitForElement(driver, 3000, driver.findElement(By.xpath("//span[text()='" + testData.get("ReferenceID") + "']")));
+				waithelper.waitForElementwithFluentwait(driver, driver.findElement(By.xpath("//span[text()='" + testData.get("ReferenceID") + "']")));
 				WebElement referanceID = driver.findElement(By.xpath("//span[text()='" + testData.get("ReferenceID") + "']"));
 				referanceID.click();
 				Assert.assertTrue(referanceID.isDisplayed());
 				break;
 			} catch (NoSuchElementException e) {
-				waithelper.waitForElement(driver, 4000, kubschecker.checker_notification_next_button());
-
+				waithelper.waitForElementwithFluentwait(driver, kubschecker.checker_notification_next_button());
 				kubschecker.checker_notification_next_button().click();
 			}
 		}
 		String before_xpath = "//span[text()='";
 		String after_xpath = "']/ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell//ion-button";
 
-		waithelper.waitForElement(driver, 5000, driver.findElement(By.xpath(before_xpath + testData.get("ReferenceID") + after_xpath)));
+		waithelper.waitForElementwithFluentwait(driver, driver.findElement(By.xpath(before_xpath + testData.get("ReferenceID") + after_xpath)));
 		driver.findElement(By.xpath(before_xpath + testData.get("ReferenceID") + after_xpath)).click();
 
 		// Approve
-//			waithelper.waitForElement(driver, 4000, reviewer.reviewerApproveButton());
 		waithelper.waitForElementwithFluentwait(driver, reviewer.reviewerApproveButton());
 		reviewer.reviewerApproveButton().click();
 
-//			waithelper.waitForElement(driver, 2000, reviewer.reviewerAlertRemarks());
 		waithelper.waitForElementwithFluentwait(driver, reviewer.reviewerAlertRemarks());
 		clicksAndActionHelper.JSEClick(reviewer.reviewerAlertRemarks());
 		reviewer.reviewerAlertRemarks().sendKeys("ok");
 
-//			waithelper.waitForElement(driver, 2000, reviewer.reviewerAlertSubmitButton());
 		waithelper.waitForElementwithFluentwait(driver, reviewer.reviewerAlertSubmitButton());
 		reviewer.reviewerAlertSubmitButton().click();
-		Thread.sleep(2000);
+//		Thread.sleep(2000);
 
 	}
 	
@@ -287,21 +252,18 @@ public class InventoryManagement_InventoryStockReceivedFromVendor {
 	public void then_checker_claim_the_stock_receipt_record() throws InterruptedException, IOException, ParseException {
 
 		// open pool
-		waithelper = new WaitHelper(driver);
-		kubschecker = new KUBS_CheckerObj(driver);
-//		waitHelper.waitForElement(driver, 3000, kubschecker.checkerSecurityManagement());
 		waithelper.waitForElementToVisibleWithFluentWait(driver, kubschecker.checkerSecurityManagement(), 20, 2);
 		kubschecker.checkerSecurityManagement().click();
 
 		// claim
-		waithelper.waitForElement(driver, 3000, kubschecker.checkerActionIcon());
+		waithelper.waitForElementwithFluentwait(driver, kubschecker.checkerActionIcon());
 		kubschecker.checkerActionIcon().click();
-		Thread.sleep(2000);
+//		Thread.sleep(2000);
 		String before_xpath = "//span[contains(text(),'";
 		String after_xpath_claim = "')]/parent::div/parent::datatable-body-cell/preceding-sibling::datatable-body-cell[2]/div/ion-buttons/ion-button";
-		waithelper.waitForElement(driver, 5000, driver.findElement(By.xpath(before_xpath + testData.get("ReferenceID") + after_xpath_claim)));
+		waithelper.waitForElementwithFluentwait(driver, driver.findElement(By.xpath(before_xpath + testData.get("ReferenceID") + after_xpath_claim)));
 		driver.findElement(By.xpath(before_xpath + testData.get("ReferenceID") + after_xpath_claim)).click();
-		waithelper.waitForElement(driver, 3000, kubschecker.checkerAlertClose());
+		waithelper.waitForElementwithFluentwait(driver, kubschecker.checkerAlertClose());
 		kubschecker.checkerAlertClose().click();
 
 	}
@@ -310,38 +272,34 @@ public class InventoryManagement_InventoryStockReceivedFromVendor {
 	public void select_the_stock_receipt_record_and_approve_by_checker() throws InterruptedException, IOException, ParseException {
 		waithelper.waitForElementwithFluentwait(driver, kubschecker.checkerNotificationIcon());
 		kubschecker.checkerNotificationIcon().click();
-		Thread.sleep(1000);
+//		Thread.sleep(1000);
 		for (int i = 1; i <= 35; i++) {
 			try {
-				waithelper.waitForElement(driver, 3000, driver.findElement(By.xpath("//span[text()='" + testData.get("ReferenceID") + "']")));
+				waithelper.waitForElementwithFluentwait(driver, driver.findElement(By.xpath("//span[text()='" + testData.get("ReferenceID") + "']")));
 				WebElement referanceID = driver.findElement(By.xpath("//span[text()='" + testData.get("ReferenceID") + "']"));
 				referanceID.click();
-
 				Assert.assertTrue(referanceID.isDisplayed());
 				break;
 			} catch (NoSuchElementException e) {
-				waithelper.waitForElement(driver, 4000, kubschecker.checker_notification_next_button());
-
+				waithelper.waitForElementwithFluentwait(driver, kubschecker.checker_notification_next_button());
 				kubschecker.checker_notification_next_button().click();
 			}
 		}
 		String before_xpath = "//span[text()='";
 		String after_xpath = "']/ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell//ion-button";
 
-		waithelper.waitForElement(driver, 10000, driver.findElement(By.xpath(before_xpath + testData.get("ReferenceID") + after_xpath)));
+		waithelper.waitForElementwithFluentwait(driver, driver.findElement(By.xpath(before_xpath + testData.get("ReferenceID") + after_xpath)));
 		driver.findElement(By.xpath(before_xpath + testData.get("ReferenceID") + after_xpath)).click();
 
-//			waithelper.waitForElement(driver, 4000, kubschecker.checkerApproveButton());
 		waithelper.waitForElementwithFluentwait(driver, kubschecker.checkerApproveButton());
 		kubschecker.checkerApproveButton().click();
-//			waithelper.waitForElement(driver, 2000, reviewer.reviewerAlertRemarks());
+		
 		waithelper.waitForElementwithFluentwait(driver, reviewer.reviewerAlertRemarks());
 		reviewer.reviewerAlertRemarks().sendKeys("ok");
-//			Thread.sleep(1000);
-//			waithelper.waitForElement(driver, 2000, reviewer.reviewerAlertSubmitButton());
+		
 		waithelper.waitForElementwithFluentwait(driver, reviewer.reviewerAlertSubmitButton());
 		reviewer.reviewerAlertSubmitButton().click();
-		Thread.sleep(3000);
+//		Thread.sleep(3000);
 	}
 	
 	/////////////////////////////////////////////////////////////////////////////////////////

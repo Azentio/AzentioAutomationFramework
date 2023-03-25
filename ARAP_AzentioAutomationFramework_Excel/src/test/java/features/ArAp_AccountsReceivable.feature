@@ -19,16 +19,17 @@ And Give Business partner Name
 Then Choose value date as System current date
 And find the invoice reference number for cancelled DebitNote is availabe at the billing queue
 
-@KUBS_AR_AP_UAT_003_006_TC_05a
+@KUBS_AR_AP_UAT_003_006_TC_05_01
 Scenario: Verify cancelling Debit Note is not allowed if the same has been adjusted at payment settlement
 Given User should go to the kubs url and login as a maker user
 Then select data set ID to Verify Cancellation of Debit Note is not allowed if it has been adjusted
+Then Choose the second Tab Segment
 When click the account payable main module 
 And click the eye icon of invoice bill booking
 And click the search icon in list view
 And search invoice type as Invoice Against Po
 And click the first eye icon in the list view of Active invoice bill
-And get the invoice number for DebitNote
+And get the invoice number and bussiness partner name for DebitNote
 When click the account payable main module
 And Click On Main module Accounts Receivable
 Then Click on Accounts Receivable Debit Note Eye Icon
@@ -38,16 +39,20 @@ And Click save button
 Then Goto The Notification Icon
 And Store the Referance Id and Open the Record
 Then Click submit button and Enter Remark submit it 
-@KUBS_AR_AP_UAT_003_006_TC_05b
-Scenario: Verify cancelling Debit Note is not allowed if the same has been adjusted at payment settlement
+Then logout from maker
+
+#@KUBS_AR_AP_UAT_003_006_TC_05_02
+#Scenario: Verify cancelling Debit Note is not allowed if the same has been adjusted at payment settlement
 Given Navigate as a Reviewer
 Then select data set ID to Verify Cancellation of Debit Note is not allowed if it has been adjusted
 Then click on Notify icon
 And Click First record Action icon
 Then Approve the record in Reviewer
 And Give Remark and Submit
-@KUBS_AR_AP_UAT_003_006_TC_05c
-Scenario: Verify cancelling Debit Note is not allowed if the same has been adjusted at payment settlement
+And logout from reviewer
+
+#@KUBS_AR_AP_UAT_003_006_TC_05_03
+#Scenario: Verify cancelling Debit Note is not allowed if the same has been adjusted at payment settlement
 Given Navigate as a Checker
 Then select data set ID to Verify Cancellation of Debit Note is not allowed if it has been adjusted
 Then Click module security management
@@ -56,7 +61,8 @@ Then Goto the Checker notification Icon
 And Click the First Action Icon
 Then Approve the Record in checker stage
 And Give the Remark and Submit it
-@KUBS_AR_AP_UAT_003_006_TC_05d
+Then logout from checker
+@KUBS_AR_AP_UAT_003_006_TC_05_02
 Scenario: Verify cancelling Debit Note is not allowed if the same has been adjusted at payment settlement
 Given User should go to the kubs url and login as a maker user
 Then select data set ID to Verify Cancellation of Debit Note is not allowed if it has been adjusted
@@ -78,29 +84,29 @@ And find the Debit reference number for Active Debit is availabe at the billing 
 Then Click the Debit Note Checkbox As Tick
 When Enter the Description value
 And Save The Payment settlement Record
-#Then Click the Alert message as Yes
+Then Click the Alert message as Yes
 Then Goto The Notification Icon
 And Store the Referance Id and Open the Record
 Then Click submit button and Enter Remark submit it
-@KUBS_AR_AP_UAT_003_006_TC_05e
+@KUBS_AR_AP_UAT_003_006_TC_05_03
 Scenario: Verify cancelling Debit Note is not allowed if the same has been adjusted at payment settlement
-Given Navigate as a Reviewer
 Then select data set ID to Verify Cancellation of Debit Note is not allowed if it has been adjusted
+Given Navigate as a Reviewer
 Then click on Notify icon
 And Click First record Action icon
 Then Approve the record in Reviewer
 And Give Remark and Submit
-@KUBS_AR_AP_UAT_003_006_TC_05f
+@KUBS_AR_AP_UAT_003_006_TC_05_04
 Scenario: Verify cancelling Debit Note is not allowed if the same has been adjusted at payment settlement
-Given Navigate as a Checker
 Then select data set ID to Verify Cancellation of Debit Note is not allowed if it has been adjusted
+Given Navigate as a Checker
 Then Click module security management
 And Claim the Record in Checker
 Then Goto the Checker notification Icon
 And Click the First Action Icon
 Then Approve the Record in checker stage
 And Give the Remark and Submit it
-@KUBS_AR_AP_UAT_003_006_TC_05g
+@KUBS_AR_AP_UAT_003_006_TC_05_05
 Scenario: Verify cancelling Debit Note is not allowed if the same has been adjusted at payment settlement
 Given User should go to the kubs url and login as a maker user
 Then select data set ID to Verify Cancellation of Debit Note is not allowed if it has been adjusted
@@ -381,58 +387,58 @@ Then Fill the credit note number in Adjustment Item Type
 And Give the Adjustment Ref No and Validate cancellation is not allowed
 
   
-#@KUBS_AR/AP_UAT_003_008_TC_02_01  @AR/AP
-#Scenario: Verify cancelled advances is not available for payment settlement
-#Given User should go to the kubs url and login as a maker user
-#Then select data set ID for verify cancelled advance is not available for payment settlement
-#Then Choose the second Tab Segment
-#And Goto accounts receivable advances module
-#Then click on search 
-#And select one record from advances
-#Then go to ar ap adjustment module
-#And click on Add Icon
-#And Fill The form for advance adjustment
-#And click notification button
-#Then choose first record in the notification record in GRN stage
-#And click on Submit button 
-#Then enter remark in confirmation alert
-#Then click on submit button in alert
-#And capture the reviewer ID in pop up which is open when we submit our record in maker stage
-#Then logout from maker
-#@KUBS_AR/AP_UAT_003_008_TC_02_02  @AR/AP
-#Scenario: Verify cancelled advances is not available for payment settlement
-#Then update data set ID for verify cancelled advance is not available for payment settlement for reviewer
-#Given login with reviewer credentials for cancelled advance record
-#Then click on notification button
-#And select our record in notification records using reference ID
-#Then Approve the record from reviewer
-#And enter the remark in alert
-#Then click on submit in alert
-#Then verify the approval status of the record
-#And logout from reviewer
-#@KUBS_AR/AP_UAT_003_008_TC_02_03  @AR/AP
-#Scenario: Verify cancelled advances is not available for payment settlement
-#Then update data set ID for verify cancelled advance is not available for payment settlement for checker
-#Given login with checker credentials for cancelled advance record
-#And click on security management menu in checker
-#Then click on action button under security management menu
-#And select our record and clime using reference ID
-#Then click on Notification button
-#Then select our record in notification records by the help of reference ID
-#And click on approve button in checker stage
-#Then give alert remark 
-#Then click on submit button on alert
-#And verify the record got approved from checker
-#Then logout from checker
-#@KUBS_AR/AP_UAT_003_008_TC_02_04  @AR/AP
-#Scenario: Verify cancelled advances is not available for payment settlement
-#Given User should go to the kubs url and login as a maker user
-#Then select data set ID for verify cancelled advance is not available for payment settlement
-#And click on accounts Payable module
-#And Go to payment settlement module
-#And click on Add Icon
-#And fill the form for cancelled advances
-#And find the invoice reference number for cancelled advance is not availabe at the billing queue
+@KUBS_AR/AP_UAT_003_008_TC_02_01  @AR/AP
+Scenario: Verify cancelled advances is not available for payment settlement
+Given User should go to the kubs url and login as a maker user
+Then select data set ID for verify cancelled advance is not available for payment settlement
+Then Choose the second Tab Segment
+And Goto accounts receivable advances module
+Then click on search 
+And select one record from advances
+Then go to ar ap adjustment module
+And click on Add Icon
+And Fill The form for advance adjustment
+And click notification button
+Then choose first record in the notification record in GRN stage
+And click on Submit button 
+Then enter remark in confirmation alert
+Then click on submit button in alert
+And capture the reviewer ID in pop up which is open when we submit our record in maker stage
+Then logout from maker
+@KUBS_AR/AP_UAT_003_008_TC_02_02  @AR/AP
+Scenario: Verify cancelled advances is not available for payment settlement
+Then update data set ID for verify cancelled advance is not available for payment settlement for reviewer
+Given login with reviewer credentials for cancelled advance record
+Then click on notification button
+And select our record in notification records using reference ID
+Then Approve the record from reviewer
+And enter the remark in alert
+Then click on submit in alert
+Then verify the approval status of the record
+And logout from reviewer
+@KUBS_AR/AP_UAT_003_008_TC_02_03  @AR/AP
+Scenario: Verify cancelled advances is not available for payment settlement
+Then update data set ID for verify cancelled advance is not available for payment settlement for checker
+Given login with checker credentials for cancelled advance record
+And click on security management menu in checker
+Then click on action button under security management menu
+And select our record and clime using reference ID
+Then click on Notification button
+Then select our record in notification records by the help of reference ID
+And click on approve button in checker stage
+Then give alert remark 
+Then click on submit button on alert
+And verify the record got approved from checker
+Then logout from checker
+@KUBS_AR/AP_UAT_003_008_TC_02_04  @AR/AP
+Scenario: Verify cancelled advances is not available for payment settlement
+Given User should go to the kubs url and login as a maker user
+Then select data set ID for verify cancelled advance is not available for payment settlement
+And click on accounts Payable module
+And Go to payment settlement module
+And click on Add Icon
+And fill the form for cancelled advances
+And find the invoice reference number for cancelled advance is not availabe at the billing queue
 
 #f
 #@KUBS_AR_AP_UAT_003_008_TC_03_01  @AR/AP

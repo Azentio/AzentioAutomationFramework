@@ -38,7 +38,7 @@ public class ARAP_AccountsPayableReport {
 	KUBS_Login kubsLogin;
 	ConfigFileReader configFileReader = new ConfigFileReader();
 	WaitHelper waitHelper = new WaitHelper(driver);
-	JavascriptHelper javaScriptHelper = new JavascriptHelper();
+	JavascriptHelper javaScriptHelper = new JavascriptHelper(driver);
 	DropDownHelper dropDownHelper = new DropDownHelper(driver);
 	
 	VerificationHelper verificationHelper = new VerificationHelper();
@@ -154,7 +154,7 @@ public class ARAP_AccountsPayableReport {
 	}
 	@Then("^Third Segment report Icon$")
 	public void third_segment_report_icon() throws Throwable {
-		javaScriptHelper.JavaScriptHelper(driver);
+		
 		javaScriptHelper.scrollIntoView(arapObj.ARAP_SegmentButton_ReportIcon());
 		waitHelper.waitForElement(driver, 3000, arapObj.ARAP_SegmentButton_ReportIcon());
 		arapObj.ARAP_SegmentButton_ReportIcon().click();
@@ -168,7 +168,7 @@ public class ARAP_AccountsPayableReport {
 	public void click_sub_module_accounts_payable_report() throws Throwable {
 		// --------SUB-MODULE ACC PAYABLE REPORT--------//
 		arapObj.ARAP_Report().click();
-		javaScriptHelper.JavaScriptHelper(driver);
+		
 		javaScriptHelper.scrollIntoView(arapReportObj.ARAP_Report_Acc_pay_Module_Edit());
 		waitHelper.waitForElementwithFluentwait(driver, arapReportObj.ARAP_Report_Acc_pay_Module_Edit());
 		arapReportObj.ARAP_Report_Acc_pay_Module_Edit().click();
@@ -184,7 +184,7 @@ public class ARAP_AccountsPayableReport {
 	public void give_current_business_date_in_arap() throws Throwable {
 		// ----------CLICK ON DATE--------------//
 		arapReportObj.ARAP_Report_Module_Date().click();
-		javaScriptHelper.JavaScriptHelper(driver);
+		
 		while (true) {
 			try {
 
@@ -227,7 +227,7 @@ public class ARAP_AccountsPayableReport {
 	public void verify_the_accounts_payable_report_is_correctly_displayed() throws Throwable {
 		// ----VERIFY THE GRN REPORT------//
 		browseHelper.SwitchToWindow(1);
-		javaScriptHelper.JavaScriptHelper(driver);
+		
 		while (true) {
 			Thread.sleep(2000);
 			try {
@@ -246,7 +246,7 @@ public class ARAP_AccountsPayableReport {
 	@Then("^Verify Balance sheet post GRN approval$")
     public void verify_balance_sheet_post_grn_approval() throws Throwable {
 		browseHelper.SwitchToWindow(1);
-		javaScriptHelper.JavaScriptHelper(driver);
+		
     	Thread.sleep(2000);
     	javaScriptHelper.scrollDownByPixel();
     	Thread.sleep(1000);

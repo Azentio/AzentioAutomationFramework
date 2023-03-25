@@ -35,7 +35,7 @@ public class ARAP_BalanceSheetReport {
 	KUBS_Login kubsLogin;
 	ConfigFileReader configFileReader = new ConfigFileReader();
 	WaitHelper waitHelper = new WaitHelper(driver);
-	JavascriptHelper javaScriptHelper = new JavascriptHelper();
+	JavascriptHelper javaScriptHelper = new JavascriptHelper(driver);
 	DropDownHelper dropDownHelper = new DropDownHelper(driver);
 	ARAP_GRNCreationPageObject grnObject=new ARAP_GRNCreationPageObject(driver);
 	
@@ -160,7 +160,7 @@ public class ARAP_BalanceSheetReport {
 		System.out.println(BPNumber);
 		
 		
-		javaScriptHelper.JavaScriptHelper(driver);
+		
 	    invoicenumber = (String) javaScriptHelper
 				.executeScript("return document.getElementsByName('billNo')[0].value");
 		System.out.println(invoicenumber);
@@ -177,7 +177,7 @@ public class ARAP_BalanceSheetReport {
 	    @And("^click the balance sheet report$")
 	    public void click_the_balance_sheet_report() throws Throwable {
 //	    	waitHelper.waitForElement(driver, 2000,arAp_BalanceSheetReportObj.arAp_BalanceSheetReport_BalanceSheetReport());
-	    	javaScriptHelper.JavaScriptHelper(driver);
+	    	
 	    	javaScriptHelper.scrollIntoView(arAp_BalanceSheetReportObj.arAp_BalanceSheetReport_BalanceSheetReport());
 	    	waitHelper.waitForElementwithFluentwait(driver, arAp_BalanceSheetReportObj.arAp_BalanceSheetReport_BalanceSheetReport());
 	    	arAp_BalanceSheetReportObj.arAp_BalanceSheetReport_BalanceSheetReport().click();
@@ -200,7 +200,7 @@ public class ARAP_BalanceSheetReport {
 			 arAp_BalanceSheetReportObj.arAp_BalanceSheetReport_CalendarButton().click();
 			
 			 
-			 javaScriptHelper.JavaScriptHelper(driver);
+			 
 while(true)
 	{
 	try
@@ -233,7 +233,7 @@ clickAndActionHelper.doubleClick(Click);
 	    
 	    @Then("^Verify Balance sheet should be updated correctly basis the legs impacted in accounting entries$")
 	    public void verify_balance_sheet_should_be_updated_correctly_basis_the_legs_impacted_in_accounting_entries() throws Throwable {
-	    	javaScriptHelper.JavaScriptHelper(driver);
+	    	
 
 	    	browseHelper.SwitchToWindow(1);
 		    Thread.sleep(1500);

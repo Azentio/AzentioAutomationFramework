@@ -37,7 +37,7 @@ public class ACCOUNTSPAYABLE_InvoiceBooking {
 	WaitHelper waithelper = new WaitHelper(driver);
 	ACCOUNTSPAYABLE_VendorContractsObj aCCOUNTSPAYABLE_VendorContractsObj = new ACCOUNTSPAYABLE_VendorContractsObj(driver);
 	ACCOUNTSPAYABLE_InvoiceBookingObj aCCOUNTSPAYABLE_InvoiceBookingObj = new ACCOUNTSPAYABLE_InvoiceBookingObj(driver);
-	JavascriptHelper javascripthelper = new JavascriptHelper();
+	JavascriptHelper javascripthelper = new JavascriptHelper(driver);
 	JsonDataReaderWriter jsonWriter = new JsonDataReaderWriter();
 	ClicksAndActionsHelper clicksAndActionHelper = new ClicksAndActionsHelper(driver);
 	JsonDataReaderWriter reader;

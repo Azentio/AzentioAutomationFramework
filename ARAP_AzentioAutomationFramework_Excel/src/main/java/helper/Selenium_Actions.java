@@ -37,7 +37,7 @@ public ScreenshotHelper getScrenshotHelper() {
 	return screnshotHelper;
 }
 public JavascriptHelper getJavascriptHelper() {
-	javascriptHelper = new JavascriptHelper();
+	javascriptHelper = new JavascriptHelper(driver);
 	return javascriptHelper;
 }
 public VerificationHelper getVerficationHelper() {

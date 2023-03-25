@@ -35,7 +35,7 @@ public class AccountReceivable_AdvanceAgainstPO extends BaseClass {
 		WaitHelper waithelper = new WaitHelper(driver) ;
 		BrowserHelper browserHelper;
 		// maker//
-		JavascriptHelper javascripthelper = new JavascriptHelper();
+		JavascriptHelper javascripthelper = new JavascriptHelper(driver);
 		ArApObj arAPobj = new ArApObj(driver);	
 		AccountReceivable_AccountReceivableAdvancesObj accountReceivable_AccountReceivableAdvancesObj = new AccountReceivable_AccountReceivableAdvancesObj(driver);
 		ExcelData excelData = new ExcelData("C:\\Users\\inindc00089\\eclipse-workspace\\AzentioAutomationFramework_ARAP\\Test-data\\KUBSTestData.xlsx","AdvanceToEmployees", "DataSet ID");
@@ -377,7 +377,6 @@ public class AccountReceivable_AdvanceAgainstPO extends BaseClass {
 			//document.querySelector('ion-toast').shadowRoot.querySelector("div[class='toast-message']")
 		    for(int i=0;i<=30;i++)
 		    {
-		    	javascripthelper.JavaScriptHelper(driver);
 		    	try
 		    	{
 		    		WebElement successMsg1 = (WebElement) javascripthelper.executeScript(

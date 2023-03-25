@@ -22,7 +22,8 @@ public class KUBS_MakerObj {
 		return maker_Configuration;
 	}
 	// custom-side-menu/ion-select
-		@FindBy(xpath = "//ion-select[@aria-label='Amlock']")
+//		@FindBy(xpath = "//ion-select[@aria-label='Amlock']")
+		@FindBy(xpath = "//custom-side-menu/ion-select[1]")
 		private WebElement kubsFinaceOption;
 
 		public WebElement kubsFinaceOption() {

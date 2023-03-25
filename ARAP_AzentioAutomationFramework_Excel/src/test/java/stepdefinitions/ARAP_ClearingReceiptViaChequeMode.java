@@ -66,7 +66,7 @@ public class ARAP_ClearingReceiptViaChequeMode extends BaseClass {
 	Selenium_Actions seleniumactions = new Selenium_Actions(driver);
 	ConfigFileReader configreader = new ConfigFileReader();
 	Map<String,String> receiptTestData=new HashMap<>();
-	JavascriptHelper javaScriptHelper = new JavascriptHelper();
+	JavascriptHelper javaScriptHelper = new JavascriptHelper(driver);
 	BrowserHelper browserHelper = new BrowserHelper(driver);
 	KUBS_ReviewerObj reviewerObj = new KUBS_ReviewerObj(driver);
 	KUBS_CheckerObj checkerObj = new KUBS_CheckerObj(driver);
@@ -106,7 +106,7 @@ public class ARAP_ClearingReceiptViaChequeMode extends BaseClass {
 
 	@And("^goto accouts receipt module$")
 	public void goto_accouts_receipt_module() throws Throwable {
-		javaScriptHelper.JavaScriptHelper(driver);
+		
 		javaScriptHelper.scrollIntoView(receiptObj.accoutsReceivableReceiptViewButton());
 //		waitHelper.waitForElementVisible(receiptObj.accoutsReceivableReceiptViewButton(), 2000, 100);
 		waitHelper.waitForElementToVisibleWithFluentWait(driver, receiptObj.accoutsReceivableReceiptViewButton(), 20,2);
@@ -215,7 +215,7 @@ public class ARAP_ClearingReceiptViaChequeMode extends BaseClass {
 		inventoryMaintenanceObj.inventoryMaintenance_InventoryItem_SubmitButton().click();
 
 		// Remark
-		javaScriptHelper.JavaScriptHelper(driver);
+		
 		waitHelper.waitForElement(driver, 3000, accountReceivable_UpdateDepositedChequeObj.accountReceivable_UpdateDepositedCheque_RemarkField());
 		javaScriptHelper.JSEClick(accountReceivable_UpdateDepositedChequeObj.accountReceivable_UpdateDepositedCheque_RemarkField());
 		accountReceivable_UpdateDepositedChequeObj.accountReceivable_UpdateDepositedCheque_RemarkField().sendKeys("OK");
@@ -268,7 +268,6 @@ public class ARAP_ClearingReceiptViaChequeMode extends BaseClass {
 		// select the record
 		browserHelper = new BrowserHelper(driver);
 		// budgetdata = jsonReader.getBudgetdataByName("Maker");
-		javaScriptHelper = new JavascriptHelper();
 		Thread.sleep(1000);
 		/*
 		 * for (int i = 1; i <= 35; i++) { try { waithelper.waitForElement(driver, 3000,
@@ -360,7 +359,7 @@ public class ARAP_ClearingReceiptViaChequeMode extends BaseClass {
 	public void goto_cheque_deposite_module() throws Throwable {
 		// waitHelper.waitForElementVisible(chequeDepositeObj.AccountsReceivableChecqueDeposite(),
 		// 2000, 100);
-		javaScriptHelper.JavaScriptHelper(driver);
+		
 		javaScriptHelper.scrollIntoView(chequeDepositeObj.AccountsReceivableChecqueDeposite());
 		chequeDepositeObj.AccountsReceivableChecqueDeposite().click();
 
@@ -406,7 +405,7 @@ public class ARAP_ClearingReceiptViaChequeMode extends BaseClass {
 	@And("^select our bill$")
 	public void select_our_bill() throws Throwable {
 		Thread.sleep(1000);
-		javaScriptHelper.JavaScriptHelper(driver);
+		
 		while (true) {
 			try {
 				driver.findElement(By.xpath("//div[text()=' " + testData.get("ReceiptReferenceNumber") + " ']/ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell[2]//ion-checkbox"))
@@ -435,7 +434,7 @@ public class ARAP_ClearingReceiptViaChequeMode extends BaseClass {
 
 	@And("^save the bill record$")
 	public void save_the_bill_record() throws Throwable {
-		javaScriptHelper.JavaScriptHelper(driver);
+		
 		javaScriptHelper.scrollIntoView(receiptObj.accoutsReceivableReceiptSaveButton());
 		receiptObj.accoutsReceivableReceiptSaveButton().click();
 
@@ -459,7 +458,7 @@ public class ARAP_ClearingReceiptViaChequeMode extends BaseClass {
 
 	@Then("^Click on Update cheque status Note icon$")
 	public void click_on_update_cheque_status_note_icon() {
-		javaScriptHelper.JavaScriptHelper(driver);
+		
 		javaScriptHelper.scrollIntoView(accountReceivable_UpdateDepositedChequeObj.accountReceivable_UpdateDepositedCheque_NoteIcon());
 		waitHelper.waitForElement(driver, 2000, accountReceivable_UpdateDepositedChequeObj.accountReceivable_UpdateDepositedCheque_NoteIcon());
 		accountReceivable_UpdateDepositedChequeObj.accountReceivable_UpdateDepositedCheque_NoteIcon().click();
@@ -526,7 +525,7 @@ public class ARAP_ClearingReceiptViaChequeMode extends BaseClass {
 		inventoryMaintenanceObj.inventoryMaintenance_InventoryItem_SubmitButton().click();
 
 		// Remark
-		javaScriptHelper.JavaScriptHelper(driver);
+		
 		waitHelper.waitForElement(driver, 3000, accountReceivable_UpdateDepositedChequeObj.accountReceivable_UpdateDepositedCheque_RemarkField());
 		javaScriptHelper.JSEClick(accountReceivable_UpdateDepositedChequeObj.accountReceivable_UpdateDepositedCheque_RemarkField());
 		accountReceivable_UpdateDepositedChequeObj.accountReceivable_UpdateDepositedCheque_RemarkField().sendKeys("OK");
@@ -586,7 +585,6 @@ public class ARAP_ClearingReceiptViaChequeMode extends BaseClass {
 		// select the record
 		browserHelper = new BrowserHelper(driver);
 		// budgetdata = jsonReader.getBudgetdataByName("Maker");
-		javaScriptHelper = new JavascriptHelper();
 		Thread.sleep(1000);
 		/*
 		 * for (int i = 1; i <= 35; i++) { try { waithelper.waitForElement(driver, 3000,
@@ -696,7 +694,7 @@ public class ARAP_ClearingReceiptViaChequeMode extends BaseClass {
 
 	@When("^click on eye button of update cheque status$")
 	public void click_on_eye_button_of_update_cheque_status() {
-		javaScriptHelper.JavaScriptHelper(driver);
+		
 		javaScriptHelper.scrollIntoView(accountsReceivable_UpdateChequeStatusObj.accountsReceivable_UpdateChequeStatus_EyeButton());
 		waitHelper.waitForElement(driver, 3000, accountsReceivable_UpdateChequeStatusObj.accountsReceivable_UpdateChequeStatus_EyeButton());
 		accountsReceivable_UpdateChequeStatusObj.accountsReceivable_UpdateChequeStatus_EyeButton().click();
@@ -722,7 +720,7 @@ public class ARAP_ClearingReceiptViaChequeMode extends BaseClass {
 
 	@Then("^click on report icon1$")
 	public void click_on_report_icon1() {
-		javaScriptHelper.JavaScriptHelper(driver);
+		
 		javaScriptHelper.scrollIntoViewAndClick(eNQUIRY_FinancialTransactionObj.ENQUIRY_FinancialTransaction_ReportIcon());
 	}
 
@@ -740,7 +738,7 @@ public class ARAP_ClearingReceiptViaChequeMode extends BaseClass {
 	}
 
 	@And("^fill the required fields of financial transaction$")
-	public void fill_the_required_fields_of_financial_transaction() {
+	public void fill_the_required_fields_of_financial_transaction() throws InterruptedException {
 		waitHelper.waitForElement(driver, 3000, eNQUIRY_FinancialTransactionObj.ENQUIRY_FinancialTransaction_BranchCode());
 		eNQUIRY_FinancialTransactionObj.ENQUIRY_FinancialTransaction_BranchCode().sendKeys(testData.get("BranchCode"));
 		eNQUIRY_FinancialTransactionObj.ENQUIRY_FinancialTransaction_BranchCode().sendKeys(Keys.ENTER);
@@ -749,42 +747,52 @@ public class ARAP_ClearingReceiptViaChequeMode extends BaseClass {
 //	    	eNQUIRY_FinancialTransactionObj.ENQUIRY_FinancialTransaction_GlCode().sendKeys(UpdateChequeStatusTestDataType.GLCode);
 //	    	eNQUIRY_FinancialTransactionObj.ENQUIRY_FinancialTransaction_GlCode().sendKeys(Keys.ENTER);
 
-		waitHelper.waitForElement(driver, 3000, eNQUIRY_FinancialTransactionObj.ENQUIRY_FinancialTransaction_FromDate());
+		waitHelper.waitForElementwithFluentwait(driver, eNQUIRY_FinancialTransactionObj.ENQUIRY_FinancialTransaction_FromDate());
 		eNQUIRY_FinancialTransactionObj.ENQUIRY_FinancialTransaction_FromDate().click();
 
-		while (true) {
+		for(int i=0;i<=70;i++) {
 			try {
-
-				waitHelper.waitForElement(driver, 3000,
-						driver.findElement(By.xpath("//span[contains(text(),'" + testData.get("Gl Month") + " " + testData.get("Gl Year") + "')]")));
-				WebElement monthAndYear = driver.findElement(By.xpath("//span[contains(text(),'" + testData.get("Gl Month") + " " + testData.get("Gl Year") + "')]"));
+				waitHelper.waitForElementwithFluentwait(driver, driver.findElement(By.xpath("//span[text()='" + testData.get("Gl Month") + " " + testData.get("Gl Year") + " ']")));
+				WebElement monthAndYear = driver.findElement(By.xpath("//span[text()='" + testData.get("Gl Month") + " " + testData.get("Gl Year") + " ']"));
 				break;
 			}
 
 			catch (NoSuchElementException nosuchElement) {
-				eNQUIRY_FinancialTransactionObj.ENQUIRY_FinancialTransaction_NextMonth().click();
+				int glYear=Integer.parseInt(testData.get("Gl Year"));
+				if(glYear<2023){
+					eNQUIRY_FinancialTransactionObj.ENQUIRY_FinancialTransaction_PreviousMonth().click();
+				}else if(glYear>=2023)
+					eNQUIRY_FinancialTransactionObj.ENQUIRY_FinancialTransaction_NextMonth().click();
 			}
 		}
+		Thread.sleep(500);
+		waitHelper.waitForElementwithFluentwait(driver, driver.findElement(
+				By.xpath("//td[@aria-label='" + testData.get("Gl FullMonth") + " " + testData.get("Gl Date") + ", " + testData.get("Gl Year") + "']/span")));
 		WebElement FinalDay = driver.findElement(
 				By.xpath("//td[@aria-label='" + testData.get("Gl FullMonth") + " " + testData.get("Gl Date") + ", " + testData.get("Gl Year") + "']/span"));
 		clicksAndActionHelper.doubleClick(FinalDay);
 
-		waitHelper.waitForElement(driver, 3000, eNQUIRY_FinancialTransactionObj.ENQUIRY_FinancialTransaction_ToDate());
+		waitHelper.waitForElementwithFluentwait(driver, eNQUIRY_FinancialTransactionObj.ENQUIRY_FinancialTransaction_ToDate());
 		eNQUIRY_FinancialTransactionObj.ENQUIRY_FinancialTransaction_ToDate().click();
 
-		while (true) {
+		for(int i=0;i<=70;i++) {
 			try {
-
-				waitHelper.waitForElement(driver, 3000,
-						driver.findElement(By.xpath("//span[contains(text(),'" + testData.get("Gl To Month") + " " + testData.get("Gl To Year") + "')]")));
-				WebElement monthAndYear = driver.findElement(By.xpath("//span[contains(text(),'" + testData.get("Gl To Month") + " " + testData.get("Gl To Year") + "')]"));
+				waitHelper.waitForElementwithFluentwait(driver, driver.findElement(By.xpath("//span[text()='" + testData.get("Gl To Month") + " " + testData.get("Gl To Year") + " ']")));
+				WebElement monthAndYear = driver.findElement(By.xpath("//span[text()='" + testData.get("Gl To Month") + " " + testData.get("Gl To Year") + " ']"));
 				break;
 			}
 
 			catch (NoSuchElementException nosuchElement) {
-				eNQUIRY_FinancialTransactionObj.ENQUIRY_FinancialTransaction_NextMonth().click();
+				int glToYear=Integer.parseInt(testData.get("Gl To Year"));
+				if(glToYear<2023){
+					eNQUIRY_FinancialTransactionObj.ENQUIRY_FinancialTransaction_PreviousMonth().click();
+				}else if(glToYear>=2023)
+					eNQUIRY_FinancialTransactionObj.ENQUIRY_FinancialTransaction_NextMonth().click();
 			}
 		}
+		Thread.sleep(500);
+		waitHelper.waitForElementwithFluentwait(driver, driver.findElement(
+				By.xpath("//td[@aria-label='" + testData.get("Gl To FullMonth") + " " + testData.get("Gl To Date") + ", " + testData.get("Gl To Year") + "']/span")));
 		WebElement FinalDay2 = driver.findElement(By
 				.xpath("//td[@aria-label='" + testData.get("Gl To FullMonth") + " " + testData.get("Gl To Date") + ", " + testData.get("Gl To Year") + "']/span"));
 		clicksAndActionHelper.doubleClick(FinalDay2);
@@ -793,7 +801,7 @@ public class ARAP_ClearingReceiptViaChequeMode extends BaseClass {
 
 	@Then("^click on view button to view the reports and verify$")
 	public void click_on_view_button_to_view_the_reports_and_verify() throws InterruptedException, IOException, ParseException {
-		javaScriptHelper.JavaScriptHelper(driver);
+		
 //		waitHelper.waitForElement(driver, 3000, eNQUIRY_FinancialTransactionObj.ENQUIRY_FinancialTransaction_ViewButton());
 		waitHelper.waitForElementToVisibleWithFluentWait(driver, eNQUIRY_FinancialTransactionObj.ENQUIRY_FinancialTransaction_ViewButton(), 20, 2);
 		eNQUIRY_FinancialTransactionObj.ENQUIRY_FinancialTransaction_ViewButton().click();
@@ -845,21 +853,25 @@ public class ARAP_ClearingReceiptViaChequeMode extends BaseClass {
 	public void select_balance_sheet_as_on_date() throws InterruptedException {
 		waitHelper.waitForElement(driver, 2000, arAp_BalanceSheetReportObj.arAp_BalanceSheetReport_CalendarButton());
 		arAp_BalanceSheetReportObj.arAp_BalanceSheetReport_CalendarButton().click();
-		javaScriptHelper.JavaScriptHelper(driver);
+		
 		for(int i=0;i<=30;i++) {
 			try {
 				// span[contains(text(),'Oct 2022')]
 			Thread.sleep(1000);
 //			waithelper.waitForElement(driver, 2000, driver.findElement(By.xpath("//span[contains(text(),'"+arAp_BalanceSheetReportTestDataType.Month+" "+arAp_BalanceSheetReportTestDataType.Year+"')]")));
 				waitHelper.waitForElementwithFluentwait(driver,
-						driver.findElement(By.xpath("//span[contains(text(),'" + testData.get("Gl Month") + " " + testData.get("Gl Year") + "')]")));
-				WebElement monthAndYear = driver.findElement(By.xpath("//span[contains(text(),'" + testData.get("Gl Month") + " " + testData.get("Gl Year") + "')]"));
+						driver.findElement(By.xpath("//span[text()='" + testData.get("Gl Month") + " " + testData.get("Gl Year") + " ']")));
+				WebElement monthAndYear = driver.findElement(By.xpath("//span[text()='" + testData.get("Gl Month") + " " + testData.get("Gl Year") + " ']"));
 //			Thread.sleep(2000);
 				break;
 			}
 
 			catch (NoSuchElementException nosuchElement) {
-				arAp_BalanceSheetReportObj.arAp_BalanceSheetReport_NextMonth().click();
+				int glYear=Integer.parseInt(testData.get("Gl Year"));
+				if(glYear<2023){
+					arAp_BalanceSheetReportObj.arAp_BalanceSheetReport_PreviousMonth().click();
+				}else if(glYear>=2023)
+					arAp_BalanceSheetReportObj.arAp_BalanceSheetReport_NextMonth().click();
 
 			}
 		}
@@ -872,7 +884,7 @@ public class ARAP_ClearingReceiptViaChequeMode extends BaseClass {
 	@Then("^Verify balance sheet should updated correctly post cheque is cleared$")
     public void Verify_balance_sheet_should_updated_correctly_post_cheque_is_cleared() throws InterruptedException  {
     	Thread.sleep(1000);
-    	javaScriptHelper.JavaScriptHelper(driver);
+    	
     	browserHelper.SwitchToWindow(1);
     	waitHelper.waitForElement(driver, 3000, financialReporting_GLBalancesReportObj.FinancialReporting_BalanceSheetReport_UpdatedDataReceipt());
     	javaScriptHelper.scrollIntoView(financialReporting_GLBalancesReportObj.FinancialReporting_BalanceSheetReport_UpdatedDataReceipt()); 

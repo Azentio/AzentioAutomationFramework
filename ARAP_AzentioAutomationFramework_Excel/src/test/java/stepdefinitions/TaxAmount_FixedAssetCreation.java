@@ -34,7 +34,7 @@ public class TaxAmount_FixedAssetCreation {
 	
 	WaitHelper waithelper = new WaitHelper(driver);
 	ACCOUNTSPAYABLE_InvoiceBookingObj aCCOUNTSPAYABLE_InvoiceBookingObj = new ACCOUNTSPAYABLE_InvoiceBookingObj(driver);
-	JavascriptHelper javascripthelper = new JavascriptHelper();
+	JavascriptHelper javascripthelper = new JavascriptHelper(driver);
 	JsonDataReaderWriter jsonWriter = new JsonDataReaderWriter();
 	ClicksAndActionsHelper clicksAndActionHelper = new ClicksAndActionsHelper(driver);
 	JsonDataReaderWriter reader;
@@ -137,7 +137,6 @@ catch(Exception e) {}}
 	    	
 
 	    	Thread.sleep(2000);
-	    	javascripthelper.JavaScriptHelper(driver);
 			String str = javascripthelper.executeScript(
 					"return document.querySelector(\"ion-toast\").shadowRoot.querySelector(\"div[class='toast-message']\").innerText")
 					.toString();

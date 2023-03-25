@@ -36,7 +36,7 @@ KUBS_CheckerObj kubschecker = new KUBS_CheckerObj(driver);
 WaitHelper waithelper = new WaitHelper(driver) ;
 BrowserHelper browserHelper;
 // maker//
-JavascriptHelper javascripthelper = new JavascriptHelper();
+JavascriptHelper javascripthelper = new JavascriptHelper(driver);
 	
 AccountReceivable_AccountReceivableAdvancesObj accountReceivable_AccountReceivableAdvancesObj = new AccountReceivable_AccountReceivableAdvancesObj(driver);
 ExcelData excelData = new ExcelData("C:\\Users\\inindc00089\\eclipse-workspace\\AzentioAutomationFramework_ARAP\\Test-data\\KUBSTestData.xlsx","AdvanceToEmployees", "DataSet ID");
@@ -129,7 +129,6 @@ Map<String, String> testData = new HashMap<>();
     	waithelper.waitForElement(driver, 2000,accountReceivable_AccountReceivableAdvancesObj.accountReceivable_AccountReceivableAdvances_Save());
     	accountReceivable_AccountReceivableAdvancesObj.accountReceivable_AccountReceivableAdvances_Save().click();
     	Thread.sleep(2000);
-        javascripthelper.JavaScriptHelper(driver);
         String str = javascripthelper.executeScript("return document.querySelector(\"ion-toast\").shadowRoot.querySelector(\"div[class='toast-message']\").innerText").toString();
         System.out.println("Message:" +str);
         Thread.sleep(1000);

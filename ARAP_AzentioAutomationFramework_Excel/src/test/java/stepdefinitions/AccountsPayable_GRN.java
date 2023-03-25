@@ -33,7 +33,7 @@ public class AccountsPayable_GRN {
 	ConfigFileReader config = new ConfigFileReader();
 	AccountsPayable_GrnObj accountsPayable_GRNObj = new AccountsPayable_GrnObj(driver);
 	WaitHelper waithelper = new WaitHelper(driver);
-	JavascriptHelper javascripthelper = new JavascriptHelper();
+	JavascriptHelper javascripthelper = new JavascriptHelper(driver);
 	ClicksAndActionsHelper clicksAndActionHelper = new ClicksAndActionsHelper(driver);
 	BrowserHelper browserHelper;
 	

@@ -261,7 +261,7 @@ Then click on report segment button
 And click on equiry menu
 Then click on edit icon near fiancial transaction menu
 And choose the branch code
-#And choose the Gl code
+And choose the Gl code
 And click transaction from date calender icon
 Then choose from date
 And click on transaction to date calender icon
@@ -320,7 +320,6 @@ Scenario: Check inventory access details report
 Given User should go to the kubs url and login as a maker user
 Then select data set ID for inventory access details report
 Then click on report button
-#Then Click on Report Tab
 Then Click on Master reports Tab
 Then Click on Inventory access detail report edit grid
 Then Fill the form for  Inventory access detail report
@@ -332,7 +331,7 @@ Scenario: Check inventory request report
 Given User should go to the kubs url and login as a maker user
 Then select data set ID for inventory request report
 Then click on report button
-Then Click on Report Tab
+Then Click on the Report Tab
 Then Click on Inventory Request report edit grid
 Then Fill the form for Inventory Request report
 And click on view button to view report of inventory request
@@ -343,7 +342,7 @@ Scenario: Check Purchase requisition report
 Given User should go to the kubs url and login as a maker user
 Then select data set ID for Purchase requisition report
 Then click on report button
-Then Click on Report Tab
+Then Click on the Report Tab
 Then Click on Purchase requisition report edit grid
 Then Fill the form for Purchase requisition report
 And Click on view button to view report of Purchase requisition report
@@ -354,7 +353,7 @@ Scenario: Check stock issuance report
 Given User should go to the kubs url and login as a maker user
 Then select data set ID for stock issuance report
 Then click on report button
-Then Click on Report Tab
+Then Click on the Report Tab
 Then Click on stock issuance report edit grid
 Then Fill the form for stock issuance report
 And Click on view button to view report of stock issuance report
@@ -365,11 +364,9 @@ Scenario: Check stock confirmation report
 Given User should go to the kubs url and login as a maker user
 Then select data set ID for stock confirmation report
 Then click on report button
-Then Click on Report Tab
+Then Click on the Report Tab
 Then Click on Stock Confirmation edit button
 Then Fill the details of stock confirmation
-#And click transaction from date calender icon
-#Then choose from date
 Then Click on View button
 Then verify the approved record is available in the report
 
@@ -378,7 +375,7 @@ Scenario: System should able to show the stock Return history for the inventory 
 Given User should go to the kubs url and login as a maker user
 Then select data set ID for stock return report
 Then click on report button
-Then Click on Report Tab
+Then Click on the Report Tab
 Then Click on stock return report edit grid
 Then Fill the form for stock return report
 And Click on view button to view report of stock return report

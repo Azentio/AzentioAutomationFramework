@@ -43,7 +43,7 @@ public class InventoryManagement_InventoryRequest extends BaseClass {
 	WaitHelper waithelper = new WaitHelper(driver);
 	// maker//
 	KUBS_Login login;
-	JavascriptHelper javaScriptHelper = new JavascriptHelper();
+	JavascriptHelper javaScriptHelper = new JavascriptHelper(driver);
 	InventoryManagement_InventoryStockReceiptObj inventoryManagement_InventoryStockReceiptObj = new InventoryManagement_InventoryStockReceiptObj(driver);
 	InventoryManagamentObj inventoryManagamentObj = new InventoryManagamentObj(driver);
 	BUDGET_BudgetTransferObj budgetTransferObj = new BUDGET_BudgetTransferObj(driver);
@@ -67,7 +67,7 @@ public class InventoryManagement_InventoryRequest extends BaseClass {
 
 	@Then("^Click on Inventory Management$")
 	public void click_on_inventory_management() throws InterruptedException {
-		javaScriptHelper.JavaScriptHelper(driver);
+		
 		Thread.sleep(2000);
 		javaScriptHelper.scrollIntoViewAndClick(inventoryManagement_InventoryStockReceiptObj.inventoryManagement_InventoryStockReceipt_InventoryManagementField());
 
@@ -75,16 +75,12 @@ public class InventoryManagement_InventoryRequest extends BaseClass {
 
 	@And("^Click on the eye icon of Inventory Request$")
 	public void click_on_the_eye_icon_of_inventory_request() throws Throwable {
-//			waithelper.waitForElement(driver, 2000,inventoryManagamentObj.inventoryManagament_InventoryRequest_EyeButton());
 		waithelper.waitForElementwithFluentwait(driver, inventoryManagamentObj.inventoryManagament_InventoryRequest_EyeButton());
 		inventoryManagamentObj.inventoryManagament_InventoryRequest_EyeButton().click();
-//			inventoryManagamentObj.inventoryManagament_InventoryRequest_EyeButton().click();
 	}
 
 	@Then("^Click on Add button$")
 	public void click_on_add_button() throws Throwable {
-//			waithelper.waitForElement(driver, 2000,inventoryManagamentObj.inventoryManagament_InventoryRequest_AddButton());
-//			inventoryManagamentObj.inventoryManagament_InventoryRequest_AddButton().click();
 		Thread.sleep(2000);
 		waithelper.waitForElementwithFluentwait(driver, inventoryManagamentObj.inventoryManagament_InventoryRequest_AddButton());
 		inventoryManagamentObj.inventoryManagament_InventoryRequest_AddButton().click();
@@ -92,9 +88,6 @@ public class InventoryManagement_InventoryRequest extends BaseClass {
 
 	@And("^Fill all the mandatory fields$")
 	public void fill_all_the_mandatory_fields() throws Throwable {
-//		inventoryManagementTestDataType = jsonReader.getInventoryManagementByName("Maker");
-
-//		waithelper.waitForElement(driver, 2000, inventoryManagamentObj.inventoryManagament_InventoryRequest_BranchCode());
 		waithelper.waitForElementToVisibleWithFluentWait(driver, inventoryManagamentObj.inventoryManagament_InventoryRequest_BranchCode(), 20, 2);
 		inventoryManagamentObj.inventoryManagament_InventoryRequest_BranchCode().click();
 		inventoryManagamentObj.inventoryManagament_InventoryRequest_BranchCode().sendKeys(testData.get("BranchCode"));
@@ -103,7 +96,6 @@ public class InventoryManagement_InventoryRequest extends BaseClass {
 		inventoryManagamentObj.inventoryManagament_InventoryRequest_ItemCodeDescriptionButton().click();
 		Thread.sleep(1000);
 
-//		radioButtonHelper.radioButton(testData.get("ItemCodeDescription"));
 		String beforexpath = "//button[";
 		String afterxpath = "]/div/div[2]";
 		List<WebElement> radioitem = driver.findElements(By.xpath("//button/div/div[1]"));
@@ -123,8 +115,6 @@ public class InventoryManagement_InventoryRequest extends BaseClass {
 			
 		waithelper.waitForElementwithFluentwait(driver, inventoryManagamentObj.inventoryManagament_InventoryRequest_RequestTypeButton());
 		inventoryManagamentObj.inventoryManagament_InventoryRequest_RequestTypeButton().click();
-//			Thread.sleep(1000);
-//			waithelper.waitForElement(driver, 3000,inventoryManagamentObj.inventoryManagament_InventoryRequest_RequestTypeNormalRadioButton());
 		while (true) {
 			try {
 				waithelper.waitForElementwithFluentwait(driver, inventoryManagamentObj.inventoryManagament_InventoryRequest_RequestTypeNormalRadioButton());
@@ -136,7 +126,6 @@ public class InventoryManagement_InventoryRequest extends BaseClass {
 
 			}
 		}
-//			waithelper.waitForElement(driver, 2000,inventoryManagamentObj.inventoryManagament_InventoryRequest_RequestQty());
 		waithelper.waitForElementwithFluentwait(driver, inventoryManagamentObj.inventoryManagament_InventoryRequest_RequestQty());
 		inventoryManagamentObj.inventoryManagament_InventoryRequest_RequestQty().click();
 		waithelper.waitForElement(driver, 2000, inventoryManagamentObj.inventoryManagament_InventoryRequest_RequestQty());
@@ -147,31 +136,21 @@ public class InventoryManagement_InventoryRequest extends BaseClass {
 	@Then("^Click on save button$")
 	public void click_on_save_button() throws Throwable {
 
-//		waithelper.waitForElement(driver, 2000, inventoryManagamentObj.inventoryManagament_InventoryRequest_SaveButton());
 		waithelper.waitForElementwithFluentwait(driver, inventoryManagamentObj.inventoryManagament_InventoryRequest_SaveButton());
 		inventoryManagamentObj.inventoryManagament_InventoryRequest_SaveButton().click();
 		
-//		waithelper.waitForElement(driver, 2000, inventoryManagamentObj.inventoryManagament_InventoryRequest_PopupCloseButton());
 		waithelper.waitForElementToVisibleWithFluentWait(driver, inventoryManagamentObj.inventoryManagament_InventoryRequest_PopupCloseButton2(), 20, 2);
 		inventoryManagamentObj.inventoryManagament_InventoryRequest_PopupCloseButton2().click();
 		
 		waithelper.waitForElementToVisibleWithFluentWait(driver, inventoryManagamentObj.inventoryManagament_InventoryRequest_PopupCloseButton(), 20, 2);
 		inventoryManagamentObj.inventoryManagament_InventoryRequest_PopupCloseButton().click();
 		
-		
-		// javascripthelper.JavaScriptHelper(driver);
-		// String str = javascripthelper.executeScript("return
-		// document.querySelector(\"ion-toast\").shadowRoot.querySelector(\"div[class='toast-message']\").innerText").toString();
-		// System.out.println("Message:" + str);
-
 	}
 
 	@Then("^Click Notification button$")
 	public void click_notification_button() throws Throwable {
-//		Thread.sleep(2000);
 		waithelper.waitForElementwithFluentwait(driver, budgetTransferObj.budget_BudgetTransfer_NotificationIcon());
 		budgetTransferObj.budget_BudgetTransfer_NotificationIcon().click();
-
 	}
 
 	@And("^Select record which we saved$")
@@ -179,7 +158,6 @@ public class InventoryManagement_InventoryRequest extends BaseClass {
 		// Reference
 		waithelper.waitForElement(driver, 2000, budgetTransferObj.budget_BudgetTransfer_FirstReferenceId());
 		String id = budgetTransferObj.budget_BudgetTransfer_FirstReferenceId().getText();
-//		jsonWriter.addReferanceData(id);
 		
 		excelData.updateTestData(dataSetID, "ReferenceID", id);
 		testData = excelData.getTestdata(dataSetID);
@@ -188,7 +166,6 @@ public class InventoryManagement_InventoryRequest extends BaseClass {
 		Thread.sleep(1000);
 		for (int i = 1; i <= 35; i++) {
 			try {
-//					waithelper.waitForElement(driver, 3000, driver.findElement(By.xpath("//span[contains(text(),'" + jsonWriter.readReferancedata() + "')]")));
 				waithelper.waitForElementwithFluentwait(driver, driver.findElement(By.xpath("//span[contains(text(),'" + testData.get("ReferenceID") + "')]")));
 				WebElement referanceID = driver.findElement(By.xpath("//span[contains(text(),'" + testData.get("ReferenceID") + "')]"));
 				referanceID.click();
@@ -214,46 +191,24 @@ public class InventoryManagement_InventoryRequest extends BaseClass {
 		waithelper.waitForElement(driver, 10000, driver.findElement(By.xpath(before_xpath + testData.get("ReferenceID") + after_xpath)));
 		driver.findElement(By.xpath(before_xpath + testData.get("ReferenceID") + after_xpath)).click();
 
-//		waithelper.waitForElementwithFluentwait(driver, inventoryManagamentObj.inventoryManagament_InventoryRequest_PopupCloseButton());
-//		inventoryManagamentObj.inventoryManagament_InventoryRequest_PopupCloseButton().click();
-
 	}
 
 	@And("^Submit the record$")
 	public void submit_the_record() throws Throwable {
 
 		// Submit button
-		// Thread.sleep(2000);
-//		waithelper.waitForElement(driver, 2000, inventoryManagamentObj.accountPayable_SubmitButton());
 		waithelper.waitForElementwithFluentwait(driver, inventoryManagamentObj.accountPayable_SubmitButton());
 		inventoryManagamentObj.accountPayable_SubmitButton().click();
-		// budgetTransferObj.budget_BudgetTransfer_Submit().click();
-		javaScriptHelper.JavaScriptHelper(driver);
+		
 		// Remark
-		// javahelper.JSEClick(inventoryManagamentObj.accountPayable_SubmitButton());
-		/*
-		 * inventoryManagamentObj.accountPayable_SubmitButton().isDisplayed(); boolean
-		 * result = inventoryManagamentObj.accountPayable_SubmitButton().isEnabled();
-		 * System.out.println(result); while(true) { try {
-		 * //inventoryManagamentObj.accountPayable_SubmitButton().click(); WebElement
-		 * submitButton = (WebElement) javahelper.
-		 * executeScript("return document.getElementsByClassName('ion-color ion-color-primary md button button-clear in-toolbar ion-activatable ion-focusable hydrated')[1]"
-		 * ); submitButton.click(); break; } catch(ElementNotInteractableException e) {
-		 * System.out.println(e.getMessage()); } }
-		 */
-//			Thread.sleep(2000);
 		WebElement element = WaitHelper.waitForElementwithFluentwait(driver, budgetTransferObj.budget_BudgetTransfer_RemarkField());
 		element.click();
-//			javahelper.JSEClick(budgetTransferObj.budget_BudgetTransfer_RemarkField());
 		WebElement element1 = WaitHelper.waitForElementwithFluentwait(driver, budgetTransferObj.budget_BudgetTransfer_RemarkField());
 		element1.sendKeys("ok");
-
-//			budgetTransferObj.budget_BudgetTransfer_RemarkField().sendKeys("OK");
 
 		// Remark Submit
 		waithelper.waitForElement(driver, 2000, budgetTransferObj.budget_BudgetTransfer_SubmitByMaker());
 		budgetTransferObj.budget_BudgetTransfer_SubmitByMaker().click();
-//			Thread.sleep(2000);
 		waithelper.waitForElementwithFluentwait(driver, budgetTransferObj.budget_BudgetTransfer_RecordStatus());
 		WebElement recordstatus = budgetTransferObj.budget_BudgetTransfer_RecordStatus();
 
@@ -265,32 +220,15 @@ public class InventoryManagement_InventoryRequest extends BaseClass {
 		String ar[] = message.split(" ");
 		emptystring = ar[ar.length - 1];
 		String reviewerId = emptystring.replaceAll("[/.]", "");
-//		String t = "";
-//		String ar[] = message.split(" ");
-//		Thread.sleep(2000);
-//		for (int i = ar.length - 1; i >= 0; i--) {
-//			t = ar[ar.length - 1];
-//		}
-//		String reviewerId = "";
-//		for (int i = 0; i < t.length() - 1; i++) {
-//			if (t.charAt(i) == '.') {
-//			} else {
-//				reviewerId = reviewerId + t.charAt(i);
-//			}
-//		}
 		System.out.println(reviewerId);
 		
 		excelData.updateTestData(dataSetID, "ReviewerID", reviewerId);
 		testData = excelData.getTestdata(dataSetID);
-		
-//		jsonWriter = new JsonDataReaderWriter();
-//		jsonWriter.addData(reviewerId);
 
 	}
 
 	@Then("^Open Reviewer account$")
 	public void open_reviewer_account() throws Throwable {
-//		reader = new JsonDataReaderWriter();
 		login = new KUBS_Login(driver);
 		driver.get(config.getApplicationUrl());
 		login.logintoAzentioappReviewer("Reviewer", testData.get("ReviewerID"));
@@ -305,12 +243,10 @@ public class InventoryManagement_InventoryRequest extends BaseClass {
 		waithelper.waitForElementwithFluentwait(driver, reviewer.reviewerNotidicationIcon());
 		reviewer.reviewerNotidicationIcon().click();
 		browserHelper = new BrowserHelper(driver);
-		javaScriptHelper = new JavascriptHelper();
 		waithelper = new WaitHelper(driver);
-//		Thread.sleep(2000);
+		Thread.sleep(2000);
 		for (int i = 1; i <= 50; i++) {
 			try {
-//					waithelper.waitForElement(driver, 3000,driver.findElement(By.xpath("//span[text()='" + reader.readReferancedata() + "']")));
 				waithelper.waitForElementwithFluentwait(driver, driver.findElement(By.xpath("//span[text()='" + testData.get("ReferenceID") + "']")));
 				WebElement referanceID = driver.findElement(By.xpath("//span[text()='" + testData.get("ReferenceID") + "']"));
 				referanceID.click();
@@ -318,15 +254,12 @@ public class InventoryManagement_InventoryRequest extends BaseClass {
 				Assert.assertTrue(referanceID.isDisplayed());
 				break;
 			} catch (NoSuchElementException e) {
-//					waithelper.waitForElement(driver, 4000, kubschecker.checker_notification_next_button());
-//				waithelper.waitForElementwithFluentwait(driver, kubschecker.checker_notification_next_button());
-//				kubschecker.checker_notification_next_button().click();
+				
 			}
 		}
 		String before_xpath = "//span[text()='";
 		String after_xpath = "']/ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell//ion-button";
 
-//			waithelper.waitForElement(driver, 10000,driver.findElement(By.xpath(before_xpath + reader.readReferancedata() + after_xpath)));
 		waithelper.waitForElementwithFluentwait(driver, driver.findElement(By.xpath(before_xpath + testData.get("ReferenceID") + after_xpath)));
 		driver.findElement(By.xpath(before_xpath + testData.get("ReferenceID") + after_xpath)).click();
 
@@ -334,13 +267,10 @@ public class InventoryManagement_InventoryRequest extends BaseClass {
 
 	@Then("^Approve the record which we submitted from maker stage$")
 	public void approve_the_record_which_we_submitted_from_maker_stage() throws Throwable {
-//			waithelper.waitForElement(driver, 2000, reviewer.reviewerApproveButton());
 		WaitHelper.waitForElementwithFluentwait(driver, reviewer.reviewerApproveButton());
 		reviewer.reviewerApproveButton().click();
-//			waithelper.waitForElement(driver, 2000, reviewer.reviewerAlertRemarks());
 		waithelper.waitForElementwithFluentwait(driver, reviewer.reviewerAlertRemarks());
 		reviewer.reviewerAlertRemarks().sendKeys("ok");
-//			waithelper.waitForElement(driver, 2000, reviewer.reviewerAlertSubmitButton());
 		waithelper.waitForElementwithFluentwait(driver, reviewer.reviewerAlertSubmitButton());
 		reviewer.reviewerAlertSubmitButton().click();
 		Thread.sleep(3000);
@@ -376,12 +306,9 @@ public class InventoryManagement_InventoryRequest extends BaseClass {
 
 	@Then("^Click on notification and approve the record$")
 	public void click_on_notification_and_approve_the_record() throws Throwable {
-		javaScriptHelper = new JavascriptHelper();
 		Thread.sleep(1500);
-//			waithelper.waitForElement(driver, 3000, kubschecker.checkerNotificationIcon());
 		waithelper.waitForElementwithFluentwait(driver, kubschecker.checkerNotificationIcon());
 		kubschecker.checkerNotificationIcon().click();
-//			Thread.sleep(3000);
 		while (true) {
 			try {
 				waithelper.waitForElementwithFluentwait(driver, driver.findElement(By.xpath("//span[contains(text(),'" + testData.get("ReferenceID") + "')]")));
@@ -393,11 +320,9 @@ public class InventoryManagement_InventoryRequest extends BaseClass {
 		Thread.sleep(1500);
 		for (int i = 1; i <= 35; i++) {
 			try {
-//					waithelper.waitForElement(driver, 3000,driver.findElement(By.xpath("//span[contains(text(),'" + reader.readReferancedata() + "')]")));
 				waithelper.waitForElementwithFluentwait(driver, driver.findElement(By.xpath("//span[contains(text(),'" + testData.get("ReferenceID") + "')]")));
 				WebElement referanceID = driver.findElement(By.xpath("//span[contains(text(),'" + testData.get("ReferenceID") + "')]"));
 				referanceID.click();
-
 				Assert.assertTrue(referanceID.isDisplayed());
 				break;
 			} catch (NoSuchElementException e) {
@@ -405,23 +330,18 @@ public class InventoryManagement_InventoryRequest extends BaseClass {
 				kubschecker.checker_notification_next_button().click();
 			}
 		}
-		// span[contains(text(),'25')]/ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell//ion-button
 		String before_xpath = "//span[contains(text(),'";
 		String after_xpath = "')]/ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell//ion-button";
 
-//			waithelper.waitForElement(driver, 10000,driver.findElement(By.xpath(before_xpath + reader.readReferancedata() + after_xpath)));
 		waithelper.waitForElementwithFluentwait(driver, driver.findElement(By.xpath(before_xpath + testData.get("ReferenceID") + after_xpath)));
 		driver.findElement(By.xpath(before_xpath + testData.get("ReferenceID") + after_xpath)).click();
 
-//			waithelper.waitForElement(driver, 4000, kubschecker.checkerApproveButton());
 		waithelper.waitForElementwithFluentwait(driver, kubschecker.checkerApproveButton());
 		kubschecker.checkerApproveButton().click();
-//			waithelper.waitForElement(driver, 2000, reviewer.reviewerAlertRemarks());
 		waithelper.waitForElementwithFluentwait(driver, reviewer.reviewerAlertRemarks());
 		reviewer.reviewerAlertRemarks().sendKeys("ok");
-//			Thread.sleep(1000);
+			Thread.sleep(1000);
 		waithelper.waitForElementwithFluentwait(driver, reviewer.reviewerAlertSubmitButton());
-//			waithelper.waitForElement(driver, 2000, reviewer.reviewerAlertSubmitButton());
 		reviewer.reviewerAlertSubmitButton().click();
 		Thread.sleep(3000);
 	}

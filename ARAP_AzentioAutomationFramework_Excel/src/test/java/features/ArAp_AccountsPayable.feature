@@ -92,39 +92,39 @@ Then logout from maker
 		And select the Cheque record and Approve by checker
 		Then logout from checker
 
-Given User should go to the kubs url and login as a maker user
-Then select data set ID for verify settlement for the bill is auto approved
-And click on accounts Payable module
-And goto invoice booking module
-And get the approved invoice from table
-And Go to payment settlement module
-And click on Add Icon
-And fill the mendatory field for settle the payment
-And fill the calender details and description
-And Save the form
-Then Click on Update Deposited Cheque Notification
-And Select and Submit the Update Deposited Cheque record
-Then logout from maker
-		Given User login as a reviewer user to approve the record by reviewer
-		Then click on the Notification select the Cheque record and Approve
-		And logout from reviewer
-		Given User navigate to the kubs url and login as a checker user
-		And then checker claim the record
-		Then click on the checker Notification 
-		And select the Cheque record and Approve by checker
-		Then logout from checker
-
-Given User should go to the kubs url and login as a maker user
-Then select data set ID for verify settlement for the bill is auto approved
-And click on accounts Payable module
-And go to auto payout module 
-And select the record from temp view
-And fill the valued date
-And fill the mendatory fields for auto payout record 
-Then save the auto payout record
-And select the record from temp view and initiate
-Then Click on Update Deposited Cheque Notification
-And Select and Submit the Update Deposited Cheque record
+#Given User should go to the kubs url and login as a maker user
+#Then select data set ID for verify settlement for the bill is auto approved
+#And click on accounts Payable module
+#And goto invoice booking module
+#And get the approved invoice from table
+#And Go to payment settlement module
+#And click on Add Icon
+#And fill the mendatory field for settle the payment
+#And fill the calender details and description
+#And Save the form
+#Then Click on Update Deposited Cheque Notification
+#And Select and Submit the Update Deposited Cheque record
+#Then logout from maker
+#		Given User login as a reviewer user to approve the record by reviewer
+#		Then click on the Notification select the Cheque record and Approve
+#		And logout from reviewer
+#		Given User navigate to the kubs url and login as a checker user
+#		And then checker claim the record
+#		Then click on the checker Notification 
+#		And select the Cheque record and Approve by checker
+#		Then logout from checker
+#
+#Given User should go to the kubs url and login as a maker user
+#Then select data set ID for verify settlement for the bill is auto approved
+#And click on accounts Payable module
+#And go to auto payout module 
+#And select the record from temp view
+#And fill the valued date
+#And fill the mendatory fields for auto payout record 
+#Then save the auto payout record
+#And select the record from temp view and initiate
+#Then Click on Update Deposited Cheque Notification
+#And Select and Submit the Update Deposited Cheque record
 		@KUBS_AR_AP_UAT_004_008_TC_01_02
 		Scenario: reviewer approved the record
 		Given User login as a reviewer user for verify settlement for the bill is auto approved

@@ -29,7 +29,7 @@ public class AccountPayable_InvoiceBooking {
 	WaitHelper waithelper = new WaitHelper(driver);
 	ACCOUNTSPAYABLE_VendorContractsObj aCCOUNTSPAYABLE_VendorContractsObj = new ACCOUNTSPAYABLE_VendorContractsObj(driver);
 	ACCOUNTSPAYABLE_InvoiceBookingObj aCCOUNTSPAYABLE_InvoiceBookingObj = new ACCOUNTSPAYABLE_InvoiceBookingObj(driver);
-	JavascriptHelper javascripthelper = new JavascriptHelper();
+	JavascriptHelper javascripthelper = new JavascriptHelper(driver);
 	JsonDataReaderWriter jsonWriter = new JsonDataReaderWriter();
 	ClicksAndActionsHelper clicksAndActionHelper = new ClicksAndActionsHelper(driver);
 	JsonDataReaderWriter reader;
@@ -63,7 +63,6 @@ public class AccountPayable_InvoiceBooking {
   @And("^Fill the required fields for invoice booking$")
   public void fill_the_required_fields_for_invoice_booking() {
 	  Random random = new Random();
-  javascripthelper.JavaScriptHelper(driver);
   waithelper.waitForElementToVisibleWithFluentWait(driver,aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_EntityBranch(),15,1);
   aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_EntityBranch().sendKeys(testData.get("EntityBranch"));
   aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_EntityBranch().sendKeys(Keys.ENTER);

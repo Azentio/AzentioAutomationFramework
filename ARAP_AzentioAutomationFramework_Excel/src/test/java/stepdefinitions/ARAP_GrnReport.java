@@ -34,7 +34,7 @@ public class ARAP_GrnReport {
 	KUBS_Login kubsLogin;
 	ConfigFileReader configFileReader = new ConfigFileReader();
 	WaitHelper waithelper = new WaitHelper(driver);
-	JavascriptHelper javaScriptHelper = new JavascriptHelper();
+	JavascriptHelper javaScriptHelper = new JavascriptHelper(driver);
 	ClicksAndActionsHelper clickAndActionHelper = new ClicksAndActionsHelper(driver);
 	ArApObj arAPobj = new ArApObj(driver);
 	BrowserHelper browseHelper = new BrowserHelper(driver);
@@ -52,11 +52,11 @@ public class ARAP_GrnReport {
 	
 	
 	
-	 @Then("^Click on Report Tab$")
-	    public void click_on_report_tabT() throws Throwable {
-	    	waithelper.waitForElement(driver, 2000,arAPobj.report_Report_Button());
-	    	arAPobj.report_Report_Button().click();  
-	    }
+//	 @Then("^Click on Report Tab$")
+//	    public void click_on_report_tabT() throws Throwable {
+//	    	waithelper.waitForElement(driver, 2000,arAPobj.report_Report_Button());
+//	    	arAPobj.report_Report_Button().click();  
+//	    }
 
 	    @Then("^Click on GRN Edit button$")
 	    public void click_on_grn_edit_button() throws Throwable {
@@ -77,7 +77,6 @@ public class ARAP_GrnReport {
 	    public void select_date() throws Throwable {
 	    	waithelper.waitForElement(driver, 2000,arAPobj.calendar_button());
 	    	arAPobj.calendar_button().click();
-	    	javaScriptHelper.JavaScriptHelper(driver);
 	    	ClicksAndActionsHelper clickAndActionHelper=new ClicksAndActionsHelper(driver);
 	    	
 	    	Thread.sleep(2000);
@@ -119,7 +118,6 @@ public class ARAP_GrnReport {
 	    }
 	    @Then("^close the report$")
 	    public void close_the_report() throws InterruptedException {
-	    javaScriptHelper.JavaScriptHelper(driver);
 
 	    browseHelper.SwitchToWindow(1);
 	    Thread.sleep(1500);

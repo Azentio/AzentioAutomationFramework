@@ -9,14 +9,15 @@ import io.cucumber.testng.CucumberOptions;
 import utilities.ExtentManager;
 import utilities.ExtentTestManager;
 
-@CucumberOptions(features = "src/test/java/features/InventoryManagement_UAT.feature",
+@CucumberOptions(features = "src/test/java/features/ArAp_AccountsReceivable.feature",
+//@CucumberOptions(features = "src/test/java/features/ArAp_AccountsPayable.feature",
                  glue = "stepdefinitions",
 		         //monochrome=false, //to make steps in color
 		         plugin = { "pretty",
 				            "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:",
 				            "rerun:ReRunScenarios/FailedReRun.txt"}
 ///ArAp1.feature			dryRun = true //to check compilation errors
-					,  tags="@KUBS_INV_MGMT_UAT_001_007_TC_01"
+					,  tags="@KUBS_AR/AP_UAT_003_008_TC_02_01"
 
 )
 public class TestApplication extends AbstractTestNGCucumberTests {

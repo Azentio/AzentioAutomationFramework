@@ -14,13 +14,21 @@ public class KUBS_ReviewerObj {
 		PageFactory.initElements(driver, this);
 	}
 
-	@FindBy(xpath = "//ion-button[@ng-reflect-router-link='/inbox']")
+//	@FindBy(xpath = "//ion-button[@ng-reflect-router-link='/inbox']")
+	@FindBy(xpath = "//ion-toolbar[1]/ion-buttons[2]/ion-button[2]")
 	private WebElement reviewer_notification_icon;
 
 	public WebElement reviewerNotidicationIcon() {
 		return reviewer_notification_icon;
 	}
-        @FindBy(xpath = "//datatable-row-wrapper[1]/datatable-body-row/div/datatable-body-cell[1]//ion-button")
+	@FindBy(xpath = "//label[contains(text(),'Reference Id')]")
+	private WebElement reviewer_notification_referenceIdLabel;
+	
+	public WebElement reviewer_notification_referenceIdLabel() {
+		return reviewer_notification_referenceIdLabel;
+	}
+	
+    @FindBy(xpath = "//datatable-row-wrapper[1]/datatable-body-row/div/datatable-body-cell[1]//ion-button")
 	private WebElement reviewer_action_button1;
 
 	public WebElement reviewer_action_button1() {

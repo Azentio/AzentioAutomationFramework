@@ -48,7 +48,7 @@ public class CancellationOfAdvanceAgainstPO extends BaseClass {
 	String ADVNumber;
 	String ADVAmount;
 	ClicksAndActionsHelper clicksAndActionsHelper = new ClicksAndActionsHelper(driver);
-	JavascriptHelper javaScriptHelper = new JavascriptHelper();
+	JavascriptHelper javaScriptHelper = new JavascriptHelper(driver);
 	JsonDataReaderWriter jsonReaderWriter = new JsonDataReaderWriter();
 	ARAP_ARandAPObj arapObj = new ARAP_ARandAPObj(driver);
 	Map<String, String> settlementTestData = new HashMap<>();
@@ -70,7 +70,7 @@ public class CancellationOfAdvanceAgainstPO extends BaseClass {
 	public void click_on_accounts_receive_advances_eye_icon() throws Throwable {
 		// ---------------ADVANCE EYE ICON----------------//
 //		waitHelper.waitForElement(driver, 2000, arapObj.accountsReceivable_Advance_Eye());
-		javaScriptHelper.JavaScriptHelper(driver);
+		
 		javaScriptHelper.scrollIntoView(arapObj.accountsReceivable_Advance_Eye());
 		waitHelper.waitForElementwithFluentwait(driver, arapObj.accountsReceivable_Advance_Eye());
 		arapObj.accountsReceivable_Advance_Eye().click();
@@ -94,18 +94,18 @@ public class CancellationOfAdvanceAgainstPO extends BaseClass {
 		BPNumber = arapObj.accountsReceivable_Advance_GetBp().getText();
 		System.out.println(BPNumber);
 
-		javaScriptHelper.JavaScriptHelper(driver);
+		
 		ADVNumber = (String) javaScriptHelper.executeScript("return document.getElementsByName('advanceNo')[1].value");
 		System.out.println(ADVNumber);
 
-		javaScriptHelper.JavaScriptHelper(driver);
+		
 		ADVAmount = (String) javaScriptHelper.executeScript("return document.getElementsByClassName('form__field ng-untouched ng-pristine ng-valid')[0].value");
 		System.out.println(ADVAmount);
 	}
 
 	@Then("^Verify No accounting entry is generated on cancelling advances against PO$")
 	public void verify_no_accounting_entry_is_generated_on_cancelling_advances_against_po() throws Throwable {
-		javaScriptHelper.JavaScriptHelper(driver);
+		
 		Thread.sleep(1000);
 		for (int i = 0; i <= 70; i++) {
 			try {
@@ -162,14 +162,18 @@ public class CancellationOfAdvanceAgainstPO extends BaseClass {
 		for(int i=0;i<=70;i++) {
 			try {
 
-				waitHelper.waitForElementwithFluentwait(driver, driver.findElement(By.xpath("//span[text()='" + testData.get("Month") + " " + testData.get("Year") + "']")));
-				WebElement monthAndYear = driver.findElement(By.xpath("//span[text()='" + testData.get("Month") + " " + testData.get("Year") + "']"));
-				Thread.sleep(2000);
+				waitHelper.waitForElementwithFluentwait(driver, driver.findElement(By.xpath("//span[text()='" + testData.get("Month") + " " + testData.get("Year") + " ']")));
+				WebElement monthAndYear = driver.findElement(By.xpath("//span[text()='" + testData.get("Month") + " " + testData.get("Year") + " ']"));
+//				Thread.sleep(2000);
 				break;
 			}
 
 			catch (NoSuchElementException nosuchElement) {
-				arapObj.ARAPNextMonth().click();
+				int year=Integer.parseInt(testData.get("Year"));
+				if(year<2023){
+					arapObj.ARAP_PreviousMonth().click();
+				}else if(year>=2023)
+					arapObj.ARAPNextMonth().click();
 
 			}
 
@@ -189,14 +193,18 @@ public class CancellationOfAdvanceAgainstPO extends BaseClass {
 				// span[contains(text(),'Oct 2022')]
 //				Thread.sleep(1000);
 //				waithelper.waitForElement(driver, 2000, driver.findElement(By.xpath("//span[contains(text(),'"+arAp_BalanceSheetReportTestDataType.Month+" "+arAp_BalanceSheetReportTestDataType.Year+"')]")));
-				waitHelper.waitForElementwithFluentwait(driver, driver.findElement(By.xpath("//span[text()='" + testData.get("Month1") + " " + testData.get("Year1") + "']")));
-				WebElement monthAndYear = driver.findElement(By.xpath("//span[text()='" + testData.get("Month1") + " " + testData.get("Year1") + "']"));
+				waitHelper.waitForElementwithFluentwait(driver, driver.findElement(By.xpath("//span[text()='" + testData.get("Month1") + " " + testData.get("Year1") + " ']")));
+				WebElement monthAndYear = driver.findElement(By.xpath("//span[text()='" + testData.get("Month1") + " " + testData.get("Year1") + " ']"));
 //				Thread.sleep(2000);
 				break;
 			}
 
 			catch (NoSuchElementException nosuchElement) {
-				arapObj.ARAPNextMonth().click();
+				int year1=Integer.parseInt(testData.get("Year1"));
+				if(year1<2023){
+					arapObj.ARAP_PreviousMonth().click();
+				}else if(year1>=2023)
+					arapObj.ARAPNextMonth().click();
 			}
 		}
 		waitHelper.waitForElement(driver, 3000,

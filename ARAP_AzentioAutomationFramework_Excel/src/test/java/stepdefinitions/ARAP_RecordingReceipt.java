@@ -59,7 +59,7 @@ public class ARAP_RecordingReceipt extends BaseClass {
 	Selenium_Actions seleniumactions = new Selenium_Actions(driver);
 	ConfigFileReader configreader = new ConfigFileReader();
 	Map<String, String> testdata = new LinkedHashMap<>();
-	JavascriptHelper javaScriptHelper = new JavascriptHelper();
+	JavascriptHelper javaScriptHelper = new JavascriptHelper(driver);
 	BrowserHelper browserHelper = new BrowserHelper(driver);
 	KUBS_ReviewerObj reviewerObj = new KUBS_ReviewerObj(driver);
 	KUBS_CheckerObj checkerObj = new KUBS_CheckerObj(driver);
@@ -107,7 +107,7 @@ public class ARAP_RecordingReceipt extends BaseClass {
 	@Then("^Click on the Receipt Eye Icon$")
 	public void click_on_the_receipt_eye_icon() throws Throwable {
 		// --------RECEIPT EYE ICON--------//
-		javaScriptHelper.JavaScriptHelper(driver);
+		
 		javaScriptHelper.scrollIntoView(arapObj.accountReceviableReceipt_Eye());
 		waithelper.waitForElementToVisibleWithFluentWait(driver, arapObj.accountReceviableReceipt_Eye(), 20, 2);
 		arapObj.accountReceviableReceipt_Eye().click();
@@ -308,7 +308,7 @@ public class ARAP_RecordingReceipt extends BaseClass {
 	@And("^Click First receipt record Action icon$")
 	public void click_first_receipt_record_action_icon() throws Throwable {
 		// -----------REVIEWER ACTION-------------//
-		javaScriptHelper.JavaScriptHelper(driver);
+		
 		String befr_xpath = "//span[contains(text(),'";
 		String aftr_xpath = "')]/parent::div/parent::datatable-body-cell/preceding-sibling::datatable-body-cell[1]//div//ion-buttons//ion-button";
 		waithelper.waitForElement(driver, 2000, driver.findElement(By.xpath(befr_xpath + testData.get("ReferenceID") + aftr_xpath)));
@@ -340,7 +340,7 @@ public class ARAP_RecordingReceipt extends BaseClass {
 	@And("^Get The Txn Receipt Number$")
 	public void get_the_txn_receipt_number() throws Throwable {
 		// -------get the txn number--------//
-		javaScriptHelper.JavaScriptHelper(driver);
+		
 		TxnNo = (String) javaScriptHelper.executeScript("return document.getElementsByName('receiptNo')[1].value");
 		System.out.println(TxnNo);
 	}
@@ -360,14 +360,18 @@ public class ARAP_RecordingReceipt extends BaseClass {
 		for(int i=0;i<=70;i++) {
 			try {
 
-				waithelper.waitForElementwithFluentwait(driver, driver.findElement(By.xpath("//span[text()='" + testData.get("Month") + " " + testData.get("Year") + "']")));
-				WebElement monthAndYear = driver.findElement(By.xpath("//span[text()='" + testData.get("Month") + " " + testData.get("Year") + "']"));
+				waithelper.waitForElementwithFluentwait(driver, driver.findElement(By.xpath("//span[text()='" + testData.get("Month") + " " + testData.get("Year") + " ']")));
+				WebElement monthAndYear = driver.findElement(By.xpath("//span[text()='" + testData.get("Month") + " " + testData.get("Year") + " ']"));
 				Thread.sleep(2000);
 				break;
 			}
 
 			catch (NoSuchElementException nosuchElement) {
-				arapObj.ARAPNextMonth().click();
+				int year=Integer.parseInt(testData.get("Year"));
+				if(year<2023){
+					arapObj.ARAP_PreviousMonth().click();
+				}else if(year>=2023)
+					arapObj.ARAPNextMonth().click();
 
 			}
 
@@ -383,18 +387,18 @@ public class ARAP_RecordingReceipt extends BaseClass {
 	public void select_to_date_in_calender_to_verify_accounting_entries_post_receipt_recording() throws Throwable {
 		for(int i=0;i<=70;i++)  {
 			try {
-
-				// span[contains(text(),'Oct 2022')]
-//				Thread.sleep(1000);
-//				waithelper.waitForElement(driver, 2000, driver.findElement(By.xpath("//span[contains(text(),'"+arAp_BalanceSheetReportTestDataType.Month+" "+arAp_BalanceSheetReportTestDataType.Year+"')]")));
-				waithelper.waitForElementwithFluentwait(driver, driver.findElement(By.xpath("//span[text()='" + testData.get("To Month") + " " + testData.get("To Year") + "']")));
-				WebElement monthAndYear = driver.findElement(By.xpath("//span[text()='" + testData.get("To Month") + " " + testData.get("To Year") + "']"));
+				waithelper.waitForElementwithFluentwait(driver, driver.findElement(By.xpath("//span[text()='" + testData.get("To Month") + " " + testData.get("To Year") + " ']")));
+				WebElement monthAndYear = driver.findElement(By.xpath("//span[text()='" + testData.get("To Month") + " " + testData.get("To Year") + " ']"));
 //				Thread.sleep(2000);
 				break;
 			}
 
 			catch (NoSuchElementException nosuchElement) {
-				arapObj.ARAPNextMonth().click();
+				int toYear=Integer.parseInt(testData.get("To Year"));
+				if(toYear<2023){
+					arapObj.ARAP_PreviousMonth().click();
+				}else if(toYear>=2023)
+					arapObj.ARAPNextMonth().click();
 			}
 		}
 		waithelper.waitForElement(driver, 3000,
@@ -408,9 +412,9 @@ public class ARAP_RecordingReceipt extends BaseClass {
 
 	@Then("^Verify Accounting entries post receipt recording$")
 	public void verify_accounting_entries_post_receipt_recording() throws Throwable {
-		javaScriptHelper.JavaScriptHelper(driver);
+		
 		Thread.sleep(1000);
-		for (int i = 0; i <= 50; i++) {
+		for (int i = 0; i <= 299; i++) {
 			try {
 
 				driver.findElement(By.xpath("(//datatable-body-cell[1]//span[contains(text(),'" + TxnNo + "')])[1]")).isDisplayed();
@@ -432,8 +436,11 @@ public class ARAP_RecordingReceipt extends BaseClass {
 				javaScriptHelper.scrollIntoView(arapObj.accountsPayablePayementSettlementNextRecord());
 				arapObj.accountsPayablePayementSettlementNextRecord().click();
 			}
+			if(i==299) {
+				Assert.fail("No record found");
+			}
 		}
-		for (int i = 0; i <= 50; i++) {
+		for (int i = 0; i <= 299; i++) {
 			try {
 
 				driver.findElement(By.xpath("(//datatable-body-cell[1]//span[contains(text(),'" + TxnNo + "')])[2]")).isDisplayed();
@@ -455,6 +462,9 @@ public class ARAP_RecordingReceipt extends BaseClass {
 				javaScriptHelper.scrollIntoView(arapObj.accountsPayablePayementSettlementNextRecord());
 				arapObj.accountsPayablePayementSettlementNextRecord().click();
 			}
+			if(i==299) {
+				Assert.fail("No record found");
+			}
 		}
 	}
 
@@ -463,7 +473,7 @@ public class ARAP_RecordingReceipt extends BaseClass {
 	@Then("^click on report icon$")
 	public void click_on_report_icon() throws InterruptedException {
 		Thread.sleep(2000);
-		javaScriptHelper.JavaScriptHelper(driver);
+		
 		javaScriptHelper.scrollIntoViewAndClick(fixedAsset_AssetCreationObj.fixedAssets_AssetCreation_ReportIcon());
 	}
 
@@ -575,7 +585,7 @@ public class ARAP_RecordingReceipt extends BaseClass {
 	@Then("^Verify balance sheet should updated correctly$")
 	public void Verify_balance_sheet_should_updated_correctly() throws InterruptedException {
 		Thread.sleep(1000);
-		javaScriptHelper.JavaScriptHelper(driver);
+		
 		browserHelper.SwitchToWindow(1);
 		waithelper.waitForElement(driver, 3000, financialReporting_GLBalancesReportObj.FinancialReporting_BalanceSheetReport_UpdatedData());
 		javaScriptHelper.scrollIntoView(financialReporting_GLBalancesReportObj.FinancialReporting_BalanceSheetReport_UpdatedData());
@@ -594,7 +604,7 @@ public class ARAP_RecordingReceipt extends BaseClass {
 	@Then("^Verify balance sheet should updated correctly post approval through online mode$")
 	public void Verify_balance_sheet_should_updated_correctly_post_approval_through_online_mode() throws InterruptedException {
 		Thread.sleep(1000);
-		javaScriptHelper.JavaScriptHelper(driver);
+		
 		browserHelper.SwitchToWindow(1);
 		waithelper.waitForElement(driver, 3000, financialReporting_GLBalancesReportObj.FinancialReporting_BalanceSheetReport_UpdatedDataReceipt());
 		javaScriptHelper.scrollIntoView(financialReporting_GLBalancesReportObj.FinancialReporting_BalanceSheetReport_UpdatedDataReceipt());

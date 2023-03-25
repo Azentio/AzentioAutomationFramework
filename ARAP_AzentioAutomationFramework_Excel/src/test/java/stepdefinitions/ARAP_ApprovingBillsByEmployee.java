@@ -45,7 +45,7 @@ public class ARAP_ApprovingBillsByEmployee extends BaseClass {
 	ConfigFileReader configFileReader = new ConfigFileReader();
 	WaitHelper waitHelper = new WaitHelper(driver);
 	KUBS_Login login = new KUBS_Login(driver);
-	JavascriptHelper javaScriptHelper = new JavascriptHelper();
+	JavascriptHelper javaScriptHelper = new JavascriptHelper(driver);
 	DropDownHelper dropDownHelper = new DropDownHelper(driver);
 //	JsonConfig jsonConfig = new JsonConfig();
 	VerificationHelper verificationHelper = new VerificationHelper();
@@ -170,7 +170,7 @@ public class ARAP_ApprovingBillsByEmployee extends BaseClass {
 	@And("^Click First record of advance to employee Action icon$")
 	public void click_first_record_of_advance_to_employee_action_icon() throws Throwable {
 		// -----------REVIEWER ACTION-------------//
-		javaScriptHelper.JavaScriptHelper(driver);
+		
 		String befr_xpath = "//span[contains(text(),'";
 		String aftr_xpath = "')]/parent::div/parent::datatable-body-cell/preceding-sibling::datatable-body-cell[1]//div//ion-buttons//ion-button";
 		waitHelper.waitForElement(driver, 2000, driver.findElement(By.xpath(befr_xpath + testData.get("ReferenceID") + aftr_xpath)));
@@ -223,7 +223,7 @@ public class ARAP_ApprovingBillsByEmployee extends BaseClass {
 	@And("^find the Advance reference number and Net Adjustable value in the billing queue$")
 	public void find_the_advance_reference_number_and_net_adjustable_value_in_the_billing_queue() throws Throwable {
 		Thread.sleep(1000);
-		javaScriptHelper.JavaScriptHelper(driver);
+		
 		// javascriptHelper.scrollDownByPixel();
 		javaScriptHelper.scrollIntoView(arapObj.accountsPayable_paymentSettlementFooter());
 		for (int i = 0; i <= 1; i++) {
@@ -262,11 +262,11 @@ public class ARAP_ApprovingBillsByEmployee extends BaseClass {
 		BPNumber = arapObj.accountsReceivable_Advance_GetBp().getText();
 		System.out.println(BPNumber);
 
-		javaScriptHelper.JavaScriptHelper(driver);
+		
 		ADVNumber = (String) javaScriptHelper.executeScript("return document.getElementsByName('advanceNo')[1].value");
 		System.out.println(ADVNumber);
 
-		javaScriptHelper.JavaScriptHelper(driver);
+		
 		ADVAmount = (String) javaScriptHelper.executeScript("return document.getElementsByClassName('form__field ng-untouched ng-pristine ng-valid')[0].value");
 		System.out.println(ADVAmount);
 	}
@@ -286,7 +286,7 @@ public class ARAP_ApprovingBillsByEmployee extends BaseClass {
 		arapObj.accountsPayablePayementSettlementValueDate().click();
 
 		// -------------CHOOSE DATE---------------//
-		javaScriptHelper.JavaScriptHelper(driver);
+		
 		while (true) {
 			try {
 
@@ -326,7 +326,7 @@ public class ARAP_ApprovingBillsByEmployee extends BaseClass {
 	@And("^Verify the Net Adjusted Value is correctly displayed$")
 	public void verify_the_net_adjusted_value_is_correctly_displayed() throws Throwable {
 		// --------VALIDATE THE NET PAYABLE ADJUSTMENT--------------//
-		javaScriptHelper.JavaScriptHelper(driver);
+		
 		String NetadjAmount = (String) javaScriptHelper
 				.executeScript("return document.getElementsByName('paymentAmt')[0].value");
 		System.out.println("The Net Adjust Amount is : " + NetadjAmount);
@@ -381,7 +381,7 @@ public class ARAP_ApprovingBillsByEmployee extends BaseClass {
 	@And("^Verify the TDS % & amount is correctly calculated & displayed$")
 	public void verify_the_tds_amount_is_correctly_calculated_displayed() throws Throwable {
 		// ----------VERIFY TDS VALUE------------//
-		javaScriptHelper.JavaScriptHelper(driver);
+		
 		String TDS = (String) javaScriptHelper.executeScript("return document.getElementsByName('tdsAmt')[0].value");
 		System.out.println("The TDS% & TDS amount is : " + TDS);
 	}
@@ -416,7 +416,7 @@ public class ARAP_ApprovingBillsByEmployee extends BaseClass {
 
 //	@Then("^Verify Accounting entries post payment settlement approval fo Advance to Employee$")
 //	public void verify_accounting_entries_post_payment_settlement_approval_fo_advance_to_employee() throws Throwable {
-//		javaScriptHelper.JavaScriptHelper(driver);
+//		
 //		Thread.sleep(1000);
 //		for (int i = 0; i <= 299; i++) {
 //			try {
@@ -470,7 +470,7 @@ public class ARAP_ApprovingBillsByEmployee extends BaseClass {
 	@And("^Verify the Net payable amount is correctly calculated & displayed$")
 	public void verify_the_net_payable_amount_is_correctly_calculated_displayed() throws Throwable {
 		// ------VERIFY THE NET PAYABLE AMOUNT-------//
-		javaScriptHelper.JavaScriptHelper(driver);
+		
 		String Netpay = (String) javaScriptHelper.executeScript("return document.getElementsByName('nettAmt')[0].value");
 		System.out.println("The Net Payable Amount is : " + Netpay);
 	}
@@ -503,7 +503,7 @@ public class ARAP_ApprovingBillsByEmployee extends BaseClass {
 	@Then("^Click on Balance Sheet Report edit button$")
 	public void click_on_balance_sheet_report_edit_button() {
 //		waitHelper.waitForElement(driver, 2000, arAp_BalanceSheetReportObj.arAp_BalanceSheetReport_BalanceSheetReport());
-		javaScriptHelper.JavaScriptHelper(driver);
+		
 		javaScriptHelper.scrollIntoView(arAp_BalanceSheetReportObj.arAp_BalanceSheetReport_BalanceSheetReport());
 		waitHelper.waitForElementwithFluentwait(driver, arAp_BalanceSheetReportObj.arAp_BalanceSheetReport_BalanceSheetReport());
 		arAp_BalanceSheetReportObj.arAp_BalanceSheetReport_BalanceSheetReport().click();
@@ -513,21 +513,25 @@ public class ARAP_ApprovingBillsByEmployee extends BaseClass {
 	public void select_date_in_calendar() throws InterruptedException {
 		waitHelper.waitForElement(driver, 2000, arAp_BalanceSheetReportObj.arAp_BalanceSheetReport_CalendarButton());
 		arAp_BalanceSheetReportObj.arAp_BalanceSheetReport_CalendarButton().click();
-		javaScriptHelper.JavaScriptHelper(driver);
+		
 		Thread.sleep(2000);
 		for(int i=0;i<=30;i++) {
 			try {
 				// span[contains(text(),'Oct 2022')]
 //			waithelper.waitForElement(driver, 2000, driver.findElement(By.xpath("//span[contains(text(),'"+arAp_BalanceSheetReportTestDataType.Month+" "+arAp_BalanceSheetReportTestDataType.Year+"')]")));
 				waitHelper.waitForElementwithFluentwait(driver,
-						driver.findElement(By.xpath("//span[text()='" + testData.get("Month") + " " + testData.get("Year") + "']")));
-				WebElement monthAndYear = driver.findElement(By.xpath("//span[text()='" + testData.get("Month") + " " + testData.get("Year") + "']"));
+						driver.findElement(By.xpath("//span[text()='" + testData.get("Month") + " " + testData.get("Year") + " ']")));
+				WebElement monthAndYear = driver.findElement(By.xpath("//span[text()='" + testData.get("Month") + " " + testData.get("Year") + " ']"));
 //			Thread.sleep(2000);
 				break;
 			}
 
 			catch (NoSuchElementException nosuchElement) {
-				arAp_BalanceSheetReportObj.arAp_BalanceSheetReport_NextMonth().click();
+				int year=Integer.parseInt(testData.get("Year"));
+				if(year<2023){
+					arAp_BalanceSheetReportObj.arAp_BalanceSheetReport_PreviousMonth().click();
+				}else if(year>=2023)
+					arAp_BalanceSheetReportObj.arAp_BalanceSheetReport_NextMonth().click();
 
 			}
 		}
@@ -573,7 +577,7 @@ public class ARAP_ApprovingBillsByEmployee extends BaseClass {
 	@And("^Verify the Accounts Payable Report post payment settlement approval$")
 	public void verify_the_accounts_payable_report_post_payment_settlement_approval() throws Throwable {
 		browseHelper.SwitchToWindow(1);
-		javaScriptHelper.JavaScriptHelper(driver);
+		
 		for(int i = 0;i<=30;i++) {
 //			Thread.sleep(2000);
 			try {
@@ -600,7 +604,7 @@ public class ARAP_ApprovingBillsByEmployee extends BaseClass {
 	public void give_current_business_date_for_approving_bills_by_employee() throws Throwable {
 		// ----------CLICK ON DATE--------------//
 		arapReportObj.ARAP_Report_Module_Date().click();
-		javaScriptHelper.JavaScriptHelper(driver);
+		
 		while(true) {
 			try {
 				waitHelper.waitForElement(driver, 3000, driver.findElement(
@@ -646,7 +650,7 @@ public class ARAP_ApprovingBillsByEmployee extends BaseClass {
 	@And("^Verify the Accounts Receivable Report post payment settlement approval$")
 	public void verify_the_accounts_receivable_report_post_payment_settlement_approval() throws Throwable {
 		browseHelper.SwitchToWindow(1);
-		javaScriptHelper.JavaScriptHelper(driver);
+		
 //		while (true) {
 //			Thread.sleep(2000);
 //			try {

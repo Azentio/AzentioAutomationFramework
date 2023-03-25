@@ -2,57 +2,57 @@
 <testng-results ignored="0" total="1" passed="0" failed="1" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2023-03-04T16:39:58 AST" name="Default suite" finished-at="2023-03-04T16:41:16 AST" duration-ms="77404">
+  <suite started-at="2023-03-23T13:15:17 AST" name="Default suite" finished-at="2023-03-23T13:16:17 AST" duration-ms="60419">
     <groups>
       <group name="cucumber">
         <method signature="AbstractTestNGCucumberTests.runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:Runner.TestApplication@2d901eb0]" name="runScenario" class="io.cucumber.testng.AbstractTestNGCucumberTests"/>
       </group> <!-- cucumber -->
     </groups>
-    <test started-at="2023-03-04T16:39:58 AST" name="Default test" finished-at="2023-03-04T16:41:16 AST" duration-ms="77404">
+    <test started-at="2023-03-23T13:15:17 AST" name="Default test" finished-at="2023-03-23T13:16:17 AST" duration-ms="60419">
       <class name="Runner.TestApplication">
-        <test-method is-config="true" signature="beforeExecution()[pri:0, instance:Runner.TestApplication@2d901eb0]" started-at="2023-03-04T16:39:58 AST" name="beforeExecution" finished-at="2023-03-04T16:39:58 AST" duration-ms="14" status="PASS">
+        <test-method is-config="true" signature="beforeExecution()[pri:0, instance:Runner.TestApplication@2d901eb0]" started-at="2023-03-23T13:15:17 AST" name="beforeExecution" finished-at="2023-03-23T13:15:17 AST" duration-ms="12" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeExecution -->
-        <test-method is-config="true" signature="setUpClass()[pri:0, instance:Runner.TestApplication@2d901eb0]" started-at="2023-03-04T16:39:58 AST" name="setUpClass" finished-at="2023-03-04T16:40:00 AST" duration-ms="1461" status="PASS">
+        <test-method is-config="true" signature="setUpClass()[pri:0, instance:Runner.TestApplication@2d901eb0]" started-at="2023-03-23T13:15:17 AST" name="setUpClass" finished-at="2023-03-23T13:15:19 AST" duration-ms="1537" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUpClass -->
-        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:Runner.TestApplication@2d901eb0]" started-at="2023-03-04T16:40:00 AST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2023-03-04T16:41:07 AST" duration-ms="67140" status="FAIL">
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:Runner.TestApplication@2d901eb0]" started-at="2023-03-23T13:15:19 AST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2023-03-23T13:16:07 AST" duration-ms="48677" status="FAIL">
           <params>
             <param index="0">
               <value>
-                <![CDATA["Bill(invoice) Booking"]]>
+                <![CDATA["Verify cancelled advances is not available for payment settlement"]]>
               </value>
             </param>
             <param index="1">
               <value>
-                <![CDATA["Optional[Check the Functionality of Inventory]"]]>
+                <![CDATA["Optional[AR/AP Module]"]]>
               </value>
             </param>
           </params>
           <exception class="org.openqa.selenium.ElementClickInterceptedException">
             <message>
-              <![CDATA[element click intercepted: Element <ion-button _ngcontent-cqh-c278="" routerlink="/inbox" tabindex="0" ng-reflect-router-link="/inbox" class="md button button-clear in-toolbar in-toolbar-color button-has-icon-only ion-activatable ion-focusable hydrated">...</ion-button> is not clickable at point (1094, 28). Other element would receive the click: <div role="alert" class="ng-tns-c136-3 toast-message ng-star-inserted" aria-label="Workflow initiated submit record from inbox." style="">...</div>
-  (Session info: chrome=110.0.5481.178)
+              <![CDATA[element click intercepted: Element <ion-button color="primary" ng-reflect-color="primary" class="ion-color ion-color-primary md button button-clear in-toolbar ion-activatable ion-focusable hydrated button-disabled" ng-reflect-disabled="true" aria-disabled="true" disabled="">...</ion-button> is not clickable at point (1255, 88). Other element would receive the click: <ion-buttons slot="end" class="buttons-last-slot sc-ion-buttons-md-h sc-ion-buttons-md-s md hydrated">...</ion-buttons>
+  (Session info: chrome=111.0.5563.110)
 Build info: version: '4.0.0-rc-1', revision: 'bc5511cbda'
-System info: host: 'DESKTOP-PSK9T3U', ip: '10.200.4.218', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.1'
+System info: host: 'DESKTOP-PSK9T3U', ip: '10.200.4.229', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.1'
 Driver info: org.openqa.selenium.chrome.ChromeDriver
-Command: [882bb38057010e0418ccfef28b577070, clickElement {id=0e3f5e84-e840-45ce-8000-5374f0e0b3a1}]
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 110.0.5481.178, chrome: {chromedriverVersion: 110.0.5481.77 (65ed616c6e8e..., userDataDir: C:\Users\ININDC~1\AppData\L...}, goog:chromeOptions: {debuggerAddress: localhost:49223}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), se:cdp: ws://localhost:49223/devtoo..., se:cdpVersion: 110.0.5481.178, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
-Element: [[ChromeDriver: chrome on WINDOWS (882bb38057010e0418ccfef28b577070)] -> xpath: //ion-header/ion-toolbar[1]/ion-buttons[2]/ion-button[2]]
-Session ID: 882bb38057010e0418ccfef28b577070]]>
+Command: [39bad30e27fc5763279768e45af89c17, clickElement {id=76adff94-398b-4750-9997-ef3308859d37}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 111.0.5563.110, chrome: {chromedriverVersion: 111.0.5563.64 (c710e93d5b63..., userDataDir: C:\Users\ININDC~1\AppData\L...}, goog:chromeOptions: {debuggerAddress: localhost:62891}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), se:cdp: ws://localhost:62891/devtoo..., se:cdpVersion: 111.0.5563.110, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Element: [[ChromeDriver: chrome on WINDOWS (39bad30e27fc5763279768e45af89c17)] -> xpath: (//ion-toolbar[1]/ion-buttons[2]/ion-button[1])[2]]
+Session ID: 39bad30e27fc5763279768e45af89c17]]>
             </message>
             <full-stacktrace>
-              <![CDATA[org.openqa.selenium.ElementClickInterceptedException: element click intercepted: Element <ion-button _ngcontent-cqh-c278="" routerlink="/inbox" tabindex="0" ng-reflect-router-link="/inbox" class="md button button-clear in-toolbar in-toolbar-color button-has-icon-only ion-activatable ion-focusable hydrated">...</ion-button> is not clickable at point (1094, 28). Other element would receive the click: <div role="alert" class="ng-tns-c136-3 toast-message ng-star-inserted" aria-label="Workflow initiated submit record from inbox." style="">...</div>
-  (Session info: chrome=110.0.5481.178)
+              <![CDATA[org.openqa.selenium.ElementClickInterceptedException: element click intercepted: Element <ion-button color="primary" ng-reflect-color="primary" class="ion-color ion-color-primary md button button-clear in-toolbar ion-activatable ion-focusable hydrated button-disabled" ng-reflect-disabled="true" aria-disabled="true" disabled="">...</ion-button> is not clickable at point (1255, 88). Other element would receive the click: <ion-buttons slot="end" class="buttons-last-slot sc-ion-buttons-md-h sc-ion-buttons-md-s md hydrated">...</ion-buttons>
+  (Session info: chrome=111.0.5563.110)
 Build info: version: '4.0.0-rc-1', revision: 'bc5511cbda'
-System info: host: 'DESKTOP-PSK9T3U', ip: '10.200.4.218', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.1'
+System info: host: 'DESKTOP-PSK9T3U', ip: '10.200.4.229', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.1'
 Driver info: org.openqa.selenium.chrome.ChromeDriver
-Command: [882bb38057010e0418ccfef28b577070, clickElement {id=0e3f5e84-e840-45ce-8000-5374f0e0b3a1}]
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 110.0.5481.178, chrome: {chromedriverVersion: 110.0.5481.77 (65ed616c6e8e..., userDataDir: C:\Users\ININDC~1\AppData\L...}, goog:chromeOptions: {debuggerAddress: localhost:49223}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), se:cdp: ws://localhost:49223/devtoo..., se:cdpVersion: 110.0.5481.178, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
-Element: [[ChromeDriver: chrome on WINDOWS (882bb38057010e0418ccfef28b577070)] -> xpath: //ion-header/ion-toolbar[1]/ion-buttons[2]/ion-button[2]]
-Session ID: 882bb38057010e0418ccfef28b577070
+Command: [39bad30e27fc5763279768e45af89c17, clickElement {id=76adff94-398b-4750-9997-ef3308859d37}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 111.0.5563.110, chrome: {chromedriverVersion: 111.0.5563.64 (c710e93d5b63..., userDataDir: C:\Users\ININDC~1\AppData\L...}, goog:chromeOptions: {debuggerAddress: localhost:62891}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), se:cdp: ws://localhost:62891/devtoo..., se:cdpVersion: 111.0.5563.110, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Element: [[ChromeDriver: chrome on WINDOWS (39bad30e27fc5763279768e45af89c17)] -> xpath: (//ion-toolbar[1]/ion-buttons[2]/ion-button[1])[2]]
+Session ID: 39bad30e27fc5763279768e45af89c17
 at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
 at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77)
 at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
@@ -67,24 +67,24 @@ at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverComman
 at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:547)
 at org.openqa.selenium.remote.RemoteWebElement.execute(RemoteWebElement.java:251)
 at org.openqa.selenium.remote.RemoteWebElement.click(RemoteWebElement.java:77)
-at jdk.internal.reflect.GeneratedMethodAccessor6.invoke(Unknown Source)
+at jdk.internal.reflect.GeneratedMethodAccessor5.invoke(Unknown Source)
 at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
 at java.base/java.lang.reflect.Method.invoke(Method.java:568)
 at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:52)
 at jdk.proxy2/jdk.proxy2.$Proxy46.click(Unknown Source)
-at stepdefinitions.InventoryManagement_BillBooking.fill_the_required_fields_for_invoice_booking_record(InventoryManagement_BillBooking.java:483)
-at ✽.Fill the required fields for invoice booking record(file:///C:/Users/ININDC00091/git/AzentioAutomationFramework/DeveshFW_Excel/ARAP_AzentioAutomationFramework_Excel/src/test/java/features/InventoryManagement_UAT.feature:230)
+at stepdefinitions.CancellationOfAdvanceToEmployees.fill_the_form_for_advance_adjustment(CancellationOfAdvanceToEmployees.java:324)
+at ✽.Fill The form for advance adjustment(file:///C:/Users/ININDC00091/git/AzentioAutomationFramework/DeveshFW_Excel/ARAP_AzentioAutomationFramework_Excel/src/test/java/features/ArAp_AccountsReceivable.feature:400)
 ]]>
             </full-stacktrace>
           </exception> <!-- org.openqa.selenium.ElementClickInterceptedException -->
           <reporter-output>
           </reporter-output>
         </test-method> <!-- runScenario -->
-        <test-method is-config="true" signature="tearDownClass()[pri:0, instance:Runner.TestApplication@2d901eb0]" started-at="2023-03-04T16:41:07 AST" name="tearDownClass" finished-at="2023-03-04T16:41:16 AST" duration-ms="8725" status="PASS">
+        <test-method is-config="true" signature="tearDownClass()[pri:0, instance:Runner.TestApplication@2d901eb0]" started-at="2023-03-23T13:16:07 AST" name="tearDownClass" finished-at="2023-03-23T13:16:17 AST" duration-ms="10134" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDownClass -->
-        <test-method is-config="true" signature="afterExecution()[pri:0, instance:Runner.TestApplication@2d901eb0]" started-at="2023-03-04T16:41:16 AST" name="afterExecution" finished-at="2023-03-04T16:41:16 AST" duration-ms="224" status="PASS">
+        <test-method is-config="true" signature="afterExecution()[pri:0, instance:Runner.TestApplication@2d901eb0]" started-at="2023-03-23T13:16:17 AST" name="afterExecution" finished-at="2023-03-23T13:16:18 AST" duration-ms="247" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterExecution -->

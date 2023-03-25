@@ -524,6 +524,14 @@ public class ARAP_ARandAPObj {
 
 		return ARAP_NextMonth;
 	}
+	
+	@FindBy(xpath = "//owl-date-time-container[1]/div[2]/owl-date-time-calendar[1]/div[1]/button[1]/span[1]")
+	private WebElement ARAP_PreviousMonth;
+	
+	public WebElement ARAP_PreviousMonth() {
+		
+		return ARAP_PreviousMonth;
+	}
 
 	@FindBy(xpath = "//ion-button[1]/span[1]")
 //	@FindBy(xpath = "//span[contains(text(),'View')]")
@@ -600,6 +608,13 @@ public class ARAP_ARandAPObj {
 
 	public WebElement accountsPayablePayementSettlementValueDate() {
 		return accountsPayable_paymentSettlementValueDate;
+	}
+	
+	@FindBy(xpath = "//ion-buttons[2]/span[1]")
+	private WebElement accountsPayable_paymentSettlement_SystemDate;
+	
+	public WebElement accountsPayable_paymentSettlement_SystemDate() {
+		return accountsPayable_paymentSettlement_SystemDate;
 	}
 	// owl-date-time-container[1]/div[2]/owl-date-time-calendar[1]/div[1]/button[2]/span[1]
 
@@ -867,6 +882,13 @@ public class ARAP_ARandAPObj {
 	public WebElement accountReceviableAdvances_AlertClose()
 	{
 		return accountReceviableAdvances_AlertClose;
+	}
+	
+	@FindBy(xpath="")
+	private WebElement ARAP_Debit_Cost;
+	public WebElement ARAP_Debit_Cost()
+	{
+		return ARAP_Debit_Cost;
 	}
 
 	// *****RECEIPT OBJECTS*****//

@@ -83,6 +83,12 @@ public class ENQUIRY_FinancialTransactionObj {
 	{
 		return ENQUIRY_FinancialTransaction_NextMonth;
 	}
+	@FindBy(xpath="//owl-date-time-calendar/div/button[1]")
+	private WebElement ENQUIRY_FinancialTransaction_PreviousMonth;
+	public WebElement ENQUIRY_FinancialTransaction_PreviousMonth()
+	{
+		return ENQUIRY_FinancialTransaction_PreviousMonth;
+	}
 	
 //	@FindBy(xpath="//ion-button[contains(text(),'View')]")
 	@FindBy(xpath="//ion-button[1]/span[1]")

@@ -75,7 +75,7 @@ public class ARAP_CancellationOfCreditNote extends BaseClass {
 	Account_Receivable account_Receivable = new Account_Receivable(driver);
 	Ar_Ap_AdjustmentObj arapAdjustment = new Ar_Ap_AdjustmentObj(driver);
 	ARAP_ARandAPObj arapObj = new ARAP_ARandAPObj(driver);
-	JavascriptHelper javascripthelper = new JavascriptHelper();
+	JavascriptHelper javascripthelper = new JavascriptHelper(driver);
 	INVENTORY_EnquiryGlObject inventoryEnquiryGlObj = new INVENTORY_EnquiryGlObject(driver);
 	ACCOUNTSPAYABLE_PayementSettlementObj accountsPayable_PaymentSettlementObj = new ACCOUNTSPAYABLE_PayementSettlementObj(driver);
 	ArAp_Cancellation_of_vendorObj cancellationofcontract = new ArAp_Cancellation_of_vendorObj(driver);
@@ -105,7 +105,7 @@ public class ARAP_CancellationOfCreditNote extends BaseClass {
 
 	@And("^click the credit note eye icon$")
 	public void click_the_credit_note_eye_icon() throws Throwable {
-		javascripthelper.JavaScriptHelper(driver);
+		
 		javascripthelper.scrollIntoView(account_Receivable.accountsReceivable_CreditNote_Eye());
 		seleniumactions.getWaitHelper().waitForElement(driver, 2000, account_Receivable.accountsReceivable_CreditNote_Eye());
 		seleniumactions.getClickAndActionsHelper().clickOnElement(account_Receivable.accountsReceivable_CreditNote_Eye());
@@ -129,7 +129,8 @@ public class ARAP_CancellationOfCreditNote extends BaseClass {
 
 	@And("^store the credit note number$")
 	public void store_the_credit_note_number() throws Throwable {
-		javascripthelper.JavaScriptHelper(driver);
+		
+		Thread.sleep(1000);
 		String creditnotenumber = (String) javascripthelper.executeScript(
 				"return document.getElementsByClassName('ng-untouched ng-pristine ng-valid sc-ion-input-md-h sc-ion-input-md-s md has-value hydrated ion-untouched ion-pristine ion-valid')[0].value");
 		// String creditnotenumber = (String) javascriphelper.executeScript("return
@@ -140,7 +141,7 @@ public class ARAP_CancellationOfCreditNote extends BaseClass {
 
 	@And("^click the Notes Option In Top$")
 	public void click_the_notes_option_in_top() throws Throwable {
-		javascripthelper.JavaScriptHelper(driver);
+		
 		javascripthelper.scrollIntoView(enquiryObj.inventoryReportIcon());
 		seleniumactions.getWaitHelper().waitForElement(driver, 2000, enquiryObj.inventoryReportIcon());
 		seleniumactions.getClickAndActionsHelper().clickOnElement(enquiryObj.inventoryReportIcon());
@@ -207,7 +208,7 @@ public class ARAP_CancellationOfCreditNote extends BaseClass {
 				break;
 
 			} catch (NoSuchElementException e) {
-				javascripthelper.JavaScriptHelper(driver);
+				
 				javascripthelper.scrollIntoView(enquiryObj.nextPageInListView());
 				seleniumactions.getWaitHelper().waitForElement(driver, 2000, enquiryObj.nextPageInListView());
 				enquiryObj.nextPageInListView().click();
@@ -225,7 +226,7 @@ public class ARAP_CancellationOfCreditNote extends BaseClass {
 	@And("^click the eye icon in credit note$")
 	public void click_the_eye_icon_in_credit_note() throws Throwable {
 //		seleniumactions.getWaitHelper().waitForElement(driver, 2000, account_Receivable.accountsReceivable_CreditNote_Eye());
-		javascripthelper.JavaScriptHelper(driver);
+		
 		javascripthelper.scrollIntoView(account_Receivable.accountsReceivable_CreditNote_Eye());
 		seleniumactions.getWaitHelper().waitForElementToVisibleWithFluentWait(driver, account_Receivable.accountsReceivable_CreditNote_Eye(), 20, 2);
 		seleniumactions.getClickAndActionsHelper().clickOnElement(account_Receivable.accountsReceivable_CreditNote_Eye());
@@ -284,7 +285,7 @@ public class ARAP_CancellationOfCreditNote extends BaseClass {
 			}
 		}
 		
-		javascripthelper.JavaScriptHelper(driver);
+		
 		String contractenddate = (String) javascripthelper.executeScript("return document.getElementsByName('kubDateTime')[0].value");
 		System.out.println(contractenddate);
 		String year = contractenddate.substring(7, 11);
@@ -360,7 +361,7 @@ public class ARAP_CancellationOfCreditNote extends BaseClass {
 
 	@And("^click the notes option in top$")
 	public void click_the_notes_optin_in_top() throws Throwable {
-		javascripthelper.JavaScriptHelper(driver);
+		
 		javascripthelper.scrollIntoView(enquiryObj.inventoryReportIcon());
 		seleniumactions.getWaitHelper().waitForElement(driver, 2000, enquiryObj.inventoryReportIcon());
 		seleniumactions.getClickAndActionsHelper().clickOnElement(enquiryObj.inventoryReportIcon());
@@ -375,20 +376,24 @@ public class ARAP_CancellationOfCreditNote extends BaseClass {
 		waithelper.waitForElement(driver, 2000, arAp_BalanceSheetReportObj.arAp_BalanceSheetReport_CalendarButton());
 		arAp_BalanceSheetReportObj.arAp_BalanceSheetReport_CalendarButton().click();
 
-		javascripthelper.JavaScriptHelper(driver);
+		
 		Thread.sleep(1000);
 		for(int i=0;i<30;i++) {
 			try {
 				// span[contains(text(),'Oct 2022')]
 //				waithelper.waitForElement(driver, 2000,
 //						driver.findElement(By.xpath("//span[text()='" + testData.get("Month") + " " + testData.get("Year") + "']")));
-				WebElement monthAndYear = driver.findElement(By.xpath("//span[text()='" + testdata.get("month") + " " + testdata.get("year") + "']"));
+				WebElement monthAndYear = driver.findElement(By.xpath("//span[text()='" + testdata.get("month") + " " + testdata.get("year") + " ']"));
 //				Thread.sleep(2000);
 				break;
 			}
 
 			catch (NoSuchElementException nosuchElement) {
-				arAp_BalanceSheetReportObj.arAp_BalanceSheetReport_NextMonth().click();
+				int year=Integer.parseInt(testData.get("Year"));
+				if(year<2023){
+					arAp_BalanceSheetReportObj.arAp_BalanceSheetReport_PreviousMonth().click();
+				}else if(year>=2023)
+					arAp_BalanceSheetReportObj.arAp_BalanceSheetReport_NextMonth().click();
 
 			}
 		}
@@ -465,7 +470,7 @@ public class ARAP_CancellationOfCreditNote extends BaseClass {
 		Thread.sleep(2000);
 		while (true) {
 			try {
-				javascripthelper.JavaScriptHelper(driver);
+				
 				javascripthelper.scrollIntoView(driver.findElement(By.xpath("//div[text()='" + testdata.get("creditnotenumber") + "']")));
 				// seleniumactions.getWaitHelper().waitForElement(driver,2000,driver.findElement(By.xpath("//div[text()='"+testdata.get("creditnotenumber")+"']")));
 				driver.findElement(By.xpath("//div[text()='" + testdata.get("creditnotenumber") + "']")).isDisplayed();
@@ -485,7 +490,7 @@ public class ARAP_CancellationOfCreditNote extends BaseClass {
 
 	@And("^click account payable main module$")
 	public void click_account_payable_main_module() throws Throwable {
-		javascripthelper.JavaScriptHelper(driver);
+		
 		javascripthelper.scrollIntoView(arapObj.ARAPTransfericon());
 		seleniumactions.getWaitHelper().waitForElement(driver, 3000, cancellationofcontract.getAccountspayable());
 		seleniumactions.getClickAndActionsHelper().clickOnElement(cancellationofcontract.getAccountspayable());
@@ -524,7 +529,7 @@ public class ARAP_CancellationOfCreditNote extends BaseClass {
 
 	@Then("^verify that invoice from credit not is not available in bill list$")
 	public void verify_that_invoice_from_credit_not_is_not_available_in_bill_list() throws Throwable {
-		javascripthelper.JavaScriptHelper(driver);
+		
 		
 		for (int i = 1; i <= 6; i++) {
 
@@ -559,7 +564,7 @@ public class ARAP_CancellationOfCreditNote extends BaseClass {
 		vendorContractObj.vendorContractContractName().click();
 		vendorContractObj.vendorContractContractName().sendKeys(testData.get("ContractName"));
 		
-		javascripthelper.JavaScriptHelper(driver);
+		
 		javascripthelper.scrollIntoView(vendorContractObj.vendorContractOtherDetails());
 //		waitHelper.waitForElementToVisibleWithFluentWait(driver, vendorContractObj.vendorContractOtherDetails(), 20, 2);
 		vendorContractObj.vendorContractOtherDetails().click();
@@ -574,12 +579,15 @@ public class ARAP_CancellationOfCreditNote extends BaseClass {
 		vendorContractObj.vendorContractLatePaymentAmount().sendKeys(testData.get("PaymentAmmount"));
 		waithelper.waitForElementVisible(vendorContractObj.vendorContractSaveButton(), 2000, 100);
 		vendorContractObj.vendorContractSaveButton().click();
+		waithelper.waitForElementwithFluentwait(driver, vendorContractObj.vendorContract_AlertClose());
+		vendorContractObj.vendorContract_AlertClose().click();
 
 	}
 	
 	@And("^add item details for the contract for cancellation of credit note$")
 	public void add_item_details_for_the_contract_for_cancellation_of_credit_note() throws Throwable {
-		waithelper.waitForElementVisible(vendorContractObj.vendorContractTempView(), 2000, 100);
+//		waithelper.waitForElementVisible(vendorContractObj.vendorContractTempView(), 2000, 100);
+		waithelper.waitForElementwithFluentwait(driver, vendorContractObj.vendorContractTempView());
 		vendorContractObj.vendorContractTempView().click();
 		waithelper.waitForElementVisible(vendorContractObj.firstTempRecord(), 2000, 100);
 		vendorContractObj.firstTempRecord().click();
@@ -663,13 +671,13 @@ public class ARAP_CancellationOfCreditNote extends BaseClass {
 		vendorContractObj.vendorContractBenificioryDetailsAutoPayout().sendKeys(Keys.ENTER);
 		vendorContractObj.vendorContractBenificioryDetailsSaveButton().click();
 		
-//		waitHelper.waitForElementToVisibleWithFluentWait(driver, vendorContractObj.vendorContract_AlertClose(), 20, 2);
+//		waithelper.waitForElementToVisibleWithFluentWait(driver, vendorContractObj.vendorContract_AlertClose(), 20, 2);
 //		vendorContractObj.vendorContract_AlertClose().click();
 	}
 	
 	@Then("^enter remark in confirmation alert for cancellation of credit note$")
 	public void enter_remark_in_confirmation_alert_for_cancellation_of_credit_note() throws Throwable {
-		javascripthelper.JavaScriptHelper(driver);
+		
 		waithelper.waitForElementToVisibleWithFluentWait(driver, budgetCreationObj.budgetCreation_AlertRemarks(), 60, 500);
 		javascripthelper.JSEClick(budgetCreationObj.budgetCreation_AlertRemarks());
 		/*
@@ -759,7 +767,7 @@ public class ARAP_CancellationOfCreditNote extends BaseClass {
 	
 	@Then("^give alert remark for checker$")
 	public void give_alert_remark_for_checker() throws Throwable {
-		javascripthelper.JavaScriptHelper(driver);
+		
 		waithelper.waitForElementToVisibleWithFluentWait(driver, kubsCheckerObj.checkerRemarks(), 60, 500);
 		clicksAndActionHelper.clickOnElement(kubsCheckerObj.checkerRemarks());
 		kubsCheckerObj.checkerRemarks().sendKeys(testData.get("Remark by Checker"));
@@ -780,19 +788,17 @@ public class ARAP_CancellationOfCreditNote extends BaseClass {
 		 * After clime our record the record will go to notification we have to capture
 		 * the our record by the help of reference ID
 		 */
-
-		String before_xpath = "//span[contains(text(),'";
-		String after_xpath = "')]/ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell/div/ion-buttons/ion-button";
-		for (int i = 0; i <= 100; i++) {
+		
+		String before_xpath = "//span[text()='";
+		String after_xpath = "']/ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell/div/ion-buttons/ion-button";
+		for (int i = 0; i <= 200; i++) {
 			try {
-//				waitHelper.waitForElementToVisibleWithFluentWait(driver,
-//						driver.findElement(By.xpath(before_xpath + jsonReaderWriter.readReferancedata() + after_xpath)),
-//						100, 500);
+				waithelper.waitForElementwithFluentwait(driver, driver.findElement(By.xpath(before_xpath + testData.get("ReferenceID") + after_xpath)));
 				clicksAndActionHelper.moveToElement(driver.findElement(By.xpath(before_xpath + testData.get("ReferenceID") + after_xpath)));
 				clicksAndActionHelper.doubleClick(driver.findElement(By.xpath(before_xpath + testData.get("ReferenceID") + after_xpath)));
 				break;
 			} catch (Exception e) {
-				if (i == 100) {
+				if (i == 200) {
 					Assert.fail(e.getMessage());
 				}
 			}
@@ -807,7 +813,7 @@ public class ARAP_CancellationOfCreditNote extends BaseClass {
 		 * 
 		 * try catch block is used for avoid stalelementReference Exception
 		 */
-		javascripthelper.JavaScriptHelper(driver);
+		
 		String before_xpath = "//span[contains(text(),'";
 		String after_xpath_claim = "')]/parent::div/parent::datatable-body-cell/preceding-sibling::datatable-body-cell[2]/div/ion-buttons/ion-button";
 		javascripthelper.JSEClick(kubsCheckerObj.checkerActionIcon());
@@ -933,7 +939,7 @@ public class ARAP_CancellationOfCreditNote extends BaseClass {
 	
 	@And("^search for approved po record for cancellation of credit note$")
 	public void search_for_approved_po_record_for_cancellation_of_credit_note() throws Throwable {
-		javascripthelper.JavaScriptHelper(driver);
+		
 		waithelper.waitForElementToVisibleWithFluentWait(driver, ArAp_poCreationObj.poCreationSearchIcon(), 20, 2);
 		ArAp_poCreationObj.poCreationSearchIcon().click();
 		Thread.sleep(1000);
@@ -960,7 +966,9 @@ public class ARAP_CancellationOfCreditNote extends BaseClass {
 		waithelper.waitForElementVisible(grnObject.accountPayable_GRN_BPBranch(), 2000, 100);
 		grnObject.accountPayable_GRN_BPBranch().click();
 		grnObject.accountPayable_GRN_BPBranch().sendKeys(Keys.ENTER);
-		grnObject.accountPayable_GrnInvoiceNumber().sendKeys(testData.get("InvoiceNo"));
+		Random random = new Random();
+		int randomNum=random.nextInt(2000-1500)+1500;
+		grnObject.accountPayable_GrnInvoiceNumber().sendKeys(testData.get("InvoiceNo")+randomNum);
 		waithelper.waitForElementToVisibleWithFluentWait(driver, grnObject.accountPayable_GrnDeliveryLocation(), 20, 2);
 		grnObject.accountPayable_GrnDeliveryLocation().click();
 		grnObject.accountPayable_GrnDeliveryLocation().sendKeys(testData.get("DeliveryLocation"));
@@ -968,11 +976,14 @@ public class ARAP_CancellationOfCreditNote extends BaseClass {
 //		Thread.sleep(1000);
 		waithelper.waitForElementwithFluentwait(driver, grnObject.accountPayable_GrnSaveButton());
 		clicksAndActionHelper.doubleClick(grnObject.accountPayable_GrnSaveButton());
-		javascripthelper.JavaScriptHelper(driver);
+		waithelper.waitForElementwithFluentwait(driver, arapObj.ARAP_Notification_Close());
+		arapObj.ARAP_Notification_Close().click();
+		
 		javascripthelper.scrollIntoView(grnObject.grnTempView());
 		waithelper.waitForElementwithFluentwait(driver, grnObject.grnTempView());
 		grnObject.grnTempView().click();
-		waithelper.waitForElementVisible(grnObject.grnTempViewFirstRecord(), 1000, 100);
+		Thread.sleep(500);
+		waithelper.waitForElementwithFluentwait(driver, grnObject.grnTempViewFirstRecord());
 		grnObject.grnTempViewFirstRecord().click();
 
 	}
@@ -1008,7 +1019,7 @@ public class ARAP_CancellationOfCreditNote extends BaseClass {
 
 			}
 		}
-		// javascriptHelper.JavaScriptHelper(driver);
+		// 
 		 Thread.sleep(1000);
 		// grnObject.ItemDetailsSaveButton().click();
 		// clickAndActions.doubleClick(grnObject.ItemDetailsSaveButton());
@@ -1125,7 +1136,7 @@ public class ARAP_CancellationOfCreditNote extends BaseClass {
 	
 	@And("^goto accouts receivable module$")
 	public void goto_accouts_receivable_module() throws Throwable {
-		javascripthelper.JavaScriptHelper(driver);
+		
 		// waitHelper.waitForElementVisible(makerObj.kubsAccountsReceivable(), 2000,
 		// 100);
 		// makerObj.kubsDirectionIcon().click();
@@ -1135,7 +1146,7 @@ public class ARAP_CancellationOfCreditNote extends BaseClass {
 
 	@And("^goto credit notet module$")
 	public void goto_credit_notet_module() throws Throwable {
-		javascripthelper.JavaScriptHelper(driver);
+		
 		javascripthelper.scrollIntoView(crediteNoteObj.accountsReceivableViewButton());
 		// waitHelper.waitForElementVisible(crediteNoteObj.accountsReceivableViewButton(),
 		// 2000, 100);
@@ -1144,7 +1155,7 @@ public class ARAP_CancellationOfCreditNote extends BaseClass {
 	
 	@And("^Fill the form for cancellation of credit note$")
 	public void fill_the_form_for_cancellation_of_credit_note() throws Throwable {
-		javascripthelper.JavaScriptHelper(driver);
+		
 		waithelper.waitForElementVisible(crediteNoteObj.accountsReceivableReceivableName(), 2000, 100);
 		crediteNoteObj.accountsReceivableReceivableName().click();
 		crediteNoteObj.accountsReceivableReceivableName().sendKeys(Keys.DOWN);
@@ -1175,7 +1186,7 @@ public class ARAP_CancellationOfCreditNote extends BaseClass {
 	
 	@And("^fill the mendatory fields for settle the payment$")
 	public void fill_the_mendatory_fields_for_settle_the_payment() throws Throwable {
-		javascripthelper.JavaScriptHelper(driver);
+		
 		waithelper.waitForElementVisible(accountsPayable_PaymentSettlementObj.accountsPayablePayementSettlementPaymentOption(), 2000, 100);
 		accountsPayable_PaymentSettlementObj.accountsPayablePayementSettlementPaymentOption().click();
 		accountsPayable_PaymentSettlementObj.accountsPayablePayementSettlementPaymentOption().sendKeys(testData.get("PaymentOption"));
@@ -1185,7 +1196,7 @@ public class ARAP_CancellationOfCreditNote extends BaseClass {
 		accountsPayable_PaymentSettlementObj.accountsPayablePayementSettlementBpNAme().sendKeys(Keys.ENTER);
 		Thread.sleep(1000);
 		// div[contains(text(),'ADV_36_2422022')]
-		for (int i = 1; i <= 20; i++) {
+		for (int i = 1; i <= 50; i++) {
 			Thread.sleep(1000);
 			if (i == 20) {
 				System.out.println("Data not available");
@@ -1215,22 +1226,86 @@ public class ARAP_CancellationOfCreditNote extends BaseClass {
 	
 	@And("^fill the calender detail and description$")
 	public void fill_the_calender_detail_and_description() throws Throwable {
-		javascripthelper.JavaScriptHelper(driver);
-		// javascriptHelper.JavaScriptHelper(driver);
+		waithelper.waitForElementwithFluentwait(driver, arapObj.accountsPayable_paymentSettlement_SystemDate());
+		String systemDate=arapObj.accountsPayable_paymentSettlement_SystemDate().getText();
+		System.out.println(systemDate);
+		String date[]=systemDate.split("-");
+		excelData.updateTestData(dataSetID, "Date", date[0]);
+		testData = excelData.getTestdata(dataSetID);
+		excelData.updateTestData(dataSetID, "Month", date[1]);
+		testData = excelData.getTestdata(dataSetID);
+		excelData.updateTestData(dataSetID, "Year", date[2]);
+		testData = excelData.getTestdata(dataSetID);
+		String fullMonth = "";
+		switch (date[1]) {
+		case "Jan":
+			fullMonth="January";
+			break;
+		case "Feb":
+			fullMonth="February";
+			break;
+		case "Mar":
+			fullMonth="March";
+			break;
+		case "Apr":
+			fullMonth="April";
+			break;
+		case "May":
+			fullMonth="May";
+			break;
+		case "Jun":
+			fullMonth="June";
+			break;
+		case "Jul":
+			fullMonth="July";
+			break;
+		case "Aug":
+			fullMonth="August";
+			break;
+		case "Sep":
+			fullMonth="September";
+			break;
+		case "Oct":
+			fullMonth="October";
+			break;
+		case "Nov":
+			fullMonth="November";
+			break;
+		case "Dec":
+			fullMonth="December";
+			break;
+		}
+		excelData.updateTestData(dataSetID, "FullMonth", fullMonth);
+		testData = excelData.getTestdata(dataSetID);
+
+		
 		javascripthelper.scrollIntoView(accountsPayable_PaymentSettlementObj.accountsPayablePayementSettlementValueDate());
 		accountsPayable_PaymentSettlementObj.accountsPayablePayementSettlementValueDate().click();
-		while (true) {
+//		while (true) {
+//			try {
+//
+//				waithelper.waitForElementwithFluentwait(driver, driver.findElement(By.xpath("//span[text()='" + testData.get("MonthYear") + " ']")));
+//				driver.findElement(By.xpath("//span[text()='" + testData.get("MonthYear") + " ']"));
+//				break;
+//			}
+//
+//			catch (NoSuchElementException nosuchElement) {
+////				inventoryEnquiryGlObj.inventoryNextMonth().click();
+//			}
+//		}
+		for(int i=0;i<=50;i++) {
 			try {
-
-				waithelper.waitForElement(driver, 3000, driver.findElement(By.xpath("//span[contains(text(),'" + testData.get("MonthYear") + "')]")));
-				driver.findElement(By.xpath("//span[contains(text(),'" + testData.get("MonthYear") + "')]"));
+				waithelper.waitForElement(driver, 5000, driver.findElement(By.xpath("//span[text()='" + testData.get("Month") + " " + testData.get("Year") + " ']")));
+				driver.findElement(By.xpath("//span[text()='" + testData.get("Month") + " " + testData.get("Year") + " ']"));
 				break;
 			}
 
 			catch (NoSuchElementException nosuchElement) {
-				inventoryEnquiryGlObj.inventoryNextMonth().click();
+				waithelper.waitForElement(driver, 5000, arapObj.ARAPNextMonth());
+				arapObj.ARAPNextMonth().click();
 			}
 		}
+		waithelper.waitForElement(driver, 5000, driver.findElement(By.xpath("//td[@aria-label='" + testData.get("FullMonth") + " " + testData.get("Date") + ", " + testData.get("Year") + "']/span")));
 		WebElement FinalDay = driver
 				.findElement(By.xpath("//td[@aria-label='" + testData.get("FullMonth") + " " + testData.get("Date") + ", " + testData.get("Year") + "']/span"));
 		clicksAndActionHelper.doubleClick(FinalDay);

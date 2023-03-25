@@ -36,7 +36,7 @@ public class ACCOUNTSPAYABLE_TaxDetails {
 	
 	WaitHelper waithelper = new WaitHelper(driver);
 	ACCOUNTSPAYABLE_InvoiceBookingObj aCCOUNTSPAYABLE_InvoiceBookingObj = new ACCOUNTSPAYABLE_InvoiceBookingObj(driver);
-	JavascriptHelper javascripthelper = new JavascriptHelper();
+	JavascriptHelper javascripthelper = new JavascriptHelper(driver);
 	JsonDataReaderWriter jsonWriter = new JsonDataReaderWriter();
 	ClicksAndActionsHelper clicksAndActionHelper = new ClicksAndActionsHelper(driver);
 	JsonDataReaderWriter reader;
@@ -53,7 +53,6 @@ public class ACCOUNTSPAYABLE_TaxDetails {
 	  }
 	@Then("^Get the tax details and check$")
 	public void get_the_tax_details_and_check() throws InterruptedException {
-		javascripthelper.JavaScriptHelper(driver);
 		waithelper.waitForElement(driver, 3000,aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_Search());
 		aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_Search().click();
 		waithelper.waitForElement(driver, 3000,aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_InvoiceNumberSearch());

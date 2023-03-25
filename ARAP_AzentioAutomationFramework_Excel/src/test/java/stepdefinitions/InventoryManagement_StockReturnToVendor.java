@@ -37,12 +37,10 @@ public class InventoryManagement_StockReturnToVendor {
 	ConfigFileReader config = new ConfigFileReader();
 	ACCOUNTSPAYABLE_VendorContractsObj aCCOUNTSPAYABLE_VendorContractsObj = new ACCOUNTSPAYABLE_VendorContractsObj(driver);
 	WaitHelper waithelper = new WaitHelper(driver);
-	JavascriptHelper javascripthelper = new JavascriptHelper();
+	JavascriptHelper javascripthelper = new JavascriptHelper(driver);
 	ClicksAndActionsHelper clicksAndActionHelper = new ClicksAndActionsHelper(driver);
 	BrowserHelper browserHelper;
 	KUBS_ReviewerObj reviewer = new KUBS_ReviewerObj(driver);
-//	INVENTORY_MANAGEMENT_PurchaseRequitionConfirmationObj iNVENTORY_MANAGEMENT_PurchaseRequitionConfirmationObj = new INVENTORY_MANAGEMENT_PurchaseRequitionConfirmationObj(driver);
-//	AccountPayable_VendorPurchaseOrderObj accountPayable_VendorPurchaseOrderObj = new AccountPayable_VendorPurchaseOrderObj(driver);
 	InventoryManagamentObj inventoryManagamentObj = new InventoryManagamentObj(driver);
 	
 
@@ -53,9 +51,7 @@ public class InventoryManagement_StockReturnToVendor {
 	
 	@And("^Click on stock return to vendor SubModule Eye icon$")
 	public void click_on_stock_return_to_vendor_submodule_eye_icon() throws Throwable {
-
 		// ---------TO VIEW THE stock return to vendor Eye icon----------//
-		javascripthelper.JavaScriptHelper(driver);
 		javascripthelper.scrollIntoView(inventoryManagamentObj.inventoryStockReturnBranchEye());
 		waithelper.waitForElementwithFluentwait(driver, inventoryManagamentObj.inventoryStockReturnBranchEye());
 		inventoryManagamentObj.inventoryStockReturnBranchEye().click();
@@ -63,7 +59,6 @@ public class InventoryManagement_StockReturnToVendor {
 	
 	@Then("^Click on stock return to vendor Add icon$")
 	public void click_on_stock_return_to_vendor_add_icon() throws Throwable {
-
 		// ---------TO VIEW THE stock return to vendor Add icon----------//
 		waithelper.waitForElement(driver, 2000, inventoryManagamentObj.inventoryStockReturnBranchAdd());
 		inventoryManagamentObj.inventoryStockReturnBranchAdd().click();
@@ -71,38 +66,34 @@ public class InventoryManagement_StockReturnToVendor {
 	
 	@And("^Click on Request Referance No code$")
 	public void click_on_request_referance_no_code() throws Throwable {
-
 		// ---------TO Enter Request Referance No code----------//
 		waithelper.waitForElementwithFluentwait(driver, inventoryManagamentObj.inventoryRequestReferanceNumber());
 		inventoryManagamentObj.inventoryRequestReferanceNumber().click();
 		waithelper.waitForElementwithFluentwait(driver, inventoryManagamentObj.inventoryRequestReferanceNumber());
 		inventoryManagamentObj.inventoryRequestReferanceNumber().sendKeys(testData.get("RequestReferanceNo"));
-		Thread.sleep(500);
+//		Thread.sleep(500);
 		inventoryManagamentObj.inventoryRequestReferanceNumber().sendKeys(Keys.ENTER);
 	}
 
 	@Then("^Click on Issue Referance No code$")
 	public void click_on_issue_referance_no_code() throws Throwable {
-
 		// ---------TO VIEW THE Issue Referance No code----------//
-//		waithelper.waitForElement(driver, 2000, inventoryManagamentObj.inventoryIssueReferanceNo());
 		waithelper.waitForElementwithFluentwait(driver, inventoryManagamentObj.inventoryIssueReferanceNo());
 		inventoryManagamentObj.inventoryIssueReferanceNo().click();
 		waithelper.waitForElementwithFluentwait(driver, inventoryManagamentObj.inventoryIssueReferanceNo());
 		inventoryManagamentObj.inventoryIssueReferanceNo().sendKeys(Keys.DOWN);
-		Thread.sleep(500);
+//		Thread.sleep(500);
 		inventoryManagamentObj.inventoryIssueReferanceNo().sendKeys(Keys.ENTER);
 	}
 	
 	@And("^Click on item code$")
 	public void click_on_item_code() throws Throwable {
 		// ---------TO VIEW THE item code----------//
-//		waithelper.waitForElement(driver, 2000, inventoryManagamentObj.inventoryItemCode());
 		waithelper.waitForElementwithFluentwait(driver, inventoryManagamentObj.inventoryItemCode());
 		inventoryManagamentObj.inventoryItemCode().click();
 		waithelper.waitForElementwithFluentwait(driver, inventoryManagamentObj.inventoryItemCode());
 		inventoryManagamentObj.inventoryItemCode().sendKeys(Keys.DOWN);
-		Thread.sleep(500);
+//		Thread.sleep(500);
 		inventoryManagamentObj.inventoryItemCode().sendKeys(Keys.ENTER);
 		
 	}
@@ -120,34 +111,31 @@ public class InventoryManagement_StockReturnToVendor {
 	@Then("^Click on Return Type and Choose Type$")
 	public void click_on_return_type_and_choose_type() throws Throwable {
 		// ---------TO VIEW THE Return Type----------//
-		waithelper.waitForElement(driver, 5000, inventoryManagamentObj.inventory_ReturnType());
+		waithelper.waitForElementwithFluentwait(driver, inventoryManagamentObj.inventory_ReturnType());
 		inventoryManagamentObj.inventory_ReturnType().click();
 		inventoryManagamentObj.inventory_ReturnType().sendKeys(testData.get("ReturnType"));
-		Thread.sleep(500);
+//		Thread.sleep(500);
 		inventoryManagamentObj.inventory_ReturnType().sendKeys(Keys.ENTER);
 	}
 
 	@And("^Click on Return Reason and Choose Type$")
 	public void click_on_return_reason_and_choose_type() throws Throwable {
 		// ---------TO VIEW THE Return Reason----------//
-//		waithelper.waitForElement(driver, 5000, inventoryManagamentObj.inventory_ReturnReason());
 		waithelper.waitForElementwithFluentwait(driver, inventoryManagamentObj.inventory_ReturnReason());
 		inventoryManagamentObj.inventory_ReturnReason().click();
 		waithelper.waitForElementwithFluentwait(driver, inventoryManagamentObj.inventory_ReturnReason());
 		inventoryManagamentObj.inventory_ReturnReason().sendKeys(testData.get("ReturnReason"));
-		Thread.sleep(500);
+//		Thread.sleep(500);
 		inventoryManagamentObj.inventory_ReturnReason().sendKeys(Keys.ENTER);
 	}
 
 	@Then("^Save the Inventory Stock Record$")
 	public void save_the_inventory_stock_record() throws Throwable {
 		// -----------SAVE THE RECORD----------------//
-//		waithelper.waitForElement(driver, 2000, inventoryManagamentObj.inventory_Save());
 		waithelper.waitForElementwithFluentwait(driver, inventoryManagamentObj.inventory_Save());
 		inventoryManagamentObj.inventory_Save().click();
 		waithelper.waitForElementwithFluentwait(driver, inventoryManagamentObj.inventoryManagament_InventoryRequest_PopupCloseButton());
 		inventoryManagamentObj.inventoryManagament_InventoryRequest_PopupCloseButton().click();
-//		Thread.sleep(3000);
 	}
 	
 	@And("^goto the maker Notification icon$")
@@ -157,13 +145,12 @@ public class InventoryManagement_StockReturnToVendor {
 		inventoryManagamentObj.inventory_MakerNotification().click();
 		waithelper.waitForElementwithFluentwait(driver, inventoryManagamentObj.inventory_ReferanceId());
 		String Referance_id = inventoryManagamentObj.inventory_ReferanceId().getText();
-		//JsonDataReaderWriter readerData;
-//		readerData.addReferanceData(Referance_id);
 		System.out.println(Referance_id);
+		
 		excelData.updateTestData(dataSetID, "ReferenceID", Referance_id);
 		testData = excelData.getTestdata(dataSetID);
 		
-		waithelper.waitForElement(driver, 2000, inventoryManagamentObj.inventory_ActionButton());
+		waithelper.waitForElementwithFluentwait(driver, inventoryManagamentObj.inventory_ActionButton());
 		inventoryManagamentObj.inventory_ActionButton().click();
 
 	}
@@ -171,26 +158,22 @@ public class InventoryManagement_StockReturnToVendor {
 	@Then("^Click Submit icon to Inventory Record$")
 	public void click_submit_icon_to_inventory_record() throws Throwable {
 		// -----------Submit Icon Inventory-----------//
-		waithelper.waitForElement(driver, 2000, inventoryManagamentObj.inventory_Submit());
+		waithelper.waitForElementwithFluentwait(driver, inventoryManagamentObj.inventory_Submit());
 		inventoryManagamentObj.inventory_Submit().click();
 	}
 
 	@And("^Give Remark and submit Inventory field$")
 	public void give_remark_and_submit_inventory_field() throws Throwable {
 		// ----------ENTER THE REMARK AND SUBMIT THE RECORD-------------//
-		waithelper.waitForElement(driver, 2000, inventoryManagamentObj.inventory_Remark());
+		waithelper.waitForElementwithFluentwait(driver, inventoryManagamentObj.inventory_Remark());
 		inventoryManagamentObj.inventory_Remark().click();
-		waithelper.waitForElement(driver, 5000, inventoryManagamentObj.inventory_Remark());
+		waithelper.waitForElementwithFluentwait(driver, inventoryManagamentObj.inventory_Remark());
 		inventoryManagamentObj.inventory_Remark().sendKeys(testData.get("Remark"));
-		Thread.sleep(2000);
-		waithelper.waitForElement(driver, 2000, inventoryManagamentObj.inventory_RemarkSubmit());
+//		Thread.sleep(2000);
+		waithelper.waitForElementwithFluentwait(driver, inventoryManagamentObj.inventory_RemarkSubmit());
 		inventoryManagamentObj.inventory_RemarkSubmit().click();
-		waithelper.waitForElement(driver, 2000, inventoryManagamentObj.inventory_ReviewerId());
+		waithelper.waitForElementwithFluentwait(driver, inventoryManagamentObj.inventory_ReviewerId());
 		String message = inventoryManagamentObj.inventory_ReviewerId().getText();
-//		String ReviewerID = reviwerId.substring(85);
-//		StringBuffer sb = new StringBuffer(ReviewerID);
-//		StringBuffer bufferedString = sb.deleteCharAt(ReviewerID.length() - 1);
-//		String filanReviewerID = bufferedString.toString();
 		String emptystring = "";
 		String ar[] = message.split(" ");
 		emptystring = ar[ar.length - 1];
@@ -204,7 +187,6 @@ public class InventoryManagement_StockReturnToVendor {
 	
 	@Then("^log in to the reviewer account to approve stock return to vendor record$")
 	public void log_in_to_the_reviewer_account_to_approve_stock_return_to_vendor_record() throws IOException, ParseException {
-//		reader = new JsonDataReaderWriter();
 		login = new KUBS_Login(driver);
 		driver.get(config.getApplicationUrl());
 		login.logintoAzentioappReviewer("Reviewer", testData.get("ReviewerID"));
@@ -213,21 +195,14 @@ public class InventoryManagement_StockReturnToVendor {
 	
 	@And("^Click on notification to approve the stock return to vendor record$")
 	public void click_on_notification_to_approve_the_stock_return_to_vendor_() throws Throwable {
-//		waithelper = new WaitHelper(driver);
-//		reviewer = new KUBS_ReviewerObj(driver);
-//		Thread.sleep(1000);
 		waithelper.waitForElementwithFluentwait(driver, reviewer.reviewerNotidicationIcon());
 		reviewer.reviewerNotidicationIcon().click();
-//		browserHelper = new BrowserHelper(driver);
-//		javascripthelper = new JavascriptHelper();
-//		waithelper = new WaitHelper(driver);
-		Thread.sleep(2000);
-		for (int i = 1; i <= 35; i++) {
+//		Thread.sleep(2000);
+		for (int i = 1; i <= 50; i++) {
 			try {
 				waithelper.waitForElementwithFluentwait(driver, driver.findElement(By.xpath("//span[text()='" + testData.get("ReferenceID") + "']")));
 				WebElement referanceID = driver.findElement(By.xpath("//span[text()='" + testData.get("ReferenceID") + "']"));
 				referanceID.click();
-
 				Assert.assertTrue(referanceID.isDisplayed());
 				break;
 			} catch (NoSuchElementException e) {
@@ -238,8 +213,6 @@ public class InventoryManagement_StockReturnToVendor {
 		}
 		String before_xpath = "//span[text()='";
 		String after_xpath = "']/ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell//ion-button";
-
-//			waithelper.waitForElement(driver, 10000,driver.findElement(By.xpath(before_xpath + reader.readReferancedata() + after_xpath)));
 		waithelper.waitForElementwithFluentwait(driver, driver.findElement(By.xpath(before_xpath + testData.get("ReferenceID") + after_xpath)));
 		driver.findElement(By.xpath(before_xpath + testData.get("ReferenceID") + after_xpath)).click();
 
@@ -247,12 +220,8 @@ public class InventoryManagement_StockReturnToVendor {
 	
 	@Then("^Click on notification and approve the stock return to vendors record$")
     public void click_on_notification_and_approve_the_stock_return_to_vendors_record() throws Throwable {
-		javascripthelper = new JavascriptHelper();
-//		Thread.sleep(1500);
-//			waithelper.waitForElement(driver, 3000, kubschecker.checkerNotificationIcon());
 		waithelper.waitForElementwithFluentwait(driver, kubschecker.checkerNotificationIcon());
 		kubschecker.checkerNotificationIcon().click();
-//			Thread.sleep(3000);
 		while (true) {
 			try {
 				waithelper.waitForElementwithFluentwait(driver, driver.findElement(By.xpath("//span[contains(text(),'" + testData.get("ReferenceID") + "')]")));
@@ -261,60 +230,51 @@ public class InventoryManagement_StockReturnToVendor {
 
 			}
 		}
-		Thread.sleep(1500);
+//		Thread.sleep(1500);
 		for (int i = 1; i <= 35; i++) {
 			try {
-//					waithelper.waitForElement(driver, 3000,driver.findElement(By.xpath("//span[contains(text(),'" + reader.readReferancedata() + "')]")));
 				waithelper.waitForElementwithFluentwait(driver, driver.findElement(By.xpath("//span[contains(text(),'" + testData.get("ReferenceID") + "')]")));
 				WebElement referanceID = driver.findElement(By.xpath("//span[contains(text(),'" + testData.get("ReferenceID") + "')]"));
 				referanceID.click();
-
 				Assert.assertTrue(referanceID.isDisplayed());
 				break;
 			} catch (NoSuchElementException e) {
-				waithelper.waitForElement(driver, 4000, kubschecker.checker_notification_next_button());
+				waithelper.waitForElementwithFluentwait(driver, kubschecker.checker_notification_next_button());
 				kubschecker.checker_notification_next_button().click();
 			}
 		}
-		// span[contains(text(),'25')]/ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell//ion-button
 		String before_xpath = "//span[contains(text(),'";
 		String after_xpath = "')]/ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell//ion-button";
-
-//			waithelper.waitForElement(driver, 10000,driver.findElement(By.xpath(before_xpath + reader.readReferancedata() + after_xpath)));
 		waithelper.waitForElementwithFluentwait(driver, driver.findElement(By.xpath(before_xpath + testData.get("ReferenceID") + after_xpath)));
 		driver.findElement(By.xpath(before_xpath + testData.get("ReferenceID") + after_xpath)).click();
 
-//			waithelper.waitForElement(driver, 4000, kubschecker.checkerApproveButton());
 		waithelper.waitForElementwithFluentwait(driver, kubschecker.checkerApproveButton());
 		kubschecker.checkerApproveButton().click();
-//			waithelper.waitForElement(driver, 2000, reviewer.reviewerAlertRemarks());
+		
 		waithelper.waitForElementwithFluentwait(driver, reviewer.reviewerAlertRemarks());
 		reviewer.reviewerAlertRemarks().sendKeys("ok");
-//			Thread.sleep(1000);
+		
 		waithelper.waitForElementwithFluentwait(driver, reviewer.reviewerAlertSubmitButton());
-//			waithelper.waitForElement(driver, 2000, reviewer.reviewerAlertSubmitButton());
 		reviewer.reviewerAlertSubmitButton().click();
-		Thread.sleep(3000);
+//		Thread.sleep(3000);
     }
 
     @And("^Claim the stock return to vendors record$")
     public void claim_the_stock_return_to_vendors_record() throws Throwable {
-		waithelper.waitForElement(driver, 3000, kubschecker.checkerSecurityManagement());
+		waithelper.waitForElementwithFluentwait(driver, kubschecker.checkerSecurityManagement());
 		kubschecker.checkerSecurityManagement().click();
-		waithelper.waitForElement(driver, 3000, kubschecker.checkerActionIcon());
-
+		
+		waithelper.waitForElementwithFluentwait(driver, kubschecker.checkerActionIcon());
 		kubschecker.checkerActionIcon().click();
-		Thread.sleep(2000);
+//		Thread.sleep(2000);
 		String before_xpath = "//span[contains(text(),'";
 		String after_xpath_claim = "')]/parent::div/parent::datatable-body-cell/preceding-sibling::datatable-body-cell[2]/div/ion-buttons/ion-button";
-		waithelper.waitForElement(driver, 5000, driver.findElement(By.xpath(before_xpath + testData.get("ReferenceID") + after_xpath_claim)));
+		waithelper.waitForElementwithFluentwait(driver, driver.findElement(By.xpath(before_xpath + testData.get("ReferenceID") + after_xpath_claim)));
 		driver.findElement(By.xpath(before_xpath + testData.get("ReferenceID") + after_xpath_claim)).click();
-		waithelper.waitForElement(driver, 3000, kubschecker.checkerAlertClose());
+		waithelper.waitForElementwithFluentwait(driver, kubschecker.checkerAlertClose());
 		kubschecker.checkerAlertClose().click();
     }
-
-	
-	
+    
 //////////////////////////////////////////////////////////////////
 	
 	

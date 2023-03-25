@@ -36,7 +36,7 @@ public class AccountPayable_VendorPurchaseOrder extends BaseClass {
 	DropDownHelper dropDownHelper;
 	WaitHelper waithelper = new WaitHelper(driver);
 	// maker//
-	JavascriptHelper javascripthelper = new JavascriptHelper();
+	JavascriptHelper javascripthelper = new JavascriptHelper(driver);
 	AccountPayable_VendorPurchaseOrderObj accountPayable_VendorPurchaseOrderObj = new AccountPayable_VendorPurchaseOrderObj(driver);
 	ClicksAndActionsHelper clicksAndActionHelper = new ClicksAndActionsHelper(driver);
 
@@ -312,7 +312,6 @@ public void edit_the_item_details_fields() throws InterruptedException {
         	accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_SubmitButton().click();
         			
         	//Remark
-        	javascripthelper.JavaScriptHelper(driver);
         	waithelper.waitForElement(driver, 3000,accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_RemarkField());
         	javascripthelper.JSEClick(accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_RemarkField());
         	accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_RemarkField().sendKeys("OK");

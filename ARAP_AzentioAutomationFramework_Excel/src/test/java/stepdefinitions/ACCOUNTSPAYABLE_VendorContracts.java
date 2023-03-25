@@ -31,7 +31,7 @@ public class ACCOUNTSPAYABLE_VendorContracts {
 	ConfigFileReader config = new ConfigFileReader();
 	ACCOUNTSPAYABLE_VendorContractsObj aCCOUNTSPAYABLE_VendorContractsObj = new ACCOUNTSPAYABLE_VendorContractsObj(driver);
 	WaitHelper waithelper = new WaitHelper(driver);
-	JavascriptHelper javascripthelper = new JavascriptHelper();
+	JavascriptHelper javascripthelper = new JavascriptHelper(driver);
 	ClicksAndActionsHelper clicksAndActionHelper = new ClicksAndActionsHelper(driver);
 	BrowserHelper browserHelper;
 
@@ -49,26 +49,24 @@ public class ACCOUNTSPAYABLE_VendorContracts {
 
 	@And("^user should navigate to accounts payable menu$")
 	public void user_should_navigate_to_accounts_payable_menu() throws InterruptedException {
-		Thread.sleep(2000);
-//		waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_DirectionButton());
+//		Thread.sleep(2000);
 		waithelper.waitForElementwithFluentwait(driver, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_DirectionButton());
 		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_DirectionButton().click();
-		waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_VendorContractsObj.accountPayableMenu());
+		waithelper.waitForElementwithFluentwait(driver, aCCOUNTSPAYABLE_VendorContractsObj.accountPayableMenu());
 		aCCOUNTSPAYABLE_VendorContractsObj.accountPayableMenu().click();
 
 	}
 
 	@When("^click on eye button of vendor contract$")
 	public void click_on_eye_button_of_vendor_contract() throws InterruptedException {
-		// Thread.sleep(2000);
-		waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_EyeButton());
+		waithelper.waitForElementwithFluentwait(driver, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_EyeButton());
 		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_EyeButton().click();
 	}
 
 	@And("^click on add button to create contract$")
 	public void click_on_add_button_to_create_contract() throws InterruptedException {
-		Thread.sleep(1000);
-//		waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_AddButton());
+//		Thread.sleep(1000);
+		waithelper.waitForElementwithFluentwait(driver, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_AddButton());
 		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_AddButton().click();
 	}
 
@@ -103,7 +101,6 @@ public class ACCOUNTSPAYABLE_VendorContracts {
 		waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_AgreementCalendar());
 		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_AgreementCalendar().click();
 		Thread.sleep(2000);
-		javascripthelper.JavaScriptHelper(driver);
 		while (true) {
 			try {
 
@@ -293,7 +290,6 @@ public class ACCOUNTSPAYABLE_VendorContracts {
 	public void save_the_record_from_maker() {
 		waithelper.waitForElement(driver, 3000, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_BenificiaryDetailsSaveButton());
 		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_BenificiaryDetailsSaveButton().click();
-		javascripthelper.JavaScriptHelper(driver);
 		for (int i = 0; i <= 200; i++) {
 			try {
 				String str = javascripthelper.executeScript("return document.querySelector(\"ion-toast\").shadowRoot.querySelector(\"div[class='toast-message']\").innerText").toString();
@@ -481,12 +477,12 @@ public class ACCOUNTSPAYABLE_VendorContracts {
 
 	@Then("^Click on notification button in reviewer$")
 	public void click_on_notification_button_in_reviewer() throws InterruptedException {
-		Thread.sleep(1000);
-		for (int i = 1; i <= 10; i++) {
+		Thread.sleep(2000);
+		for (int i = 1; i <= 50; i++) {
 			try {
 				waithelper.waitForElementwithFluentwait(driver, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_NotificationButton());
 				aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_NotificationButton().click();
-				aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_NotificationButton().click();
+//				aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_NotificationButton().click();
 				break;
 			} catch (Exception e) {
 			}

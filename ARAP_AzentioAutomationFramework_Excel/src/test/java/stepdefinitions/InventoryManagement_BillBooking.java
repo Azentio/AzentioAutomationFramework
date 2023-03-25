@@ -44,13 +44,11 @@ public class InventoryManagement_BillBooking {
 	ConfigFileReader config = new ConfigFileReader();
 	ACCOUNTSPAYABLE_VendorContractsObj aCCOUNTSPAYABLE_VendorContractsObj = new ACCOUNTSPAYABLE_VendorContractsObj(driver);
 	WaitHelper waithelper = new WaitHelper(driver);
-	JavascriptHelper javascripthelper = new JavascriptHelper();
+	JavascriptHelper javascripthelper = new JavascriptHelper(driver);
 	ClicksAndActionsHelper clicksAndActionHelper = new ClicksAndActionsHelper(driver);
 	BrowserHelper browserHelper;
-//	INVENTORY_MANAGEMENT_PurchaseRequitionConfirmationObj iNVENTORY_MANAGEMENT_PurchaseRequitionConfirmationObj = new INVENTORY_MANAGEMENT_PurchaseRequitionConfirmationObj(driver);
 	AccountPayable_VendorPurchaseOrderObj accountPayable_VendorPurchaseOrderObj = new AccountPayable_VendorPurchaseOrderObj(driver);
 	ACCOUNTSPAYABLE_InvoiceBookingObj aCCOUNTSPAYABLE_InvoiceBookingObj = new ACCOUNTSPAYABLE_InvoiceBookingObj(driver);
-
 	InventoryManagamentObj inventoryManagamentObj = new InventoryManagamentObj(driver);
 	BUDGET_BudgetTransferObj budgetTransferObj = new BUDGET_BudgetTransferObj(driver);
 	Map<String, String> invoiceBooking = new HashMap<>();
@@ -69,7 +67,7 @@ public class InventoryManagement_BillBooking {
 //	@And("^Fill the required fields for bill booking$")
 //	public void fill_the_required_fields_for_bill_booking() {
 //		Random random = new Random();
-//		javascripthelper.JavaScriptHelper(driver);
+//		
 //		waithelper.waitForElementToVisibleWithFluentWait(driver, aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_EntityBranch(), 15, 1);
 //		aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_EntityBranch().sendKeys(testData.get("EntityBranch"));
 //		aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_EntityBranch().sendKeys(Keys.ENTER);
@@ -105,43 +103,39 @@ public class InventoryManagement_BillBooking {
 	@And("^Fill the required fields for invoice booking record$")
     public void fill_the_required_fields_for_invoice_booking_record() throws InterruptedException, IOException, ParseException  {
     	Random random = new Random();
-    	javascripthelper.JavaScriptHelper(driver);
-    	waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_EntityBranch());
+    	waithelper.waitForElementwithFluentwait(driver, aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_EntityBranch());
     	aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_EntityBranch().sendKeys(testData.get("EntityBranch"));
     	aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_EntityBranch().sendKeys(Keys.ENTER);
     	
     	String invoicetype= testData.get("InvoiceType");
     	System.out.println(invoicetype);
 		if (invoicetype.equals("Expense")) {
-			waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_InvoiceType());
+			waithelper.waitForElementwithFluentwait(driver, aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_InvoiceType());
 			aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_InvoiceType().sendKeys(testData.get("InvoiceType"));
 			aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_InvoiceType().sendKeys(Keys.ENTER);
 
-			waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_InvoiceSubType());
+			waithelper.waitForElementwithFluentwait(driver, aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_InvoiceSubType());
 			aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_InvoiceSubType().sendKeys(testData.get("InvoiceSubType"));
 			aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_InvoiceSubType().sendKeys(Keys.ENTER);
 
-			waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_BP_Name());
+			waithelper.waitForElementwithFluentwait(driver, aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_BP_Name());
 			aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_BP_Name().sendKeys(testData.get("BPName"));
 			aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_BP_Name().sendKeys(Keys.DOWN);
 			aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_BP_Name().sendKeys(Keys.ENTER);
 
-			waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_CostCenter());
+			waithelper.waitForElementwithFluentwait(driver, aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_CostCenter());
 			aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_CostCenter().sendKeys(testData.get("CostCenter"));
 			aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_CostCenter().sendKeys(Keys.ENTER);
 
 			int randomNum=random.nextInt(5000-2500)+2500;
-			waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_SupplierReferenceNumber());
+			waithelper.waitForElementwithFluentwait(driver, aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_SupplierReferenceNumber());
 			aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_SupplierReferenceNumber().sendKeys(testData.get("SupplierReferenceNumber")+randomNum);
 
-			waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_InvoiceDate());
+			waithelper.waitForElementwithFluentwait(driver, aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_InvoiceDate());
 			aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_InvoiceDate().click();
-
-			javascripthelper.JavaScriptHelper(driver);
 			while (true) {
 				try {
-
-					waithelper.waitForElement(driver, 3000, driver.findElement(By.xpath("//span[contains(text(),'" + testData.get("InvoiceBillingMonth") + " "
+					waithelper.waitForElementwithFluentwait(driver, driver.findElement(By.xpath("//span[contains(text(),'" + testData.get("InvoiceBillingMonth") + " "
 							+ testData.get("InvoiceBillingYear") + "')]")));
 					WebElement monthAndYear = driver.findElement(By.xpath(
 							"//span[contains(text(),'" + testData.get("InvoiceBillingMonth") + " " + testData.get("InvoiceBillingYear") + "')]"));
@@ -192,7 +186,7 @@ public class InventoryManagement_BillBooking {
 
 				aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_PaymentDate().click();
 
-				javascripthelper.JavaScriptHelper(driver);
+				
 				while (true) {
 					try {
 
@@ -243,7 +237,7 @@ public class InventoryManagement_BillBooking {
 				aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_PaymentDateFlat().click();
 //				Thread.sleep(3000);
 
-				javascripthelper.JavaScriptHelper(driver);
+				
 				while (true) {
 					try {
 
@@ -294,7 +288,7 @@ public class InventoryManagement_BillBooking {
 			waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_InvoiceDateAgainstPO());
 			aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_InvoiceDateAgainstPO().click();
 
-			javascripthelper.JavaScriptHelper(driver);
+			
 			while (true) {
 				try {
 
@@ -351,7 +345,7 @@ public class InventoryManagement_BillBooking {
 
 				aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_PaymentDateFlat().click();
 
-				javascripthelper.JavaScriptHelper(driver);
+				
 				while (true) {
 					try {
 
@@ -409,7 +403,7 @@ public class InventoryManagement_BillBooking {
 				aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_PaymentDateFlatAgainstPO().click();
 				Thread.sleep(1000);
 
-				javascripthelper.JavaScriptHelper(driver);
+				
 				while (true) {
 					try {
 
@@ -450,7 +444,7 @@ public class InventoryManagement_BillBooking {
 		}
     	
 //    	Thread.sleep(2000);
-//		javascripthelper.JavaScriptHelper(driver);
+//		
 //		String str = javascripthelper.executeScript(
 //				"return document.querySelector(\"ion-toast\").shadowRoot.querySelector(\"div[class='toast-message']\").innerText")
 //				.toString();
@@ -468,6 +462,7 @@ public class InventoryManagement_BillBooking {
 				// TODO: handle exception
 			}
 		}
+		Thread.sleep(1000);
 		for (int i = 0; i < 50; i++) {
 			try {
 				waithelper.waitForElementwithFluentwait(driver, aCCOUNTSPAYABLE_VendorContractsObj.ConfirmationMessageCloseButton());
@@ -477,7 +472,8 @@ public class InventoryManagement_BillBooking {
 				// TODO: handle exception
 			}
 		}
-		Thread.sleep(2000);
+//		Thread.sleep(2000);
+		
 //		waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_NotificationButton());
 		waithelper.waitForElementwithFluentwait(driver, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_NotificationButton());
 		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_NotificationButton().click();
@@ -634,11 +630,12 @@ public class InventoryManagement_BillBooking {
 
 	@Then("^Save and submit the invoice billing$")
 	public void save_and_submit_the_invoice_billing() throws IOException, ParseException, InterruptedException {
-		waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_SaveExpense());
+//		waithelper.waitForElement(driver, 2000, aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_SaveExpense());
+		waithelper.waitForElementwithFluentwait(driver, aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_SaveExpense());
 		aCCOUNTSPAYABLE_InvoiceBookingObj.accountPayable_InvoiceBooking_SaveExpense().click();
 		Thread.sleep(2000);
 
-		javascripthelper.JavaScriptHelper(driver);
+		
 
 		String invoicetype2 = testData.get("InvoiceType");
 		System.out.println(invoicetype2);
@@ -732,7 +729,6 @@ public class InventoryManagement_BillBooking {
 //		String before_xpath = "//datatable-row-wrapper[";
 //		String after_xpath = "]/datatable-body-row/div/datatable-body-cell[2]";
 //		String after_xpath_for_action = "]/datatable-body-row/div/datatable-body-cell[1]/div/ion-buttons/ion-button";
-//		Thread.sleep(1000);
 //		for (int i = 1; i < 10; i++) {
 //			waithelper.waitForElement(driver, 10000, driver.findElement(By.xpath(before_xpath + i + after_xpath)));
 //			String referance_id = driver.findElement(By.xpath(before_xpath + i + after_xpath)).getText();
@@ -740,16 +736,18 @@ public class InventoryManagement_BillBooking {
 //			waithelper.waitForElement(driver, 10000, driver.findElement(By.xpath(before_xpath + i + after_xpath_for_action)));
 //			driver.findElement(By.xpath(before_xpath + i + after_xpath_for_action)).click();
 
-		for (int i = 1; i <= 35; i++) {
+		Thread.sleep(2000);
+		for (int i = 1; i <= 50; i++) {
 			try {
-				waithelper.waitForElement(driver, 3000, driver.findElement(By.xpath("//span[text()='" + testData.get("ReferenceID") + "']")));
+//				waithelper.waitForElement(driver, 3000, driver.findElement(By.xpath("//span[text()='" + testData.get("ReferenceID") + "']")));
+				waithelper.waitForElementwithFluentwait(driver, driver.findElement(By.xpath("//span[text()='" + testData.get("ReferenceID") + "']")));
 				WebElement referanceID = driver.findElement(By.xpath("//span[text()='" + testData.get("ReferenceID") + "']"));
 				referanceID.click();
 				Assert.assertTrue(referanceID.isDisplayed());
 				break;
 			} catch (NoSuchElementException e) {
-				waithelper.waitForElement(driver, 4000, kubschecker.checker_notification_next_button());
-
+//				waithelper.waitForElement(driver, 4000, kubschecker.checker_notification_next_button());
+				waithelper.waitForElementwithFluentwait(driver, kubschecker.checker_notification_next_button());
 				kubschecker.checker_notification_next_button().click();
 			}
 		}
@@ -816,7 +814,7 @@ public class InventoryManagement_BillBooking {
 
 	@Then("^click on first eye button to get the system invoice number$")
 	public void click_on_first_eye_button_to_get_the_system_invoice_number() throws InterruptedException {
-		javascripthelper.JavaScriptHelper(driver);
+		
 
 		waithelper.waitForElement(driver, 3000, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_ContractCodeEyeButton());
 		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_ContractCodeEyeButton().click();
@@ -832,7 +830,7 @@ public class InventoryManagement_BillBooking {
 		waithelper.waitForElementwithFluentwait(driver, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_ContractCodeEyeButton());
 		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_ContractCodeEyeButton().click();
 		Thread.sleep(2000);
-		javascripthelper.JavaScriptHelper(driver);
+		
 		String systemInvoiceNo = javascripthelper.executeScript("return document.getElementsByClassName('native-input sc-ion-input-md')[2].value").toString();
 		System.out.println("GRN Number: " + systemInvoiceNo);
 

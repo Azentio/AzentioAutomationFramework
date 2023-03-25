@@ -36,7 +36,7 @@ public class ARAP_AccountingEntries {
 	KUBS_Login kubsLogin;
 	ConfigFileReader configFileReader = new ConfigFileReader();
 	WaitHelper waitHelper = new WaitHelper(driver);
-	JavascriptHelper javaScriptHelper = new JavascriptHelper();
+	JavascriptHelper javaScriptHelper = new JavascriptHelper(driver);
 	DropDownHelper dropDownHelper = new DropDownHelper(driver);
 
 	VerificationHelper verificationHelper = new VerificationHelper();
@@ -190,7 +190,6 @@ public class ARAP_AccountingEntries {
 
 	@Then("^Verify Accounting entries post Bill is approved$")
 	public void verify_accounting_entries_post_bill_is_approved() throws Throwable {
-		javaScriptHelper.JavaScriptHelper(driver);
 		Thread.sleep(1000);
 		for (int i = 0; i <= 299; i++) {
 			try {

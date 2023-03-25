@@ -58,7 +58,7 @@ public class CancellationOfAdvanceToEmployees extends BaseClass {
 	String ADVNumber;
 	String ADVAmount;
 	ClicksAndActionsHelper clicksAndActionsHelper = new ClicksAndActionsHelper(driver);
-	JavascriptHelper javaScriptHelper = new JavascriptHelper();
+	JavascriptHelper javaScriptHelper = new JavascriptHelper(driver);
 	JsonDataReaderWriter jsonReaderWriter = new JsonDataReaderWriter();
 	ARAP_AdjustmentsObj arapAdjustment = new ARAP_AdjustmentsObj(driver);
 	ARAP_ARandAPObj arapObj = new ARAP_ARandAPObj(driver);
@@ -79,7 +79,7 @@ public class CancellationOfAdvanceToEmployees extends BaseClass {
 	@Then("^go to ar ap adjustment module$")
 	public void go_to_ar_ap_adjustment_module() throws Throwable {
 //		Thread.sleep(2000);
-		javaScriptHelper.JavaScriptHelper(driver);
+		
 		javaScriptHelper.scrollIntoView(makerObj.kubsToolIcon());
 		waitHelper.waitForElementToVisibleWithFluentWait(driver, makerObj.kubsToolIcon(), 5, 500);
 		makerObj.kubsToolIcon().click();
@@ -98,7 +98,7 @@ public class CancellationOfAdvanceToEmployees extends BaseClass {
 
 	@And("^search the Ar cancelled advance in the adjustment screen$")
 	public void search_the_ar_cancelled_advance_in_the_adjustment_screen() throws Throwable {
-		javaScriptHelper.JavaScriptHelper(driver);
+		
 		waitHelper.waitForElementVisible(arapAdjustment.adjustementSearchARAdvance(), 2000, 100);
 		arapAdjustment.adjustementSearchARAdvance().click();
 		arapAdjustment.adjustementSearchARAdvance().sendKeys(testData.get("AdjustementItemType"));
@@ -119,7 +119,7 @@ public class CancellationOfAdvanceToEmployees extends BaseClass {
 	public void click_on_report_segment_button() throws Throwable {
 		Thread.sleep(1500);
 
-		javaScriptHelper.JavaScriptHelper(driver);
+		
 		javaScriptHelper.scrollIntoViewAndClick(inventoryManagamentObj.inventoryReportIcon());
 
 //	waithelper.waitForElement(driver, 3000, inventoryManagamentObj.inventoryReportIcon());
@@ -162,17 +162,20 @@ public class CancellationOfAdvanceToEmployees extends BaseClass {
 	@Then("^choose the from date$")
 	public void choose_the_from_date() throws Throwable {
 
-		javaScriptHelper.JavaScriptHelper(driver);
+		
 		for(int i=0;i<20;i++) {
 			try {
-//				waitHelper.waitForElement(driver, 3000, driver.findElement(By.xpath("//span[contains(text(),'" + testData.get("Gl Month") + " " + testData.get("Gl Year") + "')]")));
-				waitHelper.waitForElementToVisibleWithFluentWait(driver, driver.findElement(By.xpath("//span[text()='" + testData.get("GL Month") + " " + testData.get("GL Year") + "']")), 10, 2);
-				WebElement monthAndYear = driver.findElement(By.xpath("//span[text()='" + testData.get("GL Month") + " " + testData.get("GL Year") + "']"));
+				waitHelper.waitForElementToVisibleWithFluentWait(driver, driver.findElement(By.xpath("//span[text()='" + testData.get("GL Month") + " " + testData.get("GL Year") + " ']")), 10, 2);
+				WebElement monthAndYear = driver.findElement(By.xpath("//span[text()='" + testData.get("GL Month") + " " + testData.get("GL Year") + " ']"));
 				break;
 			}
 
 			catch (NoSuchElementException nosuchElement) {
-				inventoryEnquiryGlObj.inventoryNextMonth().click();
+				int glYear=Integer.parseInt(testData.get("GL Year"));
+				if(glYear<2023){
+					inventoryEnquiryGlObj.inventory_previous_month().click();
+				}else if(glYear>=2023)
+					inventoryEnquiryGlObj.inventoryNextMonth().click();
 			}
 		}
 		WebElement FinalDay = driver.findElement(By.xpath("//td[@aria-label='" + testData.get("GL FullMonth") + " " + testData.get("GL Date") + ", " + testData.get("GL Year") + "']/span"));
@@ -194,13 +197,17 @@ public class CancellationOfAdvanceToEmployees extends BaseClass {
 			try {
 
 //				waitHelper.waitForElement(driver, 3000, driver.findElement(By.xpath("//span[contains(text(),'" + testData.get("GL To Month") + " " + testData.get("GL To Year") + "')]")));
-				waitHelper.waitForElementToVisibleWithFluentWait(driver, driver.findElement(By.xpath("//span[text()='" + testData.get("GL To Month") + " " + testData.get("GL To Year") + "']")), 0, 0);
-				WebElement monthAndYear = driver.findElement(By.xpath("//span[text()='" + testData.get("GL To Month") + " " + testData.get("GL To Year") + "']"));
+				waitHelper.waitForElementToVisibleWithFluentWait(driver, driver.findElement(By.xpath("//span[text()='" + testData.get("GL To Month") + " " + testData.get("GL To Year") + " ']")), 0, 0);
+				WebElement monthAndYear = driver.findElement(By.xpath("//span[text()='" + testData.get("GL To Month") + " " + testData.get("GL To Year") + " ']"));
 				break;
 			}
 
 			catch (NoSuchElementException nosuchElement) {
-				inventoryEnquiryGlObj.inventoryNextMonth().click();
+				int glToYear=Integer.parseInt(testData.get("GL To Year"));
+				if(glToYear<2023){
+					arapObj.ARAP_PreviousMonth().click();
+				}else if(glToYear>=2023)
+					arapObj.ARAPNextMonth().click();
 			}
 		}
 		WebElement FinalDay = driver.findElement(By.xpath("//td[@aria-label='" + testData.get("GL To FullMonth") + " " + testData.get("GL To Date") + ", " + testData.get("GL To Year") + "']/span"));
@@ -216,7 +223,7 @@ public class CancellationOfAdvanceToEmployees extends BaseClass {
 
 	@Then("^adjustment reference number not availabe in the GL  record$")
 	public void adjustment_reference_number_not_availabe_in_the_gl_record() throws Throwable {
-		javaScriptHelper.JavaScriptHelper(driver);
+		
 
 		for (int i = 0; i < 70; i++) {
 			try {
@@ -244,7 +251,7 @@ public class CancellationOfAdvanceToEmployees extends BaseClass {
 //		Thread.sleep(2000);
 		waitHelper.waitForElementwithFluentwait(driver, makerObj.kubsAccountsReceivable());
 		makerObj.kubsAccountsReceivable().click();
-		javaScriptHelper.JavaScriptHelper(driver);
+		
 		javaScriptHelper.scrollIntoView(accuountsReceivableObj.accountsreceivableAdvancesViewIcon());
 		waitHelper.waitForElementVisible(accuountsReceivableObj.accountsreceivableAdvancesViewIcon(), 1000, 100);
 		accuountsReceivableObj.accountsreceivableAdvancesViewIcon().click();
@@ -324,8 +331,15 @@ public class CancellationOfAdvanceToEmployees extends BaseClass {
 	public void click_notification_button() throws Throwable {
 		// After save our budget record we have to click on notification to submit our
 		// record for approvals
-		waitHelper.waitForElementToVisibleWithFluentWait(driver, budgetCreationObj.budgetCreationNotificationIcon(), 60, 100);
-		budgetCreationObj.budgetCreationNotificationIcon().click();
+		for(int i=0;i<=50;i++) {
+			try {
+				waitHelper.waitForElementToVisibleWithFluentWait(driver, budgetCreationObj.budgetCreationNotificationIcon(), 60, 100);
+				budgetCreationObj.budgetCreationNotificationIcon().click();
+				break;
+			} catch (Exception e) {
+				// TODO: handle exception
+			}
+		}
 //		Thread.sleep(1000);
 
 	}
@@ -340,7 +354,7 @@ public class CancellationOfAdvanceToEmployees extends BaseClass {
 
 	@Then("^enter remark in confirmation alert$")
 	public void enter_remark_in_confirmation_alert() throws Throwable {
-		javaScriptHelper.JavaScriptHelper(driver);
+		
 		waitHelper.waitForElementToVisibleWithFluentWait(driver, budgetCreationObj.budgetCreation_AlertRemarks(), 60, 500);
 		javaScriptHelper.JSEClick(budgetCreationObj.budgetCreation_AlertRemarks());
 		/*
@@ -354,6 +368,7 @@ public class CancellationOfAdvanceToEmployees extends BaseClass {
 	@Then("^click on submit button in alert$")
 	public void click_on_submit_button_in_alert() throws Throwable {
 		try {
+			waitHelper.waitForElementwithFluentwait(driver, budgetCreationObj.budgetCreation_AlertsubmitButton());
 			budgetCreationObj.budgetCreation_AlertsubmitButton().click();
 		} catch (ElementClickInterceptedException clickException) {
 //			Thread.sleep(1000);
@@ -393,6 +408,7 @@ public class CancellationOfAdvanceToEmployees extends BaseClass {
 		/*
 		 * Then we have to logout from maker
 		 */
+		waitHelper.waitForElementwithFluentwait(driver, budgetCreationObj.budgetCreationUserName());
 		budgetCreationObj.budgetCreationUserName().click();
 //		Thread.sleep(1000);		
 		waitHelper.waitForElementToVisibleWithFluentWait(driver, budgetCreationObj.budgetCreationLogoutButton(), 90, 500);
@@ -433,8 +449,18 @@ public class CancellationOfAdvanceToEmployees extends BaseClass {
 		/*
 		 * After successful login our first step is to click on the notification icon
 		 */
-		waitHelper.waitForElementToVisibleWithFluentWait(driver, kubsReviewerObj.reviewerNotidicationIcon(), 60, 500);
-		kubsReviewerObj.reviewerNotidicationIcon().click();
+		for(int i=0;i<=100;i++) {
+			try {
+				waitHelper.waitForElementwithFluentwait(driver, kubsReviewerObj.reviewerNotidicationIcon());
+				kubsReviewerObj.reviewerNotidicationIcon().click();
+				waitHelper.waitForElementwithFluentwait(driver, kubsReviewerObj.reviewer_notification_referenceIdLabel());
+				kubsReviewerObj.reviewer_notification_referenceIdLabel().click();
+				
+				break;
+			} catch (Exception e) {
+				// TODO: handle exception
+			}
+		}
 
 	}
 
@@ -449,7 +475,7 @@ public class CancellationOfAdvanceToEmployees extends BaseClass {
 		 * as per our reference ID
 		 */
 		 Thread.sleep(2000);
-		javaScriptHelper.JavaScriptHelper(driver);
+		
 		String before_xpath = "//span[contains(text(),'";
 		String after_xpath = "')]/ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell//ion-button";
 		for (int i = 0; i <= 300; i++) {
@@ -528,9 +554,10 @@ public class CancellationOfAdvanceToEmployees extends BaseClass {
 		 */
 		while (true) {
 			try {
-				javaScriptHelper.JavaScriptHelper(driver);
+				
 				waitHelper.waitForElementToVisibleWithFluentWait(driver, kubsReviewerObj.reviewerAlertClose(), 20, 2);
 				kubsReviewerObj.reviewerAlertClose().click();
+				waitHelper.waitForElementwithFluentwait(driver, kubsReviewerObj.reviewerUserName());
 				kubsReviewerObj.reviewerUserName().click();
 				waitHelper.waitForElement(driver, 3000, kubsReviewerObj.reviewerLogoutButton());
 				javaScriptHelper.JSEClick(kubsReviewerObj.reviewerLogoutButton());
@@ -569,7 +596,7 @@ public class CancellationOfAdvanceToEmployees extends BaseClass {
 
 	@Then("^click on action button under security management menu$")
 	public void click_on_action_button_under_security_management_menu() throws Throwable {
-		javaScriptHelper.JavaScriptHelper(driver);
+		
 		javaScriptHelper.JSEClick(kubsCheckerObj.checkerActionIcon());
 
 	}
@@ -609,7 +636,7 @@ public class CancellationOfAdvanceToEmployees extends BaseClass {
 
 	@Then("^click on Notification button$")
 	public void cliick_on_notification_button() throws Throwable {
-		javaScriptHelper.JavaScriptHelper(driver);
+		
 		waitHelper.waitForElementToVisibleWithFluentWait(driver, kubsCheckerObj.checkerAlertClose(), 20, 500);
 		for (int i = 0; i <= 15; i++) {
 			try {
@@ -661,7 +688,7 @@ public class CancellationOfAdvanceToEmployees extends BaseClass {
 
 	@Then("^give alert remark$")
 	public void give_alert_remark() throws Throwable {
-		javaScriptHelper.JavaScriptHelper(driver);
+		
 		waitHelper.waitForElementToVisibleWithFluentWait(driver, kubsCheckerObj.checkerRemarks(), 60, 500);
 		clicksAndActionsHelper.clickOnElement(kubsCheckerObj.checkerRemarks());
 		kubsCheckerObj.checkerRemarks().sendKeys(testData.get("Remark by Checker"));
@@ -723,7 +750,7 @@ public class CancellationOfAdvanceToEmployees extends BaseClass {
 
 	@And("^Go to payment settlement module$")
 	public void go_to_payment_settlement_module() throws Throwable {
-		javaScriptHelper.JavaScriptHelper(driver);
+		
 		javaScriptHelper.scrollIntoView(paymentSettlementObj.accountsPayablePayementSettlementViewIcon());
 		waitHelper.waitForElementVisible(paymentSettlementObj.accountsPayablePayementSettlementViewIcon(), 1000, 100);
 		paymentSettlementObj.accountsPayablePayementSettlementViewIcon().click();
@@ -749,7 +776,7 @@ public class CancellationOfAdvanceToEmployees extends BaseClass {
 	@And("^find the invoice reference number for cancelled advance is not availabe at the billing queue$")
 	public void find_the_invoice_reference_number_for_cancelled_advance_is_not_availabe_at_the_billing_queue() throws Throwable {
 		Thread.sleep(3000);
-		javaScriptHelper.JavaScriptHelper(driver);
+		
 		// javaScriptHelper.scrollDownByPixel();
 		for (int i = 0; i <= 30; i++) {
 			try {
@@ -819,7 +846,7 @@ public class CancellationOfAdvanceToEmployees extends BaseClass {
 
 	@And("^go to aacounts payable module$")
 	public void go_to_aacounts_payable_module() throws Throwable {
-		javaScriptHelper.JavaScriptHelper(driver);
+		
 		javaScriptHelper.scrollIntoView(makerObj.kubsDirectionIcon());
 		waitHelper.waitForElementVisible(makerObj.kubsDirectionIcon(), 2000, 100);
 		makerObj.kubsDirectionIcon().click();
@@ -829,7 +856,7 @@ public class CancellationOfAdvanceToEmployees extends BaseClass {
 
 	@And("^fill the form for settlement$")
 	public void fill_the_form_for_settlement() throws Throwable {
-		javaScriptHelper.JavaScriptHelper(driver);
+		
 		waitHelper.waitForElementVisible(paymentSettlementObj.accountsPayablePayementSettlementPaymentOption(), 1000, 100);
 		paymentSettlementObj.accountsPayablePayementSettlementPaymentOption().click();
 		paymentSettlementObj.accountsPayablePayementSettlementPaymentOption().sendKeys(testData.get("PaymentOptionForCancelledAdvance"));

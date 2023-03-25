@@ -16,10 +16,9 @@ Then Click on financial transction edit button
 And choose branch codes for cancelled debit note
 And click on transaction from date in calender
 Then Select from date in calender for cancelled debit note
-And click on transaction to date in calender icon
-Then Select To date in calender for cancelled debit note
+#And click on transaction to date in calender icon
+#Then Select To date in calender for cancelled debit note
 And click on view button
-#And Click View HyperLink
 Then Verify Accounting entries post Debit Note is cancelled
 
 @KUBS_AR/AP_UAT_003_007TC_01  @AR/AP
@@ -82,7 +81,6 @@ Then Select from date in calender to verify no accounting entries
 And click on transaction to date in calender icon
 Then Select To date in calender to verify no accounting entries
 And click on view button
-#And Click View HyperLink
 Then Verify No accounting entry is generated on cancelling advances against PO
 
 @KUBS_AR_AP_UAT_004_008_TC_02  @AR/AP
@@ -99,8 +97,8 @@ Then click on edit icon near by fiancial transaction menu
 And choose branch code for auto payout accounting entries
 And click on transaction from date calender icon 
 Then choose the from date for auto payout accounting entries
-And click on the transaction to date calender icon
-Then choose the to date for auto payout accounting entries
+#And click on the transaction to date calender icon
+#Then choose the to date for auto payout accounting entries
 And click on view button
 Then verify approved settlement reference number is available in the Gl report
 
@@ -121,9 +119,8 @@ Then Click Note iCon near by financial transction
 And choose branch codes to verify accounting entries post receipt recording
 And click on transaction from date in calender
 Then Select from date in calender to verify accounting entries post receipt recording
-And click on transaction to date in calender icon
-Then Select To date in calender to verify accounting entries post receipt recording
-#And Click View HyperLink
+#And click on transaction to date in calender icon
+#Then Select To date in calender to verify accounting entries post receipt recording
 And click on view button
 Then Verify Accounting entries post receipt recording
 

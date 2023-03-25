@@ -56,7 +56,7 @@ public class ARAP_AutoPayoutPaymentSettlement extends BaseClass {
 	Selenium_Actions seleniumactions = new Selenium_Actions(driver);
 	ConfigFileReader configreader = new ConfigFileReader();
 	Map<String, String> testdata = new LinkedHashMap<>();
-	JavascriptHelper javaScriptHelper = new JavascriptHelper();
+	JavascriptHelper javaScriptHelper = new JavascriptHelper(driver);
 	BrowserHelper browserHelper = new BrowserHelper(driver);
 	WaitHelper waitHelper = new WaitHelper(driver);
 	Map<String, String> autoPayout = new HashMap<>();
@@ -105,7 +105,7 @@ public class ARAP_AutoPayoutPaymentSettlement extends BaseClass {
 		vendorContractObj.vendorContractContractName().click();
 		vendorContractObj.vendorContractContractName().sendKeys(testData.get("ContractName"));
 		
-		javaScriptHelper.JavaScriptHelper(driver);
+		
 		javaScriptHelper.scrollIntoView(vendorContractObj.vendorContractOtherDetails());
 //		waitHelper.waitForElementToVisibleWithFluentWait(driver, vendorContractObj.vendorContractOtherDetails(), 20, 2);
 		vendorContractObj.vendorContractOtherDetails().click();
@@ -120,12 +120,15 @@ public class ARAP_AutoPayoutPaymentSettlement extends BaseClass {
 		vendorContractObj.vendorContractLatePaymentAmount().sendKeys(testData.get("PaymentAmmount"));
 		waitHelper.waitForElementVisible(vendorContractObj.vendorContractSaveButton(), 2000, 100);
 		vendorContractObj.vendorContractSaveButton().click();
+		waitHelper.waitForElementwithFluentwait(driver, vendorContractObj.vendorContract_AlertClose());
+		vendorContractObj.vendorContract_AlertClose().click();
 
 	}
 
 	@And("^add item details for the contract$")
 	public void add_item_details_for_the_contract() throws Throwable {
-		waitHelper.waitForElementVisible(vendorContractObj.vendorContractTempView(), 2000, 100);
+//		waitHelper.waitForElementVisible(vendorContractObj.vendorContractTempView(), 2000, 100);
+		waitHelper.waitForElementwithFluentwait(driver, vendorContractObj.vendorContractTempView());
 		vendorContractObj.vendorContractTempView().click();
 		waitHelper.waitForElementVisible(vendorContractObj.firstTempRecord(), 2000, 100);
 		vendorContractObj.firstTempRecord().click();
@@ -143,8 +146,9 @@ public class ARAP_AutoPayoutPaymentSettlement extends BaseClass {
 		vendorContractObj.vendorContractHSNCode().click();
 		vendorContractObj.vendorContractHSNCode().sendKeys(testData.get("HSNCode"));
 		vendorContractObj.vendorContractHSNCode().sendKeys(Keys.ENTER);
-
+		waitHelper.waitForElementwithFluentwait(driver, vendorContractObj.vendorContractExpenceCode());
 		vendorContractObj.vendorContractExpenceCode().click();
+		Thread.sleep(1000);
 		vendorContractObj.vendorContractExpenceCode().sendKeys(Keys.DOWN);
 		vendorContractObj.vendorContractExpenceCode().sendKeys(Keys.ENTER);
 
@@ -188,7 +192,7 @@ public class ARAP_AutoPayoutPaymentSettlement extends BaseClass {
 
 	@And("^add the benificiory details and select auto payout as yes$")
 	public void add_the_benificiory_details_and_select_auto_payout_as_yes() throws Throwable {
-		while (true) {
+		for(int i=0;i<=50;i++) {
 			try {
 				waitHelper.waitForElementVisible(vendorContractObj.vendorContractBenificioryDetails(), 2000, 100);
 				vendorContractObj.vendorContractBenificioryDetails().click();
@@ -214,9 +218,15 @@ public class ARAP_AutoPayoutPaymentSettlement extends BaseClass {
 
 	@Then("^Click on Update Deposited Cheque Notification$")
 	public void click_on_update_deposited_cheque_notification() {
-//		waitHelper.waitForElement(driver, 3000, accountReceivable_UpdateDepositedChequeObj.accountReceivable_UpdateDepositedCheque_Notification());
-		waitHelper.waitForElementToVisibleWithFluentWait(driver, accountReceivable_UpdateDepositedChequeObj.accountReceivable_UpdateDepositedCheque_Notification(), 0, 0);
-		accountReceivable_UpdateDepositedChequeObj.accountReceivable_UpdateDepositedCheque_Notification().click();
+		for(int i=0;i<=50;i++) {
+			try {
+				waitHelper.waitForElementToVisibleWithFluentWait(driver, accountReceivable_UpdateDepositedChequeObj.accountReceivable_UpdateDepositedCheque_Notification(), 0, 0);
+				accountReceivable_UpdateDepositedChequeObj.accountReceivable_UpdateDepositedCheque_Notification().click();
+				break;
+			} catch (Exception e) {
+				// TODO: handle exception
+			}
+		}
 		
 	}
 
@@ -262,7 +272,7 @@ public class ARAP_AutoPayoutPaymentSettlement extends BaseClass {
 		inventoryMaintenanceObj.inventoryMaintenance_InventoryItem_SubmitButton().click();
 
 		// Remark
-		javaScriptHelper.JavaScriptHelper(driver);
+		
 		waitHelper.waitForElement(driver, 3000, accountReceivable_UpdateDepositedChequeObj.accountReceivable_UpdateDepositedCheque_RemarkField());
 		javaScriptHelper.JSEClick(accountReceivable_UpdateDepositedChequeObj.accountReceivable_UpdateDepositedCheque_RemarkField());
 		accountReceivable_UpdateDepositedChequeObj.accountReceivable_UpdateDepositedCheque_RemarkField().sendKeys("OK");
@@ -327,13 +337,12 @@ public class ARAP_AutoPayoutPaymentSettlement extends BaseClass {
 		// notification
 		waitHelper = new WaitHelper(driver);
 		reviewer = new Azentio_ReviewerObj(driver);
-		waitHelper.waitForElement(driver, 2000, reviewer.reviewerNotidicationIcon());
+		waitHelper.waitForElementwithFluentwait(driver, reviewer.reviewerNotidicationIcon());
 		reviewer.reviewerNotidicationIcon().click();
 
 		// select the record
 		browserHelper = new BrowserHelper(driver);
 		// budgetdata = jsonReader.getBudgetdataByName("Maker");
-		javaScriptHelper = new JavascriptHelper();
 		Thread.sleep(1000);
 		/*
 		 * for (int i = 1; i <= 35; i++) { try { waithelper.waitForElement(driver, 3000,
@@ -346,18 +355,20 @@ public class ARAP_AutoPayoutPaymentSettlement extends BaseClass {
 		 * 
 		 * kubschecker.checker_notification_next_button().click(); } }
 		 */
-		String before_xpath = "//span[contains(text(),'";
-		String after_xpath = "')]/ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell//ion-button";
+		String before_xpath = "//span[text()='";
+		String after_xpath = "']/ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell//ion-button";
 		System.out.println(testData.get("ReferenceID"));
-		waitHelper.waitForElement(driver, 5000, driver.findElement(By.xpath(before_xpath + testData.get("ReferenceID") + after_xpath)));
+//		waitHelper.waitForElement(driver, 5000, driver.findElement(By.xpath(before_xpath + testData.get("ReferenceID") + after_xpath)));
+		waitHelper.waitForElementwithFluentwait(driver, driver.findElement(By.xpath(before_xpath + testData.get("ReferenceID") + after_xpath)));
 		driver.findElement(By.xpath(before_xpath + testData.get("ReferenceID") + after_xpath)).click();
 
 		// Approve
-		waitHelper.waitForElement(driver, 4000, reviewer.reviewerApproveButton());
+		waitHelper.waitForElementwithFluentwait(driver, reviewer.reviewerApproveButton());
 		reviewer.reviewerApproveButton().click();
-		waitHelper.waitForElement(driver, 2000, reviewer.reviewerAlertRemarkSecond());
+		Thread.sleep(1000);
+		waitHelper.waitForElementwithFluentwait(driver, reviewer.reviewerAlertRemarkSecond());
 		reviewer.reviewerAlertRemarkSecond().sendKeys("ok");
-		waitHelper.waitForElement(driver, 2000, reviewer.reviewerAlertSubmitButton());
+		waitHelper.waitForElementwithFluentwait(driver, reviewer.reviewerAlertSubmitButton());
 		reviewer.reviewerAlertSubmitButton().click();
 //		Thread.sleep(3000);
 
@@ -396,15 +407,15 @@ public class ARAP_AutoPayoutPaymentSettlement extends BaseClass {
 		}
 
 		// Approve
-		waitHelper.waitForElement(driver, 2000, kubschecker.checkerApproveButton());
+		waitHelper.waitForElementwithFluentwait(driver, kubschecker.checkerApproveButton());
 		kubschecker.checkerApproveButton().click();
-		Thread.sleep(2000);
-		waitHelper.waitForElement(driver, 2000, kubschecker.checkerRemarkSecond());
+		Thread.sleep(1000);
+		waitHelper.waitForElementwithFluentwait(driver, kubschecker.checkerRemarkSecond());
 		kubschecker.checkerRemarkSecond().sendKeys("OK");
-		Thread.sleep(2000);
-		waitHelper.waitForElement(driver, 2000, kubschecker.checkersubmitButton());
+//		Thread.sleep(2000);
+		waitHelper.waitForElementwithFluentwait(driver, kubschecker.checkersubmitButton());
 		kubschecker.checkersubmitButton().click();
-		Thread.sleep(2000);
+//		Thread.sleep(2000);
 	}
 
 	@And("^get the contract number$")
@@ -600,7 +611,7 @@ public class ARAP_AutoPayoutPaymentSettlement extends BaseClass {
 
 	@And("^search for approved po record$")
 	public void search_for_approved_po_record() throws Throwable {
-		javaScriptHelper.JavaScriptHelper(driver);
+		
 		ArAp_poCreationObj.poCreationSearchIcon().click();
 		Thread.sleep(1000);
 		// waitHelper.waitForElementVisible(poCreationObj.poStatus(), 1000, 100);
@@ -626,7 +637,9 @@ public class ARAP_AutoPayoutPaymentSettlement extends BaseClass {
 		waitHelper.waitForElementVisible(grnObject.accountPayable_GRN_BPBranch(), 2000, 100);
 		grnObject.accountPayable_GRN_BPBranch().click();
 		grnObject.accountPayable_GRN_BPBranch().sendKeys(Keys.ENTER);
-		grnObject.accountPayable_GrnInvoiceNumber().sendKeys(testData.get("InvoiceNo"));
+		Random random = new Random();
+		int randomNum=random.nextInt(5000-2500)+2500;
+		grnObject.accountPayable_GrnInvoiceNumber().sendKeys(testData.get("InvoiceNo")+randomNum);
 		waitHelper.waitForElementToVisibleWithFluentWait(driver, grnObject.accountPayable_GrnDeliveryLocation(), 20, 2);
 		grnObject.accountPayable_GrnDeliveryLocation().click();
 		// grnObject.accountPayable_GrnDeliveryLocation().sendKeys(Keys.DOWN);
@@ -635,19 +648,25 @@ public class ARAP_AutoPayoutPaymentSettlement extends BaseClass {
 		grnObject.accountPayable_GrnDeliveryLocation().sendKeys(Keys.ENTER);
 		// waitHelper.waitForElementVisible(grnObject.accountPayable_GrnSaveButton(),
 		// 1000, 100);
-		Thread.sleep(2000);
+//		Thread.sleep(2000);
 		// grnObject.accountPayable_GrnSaveButton().click();
+		waitHelper.waitForElementwithFluentwait(driver, grnObject.accountPayable_GrnSaveButton());
 		clicksAndActionHelper.doubleClick(grnObject.accountPayable_GrnSaveButton());
+		waitHelper.waitForElementwithFluentwait(driver, arapObj.ARAP_Notification_Close());
+		arapObj.ARAP_Notification_Close().click();
+		waitHelper.waitForElementwithFluentwait(driver, grnObject.grnTempView());
 		grnObject.grnTempView().click();
-		waitHelper.waitForElementVisible(grnObject.grnTempViewFirstRecord(), 1000, 100);
+//		waitHelper.waitForElementVisible(grnObject.grnTempViewFirstRecord(), 1000, 100);
+		waitHelper.waitForElementwithFluentwait(driver, grnObject.grnTempViewFirstRecord());
 		grnObject.grnTempViewFirstRecord().click();
 
 	}
 
 	@Then("^go to Item details and enter po number$")
 	public void go_to_item_details_and_enter_po_number() throws Throwable {
-		Thread.sleep(1000);
-		waitHelper.waitForElement(driver, 2000, grnObject.inventoryManagament_GRNItemDetails());
+//		Thread.sleep(1000);
+//		waitHelper.waitForElement(driver, 2000, grnObject.inventoryManagament_GRNItemDetails());
+		waitHelper.waitForElementwithFluentwait(driver, grnObject.inventoryManagament_GRNItemDetails());
 		grnObject.inventoryManagament_GRNItemDetails().click();
 		waitHelper.waitForElementVisible(grnObject.accountPayable_GrnPONumber(), 1000, 100);
 		grnObject.accountPayable_GrnPONumber().click();
@@ -687,7 +706,7 @@ public class ARAP_AutoPayoutPaymentSettlement extends BaseClass {
 
 			}
 		}
-		// javascriptHelper.JavaScriptHelper(driver);
+		// 
 		// Thread.sleep(1000);
 		// grnObject.ItemDetailsSaveButton().click();
 		// clickAndActions.doubleClick(grnObject.ItemDetailsSaveButton());
@@ -804,7 +823,7 @@ public class ARAP_AutoPayoutPaymentSettlement extends BaseClass {
 
 	@And("^fill the mendatory field for settle the payment$")
 	public void fill_the_mendatory_field_for_settle_the_payment() throws Throwable {
-		javaScriptHelper.JavaScriptHelper(driver);
+		
 		waitHelper.waitForElementVisible(paymentSettlementObj.accountsPayablePayementSettlementPaymentOption(), 2000, 100);
 		paymentSettlementObj.accountsPayablePayementSettlementPaymentOption().click();
 		paymentSettlementObj.accountsPayablePayementSettlementPaymentOption().sendKeys(testData.get("PaymentOption"));
@@ -844,8 +863,8 @@ public class ARAP_AutoPayoutPaymentSettlement extends BaseClass {
 
 	@And("^fill the calender details and description$")
 	public void fill_the_calender_details_and_save_the_record() throws Throwable {
-		javaScriptHelper.JavaScriptHelper(driver);
-		// javascriptHelper.JavaScriptHelper(driver);
+		
+		// 
 		javaScriptHelper.scrollIntoView(paymentSettlementObj.accountsPayablePayementSettlementValueDate());
 		paymentSettlementObj.accountsPayablePayementSettlementValueDate().click();
 		while (true) {
@@ -872,7 +891,7 @@ public class ARAP_AutoPayoutPaymentSettlement extends BaseClass {
 
 	@And("^go to auto payout module$")
 	public void go_to_auto_payout_module() throws Throwable {
-		javaScriptHelper.JavaScriptHelper(driver);
+		
 		javaScriptHelper.scrollIntoViewAndClick(accoutsPayableAutoPayoutObj.accounPayablePayoutTempView());
 		accoutsPayableAutoPayoutObj.accounPayablePayoutTempView().click();
 
@@ -927,7 +946,7 @@ public class ARAP_AutoPayoutPaymentSettlement extends BaseClass {
 
 	@And("^fill the mendatory fields for auto payout record$")
 	public void fill_the_mendatory_fields_for_auto_payout_record() throws Throwable {
-		javaScriptHelper.JavaScriptHelper(driver);
+		
 		waitHelper.waitForElementToVisibleWithFluentWait(driver, accoutsPayableAutoPayoutObj.accoutspYablePaymentBank(), 20, 2);
 		accoutsPayableAutoPayoutObj.accoutspYablePaymentBank().click();
 		accoutsPayableAutoPayoutObj.accoutspYablePaymentBank().sendKeys(Keys.DOWN);
@@ -942,7 +961,7 @@ public class ARAP_AutoPayoutPaymentSettlement extends BaseClass {
 
 	@And("^select the record from temp view and initiate$")
 	public void select_the_record_from_temp_view_and_initiate() throws Throwable {
-		javaScriptHelper.JavaScriptHelper(driver);
+		
 		javaScriptHelper.scrollIntoViewAndClick(accoutsPayableAutoPayoutObj.accounPayablePayoutTempView());
 		accoutsPayableAutoPayoutObj.accounPayablePayoutTempView().click();
 		waitHelper.waitForElementVisible(accoutsPayableAutoPayoutObj.accoutspYablePaymenTempViewFirstRecord(), 2000, 100);
@@ -973,17 +992,21 @@ public class ARAP_AutoPayoutPaymentSettlement extends BaseClass {
 	@Then("^choose the from date for auto payout accounting entries$")
 	public void choose_the_from_date_for_auto_payout_accounting_entries() throws Throwable {
 
-		javaScriptHelper.JavaScriptHelper(driver);
+		
 		for(int i=0;i<20;i++) {
 			try {
 //				waitHelper.waitForElement(driver, 3000, driver.findElement(By.xpath("//span[contains(text(),'" + testData.get("Gl Month") + " " + testData.get("Gl Year") + "')]")));
-				waitHelper.waitForElementToVisibleWithFluentWait(driver, driver.findElement(By.xpath("//span[text()='" + testData.get("GL Month") + " " + testData.get("GL Year") + "']")), 10, 2);
-				WebElement monthAndYear = driver.findElement(By.xpath("//span[text()='" + testData.get("GL Month") + " " + testData.get("GL Year") + "']"));
+				waitHelper.waitForElementToVisibleWithFluentWait(driver, driver.findElement(By.xpath("//span[text()='" + testData.get("GL Month") + " " + testData.get("GL Year") + " ']")), 10, 2);
+				WebElement monthAndYear = driver.findElement(By.xpath("//span[text()='" + testData.get("GL Month") + " " + testData.get("GL Year") + " ']"));
 				break;
 			}
 
 			catch (NoSuchElementException nosuchElement) {
-				inventoryEnquiryGlObj.inventoryNextMonth().click();
+				int glYear=Integer.parseInt(testData.get("GL Year"));
+				if(glYear<2023){
+					inventoryEnquiryGlObj.inventory_previous_month().click();
+				}else if(glYear>=2023)
+					inventoryEnquiryGlObj.inventoryNextMonth().click();
 			}
 		}
 		WebElement FinalDay = driver.findElement(By.xpath("//td[@aria-label='" + testData.get("GL FullMonth") + " " + testData.get("GL Date") + ", " + testData.get("GL Year") + "']/span"));
@@ -996,13 +1019,17 @@ public class ARAP_AutoPayoutPaymentSettlement extends BaseClass {
 			try {
 
 //				waitHelper.waitForElement(driver, 3000, driver.findElement(By.xpath("//span[contains(text(),'" + testData.get("GL To Month") + " " + testData.get("GL To Year") + "')]")));
-				waitHelper.waitForElementToVisibleWithFluentWait(driver, driver.findElement(By.xpath("//span[text()='" + testData.get("GL To Month") + " " + testData.get("GL To Year") + "']")), 0, 0);
-				WebElement monthAndYear = driver.findElement(By.xpath("//span[text()='" + testData.get("GL To Month") + " " + testData.get("GL To Year") + "']"));
+				waitHelper.waitForElementToVisibleWithFluentWait(driver, driver.findElement(By.xpath("//span[text()='" + testData.get("GL To Month") + " " + testData.get("GL To Year") + " ']")), 0, 0);
+				WebElement monthAndYear = driver.findElement(By.xpath("//span[text()='" + testData.get("GL To Month") + " " + testData.get("GL To Year") + " ']"));
 				break;
 			}
 
 			catch (NoSuchElementException nosuchElement) {
-				inventoryEnquiryGlObj.inventoryNextMonth().click();
+				int glToYear=Integer.parseInt(testData.get("GL To Year"));
+				if(glToYear<2023){
+					inventoryEnquiryGlObj.inventory_previous_month().click();
+				}else if(glToYear>=2023)
+					inventoryEnquiryGlObj.inventoryNextMonth().click();
 			}
 		}
 		WebElement FinalDay = driver.findElement(By.xpath("//td[@aria-label='" + testData.get("GL To FullMonth") + " " + testData.get("GL To Date") + ", " + testData.get("GL To Year") + "']/span"));
@@ -1011,11 +1038,11 @@ public class ARAP_AutoPayoutPaymentSettlement extends BaseClass {
 	
 	@Then("^verify approved settlement reference number is available in the Gl report$")
 	public void verify_approved_settlement_reference_number_is_available_in_the_gl_report() throws Throwable {
-		javaScriptHelper.JavaScriptHelper(driver);
+		
 		Thread.sleep(1000);
-		for (int i = 0; i <= 70; i++) {
+		for (int i = 0; i <= 299; i++) {
 			try {
-
+//				(//datatable-body-cell[1]//span[contains(text(),'')])[1]
 				driver.findElement(By.xpath("(//datatable-body-cell[1]//span[contains(text(),'"
 						+ settlementData.get("approvedReferenceNumber") + "')])[1]")).isDisplayed();
 
@@ -1032,10 +1059,14 @@ public class ARAP_AutoPayoutPaymentSettlement extends BaseClass {
 						+ " ')]/ancestor::datatable-body-cell[1]/following-sibling::datatable-body-cell[6]//span)[1]"))
 						.getText();
 				 System.out.println("Amount is " + amount);
+				 break;
 			}catch (NoSuchElementException e) {
 					javaScriptHelper.scrollIntoView(arapObj.accountsPayablePayementSettlementNextRecord());
 					arapObj.accountsPayablePayementSettlementNextRecord().click();
 				}
+			if(i==299) {
+				Assert.fail("No record found");
+			}
 		}
 	}
 	
