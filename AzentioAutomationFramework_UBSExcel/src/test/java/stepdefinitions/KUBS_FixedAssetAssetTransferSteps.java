@@ -24,8 +24,8 @@ public class KUBS_FixedAssetAssetTransferSteps extends BaseClass {
 
 	@And("^get the newly created asset reference number for asset tansfer$")
 	public void get_the_newly_created_asset_reference_number_for_asset_tansfer() throws Throwable {
-		waitHelper.waitForElementToVisibleWithFluentWait(driver,
-				fixedAssetTransferObj.assetCreationNewAssetReferenceNumber(), 20, 1);
+		waitHelper.waitForElementwithFluentwait(driver,
+				fixedAssetTransferObj.assetCreationNewAssetReferenceNumber());
 		assetTransferTestData.put("NewAssetReferenceNumber",
 				fixedAssetTransferObj.assetCreationNewAssetReferenceNumber().getText());
 		System.out.println(
@@ -51,16 +51,15 @@ public class KUBS_FixedAssetAssetTransferSteps extends BaseClass {
 
 	@And("^click on add button in asset transfer module$")
 	public void click_on_add_button_in_asset_transfer_module() throws Throwable {
-		waitHelper.waitForElementToVisibleWithFluentWait(driver, fixedAssetTransferObj.fixedAssetTransferAddButton(),
-				20, 1);
+		waitHelper.waitForElementwithFluentwait(driver, fixedAssetTransferObj.fixedAssetTransferAddButton());
 		clicksAndActionsHelper.moveToElement(fixedAssetTransferObj.fixedAssetTransferAddButton());
 		clicksAndActionsHelper.clickOnElement(fixedAssetTransferObj.fixedAssetTransferAddButton());
 	}
 
 	@And("^enter the asset reference number in asset transfer module$")
 	public void enter_the_asset_reference_number_in_asset_transfer_module() throws Throwable {
-		waitHelper.waitForElementToVisibleWithFluentWait(driver,
-				fixedAssetTransferObj.fixedAssetAssetTransferAssetReferenceNumber(), 20, 1);
+		waitHelper.waitForElementwithFluentwait(driver,
+				fixedAssetTransferObj.fixedAssetAssetTransferAssetReferenceNumber());
 		fixedAssetTransferObj.fixedAssetAssetTransferAssetReferenceNumber().click();
 		fixedAssetTransferObj.fixedAssetAssetTransferAssetReferenceNumber()
 				.sendKeys(assetTransferTestData.get("NewAssetReferenceNumber"));
@@ -70,8 +69,8 @@ public class KUBS_FixedAssetAssetTransferSteps extends BaseClass {
 
 	@And("^enter the new branch in asset transfer module$")
 	public void enter_the_new_branch_in_asset_transfer_module() throws Throwable {
-		waitHelper.waitForElementToVisibleWithFluentWait(driver,
-				fixedAssetTransferObj.fixedAssetAssetTransferNewBranch(), 20, 1);
+		waitHelper.waitForElementwithFluentwait(driver,
+				fixedAssetTransferObj.fixedAssetAssetTransferNewBranch());
 		fixedAssetTransferObj.fixedAssetAssetTransferNewBranch().click();
 		fixedAssetTransferObj.fixedAssetAssetTransferNewBranch().sendKeys(Keys.DOWN);
 		fixedAssetTransferObj.fixedAssetAssetTransferNewBranch().sendKeys(Keys.ENTER);
@@ -79,11 +78,10 @@ public class KUBS_FixedAssetAssetTransferSteps extends BaseClass {
 
 	@And("^choose tarnsfer as yes in asset transfer module$")
 	public void choose_tarnsfer_as_yes_in_asset_transfer_module() throws Throwable {
-		waitHelper.waitForElementToVisibleWithFluentWait(driver,
-				fixedAssetTransferObj.fixedAssetAssetTransferTransDropdown(), 20, 1);
+		waitHelper.waitForElementwithFluentwait(driver,
+				fixedAssetTransferObj.fixedAssetAssetTransferTransDropdown());
 		fixedAssetTransferObj.fixedAssetAssetTransferTransDropdown().click();
-		waitHelper.waitForElementToVisibleWithFluentWait(driver, fixedAssetTransferObj.fixedAssetTransferYesOption(),
-				20, 1);
+		waitHelper.waitForElementwithFluentwait(driver, fixedAssetTransferObj.fixedAssetTransferYesOption());
 		clicksAndActionsHelper.moveToElement(fixedAssetTransferObj.fixedAssetTransferYesOption());
 		clicksAndActionsHelper.clickUsingActionClass(fixedAssetTransferObj.fixedAssetTransferYesOption(),
 				fixedAssetTransferObj.fixedAssetTransferYesOption());
@@ -91,15 +89,13 @@ public class KUBS_FixedAssetAssetTransferSteps extends BaseClass {
 
 	@And("^click on save button in asset transfer module$")
 	public void click_on_save_button_in_asset_transfer_module() throws Throwable {
-		waitHelper.waitForElementToVisibleWithFluentWait(driver, fixedAssetTransferObj.assetTransferSaveButton(), 20,
-				1);
+		waitHelper.waitForElementwithFluentwait(driver, fixedAssetTransferObj.assetTransferSaveButton());
 		fixedAssetTransferObj.assetTransferSaveButton().click();
 	}
 
 	@And("^click on temp view in asset transfer module$")
 	public void click_on_temp_view_in_asset_transfer_module() throws Throwable {
-		waitHelper.waitForElementToVisibleWithFluentWait(driver, fixedAssetTransferObj.fixedAssetTransferTempView(), 20,
-				1);
+		waitHelper.waitForElementwithFluentwait(driver, fixedAssetTransferObj.fixedAssetTransferTempView());
 		for (int i = 0; i <= 50; i++) {
 			try {
 				fixedAssetTransferObj.fixedAssetTransferTempView().click();

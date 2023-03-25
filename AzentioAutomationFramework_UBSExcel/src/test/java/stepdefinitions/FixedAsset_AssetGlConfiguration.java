@@ -1,5 +1,6 @@
 package stepdefinitions;
 
+import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
@@ -11,7 +12,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 
-import dataProvider.JsonConfig;
 import helper.BrowserHelper;
 import helper.ClicksAndActionsHelper;
 import helper.WaitHelper;
@@ -22,11 +22,9 @@ import pageobjects.FixedAsset_AssetGlConfigurationObj;
 import pageobjects.KUBS_CommonWebElements;
 import resources.BaseClass;
 import resources.ExcelData;
-import testDataType.FixedAsset_AssetCategoryTestDataType;
 
 public class FixedAsset_AssetGlConfiguration extends BaseClass {
 	WebDriver driver = BaseClass.driver;
-	JsonConfig jsonReader = new JsonConfig();
 	WaitHelper waithelper = new WaitHelper(driver);
 	ClicksAndActionsHelper clickAndActionsHelper = new ClicksAndActionsHelper(driver);
 	FixedAsset_AssetGlConfigurationObj fixedAsset_AssetGlConfigurationObj = new FixedAsset_AssetGlConfigurationObj(
@@ -46,11 +44,11 @@ public class FixedAsset_AssetGlConfiguration extends BaseClass {
 	BrowserHelper browserHelper = new BrowserHelper(driver);
 
 	@Then("^Click on Asset GL configuration Eye button$")
-	public void click_on_asset_gl_configuration_eye_button() {
+	public void click_on_asset_gl_configuration_eye_button() throws IOException {
 		// Eye Button
 		System.out.println(intTest);
-		waithelper.waitForElementToVisibleWithFluentWait(driver,
-				fixedAsset_AssetGlConfigurationObj.fixedAsset_AssetGlConfiguration_EyeIcon(), 30, 2);
+		waithelper.waitForElementwithFluentwait(driver,
+				fixedAsset_AssetGlConfigurationObj.fixedAsset_AssetGlConfiguration_EyeIcon());
 		for (int i = 0; i <= 50; i++) {
 			try {
 				clickAndActionsHelper
@@ -69,7 +67,7 @@ public class FixedAsset_AssetGlConfiguration extends BaseClass {
 	@And("^search the transfer asset code in gl config list view$")
 	public void search_the_transfer_asset_code_in_gl_config_list_view() throws Throwable {
 		glConfigTestData = exceldataforGLConfig.getTestdata("KUBS_FAT_UAT_002_004_D7");
-		waithelper.waitForElementToVisibleWithFluentWait(driver, kubsCommonObj.kubsListViewSearchButton(), 60, 1);
+		waithelper.waitForElementwithFluentwait(driver, kubsCommonObj.kubsListViewSearchButton());
 		clickAndActionsHelper.moveToElement(kubsCommonObj.kubsListViewSearchButton());
 		for (int i = 0; i <= 100; i++) {
 			try {
@@ -81,8 +79,8 @@ public class FixedAsset_AssetGlConfiguration extends BaseClass {
 				}
 			}
 		}
-		waithelper.waitForElementToVisibleWithFluentWait(driver,
-				fixedAsset_AssetGlConfigurationObj.AssetGlConfigurationSearchAssetCode(), 20, 1);
+		waithelper.waitForElementwithFluentwait(driver,
+				fixedAsset_AssetGlConfigurationObj.AssetGlConfigurationSearchAssetCode());
 		clickAndActionsHelper.moveToElement(fixedAsset_AssetGlConfigurationObj.AssetGlConfigurationSearchAssetCode());
 		clickAndActionsHelper.clickOnElement(fixedAsset_AssetGlConfigurationObj.AssetGlConfigurationSearchAssetCode());
 		fixedAsset_AssetGlConfigurationObj.AssetGlConfigurationSearchAssetCode()
@@ -148,8 +146,8 @@ public class FixedAsset_AssetGlConfiguration extends BaseClass {
 	@And("^select the data from the asset code in fixed asset gl configuration$")
 	public void select_the_data_from_the_asset_code_in_fixed_asset_gl_configuration() throws Throwable {
 		String xpath = "//ng-dropdown-panel//span[contains(text(),'" + glConfigTestData.get("AssetCode") + "')]";
-		waithelper.waitForElementToVisibleWithFluentWait(driver,
-				fixedAsset_AssetGlConfigurationObj.fixedAsset_AssetGlConfiguration_AssetCode(), 20, 1);
+		waithelper.waitForElementwithFluentwait(driver,
+				fixedAsset_AssetGlConfigurationObj.fixedAsset_AssetGlConfiguration_AssetCode());
 		fixedAsset_AssetGlConfigurationObj.fixedAsset_AssetGlConfiguration_AssetCode().click();
 		fixedAsset_AssetGlConfigurationObj.fixedAsset_AssetGlConfiguration_AssetCode()
 				.sendKeys(glConfigTestData.get("AssetCode"));
@@ -171,8 +169,8 @@ public class FixedAsset_AssetGlConfiguration extends BaseClass {
 		//ng-dropdown-panel//span[contains(text(),'Vault Cash')]
 		String xpath = "//ng-dropdown-panel//span[contains(text(),'"+glConfigTestData.get("FixedAssetGl")+"')]";
 		
-		waithelper.waitForElementToVisibleWithFluentWait(driver,
-				fixedAsset_AssetGlConfigurationObj.fixedAsset_AssetGlConfiguration_FixedAssetGL(), 20, 1);
+		waithelper.waitForElementwithFluentwait(driver,
+				fixedAsset_AssetGlConfigurationObj.fixedAsset_AssetGlConfiguration_FixedAssetGL());
 		fixedAsset_AssetGlConfigurationObj.fixedAsset_AssetGlConfiguration_FixedAssetGL().click();
 		fixedAsset_AssetGlConfigurationObj.fixedAsset_AssetGlConfiguration_FixedAssetGL()
 				.sendKeys(glConfigTestData.get("FixedAssetGl"));
@@ -193,8 +191,8 @@ public class FixedAsset_AssetGlConfiguration extends BaseClass {
 	public void select_the_data_from_the_accumlated_depreceiation_gl_in_fixed_asset_gl_configuration()
 			throws Throwable {
 		String xpath = "//ng-dropdown-panel//span[contains(text(),'"+ glConfigTestData.get("AccumulatedDepreciationGL") + "')]";
-		waithelper.waitForElementToVisibleWithFluentWait(driver,
-				fixedAsset_AssetGlConfigurationObj.fixedAsset_AssetGlConfiguration_AccumulatedDepreciationGL(), 20, 1);
+		waithelper.waitForElementwithFluentwait(driver,
+				fixedAsset_AssetGlConfigurationObj.fixedAsset_AssetGlConfiguration_AccumulatedDepreciationGL());
 		fixedAsset_AssetGlConfigurationObj.fixedAsset_AssetGlConfiguration_AccumulatedDepreciationGL().click();
 		fixedAsset_AssetGlConfigurationObj.fixedAsset_AssetGlConfiguration_AccumulatedDepreciationGL()
 				.sendKeys(glConfigTestData.get("AccumulatedDepreciationGL"));
@@ -214,8 +212,8 @@ public class FixedAsset_AssetGlConfiguration extends BaseClass {
 	@And("^select the data from the Depreceiation Gl in fixed asset gl configuration$")
 	public void select_the_data_from_the_depreceiation_gl_in_fixed_asset_gl_configuration() throws Throwable {
 		String xpath = "//ng-dropdown-panel//span[contains(text(),'" + glConfigTestData.get("DepreciationGL") +  "')]";
-		waithelper.waitForElementToVisibleWithFluentWait(driver,
-				fixedAsset_AssetGlConfigurationObj.fixedAsset_AssetGlConfiguration_DepreciationGL(), 20, 1);
+		waithelper.waitForElementwithFluentwait(driver,
+				fixedAsset_AssetGlConfigurationObj.fixedAsset_AssetGlConfiguration_DepreciationGL());
 		fixedAsset_AssetGlConfigurationObj.fixedAsset_AssetGlConfiguration_DepreciationGL().click();
 		fixedAsset_AssetGlConfigurationObj.fixedAsset_AssetGlConfiguration_DepreciationGL()
 				.sendKeys(glConfigTestData.get("DepreciationGL"));
@@ -235,8 +233,8 @@ public class FixedAsset_AssetGlConfiguration extends BaseClass {
 	@And("^select the data from the profit on slae Gl in fixed asset gl configuration$")
 	public void select_the_data_from_the_profit_on_slae_gl_in_fixed_asset_gl_configuration() throws Throwable {
 		String xpath = "//ng-dropdown-panel//span[contains(text(),'"  + glConfigTestData.get("ProfitOnSaleGL") +  "')]";
-		waithelper.waitForElementToVisibleWithFluentWait(driver,
-				fixedAsset_AssetGlConfigurationObj.fixedAsset_AssetGlConfiguration_ProfitOnSaleGL(), 20, 1);
+		waithelper.waitForElementwithFluentwait(driver,
+				fixedAsset_AssetGlConfigurationObj.fixedAsset_AssetGlConfiguration_ProfitOnSaleGL());
 		fixedAsset_AssetGlConfigurationObj.fixedAsset_AssetGlConfiguration_ProfitOnSaleGL().click();
 		fixedAsset_AssetGlConfigurationObj.fixedAsset_AssetGlConfiguration_ProfitOnSaleGL()
 				.sendKeys(glConfigTestData.get("ProfitOnSaleGL"));
@@ -256,8 +254,8 @@ public class FixedAsset_AssetGlConfiguration extends BaseClass {
 	@And("^select the data from the Loss on sale Gl in fixed asset gl configuration$")
 	public void select_the_data_from_the_loss_on_sale_gl_in_fixed_asset_gl_configuration() throws Throwable {
 		String xpath =  "//ng-dropdown-panel//span[contains(text(),'" + glConfigTestData.get("LossOnSaleGL") + "')]";
-		waithelper.waitForElementToVisibleWithFluentWait(driver,
-				fixedAsset_AssetGlConfigurationObj.fixedAsset_AssetGlConfiguration_lossOnSaleGL(), 20, 1);
+		waithelper.waitForElementwithFluentwait(driver,
+				fixedAsset_AssetGlConfigurationObj.fixedAsset_AssetGlConfiguration_lossOnSaleGL());
 		fixedAsset_AssetGlConfigurationObj.fixedAsset_AssetGlConfiguration_lossOnSaleGL().click();
 		fixedAsset_AssetGlConfigurationObj.fixedAsset_AssetGlConfiguration_lossOnSaleGL()
 				.sendKeys(glConfigTestData.get("LossOnSaleGL"));
@@ -277,8 +275,8 @@ public class FixedAsset_AssetGlConfiguration extends BaseClass {
 	@And("^select the data from the Write off Gl in fixed asset gl configuration$")
 	public void select_the_data_from_the_write_off_gl_in_fixed_asset_gl_configuration() throws Throwable {
 		String xpath = "//ng-dropdown-panel//span[contains(text(),'" + glConfigTestData.get("WriteOffGl") + "')]";
-		waithelper.waitForElementToVisibleWithFluentWait(driver,
-				fixedAsset_AssetGlConfigurationObj.fixedAsset_AssetGlConfiguration_WriteOffGL(), 20, 1);
+		waithelper.waitForElementwithFluentwait(driver,
+				fixedAsset_AssetGlConfigurationObj.fixedAsset_AssetGlConfiguration_WriteOffGL());
 		fixedAsset_AssetGlConfigurationObj.fixedAsset_AssetGlConfiguration_WriteOffGL().click();
 		fixedAsset_AssetGlConfigurationObj.fixedAsset_AssetGlConfiguration_WriteOffGL()
 				.sendKeys(glConfigTestData.get("WriteOffGl"));
@@ -298,8 +296,8 @@ public class FixedAsset_AssetGlConfiguration extends BaseClass {
 	@And("^select the data from the impairement loss Gl in fixed asset gl configuration$")
 	public void select_the_data_from_the_impairement_loss_gl_in_fixed_asset_gl_configuration() throws Throwable {
 		String xpath =  "//ng-dropdown-panel//span[contains(text(),'" + glConfigTestData.get("ImpairmentLossGL") + "')]";
-		waithelper.waitForElementToVisibleWithFluentWait(driver,
-				fixedAsset_AssetGlConfigurationObj.fixedAsset_AssetGlConfiguration_ImpairmentLossGL(), 20, 1);
+		waithelper.waitForElementwithFluentwait(driver,
+				fixedAsset_AssetGlConfigurationObj.fixedAsset_AssetGlConfiguration_ImpairmentLossGL());
 		fixedAsset_AssetGlConfigurationObj.fixedAsset_AssetGlConfiguration_ImpairmentLossGL().click();
 		fixedAsset_AssetGlConfigurationObj.fixedAsset_AssetGlConfiguration_ImpairmentLossGL()
 				.sendKeys(glConfigTestData.get("ImpairmentLossGL"));
@@ -328,9 +326,8 @@ public class FixedAsset_AssetGlConfiguration extends BaseClass {
 			throws Throwable {
 		String xpath = "//ng-dropdown-panel//span[contains(text(),'"+ glConfigTestData.get("AccumulatedImpairmentLossGL")
 				+  "')]";
-		waithelper.waitForElementToVisibleWithFluentWait(driver,
-				fixedAsset_AssetGlConfigurationObj.fixedAsset_AssetGlConfiguration_AccumulatedImpairmentLossGL(), 20,
-				1);
+		waithelper.waitForElementwithFluentwait(driver,
+				fixedAsset_AssetGlConfigurationObj.fixedAsset_AssetGlConfiguration_AccumulatedImpairmentLossGL());
 		fixedAsset_AssetGlConfigurationObj.fixedAsset_AssetGlConfiguration_AccumulatedImpairmentLossGL().click();
 		fixedAsset_AssetGlConfigurationObj.fixedAsset_AssetGlConfiguration_AccumulatedImpairmentLossGL()
 				.sendKeys(glConfigTestData.get("AccumulatedImpairmentLossGL"));
@@ -350,8 +347,8 @@ public class FixedAsset_AssetGlConfiguration extends BaseClass {
 	@And("^select the data from the Revaluation surplus Gl in fixed asset gl configuration$")
 	public void select_the_data_from_the_revaluation_surplus_gl_in_fixed_asset_gl_configuration() throws Throwable {
 		String xpath =  "//ng-dropdown-panel//span[contains(text(),'" + glConfigTestData.get("RevaluationSurplusGL") + "')]";
-		waithelper.waitForElementToVisibleWithFluentWait(driver,
-				fixedAsset_AssetGlConfigurationObj.fixedAsset_AssetGlConfiguration_RevaluationSurplusGL(), 20, 1);
+		waithelper.waitForElementwithFluentwait(driver,
+				fixedAsset_AssetGlConfigurationObj.fixedAsset_AssetGlConfiguration_RevaluationSurplusGL());
 		fixedAsset_AssetGlConfigurationObj.fixedAsset_AssetGlConfiguration_RevaluationSurplusGL().click();
 		fixedAsset_AssetGlConfigurationObj.fixedAsset_AssetGlConfiguration_RevaluationSurplusGL()
 				.sendKeys(glConfigTestData.get("RevaluationSurplusGL"));
@@ -377,13 +374,13 @@ public class FixedAsset_AssetGlConfiguration extends BaseClass {
 
 	@And("^save the fixed asset gl configuration Gl Record$")
 	public void save_the_fixed_asset_gl_configuration_gl_record() throws Throwable {
-		waithelper.waitForElementToVisibleWithFluentWait(driver, kubsCommonObj.kubsSaveButton(), 20, 1);
+		waithelper.waitForElementwithFluentwait(driver, kubsCommonObj.kubsSaveButton());
 		kubsCommonObj.kubsSaveButton().click();
 	}
 
 	@And("^search the asset gl configuration module code in notification$")
 	public void search_the_seet_gl_configuration_module_code_in_notification() throws Throwable {
-		waithelper.waitForElementToVisibleWithFluentWait(driver, kubsCommonObj.kubsSearchEventCode(), 20, 1);
+		waithelper.waitForElementwithFluentwait(driver, kubsCommonObj.kubsSearchEventCode());
 		// assetSaleTestData.get("Remark")
 		clickAndActionsHelper.moveToElement(kubsCommonObj.kubsSearchEventCode());
 		clickAndActionsHelper.clickOnElement(kubsCommonObj.kubsSearchEventCode());
@@ -393,27 +390,27 @@ public class FixedAsset_AssetGlConfiguration extends BaseClass {
 	@And("^store the fixed asset gl configuration record reference number in excel data base and select the record$")
 	public void store_the_fixed_asset_gl_configuration_record_reference_number_in_excel_data_base_and_select_the_record()
 			throws Throwable {
-		waithelper.waitForElementToVisibleWithFluentWait(driver,
-				fixedAsset_AssetGlConfigurationObj.assetCodeConfigAssetGLConfigNotificationRecordReferenceNo(), 20, 1);
+		waithelper.waitForElementwithFluentwait(driver,
+				fixedAsset_AssetGlConfigurationObj.assetCodeConfigAssetGLConfigNotificationRecordReferenceNo());
 		exceldataforGLConfig.updateTestData(glConfigTestData.get("DataSet ID"), "Reference ID",
 				fixedAsset_AssetGlConfigurationObj.assetCodeConfigAssetGLConfigNotificationRecordReferenceNo()
 						.getText());
 
-		waithelper.waitForElementToVisibleWithFluentWait(driver,
-				fixedAsset_AssetGlConfigurationObj.assetCodeConfigAssetGLConfigNotificationRecord(), 20, 1);
+		waithelper.waitForElementwithFluentwait(driver,
+				fixedAsset_AssetGlConfigurationObj.assetCodeConfigAssetGLConfigNotificationRecord());
 		fixedAsset_AssetGlConfigurationObj.assetCodeConfigAssetGLConfigNotificationRecord().click();
 
 	}
 
 	@And("^click on submit button in fixed asset gl configuration$")
 	public void click_on_submit_button_in_fixed_asset_gl_configuration() throws Throwable {
-		waithelper.waitForElementToVisibleWithFluentWait(driver, kubsCommonObj.kubsSubmitButton(), 60, 1);
+		waithelper.waitForElementwithFluentwait(driver, kubsCommonObj.kubsSubmitButton());
 		kubsCommonObj.kubsSubmitButton().click();
 	}
 
 	@And("^enter the alert remark in fixed asset gl configuration$")
 	public void enter_the_alert_remark_in_fixed_asset_gl_configuration() throws Throwable {
-		waithelper.waitForElementToVisibleWithFluentWait(driver, kubsCommonObj.kubsAlertRemark(), 20, 1);
+		waithelper.waitForElementwithFluentwait(driver, kubsCommonObj.kubsAlertRemark());
 		for (int i = 0; i <= 100; i++) {
 			try {
 				kubsCommonObj.kubsAlertRemark().click();
@@ -429,7 +426,7 @@ public class FixedAsset_AssetGlConfiguration extends BaseClass {
 
 	@And("^click on alert submit in fixed asset gl config$")
 	public void click_on_alert_submit_in_fixed_asset_gl_config() throws Throwable {
-		waithelper.waitForElementToVisibleWithFluentWait(driver, kubsCommonObj.kubsAlertSubmit(), 20, 1);
+		waithelper.waitForElementwithFluentwait(driver, kubsCommonObj.kubsAlertSubmit());
 		try {
 			kubsCommonObj.kubsAlertSubmit().click();
 		} catch (Exception e) {
@@ -441,7 +438,7 @@ public class FixedAsset_AssetGlConfiguration extends BaseClass {
 
 	@Then("^validate the submit and store the reviewer ID in database in gl config$")
 	public void validate_the_submit_and_store_the_reviewer_id_in_database_in_gl_config() throws Throwable {
-		waithelper.waitForElementToVisibleWithFluentWait(driver, kubsCommonObj.kubsToastAlert(), 20, 1);
+		waithelper.waitForElementwithFluentwait(driver, kubsCommonObj.kubsToastAlert());
 		String reviewerID = kubsCommonObj.kubsToastAlert().getText().substring(85).replace(".", "");
 		exceldataforGLConfig.updateTestData(glConfigTestData.get("DataSet ID"), "Reviewer ID", reviewerID);
 	}
@@ -513,7 +510,7 @@ public class FixedAsset_AssetGlConfiguration extends BaseClass {
 
 	@And("^click on search button ion gl list view$")
 	public void click_on_search_button_ion_gl_list_view() throws Throwable {
-		waithelper.waitForElementToVisibleWithFluentWait(driver, kubsCommonObj.kubsListViewSearchButton(), 20, 1);
+		waithelper.waitForElementwithFluentwait(driver, kubsCommonObj.kubsListViewSearchButton());
 		clickAndActionsHelper.moveToElement(kubsCommonObj.kubsListViewSearchButton());
 		clickAndActionsHelper.clickOnElement(kubsCommonObj.kubsListViewSearchButton());
 
@@ -533,7 +530,7 @@ public class FixedAsset_AssetGlConfiguration extends BaseClass {
 		String astCode = splitCode[0] + "-" + splitCode[1];
 
 		System.out.println("Splitted Gl Code" + splitCode[0] + "-" + splitCode[1] + " aset code " + astCode);
-		waithelper.waitForElementToVisibleWithFluentWait(driver, fixedAssetAccObj.fixedAssetGlSearchAssetCode(), 20, 1);
+		waithelper.waitForElementwithFluentwait(driver, fixedAssetAccObj.fixedAssetGlSearchAssetCode());
 		clickAndActionsHelper.moveToElement(fixedAssetAccObj.fixedAssetGlSearchAssetCode());
 		clickAndActionsHelper.clickOnElement(fixedAssetAccObj.fixedAssetGlSearchAssetCode());
 		fixedAssetAccObj.fixedAssetGlSearchAssetCode().sendKeys(astCode);
@@ -542,7 +539,7 @@ public class FixedAsset_AssetGlConfiguration extends BaseClass {
 
 	@Then("^store the gl code for verify accounnt entries$")
 	public void store_the_gl_code_for_verify_accounnt_entries() throws Throwable {
-		waithelper.waitForElementToVisibleWithFluentWait(driver, fixedAssetAccObj.fixedAssetApprovedGl(), 20, 1);
+		waithelper.waitForElementwithFluentwait(driver, fixedAssetAccObj.fixedAssetApprovedGl());
 		String glCode = fixedAssetAccObj.fixedAssetApprovedGl().getText();
 
 		System.out.println("Gl Code " + glCode);
@@ -558,8 +555,8 @@ public class FixedAsset_AssetGlConfiguration extends BaseClass {
 
 	@And("^choose branch as azentio main in accounting entries screen$")
 	public void choose_branch_as_azentio_main_in_accounting_entries_screen() throws Throwable {
-		waithelper.waitForElementToVisibleWithFluentWait(driver,
-				fixedAssetAccObj.fixedAssetAccountingEntriesBranchCode(), 20, 1);
+		waithelper.waitForElementwithFluentwait(driver,
+				fixedAssetAccObj.fixedAssetAccountingEntriesBranchCode());
 		fixedAssetAccObj.fixedAssetAccountingEntriesBranchCode().click();
 		fixedAssetAccObj.fixedAssetAccountingEntriesBranchCode().sendKeys("AZENTMAIN-Azentio Main Branch");
 
@@ -570,8 +567,7 @@ public class FixedAsset_AssetGlConfiguration extends BaseClass {
 
 	@And("^enter the accounting gl in accounting entries screen$")
 	public void enter_the_accounting_gl_in_accounting_entries_screen() throws Throwable {
-		waithelper.waitForElementToVisibleWithFluentWait(driver, fixedAssetAccObj.fixedAssetAccountingEntriesGlCode(),
-				20, 1);
+		waithelper.waitForElementwithFluentwait(driver, fixedAssetAccObj.fixedAssetAccountingEntriesGlCode());
 		fixedAssetAccObj.fixedAssetAccountingEntriesGlCode().click();
 		fixedAssetAccObj.fixedAssetAccountingEntriesGlCode().sendKeys(glAccountingTestData.get("glCode"));
 		fixedAssetAccObj.fixedAssetAccountingEntriesGlCode().sendKeys(Keys.DOWN);
@@ -580,8 +576,7 @@ public class FixedAsset_AssetGlConfiguration extends BaseClass {
 
 	@And("^enter the accounting gl in accounting entries screen after vendor payment$")
 	public void enter_the_accounting_gl_in_accounting_entries_screen_after_vendor_payment() throws Throwable {
-		waithelper.waitForElementToVisibleWithFluentWait(driver, fixedAssetAccObj.fixedAssetAccountingEntriesGlCode(),
-				20, 1);
+		waithelper.waitForElementwithFluentwait(driver, fixedAssetAccObj.fixedAssetAccountingEntriesGlCode());
 		fixedAssetAccObj.fixedAssetAccountingEntriesGlCode().click();
 		fixedAssetAccObj.fixedAssetAccountingEntriesGlCode()
 				.sendKeys(glAccountingTestData.get("GlCodeForAccountingEntries"));
@@ -592,8 +587,8 @@ public class FixedAsset_AssetGlConfiguration extends BaseClass {
 	@And("^click on view button in accounting entries screen$")
 	public void click_on_view_button_in_accounting_entries_screen() throws Throwable {
 
-		waithelper.waitForElementToVisibleWithFluentWait(driver,
-				fixedAssetAccObj.fixedAssetAccountingEntriesViewButton(), 20, 1);
+		waithelper.waitForElementwithFluentwait(driver,
+				fixedAssetAccObj.fixedAssetAccountingEntriesViewButton());
 
 		fixedAssetAccObj.fixedAssetAccountingEntriesViewButton().click();
 
@@ -603,7 +598,7 @@ public class FixedAsset_AssetGlConfiguration extends BaseClass {
 	public void verify_no_accounting_entries_should_posted_for_before_vendor_payment() throws Throwable {
 		for (int i = 0; i <= 500; i++) {
 			try {
-				boolean displayed = fixedAssetAccObj.fixedAsset_AccountingEntriesNoDataValidation().isDisplayed();
+				fixedAssetAccObj.fixedAsset_AccountingEntriesNoDataValidation().isDisplayed();
 				break;
 			} catch (Exception e) {
 				
@@ -632,7 +627,7 @@ public class FixedAsset_AssetGlConfiguration extends BaseClass {
 	public void verify_after_payment_gl_code_should_display_under_accounting_entries_screen() throws Throwable {
 		for (int i = 0; i <= 50; i++) {
 			try {
-				boolean displayed = driver.findElement(By.xpath("//datatable-row-wrapper[1]//span[contains(text(),'"
+				 driver.findElement(By.xpath("//datatable-row-wrapper[1]//span[contains(text(),'"
 						+ glAccountingTestData.get("GlCodeForAccountingEntries") + "')]")).isDisplayed();
 				break;
 			} catch (Exception e) {
@@ -645,8 +640,8 @@ public class FixedAsset_AssetGlConfiguration extends BaseClass {
 
 	@And("^get the approved asset code for asset gl report$")
 	public void get_the_approved_asset_code_for_asset_gl_report() throws Throwable {
-		waithelper.waitForElementToVisibleWithFluentWait(driver,
-				fixedAsset_AssetGlConfigurationObj.assetCodeConfigAssetGLApprovedAssetCode(), 20, 1);
+		waithelper.waitForElementwithFluentwait(driver,
+				fixedAsset_AssetGlConfigurationObj.assetCodeConfigAssetGLApprovedAssetCode());
 		String approvedGlAssetCode = fixedAsset_AssetGlConfigurationObj.assetCodeConfigAssetGLApprovedAssetCode()
 				.getText();
 		glConfigReportTestData.put("approvedGlAssetCode", approvedGlAssetCode);
@@ -655,14 +650,14 @@ public class FixedAsset_AssetGlConfiguration extends BaseClass {
 
 	@And("^click on asset gl report temp view$")
 	public void click_on_asset_gl_report_temp_view() throws Throwable {
-		waithelper.waitForElementToVisibleWithFluentWait(driver, kubsCommonObj.kubsAssetGlReportTempView(), 20, 1);
+		waithelper.waitForElementwithFluentwait(driver, kubsCommonObj.kubsAssetGlReportTempView());
 		kubsCommonObj.kubsAssetGlReportTempView().click();
 	}
 
 	@And("^enter the asset code for asset gl report$")
 	public void enter_the_asset_code_for_asset_gl_report() throws Throwable {
-		waithelper.waitForElementToVisibleWithFluentWait(driver,
-				fixedAsset_AssetGlConfigurationObj.assetCodeConfigAssetGLReportAssetCode(), 20, 1);
+		waithelper.waitForElementwithFluentwait(driver,
+				fixedAsset_AssetGlConfigurationObj.assetCodeConfigAssetGLReportAssetCode());
 		fixedAsset_AssetGlConfigurationObj.assetCodeConfigAssetGLReportAssetCode().click();
 		fixedAsset_AssetGlConfigurationObj.assetCodeConfigAssetGLReportAssetCode()
 				.sendKeys(glConfigReportTestData.get("approvedGlAssetCode"));
@@ -672,8 +667,8 @@ public class FixedAsset_AssetGlConfiguration extends BaseClass {
 
 	@And("^enter the asset gl as on date in asset gl report$")
 	public void enter_the_asset_gl_as_on_date_in_asset_gl_report() throws Throwable {
-		waithelper.waitForElementToVisibleWithFluentWait(driver,
-				fixedAsset_AssetGlConfigurationObj.assetCodeConfigAssetGLReportAssetCodeAsOnDate(), 20, 1);
+		waithelper.waitForElementwithFluentwait(driver,
+				fixedAsset_AssetGlConfigurationObj.assetCodeConfigAssetGLReportAssetCodeAsOnDate());
 		fixedAsset_AssetGlConfigurationObj.assetCodeConfigAssetGLReportAssetCodeAsOnDate().click();
 		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MMM/uuuu");
 		DateTimeFormatter dtf1 = DateTimeFormatter.ofPattern("dd/MMMM/uuuu");
@@ -688,7 +683,7 @@ public class FixedAsset_AssetGlConfiguration extends BaseClass {
 		String FullMonth = DateSplit1[1];
 		Integer yearNum = Integer.valueOf(DateSplit[2]);
 
-		waithelper.waitForElementToVisibleWithFluentWait(driver, kubsCommonObj.kubsCalendarMonthYearOption(), 20, 1);
+		waithelper.waitForElementwithFluentwait(driver, kubsCommonObj.kubsCalendarMonthYearOption());
 		clickAndActionsHelper.moveToElement(kubsCommonObj.kubsCalendarMonthYearOption());
 		clickAndActionsHelper.clickOnElement(kubsCommonObj.kubsCalendarMonthYearOption());
 		String yearXpath = "//span[contains(text(),'" + yearNum + "')]//ancestor::td";

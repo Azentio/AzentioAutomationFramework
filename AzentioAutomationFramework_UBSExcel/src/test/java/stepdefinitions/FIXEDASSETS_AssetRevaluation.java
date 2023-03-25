@@ -45,7 +45,6 @@ public class FIXEDASSETS_AssetRevaluation {
 	
 	@When("^click on eye button of asset revaluation$")
     public void click_on_eye_button_of_asset_revaluation() {
-		//waithelper.waitForElement(driver, 3000, fIXEDASSETS_AssetUndertakingObj.fixedAssets_AssetRevaluation_EyeButton());
 		javascripthelper.JavaScriptHelper(driver);
 		javascripthelper.scrollIntoView(fIXEDASSETS_AssetUndertakingObj.fixedAssets_AssetRevaluation_EyeButton());
 		fIXEDASSETS_AssetUndertakingObj.fixedAssets_AssetRevaluation_EyeButton().click();

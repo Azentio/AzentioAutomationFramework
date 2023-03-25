@@ -1,48 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
+<testng-results ignored="0" total="0" passed="0" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2023-03-24T16:23:55 IST" name="Default suite" finished-at="2023-03-24T16:26:56 IST" duration-ms="181422">
+  <suite started-at="2023-03-25T09:42:00 IST" name="Default suite" finished-at="2023-03-25T09:42:00 IST" duration-ms="768">
     <groups>
       <group name="cucumber">
-        <method signature="AbstractTestNGCucumberTests.runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:Runner.TestApplication@1c5920df]" name="runScenario" class="io.cucumber.testng.AbstractTestNGCucumberTests"/>
+        <method signature="AbstractTestNGCucumberTests.runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:Runner.FailedRun@2034b64c]" name="runScenario" class="io.cucumber.testng.AbstractTestNGCucumberTests"/>
       </group> <!-- cucumber -->
     </groups>
-    <test started-at="2023-03-24T16:23:55 IST" name="Default test" finished-at="2023-03-24T16:26:56 IST" duration-ms="181422">
-      <class name="Runner.TestApplication">
-        <test-method is-config="true" signature="beforeExecution()[pri:0, instance:Runner.TestApplication@1c5920df]" started-at="2023-03-24T16:23:55 IST" name="beforeExecution" finished-at="2023-03-24T16:23:55 IST" duration-ms="11" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- beforeExecution -->
-        <test-method is-config="true" signature="setUpClass()[pri:0, instance:Runner.TestApplication@1c5920df]" started-at="2023-03-24T16:23:55 IST" name="setUpClass" finished-at="2023-03-24T16:23:56 IST" duration-ms="1195" status="PASS">
+    <test started-at="2023-03-25T09:42:00 IST" name="Default test" finished-at="2023-03-25T09:42:00 IST" duration-ms="768">
+      <class name="Runner.FailedRun">
+        <test-method is-config="true" signature="setUpClass()[pri:0, instance:Runner.FailedRun@2034b64c]" started-at="2023-03-25T09:42:00 IST" name="setUpClass" finished-at="2023-03-25T09:42:00 IST" duration-ms="692" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUpClass -->
-        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:Runner.TestApplication@1c5920df]" started-at="2023-03-24T16:23:56 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2023-03-24T16:25:54 IST" duration-ms="117949" status="PASS">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA["To verify maker user can able to submit the business partner setup record"]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA["Optional[Test accounts Payable module for fixed asset creation]"]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- runScenario -->
-        <test-method is-config="true" signature="tearDownClass()[pri:0, instance:Runner.TestApplication@1c5920df]" started-at="2023-03-24T16:25:54 IST" name="tearDownClass" finished-at="2023-03-24T16:26:56 IST" duration-ms="62227" status="PASS">
+        <test-method is-config="true" signature="tearDownClass()[pri:0, instance:Runner.FailedRun@2034b64c]" started-at="2023-03-25T09:42:00 IST" name="tearDownClass" finished-at="2023-03-25T09:42:00 IST" duration-ms="19" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDownClass -->
-        <test-method is-config="true" signature="afterExecution()[pri:0, instance:Runner.TestApplication@1c5920df]" started-at="2023-03-24T16:26:56 IST" name="afterExecution" finished-at="2023-03-24T16:26:56 IST" duration-ms="111" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- afterExecution -->
-      </class> <!-- Runner.TestApplication -->
+      </class> <!-- Runner.FailedRun -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

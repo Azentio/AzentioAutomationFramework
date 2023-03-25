@@ -2,17 +2,14 @@ package stepdefinitions;
 
 import java.time.Month;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Map;
 import java.util.Random;
-
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import dataProvider.ConfigFileReader;
-import dataProvider.JsonConfig;
 import helper.BrowserHelper;
 import helper.ClicksAndActionsHelper;
 import helper.DropDownHelper;
@@ -31,9 +28,6 @@ import pageobjects.KUBS_ReviewerObj;
 import resources.BaseClass;
 import resources.ExcelData;
 import resources.JsonDataReaderWriter;
-import testDataType.FIXEDASSET_AssetAmendmentData;
-import testDataType.FIXEDASSET_AssetImpairementTestDataType;
-import testDataType.FixedAsset_AssetCreationTestDataType;
 
 public class FIXEDASSET_AssetReplacement extends BaseClass {
 
@@ -43,7 +37,6 @@ public class FIXEDASSET_AssetReplacement extends BaseClass {
 	WaitHelper waitHelper = new WaitHelper(driver);
 	JavascriptHelper javaScriptHelper = new JavascriptHelper();
 	DropDownHelper dropDownHelper = new DropDownHelper(driver);
-	JsonConfig jsonConfig = new JsonConfig();
 	VerificationHelper verificationHelper = new VerificationHelper();
 	String referance_id;
 	String reviwerId;
@@ -53,12 +46,10 @@ public class FIXEDASSET_AssetReplacement extends BaseClass {
 	KUBS_CheckerObj checkerObj = new KUBS_CheckerObj(driver);
 	ClicksAndActionsHelper clickAndActionHelper = new ClicksAndActionsHelper(driver);
 	FIXEDASSET_AssetReplacementObj assetReplacement = new FIXEDASSET_AssetReplacementObj(driver);
-
 	FIXEDASSET_AssetReplacementObj assetReplacementObj = new FIXEDASSET_AssetReplacementObj(driver);
 	JavascriptHelper javascripthelper = new JavascriptHelper();
 	BrowserHelper browserHelper = new BrowserHelper(driver);
 	FIXEDASSET_fixedAssetObj fixedAssetObj = new FIXEDASSET_fixedAssetObj(driver);
-
 	Map<String, String> testData = new HashMap<>();
 	KUBS_CommonWebElements kubsCommonObj = new KUBS_CommonWebElements(driver);
 	String path = System.getProperty("user.dir") + "\\Test-data\\KUBSTestData.xlsx";
@@ -79,14 +70,14 @@ public class FIXEDASSET_AssetReplacement extends BaseClass {
 		kubsLogin = new KUBS_Login(driver);
 		driver.get(configFileReader.getApplicationUrl());
 		kubsLogin.loginToAzentioAppByMaker();
-		Thread.sleep(1000);
+	
 	}
 
 	@Then("^Click Second Segman button$")
 	public void click_second_segman_button() throws Throwable {
 
 		// ---------TO VIEW THE SECOND SEGMENT ICON----------//
-		waitHelper.waitForElement(driver, 2000, assetReplacement.fixedTransfericon());
+		waitHelper.waitForElementwithFluentwait(driver, assetReplacement.fixedTransfericon());
 		assetReplacement.fixedTransfericon().click();
 	}
 
@@ -94,13 +85,13 @@ public class FIXEDASSET_AssetReplacement extends BaseClass {
 	public void click_fixed_asset_module() throws Throwable {
 
 		// ----------TO CLICK THE FIXED ASSET MODULE---------//
-		waitHelper.waitForElement(driver, 2000, assetReplacement.fixed_FixedAssets());
+		waitHelper.waitForElementwithFluentwait(driver, assetReplacement.fixed_FixedAssets());
 		assetReplacement.fixed_FixedAssets().click();
 	}
 
 	@And("^get the asset reference number for do asset replacement$")
 	public void get_the_asset_reference_number_for_do_asset_replacement() throws Throwable {
-		waitHelper.waitForElementVisible(fixedAssetObj.fixedAssetApprovedReferenceNumber(), 3000, 300);
+		waitHelper.waitForElementwithFluentwait(driver,fixedAssetObj.fixedAssetApprovedReferenceNumber());
 		testData.put("AssetReferemnceNumber", fixedAssetObj.fixedAssetApprovedReferenceNumber().getText());
 		System.out.println("Asset reference number is :" + testData.get("AssetReferemnceNumber"));
 
@@ -112,7 +103,7 @@ public class FIXEDASSET_AssetReplacement extends BaseClass {
 		// -----------TO CLICK THE ASSET REPLACEMENT------------//
 		javaScriptHelper.JavaScriptHelper(driver);
 		javaScriptHelper.scrollIntoView(assetReplacement.fixed_AssetReplacementEye());
-		waitHelper.waitForElement(driver, 2000, assetReplacement.fixed_AssetReplacementEye());
+		waitHelper.waitForElementwithFluentwait(driver, assetReplacement.fixed_AssetReplacementEye());
 		assetReplacement.fixed_AssetReplacementEye().click();
 	}
 
@@ -120,7 +111,7 @@ public class FIXEDASSET_AssetReplacement extends BaseClass {
 	public void click_add_icon_button() throws Throwable {
 
 		// -----------CLICK ADD ICON---------------//
-		waitHelper.waitForElementToVisibleWithFluentWait(driver, assetReplacement.fixedAssetReplacementAdd(), 20, 1);
+		waitHelper.waitForElementwithFluentwait(driver, assetReplacement.fixedAssetReplacementAdd());
 		for (int i = 0; i <= 200; i++) {
 			try {
 				assetReplacement.fixedAssetReplacementAdd().click();
@@ -170,8 +161,8 @@ public class FIXEDASSET_AssetReplacement extends BaseClass {
 
 	@And("^enter the asset reference number in asset replacement$")
 	public void enter_the_asset_reference_number_in_asset_replacement() throws Throwable {
-		waitHelper.waitForElementToVisibleWithFluentWait(driver,
-				assetReplacement.fixedAssetReplacementReferenceNumber(), 20, 1);
+		waitHelper.waitForElementwithFluentwait(driver,
+				assetReplacement.fixedAssetReplacementReferenceNumber());
 		assetReplacement.fixedAssetReplacementReferenceNumber().click();
 		assetReplacement.fixedAssetReplacementReferenceNumber()
 				.sendKeys(assetReplacementTestData.get("AssetReferenceNumber"));
@@ -192,8 +183,7 @@ public class FIXEDASSET_AssetReplacement extends BaseClass {
 
 	@And("^enter the asset item number in asset replacement$")
 	public void enter_the_asset_item_number_in_asset_replacement() throws Throwable {
-		waitHelper.waitForElementToVisibleWithFluentWait(driver, assetReplacement.fixedAssetReplacementItemNumber(), 20,
-				1);
+		waitHelper.waitForElementwithFluentwait(driver, assetReplacement.fixedAssetReplacementItemNumber());
 		assetReplacement.fixedAssetReplacementItemNumber().click();
 		assetReplacement.fixedAssetReplacementItemNumber().sendKeys(assetReplacementTestData.get("AssetItemNumber"));
 		String xpath = "//ng-dropdown-panel//span[text()='" + assetReplacementTestData.get("AssetItemNumber") + "']";
@@ -218,8 +208,7 @@ public class FIXEDASSET_AssetReplacement extends BaseClass {
 		String newItemNum = assetReplacementTestData.get("NewItemNumber") + randomNumber1 + randomNumber2;
 		excelDataForAssetReplacement.updateTestData(assetReplacementTestData.get("DataSet ID"), "UpdatedNewItemNumber",
 				newItemNum);
-		waitHelper.waitForElementToVisibleWithFluentWait(driver, assetReplacement.fixedAssetReplacementNewItemNumber(),
-				20, 1);
+		waitHelper.waitForElementwithFluentwait(driver, assetReplacement.fixedAssetReplacementNewItemNumber());
 		assetReplacement.fixedAssetReplacementNewItemNumber().click();
 		assetReplacement.fixedAssetReplacementNewItemNumber().sendKeys(newItemNum);
 	}
@@ -227,8 +216,7 @@ public class FIXEDASSET_AssetReplacement extends BaseClass {
 	@And("^enter the new item description in asset replacement$")
 	public void enter_the_new_item_description_in_asset_replacement() throws Throwable {
 
-		waitHelper.waitForElementToVisibleWithFluentWait(driver, assetReplacement.fixedAssetReplacementNewDescription(),
-				20, 1);
+		waitHelper.waitForElementwithFluentwait(driver, assetReplacement.fixedAssetReplacementNewDescription());
 		assetReplacement.fixedAssetReplacementNewDescription().click();
 		assetReplacement.fixedAssetReplacementNewDescription()
 				.sendKeys(assetReplacementTestData.get("NewItemDescription"));
@@ -236,14 +224,14 @@ public class FIXEDASSET_AssetReplacement extends BaseClass {
 
 	@And("^save the asset replacement record$")
 	public void save_the_asset_replacement_record() throws Throwable {
-		waitHelper.waitForElementToVisibleWithFluentWait(driver, kubsCommonObj.kubsSaveButton(), 20, 1);
+		waitHelper.waitForElementwithFluentwait(driver, kubsCommonObj.kubsSaveButton());
 		clickAndActionHelper.moveToElement(kubsCommonObj.kubsSaveButton());
 		clickAndActionHelper.clickOnElement(kubsCommonObj.kubsSaveButton());
 	}
 
 	@And("^search the asset replacement event code in notification$")
 	public void search_the_asset_replacement_event_code_in_notification() throws Throwable {
-		waitHelper.waitForElementToVisibleWithFluentWait(driver, kubsCommonObj.kubsSearchEventCode(), 20, 1);
+		waitHelper.waitForElementwithFluentwait(driver, kubsCommonObj.kubsSearchEventCode());
 		clickAndActionHelper.moveToElement(kubsCommonObj.kubsSearchEventCode());
 		clickAndActionHelper.clickOnElement(kubsCommonObj.kubsSearchEventCode());
 		kubsCommonObj.kubsSearchEventCode().sendKeys(assetReplacementTestData.get("ModuleCode"));
@@ -251,8 +239,7 @@ public class FIXEDASSET_AssetReplacement extends BaseClass {
 
 	@And("^store the replacement record reference number in replacement excel database$")
 	public void store_the_replacement_record_reference_number_in_replacement_excel_database() throws Throwable {
-		waitHelper.waitForElementToVisibleWithFluentWait(driver, assetReplacement.assetReplacementReferenceNumber(), 20,
-				1);
+		waitHelper.waitForElementwithFluentwait(driver, assetReplacement.assetReplacementReferenceNumber());
 		String referenceID = assetReplacement.assetReplacementReferenceNumber().getText();
 		excelDataForAssetReplacement.updateTestData(assetReplacementTestData.get("DataSet ID"), "Reference ID",
 				referenceID);
@@ -260,7 +247,7 @@ public class FIXEDASSET_AssetReplacement extends BaseClass {
 
 	@And("^select the replcement record in notification$")
 	public void select_the_replcement_record_in_notification() throws Throwable {
-//		waitHelper.waitForElementToVisibleWithFluentWait(driver,
+//		waitHelper.waitForElementwithFluentwait(driver,
 //				assetReplacement.assetReplacementNotificationFirstRecord(), 20, 1);
 		for (int i = 0; i <= 100; i++) {
 			try {
@@ -278,14 +265,14 @@ public class FIXEDASSET_AssetReplacement extends BaseClass {
 
 	@And("^click on submit in asset replacement$")
 	public void click_on_submit_in_asset_replacement() throws Throwable {
-		waitHelper.waitForElementToVisibleWithFluentWait(driver, kubsCommonObj.kubsSubmitButton(), 20, 1);
+		waitHelper.waitForElementwithFluentwait(driver, kubsCommonObj.kubsSubmitButton());
 		clickAndActionHelper.moveToElement(kubsCommonObj.kubsSubmitButton());
 		clickAndActionHelper.clickOnElement(kubsCommonObj.kubsSubmitButton());
 	}
 
 	@And("^enter the alert remark in asset replacement$")
 	public void enter_the_alert_remark_in_asset_replacement() throws Throwable {
-		waitHelper.waitForElementToVisibleWithFluentWait(driver, kubsCommonObj.kubsAlertRemark(), 20, 1);
+		waitHelper.waitForElementwithFluentwait(driver, kubsCommonObj.kubsAlertRemark());
 		clickAndActionHelper.moveToElement(kubsCommonObj.kubsAlertRemark());
 		clickAndActionHelper.clickOnElement(kubsCommonObj.kubsAlertRemark());
 		kubsCommonObj.kubsAlertRemark().sendKeys(assetReplacementTestData.get("MakerAlertRemark"));
@@ -293,14 +280,14 @@ public class FIXEDASSET_AssetReplacement extends BaseClass {
 
 	@And("^click on alert submit in asset replacement$")
 	public void click_on_alert_submit_in_asset_replacement() throws Throwable {
-		waitHelper.waitForElementToVisibleWithFluentWait(driver, kubsCommonObj.kubsAlertSubmit(), 20, 1);
+		waitHelper.waitForElementwithFluentwait(driver, kubsCommonObj.kubsAlertSubmit());
 		clickAndActionHelper.moveToElement(kubsCommonObj.kubsAlertSubmit());
 		clickAndActionHelper.clickOnElement(kubsCommonObj.kubsAlertSubmit());
 	}
 
 	@And("^validate the submission on replacement record and store the reviewer ID$")
 	public void validate_the_submission_on_replacement_record_and_store_the_reviewer_id() throws Throwable {
-		waitHelper.waitForElementToVisibleWithFluentWait(driver, kubsCommonObj.kubsToastAlert(), 20, 1);
+		waitHelper.waitForElementwithFluentwait(driver, kubsCommonObj.kubsToastAlert());
 		String reviewerID = kubsCommonObj.kubsToastAlert().getText().substring(85).replace(".", "");
 		excelDataForAssetReplacement.updateTestData(assetReplacementTestData.get("DataSet ID"), "Reviewer ID",
 				reviewerID);
@@ -317,7 +304,7 @@ public class FIXEDASSET_AssetReplacement extends BaseClass {
 
 	@And("^click on search button in replacement list view$")
 	public void click_on_search_button_in_replacement_list_view() throws Throwable {
-		waitHelper.waitForElementToVisibleWithFluentWait(driver, kubsCommonObj.kubsListViewSearchButton(), 20, 1);
+		waitHelper.waitForElementwithFluentwait(driver, kubsCommonObj.kubsListViewSearchButton());
 		for (int i = 0; i <= 50; i++) {
 			try {
 				clickAndActionHelper.moveToElement(kubsCommonObj.kubsListViewSearchButton());
@@ -333,8 +320,8 @@ public class FIXEDASSET_AssetReplacement extends BaseClass {
 
 	@And("^search the approved asset reference number of replacement asset$")
 	public void search_the_approved_asset_reference_number_of_replacement_asset() throws Throwable {
-		waitHelper.waitForElementToVisibleWithFluentWait(driver,
-				assetReplacement.assetReplacementListViewSearchAssetReferenceNumber(), 20, 1);
+		waitHelper.waitForElementwithFluentwait(driver,
+				assetReplacement.assetReplacementListViewSearchAssetReferenceNumber());
 		clickAndActionHelper.moveToElement(assetReplacement.assetReplacementListViewSearchAssetReferenceNumber());
 		clickAndActionHelper.clickOnElement(assetReplacement.assetReplacementListViewSearchAssetReferenceNumber());
 		assetReplacement.assetReplacementListViewSearchAssetReferenceNumber()
@@ -403,10 +390,10 @@ public class FIXEDASSET_AssetReplacement extends BaseClass {
 	public void enter_the_asset_referance_number() throws Throwable {
 
 		// -----------ENTER ASSET REF NO---------------//
-		waitHelper.waitForElement(driver, 2000, assetReplacement.fixed_AssetReferenceNumber());
+		waitHelper.waitForElementwithFluentwait(driver, assetReplacement.fixed_AssetReferenceNumber());
 		assetReplacement.fixed_AssetReferenceNumber().sendKeys(Keys.DOWN);
 		assetReplacement.fixed_AssetReferenceNumber().sendKeys(Keys.ENTER);
-		waitHelper.waitForElement(driver, 2000, assetReplacement.fixed_AssetGetReferenceNumber());
+		waitHelper.waitForElementwithFluentwait(driver, assetReplacement.fixed_AssetGetReferenceNumber());
 		AssetCreation = assetReplacement.fixed_AssetGetReferenceNumber().getText();
 		System.out.println(AssetCreation);
 	}
@@ -414,14 +401,14 @@ public class FIXEDASSET_AssetReplacement extends BaseClass {
 	@Then("^Enter the Asset Referance Number which we got from aset Creation module$")
 	public void enter_the_asset_referance_number_which_we_got_from_aset_creation_module() throws Throwable {
 
-		waitHelper.waitForElementToVisibleWithFluentWait(driver, assetReplacement.fixed_AssetReferenceNumber(), 20, 1);
+		waitHelper.waitForElementwithFluentwait(driver, assetReplacement.fixed_AssetReferenceNumber());
 		assetReplacement.fixed_AssetReferenceNumber().click();
-		Thread.sleep(1000);
+		
 		assetReplacement.fixed_AssetReferenceNumber().sendKeys(testData.get("AssetReferemnceNumber"));
 		// assetReplacement.fixed_AssetReferenceNumber().sendKeys(fixedAsset_AssetCreationTestDataType.AssetCode);
 		assetReplacement.fixed_AssetReferenceNumber().sendKeys(Keys.DOWN);
 		assetReplacement.fixed_AssetReferenceNumber().sendKeys(Keys.ENTER);
-		waitHelper.waitForElement(driver, 2000, assetReplacement.fixed_AssetGetReferenceNumber());
+		waitHelper.waitForElementwithFluentwait(driver, assetReplacement.fixed_AssetGetReferenceNumber());
 		AssetCreation = assetReplacement.fixed_AssetGetReferenceNumber().getText();
 		System.out.println(AssetCreation);
 
@@ -431,9 +418,9 @@ public class FIXEDASSET_AssetReplacement extends BaseClass {
 	public void enter_the_asset_item_number() throws Throwable {
 
 		// --------------ASSET ITEM NUMBER---------------//
-		waitHelper.waitForElement(driver, 2000, assetReplacement.fixed_AssetItemNO());
+		waitHelper.waitForElementwithFluentwait(driver, assetReplacement.fixed_AssetItemNO());
 		assetReplacement.fixed_AssetItemNO().click();
-		Thread.sleep(500);
+	
 		assetReplacement.fixed_AssetItemNO().sendKeys(Keys.DOWN);
 		assetReplacement.fixed_AssetItemNO().sendKeys(Keys.ENTER);
 
@@ -443,7 +430,7 @@ public class FIXEDASSET_AssetReplacement extends BaseClass {
 	public void save_the_replacement_recordss() throws Throwable {
 
 		// -----------------SAVE THE RECORD---------------//
-		waitHelper.waitForElement(driver, 3000, assetReplacement.AssetReplace_Save());
+		waitHelper.waitForElementwithFluentwait(driver, assetReplacement.AssetReplace_Save());
 		javaScriptHelper.JavaScriptHelper(driver);
 		javaScriptHelper.JSEClick(assetReplacement.AssetReplace_Save());
 
@@ -453,7 +440,7 @@ public class FIXEDASSET_AssetReplacement extends BaseClass {
 	public void went_to_maker_notification() throws Throwable {
 
 		// ------------Maker Notification icon---------//
-		waitHelper.waitForElement(driver, 2000, assetReplacement.fixed_MakerNotification());
+		waitHelper.waitForElementwithFluentwait(driver, assetReplacement.fixed_MakerNotification());
 		assetReplacement.fixed_MakerNotification().click();
 	}
 
@@ -461,10 +448,10 @@ public class FIXEDASSET_AssetReplacement extends BaseClass {
 	public void click_the_first_action_icon() throws Throwable {
 
 		// -----------Action Icon-----------//
-		waitHelper.waitForElement(driver, 2000, assetReplacement.fixed_ReferanceId());
+		waitHelper.waitForElementwithFluentwait(driver, assetReplacement.fixed_ReferanceId());
 		String Referance_id = assetReplacement.fixed_ReferanceId().getText();
 		readerData.addReferanceData(Referance_id);
-		waitHelper.waitForElement(driver, 2000, assetReplacement.fixed_ActionButton());
+		waitHelper.waitForElementwithFluentwait(driver, assetReplacement.fixed_ActionButton());
 		assetReplacement.fixed_ActionButton().click();
 
 	}
@@ -473,9 +460,9 @@ public class FIXEDASSET_AssetReplacement extends BaseClass {
 	public void submit_the_record_in_maker() throws Throwable {
 
 		// ---------------SUBMIT RECORD--------------//
-		waitHelper.waitForElement(driver, 2000, assetReplacement.fixed_Submit());
+		waitHelper.waitForElementwithFluentwait(driver, assetReplacement.fixed_Submit());
 		assetReplacement.fixed_Submit().click();
-		Thread.sleep(2000);
+		
 	}
 
 	// REVIEWER
@@ -491,9 +478,9 @@ public class FIXEDASSET_AssetReplacement extends BaseClass {
 	@And("^Click Reviewer Notification icon$")
 	public void click_reviewer_notification_icon() throws Throwable {
 		// -------------REVIEWER NOTIFICATION---------------//
-		waitHelper.waitForElement(driver, 2000, reviewerObj.reviewerNotidicationIcon());
+		waitHelper.waitForElementwithFluentwait(driver, reviewerObj.reviewerNotidicationIcon());
 		reviewerObj.reviewerNotidicationIcon().click();
-		waitHelper.waitForElement(driver, 2000, reviewerObj.reviewer_referanceid());
+		waitHelper.waitForElementwithFluentwait(driver, reviewerObj.reviewer_referanceid());
 		javaScriptHelper.JavaScriptHelper(driver);
 		referance_id = reviewerObj.reviewer_referanceid().getText();
 		System.out.println("Referance_id:" + referance_id);
@@ -506,8 +493,7 @@ public class FIXEDASSET_AssetReplacement extends BaseClass {
 		javaScriptHelper.JavaScriptHelper(driver);
 		String befr_xpath = "//span[contains(text(),'";
 		String aftr_xpath = "')]/parent::div/parent::datatable-body-cell/preceding-sibling::datatable-body-cell[1]//div//ion-buttons//ion-button";
-		waitHelper.waitForElement(driver, 2000,
-				driver.findElement(By.xpath(befr_xpath + readerData.readReferancedata() + aftr_xpath)));
+		waitHelper.waitForElementwithFluentwait(driver, driver.findElement(By.xpath(befr_xpath + readerData.readReferancedata() + aftr_xpath)));
 		driver.findElement(By.xpath(befr_xpath + readerData.readReferancedata() + aftr_xpath)).click();
 		javaScriptHelper.JSEClick(reviewerObj.reviewer_action_button());
 		// reviewerObj.reviewer_action_button().click();
@@ -517,7 +503,7 @@ public class FIXEDASSET_AssetReplacement extends BaseClass {
 	public void click_approve_icon_from_reviewer_end() throws Throwable {
 		// -----------------REVIEWER APPROVE---------------------//
 		readerData.addReferanceData(referance_id);
-		waitHelper.waitForElement(driver, 2000, reviewerObj.reviewerApproveButton());
+		waitHelper.waitForElementwithFluentwait(driver, reviewerObj.reviewerApproveButton());
 		reviewerObj.reviewerApproveButton().click();
 	}
 
@@ -533,14 +519,14 @@ public class FIXEDASSET_AssetReplacement extends BaseClass {
 	@Then("^Click Security management$")
 	public void click_security_management() throws Throwable {
 		// --------------------CLICK ON SECURITY MANAGEMENTS-----------------------//
-		waitHelper.waitForElement(driver, 3000, checkerObj.checkerSecurityManagement());
+		waitHelper.waitForElementwithFluentwait(driver, checkerObj.checkerSecurityManagement());
 		checkerObj.checkerSecurityManagement().click();
 	}
 
 	@And("^Click open pool Edit icon$")
 	public void click_open_pool_edit_icon() throws Throwable {
 		// ----------------------CLICK ON OPEN POOL-----------------------//
-		waitHelper.waitForElement(driver, 3000, checkerObj.checkerActionIcon());
+		waitHelper.waitForElementwithFluentwait(driver, checkerObj.checkerActionIcon());
 		checkerObj.checkerActionIcon().click();
 	}
 
@@ -549,10 +535,9 @@ public class FIXEDASSET_AssetReplacement extends BaseClass {
 		// -------------------------CLICK CLAIM OPTION-------------------------//
 		String before_xpath = "//span[contains(text(),'";
 		String after_xpath_claim = "')]/parent::div/parent::datatable-body-cell/preceding-sibling::datatable-body-cell[2]/div/ion-buttons/ion-button";
-		waitHelper.waitForElement(driver, 10000,
-				driver.findElement(By.xpath(before_xpath + readerData.readReferancedata() + after_xpath_claim)));
+		waitHelper.waitForElementwithFluentwait(driver, driver.findElement(By.xpath(before_xpath + readerData.readReferancedata() + after_xpath_claim)));
 		driver.findElement(By.xpath(before_xpath + readerData.readReferancedata() + after_xpath_claim)).click();
-		waitHelper.waitForElement(driver, 2000, checkerObj.checker_alert_close());
+		waitHelper.waitForElementwithFluentwait(driver, checkerObj.checker_alert_close());
 		checkerObj.checker_alert_close().click();
 	}
 
@@ -560,7 +545,7 @@ public class FIXEDASSET_AssetReplacement extends BaseClass {
 	public void click_checker_notification_icon() throws Throwable {
 		// ----------------CHECKER NOTIFICATION-----------------------//
 		javaScriptHelper = new JavascriptHelper();
-		waitHelper.waitForElement(driver, 3000, checkerObj.checkerNotificationIcon());
+		waitHelper.waitForElementwithFluentwait(driver, checkerObj.checkerNotificationIcon());
 		javaScriptHelper.JavaScriptHelper(driver);
 		javaScriptHelper.JSEClick(checkerObj.checkerNotificationIcon());
 	}
@@ -568,10 +553,9 @@ public class FIXEDASSET_AssetReplacement extends BaseClass {
 	@Then("^Click Action Icon from claimed record$")
 	public void click_action_icon_from_claimed_record() throws Throwable {
 		// ------------------CHECKER ACTION------------------//
-		waitHelper.waitForElementToVisibleWithFluentWait(driver, driver.findElement(By.xpath("//span[contains(text(),'"
+		waitHelper.waitForElementwithFluentwait(driver, driver.findElement(By.xpath("//span[contains(text(),'"
 				+ readerData.readReferancedata()
-				+ "')]/ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell/div/ion-buttons/ion-button")),
-				60, 5);
+				+ "')]/ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell/div/ion-buttons/ion-button")));
 		for (int i = 0; i < 10; i++) {
 			try {
 				driver.findElement(By.xpath("//span[contains(text(),'" + readerData.readReferancedata()
@@ -589,21 +573,21 @@ public class FIXEDASSET_AssetReplacement extends BaseClass {
 	@And("^Click Approve icon$")
 	public void click_approve_icon() throws Throwable {
 		// ------------------APPROVE THE RECORD----------------------//
-		waitHelper.waitForElement(driver, 2000, checkerObj.checkerApproveButton());
+		waitHelper.waitForElementwithFluentwait(driver, checkerObj.checkerApproveButton());
 		checkerObj.checkerApproveButton().click();
 	}
 
 	@And("^Click on the search icon$")
 	public void click_on_the_search_icon() throws Throwable {
 		// ----------CLICK THE SEARCH ICON----------//
-		waitHelper.waitForElement(driver, 2000, assetReplacement.fixed_AssetSearch());
+		waitHelper.waitForElementwithFluentwait(driver, assetReplacement.fixed_AssetSearch());
 		assetReplacement.fixed_AssetSearch().click();
 	}
 
 	@Then("^Enter Asset Referance No$")
 	public void enter_asset_referance_no() throws Throwable {
 		// -------------ENTER SEARCHCODE-----------//
-		waitHelper.waitForElement(driver, 2000, assetReplacement.fixed_AssetSearchCode());
+		waitHelper.waitForElementwithFluentwait(driver, assetReplacement.fixed_AssetSearchCode());
 		assetReplacement.fixed_AssetSearchCode().click();
 		assetReplacement.fixed_AssetSearchCode().sendKeys(AssetCreation);
 	}
@@ -613,7 +597,7 @@ public class FIXEDASSET_AssetReplacement extends BaseClass {
 		// ------------CAPTURE THE ASSET------------//
 		String befr = "//span[contains(text(),'";
 		String aftr = "')]/ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell/div/ion-buttons/ion-button[1]";
-		waitHelper.waitForElement(driver, 2000, driver.findElement(By.xpath(befr + AssetCreation + aftr)));
+		waitHelper.waitForElementwithFluentwait(driver, driver.findElement(By.xpath(befr + AssetCreation + aftr)));
 		driver.findElement(By.xpath(befr + AssetCreation + aftr)).click();
 	}
 
@@ -621,32 +605,32 @@ public class FIXEDASSET_AssetReplacement extends BaseClass {
 
 	@And("^click on view button in asset replacement module$")
 	public void click_on_view_button_in_seet_replacement_module() throws Throwable {
-		Thread.sleep(1000);
+	
 		javascripthelper.JavaScriptHelper(driver);
 		javascripthelper.scrollIntoView(assetReplacementObj.fixedAssetAAssetReplacementViewButton());
-		// waitHelper.waitForElementVisible(assetReplacementObj.fixedAssetAAssetReplacementViewButton(),
+		// waitHelper.waitForElementwithFluentwait(assetReplacementObj.fixedAssetAAssetReplacementViewButton(),
 		// 2000, 100);
 		assetReplacementObj.fixedAssetAAssetReplacementViewButton().click();
 	}
 
 	@And("^save the replacement record$")
 	public void save_the_replacement_record() throws Throwable {
-		waitHelper.waitForElementVisible(assetReplacementObj.fixedAssetReplacementSaveButton(), 2000, 100);
+		waitHelper.waitForElementwithFluentwait(driver,assetReplacementObj.fixedAssetReplacementSaveButton());
 		assetReplacementObj.fixedAssetReplacementSaveButton().click();
 	}
 
 	// Replcement report
 	@And("^select the approved replacement record from replacement list view$")
 	public void select_the_approved_replacement_record_from_replacement_list_view() throws Throwable {
-		waitHelper.waitForElementToVisibleWithFluentWait(driver,
-				assetReplacementObj.assetReplacementListViewApprovedRecord(), 20, 1);
+		waitHelper.waitForElementwithFluentwait(driver,
+				assetReplacementObj.assetReplacementListViewApprovedRecord());
 		assetReplacementObj.assetReplacementListViewApprovedRecord().click();
 	}
 
 	@And("^store the approved replacement reference number$")
 	public void store_the_approved_replacement_reference_number() throws Throwable {
-		waitHelper.waitForElementToVisibleWithFluentWait(driver,
-				assetReplacementObj.assetReplacementListViewApprovedAssetReferenceNumberr(), 20, 1);
+		waitHelper.waitForElementwithFluentwait(driver,
+				assetReplacementObj.assetReplacementListViewApprovedAssetReferenceNumberr());
 		String approvedAssetReferenceNumber = assetReplacementObj
 				.assetReplacementListViewApprovedAssetReferenceNumberr().getText();
 		assetReplacementReportTestData.put("approvedAssetReferenceNumber", approvedAssetReferenceNumber);
@@ -678,8 +662,8 @@ public class FIXEDASSET_AssetReplacement extends BaseClass {
 
 	@And("^store the item number of replaced asset$")
 	public void store_the_item_number_of_replaced_asset() throws Throwable {
-		waitHelper.waitForElementToVisibleWithFluentWait(driver,
-				assetReplacementObj.assetReplacementListViewApprovedItemNumber(), 20, 1);
+		waitHelper.waitForElementwithFluentwait(driver,
+				assetReplacementObj.assetReplacementListViewApprovedItemNumber());
 		String approvedAssetItemNo = assetReplacementObj.assetReplacementListViewApprovedItemNumber().getText();
 		assetReplacementReportTestData.put("approvedAssetItemNo", approvedAssetItemNo);
 		System.out.println("Approved Item Number " + assetReplacementReportTestData.get("approvedAssetItemNo"));
@@ -687,8 +671,8 @@ public class FIXEDASSET_AssetReplacement extends BaseClass {
 
 	@And("^store the replacement record created date$")
 	public void store_the_replacement_record_created_date() throws Throwable {
-		waitHelper.waitForElementToVisibleWithFluentWait(driver,
-				assetReplacementObj.assetReplacementListViewApprovedDate(), 20, 1);
+		waitHelper.waitForElementwithFluentwait(driver,
+				assetReplacementObj.assetReplacementListViewApprovedDate());
 		String approvedAssetDate = assetReplacementObj.assetReplacementListViewApprovedDate().getText();
 		assetReplacementReportTestData.put("approvedAssetDate", approvedAssetDate);
 		System.out.println("Approved Date " + assetReplacementReportTestData.get("approvedAssetDate"));
@@ -696,16 +680,14 @@ public class FIXEDASSET_AssetReplacement extends BaseClass {
 
 	@And("^click on replacement report temp view$")
 	public void click_on_replacement_report_temp_view() throws Throwable {
-		waitHelper.waitForElementToVisibleWithFluentWait(driver, assetReplacementObj.assetReplacementReportTempView(),
-				20, 1);
+		waitHelper.waitForElementwithFluentwait(driver, assetReplacementObj.assetReplacementReportTempView());
 		assetReplacementObj.assetReplacementReportTempView().click();
 
 	}
 
 	@And("^enter the asset code in replacement report$")
 	public void enter_the_asset_code_in_replacement_report() throws Throwable {
-		waitHelper.waitForElementToVisibleWithFluentWait(driver, assetReplacementObj.assetReplacementReportAssetCode(),
-				20, 1);
+		waitHelper.waitForElementwithFluentwait(driver, assetReplacementObj.assetReplacementReportAssetCode());
 		assetReplacementObj.assetReplacementReportAssetCode().click();
 		assetReplacementObj.assetReplacementReportAssetCode()
 				.sendKeys(assetReplacementReportTestData.get("ReplacementAssetCode"));
@@ -726,8 +708,7 @@ public class FIXEDASSET_AssetReplacement extends BaseClass {
 
 	@And("^enter the replacement asset item number in report$")
 	public void enter_the_replacement_asset_item_number_in_report() throws Throwable {
-		waitHelper.waitForElementToVisibleWithFluentWait(driver, assetReplacementObj.assetReplacementReportItemNumber(),
-				20, 1);
+		waitHelper.waitForElementwithFluentwait(driver, assetReplacementObj.assetReplacementReportItemNumber());
 		assetReplacementObj.assetReplacementReportItemNumber().click();
 		assetReplacementObj.assetReplacementReportItemNumber()
 				.sendKeys(assetReplacementReportTestData.get("approvedAssetItemNo"));
@@ -746,13 +727,14 @@ public class FIXEDASSET_AssetReplacement extends BaseClass {
 		}
 	}
 
+	@SuppressWarnings("static-access")
 	@And("^give the the replacement created date in report$")
 	public void give_the_the_replacement_created_date_in_report() throws Throwable {
-		waitHelper.waitForElementToVisibleWithFluentWait(driver,
-				assetReplacementObj.assetReplacementReportCreatedCalendar(), 20, 1);
+		waitHelper.waitForElementwithFluentwait(driver,
+				assetReplacementObj.assetReplacementReportCreatedCalendar());
 		assetReplacementObj.assetReplacementReportCreatedCalendar().click();
 
-		waitHelper.waitForElementToVisibleWithFluentWait(driver, kubsCommonObj.kubsCalendarMonthYearOption(), 20, 1);
+		waitHelper.waitForElementwithFluentwait(driver, kubsCommonObj.kubsCalendarMonthYearOption());
 		clickAndActionHelper.moveToElement(kubsCommonObj.kubsCalendarMonthYearOption());
 		clickAndActionHelper.clickOnElement(kubsCommonObj.kubsCalendarMonthYearOption());
 		System.out.println("Created date" + assetReplacementReportTestData.get("approvedAssetDate"));

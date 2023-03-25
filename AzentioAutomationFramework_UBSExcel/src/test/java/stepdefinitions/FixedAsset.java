@@ -4,74 +4,44 @@ import java.time.LocalDate;
 import java.time.Month;
 import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.Random;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
-import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
-
 import dataProvider.ConfigFileReader;
-import dataProvider.JsonConfig;
 import helper.BrowserHelper;
 import helper.ClicksAndActionsHelper;
-import helper.DropDownHelper;
 import helper.JavascriptHelper;
 import helper.WaitHelper;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import pageobjects.BUDGET_BudgetTransferObj;
-import pageobjects.FIXEDASSET_fixedAssetObj;
 import pageobjects.FixedAssetObj;
 import pageobjects.InventoryManagamentObj;
-import pageobjects.KUBS_CheckerObj;
 import pageobjects.KUBS_CommonWebElements;
 import pageobjects.KUBS_MakerObj;
-import pageobjects.KUBS_ReviewerObj;
 import resources.BaseClass;
 import resources.ExcelData;
-import resources.JsonDataReaderWriter;
-import testDataType.BUDGET_BudgetCreationTestDataType;
 import testDataType.BUDGET_BudgetDefinitionTestDataType;
-import testDataType.BUDGET_BudgetTransferTestDataType;
-import testDataType.FixedAssetTestDataType;
-import testDataType.FixedAsset_AssetCreationTestDataType;
-import testDataType.InventoryManagementTestDataType;
-import utilities.ExtentTestManager;
 
 public class FixedAsset {
 	WebDriver driver = BaseClass.driver;
-	ConfigFileReader config = new ConfigFileReader();
-
-	KUBS_ReviewerObj reviewer;
-
-	JsonConfig jsonconfig = new JsonConfig();
 	BrowserHelper browserHelper = new BrowserHelper(driver);
 	BUDGET_BudgetDefinitionTestDataType budgetdata1;
-	JavascriptHelper javahelper = new JavascriptHelper();
-	JsonConfig jsonReader = new JsonConfig();
-	WaitHelper waithelper = new WaitHelper(driver);
+	JavascriptHelper jaascriptHelper = new JavascriptHelper();
+	
+	WaitHelper waitHelper = new WaitHelper(driver);
 	JavascriptHelper javascripthelper = new JavascriptHelper();
-	BUDGET_BudgetTransferTestDataType budgetTransferTestDataType;
-	JsonDataReaderWriter reader = new JsonDataReaderWriter();
-	JsonDataReaderWriter jsonWriter = new JsonDataReaderWriter();
-	FixedAssetTestDataType fixedAssetTestDataType = new FixedAssetTestDataType();
-
 	InventoryManagamentObj inventoryManagamentObj = new InventoryManagamentObj(driver);
-	InventoryManagementTestDataType inventoryManagementTestDataType = new InventoryManagementTestDataType();
 	ConfigFileReader configFileReader = new ConfigFileReader();
 	ClicksAndActionsHelper clicksAndActionHelper = new ClicksAndActionsHelper(driver);
 	BUDGET_BudgetTransferObj budgetTransferObj = new BUDGET_BudgetTransferObj(driver);
 	String referance_id;
-	KUBS_MakerObj makerobj;
-	DropDownHelper dropdownhelper;
-	KUBS_CheckerObj kubschecker;
-	JavascriptHelper javascript;
+	KUBS_MakerObj makerObj;
 	FixedAssetObj fixedAssetObj = new FixedAssetObj(driver);
 	Map<String, String> codeConfigData = new HashMap<>();
 	KUBS_CommonWebElements kubsCommonWebObj = new KUBS_CommonWebElements(driver);
@@ -92,19 +62,7 @@ public class FixedAsset {
 	Map<String, String> assetAllocationReportTestData = new HashMap<>();
 	Map<String, String> assetCreationReportTestData = new HashMap<>();
 	KUBS_Login kubsLogin = new KUBS_Login(driver);
-	// -------------KUBS_FAT_UAT_002_001------
-
-//	    @Then("^Click on the Finance$")
-//	    public void click_on_the_finance() throws Throwable {
-//	    	System.out.println("Click on finance");
-//	    }
-
-//	    @Then("^Click on the Direction$")
-//	    public void click_on_the_direction() throws Throwable {
-//	    	waithelper.waitForElementToVisisbleWithFluentWait(driver, budgetTransferObj.budget_BudgetTransfer_DirectionIcon());
-//			budgetTransferObj.budget_BudgetTransfer_DirectionIcon().click();
-//
-//	    }
+	
 	@Given("^Maker Navigate to UAT URL login$")
 	public void maker_navigate_to_uat_url_login() throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
@@ -113,22 +71,22 @@ public class FixedAsset {
 
 	@And("^click on configuration section$")
 	public void click_on_configuration_section() throws Throwable {
-		waithelper.waitForElementToVisibleWithFluentWait(driver, kubsCommonWebObj.kubsConfigurationSection(), 20, 1);
+		waitHelper.waitForElementwithFluentwait(driver, kubsCommonWebObj.kubsConfigurationSection());
 		clicksAndActionHelper.moveToElement(kubsCommonWebObj.kubsConfigurationSection());
 		clicksAndActionHelper.clickOnElement(kubsCommonWebObj.kubsConfigurationSection());
-		Thread.sleep(500);
+		
 
 	}
 
 	@And("^click on transaction section$")
 	public void click_on_transaction_section() throws Throwable {
-		waithelper.waitForElementToVisibleWithFluentWait(driver, kubsCommonWebObj.kubsTransactionSection(), 20, 1);
+		waitHelper.waitForElementwithFluentwait(driver, kubsCommonWebObj.kubsTransactionSection());
 		clicksAndActionHelper.moveToElement(kubsCommonWebObj.kubsTransactionSection());
 		clicksAndActionHelper.clickOnElement(kubsCommonWebObj.kubsTransactionSection());
-		waithelper.waitForElementToVisibleWithFluentWait(driver, kubsCommonWebObj.kubsConfigurationSection(), 20, 1);
+		waitHelper.waitForElementwithFluentwait(driver, kubsCommonWebObj.kubsConfigurationSection());
 		clicksAndActionHelper.moveToElement(kubsCommonWebObj.kubsConfigurationSection());
 		clicksAndActionHelper.clickOnElement(kubsCommonWebObj.kubsConfigurationSection());
-		waithelper.waitForElementToVisibleWithFluentWait(driver, kubsCommonWebObj.kubsTransactionSection(), 20, 1);
+		waitHelper.waitForElementwithFluentwait(driver, kubsCommonWebObj.kubsTransactionSection());
 		clicksAndActionHelper.moveToElement(kubsCommonWebObj.kubsTransactionSection());
 		clicksAndActionHelper.clickOnElement(kubsCommonWebObj.kubsTransactionSection());
 
@@ -136,7 +94,7 @@ public class FixedAsset {
 
 	@Then("^Click on Fixed Asset$")
 	public void click_on_fixed_asset() throws Throwable {
-		waithelper.waitForElementToVisibleWithFluentWait(driver, fixedAssetObj.fixedAsset_Button(), 60, 5);
+		waitHelper.waitForElementwithFluentwait(driver, fixedAssetObj.fixedAsset_Button());
 		fixedAssetObj.fixedAsset_Button().click();
 	}
 
@@ -152,7 +110,7 @@ public class FixedAsset {
 
 	@And("^click on search button in asset creation module$")
 	public void click_on_search_button_in_asset_creation_module() throws Throwable {
-		waithelper.waitForElementToVisibleWithFluentWait(driver, fixedAssetObj.kubsSearchButton(), 20, 1);
+		waitHelper.waitForElementwithFluentwait(driver, fixedAssetObj.kubsSearchButton());
 		for (int i = 0; i <= 50; i++) {
 			try {
 				clicksAndActionHelper.moveToElement(fixedAssetObj.kubsSearchButton());
@@ -168,7 +126,7 @@ public class FixedAsset {
 
 	@And("^search the asset code in asset creation module$")
 	public void search_the_asset_code_in_asset_creation_module() throws Throwable {
-		waithelper.waitForElementToVisibleWithFluentWait(driver, fixedAssetObj.fixedAssetSearchAssetCode(), 20, 1);
+		waitHelper.waitForElementwithFluentwait(driver, fixedAssetObj.fixedAssetSearchAssetCode());
 		fixedAssetObj.fixedAssetSearchAssetCode().sendKeys(assetCreationTestData.get("AssetCode"));
 	}
 
@@ -1362,8 +1320,8 @@ public class FixedAsset {
 	@And("^select the branch code in asset creation module$")
 	public void select_the_branch_code_in_asset_creation_module() throws Throwable {
 
-		waithelper.waitForElementToVisibleWithFluentWait(driver,
-				fixedAssetObj.fixedAsset_AssetCreation_BranchCode_Textbox(), 60, 5);
+		waitHelper.waitForElementwithFluentwait(driver,
+				fixedAssetObj.fixedAsset_AssetCreation_BranchCode_Textbox());
 		fixedAssetObj.fixedAsset_AssetCreation_BranchCode_Textbox().click();
 
 		fixedAssetObj.fixedAsset_AssetCreation_BranchCode_Textbox().sendKeys(assetCreationTestData.get("BranchCode"));
@@ -1384,8 +1342,8 @@ public class FixedAsset {
 	@And("^select the asset code in asset creation module$")
 	public void select_the_asset_code_in_asset_creation_module() throws Throwable {
 		String xpath = "//ng-dropdown-panel//span[text()='" + assetCreationTestData.get("AssetCode") + "']";
-		waithelper.waitForElementToVisibleWithFluentWait(driver,
-				fixedAssetObj.fixedAsset_AssetCreation_AssetCode_Textbox(), 60, 5);
+		waitHelper.waitForElementwithFluentwait(driver,
+				fixedAssetObj.fixedAsset_AssetCreation_AssetCode_Textbox());
 		fixedAssetObj.fixedAsset_AssetCreation_AssetCode_Textbox().click();
 
 		fixedAssetObj.fixedAsset_AssetCreation_AssetCode_Textbox().sendKeys(assetCreationTestData.get("AssetCode"));
@@ -1404,8 +1362,8 @@ public class FixedAsset {
 
 	@And("^enter the GRN number in asset creation screen$")
 	public void enter_the_grn_number_in_asset_creation_screen() throws Throwable {
-		waithelper.waitForElementToVisibleWithFluentWait(driver,
-				fixedAssetObj.fixedAsset_AssetCreationGRNReferenceNumberTextBox(), 20, 1);
+		waitHelper.waitForElementwithFluentwait(driver,
+				fixedAssetObj.fixedAsset_AssetCreationGRNReferenceNumberTextBox());
 		fixedAssetObj.fixedAsset_AssetCreationGRNReferenceNumberTextBox().click();
 		fixedAssetObj.fixedAsset_AssetCreationGRNReferenceNumberTextBox()
 				.sendKeys(assetCreationTestData.get("GRNNumber"));
@@ -1425,16 +1383,16 @@ public class FixedAsset {
 
 	@And("^click on contract linkage tab$")
 	public void click_on_contract_linkage_tab() throws Throwable {
-		waithelper.waitForElementToVisibleWithFluentWait(driver,
-				fixedAssetObj.fixedAsset_AssetCreationAssetContractLinkageTab(), 20, 1);
+		waitHelper.waitForElementwithFluentwait(driver,
+				fixedAssetObj.fixedAsset_AssetCreationAssetContractLinkageTab());
 		fixedAssetObj.fixedAsset_AssetCreationAssetContractLinkageTab().click();
 		fixedAssetObj.fixedAsset_AssetCreationAssetContractLinkageTab();
 	}
 
 	@And("^enter the po number in contract linkage screen$")
 	public void enter_the_po_number_in_contract_linkage_screen() throws Throwable {
-		waithelper.waitForElementToVisibleWithFluentWait(driver,
-				fixedAssetObj.fixedAsset_AssetCreationContractLinkagePoNumberTextBox(), 20, 1);
+		waitHelper.waitForElementwithFluentwait(driver,
+				fixedAssetObj.fixedAsset_AssetCreationContractLinkagePoNumberTextBox());
 		fixedAssetObj.fixedAsset_AssetCreationContractLinkagePoNumberTextBox().click();
 		fixedAssetObj.fixedAsset_AssetCreationContractLinkagePoNumberTextBox()
 				.sendKeys(assetCreationTestData.get("PONumber"));
@@ -1454,9 +1412,9 @@ public class FixedAsset {
 
 	@And("^save the contract linkage screen$")
 	public void save_the_contract_linkage_screen() throws Throwable {
-		waithelper.waitForElementToVisibleWithFluentWait(driver, kubsCommonWebObj.kubsSaveButton(), 20, 1);
+		waitHelper.waitForElementwithFluentwait(driver, kubsCommonWebObj.kubsSaveButton());
 		kubsCommonWebObj.kubsSaveButton().click();
-		waithelper.waitForElementToVisibleWithFluentWait(driver, kubsCommonWebObj.kubsToastAlert(), 20, 1);
+		waitHelper.waitForElementwithFluentwait(driver, kubsCommonWebObj.kubsToastAlert());
 		String toastAlert = kubsCommonWebObj.kubsToastAlert().getText();
 		System.out.println(toastAlert);
 		Assert.assertEquals(toastAlert, "AssetContractLinkage created successfully.");
@@ -1467,8 +1425,8 @@ public class FixedAsset {
 	@And("^select the bill reference number in asset creation module$")
 	public void select_the_bill_reference_number_in_asset_creation_module() throws Throwable {
 		String xpath = "//ng-dropdown-panel//span[text()='" + assetCreationTestData.get("BillReferenceNumber") + "']";
-		waithelper.waitForElementToVisibleWithFluentWait(driver,
-				fixedAssetObj.fixedAsset_AssetCreation_BillReferenceNumber_Textbox(), 60, 5);
+		waitHelper.waitForElementwithFluentwait(driver,
+				fixedAssetObj.fixedAsset_AssetCreation_BillReferenceNumber_Textbox());
 		fixedAssetObj.fixedAsset_AssetCreation_BillReferenceNumber_Textbox().click();
 
 		fixedAssetObj.fixedAsset_AssetCreation_BillReferenceNumber_Textbox()
@@ -1489,8 +1447,8 @@ public class FixedAsset {
 	@And("^select the asset life in asset creation module$")
 	public void select_the_asset_life_in_asset_creation_module() throws Throwable {
 		String xpath = "//ng-dropdown-panel//span[text()='" + assetCreationTestData.get("AssetLife") + "']";
-		waithelper.waitForElementToVisibleWithFluentWait(driver,
-				fixedAssetObj.Report_report_AssetCreationCommon_AssetLifeUnit(), 60, 5);
+		waitHelper.waitForElementwithFluentwait(driver,
+				fixedAssetObj.Report_report_AssetCreationCommon_AssetLifeUnit());
 		fixedAssetObj.Report_report_AssetCreationCommon_AssetLifeUnit().click();
 
 		fixedAssetObj.Report_report_AssetCreationCommon_AssetLifeUnit()
@@ -1510,7 +1468,7 @@ public class FixedAsset {
 
 	@And("^save the asset creation record$")
 	public void save_the_asset_creation_record() throws Throwable {
-		waithelper.waitForElementToVisibleWithFluentWait(driver, kubsCommonWebObj.kubsSaveButton(), 20, 1);
+		waitHelper.waitForElementwithFluentwait(driver, kubsCommonWebObj.kubsSaveButton());
 		clicksAndActionHelper.moveToElement(kubsCommonWebObj.kubsSaveButton());
 		clicksAndActionHelper.clickOnElement(kubsCommonWebObj.kubsSaveButton());
 
@@ -1539,11 +1497,10 @@ public class FixedAsset {
 	@And("^store the fixed asset creation with minimum details reference number in excel data base and select the record$")
 	public void store_the_fixed_asset_creation_with_minimum_details_reference_number_in_excel_data_base_and_select_the_record()
 			throws Throwable {
-		waithelper.waitForElementToVisibleWithFluentWait(driver, fixedAssetObj.assetCreationReferenceNumber(), 20, 1);
+		waitHelper.waitForElementwithFluentwait(driver, fixedAssetObj.assetCreationReferenceNumber());
 		excelDataForAssetCreation.updateTestData(assetCreationTestData.get("DataSet ID"), "Reference ID",
 				fixedAssetObj.assetCreationReferenceNumber().getText());
-		waithelper.waitForElementToVisibleWithFluentWait(driver, fixedAssetObj.assetCreationNotificationFirstRecord(),
-				20, 1);
+		waitHelper.waitForElementwithFluentwait(driver, fixedAssetObj.assetCreationNotificationFirstRecord());
 		fixedAssetObj.assetCreationNotificationFirstRecord().click();
 
 	}
@@ -1568,10 +1525,10 @@ public class FixedAsset {
 	@And("^store the fixed asset creation with full details reference number in excel data base and select the record$")
 	public void store_the_fixed_asset_creation_with_full_details_reference_number_in_excel_data_base_and_select_the_record()
 			throws Throwable {
-		waithelper.waitForElementToVisibleWithFluentWait(driver, fixedAssetObj.assetCreationReferenceNumber(), 20, 1);
+		waitHelper.waitForElementwithFluentwait(driver, fixedAssetObj.assetCreationReferenceNumber());
 		excelDataForAssetCreation.updateTestData(assetCreationTestData.get("DataSet ID"), "Reference ID",
 				fixedAssetObj.assetCreationReferenceNumber().getText());
-//		waithelper.waitForElementToVisibleWithFluentWait(driver, fixedAssetObj.assetCreationNotificationFirstRecord(),
+//		waithelper.waitForElementwithFluentwait(driver, fixedAssetObj.assetCreationNotificationFirstRecord(),
 //				20, 1);
 		for (int i = 0; i <= 100; i++) {
 			try {
@@ -1587,13 +1544,13 @@ public class FixedAsset {
 
 	@And("^click on submit in fixed asset creation with full details$")
 	public void click_on_submit_in_fixed_asset_creation_with_full_details() throws Throwable {
-		waithelper.waitForElementToVisibleWithFluentWait(driver, kubsCommonWebObj.kubsSubmitButton(), 20, 1);
+		waitHelper.waitForElementwithFluentwait(driver, kubsCommonWebObj.kubsSubmitButton());
 		kubsCommonWebObj.kubsSubmitButton().click();
 	}
 
 	@And("^enter the alert remark in fixed asset creation with full details$")
 	public void enter_the_alert_remark_in_fixed_asset_creation_with_full_details() throws Throwable {
-		waithelper.waitForElementToVisibleWithFluentWait(driver, kubsCommonWebObj.kubsAlertRemark(), 20, 1);
+		waitHelper.waitForElementwithFluentwait(driver, kubsCommonWebObj.kubsAlertRemark());
 		clicksAndActionHelper.moveToElement(kubsCommonWebObj.kubsAlertRemark());
 		clicksAndActionHelper.clickOnElement(kubsCommonWebObj.kubsAlertRemark());
 
@@ -1602,14 +1559,14 @@ public class FixedAsset {
 
 	@And("^click on alert submit in fixed asset creation with full details$")
 	public void click_on_alert_submit_in_fixed_asset_creation_with_full_details() throws Throwable {
-		waithelper.waitForElementToVisibleWithFluentWait(driver, kubsCommonWebObj.kubsAlertSubmit(), 20, 1);
+		waitHelper.waitForElementwithFluentwait(driver, kubsCommonWebObj.kubsAlertSubmit());
 
 		for (int i = 0; i <= 50; i++) {
 			try {
 				kubsCommonWebObj.kubsAlertSubmit().click();
 				break;
 			} catch (Exception e) {
-				waithelper.waitForElementToVisibleWithFluentWait(driver, kubsCommonWebObj.kubsAlertRemark(), 20, 1);
+				waitHelper.waitForElementwithFluentwait(driver, kubsCommonWebObj.kubsAlertRemark());
 				clicksAndActionHelper.moveToElement(kubsCommonWebObj.kubsAlertRemark());
 				clicksAndActionHelper.clickOnElement(kubsCommonWebObj.kubsAlertRemark());
 
@@ -1624,15 +1581,14 @@ public class FixedAsset {
 	@Then("^validate the submit and store the reviewer ID of fixed asset creation with minimum details in excel database$")
 	public void validate_the_submit_and_store_the_reviewer_id_of_fixed_asset_creation_with_minimum_details_in_excel_database()
 			throws Throwable {
-		waithelper.waitForElementToVisibleWithFluentWait(driver, kubsCommonWebObj.kubsToastAlert(), 20, 1);
+		waitHelper.waitForElementwithFluentwait(driver, kubsCommonWebObj.kubsToastAlert());
 		String reviewerID = kubsCommonWebObj.kubsToastAlert().getText().substring(85).replace(".", "");
 		excelDataForAssetCreation.updateTestData(assetCreationTestData.get("DataSet ID"), "Reviewer ID", reviewerID);
 	}
 
 	@And("^Select the asset creation recod in notification$")
 	public void select_the_asset_creation_recod_in_notification() throws Throwable {
-		waithelper.waitForElementToVisibleWithFluentWait(driver, fixedAssetObj.assetCreationNotificationFirstRecord(),
-				20, 1);
+		waitHelper.waitForElementwithFluentwait(driver, fixedAssetObj.assetCreationNotificationFirstRecord());
 		for (int i = 0; i <= 100; i++) {
 			try {
 				clicksAndActionHelper.moveToElement(fixedAssetObj.assetCreationNotificationFirstRecord());
@@ -1649,8 +1605,8 @@ public class FixedAsset {
 
 	@And("^click on asset Item tab in asset creation$")
 	public void click_on_asset_item_tab_in_asset_creation() throws Throwable {
-		waithelper.waitForElementToVisibleWithFluentWait(driver,
-				fixedAssetObj.fixedAsset_AssetCreation_FixedAssetItems(), 20, 1);
+		waitHelper.waitForElementwithFluentwait(driver,
+				fixedAssetObj.fixedAsset_AssetCreation_FixedAssetItems());
 		for (int i = 0; i <= 100; i++) {
 			try {
 				clicksAndActionHelper.moveToElement(fixedAssetObj.fixedAsset_AssetCreation_FixedAssetItems());
@@ -1666,7 +1622,7 @@ public class FixedAsset {
 
 	@And("^click on add button in asset item section$")
 	public void click_on_add_button_in_asset_item_section() throws Throwable {
-		waithelper.waitForElementToVisibleWithFluentWait(driver, fixedAssetObj.fixedAssetAddButton(), 20, 1);
+		waitHelper.waitForElementwithFluentwait(driver, fixedAssetObj.fixedAssetAddButton());
 		for (int i = 0; i <= 100; i++) {
 			try {
 				clicksAndActionHelper.moveToElement(fixedAssetObj.fixedAssetAddButton());
@@ -1691,16 +1647,16 @@ public class FixedAsset {
 				+ randomNumber3;
 		excelDataForAssetCreation.updateTestData(assetCreationTestData.get("DataSet ID"), "UpdatedItemNumber",
 				assetItemNumber);
-		waithelper.waitForElementToVisibleWithFluentWait(driver,
-				fixedAssetObj.fixedAsset_AssetCreation_AssetItemNumber(), 20, 1);
+		waitHelper.waitForElementwithFluentwait(driver,
+				fixedAssetObj.fixedAsset_AssetCreation_AssetItemNumber());
 		fixedAssetObj.fixedAsset_AssetCreation_AssetItemNumber().click();
 		fixedAssetObj.fixedAsset_AssetCreation_AssetItemNumber().sendKeys(assetItemNumber);
 	}
 
 	@And("^enter asset description in asset item creation$")
 	public void enter_asset_description_in_asset_item_creation() throws Throwable {
-		waithelper.waitForElementToVisibleWithFluentWait(driver,
-				fixedAssetObj.fixedAsset_AssetCreation_AssetItemDescription(), 20, 1);
+		waitHelper.waitForElementwithFluentwait(driver,
+				fixedAssetObj.fixedAsset_AssetCreation_AssetItemDescription());
 		fixedAssetObj.fixedAsset_AssetCreation_AssetItemDescription().click();
 		fixedAssetObj.fixedAsset_AssetCreation_AssetItemDescription()
 				.sendKeys(assetCreationTestData.get("AssetItemDescription"));
@@ -1708,10 +1664,10 @@ public class FixedAsset {
 
 	@And("^select the asset capitalization date in asset item creation$")
 	public void select_the_asset_capitalization_date_in_asset_item_creation() throws Throwable {
-		waithelper.waitForElementToVisibleWithFluentWait(driver,
-				fixedAssetObj.fixedAsset_AssetCreation_AssetItemCalendar(), 20, 1);
+		waitHelper.waitForElementwithFluentwait(driver,
+				fixedAssetObj.fixedAsset_AssetCreation_AssetItemCalendar());
 		fixedAssetObj.fixedAsset_AssetCreation_AssetItemCalendar().click();
-		waithelper.waitForElementToVisibleWithFluentWait(driver, kubsCommonWebObj.kubsMonthAndYear(), 20, 1);
+		waitHelper.waitForElementwithFluentwait(driver, kubsCommonWebObj.kubsMonthAndYear());
 		clicksAndActionHelper.moveToElement(kubsCommonWebObj.kubsMonthAndYear());
 		clicksAndActionHelper.clickOnElement(kubsCommonWebObj.kubsMonthAndYear());
 
@@ -1766,8 +1722,7 @@ public class FixedAsset {
 
 	@And("^enter HSN Code in asset item creation$")
 	public void enter_hsn_code_in_asset_item_creation() throws Throwable {
-		waithelper.waitForElementToVisibleWithFluentWait(driver, fixedAssetObj.fixedAsset_AssetCreation_HSNCode(), 20,
-				1);
+		waitHelper.waitForElementwithFluentwait(driver, fixedAssetObj.fixedAsset_AssetCreation_HSNCode());
 		fixedAssetObj.fixedAsset_AssetCreation_HSNCode().click();
 		fixedAssetObj.fixedAsset_AssetCreation_HSNCode().sendKeys(assetCreationTestData.get("HSNCode"));
 		String xpath = "//ng-dropdown-panel//span[text()='" + assetCreationTestData.get("HSNCode") + "']";
@@ -1786,35 +1741,34 @@ public class FixedAsset {
 
 	@And("^enter asset value in asset item creation$")
 	public void enter_asset_value_in_asset_item_creation() throws Throwable {
-		waithelper.waitForElementToVisibleWithFluentWait(driver, fixedAssetObj.fixedAsset_AssetCreation_AssetValue(),
-				20, 1);
+		waitHelper.waitForElementwithFluentwait(driver, fixedAssetObj.fixedAsset_AssetCreation_AssetValue());
 		fixedAssetObj.fixedAsset_AssetCreation_AssetValue().click();
 		fixedAssetObj.fixedAsset_AssetCreation_AssetValue().sendKeys(assetCreationTestData.get("Assetvalue"));
 	}
 
 	@And("^save the asset item creation record$")
 	public void save_the_asset_item_creation_record() throws Throwable {
-		waithelper.waitForElementToVisibleWithFluentWait(driver, kubsCommonWebObj.kubsSaveButton(), 20, 1);
+		waitHelper.waitForElementwithFluentwait(driver, kubsCommonWebObj.kubsSaveButton());
 		kubsCommonWebObj.kubsSaveButton().click();
 	}
 
 	// End
 	@And("^click on submit in fixed asset creation with minimum details$")
 	public void click_on_submit_in_fixed_asset_creation_with_minimum_details() throws Throwable {
-		waithelper.waitForElementToVisibleWithFluentWait(driver, kubsCommonWebObj.kubsSubmitButton(), 20, 1);
+		waitHelper.waitForElementwithFluentwait(driver, kubsCommonWebObj.kubsSubmitButton());
 		kubsCommonWebObj.kubsSubmitButton().click();
 	}
 
 	@And("^enter the alert remark in fixed asset creation with minimum details$")
 	public void enter_the_alert_remark_in_fixed_asset_creation_with_minimum_details() throws Throwable {
-		waithelper.waitForElementToVisibleWithFluentWait(driver, kubsCommonWebObj.kubsAlertRemark(), 20, 1);
+		waitHelper.waitForElementwithFluentwait(driver, kubsCommonWebObj.kubsAlertRemark());
 		kubsCommonWebObj.kubsAlertRemark().click();
 		kubsCommonWebObj.kubsAlertRemark().sendKeys(assetCreationTestData.get("MakerAlertRemark"));
 	}
 
 	@And("^click on alert submit in fixed asset creation with minimum details$")
 	public void click_on_alert_submit_in_fixed_asset_creation_with_minimum_details() throws Throwable {
-		waithelper.waitForElementToVisibleWithFluentWait(driver, kubsCommonWebObj.kubsAlertSubmit(), 20, 1);
+		waitHelper.waitForElementwithFluentwait(driver, kubsCommonWebObj.kubsAlertSubmit());
 		kubsCommonWebObj.kubsAlertSubmit().click();
 	}
 
@@ -1868,8 +1822,7 @@ public class FixedAsset {
 
 	@Then("^Save the filled form$")
 	public void save_the_filled_form() throws Throwable {
-		waithelper.waitForElementToVisibleWithFluentWait(driver, fixedAssetObj.fixedAsset_AssetCreation_SaveButton(),
-				60, 5);
+		waitHelper.waitForElementwithFluentwait(driver, fixedAssetObj.fixedAsset_AssetCreation_SaveButton());
 		fixedAssetObj.fixedAsset_AssetCreation_SaveButton().click();
 		for (int i = 0; i < 90; i++) {
 			try {
@@ -1892,53 +1845,12 @@ public class FixedAsset {
 		}
 	}
 
-//	    @Then("^Click on the Notification$")
-//	    public void click_on_the_notification() throws Throwable {
-//	    	waithelper.waitForElementToVisisbleWithFluentWait(driver,  budgetTransferObj.budget_BudgetTransfer_NotificationIcon());
-//			budgetTransferObj.budget_BudgetTransfer_NotificationIcon().click();
-//
-//	    }
 
-	/*
-	 * @Then("^Select the record which we saved$") public void
-	 * select_the_record_which_we_saved() throws Throwable { // Reference
-	 * waithelper.waitForElementToVisisbleWithFluentWait(driver,
-	 * budgetTransferObj.budget_BudgetTransfer_FirstReferenceId()); String id =
-	 * budgetTransferObj.budget_BudgetTransfer_FirstReferenceId().getText();
-	 * jsonWriter.addReferanceData(id); System.out.println("Reference ID:" + id);
-	 * for (int i = 1; i <= 35; i++) { try {
-	 * waithelper.waitForElementToVisisbleWithFluentWait(driver,
-	 * driver.findElement(By.xpath("//span[contains(text(),'" +
-	 * jsonWriter.readReferancedata() + "')]"))); WebElement referanceID =
-	 * driver.findElement(By.xpath("//span[contains(text(),'" +
-	 * jsonWriter.readReferancedata() + "')]")); referanceID.click();
-	 * System.out.println(referanceID); //
-	 * Assert.assertTrue(referanceID.isDisplayed()); break; } catch
-	 * (NoSuchElementException e) {
-	 * waithelper.waitForElementToVisisbleWithFluentWait(driver, 4000,
-	 * budgetTransferObj.maker_notification_next_button());
-	 * 
-	 * budgetTransferObj.maker_notification_next_button().click(); }
-	 * 
-	 * } budgetTransferObj.budget_BudgetTransfer_FirstReferenceId().click();
-	 * 
-	 * // Action-Pencil String before_xpath = "//span[contains(text(),'"; String
-	 * after_xpath =
-	 * "')]/ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell//ion-button";
-	 * 
-	 * waithelper.waitForElementToVisisbleWithFluentWait(driver,
-	 * 10000,driver.findElement(By.xpath(before_xpath + reader.readReferancedata() +
-	 * after_xpath))); driver.findElement(By.xpath(before_xpath +
-	 * reader.readReferancedata() + after_xpath)).click();
-	 * 
-	 * }
-	 */
 	@Then("^Click on Fixed Asset items$")
 	public void click_on_fixed_asset_items() throws Throwable {
-		// Asset Items
-		Thread.sleep(2000);
-		waithelper.waitForElementToVisibleWithFluentWait(driver,
-				fixedAssetObj.fixedAsset_AssetCreation_FixedAssetItems(), 60, 5);
+	
+		waitHelper.waitForElementwithFluentwait(driver,
+				fixedAssetObj.fixedAsset_AssetCreation_FixedAssetItems());
 		fixedAssetObj.fixedAsset_AssetCreation_FixedAssetItems().click();
 
 	}
@@ -1946,7 +1858,7 @@ public class FixedAsset {
 	@Then("^Click on the add button of asset items$")
 	public void click_on_the_add_button_of_asset_items() {
 		// Add button
-		// waithelper.waitForElementToVisibleWithFluentWait(driver,fixedAssetObj.fixedAsset_AssetCreation_AddButton(),60,5);
+		// waithelper.waitForElementwithFluentwait(driver,fixedAssetObj.fixedAsset_AssetCreation_AddButton(),60,5);
 		for (int i = 0; i < 30; i++) {
 			try {
 				fixedAssetObj.fixedAsset_AssetCreation_AddButton().click();
@@ -1962,23 +1874,20 @@ public class FixedAsset {
 
 	@Then("^Click on save button of item details$")
 	public void click_on_save_button_of_item_details() throws Throwable {
-		waithelper.waitForElementToVisibleWithFluentWait(driver, fixedAssetObj.fixedAsset_AssetAllocation_SaveButton(),
-				60, 5);
+		waitHelper.waitForElementwithFluentwait(driver, fixedAssetObj.fixedAsset_AssetAllocation_SaveButton());
 		fixedAssetObj.fixedAsset_AssetAllocation_SaveButton().click();
-		Thread.sleep(3000);
+	
 	}
 
 	@And("^click on search in notification section$")
 	public void click_on_search_in_notification_section() throws Throwable {
-		// waithelper.waitForElementToVisibleWithFluentWait(driver,
-		// fixedAssetObj.fixedAssetMailBoxSearchButton(), 20, 1);
+	
 
 		javascripthelper.JavaScriptHelper(driver);
 		for (int i = 0; i <= 500; i++) {
 			try {
 				clicksAndActionHelper.moveToElement(fixedAssetObj.fixedAssetMailBoxSearchButton());
-				// clicksAndActionHelper.clickOnElement(fixedAssetObj.fixedAssetMailBoxSearchButton());
-				// clicksAndActionHelper.doubleClick(fixedAssetObj.fixedAssetMailBoxSearchButton());
+				
 				javascripthelper.JSEClick(fixedAssetObj.fixedAssetMailBoxSearchButton());
 				break;
 			} catch (Exception e) {
@@ -1989,13 +1898,7 @@ public class FixedAsset {
 		}
 	}
 
-	@And("^search for asset creation record in notification$")
-	public void search_for_asset_creation_record_in_notification() throws Throwable {
-		waithelper.waitForElementToVisibleWithFluentWait(driver, fixedAssetObj.fixedAssetSearchEventCode(), 20, 1);
-		clicksAndActionHelper.moveToElement(fixedAssetObj.fixedAssetSearchEventCode());
-		clicksAndActionHelper.clickOnElement(fixedAssetObj.fixedAssetSearchEventCode());
-		fixedAssetObj.fixedAssetSearchEventCode().sendKeys(fixedAssetTestDataType.ModuleEventCode);
-	}
+	
 
 	@Then("^Click on Asset Allocation Eye button$")
 	public void click_on_asset_allocation_eye_button() throws Throwable {
@@ -2097,8 +2000,8 @@ public class FixedAsset {
 
 	@And("^enter the asset reference number in asset allocation$")
 	public void enter_the_asset_reference_number_in_asset_allocation() throws Throwable {
-		waithelper.waitForElementToVisibleWithFluentWait(driver,
-				fixedAssetObj.fixedAsset_AssetAllocation_AssetRefferenceNumber(), 20, 1);
+		waitHelper.waitForElementwithFluentwait(driver,
+				fixedAssetObj.fixedAsset_AssetAllocation_AssetRefferenceNumber());
 		fixedAssetObj.fixedAsset_AssetAllocation_AssetRefferenceNumber().click();
 		fixedAssetObj.fixedAsset_AssetAllocation_AssetRefferenceNumber()
 				.sendKeys(assetAllocationTestData.get("AssetReferenceNumber"));
@@ -2120,8 +2023,7 @@ public class FixedAsset {
 
 	@And("^enter the asset item number in asset allocation$")
 	public void enter_the_asset_item_number_in_asset_allocation() throws Throwable {
-		waithelper.waitForElementToVisibleWithFluentWait(driver, fixedAssetObj.fixedAsset_AssetAllocation_ItemNumber(),
-				60, 5);
+		waitHelper.waitForElementwithFluentwait(driver, fixedAssetObj.fixedAsset_AssetAllocation_ItemNumber());
 		fixedAssetObj.fixedAsset_AssetAllocation_ItemNumber().click();
 		fixedAssetObj.fixedAsset_AssetAllocation_ItemNumber().sendKeys(assetAllocationTestData.get("AssetItemNumber"));
 		String xpath = "//ng-dropdown-panel//span[text()='" + assetAllocationTestData.get("AssetItemNumber") + "']";
@@ -2141,8 +2043,7 @@ public class FixedAsset {
 
 	@Then("^verify item number of sold asset is not reflecting in asset allocation screen$")
 	public void verify_item_number_of_sold_asset_is_not_reflecting_in_asset_allocation_screen() throws Throwable {
-		waithelper.waitForElementToVisibleWithFluentWait(driver, fixedAssetObj.fixedAsset_AssetAllocation_ItemNumber(),
-				60, 5);
+		waitHelper.waitForElementwithFluentwait(driver, fixedAssetObj.fixedAsset_AssetAllocation_ItemNumber());
 		fixedAssetObj.fixedAsset_AssetAllocation_ItemNumber().click();
 		fixedAssetObj.fixedAsset_AssetAllocation_ItemNumber().sendKeys(assetAllocationTestData.get("AssetItemNumber"));
 
@@ -2164,8 +2065,8 @@ public class FixedAsset {
 			throws Throwable {
 		boolean statusOfrefNo = false;
 		boolean statusOfItemNo = false;
-		waithelper.waitForElementToVisibleWithFluentWait(driver,
-				fixedAssetObj.fixedAsset_AssetAllocation_AssetRefferenceNumber(), 20, 1);
+		waitHelper.waitForElementwithFluentwait(driver,
+				fixedAssetObj.fixedAsset_AssetAllocation_AssetRefferenceNumber());
 		fixedAssetObj.fixedAsset_AssetAllocation_AssetRefferenceNumber().click();
 		fixedAssetObj.fixedAsset_AssetAllocation_AssetRefferenceNumber()
 				.sendKeys(assetAllocationTestData.get("AssetReferenceNumber"));
@@ -2184,8 +2085,7 @@ public class FixedAsset {
 			}
 		}
 
-		waithelper.waitForElementToVisibleWithFluentWait(driver, fixedAssetObj.fixedAsset_AssetAllocation_ItemNumber(),
-				60, 5);
+		waitHelper.waitForElementwithFluentwait(driver, fixedAssetObj.fixedAsset_AssetAllocation_ItemNumber());
 		fixedAssetObj.fixedAsset_AssetAllocation_ItemNumber().click();
 		fixedAssetObj.fixedAsset_AssetAllocation_ItemNumber().sendKeys(assetAllocationTestData.get("AssetItemNumber"));
 		String xpathItem = "//ng-dropdown-panel//span[text()='" + assetAllocationTestData.get("AssetItemNumber") + "']";
@@ -2210,8 +2110,7 @@ public class FixedAsset {
 
 	@And("^enter the employee id in asset allocation$")
 	public void enter_the_employee_id_in_asset_allocation() throws Throwable {
-		waithelper.waitForElementToVisibleWithFluentWait(driver, fixedAssetObj.fixedAsset_AssetAllocation_EmployeeID(),
-				60, 5);
+		waitHelper.waitForElementwithFluentwait(driver, fixedAssetObj.fixedAsset_AssetAllocation_EmployeeID());
 		fixedAssetObj.fixedAsset_AssetAllocation_EmployeeID().click();
 		fixedAssetObj.fixedAsset_AssetAllocation_EmployeeID().sendKeys(assetAllocationTestData.get("EmployeeID"));
 		String xpath = "//ng-dropdown-panel//span[text()='" + assetAllocationTestData.get("EmployeeID") + "']";
@@ -2231,13 +2130,13 @@ public class FixedAsset {
 
 	@And("^save the asset allocation record$")
 	public void save_the_asset_allocation_record() throws Throwable {
-		waithelper.waitForElementToVisibleWithFluentWait(driver, kubsCommonWebObj.kubsSaveButton(), 20, 1);
+		waitHelper.waitForElementwithFluentwait(driver, kubsCommonWebObj.kubsSaveButton());
 		kubsCommonWebObj.kubsSaveButton().click();
 	}
 
 	@And("^search the asset allocation module code$")
 	public void search_the_asset_allocation_module_code() throws Throwable {
-		waithelper.waitForElementToVisibleWithFluentWait(driver, kubsCommonWebObj.kubsSearchEventCode(), 20, 1);
+		waitHelper.waitForElementwithFluentwait(driver, kubsCommonWebObj.kubsSearchEventCode());
 		clicksAndActionHelper.moveToElement(kubsCommonWebObj.kubsSearchEventCode());
 		clicksAndActionHelper.clickOnElement(kubsCommonWebObj.kubsSearchEventCode());
 		kubsCommonWebObj.kubsSearchEventCode().sendKeys(assetAllocationTestData.get("ModuleCode"));
@@ -2245,7 +2144,7 @@ public class FixedAsset {
 
 	@And("^store the asset allocation reference number in asset allocation excel data base$")
 	public void store_the_asset_allocation_reference_number_in_asset_allocation_excel_data_base() throws Throwable {
-		waithelper.waitForElementToVisibleWithFluentWait(driver, fixedAssetObj.assetAllocationReferenceNumber(), 20, 1);
+		waitHelper.waitForElementwithFluentwait(driver, fixedAssetObj.assetAllocationReferenceNumber());
 		String allocationReferenceNum = fixedAssetObj.assetAllocationReferenceNumber().getText();
 		excelDataForAssetAllocation.updateTestData(assetAllocationTestData.get("DataSet ID"), "Reference ID",
 				allocationReferenceNum);
@@ -2253,8 +2152,7 @@ public class FixedAsset {
 
 	@And("^select the asset allocation record$")
 	public void select_the_asset_allocation_record() throws Throwable {
-		waithelper.waitForElementToVisibleWithFluentWait(driver, fixedAssetObj.assetAllocationNotificationFirstRecord(),
-				20, 1);
+		waitHelper.waitForElementwithFluentwait(driver, fixedAssetObj.assetAllocationNotificationFirstRecord());
 		clicksAndActionHelper.moveToElement(fixedAssetObj.assetAllocationNotificationFirstRecord());
 		clicksAndActionHelper.clickOnElement(fixedAssetObj.assetAllocationNotificationFirstRecord());
 
@@ -2262,13 +2160,13 @@ public class FixedAsset {
 
 	@And("^enter the submit button in asset allocation module$")
 	public void enter_the_submit_button_in_asset_allocation_module() throws Throwable {
-		waithelper.waitForElementToVisibleWithFluentWait(driver, kubsCommonWebObj.kubsSubmitButton(), 20, 1);
+		waitHelper.waitForElementwithFluentwait(driver, kubsCommonWebObj.kubsSubmitButton());
 		kubsCommonWebObj.kubsSubmitButton().click();
 	}
 
 	@And("^enter the alert remark in asset allocation module$")
 	public void enter_the_alert_remark_in_asset_allocation_module() throws Throwable {
-		waithelper.waitForElementToVisibleWithFluentWait(driver, kubsCommonWebObj.kubsAlertRemark(), 20, 1);
+		waitHelper.waitForElementwithFluentwait(driver, kubsCommonWebObj.kubsAlertRemark());
 		clicksAndActionHelper.moveToElement(kubsCommonWebObj.kubsAlertRemark());
 		clicksAndActionHelper.clickOnElement(kubsCommonWebObj.kubsAlertRemark());
 		kubsCommonWebObj.kubsAlertRemark().sendKeys(assetAllocationTestData.get("MakerAlertRemark"));
@@ -2276,13 +2174,13 @@ public class FixedAsset {
 
 	@And("^click on alert submit in asset allocation module$")
 	public void click_on_alert_submit_in_asset_allocation_module() throws Throwable {
-		waithelper.waitForElementToVisibleWithFluentWait(driver, kubsCommonWebObj.kubsAlertSubmit(), 20, 1);
+		waitHelper.waitForElementwithFluentwait(driver, kubsCommonWebObj.kubsAlertSubmit());
 		kubsCommonWebObj.kubsAlertSubmit().click();
 	}
 
 	@Then("^store the reviewer ID in asset allocation  excel database$")
 	public void store_the_reviewer_id_in_asset_allocation_excel_database() throws Throwable {
-		waithelper.waitForElementToVisibleWithFluentWait(driver, kubsCommonWebObj.kubsToastAlert(), 20, 1);
+		waitHelper.waitForElementwithFluentwait(driver, kubsCommonWebObj.kubsToastAlert());
 		String reviewerID = kubsCommonWebObj.kubsToastAlert().getText().substring(85).replace(".", "");
 
 		excelDataForAssetAllocation.updateTestData(assetAllocationTestData.get("DataSet ID"), "Reviewer ID",
@@ -2291,7 +2189,7 @@ public class FixedAsset {
 
 	@And("^click on search in maker approved list view$")
 	public void click_on_search_in_maker_approved_list_view() throws Throwable {
-		waithelper.waitForElementToVisibleWithFluentWait(driver, kubsCommonWebObj.kubsListViewSearchButton(), 20, 1);
+		waitHelper.waitForElementwithFluentwait(driver, kubsCommonWebObj.kubsListViewSearchButton());
 		for (int i = 0; i <= 100; i++) {
 			try {
 				clicksAndActionHelper.moveToElement(kubsCommonWebObj.kubsListViewSearchButton());
@@ -2307,8 +2205,8 @@ public class FixedAsset {
 
 	@And("^search the approved asset reference number in asset allocation list view$")
 	public void search_the_approved_asset_reference_number_in_asset_allocation_list_view() throws Throwable {
-		waithelper.waitForElementToVisibleWithFluentWait(driver,
-				fixedAssetObj.assetAllocationListViewSearchAssetReferenceNumber(), 20, 1);
+		waitHelper.waitForElementwithFluentwait(driver,
+				fixedAssetObj.assetAllocationListViewSearchAssetReferenceNumber());
 		clicksAndActionHelper.moveToElement(fixedAssetObj.assetAllocationListViewSearchAssetReferenceNumber());
 		clicksAndActionHelper.clickOnElement(fixedAssetObj.assetAllocationListViewSearchAssetReferenceNumber());
 		fixedAssetObj.assetAllocationListViewSearchAssetReferenceNumber()
@@ -2444,7 +2342,7 @@ public class FixedAsset {
 
 	@Then("^Save the filled Allocation$")
 	public void save_the_filled_allocation() throws Throwable {
-		waithelper.waitForElementToVisibleWithFluentWait(driver, fixedAssetObj.fixedAsserAllocationSaveButton(), 60, 5);
+		waitHelper.waitForElementwithFluentwait(driver, fixedAssetObj.fixedAsserAllocationSaveButton());
 		fixedAssetObj.fixedAsserAllocationSaveButton().click();
 		for (int i = 0; i < 30; i++) {
 			try {
@@ -2496,7 +2394,7 @@ public class FixedAsset {
 
 	@And("^get imparied asset reference number$")
 	public void get_imparied_asset_reference_number() throws Throwable {
-		waithelper.waitForElementVisible(driver.findElement(By.xpath(
+		waitHelper.waitForElementVisible(driver.findElement(By.xpath(
 				"(//span[text()=' Active ']/ancestor::datatable-body-cell)[1]/preceding::datatable-body-cell[6]")),
 				3000, 300);
 		// driver.findElement(By.xpath("//datatable-row-wrapper[1]//datatable-body-cell[2]//span")).getText();
@@ -2511,7 +2409,7 @@ public class FixedAsset {
 	// -------KUBS_FAT_UAT_006_004---------
 	@And("^User get the revalued asset for allocation$")
 	public void user_get_the_revalued_asset_for_allocation() throws Throwable {
-		waithelper.waitForElementVisible(driver.findElement(By.xpath(
+		waitHelper.waitForElementVisible(driver.findElement(By.xpath(
 				"(//span[text()=' Active ']/ancestor::datatable-body-cell)[1]/preceding::datatable-body-cell[4]")),
 				3000, 300);
 		// driver.findElement(By.xpath("//datatable-row-wrapper[1]//datatable-body-cell[2]//span")).getText();
@@ -2526,26 +2424,26 @@ public class FixedAsset {
 	// --------KUBS_FAT_UAT_002_008-----
 	@Then("^Click on Job Scheduler$")
 	public void click_on_job_scheduler() throws Throwable {
-		waithelper.waitForElementToVisibleWithFluentWait(driver, fixedAssetObj.JobScheduler_Button(), 60, 5);
+		waitHelper.waitForElementwithFluentwait(driver, fixedAssetObj.JobScheduler_Button());
 		fixedAssetObj.JobScheduler_Button().click();
 	}
 
 	@Then("^Click on Job Execution edit button$")
 	public void click_on_job_execution_edit_button() throws Throwable {
-		waithelper.waitForElementToVisibleWithFluentWait(driver, fixedAssetObj.JobExecution_EditButton(), 60, 5);
+		waitHelper.waitForElementwithFluentwait(driver, fixedAssetObj.JobExecution_EditButton());
 		fixedAssetObj.JobExecution_EditButton().click();
 	}
 
 	@Then("^click on Start the job$")
 	public void click_on_start_the_job() throws Throwable {
-		waithelper.waitForElementToVisibleWithFluentWait(driver, fixedAssetObj.JobExecution_StartJobButton(), 60, 5);
+		waitHelper.waitForElementwithFluentwait(driver, fixedAssetObj.JobExecution_StartJobButton());
 		fixedAssetObj.JobExecution_StartJobButton().click();
-		Thread.sleep(2000);
+		
 	}
 
 	@Then("^Click on refresh button$")
 	public void click_on_refresh_button() throws Throwable {
-		waithelper.waitForElementToVisibleWithFluentWait(driver, fixedAssetObj.JobExecution_RefreshButton(), 60, 5);
+		waitHelper.waitForElementwithFluentwait(driver, fixedAssetObj.JobExecution_RefreshButton());
 		fixedAssetObj.JobExecution_RefreshButton().click();
 	}
 
@@ -2554,16 +2452,16 @@ public class FixedAsset {
 	public void click_on_asset_creation_common_edit_grid() throws Throwable {
 		javascripthelper.JavaScriptHelper(driver);
 		javascripthelper.scrollIntoView(fixedAssetObj.Report_report_AssetCreationCommon_editButton());
-		waithelper.waitForElementToVisibleWithFluentWait(driver,
-				fixedAssetObj.Report_report_AssetCreationCommon_editButton(), 60, 5);
+		waitHelper.waitForElementwithFluentwait(driver,
+				fixedAssetObj.Report_report_AssetCreationCommon_editButton());
 		fixedAssetObj.Report_report_AssetCreationCommon_editButton().click();
 
 	}
 
 	@Then("^Click on view button to see Asset Creation report$")
 	public void click_on_view_button_to_see_asset_creation_report() throws Throwable {
-		waithelper.waitForElementToVisibleWithFluentWait(driver,
-				fixedAssetObj.Report_report_AssetCreationCommon_ViewButton(), 60, 5);
+		waitHelper.waitForElementwithFluentwait(driver,
+				fixedAssetObj.Report_report_AssetCreationCommon_ViewButton());
 		fixedAssetObj.Report_report_AssetCreationCommon_ViewButton().click();
 
 	}
@@ -2571,8 +2469,7 @@ public class FixedAsset {
 	// Report
 	@And("^open the list view record which is appeared in asset allocation record$")
 	public void open_the_list_view_record_which_is_appeared_in_asset_allocation_record() throws Throwable {
-		waithelper.waitForElementToVisibleWithFluentWait(driver, fixedAssetObj.assetAllocationListViewFirstRecord(), 20,
-				1);
+		waitHelper.waitForElementwithFluentwait(driver, fixedAssetObj.assetAllocationListViewFirstRecord());
 		clicksAndActionHelper.moveToElement(fixedAssetObj.assetAllocationListViewFirstRecord());
 		clicksAndActionHelper.clickOnElement(fixedAssetObj.assetAllocationListViewFirstRecord());
 	}
@@ -2581,16 +2478,14 @@ public class FixedAsset {
 	public void store_the_asset_item_number_and_asset_referece_number_and_allocated_date_for_report_validation()
 			throws Throwable {
 		javascripthelper.JavaScriptHelper(driver);
-		waithelper.waitForElementToVisibleWithFluentWait(driver,
-				fixedAssetObj.assetAllocationAllocatedReferenceNumber(), 20, 1);
+		waitHelper.waitForElementwithFluentwait(driver,
+				fixedAssetObj.assetAllocationAllocatedReferenceNumber());
 		String assetRefereceNumber = fixedAssetObj.assetAllocationAllocatedReferenceNumber().getText();
 		assetAllocationReportTestData.put("assetRefereceNumber", assetRefereceNumber);
-		waithelper.waitForElementToVisibleWithFluentWait(driver, fixedAssetObj.assetAllocationAllocatedEmployeeID(), 20,
-				1);
+		waitHelper.waitForElementwithFluentwait(driver, fixedAssetObj.assetAllocationAllocatedEmployeeID());
 		String employeeId = fixedAssetObj.assetAllocationAllocatedEmployeeID().getText();
 		assetAllocationReportTestData.put("employeeId", employeeId);
-		waithelper.waitForElementToVisibleWithFluentWait(driver, fixedAssetObj.assetAllocationAllocatedItemNumber(), 20,
-				1);
+		waitHelper.waitForElementwithFluentwait(driver, fixedAssetObj.assetAllocationAllocatedItemNumber());
 		String ItemNumber = fixedAssetObj.assetAllocationAllocatedItemNumber().getText();
 		assetAllocationReportTestData.put("ItemNumber", ItemNumber);
 
@@ -2612,15 +2507,14 @@ public class FixedAsset {
 
 	@And("^click on asset allocation report temp view$")
 	public void click_on_asset_allocation_report_temp_view() throws Throwable {
-		waithelper.waitForElementToVisibleWithFluentWait(driver, fixedAssetObj.assetAllocationAllocationReportTemp(),
-				20, 1);
+		waitHelper.waitForElementwithFluentwait(driver, fixedAssetObj.assetAllocationAllocationReportTemp());
 		fixedAssetObj.assetAllocationAllocationReportTemp().click();
 	}
 
 	@And("^enter the employee name in report$")
 	public void enter_the_employee_name_in_report() throws Throwable {
-		waithelper.waitForElementToVisibleWithFluentWait(driver,
-				fixedAssetObj.assetAllocationAllocationReportEmployeeID(), 20, 1);
+		waitHelper.waitForElementwithFluentwait(driver,
+				fixedAssetObj.assetAllocationAllocationReportEmployeeID());
 		fixedAssetObj.assetAllocationAllocationReportEmployeeID().click();
 		fixedAssetObj.assetAllocationAllocationReportEmployeeID()
 				.sendKeys(assetAllocationReportTestData.get("employeeId"));
@@ -2641,8 +2535,8 @@ public class FixedAsset {
 
 	@And("^enter the asset item number in report$")
 	public void enter_the_asset_item_number_in_report() throws Throwable {
-		waithelper.waitForElementToVisibleWithFluentWait(driver,
-				fixedAssetObj.assetAllocationAllocationReportItemNumber(), 20, 1);
+		waitHelper.waitForElementwithFluentwait(driver,
+				fixedAssetObj.assetAllocationAllocationReportItemNumber());
 		fixedAssetObj.assetAllocationAllocationReportItemNumber().click();
 		fixedAssetObj.assetAllocationAllocationReportItemNumber()
 				.sendKeys(assetAllocationReportTestData.get("ItemNumber"));
@@ -2661,13 +2555,14 @@ public class FixedAsset {
 		}
 	}
 
+	@SuppressWarnings("static-access")
 	@And("^enter the asset allocated date in alocation report$")
 	public void enter_the_asset_allocated_date_in_alocation_report() throws Throwable {
-		waithelper.waitForElementToVisibleWithFluentWait(driver,
-				fixedAssetObj.assetAllocationAllocationReportAllocatedDate(), 20, 1);
+		waitHelper.waitForElementwithFluentwait(driver,
+				fixedAssetObj.assetAllocationAllocationReportAllocatedDate());
 		fixedAssetObj.assetAllocationAllocationReportAllocatedDate().click();
 
-		waithelper.waitForElementToVisibleWithFluentWait(driver, kubsCommonWebObj.kubsCalendarMonthYearOption(), 20, 1);
+		waitHelper.waitForElementwithFluentwait(driver, kubsCommonWebObj.kubsCalendarMonthYearOption());
 		clicksAndActionHelper.moveToElement(kubsCommonWebObj.kubsCalendarMonthYearOption());
 		clicksAndActionHelper.clickOnElement(kubsCommonWebObj.kubsCalendarMonthYearOption());
 		String[] splitDate = assetAllocationReportTestData.get("assetAllocatedDate").split("-");
@@ -2782,48 +2677,47 @@ public class FixedAsset {
 
 	@And("^store the asset branch for asset creation common report$")
 	public void store_the_asset_branch_for_asset_creation_common_report() throws Throwable {
-		waithelper.waitForElementToVisibleWithFluentWait(driver,
-				fixedAssetObj.assetcreationListViewApprovedAssetBranch(), 20, 1);
+		waitHelper.waitForElementwithFluentwait(driver,
+				fixedAssetObj.assetcreationListViewApprovedAssetBranch());
 		String approvedBranch = fixedAssetObj.assetcreationListViewApprovedAssetBranch().getText();
 		assetCreationReportTestData.put("approvedBranch", approvedBranch);
 	}
 
 	@And("^store the asset code and seet reference number for asset creation report$")
 	public void store_the_asset_code_and_seet_reference_number_for_asset_creation_report() throws Throwable {
-		waithelper.waitForElementToVisibleWithFluentWait(driver,
-				fixedAssetObj.assetcreationListViewApprovedAssetReferenceNumber(), 20, 1);
+		waitHelper.waitForElementwithFluentwait(driver,
+				fixedAssetObj.assetcreationListViewApprovedAssetReferenceNumber());
 		String ApprovedAssetReferenceNumber = fixedAssetObj.assetcreationListViewApprovedAssetReferenceNumber()
 				.getText();
 		assetCreationReportTestData.put("ApprovedAssetReferenceNumber", ApprovedAssetReferenceNumber);
-		waithelper.waitForElementToVisibleWithFluentWait(driver, fixedAssetObj.assetCreationListViewApprovedAssetCode(),
-				20, 1);
+		waitHelper.waitForElementwithFluentwait(driver, fixedAssetObj.assetCreationListViewApprovedAssetCode());
 		String ApprovedAssetCode = fixedAssetObj.assetCreationListViewApprovedAssetCode().getText();
 		assetCreationReportTestData.put("ApprovedAssetCode", ApprovedAssetCode);
 	}
 
 	@And("^seelect the asset creation approved record in list view$")
 	public void seelect_the_asset_creation_approved_record_in_list_view() throws Throwable {
-		waithelper.waitForElementToVisibleWithFluentWait(driver,
-				fixedAssetObj.assetcreationListViewApprovedAssetRecord(), 20, 1);
+		waitHelper.waitForElementwithFluentwait(driver,
+				fixedAssetObj.assetcreationListViewApprovedAssetRecord());
 		fixedAssetObj.assetcreationListViewApprovedAssetRecord().click();
 	}
 
 	@And("^store the asset life in for asset creation report validation$")
 	public void store_the_asset_life_in_for_asset_creation_report_validation() throws Throwable {
-		waithelper.waitForElementToVisibleWithFluentWait(driver,
-				fixedAssetObj.assetcreationApprovedAssetCreationAssetLife(), 20, 1);
+		waitHelper.waitForElementwithFluentwait(driver,
+				fixedAssetObj.assetcreationApprovedAssetCreationAssetLife());
 		String approvedAssetLife = fixedAssetObj.assetcreationApprovedAssetCreationAssetLife().getText();
 		assetCreationReportTestData.put("approvedAssetLife", approvedAssetLife);
 	}
 
 	@And("^select the item record in list view of item details$")
 	public void select_the_item_record_in_list_view_of_item_details() throws Throwable {
-		waithelper.waitForElementToVisibleWithFluentWait(driver,
-				fixedAssetObj.assetcreationListViewApprovedAssetItemNumber(), 20, 1);
+		waitHelper.waitForElementwithFluentwait(driver,
+				fixedAssetObj.assetcreationListViewApprovedAssetItemNumber());
 		String approvedAssetItemNumber = fixedAssetObj.assetcreationListViewApprovedAssetItemNumber().getText();
 		assetCreationReportTestData.put("approvedAssetItemNumber", approvedAssetItemNumber);
-		waithelper.waitForElementToVisibleWithFluentWait(driver,
-				fixedAssetObj.assetcreationListViewApprovedAssetItemRecord(), 20, 1);
+		waitHelper.waitForElementwithFluentwait(driver,
+				fixedAssetObj.assetcreationListViewApprovedAssetItemRecord());
 		fixedAssetObj.assetcreationListViewApprovedAssetItemRecord().click();
 	}
 
@@ -2847,7 +2741,7 @@ public class FixedAsset {
 				}
 			}
 		}
-		waithelper.waitForElementToVisibleWithFluentWait(driver, kubsCommonWebObj.kUBSSystemDate(), 20, 1);
+		waitHelper.waitForElementwithFluentwait(driver, kubsCommonWebObj.kUBSSystemDate());
 		String systemDate = kubsCommonWebObj.kUBSSystemDate().getText();
 		assetCreationReportTestData.put("systemDate", systemDate);
 		System.out.println("System Date" + assetCreationReportTestData.get("systemDate"));
@@ -2868,12 +2762,13 @@ public class FixedAsset {
 		}
 	}
 
+	@SuppressWarnings("static-access")
 	@And("^give the capitalization date in asset creation item wise report$")
 	public void give_the_capitalization_date_in_asset_creation_item_wise_report() throws Throwable {
-		waithelper.waitForElementToVisibleWithFluentWait(driver,
-				fixedAssetObj.assetcreationLReportCapitalizationDateCalendar(), 20, 1);
+		waitHelper.waitForElementwithFluentwait(driver,
+				fixedAssetObj.assetcreationLReportCapitalizationDateCalendar());
 		fixedAssetObj.assetcreationLReportCapitalizationDateCalendar().click();
-		waithelper.waitForElementToVisibleWithFluentWait(driver, kubsCommonWebObj.kubsCalendarMonthYearOption(), 20, 1);
+		waitHelper.waitForElementwithFluentwait(driver, kubsCommonWebObj.kubsCalendarMonthYearOption());
 		clicksAndActionHelper.moveToElement(kubsCommonWebObj.kubsCalendarMonthYearOption());
 		clicksAndActionHelper.clickOnElement(kubsCommonWebObj.kubsCalendarMonthYearOption());
 		System.out.println("Created date" + assetCreationReportTestData.get("capDate"));
@@ -2970,13 +2865,14 @@ public class FixedAsset {
 
 	}
 
+	@SuppressWarnings("static-access")
 	@And("^give the asset creation as on date in asset creation item wise report$")
 	public void give_the_asset_creation_as_on_date_in_asset_creation_item_wise_report() throws Throwable {
-		waithelper.waitForElementToVisibleWithFluentWait(driver,
-				fixedAssetObj.assetcreationLReportAssetCreationAsOnDateCalendar(), 20, 1);
+		waitHelper.waitForElementwithFluentwait(driver,
+				fixedAssetObj.assetcreationLReportAssetCreationAsOnDateCalendar());
 		fixedAssetObj.assetcreationLReportAssetCreationAsOnDateCalendar().click();
 
-		waithelper.waitForElementToVisibleWithFluentWait(driver, kubsCommonWebObj.kubsCalendarMonthYearOption(), 20, 1);
+		waitHelper.waitForElementwithFluentwait(driver, kubsCommonWebObj.kubsCalendarMonthYearOption());
 		clicksAndActionHelper.moveToElement(kubsCommonWebObj.kubsCalendarMonthYearOption());
 		clicksAndActionHelper.clickOnElement(kubsCommonWebObj.kubsCalendarMonthYearOption());
 		System.out.println("Created date" + assetCreationReportTestData.get("systemDate"));
@@ -3074,7 +2970,7 @@ public class FixedAsset {
 
 	@And("^click on asset creation item report temp view$")
 	public void click_on_asset_creation_item_report_temp_view() throws Throwable {
-		waithelper.waitForElementToVisibleWithFluentWait(driver, kubsCommonWebObj.kubsAssetCreationItemReport(), 20, 1);
+		waitHelper.waitForElementwithFluentwait(driver, kubsCommonWebObj.kubsAssetCreationItemReport());
 		kubsCommonWebObj.kubsAssetCreationItemReport().click();
 
 	}
@@ -3094,8 +2990,7 @@ public class FixedAsset {
 				break;
 			} catch (Exception e) {
 				if (i != 500) {
-					waithelper.waitForElementToVisibleWithFluentWait(driver, kubsCommonWebObj.kubsReportNextButton(),
-							10, 1);
+					waitHelper.waitForElementwithFluentwait(driver, kubsCommonWebObj.kubsReportNextButton());
 					kubsCommonWebObj.kubsReportNextButton().click();
 				} else if (i == 500) {
 					Assert.fail(e.getMessage());
@@ -3108,15 +3003,15 @@ public class FixedAsset {
 
 	@And("^click on asset creation common roport temp view$")
 	public void click_on_asset_creation_common_roport_temp_view() throws Throwable {
-		waithelper.waitForElementToVisibleWithFluentWait(driver,
-				kubsCommonWebObj.kubsAssetAssetCreationCommonReportTempView(), 20, 1);
+		waitHelper.waitForElementwithFluentwait(driver,
+				kubsCommonWebObj.kubsAssetAssetCreationCommonReportTempView());
 		kubsCommonWebObj.kubsAssetAssetCreationCommonReportTempView().click();
 	}
 
 	@And("^enter the asset life unit in asset creation common report$")
 	public void enter_the_asset_life_unit_in_asset_creation_common_report() throws Throwable {
-		waithelper.waitForElementToVisibleWithFluentWait(driver,
-				fixedAssetObj.assetCreationCommonReport_AssetLifeUnit(), 20, 1);
+		waitHelper.waitForElementwithFluentwait(driver,
+				fixedAssetObj.assetCreationCommonReport_AssetLifeUnit());
 		fixedAssetObj.assetCreationCommonReport_AssetLifeUnit().click();
 		fixedAssetObj.assetCreationCommonReport_AssetLifeUnit()
 				.sendKeys(assetCreationReportTestData.get("approvedAssetLife"));
@@ -3124,15 +3019,16 @@ public class FixedAsset {
 		fixedAssetObj.assetCreationCommonReport_AssetLifeUnit().sendKeys(Keys.ENTER);
 	}
 
+	@SuppressWarnings("static-access")
 	@And("^enter the asset date in asset creation common report$")
 	public void enter_the_asset_date_in_asset_creation_common_report() throws Throwable {
-		waithelper.waitForElementToVisibleWithFluentWait(driver,
-				fixedAssetObj.assetcreationLReportCapitalizationDateCalendar(), 20, 1);
+		waitHelper.waitForElementwithFluentwait(driver,
+				fixedAssetObj.assetcreationLReportCapitalizationDateCalendar());
 		fixedAssetObj.assetcreationLReportCapitalizationDateCalendar().click();
-		waithelper.waitForElementToVisibleWithFluentWait(driver, kubsCommonWebObj.kubsCalendarMonthYearOption(), 20, 1);
+		waitHelper.waitForElementwithFluentwait(driver, kubsCommonWebObj.kubsCalendarMonthYearOption());
 		clicksAndActionHelper.moveToElement(kubsCommonWebObj.kubsCalendarMonthYearOption());
 		clicksAndActionHelper.clickOnElement(kubsCommonWebObj.kubsCalendarMonthYearOption());
-		waithelper.waitForElementToVisibleWithFluentWait(driver, kubsCommonWebObj.kUBSSystemDate(), 20, 1);
+		waitHelper.waitForElementwithFluentwait(driver, kubsCommonWebObj.kUBSSystemDate());
 		String systemDate = kubsCommonWebObj.kUBSSystemDate().getText();
 		System.out.println("Created date" + systemDate);
 		String[] splitDate = systemDate.split("-");
@@ -3243,8 +3139,7 @@ public class FixedAsset {
 				break;
 			} catch (Exception e) {
 				if (i != 500) {
-					waithelper.waitForElementToVisibleWithFluentWait(driver, kubsCommonWebObj.kubsReportNextButton(),
-							10, 1);
+					waitHelper.waitForElementwithFluentwait(driver, kubsCommonWebObj.kubsReportNextButton());
 					kubsCommonWebObj.kubsReportNextButton().click();
 				} else if (i == 500) {
 					Assert.fail(e.getMessage());
@@ -3257,28 +3152,28 @@ public class FixedAsset {
 
 	@And("^click on fixed asset branch level depriciation list view$")
 	public void click_on_fixed_asset_branch_level_depriciation_list_view() throws Throwable {
-		waithelper.waitForElementToVisibleWithFluentWait(driver,
-				fixedAssetObj.fixedAssetBranchLevelDepriciationListView(), 20, 1);
+		waitHelper.waitForElementwithFluentwait(driver,
+				fixedAssetObj.fixedAssetBranchLevelDepriciationListView());
 		fixedAssetObj.fixedAssetBranchLevelDepriciationListView().click();
 
 	}
 
 	@And("^click on search button in branch level depriciation list view$")
 	public void click_on_search_button_in_branch_level_depriciation_list_view() throws Throwable {
-		waithelper.waitForElementToVisibleWithFluentWait(driver, kubsCommonWebObj.kubsListViewSearchButton(), 20, 1);
+		waitHelper.waitForElementwithFluentwait(driver, kubsCommonWebObj.kubsListViewSearchButton());
 		kubsCommonWebObj.kubsListViewSearchButton().click();
 	}
 
 	@And("^search the branch level for geting the depriciation period$")
 	public void search_the_branch_level_for_geting_the_depriciation_period() throws Throwable {
-		waithelper.waitForElementToVisibleWithFluentWait(driver,
-				fixedAssetObj.fixedAssetBranchLevelDepriciationSearchBranchCode(), 20, 1);
+		waitHelper.waitForElementwithFluentwait(driver,
+				fixedAssetObj.fixedAssetBranchLevelDepriciationSearchBranchCode());
 		fixedAssetObj.fixedAssetBranchLevelDepriciationSearchBranchCode().click();
 		String[] splitBranch = assetCreationReportTestData.get("approvedBranch").split("-");
 		fixedAssetObj.fixedAssetBranchLevelDepriciationSearchBranchCode().sendKeys(splitBranch[0].trim());
 
-		waithelper.waitForElementToVisibleWithFluentWait(driver,
-				fixedAssetObj.fixedAssetBranchLevelDepriciationListViewDepriciationPeriod(), 20, 1);
+		waitHelper.waitForElementwithFluentwait(driver,
+				fixedAssetObj.fixedAssetBranchLevelDepriciationListViewDepriciationPeriod());
 		String depriciationPeriod = fixedAssetObj.fixedAssetBranchLevelDepriciationListViewDepriciationPeriod()
 				.getText();
 		assetCreationReportTestData.put("depriciationPeriod", depriciationPeriod);
@@ -3287,13 +3182,13 @@ public class FixedAsset {
 
 	@And("^click on temp view of depriciation report temp view$")
 	public void click_on_temp_view_of_depriciation_report_temp_view() throws Throwable {
-		waithelper.waitForElementToVisibleWithFluentWait(driver, fixedAssetObj.depriciationReportTempView(), 20, 1);
+		waitHelper.waitForElementwithFluentwait(driver, fixedAssetObj.depriciationReportTempView());
 		fixedAssetObj.depriciationReportTempView().click();
 	}
 
 	@And("^enter the branch in depriciation report$")
 	public void enter_the_branch_in_depriciation_report() throws Throwable {
-		waithelper.waitForElementToVisibleWithFluentWait(driver, fixedAssetObj.depriciationReportBranchInput(), 20, 1);
+		waitHelper.waitForElementwithFluentwait(driver, fixedAssetObj.depriciationReportBranchInput());
 		fixedAssetObj.depriciationReportBranchInput().click();
 		String[] splitBranch = assetCreationReportTestData.get("approvedBranch").split("-");
 		fixedAssetObj.depriciationReportBranchInput().sendKeys(splitBranch[1]);
@@ -3303,12 +3198,12 @@ public class FixedAsset {
 
 	}
 
+	@SuppressWarnings("static-access")
 	@And("^give the date in depriciation report$")
 	public void give_the_date_in_depriciation_report() throws Throwable {
-		waithelper.waitForElementToVisibleWithFluentWait(driver, fixedAssetObj.depriciationReportDepriciationCalendar(),
-				20, 1);
+		waitHelper.waitForElementwithFluentwait(driver, fixedAssetObj.depriciationReportDepriciationCalendar());
 		fixedAssetObj.depriciationReportDepriciationCalendar().click();
-		waithelper.waitForElementToVisibleWithFluentWait(driver, kubsCommonWebObj.kubsCalendarMonthYearOption(), 20, 1);
+		waitHelper.waitForElementwithFluentwait(driver, kubsCommonWebObj.kubsCalendarMonthYearOption());
 		clicksAndActionHelper.moveToElement(kubsCommonWebObj.kubsCalendarMonthYearOption());
 		clicksAndActionHelper.clickOnElement(kubsCommonWebObj.kubsCalendarMonthYearOption());
 		System.out.println("Created date" + assetCreationReportTestData.get("assetDate"));
@@ -3406,8 +3301,7 @@ public class FixedAsset {
 
 	@And("^enter the depriciation period in depriciation report$")
 	public void enter_the_depriciation_period_in_depriciation_report() throws Throwable {
-		waithelper.waitForElementToVisibleWithFluentWait(driver, fixedAssetObj.depriciationReportDepriciationPeriod(),
-				20, 1);
+		waitHelper.waitForElementwithFluentwait(driver, fixedAssetObj.depriciationReportDepriciationPeriod());
 		fixedAssetObj.depriciationReportDepriciationPeriod().click();
 		fixedAssetObj.depriciationReportDepriciationPeriod()
 				.sendKeys(assetCreationReportTestData.get("depriciationPeriod"));
@@ -3431,8 +3325,7 @@ public class FixedAsset {
 				break;
 			} catch (Exception e) {
 				if (i != 500) {
-					waithelper.waitForElementToVisibleWithFluentWait(driver, kubsCommonWebObj.kubsReportNextButton(),
-							10, 1);
+					waitHelper.waitForElementwithFluentwait(driver, kubsCommonWebObj.kubsReportNextButton());
 					kubsCommonWebObj.kubsReportNextButton().click();
 				} else if (i == 500) {
 					Assert.fail(e.getMessage());
@@ -3445,14 +3338,14 @@ public class FixedAsset {
 
 	@And("^click on temp view of asset limit report$")
 	public void click_on_temp_view_of_asset_limit_report() throws Throwable {
-		waithelper.waitForElementToVisibleWithFluentWait(driver, fixedAssetObj.assetLimitReportTempView(), 20, 1);
+		waitHelper.waitForElementwithFluentwait(driver, fixedAssetObj.assetLimitReportTempView());
 		fixedAssetObj.assetLimitReportTempView().click();
 		;
 	}
 
 	@And("^enter the accounting standard in asset limit report$")
 	public void enter_the_accounting_standard_in_asset_limit_report() throws Throwable {
-		waithelper.waitForElementToVisibleWithFluentWait(driver, fixedAssetObj.assetLimitAccountingStandards(), 20, 1);
+		waitHelper.waitForElementwithFluentwait(driver, fixedAssetObj.assetLimitAccountingStandards());
 		fixedAssetObj.assetLimitAccountingStandards().click();
 		fixedAssetObj.assetLimitAccountingStandards().sendKeys(Keys.DOWN);
 		fixedAssetObj.assetLimitAccountingStandards().sendKeys(Keys.ENTER);
@@ -3460,7 +3353,7 @@ public class FixedAsset {
 
 	@And("^enter the limit as on date in asset limit report$")
 	public void enter_the_limit_as_on_date_in_asset_limit_report() throws Throwable {
-		waithelper.waitForElementToVisibleWithFluentWait(driver, fixedAssetObj.assetLimitLimitAsOnDate(), 20, 1);
+		waitHelper.waitForElementwithFluentwait(driver, fixedAssetObj.assetLimitLimitAsOnDate());
 		fixedAssetObj.assetLimitLimitAsOnDate().click();
 
 		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MMM/uuuu");
@@ -3476,7 +3369,7 @@ public class FixedAsset {
 		String FullMonth = DateSplit1[1];
 		Integer yearNum = Integer.valueOf(DateSplit[2]);
 
-		waithelper.waitForElementToVisibleWithFluentWait(driver, kubsCommonWebObj.kubsCalendarMonthYearOption(), 20, 1);
+		waitHelper.waitForElementwithFluentwait(driver, kubsCommonWebObj.kubsCalendarMonthYearOption());
 		clicksAndActionHelper.moveToElement(kubsCommonWebObj.kubsCalendarMonthYearOption());
 		clicksAndActionHelper.clickOnElement(kubsCommonWebObj.kubsCalendarMonthYearOption());
 		String yearXpath = "//span[contains(text(),'" + yearNum + "')]//ancestor::td";

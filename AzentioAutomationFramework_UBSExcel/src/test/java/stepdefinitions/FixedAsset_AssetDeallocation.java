@@ -1,5 +1,6 @@
 package stepdefinitions;
 
+import java.io.IOException;
 import java.time.Month;
 import java.util.HashMap;
 import java.util.Map;
@@ -9,7 +10,6 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 
-import dataProvider.JsonConfig;
 import helper.BrowserHelper;
 import helper.ClicksAndActionsHelper;
 import helper.JavascriptHelper;
@@ -20,18 +20,15 @@ import pageobjects.FixedAsset_AssetDeallocationObj;
 import pageobjects.KUBS_CommonWebElements;
 import resources.BaseClass;
 import resources.ExcelData;
-import testDataType.FixedAsset_AssetCreationTestDataType;
-import testDataType.FixedAsset_AssetDeallocationTestDataType;
 
 public class FixedAsset_AssetDeallocation extends BaseClass {
 	WebDriver driver = BaseClass.driver;
-	JsonConfig jsonReader = new JsonConfig();
-	WaitHelper waithelper = new WaitHelper(driver);
+	WaitHelper waitHelper = new WaitHelper(driver);
 	ClicksAndActionsHelper clicksAndActionHelper = new ClicksAndActionsHelper(driver);
 	FixedAsset_AssetDeallocationObj fixedAsset_AssetDeallocationObj = new FixedAsset_AssetDeallocationObj(driver);
 	BrowserHelper browserHelper = new BrowserHelper(driver);
 	String AssetReferenceNumber;
-	JavascriptHelper javascripthelper = new JavascriptHelper();
+	JavascriptHelper javascriptHelper = new JavascriptHelper();
 	Map<String, String> mapData = new HashMap<>();
 	KUBS_CommonWebElements kubsCommonWebObj = new KUBS_CommonWebElements(driver);
 	String path = System.getProperty("user.dir") + "\\Test-data\\KUBSTestData.xlsx";
@@ -42,10 +39,11 @@ public class FixedAsset_AssetDeallocation extends BaseClass {
 	ExcelData excelDataForAssetWriteOff = new ExcelData(path, "FixedAsset_WriteOff", "DataSet ID");
 	Map<String, String> assetDeAllocationTestData = new HashMap<>();
 	Map<String, String> assetDeAllocationReportTestData = new HashMap<>();
+
 	@And("^get the allocated asset reference number in asset allocation module$")
 	public void get_the_allocated_asset_reference_number_in_asset_allocation_module() throws Throwable {
-		waithelper.waitForElementToVisibleWithFluentWait(driver,
-				fixedAsset_AssetDeallocationObj.fixedAssetAllocatedApprovedRecord(), 60, 5);
+		waitHelper.waitForElementwithFluentwait(driver,
+				fixedAsset_AssetDeallocationObj.fixedAssetAllocatedApprovedRecord());
 		mapData.put("allocatedAssetReferenceNumber",
 				fixedAsset_AssetDeallocationObj.fixedAssetAllocatedApprovedRecord().getText());
 		System.out.println("Allocate dasset reference number is " + mapData.get("allocatedAssetReferenceNumber"));
@@ -116,11 +114,11 @@ public class FixedAsset_AssetDeallocation extends BaseClass {
 	public void click_on_asset_deallocaion_eye_button() throws InterruptedException {
 		// Eye
 
-		javascripthelper.JavaScriptHelper(driver);
+		javascriptHelper.JavaScriptHelper(driver);
 		for (int i = 0; i <= 100; i++) {
 			try {
 
-				javascripthelper.scrollIntoView(fixedAsset_AssetDeallocationObj.fixedAsset_AssetDeallocation_EyeIcon());
+				javascriptHelper.scrollIntoView(fixedAsset_AssetDeallocationObj.fixedAsset_AssetDeallocation_EyeIcon());
 				// waithelper.waitForElementToVisisbleWithFluentWait(driver,
 				// fixedAsset_AssetDeallocationObj.fixedAsset_AssetDeallocation_EyeIcon());
 				fixedAsset_AssetDeallocationObj.fixedAsset_AssetDeallocation_EyeIcon().click();
@@ -136,8 +134,8 @@ public class FixedAsset_AssetDeallocation extends BaseClass {
 
 	@And("^enter the asset reference number in asset de allocation$")
 	public void enter_the_asset_reference_number_in_asset_de_allocation() throws Throwable {
-		waithelper.waitForElementToVisibleWithFluentWait(driver,
-				fixedAsset_AssetDeallocationObj.fixedAsset_AssetDeallocation_AssetReferenceNumber(), 20, 1);
+		waitHelper.waitForElementwithFluentwait(driver,
+				fixedAsset_AssetDeallocationObj.fixedAsset_AssetDeallocation_AssetReferenceNumber());
 		fixedAsset_AssetDeallocationObj.fixedAsset_AssetDeallocation_AssetReferenceNumber().click();
 		fixedAsset_AssetDeallocationObj.fixedAsset_AssetDeallocation_AssetReferenceNumber()
 				.sendKeys(assetDeAllocationTestData.get("AssetReferenceNumber"));
@@ -159,8 +157,8 @@ public class FixedAsset_AssetDeallocation extends BaseClass {
 
 	@And("^enter the asset item number in asset de allocation$")
 	public void enter_the_asset_item_number_in_asset_de_allocation() throws Throwable {
-		waithelper.waitForElementToVisibleWithFluentWait(driver,
-				fixedAsset_AssetDeallocationObj.fixedAsset_AssetDeallocation_ItemNumber(), 20, 1);
+		waitHelper.waitForElementwithFluentwait(driver,
+				fixedAsset_AssetDeallocationObj.fixedAsset_AssetDeallocation_ItemNumber());
 		fixedAsset_AssetDeallocationObj.fixedAsset_AssetDeallocation_ItemNumber().click();
 		fixedAsset_AssetDeallocationObj.fixedAsset_AssetDeallocation_ItemNumber()
 				.sendKeys(assetDeAllocationTestData.get("AssetItemNumber"));
@@ -181,13 +179,13 @@ public class FixedAsset_AssetDeallocation extends BaseClass {
 
 	@And("^save the asset de allocation record$")
 	public void save_the_asset_de_allocation_record() throws Throwable {
-		waithelper.waitForElementToVisibleWithFluentWait(driver, kubsCommonWebObj.kubsSaveButton(), 20, 1);
+		waitHelper.waitForElementwithFluentwait(driver, kubsCommonWebObj.kubsSaveButton());
 		kubsCommonWebObj.kubsSaveButton().click();
 	}
 
 	@And("^search the asset de allocation record in notification$")
 	public void search_the_asset_de_allocation_record_in_notification() throws Throwable {
-		waithelper.waitForElementToVisibleWithFluentWait(driver, kubsCommonWebObj.kubsSearchEventCode(), 20, 1);
+		waitHelper.waitForElementwithFluentwait(driver, kubsCommonWebObj.kubsSearchEventCode());
 		clicksAndActionHelper.moveToElement(kubsCommonWebObj.kubsSearchEventCode());
 		clicksAndActionHelper.clickOnElement(kubsCommonWebObj.kubsSearchEventCode());
 		kubsCommonWebObj.kubsSearchEventCode().sendKeys(assetDeAllocationTestData.get("ModuleCode"));
@@ -196,28 +194,28 @@ public class FixedAsset_AssetDeallocation extends BaseClass {
 
 	@And("^store the asset de allocation record in asset de allocation excel database$")
 	public void store_the_asset_de_allocation_record_in_asset_de_allocation_excel_database() throws Throwable {
-		waithelper.waitForElementToVisibleWithFluentWait(driver,
-				fixedAsset_AssetDeallocationObj.assetDeAllocationReferenceNumber(), 20, 1);
+		waitHelper.waitForElementwithFluentwait(driver,
+				fixedAsset_AssetDeallocationObj.assetDeAllocationReferenceNumber());
 		excelDataForAssetDeAllocation.updateTestData(assetDeAllocationTestData.get("DataSet ID"), "Reference ID",
 				fixedAsset_AssetDeallocationObj.assetDeAllocationReferenceNumber().getText());
 	}
 
 	@And("^select the asse de allocation record$")
 	public void select_the_asse_de_allocation_record() throws Throwable {
-		waithelper.waitForElementToVisibleWithFluentWait(driver,
-				fixedAsset_AssetDeallocationObj.assetDeAllocationNotificationFirstRecord(), 20, 1);
+		waitHelper.waitForElementwithFluentwait(driver,
+				fixedAsset_AssetDeallocationObj.assetDeAllocationNotificationFirstRecord());
 		fixedAsset_AssetDeallocationObj.assetDeAllocationNotificationFirstRecord().click();
 	}
 
 	@And("^click on submit in asset de allocation$")
 	public void click_on_submit_in_asset_de_allocation() throws Throwable {
-		waithelper.waitForElementToVisibleWithFluentWait(driver, kubsCommonWebObj.kubsSubmitButton(), 20, 1);
+		waitHelper.waitForElementwithFluentwait(driver, kubsCommonWebObj.kubsSubmitButton());
 		kubsCommonWebObj.kubsSubmitButton().click();
 	}
 
 	@And("^enter the alert remark in asset de allocation$")
 	public void enter_the_alert_remark_in_asset_de_allocation() throws Throwable {
-		waithelper.waitForElementToVisibleWithFluentWait(driver, kubsCommonWebObj.kubsAlertRemark(), 20, 1);
+		waitHelper.waitForElementwithFluentwait(driver, kubsCommonWebObj.kubsAlertRemark());
 		clicksAndActionHelper.moveToElement(kubsCommonWebObj.kubsAlertRemark());
 		clicksAndActionHelper.clickOnElement(kubsCommonWebObj.kubsAlertRemark());
 		kubsCommonWebObj.kubsAlertRemark().sendKeys(assetDeAllocationTestData.get("MakerAlertRemark"));
@@ -225,13 +223,13 @@ public class FixedAsset_AssetDeallocation extends BaseClass {
 
 	@And("^click on alert submit in asset de allocation$")
 	public void click_on_alert_submit_in_asset_de_allocation() throws Throwable {
-		waithelper.waitForElementToVisibleWithFluentWait(driver, kubsCommonWebObj.kubsAlertSubmit(), 20, 1);
+		waitHelper.waitForElementwithFluentwait(driver, kubsCommonWebObj.kubsAlertSubmit());
 		kubsCommonWebObj.kubsAlertSubmit().click();
 	}
 
 	@And("^store the reviewer ID of asset de allocation record and store in excel database$")
 	public void store_the_reviewer_id_of_asset_de_allocation_record_and_store_in_excel_database() throws Throwable {
-		waithelper.waitForElementToVisibleWithFluentWait(driver, kubsCommonWebObj.kubsToastAlert(), 20, 1);
+		waitHelper.waitForElementwithFluentwait(driver, kubsCommonWebObj.kubsToastAlert());
 		String reviewerID = kubsCommonWebObj.kubsToastAlert().getText().substring(85).replace(".", "");
 		excelDataForAssetDeAllocation.updateTestData(assetDeAllocationTestData.get("DataSet ID"), "Reviewer ID",
 				reviewerID);
@@ -239,8 +237,8 @@ public class FixedAsset_AssetDeallocation extends BaseClass {
 
 	@And("^search the de allocated asset reference number$")
 	public void search_the_de_allocated_asset_reference_number() throws Throwable {
-		waithelper.waitForElementToVisibleWithFluentWait(driver,
-				fixedAsset_AssetDeallocationObj.assetDeAllocationListViewSearchAssetReferenceNumber(), 20, 1);
+		waitHelper.waitForElementwithFluentwait(driver,
+				fixedAsset_AssetDeallocationObj.assetDeAllocationListViewSearchAssetReferenceNumber());
 		fixedAsset_AssetDeallocationObj.assetDeAllocationListViewSearchAssetReferenceNumber().click();
 		fixedAsset_AssetDeallocationObj.assetDeAllocationListViewSearchAssetReferenceNumber()
 				.sendKeys(assetDeAllocationTestData.get("AssetReferenceNumber"));
@@ -314,9 +312,8 @@ public class FixedAsset_AssetDeallocation extends BaseClass {
 	// ---------asset sold deallocaion-------------//
 	@And("^User get sold asset for de allocation$")
 	public void user_get_sold_asset_for_de_allocation() throws Throwable {
-		waithelper.waitForElementVisible(driver.findElement(By.xpath(
-				"(//span[text()=' Active ']/ancestor::datatable-body-cell)[1]/preceding::datatable-body-cell[4]")),
-				3000, 300);
+		waitHelper.waitForElementwithFluentwait(driver, driver.findElement(By.xpath(
+				"(//span[text()=' Active ']/ancestor::datatable-body-cell)[1]/preceding::datatable-body-cell[4]")));
 		// driver.findElement(By.xpath("//datatable-row-wrapper[1]//datatable-body-cell[2]//span")).getText();
 		mapData.put("AssetCode", driver.findElement(By.xpath(
 				"(//span[text()=' Active ']/ancestor::datatable-body-cell)[1]/preceding::datatable-body-cell[4]"))
@@ -328,53 +325,49 @@ public class FixedAsset_AssetDeallocation extends BaseClass {
 
 	// Asset Reference Number
 	@Then("^Select Asset Reference Number$")
-	public void select_asset_reference_number() throws InterruptedException {
-	
-		waithelper.waitForElementToVisibleWithFluentWait(driver,
-				fixedAsset_AssetDeallocationObj.fixedAsset_AssetReference(), 60, 5);
+	public void select_asset_reference_number() throws InterruptedException, IOException {
+
+		waitHelper.waitForElementwithFluentwait(driver, fixedAsset_AssetDeallocationObj.fixedAsset_AssetReference());
 		AssetReferenceNumber = fixedAsset_AssetDeallocationObj.fixedAsset_AssetReference().getText();
 		System.out.println(AssetReferenceNumber);
-	
+
 	}
 
 	@Then("^Click on Asset Impairment Eye button$")
-	public void click_on_asset_impairment_eye_button() throws InterruptedException {
-		javascripthelper.JavaScriptHelper(driver);
-		javascripthelper.scrollIntoView(fixedAsset_AssetDeallocationObj.fixedAsset_AssetImpairement_EyeIcon());
-		waithelper.waitForElementToVisibleWithFluentWait(driver,
-				fixedAsset_AssetDeallocationObj.fixedAsset_AssetImpairement_EyeIcon(), 60, 5);
+	public void click_on_asset_impairment_eye_button() throws InterruptedException, IOException {
+		javascriptHelper.JavaScriptHelper(driver);
+		javascriptHelper.scrollIntoView(fixedAsset_AssetDeallocationObj.fixedAsset_AssetImpairement_EyeIcon());
+		waitHelper.waitForElementwithFluentwait(driver,
+				fixedAsset_AssetDeallocationObj.fixedAsset_AssetImpairement_EyeIcon());
 		fixedAsset_AssetDeallocationObj.fixedAsset_AssetImpairement_EyeIcon().click();
-		
+
 	}
 
 	@Then("^fill the form for Asset Impairment$")
 	public void fill_the_form_for_asset_impairment() throws Throwable {
-		// AssetReferenceNumber
-		waithelper.waitForElementToVisibleWithFluentWait(driver,
-				fixedAsset_AssetDeallocationObj.fixedAsset_AssetImpairement_AssetReferenceNumber(), 60, 5);
+
+		waitHelper.waitForElementwithFluentwait(driver,
+				fixedAsset_AssetDeallocationObj.fixedAsset_AssetImpairement_AssetReferenceNumber());
 		fixedAsset_AssetDeallocationObj.fixedAsset_AssetImpairement_AssetReferenceNumber().click();
 		fixedAsset_AssetDeallocationObj.fixedAsset_AssetImpairement_AssetReferenceNumber()
 				.sendKeys(AssetReferenceNumber);
-	
-		// fixedAsset_AssetDeallocationObj.fixedAsset_AssetImpairement_AssetReferenceNumber().sendKeys(fixedAsset_AssetCreationTestDataType.AssetCode);
+
 		fixedAsset_AssetDeallocationObj.fixedAsset_AssetImpairement_AssetReferenceNumber().sendKeys(Keys.ENTER);
 
 		// Transaction TYpe
-		waithelper.waitForElementToVisibleWithFluentWait(driver,
-				fixedAsset_AssetDeallocationObj.fixedAsset_AssetImpairement_TransactionType(), 60, 5);
+		waitHelper.waitForElementwithFluentwait(driver,
+				fixedAsset_AssetDeallocationObj.fixedAsset_AssetImpairement_TransactionType());
 		fixedAsset_AssetDeallocationObj.fixedAsset_AssetImpairement_TransactionType().click();
-		
+
 		// impairement
-		waithelper.waitForElementToVisibleWithFluentWait(driver,
-				fixedAsset_AssetDeallocationObj.fixedAsset_AssetImpairement_Impairement(), 60, 5);
+		waitHelper.waitForElementwithFluentwait(driver,
+				fixedAsset_AssetDeallocationObj.fixedAsset_AssetImpairement_Impairement());
 		fixedAsset_AssetDeallocationObj.fixedAsset_AssetImpairement_Impairement().click();
 
 		// AssetItemNumber
-		waithelper.waitForElementToVisibleWithFluentWait(driver,
-				fixedAsset_AssetDeallocationObj.fixedAsset_AssetImpairement_ItemNumber(), 60, 5);
+		waitHelper.waitForElementwithFluentwait(driver,
+				fixedAsset_AssetDeallocationObj.fixedAsset_AssetImpairement_ItemNumber());
 		fixedAsset_AssetDeallocationObj.fixedAsset_AssetImpairement_ItemNumber().click();
-		// fixedAsset_AssetDeallocationObj.fixedAsset_AssetImpairement_ItemNumber().sendKeys(fixedAsset_AssetDeallocationTestDataType.AssetItemNumberimpaired);
-	
 		fixedAsset_AssetDeallocationObj.fixedAsset_AssetImpairement_ItemNumber().sendKeys(Keys.DOWN);
 		fixedAsset_AssetDeallocationObj.fixedAsset_AssetImpairement_ItemNumber().sendKeys(Keys.ENTER);
 
@@ -382,78 +375,77 @@ public class FixedAsset_AssetDeallocation extends BaseClass {
 
 	@Then("^Click on revalued asset Eye button$")
 	public void click_on_revalued_asset_eye_button() throws Throwable {
-		javascripthelper.JavaScriptHelper(driver);
-		javascripthelper.scrollIntoView(fixedAsset_AssetDeallocationObj.fixedAsset_RevaluedAsset_EyeIcon());
-		waithelper.waitForElementToVisibleWithFluentWait(driver,
-				fixedAsset_AssetDeallocationObj.fixedAsset_RevaluedAsset_EyeIcon(), 60, 5);
+		javascriptHelper.JavaScriptHelper(driver);
+		javascriptHelper.scrollIntoView(fixedAsset_AssetDeallocationObj.fixedAsset_RevaluedAsset_EyeIcon());
+		waitHelper.waitForElementwithFluentwait(driver,
+				fixedAsset_AssetDeallocationObj.fixedAsset_RevaluedAsset_EyeIcon());
 		fixedAsset_AssetDeallocationObj.fixedAsset_RevaluedAsset_EyeIcon().click();
-		
+
 	}
 
 	@Then("^Click on amended asset Eye button$")
-	public void click_on_amended_asset_eye_button() throws InterruptedException {
-		javascripthelper.JavaScriptHelper(driver);
-		javascripthelper.scrollIntoView(fixedAsset_AssetDeallocationObj.fixedAsset_AmendedAsset_EyeIcon());
-		waithelper.waitForElementToVisibleWithFluentWait(driver,
-				fixedAsset_AssetDeallocationObj.fixedAsset_AmendedAsset_EyeIcon(), 60, 5);
+	public void click_on_amended_asset_eye_button() throws InterruptedException, IOException {
+		javascriptHelper.JavaScriptHelper(driver);
+		javascriptHelper.scrollIntoView(fixedAsset_AssetDeallocationObj.fixedAsset_AmendedAsset_EyeIcon());
+		waitHelper.waitForElementwithFluentwait(driver,
+				fixedAsset_AssetDeallocationObj.fixedAsset_AmendedAsset_EyeIcon());
 		fixedAsset_AssetDeallocationObj.fixedAsset_AmendedAsset_EyeIcon().click();
-		
+
 	}
 
 	// ----------asset replacement deallocaion ------------//
 
 	@Then("^Click on asset replacement  Eye button$")
-	public void click_on_asset_replacement_eye_button() throws InterruptedException {
-		javascripthelper.JavaScriptHelper(driver);
-		javascripthelper.scrollIntoView(fixedAsset_AssetDeallocationObj.fixedAsset_AssetReplacement_EyeIcon());
-		waithelper.waitForElementToVisibleWithFluentWait(driver,
-				fixedAsset_AssetDeallocationObj.fixedAsset_AssetReplacement_EyeIcon(), 60, 5);
+	public void click_on_asset_replacement_eye_button() throws InterruptedException, IOException {
+		javascriptHelper.JavaScriptHelper(driver);
+		javascriptHelper.scrollIntoView(fixedAsset_AssetDeallocationObj.fixedAsset_AssetReplacement_EyeIcon());
+		waitHelper.waitForElementwithFluentwait(driver,
+				fixedAsset_AssetDeallocationObj.fixedAsset_AssetReplacement_EyeIcon());
 		fixedAsset_AssetDeallocationObj.fixedAsset_AssetReplacement_EyeIcon().click();
-		
+
 	}
 
 	@And("^open the list view record in de allocation list view$")
 	public void open_the_list_view_record_in_de_allocation_list_view() throws Throwable {
-		javascripthelper.JavaScriptHelper(driver);
-		waithelper.waitForElementToVisibleWithFluentWait(driver,
-				fixedAsset_AssetDeallocationObj.assetDeAllocationFirstApprovedRecord(), 20, 1);
+		javascriptHelper.JavaScriptHelper(driver);
+		waitHelper.waitForElementwithFluentwait(driver,
+				fixedAsset_AssetDeallocationObj.assetDeAllocationFirstApprovedRecord());
 		fixedAsset_AssetDeallocationObj.assetDeAllocationFirstApprovedRecord().click();
-		
 
 	}
+
 	@And("^store the de allocation created date for de allocation report$")
-    public void store_the_de_allocation_created_date_for_de_allocation_report() throws Throwable {
+	public void store_the_de_allocation_created_date_for_de_allocation_report() throws Throwable {
 		for (int i = 0; i <= 500; i++) {
 			try {
-				
+
 				String createdDate = fixedAsset_AssetDeallocationObj.assetDeAllocationDeAllocationCreatedDate()
 						.getText();
-					
-					System.out.println("Created Date " + createdDate);
-					assetDeAllocationReportTestData.put("createdDate", createdDate);
-					break;
-				}
-			 catch (Exception e) {
+
+				System.out.println("Created Date " + createdDate);
+				assetDeAllocationReportTestData.put("createdDate", createdDate);
+				break;
+			} catch (Exception e) {
 				if (i == 500) {
 					Assert.fail(e.getMessage());
 				}
 			}
 
 		}
-    }
+	}
 
 	@And("^store the asset item number and asset referece number and de allocated date for de allocation report validation$")
 	public void store_the_asset_item_number_and_asset_referece_number_and_de_allocated_date_for_de_allocation_report_validation()
 			throws Throwable {
-		javascripthelper.JavaScriptHelper(driver);
-		waithelper.waitForElementToVisibleWithFluentWait(driver,
-				fixedAsset_AssetDeallocationObj.assetDeAllocationApprovedAssetReferenceNumber(), 20, 1);
+		javascriptHelper.JavaScriptHelper(driver);
+		waitHelper.waitForElementwithFluentwait(driver,
+				fixedAsset_AssetDeallocationObj.assetDeAllocationApprovedAssetReferenceNumber());
 		String deallocationAprovedReferenceNumber = fixedAsset_AssetDeallocationObj
 				.assetDeAllocationApprovedAssetReferenceNumber().getText();
 		assetDeAllocationReportTestData.put("deallocationAprovedReferenceNumber", deallocationAprovedReferenceNumber);
 		for (int i = 0; i <= 500; i++) {
 			try {
-				String deAllocationdate = javascripthelper
+				String deAllocationdate = javascriptHelper
 						.executeScript("return document.getElementById('kubDateTime').value").toString();
 				assetDeAllocationReportTestData.put("deAllocationdate", deAllocationdate);
 				break;
@@ -468,15 +460,15 @@ public class FixedAsset_AssetDeallocation extends BaseClass {
 
 	@And("^click on temp view of de allocation report temp view$")
 	public void click_on_temp_view_of_de_allocation_report_temp_view() throws Throwable {
-		waithelper.waitForElementToVisibleWithFluentWait(driver,
-				fixedAsset_AssetDeallocationObj.assetDeAllocationReportTempView(), 20, 1);
+		waitHelper.waitForElementwithFluentwait(driver,
+				fixedAsset_AssetDeallocationObj.assetDeAllocationReportTempView());
 		fixedAsset_AssetDeallocationObj.assetDeAllocationReportTempView().click();
 	}
 
 	@And("^enter the employee in de allocation report form$")
 	public void enter_the_employee_in_de_allocation_report_form() throws Throwable {
-		waithelper.waitForElementToVisibleWithFluentWait(driver,
-				fixedAsset_AssetDeallocationObj.assetDeAllocationDeAllocationReportEmployeeID(), 20, 1);
+		waitHelper.waitForElementwithFluentwait(driver,
+				fixedAsset_AssetDeallocationObj.assetDeAllocationDeAllocationReportEmployeeID());
 		fixedAsset_AssetDeallocationObj.assetDeAllocationDeAllocationReportEmployeeID().click();
 		fixedAsset_AssetDeallocationObj.assetDeAllocationDeAllocationReportEmployeeID().sendKeys("anant");
 		String xpath = "//ng-dropdown-panel//span[text()='" + "anant" + "']";
@@ -495,12 +487,13 @@ public class FixedAsset_AssetDeallocation extends BaseClass {
 
 	}
 
+	@SuppressWarnings("static-access")
 	@And("^enter the de allocation date in de allocation report form$")
 	public void enter_the_de_allocation_date_in_de_allocation_report_form() throws Throwable {
-		waithelper.waitForElementToVisibleWithFluentWait(driver,
-				fixedAsset_AssetDeallocationObj.assetDeAllocationDeAllocationReportDeAallocationCalendar(), 20, 1);
+		waitHelper.waitForElementwithFluentwait(driver,
+				fixedAsset_AssetDeallocationObj.assetDeAllocationDeAllocationReportDeAallocationCalendar());
 		fixedAsset_AssetDeallocationObj.assetDeAllocationDeAllocationReportDeAallocationCalendar().click();
-		waithelper.waitForElementToVisibleWithFluentWait(driver, kubsCommonWebObj.kubsCalendarMonthYearOption(), 20, 1);
+		waitHelper.waitForElementwithFluentwait(driver, kubsCommonWebObj.kubsCalendarMonthYearOption());
 		clicksAndActionHelper.moveToElement(kubsCommonWebObj.kubsCalendarMonthYearOption());
 		clicksAndActionHelper.clickOnElement(kubsCommonWebObj.kubsCalendarMonthYearOption());
 		String[] splitDate = assetDeAllocationReportTestData.get("deAllocationdate").split("-");
@@ -595,13 +588,14 @@ public class FixedAsset_AssetDeallocation extends BaseClass {
 		}
 	}
 
+	@SuppressWarnings("static-access")
 	@And("^enter the de allocation as on date in de allocation report form$")
 	public void enter_the_de_allocation_as_on_date_in_de_allocation_report_form() throws Throwable {
-		waithelper.waitForElementToVisibleWithFluentWait(driver,
-				fixedAsset_AssetDeallocationObj.assetDeAllocationDeAllocationReportDeAallocationAsOnCalendar(), 20, 1);
+		waitHelper.waitForElementwithFluentwait(driver,
+				fixedAsset_AssetDeallocationObj.assetDeAllocationDeAllocationReportDeAallocationAsOnCalendar());
 		fixedAsset_AssetDeallocationObj.assetDeAllocationDeAllocationReportDeAallocationAsOnCalendar().click();
 
-		waithelper.waitForElementToVisibleWithFluentWait(driver, kubsCommonWebObj.kubsCalendarMonthYearOption(), 20, 1);
+		waitHelper.waitForElementwithFluentwait(driver, kubsCommonWebObj.kubsCalendarMonthYearOption());
 		clicksAndActionHelper.moveToElement(kubsCommonWebObj.kubsCalendarMonthYearOption());
 		clicksAndActionHelper.clickOnElement(kubsCommonWebObj.kubsCalendarMonthYearOption());
 		System.out.println("Created date" + assetDeAllocationReportTestData.get("createdDate"));

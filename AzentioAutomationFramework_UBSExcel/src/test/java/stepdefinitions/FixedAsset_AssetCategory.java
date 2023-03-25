@@ -1,19 +1,16 @@
 package stepdefinitions;
 
+import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
-
 import org.junit.Assert;
 import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-
 import dataProvider.ConfigFileReader;
-import dataProvider.JsonConfig;
 import helper.BrowserHelper;
 import helper.ClicksAndActionsHelper;
 import helper.DropDownHelper;
@@ -27,23 +24,19 @@ import pageobjects.FixedAsset_AssetCategoryObj;
 import pageobjects.KUBS_CommonWebElements;
 import resources.BaseClass;
 import resources.ExcelData;
-import resources.JsonDataReaderWriter;
 import testDataType.BUDGET_BudgetCreationTestDataType;
 import testDataType.FixedAsset_AssetCategoryTestDataType;
 
 public class FixedAsset_AssetCategory extends BaseClass {
 
 	WebDriver driver = BaseClass.driver;
-	JsonConfig jsonReader = new JsonConfig();
+
 	ConfigFileReader configFileReader = new ConfigFileReader();
 	ConfigFileReader config = new ConfigFileReader();
 	DropDownHelper dropDownHelper;
 	WaitHelper waitHelper = new WaitHelper(driver);
 	ClicksAndActionsHelper clickAndActionsHelper = new ClicksAndActionsHelper(driver);
 	JavascriptHelper javascripthelper = new JavascriptHelper();
-
-	JsonDataReaderWriter jsonWriter = new JsonDataReaderWriter();
-	JsonDataReaderWriter reader = new JsonDataReaderWriter();
 	ClicksAndActionsHelper clicksAndActionHelper = new ClicksAndActionsHelper(driver);
 	Azentio_ReviewerObj reviewer;
 	BrowserHelper browserHelper = new BrowserHelper(driver);
@@ -181,8 +174,8 @@ public class FixedAsset_AssetCategory extends BaseClass {
 	@And("^select the data from Asset category dropdown$")
 	public void select_the_data_from_asset_category_dropdown() throws Throwable {
 		String xpath = "//ng-dropdown-panel//span[text()='" + assetcatogoryTestdata.get("Assetcategory") + "']";
-		waitHelper.waitForElementToVisibleWithFluentWait(driver,
-				fixedAsset_AssetCategoryObj.fixedAsset_AssetCategory_AssetCategoryInputField(), 20, 1);
+		waitHelper.waitForElementwithFluentwait(driver,
+				fixedAsset_AssetCategoryObj.fixedAsset_AssetCategory_AssetCategoryInputField());
 		fixedAsset_AssetCategoryObj.fixedAsset_AssetCategory_AssetCategoryInputField().click();
 		fixedAsset_AssetCategoryObj.fixedAsset_AssetCategory_AssetCategoryInputField()
 				.sendKeys(assetcatogoryTestdata.get("Assetcategory"));
@@ -201,8 +194,8 @@ public class FixedAsset_AssetCategory extends BaseClass {
 
 	@And("^select the data from Asset sub category$")
 	public void select_the_data_from_asset_sub_category() throws Throwable {
-		waitHelper.waitForElementToVisibleWithFluentWait(driver,
-				fixedAsset_AssetCategoryObj.fixedAsset_AssetCategory_AssetSubCategory(), 20, 1);
+		waitHelper.waitForElementwithFluentwait(driver,
+				fixedAsset_AssetCategoryObj.fixedAsset_AssetCategory_AssetSubCategory());
 		fixedAsset_AssetCategoryObj.fixedAsset_AssetCategory_AssetSubCategory().click();
 		fixedAsset_AssetCategoryObj.fixedAsset_AssetCategory_AssetSubCategory()
 				.sendKeys(assetcatogoryTestdata.get("AssetSubCategory"));
@@ -228,8 +221,8 @@ public class FixedAsset_AssetCategory extends BaseClass {
 		int randomNum = random.nextInt(1000 - 1) + 1;
 		int randomNum2 = random.nextInt(200 - 1) + 1;
 		String assetItemcategory = assetcatogoryTestdata.get("AssetItemCategory") + randomNum + randomNum2;
-		waitHelper.waitForElementToVisibleWithFluentWait(driver,
-				fixedAsset_AssetCategoryObj.fixedAsset_AssetCategory_AssetItemCategory(), 20, 1);
+		waitHelper.waitForElementwithFluentwait(driver,
+				fixedAsset_AssetCategoryObj.fixedAsset_AssetCategory_AssetItemCategory());
 		fixedAsset_AssetCategoryObj.fixedAsset_AssetCategory_AssetItemCategory().click();
 		fixedAsset_AssetCategoryObj.fixedAsset_AssetCategory_AssetItemCategory().sendKeys(assetItemcategory);
 
@@ -239,35 +232,34 @@ public class FixedAsset_AssetCategory extends BaseClass {
 
 	@And("^enter the asset description input$")
 	public void enter_the_asset_description_input() throws Throwable {
-		waitHelper.waitForElementToVisibleWithFluentWait(driver,
-				fixedAsset_AssetCategoryObj.fixedAsset_AssetCategory_AssetDescription(), 20, 1);
+		waitHelper.waitForElementwithFluentwait(driver,
+				fixedAsset_AssetCategoryObj.fixedAsset_AssetCategory_AssetDescription());
 		fixedAsset_AssetCategoryObj.fixedAsset_AssetCategory_AssetDescription().click();
 		fixedAsset_AssetCategoryObj.fixedAsset_AssetCategory_AssetDescription()
 				.sendKeys(assetcatogoryTestdata.get("AssetDescription"));
 	}
 
 	@Then("^Click on Fixed Asset Direction icon$")
-	public void click_on_fixed_asset_direction_icon() {
+	public void click_on_fixed_asset_direction_icon() throws IOException {
 		waitHelper = new WaitHelper(driver);
-		waitHelper.waitForElementToVisibleWithFluentWait(driver,
-				fixedAsset_AssetCategoryObj.fixedAsset_AssetCategory_DirectionIcon(), 60, 5);
+		waitHelper.waitForElementwithFluentwait(driver,
+				fixedAsset_AssetCategoryObj.fixedAsset_AssetCategory_DirectionIcon());
 		fixedAsset_AssetCategoryObj.fixedAsset_AssetCategory_DirectionIcon().click();
 
 	}
 
 	@Then("^Click on Fixed assets configuration$")
-	public void click_on_fixed_assets_configuration() {
-		waitHelper.waitForElementToVisibleWithFluentWait(driver,
-				fixedAsset_AssetCategoryObj.fixedAsset_AssetCategory_FixedAssetsConfiguration(), 60, 5);
+	public void click_on_fixed_assets_configuration() throws IOException {
+		waitHelper.waitForElementwithFluentwait(driver,
+				fixedAsset_AssetCategoryObj.fixedAsset_AssetCategory_FixedAssetsConfiguration());
 		fixedAsset_AssetCategoryObj.fixedAsset_AssetCategory_FixedAssetsConfiguration().click();
 
 	}
 
 	@Then("^Click on Asset Category Eye button$")
-	public void click_on_asset_category_eye_button() {
+	public void click_on_asset_category_eye_button() throws IOException {
 		// Eye Button
-		waitHelper.waitForElementToVisibleWithFluentWait(driver,
-				fixedAsset_AssetCategoryObj.fixedAsset_AssetCategory_EyeIcon(), 60, 5);
+		waitHelper.waitForElementwithFluentwait(driver, fixedAsset_AssetCategoryObj.fixedAsset_AssetCategory_EyeIcon());
 		for (int i = 0; i <= 100; i++) {
 			try {
 				if (i > 50 && i < 100) {
@@ -288,7 +280,7 @@ public class FixedAsset_AssetCategory extends BaseClass {
 	@Then("^Click on Fixed Asset Add button$")
 	public void click_on_fixed_asset_add_button() {
 		// Add Button
-		// waitHelper.waitForElementToVisibleWithFluentWait(driver,
+		// waitHelper.waitForElementwithFluentwait(driver,
 		// fixedAsset_AssetCategoryObj.fixedAsset_AssetCategory_AddButton(),60,5);
 		for (int i = 0; i < 30; i++) {
 			try {
@@ -306,7 +298,7 @@ public class FixedAsset_AssetCategory extends BaseClass {
 	@Then("^Click on Fixed Asset Save button$")
 	public void click_on_fixed_asset_save_button() throws InterruptedException {
 		// Save
-		// waitHelper.waitForElementToVisibleWithFluentWait(driver,fixedAsset_AssetCategoryObj.fixedAsset_AssetCategory_Save(),60,5);
+		// waitHelper.waitForElementwithFluentwait(driver,fixedAsset_AssetCategoryObj.fixedAsset_AssetCategory_Save(),60,5);
 		for (int i = 0; i < 20; i++) {
 			try {
 				fixedAsset_AssetCategoryObj.fixedAsset_AssetCategory_Save().click();
@@ -320,10 +312,10 @@ public class FixedAsset_AssetCategory extends BaseClass {
 	}
 
 	@Then("^Click on Fixed Asset Notification$")
-	public void click_on_fixed_asset_notification() {
-waitHelper.waitForElementToVisibleWithFluentWait(driver, kubsCommonObj.kubsToastAlert(), 20, 1);
-String toastAlert = kubsCommonObj.kubsToastAlert().getText();
-System.out.println(toastAlert);
+	public void click_on_fixed_asset_notification() throws IOException {
+		waitHelper.waitForElementwithFluentwait(driver, kubsCommonObj.kubsToastAlert());
+		String toastAlert = kubsCommonObj.kubsToastAlert().getText();
+		System.out.println(toastAlert);
 		for (int i = 0; i <= 500; i++) {
 			try {
 				kubsCommonObj.kubsAlertClose().click();
@@ -335,7 +327,7 @@ System.out.println(toastAlert);
 			}
 		}
 
-		// waitHelper.waitForElementToVisibleWithFluentWait(driver,fixedAsset_AssetCategoryObj.fixedAsset_AssetCategory_Notification(),60,5);
+		// waitHelper.waitForElementwithFluentwait(driver,fixedAsset_AssetCategoryObj.fixedAsset_AssetCategory_Notification(),60,5);
 		for (int i = 0; i <= 200; i++) {
 			try {
 				fixedAsset_AssetCategoryObj.fixedAsset_AssetCategory_Notification().click();
@@ -352,8 +344,7 @@ System.out.println(toastAlert);
 
 	@And("^click on notification search in asset category$")
 	public void click_on_notification_search_in_asset_category() throws Throwable {
-		waitHelper.waitForElementToVisibleWithFluentWait(driver,
-				fixedAsset_AssetCategoryObj.fixedAssetCategorySearchButton(), 20, 1);
+		waitHelper.waitForElementwithFluentwait(driver, fixedAsset_AssetCategoryObj.fixedAssetCategorySearchButton());
 		for (int i = 0; i <= 200; i++) {
 			try {
 				clickAndActionsHelper.moveToElement(fixedAsset_AssetCategoryObj.fixedAssetCategorySearchButton());
@@ -369,8 +360,7 @@ System.out.println(toastAlert);
 
 	@And("^search the asset catregory record$")
 	public void search_the_asset_catregory_record() throws Throwable {
-		waitHelper.waitForElementToVisibleWithFluentWait(driver,
-				fixedAsset_AssetCategoryObj.fixedAssetcategoryEventCode(), 20, 1);
+		waitHelper.waitForElementwithFluentwait(driver, fixedAsset_AssetCategoryObj.fixedAssetcategoryEventCode());
 		fixedAsset_AssetCategoryObj.fixedAssetcategoryEventCode().click();
 		fixedAsset_AssetCategoryObj.fixedAssetcategoryEventCode().sendKeys(assetcatogoryTestdata.get("ModuleCode"));
 	}
@@ -378,22 +368,20 @@ System.out.println(toastAlert);
 	@And("^store the reference number of asset category record$")
 	public void store_the_reference_number_of_asset_category_record() throws Throwable {
 		System.out.println("DataSet ID : " + assetcatogoryTestdata.get("DataSet ID"));
-		waitHelper.waitForElementToVisibleWithFluentWait(driver,
-				fixedAsset_AssetCategoryObj.assetCategoryReferenceNumber(), 30, 1);
+		waitHelper.waitForElementwithFluentwait(driver, fixedAsset_AssetCategoryObj.assetCategoryReferenceNumber());
 		excelData.updateTestData(assetcatogoryTestdata.get("DataSet ID"), "Reference ID",
 				fixedAsset_AssetCategoryObj.assetCategoryReferenceNumber().getText());
 	}
 
 	@And("^select the asset category record$")
 	public void select_the_asset_category_record() throws Throwable {
-		waitHelper.waitForElementToVisibleWithFluentWait(driver,
-				fixedAsset_AssetCategoryObj.assetCategoryNotificationRecord(), 20, 1);
+		waitHelper.waitForElementwithFluentwait(driver, fixedAsset_AssetCategoryObj.assetCategoryNotificationRecord());
 		fixedAsset_AssetCategoryObj.assetCategoryNotificationRecord().click();
 	}
 
 	@And("^submit the asset category record$")
 	public void submit_the_asset_category_record() throws Throwable {
-		waitHelper.waitForElementToVisibleWithFluentWait(driver, kubsCommonObj.kubsSubmitButton(), 20, 1);
+		waitHelper.waitForElementwithFluentwait(driver, kubsCommonObj.kubsSubmitButton());
 		kubsCommonObj.kubsSubmitButton().click();
 //alert Remark
 		for (int i = 0; i <= 500; i++) {
@@ -410,7 +398,7 @@ System.out.println(toastAlert);
 			}
 		}
 		// aler submit click
-		waitHelper.waitForElementToVisibleWithFluentWait(driver, kubsCommonObj.kubsAlertSubmit(), 20, 1);
+		waitHelper.waitForElementwithFluentwait(driver, kubsCommonObj.kubsAlertSubmit());
 		try {
 			kubsCommonObj.kubsAlertSubmit().click();
 		} catch (Exception e) {
@@ -422,7 +410,7 @@ System.out.println(toastAlert);
 
 	@And("^store the reciewer ID in asset category$")
 	public void store_the_reciewer_id_in_asset_category() throws Throwable {
-		waitHelper.waitForElementToVisibleWithFluentWait(driver, kubsCommonObj.kubsToastAlert(), 20, 1);
+		waitHelper.waitForElementwithFluentwait(driver, kubsCommonObj.kubsToastAlert());
 		String reviewerID = kubsCommonObj.kubsToastAlert().getText().substring(85).replace(".", "");
 		excelData.updateTestData(assetcatogoryTestdata.get("DataSet ID"), "Reviewer ID", reviewerID);
 
@@ -443,8 +431,8 @@ System.out.println(toastAlert);
 	// Asset category report
 	@And("^get the asset category from asset category approved list view$")
 	public void get_the_asset_category_from_asset_category_approved_list_view() throws Throwable {
-		waitHelper.waitForElementToVisibleWithFluentWait(driver,
-				fixedAsset_AssetCategoryObj.assetCategory_ReportCategoryApprovedItemCategory(), 20, 1);
+		waitHelper.waitForElementwithFluentwait(driver,
+				fixedAsset_AssetCategoryObj.assetCategory_ReportCategoryApprovedItemCategory());
 		String approvedItemCategory = fixedAsset_AssetCategoryObj.assetCategory_ReportCategoryApprovedItemCategory()
 				.getText();
 		assetcatogoryReportTestdata.put("approvedItemCategory", approvedItemCategory);
@@ -453,8 +441,7 @@ System.out.println(toastAlert);
 
 	@And("^click on asset category report temp view$")
 	public void click_on_asset_category_report_temp_view() throws Throwable {
-		waitHelper.waitForElementToVisibleWithFluentWait(driver,
-				fixedAsset_AssetCategoryObj.assetCategoryReporTempView(), 20, 1);
+		waitHelper.waitForElementwithFluentwait(driver, fixedAsset_AssetCategoryObj.assetCategoryReporTempView());
 		fixedAsset_AssetCategoryObj.assetCategoryReporTempView().click();
 	}
 
@@ -473,11 +460,11 @@ System.out.println(toastAlert);
 		String FullMonth = DateSplit1[1];
 		Integer yearNum = Integer.valueOf(DateSplit[2]);
 
-		waitHelper.waitForElementToVisibleWithFluentWait(driver,
-				fixedAsset_AssetCategoryObj.assetCategoryReportCategoryAsOnDate(), 20, 1);
+		waitHelper.waitForElementwithFluentwait(driver,
+				fixedAsset_AssetCategoryObj.assetCategoryReportCategoryAsOnDate());
 		clickAndActionsHelper.moveToElement(fixedAsset_AssetCategoryObj.assetCategoryReportCategoryAsOnDate());
 		clickAndActionsHelper.clickOnElement(fixedAsset_AssetCategoryObj.assetCategoryReportCategoryAsOnDate());
-		waitHelper.waitForElementToVisibleWithFluentWait(driver, kubsCommonObj.kubsCalendarMonthYearOption(), 20, 1);
+		waitHelper.waitForElementwithFluentwait(driver, kubsCommonObj.kubsCalendarMonthYearOption());
 		clickAndActionsHelper.moveToElement(kubsCommonObj.kubsCalendarMonthYearOption());
 		clickAndActionsHelper.clickOnElement(kubsCommonObj.kubsCalendarMonthYearOption());
 		String yearXpath = "//span[contains(text(),'" + yearNum + "')]//ancestor::td";

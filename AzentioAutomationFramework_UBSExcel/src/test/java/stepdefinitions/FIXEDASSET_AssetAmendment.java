@@ -12,10 +12,8 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 
 import dataProvider.ConfigFileReader;
-import dataProvider.JsonConfig;
 import helper.BrowserHelper;
 import helper.ClicksAndActionsHelper;
-import helper.DropDownHelper;
 import helper.JavascriptHelper;
 import helper.WaitHelper;
 import io.cucumber.java.en.And;
@@ -35,15 +33,11 @@ public class FIXEDASSET_AssetAmendment extends BaseClass {
 	ConfigFileReader configFileReader = new ConfigFileReader();
 	WaitHelper waitHelper = new WaitHelper(driver);
 	JavascriptHelper javaScriptHelper = new JavascriptHelper();
-	DropDownHelper dropDownHelper = new DropDownHelper(driver);
-	JsonConfig jsonConfig = new JsonConfig();
 	KUBS_ReviewerObj reviewerObj = new KUBS_ReviewerObj(driver);
 	KUBS_CheckerObj checkerObj = new KUBS_CheckerObj(driver);
 	ClicksAndActionsHelper clickAndActionHelper = new ClicksAndActionsHelper(driver);
 	FIXEDASSET_AssetAmendmentObj assetAmendmentObj = new FIXEDASSET_AssetAmendmentObj(driver);
-
 	FIXEDASSET_fixedAssetObj fixedAssetObj = new FIXEDASSET_fixedAssetObj(driver);
-
 	Map<String, String> testData = new HashMap<>();
 	Map<String, String> assetAmmendmentTestData = new HashMap<>();
 	KUBS_CommonWebElements kubsCommonObj = new KUBS_CommonWebElements(driver);
@@ -62,20 +56,20 @@ public class FIXEDASSET_AssetAmendment extends BaseClass {
 	public void click_on_fixed_asset_module() throws Throwable {
 
 		// ----------TO CLICK THE FIXED ASSET MODULE---------//
-		waitHelper.waitForElement(driver, 2000, assetAmendmentObj.fixed_FixedAssets());
+		waitHelper.waitForElementwithFluentwait(driver, assetAmendmentObj.fixed_FixedAssets());
 		assetAmendmentObj.fixed_FixedAssets().click();
 	}
 
 	@Then("^click on Asset creation Eye icon$")
 	public void click_on_asset_creation_eye_icon() throws Throwable {
 		// ----------TO CLICK THE FIXED ASSETCREATION---------//
-		waitHelper.waitForElement(driver, 2000, assetAmendmentObj.fixed_AssetCreataionEye());
+		waitHelper.waitForElementwithFluentwait(driver, assetAmendmentObj.fixed_AssetCreataionEye());
 		assetAmendmentObj.fixed_AssetCreataionEye().click();
 	}
 
 	@And("^get the approved asset reference number to do the asset ammendment$")
 	public void get_the_approved_asset_reference_number_to_do_the_asset_ammendment() throws Throwable {
-		waitHelper.waitForElementVisible(fixedAssetObj.fixedAssetApprovedReferenceNumber(), 3000, 300);
+		waitHelper.waitForElementwithFluentwait(driver, fixedAssetObj.fixedAssetApprovedReferenceNumber());
 
 	}
 
@@ -140,8 +134,7 @@ public class FIXEDASSET_AssetAmendment extends BaseClass {
 
 	@And("^enter the asset reference number in aset ammendment$")
 	public void enter_the_asset_reference_number_in_aset_ammendment() throws Throwable {
-		waitHelper.waitForElementToVisibleWithFluentWait(driver, fixedAssetObj.assetAmmendmentAssetReferenceNumber(),
-				20, 1);
+		waitHelper.waitForElementwithFluentwait(driver, fixedAssetObj.assetAmmendmentAssetReferenceNumber());
 		fixedAssetObj.assetAmmendmentAssetReferenceNumber().click();
 		fixedAssetObj.assetAmmendmentAssetReferenceNumber()
 				.sendKeys(assetAmmendmentTestData.get("AssetReferenceNumber"));
@@ -163,7 +156,7 @@ public class FIXEDASSET_AssetAmendment extends BaseClass {
 
 	@And("^enter the asset item number in asset ammendment$")
 	public void enter_the_asset_item_number_in_asset_ammendment() throws Throwable {
-		waitHelper.waitForElementToVisibleWithFluentWait(driver, fixedAssetObj.assetAmmendmentAssetItemNumber(), 20, 1);
+		waitHelper.waitForElementwithFluentwait(driver, fixedAssetObj.assetAmmendmentAssetItemNumber());
 		fixedAssetObj.assetAmmendmentAssetItemNumber().click();
 		fixedAssetObj.assetAmmendmentAssetItemNumber().sendKeys(assetAmmendmentTestData.get("AssetItemNumber"));
 		String xpath = "//ng-dropdown-panel//span[text()='" + assetAmmendmentTestData.get("AssetItemNumber") + "']";
@@ -182,8 +175,7 @@ public class FIXEDASSET_AssetAmendment extends BaseClass {
 
 	@And("^choose modifcation type as capitalization date$")
 	public void choose_modifcation_type_as_capitalization_date() throws Throwable {
-		waitHelper.waitForElementToVisibleWithFluentWait(driver, fixedAssetObj.AssetAmmendmentModificationType(), 20,
-				1);
+		waitHelper.waitForElementwithFluentwait(driver, fixedAssetObj.AssetAmmendmentModificationType());
 		fixedAssetObj.AssetAmmendmentModificationType().click();
 		fixedAssetObj.AssetAmmendmentModificationType().sendKeys(assetAmmendmentTestData.get("ModificationType"));
 		String xpath = "//ng-dropdown-panel//span[text()='" + assetAmmendmentTestData.get("ModificationType") + "']";
@@ -202,8 +194,7 @@ public class FIXEDASSET_AssetAmendment extends BaseClass {
 
 	@And("^choose modifcation type as Asset life$")
 	public void choose_modifcation_type_as_asset_life() throws Throwable {
-		waitHelper.waitForElementToVisibleWithFluentWait(driver, fixedAssetObj.AssetAmmendmentModificationType(), 20,
-				1);
+		waitHelper.waitForElementwithFluentwait(driver, fixedAssetObj.AssetAmmendmentModificationType());
 		fixedAssetObj.AssetAmmendmentModificationType().click();
 		fixedAssetObj.AssetAmmendmentModificationType().sendKeys(assetAmmendmentTestData.get("ModificationType"));
 		String xpath = "//ng-dropdown-panel//span[text()='" + assetAmmendmentTestData.get("ModificationType") + "']";
@@ -222,13 +213,12 @@ public class FIXEDASSET_AssetAmendment extends BaseClass {
 
 	@And("^change the asset capitalizaion date in asset ammendment$")
 	public void change_the_asset_capitalizaion_date_in_asset_ammendment() throws Throwable {
-		waitHelper.waitForElementToVisibleWithFluentWait(driver, fixedAssetObj.assetAmmendmentAssetCapitalizationDate(),
-				20, 1);
+		waitHelper.waitForElementwithFluentwait(driver, fixedAssetObj.assetAmmendmentAssetCapitalizationDate());
 		clickAndActionHelper.moveToElement(fixedAssetObj.assetAmmendmentAssetCapitalizationDate());
 		clickAndActionHelper.clickOnElement(fixedAssetObj.assetAmmendmentAssetCapitalizationDate());
 
 		// Year
-		waitHelper.waitForElementToVisibleWithFluentWait(driver, kubsCommonObj.kubsMonthAndYear(), 20, 1);
+		waitHelper.waitForElementwithFluentwait(driver, kubsCommonObj.kubsMonthAndYear());
 		clickAndActionHelper.moveToElement(kubsCommonObj.kubsMonthAndYear());
 		clickAndActionHelper.clickOnElement(kubsCommonObj.kubsMonthAndYear());
 
@@ -328,13 +318,12 @@ public class FIXEDASSET_AssetAmendment extends BaseClass {
 				splitFinalDate[1]);
 		excelDataForAssetAmmendment.updateTestData(assetAmmendmentTestData.get("DataSet ID"), "Day", splitFinalDate[2]);
 		assetAmmendmentTestData = excelDataForAssetAmmendment.getTestdata(assetAmmendmentTestData.get("DataSet ID"));
-		waitHelper.waitForElementToVisibleWithFluentWait(driver, fixedAssetObj.assetAmmendmentAssetCapitalizationDate(),
-				20, 1);
+		waitHelper.waitForElementwithFluentwait(driver, fixedAssetObj.assetAmmendmentAssetCapitalizationDate());
 		clickAndActionHelper.moveToElement(fixedAssetObj.assetAmmendmentAssetCapitalizationDate());
 		clickAndActionHelper.clickOnElement(fixedAssetObj.assetAmmendmentAssetCapitalizationDate());
 
 		// Year
-		waitHelper.waitForElementToVisibleWithFluentWait(driver, kubsCommonObj.kubsMonthAndYear(), 20, 1);
+		waitHelper.waitForElementwithFluentwait(driver, kubsCommonObj.kubsMonthAndYear());
 		clickAndActionHelper.moveToElement(kubsCommonObj.kubsMonthAndYear());
 		clickAndActionHelper.clickOnElement(kubsCommonObj.kubsMonthAndYear());
 
@@ -433,13 +422,12 @@ public class FIXEDASSET_AssetAmendment extends BaseClass {
 				splitFinalDate[1]);
 		excelDataForAssetAmmendment.updateTestData(assetAmmendmentTestData.get("DataSet ID"), "Day", splitFinalDate[2]);
 		assetAmmendmentTestData = excelDataForAssetAmmendment.getTestdata(assetAmmendmentTestData.get("DataSet ID"));
-		waitHelper.waitForElementToVisibleWithFluentWait(driver, fixedAssetObj.assetAmmendmentAssetCapitalizationDate(),
-				20, 1);
+		waitHelper.waitForElementwithFluentwait(driver, fixedAssetObj.assetAmmendmentAssetCapitalizationDate());
 		clickAndActionHelper.moveToElement(fixedAssetObj.assetAmmendmentAssetCapitalizationDate());
 		clickAndActionHelper.clickOnElement(fixedAssetObj.assetAmmendmentAssetCapitalizationDate());
 
 		// Year
-		waitHelper.waitForElementToVisibleWithFluentWait(driver, kubsCommonObj.kubsMonthAndYear(), 20, 1);
+		waitHelper.waitForElementwithFluentwait(driver, kubsCommonObj.kubsMonthAndYear());
 		clickAndActionHelper.moveToElement(kubsCommonObj.kubsMonthAndYear());
 		clickAndActionHelper.clickOnElement(kubsCommonObj.kubsMonthAndYear());
 
@@ -490,7 +478,7 @@ public class FIXEDASSET_AssetAmendment extends BaseClass {
 
 	@And("^change the asset life in ammendment screen$")
 	public void change_the_asset_life_in_ammendment_screen() throws Throwable {
-		waitHelper.waitForElementToVisibleWithFluentWait(driver, fixedAssetObj.assetAmmendmentAssetLife(), 20, 1);
+		waitHelper.waitForElementwithFluentwait(driver, fixedAssetObj.assetAmmendmentAssetLife());
 		fixedAssetObj.assetAmmendmentAssetLife().click();
 		fixedAssetObj.assetAmmendmentAssetLife().clear();
 		fixedAssetObj.assetAmmendmentAssetLife().sendKeys(assetAmmendmentTestData.get("AssetLife"));
@@ -498,13 +486,13 @@ public class FIXEDASSET_AssetAmendment extends BaseClass {
 
 	@And("^click on save button in asset ammanedment$")
 	public void click_on_save_button_in_asset_ammanedment() throws Throwable {
-		waitHelper.waitForElementToVisibleWithFluentWait(driver, kubsCommonObj.kubsSaveButton(), 20, 1);
+		waitHelper.waitForElementwithFluentwait(driver, kubsCommonObj.kubsSaveButton());
 		kubsCommonObj.kubsSaveButton().click();
 	}
 
 	@And("^search the asset ammendment event code in notification$")
 	public void search_the_asset_ammendment_event_code_in_notification() throws Throwable {
-		waitHelper.waitForElementToVisibleWithFluentWait(driver, kubsCommonObj.kubsSearchEventCode(), 20, 1);
+		waitHelper.waitForElementwithFluentwait(driver, kubsCommonObj.kubsSearchEventCode());
 		clickAndActionHelper.moveToElement(kubsCommonObj.kubsSearchEventCode());
 		clickAndActionHelper.clickOnElement(kubsCommonObj.kubsSearchEventCode());
 		kubsCommonObj.kubsSearchEventCode().sendKeys(assetAmmendmentTestData.get("ModuleCode"));
@@ -512,7 +500,7 @@ public class FIXEDASSET_AssetAmendment extends BaseClass {
 
 	@And("^store the record reference number of ammendment asset in ammendment excel database$")
 	public void store_the_record_reference_number_of_ammendment_asset_in_ammendment_excel_database() throws Throwable {
-		waitHelper.waitForElementToVisibleWithFluentWait(driver, fixedAssetObj.assetAmmendmentReferenceNumber(), 20, 1);
+		waitHelper.waitForElementwithFluentwait(driver, fixedAssetObj.assetAmmendmentReferenceNumber());
 		String referenceNumber = fixedAssetObj.assetAmmendmentReferenceNumber().getText();
 		excelDataForAssetAmmendment.updateTestData(assetAmmendmentTestData.get("DataSet ID"), "Reference ID",
 				referenceNumber);
@@ -521,7 +509,7 @@ public class FIXEDASSET_AssetAmendment extends BaseClass {
 
 	@And("^select the ammendment record from notification$")
 	public void select_the_ammendment_record_from_notification() throws Throwable {
-//		waitHelper.waitForElementToVisibleWithFluentWait(driver, fixedAssetObj.assetAmmendmentNotificationFirstRecord(),
+//		waitHelper.waitForElementwithFluentwait(driver, fixedAssetObj.assetAmmendmentNotificationFirstRecord(),
 //				20, 1);
 		for (int i = 0; i <= 100; i++) {
 			try {
@@ -537,14 +525,14 @@ public class FIXEDASSET_AssetAmendment extends BaseClass {
 
 	@And("^click on submit in asset ammendment$")
 	public void click_on_submit_in_asset_ammendment() throws Throwable {
-		waitHelper.waitForElementToVisibleWithFluentWait(driver, kubsCommonObj.kubsSubmitButton(), 20, 1);
+		waitHelper.waitForElementwithFluentwait(driver, kubsCommonObj.kubsSubmitButton());
 		clickAndActionHelper.moveToElement(kubsCommonObj.kubsSubmitButton());
 		clickAndActionHelper.clickOnElement(kubsCommonObj.kubsSubmitButton());
 	}
 
 	@And("^enter the alert remark in asset ammendment$")
 	public void enter_the_alert_remark_in_asset_ammendment() throws Throwable {
-		waitHelper.waitForElementToVisibleWithFluentWait(driver, kubsCommonObj.kubsAlertRemark(), 20, 1);
+		waitHelper.waitForElementwithFluentwait(driver, kubsCommonObj.kubsAlertRemark());
 		clickAndActionHelper.moveToElement(kubsCommonObj.kubsAlertRemark());
 		clickAndActionHelper.clickOnElement(kubsCommonObj.kubsAlertRemark());
 		kubsCommonObj.kubsAlertRemark().sendKeys(assetAmmendmentTestData.get("MakerAlertRemark"));
@@ -552,7 +540,7 @@ public class FIXEDASSET_AssetAmendment extends BaseClass {
 
 	@And("^click on alert remark in asset ammendment$")
 	public void click_on_alert_remark_in_asset_ammendment() throws Throwable {
-		waitHelper.waitForElementToVisibleWithFluentWait(driver, kubsCommonObj.kubsAlertSubmit(), 20, 1);
+		waitHelper.waitForElementwithFluentwait(driver, kubsCommonObj.kubsAlertSubmit());
 		clickAndActionHelper.moveToElement(kubsCommonObj.kubsAlertSubmit());
 		clickAndActionHelper.clickOnElement(kubsCommonObj.kubsAlertSubmit());
 	}
@@ -560,7 +548,7 @@ public class FIXEDASSET_AssetAmendment extends BaseClass {
 	@And("^valiadate teh ammendment record submittion and store the reviewer ID in ammendment excel database$")
 	public void valiadate_teh_ammendment_record_submittion_and_store_the_reviewer_id_in_ammendment_excel_database()
 			throws Throwable {
-		waitHelper.waitForElementToVisibleWithFluentWait(driver, kubsCommonObj.kubsToastAlert(), 20, 1);
+		waitHelper.waitForElementwithFluentwait(driver, kubsCommonObj.kubsToastAlert());
 		String reviewerID = kubsCommonObj.kubsToastAlert().getText().substring(85).replace(".", "");
 		excelDataForAssetAmmendment.updateTestData(assetAmmendmentTestData.get("DataSet ID"), "Reviewer ID",
 				reviewerID);
@@ -568,7 +556,7 @@ public class FIXEDASSET_AssetAmendment extends BaseClass {
 
 	@And("^click on search button in ammendment list view$")
 	public void click_on_search_button_in_ammendment_list_view() throws Throwable {
-		waitHelper.waitForElementToVisibleWithFluentWait(driver, kubsCommonObj.kubsListViewSearchButton(), 20, 1);
+		waitHelper.waitForElementwithFluentwait(driver, kubsCommonObj.kubsListViewSearchButton());
 		for (int i = 0; i <= 50; i++) {
 			try {
 				clickAndActionHelper.moveToElement(kubsCommonObj.kubsListViewSearchButton());
@@ -584,8 +572,7 @@ public class FIXEDASSET_AssetAmendment extends BaseClass {
 
 	@And("^search the asset approved reference number of ammendment record$")
 	public void search_the_asset_approved_reference_number_of_ammendment_record() throws Throwable {
-		waitHelper.waitForElementToVisibleWithFluentWait(driver,
-				fixedAssetObj.assetAmmendmentListViewSearchAssetRefNo(), 20, 1);
+		waitHelper.waitForElementwithFluentwait(driver, fixedAssetObj.assetAmmendmentListViewSearchAssetRefNo());
 		clickAndActionHelper.moveToElement(fixedAssetObj.assetAmmendmentListViewSearchAssetRefNo());
 		clickAndActionHelper.clickOnElement(fixedAssetObj.assetAmmendmentListViewSearchAssetRefNo());
 		fixedAssetObj.assetAmmendmentListViewSearchAssetRefNo()
@@ -622,8 +609,7 @@ public class FIXEDASSET_AssetAmendment extends BaseClass {
 				}
 			}
 		}
-		waitHelper.waitForElementToVisibleWithFluentWait(driver, fixedAssetObj.assetAmmendmentApprovedItemNumber(), 20,
-				1);
+		waitHelper.waitForElementwithFluentwait(driver, fixedAssetObj.assetAmmendmentApprovedItemNumber());
 		String ItemNum = fixedAssetObj.assetAmmendmentApprovedItemNumber().getText();
 		Assert.assertEquals(ItemNum, assetAmmendmentTestData.get("AssetItemNumber"));
 		String updatedCapitalizationDate = "";
@@ -691,8 +677,7 @@ public class FIXEDASSET_AssetAmendment extends BaseClass {
 				}
 			}
 		}
-		waitHelper.waitForElementToVisibleWithFluentWait(driver, fixedAssetObj.assetAmmendmentApprovedItemNumber(), 20,
-				1);
+		waitHelper.waitForElementwithFluentwait(driver, fixedAssetObj.assetAmmendmentApprovedItemNumber());
 		String ItemNum = fixedAssetObj.assetAmmendmentApprovedItemNumber().getText();
 		Assert.assertEquals(ItemNum, assetAmmendmentTestData.get("AssetItemNumber"));
 		String updatedAssetLife = "";
@@ -756,7 +741,7 @@ public class FIXEDASSET_AssetAmendment extends BaseClass {
 		// ----------TO CLICK AMMENDMENT EYE ICON------------//
 		javaScriptHelper.JavaScriptHelper(driver);
 		javaScriptHelper.scrollIntoView(assetAmendmentObj.fixed_AssetAmmendmentEye());
-		waitHelper.waitForElementToVisibleWithFluentWait(driver, assetAmendmentObj.fixed_AssetAmmendmentEye(), 20, 1);
+		waitHelper.waitForElementwithFluentwait(driver, assetAmendmentObj.fixed_AssetAmmendmentEye());
 		assetAmendmentObj.fixed_AssetAmmendmentEye().click();
 	}
 
@@ -764,9 +749,9 @@ public class FIXEDASSET_AssetAmendment extends BaseClass {
 	public void click_on_add_icon() throws Throwable {
 
 		// ----------TO CLICK ADD ICON--------------//
-		// waitHelper.waitForElement(driver, 2000,
+		// waitHelper.waitForElementwithFluentwait(driver, 2000,
 		// assetAmendmentObj.fixedAssetAmmendmentAdd());
-		waitHelper.waitForElementToVisibleWithFluentWait(driver, assetAmendmentObj.fixedAssetAmmendmentAdd(), 20, 1);
+		waitHelper.waitForElementwithFluentwait(driver, assetAmendmentObj.fixedAssetAmmendmentAdd());
 		for (int i = 0; i <= 200; i++) {
 			try {
 				clickAndActionHelper.moveToElement(assetAmendmentObj.fixedAssetAmmendmentAdd());
@@ -785,7 +770,7 @@ public class FIXEDASSET_AssetAmendment extends BaseClass {
 	public void enter_asset_item_number() throws Throwable {
 
 		// ----------ENTER ASSET ITEM NUMBER-----------//
-		waitHelper.waitForElement(driver, 2000, assetAmendmentObj.fixed_AssetItemCode());
+		waitHelper.waitForElementwithFluentwait(driver, assetAmendmentObj.fixed_AssetItemCode());
 		assetAmendmentObj.fixed_AssetItemCode().click();
 		Thread.sleep(500);
 		assetAmendmentObj.fixed_AssetItemCode().sendKeys(Keys.DOWN);
@@ -796,7 +781,7 @@ public class FIXEDASSET_AssetAmendment extends BaseClass {
 	public void click_on_calender_icon() throws Throwable {
 
 		// ------------CLICK ON CALENDER ICON------------//
-		waitHelper.waitForElement(driver, 2000, assetAmendmentObj.fixed_AssetCalenderDate());
+		waitHelper.waitForElementwithFluentwait(driver, assetAmendmentObj.fixed_AssetCalenderDate());
 		assetAmendmentObj.fixed_AssetCalenderDate().click();
 	}
 
@@ -804,23 +789,23 @@ public class FIXEDASSET_AssetAmendment extends BaseClass {
 	public void save_the_asset_record() throws Throwable {
 		// -----------------SAVE THE RECORD---------------//
 
-		waitHelper.waitForElement(driver, 2000, assetAmendmentObj.AssetAmendment_Save());
+		waitHelper.waitForElementwithFluentwait(driver, assetAmendmentObj.AssetAmendment_Save());
 		assetAmendmentObj.AssetAmendment_Save().isDisplayed();
-		waitHelper.waitForElement(driver, 2000, assetAmendmentObj.AssetAmendment_Save());
+		waitHelper.waitForElementwithFluentwait(driver, assetAmendmentObj.AssetAmendment_Save());
 		assetAmendmentObj.AssetAmendment_Save().click();
 	}
 
 	@And("^Click on Maker Notification$")
 	public void click_on_maker_notification() throws Throwable {
 		// ------------Maker Notification icon---------//
-		waitHelper.waitForElement(driver, 2000, assetAmendmentObj.fixed_MakerNotification());
+		waitHelper.waitForElementwithFluentwait(driver, assetAmendmentObj.fixed_MakerNotification());
 		assetAmendmentObj.fixed_MakerNotification().click();
 	}
 
 	@And("^store the asset reference number of ammendment asset$")
 	public void store_the_asset_reference_number_of_ammendment_asset() throws Throwable {
-		waitHelper.waitForElementToVisibleWithFluentWait(driver,
-				assetAmendmentObj.fixedAmendmentListViewApprovedAssetReferenceNumber(), 20, 1);
+		waitHelper.waitForElementwithFluentwait(driver,
+				assetAmendmentObj.fixedAmendmentListViewApprovedAssetReferenceNumber());
 		String ammendmentAssetReferenceNumber = assetAmendmentObj.fixedAmendmentListViewApprovedAssetReferenceNumber()
 				.getText();
 		assetAmmendmentReportTestData.put("ammendmentAssetReferenceNumber", ammendmentAssetReferenceNumber);
@@ -830,8 +815,7 @@ public class FIXEDASSET_AssetAmendment extends BaseClass {
 
 	@And("^store the asset code of ammendment asset$")
 	public void store_the_asset_code_of_ammendment_asset() throws Throwable {
-		waitHelper.waitForElementToVisibleWithFluentWait(driver,
-				assetAmendmentObj.fixedAmendmentListViewApprovedAssetCode(), 20, 1);
+		waitHelper.waitForElementwithFluentwait(driver, assetAmendmentObj.fixedAmendmentListViewApprovedAssetCode());
 		String ammendmentAssetCode = assetAmendmentObj.fixedAmendmentListViewApprovedAssetCode().getText();
 		assetAmmendmentReportTestData.put("ammendmentAssetCode", ammendmentAssetCode);
 		System.out.println("Ammendment Asset Code " + assetAmmendmentReportTestData.get("ammendmentAssetCode"));
@@ -839,16 +823,14 @@ public class FIXEDASSET_AssetAmendment extends BaseClass {
 
 	@And("^select the approved ammendment asset from ammendmen list view$")
 	public void select_the_approved_ammendment_asset_from_ammendmen_list_view() throws Throwable {
-		waitHelper.waitForElementToVisibleWithFluentWait(driver,
-				assetAmendmentObj.fixedAmendmentListViewApprovedRecord(), 20, 1);
+		waitHelper.waitForElementwithFluentwait(driver, assetAmendmentObj.fixedAmendmentListViewApprovedRecord());
 		assetAmendmentObj.fixedAmendmentListViewApprovedRecord().click();
 	}
 
 	@And("^store the capitalization date of the ammednment asset$")
 	public void store_the_capitalization_date_of_the_ammednment_asset() throws Throwable {
 		javaScriptHelper.JavaScriptHelper(driver);
-		waitHelper.waitForElementToVisibleWithFluentWait(driver,
-				assetAmendmentObj.fixedAmendmentApprovedModificationType(), 20, 1);
+		waitHelper.waitForElementwithFluentwait(driver, assetAmendmentObj.fixedAmendmentApprovedModificationType());
 		String ammendmentModificationType = assetAmendmentObj.fixedAmendmentApprovedModificationType().getText();
 		assetAmmendmentReportTestData.put("ammendmentModificationType", ammendmentModificationType);
 		System.out.println("Ammendment Asset modification Type "
@@ -871,15 +853,14 @@ public class FIXEDASSET_AssetAmendment extends BaseClass {
 
 	@And("^click on temp view of ammendment asset$")
 	public void click_on_temp_view_of_ammendment_asset() throws Throwable {
-		waitHelper.waitForElementToVisibleWithFluentWait(driver,
-				assetAmendmentObj.fixedAmendmentAssetAmmendmentReportTempView(), 20, 1);
+		waitHelper.waitForElementwithFluentwait(driver,
+				assetAmendmentObj.fixedAmendmentAssetAmmendmentReportTempView());
 		assetAmendmentObj.fixedAmendmentAssetAmmendmentReportTempView().click();
 	}
 
 	@And("^enter the modification type in ammendment report$")
 	public void enter_the_modification_type_in_ammendment_report() throws Throwable {
-		waitHelper.waitForElementToVisibleWithFluentWait(driver,
-				assetAmendmentObj.assetAmmendmentReportModificationType(), 20, 1);
+		waitHelper.waitForElementwithFluentwait(driver, assetAmendmentObj.assetAmmendmentReportModificationType());
 		assetAmendmentObj.assetAmmendmentReportModificationType().click();
 		assetAmendmentObj.assetAmmendmentReportModificationType()
 				.sendKeys(assetAmmendmentReportTestData.get("ammendmentModificationType"));
@@ -898,12 +879,12 @@ public class FIXEDASSET_AssetAmendment extends BaseClass {
 		}
 	}
 
+	@SuppressWarnings("static-access")
 	@And("^enter the capitalization date in ammemdment report$")
 	public void enter_the_capitalization_date_in_ammemdment_report() throws Throwable {
-		waitHelper.waitForElementToVisibleWithFluentWait(driver,
-				assetAmendmentObj.assetAmmendmentReportcapitalizationDate(), 20, 1);
+		waitHelper.waitForElementwithFluentwait(driver, assetAmendmentObj.assetAmmendmentReportcapitalizationDate());
 		assetAmendmentObj.assetAmmendmentReportcapitalizationDate().click();
-		waitHelper.waitForElementToVisibleWithFluentWait(driver, kubsCommonObj.kubsCalendarMonthYearOption(), 20, 1);
+		waitHelper.waitForElementwithFluentwait(driver, kubsCommonObj.kubsCalendarMonthYearOption());
 		clickAndActionHelper.moveToElement(kubsCommonObj.kubsCalendarMonthYearOption());
 		clickAndActionHelper.clickOnElement(kubsCommonObj.kubsCalendarMonthYearOption());
 		System.out.println("Created date" + assetAmmendmentReportTestData.get("ammendmentCapDate"));
@@ -1001,8 +982,8 @@ public class FIXEDASSET_AssetAmendment extends BaseClass {
 
 	@And("^enter theammendment as on date in ammdnement report$")
 	public void enter_theammendment_as_on_date_in_ammdnement_report() throws Throwable {
-		waitHelper.waitForElementToVisibleWithFluentWait(driver,
-				assetAmendmentObj.fixedAmendmentAssetAmmendmentReportAsOndate(), 20, 1);
+		waitHelper.waitForElementwithFluentwait(driver,
+				assetAmendmentObj.fixedAmendmentAssetAmmendmentReportAsOndate());
 		assetAmendmentObj.fixedAmendmentAssetAmmendmentReportAsOndate().click();
 
 		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MMM/uuuu");
@@ -1021,7 +1002,7 @@ public class FIXEDASSET_AssetAmendment extends BaseClass {
 		System.out.println(" Full Month " + FullMonth);
 		System.out.println(" Year  " + yearNum);
 		System.out.println("Day " + DateNum);
-		waitHelper.waitForElementToVisibleWithFluentWait(driver, kubsCommonObj.kubsCalendarMonthYearOption(), 20, 1);
+		waitHelper.waitForElementwithFluentwait(driver, kubsCommonObj.kubsCalendarMonthYearOption());
 		clickAndActionHelper.moveToElement(kubsCommonObj.kubsCalendarMonthYearOption());
 
 		String yearXpath = "//span[contains(text(),'" + yearNum + "')]//ancestor::td";

@@ -131,6 +131,8 @@ Then verify user profile got logout
 Scenario: Create a contract details for procuring an asset
 And User get the test data for Contract creation Testcase1
 Given User should go to the kubs url and login as a maker user
+And click on configuration section
+And click on transaction section
 And user should navigate to accounts payable menu
 When click on eye button of vendor contract
 And click on add button to create contract
@@ -359,6 +361,8 @@ Then verify user profile got logout
 Scenario: Check the Bill Booking with all the details and submit from maker
 Given User should go to the kubs url and login as a maker user
 And Update test data for bill booking create and submit from maker
+And click on configuration section
+And click on transaction section
 And user should navigate to accounts payable menu
 When click on eye button of invoice booking
 And click on add button for invoice booking
@@ -410,6 +414,8 @@ Then verify user profile got logout
 @KUBS_FAT_UAT_001_005_04
 Scenario: Verify that approved bill booking record is present in view list
 Given User should go to the kubs url and login as a maker user
+And click on configuration section
+And click on transaction section
 And user should navigate to accounts payable menu
 When click on eye button of invoice booking
 And update the invoice number in asset creation excel database

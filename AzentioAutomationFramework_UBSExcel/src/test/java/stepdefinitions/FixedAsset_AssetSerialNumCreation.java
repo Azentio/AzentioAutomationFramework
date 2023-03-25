@@ -2,12 +2,9 @@ package stepdefinitions;
 
 import java.util.HashMap;
 import java.util.Map;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.testng.Assert;
-
 import dataProvider.JsonConfig;
 import helper.ClicksAndActionsHelper;
 import helper.WaitHelper;
@@ -22,8 +19,7 @@ import testDataType.FixedAsset_AssetCategoryTestDataType;
 public class FixedAsset_AssetSerialNumCreation extends BaseClass {
 
 	WebDriver driver = BaseClass.driver;
-	JsonConfig jsonReader = new JsonConfig();
-	WaitHelper waithelper = new WaitHelper(driver);
+	WaitHelper waitHelper = new WaitHelper(driver);
 	ClicksAndActionsHelper clicksAndActionHelper = new ClicksAndActionsHelper(driver);
 	FixedAsset_AssetSerialNumCreationObj fixedAsset_AssetSerialNumCreationObj = new FixedAsset_AssetSerialNumCreationObj(
 			driver);
@@ -38,7 +34,6 @@ public class FixedAsset_AssetSerialNumCreation extends BaseClass {
 
 	@Then("^Click on Asset Serial Num Creation Eye button$")
 	public void click_on_asset_serial_num_creation_eye_button() {
-		// Eye Button
 		for (int i = 0; i <= 100; i++) {
 			try {
 				clicksAndActionHelper.moveToElement(
@@ -112,8 +107,8 @@ public class FixedAsset_AssetSerialNumCreation extends BaseClass {
 
 	@And("^enter the asset seria number in asset serail number configuration$")
 	public void enter_the_asset_seria_number_in_asset_serail_number_configuration() throws Throwable {
-		waithelper.waitForElementToVisibleWithFluentWait(driver,
-				fixedAsset_AssetSerialNumCreationObj.fixedAsset_AssetSerialNumCreation_StartSerialNumber(), 20, 1);
+		waitHelper.waitForElementwithFluentwait(driver,
+				fixedAsset_AssetSerialNumCreationObj.fixedAsset_AssetSerialNumCreation_StartSerialNumber());
 		fixedAsset_AssetSerialNumCreationObj.fixedAsset_AssetSerialNumCreation_StartSerialNumber().clear();
 		fixedAsset_AssetSerialNumCreationObj.fixedAsset_AssetSerialNumCreation_StartSerialNumber()
 				.sendKeys(assetSerialNumberTestData.get("SerailNumber"));
@@ -121,14 +116,14 @@ public class FixedAsset_AssetSerialNumCreation extends BaseClass {
 
 	@And("^click on save button in asset serial number configuration$")
 	public void click_on_save_button_in_asset_serial_number_configuration() throws Throwable {
-		waithelper.waitForElementToVisibleWithFluentWait(driver, kubsCommonObj.kubsSaveButton(), 20, 1);
+		waitHelper.waitForElementwithFluentwait(driver, kubsCommonObj.kubsSaveButton());
 		kubsCommonObj.kubsSaveButton().click();
 	}
 
 	@And("^search the asset asset serail number setup module code in notification$")
 	public void search_the_asset_asset_serail_number_setup_module_code_in_notification() throws Throwable {
-		waithelper.waitForElementToVisibleWithFluentWait(driver, kubsCommonObj.kubsSearchEventCode(), 20, 1);
-		// assetSaleTestData.get("Remark")
+		waitHelper.waitForElementwithFluentwait(driver, kubsCommonObj.kubsSearchEventCode());
+	
 		clicksAndActionHelper.moveToElement(kubsCommonObj.kubsSearchEventCode());
 		clicksAndActionHelper.clickOnElement(kubsCommonObj.kubsSearchEventCode());
 		kubsCommonObj.kubsSearchEventCode().sendKeys(assetSerialNumberTestData.get("ModuleCode"));
@@ -137,19 +132,19 @@ public class FixedAsset_AssetSerialNumCreation extends BaseClass {
 	@And("^store the fixed asset gl serail number setup record reference number in excel data base and select the record$")
 	public void store_the_fixed_asset_gl_serail_number_setup_record_reference_number_in_excel_data_base_and_select_the_record()
 			throws Throwable {
-		waithelper.waitForElementToVisibleWithFluentWait(driver,
-				fixedAsset_AssetSerialNumCreationObj.assetSerialNumberReferenceNumber(), 20, 1);
+		waitHelper.waitForElementwithFluentwait(driver,
+				fixedAsset_AssetSerialNumCreationObj.assetSerialNumberReferenceNumber());
 		excelTestDataaForAssetSerialNumber.updateTestData(assetSerialNumberTestData.get("DataSet ID"), "Reference ID",
 
 				fixedAsset_AssetSerialNumCreationObj.assetSerialNumberReferenceNumber().getText());
-		waithelper.waitForElementToVisibleWithFluentWait(driver,
-				fixedAsset_AssetSerialNumCreationObj.assetSerialNumberNotificationFirstRecord(), 20, 1);
+		waitHelper.waitForElementwithFluentwait(driver,
+				fixedAsset_AssetSerialNumCreationObj.assetSerialNumberNotificationFirstRecord());
 		fixedAsset_AssetSerialNumCreationObj.assetSerialNumberNotificationFirstRecord().click();
 	}
 
 	@And("^click on submit in asset serail number setup$")
 	public void click_on_submit_in_asset_serail_number_setup() throws Throwable {
-		waithelper.waitForElementToVisibleWithFluentWait(driver, kubsCommonObj.kubsSubmitButton(), 20, 1);
+		waitHelper.waitForElementwithFluentwait(driver, kubsCommonObj.kubsSubmitButton());
 		kubsCommonObj.kubsSubmitButton().click();
 	}
 
@@ -171,13 +166,13 @@ public class FixedAsset_AssetSerialNumCreation extends BaseClass {
 
 	@And("^click on alert submit in serial number setup$")
 	public void click_on_alert_submit_in_serial_number_setup() throws Throwable {
-		waithelper.waitForElementToVisibleWithFluentWait(driver, kubsCommonObj.kubsAlertSubmit(), 20, 1);
+		waitHelper.waitForElementwithFluentwait(driver, kubsCommonObj.kubsAlertSubmit());
 		kubsCommonObj.kubsAlertSubmit().click();
 	}
 
 	@Then("^validate the submit and store the reviewer ID of asset gl setup in excel database$")
 	public void validate_the_submit_and_store_the_reviewer_id_of_asset_gl_setup_in_excel_database() throws Throwable {
-		waithelper.waitForElementToVisibleWithFluentWait(driver, kubsCommonObj.kubsToastAlert(), 20, 1);
+		waitHelper.waitForElementwithFluentwait(driver, kubsCommonObj.kubsToastAlert());
 		String reviewerID = kubsCommonObj.kubsToastAlert().getText().substring(85).replace(".", "");
 		excelTestDataaForAssetSerialNumber.updateTestData(assetSerialNumberTestData.get("DataSet ID"), "Reviewer ID",
 				reviewerID);
@@ -251,84 +246,4 @@ public class FixedAsset_AssetSerialNumCreation extends BaseClass {
 				assetSerialNumberTestData.get("AssetCode"));
 
 	}
-	/*
-	 * @And("^get the active asset code in asset category moduless$") public void
-	 * get_the_active_asset_code_in_asset_category_moduless() throws Throwable {
-	 * waithelper.waitForElementVisible( driver.findElement(By.xpath(
-	 * "//datatable-row-wrapper[1]//datatable-body-cell[2]//span")), 3000, 300);
-	 * driver.findElement(By.xpath(
-	 * "//datatable-row-wrapper[1]//datatable-body-cell[2]//span")).getText();
-	 * codeConfigData.put("AssetCode", driver.findElement(By.xpath(
-	 * "//datatable-row-wrapper[1]//datatable-body-cell[2]//span")).getText());
-	 * 
-	 * }
-	 */
-
-	/*
-	 * @Then("^Click on Asset Serial Num Creation Search icon$") public void
-	 * click_on_asset_serial_num_creation_search_icon() { //
-	 * waithelper.waitForElementToVisibleWithFluentWait(driver, //
-	 * fixedAsset_AssetSerialNumCreationObj.
-	 * fixedAsset_AssetSerialNumCreation_SearchIcon(),60,5); for (int i = 0; i < 30;
-	 * i++) { try { fixedAsset_AssetSerialNumCreationObj.
-	 * fixedAsset_AssetSerialNumCreation_SearchIcon().click(); break; } catch
-	 * (Exception e) { if (i == 29) {
-	 * Assert.fail("Asset serial number search icon not clicked"); } } }
-	 */
-
 }
-
-/*
- * @Then("^Enter Asset code$") public void enter_asset_code() {
- * fixedAsset_AssetCategoryTestDataType =
- * jsonReader.getAssetCategoryByName("Maker"); // Asset code
- * 
- * waithelper.waitForElementToVisibleWithFluentWait(driver,
- * fixedAsset_AssetSerialNumCreationObj.
- * fixedAsset_AssetSerialNumCreation_AssetCode(), 60, 5);
- * fixedAsset_AssetSerialNumCreationObj.
- * fixedAsset_AssetSerialNumCreation_AssetCode().click(); //
- * fixedAsset_AssetSerialNumCreationObj.
- * fixedAsset_AssetSerialNumCreation_AssetCode().sendKeys(
- * fixedAsset_AssetCategoryTestDataType.AssetCode);
- * fixedAsset_AssetSerialNumCreationObj.
- * fixedAsset_AssetSerialNumCreation_AssetCode()
- * .sendKeys(codeConfigData.get("AssetCode"));
- * fixedAsset_AssetSerialNumCreationObj.
- * fixedAsset_AssetSerialNumCreation_AssetCode().sendKeys(Keys.ENTER);
- * 
- * }
- */
-
-/*
- * @Then("^Click on the record$") public void click_on_the_record() { // Pencil
- * 
- * waithelper.waitForElementToVisibleWithFluentWait(driver,
- * fixedAsset_AssetSerialNumCreationObj.
- * fixedAsset_AssetSerialNumCreation_PencilIcon(), 60, 5);
- * fixedAsset_AssetSerialNumCreationObj.
- * fixedAsset_AssetSerialNumCreation_PencilIcon().click();
- * 
- * }
- */
-
-/*
- * @Then("^Fill Asset Serial Num Creation Mandatory fields$") public void
- * fill_asset_serial_num_creation_mandatory_fields() throws InterruptedException
- * { fixedAsset_AssetCategoryTestDataType =
- * jsonReader.getAssetCategoryByName("Maker"); // StartSerialNumber
- * 
- * waithelper.waitForElementToVisibleWithFluentWait(driver,
- * fixedAsset_AssetSerialNumCreationObj.
- * fixedAsset_AssetSerialNumCreation_StartSerialNumber(), 60, 5);
- * fixedAsset_AssetSerialNumCreationObj.
- * fixedAsset_AssetSerialNumCreation_StartSerialNumber().click();
- * fixedAsset_AssetSerialNumCreationObj.
- * fixedAsset_AssetSerialNumCreation_StartSerialNumber()
- * .sendKeys(fixedAsset_AssetCategoryTestDataType.StartSerialNumber);
- * fixedAsset_AssetSerialNumCreationObj.
- * fixedAsset_AssetSerialNumCreation_StartSerialNumber().sendKeys(Keys.ENTER);
- * Thread.sleep(2000);
- * 
- * }
- */

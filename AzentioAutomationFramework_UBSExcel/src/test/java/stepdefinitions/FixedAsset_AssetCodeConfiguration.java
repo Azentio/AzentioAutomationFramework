@@ -1,16 +1,15 @@
 package stepdefinitions;
 
+import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.Map;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
-
 import dataProvider.JsonConfig;
 import helper.BrowserHelper;
 import helper.ClicksAndActionsHelper;
@@ -23,16 +22,13 @@ import pageobjects.FixedAsset_AssetCodeConfigurationObj;
 import pageobjects.KUBS_CommonWebElements;
 import resources.BaseClass;
 import resources.ExcelData;
-import testDataType.FixedAsset_AssetCategoryTestDataType;
 
 public class FixedAsset_AssetCodeConfiguration extends BaseClass {
 	WebDriver driver = BaseClass.driver;
-	JsonConfig jsonReader = new JsonConfig();
-	WaitHelper waithelper = new WaitHelper(driver);
+	WaitHelper waitHelper = new WaitHelper(driver);
 	ClicksAndActionsHelper clicksAndActionHelper = new ClicksAndActionsHelper(driver);
 	FixedAsset_AssetCodeConfigurationObj fixedAsset_AssetCodeConfigurationObj = new FixedAsset_AssetCodeConfigurationObj(
 			driver);
-
 	String AssetCode;
 	Map<String, String> codeConfigData = new HashMap<>();
 	String excelPath = System.getProperty("user.dir") + "\\Test-data\\KUBSTestData.xlsx";
@@ -47,9 +43,9 @@ public class FixedAsset_AssetCodeConfiguration extends BaseClass {
 
 	@And("^get the active asset code in asset category module$")
 	public void get_the_active_asset_code_in_asset_category_module() throws Throwable {
-		waithelper.waitForElementVisible(
-				driver.findElement(By.xpath("//datatable-row-wrapper[1]//datatable-body-cell[2]//span")), 3000, 300);
-		// driver.findElement(By.xpath("//datatable-row-wrapper[1]//datatable-body-cell[2]//span")).getText();
+		waitHelper.waitForElementwithFluentwait(driver,
+				driver.findElement(By.xpath("//datatable-row-wrapper[1]//datatable-body-cell[2]//span")));
+
 		codeConfigData.put("AssetCode",
 				driver.findElement(By.xpath("//datatable-row-wrapper[1]//datatable-body-cell[2]//span")).getText());
 		System.out.println(
@@ -57,9 +53,9 @@ public class FixedAsset_AssetCodeConfiguration extends BaseClass {
 	}
 
 	@Then("^Click on Asset code configuration Eye button$")
-	public void click_on_asset_code_configuration_eye_button() {
+	public void click_on_asset_code_configuration_eye_button() throws IOException {
 		// Eye Button
-		waithelper.waitForElement(driver, 4000,
+		waitHelper.waitForElementwithFluentwait(driver,
 				fixedAsset_AssetCodeConfigurationObj.fixedAsset_AssetCodeConfiguration_EyeIcon());
 		fixedAsset_AssetCodeConfigurationObj.fixedAsset_AssetCodeConfiguration_EyeIcon().click();
 
@@ -103,8 +99,8 @@ public class FixedAsset_AssetCodeConfiguration extends BaseClass {
 
 	@And("^enter the asset code in asset code configuration$")
 	public void enter_the_asset_code_in_asset_code_configuration() throws Throwable {
-		waithelper.waitForElementToVisibleWithFluentWait(driver,
-				fixedAsset_AssetCodeConfigurationObj.fixedAsset_AssetCodeConfiguration_AssetCode(), 20, 1);
+		waitHelper.waitForElementwithFluentwait(driver,
+				fixedAsset_AssetCodeConfigurationObj.fixedAsset_AssetCodeConfiguration_AssetCode());
 		fixedAsset_AssetCodeConfigurationObj.fixedAsset_AssetCodeConfiguration_AssetCode().click();
 		System.out.println("Asset Code " + assetCodeConfigTestData.get("AssetCode"));
 		for (int i = 0; i <= 50; i++) {
@@ -134,8 +130,8 @@ public class FixedAsset_AssetCodeConfiguration extends BaseClass {
 
 	@And("^enter the accounting model in asset code configuration$")
 	public void enter_the_accounting_model_in_asset_code_configuration() throws Throwable {
-		waithelper.waitForElementToVisibleWithFluentWait(driver,
-				fixedAsset_AssetCodeConfigurationObj.fixedAsset_AssetCodeConfiguration_AccountingModel(), 20, 1);
+		waitHelper.waitForElementwithFluentwait(driver,
+				fixedAsset_AssetCodeConfigurationObj.fixedAsset_AssetCodeConfiguration_AccountingModel());
 		fixedAsset_AssetCodeConfigurationObj.fixedAsset_AssetCodeConfiguration_AccountingModel().click();
 		fixedAsset_AssetCodeConfigurationObj.fixedAsset_AssetCodeConfiguration_AccountingModel()
 				.sendKeys(assetCodeConfigTestData.get("AccountingModel"));
@@ -145,8 +141,8 @@ public class FixedAsset_AssetCodeConfiguration extends BaseClass {
 
 	@And("^enter the asset life unit in asset code configuration$")
 	public void enter_the_asset_life_unit_in_asset_code_configuration() throws Throwable {
-		waithelper.waitForElementToVisibleWithFluentWait(driver,
-				fixedAsset_AssetCodeConfigurationObj.fixedAsset_AssetCodeConfiguration_AssetLifeUnit(), 20, 1);
+		waitHelper.waitForElementwithFluentwait(driver,
+				fixedAsset_AssetCodeConfigurationObj.fixedAsset_AssetCodeConfiguration_AssetLifeUnit());
 		fixedAsset_AssetCodeConfigurationObj.fixedAsset_AssetCodeConfiguration_AssetLifeUnit().click();
 		fixedAsset_AssetCodeConfigurationObj.fixedAsset_AssetCodeConfiguration_AssetLifeUnit()
 				.sendKeys(assetCodeConfigTestData.get("AssetLifeUnit"));
@@ -167,8 +163,8 @@ public class FixedAsset_AssetCodeConfiguration extends BaseClass {
 
 	@And("^enter the asset life in asset code configuration$")
 	public void enter_the_asset_life_in_asset_code_configuration() throws Throwable {
-		waithelper.waitForElementToVisibleWithFluentWait(driver,
-				fixedAsset_AssetCodeConfigurationObj.fixedAsset_AssetCodeConfiguration_AssetLife(), 20, 1);
+		waitHelper.waitForElementwithFluentwait(driver,
+				fixedAsset_AssetCodeConfigurationObj.fixedAsset_AssetCodeConfiguration_AssetLife());
 		fixedAsset_AssetCodeConfigurationObj.fixedAsset_AssetCodeConfiguration_AssetLife().click();
 		fixedAsset_AssetCodeConfigurationObj.fixedAsset_AssetCodeConfiguration_AssetLife()
 				.sendKeys(assetCodeConfigTestData.get("AssetLife"));
@@ -176,8 +172,8 @@ public class FixedAsset_AssetCodeConfiguration extends BaseClass {
 
 	@And("^enter the basis for depriciation in asset code configuration$")
 	public void enter_the_basis_for_depriciation_in_asset_code_configuration() throws Throwable {
-		waithelper.waitForElementToVisibleWithFluentWait(driver,
-				fixedAsset_AssetCodeConfigurationObj.fixedAsset_AssetCodeConfiguration_BasisForDeperciation(), 20, 1);
+		waitHelper.waitForElementwithFluentwait(driver,
+				fixedAsset_AssetCodeConfigurationObj.fixedAsset_AssetCodeConfiguration_BasisForDeperciation());
 		fixedAsset_AssetCodeConfigurationObj.fixedAsset_AssetCodeConfiguration_BasisForDeperciation().click();
 		fixedAsset_AssetCodeConfigurationObj.fixedAsset_AssetCodeConfiguration_BasisForDeperciation()
 				.sendKeys(assetCodeConfigTestData.get("BasisForDepriciation"));
@@ -189,8 +185,8 @@ public class FixedAsset_AssetCodeConfiguration extends BaseClass {
 
 	@And("^enter the depriciaton method in asset code configuration$")
 	public void enter_the_depriciaton_method_in_asset_code_configuration() throws Throwable {
-		waithelper.waitForElementToVisibleWithFluentWait(driver,
-				fixedAsset_AssetCodeConfigurationObj.fixedAsset_AssetCodeConfiguration_DeperciationMethod(), 20, 1);
+		waitHelper.waitForElementwithFluentwait(driver,
+				fixedAsset_AssetCodeConfigurationObj.fixedAsset_AssetCodeConfiguration_DeperciationMethod());
 		fixedAsset_AssetCodeConfigurationObj.fixedAsset_AssetCodeConfiguration_DeperciationMethod().click();
 		fixedAsset_AssetCodeConfigurationObj.fixedAsset_AssetCodeConfiguration_DeperciationMethod()
 				.sendKeys(assetCodeConfigTestData.get("DepriciationMethod"));
@@ -201,9 +197,8 @@ public class FixedAsset_AssetCodeConfiguration extends BaseClass {
 
 	@And("^enter the depriciation rounding method in asset code configuration$")
 	public void enter_the_depriciation_rounding_method_in_asset_code_configuration() throws Throwable {
-		waithelper.waitForElementToVisibleWithFluentWait(driver,
-				fixedAsset_AssetCodeConfigurationObj.fixedAsset_AssetCodeConfiguration_DeperciationRoundingMethod(), 20,
-				1);
+		waitHelper.waitForElementwithFluentwait(driver,
+				fixedAsset_AssetCodeConfigurationObj.fixedAsset_AssetCodeConfiguration_DeperciationRoundingMethod());
 		fixedAsset_AssetCodeConfigurationObj.fixedAsset_AssetCodeConfiguration_DeperciationRoundingMethod().click();
 		fixedAsset_AssetCodeConfigurationObj.fixedAsset_AssetCodeConfiguration_DeperciationRoundingMethod()
 				.sendKeys(assetCodeConfigTestData.get("DepriciationRoundingMethod"));
@@ -215,20 +210,20 @@ public class FixedAsset_AssetCodeConfiguration extends BaseClass {
 
 	@Then("^verify asset code config record got submitted and store the reviewer ID$")
 	public void verify_asset_code_config_record_got_submitted_and_store_the_reviewer_id() throws Throwable {
-		waithelper.waitForElementToVisibleWithFluentWait(driver, kubsCommonWebObj.kubsToastAlert(), 60, 1);
+		waitHelper.waitForElementwithFluentwait(driver, kubsCommonWebObj.kubsToastAlert());
 		String reviewerID = kubsCommonWebObj.kubsToastAlert().getText().substring(85).replace(".", "");
 		excelData.updateTestData(assetCodeConfigTestData.get("DataSet ID"), "Reviewer ID", reviewerID);
 	}
 
 	@And("^save the asset code configuration record$")
 	public void save_the_asset_code_configuration_record() throws Throwable {
-		waithelper.waitForElementToVisibleWithFluentWait(driver, kubsCommonWebObj.kubsSaveButton(), 20, 1);
+		waitHelper.waitForElementwithFluentwait(driver, kubsCommonWebObj.kubsSaveButton());
 		kubsCommonWebObj.kubsSaveButton().click();
 	}
 
 	@Then("^validate record got save in maker stage$")
 	public void validate_record_got_save_in_maker_stage() throws Throwable {
-		waithelper.waitForElementToVisibleWithFluentWait(driver, kubsCommonWebObj.kubsToastAlert(), 60, 1);
+		waitHelper.waitForElementwithFluentwait(driver, kubsCommonWebObj.kubsToastAlert());
 		clickAndActionsHelper.moveToElement(kubsCommonWebObj.kubsToastAlert());
 		Assert.assertEquals(kubsCommonWebObj.kubsToastAlert().getText(),
 				"Workflow initiated submit record from inbox.");
@@ -248,7 +243,7 @@ public class FixedAsset_AssetCodeConfiguration extends BaseClass {
 	@And("^click on notification icon in maker stage$")
 	public void click_on_notification_icon_in_maker_stage() throws Throwable {
 		javascriptHelper.JavaScriptHelper(driver);
-		waithelper.waitForElementToVisibleWithFluentWait(driver, kubsCommonWebObj.kubsNotificationIcon(), 20, 1);
+		waitHelper.waitForElementwithFluentwait(driver, kubsCommonWebObj.kubsNotificationIcon());
 		for (int i = 0; i <= 50; i++) {
 			try {
 				clickAndActionsHelper.moveToElement(kubsCommonWebObj.kubsNotificationIcon());
@@ -269,7 +264,7 @@ public class FixedAsset_AssetCodeConfiguration extends BaseClass {
 
 	@And("^search the asset code config module code in notification$")
 	public void search_the_asset_code_config_module_code_in_notification() throws Throwable {
-		waithelper.waitForElementToVisibleWithFluentWait(driver, kubsCommonWebObj.kubsSearchEventCode(), 20, 1);
+		waitHelper.waitForElementwithFluentwait(driver, kubsCommonWebObj.kubsSearchEventCode());
 		// assetSaleTestData.get("Remark")
 		clicksAndActionHelper.moveToElement(kubsCommonWebObj.kubsSearchEventCode());
 		clicksAndActionHelper.clickOnElement(kubsCommonWebObj.kubsSearchEventCode());
@@ -279,8 +274,8 @@ public class FixedAsset_AssetCodeConfiguration extends BaseClass {
 
 	@And("^store the asset code reference number in excel file$")
 	public void store_the_asset_code_reference_number_in_excel_file() throws Throwable {
-		waithelper.waitForElementToVisibleWithFluentWait(driver,
-				fixedAsset_AssetCodeConfigurationObj.assetCodeConfigNotificationRecordReferenceNo(), 20, 1);
+		waitHelper.waitForElementwithFluentwait(driver,
+				fixedAsset_AssetCodeConfigurationObj.assetCodeConfigNotificationRecordReferenceNo());
 
 		excelData.updateTestData(assetCodeConfigTestData.get("DataSet ID"), "Reference ID",
 				fixedAsset_AssetCodeConfigurationObj.assetCodeConfigNotificationRecordReferenceNo().getText());
@@ -288,20 +283,20 @@ public class FixedAsset_AssetCodeConfiguration extends BaseClass {
 
 	@And("^select the asset code configuration record$")
 	public void select_the_asset_code_configuration_record() throws Throwable {
-		waithelper.waitForElementToVisibleWithFluentWait(driver,
-				fixedAsset_AssetCodeConfigurationObj.assetCodeConfigNotificationRecord(), 20, 1);
+		waitHelper.waitForElementwithFluentwait(driver,
+				fixedAsset_AssetCodeConfigurationObj.assetCodeConfigNotificationRecord());
 		fixedAsset_AssetCodeConfigurationObj.assetCodeConfigNotificationRecord().click();
 	}
 
 	@And("^click on submit in asset code configuration record$")
 	public void click_on_submit_in_asset_code_configuration_record() throws Throwable {
-		waithelper.waitForElementToVisibleWithFluentWait(driver, kubsCommonWebObj.kubsSubmitButton(), 20, 1);
+		waitHelper.waitForElementwithFluentwait(driver, kubsCommonWebObj.kubsSubmitButton());
 		kubsCommonWebObj.kubsSubmitButton().click();
 	}
 
 	@And("^enter the alert remark in asset code configuration record$")
 	public void enter_the_alert_remark_in_asset_code_configuration_record() throws Throwable {
-		waithelper.waitForElementToVisibleWithFluentWait(driver, kubsCommonWebObj.kubsAlertRemark(), 20, 1);
+		waitHelper.waitForElementwithFluentwait(driver, kubsCommonWebObj.kubsAlertRemark());
 		clickAndActionsHelper.moveToElement(kubsCommonWebObj.kubsAlertRemark());
 		clickAndActionsHelper.clickOnElement(kubsCommonWebObj.kubsAlertRemark());
 		kubsCommonWebObj.kubsAlertRemark().sendKeys(assetCodeConfigTestData.get("MakerAlertRemark"));
@@ -309,7 +304,7 @@ public class FixedAsset_AssetCodeConfiguration extends BaseClass {
 
 	@And("^click on alert submit in asset code configuration$")
 	public void click_on_alert_submit_in_asset_code_configuration() throws Throwable {
-		waithelper.waitForElementToVisibleWithFluentWait(driver, kubsCommonWebObj.kubsAlertSubmit(), 20, 1);
+		waitHelper.waitForElementwithFluentwait(driver, kubsCommonWebObj.kubsAlertSubmit());
 		try {
 			kubsCommonWebObj.kubsAlertSubmit().click();
 		} catch (Exception e) {
@@ -388,8 +383,8 @@ public class FixedAsset_AssetCodeConfiguration extends BaseClass {
 
 	@And("^get the asset code for report$")
 	public void get_the_asset_code_for_report() throws Throwable {
-		waithelper.waitForElementToVisibleWithFluentWait(driver,
-				fixedAsset_AssetCodeConfigurationObj.assetCodeConfigListViewApprovedAssetRecord(), 20, 1);
+		waitHelper.waitForElementwithFluentwait(driver,
+				fixedAsset_AssetCodeConfigurationObj.assetCodeConfigListViewApprovedAssetRecord());
 		String approvedAssetCode = fixedAsset_AssetCodeConfigurationObj.assetCodeConfigListViewApprovedAssetRecord()
 				.getText();
 		assetCodeConfigReportTestData.put("approvedAssetCode", approvedAssetCode);
@@ -398,8 +393,8 @@ public class FixedAsset_AssetCodeConfiguration extends BaseClass {
 
 	@And("^get the asset depriciation method for report$")
 	public void get_the_asset_depriciation_method_for_report() throws Throwable {
-		waithelper.waitForElementToVisibleWithFluentWait(driver,
-				fixedAsset_AssetCodeConfigurationObj.assetCodeConfigListViewApprovedAssetDepriciationType(), 20, 1);
+		waitHelper.waitForElementwithFluentwait(driver,
+				fixedAsset_AssetCodeConfigurationObj.assetCodeConfigListViewApprovedAssetDepriciationType());
 		String approvedAssetDepriciationType = fixedAsset_AssetCodeConfigurationObj
 				.assetCodeConfigListViewApprovedAssetDepriciationType().getText();
 		assetCodeConfigReportTestData.put("approvedAssetDepriciationType", approvedAssetDepriciationType);
@@ -407,14 +402,14 @@ public class FixedAsset_AssetCodeConfiguration extends BaseClass {
 
 	@And("^click on temp view of asset code report$")
 	public void click_on_temp_view_of_asset_code_report() throws Throwable {
-		waithelper.waitForElementToVisibleWithFluentWait(driver, kubsCommonWebObj.kubsAssetCodeReportTempView(), 20, 1);
+		waitHelper.waitForElementwithFluentwait(driver, kubsCommonWebObj.kubsAssetCodeReportTempView());
 		kubsCommonWebObj.kubsAssetCodeReportTempView().click();
 	}
 
 	@And("^enter the asset depriciation method in asset code report$")
 	public void enter_the_asset_depriciation_method_in_asset_code_report() throws Throwable {
-		waithelper.waitForElementToVisibleWithFluentWait(driver,
-				fixedAsset_AssetCodeConfigurationObj.assetCodeReportDepriciationMethod(), 20, 1);
+		waitHelper.waitForElementwithFluentwait(driver,
+				fixedAsset_AssetCodeConfigurationObj.assetCodeReportDepriciationMethod());
 		fixedAsset_AssetCodeConfigurationObj.assetCodeReportDepriciationMethod().click();
 		fixedAsset_AssetCodeConfigurationObj.assetCodeReportDepriciationMethod()
 				.sendKeys(assetCodeConfigReportTestData.get("approvedAssetDepriciationType"));
@@ -424,8 +419,8 @@ public class FixedAsset_AssetCodeConfiguration extends BaseClass {
 
 	@And("^enter the asset code as on date in asset code report$")
 	public void enter_the_asset_code_as_on_date_in_asset_code_report() throws Throwable {
-		waithelper.waitForElementToVisibleWithFluentWait(driver,
-				fixedAsset_AssetCodeConfigurationObj.assetCodeReportAssetCodeAsOndate(), 20, 1);
+		waitHelper.waitForElementwithFluentwait(driver,
+				fixedAsset_AssetCodeConfigurationObj.assetCodeReportAssetCodeAsOndate());
 		fixedAsset_AssetCodeConfigurationObj.assetCodeReportAssetCodeAsOndate().click();
 		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MMM/uuuu");
 		DateTimeFormatter dtf1 = DateTimeFormatter.ofPattern("dd/MMMM/uuuu");
@@ -440,7 +435,7 @@ public class FixedAsset_AssetCodeConfiguration extends BaseClass {
 		String FullMonth = DateSplit1[1];
 		Integer yearNum = Integer.valueOf(DateSplit[2]);
 
-		waithelper.waitForElementToVisibleWithFluentWait(driver, kubsCommonWebObj.kubsCalendarMonthYearOption(), 20, 1);
+		waitHelper.waitForElementwithFluentwait(driver, kubsCommonWebObj.kubsCalendarMonthYearOption());
 		clickAndActionsHelper.moveToElement(kubsCommonWebObj.kubsCalendarMonthYearOption());
 		clickAndActionsHelper.clickOnElement(kubsCommonWebObj.kubsCalendarMonthYearOption());
 		String yearXpath = "//span[contains(text(),'" + yearNum + "')]//ancestor::td";
@@ -501,6 +496,5 @@ public class FixedAsset_AssetCodeConfiguration extends BaseClass {
 		}
 		browserHelper.switchToParentWithChildClose();
 	}
-	
 
 }
