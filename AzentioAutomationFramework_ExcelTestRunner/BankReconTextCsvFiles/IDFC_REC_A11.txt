@@ -1,0 +1,13 @@
+IDFC FIRST BANK
+"Account No.: IDFC77712345, NEHRU NAGAR BRANCH"
+"Closing Balance: INR 18374.0, As On Date: 01-Feb-2023"
+As On Date: 02-Feb-2023
+Date        Chq./Ref.No.            Deposit Amt.             Withdrawal Amt.         Narration            Value Dt                Closing Balance					
+02/02/2023  RRN260001               1000                                             OK                   02/02/2023              1000.0
+02/03/2023  RRN260003               1000                                             OneToM               02/03/2023              2000.0
+02/03/2023  RRN260003               500                                              OneToM               02/03/2023              2500.0
+02/03/2023  RRN260004               1000                                             ManyToOne            02/03/2023              3500.0
+02/03/2023  RRN260006               2000                                             receipt anay         02/03/2023              5500.0
+02/03/2023  RRN260008               4789                                             RECEIPT FOR ANANT    02/03/2023              10289.0
+02/03/2023  RRN260008               5085                                             RECEIPT FOR ANANT    02/03/2023              15374.0
+19/03/2023  RRN260007               3000                                             567                  02/02/2023              18374.0

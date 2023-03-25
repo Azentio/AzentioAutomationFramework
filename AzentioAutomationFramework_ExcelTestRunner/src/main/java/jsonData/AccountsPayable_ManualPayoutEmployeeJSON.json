@@ -1,0 +1,24 @@
+[{
+
+
+		"User" : "Maker",
+		"EntityBranch" : "Azentio Main Branch",
+		"BP_Name" : "Mehta",
+		"BeneficiaryName" : "Mehta",
+		"Currency" : "INR",
+		"PaymentBank" : "HDFC BANK",
+		"BankAccountNumber" : "1234534555",
+		"PaymentMode" : "wire Transfer(External Bank A/C)",
+		"ReferenceNumber" : "Ref-001",
+		"ChequeNumber" : "C-001",
+		"Remarks" : "ok",
+		"RemarkByMaker" : "Submit By Maker",
+		"ApprovedByReviewer" : "Approved By Reviewer",
+		"ApprovedByChecker" : "Approved By Checker",
+		"PaymentApprovalTxnNumber" : "PAN-273-2022-05-11",
+		"CancelledPaymentTxnNumber" : "PAN-248-2022-04-21"
+
+
+
+
+}]
