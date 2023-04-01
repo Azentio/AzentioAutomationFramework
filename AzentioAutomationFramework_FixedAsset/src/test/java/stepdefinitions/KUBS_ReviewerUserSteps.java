@@ -49,10 +49,17 @@ public class KUBS_ReviewerUserSteps extends BaseClass {
 	ExcelData excelDataForBudgetReqAllocation = new ExcelData(excelPath, "BudgetReqAndAllocation", "DataSet ID");
 	ExcelData excelDataForBudgetSupplementary = new ExcelData(excelPath,"BudgetSupplimentory","DataSet ID");
 	ExcelData excelDataForBudgetReqAndAllocation = new ExcelData(excelPath, "BudgetReqAndAllocation", "DataSet ID");
+	ExcelData excelDataForBankRecon = new ExcelData(excelPath,"BankRecon","DataSet ID");
 	@Given("^navigate to kubs url to approve the yearly budget record$")
     public void navigate_to_kubs_url_to_approve_the_yearly_budget_record() throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
 		reviewerTestData = excelDataForBudgetConfig.getTestdata("KUBS_BP_UAT_001_001_D1");
+		kubsLogin.logintoAzentioappReviewer(reviewerTestData.get("Reviewer ID"));
+    }
+	@Given("^navigate to kubs url and log in with reviewer to approve the bank recon config record$")
+    public void navigate_to_kubs_url_and_log_in_with_reviewer_to_approve_the_bank_recon_config_record() throws Throwable {
+		driver.get(configFileReader.getApplicationUrl());
+		reviewerTestData = excelDataForBankRecon.getTestdata("KUBS_TAX_UAT_006_001_TC_001_PQ_2_D1");
 		kubsLogin.logintoAzentioappReviewer(reviewerTestData.get("Reviewer ID"));
     }
 	@Given("^navigate to kubs url to approve the Montly budget request and allocation record$")

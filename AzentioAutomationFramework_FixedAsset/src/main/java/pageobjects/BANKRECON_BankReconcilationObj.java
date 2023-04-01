@@ -80,11 +80,25 @@ public class BANKRECON_BankReconcilationObj {
 	{
 		return BANKRECON_BankReconStatementTab;
 	}
-	   @FindBy(xpath = "//div[@id='toast-container']//div/div")
+	   @FindBy(xpath = "//body/div/div/div/div[1]")
 		private WebElement BANKRECON_ToastAlert;
 
 		public WebElement BANKRECOnToastAlert() {
 			return BANKRECON_ToastAlert;
+		}
+		
+		@FindBy(xpath = "//div[@role='alert']")
+		private WebElement BANKRECON_SucessToastAlert;
+
+		public WebElement BANKRECON_SucessToastAlert() {
+			return BANKRECON_SucessToastAlert;
+		}
+		// success message close
+		@FindBy(xpath = "//div[@id='toast-container']//button[@aria-label='Close']")
+		private WebElement SuccessMessageClose;
+
+		public WebElement SuccessMessageClose() {
+			return SuccessMessageClose;
 		}
 		@FindBy(xpath="//ion-grid[1]//datatable-row-wrapper[1]//datatable-body-cell[1]//input")
 		private WebElement MatchedTab_FirstGrid_Input;
@@ -177,6 +191,18 @@ public class BANKRECON_BankReconcilationObj {
     {
     	return bankRecon_MatchedTabSaveButton;
     }
-    
+ 
+    @FindBy(xpath="//ion-label[text()=' Bank Reconciliation Process ']/parent::ion-tab-button")
+    private WebElement  BankReconciliationProcessTab ;
+    public WebElement BankReconciliationProcessTab()
+    {
+    	return BankReconciliationProcessTab;
+    }
+    @FindBy(xpath="//ion-label[text()=' Bank Reconciliation Details ']/parent::ion-tab-button")
+    private WebElement  BankReconciliationProcessDetailsTab ;
+    public WebElement BankReconciliationProcessDetailsTab()
+    {
+    	return BankReconciliationProcessDetailsTab;
+    }
 	
 }

@@ -6,7 +6,7 @@ import java.util.concurrent.TimeUnit;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.openqa.selenium.ElementNotVisibleException;
+import org.openqa.selenium.ElementNotInteractableException;
 import org.openqa.selenium.NoSuchFrameException;
 import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
@@ -48,7 +48,7 @@ public class WaitHelper {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeOutInSeconds));
 		// wait.pollingEvery(pollingEveryInMiliSec, TimeUnit.MILLISECONDS);
 		wait.ignoring(NoSuchElementException.class);
-		wait.ignoring(ElementNotVisibleException.class);
+		wait.ignoring(ElementNotInteractableException.class);
 		wait.ignoring(StaleElementReferenceException.class);
 		wait.ignoring(NoSuchFrameException.class);
 		//ExtentTestManager.getTest().info("Setted explicit wait for this element");

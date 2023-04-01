@@ -47,6 +47,14 @@ public class KUBS_ChekcerSteps extends BaseClass {
 	ExcelData excelDataForBudgetConfig = new ExcelData(excelPath, "BudgetConfiguration", "DataSet ID");
 	ExcelData excelDataForBudgetDefenition = new ExcelData(excelPath, "BudgetConfiguration", "DataSet ID");
 	ExcelData excelDataForBudgetReqAndAllocation = new ExcelData(excelPath, "BudgetReqAndAllocation", "DataSet ID");
+	ExcelData excelDataForBankRecon = new ExcelData(excelPath,"BankRecon","DataSet ID");
+	// bank recon
+	@Given("^Navigate to KUBS url and login with checker for approve bank recon config record$")
+    public void navigate_to_kubs_url_and_login_with_checker_for_approve_bank_recon_config_record() throws Throwable {
+		driver.get(configFileReader.getApplicationUrl());
+		kubsLogin.loginToAzentioAppAsChecker();
+		checkerTestData = excelDataForBankRecon.getTestdata("KUBS_TAX_UAT_006_001_TC_001_PQ_2_D1");
+    }
 	@Given("^navigate to kubs url to approve the fixed asset replacement record as a checker$")
 	public void navigate_to_kubs_url_to_approve_the_fixed_asset_replacement_record_as_a_checker() throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());

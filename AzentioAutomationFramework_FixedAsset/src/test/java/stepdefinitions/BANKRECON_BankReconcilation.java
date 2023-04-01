@@ -4,11 +4,13 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
+
 import dataProvider.JsonConfig;
 import helper.AlertHelper;
 import helper.ClicksAndActionsHelper;
@@ -87,8 +89,8 @@ public class BANKRECON_BankReconcilation extends BaseClass {
 	public void verify_system_throw_the_validation_message_or_not() throws Throwable {
 		waitHelper.waitForElementVisible(bankReconObj.BANKRECOnToastAlert(), 3000, 300);
 		String toast_Alert = bankReconObj.BANKRECOnToastAlert().getText();
-		System.out.println("Alert message is : " + toast_Alert);
-		Assert.assertEquals("Recon From date must be +1 day of previous processed bank recon to date.", toast_Alert);
+		//System.out.println("Alert message is : " + toast_Alert);
+		Assert.assertEquals(toast_Alert,"Bank Reconciliation process is already done for selected period and bank account number");
 	}
 
 	// KUBS_TAX_UAT_07_002
@@ -233,12 +235,19 @@ public class BANKRECON_BankReconcilation extends BaseClass {
 		bankReconObj.BANKRECON_BankReconUploadFileButton().sendKeys(bankReconTestData.csvFilePath);
 	}
 
-	@And("^check the file is validated  successfully or not$")
+	@And("^check the file is validated successfully or not$")
 	public void check_the_file_is_validated_successfully_or_not() throws Throwable {
-		waitHelper.waitForElementVisible(bankReconObj.BANKRECOnToastAlert(), 3000, 300);
-		Assert.assertEquals("File validated successfully", bankReconObj.BANKRECOnToastAlert().getText());
-		System.out.println(bankReconObj.BANKRECOnToastAlert().getText());
-		System.out.println("File Validation successfully");
+		waitHelper.waitForElementToVisibleWithFluentWait(driver,bankReconObj.BANKRECOnToastAlert(),60, 2);
+		for (int i = 0; i <200; i++) {
+			try {
+				Assert.assertEquals("File validated successfully", bankReconObj.BANKRECOnToastAlert().getText());
+				break;
+			} catch (Exception e) {
+				Assert.fail(e.getMessage());
+			}
+		}
+		
+		//System.out.println(bankReconObj.BANKRECOnToastAlert().getText());
 	}
 
 	@And("^save the bank recon record$")
@@ -247,7 +256,7 @@ public class BANKRECON_BankReconcilation extends BaseClass {
 		bankReconObj.BANKRECONBankReconSaveButton().click();
 
 	}
-
+	
 	@And("^Process that file$")
 	public void process_that_file() throws Throwable {
 
@@ -263,6 +272,16 @@ public class BANKRECON_BankReconcilation extends BaseClass {
 		}
 
 	}
+	@And("^User click on bank reconciliation details tab$")
+    public void user_click_on_bank_reconciliation_details_tab() throws Throwable {
+		 waitHelper.waitForElementToVisibleWithFluentWait(driver,bankReconObj.BankReconciliationProcessDetailsTab(),60, 2);
+		 bankReconObj.BankReconciliationProcessDetailsTab().click();
+    }
+	@And("^Verify Bank Reconciliation process tab is enabled$")
+    public void verify_bank_reconciliation_process_tab_is_enabled() throws Throwable {
+       waitHelper.waitForElementToVisibleWithFluentWait(driver,bankReconObj.BankReconciliationProcessTab(),60, 2);
+       Assert.assertTrue(bankReconObj.BankReconciliationProcessTab().isDisplayed());
+    }
 
 	@And("^goto unmatched Tab$")
 	public void goto_unmatched_tab() throws Throwable {
@@ -271,7 +290,7 @@ public class BANKRECON_BankReconcilation extends BaseClass {
 
 	}
 
-	@And("^unmatch that record and try to save that record$")
+	@And("^match that record and try to save that record$")
 	public void unmatch_that_record_and_try_to_save_that_record() throws Throwable {
 		javascriptHelper.JavaScriptHelper(driver);
 		waitHelper.waitForElementVisible(bankReconObj.MatcedTabFirstGridInput(), 3000, 300);
@@ -299,7 +318,7 @@ public class BANKRECON_BankReconcilation extends BaseClass {
 				.toString();
 		System.out.println("String is : " + AlertMessage);
 
-		Assert.assertEquals("Please select proper records Bank side for manual match!!!", AlertMessage);
+		Assert.assertEquals(AlertMessage,"Please select proper records Bank side for manual match!!!");
 
 	}
 

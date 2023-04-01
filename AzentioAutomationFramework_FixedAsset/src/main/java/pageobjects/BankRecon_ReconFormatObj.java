@@ -13,6 +13,18 @@ public class BankRecon_ReconFormatObj {
 		PageFactory.initElements(driver, this);
 
 	}
+	@FindBy(xpath = "//datatable-row-wrapper[1]//span[text()='BANK_REC_FORMAT_MST']//ancestor::datatable-body-cell//preceding-sibling::datatable-body-cell[2]//ion-button")
+	private WebElement bankReconConfig_NotificationFirstRecord;
+
+	public WebElement bankReconConfigNotificationFirstRecord() {
+		return bankReconConfig_NotificationFirstRecord;
+	}
+	@FindBy(xpath = "//datatable-row-wrapper[1]//span[text()='BANK_REC_FORMAT_MST']//ancestor::datatable-body-cell//preceding-sibling::datatable-body-cell[1]//span")
+	private WebElement bankReconConfig_ReferenceNumber;
+
+	public WebElement bankReconConfigReferenceNumber() {
+		return bankReconConfig_ReferenceNumber;
+	}
 	@FindBy(xpath = "//ion-segment/ion-segment-button[1]")
 	private WebElement bankRecon_ReconFormat_DirectionLeft;
 	public WebElement bankRecon_ReconFormat_DirectionLeft() {
@@ -25,7 +37,12 @@ public class BankRecon_ReconFormatObj {
 	public WebElement bankRecon_ReconFormatField() {
 		return bankRecon_ReconFormatField;
 	}
-
+	// click first edit icon of idbi bank
+	@FindBy(xpath = "//span[text()=' IDBI ']/ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell//ion-button[2]")
+	private WebElement bankRecon_EditIconOfApprovedBank;
+	public WebElement bankRecon_EditIconOfApprovedBank() {
+		return bankRecon_EditIconOfApprovedBank;
+	}
 	@FindBy(xpath = "//ion-button[@ng-reflect-router-link='/tabs/list/datagrid-view/245']")
 	private WebElement bankRecon_ReconFormat_EyeButton;
 
@@ -86,11 +103,18 @@ public class BankRecon_ReconFormatObj {
 	}
 
 	// AllowUnadjusted
-	@FindBy(xpath = "//ion-col[6]/app-kub-lov[1]/span[1]/ng-select[1]/div[1]/div[1]/div[2]/input[1]")
+	@FindBy(xpath = "//label[text()=' Allow unadjust entry from Bank statement ']/ancestor::app-kub-lov//input")
 	private WebElement bankRecon_ReconFormat_AllowUnadjusted;
 
 	public WebElement bankRecon_ReconFormat_AllowUnadjusted() {
 		return bankRecon_ReconFormat_AllowUnadjusted;
+	}
+	// Search bank name in approved view
+	@FindBy(xpath = "//input[@placeholder='Search Bank Name']")
+	private WebElement bankRecon_SearchBankNameInApprovedView;
+
+	public WebElement bankRecon_SearchBankNameInApprovedView() {
+		return bankRecon_SearchBankNameInApprovedView;
 	}
 
 	// EffectiveDate 

@@ -19,6 +19,12 @@ public class KUBS_CommonWebElements {
 	public WebElement kubsSubmitButton() {
 		return kubs_SubmitButton;
 	}
+	@FindBy(xpath = "//span[text()='Cancel']//ancestor::ion-button")
+	private WebElement kubs_CancelButton;
+
+	public WebElement kubs_CancelButton() {
+		return kubs_CancelButton;
+	}
 
 	@FindBy(xpath = "//textarea")
 	private WebElement kubs_AlertRemark;

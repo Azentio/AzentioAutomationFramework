@@ -9,11 +9,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
-
 import dataProvider.ConfigFileReader;
-import io.github.bonigarcia.wdm.WebDriverManager;
-
-
 public class BaseClass {
 	Logger log = LogManager.getLogger(BaseClass.class.getName());
 	public static WebDriver driver;
@@ -24,22 +20,20 @@ public class BaseClass {
 	String browserName =configFileReader.getBrowser();
 	
 	if(browserName.equalsIgnoreCase("chrome")) {
-		System.setProperty("webdriver.chrome.driver","Drivers/chromedriver.exe");
 		//WebDriverManager.chromedriver().setup();
 		ChromeOptions options = new ChromeOptions();
+		options.addArguments("--remote-allow-origins=*");
 		options.addArguments("--incognito");
 		driver = new ChromeDriver(options);
 		
 	}else if(browserName.equalsIgnoreCase("firefox")) {
 		
-		WebDriverManager.firefoxdriver().setup();
 		driver = new FirefoxDriver();
 	
 	
 		
 	}else if(browserName.equalsIgnoreCase("ie")) {
 		
-		WebDriverManager.iedriver().setup();
 		driver = new InternetExplorerDriver();
 		
 	}
