@@ -1,0 +1,1546 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Automation Report HTML</title>
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/extent-framework/extent-github-cdn@b00a2d0486596e73dd7326beacf352c639623a0e/commons/img/logo.png">
+<link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/extent-framework/extent-github-cdn@b00a2d0486596e73dd7326beacf352c639623a0e/commons/img/logo.png">
+<link href="https://cdn.jsdelivr.net/gh/extent-framework/extent-github-cdn@c43b89d03a7c43dae8bb8f0f078bad1997af6b3b/spark/css/spark-style.css" rel="stylesheet" />
+<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<script src="https://cdn.rawgit.com/extent-framework/extent-github-cdn/7cc78ce/spark/js/jsontree.js"></script>
+<style type="text/css"></style></head><body class="spa bdd-report standard">
+  <div class="app">
+    <div class="layout">
+<div class="header navbar">
+<div class="vheader">
+<div class="nav-logo">
+<a href="#">
+<div class="logo" style="background-image: url('https://cdn.jsdelivr.net/gh/extent-framework/extent-github-cdn@b00a2d0486596e73dd7326beacf352c639623a0e/commons/img/logo.png')"></div>
+</a>
+</div>
+<ul class="nav-left">
+<li class="search-box">
+<a class="search-toggle" href="#">
+<i class="search-icon fa fa-search"></i>
+<i class="search-icon-close fa fa-close"></i>
+</a>
+</li>
+<li class="search-input"><input id="search-tests" class="form-control" type="text" placeholder="Search..."></li>
+</ul>
+<ul class="nav-right">
+<li class="m-r-10">
+<a href="#"><span class="badge badge-primary">Azentio Automation Suite Report</span></a>
+</li>
+<li class="m-r-10">
+<a href="#"><span class="badge badge-primary">Mar 23, 2023 09:12:34 AM</span></a>
+</li>
+</ul>
+</div>
+</div><div class="side-nav">
+<div class="side-nav-inner">
+<ul class="side-nav-menu">
+<li class="nav-item dropdown" onclick="toggleView('test-view')">
+<a id="nav-test" class="dropdown-toggle" href="#">
+<span class="ico"><i class="fa fa-list"></i></span>
+</a>
+</li>
+<li class="nav-item dropdown" onclick="toggleView('dashboard-view')">
+<a id="nav-dashboard" class="dropdown-toggle" href="#">
+<span class="ico"><i class="fa fa-bar-chart"></i></span>
+</a>
+</li>
+<li class="nav-item dropdown" onclick="toggleView('category-view')">
+<a id="nav-category" class="dropdown-toggle" href="#">
+<span class="ico"><i class="fa fa-tag"></i></span>
+</a>
+</li>
+<li class="nav-item dropdown" onclick="toggleView('exception-view')">
+<a id="nav-exception" class="dropdown-toggle" href="#">
+<span class="ico"><i class="fa fa-bug"></i></span>
+</a>
+</li>
+</ul>
+</div>
+</div>      <div class="vcontainer">
+        <div class="main-content">
+<div class="test-wrapper row view test-view">
+  <div class="test-list">
+    <div class="test-list-tools">
+<ul class="tools pull-left">
+<li><a href="#"><span class="font-size-14">Tests</span></a></li>
+</ul>
+<ul class="tools text-right">
+<li class="dropdown">
+<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-exclamation-circle"></i></a>
+<ul id="status-toggle" class="dropdown-menu dropdown-md p-v-0">
+<a class="dropdown-item" status="fail" href="#"><span>Fail</span><span class="status danger"></span></a>
+<div class="dropdown-divider"></div>
+<a status="clear" class="dropdown-item" href="#"><span>Clear</span><span class="pull-right"><i class="fa fa-close"></i></span></a>
+</ul>
+</li>
+<li class="dropdown">
+<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-tag"></i></a>
+<ul id="tag-toggle" class="dropdown-menu dropdown-md p-v-0">
+<a class="dropdown-item" href="#">@KUBS_AR_AP_UAT_003_007_TC_05_01</a>
+</ul>
+</li>
+</ul>
+</div>    <div class="test-list-wrapper scrollable">
+      <ul class="test-list-item">
+        <li class="test-item"  status="fail" test-id="1"
+          author=""
+          tag=""
+          device="">
+          <div class="test-detail">
+            <p class="name">AR/AP Module</p>
+            <p class="text-sm">
+              <span>09:12:36 AM</span> / <span>01:24:011</span>
+              <span class="badge fail-bg log float-right">Fail</span>
+            </p>
+          </div>
+          <div class="test-contents d-none">
+<div class="detail-head">
+<div class="p-v-10">
+<div class="info">
+<h5 class="test-status text-fail">AR/AP Module</h5>
+<span class='badge badge-success'>03.23.2023 09:12:36</span>
+<span class='badge badge-danger'>03.23.2023 09:14:00</span>
+<span class='badge badge-default'>01:24:011</span>
+&middot; <span class='uri-anchor badge badge-default'>#test-id=1</span>
+</div>
+<div class="m-t-10 m-l-5"></div>
+</div>
+</div>
+<div class="accordion mt-4">
+  <div class="card">
+    <div class="card-header" role="tab">
+      <div class="card-title">
+        <div class="node" id="2"><span class="badge log fail-bg mr-2">Fail</span>Verify cancelling Credit Note is not allowed if the same has been adjusted at payment settlement</div>
+          <div class="status-avatar float-right mr-4">
+            <i class="fa fa-paperclip"></i>
+          </div>
+      </div>
+    </div>
+        <div class="">
+          <div class="card-body">
+              <div class="step pass-bg" title="stepdefinitions.ACCOUNTSPAYABLE_VendorContracts.user_should_go_to_the_kubs_url_and_login_as_a_maker_user()">
+                <span>Given User should go to the kubs url and login as a maker user</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="AFTER_STEP">
+                <span>stepdefinitions.HooksClass.addScreenshot(io.cucumber.java.Scenario)</span>
+      <div>screenshot
+          <div class="row mb-3"><div class="col-md-3">
+    <img data-featherlight='../Spark_Screenshots/embedded1.png' src="../Spark_Screenshots/embedded1.png">
+    
+    </div></div>
+</div>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinitions.ARAP_CancellationOfCreditNote.select_data_set_id_for_verify_cancelling_credit_note_is_not_allowed_if_it_has_been_adjusted()">
+                <span>Then select data set ID for Verify cancelling Credit Note is not allowed if it has been adjusted</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="AFTER_STEP">
+                <span>stepdefinitions.HooksClass.addScreenshot(io.cucumber.java.Scenario)</span>
+      <div>screenshot
+          <div class="row mb-3"><div class="col-md-3">
+    <img data-featherlight='../Spark_Screenshots/embedded2.png' src="../Spark_Screenshots/embedded2.png">
+    
+    </div></div>
+</div>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinitions.CancellationOfAdvanceToEmployees.click_on_accounts_payable_module()">
+                <span>And click on accounts Payable module</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="AFTER_STEP">
+                <span>stepdefinitions.HooksClass.addScreenshot(io.cucumber.java.Scenario)</span>
+      <div>screenshot
+          <div class="row mb-3"><div class="col-md-3">
+    <img data-featherlight='../Spark_Screenshots/embedded3.png' src="../Spark_Screenshots/embedded3.png">
+    
+    </div></div>
+</div>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinitions.ARAP_AutoPayoutPaymentSettlement.goto_vendor_contract_module()">
+                <span>And goto vendor contract module</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="AFTER_STEP">
+                <span>stepdefinitions.HooksClass.addScreenshot(io.cucumber.java.Scenario)</span>
+      <div>screenshot
+          <div class="row mb-3"><div class="col-md-3">
+    <img data-featherlight='../Spark_Screenshots/embedded4.png' src="../Spark_Screenshots/embedded4.png">
+    
+    </div></div>
+</div>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinitions.CancellationOfAdvanceToEmployees.click_on_Add_Icon()">
+                <span>And click on Add Icon</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="AFTER_STEP">
+                <span>stepdefinitions.HooksClass.addScreenshot(io.cucumber.java.Scenario)</span>
+      <div>screenshot
+          <div class="row mb-3"><div class="col-md-3">
+    <img data-featherlight='../Spark_Screenshots/embedded5.png' src="../Spark_Screenshots/embedded5.png">
+    
+    </div></div>
+</div>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinitions.ARAP_CancellationOfCreditNote.fill_all_the_mendatory_fields_for_creating_vendor_for_cancellation_of_credit_note()">
+                <span>Then fill all the mendatory fields for creating vendor for cancellation of credit note</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="AFTER_STEP">
+                <span>stepdefinitions.HooksClass.addScreenshot(io.cucumber.java.Scenario)</span>
+      <div>screenshot
+          <div class="row mb-3"><div class="col-md-3">
+    <img data-featherlight='../Spark_Screenshots/embedded6.png' src="../Spark_Screenshots/embedded6.png">
+    
+    </div></div>
+</div>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinitions.ARAP_CancellationOfCreditNote.add_item_details_for_the_contract_for_cancellation_of_credit_note()">
+                <span>And add item details for the contract for cancellation of credit note</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="AFTER_STEP">
+                <span>stepdefinitions.HooksClass.addScreenshot(io.cucumber.java.Scenario)</span>
+      <div>screenshot
+          <div class="row mb-3"><div class="col-md-3">
+    <img data-featherlight='../Spark_Screenshots/embedded7.png' src="../Spark_Screenshots/embedded7.png">
+    
+    </div></div>
+</div>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinitions.ARAP_CancellationOfCreditNote.add_the_payment_term_for_the_contract_for_cancellation_of_credit_note()">
+                <span>And add the payment term for the contract for cancellation of credit note</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="AFTER_STEP">
+                <span>stepdefinitions.HooksClass.addScreenshot(io.cucumber.java.Scenario)</span>
+      <div>screenshot
+          <div class="row mb-3"><div class="col-md-3">
+    <img data-featherlight='../Spark_Screenshots/embedded8.png' src="../Spark_Screenshots/embedded8.png">
+    
+    </div></div>
+</div>
+      <div>
+      </div>
+              </div>
+              <div class="step fail-bg" title="stepdefinitions.ARAP_CancellationOfCreditNote.add_the_benificiory_details_and_select_auto_payout_as_yes_for_cancellation_of_credit_note()">
+                <span>And add the benificiory details and select auto payout as yes for cancellation of credit note</span>
+      <div>
+        <textarea disabled class="code-block">org.openqa.selenium.TimeoutException: Expected condition failed: waiting for visibility of Proxy element for: DefaultElementLocator 'By.xpath: //div[@id='toast-container']//button' (tried for 20 second(s) with 2 milliseconds interval)
+	at org.openqa.selenium.support.ui.FluentWait.timeoutException(FluentWait.java:263)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:231)
+	at helper.WaitHelper.waitForElementToVisibleWithFluentWait(WaitHelper.java:102)
+	at stepdefinitions.ARAP_CancellationOfCreditNote.add_the_benificiory_details_and_select_auto_payout_as_yes_for_cancellation_of_credit_note(ARAP_CancellationOfCreditNote.java:674)
+	at ✽.add the benificiory details and select auto payout as yes for cancellation of credit note(file:///C:/Users/ININDC00091/git/AzentioAutomationFramework/DeveshFW_Excel/ARAP_AzentioAutomationFramework_Excel/src/test/java/features/ArAp_AccountsReceivable.feature:150)
+Caused by: org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {"method":"xpath","selector":"//div[@id='toast-container']//button"}
+  (Session info: chrome=111.0.5563.110)
+For documentation on this error, please visit: https://selenium.dev/exceptions/#no_such_element
+Build info: version: '4.0.0-rc-1', revision: 'bc5511cbda'
+System info: host: 'DESKTOP-PSK9T3U', ip: '10.200.4.229', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.1'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [db53c0d363d98a37ca13994a451c75dc, findElement {using=xpath, value=//div[@id='toast-container']//button}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 111.0.5563.110, chrome: {chromedriverVersion: 111.0.5563.64 (c710e93d5b63..., userDataDir: C:\Users\ININDC~1\AppData\L...}, goog:chromeOptions: {debuggerAddress: localhost:59190}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), se:cdp: ws://localhost:59190/devtoo..., se:cdpVersion: 111.0.5563.110, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: db53c0d363d98a37ca13994a451c75dc
+	at jdk.internal.reflect.GeneratedConstructorAccessor38.newInstance(Unknown Source)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:480)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:200)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:133)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:53)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:184)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:164)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:139)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:547)
+	at org.openqa.selenium.remote.ElementLocation$ElementFinder$2.findElement(ElementLocation.java:162)
+	at org.openqa.selenium.remote.ElementLocation.findElement(ElementLocation.java:60)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:381)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:373)
+	at org.openqa.selenium.support.pagefactory.DefaultElementLocator.findElement(DefaultElementLocator.java:70)
+	at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:39)
+	at jdk.proxy2/jdk.proxy2.$Proxy46.isDisplayed(Unknown Source)
+	at org.openqa.selenium.support.ui.ExpectedConditions.elementIfVisible(ExpectedConditions.java:307)
+	at org.openqa.selenium.support.ui.ExpectedConditions.access$000(ExpectedConditions.java:40)
+	at org.openqa.selenium.support.ui.ExpectedConditions$10.apply(ExpectedConditions.java:293)
+	at org.openqa.selenium.support.ui.ExpectedConditions$10.apply(ExpectedConditions.java:290)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:208)
+	at helper.WaitHelper.waitForElementToVisibleWithFluentWait(WaitHelper.java:102)
+	at stepdefinitions.ARAP_CancellationOfCreditNote.add_the_benificiory_details_and_select_auto_payout_as_yes_for_cancellation_of_credit_note(ARAP_CancellationOfCreditNote.java:674)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at io.cucumber.java.Invoker.doInvoke(Invoker.java:66)
+	at io.cucumber.java.Invoker.invoke(Invoker.java:24)
+	at io.cucumber.java.AbstractGlueDefinition.invokeMethod(AbstractGlueDefinition.java:47)
+	at io.cucumber.java.JavaStepDefinition.execute(JavaStepDefinition.java:29)
+	at io.cucumber.core.runner.CoreStepDefinition.execute(CoreStepDefinition.java:66)
+	at io.cucumber.core.runner.PickleStepDefinitionMatch.runStep(PickleStepDefinitionMatch.java:63)
+	at io.cucumber.core.runner.ExecutionMode$1.execute(ExecutionMode.java:10)
+	at io.cucumber.core.runner.TestStep.executeStep(TestStep.java:92)
+	at io.cucumber.core.runner.TestStep.run(TestStep.java:64)
+	at io.cucumber.core.runner.PickleStepTestStep.run(PickleStepTestStep.java:51)
+	at io.cucumber.core.runner.TestCase.run(TestCase.java:104)
+	at io.cucumber.core.runner.Runner.runPickle(Runner.java:71)
+	at io.cucumber.testng.TestNGCucumberRunner.lambda$runScenario$0(TestNGCucumberRunner.java:116)
+	at io.cucumber.core.runtime.CucumberExecutionContext.runTestCase(CucumberExecutionContext.java:117)
+	at io.cucumber.testng.TestNGCucumberRunner.runScenario(TestNGCucumberRunner.java:113)
+	at io.cucumber.testng.AbstractTestNGCucumberTests.runScenario(AbstractTestNGCucumberTests.java:31)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:133)
+	at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:598)
+	at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:173)
+	at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
+	at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:824)
+	at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:146)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at org.testng.TestRunner.privateRun(TestRunner.java:794)
+	at org.testng.TestRunner.run(TestRunner.java:596)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:377)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:371)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:332)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:276)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1212)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1134)
+	at org.testng.TestNG.runSuites(TestNG.java:1063)
+	at org.testng.TestNG.run(TestNG.java:1031)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+</textarea>
+      
+      </div>
+              </div>
+              <div class="step pass-bg" title="AFTER_STEP">
+                <span>stepdefinitions.HooksClass.addScreenshot(io.cucumber.java.Scenario)</span>
+      <div>screenshot
+          <div class="row mb-3"><div class="col-md-3">
+    <img data-featherlight='../Spark_Screenshots/embedded9.png' src="../Spark_Screenshots/embedded9.png">
+    
+    </div></div>
+</div>
+      <div>
+      </div>
+              </div>
+              <div class="step skip-bg" title="stepdefinitions.CancellationOfAdvanceToEmployees.click_notification_button()">
+                <span>And click notification button</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="stepdefinitions.ARAP_CancellationOfCreditNote.choose_first_record_in_the_notification_record_for_cancellation_of_credit_note()">
+                <span>Then choose first record in the notification record for cancellation of credit note</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="stepdefinitions.CancellationOfAdvanceToEmployees.click_on_submit_button()">
+                <span>And click on Submit button</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="stepdefinitions.ARAP_CancellationOfCreditNote.enter_remark_in_confirmation_alert_for_cancellation_of_credit_note()">
+                <span>Then enter remark in confirmation alert for cancellation of credit note</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="stepdefinitions.CancellationOfAdvanceToEmployees.click_on_submit_button_in_alert()">
+                <span>Then click on submit button in alert</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="stepdefinitions.ARAP_CancellationOfCreditNote.capture_the_reviewer_id_for_cancellation_of_credit_note()">
+                <span>And capture the reviewer ID for cancellation of credit note</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="stepdefinitions.CancellationOfAdvanceToEmployees.logout_from_maker()">
+                <span>Then logout from maker</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="stepdefinitions.ARAP_CancellationOfCreditNote.login_with_reviewer_credentials_for_cancellation_of_credit_note()">
+                <span>And login with reviewer credentials for cancellation of credit note</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="stepdefinitions.CancellationOfAdvanceToEmployees.click_on_notification_button()">
+                <span>Then click on notification button</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="stepdefinitions.ARAP_CancellationOfCreditNote.select_our_record_in_notification_records_for_cancellation_of_credit_note()">
+                <span>And select our record in notification records for cancellation of credit note</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="stepdefinitions.CancellationOfAdvanceToEmployees.approve_the_budget_record_from_reviewer()">
+                <span>Then Approve the record from reviewer</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="stepdefinitions.ARAP_CancellationOfCreditNote.enter_the_remark_in_alert_for_cancellation_of_credit_note()">
+                <span>And enter the remark in alert for cancellation of credit note</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="stepdefinitions.ARAP_CancellationOfCreditNote.click_on_submit_in_alert_for_cancellation_of_credit_note()">
+                <span>Then click on submit in alert for cancellation of credit note</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="stepdefinitions.CancellationOfAdvanceToEmployees.verify_the_approval_status_of_the_record()">
+                <span>Then verify the approval status of the record</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="stepdefinitions.CancellationOfAdvanceToEmployees.logout_from_reviewer()">
+                <span>And logout from reviewer</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="stepdefinitions.CancellationOfAdvanceToEmployees.login_as_a_checker()">
+                <span>Then login as a checker</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="stepdefinitions.CancellationOfAdvanceToEmployees.click_on_security_management_menu_in_checker()">
+                <span>And click on security management menu in checker</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="stepdefinitions.CancellationOfAdvanceToEmployees.click_on_action_button_under_security_management_menu()">
+                <span>Then click on action button under security management menu</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="stepdefinitions.ARAP_CancellationOfCreditNote.select_our_budget_record_and_claim_for_cancellation_of_credit_note()">
+                <span>And select our record and claim for cancellation of credit note</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="stepdefinitions.CancellationOfAdvanceToEmployees.cliick_on_notification_button()">
+                <span>Then click on Notification button</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="stepdefinitions.ARAP_CancellationOfCreditNote.select_our_record_in_notification_records_for_cancellation_of_credit_note()">
+                <span>Then select our record in notification records for cancellation of credit note</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="stepdefinitions.CancellationOfAdvanceToEmployees.click_on_approve_button_in_checker_stage()">
+                <span>And click on approve button in checker stage</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="stepdefinitions.ARAP_CancellationOfCreditNote.give_alert_remark_for_checker()">
+                <span>Then give alert remark for checker</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="stepdefinitions.CancellationOfAdvanceToEmployees.click_on_submit_button_on_alert()">
+                <span>Then click on submit button on alert</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="stepdefinitions.CancellationOfAdvanceToEmployees.verify_the_record_got_approved_from_checker()">
+                <span>And verify the record got approved from checker</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="stepdefinitions.CancellationOfAdvanceToEmployees.logout_from_checker()">
+                <span>Then logout from checker</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="stepdefinitions.ARAP_CancellationOfCreditNote.login_with_maker_id()">
+                <span>And login with Maker ID</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="stepdefinitions.CancellationOfAdvanceToEmployees.click_on_accounts_payable_module()">
+                <span>And click on accounts Payable module</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="stepdefinitions.ARAP_AutoPayoutPaymentSettlement.goto_vendor_contract_module()">
+                <span>And goto vendor contract module</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="stepdefinitions.ARAP_CancellationOfCreditNote.get_the_contract_number_for_cancellation_of_credit_note()">
+                <span>And get the contract number for cancellation of credit note</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="stepdefinitions.ARAP_AutoPayoutPaymentSettlement.goto_po_creation_module()">
+                <span>And goto po creation module</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="stepdefinitions.CancellationOfAdvanceToEmployees.click_on_Add_Icon()">
+                <span>And click on Add Icon</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="stepdefinitions.ARAP_CancellationOfCreditNote.fill_the_mendatory_fields_for_po_creation_for_cancellation_of_credit_note()">
+                <span>And fill the mendatory fields for po creation for cancellation of credit note</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="stepdefinitions.ARAP_AutoPayoutPaymentSettlement.save_the_po_creation_record()">
+                <span>And save the po creation record</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="stepdefinitions.ARAP_AutoPayoutPaymentSettlement.save_the_item_details_for_pocreation()">
+                <span>And save the item details for pocreation</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="stepdefinitions.ARAP_AutoPayoutPaymentSettlement.save_the_benificiery_details_for_po_creation()">
+                <span>And save the benificiery details for po creation</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="stepdefinitions.CancellationOfAdvanceToEmployees.click_notification_button()">
+                <span>And click notification button</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="stepdefinitions.ARAP_CancellationOfCreditNote.choose_first_record_in_the_notification_record_for_cancellation_of_credit_note()">
+                <span>Then choose first record in the notification record for cancellation of credit note</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="stepdefinitions.CancellationOfAdvanceToEmployees.click_on_submit_button()">
+                <span>And click on Submit button</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="stepdefinitions.ARAP_CancellationOfCreditNote.enter_remark_in_confirmation_alert_for_cancellation_of_credit_note()">
+                <span>Then enter remark in confirmation alert for cancellation of credit note</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="stepdefinitions.CancellationOfAdvanceToEmployees.click_on_submit_button_in_alert()">
+                <span>Then click on submit button in alert</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="stepdefinitions.ARAP_CancellationOfCreditNote.capture_the_reviewer_id_for_cancellation_of_credit_note()">
+                <span>And capture the reviewer ID for cancellation of credit note</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="stepdefinitions.CancellationOfAdvanceToEmployees.logout_from_maker()">
+                <span>Then logout from maker</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="stepdefinitions.ARAP_CancellationOfCreditNote.login_with_reviewer_credentials_for_cancellation_of_credit_note()">
+                <span>And login with reviewer credentials for cancellation of credit note</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="stepdefinitions.CancellationOfAdvanceToEmployees.click_on_notification_button()">
+                <span>Then click on notification button</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="stepdefinitions.ARAP_CancellationOfCreditNote.select_our_record_in_notification_records_for_cancellation_of_credit_note()">
+                <span>And select our record in notification records for cancellation of credit note</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="stepdefinitions.CancellationOfAdvanceToEmployees.approve_the_budget_record_from_reviewer()">
+                <span>Then Approve the record from reviewer</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="stepdefinitions.ARAP_CancellationOfCreditNote.enter_the_remark_in_alert_for_cancellation_of_credit_note()">
+                <span>And enter the remark in alert for cancellation of credit note</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="stepdefinitions.ARAP_CancellationOfCreditNote.click_on_submit_in_alert_for_cancellation_of_credit_note()">
+                <span>Then click on submit in alert for cancellation of credit note</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="stepdefinitions.CancellationOfAdvanceToEmployees.verify_the_approval_status_of_the_record()">
+                <span>Then verify the approval status of the record</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="stepdefinitions.CancellationOfAdvanceToEmployees.logout_from_reviewer()">
+                <span>And logout from reviewer</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="stepdefinitions.CancellationOfAdvanceToEmployees.login_as_a_checker()">
+                <span>Then login as a checker</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="stepdefinitions.CancellationOfAdvanceToEmployees.click_on_security_management_menu_in_checker()">
+                <span>And click on security management menu in checker</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="stepdefinitions.CancellationOfAdvanceToEmployees.click_on_action_button_under_security_management_menu()">
+                <span>Then click on action button under security management menu</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="stepdefinitions.ARAP_CancellationOfCreditNote.select_our_budget_record_and_claim_for_cancellation_of_credit_note()">
+                <span>And select our record and claim for cancellation of credit note</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="stepdefinitions.CancellationOfAdvanceToEmployees.cliick_on_notification_button()">
+                <span>Then click on Notification button</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="stepdefinitions.ARAP_CancellationOfCreditNote.select_our_record_in_notification_records_for_cancellation_of_credit_note()">
+                <span>Then select our record in notification records for cancellation of credit note</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="stepdefinitions.CancellationOfAdvanceToEmployees.click_on_approve_button_in_checker_stage()">
+                <span>And click on approve button in checker stage</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="stepdefinitions.ARAP_CancellationOfCreditNote.give_alert_remark_for_checker()">
+                <span>Then give alert remark for checker</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="stepdefinitions.CancellationOfAdvanceToEmployees.click_on_submit_button_on_alert()">
+                <span>Then click on submit button on alert</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="stepdefinitions.CancellationOfAdvanceToEmployees.verify_the_record_got_approved_from_checker()">
+                <span>And verify the record got approved from checker</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="stepdefinitions.CancellationOfAdvanceToEmployees.logout_from_checker()">
+                <span>Then logout from checker</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="stepdefinitions.ARAP_CancellationOfCreditNote.login_with_maker_id()">
+                <span>And login with Maker ID</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="stepdefinitions.CancellationOfAdvanceToEmployees.click_on_accounts_payable_module()">
+                <span>And click on accounts Payable module</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="stepdefinitions.ARAP_AutoPayoutPaymentSettlement.click_on_po_creation_module()">
+                <span>Then click on po creation module</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="stepdefinitions.ARAP_CancellationOfCreditNote.search_for_approved_po_record_for_cancellation_of_credit_note()">
+                <span>And search for approved po record for cancellation of credit note</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="stepdefinitions.ARAP_AutoPayoutPaymentSettlement.go_to_grn_module()">
+                <span>Then go to GRN module</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="stepdefinitions.CancellationOfAdvanceToEmployees.click_on_Add_Icon()">
+                <span>And click on Add Icon</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="stepdefinitions.ARAP_CancellationOfCreditNote.check_grn_can_be_created_for_that_perticular_po_for_cancellation_of_credit_note()">
+                <span>And check GRN can be created for that perticular po for cancellation of credit note</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="stepdefinitions.ARAP_CancellationOfCreditNote.go_to_item_details_and_enter_po_number_for_cancellation_of_credit_note()">
+                <span>Then go to Item details and enter po number for cancellation of credit note</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="stepdefinitions.CancellationOfAdvanceToEmployees.click_notification_button()">
+                <span>And click notification button</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="stepdefinitions.ARAP_CancellationOfCreditNote.choose_first_record_in_the_notification_record_for_cancellation_of_credit_note()">
+                <span>Then choose first record in the notification record for cancellation of credit note</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="stepdefinitions.CancellationOfAdvanceToEmployees.click_on_submit_button()">
+                <span>And click on Submit button</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="stepdefinitions.ARAP_CancellationOfCreditNote.enter_remark_in_confirmation_alert_for_cancellation_of_credit_note()">
+                <span>Then enter remark in confirmation alert for cancellation of credit note</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="stepdefinitions.CancellationOfAdvanceToEmployees.click_on_submit_button_in_alert()">
+                <span>Then click on submit button in alert</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="stepdefinitions.ARAP_CancellationOfCreditNote.capture_the_reviewer_id_for_cancellation_of_credit_note()">
+                <span>And capture the reviewer ID for cancellation of credit note</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="stepdefinitions.CancellationOfAdvanceToEmployees.logout_from_maker()">
+                <span>Then logout from maker</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="stepdefinitions.ARAP_CancellationOfCreditNote.login_with_reviewer_credentials_for_cancellation_of_credit_note()">
+                <span>And login with reviewer credentials for cancellation of credit note</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="stepdefinitions.CancellationOfAdvanceToEmployees.click_on_notification_button()">
+                <span>Then click on notification button</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="stepdefinitions.ARAP_CancellationOfCreditNote.select_our_record_in_notification_records_for_cancellation_of_credit_note()">
+                <span>And select our record in notification records for cancellation of credit note</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="stepdefinitions.CancellationOfAdvanceToEmployees.approve_the_budget_record_from_reviewer()">
+                <span>Then Approve the record from reviewer</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="stepdefinitions.ARAP_CancellationOfCreditNote.enter_remark_in_confirmation_alert_for_cancellation_of_credit_note()">
+                <span>Then enter remark in confirmation alert for cancellation of credit note</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="stepdefinitions.ARAP_CancellationOfCreditNote.click_on_submit_in_alert_for_cancellation_of_credit_note()">
+                <span>Then click on submit in alert for cancellation of credit note</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="stepdefinitions.CancellationOfAdvanceToEmployees.verify_the_approval_status_of_the_record()">
+                <span>Then verify the approval status of the record</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="stepdefinitions.CancellationOfAdvanceToEmployees.logout_from_reviewer()">
+                <span>And logout from reviewer</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="stepdefinitions.CancellationOfAdvanceToEmployees.login_as_a_checker()">
+                <span>Then login as a checker</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="stepdefinitions.CancellationOfAdvanceToEmployees.click_on_security_management_menu_in_checker()">
+                <span>And click on security management menu in checker</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="stepdefinitions.CancellationOfAdvanceToEmployees.click_on_action_button_under_security_management_menu()">
+                <span>Then click on action button under security management menu</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="stepdefinitions.ARAP_CancellationOfCreditNote.select_our_budget_record_and_claim_for_cancellation_of_credit_note()">
+                <span>And select our record and claim for cancellation of credit note</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="stepdefinitions.CancellationOfAdvanceToEmployees.cliick_on_notification_button()">
+                <span>Then click on Notification button</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="stepdefinitions.ARAP_CancellationOfCreditNote.select_our_record_in_notification_records_for_cancellation_of_credit_note()">
+                <span>Then select our record in notification records for cancellation of credit note</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="stepdefinitions.CancellationOfAdvanceToEmployees.click_on_approve_button_in_checker_stage()">
+                <span>And click on approve button in checker stage</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="stepdefinitions.ARAP_CancellationOfCreditNote.give_alert_remark_for_checker()">
+                <span>Then give alert remark for checker</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="stepdefinitions.CancellationOfAdvanceToEmployees.click_on_submit_button_on_alert()">
+                <span>Then click on submit button on alert</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="stepdefinitions.CancellationOfAdvanceToEmployees.verify_the_record_got_approved_from_checker()">
+                <span>And verify the record got approved from checker</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="stepdefinitions.CancellationOfAdvanceToEmployees.logout_from_checker()">
+                <span>Then logout from checker</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="stepdefinitions.ARAP_CancellationOfCreditNote.login_with_maker_id()">
+                <span>And login with Maker ID</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="stepdefinitions.CancellationOfAdvanceToEmployees.click_on_accounts_payable_module()">
+                <span>And click on accounts Payable module</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="stepdefinitions.ARAP_AutoPayoutPaymentSettlement.click_on_po_creation_module()">
+                <span>Then click on po creation module</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="stepdefinitions.ARAP_CancellationOfCreditNote.get_the_approved_po_number_from_approved_record_for_cancellation_of_credit_note()">
+                <span>And get the approved po number from approved record for cancellation of credit note</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="stepdefinitions.ARAP_AutoPayoutPaymentSettlement.go_to_invoice_bill_booking_module()">
+                <span>And go to invoice bill booking module</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="stepdefinitions.CancellationOfAdvanceToEmployees.click_on_Add_Icon()">
+                <span>And click on Add Icon</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="stepdefinitions.ARAP_CancellationOfCreditNote.fill_the_invoice_booking_record_for_cancellation_of_credit_note()">
+                <span>And fill the invoice booking record for cancellation of credit note</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="stepdefinitions.ARAP_AutoPayoutPaymentSettlement.goto_invoice_bill_booking_temp_view_and_select_the_record()">
+                <span>And goto invoice bill booking temp view and select the record</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="stepdefinitions.ARAP_CancellationOfCreditNote.fill_the_invoice_against_po_record_for_cancellation_of_credit_note()">
+                <span>And fill The invoice against po record for cancellation of credit note</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="stepdefinitions.CancellationOfAdvanceToEmployees.click_notification_button()">
+                <span>And click notification button</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="stepdefinitions.ARAP_CancellationOfCreditNote.choose_first_record_in_the_notification_record_for_cancellation_of_credit_note()">
+                <span>Then choose first record in the notification record for cancellation of credit note</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="stepdefinitions.CancellationOfAdvanceToEmployees.click_on_submit_button()">
+                <span>And click on Submit button</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="stepdefinitions.ARAP_CancellationOfCreditNote.enter_remark_in_confirmation_alert_for_cancellation_of_credit_note()">
+                <span>Then enter remark in confirmation alert for cancellation of credit note</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="stepdefinitions.CancellationOfAdvanceToEmployees.click_on_submit_button_in_alert()">
+                <span>Then click on submit button in alert</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="stepdefinitions.ARAP_CancellationOfCreditNote.capture_the_reviewer_id_for_cancellation_of_credit_note()">
+                <span>And capture the reviewer ID for cancellation of credit note</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="stepdefinitions.CancellationOfAdvanceToEmployees.logout_from_maker()">
+                <span>Then logout from maker</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="stepdefinitions.ARAP_CancellationOfCreditNote.login_with_reviewer_credentials_for_cancellation_of_credit_note()">
+                <span>And login with reviewer credentials for cancellation of credit note</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="stepdefinitions.CancellationOfAdvanceToEmployees.click_on_notification_button()">
+                <span>Then click on notification button</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="stepdefinitions.ARAP_CancellationOfCreditNote.select_our_record_in_notification_records_for_cancellation_of_credit_note()">
+                <span>And select our record in notification records for cancellation of credit note</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="stepdefinitions.CancellationOfAdvanceToEmployees.approve_the_budget_record_from_reviewer()">
+                <span>Then Approve the record from reviewer</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="stepdefinitions.ARAP_CancellationOfCreditNote.enter_the_remark_in_alert_for_cancellation_of_credit_note()">
+                <span>And enter the remark in alert for cancellation of credit note</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="stepdefinitions.ARAP_CancellationOfCreditNote.click_on_submit_in_alert_for_cancellation_of_credit_note()">
+                <span>Then click on submit in alert for cancellation of credit note</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="stepdefinitions.CancellationOfAdvanceToEmployees.verify_the_approval_status_of_the_record()">
+                <span>Then verify the approval status of the record</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="stepdefinitions.CancellationOfAdvanceToEmployees.logout_from_reviewer()">
+                <span>And logout from reviewer</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="stepdefinitions.CancellationOfAdvanceToEmployees.login_as_a_checker()">
+                <span>Then login as a checker</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="stepdefinitions.CancellationOfAdvanceToEmployees.click_on_security_management_menu_in_checker()">
+                <span>And click on security management menu in checker</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="stepdefinitions.CancellationOfAdvanceToEmployees.click_on_action_button_under_security_management_menu()">
+                <span>Then click on action button under security management menu</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="stepdefinitions.ARAP_CancellationOfCreditNote.select_our_budget_record_and_claim_for_cancellation_of_credit_note()">
+                <span>And select our record and claim for cancellation of credit note</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="stepdefinitions.CancellationOfAdvanceToEmployees.cliick_on_notification_button()">
+                <span>Then click on Notification button</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="stepdefinitions.ARAP_CancellationOfCreditNote.select_our_record_in_notification_records_for_cancellation_of_credit_note()">
+                <span>Then select our record in notification records for cancellation of credit note</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="stepdefinitions.CancellationOfAdvanceToEmployees.click_on_approve_button_in_checker_stage()">
+                <span>And click on approve button in checker stage</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="stepdefinitions.ARAP_CancellationOfCreditNote.give_alert_remark_for_checker()">
+                <span>Then give alert remark for checker</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="stepdefinitions.CancellationOfAdvanceToEmployees.click_on_submit_button_on_alert()">
+                <span>Then click on submit button on alert</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="stepdefinitions.CancellationOfAdvanceToEmployees.verify_the_record_got_approved_from_checker()">
+                <span>And verify the record got approved from checker</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="stepdefinitions.CancellationOfAdvanceToEmployees.logout_from_checker()">
+                <span>Then logout from checker</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="stepdefinitions.ARAP_CancellationOfCreditNote.login_with_maker_id()">
+                <span>And login with Maker ID</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="stepdefinitions.CancellationOfAdvanceToEmployees.click_on_accounts_payable_module()">
+                <span>And click on accounts Payable module</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="stepdefinitions.ARAP_AutoPayoutPaymentSettlement.goto_invoice_booking_module()">
+                <span>And goto invoice booking module</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="stepdefinitions.ARAP_CancellationOfCreditNote.select_the_approved_record_from_invoice_bill_booking_for_cancellation_of_credit_note()">
+                <span>And select the approved record from invoice bill booking for cancellation of credit note</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="stepdefinitions.ARAP_CancellationOfCreditNote.goto_accouts_receivable_module()">
+                <span>And goto accouts receivable module</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="stepdefinitions.ARAP_CancellationOfCreditNote.goto_credit_notet_module()">
+                <span>And goto credit notet module</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="stepdefinitions.CancellationOfAdvanceToEmployees.click_on_Add_Icon()">
+                <span>And click on Add Icon</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="stepdefinitions.ARAP_CancellationOfCreditNote.fill_the_form_for_cancellation_of_credit_note()">
+                <span>And Fill the form for cancellation of credit note</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="stepdefinitions.CancellationOfAdvanceToEmployees.click_notification_button()">
+                <span>And click notification button</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="stepdefinitions.ARAP_CancellationOfCreditNote.choose_first_record_in_the_notification_record_for_cancellation_of_credit_note()">
+                <span>Then choose first record in the notification record for cancellation of credit note</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="stepdefinitions.CancellationOfAdvanceToEmployees.click_on_submit_button()">
+                <span>And click on Submit button</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="stepdefinitions.ARAP_CancellationOfCreditNote.enter_remark_in_confirmation_alert_for_cancellation_of_credit_note()">
+                <span>Then enter remark in confirmation alert for cancellation of credit note</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="stepdefinitions.CancellationOfAdvanceToEmployees.click_on_submit_button_in_alert()">
+                <span>Then click on submit button in alert</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="stepdefinitions.ARAP_CancellationOfCreditNote.capture_the_reviewer_id_for_cancellation_of_credit_note()">
+                <span>And capture the reviewer ID for cancellation of credit note</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="stepdefinitions.CancellationOfAdvanceToEmployees.logout_from_maker()">
+                <span>Then logout from maker</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="stepdefinitions.ARAP_CancellationOfCreditNote.login_with_reviewer_credentials_for_cancellation_of_credit_note()">
+                <span>And login with reviewer credentials for cancellation of credit note</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="stepdefinitions.CancellationOfAdvanceToEmployees.click_on_notification_button()">
+                <span>Then click on notification button</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="stepdefinitions.ARAP_CancellationOfCreditNote.select_our_record_in_notification_records_for_cancellation_of_credit_note()">
+                <span>And select our record in notification records for cancellation of credit note</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="stepdefinitions.CancellationOfAdvanceToEmployees.approve_the_budget_record_from_reviewer()">
+                <span>Then Approve the record from reviewer</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="stepdefinitions.ARAP_CancellationOfCreditNote.enter_the_remark_in_alert_for_cancellation_of_credit_note()">
+                <span>And enter the remark in alert for cancellation of credit note</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="stepdefinitions.ARAP_CancellationOfCreditNote.click_on_submit_in_alert_for_cancellation_of_credit_note()">
+                <span>Then click on submit in alert for cancellation of credit note</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="stepdefinitions.CancellationOfAdvanceToEmployees.verify_the_approval_status_of_the_record()">
+                <span>Then verify the approval status of the record</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="stepdefinitions.CancellationOfAdvanceToEmployees.logout_from_reviewer()">
+                <span>And logout from reviewer</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="stepdefinitions.CancellationOfAdvanceToEmployees.login_as_a_checker()">
+                <span>Then login as a checker</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="stepdefinitions.CancellationOfAdvanceToEmployees.click_on_security_management_menu_in_checker()">
+                <span>And click on security management menu in checker</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="stepdefinitions.CancellationOfAdvanceToEmployees.click_on_action_button_under_security_management_menu()">
+                <span>Then click on action button under security management menu</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="stepdefinitions.ARAP_CancellationOfCreditNote.select_our_budget_record_and_claim_for_cancellation_of_credit_note()">
+                <span>And select our record and claim for cancellation of credit note</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="stepdefinitions.CancellationOfAdvanceToEmployees.cliick_on_notification_button()">
+                <span>Then click on Notification button</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="stepdefinitions.ARAP_CancellationOfCreditNote.select_our_record_in_notification_records_for_cancellation_of_credit_note()">
+                <span>Then select our record in notification records for cancellation of credit note</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="stepdefinitions.CancellationOfAdvanceToEmployees.click_on_approve_button_in_checker_stage()">
+                <span>And click on approve button in checker stage</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="stepdefinitions.ARAP_CancellationOfCreditNote.give_alert_remark_for_checker()">
+                <span>Then give alert remark for checker</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="stepdefinitions.CancellationOfAdvanceToEmployees.click_on_submit_button_on_alert()">
+                <span>Then click on submit button on alert</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="stepdefinitions.CancellationOfAdvanceToEmployees.verify_the_record_got_approved_from_checker()">
+                <span>And verify the record got approved from checker</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="stepdefinitions.CancellationOfAdvanceToEmployees.logout_from_checker()">
+                <span>Then logout from checker</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="stepdefinitions.ARAP_CancellationOfCreditNote.login_with_maker_id()">
+                <span>And login with Maker ID</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="stepdefinitions.CancellationOfAdvanceToEmployees.click_on_accounts_payable_module()">
+                <span>And click on accounts Payable module</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="stepdefinitions.CancellationOfAdvanceToEmployees.go_to_payment_settlement_module()">
+                <span>And Go to payment settlement module</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="stepdefinitions.CancellationOfAdvanceToEmployees.click_on_Add_Icon()">
+                <span>And click on Add Icon</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="stepdefinitions.ARAP_CancellationOfCreditNote.fill_the_mendatory_fields_for_settle_the_payment()">
+                <span>And fill the mendatory fields for settle the payment</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="stepdefinitions.ARAP_CancellationOfCreditNote.fill_the_calender_detail_and_description()">
+                <span>And fill the calender detail and description</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="stepdefinitions.CancellationOfAdvanceToEmployees.Save_the_form()">
+                <span>And Save the form</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="stepdefinitions.CancellationOfAdvanceToEmployees.click_notification_button()">
+                <span>And click notification button</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="stepdefinitions.ARAP_CancellationOfCreditNote.choose_first_record_in_the_notification_record_for_cancellation_of_credit_note()">
+                <span>Then choose first record in the notification record for cancellation of credit note</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="stepdefinitions.CancellationOfAdvanceToEmployees.click_on_submit_button()">
+                <span>And click on Submit button</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="stepdefinitions.ARAP_CancellationOfCreditNote.enter_remark_in_confirmation_alert_for_cancellation_of_credit_note()">
+                <span>Then enter remark in confirmation alert for cancellation of credit note</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="stepdefinitions.CancellationOfAdvanceToEmployees.click_on_submit_button_in_alert()">
+                <span>Then click on submit button in alert</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="stepdefinitions.ARAP_CancellationOfCreditNote.capture_the_reviewer_id_for_cancellation_of_credit_note()">
+                <span>And capture the reviewer ID for cancellation of credit note</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="stepdefinitions.CancellationOfAdvanceToEmployees.logout_from_maker()">
+                <span>Then logout from maker</span>
+      <div>Step skipped
+      </div>
+              </div>
+          </div>
+        </div>
+  </div>
+</div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+<div class="test-content scrollable">
+<div class="test-content-tools">
+<ul><li><a class="back-to-test" href="#"><i class="fa fa-arrow-left"></i></a></li></ul>
+</div>
+<div class="test-content-detail"><div class="detail-body"></div></div>
+</div></div>
+<div class="container-fluid p-4 view dashboard-view">
+<div class="row">
+<div class="col-md-3">
+<div class="card"><div class="card-body">
+<p class="m-b-0">Started</p>
+<h3>Mar 23, 2023 09:12:34 AM</h3>
+</div></div>
+</div>
+<div class="col-md-3">
+<div class="card"><div class="card-body">
+<p class="m-b-0">Ended</p>
+<h3>Mar 23, 2023 09:14:00 AM</h3>
+</div></div>
+</div>
+<div class="col-md-3">
+<div class="card"><div class="card-body">
+<p class="m-b-0 text-pass">Features Passed</p>
+<h3>0</h3>
+</div></div>
+</div>
+<div class="col-md-3">
+<div class="card"><div class="card-body">
+<p class="m-b-0 text-fail">Features Failed</p>
+<h3>1</h3>
+</div></div>
+</div>
+</div>
+<div class="row">
+<div class="col-md-4">
+<div class="card">
+<div class="card-header">
+<h6 class="card-title">Features</h6>
+</div>
+<div class="card-body">
+<div class="">
+<canvas id='parent-analysis' width='115' height='90'></canvas>
+</div>
+</div>
+<div class="card-footer">
+<div><small data-tooltip='0%'>
+<b>0</b> features passed
+</small>
+</div>
+<div>
+<small data-tooltip='100%'><b>1</b> features failed,
+<b>0</b> skipped, <b data-tooltip='0%'>0</b> others
+</small>
+</div>
+</div>
+</div>
+</div>
+<div class="col-md-4">
+<div class="card">
+<div class="card-header">
+<h6 class="card-title">Scenarios</h6>
+</div>
+<div class="card-body">
+<div class="">
+<canvas id='child-analysis' width='115' height='90'></canvas>
+</div>
+</div>
+<div class="card-footer">
+<div><small data-tooltip='0%'><b>0</b> scenarios passed</small></div>
+<div>
+<small data-tooltip='100%'><b>1</b> scenarios failed,
+<b>0</b> skipped, <b data-tooltip='%'>0</b> others
+</small>
+</div>
+</div>
+</div>
+</div>
+<div class="col-md-4">
+<div class="card">
+<div class="card-header">
+<h6 class="card-title">Steps</h6>
+</div>
+<div class="card-body">
+<div class="">
+<canvas id='grandchild-analysis' width='115' height='90'></canvas>
+</div>
+</div>
+<div class="card-footer">
+<div><small data-tooltip='8%'><b>17</b> steps passed</small></div>
+<div>
+<small data-tooltip='0%'><b>1</b> steps failed,
+<b>179</b> skipped, <b data-tooltip='%'>0</b> others
+</small>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="row"><div class="col-md-12">
+<div class="card"><div class="card-header"><p>Timeline</p></div>
+<div class="card-body pt-0"><div>
+<canvas id="timeline" height="120"></canvas>
+</div></div>
+</div>
+</div></div>
+<script>
+var timeline = {
+"AR/AP Module":84.011
+};
+</script>
+<div class="row">
+<div class="col-md-4 category-container">
+<div class="card">
+<div class="card-header"><p>Tags</p></div>
+<div class="card-body pb-0 pt-0"><table class="table table-sm table-bordered">
+<thead><tr class="bg-gray"><th>Name</th><th>Passed</th><th>Failed</th><th>Skipped</th><th>Others</th><th>Passed %</th></tr></thead><tbody>
+<tr>
+<td>@KUBS_AR_AP_UAT_003_007_TC_05_01</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0%</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<div class="col-md-4 sysenv-container">
+<div class="card">
+<div class="card-header"><p>System/Environment</p></div>
+<div class="card-body pb-0 pt-0"><table class="table table-sm table-bordered">
+<thead><tr class="bg-gray"><th>Name</th><th>Value</th></tr></thead>
+<tbody>
+<tr>
+<td>version</td>
+<td>10</td>
+</tr>
+<tr>
+<td>os</td>
+<td>windows</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+</div>
+</div>
+<script>
+var statusGroup = {
+parentCount: 5,
+passParent: 0,
+failParent: 1,
+warningParent: 0,
+skipParent: 0,
+childCount: 5,
+passChild: 0,
+failChild: 1,
+warningChild: 0,
+skipChild: 0,
+infoChild: 0,
+grandChildCount: 5,
+passGrandChild: 17,
+failGrandChild: 1,
+warningGrandChild: 0,
+skipGrandChild: 179,
+infoGrandChild: 0,
+eventsCount: 5,
+};
+</script><div class="test-wrapper row view category-view attributes-view">
+<div class="test-list">
+<div class="test-list-tools">
+<ul class="tools pull-left"><li><a href=""><span class="font-size-14">Category</span></a></li></ul>
+<ul class="tools text-right"><li><a href="#"><span class="badge badge-primary">1</span></a></li></ul>
+</div>
+<div class="test-list-wrapper scrollable">
+<ul class="test-list-item">
+<li class="test-item">
+<div class="test-detail">
+<span class="meta">
+<span class='badge log badge-danger'>1</span>
+</span>
+<p class="name">@KUBS_AR_AP_UAT_003_007_TC_05_01</p>
+<p class="duration text-sm">1 tests</p>
+</div>
+<div class="test-contents d-none">
+<div class="info">
+<h4>@KUBS_AR_AP_UAT_003_007_TC_05_01</h4>
+<span status="fail" class='badge log badge-danger'>1 failed</span>
+</div>
+<table class='table table-sm mt-4'>
+<thead>
+<tr>
+<th class="status-col">Status</th>
+<th class="timestamp-col">Timestamp</th>
+<th>TestName</th>
+</tr>
+</thead>
+<tbody>
+<tr class="tag-test-status" status="fail">
+<td><span class="badge log fail-bg">Fail</span></td>
+<td>09:12:36 AM</td>
+<td>
+<a href="#" class="linked" test-id='1' id='2'>Verify cancelling Credit Note is not allowed if the same has been adjusted at payment settlement</a>
+<div class="">
+<span class="badge badge-default">AR/AP Module.Verify cancelling Credit Note is not allowed if the same has been adjusted at payment settlement</span>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="test-content scrollable">
+<div class="test-content-detail">
+<div class="detail-body"></div>
+</div>
+</div>
+</div><div class="test-wrapper row view exception-view attributes-view">
+<div class="test-list">
+<div class="test-list-tools">
+<ul class="tools pull-left"><li><a href=""><span class="font-size-14">Exception</span></a></li></ul>
+<ul class="tools text-right"><li><a href="#"><span class="badge badge-primary">1</span></a></li></ul>
+</div>
+<div class="test-list-wrapper scrollable">
+<ul class="test-list-item">
+<li class="test-item">
+<div class="test-detail">
+<span class="meta">
+<span class='badge log badge-danger'>1</span>
+</span>
+<p class="name">org.openqa.selenium.TimeoutException</p>
+<p class="duration text-sm">1 tests</p>
+</div>
+<div class="test-contents d-none">
+<div class="info">
+<h4>org.openqa.selenium.TimeoutException</h4>
+<span status="fail" class='badge log badge-danger'>1 failed</span>
+</div>
+<table class='table table-sm mt-4'>
+<thead>
+<tr>
+<th class="status-col">Status</th>
+<th class="timestamp-col">Timestamp</th>
+<th>TestName</th>
+</tr>
+</thead>
+<tbody>
+<tr class="tag-test-status" status="fail">
+<td><span class="badge log fail-bg">Fail</span></td>
+<td>09:13:38 AM</td>
+<td>
+<a href="#" class="linked" test-id='1' id='21'>And add the benificiory details and select auto payout as yes for cancellation of credit note</a>
+<div class="">
+<span class="badge badge-default">AR/AP Module.Verify cancelling Credit Note is not allowed if the same has been adjusted at payment settlement.And add the benificiory details and select auto payout as yes for cancellation of credit note</span>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="test-content scrollable">
+<div class="test-content-detail">
+<div class="detail-body"></div>
+</div>
+</div>
+</div>        </div>
+      </div>
+    </div>
+  </div>
+<script src="https://cdn.jsdelivr.net/gh/extent-framework/extent-github-cdn@14e9bb345ef7e2ed3a102f271d84e9f0267c88e7/spark/js/spark-script.js"></script>
+<script type="text/javascript"></script></body>
+</html>

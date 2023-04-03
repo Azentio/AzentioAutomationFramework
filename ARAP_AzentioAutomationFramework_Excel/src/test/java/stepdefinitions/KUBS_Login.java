@@ -2,11 +2,9 @@ package stepdefinitions;
 
 import java.util.HashMap;
 import java.util.Map;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
-
 import helper.ClicksAndActionsHelper;
 import helper.DropDownHelper;
 import helper.WaitHelper;
@@ -47,7 +45,18 @@ public class KUBS_Login {
 		driver.findElement(By.xpath("//ng-otp-input/div/input[1]")).sendKeys(otp.substring(4));
 		login.Login_signIn().click();
 		waithelper.waitForElementToVisibleWithFluentWait(driver, makerobj.kubsFinaceOption(), 60, 2);
-		clicksAndActionsHelper.clickUsingActionClass(makerobj.kubsFinaceOption(), makerobj.kubsFinaceOption());
+		for (int i = 0; i <= 200; i++) {
+			try {
+				clicksAndActionsHelper.clickUsingActionClass(makerobj.kubsFinaceOption(), makerobj.kubsFinaceOption());
+				break;
+			} catch (Exception e) {
+				if (i == 200) {
+					Assert.fail(e.getMessage());
+				}
+			}
+		}
+		
+		waithelper.waitForElementToVisibleWithFluentWait(driver, makerobj.FinanceOption(), 60, 2);
 		for (int i = 0; i <= 200; i++) {
 			try {
 				clicksAndActionsHelper.clickUsingActionClass(makerobj.FinanceOption(), makerobj.FinanceOption());
@@ -58,7 +67,6 @@ public class KUBS_Login {
 				}
 			}
 		}
-
 	}
 
 	public void logintoAzentioappReviewer(String user, String id) {

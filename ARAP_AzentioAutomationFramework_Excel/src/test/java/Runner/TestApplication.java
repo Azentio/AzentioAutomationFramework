@@ -9,7 +9,7 @@ import io.cucumber.testng.CucumberOptions;
 import utilities.ExtentManager;
 import utilities.ExtentTestManager;
 
-@CucumberOptions(features = "src/test/java/features/ArAp_AccountsReceivable.feature",
+@CucumberOptions(features = "src/test/java/features/BankRecon_BankReconciliation.feature",
 //@CucumberOptions(features = "src/test/java/features/ArAp_AccountsPayable.feature",
                  glue = "stepdefinitions",
 		         //monochrome=false, //to make steps in color
@@ -17,7 +17,8 @@ import utilities.ExtentTestManager;
 				            "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:",
 				            "rerun:ReRunScenarios/FailedReRun.txt"}
 ///ArAp1.feature			dryRun = true //to check compilation errors
-					,  tags="@KUBS_AR/AP_UAT_003_008_TC_02_01"
+					,  tags="@KUBS_TAX_UAT_002_002_TC_007_01"
+//							,  tags="@KUBS_TAX_UAT_cancel_processed_record"
 
 )
 public class TestApplication extends AbstractTestNGCucumberTests {

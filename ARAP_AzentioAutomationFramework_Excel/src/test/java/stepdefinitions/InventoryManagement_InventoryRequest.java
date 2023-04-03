@@ -201,9 +201,9 @@ public class InventoryManagement_InventoryRequest extends BaseClass {
 		inventoryManagamentObj.accountPayable_SubmitButton().click();
 		
 		// Remark
-		WebElement element = WaitHelper.waitForElementwithFluentwait(driver, budgetTransferObj.budget_BudgetTransfer_RemarkField());
+		WebElement element = waithelper.waitForElementwithFluentwait(driver, budgetTransferObj.budget_BudgetTransfer_RemarkField());
 		element.click();
-		WebElement element1 = WaitHelper.waitForElementwithFluentwait(driver, budgetTransferObj.budget_BudgetTransfer_RemarkField());
+		WebElement element1 = waithelper.waitForElementwithFluentwait(driver, budgetTransferObj.budget_BudgetTransfer_RemarkField());
 		element1.sendKeys("ok");
 
 		// Remark Submit
@@ -267,7 +267,7 @@ public class InventoryManagement_InventoryRequest extends BaseClass {
 
 	@Then("^Approve the record which we submitted from maker stage$")
 	public void approve_the_record_which_we_submitted_from_maker_stage() throws Throwable {
-		WaitHelper.waitForElementwithFluentwait(driver, reviewer.reviewerApproveButton());
+		waithelper.waitForElementwithFluentwait(driver, reviewer.reviewerApproveButton());
 		reviewer.reviewerApproveButton().click();
 		waithelper.waitForElementwithFluentwait(driver, reviewer.reviewerAlertRemarks());
 		reviewer.reviewerAlertRemarks().sendKeys("ok");

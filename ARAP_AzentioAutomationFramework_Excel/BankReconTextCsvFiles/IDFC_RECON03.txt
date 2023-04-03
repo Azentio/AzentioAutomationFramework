@@ -1,0 +1,7 @@
+IDFC BANK
+"Account No.: 3232999123, NEAR ANDHERI, MUMBAI"
+"Closing Balance: INR 500.0, As On Date: 18-Jan-2023"
+As On Date: 19-Jan-2023
+Date        Chq./Ref.No.            Deposit Amt.             Withdrawal Amt.         Narration            Value Dt                Closing Balance
+29/01/2023  RRN002                  200                                              ok                   18/01/2023              200.0
+29/01/2023  RRN002                  300                                              ok                   18/01/2023              500.0
