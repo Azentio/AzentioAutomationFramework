@@ -62,6 +62,25 @@ public class KUBS_ReviewerUserSteps extends BaseClass {
 		reviewerTestData = excelDataForBankRecon.getTestdata("KUBS_TAX_UAT_006_001_TC_001_PQ_2_D1");
 		kubsLogin.logintoAzentioappReviewer(reviewerTestData.get("Reviewer ID"));
     }
+	@Given("^navigate to kubs url and log in with reviewer to approve the bank recon process record and check record available for checker approval$")
+    public void navigate_to_kubs_url_and_log_in_with_reviewer_to_approve_the_bank_recon_process_record_and_check_record_available_for_checker_approval() throws Throwable {
+		driver.get(configFileReader.getApplicationUrl());
+		reviewerTestData = excelDataForBankRecon.getTestdata("KUBS_TAX_UAT_006_001_TC_006_05_01_D1");
+		kubsLogin.logintoAzentioappReviewer(reviewerTestData.get("Reviewer ID"));
+    }
+	
+	@Given("^navigate to kubs url and log in with reviewer to approve the bank recon for checker approval$")
+    public void navigate_to_kubs_url_and_log_in_with_reviewer_to_approve_the_bank_recon_for_checker_approval() throws Throwable {
+		driver.get(configFileReader.getApplicationUrl());
+		reviewerTestData = excelDataForBankRecon.getTestdata("KUBS_TAX_UAT_006_001_TC_007_02_D1");
+		kubsLogin.logintoAzentioappReviewer(reviewerTestData.get("Reviewer ID"));
+    }
+	@Given("^navigate to kubs url and log in with reviewer to approve the bank recon process record$")
+    public void navigate_to_kubs_url_and_log_in_with_reviewer_to_approve_the_bank_recon_process_record() throws Throwable {
+		driver.get(configFileReader.getApplicationUrl());
+		reviewerTestData = excelDataForBankRecon.getTestdata("KUBS_TAX_UAT_006_001_TC_006_02_D1");
+		kubsLogin.logintoAzentioappReviewer(reviewerTestData.get("Reviewer ID"));
+    }
 	@Given("^navigate to kubs url to approve the Montly budget request and allocation record$")
     public void navigate_to_kubs_url_to_approve_the_montly_budget_request_and_allocation_record() throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());

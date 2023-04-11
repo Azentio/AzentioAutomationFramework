@@ -136,7 +136,7 @@ public class BankReconciliation_ModuleObj {
 	public WebElement clickFirstCheckboxInBookRecord() {
 		return clickFirstCheckboxInBookRecord;
 	}
-	@FindBy(xpath="(//input[@id='saveCheckBox'])[5]")
+	@FindBy(xpath="//ion-grid[2]//datatable-row-wrapper[1]/datatable-body-row/div[2]/datatable-body-cell[6]/preceding-sibling::datatable-body-cell[5]//input")
 	private WebElement clickFirstCheckInBankStatement;
 	public WebElement clickFirstCheckInBankStatement() {
 		return clickFirstCheckInBankStatement;

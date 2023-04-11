@@ -1224,6 +1224,7 @@ public class ARAP_AccountsReceivable_AccountsPayable extends BaseClass {
 			try {
 				// waitHelper.waitForElement(driver, 2000, arapObj.ARAP_ActionButton());
 				arapObj.ARAP_ActionButton().click();
+				break;
 			} catch (Exception e) {
 
 			}

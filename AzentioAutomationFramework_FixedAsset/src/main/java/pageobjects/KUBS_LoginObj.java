@@ -51,7 +51,7 @@ public class KUBS_LoginObj {
 		return sign_in;
 	}
 
-	@FindBy(xpath = "//span[text()=' (AZENTMAIN) ']")
+	@FindBy(xpath = "//span[text()=' AZENTMAIN ']")
 	private WebElement login_status;
 
 	public WebElement Login_loginStatus() {

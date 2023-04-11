@@ -55,6 +55,25 @@ public class KUBS_ChekcerSteps extends BaseClass {
 		kubsLogin.loginToAzentioAppAsChecker();
 		checkerTestData = excelDataForBankRecon.getTestdata("KUBS_TAX_UAT_006_001_TC_001_PQ_2_D1");
     }
+	@Given("^Navigate to KUBS url and login with checker for approve the bank recon process record and check record available for checker approval$")
+    public void navigate_to_kubs_url_and_login_with_checker_for_approve_the_bank_recon_process_record_and_check_record_available_for_checker_approval() throws Throwable {
+		driver.get(configFileReader.getApplicationUrl());
+		kubsLogin.loginToAzentioAppAsChecker();
+		checkerTestData = excelDataForBankRecon.getTestdata("KUBS_TAX_UAT_006_001_TC_006_05_01_D1");
+    }
+	@Given("^Navigate to KUBS url and login with checker to verify checker able to submit bank recon record$")
+    public void navigate_to_kubs_url_and_login_with_checker_to_verify_checker_able_to_submit_bank_recon_record() throws Throwable {
+		driver.get(configFileReader.getApplicationUrl());
+		kubsLogin.loginToAzentioAppAsChecker();
+		checkerTestData = excelDataForBankRecon.getTestdata("KUBS_TAX_UAT_006_001_TC_007_03_D1");
+    }
+
+	@Given("^Navigate to KUBS url and login with checker for approve bank recon process record$")
+    public void navigate_to_kubs_url_and_login_with_checker_for_approve_bank_recon_process_record() throws Throwable {
+		driver.get(configFileReader.getApplicationUrl());
+		kubsLogin.loginToAzentioAppAsChecker();
+		checkerTestData = excelDataForBankRecon.getTestdata("KUBS_TAX_UAT_006_001_TC_006_03_D1");
+    }
 	@Given("^navigate to kubs url to approve the fixed asset replacement record as a checker$")
 	public void navigate_to_kubs_url_to_approve_the_fixed_asset_replacement_record_as_a_checker() throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());

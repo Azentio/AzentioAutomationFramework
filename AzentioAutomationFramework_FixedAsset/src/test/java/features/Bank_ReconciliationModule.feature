@@ -180,7 +180,7 @@ And user click choose file and upload the bank statement
 And user click save button in bank recon
 And user click process button in bank recon
 And user click the unmatched data in bank recon process
-Then verify unmatched,partially matched and transposition matched records in bank Statment  after processing
+Then verify unmatched,partially matched and transposition matched records in bank Statment after processing
 @KUBS_TAX_UAT_009_003TC_002
 Scenario: Verify system gives correct unmatced,partial and transposition records from book records 
 Given user log in to Azentio for bank recon
@@ -287,7 +287,7 @@ And user click choose file and upload the bank statement for csv
 And user click save button in bank recon
 And user click process button in bank recon
 And user click the unmatched data in bank recon process
-And user match the records in unmached tab
+And user match the records in unmatched tab
 And user click matched data tab
 Then user verify that Book entry will be matched with Bank entry and will be displayed in Matched Tab
 Then user verify that Unmatched entry from Bank Side will not be displayed
@@ -305,7 +305,7 @@ And user click choose file and upload the bank statement for csv
 And user click save button in bank recon
 And user click process button in bank recon
 And user click the unmatched data in bank recon process
-And user match the records in unmached tab
+And user match the records in unmatched tab
 And user click matched data tab
 And user click bank recon temp view
 And user click first record in bank recon temp view
@@ -326,7 +326,7 @@ And user click choose file and upload the bank statement for csv
 And user click save button in bank recon
 And user click process button in bank recon
 And user click the unmatched data in bank recon process
-And user match the records in unmached tab
+And user match the records in unmatched tab
 And user click matched data tab
 And user unmatch the matched records in matched tab
 And user click bank recon temp view

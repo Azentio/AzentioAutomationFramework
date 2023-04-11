@@ -100,6 +100,10 @@ public class Bank_Recon extends BaseClass {
     public void user_update_test_data_set_id_for_click_on_bank_process_button() throws Throwable {
 		bankReconTestData = excelDataForBankRecon.getTestdata("KUBS_TAX_UAT_009_001_TC_003_D1");
     }
+	@And("^User update test data set id prerequisites for Processing Bank recon for same period Bank and Account Number$")
+    public void user_update_test_data_set_id_prerequisites_for_processing_bank_recon_for_same_period_bank_and_account_number() throws Throwable {
+		bankReconTestData = excelDataForBankRecon.getTestdata("KUBS_TAX_UAT_07_001TC_001_PRQ_1_D1");
+    }
 	@And("^User update test data id to Processing Bank recon for same period Bank and Account Number$")
     public void user_update_test_data_id_to_processing_bank_recon_for_same_period_bank_and_account_number() throws Throwable {
 		bankReconTestData = excelDataForBankRecon.getTestdata("KUBS_TAX_UAT_07_001TC_001_D1");
@@ -121,6 +125,28 @@ public class Bank_Recon extends BaseClass {
     public void user_update_test_data_set_id_for_checker_approves_bank_reconciliation() throws Throwable {
     	bankReconTestData = excelDataForBankRecon.getTestdata("KUBS_TAX_UAT_006_001_TC_007_01_D1");
     }
+    @And("^User update test data set id for Check format of Bank Reconciliation statement is correct as per FSD$")
+    public void user_update_test_data_set_id_for_check_format_of_bank_reconciliation_statement_is_correct_as_per_fsd() throws Throwable {
+    	bankReconTestData = excelDataForBankRecon.getTestdata("KUBS_TAX_UAT_011_001TC_001_D1");
+    }
+    @And("^User update test data set id for Check system displays correct sum and records in below head as per logics given in FSD$")
+    public void user_update_test_data_set_id_for_check_system_displays_correct_sum_and_records_in_below_head_as_per_logics_given_in_fsd() throws Throwable {
+    	bankReconTestData = excelDataForBankRecon.getTestdata("KUBS_TAX_UAT_011_001TC_002_D1");
+    }
+    @And("^User update test data set id for Verify unmatched transactions are displayed of current month plus previous month$")
+    public void user_update_test_data_set_id_for_verify_unmatched_transactions_are_displayed_of_current_month_plus_previous_month() throws Throwable {
+    	bankReconTestData = excelDataForBankRecon.getTestdata("KUBS_TAX_UAT_008_002TC_001_D1");
+    }
+    @And("^User update test data set id for Submit a bank recon from Maker Queue and check the record is available in checker queue for approval$")
+    public void user_update_test_data_set_id_for_submit_a_bank_recon_from_maker_queue_and_check_the_record_is_available_in_checker_queue_for_approval() throws Throwable {
+    	bankReconTestData = excelDataForBankRecon.getTestdata("KUBS_TAX_UAT_006_001_TC_006_05_01_D1");
+    }
+    @And("^User update test data set id for Check Adjusted Balance as per Bank Statement matches with Adjusted Balance as per Book$")
+    public void user_update_test_data_set_id_for_check_adjusted_balance_as_per_bank_statement_matches_with_adjusted_balance_as_per_book() throws Throwable {
+    	bankReconTestData = excelDataForBankRecon.getTestdata("KUBS_TAX_UAT_011_001TC_002_D1");
+    }
+
+
 	
 	// *****************@KUBS_TAX_UAT_006_001_Tc_001******************//
 
@@ -186,7 +212,9 @@ public class Bank_Recon extends BaseClass {
     @And("^Process that Bank file$")
     public void process_that_bank_file() throws Throwable {
     	Thread.sleep(1000);
-		bankReconObj.BankReconProcessButton().click();
+    	javascriphelper.JavaScriptHelper(driver);
+    	javascriphelper.JSEClick(bankReconObj.BankReconProcessButton());
+		//bankReconObj.BankReconProcessButton().click();
 		// alertHelper.isAlertPresent()
 		Thread.sleep(1000);
 		System.out.println("Alert message is : " + alertHelper.getAlertText());
@@ -195,6 +223,13 @@ public class Bank_Recon extends BaseClass {
 			System.out.println("Alert message is : " + alertHelper.getAlertText());
 			alertHelper.AcceptAlert();
 		}
+//		try {
+//			waitHelper.waitForElementToVisibleWithFluentWait(driver,bankReconObj.SuccessMessageClose(),15, 2);
+//			bankReconObj.SuccessMessageClose().click();
+//		} catch (Exception e) {
+//			
+//		}
+		
     }
 
     @And("^Click unmatched Tab$")
@@ -284,7 +319,7 @@ public class Bank_Recon extends BaseClass {
 		for (int i = 0; i <200; i++) {
 			try {
 				
-				driver.findElement(By.xpath("//span[text()='"+bankReconTestData.get("Bank Name")+"']")).isDisplayed();
+				driver.findElement(By.xpath("//div[text()='"+bankReconTestData.get("Bank Name")+"']")).isDisplayed();
 				break;
 			} catch (Exception e) {
 				if (i==199) {
@@ -305,7 +340,7 @@ public class Bank_Recon extends BaseClass {
     	for (int i = 0; i <200; i++) {
 			try {
 				
-				driver.findElement(By.xpath("//span[text()='"+format+"']")).isDisplayed();
+				driver.findElement(By.xpath("//div[text()='"+format+"']")).isDisplayed();
 				break;
 			} catch (Exception e) {
 				if (i==199) {
@@ -327,12 +362,116 @@ public class Bank_Recon extends BaseClass {
 				break;
 			} catch (NoSuchElementException e) {
 				bankReconObj.calendarNextMonthButton().click();
+				
 			}
 		}
 		Thread.sleep(2000);
 		clickAndActionHelper.doubleClick(driver.findElement(By.xpath("//td[@aria-label='" + bankReconTestData.get("Recon Period Fullmonth") + " "
 				+ bankReconTestData.get("Recon Period From Date") + ", " + bankReconTestData.get("Recon Period Year") + "']//span")));
 	}
+	@And("^Give the Bank recon period from date1$")
+    public void give_the_bank_recon_period_from_date1() throws Throwable {
+		// ----------CLICK ON FROM DATE--------------//
+		bankReconObj.BANKRECON_PeriodFromDate().click();
+		for (int i = 0; i <200; i++) {
+			try {
+				driver.findElement(By.xpath("(//span[@class='owl-dt-control-content owl-dt-control-button-content'])[2]"))
+				.click();
+				break;
+			} catch (Exception e) {
+				if (i==199) {
+					Assert.fail(e.getMessage());
+				}
+			}
+		}
+		for (int i = 0; i <200; i++) {
+			try {
+				driver.findElement(By.xpath("//span[text()='" + bankReconTestData.get("Recon Period Year") + "']")).click();
+				break;
+			} catch (Exception e) {
+				if (i==199) {
+					Assert.fail(e.getMessage());
+				}
+			}
+		}
+		for (int i = 0; i <200; i++) {
+			try {
+				driver.findElement(By.xpath("//span[text()='" + bankReconTestData.get("Recon Period Month") + "']")).click();
+				break;
+			} catch (Exception e) {
+				if (i==199) {
+					Assert.fail(e.getMessage());
+				}
+			}
+		}
+		for (int i = 0; i <200; i++) {
+			try {
+				clickAndActionHelper.doubleClick(driver.findElement(By.xpath(("(//span[text()='" + bankReconTestData.get("Recon Period From Date") + "'])[1]"))));
+				break;
+			} catch (Exception e) {
+				if (i==199) {
+					Assert.fail(e.getMessage());
+				}
+			}
+		}
+				
+				
+
+//				
+//				waitHelper.waitForElement(driver, 2000,
+//						driver.findElement(By.xpath("(//span[text()='" + bankReconTestData.get("Recon Period From Date") + "'])[1]")));
+//				// driver.findElement(By.xpath(("(//span[text()='" + arapData.Day +
+//				// "'])[1]"))).click();
+				
+				
+	}
+
+    @And("^Give the Bank recon period to date1$")
+    public void give_the_bank_recon_period_to_date1() throws Throwable {
+    	bankReconObj.BANKRECON_BankReconPeriodToDate().click();
+    	for (int i = 0; i <200; i++) {
+			try {
+				driver.findElement(By.xpath("(//span[@class='owl-dt-control-content owl-dt-control-button-content'])[2]"))
+				.click();
+				break;
+			} catch (Exception e) {
+				if (i==199) {
+					Assert.fail(e.getMessage());
+				}
+			}
+		}
+		for (int i = 0; i <200; i++) {
+			try {
+				driver.findElement(By.xpath("//span[text()='" + bankReconTestData.get("Recon Period Year") + "']")).click();
+				break;
+			} catch (Exception e) {
+				if (i==199) {
+					Assert.fail(e.getMessage());
+				}
+			}
+		}
+		for (int i = 0; i <200; i++) {
+			try {
+				driver.findElement(By.xpath("//span[text()='" + bankReconTestData.get("Recon Period Month") + "']")).click();
+				break;
+			} catch (Exception e) {
+				if (i==199) {
+					Assert.fail(e.getMessage());
+				}
+			}
+		}
+		for (int i = 0; i <200; i++) {
+			try {
+				clickAndActionHelper.doubleClick(driver.findElement(By.xpath(("(//span[text()='" + bankReconTestData.get("Recon Period To Date") + "'])[1]"))));
+				break;
+			} catch (Exception e) {
+				if (i==199) {
+					Assert.fail(e.getMessage());
+				}
+			}
+		}
+
+    }
 
 	@And("^Give the Bank recon period to date$")
 	public void give_the_bank_recon_period_to_date() throws Throwable {
@@ -351,6 +490,7 @@ public class Bank_Recon extends BaseClass {
 		clickAndActionHelper.doubleClick(driver.findElement(By.xpath("//td[@aria-label='" + bankReconTestData.get("Recon Period Fullmonth") + " "
 				+ bankReconTestData.get("Recon Period To Date") + ", " + bankReconTestData.get("Recon Period Year") + "']//span")));
 	}
+	
 
 	@Then("^Upload our file for Indian$")
 	public void upload_our_file_for_indian() throws Throwable {
@@ -585,13 +725,18 @@ public class Bank_Recon extends BaseClass {
 		waitHelper.waitForElementVisible(bankReconObj.BANKRECOnToastAlert(), 3000, 300);
 		String Alert = bankReconObj.BANKRECOnToastAlert().getText();
 		System.out.println(Alert);
+		Assert.assertEquals(Alert,"Please correct Transposition entry to proceed");
 	}
 	@And("^User Verify notification message get while save bank recon record$")
     public void user_verify_notification_message_get_while_save_bank_recon_record() throws Throwable {
 		waitHelper.waitForElementToVisibleWithFluentWait(driver,bankReconObj.BANKRECON_SucessToastAlert() ,30, 2);
 		Assert.assertEquals(bankReconObj.BANKRECON_SucessToastAlert().getText(),"Workflow initiated submit record from inbox.");
-		waitHelper.waitForElementToVisibleWithFluentWait(driver,bankReconObj.SuccessMessageClose(),30, 2);
-		bankReconObj.SuccessMessageClose().click();
+		try {
+			waitHelper.waitForElementToVisibleWithFluentWait(driver,bankReconObj.SuccessMessageClose(),15, 2);
+			bankReconObj.SuccessMessageClose().click();
+		} catch (Exception e) {
+		}
+		
       
 	}
 	 @Then("^Displayed transactions must of current month plus unmatched records from previous month if any matched in current month where view basis is Bank to Book$")
@@ -1047,7 +1192,7 @@ public class Bank_Recon extends BaseClass {
  	
  }
 
- @And("^user match the records in unmached tab$")
+ @And("^user match the records in unmatched tab$")
  public void user_match_the_records_in_unmached_tab() throws Throwable {
  	String xpath="//ion-grid[1]//datatable-row-wrapper[1]/datatable-body-row/div[2]/datatable-body-cell[6]/div";
      seleniumactions.getWaitHelper().waitForElement(driver,2000,driver.findElement(By.xpath(xpath)));
@@ -1068,13 +1213,36 @@ public class Bank_Recon extends BaseClass {
      bankReconModuleObj.clickFirstCheckInBankStatement().click();
      bankReconModuleObj.clickMatch().click();
      
+//     int i=1;
+//     int j=1;
+//  	
+//  			
+//  		 	while (true) {
+//  		 		javascriphelper.JavaScriptHelper(driver);
+//  	  		 	String xpath1="//ion-grid[1]//datatable-row-wrapper["+j+"]/datatable-body-row/div[2]/datatable-body-cell[6]/div";
+//  	  		 	String xpath2="//ion-grid[2]//datatable-row-wrapper["+i+"]/datatable-body-row/div[2]/datatable-body-cell[6]/div";
+//  		 		javascriphelper.scrollIntoView(driver.findElement(By.xpath(xpath1)));
+//  	  		 	String recordsFromBook = driver.findElement(By.xpath(xpath1)).getText();
+//  	  		javascriphelper.scrollIntoView(driver.findElement(By.xpath(xpath2)));
+//  		 	String recordsfrombankStatement = driver.findElement(By.xpath(xpath2)).getText();
+//  		 	if (!recordsFromBook.equalsIgnoreCase(recordsfrombankStatement)) {
+//  		 			String xpath3 ="//ion-grid[1]//datatable-row-wrapper["+j+"]/datatable-body-row/div[2]/datatable-body-cell[6]/preceding-sibling::datatable-body-cell[5]//input";
+//  		 			String xpath4 ="//ion-grid[1]//datatable-row-wrapper["+i+"]/datatable-body-row/div[2]/datatable-body-cell[6]/preceding-sibling::datatable-body-cell[5]//input";
+//  		 			System.out.println(recordsFromBook+" not matched in bank statement");
+//  					break;
+//  				}
+//  		 	i++;
+//			}
+  		 	
+  		 	
+  		 	
+ 		
  }
 
  @And("^user click matched data tab$")
  public void user_click_matched_data_tab() throws Throwable {
      seleniumactions.getWaitHelper().waitForElement(driver,2000,bankReconModuleObj.matchedData());
      bankReconModuleObj.matchedData().click();
-     Thread.sleep(1000);
  }
  
  
@@ -1190,41 +1358,45 @@ public class Bank_Recon extends BaseClass {
  
  @Then("^user verify Receipt recorded in Book but missing in Bank Statement$")
  public void user_verify_receipt_recorded_in_book_but_missing_in_bank_statement() throws Throwable {
- 	int i=1;
- 	while(true) {
- 	javascriphelper.JavaScriptHelper(driver);
- 	String xpath="//ion-grid[1]//datatable-row-wrapper["+i+"]/datatable-body-row/div[2]/datatable-body-cell[6]/div";
- 	String xpath1="//ion-grid[2]//datatable-row-wrapper["+i+"]/datatable-body-row/div[2]/datatable-body-cell[6]/div";
- 	javascriphelper.scrollIntoView(driver.findElement(By.xpath(xpath)));
- 	String recordsFromBook = driver.findElement(By.xpath(xpath)).getText();
- 	javascriphelper.scrollIntoView(driver.findElement(By.xpath(xpath1)));
- 	String recordsfrombankStatement = driver.findElement(By.xpath(xpath1)).getText();
- 	if (!recordsFromBook.equalsIgnoreCase(recordsfrombankStatement)) {
-			System.out.println(recordsFromBook+" not matched in bank statement");
-			break;
+	 String xpath ="//ion-label[text()='Add: Receipt recorded in Book but missing in Bank Statement']/ancestor::ion-row/following-sibling::ion-row//tr//td";
+	 	for (int i = 0; i < 200; i++) {
+	 		try {
+	 			List<WebElement> receipts = driver.findElements(By.xpath(xpath));
+	 			for (WebElement webElement : receipts) {
+	 				String receiptsDetails = webElement.getText();
+	 				System.out.println(receiptsDetails);
+	 			}
+	 			break;
+	 		} catch (Exception e) {
+	 			if (i==30) {
+					break;
+				}
+	 		}
 		}
- 	i++;
+ 	
  }
- }
+ 
 
  @Then("^user verify Receipts recorded in bank statement but missing in Book$")
  public void user_verify_receipts_recorded_in_bank_statement_but_missing_in_book() throws Throwable {
- 	int i=1;
- 	while(true) {
- 	javascriphelper.JavaScriptHelper(driver);
- 	String xpath="//ion-grid[1]//datatable-row-wrapper["+i+"]/datatable-body-row/div[2]/datatable-body-cell[6]/div";
- 	String xpath1="//ion-grid[2]//datatable-row-wrapper["+i+"]/datatable-body-row/div[2]/datatable-body-cell[6]/div";
- 	javascriphelper.scrollIntoView(driver.findElement(By.xpath(xpath)));
- 	String recordsFromBook = driver.findElement(By.xpath(xpath)).getText();
- 	javascriphelper.scrollIntoView(driver.findElement(By.xpath(xpath1)));
- 	String recordsfrombankStatement = driver.findElement(By.xpath(xpath1)).getText();
- 	if (!recordsfrombankStatement.equalsIgnoreCase(recordsFromBook)) {
-			System.out.println(recordsfrombankStatement+" not matched in book record");
-			break;
-		}
- 	i++;
+	 String xpath ="//ion-label[text()='Add: Receipts recorded in bank statement but missing in Book']/ancestor::ion-row/following-sibling::ion-row//tr//td";
+ 	for (int i = 0; i < 200; i++) {
+ 		try {
+ 			List<WebElement> receipts = driver.findElements(By.xpath(xpath));
+ 			for (WebElement webElement : receipts) {
+ 				String receiptsDetails = webElement.getText();
+ 				System.out.println(receiptsDetails);
+ 			}
+ 			break;
+ 		} catch (Exception e) {
+ 			if (i==199) {
+				Assert.fail(e.getMessage());
+			}
+ 		}
+	}
+	 
  }
- }
+ 
 // bank recon format
  @Then("^Click on Bank Recon$")
  public void click_on_bank_recon()  {
@@ -1276,7 +1448,7 @@ public class Bank_Recon extends BaseClass {
  	clicksAndActionHelper.clickOnElement(kubsCommonObj.kubsSearchEventCode());
 		kubsCommonObj.kubsSearchEventCode().sendKeys(bankReconTestData.get("ModuleCode"));
  }
- @And("^store the reference number of budget bank recon in excel database$")
+ @And("^store the reference number of bank recon format in excel database$")
  public void store_the_reference_number_of_budget_bank_recon_in_excel_database() throws Throwable {
  	for (int i = 0; i <200; i++) {
 			try {
@@ -1294,6 +1466,22 @@ public class Bank_Recon extends BaseClass {
 			}
 		}
  }
+ @And("^store the reference number of bank recon process record in excel database$")
+ public void store_the_reference_number_of_bank_recon_process_record_in_excel_database() throws Throwable {
+	 for (int i = 0; i <200; i++) {
+			try {
+				String referenceNumber = bankRecon_ReconFormatObj.bankReconProcessRecord_ReferenceNumber().getText();
+				excelDataForBankRecon.updateTestData(bankReconTestData.get("DataSet ID"),"Reference ID",
+						referenceNumber);
+				break;
+				
+			} catch (Exception e) {
+				if (i==199) {
+					Assert.fail(e.getMessage());
+				}
+			}
+		}
+ }
  @And("^select the bank recon record$")
  public void select_the_bank_recon_record() throws Throwable {
  	waithelper.waitForElementToVisibleWithFluentWait(driver,
@@ -1301,7 +1489,31 @@ public class Bank_Recon extends BaseClass {
  	clicksAndActionHelper.moveToElement(bankRecon_ReconFormatObj.bankReconConfigNotificationFirstRecord());
  	clicksAndActionHelper.clickOnElement(bankRecon_ReconFormatObj.bankReconConfigNotificationFirstRecord());
  }
+ @And("^select the bank recon record to submit$")
+ public void select_the_bank_recon_record_to_submit() throws Throwable {
+	 waithelper.waitForElementToVisibleWithFluentWait(driver,
+	 			bankRecon_ReconFormatObj.bankReconProcess_NotificationFirstRecord(), 20, 1);
+	 	clicksAndActionHelper.moveToElement(bankRecon_ReconFormatObj.bankReconProcess_NotificationFirstRecord());
+	 	clicksAndActionHelper.clickOnElement(bankRecon_ReconFormatObj.bankReconProcess_NotificationFirstRecord());
+ }
 
+ @And("^select the bank recon record based on reference id$")
+ public void select_the_bank_recon_record_based_on_reference_id() throws Throwable {
+	 
+     for (int i = 0; i <200; i++) {
+		try {
+			
+			String xpath ="//span[text()='"+bankReconTestData.get("Reference ID")+"']/ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell//ion-button";
+			driver.findElement(By.xpath(xpath)).click();
+			break;
+		} catch (Exception e) {
+			if (i==199) {
+				Assert.fail(e.getMessage());
+			}
+			
+		}
+	}
+ }
  @And("^click on submit in bank recon configuration$")
  public void click_on_submit_in_bank_recon_configuration() throws Throwable {
  	waithelper.waitForElementToVisibleWithFluentWait(driver, kubsCommonObj.kubsSubmitButton(), 20, 1);
@@ -1336,7 +1548,7 @@ public class Bank_Recon extends BaseClass {
 			} catch (Exception e) {
 				clicksAndActionHelper.moveToElement(kubsCommonObj.kubsAlertRemark());
 				clicksAndActionHelper.clickOnElement(kubsCommonObj.kubsAlertRemark());
-				kubsCommonObj.kubsAlertRemark().sendKeys(bankReconTestData.get("MakerAlerRemark"));
+				kubsCommonObj.kubsAlertRemark().sendKeys(bankReconTestData.get("Remarks"));
 				if (i == 100) {
 					Assert.fail(e.getMessage());
 				}
@@ -1352,10 +1564,41 @@ public class Bank_Recon extends BaseClass {
 
  @And("^store the reviewer id of bank recon configuration in excel database$")
  public void store_the_reviewer_id_of_bank_recon_configuration_in_excel_database() throws Throwable {
- 	waithelper.waitForElementToVisibleWithFluentWait(driver, kubsCommonObj.kubsToastAlert(), 20, 1);
+ 		waithelper.waitForElementToVisibleWithFluentWait(driver, kubsCommonObj.kubsToastAlert(), 20, 1);
 		String reviewerID = kubsCommonObj.kubsToastAlert().getText().substring(85).replace(".", "");
 		excelDataForBankRecon.updateTestData("KUBS_TAX_UAT_006_001_TC_001_PQ_2_D1", "Reviewer ID", reviewerID);
  }
+ @And("^store the reviewer id of bank recon process record in excel database$")
+ public void store_the_reviewer_id_of_bank_recon_process_record_in_excel_database() throws Throwable {
+	 waithelper.waitForElementToVisibleWithFluentWait(driver, kubsCommonObj.kubsToastAlert(), 20, 1);
+		String reviewerID = kubsCommonObj.kubsToastAlert().getText().substring(85).replace(".", "");
+		excelDataForBankRecon.updateTestData(bankReconTestData.get("DataSet ID"), "Reviewer ID", reviewerID);
+ }
+ @And("^store the reviewer id of bank recon process record in excel database to check the record is available in checker queue for approval$")
+ public void store_the_reviewer_id_of_bank_recon_process_record_in_excel_database_to_check_the_record_is_available_in_checker_queue_for_approval() throws Throwable {
+	 try {
+		 waithelper.waitForElementToVisibleWithFluentWait(driver, kubsCommonObj.kubsToastAlert(), 20, 1);
+			String reviewerID = kubsCommonObj.kubsToastAlert().getText().substring(85).replace(".", "");
+			excelDataForBankRecon.updateTestData(bankReconTestData.get("DataSet ID"), "Reviewer ID", reviewerID);
+	} catch (Exception e) {
+		Thread.sleep(2000);
+		waithelper.waitForElementToVisibleWithFluentWait(driver, kubsCommonObj.kubsSubmitButton(), 20, 1);
+	 	clicksAndActionHelper.moveToElement(kubsCommonObj.kubsSubmitButton());
+	 	clicksAndActionHelper.clickOnElement(kubsCommonObj.kubsSubmitButton());
+	 	waithelper.waitForElementToVisibleWithFluentWait(driver, kubsCommonObj.kubsAlertRemark(), 20, 1);
+	 	clicksAndActionHelper.moveToElement(kubsCommonObj.kubsAlertRemark());
+	 	clicksAndActionHelper.clickOnElement(kubsCommonObj.kubsAlertRemark());
+		kubsCommonObj.kubsAlertRemark().sendKeys(bankReconTestData.get("Remarks"));
+		clicksAndActionHelper.moveToElement(kubsCommonObj.kubsAlertSubmit());
+		clicksAndActionHelper.clickOnElement(kubsCommonObj.kubsAlertSubmit());
+		waithelper.waitForElementToVisibleWithFluentWait(driver, kubsCommonObj.kubsToastAlert(), 20, 1);
+		String reviewerID = kubsCommonObj.kubsToastAlert().getText().substring(85).replace(".", "");
+		excelDataForBankRecon.updateTestData(bankReconTestData.get("DataSet ID"), "Reviewer ID", reviewerID);
+	}
+	
+ }
+
+ 
  @And("^User Search Bank name in approved view$")
  public void user_search_bank_name_in_approved_view() throws Throwable {
      waithelper.waitForElementToVisibleWithFluentWait(driver,bankRecon_ReconFormatObj.bankRecon_SearchBankNameInApprovedView(), 30, 2);
@@ -1802,7 +2045,20 @@ waithelper.waitForElement(driver, 3000, bankRecon_ReconFormatObj.bankRecon_Recon
 		bankRecon_ReconFormatObj.bankRecon_ReconFormat_MatchConditionNum().sendKeys(Keys.ENTER);
 		 
  }
- 
+ @And("^Verify the submitted record from maker and check the record id available in cheker queue for approval$")
+ public void verify_the_submitted_record_from_maker_and_check_the_record_id_available_in_cheker_queue_for_approval() throws Throwable {
+	
+	 for (int i = 0; i <200; i++) {
+		try {
+			Assert.assertTrue(driver.findElement(By.xpath("//span[text()='1979']")).isDisplayed());
+			break;
+		} catch (Exception e) {
+			if (i==199) {
+				Assert.fail(e.getMessage());
+			}
+		}
+	}
+ }
 
  
 

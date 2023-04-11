@@ -25,6 +25,18 @@ public class BankRecon_ReconFormatObj {
 	public WebElement bankReconConfigReferenceNumber() {
 		return bankReconConfig_ReferenceNumber;
 	}
+	@FindBy(xpath = "//datatable-row-wrapper[1]//span[text()='BANK_RECON_DTL']//ancestor::datatable-body-cell//preceding-sibling::datatable-body-cell[1]//span")
+	private WebElement bankReconProcessRecord_ReferenceNumber;
+
+	public WebElement bankReconProcessRecord_ReferenceNumber() {
+		return bankReconProcessRecord_ReferenceNumber;
+	}
+	@FindBy(xpath = "//datatable-row-wrapper[1]//span[text()='BANK_RECON_DTL']//ancestor::datatable-body-cell//preceding-sibling::datatable-body-cell[2]//ion-button")
+	private WebElement bankReconProcess_NotificationFirstRecord;
+
+	public WebElement bankReconProcess_NotificationFirstRecord() {
+		return bankReconProcess_NotificationFirstRecord;
+	}
 	@FindBy(xpath = "//ion-segment/ion-segment-button[1]")
 	private WebElement bankRecon_ReconFormat_DirectionLeft;
 	public WebElement bankRecon_ReconFormat_DirectionLeft() {

@@ -54,7 +54,7 @@ public class KUBS_CommonWebElements {
 		return kubs_AlertClose;
 	}
 
-	@FindBy(xpath = "//ion-header/ion-toolbar[1]/ion-buttons[2]/ion-button[2]")
+	@FindBy(xpath = "//ion-button[@ng-reflect-text='Inbox']")
 	private WebElement kubs_NotificationIcon;
 
 	public WebElement kubsNotificationIcon() {

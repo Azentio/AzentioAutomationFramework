@@ -8,16 +8,14 @@ import io.cucumber.testng.CucumberOptions;
 import utilities.ExtentManager;
 import utilities.ExtentTestManager;
 
-@CucumberOptions(features = {"src/test/java/features/BugetAndPlanningDefinition_UATFEATURE.feature",
-		"src/test/java/features/BudgetAndPlanning_UATBudgetCreation.feature","src/test/java/features/BudgetAndPlanning_UATBudgetSupplementary.feature"
-		,"src/test/java/features/BudgetTransferExcel.feature","src/test/java/features/BankRecon_ExcelUpdated.feature"},
+@CucumberOptions(features = {"src/test/java/features/BankRecon_ExcelUpdated.feature"},
                 glue = "stepdefinitions",
                 //monochrome=false, //to make steps in color
                 plugin = { "pretty",
                            "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:",
                            "rerun:ReRunScenarios/FailedReRun.txt"}
                //dryRun = false //to check compilation errors                                      
-               , tags="@KUBS_TAX_UAT_009_003TC_003"
+               , tags="@KUBS_TAX_UAT_011_001TC_002"
 
 )
 public class TestApplication extends AbstractTestNGCucumberTests {
