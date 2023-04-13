@@ -196,6 +196,8 @@ Then verify user profile got logout
 Scenario: Create a contract details for procuring an asset
 And User get the test data for Contract creation Testcase1
 Given User should go to the kubs url and login as a maker user
+And click on configuration section
+And click on transaction section
 And user should navigate to accounts payable menu
 When click on eye button of vendor contract
 Then click on search button
@@ -232,7 +234,8 @@ Then verify user profile got logout
 Scenario: Create a purchase order with Unique purchase order number
 And Get the test data for the po creation test case1
 Given Maker Navigate to UAT URL login
-Then Click on Direction icon
+And click on configuration section
+And click on transaction section
 Then Click on Account Payable 
 Then Click on purchase order Eye Icon
 Then Click on purchase order Add button

@@ -40,6 +40,9 @@ public class FixedAsset_AssetCodeConfiguration extends BaseClass {
 	JavascriptHelper javascriptHelper = new JavascriptHelper();
 	FIXEDASSET_fixedAssetObj fixedAssetAccObj = new FIXEDASSET_fixedAssetObj(driver);
 	BrowserHelper browserHelper = new BrowserHelper(driver);
+	ExcelData excelDataAssetCategoryForTransfer = new ExcelData(excelPath, "AssetTransfer_ExecutionTracker", "TestCaseID");
+	
+	Map<String, String> DataSetID = new HashMap<>();
 
 	@And("^get the active asset code in asset category module$")
 	public void get_the_active_asset_code_in_asset_category_module() throws Throwable {
@@ -94,7 +97,8 @@ public class FixedAsset_AssetCodeConfiguration extends BaseClass {
 
 	@And("^get the test data for asset code configuration for asset transfer and undetaking$")
 	public void get_the_test_data_for_asset_code_configuration_for_asset_transfer_and_undetaking() throws Throwable {
-		assetCodeConfigTestData = excelData.getTestdata("KUBS_FAT_UAT_002_003_D7");
+		DataSetID=excelDataAssetCategoryForTransfer.getTestdata("KUBS_FAT_UAT_002_003_01_Transfer");
+		assetCodeConfigTestData = excelData.getTestdata(DataSetID.get("Data Set ID"));
 	}
 
 	@And("^enter the asset code in asset code configuration$")
@@ -114,7 +118,7 @@ public class FixedAsset_AssetCodeConfiguration extends BaseClass {
 				}
 			}
 		}
-		String xpath = "//ng-dropdown-panel//span[contains(text(),'" + assetCodeConfigTestData.get("AssetCode") + "')]";
+		String xpath = "//ng-dropdown-panel//div[contains(text(),'" + assetCodeConfigTestData.get("AssetCode") + "')]";
 		for (int i = 0; i <= 200; i++) {
 			try {
 				clickAndActionsHelper.moveToElement(driver.findElement(By.xpath(xpath)));
@@ -149,9 +153,9 @@ public class FixedAsset_AssetCodeConfiguration extends BaseClass {
 		for (int i = 0; i <= 20; i++) {
 			try {
 				clickAndActionsHelper.moveToElement(driver.findElement(
-						By.xpath("//span[text()='" + assetCodeConfigTestData.get("AssetLifeUnit") + "']")));
+						By.xpath("//div[text()='" + assetCodeConfigTestData.get("AssetLifeUnit") + "']")));
 				clickAndActionsHelper.clickOnElement(driver.findElement(
-						By.xpath("//span[text()='" + assetCodeConfigTestData.get("AssetLifeUnit") + "']")));
+						By.xpath("//div[text()='" + assetCodeConfigTestData.get("AssetLifeUnit") + "']")));
 				break;
 			} catch (Exception e) {
 				if (i == 20) {
@@ -356,7 +360,7 @@ public class FixedAsset_AssetCodeConfiguration extends BaseClass {
 	public void store_the_asset_code_in_asset_gl_configuration_database_for_asset_transfer_and_undetaking()
 			throws Throwable {
 		ExcelData exceldataforGLConfig = new ExcelData(excelPath, "FixedAsset_GLConfig", "DataSet ID");
-		exceldataforGLConfig.updateTestData("KUBS_FAT_UAT_002_004_D7", "AssetCode",
+		exceldataforGLConfig.updateTestData(assetCodeConfigTestData.get("Update Data Set 1"), "AssetCode",
 				assetCodeConfigTestData.get("AssetCode"));
 	}
 

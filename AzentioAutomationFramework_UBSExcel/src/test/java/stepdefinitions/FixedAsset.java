@@ -57,6 +57,8 @@ public class FixedAsset {
 	ExcelData excelDataForAssetReplacement = new ExcelData(path, "FixedAsset_AssetReplacement", "DataSet ID");
 	ExcelData excelDataForAssetTransfer = new ExcelData(path, "FixedAsset_AssetTransfer", "DataSet ID");
 	ExcelData excelDataForAssetWriteOff = new ExcelData(path, "FixedAsset_WriteOff", "DataSet ID");
+	ExcelData excelDataAssetCreationForTransfer = new ExcelData(path, "AssetTransfer_ExecutionTracker", "TestCaseID");
+	Map<String, String> dataSetID = new HashMap<>();
 	Map<String, String> assetCreationTestData = new HashMap<>();
 	Map<String, String> assetAllocationTestData = new HashMap<>();
 	Map<String, String> assetAllocationReportTestData = new HashMap<>();
@@ -74,12 +76,16 @@ public class FixedAsset {
 		waitHelper.waitForElementwithFluentwait(driver, kubsCommonWebObj.kubsConfigurationSection());
 		clicksAndActionHelper.moveToElement(kubsCommonWebObj.kubsConfigurationSection());
 		clicksAndActionHelper.clickOnElement(kubsCommonWebObj.kubsConfigurationSection());
-		
-
 	}
 
 	@And("^click on transaction section$")
 	public void click_on_transaction_section() throws Throwable {
+		waitHelper.waitForElementwithFluentwait(driver, kubsCommonWebObj.kubsTransactionSection());
+		clicksAndActionHelper.moveToElement(kubsCommonWebObj.kubsTransactionSection());
+		clicksAndActionHelper.clickOnElement(kubsCommonWebObj.kubsTransactionSection());
+		waitHelper.waitForElementwithFluentwait(driver, kubsCommonWebObj.kubsConfigurationSection());
+		clicksAndActionHelper.moveToElement(kubsCommonWebObj.kubsConfigurationSection());
+		clicksAndActionHelper.clickOnElement(kubsCommonWebObj.kubsConfigurationSection());
 		waitHelper.waitForElementwithFluentwait(driver, kubsCommonWebObj.kubsTransactionSection());
 		clicksAndActionHelper.moveToElement(kubsCommonWebObj.kubsTransactionSection());
 		clicksAndActionHelper.clickOnElement(kubsCommonWebObj.kubsTransactionSection());
@@ -214,7 +220,7 @@ public class FixedAsset {
 				}
 			}
 		}
-		excelDataForAssetTransfer.updateTestData("KUBS_FAT_UAT_005_001_D1", "AssetReferenceNumber",
+		excelDataForAssetTransfer.updateTestData(assetCreationTestData.get("Update Data Set 1"), "AssetReferenceNumber",
 				assetReferenceNumber);
 	}
 
@@ -233,7 +239,8 @@ public class FixedAsset {
 				}
 			}
 		}
-		excelDataForAssetTransfer.updateTestData("KUBS_FAT_UAT_005_005_D1", "AssetReferenceNumber",
+		
+		excelDataForAssetTransfer.updateTestData(assetCreationTestData.get("Update Data Set 4"), "AssetReferenceNumber",
 				assetReferenceNumber);
 	}
 
@@ -253,7 +260,7 @@ public class FixedAsset {
 				}
 			}
 		}
-		excelDataForAssetImpairment.updateTestData("KUBS_FAT_UAT_009_001_01_D4", "AssetReferenceNumber",
+		excelDataForAssetImpairment.updateTestData(assetCreationTestData.get("Update Data Set 2"), "AssetReferenceNumber",
 				assetReferenceNumber);
 	}
 
@@ -273,7 +280,7 @@ public class FixedAsset {
 				}
 			}
 		}
-		excelDataForAssetRevaluation.updateTestData("KUBS_FAT_UAT_012_01_D10", "AssetReferenceNumber",
+		excelDataForAssetRevaluation.updateTestData(assetCreationTestData.get("Update Data Set 3"), "AssetReferenceNumber",
 				assetReferenceNumber);
 	}
 
@@ -405,26 +412,26 @@ public class FixedAsset {
 	@And("^store the asset item number in asset impairment excel database for the prerequisite of asset transfer$")
 	public void store_the_asset_item_number_in_asset_impairment_excel_database_for_the_prerequisite_of_asset_transfer()
 			throws Throwable {
-		excelDataForAssetImpairment.updateTestData("KUBS_FAT_UAT_009_001_01_D4", "AssetItemNumber",
+		excelDataForAssetImpairment.updateTestData(assetCreationTestData.get("Update Data Set 2"), "AssetItemNumber",
 				assetCreationTestData.get("UpdatedItemNumber"));
 	}
 
 	@And("^store the asset item number in asset revaluation excel database for the prerequisite of asset transfer$")
 	public void store_the_asset_item_number_in_asset_revaluation_excel_database_for_the_prerequisite_of_asset_transfer()
 			throws Throwable {
-		excelDataForAssetRevaluation.updateTestData("KUBS_FAT_UAT_012_01_D10", "AssetItemNumber",
+		excelDataForAssetRevaluation.updateTestData(assetCreationTestData.get("Update Data Set 3"), "AssetItemNumber",
 				assetCreationTestData.get("UpdatedItemNumber"));
 	}
 
 	@And("^store the asset item number in asset transfer undertaking excel database$")
 	public void store_the_asset_item_number_in_asset_transfer_undertaking_excel_database() throws Throwable {
-		excelDataForAssetTransfer.updateTestData("KUBS_FAT_UAT_005_001_D1", "AssetItemNumber",
+		excelDataForAssetTransfer.updateTestData(assetCreationTestData.get("Update Data Set 1"), "AssetItemNumber",
 				assetCreationTestData.get("UpdatedItemNumber"));
 	}
 
 	@And("^store the asset item number in asset transfer and undertaking excel database$")
 	public void store_the_asset_item_number_in_asset_transfer_and_undertaking_excel_database() throws Throwable {
-		excelDataForAssetTransfer.updateTestData("KUBS_FAT_UAT_005_005_D1", "AssetItemNumber",
+		excelDataForAssetTransfer.updateTestData(assetCreationTestData.get("Update Data Set 4"), "AssetItemNumber",
 				assetCreationTestData.get("UpdatedItemNumber"));
 	}
 
@@ -1285,7 +1292,8 @@ public class FixedAsset {
 	@And("^get the test data for asset creation with full details from excel data for asset transfer$")
 	public void get_the_test_data_for_asset_creation_with_full_details_from_excel_data_for_asset_transfer()
 			throws Throwable {
-		assetCreationTestData = excelDataForAssetCreation.getTestdata("KUBS_FAT_UAT_002_007_D7");
+		dataSetID=excelDataAssetCreationForTransfer.getTestdata("KUBS_FAT_UAT_002_007_01_AssetTransfer1");
+		assetCreationTestData = excelDataForAssetCreation.getTestdata(dataSetID.get("Data Set ID"));
 	}
 
 	@And("^get the test data for asset creation with full details from excel data for prerequisite of asset revaluation$")
@@ -1325,7 +1333,7 @@ public class FixedAsset {
 		fixedAssetObj.fixedAsset_AssetCreation_BranchCode_Textbox().click();
 
 		fixedAssetObj.fixedAsset_AssetCreation_BranchCode_Textbox().sendKeys(assetCreationTestData.get("BranchCode"));
-		String xpath = "//ng-dropdown-panel//span[text()='" + assetCreationTestData.get("BranchCode") + "']";
+		String xpath = "//ng-dropdown-panel//div[text()='" + assetCreationTestData.get("BranchCode") + "']";
 		for (int i = 0; i <= 500; i++) {
 			try {
 				clicksAndActionHelper.moveToElement(driver.findElement(By.xpath(xpath)));
@@ -1341,7 +1349,7 @@ public class FixedAsset {
 
 	@And("^select the asset code in asset creation module$")
 	public void select_the_asset_code_in_asset_creation_module() throws Throwable {
-		String xpath = "//ng-dropdown-panel//span[text()='" + assetCreationTestData.get("AssetCode") + "']";
+		String xpath = "//ng-dropdown-panel//div[text()='" + assetCreationTestData.get("AssetCode") + "']";
 		waitHelper.waitForElementwithFluentwait(driver,
 				fixedAssetObj.fixedAsset_AssetCreation_AssetCode_Textbox());
 		fixedAssetObj.fixedAsset_AssetCreation_AssetCode_Textbox().click();
@@ -1367,7 +1375,7 @@ public class FixedAsset {
 		fixedAssetObj.fixedAsset_AssetCreationGRNReferenceNumberTextBox().click();
 		fixedAssetObj.fixedAsset_AssetCreationGRNReferenceNumberTextBox()
 				.sendKeys(assetCreationTestData.get("GRNNumber"));
-		String xpath = "//ng-dropdown-panel//span[text()='" + assetCreationTestData.get("GRNNumber") + "']";
+		String xpath = "//ng-dropdown-panel//div[text()='" + assetCreationTestData.get("GRNNumber") + "']";
 		for (int i = 0; i <= 100; i++) {
 			try {
 				clicksAndActionHelper.moveToElement(driver.findElement(By.xpath(xpath)));
@@ -1396,7 +1404,7 @@ public class FixedAsset {
 		fixedAssetObj.fixedAsset_AssetCreationContractLinkagePoNumberTextBox().click();
 		fixedAssetObj.fixedAsset_AssetCreationContractLinkagePoNumberTextBox()
 				.sendKeys(assetCreationTestData.get("PONumber"));
-		String xpath = "//ng-dropdown-panel//span[text()='" + assetCreationTestData.get("PONumber") + "']";
+		String xpath = "//ng-dropdown-panel//div[text()='" + assetCreationTestData.get("PONumber") + "']";
 		for (int i = 0; i <= 100; i++) {
 			try {
 				clicksAndActionHelper.moveToElement(driver.findElement(By.xpath(xpath)));
@@ -1424,7 +1432,7 @@ public class FixedAsset {
 
 	@And("^select the bill reference number in asset creation module$")
 	public void select_the_bill_reference_number_in_asset_creation_module() throws Throwable {
-		String xpath = "//ng-dropdown-panel//span[text()='" + assetCreationTestData.get("BillReferenceNumber") + "']";
+		String xpath = "//ng-dropdown-panel//div[text()='" + assetCreationTestData.get("BillReferenceNumber") + "']";
 		waitHelper.waitForElementwithFluentwait(driver,
 				fixedAssetObj.fixedAsset_AssetCreation_BillReferenceNumber_Textbox());
 		fixedAssetObj.fixedAsset_AssetCreation_BillReferenceNumber_Textbox().click();
@@ -1446,7 +1454,7 @@ public class FixedAsset {
 
 	@And("^select the asset life in asset creation module$")
 	public void select_the_asset_life_in_asset_creation_module() throws Throwable {
-		String xpath = "//ng-dropdown-panel//span[text()='" + assetCreationTestData.get("AssetLife") + "']";
+		String xpath = "//ng-dropdown-panel//div[text()='" + assetCreationTestData.get("AssetLife") + "']";
 		waitHelper.waitForElementwithFluentwait(driver,
 				fixedAssetObj.Report_report_AssetCreationCommon_AssetLifeUnit());
 		fixedAssetObj.Report_report_AssetCreationCommon_AssetLifeUnit().click();
@@ -1725,7 +1733,7 @@ public class FixedAsset {
 		waitHelper.waitForElementwithFluentwait(driver, fixedAssetObj.fixedAsset_AssetCreation_HSNCode());
 		fixedAssetObj.fixedAsset_AssetCreation_HSNCode().click();
 		fixedAssetObj.fixedAsset_AssetCreation_HSNCode().sendKeys(assetCreationTestData.get("HSNCode"));
-		String xpath = "//ng-dropdown-panel//span[text()='" + assetCreationTestData.get("HSNCode") + "']";
+		String xpath = "//ng-dropdown-panel//div[text()='" + assetCreationTestData.get("HSNCode") + "']";
 		for (int i = 0; i <= 10; i++) {
 			try {
 				clicksAndActionHelper.moveToElement(driver.findElement(By.xpath(xpath)));
@@ -2005,7 +2013,7 @@ public class FixedAsset {
 		fixedAssetObj.fixedAsset_AssetAllocation_AssetRefferenceNumber().click();
 		fixedAssetObj.fixedAsset_AssetAllocation_AssetRefferenceNumber()
 				.sendKeys(assetAllocationTestData.get("AssetReferenceNumber"));
-		String xpath = "//ng-dropdown-panel//span[text()='" + assetAllocationTestData.get("AssetReferenceNumber")
+		String xpath = "//ng-dropdown-panel//div[text()='" + assetAllocationTestData.get("AssetReferenceNumber")
 				+ "']";
 
 		for (int i = 0; i <= 100; i++) {
@@ -2026,7 +2034,7 @@ public class FixedAsset {
 		waitHelper.waitForElementwithFluentwait(driver, fixedAssetObj.fixedAsset_AssetAllocation_ItemNumber());
 		fixedAssetObj.fixedAsset_AssetAllocation_ItemNumber().click();
 		fixedAssetObj.fixedAsset_AssetAllocation_ItemNumber().sendKeys(assetAllocationTestData.get("AssetItemNumber"));
-		String xpath = "//ng-dropdown-panel//span[text()='" + assetAllocationTestData.get("AssetItemNumber") + "']";
+		String xpath = "//ng-dropdown-panel//div[text()='" + assetAllocationTestData.get("AssetItemNumber") + "']";
 
 		for (int i = 0; i <= 500; i++) {
 			try {
@@ -2070,7 +2078,7 @@ public class FixedAsset {
 		fixedAssetObj.fixedAsset_AssetAllocation_AssetRefferenceNumber().click();
 		fixedAssetObj.fixedAsset_AssetAllocation_AssetRefferenceNumber()
 				.sendKeys(assetAllocationTestData.get("AssetReferenceNumber"));
-		String xpathRefNo = "//ng-dropdown-panel//span[text()='" + assetAllocationTestData.get("AssetReferenceNumber")
+		String xpathRefNo = "//ng-dropdown-panel//div[text()='" + assetAllocationTestData.get("AssetReferenceNumber")
 				+ "']";
 
 		for (int i = 0; i <= 100; i++) {
@@ -2088,7 +2096,7 @@ public class FixedAsset {
 		waitHelper.waitForElementwithFluentwait(driver, fixedAssetObj.fixedAsset_AssetAllocation_ItemNumber());
 		fixedAssetObj.fixedAsset_AssetAllocation_ItemNumber().click();
 		fixedAssetObj.fixedAsset_AssetAllocation_ItemNumber().sendKeys(assetAllocationTestData.get("AssetItemNumber"));
-		String xpathItem = "//ng-dropdown-panel//span[text()='" + assetAllocationTestData.get("AssetItemNumber") + "']";
+		String xpathItem = "//ng-dropdown-panel//div[text()='" + assetAllocationTestData.get("AssetItemNumber") + "']";
 
 		for (int i = 0; i <= 500; i++) {
 			try {
@@ -2113,7 +2121,7 @@ public class FixedAsset {
 		waitHelper.waitForElementwithFluentwait(driver, fixedAssetObj.fixedAsset_AssetAllocation_EmployeeID());
 		fixedAssetObj.fixedAsset_AssetAllocation_EmployeeID().click();
 		fixedAssetObj.fixedAsset_AssetAllocation_EmployeeID().sendKeys(assetAllocationTestData.get("EmployeeID"));
-		String xpath = "//ng-dropdown-panel//span[text()='" + assetAllocationTestData.get("EmployeeID") + "']";
+		String xpath = "//ng-dropdown-panel//div[text()='" + assetAllocationTestData.get("EmployeeID") + "']";
 
 		for (int i = 0; i <= 10; i++) {
 			try {
@@ -2518,7 +2526,7 @@ public class FixedAsset {
 		fixedAssetObj.assetAllocationAllocationReportEmployeeID().click();
 		fixedAssetObj.assetAllocationAllocationReportEmployeeID()
 				.sendKeys(assetAllocationReportTestData.get("employeeId"));
-		String xpath = "//ng-dropdown-panel//span[text()='" + assetAllocationReportTestData.get("employeeId") + "']";
+		String xpath = "//ng-dropdown-panel//div[text()='" + assetAllocationReportTestData.get("employeeId") + "']";
 
 		for (int i = 0; i <= 100; i++) {
 			try {
@@ -2540,7 +2548,7 @@ public class FixedAsset {
 		fixedAssetObj.assetAllocationAllocationReportItemNumber().click();
 		fixedAssetObj.assetAllocationAllocationReportItemNumber()
 				.sendKeys(assetAllocationReportTestData.get("ItemNumber"));
-		String xpath = "//ng-dropdown-panel//span[text()='" + assetAllocationReportTestData.get("ItemNumber") + "']";
+		String xpath = "//ng-dropdown-panel//div[text()='" + assetAllocationReportTestData.get("ItemNumber") + "']";
 
 		for (int i = 0; i <= 100; i++) {
 			try {

@@ -120,7 +120,7 @@ public class FixedAsset_AssetCategoryObj {
 		
 		return fixedAsset_AssetCategory_VaildationMsg;
 	}
-	@FindBy(xpath="//app-inbox[1]//ion-toolbar[1]/ion-buttons[2]//ion-icon")
+	@FindBy(xpath="//ion-button[@routerlink='/inbox']")
 	private WebElement fixedAssetcategory_SerahcButton;
 	public WebElement fixedAssetCategorySearchButton()
 	{

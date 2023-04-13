@@ -23,6 +23,7 @@ import pageobjects.ACCOUNTSPAYABLE_VendorContractsObj;
 import pageobjects.AccountPayable_VendorPurchaseOrderObj;
 import pageobjects.Azentio_CheckerObj;
 import pageobjects.Azentio_ReviewerObj;
+import pageobjects.KUBS_CommonWebElements;
 import resources.BaseClass;
 import resources.ExcelData;
 import resources.JsonDataReaderWriter;
@@ -56,7 +57,7 @@ public class VendorPurchaseOrder_PO {
 	String excelPath = System.getProperty("user.dir") + "\\Test-data\\KUBSTestData.xlsx";
 	ExcelData excelData = new ExcelData(excelPath, "POCreationTestData", "Data Set ID");
 	Map<String, String> testData;
-
+	KUBS_CommonWebElements kubsCommonWebElements = new KUBS_CommonWebElements(driver);
 	ExcelData excelData1 = new ExcelData(excelPath, "ContractTestData", "Data Set ID");
 	ExcelData excelDataGRNTestdata = new ExcelData(excelPath, "GRNTestData", "Data Set ID");
 	ExcelData excelDataForAssetCreation = new ExcelData(excelPath, "FixedAsset_AssetCreation", "Data Set ID");
@@ -76,6 +77,18 @@ public class VendorPurchaseOrder_PO {
 		accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_BPName().click();
 		accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_BPName()
 				.sendKeys(testData.get("BpName"));
+		waithelper.waitForElementwithFluentwait(driver, kubsCommonWebElements.kubsDropdownnElementValidation());
+		for (int i = 0; i <= 500; i++) {
+			try {
+				kubsCommonWebElements.kubsDropdownnElementValidation().isDisplayed();
+				break;
+			} catch (Exception e) {
+				if (i == 500) {
+					Assert.fail(e.getMessage());
+				}
+			}
+		}
+
 		accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_BPName().sendKeys(Keys.DOWN);
 		accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_BPName().sendKeys(Keys.ENTER);
 
@@ -88,7 +101,8 @@ public class VendorPurchaseOrder_PO {
 		accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_ReferenceType().click();
 		accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_ReferenceType()
 				.sendKeys(testData.get("ReferenceType"));
-	
+		waithelper.waitForElementwithFluentwait(driver, kubsCommonWebElements.kubsDropdownnElementValidation());
+		kubsCommonWebElements.kubsDropdownnElementValidation().isDisplayed();
 		accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_ReferenceType().sendKeys(Keys.DOWN);
 		accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_ReferenceType().sendKeys(Keys.ENTER);
 
@@ -99,8 +113,17 @@ public class VendorPurchaseOrder_PO {
 
 		waithelper.waitForElementwithFluentwait(driver,
 				accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_CheckBoxPoItem());
+		for (int i = 0; i <= 500; i++) {
+			try {
+				accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_CheckBoxPoItem().click();
+				break;
+			} catch (Exception e) {
+				if (i == 500) {
+					Assert.fail(e.getMessage());
+				}
+			}
 
-		accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_CheckBoxPoItem().click();
+		}
 
 	}
 
@@ -118,9 +141,20 @@ public class VendorPurchaseOrder_PO {
 
 	@And("^User save the accountsPayable_VendorPurchaseOrder_PoItemSave1$")
 	public void user_save_the_accountspayablevendorpurchaseorderpoitemsave1() throws Throwable {
-
-		clicksAndActionHelper
-				.clickOnElement(accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_PoItemSave());
+		for (int i = 0; i <= 500; i++) {
+			try {
+				clicksAndActionHelper.clickOnElement(
+						accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_PoItemSave());
+				break;
+			} catch (Exception e) {
+				if (i > 100 || i < 500) {
+					accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_CheckBoxPoItem().click();
+				}
+				if (i == 500) {
+					Assert.fail(e.getMessage());
+				}
+			}
+		}
 
 	}
 
@@ -131,7 +165,18 @@ public class VendorPurchaseOrder_PO {
 		accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_POSubType1().click();
 		accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_POSubType1()
 				.sendKeys(testData.get("PoSubType"));
-	
+		waithelper.waitForElementwithFluentwait(driver, kubsCommonWebElements.kubsDropdownnElementValidation());
+		for (int i = 0; i <= 500; i++) {
+			try {
+				kubsCommonWebElements.kubsDropdownnElementValidation().isDisplayed();
+				break;
+			} catch (Exception e) {
+				if (i == 500) {
+					Assert.fail(e.getMessage());
+				}
+			}
+		}
+
 		accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_POSubType1().sendKeys(Keys.DOWN);
 		accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_POSubType1().sendKeys(Keys.ENTER);
 
@@ -139,11 +184,22 @@ public class VendorPurchaseOrder_PO {
 
 	@And("^User fill the accountsPayable_VendorPurchaseOrder_CostCenter1$")
 	public void user_fill_the_accountspayablevendorpurchaseordercostcenter1() throws Throwable {
-		waithelper.waitForElementwithFluentwait	(driver,
+		waithelper.waitForElementwithFluentwait(driver,
 				accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_CostCenter1());
 		accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_CostCenter1().click();
 		accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_CostCenter1()
 				.sendKeys(testData.get("CostCenter"));
+		waithelper.waitForElementwithFluentwait(driver, kubsCommonWebElements.kubsDropdownnElementValidation());
+		for (int i = 0; i <= 500; i++) {
+			try {
+				kubsCommonWebElements.kubsDropdownnElementValidation().isDisplayed();
+				break;
+			} catch (Exception e) {
+				if (i == 500) {
+					Assert.fail(e.getMessage());
+				}
+			}
+		}
 		accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_CostCenter1().sendKeys(Keys.DOWN);
 		accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_CostCenter1().sendKeys(Keys.ENTER);
 
@@ -160,14 +216,16 @@ public class VendorPurchaseOrder_PO {
 
 	@Then("^Click on Account Payable$")
 	public void click_on_account_payable() throws IOException {
-		waithelper.waitForElementwithFluentwait(driver, accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_AccountsPayableField());
+		waithelper.waitForElementwithFluentwait(driver,
+				accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_AccountsPayableField());
 		accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_AccountsPayableField().click();
 
 	}
 
 	@Then("^Click on purchase order Eye Icon$")
 	public void click_on_purchase_order_eye_icon() throws IOException {
-		waithelper.waitForElementwithFluentwait(driver, accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_EyeButton());
+		waithelper.waitForElementwithFluentwait(driver,
+				accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_EyeButton());
 		accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_EyeButton().click();
 
 	}
@@ -176,13 +234,22 @@ public class VendorPurchaseOrder_PO {
 	public void click_on_purchase_order_add_button() throws InterruptedException, IOException {
 		waithelper.waitForElementwithFluentwait(driver,
 				accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_AddButton());
-		accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_AddButton().click();
+		for (int i = 0; i <= 500; i++) {
+			try {
+				accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_AddButton().click();
+				break;
+			} catch (Exception e) {
+				if (i == 500) {
+					Assert.fail(e.getMessage());
+				}
+			}
+		}
 
 	}
 
 	@Then("^Click on Account Payable Save button$")
 	public void click_on_account_payable_save_button() {
-		
+
 		for (int i = 0; i < 40; i++) {
 			try {
 				accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_Save().click();
@@ -200,8 +267,7 @@ public class VendorPurchaseOrder_PO {
 
 	@Then("^Click on Account Payable Notification$")
 	public void click_on_account_payable_notification() throws InterruptedException {
-		
-		
+
 		for (int i = 0; i < 30; i++) {
 			try {
 				accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_Notification().click();
@@ -216,7 +282,6 @@ public class VendorPurchaseOrder_PO {
 	@Then("^Click on Item Details Record$")
 	public void click_on_item_details_record() throws InterruptedException {
 
-
 		for (int i = 0; i <= 500; i++) {
 			try {
 				accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_ItemDetailsRecord().click();
@@ -227,23 +292,32 @@ public class VendorPurchaseOrder_PO {
 				}
 			}
 		}
-	
 
 	}
 
 	@Then("^Edit the item details fields$")
 	public void edit_the_item_details_fields() throws IOException {
 
-		
-		waithelper.waitForElementwithFluentwait(driver, accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_ShippedFromLocation());
+		waithelper.waitForElementwithFluentwait(driver,
+				accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_ShippedFromLocation());
 		accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_ShippedFromLocation().click();
 		accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_ShippedFromLocation()
 				.sendKeys(testData.get("ShippedFromLocation"));
+		waithelper.waitForElementwithFluentwait(driver, kubsCommonWebElements.kubsDropdownnElementValidation());
+		for (int i = 0; i <= 500; i++) {
+			try {
+				kubsCommonWebElements.kubsDropdownnElementValidation().isDisplayed();
+				break;
+			} catch (Exception e) {
+				if (i == 500) {
+					Assert.fail(e.getMessage());
+				}
+			}
+		}
 		accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_ShippedFromLocation()
-		.sendKeys(Keys.DOWN);
+				.sendKeys(Keys.DOWN);
 		accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_ShippedFromLocation()
 				.sendKeys(Keys.ENTER);
-
 
 		for (int i = 0; i < 30; i++) {
 			try {
@@ -254,13 +328,24 @@ public class VendorPurchaseOrder_PO {
 			}
 		}
 
-
-		waithelper.waitForElementwithFluentwait(driver, accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_DeliveryLocation());
+		waithelper.waitForElementwithFluentwait(driver,
+				accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_DeliveryLocation());
 		accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_DeliveryLocation().click();
 		accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_DeliveryLocation()
 				.sendKeys(testData.get("DeliveryLocation"));
+		waithelper.waitForElementwithFluentwait(driver, kubsCommonWebElements.kubsDropdownnElementValidation());
+		for (int i = 0; i <= 500; i++) {
+			try {
+				kubsCommonWebElements.kubsDropdownnElementValidation().isDisplayed();
+				break;
+			} catch (Exception e) {
+				if (i == 500) {
+					Assert.fail(e.getMessage());
+				}
+			}
+		}
 		accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_DeliveryLocation()
-		.sendKeys(Keys.DOWN);
+				.sendKeys(Keys.DOWN);
 		accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_DeliveryLocation()
 				.sendKeys(Keys.ENTER);
 
@@ -269,7 +354,8 @@ public class VendorPurchaseOrder_PO {
 	@Then("^Select the record from Notification$")
 	public void select_the_record_from_notification() throws Throwable {
 
-		waithelper.waitForElementwithFluentwait(driver, accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_ReferenceId());
+		waithelper.waitForElementwithFluentwait(driver,
+				accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_ReferenceId());
 		String id = accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_ReferenceId().getText();
 
 		excelData.updateTestData("KUBS_FAT_UAT_001_003_01_D1", "Reference ID", id);
@@ -280,21 +366,22 @@ public class VendorPurchaseOrder_PO {
 		String before_xpath = "//span[contains(text(),'";
 		String after_xpath = "')]/ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell//ion-button";
 
+		waithelper.waitForElementwithFluentwait(driver,
+				driver.findElement(By.xpath(before_xpath + testData.get("Reference ID") + after_xpath)));
 
-		waithelper.waitForElementwithFluentwait(driver, driver.findElement(By.xpath(before_xpath + testData.get("Reference ID") + after_xpath)));
-	
 		driver.findElement(By.xpath(before_xpath + testData.get("Reference ID") + after_xpath)).click();
 	}
 
 	@And("^Submit the Selected record$")
 	public void submit_the_selected_record() throws InterruptedException, IOException {
 
-		waithelper.waitForElementwithFluentwait(driver, accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_SubmitButton());
+		waithelper.waitForElementwithFluentwait(driver,
+				accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_SubmitButton());
 		accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_SubmitButton().click();
 
-
 		javascripthelper.JavaScriptHelper(driver);
-		waithelper.waitForElementwithFluentwait(driver, accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_RemarkField());
+		waithelper.waitForElementwithFluentwait(driver,
+				accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_RemarkField());
 		javascripthelper
 				.JSEClick(accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_RemarkField());
 		waithelper.waitForElementwithFluentwait(driver,
@@ -325,7 +412,7 @@ public class VendorPurchaseOrder_PO {
 		accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_RecordStatus().click();
 		String t = "";
 		String ar[] = message.split(" ");
-	
+
 		for (int i = ar.length - 1; i >= 0; i--) {
 			t = ar[ar.length - 1];
 		}
@@ -338,7 +425,6 @@ public class VendorPurchaseOrder_PO {
 		}
 		System.out.println(reviewerId);
 		excelData.updateTestData("KUBS_FAT_UAT_001_003_01_D1", "Reviewer ID", reviewerId);
-
 
 	}
 
@@ -363,10 +449,7 @@ public class VendorPurchaseOrder_PO {
 
 		reviewer.reviewerNotidicationIcon().click();
 
-
 		browserHelper = new BrowserHelper(driver);
-
-
 
 		String before_xpath = "//span[contains(text(),'";
 		String after_xpath = "')]/ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell//ion-button";
@@ -374,7 +457,6 @@ public class VendorPurchaseOrder_PO {
 		for (int i = 0; i < 500; i++) {
 			try {
 
-	
 				driver.findElement(By.xpath(before_xpath + testData.get("Reference ID") + after_xpath)).click();
 				break;
 			} catch (Exception e) {
@@ -384,7 +466,7 @@ public class VendorPurchaseOrder_PO {
 
 			}
 		}
-	
+
 		waithelper.waitForElementwithFluentwait(driver, reviewer.reviewerApproveButton());
 		reviewer.reviewerApproveButton().click();
 
@@ -405,18 +487,17 @@ public class VendorPurchaseOrder_PO {
 			}
 		}
 
-
 	}
 
 	@Then("^log in to the reviewer account3$")
 	public void log_in_to_the_reviewer_account3() throws IOException, ParseException, InterruptedException {
-		
+
 		KUBS_Login kubsLogin;
-		
+
 		kubsLogin = new KUBS_Login(driver);
 		driver.get(config.getApplicationUrl());
 		kubsLogin.logintoAzentioappReviewer("Reviewer", testData.get("Reviewer ID"));
-	
+
 	}
 
 	@Then("^click on the checker Notification$")
@@ -429,19 +510,18 @@ public class VendorPurchaseOrder_PO {
 	@And("^then checker claim the record3$")
 	public void then_checker_claim_the_record3() throws InterruptedException, IOException, ParseException {
 
-	
 		waithelper = new WaitHelper(driver);
 		kubschecker = new Azentio_CheckerObj(driver);
 		waithelper.waitForElementwithFluentwait(driver, kubschecker.checkerSecurityManagement());
 		kubschecker.checkerSecurityManagement().click();
 		System.out.println("Security management clicked");
-	
+
 		waithelper.waitForElementwithFluentwait(driver, kubschecker.checkerActionIcon());
 		kubschecker.checkerActionIcon().click();
 		System.out.println("Checker clicked on open pool temp view");
 		String before_xpath = "//span[contains(text(),'";
 		String after_xpath_claim = "')]/parent::div/parent::datatable-body-cell/preceding-sibling::datatable-body-cell[2]/div/ion-buttons/ion-button";
-	
+
 		for (int i = 0; i < 50; i++) {
 			try {
 				driver.findElement(By.xpath(before_xpath + testData.get("Reference ID") + after_xpath_claim)).click();
@@ -457,14 +537,12 @@ public class VendorPurchaseOrder_PO {
 		clicksAndActionHelper.moveToElement(kubschecker.checkerAlertClose());
 		clicksAndActionHelper.clickOnElement(kubschecker.checkerAlertClose());
 	}
-	
 
 	@And("^select the record and Approve by checker3$")
 	public void select_the_record_and_approve_by_checker3() throws InterruptedException, IOException, ParseException {
-	
+
 		String before_xpath = "//span[contains(text(),'";
 		String after_xpath = "')]/ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell//ion-button";
-
 
 		for (int i = 0; i < 200; i++) {
 			try {
@@ -474,7 +552,6 @@ public class VendorPurchaseOrder_PO {
 
 			}
 		}
-
 
 		waithelper.waitForElementwithFluentwait(driver, kubschecker.checkerApproveButton());
 		kubschecker.checkerApproveButton().click();
@@ -501,7 +578,6 @@ public class VendorPurchaseOrder_PO {
 
 	ACCOUNTSPAYABLE_VendorContractsObj aCCOUNTSPAYABLE_VendorContractsObj = new ACCOUNTSPAYABLE_VendorContractsObj(
 			driver);
-
 
 	@And("^vendor contract PO details should display on PO creation  list view$")
 	public void vendor_contract_po_details_should_display_on_po_creation_list_view() throws Throwable {
@@ -538,6 +614,8 @@ public class VendorPurchaseOrder_PO {
 				aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_BusinessPartnerSearch());
 		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_BusinessPartnerSearch()
 				.sendKeys(testData.get("BP_Name"));
+		waithelper.waitForElementwithFluentwait(driver, kubsCommonWebElements.kubsDropdownnElementValidation());
+		kubsCommonWebElements.kubsDropdownnElementValidation().isDisplayed();
 		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_BusinessPartnerSearch().sendKeys(Keys.DOWN);
 		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_BusinessPartnerSearch().sendKeys(Keys.ENTER);
 

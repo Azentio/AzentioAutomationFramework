@@ -73,7 +73,7 @@ public class FixedAsset_BusibessPartnerSetup extends BaseClass {
 		waitHelper.waitForElementwithFluentwait(driver, businessPartnerObj.businessPartner_BPType());
 		businessPartnerObj.businessPartner_BPType().sendKeys(busniessPartnerTestData.get("BP_Type"));
 
-		String xpath = "//ng-dropdown-panel//span[contains(text(),'" + busniessPartnerTestData.get("BP_Type") + "')]";
+		String xpath = "//ng-dropdown-panel//div[contains(text(),'" + busniessPartnerTestData.get("BP_Type") + "')]";
 		for (int i = 0; i <= 500; i++) {
 			try {
 				clicksAndActionsHelper.moveToElement(driver.findElement(By.xpath(xpath)));
@@ -94,7 +94,7 @@ public class FixedAsset_BusibessPartnerSetup extends BaseClass {
 
 		waitHelper.waitForElementwithFluentwait(driver, businessPartnerObj.businessPartner_BPSubType());
 		businessPartnerObj.businessPartner_BPSubType().sendKeys(busniessPartnerTestData.get("BP_SubType"));
-		String xpath = "//ng-dropdown-panel//span[contains(text(),'" + busniessPartnerTestData.get("BP_SubType")
+		String xpath = "//ng-dropdown-panel//div[contains(text(),'" + busniessPartnerTestData.get("BP_SubType")
 				+ "')]";
 		for (int i = 0; i <= 500; i++) {
 			try {
@@ -114,7 +114,7 @@ public class FixedAsset_BusibessPartnerSetup extends BaseClass {
 	public void enter_the_reference_type_in_business_partner_setup() throws Throwable {
 		waitHelper.waitForElementwithFluentwait(driver, businessPartnerObj.businessPartner_ReferenceType());
 		businessPartnerObj.businessPartner_ReferenceType().sendKeys(busniessPartnerTestData.get("ReferenceType"));
-		String xpath = "//ng-dropdown-panel//span[contains(text(),'" + busniessPartnerTestData.get("ReferenceType")
+		String xpath = "//ng-dropdown-panel//div[contains(text(),'" + busniessPartnerTestData.get("ReferenceType")
 				+ "')]";
 		for (int i = 0; i <= 500; i++) {
 			try {
@@ -194,7 +194,7 @@ public class FixedAsset_BusibessPartnerSetup extends BaseClass {
 
 		waitHelper.waitForElementwithFluentwait(driver, businessPartnerObj.businessPartner_Gender());
 		businessPartnerObj.businessPartner_Gender().sendKeys(busniessPartnerTestData.get("Gender"));
-		String xpath = "//ng-dropdown-panel//span[contains(text(),'" + busniessPartnerTestData.get("Gender") + "')]";
+		String xpath = "//ng-dropdown-panel//div[contains(text(),'" + busniessPartnerTestData.get("Gender") + "')]";
 		for (int i = 0; i <= 500; i++) {
 			try {
 				clicksAndActionsHelper.moveToElement(driver.findElement(By.xpath(xpath)));
@@ -236,7 +236,7 @@ public class FixedAsset_BusibessPartnerSetup extends BaseClass {
 	public void enter_the_black_listed_in_individual_tab() throws Throwable {
 		waitHelper.waitForElementwithFluentwait(driver, businessPartnerObj.businessPartner_Blacklisted());
 		businessPartnerObj.businessPartner_Blacklisted().sendKeys(busniessPartnerTestData.get("Blacklisted"));
-		String xpath = "//ng-dropdown-panel//span[contains(text(),'" + busniessPartnerTestData.get("Blacklisted")
+		String xpath = "//ng-dropdown-panel//div[contains(text(),'" + busniessPartnerTestData.get("Blacklisted")
 				+ "')]";
 		for (int i = 0; i <= 500; i++) {
 			try {
@@ -256,7 +256,7 @@ public class FixedAsset_BusibessPartnerSetup extends BaseClass {
 	public void enter_the_kyc_status_in_individual_tab() throws Throwable {
 		waitHelper.waitForElementwithFluentwait(driver, businessPartnerObj.businessPartner_KYC_Status());
 		businessPartnerObj.businessPartner_KYC_Status().sendKeys(busniessPartnerTestData.get("KYC_Status"));
-		String xpath = "//ng-dropdown-panel//span[contains(text(),'" + busniessPartnerTestData.get("KYC_Status")
+		String xpath = "//ng-dropdown-panel//div[contains(text(),'" + busniessPartnerTestData.get("KYC_Status")
 				+ "')]";
 		for (int i = 0; i <= 500; i++) {
 			try {
@@ -319,7 +319,7 @@ public class FixedAsset_BusibessPartnerSetup extends BaseClass {
 				businessPartnerObj.businessPartnerCorporateCountryofRegistration());
 		businessPartnerObj.businessPartnerCorporateCountryofRegistration()
 				.sendKeys(busniessPartnerTestData.get("CountryOfRegisteration"));
-		String xpath = "//ng-dropdown-panel//span[contains(text(),'"
+		String xpath = "//ng-dropdown-panel//div[contains(text(),'"
 				+ busniessPartnerTestData.get("CountryOfRegisteration") + "')]";
 		for (int i = 0; i <= 500; i++) {
 			try {
@@ -339,7 +339,7 @@ public class FixedAsset_BusibessPartnerSetup extends BaseClass {
 	public void enter_the_industry_in_coporate_section() throws Throwable {
 		waitHelper.waitForElementwithFluentwait(driver, businessPartnerObj.businessPartnerCorporateIndustry());
 		businessPartnerObj.businessPartnerCorporateIndustry().sendKeys(busniessPartnerTestData.get("Industry"));
-		String xpath = "//ng-dropdown-panel//span[contains(text(),'" + busniessPartnerTestData.get("Industry") + "')]";
+		String xpath = "//ng-dropdown-panel//div[contains(text(),'" + busniessPartnerTestData.get("Industry") + "')]";
 		for (int i = 0; i <= 500; i++) {
 			try {
 				clicksAndActionsHelper.moveToElement(driver.findElement(By.xpath(xpath)));
@@ -365,7 +365,7 @@ public class FixedAsset_BusibessPartnerSetup extends BaseClass {
 		waitHelper.waitForElementwithFluentwait(driver, businessPartnerObj.businessPartnerCorporateKYCCompliance());
 		businessPartnerObj.businessPartnerCorporateKYCCompliance()
 				.sendKeys(busniessPartnerTestData.get("KYCComplaince"));
-		String xpath = "//ng-dropdown-panel//span[contains(text(),'" + busniessPartnerTestData.get("KYCComplaince")
+		String xpath = "//ng-dropdown-panel//div[contains(text(),'" + busniessPartnerTestData.get("KYCComplaince")
 				+ "')]";
 		for (int i = 0; i <= 500; i++) {
 			try {
@@ -385,7 +385,7 @@ public class FixedAsset_BusibessPartnerSetup extends BaseClass {
 	public void enter_the_blackisted_option_in_corporate_section() throws Throwable {
 		waitHelper.waitForElementwithFluentwait(driver, businessPartnerObj.businessPartnerCorporateBlackListed());
 		businessPartnerObj.businessPartnerCorporateBlackListed().sendKeys(busniessPartnerTestData.get("BlackListed"));
-		String xpath = "//ng-dropdown-panel//span[contains(text(),'" + busniessPartnerTestData.get("BlackListed")
+		String xpath = "//ng-dropdown-panel//div[contains(text(),'" + busniessPartnerTestData.get("BlackListed")
 				+ "')]";
 		for (int i = 0; i <= 500; i++) {
 			try {
@@ -440,7 +440,7 @@ public class FixedAsset_BusibessPartnerSetup extends BaseClass {
 	public void enter_the_branch_type_in_branch_section() throws Throwable {
 		waitHelper.waitForElementwithFluentwait(driver, businessPartnerObj.businessPartnerBranchBranchType());
 		businessPartnerObj.businessPartnerBranchBranchType().sendKeys(busniessPartnerTestData.get("BranchType"));
-		String xpath = "//ng-dropdown-panel//span[contains(text(),'" + busniessPartnerTestData.get("BranchType")
+		String xpath = "//ng-dropdown-panel//div[contains(text(),'" + busniessPartnerTestData.get("BranchType")
 				+ "')]";
 		for (int i = 0; i <= 500; i++) {
 			try {
@@ -533,7 +533,7 @@ public class FixedAsset_BusibessPartnerSetup extends BaseClass {
 	public void enter_the_id_type_in_identification_section() throws Throwable {
 		waitHelper.waitForElementwithFluentwait(driver, businessPartnerObj.businessPartner_ID_Type());
 		businessPartnerObj.businessPartner_ID_Type().sendKeys(busniessPartnerTestData.get("ID_Type"));
-		String xpath = "//ng-dropdown-panel//span[contains(text(),'" + busniessPartnerTestData.get("ID_Type") + "')]";
+		String xpath = "//ng-dropdown-panel//div[contains(text(),'" + busniessPartnerTestData.get("ID_Type") + "')]";
 		for (int i = 0; i <= 500; i++) {
 			try {
 				clicksAndActionsHelper.moveToElement(driver.findElement(By.xpath(xpath)));
@@ -594,7 +594,7 @@ public class FixedAsset_BusibessPartnerSetup extends BaseClass {
 	public void enter_the_bank_name_in_bank_account_section() throws Throwable {
 		waitHelper.waitForElementwithFluentwait(driver, businessPartnerObj.businessPartner_BankName());
 		businessPartnerObj.businessPartner_BankName().sendKeys(busniessPartnerTestData.get("BankName"));
-		String xpath = "//ng-dropdown-panel//span[contains(text(),'" + busniessPartnerTestData.get("BankName") + "')]";
+		String xpath = "//ng-dropdown-panel//div[contains(text(),'" + busniessPartnerTestData.get("BankName") + "')]";
 		for (int i = 0; i <= 500; i++) {
 			try {
 				clicksAndActionsHelper.moveToElement(driver.findElement(By.xpath(xpath)));
@@ -615,7 +615,7 @@ public class FixedAsset_BusibessPartnerSetup extends BaseClass {
 		waitHelper.waitForElementwithFluentwait(driver, businessPartnerObj.businessPartner_BranchName());
 		businessPartnerObj.businessPartner_BranchName().click();
 		businessPartnerObj.businessPartner_BranchName().sendKeys(busniessPartnerTestData.get("BranchName"));
-		String xpath = "//ng-dropdown-panel//span[contains(text(),'" + busniessPartnerTestData.get("BranchName")
+		String xpath = "//ng-dropdown-panel//div[contains(text(),'" + busniessPartnerTestData.get("BranchName")
 				+ "')]";
 		for (int i = 0; i <= 500; i++) {
 			try {
@@ -636,7 +636,7 @@ public class FixedAsset_BusibessPartnerSetup extends BaseClass {
 	public void enter_the_account_type_in_bank_ccount_section() throws Throwable {
 		waitHelper.waitForElementwithFluentwait(driver, businessPartnerObj.businessPartner_AccountType());
 		businessPartnerObj.businessPartner_AccountType().sendKeys(busniessPartnerTestData.get("AccountType"));
-		String xpath = "//ng-dropdown-panel//span[contains(text(),'" + busniessPartnerTestData.get("AccountType")
+		String xpath = "//ng-dropdown-panel//div[contains(text(),'" + busniessPartnerTestData.get("AccountType")
 				+ "')]";
 		for (int i = 0; i <= 500; i++) {
 			try {
@@ -662,7 +662,7 @@ public class FixedAsset_BusibessPartnerSetup extends BaseClass {
 	public void enter_the_account_currency_in_bank_account_section() throws Throwable {
 		waitHelper.waitForElementwithFluentwait(driver, businessPartnerObj.businessPartner_AccountCurrency());
 		businessPartnerObj.businessPartner_AccountCurrency().sendKeys(busniessPartnerTestData.get("AccountCurrency"));
-		String xpath = "//ng-dropdown-panel//span[contains(text(),'" + busniessPartnerTestData.get("AccountCurrency")
+		String xpath = "//ng-dropdown-panel//div[contains(text(),'" + busniessPartnerTestData.get("AccountCurrency")
 				+ "')]";
 		for (int i = 0; i <= 500; i++) {
 			try {
@@ -683,7 +683,7 @@ public class FixedAsset_BusibessPartnerSetup extends BaseClass {
 		waitHelper.waitForElementwithFluentwait(driver, businessPartnerObj.businessPartnerPaymentAccountIndicator());
 		businessPartnerObj.businessPartnerPaymentAccountIndicator()
 				.sendKeys(busniessPartnerTestData.get("PaymentAccountIndicator"));
-		String xpath = "//ng-dropdown-panel//span[contains(text(),'"
+		String xpath = "//ng-dropdown-panel//div[contains(text(),'"
 				+ busniessPartnerTestData.get("PaymentAccountIndicator") + "')]";
 		for (int i = 0; i <= 500; i++) {
 			try {
@@ -703,7 +703,7 @@ public class FixedAsset_BusibessPartnerSetup extends BaseClass {
 	public void enter_the_account_status_in_bank_coount_section() throws Throwable {
 		waitHelper.waitForElementwithFluentwait(driver, businessPartnerObj.businessPartner_AccountStatus());
 		businessPartnerObj.businessPartner_AccountStatus().sendKeys(busniessPartnerTestData.get("AccountStatus"));
-		String xpath = "//ng-dropdown-panel//span[contains(text(),'" + busniessPartnerTestData.get("AccountStatus")
+		String xpath = "//ng-dropdown-panel//div[contains(text(),'" + busniessPartnerTestData.get("AccountStatus")
 				+ "')]";
 		for (int i = 0; i <= 500; i++) {
 			try {
@@ -768,7 +768,7 @@ public class FixedAsset_BusibessPartnerSetup extends BaseClass {
 
 		businessPartnerObj.businessPartner_HSN_Code().click();
 		businessPartnerObj.businessPartner_HSN_Code().sendKeys(busniessPartnerTestData.get("HSN_Code"));
-		String xpath = "//ng-dropdown-panel//span[contains(text(),'" + busniessPartnerTestData.get("HSN_Code") + "')]";
+		String xpath = "//ng-dropdown-panel//div[contains(text(),'" + busniessPartnerTestData.get("HSN_Code") + "')]";
 		for (int i = 0; i <= 500; i++) {
 			try {
 				clicksAndActionsHelper.moveToElement(driver.findElement(By.xpath(xpath)));
@@ -813,7 +813,7 @@ public class FixedAsset_BusibessPartnerSetup extends BaseClass {
 		waitHelper.waitForElementwithFluentwait(driver, businessPartnerObj.businessPartner_Address());
 		businessPartnerObj.businessPartner_AddressType().click();
 		businessPartnerObj.businessPartner_AddressType().sendKeys(busniessPartnerTestData.get("AddressType"));
-		String xpath = "//ng-dropdown-panel//span[contains(text(),'" + busniessPartnerTestData.get("AddressType")
+		String xpath = "//ng-dropdown-panel//div[contains(text(),'" + busniessPartnerTestData.get("AddressType")
 				+ "')]";
 		for (int i = 0; i <= 500; i++) {
 			try {
@@ -859,7 +859,7 @@ public class FixedAsset_BusibessPartnerSetup extends BaseClass {
 		waitHelper.waitForElementwithFluentwait(driver, businessPartnerObj.businessPartner_Country());
 		businessPartnerObj.businessPartner_Country().click();
 		businessPartnerObj.businessPartner_Country().sendKeys(busniessPartnerTestData.get("Country"));
-		String xpath = "//ng-dropdown-panel//span[contains(text(),'" + busniessPartnerTestData.get("Country") + "')]";
+		String xpath = "//ng-dropdown-panel//div[contains(text(),'" + busniessPartnerTestData.get("Country") + "')]";
 		for (int i = 0; i <= 500; i++) {
 			try {
 				clicksAndActionsHelper.moveToElement(driver.findElement(By.xpath(xpath)));
@@ -880,7 +880,7 @@ public class FixedAsset_BusibessPartnerSetup extends BaseClass {
 		waitHelper.waitForElementwithFluentwait(driver, businessPartnerObj.businessPartner_State());
 		businessPartnerObj.businessPartner_State().click();
 		businessPartnerObj.businessPartner_State().sendKeys(busniessPartnerTestData.get("State"));
-		String xpath = "//ng-dropdown-panel//span[contains(text(),'" + busniessPartnerTestData.get("State") + "')]";
+		String xpath = "//ng-dropdown-panel//div[contains(text(),'" + busniessPartnerTestData.get("State") + "')]";
 		for (int i = 0; i <= 500; i++) {
 			try {
 				clicksAndActionsHelper.moveToElement(driver.findElement(By.xpath(xpath)));
@@ -901,7 +901,7 @@ public class FixedAsset_BusibessPartnerSetup extends BaseClass {
 		waitHelper.waitForElementwithFluentwait(driver, businessPartnerObj.businessPartner_City());
 		businessPartnerObj.businessPartner_City().click();
 		businessPartnerObj.businessPartner_City().sendKeys(busniessPartnerTestData.get("City"));
-		String xpath = "//ng-dropdown-panel//span[contains(text(),'" + busniessPartnerTestData.get("City") + "')]";
+		String xpath = "//ng-dropdown-panel//div[contains(text(),'" + busniessPartnerTestData.get("City") + "')]";
 		for (int i = 0; i <= 500; i++) {
 			try {
 				clicksAndActionsHelper.moveToElement(driver.findElement(By.xpath(xpath)));
@@ -919,7 +919,9 @@ public class FixedAsset_BusibessPartnerSetup extends BaseClass {
 	@And("^enter the zip code in address section$")
 	public void enter_the_zip_code_in_address_section() throws Throwable {
 		waitHelper.waitForElementwithFluentwait(driver, businessPartnerObj.businessPartner_ZipCode());
-		businessPartnerObj.businessPartner_ZipCode().sendKeys(busniessPartnerTestData.get("Zipcode"));
+		double zipcode=Double.valueOf(busniessPartnerTestData.get("Zipcode"));
+		System.out.println(zipcode);
+		businessPartnerObj.businessPartner_ZipCode().sendKeys(String.format("%.0f", zipcode));
 
 	}
 
@@ -935,7 +937,7 @@ public class FixedAsset_BusibessPartnerSetup extends BaseClass {
 		businessPartnerObj.businessPartner_Contact().click();
 		waitHelper.waitForElementwithFluentwait(driver, businessPartnerObj.businessPartner_ContactType());
 		businessPartnerObj.businessPartner_ContactType().sendKeys(busniessPartnerTestData.get("ContactType"));
-		String xpath = "//ng-dropdown-panel//span[contains(text(),'" + busniessPartnerTestData.get("ContactType")
+		String xpath = "//ng-dropdown-panel//div[contains(text(),'" + busniessPartnerTestData.get("ContactType")
 				+ "')]";
 		for (int i = 0; i <= 500; i++) {
 			try {
@@ -968,7 +970,7 @@ public class FixedAsset_BusibessPartnerSetup extends BaseClass {
 	public void enter_the_designation_in_contact_section() throws Throwable {
 		waitHelper.waitForElementwithFluentwait(driver, businessPartnerObj.businessPartner_Designation());
 		businessPartnerObj.businessPartner_Designation().sendKeys(busniessPartnerTestData.get("Designation"));
-		String xpath = "//ng-dropdown-panel//span[contains(text(),'" + busniessPartnerTestData.get("Designation")
+		String xpath = "//ng-dropdown-panel//div[contains(text(),'" + busniessPartnerTestData.get("Designation")
 				+ "')]";
 		for (int i = 0; i <= 500; i++) {
 			try {

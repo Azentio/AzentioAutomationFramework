@@ -1,5 +1,5 @@
 Feature: To test the asset undertaking moudle
-@KUBS_FAT_UAT_002_002_01_Transfer_Undertaking2
+@KUBS_FAT_UAT_002_002_01_Undertaking
 Scenario: Create an asset category
 Given Maker Navigate to UAT URL login
 Then Click on Fixed Asset Direction icon
@@ -22,7 +22,7 @@ And store the reciewer ID in asset category
 And click on user profile in maker
 And click on logout button
 Then verify user profile got logout
-@KUBS_FAT_UAT_002_002_02_Transfer_Undertaking2
+@KUBS_FAT_UAT_002_002_02_Undertaking
 Scenario: To verify reviewer user can able to approve the asset category record
 Given navigate to kubs url to approve the asset category record for asset transfer and undertaking
 And click on notification in reviewer stage
@@ -34,7 +34,7 @@ Then verify record got approved in reviewer stage
 And click on user profile in reviewer
 And click on logout button
 Then verify user profile got logout
-@KUBS_FAT_UAT_002_002_03_Transfer_Undertaking2
+@KUBS_FAT_UAT_002_002_03_Undertaking
 Scenario: To verify checker user can able to approve the asset category record
 Given Navigate to KUBS url and login with checker for approve asset category record for asset tranfer and undertaking
 And click on security management tool
@@ -47,7 +47,7 @@ And click on approve button in checker
 And give approve alert remark in checker stage
 And click on submit button in checker stage
 Then verify record got approved in checker stage
-@KUBS_FAT_UAT_002_002_04_Transfer_Undertaking2
+@KUBS_FAT_UAT_002_002_04_Undertaking
 Scenario: To verify approved asset category record should visible in asset category list view
 Given Maker Navigate to UAT URL login
 Then Click on Fixed Asset Direction icon
@@ -59,7 +59,7 @@ And store the asset code for asset code configuration for asset transfer and und
 And click on user profile in maker
 And click on logout button
 Then verify user profile got logout
-@KUBS_FAT_UAT_002_003_01_Transfer_Undertaking2
+@KUBS_FAT_UAT_002_003_01_Undertaking
 Scenario: Configure the asset category for asset code creation 
 Given Maker Navigate to UAT URL login
 Then Click on Fixed Asset Direction icon
@@ -88,7 +88,7 @@ Then verify asset code config record got submitted and store the reviewer ID
 And click on user profile in maker
 And click on logout button
 Then verify user profile got logout 
-@KUBS_FAT_UAT_002_003_02_Transfer_Undertaking
+@KUBS_FAT_UAT_002_003_02_Undertaking
 Scenario: To verify reviewer user can able to approve the asset code configuration record
 Given navigate to kubs url to approve the asset code configuration record for asset transfer and undetaking
 And click on notification in reviewer stage
@@ -100,7 +100,7 @@ Then verify record got approved in reviewer stage
 And click on user profile in reviewer
 And click on logout button
 Then verify user profile got logout
-@KUBS_FAT_UAT_002_003_03_Transfer_Undertaking
+@KUBS_FAT_UAT_002_003_03_Undertaking
 Scenario: To verify checker user can able to approve the asset code configuration record
 Given Navigate to KUBS url and login with checker for approve asset code configuration record for asset transfer and undetaking
 And click on security management tool
@@ -113,7 +113,7 @@ And click on approve button in checker
 And give approve alert remark in checker stage
 And click on submit button in checker stage
 Then verify record got approved in checker stage
-@KUBS_FAT_UAT_002_003_04_Transfer_Undertaking
+@KUBS_FAT_UAT_002_003_04_Undertaking
 Scenario: To verify approved asset code config record should available in maker list viewe
 Given Maker Navigate to UAT URL login
 Then Click on Fixed Asset Direction icon
@@ -125,7 +125,7 @@ And store the asset code in asset gl Configuration database for asset transfer a
 And click on user profile in maker
 And click on logout button
 Then verify user profile got logout
-@KUBS_FAT_UAT_002_004_01_Transfer_Undertaking
+@KUBS_FAT_UAT_002_004_01_Undertaking
 Scenario: Map the various GLs for created asset code
 Given Maker Navigate to UAT URL login
 Then Click on Fixed Asset Direction icon
@@ -156,7 +156,7 @@ Then validate the submit and store the reviewer ID in database in gl config
 And click on user profile icon
 And click on logout button
 Then verify user profile got logout
-@KUBS_FAT_UAT_002_004_02_Transfer_Undertaking
+@KUBS_FAT_UAT_002_004_02_Undertaking
 Scenario: To verify reviewer user can able to approve the  asset code gl configuration
 Given navigate to kubs url to approve the asset GL configuration record for asset transfer and undertaking
 And click on notification in reviewer stage
@@ -168,7 +168,7 @@ Then verify record got approved in reviewer stage
 And click on user profile icon
 And click on logout button
 Then verify user profile got logout
-@KUBS_FAT_UAT_002_004_03_Transfer_Undertaking
+@KUBS_FAT_UAT_002_004_03_Undertaking
 Scenario: To verify checker user can able to approve the asset code gl configuration
 Given Navigate to KUBS url and login with checker for approve asset gl configuration record for asset transfer and undertaking
 And click on security management tool
@@ -184,7 +184,7 @@ Then verify record got approved in checker stage
 And click on user profile icon
 And click on logout button
 Then verify user profile got logout
-@KUBS_FAT_UAT_002_004_04_Transfer_Undertaking
+@KUBS_FAT_UAT_002_004_04_Undertaking
 Scenario: To verify approved asset gl configuration record should visible in maker list view
 Given Maker Navigate to UAT URL login
 Then Click on Fixed Asset Direction icon
@@ -196,7 +196,7 @@ And store the asset reference number in gl serial number config excel database f
 And click on user profile in maker
 And click on logout button
 Then verify user profile got logout
-@KUBS_FAT_UAT_002_005_01_Transfer_Undertaking
+@KUBS_FAT_UAT_002_005_01_Undertaking
 Scenario: Allocate the serial number for the asset
 Given Maker Navigate to UAT URL login
 Then Click on Fixed Asset Direction icon
@@ -218,7 +218,7 @@ Then validate the submit and store the reviewer ID of asset gl setup in excel da
 And click on user profile in maker
 And click on logout button
 Then verify user profile got logout
-@KUBS_FAT_UAT_002_005_02_Transfer_Undertaking
+@KUBS_FAT_UAT_002_005_02_Undertaking
 Scenario: To verify reviewer user can able to approve the fixed asset serial number setup record
 Given navigate to kubs url to approve the fixed asset serial number setup record for asset transfer and undertaking
 And click on notification in reviewer stage
@@ -230,7 +230,7 @@ Then verify record got approved in reviewer stage
 And click on user profile icon
 And click on logout button
 Then verify user profile got logout
-@KUBS_FAT_UAT_002_005_03_Transfer_Undertaking
+@KUBS_FAT_UAT_002_005_03_Undertaking
 Scenario: To verify checker user can able to approve the fixed asset serial number setup record
 Given Navigate to KUBS url and login with checker for approve the asset serial number setup record for asset transfer and undertaking
 And click on security management tool
@@ -246,7 +246,7 @@ Then verify record got approved in checker stage
 And click on user profile icon
 And click on logout button
 Then verify user profile got logout
-@KUBS_FAT_UAT_002_005_04_Transfer_Undertaking
+@KUBS_FAT_UAT_002_005_04_Undertaking
 Scenario: To verify approved serial number record should visible in maker list view
 Given Maker Navigate to UAT URL login
 Then Click on Fixed Asset Direction icon
@@ -259,7 +259,7 @@ And click on user profile in maker
 And click on logout button
 Then verify user profile got logout
 
-@KUBS_FAT_UAT_002_007_01_AssetTransfer_Undertaking
+@KUBS_FAT_UAT_002_007_01_AssetUndertaking4
 Scenario: Creation of the registered asset with full details
 Given Maker Navigate to UAT URL login
 And click on configuration section
@@ -294,7 +294,7 @@ Then validate the submit and store the reviewer ID of fixed asset creation with 
 And click on user profile in maker
 And click on logout button
 Then verify user profile got logout
-@KUBS_FAT_UAT_002_007_02_AssetTransfer_Undertaking
+@KUBS_FAT_UAT_002_007_02_AssetUndertaking4
 Scenario: To verify reviewer user can able to approve the asset creation record with full details record
 Given navigate to kubs Url to approve the fixed asset creation record with full details in reviewer for asset transfer
 And click on notification in reviewer stage
@@ -306,7 +306,7 @@ Then verify record got approved in reviewer stage
 And click on user profile icon
 And click on logout button
 Then verify user profile got logout
-@KUBS_FAT_UAT_002_007_03_AssetTransfer_Undertaking
+@KUBS_FAT_UAT_002_007_03_AssetUndertaking4
 Scenario: To verify checker user can able to approve the fixed asset creation with full details record
 Given navigate to kubs url to approve the fixed asset creation record with full details in checker for asset transfer
 And click on security management tool
@@ -322,7 +322,7 @@ Then verify record got approved in checker stage
 And click on user profile icon
 And click on logout button
 Then verify user profile got logout
-@KUBS_FAT_UAT_002_007_04_AssetTransfer_Undertaking
+@KUBS_FAT_UAT_002_007_04_AssetUndertaking4
 Scenario: To verify maker user can able to see the approved asset reference number in maker list view
 Given Maker Navigate to UAT URL login
 And click on configuration section
@@ -341,7 +341,7 @@ And store the asset item number in asset transfer and undertaking excel database
 And click on user profile in maker
 And click on logout button
 Then verify user profile got logout
-@KUBS_FAT_UAT_002_007_01_AssetTransfer_Undertaking
+@KUBS_FAT_UAT_002_007_01_AssetUndertaking5
 Scenario: Creation of the registered asset with full details
 Given Maker Navigate to UAT URL login
 And click on configuration section
@@ -376,7 +376,7 @@ Then validate the submit and store the reviewer ID of fixed asset creation with 
 And click on user profile in maker
 And click on logout button
 Then verify user profile got logout
-@KUBS_FAT_UAT_002_007_02_AssetTransfer_Undertaking
+@KUBS_FAT_UAT_002_007_02_AssetUndertaking5
 Scenario: To verify reviewer user can able to approve the asset creation record with full details record
 Given navigate to kubs Url to approve the fixed asset creation record with full details in reviewer for asset transfer
 And click on notification in reviewer stage
@@ -388,7 +388,7 @@ Then verify record got approved in reviewer stage
 And click on user profile icon
 And click on logout button
 Then verify user profile got logout
-@KUBS_FAT_UAT_002_007_03_AssetTransfer_Undertaking
+@KUBS_FAT_UAT_002_007_02_AssetUndertaking5
 Scenario: To verify checker user can able to approve the fixed asset creation with full details record
 Given navigate to kubs url to approve the fixed asset creation record with full details in checker for asset transfer
 And click on security management tool
@@ -404,7 +404,7 @@ Then verify record got approved in checker stage
 And click on user profile icon
 And click on logout button
 Then verify user profile got logout
-@KUBS_FAT_UAT_002_007_04_AssetTransfer_Undertaking
+@KUBS_FAT_UAT_002_007_04_AssetUndertaking5
 Scenario: To verify maker user can able to see the approved asset reference number in maker list view
 Given Maker Navigate to UAT URL login
 And click on configuration section
@@ -424,7 +424,7 @@ And click on user profile in maker
 And click on logout button
 Then verify user profile got logout
 
-@KUBS_FAT_UAT_002_007_01_AssetTransfer_Undertaking
+@KUBS_FAT_UAT_002_007_01_AssetUndertaking6
 Scenario: Creation of the registered asset with full details
 Given Maker Navigate to UAT URL login
 And click on configuration section
@@ -459,7 +459,7 @@ Then validate the submit and store the reviewer ID of fixed asset creation with 
 And click on user profile in maker
 And click on logout button
 Then verify user profile got logout
-@KUBS_FAT_UAT_002_007_02_AssetTransfer_Undertaking
+@KUBS_FAT_UAT_002_007_02_AssetUndertaking6
 Scenario: To verify reviewer user can able to approve the asset creation record with full details record
 Given navigate to kubs Url to approve the fixed asset creation record with full details in reviewer for asset transfer
 And click on notification in reviewer stage
@@ -471,7 +471,7 @@ Then verify record got approved in reviewer stage
 And click on user profile icon
 And click on logout button
 Then verify user profile got logout
-@KUBS_FAT_UAT_002_007_03_AssetTransfer_Undertaking
+@KUBS_FAT_UAT_002_007_03_AssetUndertaking6
 Scenario: To verify checker user can able to approve the fixed asset creation with full details record
 Given navigate to kubs url to approve the fixed asset creation record with full details in checker for asset transfer
 And click on security management tool
@@ -487,7 +487,7 @@ Then verify record got approved in checker stage
 And click on user profile icon
 And click on logout button
 Then verify user profile got logout
-@KUBS_FAT_UAT_002_007_04_AssetTransfer_Undertaking
+@KUBS_FAT_UAT_002_007_04_AssetUndertaking6
 Scenario: To verify maker user can able to see the approved asset reference number in maker list view
 Given Maker Navigate to UAT URL login
 And click on configuration section
@@ -590,7 +590,7 @@ And click on user profile in maker
 And click on logout button
 Then verify user profile got logout
 
-@KUBS_FAT_UAT_009_001_01__AssetTransfer
+@KUBS_FAT_UAT_009_001_01_AssetUndertaking
 Scenario: Check the impairement of asset
 Given Maker Navigate to UAT URL login
 And click on configuration section
@@ -616,7 +616,7 @@ And store the reviewer ID in asset impairment excel database
 And click on user profile in maker
 And click on logout button
 Then verify user profile got logout
-@KUBS_FAT_UAT_009_001_02
+@KUBS_FAT_UAT_009_001_02_AsseUndertaking
 Scenario: To verify reviewer user can able to approve the asset impairment record
 Given navigate to kubs Url to approve the fixed asset impairment record in reviewer for prerequisite of asset transfer
 And click on notification in reviewer stage
@@ -628,7 +628,7 @@ Then verify record got approved in reviewer stage
 And click on user profile icon
 And click on logout button
 Then verify user profile got logout
-@KUBS_FAT_UAT_009_001_03
+@KUBS_FAT_UAT_009_001_03_AssetUndertaking
 Scenario: To verify checker user can able to approve the fixed asset impairment
 Given navigate to kubs url to approve the fixed asset impairment record in checker for prerequisite of asset transfer
 And click on security management tool
@@ -644,7 +644,7 @@ Then verify record got approved in checker stage
 And click on user profile icon
 And click on logout button
 Then verify user profile got logout
-@KUBS_FAT_UAT_009_001_04
+@KUBS_FAT_UAT_009_001_04_AssetUndertaking
 Scenario: To verify approved asset reference number of asset impairment should visisble in maker list view
 Given Maker Navigate to UAT URL login
 And click on configuration section
@@ -742,7 +742,7 @@ And click on user profile in maker
 And click on logout button
 Then verify user profile got logout
 
-@KUBS_FAT_UAT_012_01_AssetTransfer_Undertaking
+@KUBS_FAT_UAT_012_01_AssetUndertaking
 Scenario: To verify maker user can able to create the asset revaluation record
 Given Maker Navigate to UAT URL login
 And click on configuration section
@@ -768,7 +768,7 @@ And store the reviewer ID of asset revaluation record in excel database
 And click on user profile in maker
 And click on logout button
 Then verify user profile got logout
-@KUBS_FAT_UAT_012_02_AssetTransfer_Undertaking
+@KUBS_FAT_UAT_012_02_AssetUndertaking
 Scenario: To verify reviewer user can able to approve the asset revaluation record
 Given navigate to kubs Url to approve the fixed asset Revaluation record in reviewer for the prerequisite of asset transfer undertaking 
 And click on notification in reviewer stage
@@ -780,7 +780,7 @@ Then verify record got approved in reviewer stage
 And click on user profile icon
 And click on logout button
 Then verify user profile got logout
-@KUBS_FAT_UAT_012_03_AssetTransfer_Undertaking
+@KUBS_FAT_UAT_012_03_AssetUndertaking
 Scenario: To verify checker user can able to approve the fixed asset creation with minimum details record
 Given navigate to kubs url to approve the fixed asset revaluation record in checker for the prerequisite of asset transfer undertaking
 And click on security management tool
@@ -796,7 +796,7 @@ Then verify record got approved in checker stage
 And click on user profile icon
 And click on logout button
 Then verify user profile got logout
-@KUBS_FAT_UAT_012_04_AssetTransfer_Undertaking
+@KUBS_FAT_UAT_012_04_AssetUndertaking
 Scenario: To verify approved asset revaluation record should visisble in revaluation list view
 Given Maker Navigate to UAT URL login
 And click on configuration section

@@ -97,7 +97,7 @@ public class KUBS_CommonWebElements {
 		return kubs_CalendarMonthAndYear;
 	}
 
-	@FindBy(xpath = "//app-inbox[1]//ion-toolbar[1]/ion-buttons[2]//ion-icon")
+	@FindBy(xpath = "//app-inbox//ion-icon[@name='search']")
 	private WebElement kubsNotification_SearchButton;
 
 	public WebElement kubsNotificationSearchButton() {
@@ -143,7 +143,7 @@ public class KUBS_CommonWebElements {
 	{
 		return kubs_UserProfileButton;
 	}
-	@FindBy(xpath="//ion-label[text()='Logout']")
+	@FindBy(xpath="//span[text()='Logout']")
 	private WebElement kubs_LogoutButton;
 	public WebElement kubsLogoutButton()
 	{
@@ -244,6 +244,12 @@ public class KUBS_CommonWebElements {
 
 	public WebElement kubsDropdownNoItemFoundOption() {
 		return kubs_DropdownNoItemFoundOption;
+	}
+	@FindBy(xpath="(//ng-dropdown-panel//div[2]//span[1])[1]")
+	private WebElement kubs_DropdownnElementValidation;
+
+	public WebElement kubsDropdownnElementValidation() {
+		return kubs_DropdownnElementValidation;
 	}
 	
 }

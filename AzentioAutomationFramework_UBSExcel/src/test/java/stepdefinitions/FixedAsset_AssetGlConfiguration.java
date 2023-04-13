@@ -41,6 +41,10 @@ public class FixedAsset_AssetGlConfiguration extends BaseClass {
 	KUBS_CommonWebElements kubsCommonObj = new KUBS_CommonWebElements(driver);
 	int intTest = 1;
 	Map<String, String> glAccountingTestData = new HashMap<>();
+	
+	ExcelData excelDataAssetCategoryForTransfer = new ExcelData(excelPath, "AssetTransfer_ExecutionTracker", "TestCaseID");
+	Map<String, String> dataSetID = new HashMap<>();
+	ExcelData excelDataAssetGlForTransfer = new ExcelData(excelPath, "AssetTransfer_ExecutionTracker", "TestCaseID");
 	BrowserHelper browserHelper = new BrowserHelper(driver);
 
 	@Then("^Click on Asset GL configuration Eye button$")
@@ -125,7 +129,8 @@ public class FixedAsset_AssetGlConfiguration extends BaseClass {
 	@And("^get the testData for fixed asset gl configuration module for asset transfer and undertaking$")
 	public void get_the_testdata_for_fixed_asset_gl_configuration_module_for_asset_transfer_and_undertaking()
 			throws Throwable {
-		glConfigTestData = exceldataforGLConfig.getTestdata("KUBS_FAT_UAT_002_004_D7");
+		dataSetID=excelDataAssetGlForTransfer.getTestdata("KUBS_FAT_UAT_002_004_01_Transfer");
+		glConfigTestData = exceldataforGLConfig.getTestdata(dataSetID.get("Data Set ID"));
 	}
 
 	@And("^get the testData for fixed asset gl configuration module for asset allocation$")
@@ -145,7 +150,7 @@ public class FixedAsset_AssetGlConfiguration extends BaseClass {
 
 	@And("^select the data from the asset code in fixed asset gl configuration$")
 	public void select_the_data_from_the_asset_code_in_fixed_asset_gl_configuration() throws Throwable {
-		String xpath = "//ng-dropdown-panel//span[contains(text(),'" + glConfigTestData.get("AssetCode") + "')]";
+		String xpath = "//ng-dropdown-panel//div[contains(text(),'" + glConfigTestData.get("AssetCode") + "')]";
 		waithelper.waitForElementwithFluentwait(driver,
 				fixedAsset_AssetGlConfigurationObj.fixedAsset_AssetGlConfiguration_AssetCode());
 		fixedAsset_AssetGlConfigurationObj.fixedAsset_AssetGlConfiguration_AssetCode().click();
@@ -166,8 +171,8 @@ public class FixedAsset_AssetGlConfiguration extends BaseClass {
 
 	@And("^select the data from the fixed asset Gl in fixed asset gl configuration$")
 	public void select_the_data_from_the_fixed_asset_gl_in_fixed_asset_gl_configuration() throws Throwable {
-		//ng-dropdown-panel//span[contains(text(),'Vault Cash')]
-		String xpath = "//ng-dropdown-panel//span[contains(text(),'"+glConfigTestData.get("FixedAssetGl")+"')]";
+		//ng-dropdown-panel//div[contains(text(),'Vault Cash')]
+		String xpath = "//ng-dropdown-panel//div[contains(text(),'"+glConfigTestData.get("FixedAssetGl")+"')]";
 		
 		waithelper.waitForElementwithFluentwait(driver,
 				fixedAsset_AssetGlConfigurationObj.fixedAsset_AssetGlConfiguration_FixedAssetGL());
@@ -190,7 +195,7 @@ public class FixedAsset_AssetGlConfiguration extends BaseClass {
 	@And("^select the data from the accumlated Depreceiation Gl in fixed asset gl configuration$")
 	public void select_the_data_from_the_accumlated_depreceiation_gl_in_fixed_asset_gl_configuration()
 			throws Throwable {
-		String xpath = "//ng-dropdown-panel//span[contains(text(),'"+ glConfigTestData.get("AccumulatedDepreciationGL") + "')]";
+		String xpath = "//ng-dropdown-panel//div[contains(text(),'"+ glConfigTestData.get("AccumulatedDepreciationGL") + "')]";
 		waithelper.waitForElementwithFluentwait(driver,
 				fixedAsset_AssetGlConfigurationObj.fixedAsset_AssetGlConfiguration_AccumulatedDepreciationGL());
 		fixedAsset_AssetGlConfigurationObj.fixedAsset_AssetGlConfiguration_AccumulatedDepreciationGL().click();
@@ -211,7 +216,7 @@ public class FixedAsset_AssetGlConfiguration extends BaseClass {
 
 	@And("^select the data from the Depreceiation Gl in fixed asset gl configuration$")
 	public void select_the_data_from_the_depreceiation_gl_in_fixed_asset_gl_configuration() throws Throwable {
-		String xpath = "//ng-dropdown-panel//span[contains(text(),'" + glConfigTestData.get("DepreciationGL") +  "')]";
+		String xpath = "//ng-dropdown-panel//div[contains(text(),'" + glConfigTestData.get("DepreciationGL") +  "')]";
 		waithelper.waitForElementwithFluentwait(driver,
 				fixedAsset_AssetGlConfigurationObj.fixedAsset_AssetGlConfiguration_DepreciationGL());
 		fixedAsset_AssetGlConfigurationObj.fixedAsset_AssetGlConfiguration_DepreciationGL().click();
@@ -232,7 +237,7 @@ public class FixedAsset_AssetGlConfiguration extends BaseClass {
 
 	@And("^select the data from the profit on slae Gl in fixed asset gl configuration$")
 	public void select_the_data_from_the_profit_on_slae_gl_in_fixed_asset_gl_configuration() throws Throwable {
-		String xpath = "//ng-dropdown-panel//span[contains(text(),'"  + glConfigTestData.get("ProfitOnSaleGL") +  "')]";
+		String xpath = "//ng-dropdown-panel//div[contains(text(),'"  + glConfigTestData.get("ProfitOnSaleGL") +  "')]";
 		waithelper.waitForElementwithFluentwait(driver,
 				fixedAsset_AssetGlConfigurationObj.fixedAsset_AssetGlConfiguration_ProfitOnSaleGL());
 		fixedAsset_AssetGlConfigurationObj.fixedAsset_AssetGlConfiguration_ProfitOnSaleGL().click();
@@ -253,7 +258,7 @@ public class FixedAsset_AssetGlConfiguration extends BaseClass {
 
 	@And("^select the data from the Loss on sale Gl in fixed asset gl configuration$")
 	public void select_the_data_from_the_loss_on_sale_gl_in_fixed_asset_gl_configuration() throws Throwable {
-		String xpath =  "//ng-dropdown-panel//span[contains(text(),'" + glConfigTestData.get("LossOnSaleGL") + "')]";
+		String xpath =  "//ng-dropdown-panel//div[contains(text(),'" + glConfigTestData.get("LossOnSaleGL") + "')]";
 		waithelper.waitForElementwithFluentwait(driver,
 				fixedAsset_AssetGlConfigurationObj.fixedAsset_AssetGlConfiguration_lossOnSaleGL());
 		fixedAsset_AssetGlConfigurationObj.fixedAsset_AssetGlConfiguration_lossOnSaleGL().click();
@@ -274,7 +279,7 @@ public class FixedAsset_AssetGlConfiguration extends BaseClass {
 
 	@And("^select the data from the Write off Gl in fixed asset gl configuration$")
 	public void select_the_data_from_the_write_off_gl_in_fixed_asset_gl_configuration() throws Throwable {
-		String xpath = "//ng-dropdown-panel//span[contains(text(),'" + glConfigTestData.get("WriteOffGl") + "')]";
+		String xpath = "//ng-dropdown-panel//div[contains(text(),'" + glConfigTestData.get("WriteOffGl") + "')]";
 		waithelper.waitForElementwithFluentwait(driver,
 				fixedAsset_AssetGlConfigurationObj.fixedAsset_AssetGlConfiguration_WriteOffGL());
 		fixedAsset_AssetGlConfigurationObj.fixedAsset_AssetGlConfiguration_WriteOffGL().click();
@@ -295,7 +300,7 @@ public class FixedAsset_AssetGlConfiguration extends BaseClass {
 
 	@And("^select the data from the impairement loss Gl in fixed asset gl configuration$")
 	public void select_the_data_from_the_impairement_loss_gl_in_fixed_asset_gl_configuration() throws Throwable {
-		String xpath =  "//ng-dropdown-panel//span[contains(text(),'" + glConfigTestData.get("ImpairmentLossGL") + "')]";
+		String xpath =  "//ng-dropdown-panel//div[contains(text(),'" + glConfigTestData.get("ImpairmentLossGL") + "')]";
 		waithelper.waitForElementwithFluentwait(driver,
 				fixedAsset_AssetGlConfigurationObj.fixedAsset_AssetGlConfiguration_ImpairmentLossGL());
 		fixedAsset_AssetGlConfigurationObj.fixedAsset_AssetGlConfiguration_ImpairmentLossGL().click();
@@ -324,7 +329,7 @@ public class FixedAsset_AssetGlConfiguration extends BaseClass {
 	@And("^select the data from the accumlated impairement loss Gl in fixed asset gl configuration$")
 	public void select_the_data_from_the_accumlated_impairement_loss_gl_in_fixed_asset_gl_configuration()
 			throws Throwable {
-		String xpath = "//ng-dropdown-panel//span[contains(text(),'"+ glConfigTestData.get("AccumulatedImpairmentLossGL")
+		String xpath = "//ng-dropdown-panel//div[contains(text(),'"+ glConfigTestData.get("AccumulatedImpairmentLossGL")
 				+  "')]";
 		waithelper.waitForElementwithFluentwait(driver,
 				fixedAsset_AssetGlConfigurationObj.fixedAsset_AssetGlConfiguration_AccumulatedImpairmentLossGL());
@@ -346,7 +351,7 @@ public class FixedAsset_AssetGlConfiguration extends BaseClass {
 
 	@And("^select the data from the Revaluation surplus Gl in fixed asset gl configuration$")
 	public void select_the_data_from_the_revaluation_surplus_gl_in_fixed_asset_gl_configuration() throws Throwable {
-		String xpath =  "//ng-dropdown-panel//span[contains(text(),'" + glConfigTestData.get("RevaluationSurplusGL") + "')]";
+		String xpath =  "//ng-dropdown-panel//div[contains(text(),'" + glConfigTestData.get("RevaluationSurplusGL") + "')]";
 		waithelper.waitForElementwithFluentwait(driver,
 				fixedAsset_AssetGlConfigurationObj.fixedAsset_AssetGlConfiguration_RevaluationSurplusGL());
 		fixedAsset_AssetGlConfigurationObj.fixedAsset_AssetGlConfiguration_RevaluationSurplusGL().click();
@@ -490,7 +495,7 @@ public class FixedAsset_AssetGlConfiguration extends BaseClass {
 	@And("^store the asset reference number in gl serial number config excel database for asset transfer and undertaking$")
 	public void store_the_asset_reference_number_in_gl_serial_number_config_excel_database_for_asset_transfer_and_undertaking()
 			throws Throwable {
-		excelDataForGlSerialNum.updateTestData("KUBS_FAT_UAT_002_005_D7", "AssetCode",
+		excelDataForGlSerialNum.updateTestData(glConfigTestData.get("Update Data Set 1"), "AssetCode",
 				glConfigTestData.get("AssetCode"));
 	}
 

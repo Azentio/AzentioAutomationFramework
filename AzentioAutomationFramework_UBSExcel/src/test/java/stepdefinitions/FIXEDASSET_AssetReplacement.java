@@ -166,7 +166,7 @@ public class FIXEDASSET_AssetReplacement extends BaseClass {
 		assetReplacement.fixedAssetReplacementReferenceNumber().click();
 		assetReplacement.fixedAssetReplacementReferenceNumber()
 				.sendKeys(assetReplacementTestData.get("AssetReferenceNumber"));
-		String xpath = "//ng-dropdown-panel//span[text()='" + assetReplacementTestData.get("AssetReferenceNumber")
+		String xpath = "//ng-dropdown-panel//div[text()='" + assetReplacementTestData.get("AssetReferenceNumber")
 				+ "']";
 		for (int i = 0; i <= 500; i++) {
 			try {
@@ -186,7 +186,7 @@ public class FIXEDASSET_AssetReplacement extends BaseClass {
 		waitHelper.waitForElementwithFluentwait(driver, assetReplacement.fixedAssetReplacementItemNumber());
 		assetReplacement.fixedAssetReplacementItemNumber().click();
 		assetReplacement.fixedAssetReplacementItemNumber().sendKeys(assetReplacementTestData.get("AssetItemNumber"));
-		String xpath = "//ng-dropdown-panel//span[text()='" + assetReplacementTestData.get("AssetItemNumber") + "']";
+		String xpath = "//ng-dropdown-panel//div[text()='" + assetReplacementTestData.get("AssetItemNumber") + "']";
 		for (int i = 0; i <= 100; i++) {
 			try {
 				clickAndActionHelper.moveToElement(driver.findElement(By.xpath(xpath)));
@@ -691,7 +691,7 @@ public class FIXEDASSET_AssetReplacement extends BaseClass {
 		assetReplacementObj.assetReplacementReportAssetCode().click();
 		assetReplacementObj.assetReplacementReportAssetCode()
 				.sendKeys(assetReplacementReportTestData.get("ReplacementAssetCode"));
-		String xpath = "//ng-dropdown-panel//span[text()='" + assetReplacementReportTestData.get("ReplacementAssetCode")
+		String xpath = "//ng-dropdown-panel//div[text()='" + assetReplacementReportTestData.get("ReplacementAssetCode")
 				+ "']";
 		for (int i = 0; i <= 100; i++) {
 			try {
@@ -712,7 +712,7 @@ public class FIXEDASSET_AssetReplacement extends BaseClass {
 		assetReplacementObj.assetReplacementReportItemNumber().click();
 		assetReplacementObj.assetReplacementReportItemNumber()
 				.sendKeys(assetReplacementReportTestData.get("approvedAssetItemNo"));
-		String xpath = "//ng-dropdown-panel//span[text()='" + assetReplacementReportTestData.get("approvedAssetItemNo")
+		String xpath = "//ng-dropdown-panel//div[text()='" + assetReplacementReportTestData.get("approvedAssetItemNo")
 				+ "']";
 		for (int i = 0; i <= 100; i++) {
 			try {

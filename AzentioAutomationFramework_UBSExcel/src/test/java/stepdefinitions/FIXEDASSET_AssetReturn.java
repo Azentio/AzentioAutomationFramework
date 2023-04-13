@@ -143,7 +143,7 @@ public class FIXEDASSET_AssetReturn extends BaseClass {
 		waitHelper.waitForElementwithFluentwait(driver, assetReturnObj.assetReturnAssetReferenceNumber());
 		assetReturnObj.assetReturnAssetReferenceNumber().click();
 		assetReturnObj.assetReturnAssetReferenceNumber().sendKeys(assetReturnTestdata.get("AssetReferenceNumber"));
-		String xpath = "//ng-dropdown-panel//span[text()='" + assetReturnTestdata.get("AssetReferenceNumber") + "']";
+		String xpath = "//ng-dropdown-panel//div[text()='" + assetReturnTestdata.get("AssetReferenceNumber") + "']";
 
 		for (int i = 0; i <= 50; i++) {
 			try {
@@ -163,7 +163,7 @@ public class FIXEDASSET_AssetReturn extends BaseClass {
 		waitHelper.waitForElementwithFluentwait(driver, assetReturnObj.assetReturnAssetItemNo());
 		assetReturnObj.assetReturnAssetItemNo().click();
 		assetReturnObj.assetReturnAssetItemNo().sendKeys(assetReturnTestdata.get("AssetItemNumber"));
-		String xpath = "//ng-dropdown-panel//span[text()='" + assetReturnTestdata.get("AssetItemNumber") + "']";
+		String xpath = "//ng-dropdown-panel//div[text()='" + assetReturnTestdata.get("AssetItemNumber") + "']";
 
 		for (int i = 0; i <= 100; i++) {
 			try {
@@ -222,7 +222,7 @@ public class FIXEDASSET_AssetReturn extends BaseClass {
 		waitHelper.waitForElementwithFluentwait(driver, assetReturnObj.assetReturnAssetReferenceNumber());
 		assetReturnObj.assetReturnAssetReferenceNumber().click();
 		assetReturnObj.assetReturnAssetReferenceNumber().sendKeys(assetReturnTestdata.get("AssetReferenceNumber"));
-		String xpath = "//ng-dropdown-panel//span[text()='" + assetReturnTestdata.get("AssetReferenceNumber") + "']";
+		String xpath = "//ng-dropdown-panel//div[text()='" + assetReturnTestdata.get("AssetReferenceNumber") + "']";
 
 		for (int i = 0; i <= 100; i++) {
 			try {
@@ -236,7 +236,7 @@ public class FIXEDASSET_AssetReturn extends BaseClass {
 		waitHelper.waitForElementwithFluentwait(driver, assetReturnObj.assetReturnAssetItemNo());
 		assetReturnObj.assetReturnAssetItemNo().click();
 		assetReturnObj.assetReturnAssetItemNo().sendKeys(assetReturnTestdata.get("AssetItemNumber"));
-		String xpath2 = "//ng-dropdown-panel//span[text()='" + assetReturnTestdata.get("AssetItemNumber") + "']";
+		String xpath2 = "//ng-dropdown-panel//div[text()='" + assetReturnTestdata.get("AssetItemNumber") + "']";
 
 		for (int i = 0; i <= 100; i++) {
 			try {
@@ -810,7 +810,7 @@ public class FIXEDASSET_AssetReturn extends BaseClass {
 		waitHelper.waitForElementwithFluentwait(driver, assetReturnObj.assetReturnAssetCode());
 		assetReturnObj.assetReturnAssetCode().click();
 		assetReturnObj.assetReturnAssetCode().sendKeys(assetReturnReportTestdata.get("approvedAssetCode"));
-		String xpath = "//ng-dropdown-panel//span[text()='" + assetReturnReportTestdata.get("approvedAssetCode") + "']";
+		String xpath = "//ng-dropdown-panel//div[text()='" + assetReturnReportTestdata.get("approvedAssetCode") + "']";
 
 		for (int i = 0; i <= 100; i++) {
 			try {
@@ -830,7 +830,7 @@ public class FIXEDASSET_AssetReturn extends BaseClass {
 		waitHelper.waitForElementwithFluentwait(driver, assetReturnObj.assetReturnReportItemNumber());
 		assetReturnObj.assetReturnReportItemNumber().click();
 		assetReturnObj.assetReturnReportItemNumber().sendKeys(assetReturnReportTestdata.get("approvedItemNumber"));
-		String xpath = "//ng-dropdown-panel//span[text()='" + assetReturnReportTestdata.get("approvedItemNumber")
+		String xpath = "//ng-dropdown-panel//div[text()='" + assetReturnReportTestdata.get("approvedItemNumber")
 				+ "']";
 
 		for (int i = 0; i <= 100; i++) {

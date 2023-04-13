@@ -31,7 +31,8 @@ public class FixedAsset_AssetSerialNumCreation extends BaseClass {
 	Map<String, String> assetSerialNumberTestData = new HashMap<>();
 	KUBS_CommonWebElements kubsCommonObj = new KUBS_CommonWebElements(driver);
 	ExcelData excelDataForAssetCreation = new ExcelData(excelPath, "FixedAsset_AssetCreation", "DataSet ID");
-
+	Map<String, String> dataSetID = new HashMap<>();
+	ExcelData excelDataAssetSerialNoForTransfer = new ExcelData(excelPath, "AssetTransfer_ExecutionTracker", "TestCaseID");
 	@Then("^Click on Asset Serial Num Creation Eye button$")
 	public void click_on_asset_serial_num_creation_eye_button() {
 		for (int i = 0; i <= 100; i++) {
@@ -74,7 +75,8 @@ public class FixedAsset_AssetSerialNumCreation extends BaseClass {
 	@And("^get the test data for asset serial number setup from excel database for asset transfer and undertaking$")
 	public void get_the_test_data_for_asset_serial_number_setup_from_excel_database_for_asset_transfer_and_undertaking()
 			throws Throwable {
-		assetSerialNumberTestData = excelTestDataaForAssetSerialNumber.getTestdata("KUBS_FAT_UAT_002_005_D7");
+		dataSetID=excelDataAssetSerialNoForTransfer.getTestdata("KUBS_FAT_UAT_002_005_01_Transfer");
+		assetSerialNumberTestData = excelTestDataaForAssetSerialNumber.getTestdata(dataSetID.get("Data Set ID"));
 	}
 
 	@And("^get the test data for asset serial number setup from excel database to do asset impairment$")
@@ -230,7 +232,7 @@ public class FixedAsset_AssetSerialNumCreation extends BaseClass {
 	@And("^store the asset code in asset creation excel database for asset transfer and undertaking$")
 	public void store_the_asset_code_in_asset_creation_excel_database_for_asset_transfer_and_undertaking()
 			throws Throwable {
-		excelDataForAssetCreation.updateTestData("KUBS_FAT_UAT_002_007_D7", "AssetCode",
+		excelDataForAssetCreation.updateTestData(assetSerialNumberTestData.get("Update Data Set 1"), "AssetCode",
 				assetSerialNumberTestData.get("AssetCode"));
 	}
 

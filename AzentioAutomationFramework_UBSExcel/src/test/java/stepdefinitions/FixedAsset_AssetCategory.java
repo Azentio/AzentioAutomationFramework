@@ -54,6 +54,9 @@ public class FixedAsset_AssetCategory extends BaseClass {
 	KUBS_CommonWebElements kubsCommonObj = new KUBS_CommonWebElements(driver);
 	ExcelData excelDataAssetCode = new ExcelData(path, "FixedAsset_AssetCodeConfig", "DataSet ID");
 	Map<String, String> testMap = new HashMap<>();
+	KUBS_CommonWebElements kubsCommonWebElements= new KUBS_CommonWebElements(driver);
+	ExcelData excelDataAssetCategoryForTransfer = new ExcelData(path, "AssetTransfer_ExecutionTracker", "TestCaseID");
+	Map<String, String> DataSetID = new HashMap<>();
 
 	@And("^get the test data for asset catogory creation Test Data$")
 	public void get_the_test_data_for_asset_catogory_creation_test_data() throws Throwable {
@@ -84,7 +87,8 @@ public class FixedAsset_AssetCategory extends BaseClass {
 	@And("^get the test data for asset catogory creation Test Data for asset transfer undertaking$")
 	public void get_the_test_data_for_asset_catogory_creation_test_data_for_asset_transfer_undertaking()
 			throws Throwable {
-		assetcatogoryTestdata = excelData.getTestdata("KUBS_FAT_UAT_002_002_D7");
+		DataSetID = excelDataAssetCategoryForTransfer.getTestdata("KUBS_FAT_UAT_002_002_01_Transfer");
+		assetcatogoryTestdata = excelData.getTestdata(DataSetID.get("Data Set ID"));
 	}
 
 	@Then("^verify newly created asset category is refelected in list view$")
@@ -142,13 +146,14 @@ public class FixedAsset_AssetCategory extends BaseClass {
 	@And("^store the asset code for asset code configuration for asset transfer and undertaking$")
 	public void store_the_asset_code_for_asset_code_configuration_for_asset_transfer_and_undertaking()
 			throws Throwable {
-		excelDataAssetCode.updateTestData("KUBS_FAT_UAT_002_003_D7", "AssetCode",
+		excelDataAssetCode.updateTestData(assetcatogoryTestdata.get("Update Data Set 1"), "AssetCode",
 				assetcatogoryTestdata.get("Asset_Code"));
+		
 	}
 
 	@And("^store the asset code for asset code configuration for asset allocation$")
 	public void store_the_asset_code_for_asset_code_configuration_for_asset_allocation() throws Throwable {
-		excelDataAssetCode.updateTestData("KUBS_FAT_UAT_002_003_D4", "AssetCode",
+		excelDataAssetCode.updateTestData(assetcatogoryTestdata.get("Update Data Set 1"), "AssetCode",
 				assetcatogoryTestdata.get("Asset_Code"));
 	}
 
@@ -173,7 +178,7 @@ public class FixedAsset_AssetCategory extends BaseClass {
 
 	@And("^select the data from Asset category dropdown$")
 	public void select_the_data_from_asset_category_dropdown() throws Throwable {
-		String xpath = "//ng-dropdown-panel//span[text()='" + assetcatogoryTestdata.get("Assetcategory") + "']";
+		String xpath = "//ng-dropdown-panel//div[text()='" + assetcatogoryTestdata.get("Assetcategory") + "']";
 		waitHelper.waitForElementwithFluentwait(driver,
 				fixedAsset_AssetCategoryObj.fixedAsset_AssetCategory_AssetCategoryInputField());
 		fixedAsset_AssetCategoryObj.fixedAsset_AssetCategory_AssetCategoryInputField().click();
@@ -202,9 +207,9 @@ public class FixedAsset_AssetCategory extends BaseClass {
 		for (int i = 0; i <= 100; i++) {
 			try {
 				clickAndActionsHelper.moveToElement(driver.findElement(
-						By.xpath("//span[text()='" + assetcatogoryTestdata.get("AssetSubCategory") + "']")));
+						By.xpath("//div[text()='" + assetcatogoryTestdata.get("AssetSubCategory") + "']")));
 				clickAndActionsHelper.clickOnElement(driver.findElement(
-						By.xpath("//span[text()='" + assetcatogoryTestdata.get("AssetSubCategory") + "']")));
+						By.xpath("//div[text()='" + assetcatogoryTestdata.get("AssetSubCategory") + "']")));
 				break;
 			} catch (Exception e) {
 				if (i == 100) {
@@ -360,6 +365,8 @@ public class FixedAsset_AssetCategory extends BaseClass {
 
 	@And("^search the asset catregory record$")
 	public void search_the_asset_catregory_record() throws Throwable {
+		waitHelper.waitForElementwithFluentwait(driver, kubsCommonWebElements.kubsNotificationSearchButton());
+		kubsCommonWebElements.kubsNotificationSearchButton().click();
 		waitHelper.waitForElementwithFluentwait(driver, fixedAsset_AssetCategoryObj.fixedAssetcategoryEventCode());
 		fixedAsset_AssetCategoryObj.fixedAssetcategoryEventCode().click();
 		fixedAsset_AssetCategoryObj.fixedAssetcategoryEventCode().sendKeys(assetcatogoryTestdata.get("ModuleCode"));

@@ -57,6 +57,8 @@ public class FIXEDASSET_AssetRevaluvation extends BaseClass {
 	ExcelData excelDataForAssetImpairment = new ExcelData(path, "FixedAsset_AssetImpairement", "DataSet ID");
 	ExcelData excelDataForAssetTransfer = new ExcelData(path, "FixedAsset_AssetTransfer", "DataSet ID");
 	ExcelData excelDataForAssetWriteOff = new ExcelData(path, "FixedAsset_WriteOff", "DataSet ID");
+	ExcelData excelDataRevaluationAssetTransferExecution = new ExcelData(path, "AssetTransfer_ExecutionTracker", "TestCaseID");
+	Map<String, String> DataSetID = new HashMap<>();
 	// ************************@KUBS_FAT_UAT_012_001********************* //
 
 	@Given("^Navigate the Maker Url$")
@@ -128,7 +130,8 @@ public class FIXEDASSET_AssetRevaluvation extends BaseClass {
 	@And("^get the test data for asset revaluation test data from excel database for asset transfer undertaking prerequisite$")
 	public void get_the_test_data_for_asset_revaluation_test_data_from_excel_database_for_asset_transfer_undertaking_prerequisite()
 			throws Throwable {
-		revaluationTestData = excelDataForAssetRevaluation.getTestdata("KUBS_FAT_UAT_012_01_D10");
+		DataSetID=excelDataRevaluationAssetTransferExecution.getTestdata("KUBS_FAT_UAT_012_01_AssetTransfer");
+		revaluationTestData = excelDataForAssetRevaluation.getTestdata(DataSetID.get("Data Set ID"));
 	}
 
 	@And("^get the test data for asset revaluation test data from excel database which is already de allocated$")
@@ -208,7 +211,7 @@ public class FIXEDASSET_AssetRevaluvation extends BaseClass {
 		waitHelper.waitForElementwithFluentwait(driver, assetRevaluvationObj.fixed_AssetReferenceNumber());
 		assetRevaluvationObj.fixed_AssetReferenceNumber().click();
 		assetRevaluvationObj.fixed_AssetReferenceNumber().sendKeys(revaluationTestData.get("AssetReferenceNumber"));
-		String xpath = "//ng-dropdown-panel//span[text()='" + revaluationTestData.get("AssetReferenceNumber") + "']";
+		String xpath = "//ng-dropdown-panel//div[text()='" + revaluationTestData.get("AssetReferenceNumber") + "']";
 		for (int i = 0; i <= 100; i++) {
 			try {
 				clickAndActionHelper.moveToElement(driver.findElement(By.xpath(xpath)));
@@ -230,7 +233,7 @@ public class FIXEDASSET_AssetRevaluvation extends BaseClass {
 		waitHelper.waitForElementwithFluentwait(driver, assetRevaluvationObj.fixed_AssetReferenceNumber());
 		assetRevaluvationObj.fixed_AssetReferenceNumber().click();
 		assetRevaluvationObj.fixed_AssetReferenceNumber().sendKeys(revaluationTestData.get("AssetReferenceNumber"));
-		String xpath = "//ng-dropdown-panel//span[text()='" + revaluationTestData.get("AssetReferenceNumber") + "']";
+		String xpath = "//ng-dropdown-panel//div[text()='" + revaluationTestData.get("AssetReferenceNumber") + "']";
 
 		for (int i = 0; i <= 50; i++) {
 			try {
@@ -281,7 +284,7 @@ public class FIXEDASSET_AssetRevaluvation extends BaseClass {
 		waitHelper.waitForElementwithFluentwait(driver, assetRevaluvationObj.fixed_AssetItemCode());
 		assetRevaluvationObj.fixed_AssetItemCode().click();
 		assetRevaluvationObj.fixed_AssetItemCode().sendKeys(revaluationTestData.get("AssetItemNumber"));
-		String xpath = "//ng-dropdown-panel//span[text()='" + revaluationTestData.get("AssetItemNumber") + "']";
+		String xpath = "//ng-dropdown-panel//div[text()='" + revaluationTestData.get("AssetItemNumber") + "']";
 		for (int i = 0; i <= 100; i++) {
 			try {
 				clickAndActionHelper.moveToElement(driver.findElement(By.xpath(xpath)));
@@ -489,18 +492,18 @@ public class FIXEDASSET_AssetRevaluvation extends BaseClass {
 	@And("^store the asset referefnce number and item number of revalued asset in asset transfer undertaking excel database$")
 	public void store_the_asset_referefnce_number_and_item_number_of_revalued_asset_in_asset_transfer_undertaking_excel_database()
 			throws Throwable {
-		excelDataForAssetTransfer.updateTestData("KUBS_FAT_UAT_005_003_D1", "AssetReferenceNumber",
+		excelDataForAssetTransfer.updateTestData(revaluationTestData.get("Update Data Set 1"), "AssetReferenceNumber",
 				revaluationTestData.get("AssetReferenceNumber"));
-		excelDataForAssetTransfer.updateTestData("KUBS_FAT_UAT_005_003_D1", "AssetItemNumber",
+		excelDataForAssetTransfer.updateTestData(revaluationTestData.get("Update Data Set 1"), "AssetItemNumber",
 				revaluationTestData.get("AssetItemNumber"));
 	}
 
 	@And("^store the asset reference number and item number of revalued asset in asset undertaking excel database$")
 	public void store_the_asset_reference_number_and_item_number_of_revalued_asset_in_asset_undertaking_excel_database()
 			throws Throwable {
-		excelDataForAssetTransfer.updateTestData("KUBS_FAT_UAT_005_007_D1", "AssetReferenceNumber",
+		excelDataForAssetTransfer.updateTestData(revaluationTestData.get("Update Data Set 2"), "AssetReferenceNumber",
 				revaluationTestData.get("AssetReferenceNumber"));
-		excelDataForAssetTransfer.updateTestData("KUBS_FAT_UAT_005_007_D1", "AssetItemNumber",
+		excelDataForAssetTransfer.updateTestData(revaluationTestData.get("Update Data Set 2"), "AssetItemNumber",
 				revaluationTestData.get("AssetItemNumber"));
 	}
 

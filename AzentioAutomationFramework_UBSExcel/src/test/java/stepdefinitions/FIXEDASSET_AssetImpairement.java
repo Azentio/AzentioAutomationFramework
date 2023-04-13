@@ -67,6 +67,8 @@ public class FIXEDASSET_AssetImpairement extends BaseClass {
 	ExcelData excelDataForAssetRevaluation = new ExcelData(path, "FixedAsset_AssetReValuation", "DataSet ID");
 	ExcelData excelDataForAssetTransfer = new ExcelData(path, "FixedAsset_AssetTransfer", "DataSet ID");
 	ExcelData excelDataForAssetWriteOff = new ExcelData(path, "FixedAsset_WriteOff", "DataSet ID");
+	ExcelData excelDataImpairementAssetTransferExecution = new ExcelData(path, "AssetTransfer_ExecutionTracker", "TestCaseID");
+	Map<String, String> DataSetID = new HashMap<>();
 	BrowserHelper browserHelper = new BrowserHelper(driver);
 
 	@Given("^Navigate to KUBS URL and login with maker credentials$")
@@ -424,7 +426,8 @@ public class FIXEDASSET_AssetImpairement extends BaseClass {
 	@And("^get the test data for impairment asset from excel database for the prerequisite of asset transfer$")
 	public void get_the_test_data_for_impairment_asset_from_excel_database_for_the_prerequisite_of_asset_transfer()
 			throws Throwable {
-		impairmentTestData = excelDataForAssetImpairment.getTestdata("KUBS_FAT_UAT_009_001_01_D4");
+		DataSetID=excelDataImpairementAssetTransferExecution.getTestdata("KUBS_FAT_UAT_009_001_01_AssetTransfer");
+		impairmentTestData = excelDataForAssetImpairment.getTestdata(DataSetID.get("Data Set ID"));
 	}
 
 	@And("^get the test data for impairment asset from excel database for the prerequisite of asset revaluation$")
@@ -519,18 +522,18 @@ public class FIXEDASSET_AssetImpairement extends BaseClass {
 	@And("^store the impaired asset reference number and item number in asset transfer exceldatabase$")
 	public void store_the_impaired_asset_reference_number_and_item_number_in_asset_transfer_exceldatabase()
 			throws Throwable {
-		excelDataForAssetTransfer.updateTestData("KUBS_FAT_UAT_005_002_D1", "AssetReferenceNumber",
+		excelDataForAssetTransfer.updateTestData(impairmentTestData.get("Update Data Set 1"), "AssetReferenceNumber",
 				impairmentTestData.get("AssetReferenceNumber"));
-		excelDataForAssetTransfer.updateTestData("KUBS_FAT_UAT_005_002_D1", "AssetItemNumber",
+		excelDataForAssetTransfer.updateTestData(impairmentTestData.get("Update Data Set 1"), "AssetItemNumber",
 				impairmentTestData.get("AssetItemNumber"));
 	}
 
 	@And("^store the impaired asset reference number and item number in asset transfer and undertaking exceldatabase$")
 	public void store_the_impaired_asset_reference_number_and_item_number_in_asset_transfer_and_undertaking_exceldatabase()
 			throws Throwable {
-		excelDataForAssetTransfer.updateTestData("KUBS_FAT_UAT_005_006_D1", "AssetReferenceNumber",
+		excelDataForAssetTransfer.updateTestData(impairmentTestData.get("Update Data Set 2"), "AssetReferenceNumber",
 				impairmentTestData.get("AssetReferenceNumber"));
-		excelDataForAssetTransfer.updateTestData("KUBS_FAT_UAT_005_006_D1", "AssetItemNumber",
+		excelDataForAssetTransfer.updateTestData(impairmentTestData.get("Update Data Set 2"), "AssetItemNumber",
 				impairmentTestData.get("AssetItemNumber"));
 	}
 
@@ -760,7 +763,7 @@ public class FIXEDASSET_AssetImpairement extends BaseClass {
 		waitHelper.waitForElementwithFluentwait(driver, assetImpairementObj.fixedAssetReferenceNumber());
 		assetImpairementObj.fixedAssetReferenceNumber().click();
 		assetImpairementObj.fixedAssetReferenceNumber().sendKeys(impairmentTestData.get("AssetReferenceNumber"));
-		String xpath = "//ng-dropdown-panel//span[text()='" + impairmentTestData.get("AssetReferenceNumber") + "']";
+		String xpath = "//ng-dropdown-panel//div[text()='" + impairmentTestData.get("AssetReferenceNumber") + "']";
 		for (int i = 0; i <= 10; i++) {
 			try {
 
@@ -782,7 +785,7 @@ public class FIXEDASSET_AssetImpairement extends BaseClass {
 		assetImpairementObj.fixedAssetAssetItemNo().click();
 		assetImpairementObj.fixedAssetAssetItemNo().sendKeys(impairmentTestData.get("AssetItemNumber"));
 
-		String xpath = "//ng-dropdown-panel//span[text()='" + impairmentTestData.get("AssetItemNumber") + "']";
+		String xpath = "//ng-dropdown-panel//div[text()='" + impairmentTestData.get("AssetItemNumber") + "']";
 		for (int i = 0; i <= 500; i++) {
 			try {
 
@@ -803,7 +806,7 @@ public class FIXEDASSET_AssetImpairement extends BaseClass {
 		waitHelper.waitForElementwithFluentwait(driver, assetImpairementObj.fixedAssetReferenceNumber());
 		assetImpairementObj.fixedAssetReferenceNumber().click();
 		assetImpairementObj.fixedAssetReferenceNumber().sendKeys(impairmentTestData.get("AssetReferenceNumber"));
-		String xpath = "//ng-dropdown-panel//span[text()='" + impairmentTestData.get("AssetReferenceNumber") + "']";
+		String xpath = "//ng-dropdown-panel//div[text()='" + impairmentTestData.get("AssetReferenceNumber") + "']";
 		for (int i = 0; i <= 10; i++) {
 			try {
 
@@ -819,7 +822,7 @@ public class FIXEDASSET_AssetImpairement extends BaseClass {
 		assetImpairementObj.fixedAssetAssetItemNo().click();
 		assetImpairementObj.fixedAssetAssetItemNo().sendKeys(impairmentTestData.get("AssetItemNumber"));
 
-		String xpath2 = "//ng-dropdown-panel//span[text()='" + impairmentTestData.get("AssetItemNumber") + "']";
+		String xpath2 = "//ng-dropdown-panel//div[text()='" + impairmentTestData.get("AssetItemNumber") + "']";
 		for (int i = 0; i <= 10; i++) {
 			try {
 

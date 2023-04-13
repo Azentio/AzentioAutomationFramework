@@ -128,7 +128,7 @@ public class FIXEDASSETS_AssetSale {
 
 	@And("^enter the asset reference number in asset sale$")
 	public void enter_the_asset_reference_number_in_asset_sale() throws Throwable {
-		String xpath = "//ng-dropdown-panel//span[text()='" + assetSaleTestData.get("AssetReferenceNumber") + "']";
+		String xpath = "//ng-dropdown-panel//div[text()='" + assetSaleTestData.get("AssetReferenceNumber") + "']";
 		waitHelper.waitForElementwithFluentwait(driver,
 				fxedAssetAssetSaleObj.fixedAssets_AssetSale_AssetReferenceNumber());
 		fxedAssetAssetSaleObj.fixedAssets_AssetSale_AssetReferenceNumber().click();
@@ -150,7 +150,7 @@ public class FIXEDASSETS_AssetSale {
 
 	@And("^enter the asset item number in asset sale module$")
 	public void enter_the_asset_item_number_in_asset_sale_module() throws Throwable {
-		String xpath = "//ng-dropdown-panel//span[text()='" + assetSaleTestData.get("AssetItemNumber") + "']";
+		String xpath = "//ng-dropdown-panel//div[text()='" + assetSaleTestData.get("AssetItemNumber") + "']";
 		waitHelper.waitForElementwithFluentwait(driver, fxedAssetAssetSaleObj.fixedAssets_AssetSale_ItemNumber());
 		fxedAssetAssetSaleObj.fixedAssets_AssetSale_ItemNumber().click();
 		fxedAssetAssetSaleObj.fixedAssets_AssetSale_ItemNumber().sendKeys(assetSaleTestData.get("AssetItemNumber"));
@@ -189,7 +189,7 @@ public class FIXEDASSETS_AssetSale {
 
 	@And("^choose the actionable by in asset sale module$")
 	public void choose_the_actionable_by_in_asset_sale_module() throws Throwable {
-		String xpath = "//ng-dropdown-panel//span[text()='" + assetSaleTestData.get("ActionableBy") + "']";
+		String xpath = "//ng-dropdown-panel//div[text()='" + assetSaleTestData.get("ActionableBy") + "']";
 		waitHelper.waitForElementwithFluentwait(driver, fxedAssetAssetSaleObj.fixedAssets_AssetSale_ActionableBy());
 		fxedAssetAssetSaleObj.fixedAssets_AssetSale_ActionableBy().click();
 		fxedAssetAssetSaleObj.fixedAssets_AssetSale_ActionableBy().sendKeys(assetSaleTestData.get("ActionableBy"));
@@ -360,7 +360,7 @@ public class FIXEDASSETS_AssetSale {
 
 		fxedAssetAssetSaleObj.assetSaleReoprtAssetCodeInputBox()
 				.sendKeys(assetSaleReportTestData.get("assetSaleApprovedAssetCode"));
-		String xpath = "//ng-dropdown-panel//span[text()='" + assetSaleReportTestData.get("assetSaleApprovedAssetCode")
+		String xpath = "//ng-dropdown-panel//div[text()='" + assetSaleReportTestData.get("assetSaleApprovedAssetCode")
 				+ "']";
 		for (int i = 0; i <= 10; i++) {
 			try {

@@ -48,7 +48,10 @@ public class FIXEDASSETS_AssetUndertaking {
 	ExcelData excelDataForAssetWriteOff = new ExcelData(path, "FixedAsset_WriteOff", "DataSet ID");
 	ExcelData excelDataForAssetReturn = new ExcelData(path, "FixedAsset_AssetReturn", "DataSet ID");
 	ExcelData excelDataForAssetAllocation = new ExcelData(path, "FixedAsset_AssetAllocation", "DataSet ID");
-
+	ExcelData excelDataAssetTransferExecution = new ExcelData(path, "AssetTransfer_ExecutionTracker", "TestCaseID");
+	ExcelData excelDataAssetUndertakingExecution = new ExcelData(path, "AssetUndertaking_ExecTracker", "TestCaseID");
+	
+	Map<String, String> DataSetID = new HashMap<>();
 	@And("^user should navigate to fixed assets menu$")
 	public void user_should_navigate_to_fixed_assets_menu() throws InterruptedException, IOException {
 
@@ -102,7 +105,11 @@ public class FIXEDASSETS_AssetUndertaking {
 
 	@And("^get the test data for asset transfer from asset transfer excel database$")
 	public void get_the_test_data_for_asset_transfer_from_asset_transfer_excel_database() throws Throwable {
-		asetTransferTestData = excelDataForAssetTransfer.getTestdata("KUBS_FAT_UAT_005_001_D1");
+		                                                     //KUBS_FAT_UAT_005_001_01
+		DataSetID=excelDataAssetTransferExecution.getTestdata("KUBS_FAT_UAT_005_001_01");
+		//KUBS_FAT_UAT_005_001_D1
+		System.out.println("DataSet ID"+DataSetID.get("Data Set ID"));
+		asetTransferTestData = excelDataForAssetTransfer.getTestdata(DataSetID.get("Data Set ID"));
 	}
 
 	@And("^get the test data for asset transfer from asset transfer excel database for the prerequisite of asset writeoff$")
@@ -113,7 +120,8 @@ public class FIXEDASSETS_AssetUndertaking {
 
 	@And("^get the test data for asset transfer from asset transfer undertaking excel database$")
 	public void get_the_test_data_for_asset_transfer_from_asset_transfer_undertaking_excel_database() throws Throwable {
-		asetTransferTestData = excelDataForAssetTransfer.getTestdata("KUBS_FAT_UAT_005_005_D1");
+		DataSetID=excelDataAssetUndertakingExecution.getTestdata("KUBS_FAT_UAT_005_005_01");
+		asetTransferTestData = excelDataForAssetTransfer.getTestdata(DataSetID.get("Data Set ID"));
 	}
 
 	@And("^get the test data for asset transfer from asset transfer undertaking excel database for prerequisite of asset return$")
@@ -131,25 +139,29 @@ public class FIXEDASSETS_AssetUndertaking {
 	@And("^get the test data for asset transfer from asset transfer excel database which is already impaired$")
 	public void get_the_test_data_for_asset_transfer_from_asset_transfer_excel_database_which_is_already_impaired()
 			throws Throwable {
-		asetTransferTestData = excelDataForAssetTransfer.getTestdata("KUBS_FAT_UAT_005_002_D1");
+		DataSetID=excelDataAssetTransferExecution.getTestdata("KUBS_FAT_UAT_005_002_01");
+		asetTransferTestData = excelDataForAssetTransfer.getTestdata(DataSetID.get("Data Set ID"));
 	}
 
 	@And("^get the test data for asset transfer from asset transfer undertaking excel database which is already impaired$")
 	public void get_the_test_data_for_asset_transfer_from_asset_transfer_undertaking_excel_database_which_is_already_impaired()
 			throws Throwable {
-		asetTransferTestData = excelDataForAssetTransfer.getTestdata("KUBS_FAT_UAT_005_006_D1");
+		DataSetID=excelDataAssetUndertakingExecution.getTestdata("KUBS_FAT_UAT_005_006_01");
+		asetTransferTestData = excelDataForAssetTransfer.getTestdata(DataSetID.get("Data Set ID"));
 	}
 
 	@And("^get the test data for asset transfer from asset transfer excel database which is already revalued$")
 	public void get_the_test_data_for_asset_transfer_from_asset_transfer_excel_database_which_is_already_revalued()
 			throws Throwable {
-		asetTransferTestData = excelDataForAssetTransfer.getTestdata("KUBS_FAT_UAT_005_003_D1");
+		DataSetID=excelDataAssetTransferExecution.getTestdata("KUBS_FAT_UAT_005_003_01");
+		asetTransferTestData = excelDataForAssetTransfer.getTestdata(DataSetID.get("Data Set ID"));
 	}
 
 	@And("^get the test data for asset transfer from asset transfer undertaking excel database which is already revalued$")
 	public void get_the_test_data_for_asset_transfer_from_asset_transfer_undertaking_excel_database_which_is_already_revalued()
 			throws Throwable {
-		asetTransferTestData = excelDataForAssetTransfer.getTestdata("KUBS_FAT_UAT_005_007_D1");
+		DataSetID=excelDataAssetUndertakingExecution.getTestdata("KUBS_FAT_UAT_005_007_01");
+		asetTransferTestData = excelDataForAssetTransfer.getTestdata(DataSetID.get("Data Set ID"));
 	}
 
 	@And("^Choose the data set id for the creation of asset tranfer from asset transfer excel data base$")
@@ -165,7 +177,7 @@ public class FIXEDASSETS_AssetUndertaking {
 		fIXEDASSETS_AssetUndertakingObj.fixedAssets_AssetTransfer_AssetReferenceNumber().click();
 		fIXEDASSETS_AssetUndertakingObj.fixedAssets_AssetTransfer_AssetReferenceNumber()
 				.sendKeys(asetTransferTestData.get("AssetReferenceNumber"));
-		String xpath = "//ng-dropdown-panel//span[text()='" + asetTransferTestData.get("AssetReferenceNumber") + "']";
+		String xpath = "//ng-dropdown-panel//div[text()='" + asetTransferTestData.get("AssetReferenceNumber") + "']";
 		for (int i = 0; i <= 500; i++) {
 			try {
 				clicksAndActionHelper.moveToElement(driver.findElement(By.xpath(xpath)));
@@ -235,7 +247,7 @@ public class FIXEDASSETS_AssetUndertaking {
 		fIXEDASSETS_AssetUndertakingObj.fixedAssets_AssetTransfer_NewBranch().click();
 		fIXEDASSETS_AssetUndertakingObj.fixedAssets_AssetTransfer_NewBranch()
 				.sendKeys(asetTransferTestData.get("New Branch"));
-		String xpath = "//ng-dropdown-panel//span[text()='" + asetTransferTestData.get("New Branch") + "']";
+		String xpath = "//ng-dropdown-panel//div[text()='" + asetTransferTestData.get("New Branch") + "']";
 		for (int i = 0; i <= 500; i++) {
 			try {
 				clicksAndActionHelper.moveToElement(driver.findElement(By.xpath(xpath)));
@@ -444,9 +456,10 @@ public class FIXEDASSETS_AssetUndertaking {
 	@And("^store the asset reference number and item number of undertaking asset in asset revaluation excel database$")
 	public void store_the_asset_reference_number_and_item_number_of_undertaking_asset_in_asset_revaluation_excel_database()
 			throws Throwable {
-		excelDataForAssetRevaluation.updateTestData("KUBS_FAT_UAT_012_06_D1", "AssetReferenceNumber",
+		//Update Data Set 2
+		excelDataForAssetRevaluation.updateTestData(asetTransferTestData.get("Update Data Set 2"), "AssetReferenceNumber",
 				asetTransferTestData.get("AssetReferenceNumber"));
-		excelDataForAssetRevaluation.updateTestData("KUBS_FAT_UAT_012_06_D1", "AssetItemNumber",
+		excelDataForAssetRevaluation.updateTestData(asetTransferTestData.get("Update Data Set 2"), "AssetItemNumber",
 				asetTransferTestData.get("AssetItemNumber"));
 	}
 
@@ -513,7 +526,7 @@ public class FIXEDASSETS_AssetUndertaking {
 		waitHelper.waitForElementwithFluentwait(driver, kubsAccountingEntriesObj.accountingEntriesBranchCode());
 		kubsAccountingEntriesObj.accountingEntriesBranchCode().click();
 		kubsAccountingEntriesObj.accountingEntriesBranchCode().sendKeys(asetTransferTestData.get("BranchCode"));
-		String xpath = "//ng-dropdown-panel//span[contains(text(),'" + asetTransferTestData.get("BranchCode") + "')]";
+		String xpath = "//ng-dropdown-panel//div[contains(text(),'" + asetTransferTestData.get("BranchCode") + "')]";
 		for (int i = 0; i <= 500; i++) {
 			try {
 				clicksAndActionHelper.moveToElement(driver.findElement(By.xpath(xpath)));
@@ -611,7 +624,7 @@ public class FIXEDASSETS_AssetUndertaking {
 		fIXEDASSETS_AssetUndertakingObj.assetTransferReportAssetCodeInputBox().click();
 		fIXEDASSETS_AssetUndertakingObj.assetTransferReportAssetCodeInputBox()
 				.sendKeys(assetTransferReportTestData.get("approvedAssetCode"));
-		String xpath = "//ng-dropdown-panel//span[contains(text(),'"
+		String xpath = "//ng-dropdown-panel//div[contains(text(),'"
 				+ assetTransferReportTestData.get("approvedAssetCode") + "')]";
 		for (int i = 0; i <= 500; i++) {
 			try {

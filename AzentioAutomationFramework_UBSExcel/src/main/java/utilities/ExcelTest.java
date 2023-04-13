@@ -1,4 +1,4 @@
-package tests;
+package utilities;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,16 +19,11 @@ public class ExcelTest {
 	public  List<String> getTestCaseTagsfromExcel() {
 		ExcelReader excelReader = new ExcelReader(path);
 		List<String> li = new ArrayList<String>();
-		
-	
-		for(int i=1;i>0;i++){
-			String cellData = excelReader.getCellData(sheetName, 1,i);
+		int columnCount = excelReader.getColumnCount(sheetName);
+		for (int i = 2; i <=columnCount; i++) {
+			String cellData = excelReader.getCellData(sheetName, columnName, i);
 			if (!(cellData.isBlank())) {
 				li.add(cellData);
-			}
-			else if(cellData.isBlank())
-			{
-				break;
 			}
 			
 		}
