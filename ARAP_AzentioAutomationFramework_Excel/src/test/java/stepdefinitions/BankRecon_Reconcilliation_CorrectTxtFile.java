@@ -40,6 +40,13 @@ public class BankRecon_Reconcilliation_CorrectTxtFile extends BaseClass{
 	bankRecon_ReconcilliationObj.bankRecon_Reconcilliation_Field().click();
         
     }
+	
+	@Then("^click on Bank Reconcilliation format eye button$")
+    public void click_on_bank_reconcilliation_format_eye_button() throws Throwable {
+	javascripthelper.scrollIntoView(bankRecon_ReconcilliationObj.bankRecon_Reconcilliation_EyeButton());
+	waithelper.waitForElementwithFluentwait(driver, bankRecon_ReconcilliationObj.bankRecon_Reconcilliation_EyeButton());
+    bankRecon_ReconcilliationObj.bankRecon_Reconcilliation_EyeButton().click();   
+    }
     
     @Then("^Select Bank Name and Account Number$")
     public void select_bank_name_and_account_number() throws Throwable {
@@ -66,9 +73,9 @@ public class BankRecon_Reconcilliation_CorrectTxtFile extends BaseClass{
 		try {
 
 			waithelper.waitForElementwithFluentwait(driver,
-					driver.findElement(By.xpath("//span[contains(text(),'" + testData.get("FromMonth") + " " + testData.get("FromYear") + "')]")));
+					driver.findElement(By.xpath("//span[text()='" + testData.get("FromMonth") + " " + testData.get("FromYear") + " ']")));
 			WebElement monthAndYear = driver
-					.findElement(By.xpath("//span[contains(text(),'" + testData.get("FromMonth") + " " + testData.get("FromYear") + "')]"));
+					.findElement(By.xpath("//span[text()='" + testData.get("FromMonth") + " " + testData.get("FromYear") + " ']"));
 			break;
 
 		}
@@ -91,9 +98,9 @@ public class BankRecon_Reconcilliation_CorrectTxtFile extends BaseClass{
 		try {
 
 			waithelper.waitForElementwithFluentwait(driver,
-					driver.findElement(By.xpath("//span[contains(text(),'" + testData.get("ToMonth") + " " + testData.get("ToYear") + "')]")));
+					driver.findElement(By.xpath("//span[text()='" + testData.get("ToMonth") + " " + testData.get("ToYear") + " ']")));
 			WebElement monthAndYear = driver
-					.findElement(By.xpath("//span[contains(text(),'" + testData.get("ToMonth") + " " + testData.get("ToYear") + "')]"));
+					.findElement(By.xpath("//span[text()='" + testData.get("ToMonth") + " " + testData.get("ToYear") + " ']"));
 			break;
 		}
 
@@ -135,37 +142,37 @@ public class BankRecon_Reconcilliation_CorrectTxtFile extends BaseClass{
 //        
 //    }
     
-    @Then("^verify unmatch record$")
-    public void verify_unmatch_record() throws Throwable {
-    waithelper.waitForElementwithFluentwait(driver, bankRecon_ReconcilliationObj.bankRecon_BankReconciliation_UnmatchedDataTab());
-    bankRecon_ReconcilliationObj.bankRecon_BankReconciliation_UnmatchedDataTab().click();
-    //Thread.sleep(2000); 
-    //suggested record
-    waithelper.waitForElementwithFluentwait(driver, bankRecon_ReconcilliationObj.bankRecon_BankReconciliation_UnmatchedSuggestedRec());
-    bankRecon_ReconcilliationObj.bankRecon_BankReconciliation_UnmatchedSuggestedRec().click();
-    
-    waithelper.waitForElementwithFluentwait(driver, bankRecon_ReconcilliationObj.bankRecon_BankReconciliation_SuggestedRecord());
-    bankRecon_ReconcilliationObj.bankRecon_BankReconciliation_SuggestedRecord().isDisplayed();
-    //Thread.sleep(1000);
-    javascripthelper.scrollIntoView(bankRecon_ReconcilliationObj.bankRecon_BankReconciliation_TotalBankRec());
-    //Thread.sleep(1000);
-    
-    waithelper.waitForElementwithFluentwait(driver, bankRecon_ReconcilliationObj.bankRecon_BankReconciliation_UnmatchedSuggestedRec());
-    bankRecon_ReconcilliationObj.bankRecon_BankReconciliation_UnmatchedSuggestedRec().click();
-    
-    //Transposition
-    waithelper.waitForElementwithFluentwait(driver, bankRecon_ReconcilliationObj.bankRecon_BankReconciliation_UnmatchedTranspositionRec());
-    bankRecon_ReconcilliationObj.bankRecon_BankReconciliation_UnmatchedTranspositionRec().click();
-    
-    waithelper.waitForElementwithFluentwait(driver, bankRecon_ReconcilliationObj.bankRecon_BankReconciliation_TranspositionRecord());
-    bankRecon_ReconcilliationObj.bankRecon_BankReconciliation_TranspositionRecord().isDisplayed();
-    //Thread.sleep(1000);
-    //javascripthelper.JavaScriptHelper(driver);
-   // javascripthelper.scrollIntoView(bankRecon_ReconcilliationObj.bankRecon_BankReconciliation_TotalBankRec());
-    ////Thread.sleep(1000);
-    
-    
-    }
+//    @Then("^verify unmatch record$")
+//    public void verify_unmatch_record() throws Throwable {
+//    waithelper.waitForElementwithFluentwait(driver, bankRecon_ReconcilliationObj.bankRecon_BankReconciliation_UnmatchedDataTab());
+//    bankRecon_ReconcilliationObj.bankRecon_BankReconciliation_UnmatchedDataTab().click();
+//    //Thread.sleep(2000); 
+//    //suggested record
+//    waithelper.waitForElementwithFluentwait(driver, bankRecon_ReconcilliationObj.bankRecon_BankReconciliation_UnmatchedSuggestedRec());
+//    bankRecon_ReconcilliationObj.bankRecon_BankReconciliation_UnmatchedSuggestedRec().click();
+//    
+//    waithelper.waitForElementwithFluentwait(driver, bankRecon_ReconcilliationObj.bankRecon_BankReconciliation_SuggestedRecord());
+//    bankRecon_ReconcilliationObj.bankRecon_BankReconciliation_SuggestedRecord().isDisplayed();
+//    //Thread.sleep(1000);
+//    javascripthelper.scrollIntoView(bankRecon_ReconcilliationObj.bankRecon_BankReconciliation_TotalBankRec());
+//    //Thread.sleep(1000);
+//    
+//    waithelper.waitForElementwithFluentwait(driver, bankRecon_ReconcilliationObj.bankRecon_BankReconciliation_UnmatchedSuggestedRec());
+//    bankRecon_ReconcilliationObj.bankRecon_BankReconciliation_UnmatchedSuggestedRec().click();
+//    
+//    //Transposition
+//    waithelper.waitForElementwithFluentwait(driver, bankRecon_ReconcilliationObj.bankRecon_BankReconciliation_UnmatchedTranspositionRec());
+//    bankRecon_ReconcilliationObj.bankRecon_BankReconciliation_UnmatchedTranspositionRec().click();
+//    
+//    waithelper.waitForElementwithFluentwait(driver, bankRecon_ReconcilliationObj.bankRecon_BankReconciliation_TranspositionRecord());
+//    bankRecon_ReconcilliationObj.bankRecon_BankReconciliation_TranspositionRecord().isDisplayed();
+//    //Thread.sleep(1000);
+//    //javascripthelper.JavaScriptHelper(driver);
+//   // javascripthelper.scrollIntoView(bankRecon_ReconcilliationObj.bankRecon_BankReconciliation_TotalBankRec());
+//    ////Thread.sleep(1000);
+//    
+//    
+//    }
     
     @Then("^upload the file data does not match$")
     public void upload_the_file_data_does_not_match() throws Throwable {

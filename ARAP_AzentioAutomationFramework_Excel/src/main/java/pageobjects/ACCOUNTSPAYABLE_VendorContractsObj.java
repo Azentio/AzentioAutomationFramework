@@ -511,6 +511,13 @@ public class ACCOUNTSPAYABLE_VendorContractsObj {
 		return accountPayable_VendorContracts_RecordStatus;
 	}
 	
+	@FindBy(xpath = "//body/div/div/div/button[1]")
+	private WebElement accountPayable_VendorContracts_ValidationMessageCloseButton;
+	
+	public WebElement accountPayable_VendorContracts_ValidationMessageCloseButton() {
+		return accountPayable_VendorContracts_ValidationMessageCloseButton;
+	}
+	
 
 	// reject button
 	@FindBy(xpath = "//span/ion-button[3]")

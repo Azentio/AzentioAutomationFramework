@@ -32,7 +32,7 @@ public class BankRecon_BankReconciliationObj {
 	}
 
 	//temp view button
-	@FindBy(xpath = "//ion-label[text()=' Bank reconcilliation ']/following-sibling::ion-buttons/ion-button[1]")
+	@FindBy(xpath = "//ion-label[text()=' Bank reconciliation ']/following-sibling::ion-buttons/ion-button[1]")
 	private WebElement BankRecon_BankReconciliation_TempView;
 
 	public WebElement BankRecon_BankReconciliation_TempView() {
@@ -156,11 +156,26 @@ public class BankRecon_BankReconciliationObj {
 	
 	//Match Condition input field
 	@FindBy(xpath = "//label[text()=' Match Condition ']/following-sibling::ng-select/descendant::span[2]")
-//	@FindBy(xpath = "//label[text()=' Match Condition ']/following-sibling::ng-select/descendant::input")
 	private WebElement BankRecon_BankReconFormat_MatchConditionInput;
 	
 	public WebElement BankRecon_BankReconFormat_MatchConditionInput() {
 		return BankRecon_BankReconFormat_MatchConditionInput;
+	}
+	
+	//Suggested Condition input field
+	@FindBy(xpath = "//label[text()=' Suggested Condition ']/following-sibling::ng-select/descendant::span[2]")
+	private WebElement BankRecon_BankReconFormat_SuggestedConditionInput;
+	
+	public WebElement BankRecon_BankReconFormat_SuggestedConditionInput() {
+		return BankRecon_BankReconFormat_SuggestedConditionInput;
+	}
+	
+	//Transposition Condition input field
+	@FindBy(xpath = "//label[text()=' Transposition Condition ']/following-sibling::ng-select/descendant::span[2]")
+	private WebElement BankRecon_BankReconFormat_TranspositionConditionInput;
+	
+	public WebElement BankRecon_BankReconFormat_TranspositionConditionInput() {
+		return BankRecon_BankReconFormat_TranspositionConditionInput;
 	}
 	
 	//Back Button
@@ -260,6 +275,14 @@ public class BankRecon_BankReconciliationObj {
 	
 	public WebElement BankRecon_BankReconciliation_ProcessButton() {
 		return BankRecon_BankReconciliation_ProcessButton;
+	}
+	
+	// Process button For Reprocessing
+	@FindBy(xpath = "//page-bank-recon-details-update/ion-header/ion-toolbar/ion-buttons[2]/ion-button")
+	private WebElement BankRecon_BankReconciliation_ProcessButtonForReprocessing;
+	
+	public WebElement BankRecon_BankReconciliation_ProcessButtonForReprocessing() {
+		return BankRecon_BankReconciliation_ProcessButtonForReprocessing;
 	}
 	
 	// BankReconciliatioDetails tab
@@ -511,10 +534,10 @@ public class BankRecon_BankReconciliationObj {
 	
 	//Search status and respective records from book
 	@FindBy(xpath = "//ion-grid[1]/ngx-datatable[1]/div[1]/datatable-header[1]/div[1]/div[2]/datatable-header-cell[9]/div[1]/ion-input[1]/input[1]")
-	private WebElement BankRecon_BankReconciliation_StatusSearchFromBook;
+	private WebElement BankRecon_BankReconciliation_StatusSearch;
 	
-	public WebElement BankRecon_BankReconciliation_StatusSearchFromBook() {
-		return BankRecon_BankReconciliation_StatusSearchFromBook;
+	public WebElement BankRecon_BankReconciliation_StatusSearch() {
+		return BankRecon_BankReconciliation_StatusSearch;
 	}
 	
 //	//Search for records from bank
@@ -573,5 +596,21 @@ public class BankRecon_BankReconciliationObj {
 	
 	public WebElement BankRecon_BankReconciliation_instrumentNumberFromBank() {
 		return BankRecon_BankReconciliation_instrumentNumberFromBank;
+	}
+	
+	//Withdrawl amount from book
+	@FindBy(xpath = "//ion-grid[2]/descendant::datatable-body-row/div[2]/datatable-body-cell[6]/div")
+	private WebElement BankRecon_BankReconciliation_WithDrawlAmountFromBook;
+	
+	public WebElement BankRecon_BankReconciliation_WithDrawlAmountFromBook() {
+		return BankRecon_BankReconciliation_WithDrawlAmountFromBook;
+	}
+	
+	//Deposit amount from Bank Statement
+	@FindBy(xpath = "//ion-grid[3]/descendant::datatable-body-row/div[2]/datatable-body-cell[7]/div")
+	private WebElement BankRecon_BankReconciliation_depositAmountFromBank;
+	
+	public WebElement BankRecon_BankReconciliation_depositAmountFromBank() {
+		return BankRecon_BankReconciliation_depositAmountFromBank;
 	}
 }
