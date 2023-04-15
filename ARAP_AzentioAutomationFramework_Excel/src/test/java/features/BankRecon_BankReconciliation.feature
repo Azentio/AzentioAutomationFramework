@@ -4,27 +4,41 @@ Feature: Checking the Bank Reconcilliation  functionality
 Scenario: System allow user to create bank recon details by uploading correct txt file.
 Given User should go to the kubs url and login as a maker user
 Then select data set ID for uploading correct bank recon txt file
-Then Choose the second Tab Segment
-Then Click on Bank Reconcilliation
-Then click on Bank Reconcilliation format eye button
-Then Click on Add button
-Then Select Bank Name and Account Number
-Then Select Recon period from
-Then Select Recon period to
-Then upload the file
+#Then Choose the second Tab Segment
+#Then Click on Bank Reconcilliation
+#Then click on Bank Reconcilliation format eye button
+#Then Click on Add button
+#Then Select Bank Name and Account Number
+#Then Select Recon period from
+#Then Select Recon period to
+And user should navigate to bank recon menu
+When click on eye button of bank reconciliation
+And click on add button for bank reconciliation
+Then Fill the bank name and account number for bank reconciliation
+Then select the recon period from date for bank reconciliation
+And verify and cancel Bank Reconciliation process if already done for selected period 
+Then select the recon period to date for bank reconciliation
+Then upload the text file for bank reconciliation
 
 @KUBS_TAX_UAT_002_001_TC_002  @MultiAuth
 Scenario: Check system throws validation any data on Bank Reconciliation Details screen does not match with uploaded file.
 Given User should go to the kubs url and login as a maker user
 Then select data set ID for verifying system throws validation on mismatched data
-Then Choose the second Tab Segment
-Then Click on Bank Reconcilliation
-Then click on Bank Reconcilliation format eye button
-Then Click on Add button
-Then Select Bank Name and Account Number
-Then Select Recon period from
-Then Select Recon period to
-Then upload the file data does not match
+#Then Choose the second Tab Segment
+#Then Click on Bank Reconcilliation
+#Then click on Bank Reconcilliation format eye button
+#Then Click on Add button
+#Then Select Bank Name and Account Number
+#Then Select Recon period from
+#Then Select Recon period to
+And user should navigate to bank recon menu
+When click on eye button of bank reconciliation
+And click on add button for bank reconciliation
+Then Fill the bank name and account number for bank reconciliation
+Then select the recon period from date for bank reconciliation
+And verify and cancel Bank Reconciliation process if already done for selected period 
+Then select the recon period to date for bank reconciliation
+Then upload the file data which does not match with uploaded file
 
 	@KUBS_TAX_UAT_002_001_TC_003
 	Scenario: Click on Process button
@@ -211,7 +225,7 @@ And click on add button for bank reconciliation
 And Fill the required fields and upload bank statement for bank reconciliation
 Then Save and click on process
 Then select matched record from matched tab
-And click on unmatch button
+And click on unmatch button in matched tab
 Then verify system must unmatch the matched record and unmatched record must display in unmatched tab
 And verify the same record should not be displayed in matched tab
 #cancel_processed_record
@@ -227,7 +241,7 @@ Scenario: Select a unmatched record from Bank and one record from Book and click
     And Fill the required fields and upload bank statement for bank reconciliation
     Then Save and click on process
     Then select a unmatched record from bank and one record from book where view basis is book to bank
-    And click on match button
+    And click on match button in unmatched tab
     Then verify system must unmatch a matched record and a single record From Book on Matched Tab
 
 @KUBS_TAX_UAT_003_002_TC_002
@@ -365,7 +379,6 @@ Scenario: System must display correct sum  and records in below head as per logi
     And user should navigate to bank recon menu
     When click on eye button of bank reconciliation
     And click on add button for bank reconciliation
-    #And Fill the required fields and upload bank statement for bank reconciliation
     Then Fill the bank name and account number for bank reconciliation
     Then select the recon period from date for bank reconciliation
     And verify and cancel Bank Reconciliation process if already done for selected period 
@@ -380,5 +393,21 @@ Scenario: System must display correct sum  and records in below head as per logi
     #cancel_processed_record
 		Then cancel the process record from temp view
     
-    
+@KUBS_TAX_UAT_005_001_TC_003
+Scenario: Check Adjusted Balance as per Bank Statement must match with Adjusted Balance as per Books
+    Given User should go to the kubs url and login as a maker user
+    Then select data set ID to check Adjusted Balance as per Bank Statement must match with Adjusted Balance as per Books
+    And user should navigate to bank recon menu
+    When click on eye button of bank reconciliation
+    And click on add button for bank reconciliation
+    Then Fill the bank name and account number for bank reconciliation
+    Then select the recon period from date for bank reconciliation
+    And verify and cancel Bank Reconciliation process if already done for selected period 
+    Then select the recon period to date for bank reconciliation
+    Then upload the text file for bank reconciliation
+    Then Save and click on process
+    Then click on bank reconciliation statement tab
+    Then verify adjusted balance as per bank statement must match with adjusted balance as per books
+    #cancel_processed_record
+		Then cancel the process record from temp view
     

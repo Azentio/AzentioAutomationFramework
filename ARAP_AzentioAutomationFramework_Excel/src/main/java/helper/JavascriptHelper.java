@@ -46,7 +46,7 @@ public class JavascriptHelper {
 //scrollIntoView
 	public void scrollIntoView(WebElement element) {
 		executeScript("arguments[0].scrollIntoView()", element);
-		Log.info(element);
+//		Log.info(element);
 		//ExtentTestManager.getTest().info("Scrolled to that view");
 	}
 //scrollIntoViewAndClick

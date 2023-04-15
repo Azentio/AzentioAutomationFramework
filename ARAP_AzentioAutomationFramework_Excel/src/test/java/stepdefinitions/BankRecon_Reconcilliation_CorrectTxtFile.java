@@ -61,6 +61,20 @@ public class BankRecon_Reconcilliation_CorrectTxtFile extends BaseClass{
     Double d = Double.valueOf(testData.get("AccountNumber"));
     String accountNumber =String.format("%.0f", d);
     bankRecon_ReconcilliationObj.bankRecon_Reconcilliation_AccountNumber().sendKeys(accountNumber);
+    String beforexpath1 = "//div[text()='";
+	String afterxpath1 = "']";
+	for (int i = 0; i <= 35; i++) {
+		try {
+			waithelper.waitForElementwithFluentwait(driver, driver.findElement(By.xpath(beforexpath1+accountNumber+afterxpath1)));
+			driver.findElement(By.xpath(beforexpath1+accountNumber+afterxpath1)).isDisplayed();
+			break;
+		} catch (Exception e) {
+			if(i==35) {
+				Assert.fail(e.getMessage());	
+				}
+			// TODO: handle exception
+		}
+	}
 //    bankRecon_ReconcilliationObj.bankRecon_Reconcilliation_AccountNumber().sendKeys(testData.get("AccountNumber"));
     bankRecon_ReconcilliationObj.bankRecon_Reconcilliation_AccountNumber().sendKeys(Keys.ENTER);
     
@@ -194,17 +208,4 @@ public class BankRecon_Reconcilliation_CorrectTxtFile extends BaseClass{
 			 */
     }
     
-    @Then("^select data set ID for uploading correct bank recon txt file$")
-    public void select_data_set_id_for_uploading_correct_bank_recon_txt_file() throws Throwable {
-    	dataSetID = "KUBS_TAX_UAT_002_001_TC_001_D1";
-		testData = excelData.getTestdata(dataSetID);
-    }
-    
-    @Then("^select data set ID for verifying system throws validation on mismatched data$")
-    public void select_data_set_id_for_verifying_system_throws_validation_on_mismatched_data() throws Throwable {
-    	dataSetID = "KUBS_TAX_UAT_002_001_TC_002_D1";
-		testData = excelData.getTestdata(dataSetID);
-    }
-    
-		
 }

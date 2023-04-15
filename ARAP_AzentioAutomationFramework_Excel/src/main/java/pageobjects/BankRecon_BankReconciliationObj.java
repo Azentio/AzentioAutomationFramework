@@ -613,4 +613,68 @@ public class BankRecon_BankReconciliationObj {
 	public WebElement BankRecon_BankReconciliation_depositAmountFromBank() {
 		return BankRecon_BankReconciliation_depositAmountFromBank;
 	}
+	
+	// Adjusted Balance as per Bank Statement
+	@FindBy(xpath = "//b[text()='Adjusted Balance as per Bank Statement']/../../../descendant::ion-label[2]")
+	private WebElement BankRecon_BankReconciliation_AdjustedBalanceAsPerBankStatement;
+	
+	public WebElement BankRecon_BankReconciliation_AdjustedBalanceAsPerBankStatement() {
+		return BankRecon_BankReconciliation_AdjustedBalanceAsPerBankStatement;
+	}
+	
+	// Adjusted Balance as per Book
+	@FindBy(xpath = "//b[text()='Adjusted Balance as per Book']/../../../descendant::ion-label[2]")
+	private WebElement BankRecon_BankReconciliation_AdjustedBalanceAsPerBook;
+	
+	public WebElement BankRecon_BankReconciliation_AdjustedBalanceAsPerBook() {
+		return BankRecon_BankReconciliation_AdjustedBalanceAsPerBook;
+	}
+	
+	// Add: Receipt recorded in Book but missing in Bank Statement
+	@FindBy(xpath = "//ion-label[text()='Add: Receipt recorded in Book but missing in Bank Statement']/../../descendant::ion-label[2]")
+	private WebElement BankRecon_BankReconciliation_ReceiptAmountRecordedInBook;
+	
+	public WebElement BankRecon_BankReconciliation_ReceiptAmountRecordedInBook() {
+		return BankRecon_BankReconciliation_ReceiptAmountRecordedInBook;
+	}
+	
+	// Add: Receipt recorded in Bank Statement but missing in Book
+	@FindBy(xpath = "//ion-label[text()='Add: Receipts recorded in bank statement but missing in Book']/../../descendant::ion-label[2]")
+	private WebElement BankRecon_BankReconciliation_ReceiptAmountRecordedInBankStatement;
+	
+	public WebElement BankRecon_BankReconciliation_ReceiptAmountRecordedInBankStatement() {
+		return BankRecon_BankReconciliation_ReceiptAmountRecordedInBankStatement;
+	}
+	
+	// Less: Payment recorded in Book but missing in Bank Statement
+	@FindBy(xpath = "//ion-label[text()='Less: Payment recorded in Book but missing in Bank Statement ']/../../descendant::ion-label[2]")
+	private WebElement BankRecon_BankReconciliation_PaymentAmountRecordedInBook;
+	
+	public WebElement BankRecon_BankReconciliation_PaymentAmountRecordedInBook() {
+		return BankRecon_BankReconciliation_PaymentAmountRecordedInBook;
+	}
+	
+	// Less: Payment recorded in Bank Statement but missing in Book
+	@FindBy(xpath = "//ion-label[text()='Less: Payment recorded in Book but missing in Bank Statement ']/../../descendant::ion-label[2]")
+	private WebElement BankRecon_BankReconciliation_PaymentAmountRecordedInBankStatement;
+	
+	public WebElement BankRecon_BankReconciliation_PaymentAmountRecordedInBankStatement() {
+		return BankRecon_BankReconciliation_PaymentAmountRecordedInBankStatement;
+	}
+	
+	// Balance as per Bank Statement
+	@FindBy(xpath = "//b[text()='Balance as per Bank Statement']/../../../descendant::ion-label[2]")
+	private WebElement BankRecon_BankReconciliation_BalanceAsPerBankStatement;
+	
+	public WebElement BankRecon_BankReconciliation_BalanceAsPerBankStatement() {
+		return BankRecon_BankReconciliation_BalanceAsPerBankStatement;
+	}
+	
+	// Balance as per Book
+	@FindBy(xpath = "//b[text()='Balance as per Book']/../../../descendant::ion-label[2]")
+	private WebElement BankRecon_BankReconciliation_BalanceAsPerBook;
+	
+	public WebElement BankRecon_BankReconciliation_BalanceAsPerBook() {
+		return BankRecon_BankReconciliation_BalanceAsPerBook;
+	}
 }

@@ -1,6 +1,7 @@
 package stepdefinitions;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -45,7 +46,29 @@ public class BankRecon_BankReconciliation {
 	Map<String, String> testData = new HashMap<>();
 	String dataSetID;
 	
-//-------- @KUBS_TAX_UAT_002_001_TC_003------------
+//-------- @KUBS_TAX_UAT_002_001_TC_002------------//
+	
+	@Then("^upload the file data which does not match with uploaded file$")
+    public void upload_the_file_data_which_does_not_match_with_uploaded_file() throws Throwable {
+		Thread.sleep(1000);
+		waithelper.waitForElementwithFluentwait(driver, bankRecon_BankReconciliationObj.BankRecon_BankReconciliation_UploadFile());
+		bankRecon_BankReconciliationObj.BankRecon_BankReconciliation_UploadFile().sendKeys(testData.get("UploadTextFile"));
+		
+		//By using AUTO IT Method
+//		//Thread.sleep(7000);
+//		Runtime.getRuntime().exec("C://Users/inindc00091/Desktop/IDFC_REC_A11.exe"+" "+"C:\\Users\\inindc00091\\Downloads\\IDFC_REC_A11.txt");
+//		//Thread.sleep(1000);
+		
+		waithelper.waitForElementwithFluentwait(driver, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_RecordStatus());
+		WebElement recordstatus = aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_RecordStatus();
+		clicksAndActionHelper.moveToElement(recordstatus);
+    	String toastmessage = aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_RecordStatus().getText();
+    	System.out.println(toastmessage);
+    	Assert.assertEquals("Account no in uploaded file is not matching with account no selected on screen", toastmessage);
+    	aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_RecordStatus().click();
+    }
+	
+//-------- @KUBS_TAX_UAT_002_001_TC_003------------//
 	
 	@And("^user should navigate to bank recon menu$")
 	public void user_should_navigate_to_bank_recon_menu()  {
@@ -771,8 +794,9 @@ public class BankRecon_BankReconciliation {
 		waithelper.waitForElementwithFluentwait(driver, aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_RecordStatus());
 		WebElement recordstatus = aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_RecordStatus();
 		clicksAndActionHelper.moveToElement(recordstatus);
-    	String message = aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_RecordStatus().getText();
-    	System.out.println(message);
+    	String toastmessage = aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_RecordStatus().getText();
+    	System.out.println(toastmessage);
+    	Assert.assertEquals("File validated successfully", toastmessage);
     	aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_RecordStatus().click();
     }
 	
@@ -1811,24 +1835,144 @@ public class BankRecon_BankReconciliation {
 
     @Then("^verify system must unmatch the matched record and unmatched record must display in unmatched tab$")
     public void verify_system_must_unmatch_the_matched_record_and_unmatched_record_must_display_in_unmatched_tab() throws Throwable {
-       
-    }
-
-    @And("^click on unmatch button$")
-    public void click_on_unmatch_button() throws Throwable {
-       
+    	waithelper.waitForElementwithFluentwait(driver, bankRecon_BankReconciliationObj.BankRecon_BankReconciliation_UnmatchedDataTab());
+		for (int i = 0; i <= 200; i++) {
+			try {
+				bankRecon_BankReconciliationObj.BankRecon_BankReconciliation_UnmatchedDataTab().click();
+				break;
+			} catch (Exception e) {
+				// TODO: handle exception
+				if(i==200) {
+					Assert.fail(e.getMessage());
+				}
+			}
+		}
+		
+		waithelper.waitForElementwithFluentwait(driver, bankRecon_BankReconciliationObj.BankRecon_BankReconciliation_SearchButton1());
+    	for (int i = 0; i <= 200; i++) {
+			try {
+				bankRecon_BankReconciliationObj.BankRecon_BankReconciliation_SearchButton1().click();
+				break;
+			} catch (Exception e) {
+				// TODO: handle exception
+				if(i==200) {
+					Assert.fail(e.getMessage());
+				}
+			}
+		}
+    	waithelper.waitForElementwithFluentwait(driver, bankRecon_BankReconciliationObj.BankRecon_BankReconciliation_SearchBankToBookReceiptRecord1());
+    	bankRecon_BankReconciliationObj.BankRecon_BankReconciliation_SearchBankToBookReceiptRecord1().sendKeys(testData.get("ReceiptNumber"));
+    	
+    	waithelper.waitForElementwithFluentwait(driver, driver.findElement(By.xpath("//div[text()=' "+testData.get("ReceiptNumber")+" ']")));
+    	for (int i = 0; i <= 200; i++) {
+			try {
+				//div[text()='  ']/../../datatable-body-cell[1]/div/input
+				driver.findElement(By.xpath("//div[text()=' "+testData.get("ReceiptNumber")+" ']")).isDisplayed();
+				break;
+			} catch (Exception e) {
+				// TODO: handle exception
+				if(i==200) {
+					Assert.fail(e.getMessage());
+				}
+			}
+		}
+		
     }
 
     @And("^verify the same record should not be displayed in matched tab$")
     public void verify_the_same_record_should_not_be_displayed_in_matched_tab() throws Throwable {
-       
+    	waithelper.waitForElementwithFluentwait(driver, bankRecon_BankReconciliationObj.BankRecon_BankReconciliation_MatchedDataTab());
+		for (int i = 0; i <= 200; i++) {
+			try {
+				bankRecon_BankReconciliationObj.BankRecon_BankReconciliation_MatchedDataTab().click();
+				break;
+			} catch (Exception e) {
+				// TODO: handle exception
+				if(i==200) {
+					Assert.fail(e.getMessage());
+				}
+			}
+		}
+		waithelper.waitForElementwithFluentwait(driver, bankRecon_BankReconciliationObj.BankRecon_BankReconciliation_SearchButton1());
+		bankRecon_BankReconciliationObj.BankRecon_BankReconciliation_SearchButton1().click();
+		waithelper.waitForElementwithFluentwait(driver, bankRecon_BankReconciliationObj.BankRecon_BankReconciliation_SearchReceiptRecord());
+		bankRecon_BankReconciliationObj.BankRecon_BankReconciliation_SearchReceiptRecord().sendKeys(testData.get("ReceiptNumber"));
+		for (int i = 0; i <= 200; i++) {
+			try {
+				boolean status = driver.findElement(By.xpath("//div[text()=' "+testData.get("ReceiptNumber")+" ']")).isDisplayed();
+				Assert.assertFalse(status);
+				break;
+			} catch (Exception e) {
+				// TODO: handle exception
+				if(i==200) {
+					Assert.fail(e.getMessage());
+				}
+			}
+		}
     }
     
     ///////////////////////////////003_002_TC_001///////////////////////////////
     
     @Then("^select a unmatched record from bank and one record from book where view basis is book to bank$")
     public void select_a_unmatched_record_from_bank_and_one_record_from_book_where_view_basis_is_book_to_bank() throws Throwable {
-        
+    	waithelper.waitForElementwithFluentwait(driver, bankRecon_BankReconciliationObj.BankRecon_BankReconciliation_UnmatchedDataTab());
+		for (int i = 0; i <= 200; i++) {
+			try {
+				bankRecon_BankReconciliationObj.BankRecon_BankReconciliation_UnmatchedDataTab().click();
+				break;
+			} catch (Exception e) {
+				// TODO: handle exception
+				if(i==200) {
+					Assert.fail(e.getMessage());
+				}
+			}
+		}
+		
+		waithelper.waitForElementwithFluentwait(driver, bankRecon_BankReconciliationObj.BankRecon_BankReconciliation_SearchButton1());
+    	for (int i = 0; i <= 200; i++) {
+			try {
+				bankRecon_BankReconciliationObj.BankRecon_BankReconciliation_SearchButton1().click();
+				break;
+			} catch (Exception e) {
+				// TODO: handle exception
+				if(i==200) {
+					Assert.fail(e.getMessage());
+				}
+			}
+		}
+    	waithelper.waitForElementwithFluentwait(driver, bankRecon_BankReconciliationObj.BankRecon_BankReconciliation_SearchBankToBookReceiptRecord1());
+    	bankRecon_BankReconciliationObj.BankRecon_BankReconciliation_SearchBankToBookReceiptRecord1().sendKeys(testData.get("ReceiptNumber"));
+    	
+    	waithelper.waitForElementwithFluentwait(driver, driver.findElement(By.xpath("//div[text()=' "+testData.get("ReceiptNumber")+" ']/../../datatable-body-cell[1]/div/input")));
+    	for (int i = 0; i <= 200; i++) {
+			try {
+				//div[text()='  ']/../../datatable-body-cell[1]/div/input
+				driver.findElement(By.xpath("//div[text()=' "+testData.get("ReceiptNumber")+" ']/../../datatable-body-cell[1]/div/input")).click();
+				break;
+			} catch (Exception e) {
+				// TODO: handle exception
+				if(i==200) {
+					Assert.fail(e.getMessage());
+				}
+			}
+		}
+    	
+    	waithelper.waitForElementwithFluentwait(driver, bankRecon_BankReconciliationObj.BankRecon_BankReconciliation_SearchBankToBookReceiptRecord2());
+    	bankRecon_BankReconciliationObj.BankRecon_BankReconciliation_SearchBankToBookReceiptRecord2().sendKeys(testData.get("ReceiptNumber1"));
+    	waithelper.waitForElementwithFluentwait(driver, driver.findElement(By.xpath("//div[text()=' "+testData.get("ReceiptNumber1")+" ']/../../datatable-body-cell[1]/div/input")));
+    	for (int i = 0; i <= 200; i++) {
+			try {
+				//div[text()='  ']/../../datatable-body-cell[1]/div/input
+				driver.findElement(By.xpath("//div[text()=' "+testData.get("ReceiptNumber1")+" ']/../../datatable-body-cell[1]/div/input")).click();
+				break;
+			} catch (Exception e) {
+				// TODO: handle exception
+				if(i==200) {
+					Assert.fail(e.getMessage());
+				}
+			}
+		}
+    	
     }
     
     @And("^click on match button in unmatched tab$")
@@ -2761,22 +2905,36 @@ public class BankRecon_BankReconciliation {
     @Then("^click on bank reconciliation statement tab$")
     public void click_on_bank_reconciliation_statement_tab() throws Throwable {
     	waithelper.waitForElementwithFluentwait(driver, bankRecon_BankReconciliationObj.BankRecon_BankReconciliation_BankReconciliationStatementTab());
-    	bankRecon_BankReconciliationObj.BankRecon_BankReconciliation_BankReconciliationStatementTab().click();
+    	for (int i = 0; i <= 200; i++) {
+			try {
+				bankRecon_BankReconciliationObj.BankRecon_BankReconciliation_BankReconciliationStatementTab().click();
+				break;
+			} catch (Exception e) {
+				// TODO: handle exception
+				if(i==200) {
+					Assert.fail(e.getMessage());
+				}
+			}
+		}
     }
     
     @Then("^verify system displays correct sum and records in Receipt recorded in Book but missing in Bank Statement head$")
     public void verify_system_displays_correct_sum_and_records_in_receipt_recorded_in_book_but_missing_in_bank_statement_head() throws Throwable {
-    	//ion-row[1]/ion-col[1]/ion-grid[2]/ion-row[2]/ion-col/table/tbody/tr[1]/td[3]
-    	String xpath ="//ion-label[text()='Add: Receipt recorded in Book but missing in Bank Statement']/../../../ion-row[2]/descendant::tr/td[3]";
-    	double temp=0;
+	 	String value = javascripthelper.executeScript("return document.getElementsByClassName('table table-bordered')[0].innerText").toString();
+	 	String tablevalue=value.replaceAll("[/\t]", " ");
+	 	System.out.println(tablevalue);
+    	
+    	ArrayList<String> al=new ArrayList();
+    	String xpath ="//ion-label[text()='Add: Receipt recorded in Book but missing in Bank Statement']/../../../ion-row[2]/descendant::tbody/tr/td[3]";
+    	List<WebElement> amounts = driver.findElements(By.xpath(xpath));
+    	int numberOfAmounts = amounts.size();
     	for (int i = 0; i < 200; i++) {
 	 		try {
-	 			List<WebElement> Amount = driver.findElements(By.xpath(xpath));
-	 			for (WebElement webElement : Amount) {
-	 				String receiptAmount = webElement.getText();
-	 				System.out.println(receiptAmount);
-	 				int amt=Integer.parseInt(receiptAmount);
-	 				temp = amt;
+	 			for (WebElement webElement : amounts) {
+	 				javascripthelper.scrollIntoView(webElement);
+	 				String receiptsAmount = webElement.getText();
+	 				al.add(receiptsAmount);
+	 				System.out.println(receiptsAmount);
 	 			}
 	 			break;
 	 		} catch (Exception e) {
@@ -2785,20 +2943,28 @@ public class BankRecon_BankReconciliation {
 				}
 	 		}
 		}
-    	System.out.println(temp);
     	
+    	waithelper.waitForElementwithFluentwait(driver, bankRecon_BankReconciliationObj.BankRecon_BankReconciliation_ReceiptAmountRecordedInBook());
+    	String receiptAmountRecordedInBook = bankRecon_BankReconciliationObj.BankRecon_BankReconciliation_ReceiptAmountRecordedInBook().getText();
+    	System.out.println("Add: Receipt recorded in Book but missing in Bank Statement - "+receiptAmountRecordedInBook);
+   
     }
-
+    
     @Then("^verify system displays correct sum and records in Payment recorded in Book but missing in Bank Statement head$")
     public void verify_system_displays_correct_sum_and_records_in_payment_recorded_in_book_but_missing_in_bank_statement_head() throws Throwable {
-    	//ion-row[1]/ion-col[1]/ion-grid[2]/ion-row[4]/ion-col/table/tbody/tr[1]/td[3]
+    	String value = javascripthelper.executeScript("return document.getElementsByClassName('table table-bordered')[1].innerText").toString();
+	 	String tablevalue=value.replaceAll("[/\t]", " ");
+	 	System.out.println(tablevalue);
+    	
+    	ArrayList<String> al2=new ArrayList();
     	String xpath ="//ion-label[text()='Less: Payment recorded in Book but missing in Bank Statement ']/../../../ion-row[4]/descendant::tr/td[3]";
 	 	for (int i = 0; i < 200; i++) {
 	 		try {
 	 			List<WebElement> receipts = driver.findElements(By.xpath(xpath));
 	 			for (WebElement webElement : receipts) {
+	 				javascripthelper.scrollIntoView(webElement);
 	 				String receiptsDetails = webElement.getText();
-	 				System.out.println(receiptsDetails);
+	 				al2.add(receiptsDetails);
 	 			}
 	 			break;
 	 		} catch (Exception e) {
@@ -2807,19 +2973,28 @@ public class BankRecon_BankReconciliation {
 				}
 	 		}
 		}
-  
+	 	
+	 	waithelper.waitForElementwithFluentwait(driver, bankRecon_BankReconciliationObj.BankRecon_BankReconciliation_PaymentAmountRecordedInBankStatement());
+    	String paymentAmountRecordedInBook = bankRecon_BankReconciliationObj.BankRecon_BankReconciliation_PaymentAmountRecordedInBankStatement().getText();
+    	System.out.println("Less: Payment recorded in Book but missing in Bank Statement - "+paymentAmountRecordedInBook);
+	 	
     }
 
     @Then("^verify system displays correct sum and records in Receipts recorded in bank statement but missing in Book head$")
     public void verify_system_displays_correct_sum_and_records_in_receipts_recorded_in_bank_statement_but_missing_in_book_head() throws Throwable {
-    	//ion-row[1]/ion-col[2]/ion-grid[2]/ion-row[2]/ion-col/table/tbody/tr[1]/td[3]
+    	String value = javascripthelper.executeScript("return document.getElementsByClassName('table table-bordered')[2].innerText").toString();
+	 	String tablevalue=value.replaceAll("[/\t]", " ");
+	 	System.out.println(tablevalue);
+	 	
+    	ArrayList<String> al3=new ArrayList();
     	String xpath ="//ion-label[text()='Add: Receipts recorded in bank statement but missing in Book']/../../../ion-row[2]/descendant::tr/td[3]";
 	 	for (int i = 0; i < 200; i++) {
 	 		try {
 	 			List<WebElement> receipts = driver.findElements(By.xpath(xpath));
 	 			for (WebElement webElement : receipts) {
+	 				javascripthelper.scrollIntoView(webElement);
 	 				String receiptsDetails = webElement.getText();
-	 				System.out.println(receiptsDetails);
+	 				al3.add(receiptsDetails);
 	 			}
 	 			break;
 	 		} catch (Exception e) {
@@ -2828,20 +3003,27 @@ public class BankRecon_BankReconciliation {
 				}
 	 		}
 		}
-   
+	 	waithelper.waitForElementwithFluentwait(driver, bankRecon_BankReconciliationObj.BankRecon_BankReconciliation_ReceiptAmountRecordedInBankStatement());
+    	String receiptAmountRecordedInBankStatement = bankRecon_BankReconciliationObj.BankRecon_BankReconciliation_ReceiptAmountRecordedInBankStatement().getText();
+    	System.out.println("Add: Receipt recorded in Bank Statement but missing in Book - "+receiptAmountRecordedInBankStatement);
     }
 
     @Then("^verify system displays correct sum and records in Payment recorded in bank statement but missing in Book head$")
     public void verify_system_displays_correct_sum_and_records_in_payment_recorded_in_bank_statement_but_missing_in_book_head() throws Throwable {
-    	//ion-row[1]/ion-col[2]/ion-grid[2]/ion-row[4]/ion-col/table/tbody/tr/td[3]
-    	//ion-label[text()='Less : Payment recorded in bank statement but missing in Book']/../../../ion-row[4]/descendant::tr/td[3]
+    	String value = javascripthelper.executeScript("return document.getElementsByClassName('table table-bordered')[3].innerText").toString();
+	 	String tablevalue=value.replaceAll("[/\t]", " ");
+	 	System.out.println(tablevalue);
+    	
+    	
+    	ArrayList<String> al4=new ArrayList();
     	String xpath ="//ion-label[text()='Less : Payment recorded in bank statement but missing in Book']/../../../ion-row[4]/descendant::tr/td[3]";
 	 	for (int i = 0; i < 200; i++) {
 	 		try {
 	 			List<WebElement> receipts = driver.findElements(By.xpath(xpath));
 	 			for (WebElement webElement : receipts) {
+	 				javascripthelper.scrollIntoView(webElement);
 	 				String receiptsDetails = webElement.getText();
-	 				System.out.println(receiptsDetails);
+	 				al4.add(receiptsDetails);
 	 			}
 	 			break;
 	 		} catch (Exception e) {
@@ -2850,11 +3032,43 @@ public class BankRecon_BankReconciliation {
 				}
 	 		}
 		}
+	 	
+	 	waithelper.waitForElementwithFluentwait(driver, bankRecon_BankReconciliationObj.BankRecon_BankReconciliation_PaymentAmountRecordedInBankStatement());
+    	String paymentAmountRecordedInBankStatement = bankRecon_BankReconciliationObj.BankRecon_BankReconciliation_PaymentAmountRecordedInBankStatement().getText();
+    	System.out.println("Less: Payment recorded in Bank Statement but missing in Book - "+paymentAmountRecordedInBankStatement);
+	 	
+	 	
     }
     
     /////////////////////////005_001_TC_003//////////////////////////////
-    ////////////////////////////////////////////////////////////////////
     
+	@Then("^verify adjusted balance as per bank statement must match with adjusted balance as per books$")
+	public void verify_adjusted_balance_as_per_bank_statement_must_match_with_adjusted_balance_as_per_books() throws Throwable {
+		javascripthelper.scrollIntoView(bankRecon_BankReconciliationObj.BankRecon_BankReconciliation_AdjustedBalanceAsPerBankStatement());
+		waithelper.waitForElementwithFluentwait(driver, bankRecon_BankReconciliationObj.BankRecon_BankReconciliation_AdjustedBalanceAsPerBankStatement());
+		String adjustedBalanceAsPerBankStatement=bankRecon_BankReconciliationObj.BankRecon_BankReconciliation_AdjustedBalanceAsPerBankStatement().getText();
+		System.out.println("Adjusted Balance As Per Bank Statement -"+adjustedBalanceAsPerBankStatement);
+		
+		waithelper.waitForElementwithFluentwait(driver, bankRecon_BankReconciliationObj.BankRecon_BankReconciliation_AdjustedBalanceAsPerBook());
+		String adjustedBalanceAsPerBook=bankRecon_BankReconciliationObj.BankRecon_BankReconciliation_AdjustedBalanceAsPerBook().getText();
+		System.out.println("Adjusted Balance As Per Book -"+adjustedBalanceAsPerBook);
+		Assert.assertEquals(adjustedBalanceAsPerBankStatement, adjustedBalanceAsPerBook);
+	}
+	
+	
+    ////////////////////////////////////////////////////////////////////
+	@Then("^select data set ID for uploading correct bank recon txt file$")
+    public void select_data_set_id_for_uploading_correct_bank_recon_txt_file() throws Throwable {
+    	dataSetID = "KUBS_TAX_UAT_002_001_TC_001_D1";
+		testData = excelData.getTestdata(dataSetID);
+    }
+	
+	@Then("^select data set ID for verifying system throws validation on mismatched data$")
+    public void select_data_set_id_for_verifying_system_throws_validation_on_mismatched_data() throws Throwable {
+    	dataSetID = "KUBS_TAX_UAT_002_001_TC_002_D1";
+		testData = excelData.getTestdata(dataSetID);
+    }
+	
     @Then("^select data set ID for clicking on process button$")
     public void select_data_set_id_for_clicking_on_process_button() throws Throwable {
     	dataSetID = "KUBS_TAX_UAT_002_001_TC_003_D1";
@@ -2975,6 +3189,11 @@ public class BankRecon_BankReconciliation {
     	testData = excelData.getTestdata(dataSetID);
     }
     
+    @Then("^select data set ID to check Adjusted Balance as per Bank Statement must match with Adjusted Balance as per Books$")
+    public void select_data_set_id_to_check_adjusted_balance_as_per_bank_statement_must_match_with_adjusted_balance_as_per_books() throws Throwable {
+    	dataSetID = "KUBS_TAX_UAT_005_001_TC_003_D1";
+    	testData = excelData.getTestdata(dataSetID);
+    }
     
     
     
