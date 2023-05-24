@@ -1,7 +1,6 @@
 Feature: Check the Functionality of Inventory
 
 @KUBS_INV_MGMT_UAT_001_001 @multiauth
-
 Scenario: Create a request for inventory
 Given Navigate to URL and user should login as a maker
 Then Click on Finance
@@ -594,7 +593,6 @@ Then validate voucher number
 
 @KUBS_INV_MGMT_UAT_007_001
 Scenario: Check inventory access details report
-
 
 Given Navigate to URL and user should login as a maker
 Then click on report button

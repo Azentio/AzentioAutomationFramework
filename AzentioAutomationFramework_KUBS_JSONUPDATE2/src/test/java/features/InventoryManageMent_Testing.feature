@@ -8,9 +8,7 @@ Then Click on the Direction
 Then Click on Inventory Management
 And Click on the eye icon of Inventory Request
 Then Click on Add button
-
 And Fill all the mandatory fields
-
 Then Click on save button
 Then Click Notification button
 And Select record which we saved
@@ -197,20 +195,20 @@ And select the record and Approve by checker
     Then click on first eye button to get the system invoice number
     And maker should logout
   	
-  #	@KUBS_INV_MGMT_UAT_001_006AE
-#Scenario: Check the accounting entries
-#
-#Given Navigate to URL and user should login as a maker
-#Then click on report segment button
-#And click on equiry menu
-#Then click on edit icon near fiancial transaction menu
-#And choose the branch code
-#And choose the Gl code
-#And click transaction from date calender icon
-#Then choose from date
-#And click on transaction to date calender icon
-#Then choose to date
-#And click on view button
+  	@KUBS_INV_MGMT_UAT_001_006AE
+Scenario: Check the accounting entries
+
+Given Navigate to URL and user should login as a maker
+Then click on report segment button
+And click on equiry menu
+Then click on edit icon near fiancial transaction menu
+And choose the branch code
+And choose the Gl code
+And click transaction from date calender icon
+Then choose from date
+And click on transaction to date calender icon
+Then choose to date
+And click on view button
 
 @KUBS_INV_MGMT_UAT_002_001 @multiauth
 

@@ -1207,7 +1207,7 @@ And find the Debit reference number for Active Debit is availabe at the billing 
 Then Click the Debit Note Checkbox As Tick
 When Enter the Description value
 And Save The Payment settlement Record
-#Then Click the Alert message as Yes
+Then Click the Alert message as Yes
 Then Goto The Notification Icon
 And Store the Referance Id and Open the Record
 Then Click submit button and Enter Remark submit it 
@@ -1446,6 +1446,7 @@ And click on approve button in checker stage
 Then click on the submit button which is appeared in alert box
 And verify the record got approved from checker
 Then logout from checker
+
 And login with Maker ID
 And click on accounts Payable module
 And goto invoice booking module
