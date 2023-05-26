@@ -28,9 +28,9 @@ import utilities.ExtentTestManager;
 public class HooksClass extends BaseClass {
 	WebDriver driver;
 	String path = System.getProperty("user.dir")+"\\Test-data\\KUBSTestData.xlsx";
-	ExcelData testExecution = new ExcelData(path,"AssetUndertaking_ExecTracker","TestCaseID");
+	ExcelData testExecution = new ExcelData(path,"AssetRevaluation_ExecutionTrack","TestCaseID");
 	Map<String, String> testExecutionData;
-	ExcelTest excelTest = new ExcelTest(path, "AssetUndertaking_ExecTracker", "TestCaseID");
+	ExcelTest excelTest = new ExcelTest(path, "AssetRevaluation_ExecutionTrack", "TestCaseID");
 	List<String> testCaseTagsFromExcel = excelTest.getTestCaseTagsfromExcel();
 	
 	ScreenshotHelper screenshotHelper = new ScreenshotHelper(driver);

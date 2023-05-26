@@ -39,6 +39,7 @@ public class FIXEDASSET_AssetAmendment extends BaseClass {
 	FIXEDASSET_AssetAmendmentObj assetAmendmentObj = new FIXEDASSET_AssetAmendmentObj(driver);
 	FIXEDASSET_fixedAssetObj fixedAssetObj = new FIXEDASSET_fixedAssetObj(driver);
 	Map<String, String> testData = new HashMap<>();
+	Map<String, String> dataSetID = new HashMap<>();
 	Map<String, String> assetAmmendmentTestData = new HashMap<>();
 	KUBS_CommonWebElements kubsCommonObj = new KUBS_CommonWebElements(driver);
 	String path = System.getProperty("user.dir") + "\\Test-data\\KUBSTestData.xlsx";
@@ -48,6 +49,8 @@ public class FIXEDASSET_AssetAmendment extends BaseClass {
 	ExcelData excelDataForAssetAllocation = new ExcelData(path, "FixedAsset_AssetAllocation", "DataSet ID");
 	ExcelData excelDataForAssetRevaluation = new ExcelData(path, "FixedAsset_AssetReValuation", "DataSet ID");
 	ExcelData excelDataForAssetWriteOff = new ExcelData(path, "FixedAsset_WriteOff", "DataSet ID");
+	ExcelData excelDataForAssetImpairementExecution = new ExcelData(path, "AssetImpairement_ExecutionTrack", "TestCaseID");
+	ExcelData excelDataForAssetRevaluationExecution = new ExcelData(path, "AssetImpairement_ExecutionTrack", "TestCaseID");
 	DateIncrementDecrement dateIncrementDecrement = new DateIncrementDecrement();
 	BrowserHelper browserHelper = new BrowserHelper(driver);
 	Map<String, String> assetAmmendmentReportTestData = new HashMap<>();
@@ -88,7 +91,9 @@ public class FIXEDASSET_AssetAmendment extends BaseClass {
 	@And("^get the test data for asset ammendment from ammendment excel database for prerequisite asset revaluation$")
 	public void get_the_test_data_for_asset_ammendment_from_ammendment_excel_database_for_prerequisite_asset_revaluation()
 			throws Throwable {
-		assetAmmendmentTestData = excelDataForAssetAmmendment.getTestdata("KUBS_FAT_UAT_011_01_D6");
+		dataSetID=excelDataForAssetRevaluationExecution.getTestdata("KUBS_FAT_UAT_011_01_Revaluation");
+		
+		assetAmmendmentTestData = excelDataForAssetAmmendment.getTestdata(dataSetID.get("Data Set ID"));
 	}
 
 	@And("^get the test data for asset ammendment from ammendment excel database to change the asset life$")
@@ -118,7 +123,8 @@ public class FIXEDASSET_AssetAmendment extends BaseClass {
 	@And("^get the test data for asset ammendment from ammendment excel database for asset impairment prerequsite$")
 	public void get_the_test_data_for_asset_ammendment_from_ammendment_excel_database_for_asset_impairment_prerequsite()
 			throws Throwable {
-		assetAmmendmentTestData = excelDataForAssetAmmendment.getTestdata("KUBS_FAT_UAT_011_01_D3");
+		dataSetID= excelDataForAssetImpairementExecution.getTestdata("KUBS_FAT_UAT_011_01_Impairment");
+		assetAmmendmentTestData = excelDataForAssetAmmendment.getTestdata(dataSetID.get("Data Set ID"));
 	}
 
 	@And("^get the test data for asset ammendment from ammendment excel database for asset return prerequsite$")
@@ -138,7 +144,7 @@ public class FIXEDASSET_AssetAmendment extends BaseClass {
 		fixedAssetObj.assetAmmendmentAssetReferenceNumber().click();
 		fixedAssetObj.assetAmmendmentAssetReferenceNumber()
 				.sendKeys(assetAmmendmentTestData.get("AssetReferenceNumber"));
-		String xpath = "//ng-dropdown-panel//span[text()='" + assetAmmendmentTestData.get("AssetReferenceNumber")
+		String xpath = "//ng-dropdown-panel//div[text()='" + assetAmmendmentTestData.get("AssetReferenceNumber")
 				+ "']";
 		for (int i = 0; i <= 10; i++) {
 			try {
@@ -159,7 +165,7 @@ public class FIXEDASSET_AssetAmendment extends BaseClass {
 		waitHelper.waitForElementwithFluentwait(driver, fixedAssetObj.assetAmmendmentAssetItemNumber());
 		fixedAssetObj.assetAmmendmentAssetItemNumber().click();
 		fixedAssetObj.assetAmmendmentAssetItemNumber().sendKeys(assetAmmendmentTestData.get("AssetItemNumber"));
-		String xpath = "//ng-dropdown-panel//span[text()='" + assetAmmendmentTestData.get("AssetItemNumber") + "']";
+		String xpath = "//ng-dropdown-panel//div[text()='" + assetAmmendmentTestData.get("AssetItemNumber") + "']";
 		for (int i = 0; i <= 100; i++) {
 			try {
 				clickAndActionHelper.moveToElement(driver.findElement(By.xpath(xpath)));
@@ -710,9 +716,9 @@ public class FIXEDASSET_AssetAmendment extends BaseClass {
 	public void store_the_asset_reference_number_and_item_number_of_ammendment_asset_in_asset_revaluation_excel_database()
 			throws Throwable {
 
-		excelDataForAssetRevaluation.updateTestData("KUBS_FAT_UAT_012_05_D1", "AssetReferenceNumber",
+		excelDataForAssetRevaluation.updateTestData(assetAmmendmentTestData.get("Update Data Set 1"), "AssetReferenceNumber",
 				assetAmmendmentTestData.get("AssetReferenceNumber"));
-		excelDataForAssetRevaluation.updateTestData("KUBS_FAT_UAT_012_05_D1", "AssetItemNumber",
+		excelDataForAssetRevaluation.updateTestData(assetAmmendmentTestData.get("Update Data Set 1"), "AssetItemNumber",
 				assetAmmendmentTestData.get("AssetItemNumber"));
 	}
 
@@ -728,9 +734,9 @@ public class FIXEDASSET_AssetAmendment extends BaseClass {
 	@And("^store the asset reference number and item number of ammendment asset in asset impairment excel database$")
 	public void store_the_asset_reference_number_and_item_number_of_ammendment_asset_in_asset_impairment_excel_database()
 			throws Throwable {
-		excelDataForAssetImpairment.updateTestData("KUBS_FAT_UAT_009_005_01_D1", "AssetReferenceNumber",
+		excelDataForAssetImpairment.updateTestData(assetAmmendmentTestData.get("Update Data Set 1"), "AssetReferenceNumber",
 				assetAmmendmentTestData.get("AssetReferenceNumber"));
-		excelDataForAssetImpairment.updateTestData("KUBS_FAT_UAT_009_005_01_D1", "AssetItemNumber",
+		excelDataForAssetImpairment.updateTestData(assetAmmendmentTestData.get("Update Data Set 1"), "AssetItemNumber",
 				assetAmmendmentTestData.get("AssetItemNumber"));
 	}
 

@@ -14,9 +14,9 @@ import utilities.ExtentTestManager;
 
 public class NewExcelTestRunner {
 	String path = System.getProperty("user.dir") + "\\Test-data\\KUBSTestData.xlsx";
-	ExcelData testExecution = new ExcelData(path, "AssetUndertaking_ExecTracker", "TestCaseID");
+	ExcelData testExecution = new ExcelData(path, "AssetRevaluation_ExecutionTrack", "TestCaseID");
 	Map<String, String> testExecutionData;
-	ExcelTest excelTest = new ExcelTest(path, "AssetUndertaking_ExecTracker", "TestCaseID");
+	ExcelTest excelTest = new ExcelTest(path, "AssetRevaluation_ExecutionTrack", "TestCaseID");
 	List<String> testCaseTagsFromExcel = excelTest.getTestCaseTagsfromExcel();
 	static String currentExecutionTag;
 
@@ -24,7 +24,7 @@ public class NewExcelTestRunner {
 
 		String[] parameter = {
 
-				"src/test/java/features/\\FixedAsset_AssetUndertakingFEATURE.feature", "--glue", "stepdefinitions",
+				"src/test/java/features/FixedAsset_AssetRevaluationFEATURE.feature", "--glue", "stepdefinitions",
 				"--plugin", "pretty", "--plugin",
 				"com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:", "--plugin",
 				"rerun:ReRunScenarios/FailedReRun.txt", "--tags", "@" + tags };
@@ -44,7 +44,7 @@ public class NewExcelTestRunner {
 	@Test()
 	public void test() {
 		String path = System.getProperty("user.dir") + "\\Test-data\\KUBSTestData.xlsx";
-		ExcelTest excelTest = new ExcelTest(path, "AssetUndertaking_ExecTracker", "TestCaseID");
+		ExcelTest excelTest = new ExcelTest(path, "AssetRevaluation_ExecutionTrack", "TestCaseID");
 		testCaseTagsFromExcel = excelTest.getTestCaseTagsfromExcel();
 		NewExcelTestRunner newExcelTestRunner = new NewExcelTestRunner();
 		for (String string : testCaseTagsFromExcel) {
@@ -52,11 +52,11 @@ public class NewExcelTestRunner {
 		}
 		System.out.println("Tag size is "+testCaseTagsFromExcel.size());
 		for (String string : testCaseTagsFromExcel) {
-			ExcelTest excelTest2 = new ExcelTest(path, "AssetUndertaking_ExecTracker", "TestCaseID");
+			ExcelTest excelTest2 = new ExcelTest(path, "AssetRevaluation_ExecutionTrack", "TestCaseID");
 			testCaseTagsFromExcel = excelTest2.getTestCaseTagsfromExcel();
 			System.out.println(string);
 			currentExecutionTag = string;
-			ExcelData testExecution = new ExcelData(path, "AssetUndertaking_ExecTracker", "TestCaseID");
+			ExcelData testExecution = new ExcelData(path, "AssetRevaluation_ExecutionTrack", "TestCaseID");
 			testExecutionData = testExecution.getTestdata(string);
 			// run the scenarios based on tags from excel
 			

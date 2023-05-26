@@ -32,11 +32,14 @@ public class FIXEDASSETS_AssetSale {
 	BrowserHelper browserHelper = new BrowserHelper(driver);
 	Map<String, String> assetSaleTestData = new HashMap<>();
 	Map<String, String> assetSaleReportTestData = new HashMap<>();
+	Map<String, String> dataSetID = new HashMap<>();
 	String path = System.getProperty("user.dir") + "\\Test-data\\KUBSTestData.xlsx";
 	ExcelData excelDatForAssetSale = new ExcelData(path, "FixedAsset_AssetSale", "DataSet ID");
 	ExcelData excelDatForAssetImpairment = new ExcelData(path, "FixedAsset_AssetImpairement", "DataSet ID");
 	ExcelData excelDatForAssetRevaluation = new ExcelData(path, "FixedAsset_AssetReValuation", "DataSet ID");
 	ExcelData excelDatForAssetAllocation = new ExcelData(path, "FixedAsset_AssetAllocation", "DataSet ID");
+	ExcelData excelDatForAssetImpairementExecution = new ExcelData(path, "AssetImpairement_ExecutionTrack", "TestCaseID");
+	ExcelData excelDatForAssetRevaluationExecution = new ExcelData(path, "AssetRevaluation_ExecutionTrack", "TestCaseID");
 	KUBS_CommonWebElements kubsCommonObj = new KUBS_CommonWebElements(driver);
 
 	@And("^user should navigate to fixed asset menu$")
@@ -80,13 +83,15 @@ public class FIXEDASSETS_AssetSale {
 	@And("^get the test data for asset sale from excel database for the pre requisite of asset revaluation$")
 	public void get_the_test_data_for_asset_sale_from_excel_database_for_the_pre_requisite_of_asset_revaluation()
 			throws Throwable {
-		assetSaleTestData = excelDatForAssetSale.getTestdata("KUBS_FAT_UAT_004_003_01_D3");
+		dataSetID=excelDatForAssetRevaluationExecution.getTestdata("KUBS_FAT_UAT_004_001_01_Revaluation");
+		assetSaleTestData = excelDatForAssetSale.getTestdata(dataSetID.get("Data Set ID"));
 	}
 
 	@And("^get the test data for asset sale with high price from excel database for asset impairment prerequsite$")
 	public void get_the_test_data_for_asset_sale_with_high_price_from_excel_database_for_asset_impairment_prerequsite()
 			throws Throwable {
-		assetSaleTestData = excelDatForAssetSale.getTestdata("KUBS_FAT_UAT_004_003_01_D2");
+		dataSetID=excelDatForAssetImpairementExecution.getTestdata("KUBS_FAT_UAT_004_001_01");
+		assetSaleTestData = excelDatForAssetSale.getTestdata(dataSetID.get("Data Set ID"));
 	}
 
 	@And("^get the test data for asset sale with low price from excel database$")
@@ -314,18 +319,19 @@ public class FIXEDASSETS_AssetSale {
 	@And("^store the asset reference number and item number of sale asset in revaluation excel database$")
 	public void store_the_asset_reference_number_and_item_number_of_sale_asset_in_revaluation_excel_database()
 			throws Throwable {
-		excelDatForAssetRevaluation.updateTestData("KUBS_FAT_UAT_012_07_D1", "AssetReferenceNumber",
+		
+		excelDatForAssetRevaluation.updateTestData(assetSaleTestData.get("Update Data Set 1"), "AssetReferenceNumber",
 				assetSaleTestData.get("AssetReferenceNumber"));
-		excelDatForAssetRevaluation.updateTestData("KUBS_FAT_UAT_012_07_D1", "AssetItemNumber",
+		excelDatForAssetRevaluation.updateTestData(assetSaleTestData.get("Update Data Set 1"), "AssetItemNumber",
 				assetSaleTestData.get("AssetItemNumber"));
 	}
 
 	@And("^store the asset reference number and item number of sold asset in impairment excel database$")
 	public void store_the_asset_reference_number_and_item_number_of_sold_asset_in_impairment_excel_database()
 			throws Throwable {
-		excelDatForAssetImpairment.updateTestData("KUBS_FAT_UAT_009_008_01_D1", "AssetReferenceNumber",
+		excelDatForAssetImpairment.updateTestData(assetSaleTestData.get("Update Data Set 1"), "AssetReferenceNumber",
 				assetSaleTestData.get("AssetReferenceNumber"));
-		excelDatForAssetImpairment.updateTestData("KUBS_FAT_UAT_009_008_01_D1", "AssetItemNumber",
+		excelDatForAssetImpairment.updateTestData(assetSaleTestData.get("Update Data Set 1"), "AssetItemNumber",
 				assetSaleTestData.get("AssetItemNumber"));
 	}
 

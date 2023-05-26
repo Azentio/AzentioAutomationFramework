@@ -40,8 +40,13 @@ public class FixedAsset_AssetCodeConfiguration extends BaseClass {
 	JavascriptHelper javascriptHelper = new JavascriptHelper();
 	FIXEDASSET_fixedAssetObj fixedAssetAccObj = new FIXEDASSET_fixedAssetObj(driver);
 	BrowserHelper browserHelper = new BrowserHelper(driver);
-	ExcelData excelDataAssetCategoryForTransfer = new ExcelData(excelPath, "AssetTransfer_ExecutionTracker", "TestCaseID");
-	
+	ExcelData excelDataAssetCategoryForTransfer = new ExcelData(excelPath, "AssetTransfer_ExecutionTracker",
+			"TestCaseID");
+	ExcelData excelDataAssetCategoryForImpairement = new ExcelData(excelPath, "AssetImpairement_ExecutionTrack",
+			"TestCaseID");
+	ExcelData excelDataAssetCodeConfigForRevaluation = new ExcelData(excelPath, "AssetRevaluation_ExecutionTrack",
+			"TestCaseID");
+
 	Map<String, String> DataSetID = new HashMap<>();
 
 	@And("^get the active asset code in asset category module$")
@@ -82,7 +87,9 @@ public class FixedAsset_AssetCodeConfiguration extends BaseClass {
 
 	@And("^get the test data for asset code configuration to do impairment$")
 	public void get_the_test_data_for_asset_code_configuration_to_do_impairment() throws Throwable {
-		assetCodeConfigTestData = excelData.getTestdata("KUBS_FAT_UAT_002_003_D2");
+		DataSetID = excelDataAssetCategoryForImpairement.getTestdata("KUBS_FAT_UAT_002_003_01");
+		System.out.println("DataSet ID " + DataSetID.get("Data Set ID"));
+		assetCodeConfigTestData = excelData.getTestdata(DataSetID.get("Data Set ID"));
 	}
 
 	@And("^get the test data for asset code configuration for asset allocation$")
@@ -92,12 +99,13 @@ public class FixedAsset_AssetCodeConfiguration extends BaseClass {
 
 	@And("^get the test data for asset code configuration for asset revaluation$")
 	public void get_the_test_data_for_asset_code_configuration_for_asset_revaluation() throws Throwable {
-		assetCodeConfigTestData = excelData.getTestdata("KUBS_FAT_UAT_002_003_D6");
+		DataSetID = excelDataAssetCodeConfigForRevaluation.getTestdata("KUBS_FAT_UAT_002_003_01_ReValuation");
+		assetCodeConfigTestData = excelData.getTestdata(DataSetID.get("Data Set ID"));
 	}
 
 	@And("^get the test data for asset code configuration for asset transfer and undetaking$")
 	public void get_the_test_data_for_asset_code_configuration_for_asset_transfer_and_undetaking() throws Throwable {
-		DataSetID=excelDataAssetCategoryForTransfer.getTestdata("KUBS_FAT_UAT_002_003_01_Transfer");
+		DataSetID = excelDataAssetCategoryForTransfer.getTestdata("KUBS_FAT_UAT_002_003_01_Transfer");
 		assetCodeConfigTestData = excelData.getTestdata(DataSetID.get("Data Set ID"));
 	}
 
@@ -152,10 +160,10 @@ public class FixedAsset_AssetCodeConfiguration extends BaseClass {
 				.sendKeys(assetCodeConfigTestData.get("AssetLifeUnit"));
 		for (int i = 0; i <= 20; i++) {
 			try {
-				clickAndActionsHelper.moveToElement(driver.findElement(
-						By.xpath("//div[text()='" + assetCodeConfigTestData.get("AssetLifeUnit") + "']")));
-				clickAndActionsHelper.clickOnElement(driver.findElement(
-						By.xpath("//div[text()='" + assetCodeConfigTestData.get("AssetLifeUnit") + "']")));
+				clickAndActionsHelper.moveToElement(driver
+						.findElement(By.xpath("//div[text()='" + assetCodeConfigTestData.get("AssetLifeUnit") + "']")));
+				clickAndActionsHelper.clickOnElement(driver
+						.findElement(By.xpath("//div[text()='" + assetCodeConfigTestData.get("AssetLifeUnit") + "']")));
 				break;
 			} catch (Exception e) {
 				if (i == 20) {
@@ -280,7 +288,7 @@ public class FixedAsset_AssetCodeConfiguration extends BaseClass {
 	public void store_the_asset_code_reference_number_in_excel_file() throws Throwable {
 		waitHelper.waitForElementwithFluentwait(driver,
 				fixedAsset_AssetCodeConfigurationObj.assetCodeConfigNotificationRecordReferenceNo());
-
+		System.out.println("DataSet ID " + assetCodeConfigTestData.get("DataSet ID"));
 		excelData.updateTestData(assetCodeConfigTestData.get("DataSet ID"), "Reference ID",
 				fixedAsset_AssetCodeConfigurationObj.assetCodeConfigNotificationRecordReferenceNo().getText());
 	}
@@ -352,8 +360,9 @@ public class FixedAsset_AssetCodeConfiguration extends BaseClass {
 	@And("^store the asset code in asset gl Configuration database for asset revaluation$")
 	public void store_the_asset_code_in_asset_gl_configuration_database_for_asset_revaluation() throws Throwable {
 		ExcelData exceldataforGLConfig = new ExcelData(excelPath, "FixedAsset_GLConfig", "DataSet ID");
-		exceldataforGLConfig.updateTestData("KUBS_FAT_UAT_002_004_D6", "AssetCode",
+		exceldataforGLConfig.updateTestData(assetCodeConfigTestData.get("Update Data Set 1"), "AssetCode",
 				assetCodeConfigTestData.get("AssetCode"));
+
 	}
 
 	@And("^store the asset code in asset gl Configuration database for asset transfer and undetaking$")
@@ -374,7 +383,7 @@ public class FixedAsset_AssetCodeConfiguration extends BaseClass {
 	@And("^store the asset code in asset gl Configuration database to do impairment$")
 	public void store_the_asset_code_in_asset_gl_configuration_database_to_do_impairment() throws Throwable {
 		ExcelData exceldataforGLConfig = new ExcelData(excelPath, "FixedAsset_GLConfig", "DataSet ID");
-		exceldataforGLConfig.updateTestData("KUBS_FAT_UAT_002_004_D2", "AssetCode",
+		exceldataforGLConfig.updateTestData(assetCodeConfigTestData.get("Update Data Set 1"), "AssetCode",
 				assetCodeConfigTestData.get("AssetCode"));
 	}
 

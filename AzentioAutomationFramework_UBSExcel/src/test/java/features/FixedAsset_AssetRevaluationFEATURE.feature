@@ -261,7 +261,7 @@ And store the asset code in asset creation excel database for asset revaluation
 And click on user profile in maker
 And click on logout button
 Then verify user profile got logout
-@KUBS_FAT_UAT_002_007_01_AssetRevaluation
+@KUBS_FAT_UAT_002_007_01_AssetRevaluation01
 Scenario: Creation of the registered asset with full details
 Given Maker Navigate to UAT URL login
 And click on configuration section
@@ -298,7 +298,7 @@ Then validate the submit and store the reviewer ID of fixed asset creation with 
 And click on user profile in maker
 And click on logout button
 Then verify user profile got logout
-@KUBS_FAT_UAT_002_007_02_AssetRevaluation
+@KUBS_FAT_UAT_002_007_02_AssetRevaluation02
 Scenario: To verify reviewer user can able to approve the asset creation record with full details record
 Given navigate to kubs Url to approve the fixed asset creation record with full details in reviewer for the pre requisite of asset revaluation
 And click on notification in reviewer stage
@@ -310,7 +310,7 @@ Then verify record got approved in reviewer stage
 And click on user profile in maker
 And click on logout button
 Then verify user profile got logout
-@KUBS_FAT_UAT_002_007_03_AssetRevaluation
+@KUBS_FAT_UAT_002_007_03_AssetRevaluation03
 Scenario: To verify checker user can able to approve the fixed asset creation with minimum details record
 Given navigate to kubs url to approve the fixed asset creation record with full details in checker fo the pre requiste of asset revaluation
 And click on security management tool
@@ -326,7 +326,7 @@ Then verify record got approved in checker stage
 And click on user profile in maker
 And click on logout button
 Then verify user profile got logout
-@KUBS_FAT_UAT_002_007_04_AssetRevaluation
+@KUBS_FAT_UAT_002_007_04_AssetRevaluation04
 Scenario: To verify maker user can able to see the approved asset reference number in maker list view
 Given Maker Navigate to UAT URL login
 And click on configuration section
@@ -413,7 +413,7 @@ Then verify approved asset reference number of revaluation record should visisbl
 And click on user profile in maker
 And click on logout button
 Then verify user profile got logout
-@KUBS_FAT_UAT_002_007_01_AssetRevaluation
+@KUBS_FAT_UAT_002_007_01_AssetRevaluation05
 Scenario: Creation of the registered asset with full details
 Given Maker Navigate to UAT URL login
 And click on configuration section
@@ -450,7 +450,7 @@ Then validate the submit and store the reviewer ID of fixed asset creation with 
 And click on user profile in maker
 And click on logout button
 Then verify user profile got logout
-@KUBS_FAT_UAT_002_007_02_AssetRevaluation
+@KUBS_FAT_UAT_002_007_02_AssetRevaluation06
 Scenario: To verify reviewer user can able to approve the asset creation record with full details record
 Given navigate to kubs Url to approve the fixed asset creation record with full details in reviewer for the pre requisite of asset revaluation
 And click on notification in reviewer stage
@@ -462,7 +462,7 @@ Then verify record got approved in reviewer stage
 And click on user profile in maker
 And click on logout button
 Then verify user profile got logout
-@KUBS_FAT_UAT_002_007_03_AssetRevaluation
+@KUBS_FAT_UAT_002_007_03_AssetRevaluation07
 Scenario: To verify checker user can able to approve the fixed asset creation with minimum details record
 Given navigate to kubs url to approve the fixed asset creation record with full details in checker fo the pre requiste of asset revaluation
 And click on security management tool
@@ -478,7 +478,7 @@ Then verify record got approved in checker stage
 And click on user profile in maker
 And click on logout button
 Then verify user profile got logout
-@KUBS_FAT_UAT_002_007_04_AssetRevaluation
+@KUBS_FAT_UAT_002_007_04_AssetRevaluation08
 Scenario: To verify maker user can able to see the approved asset reference number in maker list view
 Given Maker Navigate to UAT URL login
 And click on configuration section
@@ -702,7 +702,7 @@ Then verify approved asset reference number of revaluation record should visisbl
 And click on user profile in maker
 And click on logout button
 Then verify user profile got logout
-@KUBS_FAT_UAT_002_007_01_AssetRevaluation
+@KUBS_FAT_UAT_002_007_01_AssetRevaluation09
 Scenario: Creation of the registered asset with full details
 Given Maker Navigate to UAT URL login
 And click on configuration section
@@ -739,7 +739,7 @@ Then validate the submit and store the reviewer ID of fixed asset creation with 
 And click on user profile in maker
 And click on logout button
 Then verify user profile got logout
-@KUBS_FAT_UAT_002_007_02_AssetRevaluation
+@KUBS_FAT_UAT_002_007_02_AssetRevaluation10
 Scenario: To verify reviewer user can able to approve the asset creation record with full details record
 Given navigate to kubs Url to approve the fixed asset creation record with full details in reviewer for the pre requisite of asset revaluation
 And click on notification in reviewer stage
@@ -751,7 +751,7 @@ Then verify record got approved in reviewer stage
 And click on user profile in maker
 And click on logout button
 Then verify user profile got logout
-@KUBS_FAT_UAT_002_007_03_AssetRevaluation
+@KUBS_FAT_UAT_002_007_03_AssetRevaluation11
 Scenario: To verify checker user can able to approve the fixed asset creation with minimum details record
 Given navigate to kubs url to approve the fixed asset creation record with full details in checker fo the pre requiste of asset revaluation
 And click on security management tool
@@ -767,7 +767,7 @@ Then verify record got approved in checker stage
 And click on user profile in maker
 And click on logout button
 Then verify user profile got logout
-@KUBS_FAT_UAT_002_007_04_AssetRevaluation
+@KUBS_FAT_UAT_002_007_04_AssetRevaluation12
 Scenario: To verify maker user can able to see the approved asset reference number in maker list view
 Given Maker Navigate to UAT URL login
 And click on configuration section
@@ -924,7 +924,7 @@ And click on user profile in maker
 And click on logout button
 Then verify user profile got logout
 #Revaluation Impairment Issue Test case
-@KUBS_FAT_UAT_002_007_01_AssetRevaluation
+@KUBS_FAT_UAT_002_007_01_AssetRevaluation13
 Scenario: Creation of the registered asset with full details
 Given Maker Navigate to UAT URL login
 And click on configuration section
@@ -961,7 +961,7 @@ Then validate the submit and store the reviewer ID of fixed asset creation with 
 And click on user profile in maker
 And click on logout button
 Then verify user profile got logout
-@KUBS_FAT_UAT_002_007_02_AssetRevaluation
+@KUBS_FAT_UAT_002_007_02_AssetRevaluation14
 Scenario: To verify reviewer user can able to approve the asset creation record with full details record
 Given navigate to kubs Url to approve the fixed asset creation record with full details in reviewer for the pre requisite of asset revaluation
 And click on notification in reviewer stage
@@ -973,7 +973,7 @@ Then verify record got approved in reviewer stage
 And click on user profile in maker
 And click on logout button
 Then verify user profile got logout
-@KUBS_FAT_UAT_002_007_03_AssetRevaluation
+@KUBS_FAT_UAT_002_007_03_AssetRevaluation15
 Scenario: To verify checker user can able to approve the fixed asset creation with minimum details record
 Given navigate to kubs url to approve the fixed asset creation record with full details in checker fo the pre requiste of asset revaluation
 And click on security management tool
@@ -989,7 +989,7 @@ Then verify record got approved in checker stage
 And click on user profile in maker
 And click on logout button
 Then verify user profile got logout
-@KUBS_FAT_UAT_002_007_04_AssetRevaluation
+@KUBS_FAT_UAT_002_007_04_AssetRevaluation16
 Scenario: To verify maker user can able to see the approved asset reference number in maker list view
 Given Maker Navigate to UAT URL login
 And click on configuration section
@@ -1093,7 +1093,7 @@ Then verify user profile got logout
 
 
 
-@KUBS_FAT_UAT_002_007_01_AssetRevaluation
+@KUBS_FAT_UAT_002_007_01_AssetRevaluation17
 Scenario: Creation of the registered asset with full details
 Given Maker Navigate to UAT URL login
 And click on configuration section
@@ -1130,7 +1130,7 @@ Then validate the submit and store the reviewer ID of fixed asset creation with 
 And click on user profile in maker
 And click on logout button
 Then verify user profile got logout
-@KUBS_FAT_UAT_002_007_02_AssetRevaluation
+@KUBS_FAT_UAT_002_007_02_AssetRevaluation18
 Scenario: To verify reviewer user can able to approve the asset creation record with full details record
 Given navigate to kubs Url to approve the fixed asset creation record with full details in reviewer for the pre requisite of asset revaluation
 And click on notification in reviewer stage
@@ -1142,7 +1142,7 @@ Then verify record got approved in reviewer stage
 And click on user profile in maker
 And click on logout button
 Then verify user profile got logout
-@KUBS_FAT_UAT_002_007_03_AssetRevaluation
+@KUBS_FAT_UAT_002_007_03_AssetRevaluation19
 Scenario: To verify checker user can able to approve the fixed asset creation with minimum details record
 Given navigate to kubs url to approve the fixed asset creation record with full details in checker fo the pre requiste of asset revaluation
 And click on security management tool
@@ -1158,7 +1158,7 @@ Then verify record got approved in checker stage
 And click on user profile in maker
 And click on logout button
 Then verify user profile got logout
-@KUBS_FAT_UAT_002_007_04_AssetRevaluation
+@KUBS_FAT_UAT_002_007_04_AssetRevaluation20
 Scenario: To verify maker user can able to see the approved asset reference number in maker list view
 Given Maker Navigate to UAT URL login
 And click on configuration section
@@ -1318,7 +1318,7 @@ And click on logout button
 Then verify user profile got logout
 
 #Sold maker doe asset revaluation
-@KUBS_FAT_UAT_002_007_01_AssetRevaluation
+@KUBS_FAT_UAT_002_007_01_AssetRevaluation21
 Scenario: Creation of the registered asset with full details
 Given Maker Navigate to UAT URL login
 And click on configuration section
@@ -1355,7 +1355,7 @@ Then validate the submit and store the reviewer ID of fixed asset creation with 
 And click on user profile in maker
 And click on logout button
 Then verify user profile got logout
-@KUBS_FAT_UAT_002_007_02_AssetRevaluation
+@KUBS_FAT_UAT_002_007_01_AssetRevaluation22
 Scenario: To verify reviewer user can able to approve the asset creation record with full details record
 Given navigate to kubs Url to approve the fixed asset creation record with full details in reviewer for the pre requisite of asset revaluation
 And click on notification in reviewer stage
@@ -1367,7 +1367,7 @@ Then verify record got approved in reviewer stage
 And click on user profile in maker
 And click on logout button
 Then verify user profile got logout
-@KUBS_FAT_UAT_002_007_03_AssetRevaluation
+@KUBS_FAT_UAT_002_007_01_AssetRevaluation23
 Scenario: To verify checker user can able to approve the fixed asset creation with minimum details record
 Given navigate to kubs url to approve the fixed asset creation record with full details in checker fo the pre requiste of asset revaluation
 And click on security management tool
@@ -1383,7 +1383,7 @@ Then verify record got approved in checker stage
 And click on user profile in maker
 And click on logout button
 Then verify user profile got logout
-@KUBS_FAT_UAT_002_007_04_AssetRevaluation
+@KUBS_FAT_UAT_002_007_01_AssetRevaluation24
 Scenario: To verify maker user can able to see the approved asset reference number in maker list view
 Given Maker Navigate to UAT URL login
 And click on configuration section
@@ -1432,7 +1432,7 @@ And click on user profile in maker
 And click on logout button
 Then verify user profile got logout
 @KUBS_FAT_UAT_012_007_01
-Scenario: To verify maker user can able to create the asset revaluation record(Replacment Asset)
+Scenario: To verify maker user can able to create the asset revaluation record
 Given Maker Navigate to UAT URL login
 And click on configuration section
 And click on transaction section
@@ -1500,7 +1500,7 @@ And click on user profile in maker
 And click on logout button
 Then verify user profile got logout
 #Asset return _Revaluation
-@KUBS_FAT_UAT_002_007_01_AssetRevaluation
+@KUBS_FAT_UAT_002_007_01_AssetRevaluation25
 Scenario: Creation of the registered asset with full details
 Given Maker Navigate to UAT URL login
 And click on configuration section
@@ -1537,7 +1537,7 @@ Then validate the submit and store the reviewer ID of fixed asset creation with 
 And click on user profile in maker
 And click on logout button
 Then verify user profile got logout
-@KUBS_FAT_UAT_002_007_02_AssetRevaluation
+@KUBS_FAT_UAT_002_007_01_AssetRevaluation26
 Scenario: To verify reviewer user can able to approve the asset creation record with full details record
 Given navigate to kubs Url to approve the fixed asset creation record with full details in reviewer for the pre requisite of asset revaluation
 And click on notification in reviewer stage
@@ -1549,7 +1549,7 @@ Then verify record got approved in reviewer stage
 And click on user profile in maker
 And click on logout button
 Then verify user profile got logout
-@KUBS_FAT_UAT_002_007_03_AssetRevaluation
+@KUBS_FAT_UAT_002_007_01_AssetRevaluation27
 Scenario: To verify checker user can able to approve the fixed asset creation with minimum details record
 Given navigate to kubs url to approve the fixed asset creation record with full details in checker fo the pre requiste of asset revaluation
 And click on security management tool
@@ -1565,7 +1565,7 @@ Then verify record got approved in checker stage
 And click on user profile in maker
 And click on logout button
 Then verify user profile got logout
-@KUBS_FAT_UAT_002_007_04_AssetRevaluation
+@KUBS_FAT_UAT_002_007_01_AssetRevaluation28
 Scenario: To verify maker user can able to see the approved asset reference number in maker list view
 Given Maker Navigate to UAT URL login
 And click on configuration section
@@ -1680,7 +1680,7 @@ And click on logout button
 Then verify user profile got logout
 
 #Replaced asset revaluation
-@KUBS_FAT_UAT_002_007_01_AssetRevaluation
+@KUBS_FAT_UAT_002_007_01_AssetRevaluation26
 Scenario: Creation of the registered asset with full details
 Given Maker Navigate to UAT URL login
 And click on configuration section
@@ -1717,7 +1717,7 @@ Then validate the submit and store the reviewer ID of fixed asset creation with 
 And click on user profile in maker
 And click on logout button
 Then verify user profile got logout
-@KUBS_FAT_UAT_002_007_02_AssetRevaluation
+@KUBS_FAT_UAT_002_007_01_AssetRevaluation27
 Scenario: To verify reviewer user can able to approve the asset creation record with full details record
 Given navigate to kubs Url to approve the fixed asset creation record with full details in reviewer for the pre requisite of asset revaluation
 And click on notification in reviewer stage
@@ -1729,7 +1729,7 @@ Then verify record got approved in reviewer stage
 And click on user profile in maker
 And click on logout button
 Then verify user profile got logout
-@KUBS_FAT_UAT_002_007_03_AssetRevaluation
+@KUBS_FAT_UAT_002_007_01_AssetRevaluation28
 Scenario: To verify checker user can able to approve the fixed asset creation with minimum details record
 Given navigate to kubs url to approve the fixed asset creation record with full details in checker fo the pre requiste of asset revaluation
 And click on security management tool
@@ -1745,7 +1745,7 @@ Then verify record got approved in checker stage
 And click on user profile in maker
 And click on logout button
 Then verify user profile got logout
-@KUBS_FAT_UAT_002_007_04_AssetRevaluation
+@KUBS_FAT_UAT_002_007_01_AssetRevaluation29
 Scenario: To verify maker user can able to see the approved asset reference number in maker list view
 Given Maker Navigate to UAT URL login
 And click on configuration section
@@ -1906,7 +1906,7 @@ And click on logout button
 Then verify user profile got logout
 
 #Asset Undertaking _Revaluation
-@KUBS_FAT_UAT_002_007_01_AssetRevaluation
+@KUBS_FAT_UAT_002_007_01_AssetRevaluation30
 Scenario: Creation of the registered asset with full details
 Given Maker Navigate to UAT URL login
 And click on configuration section
@@ -1943,7 +1943,7 @@ Then validate the submit and store the reviewer ID of fixed asset creation with 
 And click on user profile in maker
 And click on logout button
 Then verify user profile got logout
-@KUBS_FAT_UAT_002_007_02_AssetRevaluation
+@KUBS_FAT_UAT_002_007_01_AssetRevaluation31
 Scenario: To verify reviewer user can able to approve the asset creation record with full details record
 Given navigate to kubs Url to approve the fixed asset creation record with full details in reviewer for the pre requisite of asset revaluation
 And click on notification in reviewer stage
@@ -1955,7 +1955,7 @@ Then verify record got approved in reviewer stage
 And click on user profile in maker
 And click on logout button
 Then verify user profile got logout
-@KUBS_FAT_UAT_002_007_03_AssetRevaluation
+@KUBS_FAT_UAT_002_007_01_AssetRevaluation32
 Scenario: To verify checker user can able to approve the fixed asset creation with minimum details record
 Given navigate to kubs url to approve the fixed asset creation record with full details in checker fo the pre requiste of asset revaluation
 And click on security management tool
@@ -1971,7 +1971,7 @@ Then verify record got approved in checker stage
 And click on user profile in maker
 And click on logout button
 Then verify user profile got logout
-@KUBS_FAT_UAT_002_007_04_AssetRevaluation
+@KUBS_FAT_UAT_002_007_01_AssetRevaluation33
 Scenario: To verify maker user can able to see the approved asset reference number in maker list view
 Given Maker Navigate to UAT URL login
 And click on configuration section

@@ -68,6 +68,8 @@ public class FIXEDASSET_AssetImpairement extends BaseClass {
 	ExcelData excelDataForAssetTransfer = new ExcelData(path, "FixedAsset_AssetTransfer", "DataSet ID");
 	ExcelData excelDataForAssetWriteOff = new ExcelData(path, "FixedAsset_WriteOff", "DataSet ID");
 	ExcelData excelDataImpairementAssetTransferExecution = new ExcelData(path, "AssetTransfer_ExecutionTracker", "TestCaseID");
+	ExcelData excelDataImpairementAssetImpairementExecution = new ExcelData(path, "AssetImpairement_ExecutionTrack", "TestCaseID");
+	ExcelData excelDataImpairementAssetRevaluationExecution = new ExcelData(path, "AssetRevaluation_ExecutionTrack", "TestCaseID");
 	Map<String, String> DataSetID = new HashMap<>();
 	BrowserHelper browserHelper = new BrowserHelper(driver);
 
@@ -370,7 +372,8 @@ public class FIXEDASSET_AssetImpairement extends BaseClass {
 
 	@And("^get the test data for impairment asset from excel database$")
 	public void get_the_test_data_for_impairment_asset_from_excel_database() throws Throwable {
-		impairmentTestData = excelDataForAssetImpairment.getTestdata("KUBS_FAT_UAT_009_001_01_D1");
+		DataSetID=excelDataImpairementAssetImpairementExecution.getTestdata("KUBS_FAT_UAT_009_001_01");
+		impairmentTestData = excelDataForAssetImpairment.getTestdata(DataSetID.get("Data Set ID"));
 	}
 
 	@And("^get the test data for impairment asset from excel database for the pre requisite of asset write off$")
@@ -433,7 +436,8 @@ public class FIXEDASSET_AssetImpairement extends BaseClass {
 	@And("^get the test data for impairment asset from excel database for the prerequisite of asset revaluation$")
 	public void get_the_test_data_for_impairment_asset_from_excel_database_for_the_prerequisite_of_asset_revaluation()
 			throws Throwable {
-		impairmentTestData = excelDataForAssetImpairment.getTestdata("KUBS_FAT_UAT_009_001_01_D3");
+		DataSetID=excelDataImpairementAssetRevaluationExecution.getTestdata("KUBS_FAT_UAT_009_001_01_Revaluation");
+		impairmentTestData = excelDataForAssetImpairment.getTestdata(DataSetID.get("Data Set ID"));
 	}
 
 	@And("^get the test data for impairment asset from excel database for the prerequsite of asset return$")
@@ -446,49 +450,58 @@ public class FIXEDASSET_AssetImpairement extends BaseClass {
 	@And("^get the test data for impairment asset from excel database which is already done one asset allocation$")
 	public void get_the_test_data_for_impairment_asset_from_excel_database_which_is_already_done_one_asset_allocation()
 			throws Throwable {
-		impairmentTestData = excelDataForAssetImpairment.getTestdata("KUBS_FAT_UAT_009_002_01_D1");
+		DataSetID=excelDataImpairementAssetImpairementExecution.getTestdata("KUBS_FAT_UAT_009_002_01");
+		impairmentTestData = excelDataForAssetImpairment.getTestdata(DataSetID.get("Data Set ID"));
 	}
 
 	@And("^get the test data for impairment asset from excel database which is already done on asset de allocation$")
 	public void get_the_test_data_for_impairment_asset_from_excel_database_which_is_already_done_on_asset_de_allocation()
 			throws Throwable {
-		impairmentTestData = excelDataForAssetImpairment.getTestdata("KUBS_FAT_UAT_009_003_01_D1");
+		DataSetID=excelDataImpairementAssetImpairementExecution.getTestdata("KUBS_FAT_UAT_009_003_01");
+		impairmentTestData = excelDataForAssetImpairment.getTestdata(DataSetID.get("Data Set ID"));
 	}
 
 	@And("^get the test data for impairment asset from excel database which is already done on asset revaluation$")
 	public void get_the_test_data_for_impairment_asset_from_excel_database_which_is_already_done_on_asset_revaluation()
 			throws Throwable {
-		impairmentTestData = excelDataForAssetImpairment.getTestdata("KUBS_FAT_UAT_009_004_01_D1");
+		
+		DataSetID=excelDataImpairementAssetImpairementExecution.getTestdata("KUBS_FAT_UAT_009_004_01");
+		impairmentTestData = excelDataForAssetImpairment.getTestdata(DataSetID.get("Data Set ID"));
 	}
 
 	@And("^get the test data for impairment asset from excel database which is already done on asset ammendment$")
 	public void get_the_test_data_for_impairment_asset_from_excel_database_which_is_already_done_on_asset_ammendment()
 			throws Throwable {
-		impairmentTestData = excelDataForAssetImpairment.getTestdata("KUBS_FAT_UAT_009_005_01_D1");
+		DataSetID=excelDataImpairementAssetImpairementExecution.getTestdata("KUBS_FAT_UAT_009_005_01");
+		impairmentTestData = excelDataForAssetImpairment.getTestdata(DataSetID.get("Data Set ID"));
 	}
 
 	@And("^get the test data for impairment asset from excel database which is already done on asset replacement maker part$")
 	public void get_the_test_data_for_impairment_asset_from_excel_database_which_is_already_done_on_asset_replacement_maker_part()
 			throws Throwable {
-		impairmentTestData = excelDataForAssetImpairment.getTestdata("KUBS_FAT_UAT_009_006_01_D1");
+		DataSetID=excelDataImpairementAssetImpairementExecution.getTestdata("KUBS_FAT_UAT_009_006_01");
+		impairmentTestData = excelDataForAssetImpairment.getTestdata(DataSetID.get("Data Set ID"));
 	}
 
 	@And("^get the test data for impairment asset from excel database which is already done on asset return maker part$")
 	public void get_the_test_data_for_impairment_asset_from_excel_database_which_is_already_done_on_asset_return_maker_part()
 			throws Throwable {
-		impairmentTestData = excelDataForAssetImpairment.getTestdata("KUBS_FAT_UAT_009_007_01_D1");
+		DataSetID=excelDataImpairementAssetImpairementExecution.getTestdata("KUBS_FAT_UAT_009_007_01");
+		impairmentTestData = excelDataForAssetImpairment.getTestdata(DataSetID.get("Data Set ID"));
 	}
 
 	@And("^get the test data for impairment asset from excel database which is already done on asset Sale maker part$")
 	public void get_the_test_data_for_impairment_asset_from_excel_database_which_is_already_done_on_asset_sale_maker_part()
 			throws Throwable {
-		impairmentTestData = excelDataForAssetImpairment.getTestdata("KUBS_FAT_UAT_009_008_01_D1");
+		DataSetID=excelDataImpairementAssetImpairementExecution.getTestdata("KUBS_FAT_UAT_009_008_01");
+		impairmentTestData = excelDataForAssetImpairment.getTestdata(DataSetID.get("Data Set ID"));
 	}
 
 	@And("^get the test data for impairment asset from excel database which is already done on asset Transfer maker part$")
 	public void get_the_test_data_for_impairment_asset_from_excel_database_which_is_already_done_on_asset_transfer_maker_part()
 			throws Throwable {
-		impairmentTestData = excelDataForAssetImpairment.getTestdata("KUBS_FAT_UAT_009_009_01_D1");
+		DataSetID=excelDataImpairementAssetImpairementExecution.getTestdata("KUBS_FAT_UAT_009_009_01");
+		impairmentTestData = excelDataForAssetImpairment.getTestdata(DataSetID.get("Data Set ID"));
 	}
 
 	@Then("^verify asset reference number should visisble along with item number in impairment list view$")
@@ -540,9 +553,10 @@ public class FIXEDASSET_AssetImpairement extends BaseClass {
 	@And("^store the asset reference number and item number of impaired asset in assetrevaluation excel database$")
 	public void store_the_asset_reference_number_and_item_number_of_impaired_asset_in_assetrevaluation_excel_database()
 			throws Throwable {
-		excelDataForAssetRevaluation.updateTestData("KUBS_FAT_UAT_012_04_D1", "AssetReferenceNumber",
+		
+		excelDataForAssetRevaluation.updateTestData(impairmentTestData.get("Update Data Set 1"), "AssetReferenceNumber",
 				impairmentTestData.get("AssetReferenceNumber"));
-		excelDataForAssetRevaluation.updateTestData("KUBS_FAT_UAT_012_04_D1", "AssetItemNumber",
+		excelDataForAssetRevaluation.updateTestData(impairmentTestData.get("Update Data Set 1"), "AssetItemNumber",
 				impairmentTestData.get("AssetItemNumber"));
 	}
 

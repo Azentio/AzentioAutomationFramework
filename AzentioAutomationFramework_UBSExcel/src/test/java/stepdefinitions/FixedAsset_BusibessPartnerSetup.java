@@ -929,6 +929,7 @@ public class FixedAsset_BusibessPartnerSetup extends BaseClass {
 	public void save_the_address_details_data() throws Throwable {
 		waitHelper.waitForElementwithFluentwait(driver, kubsCommonObj.kubsSaveButton());
 		kubsCommonObj.kubsSaveButton().click();
+		Thread.sleep(1000);
 	}
 
 	@And("^enter the contact type in contact section$")

@@ -43,8 +43,10 @@ public class FixedAsset_AssetGlConfiguration extends BaseClass {
 	Map<String, String> glAccountingTestData = new HashMap<>();
 	
 	ExcelData excelDataAssetCategoryForTransfer = new ExcelData(excelPath, "AssetTransfer_ExecutionTracker", "TestCaseID");
+	ExcelData excelDataAssetGLForImpairement = new ExcelData(excelPath, "AssetImpairement_ExecutionTrack", "TestCaseID");
 	Map<String, String> dataSetID = new HashMap<>();
 	ExcelData excelDataAssetGlForTransfer = new ExcelData(excelPath, "AssetTransfer_ExecutionTracker", "TestCaseID");
+	ExcelData excelDataAssetGlForRevaluation = new ExcelData(excelPath, "AssetRevaluation_ExecutionTrack", "TestCaseID");
 	BrowserHelper browserHelper = new BrowserHelper(driver);
 
 	@Then("^Click on Asset GL configuration Eye button$")
@@ -123,7 +125,8 @@ public class FixedAsset_AssetGlConfiguration extends BaseClass {
 
 	@And("^get the testData for fixed asset gl configuration module for asset revaluation$")
 	public void get_the_testdata_for_fixed_asset_gl_configuration_module_for_asset_revaluation() throws Throwable {
-		glConfigTestData = exceldataforGLConfig.getTestdata("KUBS_FAT_UAT_002_004_D6");
+		dataSetID=excelDataAssetGlForRevaluation.getTestdata("KUBS_FAT_UAT_002_004_01_ReValuation");
+		glConfigTestData = exceldataforGLConfig.getTestdata(dataSetID.get("Data Set ID"));
 	}
 
 	@And("^get the testData for fixed asset gl configuration module for asset transfer and undertaking$")
@@ -145,7 +148,8 @@ public class FixedAsset_AssetGlConfiguration extends BaseClass {
 
 	@And("^get the testData for fixed asset gl configuration module to do asset impairment$")
 	public void get_the_testdata_for_fixed_asset_gl_configuration_module_to_do_asset_impairment() throws Throwable {
-		glConfigTestData = exceldataforGLConfig.getTestdata("KUBS_FAT_UAT_002_004_D2");
+		dataSetID=excelDataAssetGLForImpairement.getTestdata("KUBS_FAT_UAT_002_004_01");
+		glConfigTestData = exceldataforGLConfig.getTestdata(dataSetID.get("Data Set ID"));
 	}
 
 	@And("^select the data from the asset code in fixed asset gl configuration$")
@@ -488,7 +492,7 @@ public class FixedAsset_AssetGlConfiguration extends BaseClass {
 	@And("^store the asset reference number in gl serial number config excel database for asset revaluation$")
 	public void store_the_asset_reference_number_in_gl_serial_number_config_excel_database_for_asset_revaluation()
 			throws Throwable {
-		excelDataForGlSerialNum.updateTestData("KUBS_FAT_UAT_002_005_D6", "AssetCode",
+		excelDataForGlSerialNum.updateTestData(glConfigTestData.get("Update Data Set 1"), "AssetCode",
 				glConfigTestData.get("AssetCode"));
 	}
 

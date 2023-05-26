@@ -7,19 +7,18 @@ import io.cucumber.testng.CucumberOptions;
 import utilities.ExtentManager;
 import utilities.ExtentTestManager;
 
-@CucumberOptions(features = { //"src/test/java/features/FixedAsset_AccountsPayableFeature.feature",
+@CucumberOptions(features = { //"src/test/java/features/FeatureTest.feature",
 		 
 	    //"src/test/java/features/FixedAsset_AssetAllocationFEATURE.feature",
 		//"src/test/java/features/FixedAsset_AssetCreationWithGRN.feature",
-		//"src/test/java/features/FixedAsset_AssetAmmendmentFEATURE.feature",
+		"src/test/java/features/FixedAsset_AssetAmmendmentFEATURE.feature",
 	    //"src/test/java/features/FixedAsset_AssetCreationFEATURE.feature",
 		//"src/test/java/features/FixedAsset_AssetImpairmentFEATURE.feature",
 		//"src/test/java/features/FixedAsset_AssetReturnFEATURE.feature",
 	   //"src/test/java/features/FixedAsset_AssetRevaluationFEATURE.feature",
 		//"src/test/java/features/FixedAsset_ReportFEATURE.feature",
-	 "src/test/java/features/FixedAsset_AssetTransferFEATURE.feature",
-		//"src/test/java/features/FixedAsset_AssetUndertakingFEATURE.feature"
-		
+	 //"src/test/java/features/FixedAsset_AssetTransferFEATURE.feature",
+		//"src/test/java/features/FixedAsset_AssetUndertakingFEATURE.feature"		
 	   // "src/test/java/features/Test.feature" 
 		},
 
@@ -28,7 +27,7 @@ import utilities.ExtentTestManager;
 		plugin = { "pretty", "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:",
 				"rerun:ReRunScenarios/FailedReRun.txt" }
 // dryRun = false
- , tags = "@KUBS_FAT_UAT_005_001_01"
+ //, tags = "@KUBS_FAT_UAT_013_009"
 )
 public class TestApplication extends AbstractTestNGCucumberTests {
 	@BeforeSuite

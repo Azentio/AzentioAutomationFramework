@@ -35,13 +35,7 @@ public class ExcelTest {
 		return li;
 	}
 
-	public static void main(String[] args) {
-		String path = System.getProperty("user.dir") + "\\Test-data\\KUBSTestData.xlsx";
-		ExcelTest excelTest = new ExcelTest(path, "TestExecution", "TestCaseID");
-		List<String> testCaseTagsfromExcel = excelTest.getTestCaseTagsfromExcel();
-		for (String string : testCaseTagsfromExcel) {
-			System.out.println(string);
-		}
-	}
+	
+	
 
 }

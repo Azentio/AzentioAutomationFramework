@@ -245,7 +245,7 @@ public class KUBS_CommonWebElements {
 	public WebElement kubsDropdownNoItemFoundOption() {
 		return kubs_DropdownNoItemFoundOption;
 	}
-	@FindBy(xpath="(//ng-dropdown-panel//div[2]//span[1])[1]")
+	@FindBy(xpath="(//ng-dropdown-panel//div[2]//div[1])[1]")
 	private WebElement kubs_DropdownnElementValidation;
 
 	public WebElement kubsDropdownnElementValidation() {

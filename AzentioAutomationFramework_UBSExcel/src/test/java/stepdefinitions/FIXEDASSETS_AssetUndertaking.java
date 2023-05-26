@@ -37,6 +37,7 @@ public class FIXEDASSETS_AssetUndertaking {
 	Map<String, String> asetTransferTestData = new HashMap<>();
 	Map<String, String> accountingEntriesTransferTestData = new HashMap<>();
 	Map<String, String> assetTransferReportTestData = new HashMap<>();
+	Map<String, String> dataSetID = new HashMap<>();
 	KUBS_CommonWebElements kubsCommonObj = new KUBS_CommonWebElements(driver);
 	KUBS_AccountingEntriesObj kubsAccountingEntriesObj = new KUBS_AccountingEntriesObj(driver);
 	String path = System.getProperty("user.dir") + "\\Test-data\\KUBSTestData.xlsx";
@@ -50,6 +51,8 @@ public class FIXEDASSETS_AssetUndertaking {
 	ExcelData excelDataForAssetAllocation = new ExcelData(path, "FixedAsset_AssetAllocation", "DataSet ID");
 	ExcelData excelDataAssetTransferExecution = new ExcelData(path, "AssetTransfer_ExecutionTracker", "TestCaseID");
 	ExcelData excelDataAssetUndertakingExecution = new ExcelData(path, "AssetUndertaking_ExecTracker", "TestCaseID");
+	ExcelData excelDataAssetImpairementExecution = new ExcelData(path, "AssetImpairement_ExecutionTrack", "TestCaseID");
+	ExcelData excelDataAssetRevaluationExecution = new ExcelData(path, "AssetRevaluation_ExecutionTrack", "TestCaseID");
 	
 	Map<String, String> DataSetID = new HashMap<>();
 	@And("^user should navigate to fixed assets menu$")
@@ -95,12 +98,15 @@ public class FIXEDASSETS_AssetUndertaking {
 	// New Excel Implemented
 	@And("^get the test data for asset transfer for pre requisite of asset impairment$")
 	public void get_the_test_data_for_asset_transfer_for_pre_requisite_of_asset_impairment() throws Throwable {
-		asetTransferTestData = excelDataForAssetTransfer.getTestdata("KUBS_FAT_UAT_005_001_D2");
+		dataSetID=excelDataAssetImpairementExecution.getTestdata("KUBS_FAT_UAT_005_001");
+		asetTransferTestData = excelDataForAssetTransfer.getTestdata(dataSetID.get("Data Set ID"));
 	}
 
 	@And("^get the test data for asset transfer for pre requisite of asset revaluation$")
 	public void get_the_test_data_for_asset_transfer_for_pre_requisite_of_asset_revaluation() throws Throwable {
-		asetTransferTestData = excelDataForAssetTransfer.getTestdata("KUBS_FAT_UAT_005_001_D3");
+		
+		dataSetID=excelDataAssetRevaluationExecution.getTestdata("KUBS_FAT_UAT_005_001_Revaluation");
+		asetTransferTestData = excelDataForAssetTransfer.getTestdata(dataSetID.get("Data Set ID"));
 	}
 
 	@And("^get the test data for asset transfer from asset transfer excel database$")
@@ -330,9 +336,9 @@ public class FIXEDASSETS_AssetUndertaking {
 	@And("^store the asset reference number and itemnumber of transfered asset in asset impairment excel database$")
 	public void store_the_asset_reference_number_and_itemnumber_of_transfered_asset_in_asset_impairment_excel_database()
 			throws Throwable {
-		excelDataForAssetImpairment.updateTestData("KUBS_FAT_UAT_009_009_01_D1", "AssetReferenceNumber",
+		excelDataForAssetImpairment.updateTestData(asetTransferTestData.get("Update Data Set 1"), "AssetReferenceNumber",
 				asetTransferTestData.get("AssetReferenceNumber"));
-		excelDataForAssetImpairment.updateTestData("KUBS_FAT_UAT_009_009_01_D1", "AssetItemNumber",
+		excelDataForAssetImpairment.updateTestData(asetTransferTestData.get("Update Data Set 1"), "AssetItemNumber",
 				asetTransferTestData.get("AssetItemNumber"));
 	}
 
@@ -457,9 +463,9 @@ public class FIXEDASSETS_AssetUndertaking {
 	public void store_the_asset_reference_number_and_item_number_of_undertaking_asset_in_asset_revaluation_excel_database()
 			throws Throwable {
 		//Update Data Set 2
-		excelDataForAssetRevaluation.updateTestData(asetTransferTestData.get("Update Data Set 2"), "AssetReferenceNumber",
+		excelDataForAssetRevaluation.updateTestData(asetTransferTestData.get("Update Data Set 1"), "AssetReferenceNumber",
 				asetTransferTestData.get("AssetReferenceNumber"));
-		excelDataForAssetRevaluation.updateTestData(asetTransferTestData.get("Update Data Set 2"), "AssetItemNumber",
+		excelDataForAssetRevaluation.updateTestData(asetTransferTestData.get("Update Data Set 1"), "AssetItemNumber",
 				asetTransferTestData.get("AssetItemNumber"));
 	}
 

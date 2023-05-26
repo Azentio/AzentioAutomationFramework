@@ -87,10 +87,18 @@ public class VendorContractsStep {
 				aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_BP_Branch());
 		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_BP_Branch().click();
 		waithelper.waitForElementwithFluentwait(driver, kubsCommonWebELements.kubsDropdownnElementValidation());
-		kubsCommonWebELements.kubsDropdownnElementValidation().isDisplayed();
-		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_BP_Branch().sendKeys(Keys.DOWN);
-		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_BP_Branch().sendKeys(Keys.ENTER);
-
+		for (int i = 0; i <= 100; i++) {
+			try {
+				kubsCommonWebELements.kubsDropdownnElementValidation().isDisplayed();
+				aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_BP_Branch().sendKeys(Keys.DOWN);
+				aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_BP_Branch().sendKeys(Keys.ENTER);
+				break;
+			} catch (Exception e) {
+				if (i == 100) {
+					Assert.fail(e.getMessage());
+				}
+			}
+		}
 	}
 
 	@And("^fill the accountPayable_VendorContracts_ContractName$")
@@ -264,7 +272,17 @@ public class VendorContractsStep {
 				aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_HSN_Code());
 		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_HSN_Code().click();
 		waithelper.waitForElementwithFluentwait(driver, kubsCommonWebELements.kubsDropdownnElementValidation());
-		kubsCommonWebELements.kubsDropdownnElementValidation().isDisplayed();
+		for (int i = 0; i <= 100; i++) {
+			try {
+				kubsCommonWebELements.kubsDropdownnElementValidation().isDisplayed();
+				break;
+			} catch (Exception e) {
+				if (i == 100) {
+					Assert.fail(e.getMessage());
+				}
+			}
+		}
+
 		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_HSN_Code().sendKeys(Keys.DOWN);
 		aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_HSN_Code().sendKeys(Keys.ENTER);
 
@@ -448,7 +466,8 @@ public class VendorContractsStep {
 		javascripthelper.JavaScriptHelper(driver);
 		for (int i = 0; i <= 500; i++) {
 			try {
-				aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_NotificationButton().click();
+				clicksAndActionHelper.moveToElement(kubsComonObj.kubsNotificationIcon());
+				clicksAndActionHelper.clickOnElement(kubsComonObj.kubsNotificationIcon());
 				break;
 			} catch (Exception e) {
 				if (i == 500) {
@@ -654,7 +673,7 @@ public class VendorContractsStep {
 		// aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_NotificationButton());
 		for (int i = 0; i < 30; i++) {
 			try {
-				aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_NotificationButton().click();
+				kubsCommonWebELements.kubsNotificationIcon().click();
 				break;
 			} catch (Exception e) {
 				if (i == 29) {

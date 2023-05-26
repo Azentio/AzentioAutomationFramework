@@ -54,8 +54,11 @@ public class FixedAsset_AssetCategory extends BaseClass {
 	KUBS_CommonWebElements kubsCommonObj = new KUBS_CommonWebElements(driver);
 	ExcelData excelDataAssetCode = new ExcelData(path, "FixedAsset_AssetCodeConfig", "DataSet ID");
 	Map<String, String> testMap = new HashMap<>();
-	KUBS_CommonWebElements kubsCommonWebElements= new KUBS_CommonWebElements(driver);
+	Map<String,String> tags= new HashMap<>();
+	KUBS_CommonWebElements kubsCommonWebElements = new KUBS_CommonWebElements(driver);
 	ExcelData excelDataAssetCategoryForTransfer = new ExcelData(path, "AssetTransfer_ExecutionTracker", "TestCaseID");
+	ExcelData excelDataAssetCategoryForImapirement = new ExcelData(path, "AssetImpairement_ExecutionTrack", "TestCaseID");
+	ExcelData excelDataAssetCategoryForRevaluation = new ExcelData(path, "AssetRevaluation_ExecutionTrack", "TestCaseID");
 	Map<String, String> DataSetID = new HashMap<>();
 
 	@And("^get the test data for asset catogory creation Test Data$")
@@ -81,7 +84,8 @@ public class FixedAsset_AssetCategory extends BaseClass {
 
 	@And("^get the test data for asset catogory creation Test Data for asset Revaluation$")
 	public void get_the_test_data_for_asset_catogory_creation_test_data_for_asset_revaluation() throws Throwable {
-		assetcatogoryTestdata = excelData.getTestdata("KUBS_FAT_UAT_002_002_D6");
+		DataSetID=excelDataAssetCategoryForRevaluation.getTestdata("KUBS_FAT_UAT_002_002_01_ReValuation");
+		assetcatogoryTestdata = excelData.getTestdata(DataSetID.get("Data Set ID"));
 	}
 
 	@And("^get the test data for asset catogory creation Test Data for asset transfer undertaking$")
@@ -139,7 +143,7 @@ public class FixedAsset_AssetCategory extends BaseClass {
 
 	@And("^store the asset code for asset code configuration for asset revaluation$")
 	public void store_the_asset_code_for_asset_code_configuration_for_asset_revaluation() throws Throwable {
-		excelDataAssetCode.updateTestData("KUBS_FAT_UAT_002_003_D6", "AssetCode",
+		excelDataAssetCode.updateTestData(assetcatogoryTestdata.get("Update Data Set 1"), "AssetCode",
 				assetcatogoryTestdata.get("Asset_Code"));
 	}
 
@@ -148,7 +152,7 @@ public class FixedAsset_AssetCategory extends BaseClass {
 			throws Throwable {
 		excelDataAssetCode.updateTestData(assetcatogoryTestdata.get("Update Data Set 1"), "AssetCode",
 				assetcatogoryTestdata.get("Asset_Code"));
-		
+
 	}
 
 	@And("^store the asset code for asset code configuration for asset allocation$")
@@ -166,19 +170,22 @@ public class FixedAsset_AssetCategory extends BaseClass {
 	@And("^store the asset code for asset code configuration in impairment asset code config$")
 	public void store_the_asset_code_for_asset_code_configuration_in_impairment_asset_code_config() throws Throwable {
 		System.out.println("Asset Code " + assetcatogoryTestdata.get("Asset_Code"));
-
-		excelDataAssetCode.updateTestData("KUBS_FAT_UAT_002_003_D2", "AssetCode",
+		
+		excelDataAssetCode.updateTestData(assetcatogoryTestdata.get("Update Data Set 1"), "AssetCode",
 				assetcatogoryTestdata.get("Asset_Code"));
 	}
 
 	@And("^get the test data for asset catogory creation for asset impairment$")
 	public void get_the_test_data_for_asset_catogory_creation_for_asset_impairment() throws Throwable {
-		assetcatogoryTestdata = excelData.getTestdata("KUBS_FAT_UAT_002_002_D2");
+		tags=excelDataAssetCategoryForImapirement.getTestdata("KUBS_FAT_UAT_002_002_01");
+		System.out.println("Data Set ID "+tags.get("Data Set ID"));
+		assetcatogoryTestdata = excelData.getTestdata(tags.get("Data Set ID"));
 	}
 
 	@And("^select the data from Asset category dropdown$")
 	public void select_the_data_from_asset_category_dropdown() throws Throwable {
 		String xpath = "//ng-dropdown-panel//div[text()='" + assetcatogoryTestdata.get("Assetcategory") + "']";
+		System.out.println("Catgory " + assetcatogoryTestdata.get("Assetcategory"));
 		waitHelper.waitForElementwithFluentwait(driver,
 				fixedAsset_AssetCategoryObj.fixedAsset_AssetCategory_AssetCategoryInputField());
 		fixedAsset_AssetCategoryObj.fixedAsset_AssetCategory_AssetCategoryInputField().click();
@@ -200,11 +207,36 @@ public class FixedAsset_AssetCategory extends BaseClass {
 	@And("^select the data from Asset sub category$")
 	public void select_the_data_from_asset_sub_category() throws Throwable {
 		waitHelper.waitForElementwithFluentwait(driver,
-				fixedAsset_AssetCategoryObj.fixedAsset_AssetCategory_AssetSubCategory());
-		fixedAsset_AssetCategoryObj.fixedAsset_AssetCategory_AssetSubCategory().click();
-		fixedAsset_AssetCategoryObj.fixedAsset_AssetCategory_AssetSubCategory()
-				.sendKeys(assetcatogoryTestdata.get("AssetSubCategory"));
-		for (int i = 0; i <= 100; i++) {
+				fixedAsset_AssetCategoryObj.fixedAssetAssetSubCategoryDownArrow());
+		for (int i = 0; i <= 300; i++) {
+			try {
+				clicksAndActionHelper.moveToElement(fixedAsset_AssetCategoryObj.fixedAssetAssetSubCategoryDownArrow());
+				clicksAndActionHelper.clickOnElement(fixedAsset_AssetCategoryObj.fixedAssetAssetSubCategoryDownArrow());
+				break;
+			} catch (Exception e) {
+				if (i == 300) {
+					Assert.fail(e.getMessage());
+				}
+			}
+
+		}
+		for (int i = 0; i <= 300; i++) {
+			try {
+				clicksAndActionHelper.moveToElement(fixedAsset_AssetCategoryObj.fixedAsset_AssetCategory_AssetSubCategory());
+				clicksAndActionHelper.clickOnElement(fixedAsset_AssetCategoryObj.fixedAsset_AssetCategory_AssetSubCategory());
+				fixedAsset_AssetCategoryObj.fixedAsset_AssetCategory_AssetSubCategory()
+						.sendKeys(assetcatogoryTestdata.get("AssetSubCategory"));
+				break;
+			} catch (Exception e) {
+				if (i == 300) {
+					Assert.fail(e.getMessage());
+				}
+			}
+
+		}
+		
+
+		for (int i = 0; i <= 500; i++) {
 			try {
 				clickAndActionsHelper.moveToElement(driver.findElement(
 						By.xpath("//div[text()='" + assetcatogoryTestdata.get("AssetSubCategory") + "']")));
@@ -212,7 +244,7 @@ public class FixedAsset_AssetCategory extends BaseClass {
 						By.xpath("//div[text()='" + assetcatogoryTestdata.get("AssetSubCategory") + "']")));
 				break;
 			} catch (Exception e) {
-				if (i == 100) {
+				if (i == 500) {
 					Assert.fail(e.getMessage());
 				}
 			}

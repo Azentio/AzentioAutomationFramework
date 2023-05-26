@@ -62,8 +62,13 @@ public class FIXEDASSET_AssetReturn extends BaseClass {
 	ExcelData excelDataForAssetReturn = new ExcelData(path, "FixedAsset_AssetReturn", "DataSet ID");
 	ExcelData excelDataForAssetImpairment = new ExcelData(path, "FixedAsset_AssetImpairement", "DataSet ID");
 	ExcelData excelDataForAssetRevaluation = new ExcelData(path, "FixedAsset_AssetReValuation", "DataSet ID");
+	ExcelData excelDataForAssetImpairementExecution = new ExcelData(path, "AssetImpairement_ExecutionTrack",
+			"TestCaseID");
+	ExcelData excelDataForAssetRevaluationExecution = new ExcelData(path, "AssetRevaluation_ExecutionTrack",
+			"TestCaseID");
 	Map<String, String> assetReturnTestdata = new HashMap<>();
 	Map<String, String> assetReturnReportTestdata = new HashMap<>();
+	Map<String, String> dataSetID = new HashMap<>();
 	BrowserHelper browserHelper = new BrowserHelper(driver);
 
 	@Given("^Navigate the Azentio url$")
@@ -98,7 +103,8 @@ public class FIXEDASSET_AssetReturn extends BaseClass {
 	@And("^get the test data for asset return from excel database for asset impairment prerequsite$")
 	public void get_the_test_data_for_asset_return_from_excel_database_for_asset_impairment_prerequsite()
 			throws Throwable {
-		assetReturnTestdata = excelDataForAssetReturn.getTestdata("KUBS_FAT_UAT_007_001_01_D2");
+		dataSetID = excelDataForAssetImpairementExecution.getTestdata("KUBS_FAT_UAT_007_001_01_Impairment");
+		assetReturnTestdata = excelDataForAssetReturn.getTestdata(dataSetID.get("Data Set ID"));
 
 	}
 
@@ -119,7 +125,7 @@ public class FIXEDASSET_AssetReturn extends BaseClass {
 
 	@And("^get the test data for assset return which is already impaired$")
 	public void get_the_test_data_for_assset_return_which_is_already_impaired() throws Throwable {
-		                                                         //KUBS_FAT_UAT_007_004_01_D1
+		// KUBS_FAT_UAT_007_004_01_D1
 		assetReturnTestdata = excelDataForAssetReturn.getTestdata("KUBS_FAT_UAT_007_004_01_D1");
 	}
 
@@ -135,7 +141,8 @@ public class FIXEDASSET_AssetReturn extends BaseClass {
 
 	@And("^get the test data for assset return for prerequisite of asset revaluation$")
 	public void get_the_test_data_for_assset_return_for_prerequisite_of_asset_revaluation() throws Throwable {
-		assetReturnTestdata = excelDataForAssetReturn.getTestdata("KUBS_FAT_UAT_007_001_01_D3");
+		dataSetID=excelDataForAssetRevaluationExecution.getTestdata("KUBS_FAT_UAT_007_006_01_revaluation");
+		assetReturnTestdata = excelDataForAssetReturn.getTestdata(dataSetID.get("Data Set ID"));
 	}
 
 	@And("^enter the asset reference number in asset return$")
@@ -302,8 +309,7 @@ public class FIXEDASSET_AssetReturn extends BaseClass {
 
 	@And("^search the asset reference number in asset return module$")
 	public void search_the_asset_reference_number_in_asset_return_module() throws Throwable {
-		waitHelper.waitForElementwithFluentwait(driver,
-				assetReturnObj.assetReturnListViewSearchAssetReferenceNumber());
+		waitHelper.waitForElementwithFluentwait(driver, assetReturnObj.assetReturnListViewSearchAssetReferenceNumber());
 		clicksAndActionHelper.moveToElement(assetReturnObj.assetReturnListViewSearchAssetReferenceNumber());
 		clicksAndActionHelper.clickOnElement(assetReturnObj.assetReturnListViewSearchAssetReferenceNumber());
 		assetReturnObj.assetReturnListViewSearchAssetReferenceNumber()
@@ -422,8 +428,6 @@ public class FIXEDASSET_AssetReturn extends BaseClass {
 		assetReturnObj.fixed_MakerNotification().click();
 	}
 
-	
-
 	@And("^Approve the Asset Return Record$")
 	public void approve_the_asset_return_record() throws Throwable {
 		// ---------------SUBMIT RECORD--------------//
@@ -431,8 +435,6 @@ public class FIXEDASSET_AssetReturn extends BaseClass {
 		assetReturnObj.fixed_Submit().click();
 
 	}
-
-	
 
 	@And("^Reviewer Notification icon button$")
 	public void reviewer_notification_icon_button() throws Throwable {
@@ -445,10 +447,6 @@ public class FIXEDASSET_AssetReturn extends BaseClass {
 		System.out.println("Referance_id:" + referance_id);
 		Assert.assertTrue(reviewerObj.reviewer_referanceid().isDisplayed());
 	}
-
-	
-
-	
 
 	@Given("^Launch the Azentio Checker URL$")
 	public void launch_the_azentio_checker_url() throws Throwable {
@@ -472,8 +470,6 @@ public class FIXEDASSET_AssetReturn extends BaseClass {
 		checkerObj.checkerActionIcon().click();
 	}
 
-	
-
 	@And("^Click Checker Notification icon button$")
 	public void click_checker_notification_icon_button() throws Throwable {
 		// ----------------CHECKER NOTIFICATION-----------------------//
@@ -482,7 +478,6 @@ public class FIXEDASSET_AssetReturn extends BaseClass {
 		javaScriptHelper.JavaScriptHelper(driver);
 		javaScriptHelper.JSEClick(checkerObj.checkerNotificationIcon());
 	}
-
 
 	@And("^Click Approve icon button$")
 	public void click_approve_icon_button() throws Throwable {
@@ -625,15 +620,16 @@ public class FIXEDASSET_AssetReturn extends BaseClass {
 	@And("^choose item number for the asset$")
 	public void choose_item_number_for_the_asset() throws Throwable {
 		assetReturnObj.assetReturnAssetItemNo().click();
-	
+
 		assetReturnObj.assetReturnAssetItemNo().sendKeys(Keys.DOWN);
 		assetReturnObj.assetReturnAssetItemNo().sendKeys(Keys.ENTER);
 	}
 
 	@Then("^Click on fixed asset deallocaion  Direction icon$")
 	public void click_on_fixed_asset_deallocaion_direction_icon_AssetReturn() throws InterruptedException, IOException {
-		
-		waitHelper.waitForElementwithFluentwait(driver, fixedAsset_AssetDeallocationObj.fixedAsset_AssetDeallocation_DirectionIcon());
+
+		waitHelper.waitForElementwithFluentwait(driver,
+				fixedAsset_AssetDeallocationObj.fixedAsset_AssetDeallocation_DirectionIcon());
 		fixedAsset_AssetDeallocationObj.fixedAsset_AssetDeallocation_DirectionIcon().click();
 
 	}
@@ -641,16 +637,16 @@ public class FIXEDASSET_AssetReturn extends BaseClass {
 	@Then("^Click on Fixed assets field$")
 	public void click_on_fixed_assets_field() throws IOException {
 		// Fixed Assets
-		waitHelper.waitForElementwithFluentwait(driver, fixedAsset_AssetDeallocationObj.fixedAsset_AssetDeallocation_FixedAssetsField());
+		waitHelper.waitForElementwithFluentwait(driver,
+				fixedAsset_AssetDeallocationObj.fixedAsset_AssetDeallocation_FixedAssetsField());
 		fixedAsset_AssetDeallocationObj.fixedAsset_AssetDeallocation_FixedAssetsField().click();
 
 	}
 
-
-
 	@Then("^Click on Fixed Asset Save button for de allocation$")
 	public void click_on_fixed_asset_save_button_Deallocation() throws Throwable {
-		waitHelper.waitForElementwithFluentwait(driver,fixedAsset_AssetDeallocationObj.fixedAssetDeAllocationSaveButton());
+		waitHelper.waitForElementwithFluentwait(driver,
+				fixedAsset_AssetDeallocationObj.fixedAssetDeAllocationSaveButton());
 		fixedAsset_AssetDeallocationObj.fixedAssetDeAllocationSaveButton().click();
 	}
 
@@ -658,9 +654,9 @@ public class FIXEDASSET_AssetReturn extends BaseClass {
 	public void click_on_save_after_fill_all_the_asset() throws Throwable {
 
 		System.out.println("The asset reference number is" + assetReferenceNo.get("AssetReferenceNumber"));
-		waitHelper.waitForElementwithFluentwait(driver,assetReturnObj.fixetReturnSaveButton());
+		waitHelper.waitForElementwithFluentwait(driver, assetReturnObj.fixetReturnSaveButton());
 		assetReturnObj.fixetReturnSaveButton().click();
-		
+
 		for (int i = 0; i < 90; i++) {
 			try {
 				clicksAndActionHelper.moveToElement(assetReturnObj.fixedAsset_AssetReturn_WorkflowInitiated());
@@ -759,8 +755,7 @@ public class FIXEDASSET_AssetReturn extends BaseClass {
 //return report
 	@And("^store the returned asset reference number$")
 	public void store_the_returned_asset_reference_number() throws Throwable {
-		waitHelper.waitForElementwithFluentwait(driver,
-				assetReturnObj.assetReturnApprovedAssetReferenceNumber());
+		waitHelper.waitForElementwithFluentwait(driver, assetReturnObj.assetReturnApprovedAssetReferenceNumber());
 		String approvedAssetReferenceNumber = assetReturnObj.assetReturnApprovedAssetReferenceNumber().getText();
 
 		assetReturnReportTestdata.put("approvedAssetReferenceNumber", approvedAssetReferenceNumber);
@@ -830,8 +825,7 @@ public class FIXEDASSET_AssetReturn extends BaseClass {
 		waitHelper.waitForElementwithFluentwait(driver, assetReturnObj.assetReturnReportItemNumber());
 		assetReturnObj.assetReturnReportItemNumber().click();
 		assetReturnObj.assetReturnReportItemNumber().sendKeys(assetReturnReportTestdata.get("approvedItemNumber"));
-		String xpath = "//ng-dropdown-panel//div[text()='" + assetReturnReportTestdata.get("approvedItemNumber")
-				+ "']";
+		String xpath = "//ng-dropdown-panel//div[text()='" + assetReturnReportTestdata.get("approvedItemNumber") + "']";
 
 		for (int i = 0; i <= 100; i++) {
 			try {
