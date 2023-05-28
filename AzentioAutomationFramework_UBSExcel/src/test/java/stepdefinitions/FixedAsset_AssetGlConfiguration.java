@@ -47,6 +47,10 @@ public class FixedAsset_AssetGlConfiguration extends BaseClass {
 	Map<String, String> dataSetID = new HashMap<>();
 	ExcelData excelDataAssetGlForTransfer = new ExcelData(excelPath, "AssetTransfer_ExecutionTracker", "TestCaseID");
 	ExcelData excelDataAssetGlForRevaluation = new ExcelData(excelPath, "AssetRevaluation_ExecutionTrack", "TestCaseID");
+	ExcelData excelDataAlocDeAllocExecution = new ExcelData(excelPath, "AssetAllocDeAlloc_ExeTracker", "TestCaseID");
+	ExcelData excelDataAssetReturnExecution = new ExcelData(excelPath, "AssetReturn_ExecutionTrack", "TestCaseID");
+	ExcelData excelDataAssetAmendmentExecution = new ExcelData(excelPath, "AssetAmendment_EXecutionTrack", "TestCaseID");
+	ExcelData excelDataAssetCreationExecution = new ExcelData(excelPath, "AssetCreation_ExecutionTrack", "TestCaseID");
 	BrowserHelper browserHelper = new BrowserHelper(driver);
 
 	@Then("^Click on Asset GL configuration Eye button$")
@@ -109,18 +113,21 @@ public class FixedAsset_AssetGlConfiguration extends BaseClass {
 	// New
 	@And("^get the testData for fixed asset gl configuration module$")
 	public void get_the_testdata_for_fixed_asset_gl_configuration_module() throws Throwable {
-		glConfigTestData = exceldataforGLConfig.getTestdata("KUBS_FAT_UAT_002_004_D1");
+		dataSetID=excelDataAssetCreationExecution.getTestdata("KUBS_FAT_UAT_002_004_01");
+		glConfigTestData = exceldataforGLConfig.getTestdata(dataSetID.get("Data Set ID"));
 	}
 
 	@And("^get the testData for fixed asset gl configuration module for asset sold accounting entries$")
 	public void get_the_testdata_for_fixed_asset_gl_configuration_module_for_asset_sold_accounting_entries()
 			throws Throwable {
-		glConfigTestData = exceldataforGLConfig.getTestdata("KUBS_FAT_UAT_002_004_D1");
+		dataSetID=excelDataAssetCreationExecution.getTestdata("KUBS_FAT_UAT_004_002");
+		glConfigTestData = exceldataforGLConfig.getTestdata(dataSetID.get("Data Set ID"));
 	}
 
 	@And("^get the testData for fixed asset gl configuration module for asset ammendment$")
 	public void get_the_testdata_for_fixed_asset_gl_configuration_module_for_asset_ammendment() throws Throwable {
-		glConfigTestData = exceldataforGLConfig.getTestdata("KUBS_FAT_UAT_002_004_D5");
+		dataSetID=excelDataAssetAmendmentExecution.getTestdata("KUBS_FAT_UAT_002_004_01_AssetAmmendment");
+		glConfigTestData = exceldataforGLConfig.getTestdata(dataSetID.get("Data Set ID"));
 	}
 
 	@And("^get the testData for fixed asset gl configuration module for asset revaluation$")
@@ -138,12 +145,14 @@ public class FixedAsset_AssetGlConfiguration extends BaseClass {
 
 	@And("^get the testData for fixed asset gl configuration module for asset allocation$")
 	public void get_the_testdata_for_fixed_asset_gl_configuration_module_for_asset_allocation() throws Throwable {
-		glConfigTestData = exceldataforGLConfig.getTestdata("KUBS_FAT_UAT_002_004_D4");
+		dataSetID=excelDataAlocDeAllocExecution.getTestdata("KUBS_FAT_UAT_002_004_01Allocation");
+		glConfigTestData = exceldataforGLConfig.getTestdata(dataSetID.get("Data Set ID"));
 	}
 
 	@And("^get the testData for fixed asset gl configuration module for asset return$")
 	public void get_the_testdata_for_fixed_asset_gl_configuration_module_for_asset_return() throws Throwable {
-		glConfigTestData = exceldataforGLConfig.getTestdata("KUBS_FAT_UAT_002_004_D3");
+		dataSetID=excelDataAssetReturnExecution.getTestdata("KUBS_FAT_UAT_002_004_01_Return");
+		glConfigTestData = exceldataforGLConfig.getTestdata(dataSetID.get("Data Set ID"));
 	}
 
 	@And("^get the testData for fixed asset gl configuration module to do asset impairment$")
@@ -471,21 +480,23 @@ public class FixedAsset_AssetGlConfiguration extends BaseClass {
 
 	@And("^store the asset reference number in gl serial number config excel database$")
 	public void store_the_asset_reference_number_in_gl_serial_number_config_excel_database() throws Throwable {
-		excelDataForGlSerialNum.updateTestData("KUBS_FAT_UAT_002_005_D1", "AssetCode",
+		//Update Data Set 1
+		excelDataForGlSerialNum.updateTestData(glConfigTestData.get("Update Data Set 1"), "AssetCode",
 				glConfigTestData.get("AssetCode"));
 	}
 
 	@And("^store the asset reference number in gl serial number config excel database for asset allocation$")
 	public void store_the_asset_reference_number_in_gl_serial_number_config_excel_database_for_asset_allocation()
 			throws Throwable {
-		excelDataForGlSerialNum.updateTestData("KUBS_FAT_UAT_002_005_D4", "AssetCode",
+		excelDataForGlSerialNum.updateTestData(glConfigTestData.get("Update Data Set 1"), "AssetCode",
 				glConfigTestData.get("AssetCode"));
 	}
 
 	@And("^store the asset reference number in gl serial number config excel database for asset ammendment$")
 	public void store_the_asset_reference_number_in_gl_serial_number_config_excel_database_for_asset_ammendment()
 			throws Throwable {
-		excelDataForGlSerialNum.updateTestData("KUBS_FAT_UAT_002_005_D5", "AssetCode",
+		//Update Data Set 1
+		excelDataForGlSerialNum.updateTestData(glConfigTestData.get("Update Data Set 1"), "AssetCode",
 				glConfigTestData.get("AssetCode"));
 	}
 
@@ -505,8 +516,8 @@ public class FixedAsset_AssetGlConfiguration extends BaseClass {
 
 	@And("^store the asset reference number in gl serial number config excel database for asset return$")
 	public void store_the_asset_reference_number_in_gl_serial_number_config_excel_database_for_asset_return()
-			throws Throwable {
-		excelDataForGlSerialNum.updateTestData("KUBS_FAT_UAT_002_005_D3", "AssetCode",
+			throws Throwable {//Update Data Set 1
+		excelDataForGlSerialNum.updateTestData(glConfigTestData.get("Update Data Set 1"), "AssetCode",
 				glConfigTestData.get("AssetCode"));
 	}
 
@@ -558,8 +569,8 @@ public class FixedAsset_AssetGlConfiguration extends BaseClass {
 
 	@And("^get the test data for accounting entries test case for asset return$")
 	public void get_the_test_data_for_accounting_entries_test_case_for_asset_return() throws Throwable {
-
-		glAccountingTestData = excelDatForAssetReturn.getTestdata("KUBS_FAT_UAT_007_001_01_D10");
+		dataSetID=excelDataAssetReturnExecution.getTestdata("KUBS_FAT_UAT_007_009");
+		glAccountingTestData = excelDatForAssetReturn.getTestdata(dataSetID.get("Data Set ID"));
 	}
 
 	@And("^choose branch as azentio main in accounting entries screen$")

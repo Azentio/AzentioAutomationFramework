@@ -49,8 +49,10 @@ public class VendorContractsStep {
 	String excelPath = System.getProperty("user.dir") + "\\Test-data\\KUBSTestData.xlsx";
 	ExcelData excelData = new ExcelData(excelPath, "ContractTestData", "Data Set ID");
 	ExcelData excelDataForPo = new ExcelData(excelPath, "POCreationTestData", "Data Set ID");
+	ExcelData excelDataAssetConfigExecution = new ExcelData(excelPath, "AssetConfig_ExecutionTrack", "TestCaseID");
 	Map<String, String> testData;
 	Map<String, String> contractReportTestdata = new HashMap<>();
+	Map<String, String> dataSetID = new HashMap<>();
 	KUBS_CommonWebElements kubsComonObj = new KUBS_CommonWebElements(driver);
 
 	@And("^fill the accountPayable_VendorContracts_ExpenseType$")
@@ -480,9 +482,9 @@ public class VendorContractsStep {
 				aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_FirstReferenceId());
 		String id = aCCOUNTSPAYABLE_VendorContractsObj.accountPayable_VendorContracts_FirstReferenceId().getText();
 		System.out.println("Reference ID:" + id);
-
-		excelData.updateTestData("KUBS_FAT_UAT_001_002_01_D1", "Reference ID", id);
-		testData = excelData.getTestdata("KUBS_FAT_UAT_001_002_01_D1");
+//Update Data Set 2
+		excelData.updateTestData(testData.get("Update Data Set 2"), "Reference ID", id);
+		testData = excelData.getTestdata(testData.get("Update Data Set 2"));
 
 //		for (int i = 1; i <= 35; i++) {
 //			try {
@@ -541,14 +543,15 @@ public class VendorContractsStep {
 		System.out.println(reviewerId);
 		// jsonWriter = new JsonDataReaderWriter();
 		// jsonWriter.addData(reviewerId);
-		excelData.updateTestData("KUBS_FAT_UAT_001_002_01_D1", "Reviewer ID", reviewerId);
-		testData = excelData.getTestdata("KUBS_FAT_UAT_001_002_01_D1");
+		excelData.updateTestData(testData.get("Update Data Set 2"), "Reviewer ID", reviewerId);
+		testData = excelData.getTestdata(testData.get("Update Data Set 2"));
 
 	}
 
 	@And("^User get the test data for Contract creation Testcase1$")
 	public void user_get_the_test_data_for_contract_creation_testcase1() throws Throwable {
-		testData = excelData.getTestdata("KUBS_FAT_UAT_001_002_01_D1");
+		dataSetID=excelDataAssetConfigExecution.getTestdata("KUBS_FAT_UAT_001_002_01");
+		testData = excelData.getTestdata(dataSetID.get("Data Set ID"));
 	}
 
 	@And("^User get the test data for Contract creation Testcase3$")
@@ -558,7 +561,8 @@ public class VendorContractsStep {
 
 	@And("^User get the test data for Contract creation Testcase4$")
 	public void user_get_the_test_data_for_contract_creation_testcase4() throws Throwable {
-		testData = excelData.getTestdata("KUBS_FAT_UAT_001_002_04_D1");
+		dataSetID=excelDataAssetConfigExecution.getTestdata("KUBS_FAT_UAT_001_002_01");
+		testData = excelData.getTestdata(dataSetID.get("Data Set ID"));
 	}
 
 	@Then("^search vendor contract details by business partner name$")
@@ -601,8 +605,9 @@ public class VendorContractsStep {
 				.getText();
 		System.out.println("Bp Name : " + approvedBpname);
 		System.out.println("Contract : " + ContractDes);
-		excelDataForPo.updateTestData("KUBS_FAT_UAT_001_003_01_D1", "BpName", approvedBpname);
-		excelDataForPo.updateTestData("KUBS_FAT_UAT_001_003_01_D1", "Contract", ContractDes);
+		
+		excelDataForPo.updateTestData(testData.get("Update Data Set 1"), "BpName", approvedBpname);
+		excelDataForPo.updateTestData(testData.get("Update Data Set 1"), "Contract", ContractDes);
 	}
 
 	@And("^User should go to the kubs url and login as a reviewer user$")
@@ -732,7 +737,8 @@ public class VendorContractsStep {
 
 	@And("^User get the test data for Contract creation Testcase2$")
 	public void user_get_the_test_data_for_contract_creation_testcase2() throws Throwable {
-		testData = excelData.getTestdata("KUBS_FAT_UAT_001_002_02_D1");
+		dataSetID=excelDataAssetConfigExecution.getTestdata("KUBS_FAT_UAT_001_002_02");
+		testData = excelData.getTestdata(dataSetID.get("Data Set ID"));
 	}
 
 	@And("^Click on security management in checker$")

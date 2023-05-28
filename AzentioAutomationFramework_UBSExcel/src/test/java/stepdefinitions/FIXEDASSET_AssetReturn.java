@@ -66,6 +66,8 @@ public class FIXEDASSET_AssetReturn extends BaseClass {
 			"TestCaseID");
 	ExcelData excelDataForAssetRevaluationExecution = new ExcelData(path, "AssetRevaluation_ExecutionTrack",
 			"TestCaseID");
+	ExcelData excelDataAssetReturnExecution = new ExcelData(path, "AssetReturn_ExecutionTrack", "TestCaseID");
+	
 	Map<String, String> assetReturnTestdata = new HashMap<>();
 	Map<String, String> assetReturnReportTestdata = new HashMap<>();
 	Map<String, String> dataSetID = new HashMap<>();
@@ -97,7 +99,8 @@ public class FIXEDASSET_AssetReturn extends BaseClass {
 
 	@And("^get the test data for asset return from excel database$")
 	public void get_the_test_data_for_asset_return_from_excel_database() throws Throwable {
-		assetReturnTestdata = excelDataForAssetReturn.getTestdata("KUBS_FAT_UAT_007_001_01_D1");
+		dataSetID=excelDataAssetReturnExecution.getTestdata("KUBS_FAT_UAT_007_001_01");
+		assetReturnTestdata = excelDataForAssetReturn.getTestdata(dataSetID.get("Data Set ID"));
 	}
 
 	@And("^get the test data for asset return from excel database for asset impairment prerequsite$")
@@ -110,33 +113,39 @@ public class FIXEDASSET_AssetReturn extends BaseClass {
 
 	@And("^get the test data for asset return which is done asset ammendment$")
 	public void get_the_test_data_for_asset_return_which_is_done_asset_ammendment() throws Throwable {
-		assetReturnTestdata = excelDataForAssetReturn.getTestdata("KUBS_FAT_UAT_007_003_01_D1");
+		dataSetID = excelDataAssetReturnExecution.getTestdata("KUBS_FAT_UAT_007_003_01");
+		assetReturnTestdata = excelDataForAssetReturn.getTestdata(dataSetID.get("Data Set ID"));
 	}
 
 	@And("^get the test data for assset return which is already revalued$")
 	public void get_the_test_data_for_assset_return_which_is_already_revalued() throws Throwable {
-		assetReturnTestdata = excelDataForAssetReturn.getTestdata("KUBS_FAT_UAT_007_002_01_D1");
+		dataSetID = excelDataAssetReturnExecution.getTestdata("KUBS_FAT_UAT_007_002_01");
+		assetReturnTestdata = excelDataForAssetReturn.getTestdata(dataSetID.get("Data Set ID"));
 	}
 
 	@And("^get the test data for assset return which is already undertaken$")
 	public void get_the_test_data_for_assset_return_which_is_already_undertaken() throws Throwable {
-		assetReturnTestdata = excelDataForAssetReturn.getTestdata("KUBS_FAT_UAT_007_007_01_D1");
+		dataSetID = excelDataAssetReturnExecution.getTestdata("KUBS_FAT_UAT_007_007_01");
+		assetReturnTestdata = excelDataForAssetReturn.getTestdata(dataSetID.get("Data Set ID"));
 	}
 
 	@And("^get the test data for assset return which is already impaired$")
 	public void get_the_test_data_for_assset_return_which_is_already_impaired() throws Throwable {
 		// KUBS_FAT_UAT_007_004_01_D1
-		assetReturnTestdata = excelDataForAssetReturn.getTestdata("KUBS_FAT_UAT_007_004_01_D1");
+		dataSetID=excelDataAssetReturnExecution.getTestdata("KUBS_FAT_UAT_007_004_01");
+		assetReturnTestdata = excelDataForAssetReturn.getTestdata(dataSetID.get("Data Set ID"));
 	}
 
 	@And("^get the test data for assset return which is already replacement$")
 	public void get_the_test_data_for_assset_return_which_is_already_replacement() throws Throwable {
-		assetReturnTestdata = excelDataForAssetReturn.getTestdata("KUBS_FAT_UAT_007_005_01_D1");
+		dataSetID=excelDataAssetReturnExecution.getTestdata("KUBS_FAT_UAT_007_005_01");
+		assetReturnTestdata = excelDataForAssetReturn.getTestdata(dataSetID.get("Data Set ID"));
 	}
 
 	@And("^get the test data for assset return which is already deallocated$")
 	public void get_the_test_data_for_assset_return_which_is_already_deallocated() throws Throwable {
-		assetReturnTestdata = excelDataForAssetReturn.getTestdata("KUBS_FAT_UAT_007_006_01_D1");
+		dataSetID=excelDataAssetReturnExecution.getTestdata("KUBS_FAT_UAT_007_006_01");
+		assetReturnTestdata = excelDataForAssetReturn.getTestdata(dataSetID.get("Data Set ID"));
 	}
 
 	@And("^get the test data for assset return for prerequisite of asset revaluation$")

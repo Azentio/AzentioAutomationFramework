@@ -40,6 +40,8 @@ public class FIXEDASSETS_AssetSale {
 	ExcelData excelDatForAssetAllocation = new ExcelData(path, "FixedAsset_AssetAllocation", "DataSet ID");
 	ExcelData excelDatForAssetImpairementExecution = new ExcelData(path, "AssetImpairement_ExecutionTrack", "TestCaseID");
 	ExcelData excelDatForAssetRevaluationExecution = new ExcelData(path, "AssetRevaluation_ExecutionTrack", "TestCaseID");
+	ExcelData excelDataAlocDeAllocExecution = new ExcelData(path, "AssetAllocDeAlloc_ExeTracker", "TestCaseID");
+	ExcelData excelDataAssetCreationExecution = new ExcelData(path, "AssetCreation_ExecutionTrack", "TestCaseID");
 	KUBS_CommonWebElements kubsCommonObj = new KUBS_CommonWebElements(driver);
 
 	@And("^user should navigate to fixed asset menu$")
@@ -77,7 +79,8 @@ public class FIXEDASSETS_AssetSale {
 //New With excel Start
 	@And("^get the test data for asset sale with high price from excel database$")
 	public void get_the_test_data_for_asset_sale_with_high_price_from_excel_database() throws Throwable {
-		assetSaleTestData = excelDatForAssetSale.getTestdata("KUBS_FAT_UAT_004_001_01_D1");
+		dataSetID=excelDataAssetCreationExecution.getTestdata("KUBS_FAT_UAT_004_001_01");
+		assetSaleTestData = excelDatForAssetSale.getTestdata(dataSetID.get("Data Set ID"));
 	}
 
 	@And("^get the test data for asset sale from excel database for the pre requisite of asset revaluation$")
@@ -96,13 +99,15 @@ public class FIXEDASSETS_AssetSale {
 
 	@And("^get the test data for asset sale with low price from excel database$")
 	public void get_the_test_data_for_asset_sale_with_low_price_from_excel_database() throws Throwable {
-		assetSaleTestData = excelDatForAssetSale.getTestdata("KUBS_FAT_UAT_004_003_01_D1");
+		dataSetID=excelDatForAssetImpairementExecution.getTestdata("KUBS_FAT_UAT_004_003_01");
+		assetSaleTestData = excelDatForAssetSale.getTestdata(dataSetID.get("Data Set ID"));
 	}
 
 	@And("^get the test data for asset sale with high price from excel database for pre requiste of asset de allocation$")
 	public void get_the_test_data_for_asset_sale_with_high_price_from_excel_database_for_pre_requiste_of_asset_de_allocation()
 			throws Throwable {
-		assetSaleTestData = excelDatForAssetSale.getTestdata("KUBS_FAT_UAT_004_003_01_D4");
+		dataSetID=excelDataAlocDeAllocExecution.getTestdata("KUBS_FAT_UAT_004_001_01_AssetSaleCreation");
+		assetSaleTestData = excelDatForAssetSale.getTestdata(dataSetID.get("Data Set ID"));
 	}
 
 	@Then("^verify maker user can able to see the approved asset sale record which is sold at high price in maker list view$")
@@ -338,9 +343,10 @@ public class FIXEDASSETS_AssetSale {
 	@And("^Store the asset reference number and asset item number of asset sale in asset allocation excel database$")
 	public void store_the_asset_reference_number_and_asset_item_number_of_asset_sale_in_asset_allocation_excel_database()
 			throws Throwable {
-		excelDatForAssetAllocation.updateTestData("KUBS_FAT_UAT_006_003_D8", "AssetReferenceNumber",
+		//Update Data Set 1
+		excelDatForAssetAllocation.updateTestData(assetSaleTestData.get("Update Data Set 1"), "AssetReferenceNumber",
 				assetSaleTestData.get("AssetReferenceNumber"));
-		excelDatForAssetAllocation.updateTestData("KUBS_FAT_UAT_006_003_D8", "AssetItemNumber",
+		excelDatForAssetAllocation.updateTestData(assetSaleTestData.get("Update Data Set 1"), "AssetItemNumber",
 				assetSaleTestData.get("AssetItemNumber"));
 	}
 

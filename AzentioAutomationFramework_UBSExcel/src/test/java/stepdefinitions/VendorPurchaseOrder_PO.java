@@ -1,6 +1,7 @@
 package stepdefinitions;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.Map;
 
 import org.json.simple.parser.ParseException;
@@ -61,12 +62,13 @@ public class VendorPurchaseOrder_PO {
 	ExcelData excelData1 = new ExcelData(excelPath, "ContractTestData", "Data Set ID");
 	ExcelData excelDataGRNTestdata = new ExcelData(excelPath, "GRNTestData", "Data Set ID");
 	ExcelData excelDataForAssetCreation = new ExcelData(excelPath, "FixedAsset_AssetCreation", "Data Set ID");
+	ExcelData excelDataAssetConfigExecution = new ExcelData(excelPath, "AssetConfig_ExecutionTrack", "TestCaseID");
 	Map<String, String> testData1;
-
+	Map<String, String> dataSetID= new HashMap<>();
 	@And("^Get the test data for the po creation test case1$")
 	public void get_the_test_data_for_the_po_creation_test_case1() throws Throwable {
-
-		testData = excelData.getTestdata("KUBS_FAT_UAT_001_003_01_D1");
+		dataSetID=excelDataAssetConfigExecution.getTestdata("KUBS_FAT_UAT_001_003_01");
+		testData = excelData.getTestdata(dataSetID.get("Data Set ID"));
 
 	}
 
@@ -357,9 +359,9 @@ public class VendorPurchaseOrder_PO {
 		waithelper.waitForElementwithFluentwait(driver,
 				accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_ReferenceId());
 		String id = accountPayable_VendorPurchaseOrderObj.accountsPayable_VendorPurchaseOrder_ReferenceId().getText();
-
-		excelData.updateTestData("KUBS_FAT_UAT_001_003_01_D1", "Reference ID", id);
-		testData = excelData.getTestdata("KUBS_FAT_UAT_001_003_01_D1");
+//Data Set ID
+		excelData.updateTestData(testData.get("Data Set ID"), "Reference ID", id);
+		testData = excelData.getTestdata(testData.get("Data Set ID"));
 
 		System.out.println("Reference ID:" + id);
 
@@ -424,7 +426,7 @@ public class VendorPurchaseOrder_PO {
 			}
 		}
 		System.out.println(reviewerId);
-		excelData.updateTestData("KUBS_FAT_UAT_001_003_01_D1", "Reviewer ID", reviewerId);
+		excelData.updateTestData(testData.get("Data Set ID"), "Reviewer ID", reviewerId);
 
 	}
 
@@ -600,9 +602,10 @@ public class VendorPurchaseOrder_PO {
 		String bpName = accountPayable_VendorPurchaseOrderObj.accounstPayablePoCreationBpName().getText();
 		System.out.println("Aopproved Bp Name " + bpName);
 		System.out.println("Aopproved po Number " + poNumber);
-		excelDataGRNTestdata.updateTestData("KUBS_FAT_UAT_001_004_01_D1", "GRNPoNumber", poNumber);
-		excelDataGRNTestdata.updateTestData("KUBS_FAT_UAT_001_004_01_D1", "GRNbpName", bpName);
-		excelDataForAssetCreation.updateTestData("KUBS_FAT_UAT_002_007_D8", "PONumber", poNumber);
+		//Update Data Set 1
+		excelDataGRNTestdata.updateTestData(testData.get("Update Data Set 1"), "GRNPoNumber", poNumber);
+		excelDataGRNTestdata.updateTestData(testData.get("Update Data Set 1"), "GRNbpName", bpName);
+		excelDataForAssetCreation.updateTestData(testData.get("Update Data Set 2"), "PONumber", poNumber);
 	}
 
 	@Then("^search vendor contract details by business partner name3$")

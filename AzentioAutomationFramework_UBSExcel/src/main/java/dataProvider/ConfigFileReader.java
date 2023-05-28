@@ -57,6 +57,13 @@ public String getApplicationUATUrl() {
 		else
 			throw new RuntimeException("browser not specified in the Configuration.properties file.");
 	}
+	public String getEXecutionTracker() {
+		String executionTracker = properties.getProperty("executionTracker");
+		if (executionTracker != null)
+			return executionTracker;
+		else
+			throw new RuntimeException("browser not specified in the Configuration.properties file.");
+	}
 
 	public Boolean getBrowserWindowSize() {
 		String windowSize = properties.getProperty("windowMaximize");

@@ -39,6 +39,9 @@ public class FixedAsset_AssetDeallocation extends BaseClass {
 	ExcelData excelDataForAssetWriteOff = new ExcelData(path, "FixedAsset_WriteOff", "DataSet ID");
 	ExcelData excelDataForAssetImpairementExecutionTracker = new ExcelData(path, "AssetImpairement_ExecutionTrack", "TestCaseID");
 	ExcelData excelDataForAssetRevaluationExecutionTracker = new ExcelData(path, "AssetRevaluation_ExecutionTrack", "TestCaseID");
+	ExcelData excelDataAlocDeAllocExecution = new ExcelData(path, "AssetAllocDeAlloc_ExeTracker", "TestCaseID");
+	ExcelData excelDataAssetReturnExecution = new ExcelData(path, "AssetReturn_ExecutionTrack", "TestCaseID");
+	ExcelData excelDataAssetWriteOffExecution = new ExcelData(path, "WriteOff_ExecutionTrack", "TestCaseID");
 	Map<String, String> assetDeAllocationTestData = new HashMap<>();
 	Map<String, String> dataSetID = new HashMap<>();
 	Map<String, String> assetDeAllocationReportTestData = new HashMap<>();
@@ -56,19 +59,23 @@ public class FixedAsset_AssetDeallocation extends BaseClass {
 //New Start
 	@And("^get the asset de allocation test data from excel database$")
 	public void get_the_asset_de_allocation_test_data_from_excel_database() throws Throwable {
-		assetDeAllocationTestData = excelDataForAssetDeAllocation.getTestdata("KUBS_FAT_UAT_006_005_01_D1");
+		                                                                     //KUBS_FAT_UAT_006_005_01_D1
+		dataSetID=excelDataAlocDeAllocExecution.getTestdata("KUBS_FAT_UAT_006_005_01Prereq");
+		assetDeAllocationTestData = excelDataForAssetDeAllocation.getTestdata(dataSetID.get("Data Set ID"));
 	}
 
 	@And("^get the asset de allocation test data from excel database for asset write off prerequisite$")
 	public void get_the_asset_de_allocation_test_data_from_excel_database_for_asset_write_off_prerequisite()
-			throws Throwable {
-		assetDeAllocationTestData = excelDataForAssetDeAllocation.getTestdata("KUBS_FAT_UAT_006_005_01_D11");
+			throws Throwable {	
+		dataSetID=excelDataAssetWriteOffExecution.getTestdata("KUBS_FAT_UAT_006_005_01");
+		assetDeAllocationTestData = excelDataForAssetDeAllocation.getTestdata(dataSetID.get("Data Set ID"));
 	}
 
 	@And("^get the asset de allocation test data from excel database for asset return prerequsite$")
 	public void get_the_asset_de_allocation_test_data_from_excel_database_for_asset_return_prerequsite()
 			throws Throwable {
-		assetDeAllocationTestData = excelDataForAssetDeAllocation.getTestdata("KUBS_FAT_UAT_006_005_01_D3");
+		dataSetID=excelDataAssetReturnExecution.getTestdata("KUBS_FAT_UAT_006_005_01_Return");
+		assetDeAllocationTestData = excelDataForAssetDeAllocation.getTestdata(dataSetID.get("Data Set ID"));
 	}
 
 	@And("^get the asset de allocation test data from excel database for prerequsites of impairment asset$")
@@ -89,19 +96,24 @@ public class FixedAsset_AssetDeallocation extends BaseClass {
 	@And("^Get the data set id for asset deallocation of asset replacement record in deallocation excel database$")
 	public void get_the_data_set_id_for_asset_deallocation_of_asset_replacement_record_in_deallocation_excel_database()
 			throws Throwable {
-		assetDeAllocationTestData = excelDataForAssetDeAllocation.getTestdata("KUBS_FAT_UAT_006_005_01_D5");
+		dataSetID=excelDataAlocDeAllocExecution.getTestdata("KUBS_FAT_UAT_006_012_01");
+		assetDeAllocationTestData = excelDataForAssetDeAllocation.getTestdata(dataSetID.get("Data Set ID"));
 	}
 
 	@And("^Get the data set id for asset deallocation of asset ammenment record in deallocation excel database$")
 	public void get_the_data_set_id_for_asset_deallocation_of_asset_ammenment_record_in_deallocation_excel_database()
 			throws Throwable {
-		assetDeAllocationTestData = excelDataForAssetDeAllocation.getTestdata("KUBS_FAT_UAT_006_005_01_D6");
+		dataSetID=excelDataAlocDeAllocExecution.getTestdata("KUBS_FAT_UAT_006_011_01");
+		assetDeAllocationTestData = excelDataForAssetDeAllocation.getTestdata(dataSetID.get("Data Set ID"));
+		
 	}
 
 	@And("^Get the data set id for asset deallocation of asset transfer record in deallocation excel database$")
 	public void get_the_data_set_id_for_asset_deallocation_of_asset_transfer_record_in_deallocation_excel_database()
 			throws Throwable {
-		assetDeAllocationTestData = excelDataForAssetDeAllocation.getTestdata("KUBS_FAT_UAT_006_005_01_D7");
+		
+		dataSetID=excelDataAlocDeAllocExecution.getTestdata("KUBS_FAT_UAT_006_012_01.1_AssetTransferDeAllocation");
+		assetDeAllocationTestData = excelDataForAssetDeAllocation.getTestdata(dataSetID.get("Data Set ID"));
 	}
 
 	@And("^Get the data set id for asset deallocation of asset sale record in deallocation excel database$")
@@ -113,7 +125,8 @@ public class FixedAsset_AssetDeallocation extends BaseClass {
 	@And("^Get the data set id for asset deallocation of asset revaluation record in deallocation excel database$")
 	public void get_the_data_set_id_for_asset_deallocation_of_asset_revaluation_record_in_deallocation_excel_database()
 			throws Throwable {
-		assetDeAllocationTestData = excelDataForAssetDeAllocation.getTestdata("KUBS_FAT_UAT_006_005_01_D9");
+		dataSetID=excelDataAlocDeAllocExecution.getTestdata("KUBS_FAT_UAT_006_010_01");
+		assetDeAllocationTestData = excelDataForAssetDeAllocation.getTestdata(dataSetID.get("Data Set ID"));
 	}
 
 	@Then("^Click on asset deallocaion Eye button$")
@@ -273,9 +286,10 @@ public class FixedAsset_AssetDeallocation extends BaseClass {
 	@And("^store the asset reference number and item number of de allocated asset in asset writeoff excel database$")
 	public void store_the_asset_reference_number_and_item_number_of_de_allocated_asset_in_asset_writeoff_excel_database()
 			throws Throwable {
-		excelDataForAssetWriteOff.updateTestData("KUBS_FAT_UAT_010_008_D1", "AssetReferenceNumber",
+		
+		excelDataForAssetWriteOff.updateTestData(assetDeAllocationTestData.get("Update Data Set 1"), "AssetReferenceNumber",
 				assetDeAllocationTestData.get("AssetReferenceNumber"));
-		excelDataForAssetWriteOff.updateTestData("KUBS_FAT_UAT_010_008_D1", "AssetItemNumber",
+		excelDataForAssetWriteOff.updateTestData(assetDeAllocationTestData.get("Update Data Set 1"), "AssetItemNumber",
 				assetDeAllocationTestData.get("AssetItemNumber"));
 	}
 
@@ -301,9 +315,10 @@ public class FixedAsset_AssetDeallocation extends BaseClass {
 	@And("^store the asset reference number and item number of deallocated asset in asset return excel database$")
 	public void store_the_asset_reference_number_and_item_number_of_deallocated_asset_in_asset_return_excel_database()
 			throws Throwable {
-		excelDataForAssetReturn.updateTestData("KUBS_FAT_UAT_007_006_01_D1", "AssetReferenceNumber",
+		//Update Data Set 1
+		excelDataForAssetReturn.updateTestData(assetDeAllocationTestData.get("Update Data Set 1"), "AssetReferenceNumber",
 				assetDeAllocationTestData.get("AssetReferenceNumber"));
-		excelDataForAssetReturn.updateTestData("KUBS_FAT_UAT_007_006_01_D1", "AssetItemNumber",
+		excelDataForAssetReturn.updateTestData(assetDeAllocationTestData.get("Update Data Set 1"), "AssetItemNumber",
 				assetDeAllocationTestData.get("AssetItemNumber"));
 	}
 

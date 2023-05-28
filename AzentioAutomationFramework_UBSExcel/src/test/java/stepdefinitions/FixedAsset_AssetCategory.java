@@ -59,27 +59,35 @@ public class FixedAsset_AssetCategory extends BaseClass {
 	ExcelData excelDataAssetCategoryForTransfer = new ExcelData(path, "AssetTransfer_ExecutionTracker", "TestCaseID");
 	ExcelData excelDataAssetCategoryForImapirement = new ExcelData(path, "AssetImpairement_ExecutionTrack", "TestCaseID");
 	ExcelData excelDataAssetCategoryForRevaluation = new ExcelData(path, "AssetRevaluation_ExecutionTrack", "TestCaseID");
+	ExcelData excelDataAssetCategoryForAlocDeAllocExecution = new ExcelData(path, "AssetAllocDeAlloc_ExeTracker", "TestCaseID");
+	ExcelData excelDataAssetReturnExecution = new ExcelData(path, "AssetReturn_ExecutionTrack", "TestCaseID");
+	ExcelData excelDataAssetAmendmentExecution = new ExcelData(path, "AssetAmendment_EXecutionTrack", "TestCaseID");
+	ExcelData excelDataAssetCreationExecution = new ExcelData(path, "AssetCreation_ExecutionTrack", "TestCaseID");
 	Map<String, String> DataSetID = new HashMap<>();
 
 	@And("^get the test data for asset catogory creation Test Data$")
 	public void get_the_test_data_for_asset_catogory_creation_test_data() throws Throwable {
 		System.out.println("Test");
-		assetcatogoryTestdata = excelData.getTestdata("KUBS_FAT_UAT_002_002_D1");
+		DataSetID=excelDataAssetCreationExecution.getTestdata("KUBS_FAT_UAT_002_002_01");	
+		assetcatogoryTestdata = excelData.getTestdata(DataSetID.get("Data Set ID"));
 	}
 
 	@And("^get the test data for asset catogory creation Test Data for asset return$")
 	public void get_the_test_data_for_asset_catogory_creation_test_data_for_asset_return() throws Throwable {
-		assetcatogoryTestdata = excelData.getTestdata("KUBS_FAT_UAT_002_002_D3");
+		DataSetID=excelDataAssetReturnExecution.getTestdata("KUBS_FAT_UAT_002_002_01_Return");
+		assetcatogoryTestdata = excelData.getTestdata(DataSetID.get("Data Set ID"));
 	}
 
 	@And("^get the test data for asset catogory creation Test Data for asset allocation$")
 	public void get_the_test_data_for_asset_catogory_creation_test_data_for_asset_allocation() throws Throwable {
-		assetcatogoryTestdata = excelData.getTestdata("KUBS_FAT_UAT_002_002_D4");
+		DataSetID=excelDataAssetCategoryForAlocDeAllocExecution.getTestdata("KUBS_FAT_UAT_002_002_01Allocation");
+		assetcatogoryTestdata = excelData.getTestdata(DataSetID.get("Data Set ID"));
 	}
 
 	@And("^get the test data for asset catogory creation Test Data for asset ammendment$")
 	public void get_the_test_data_for_asset_catogory_creation_test_data_for_asset_ammendment() throws Throwable {
-		assetcatogoryTestdata = excelData.getTestdata("KUBS_FAT_UAT_002_002_D5");
+		DataSetID=excelDataAssetAmendmentExecution.getTestdata("KUBS_FAT_UAT_002_002_01_AssetAmmendment");
+		assetcatogoryTestdata = excelData.getTestdata(DataSetID.get("Data Set ID"));
 	}
 
 	@And("^get the test data for asset catogory creation Test Data for asset Revaluation$")
@@ -128,16 +136,18 @@ public class FixedAsset_AssetCategory extends BaseClass {
 
 	@And("^store the asset code for asset code configuration$")
 	public void store_the_asset_code_for_asset_code_configuration() throws Throwable {
+		//Update Data Set 1
 		System.out.println("Asset Code " + assetcatogoryTestdata.get("Asset_Code"));
 //		testMap=excelDataAssetCode.getTestdata("KUBS_FAT_UAT_002_003_D1");
 //		System.out.println(testMap.get("AccountingModel"));
-		excelDataAssetCode.updateTestData("KUBS_FAT_UAT_002_003_D1", "AssetCode",
+		excelDataAssetCode.updateTestData(assetcatogoryTestdata.get("Update Data Set 1"), "AssetCode",
 				assetcatogoryTestdata.get("Asset_Code"));
 	}
 
 	@And("^store the asset code for asset code configuration for asset ammendment$")
 	public void store_the_asset_code_for_asset_code_configuration_for_asset_ammendment() throws Throwable {
-		excelDataAssetCode.updateTestData("KUBS_FAT_UAT_002_003_D5", "AssetCode",
+		//Update Data Set 1
+		excelDataAssetCode.updateTestData(assetcatogoryTestdata.get("Update Data Set 1"), "AssetCode",
 				assetcatogoryTestdata.get("Asset_Code"));
 	}
 
@@ -163,7 +173,7 @@ public class FixedAsset_AssetCategory extends BaseClass {
 
 	@And("^store the asset code for asset code configuration for asset return$")
 	public void store_the_asset_code_for_asset_code_configuration_for_asset_return() throws Throwable {
-		excelDataAssetCode.updateTestData("KUBS_FAT_UAT_002_003_D3", "AssetCode",
+		excelDataAssetCode.updateTestData(assetcatogoryTestdata.get("Update Data Set 1"), "AssetCode",
 				assetcatogoryTestdata.get("Asset_Code"));
 	}
 

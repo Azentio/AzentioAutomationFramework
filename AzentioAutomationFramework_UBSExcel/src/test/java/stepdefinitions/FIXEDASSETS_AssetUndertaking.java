@@ -53,7 +53,9 @@ public class FIXEDASSETS_AssetUndertaking {
 	ExcelData excelDataAssetUndertakingExecution = new ExcelData(path, "AssetUndertaking_ExecTracker", "TestCaseID");
 	ExcelData excelDataAssetImpairementExecution = new ExcelData(path, "AssetImpairement_ExecutionTrack", "TestCaseID");
 	ExcelData excelDataAssetRevaluationExecution = new ExcelData(path, "AssetRevaluation_ExecutionTrack", "TestCaseID");
-	
+	ExcelData excelDataAlocDeAllocExecution = new ExcelData(path, "AssetAllocDeAlloc_ExeTracker", "TestCaseID");
+	ExcelData excelDataAssetReturnExecution = new ExcelData(path, "AssetReturn_ExecutionTrack", "TestCaseID");
+	ExcelData excelDataAssetWriteOffExecution = new ExcelData(path, "WriteOff_ExecutionTrack", "TestCaseID");
 	Map<String, String> DataSetID = new HashMap<>();
 	@And("^user should navigate to fixed assets menu$")
 	public void user_should_navigate_to_fixed_assets_menu() throws InterruptedException, IOException {
@@ -121,7 +123,9 @@ public class FIXEDASSETS_AssetUndertaking {
 	@And("^get the test data for asset transfer from asset transfer excel database for the prerequisite of asset writeoff$")
 	public void get_the_test_data_for_asset_transfer_from_asset_transfer_excel_database_for_the_prerequisite_of_asset_writeoff()
 			throws Throwable {
-		asetTransferTestData = excelDataForAssetTransfer.getTestdata("KUBS_FAT_UAT_005_001_D9");
+		
+		DataSetID=excelDataAssetWriteOffExecution.getTestdata("KUBS_FAT_UAT_005_001_01_WriteOff");
+		asetTransferTestData = excelDataForAssetTransfer.getTestdata(DataSetID.get("Data Set ID"));
 	}
 
 	@And("^get the test data for asset transfer from asset transfer undertaking excel database$")
@@ -133,7 +137,8 @@ public class FIXEDASSETS_AssetUndertaking {
 	@And("^get the test data for asset transfer from asset transfer undertaking excel database for prerequisite of asset return$")
 	public void get_the_test_data_for_asset_transfer_from_asset_transfer_undertaking_excel_database_for_prerequisite_of_asset_return()
 			throws Throwable {
-		asetTransferTestData = excelDataForAssetTransfer.getTestdata("KUBS_FAT_UAT_005_001_D8");
+		DataSetID=excelDataAssetReturnExecution.getTestdata("KUBS_FAT_UAT_005_005_01_Return");
+		asetTransferTestData = excelDataForAssetTransfer.getTestdata(DataSetID.get("Data Set ID"));
 	}
 
 	@And("^get the test data for asset transfer from asset transfer undertaking excel database for prerequisite of asset writeoff$")
@@ -173,7 +178,8 @@ public class FIXEDASSETS_AssetUndertaking {
 	@And("^Choose the data set id for the creation of asset tranfer from asset transfer excel data base$")
 	public void choose_the_data_set_id_for_the_creation_of_asset_tranfer_from_asset_transfer_excel_data_base()
 			throws Throwable {
-		asetTransferTestData = excelDataForAssetTransfer.getTestdata("KUBS_FAT_UAT_005_001_D4");
+		DataSetID=excelDataAlocDeAllocExecution.getTestdata("KUBS_FAT_UAT_006_012_01_AssetTranferCreation");
+		asetTransferTestData = excelDataForAssetTransfer.getTestdata(DataSetID.get("Data Set ID"));
 	}
 
 	@And("^enter the asset reference number in asset transfer screen$")
@@ -472,19 +478,20 @@ public class FIXEDASSETS_AssetUndertaking {
 	@And("^store the asset reference number and item number of undertaking asset in asset return excel database$")
 	public void store_the_asset_reference_number_and_item_number_of_undertaking_asset_in_asset_return_excel_database()
 			throws Throwable {
-		excelDataForAssetReturn.updateTestData("KUBS_FAT_UAT_007_007_01_D1", "AssetReferenceNumber",
+		//Update Data Set 1
+		excelDataForAssetReturn.updateTestData(asetTransferTestData.get("Update Data Set 1"), "AssetReferenceNumber",
 				asetTransferTestData.get("AssetReferenceNumber"));
-		excelDataForAssetReturn.updateTestData("KUBS_FAT_UAT_007_007_01_D1", "AssetItemNumber",
+		excelDataForAssetReturn.updateTestData(asetTransferTestData.get("Update Data Set 1"), "AssetItemNumber",
 				asetTransferTestData.get("AssetItemNumber"));
 	}
 
 	@And("^store the asset reference number and item number of undertaking asset in asset write off excel database$")
 	public void store_the_asset_reference_number_and_item_number_of_undertaking_asset_in_asset_write_off_excel_database()
 			throws Throwable {
-
-		excelDataForAssetWriteOff.updateTestData("KUBS_FAT_UAT_010_009_D1", "AssetReferenceNumber",
+//Update Data Set 1
+		excelDataForAssetWriteOff.updateTestData(asetTransferTestData.get("Update Data Set 1"), "AssetReferenceNumber",
 				asetTransferTestData.get("AssetReferenceNumber"));
-		excelDataForAssetWriteOff.updateTestData("KUBS_FAT_UAT_010_009_D1", "AssetItemNumber",
+		excelDataForAssetWriteOff.updateTestData(asetTransferTestData.get("Update Data Set 1"), "AssetItemNumber",
 				asetTransferTestData.get("AssetItemNumber"));
 
 	}
@@ -492,9 +499,10 @@ public class FIXEDASSETS_AssetUndertaking {
 	@And("^Store the asset reference number and item number of asset transfer in asset alllocation excel data base$")
 	public void store_the_asset_reference_number_and_item_number_of_asset_transfer_in_asset_alllocation_excel_data_base()
 			throws Throwable {
-		excelDataForAssetAllocation.updateTestData("KUBS_FAT_UAT_006_003_D7", "AssetReferenceNumber",
+		//Update Data Set 1
+		excelDataForAssetAllocation.updateTestData(asetTransferTestData.get("Update Data Set 1"), "AssetReferenceNumber",
 				asetTransferTestData.get("AssetReferenceNumber"));
-		excelDataForAssetAllocation.updateTestData("KUBS_FAT_UAT_006_003_D7", "AssetItemNumber",
+		excelDataForAssetAllocation.updateTestData(asetTransferTestData.get("Update Data Set 1"), "AssetItemNumber",
 				asetTransferTestData.get("AssetItemNumber"));
 
 	}

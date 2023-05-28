@@ -35,7 +35,9 @@ public class KUBS_ChekcerSteps extends BaseClass {
 			"TestCaseID");
 	ExcelData excelDataAssetRevaluationExecution = new ExcelData(excelPath, "AssetRevaluation_ExecutionTrack",
 			"TestCaseID");
-	
+	ExcelData excelDataAssetAllocDeAllocExecution = new ExcelData(excelPath, "AssetAllocDeAlloc_ExeTracker",
+			"TestCaseID");
+
 	ExcelData excelDataForSerialNumberSetUp = new ExcelData(excelPath, "FixedAsset_SerialNumberConfig", "DataSet ID");
 	ExcelData excelDataForAssetCreation = new ExcelData(excelPath, "FixedAsset_AssetCreation", "DataSet ID");
 	ExcelData excelDataForAssetSale = new ExcelData(excelPath, "FixedAsset_AssetSale", "DataSet ID");
@@ -52,29 +54,40 @@ public class KUBS_ChekcerSteps extends BaseClass {
 	ExcelData excelDataForBusinessPartner = new ExcelData(excelPath, "BusinessPartnerTestData", "Data Set ID");
 	ExcelData excelDataForInvoiceBooking = new ExcelData(excelPath, "BillBookingTestData", "Data Set ID");
 	ExcelData excelDataForGRN = new ExcelData(excelPath, "GRNTestData", "Data Set ID");
-	Map<String,String> dataSetID= new HashMap<>();
+	Map<String, String> dataSetID = new HashMap<>();
 	ExcelData excelDataForTransferExecution = new ExcelData(excelPath, "AssetTransfer_ExecutionTracker", "TestCaseID");
+	ExcelData excelDataAssetReturnExecution = new ExcelData(excelPath, "AssetReturn_ExecutionTrack", "TestCaseID");
+	ExcelData excelDataAssetAmendmentExecution = new ExcelData(excelPath, "AssetAmendment_EXecutionTrack",
+			"TestCaseID");
+	ExcelData excelDataAssetWriteOffExecution = new ExcelData(excelPath, "WriteOff_ExecutionTrack", "TestCaseID");
+	ExcelData excelDataAssetCreationExecution = new ExcelData(excelPath, "AssetCreation_ExecutionTrack", "TestCaseID");
+	ExcelData excelDataAssetConfigExecution = new ExcelData(excelPath, "AssetConfig_ExecutionTrack", "TestCaseID");
 
 	@Given("^navigate to kubs url to approve the GRN record in checker$")
 	public void navigate_to_kubs_url_to_approve_the_grn_record_in_checker() throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
 		kubsLogin.loginToAzentioAppAsChecker("Checker");
-		checkerTestData = excelDataForGRN.getTestdata("KUBS_FAT_UAT_001_004_02_D1");
+		dataSetID=excelDataAssetConfigExecution.getTestdata("KUBS_FAT_UAT_001_004_03");
+		checkerTestData = excelDataForGRN.getTestdata(dataSetID.get("Data Set ID"));
 	}
 
 	@Given("^navigate to kubs url to approve the the invoice against po record in checker$")
 	public void navigate_to_kubs_url_to_approve_the_the_invoice_against_po_record_in_checker() throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
 		kubsLogin.loginToAzentioAppAsChecker("Checker");
-		checkerTestData = excelDataForInvoiceBooking.getTestdata("KUBS_FAT_UAT_001_005_01_D1");
+		dataSetID=excelDataAssetConfigExecution.getTestdata("KUBS_FAT_UAT_001_005_03");
+		checkerTestData = excelDataForInvoiceBooking.getTestdata(dataSetID.get("Data Set ID"));
 	}
 
 	@Given("^Navigate to KUBS url and login with checker for approve the business partner setup record$")
 	public void navigate_to_kubs_url_and_login_with_checker_for_approve_the_business_partner_setup_record()
 			throws Throwable {
+
 		driver.get(configFileReader.getApplicationUrl());
 		kubsLogin.loginToAzentioAppAsChecker("Checker");
-		checkerTestData = excelDataForBusinessPartner.getTestdata("KUBS_FAT_UAT_001_01_D1");
+				dataSetID=excelDataAssetConfigExecution.getTestdata("KUBS_FAT_UAT_001_03");		
+				checkerTestData=excelDataForBusinessPartner.getTestdata(dataSetID.get("Data Set ID"));
+		
 	}
 
 	@Given("^Navigate to KUBS url and login with checker for approve the quarterly budget record to validate the budget amount field in budget allocation screen$")
@@ -258,7 +271,9 @@ public class KUBS_ChekcerSteps extends BaseClass {
 	public void navigate_to_kubs_url_to_approve_the_fixed_asset_replacement_record_as_a_checker() throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
 		kubsLogin.loginToAzentioAppAsChecker("Checker");
-		checkerTestData = excelDataForAssetReplacement.getTestdata("KUBS_FAT_UAT_008_D1");
+				dataSetID=excelDataAssetCreationExecution.getTestdata("KUBS_FAT_UAT_008_001_03");		
+				checkerTestData=excelDataForAssetReplacement.getTestdata(dataSetID.get("Data Set ID"));
+		
 	}
 
 	@Given("^navigate to kubs url to approve the fixed asset replacement record in checker for prerequisite of asset write off$")
@@ -266,15 +281,16 @@ public class KUBS_ChekcerSteps extends BaseClass {
 			throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
 		kubsLogin.loginToAzentioAppAsChecker("Checker");
-		checkerTestData = excelDataForAssetReplacement.getTestdata("KUBS_FAT_UAT_008_D11");
+		dataSetID = excelDataAssetWriteOffExecution.getTestdata("KUBS_FAT_UAT_008_001_03_WriteOff");
+		checkerTestData = excelDataForAssetReplacement.getTestdata(dataSetID.get("Data Set ID"));
 	}
 
 	@Given("^navigate to kubs url to approve the fixed asset replacement record in checker for prerequisite of asset revaluation$")
 	public void navigate_to_kubs_url_to_approve_the_fixed_asset_replacement_record_in_checker_for_prerequisite_of_asset_revaluation()
 			throws Throwable {
-		
+
 		driver.get(configFileReader.getApplicationUrl());
-		dataSetID=excelDataAssetRevaluationExecution.getTestdata("KUBS_FAT_UAT_008_001_03_Revaluation");
+		dataSetID = excelDataAssetRevaluationExecution.getTestdata("KUBS_FAT_UAT_008_001_03_Revaluation");
 		kubsLogin.loginToAzentioAppAsChecker("Checker");
 		checkerTestData = excelDataForAssetReplacement.getTestdata(dataSetID.get("Data Set ID"));
 	}
@@ -284,14 +300,17 @@ public class KUBS_ChekcerSteps extends BaseClass {
 			throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
 		kubsLogin.loginToAzentioAppAsChecker("Checker");
-		checkerTestData = excelDataForAssetReplacement.getTestdata("KUBS_FAT_UAT_008_D3");
+		dataSetID = excelDataAssetReturnExecution.getTestdata("KUBS_FAT_UAT_008_001_03_Return");
+		checkerTestData = excelDataForAssetReplacement.getTestdata(dataSetID.get("Data Set ID"));
 	}
 
 	@Given("^navigate to kubs url to approve the fixed asset ammendment record as a checker$")
 	public void navigate_to_kubs_url_to_approve_the_fixed_asset_ammendment_record_as_a_checker() throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
 		kubsLogin.loginToAzentioAppAsChecker("Checker");
-		checkerTestData = excelDataForAssetAmmendment.getTestdata("KUBS_FAT_UAT_011_01_D1");
+		dataSetID = excelDataAssetAmendmentExecution.getTestdata("KUBS_FAT_UAT_011_03");
+		checkerTestData = excelDataForAssetAmmendment.getTestdata(dataSetID.get("Data Set ID"));
+
 	}
 
 	@Given("^navigate to kubs url to approve the fixed asset ammendment record in checker for prerequisite of asset writeoff$")
@@ -299,15 +318,16 @@ public class KUBS_ChekcerSteps extends BaseClass {
 			throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
 		kubsLogin.loginToAzentioAppAsChecker("Checker");
-		checkerTestData = excelDataForAssetAmmendment.getTestdata("KUBS_FAT_UAT_011_01_D11");
+		dataSetID = excelDataAssetWriteOffExecution.getTestdata("KUBS_FAT_UAT_011_03_WriteOff");
+		checkerTestData = excelDataForAssetAmmendment.getTestdata(dataSetID.get("Data Set ID"));
 	}
 
 	@Given("^navigate to kubs url to approve the fixed asset ammendment record in checker for prerequisite for asset revaluation$")
 	public void navigate_to_kubs_url_to_approve_the_fixed_asset_ammendment_record_in_checker_for_prerequisite_for_asset_revaluation()
 			throws Throwable {
-		
+
 		driver.get(configFileReader.getApplicationUrl());
-		dataSetID=excelDataAssetRevaluationExecution.getTestdata("KUBS_FAT_UAT_011_03_Revaluation");
+		dataSetID = excelDataAssetRevaluationExecution.getTestdata("KUBS_FAT_UAT_011_03_Revaluation");
 		kubsLogin.loginToAzentioAppAsChecker("Checker");
 		checkerTestData = excelDataForAssetAmmendment.getTestdata(dataSetID.get("Data Set ID"));
 	}
@@ -317,7 +337,8 @@ public class KUBS_ChekcerSteps extends BaseClass {
 			throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
 		kubsLogin.loginToAzentioAppAsChecker("Checker");
-		checkerTestData = excelDataForAssetAmmendment.getTestdata("KUBS_FAT_UAT_011_02_D1");
+		dataSetID = excelDataAssetAmendmentExecution.getTestdata("KUBS_FAT_UAT_011_02_03");
+		checkerTestData = excelDataForAssetAmmendment.getTestdata(dataSetID.get("Data Set ID"));
 	}
 
 	@Given("^navigate to kubs Url to approve the fixed asset Ammendment in checker to approve the ammendment asset which have less that asset life which earlier exist$")
@@ -325,7 +346,8 @@ public class KUBS_ChekcerSteps extends BaseClass {
 			throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
 		kubsLogin.loginToAzentioAppAsChecker("Checker");
-		checkerTestData = excelDataForAssetAmmendment.getTestdata("KUBS_FAT_UAT_011_03_D1");
+		dataSetID = excelDataAssetAmendmentExecution.getTestdata("KUBS_FAT_UAT_011_03_03");
+		checkerTestData = excelDataForAssetAmmendment.getTestdata(dataSetID.get("Data Set ID"));
 	}
 
 	@Given("^navigate to kubs Url to approve the fixed asset Ammendment in checker to approve the ammendment asset which have Greater than asset life which earlier exist$")
@@ -333,7 +355,8 @@ public class KUBS_ChekcerSteps extends BaseClass {
 			throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
 		kubsLogin.loginToAzentioAppAsChecker("Checker");
-		checkerTestData = excelDataForAssetAmmendment.getTestdata("KUBS_FAT_UAT_011_04_D1");
+		dataSetID = excelDataAssetAmendmentExecution.getTestdata("KUBS_FAT_UAT_011_04_03");
+		checkerTestData = excelDataForAssetAmmendment.getTestdata(dataSetID.get("Data Set ID"));
 	}
 
 	@Given("^navigate to kubs url to approve the fixed asset ammendment record in checker for asset allocation$")
@@ -348,8 +371,9 @@ public class KUBS_ChekcerSteps extends BaseClass {
 	public void navigate_to_kubs_url_to_approve_the_fixed_asset_ammendment_record_in_checker_for_asset_return_prerequsite()
 			throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
+		dataSetID = excelDataAssetReturnExecution.getTestdata("KUBS_FAT_UAT_011_03_AssetReturn");
 		kubsLogin.loginToAzentioAppAsChecker("Checker");
-		checkerTestData = excelDataForAssetAmmendment.getTestdata("KUBS_FAT_UAT_011_01_D4");
+		checkerTestData = excelDataForAssetAmmendment.getTestdata(dataSetID.get("Data Set ID"));
 	}
 
 	@Given("^navigate to kubs url to approve the fixed asset ammendment record in a checker for prerequsite of asset impairment$")
@@ -357,14 +381,14 @@ public class KUBS_ChekcerSteps extends BaseClass {
 			throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
 		kubsLogin.loginToAzentioAppAsChecker("Checker");
-		dataSetID=excelDataAssetImpairementExecution.getTestdata("KUBS_FAT_UAT_011_03_Impairment");
+		dataSetID = excelDataAssetImpairementExecution.getTestdata("KUBS_FAT_UAT_011_03_Impairment");
 		checkerTestData = excelDataForAssetAmmendment.getTestdata(dataSetID.get("Data Set ID"));
 	}
 
 	@Given("^navigate to kubs url to approve the fixed asset revaluation record as a checker$")
 	public void navigate_to_kubs_url_to_approve_the_fixed_asset_revaluation_record_as_a_checker() throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
-		dataSetID=excelDataAssetRevaluationExecution.getTestdata("KUBS_FAT_UAT_012_03");
+		dataSetID = excelDataAssetRevaluationExecution.getTestdata("KUBS_FAT_UAT_012_03");
 		kubsLogin.loginToAzentioAppAsChecker("Checker");
 		checkerTestData = excelDataForAssetRevaluation.getTestdata(dataSetID.get("Data Set ID"));
 	}
@@ -374,7 +398,9 @@ public class KUBS_ChekcerSteps extends BaseClass {
 			throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
 		kubsLogin.loginToAzentioAppAsChecker("Checker");
-		checkerTestData = excelDataForAssetRevaluation.getTestdata("KUBS_FAT_UAT_012_01_D11");
+		dataSetID = excelDataAssetWriteOffExecution.getTestdata("KUBS_FAT_UAT_012_03_WriteOff");
+		checkerTestData = excelDataForAssetRevaluation.getTestdata(dataSetID.get("Data Set ID"));
+
 	}
 
 	@Given("^navigate to kubs url to approve the fixed asset revaluation record in checker for the prerequisite of asset transfer undertaking$")
@@ -382,7 +408,7 @@ public class KUBS_ChekcerSteps extends BaseClass {
 			throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
 		kubsLogin.loginToAzentioAppAsChecker("Checker");
-		dataSetID=excelDataForTransferExecution.getTestdata("KUBS_FAT_UAT_012_03_AssetTransfer");
+		dataSetID = excelDataForTransferExecution.getTestdata("KUBS_FAT_UAT_012_03_AssetTransfer");
 		checkerTestData = excelDataForAssetRevaluation.getTestdata(dataSetID.get("Data Set ID"));
 	}
 
@@ -390,7 +416,7 @@ public class KUBS_ChekcerSteps extends BaseClass {
 	public void navigate_to_kubs_url_to_approve_the_fixed_asset_revaluation_record_in_checker_which_is_already_de_allocated()
 			throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
-		dataSetID=excelDataAssetRevaluationExecution.getTestdata("KUBS_FAT_UAT_012_002_03");
+		dataSetID = excelDataAssetRevaluationExecution.getTestdata("KUBS_FAT_UAT_012_002_03");
 		kubsLogin.loginToAzentioAppAsChecker("Checker");
 		checkerTestData = excelDataForAssetRevaluation.getTestdata(dataSetID.get("Data Set ID"));
 	}
@@ -399,7 +425,7 @@ public class KUBS_ChekcerSteps extends BaseClass {
 	public void navigate_to_kubs_url_to_approve_the_fixed_asset_revaluation_record_in_checker_which_is_already_revalued()
 			throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
-		dataSetID=excelDataAssetRevaluationExecution.getTestdata("KUBS_FAT_UAT_012_003_03");
+		dataSetID = excelDataAssetRevaluationExecution.getTestdata("KUBS_FAT_UAT_012_003_03");
 		kubsLogin.loginToAzentioAppAsChecker("Checker");
 		checkerTestData = excelDataForAssetRevaluation.getTestdata(dataSetID.get("Data Set ID"));
 	}
@@ -415,9 +441,9 @@ public class KUBS_ChekcerSteps extends BaseClass {
 	@Given("^navigate to kubs url to approve the fixed asset revaluation record in checker which is already done on asset ammendment$")
 	public void navigate_to_kubs_url_to_approve_the_fixed_asset_revaluation_record_in_checker_which_is_already_done_on_asset_ammendment()
 			throws Throwable {
-		
+
 		driver.get(configFileReader.getApplicationUrl());
-		dataSetID=excelDataAssetRevaluationExecution.getTestdata("KUBS_FAT_UAT_012_005_03");
+		dataSetID = excelDataAssetRevaluationExecution.getTestdata("KUBS_FAT_UAT_012_005_03");
 		kubsLogin.loginToAzentioAppAsChecker("Checker");
 		checkerTestData = excelDataForAssetRevaluation.getTestdata(dataSetID.get("Data Set ID"));
 	}
@@ -425,9 +451,9 @@ public class KUBS_ChekcerSteps extends BaseClass {
 	@Given("^navigate to kubs url to approve the fixed asset revaluation record in checker which is already done on asset replacement$")
 	public void navigate_to_kubs_url_to_approve_the_fixed_asset_revaluation_record_in_checker_which_is_already_done_on_asset_replacement()
 			throws Throwable {
-		
+
 		driver.get(configFileReader.getApplicationUrl());
-		dataSetID=excelDataAssetRevaluationExecution.getTestdata("KUBS_FAT_UAT_012_009_03");
+		dataSetID = excelDataAssetRevaluationExecution.getTestdata("KUBS_FAT_UAT_012_009_03");
 		kubsLogin.loginToAzentioAppAsChecker("Checker");
 		checkerTestData = excelDataForAssetRevaluation.getTestdata(dataSetID.get("Data Set ID"));
 	}
@@ -436,7 +462,7 @@ public class KUBS_ChekcerSteps extends BaseClass {
 	public void navigate_to_kubs_url_to_approve_the_fixed_asset_revaluation_record_in_checker_which_is_already_done_on_asset_undertaking()
 			throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
-		dataSetID=excelDataAssetRevaluationExecution.getTestdata("KUBS_FAT_UAT_012_006_03");
+		dataSetID = excelDataAssetRevaluationExecution.getTestdata("KUBS_FAT_UAT_012_006_03");
 		kubsLogin.loginToAzentioAppAsChecker("Checker");
 		checkerTestData = excelDataForAssetRevaluation.getTestdata(dataSetID.get("Data Set ID"));
 	}
@@ -445,7 +471,7 @@ public class KUBS_ChekcerSteps extends BaseClass {
 	public void navigate_to_kubs_url_to_approve_the_fixed_asset_revaluation_record_in_checker_which_is_already_done_on_asset_sale_maker_stage()
 			throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
-		dataSetID=excelDataAssetRevaluationExecution.getTestdata("KUBS_FAT_UAT_012_007_03");
+		dataSetID = excelDataAssetRevaluationExecution.getTestdata("KUBS_FAT_UAT_012_007_03");
 		kubsLogin.loginToAzentioAppAsChecker("Checker");
 		checkerTestData = excelDataForAssetRevaluation.getTestdata(dataSetID.get("Data Set ID"));
 	}
@@ -454,7 +480,7 @@ public class KUBS_ChekcerSteps extends BaseClass {
 	public void navigate_to_kubs_url_to_approve_the_fixed_asset_revaluation_record_in_checker_which_is_already_done_on_asset_return_maker_stage()
 			throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
-		dataSetID=excelDataAssetRevaluationExecution.getTestdata("KUBS_FAT_UAT_012_008_03");
+		dataSetID = excelDataAssetRevaluationExecution.getTestdata("KUBS_FAT_UAT_012_008_03");
 		kubsLogin.loginToAzentioAppAsChecker("Checker");
 		checkerTestData = excelDataForAssetRevaluation.getTestdata(dataSetID.get("Data Set ID"));
 	}
@@ -470,9 +496,12 @@ public class KUBS_ChekcerSteps extends BaseClass {
 	@Given("^navigate to kubs url to approve the fixed asset revaluation record in checker for asset return prerequsite$")
 	public void navigate_to_kubs_url_to_approve_the_fixed_asset_revaluation_record_in_checker_for_asset_return_prerequsite()
 			throws Throwable {
+
 		driver.get(configFileReader.getApplicationUrl());
 		kubsLogin.loginToAzentioAppAsChecker("Checker");
-		checkerTestData = excelDataForAssetRevaluation.getTestdata("KUBS_FAT_UAT_012_01_D3");
+		dataSetID = excelDataAssetReturnExecution.getTestdata("KUBS_FAT_UAT_012_03_AssetReturn");
+
+		checkerTestData = excelDataForAssetRevaluation.getTestdata(dataSetID.get("Data Set ID"));
 	}
 
 	@Given("^navigate to kubs url to approve the fixed asset revaluation record in a checker for asset impairment prerequsite$")
@@ -480,7 +509,7 @@ public class KUBS_ChekcerSteps extends BaseClass {
 			throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
 		kubsLogin.loginToAzentioAppAsChecker("Checker");
-		dataSetID=excelDataAssetImpairementExecution.getTestdata("KUBS_FAT_UAT_012_03_AssetImpairment");
+		dataSetID = excelDataAssetImpairementExecution.getTestdata("KUBS_FAT_UAT_012_03_AssetImpairment");
 		checkerTestData = excelDataForAssetRevaluation.getTestdata(dataSetID.get("Data Set ID"));
 	}
 
@@ -488,7 +517,7 @@ public class KUBS_ChekcerSteps extends BaseClass {
 	public void navigate_to_kubs_url_to_approve_the_fixed_asset_impairment_record_as_a_checker() throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
 		kubsLogin.loginToAzentioAppAsChecker("Checker");
-		dataSetID=excelDataAssetImpairementExecution.getTestdata("KUBS_FAT_UAT_009_001_03");
+		dataSetID = excelDataAssetImpairementExecution.getTestdata("KUBS_FAT_UAT_009_001_03");
 		checkerTestData = excelDataForAssetImapirment.getTestdata(dataSetID.get("Data Set ID"));
 	}
 
@@ -497,14 +526,17 @@ public class KUBS_ChekcerSteps extends BaseClass {
 			throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
 		kubsLogin.loginToAzentioAppAsChecker("Checker");
-		checkerTestData = excelDataForAssetImapirment.getTestdata("KUBS_FAT_UAT_009_001_01_D11");
+		dataSetID = excelDataAssetWriteOffExecution.getTestdata("KUBS_FAT_UAT_009_001_03_WriteOff");
+		checkerTestData = excelDataForAssetImapirment.getTestdata(dataSetID.get("Data Set ID"));
+
 	}
 
 	@Given("^navigate to kubs url to approve the fixed asset write off record in checker$")
 	public void navigate_to_kubs_url_to_approve_the_fixed_asset_write_off_record_in_checker() throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
 		kubsLogin.loginToAzentioAppAsChecker("Checker");
-		checkerTestData = excelDataForAssetWriteOff.getTestdata("KUBS_FAT_UAT_010_001_D1");
+		dataSetID = excelDataAssetWriteOffExecution.getTestdata("KUBS_FAT_UAT_010_001_03");
+		checkerTestData = excelDataForAssetWriteOff.getTestdata(dataSetID.get("Data Set ID"));
 
 	}
 
@@ -513,7 +545,9 @@ public class KUBS_ChekcerSteps extends BaseClass {
 			throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
 		kubsLogin.loginToAzentioAppAsChecker("Checker");
-		checkerTestData = excelDataForAssetWriteOff.getTestdata("KUBS_FAT_UAT_010_003_D1");
+		dataSetID = excelDataAssetWriteOffExecution.getTestdata("KUBS_FAT_UAT_010_003_03");
+		checkerTestData = excelDataForAssetWriteOff.getTestdata(dataSetID.get("Data Set ID"));
+
 	}
 
 	@Given("^navigate to kubs url to approve the fixed asset write off record in checker which is already ammendment$")
@@ -521,7 +555,9 @@ public class KUBS_ChekcerSteps extends BaseClass {
 			throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
 		kubsLogin.loginToAzentioAppAsChecker("Checker");
-		checkerTestData = excelDataForAssetWriteOff.getTestdata("KUBS_FAT_UAT_010_004_D1");
+		dataSetID = excelDataAssetWriteOffExecution.getTestdata("KUBS_FAT_UAT_010_004_03");
+		checkerTestData = excelDataForAssetWriteOff.getTestdata(dataSetID.get("Data Set ID"));
+
 	}
 
 	@Given("^navigate to kubs url to approve the fixed asset write off record in checker which is already replaced$")
@@ -529,7 +565,9 @@ public class KUBS_ChekcerSteps extends BaseClass {
 			throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
 		kubsLogin.loginToAzentioAppAsChecker("Checker");
-		checkerTestData = excelDataForAssetWriteOff.getTestdata("KUBS_FAT_UAT_010_006_D1");
+		dataSetID = excelDataAssetWriteOffExecution.getTestdata("KUBS_FAT_UAT_010_006_03");
+		checkerTestData = excelDataForAssetWriteOff.getTestdata(dataSetID.get("Data Set ID"));
+
 	}
 
 	@Given("^navigate to kubs url to approve the fixed asset write off record in checker which is already allocated$")
@@ -537,7 +575,8 @@ public class KUBS_ChekcerSteps extends BaseClass {
 			throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
 		kubsLogin.loginToAzentioAppAsChecker("Checker");
-		checkerTestData = excelDataForAssetWriteOff.getTestdata("KUBS_FAT_UAT_010_007_D1");
+		dataSetID = excelDataAssetWriteOffExecution.getTestdata("KUBS_FAT_UAT_010_007_03");
+		checkerTestData = excelDataForAssetWriteOff.getTestdata(dataSetID.get("Data Set ID"));
 	}
 
 	@Given("^navigate to kubs url to approve the fixed asset write off record in checker which is already de allocated$")
@@ -545,7 +584,8 @@ public class KUBS_ChekcerSteps extends BaseClass {
 			throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
 		kubsLogin.loginToAzentioAppAsChecker("Checker");
-		checkerTestData = excelDataForAssetWriteOff.getTestdata("KUBS_FAT_UAT_010_008_D1");
+		dataSetID = excelDataAssetWriteOffExecution.getTestdata("KUBS_FAT_UAT_010_008_03");
+		checkerTestData = excelDataForAssetWriteOff.getTestdata(dataSetID.get("Data Set ID"));
 	}
 
 	@Given("^navigate to kubs url to approve the fixed asset write off record in checker which is already undertaken$")
@@ -553,7 +593,8 @@ public class KUBS_ChekcerSteps extends BaseClass {
 			throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
 		kubsLogin.loginToAzentioAppAsChecker("Checker");
-		checkerTestData = excelDataForAssetWriteOff.getTestdata("KUBS_FAT_UAT_010_009_D1");
+		dataSetID = excelDataAssetWriteOffExecution.getTestdata("KUBS_FAT_UAT_010_009_03");
+		checkerTestData = excelDataForAssetWriteOff.getTestdata(dataSetID.get("Data Set ID"));
 	}
 
 	@Given("^navigate to kubs url to approve the fixed asset impairment record in checker for prerequisite of asset transfer$")
@@ -561,7 +602,7 @@ public class KUBS_ChekcerSteps extends BaseClass {
 			throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
 		kubsLogin.loginToAzentioAppAsChecker("Checker");
-		dataSetID=excelDataForTransferExecution.getTestdata("KUBS_FAT_UAT_009_001_03_AssetTransfer");
+		dataSetID = excelDataForTransferExecution.getTestdata("KUBS_FAT_UAT_009_001_03_AssetTransfer");
 		checkerTestData = excelDataForAssetImapirment.getTestdata(dataSetID.get("Data Set ID"));
 	}
 
@@ -569,8 +610,9 @@ public class KUBS_ChekcerSteps extends BaseClass {
 	public void navigate_to_kubs_url_to_approve_the_fixed_asset_impairment_record_in_checker_for_the_prerequisite_of_asset_revaluation()
 			throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
-		dataSetID=excelDataAssetRevaluationExecution.getTestdata("KUBS_FAT_UAT_009_001_03_Revaluation");
 		kubsLogin.loginToAzentioAppAsChecker("Checker");
+		dataSetID = excelDataAssetRevaluationExecution.getTestdata("KUBS_FAT_UAT_009_001_03_Revaluation");
+
 		checkerTestData = excelDataForAssetImapirment.getTestdata(dataSetID.get("Data Set ID"));
 	}
 
@@ -579,7 +621,8 @@ public class KUBS_ChekcerSteps extends BaseClass {
 			throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
 		kubsLogin.loginToAzentioAppAsChecker("Checker");
-		checkerTestData = excelDataForAssetImapirment.getTestdata("KUBS_FAT_UAT_009_001_01_D2");
+		dataSetID = excelDataAssetReturnExecution.getTestdata("KUBS_FAT_UAT_009_001_03_AsetReturn");
+		checkerTestData = excelDataForAssetImapirment.getTestdata(dataSetID.get("Data Set ID"));
 	}
 
 	@Given("^navigate to kubs url to approve the fixed asset impairment record which is already allocated$")
@@ -587,7 +630,7 @@ public class KUBS_ChekcerSteps extends BaseClass {
 			throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
 		kubsLogin.loginToAzentioAppAsChecker("Checker");
-		dataSetID=excelDataAssetImpairementExecution.getTestdata("KUBS_FAT_UAT_009_002_03");
+		dataSetID = excelDataAssetImpairementExecution.getTestdata("KUBS_FAT_UAT_009_002_03");
 		checkerTestData = excelDataForAssetImapirment.getTestdata(dataSetID.get("Data Set ID"));
 	}
 
@@ -596,7 +639,7 @@ public class KUBS_ChekcerSteps extends BaseClass {
 			throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
 		kubsLogin.loginToAzentioAppAsChecker("Checker");
-		dataSetID=excelDataAssetImpairementExecution.getTestdata("KUBS_FAT_UAT_009_003_04");
+		dataSetID = excelDataAssetImpairementExecution.getTestdata("KUBS_FAT_UAT_009_003_04");
 		checkerTestData = excelDataForAssetImapirment.getTestdata(dataSetID.get("Data Set ID"));
 	}
 
@@ -605,7 +648,7 @@ public class KUBS_ChekcerSteps extends BaseClass {
 			throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
 		kubsLogin.loginToAzentioAppAsChecker("Checker");
-		dataSetID=excelDataAssetImpairementExecution.getTestdata("KUBS_FAT_UAT_009_004_03");
+		dataSetID = excelDataAssetImpairementExecution.getTestdata("KUBS_FAT_UAT_009_004_03");
 		checkerTestData = excelDataForAssetImapirment.getTestdata(dataSetID.get("Data Set ID"));
 	}
 
@@ -614,7 +657,7 @@ public class KUBS_ChekcerSteps extends BaseClass {
 			throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
 		kubsLogin.loginToAzentioAppAsChecker("Checker");
-		dataSetID=excelDataAssetImpairementExecution.getTestdata("KUBS_FAT_UAT_009_005_03");
+		dataSetID = excelDataAssetImpairementExecution.getTestdata("KUBS_FAT_UAT_009_005_03");
 		checkerTestData = excelDataForAssetImapirment.getTestdata(dataSetID.get("Data Set ID"));
 	}
 
@@ -623,7 +666,7 @@ public class KUBS_ChekcerSteps extends BaseClass {
 			throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
 		kubsLogin.loginToAzentioAppAsChecker("Checker");
-		dataSetID=excelDataAssetImpairementExecution.getTestdata("KUBS_FAT_UAT_009_006_03");
+		dataSetID = excelDataAssetImpairementExecution.getTestdata("KUBS_FAT_UAT_009_006_03");
 		checkerTestData = excelDataForAssetImapirment.getTestdata(dataSetID.get("Data Set ID"));
 	}
 
@@ -632,7 +675,7 @@ public class KUBS_ChekcerSteps extends BaseClass {
 			throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
 		kubsLogin.loginToAzentioAppAsChecker("Checker");
-		dataSetID=excelDataAssetImpairementExecution.getTestdata("KUBS_FAT_UAT_009_007_03");
+		dataSetID = excelDataAssetImpairementExecution.getTestdata("KUBS_FAT_UAT_009_007_03");
 		checkerTestData = excelDataForAssetImapirment.getTestdata(dataSetID.get("Data Set ID"));
 	}
 
@@ -641,7 +684,7 @@ public class KUBS_ChekcerSteps extends BaseClass {
 			throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
 		kubsLogin.loginToAzentioAppAsChecker("Checker");
-		dataSetID=excelDataAssetImpairementExecution.getTestdata("KUBS_FAT_UAT_009_008_03");
+		dataSetID = excelDataAssetImpairementExecution.getTestdata("KUBS_FAT_UAT_009_008_03");
 		checkerTestData = excelDataForAssetImapirment.getTestdata(dataSetID.get("Data Set ID"));
 	}
 
@@ -650,7 +693,7 @@ public class KUBS_ChekcerSteps extends BaseClass {
 			throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
 		kubsLogin.loginToAzentioAppAsChecker("Checker");
-		dataSetID=excelDataAssetImpairementExecution.getTestdata("KUBS_FAT_UAT_009_009_03");
+		dataSetID = excelDataAssetImpairementExecution.getTestdata("KUBS_FAT_UAT_009_009_03");
 		checkerTestData = excelDataForAssetImapirment.getTestdata(dataSetID.get("Data Set ID"));
 	}
 
@@ -658,7 +701,8 @@ public class KUBS_ChekcerSteps extends BaseClass {
 	public void navigate_to_kubs_url_and_login_with_checker_for_approve_asset_category_record() throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
 		kubsLogin.loginToAzentioAppAsChecker("Checker");
-		checkerTestData = excelData.getTestdata("KUBS_FAT_UAT_002_002_D1");
+		dataSetID = excelDataAssetCreationExecution.getTestdata("KUBS_FAT_UAT_002_002_03Allocation");
+		checkerTestData = excelData.getTestdata(dataSetID.get("Data Set ID"));
 	}
 
 	@Given("^Navigate to KUBS url and login with checker for approve asset category record for asset return$")
@@ -666,15 +710,18 @@ public class KUBS_ChekcerSteps extends BaseClass {
 			throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
 		kubsLogin.loginToAzentioAppAsChecker("Checker");
-		checkerTestData = excelData.getTestdata("KUBS_FAT_UAT_002_002_D3");
+		dataSetID = excelDataAssetReturnExecution.getTestdata("KUBS_FAT_UAT_002_002_03_Return");
+		checkerTestData = excelData.getTestdata(dataSetID.get("Data Set ID"));
+
 	}
 
 	@Given("^Navigate to KUBS url and login with checker for approve asset category record for asset allocation$")
 	public void navigate_to_kubs_url_and_login_with_checker_for_approve_asset_category_record_for_asset_allocation()
 			throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
-		kubsLogin.loginToAzentioAppAsChecker("Checker");
-		checkerTestData = excelData.getTestdata("KUBS_FAT_UAT_002_002_D4");
+		dataSetID = excelDataAssetAllocDeAllocExecution.getTestdata("KUBS_FAT_UAT_002_002_03Allocation");
+		checkerTestData = excelData.getTestdata(dataSetID.get("Data Set ID"));
+
 	}
 
 	@Given("^Navigate to KUBS url and login with checker for approve asset category record for asset ammendment$")
@@ -682,14 +729,16 @@ public class KUBS_ChekcerSteps extends BaseClass {
 			throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
 		kubsLogin.loginToAzentioAppAsChecker("Checker");
-		checkerTestData = excelData.getTestdata("KUBS_FAT_UAT_002_002_D5");
+		dataSetID = excelDataAssetAmendmentExecution.getTestdata("KUBS_FAT_UAT_002_002_03_AssetAmmendment");
+		checkerTestData = excelData.getTestdata(dataSetID.get("Data Set ID"));
+
 	}
 
 	@Given("^Navigate to KUBS url and login with checker for approve asset category record for asset revaluation$")
 	public void navigate_to_kubs_url_and_login_with_checker_for_approve_asset_category_record_for_asset_revaluation()
 			throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
-		dataSetID=excelDataAssetRevaluationExecution.getTestdata("KUBS_FAT_UAT_002_002_03_ReValuation");
+		dataSetID = excelDataAssetRevaluationExecution.getTestdata("KUBS_FAT_UAT_002_002_03_ReValuation");
 		kubsLogin.loginToAzentioAppAsChecker("Checker");
 		checkerTestData = excelData.getTestdata(dataSetID.get("Data Set ID"));
 	}
@@ -698,7 +747,7 @@ public class KUBS_ChekcerSteps extends BaseClass {
 	public void navigate_to_kubs_url_and_login_with_checker_for_approve_asset_category_record_for_asset_tranfer_and_undertaking()
 			throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
-		dataSetID=excelDataForTransferExecution.getTestdata("KUBS_FAT_UAT_002_002_03_Transfer");
+		dataSetID = excelDataForTransferExecution.getTestdata("KUBS_FAT_UAT_002_002_03_Transfer");
 		kubsLogin.loginToAzentioAppAsChecker("Checker");
 		checkerTestData = excelData.getTestdata(dataSetID.get("Data Set ID"));
 	}
@@ -714,7 +763,7 @@ public class KUBS_ChekcerSteps extends BaseClass {
 			throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
 		kubsLogin.loginToAzentioAppAsChecker("Checker");
-		dataSetID=excelDataAssetImpairementExecution.getTestdata("KUBS_FAT_UAT_002_002_03");
+		dataSetID = excelDataAssetImpairementExecution.getTestdata("KUBS_FAT_UAT_002_002_03");
 		checkerTestData = excelData.getTestdata(dataSetID.get("Data Set ID"));
 	}
 
@@ -723,7 +772,8 @@ public class KUBS_ChekcerSteps extends BaseClass {
 			throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
 		kubsLogin.loginToAzentioAppAsChecker("Checker");
-		checkerTestData = excelDataForAssetCodeConfig.getTestdata("KUBS_FAT_UAT_002_003_D1");
+		dataSetID = excelDataAssetCreationExecution.getTestdata("KUBS_FAT_UAT_002_003_03");
+		checkerTestData = excelDataForAssetCodeConfig.getTestdata(dataSetID.get("Data Set ID"));
 	}
 
 	@Given("^Navigate to KUBS url and login with checker for approve asset code configuration record for asset ammendment$")
@@ -731,22 +781,24 @@ public class KUBS_ChekcerSteps extends BaseClass {
 			throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
 		kubsLogin.loginToAzentioAppAsChecker("Checker");
-		checkerTestData = excelDataForAssetCodeConfig.getTestdata("KUBS_FAT_UAT_002_003_D5");
+		dataSetID = excelDataAssetAmendmentExecution.getTestdata("KUBS_FAT_UAT_002_003_03_AssetAmmendment");
+		checkerTestData = excelDataForAssetCodeConfig.getTestdata(dataSetID.get("Data Set ID"));
 	}
 
 	@Given("^Navigate to KUBS url and login with checker for approve asset code configuration record for asset allocation$")
 	public void navigate_to_kubs_url_and_login_with_checker_for_approve_asset_code_configuration_record_for_asset_allocation()
 			throws Throwable {
+
 		driver.get(configFileReader.getApplicationUrl());
-		kubsLogin.loginToAzentioAppAsChecker("Checker");
-		checkerTestData = excelDataForAssetCodeConfig.getTestdata("KUBS_FAT_UAT_002_003_D4");
+		dataSetID = excelDataAssetAllocDeAllocExecution.getTestdata("KUBS_FAT_UAT_002_003_03Allocation");
+		checkerTestData = excelDataForAssetCodeConfig.getTestdata(dataSetID.get("Data Set ID"));
 	}
 
 	@Given("^Navigate to KUBS url and login with checker for approve asset code configuration record for asset revaluation$")
 	public void navigate_to_kubs_url_and_login_with_checker_for_approve_asset_code_configuration_record_for_asset_revaluation()
 			throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
-		dataSetID=excelDataAssetRevaluationExecution.getTestdata("KUBS_FAT_UAT_002_003_03_ReValuation");
+		dataSetID = excelDataAssetRevaluationExecution.getTestdata("KUBS_FAT_UAT_002_003_03_ReValuation");
 		kubsLogin.loginToAzentioAppAsChecker("Checker");
 		checkerTestData = excelDataForAssetCodeConfig.getTestdata(dataSetID.get("Data Set ID"));
 	}
@@ -756,8 +808,8 @@ public class KUBS_ChekcerSteps extends BaseClass {
 			throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
 		kubsLogin.loginToAzentioAppAsChecker("Checker");
-		dataSetID=excelDataForTransferExecution.getTestdata("KUBS_FAT_UAT_002_003_03_Transfer");
-		
+		dataSetID = excelDataForTransferExecution.getTestdata("KUBS_FAT_UAT_002_003_03_Transfer");
+
 		checkerTestData = excelDataForAssetCodeConfig.getTestdata(dataSetID.get("Data Set ID"));
 	}
 
@@ -766,7 +818,7 @@ public class KUBS_ChekcerSteps extends BaseClass {
 			throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
 		kubsLogin.loginToAzentioAppAsChecker("Checker");
-		dataSetID=excelDataAssetImpairementExecution.getTestdata("KUBS_FAT_UAT_002_003_03");
+		dataSetID = excelDataAssetImpairementExecution.getTestdata("KUBS_FAT_UAT_002_003_03");
 		checkerTestData = excelDataForAssetCodeConfig.getTestdata(dataSetID.get("Data Set ID"));
 	}
 
@@ -775,7 +827,9 @@ public class KUBS_ChekcerSteps extends BaseClass {
 			throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
 		kubsLogin.loginToAzentioAppAsChecker("Checker");
-		checkerTestData = excelDataForAssetCodeConfig.getTestdata("KUBS_FAT_UAT_002_003_D3");
+		dataSetID = excelDataAssetReturnExecution.getTestdata("KUBS_FAT_UAT_002_003_03_Return");
+		checkerTestData = excelDataForAssetCodeConfig.getTestdata(dataSetID.get("Data Set ID"));
+
 	}
 
 	@Given("^Navigate to KUBS url and login with checker for approve asset gl configuration record$")
@@ -783,7 +837,8 @@ public class KUBS_ChekcerSteps extends BaseClass {
 			throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
 		kubsLogin.loginToAzentioAppAsChecker("Checker");
-		checkerTestData = excelDataForAssetGlConfig.getTestdata("KUBS_FAT_UAT_002_004_D1");
+				dataSetID=excelDataAssetCreationExecution.getTestdata("KUBS_FAT_UAT_002_004_03");		
+				checkerTestData=excelDataForAssetGlConfig.getTestdata(dataSetID.get("Data Set ID"));
 	}
 
 	@Given("^Navigate to KUBS url and login with checker for approve asset gl configuration record for asset ammendment$")
@@ -791,22 +846,25 @@ public class KUBS_ChekcerSteps extends BaseClass {
 			throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
 		kubsLogin.loginToAzentioAppAsChecker("Checker");
-		checkerTestData = excelDataForAssetGlConfig.getTestdata("KUBS_FAT_UAT_002_004_D5");
+		dataSetID = excelDataAssetAmendmentExecution.getTestdata("KUBS_FAT_UAT_002_004_03_AssetAmmendment");
+		checkerTestData = excelDataForAssetGlConfig.getTestdata(dataSetID.get("Data Set ID"));
+
 	}
 
 	@Given("^Navigate to KUBS url and login with checker for approve asset gl configuration record for asset allocation$")
 	public void navigate_to_kubs_url_and_login_with_checker_for_approve_asset_gl_configuration_record_for_asset_allocation()
 			throws Throwable {
+
 		driver.get(configFileReader.getApplicationUrl());
-		kubsLogin.loginToAzentioAppAsChecker("Checker");
-		checkerTestData = excelDataForAssetGlConfig.getTestdata("KUBS_FAT_UAT_002_004_D4");
+		dataSetID = excelDataAssetAllocDeAllocExecution.getTestdata("KUBS_FAT_UAT_002_004_03Allocation");
+		checkerTestData = excelDataForAssetGlConfig.getTestdata(dataSetID.get("Data Set ID"));
 	}
 
 	@Given("^Navigate to KUBS url and login with checker for approve asset gl configuration record for asset revaluation$")
 	public void navigate_to_kubs_url_and_login_with_checker_for_approve_asset_gl_configuration_record_for_asset_revaluation()
 			throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
-		dataSetID=excelDataAssetRevaluationExecution.getTestdata("KUBS_FAT_UAT_002_004_03_ReValuation");
+		dataSetID = excelDataAssetRevaluationExecution.getTestdata("KUBS_FAT_UAT_002_004_03_ReValuation");
 		kubsLogin.loginToAzentioAppAsChecker("Checker");
 		checkerTestData = excelDataForAssetGlConfig.getTestdata(dataSetID.get("Data Set ID"));
 	}
@@ -817,7 +875,7 @@ public class KUBS_ChekcerSteps extends BaseClass {
 
 		driver.get(configFileReader.getApplicationUrl());
 		kubsLogin.loginToAzentioAppAsChecker("Checker");
-		dataSetID=excelDataForTransferExecution.getTestdata("KUBS_FAT_UAT_002_004_03_Transfer");
+		dataSetID = excelDataForTransferExecution.getTestdata("KUBS_FAT_UAT_002_004_03_Transfer");
 		checkerTestData = excelDataForAssetGlConfig.getTestdata(dataSetID.get("Data Set ID"));
 	}
 
@@ -826,7 +884,9 @@ public class KUBS_ChekcerSteps extends BaseClass {
 			throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
 		kubsLogin.loginToAzentioAppAsChecker("Checker");
-		checkerTestData = excelDataForAssetGlConfig.getTestdata("KUBS_FAT_UAT_002_004_D3");
+		dataSetID = excelDataAssetReturnExecution.getTestdata("KUBS_FAT_UAT_002_004_03_Return");
+		checkerTestData = excelDataForAssetGlConfig.getTestdata(dataSetID.get("Data Set ID"));
+
 	}
 
 	@Given("^Navigate to KUBS url and login with checker for approve asset gl configuration record to do asset impairment$")
@@ -834,17 +894,20 @@ public class KUBS_ChekcerSteps extends BaseClass {
 			throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
 		kubsLogin.loginToAzentioAppAsChecker("Checker");
-		
-		dataSetID=excelDataAssetImpairementExecution.getTestdata("KUBS_FAT_UAT_002_004_03");
+
+		dataSetID = excelDataAssetImpairementExecution.getTestdata("KUBS_FAT_UAT_002_004_03");
 		checkerTestData = excelDataForAssetGlConfig.getTestdata(dataSetID.get("Data Set ID"));
 	}
 
 	@Given("^Navigate to KUBS url and login with checker for approve the asset serial number setup record$")
 	public void navigate_to_kubs_url_and_login_with_checker_for_approve_the_asset_serial_number_setup_record()
 			throws Throwable {
+	
 		driver.get(configFileReader.getApplicationUrl());
 		kubsLogin.loginToAzentioAppAsChecker("Checker");
-		checkerTestData = excelDataForSerialNumberSetUp.getTestdata("KUBS_FAT_UAT_002_005_D1");
+				dataSetID=excelDataAssetCreationExecution.getTestdata("KUBS_FAT_UAT_002_005_03");		
+				checkerTestData=excelDataForSerialNumberSetUp.getTestdata(dataSetID.get("Data Set ID"));
+
 	}
 
 	@Given("^Navigate to KUBS url and login with checker for approve the asset serial number setup record for asset ammendment$")
@@ -852,22 +915,25 @@ public class KUBS_ChekcerSteps extends BaseClass {
 			throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
 		kubsLogin.loginToAzentioAppAsChecker("Checker");
-		checkerTestData = excelDataForSerialNumberSetUp.getTestdata("KUBS_FAT_UAT_002_005_D5");
+		dataSetID = excelDataAssetAmendmentExecution.getTestdata("KUBS_FAT_UAT_002_005_03_AssetAmmendment");
+		checkerTestData = excelDataForSerialNumberSetUp.getTestdata(dataSetID.get("Data Set ID"));
+		
 	}
 
 	@Given("^Navigate to KUBS url and login with checker for approve the asset serial number setup record for asset allocation$")
 	public void navigate_to_kubs_url_and_login_with_checker_for_approve_the_asset_serial_number_setup_record_for_asset_allocation()
 			throws Throwable {
+
 		driver.get(configFileReader.getApplicationUrl());
-		kubsLogin.loginToAzentioAppAsChecker("Checker");
-		checkerTestData = excelDataForSerialNumberSetUp.getTestdata("KUBS_FAT_UAT_002_005_D4");
+		dataSetID = excelDataAssetAllocDeAllocExecution.getTestdata("KUBS_FAT_UAT_002_005_03Allocation");
+		checkerTestData = excelDataForSerialNumberSetUp.getTestdata(dataSetID.get("Data Set ID"));
 	}
 
 	@Given("^Navigate to KUBS url and login with checker for approve the asset serial number setup record for asset revaluation$")
 	public void navigate_to_kubs_url_and_login_with_checker_for_approve_the_asset_serial_number_setup_record_for_asset_revaluation()
 			throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
-		dataSetID=excelDataAssetRevaluationExecution.getTestdata("KUBS_FAT_UAT_002_005_03_ReValuation");
+		dataSetID = excelDataAssetRevaluationExecution.getTestdata("KUBS_FAT_UAT_002_005_03_ReValuation");
 		kubsLogin.loginToAzentioAppAsChecker("Checker");
 		checkerTestData = excelDataForSerialNumberSetUp.getTestdata(dataSetID.get("Data Set ID"));
 	}
@@ -876,9 +942,9 @@ public class KUBS_ChekcerSteps extends BaseClass {
 	public void navigate_to_kubs_url_and_login_with_checker_for_approve_the_asset_serial_number_setup_record_for_asset_transfer_and_undertaking()
 			throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
-		
+
 		kubsLogin.loginToAzentioAppAsChecker("Checker");
-		dataSetID=excelDataForTransferExecution.getTestdata("KUBS_FAT_UAT_002_005_03_Transfer");
+		dataSetID = excelDataForTransferExecution.getTestdata("KUBS_FAT_UAT_002_005_03_Transfer");
 		checkerTestData = excelDataForSerialNumberSetUp.getTestdata(dataSetID.get("Data Set ID"));
 	}
 
@@ -887,7 +953,9 @@ public class KUBS_ChekcerSteps extends BaseClass {
 			throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
 		kubsLogin.loginToAzentioAppAsChecker("Checker");
-		checkerTestData = excelDataForSerialNumberSetUp.getTestdata("KUBS_FAT_UAT_002_005_D3");
+		dataSetID = excelDataAssetReturnExecution.getTestdata("KUBS_FAT_UAT_002_005_03_Return");
+		checkerTestData = excelDataForSerialNumberSetUp.getTestdata(dataSetID.get("Data Set ID"));
+
 	}
 
 	@Given("^Navigate to KUBS url and login with checker for approve the asset serial number setup record to do asset impairment$")
@@ -895,31 +963,35 @@ public class KUBS_ChekcerSteps extends BaseClass {
 			throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
 		kubsLogin.loginToAzentioAppAsChecker("Checker");
-		dataSetID=excelDataAssetImpairementExecution.getTestdata("KUBS_FAT_UAT_002_005_03");
-		checkerTestData =excelDataForSerialNumberSetUp.getTestdata(dataSetID.get("Data Set ID"));
+		dataSetID = excelDataAssetImpairementExecution.getTestdata("KUBS_FAT_UAT_002_005_03");
+		checkerTestData = excelDataForSerialNumberSetUp.getTestdata(dataSetID.get("Data Set ID"));
 	}
 
 	@Given("^navigate to kubs url to approve the fixed asset creation record with minimum details as a checker$")
 	public void navigate_to_kubs_url_to_approve_the_fixed_asset_creation_record_with_minimum_details_as_a_checker()
 			throws Throwable {
-
 		driver.get(configFileReader.getApplicationUrl());
 		kubsLogin.loginToAzentioAppAsChecker("Checker");
-		checkerTestData = excelDataForAssetCreation.getTestdata("KUBS_FAT_UAT_002_006_D1");
+				dataSetID=excelDataAssetCreationExecution.getTestdata("KUBS_FAT_UAT_002_006_03");		
+				checkerTestData=excelDataForAssetCreation.getTestdata(dataSetID.get("Data Set ID"));
 	}
+
 	@Given("^navigate to kubs url to approve the fixed asset creation record with GRN number as a checker$")
-    public void navigate_to_kubs_url_to_approve_the_fixed_asset_creation_record_with_grn_number_as_a_checker() throws Throwable {
+	public void navigate_to_kubs_url_to_approve_the_fixed_asset_creation_record_with_grn_number_as_a_checker()
+			throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
 		kubsLogin.loginToAzentioAppAsChecker("Checker");
-		checkerTestData = excelDataForAssetCreation.getTestdata("KUBS_FAT_UAT_002_007_D8");
-    }
+				dataSetID=excelDataAssetCreationExecution.getTestdata("KUBS_FAT_UAT_002_008_03");		
+				checkerTestData=excelDataForAssetCreation.getTestdata(dataSetID.get("Data Set ID"));
+	}
 
 	@Given("^navigate to kubs url to approve the fixed asset creation record with full details as a checker$")
 	public void navigate_to_kubs_url_to_approve_the_fixed_asset_creation_record_with_full_details_as_a_checker()
 			throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
 		kubsLogin.loginToAzentioAppAsChecker("Checker");
-		checkerTestData = excelDataForAssetCreation.getTestdata("KUBS_FAT_UAT_002_007_D1");
+				dataSetID=excelDataAssetCreationExecution.getTestdata("KUBS_FAT_UAT_002_007_03");		
+				checkerTestData=excelDataForAssetCreation.getTestdata(dataSetID.get("Data Set ID"));
 	}
 
 	@Given("^navigate to kubs url to approve the fixed asset creation record with full details in checker for asset transfer$")
@@ -927,7 +999,7 @@ public class KUBS_ChekcerSteps extends BaseClass {
 			throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
 		kubsLogin.loginToAzentioAppAsChecker("Checker");
-		dataSetID=excelDataForTransferExecution.getTestdata("KUBS_FAT_UAT_002_007_03_AssetTransfer1");
+		dataSetID = excelDataForTransferExecution.getTestdata("KUBS_FAT_UAT_002_007_03_AssetTransfer1");
 		checkerTestData = excelDataForAssetCreation.getTestdata(dataSetID.get("Data Set ID"));
 	}
 
@@ -936,14 +1008,15 @@ public class KUBS_ChekcerSteps extends BaseClass {
 			throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
 		kubsLogin.loginToAzentioAppAsChecker("Checker");
-		checkerTestData = excelDataForAssetCreation.getTestdata("KUBS_FAT_UAT_002_007_D5");
+		dataSetID = excelDataAssetAmendmentExecution.getTestdata("KUBS_FAT_UAT_002_007_03_AssetAmmendment03");
+		checkerTestData = excelDataForAssetCreation.getTestdata(dataSetID.get("Data Set ID"));
 	}
 
 	@Given("^navigate to kubs url to approve the fixed asset creation record with full details in checker fo the pre requiste of asset revaluation$")
 	public void navigate_to_kubs_url_to_approve_the_fixed_asset_creation_record_with_full_details_in_checker_fo_the_pre_requiste_of_asset_revaluation()
 			throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
-		dataSetID=excelDataAssetRevaluationExecution.getTestdata("KUBS_FAT_UAT_002_007_03_AssetRevaluation03");
+		dataSetID = excelDataAssetRevaluationExecution.getTestdata("KUBS_FAT_UAT_002_007_03_AssetRevaluation03");
 		kubsLogin.loginToAzentioAppAsChecker("Checker");
 		checkerTestData = excelDataForAssetCreation.getTestdata(dataSetID.get("Data Set ID"));
 	}
@@ -951,9 +1024,10 @@ public class KUBS_ChekcerSteps extends BaseClass {
 	@Given("^navigate to kubs url to approve the fixed asset creation record with full details as a checker for asset allocation$")
 	public void navigate_to_kubs_url_to_approve_the_fixed_asset_creation_record_with_full_details_as_a_checker_for_asset_allocation()
 			throws Throwable {
+
 		driver.get(configFileReader.getApplicationUrl());
-		kubsLogin.loginToAzentioAppAsChecker("Checker");
-		checkerTestData = excelDataForAssetCreation.getTestdata("KUBS_FAT_UAT_002_007_D4");
+		dataSetID = excelDataAssetAllocDeAllocExecution.getTestdata("KUBS_FAT_UAT_002_007_03Allocation03");
+		checkerTestData = excelDataForAssetCreation.getTestdata(dataSetID.get("Data Set ID"));
 	}
 
 	@Given("^navigate to kubs url to approve the fixed asset creation record with full details as a checker to do impairment$")
@@ -961,7 +1035,7 @@ public class KUBS_ChekcerSteps extends BaseClass {
 			throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
 		kubsLogin.loginToAzentioAppAsChecker("Checker");
-		dataSetID=excelDataAssetImpairementExecution.getTestdata("KUBS_FAT_UAT_002_007_01_Impairment03");
+		dataSetID = excelDataAssetImpairementExecution.getTestdata("KUBS_FAT_UAT_002_007_01_Impairment03");
 		checkerTestData = excelDataForAssetCreation.getTestdata(dataSetID.get("Data Set ID"));
 	}
 
@@ -970,14 +1044,16 @@ public class KUBS_ChekcerSteps extends BaseClass {
 			throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
 		kubsLogin.loginToAzentioAppAsChecker("Checker");
-		checkerTestData = excelDataForAssetCreation.getTestdata("KUBS_FAT_UAT_002_007_D3");
+		dataSetID = excelDataAssetReturnExecution.getTestdata("KUBS_FAT_UAT_002_007_03_Return03");
+		checkerTestData = excelDataForAssetCreation.getTestdata(dataSetID.get("Data Set ID"));
+
 	}
 
 	@Given("^navigate to kubs url to approve the fixed asset allocation record as a checker$")
 	public void navigate_to_kubs_url_to_approve_the_fixed_asset_allocation_record_as_a_checker() throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
-		kubsLogin.loginToAzentioAppAsChecker("Checker");
-		checkerTestData = excelDataForAssetAllocation.getTestdata("KUBS_FAT_UAT_006_001_D1");
+		dataSetID = excelDataAssetAllocDeAllocExecution.getTestdata("KUBS_FAT_UAT_006_001_03");
+		checkerTestData = excelDataForAssetAllocation.getTestdata(dataSetID.get("Data Set ID"));
 	}
 
 	@Given("^navigate to kubs url to approve the fixed asset allocation record in checker for prerequisite of asset writeoff$")
@@ -985,7 +1061,8 @@ public class KUBS_ChekcerSteps extends BaseClass {
 			throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
 		kubsLogin.loginToAzentioAppAsChecker("Checker");
-		checkerTestData = excelDataForAssetAllocation.getTestdata("KUBS_FAT_UAT_006_003_D11");
+		dataSetID = excelDataAssetWriteOffExecution.getTestdata("KUBS_FAT_UAT_006_001_03_writeOff");
+		checkerTestData = excelDataForAssetAllocation.getTestdata(dataSetID.get("Data Set ID"));
 	}
 
 	@Given("^navigate to kubs url to approve the fixed asset allocation record in checker for prerequisite of asset deallocation writeoff$")
@@ -993,17 +1070,19 @@ public class KUBS_ChekcerSteps extends BaseClass {
 			throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
 		kubsLogin.loginToAzentioAppAsChecker("Checker");
-		checkerTestData = excelDataForAssetAllocation.getTestdata("KUBS_FAT_UAT_006_003_D12");
+		dataSetID = excelDataAssetWriteOffExecution.getTestdata("KUBS_FAT_UAT_006_001_01_WriteOff03");
+		checkerTestData = excelDataForAssetAllocation.getTestdata(dataSetID.get("Data Set ID"));
+
 	}
 
 	@Given("^navigate to kubs url to approve the fixed asset allocation record in checker for asset revaluation prerequisite$")
 	public void navigate_to_kubs_url_to_approve_the_fixed_asset_allocation_record_in_checker_for_asset_revaluation_prerequisite()
 			throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
-		dataSetID=excelDataAssetRevaluationExecution.getTestdata("KUBS_FAT_UAT_006_001_03_Revaluation");
+		dataSetID = excelDataAssetRevaluationExecution.getTestdata("KUBS_FAT_UAT_006_001_03_Revaluation");
 		kubsLogin.loginToAzentioAppAsChecker("Checker");
-		checkerTestData = excelDataForAssetAllocation.getTestdata(dataSetID.get("Data Set ID"));	
-	
+		checkerTestData = excelDataForAssetAllocation.getTestdata(dataSetID.get("Data Set ID"));
+
 	}
 
 	@Given("^navigate to kubs url to approve the fixed asset allocation record in checker which is already revalued$")
@@ -1027,7 +1106,8 @@ public class KUBS_ChekcerSteps extends BaseClass {
 			throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
 		kubsLogin.loginToAzentioAppAsChecker("Checker");
-		checkerTestData = excelDataForAssetAllocation.getTestdata("KUBS_FAT_UAT_006_003_D3");
+		dataSetID = excelDataAssetReturnExecution.getTestdata("KUBS_FAT_UAT_006_001_03_Return");
+		checkerTestData = excelDataForAssetAllocation.getTestdata(dataSetID.get("Data Set ID"));
 	}
 
 	@Given("^navigate to kubs Url to approve the fixed asset Allocation to make the asset impaired in checker$")
@@ -1035,7 +1115,7 @@ public class KUBS_ChekcerSteps extends BaseClass {
 			throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
 		kubsLogin.loginToAzentioAppAsChecker("Checker");
-		dataSetID=excelDataAssetImpairementExecution.getTestdata("KUBS_FAT_UAT_006_001_03_Impairment");
+		dataSetID = excelDataAssetImpairementExecution.getTestdata("KUBS_FAT_UAT_006_001_03_Impairment");
 		checkerTestData = excelDataForAssetAllocation.getTestdata(dataSetID.get("Data Set ID"));
 	}
 
@@ -1060,7 +1140,8 @@ public class KUBS_ChekcerSteps extends BaseClass {
 			throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
 		kubsLogin.loginToAzentioAppAsChecker("Checker");
-		checkerTestData = excelDataForAssetSale.getTestdata("KUBS_FAT_UAT_004_001_01_D1");
+				dataSetID=excelDataAssetCreationExecution.getTestdata("KUBS_FAT_UAT_004_001_03");		
+				checkerTestData=excelDataForAssetSale.getTestdata(dataSetID.get("Data Set ID"));
 	}
 
 	@Given("^navigate to kubs url to approve the fixed asset sale record whcih is sold at low price as a checker$")
@@ -1068,14 +1149,17 @@ public class KUBS_ChekcerSteps extends BaseClass {
 			throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
 		kubsLogin.loginToAzentioAppAsChecker("Checker");
-		checkerTestData = excelDataForAssetSale.getTestdata("KUBS_FAT_UAT_004_003_01_D1");
+				dataSetID=excelDataAssetCreationExecution.getTestdata("KUBS_FAT_UAT_004_003_03");		
+				checkerTestData=excelDataForAssetSale.getTestdata(dataSetID.get("Data Set ID"));
 	}
 
 	@Given("^navigate to kubs url to approve the fixed asset de allocation record as a checker$")
 	public void navigate_to_kubs_url_to_approve_the_fixed_asset_de_allocation_record_as_a_checker() throws Throwable {
+
 		driver.get(configFileReader.getApplicationUrl());
-		kubsLogin.loginToAzentioAppAsChecker("Checker");
-		checkerTestData = excelDataForAssetDeAllocation.getTestdata("KUBS_FAT_UAT_006_005_01_D1");
+		dataSetID = excelDataAssetAllocDeAllocExecution.getTestdata("KUBS_FAT_UAT_006_005_03Prereq");
+		checkerTestData = excelDataForAssetDeAllocation.getTestdata(dataSetID.get("Data Set ID"));
+
 	}
 
 	@Given("^navigate to kubs url to approve the fixed asset de allocation record as a checker for prerequisite of asset writeoff$")
@@ -1083,7 +1167,8 @@ public class KUBS_ChekcerSteps extends BaseClass {
 			throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
 		kubsLogin.loginToAzentioAppAsChecker("Checker");
-		checkerTestData = excelDataForAssetDeAllocation.getTestdata("KUBS_FAT_UAT_006_005_01_D11");
+		dataSetID = excelDataAssetWriteOffExecution.getTestdata("KUBS_FAT_UAT_006_005_03");
+		checkerTestData = excelDataForAssetDeAllocation.getTestdata(dataSetID.get("Data Set ID"));
 	}
 
 	@Given("^navigate to kubs url to approve the fixed asset de allocation record in checker for asset return prerequsite$")
@@ -1091,14 +1176,15 @@ public class KUBS_ChekcerSteps extends BaseClass {
 			throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
 		kubsLogin.loginToAzentioAppAsChecker("Checker");
-		checkerTestData = excelDataForAssetDeAllocation.getTestdata("KUBS_FAT_UAT_006_005_01_D3");
+		dataSetID = excelDataAssetReturnExecution.getTestdata("KUBS_FAT_UAT_006_005_03_Return");
+		checkerTestData = excelDataForAssetDeAllocation.getTestdata(dataSetID.get("Data Set ID"));
 	}
 
 	@Given("^navigate to kubs url to approve the fixed asset de allocation record in checker for the prerequisite of asset revaluation$")
 	public void navigate_to_kubs_url_to_approve_the_fixed_asset_de_allocation_record_in_checker_for_the_prerequisite_of_asset_revaluation()
 			throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
-		dataSetID=excelDataAssetRevaluationExecution.getTestdata("KUBS_FAT_UAT_006_005_03_Revaluation");
+		dataSetID = excelDataAssetRevaluationExecution.getTestdata("KUBS_FAT_UAT_006_005_03_Revaluation");
 		kubsLogin.loginToAzentioAppAsChecker("Checker");
 		checkerTestData = excelDataForAssetDeAllocation.getTestdata(dataSetID.get("Data Set ID"));
 	}
@@ -1108,7 +1194,7 @@ public class KUBS_ChekcerSteps extends BaseClass {
 			throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
 		kubsLogin.loginToAzentioAppAsChecker("Checker");
-		dataSetID=excelDataAssetImpairementExecution.getTestdata("KUBS_FAT_UAT_006_005_03_Impairment");
+		dataSetID = excelDataAssetImpairementExecution.getTestdata("KUBS_FAT_UAT_006_005_03_Impairment");
 		checkerTestData = excelData.getTestdata(dataSetID.get("Data Set ID"));
 	}
 
@@ -1116,7 +1202,8 @@ public class KUBS_ChekcerSteps extends BaseClass {
 	public void navigate_to_kubs_url_to_approve_the_fixed_asset_return_record() throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
 		kubsLogin.loginToAzentioAppAsChecker("Checker");
-		checkerTestData = excelDataForAssetReturn.getTestdata("KUBS_FAT_UAT_007_001_01_D1");
+		dataSetID = excelDataAssetReturnExecution.getTestdata("KUBS_FAT_UAT_007_001_03");
+		checkerTestData = excelDataForAssetReturn.getTestdata(dataSetID.get("Data Set ID"));
 
 	}
 
@@ -1125,7 +1212,9 @@ public class KUBS_ChekcerSteps extends BaseClass {
 			throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
 		kubsLogin.loginToAzentioAppAsChecker("Checker");
-		checkerTestData = excelDataForAssetReturn.getTestdata("KUBS_FAT_UAT_007_002_01_D1");
+		dataSetID = excelDataAssetReturnExecution.getTestdata("KUBS_FAT_UAT_007_002_03");
+		checkerTestData = excelDataForAssetReturn.getTestdata(dataSetID.get("Data Set ID"));
+
 	}
 
 	@Given("^navigate to kubs url to approve the fixed asset return record which is already undertaken in checker$")
@@ -1133,7 +1222,8 @@ public class KUBS_ChekcerSteps extends BaseClass {
 			throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
 		kubsLogin.loginToAzentioAppAsChecker("Checker");
-		checkerTestData = excelDataForAssetReturn.getTestdata("KUBS_FAT_UAT_007_007_01_D1");
+		dataSetID = excelDataAssetReturnExecution.getTestdata("KUBS_FAT_UAT_007_007_03");
+		checkerTestData = excelDataForAssetReturn.getTestdata(dataSetID.get("Data Set ID"));
 	}
 
 	@Given("^navigate to kubs url to approve the fixed asset return record which is already impaired in checker$")
@@ -1149,7 +1239,8 @@ public class KUBS_ChekcerSteps extends BaseClass {
 			throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
 		kubsLogin.loginToAzentioAppAsChecker("Checker");
-		checkerTestData = excelDataForAssetReturn.getTestdata("KUBS_FAT_UAT_007_005_01_D1");
+		dataSetID = excelDataAssetReturnExecution.getTestdata("KUBS_FAT_UAT_007_005_03");
+		checkerTestData = excelDataForAssetReturn.getTestdata(dataSetID.get("Data Set ID"));
 	}
 
 	@Given("^navigate to kubs url to approve the fixed asset return record which is already deallocated in checker$")
@@ -1157,7 +1248,8 @@ public class KUBS_ChekcerSteps extends BaseClass {
 			throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
 		kubsLogin.loginToAzentioAppAsChecker("Checker");
-		checkerTestData = excelDataForAssetReturn.getTestdata("KUBS_FAT_UAT_007_006_01_D1");
+		dataSetID = excelDataAssetReturnExecution.getTestdata("KUBS_FAT_UAT_007_006_03");
+		checkerTestData = excelDataForAssetReturn.getTestdata(dataSetID.get("Data Set ID"));
 	}
 
 	@Given("^navigate to kubs url to approve the fixed asset return record which is done on asset ammendment in checker$")
@@ -1165,78 +1257,89 @@ public class KUBS_ChekcerSteps extends BaseClass {
 			throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
 		kubsLogin.loginToAzentioAppAsChecker("Checker");
-		checkerTestData = excelDataForAssetReturn.getTestdata("KUBS_FAT_UAT_007_003_01_D1");
+		dataSetID = excelDataAssetReturnExecution.getTestdata("KUBS_FAT_UAT_007_003_03");
+		checkerTestData = excelDataForAssetReturn.getTestdata(dataSetID.get("Data Set ID"));
+
 	}
 
 	@Given("^navigate to kubs url to approve the fixed asset replacement record as a checker for deallocation$")
 	public void navigate_to_kubs_url_to_approve_the_fixed_asset_replacement_record_as_a_checker_for_deallocation()
 			throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
-		kubsLogin.loginToAzentioAppAsChecker("Checker");
-		checkerTestData = excelDataForAssetReplacement.getTestdata("KUBS_FAT_UAT_008_D6");
+		dataSetID = excelDataAssetAllocDeAllocExecution
+				.getTestdata("KUBS_FAT_UAT_006_012_03_AssetReplacementForDealloaction");
+		checkerTestData = excelDataForAssetReplacement.getTestdata(dataSetID.get("Data Set ID"));
 	}
 
 	@Given("^navigate to kubs url to approve the fixed asset allocation from asset replacement record as a checker$")
 	public void navigate_to_kubs_url_to_approve_the_fixed_asset_allocation_from_asset_replacement_record_as_a_checker()
 			throws Throwable {
+
 		driver.get(configFileReader.getApplicationUrl());
-		kubsLogin.loginToAzentioAppAsChecker("Checker");
-		checkerTestData = excelDataForAssetAllocation.getTestdata("KUBS_FAT_UAT_006_003_D5");
+		dataSetID = excelDataAssetAllocDeAllocExecution
+				.getTestdata("KUBS_FAT_UAT_006_012_03_AssetReplacementAllocation");
+		checkerTestData = excelDataForAssetAllocation.getTestdata(dataSetID.get("Data Set ID"));
 	}
 
 	@Given("^navigate to kubs url to approve the asset replacement record to de allocation as a checker$")
 	public void navigate_to_kubs_url_to_approve_the_asset_replacement_record_to_de_allocation_as_a_checker()
 			throws Throwable {
+
 		driver.get(configFileReader.getApplicationUrl());
-		kubsLogin.loginToAzentioAppAsChecker("Checker");
-		checkerTestData = excelDataForAssetDeAllocation.getTestdata("KUBS_FAT_UAT_006_005_01_D5");
+		dataSetID = excelDataAssetAllocDeAllocExecution.getTestdata("KUBS_FAT_UAT_006_012_03");
+		checkerTestData = excelDataForAssetDeAllocation.getTestdata(dataSetID.get("Data Set ID"));
 	}
 
 	@Given("^navigate to kubs url to approve the fixed asset allocation from asset ammenment record as a checker$")
 	public void navigate_to_kubs_url_to_approve_the_fixed_asset_allocation_from_asset_ammenment_record_as_a_checker()
 			throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
-		kubsLogin.loginToAzentioAppAsChecker("Checker");
-		checkerTestData = excelDataForAssetAllocation.getTestdata("KUBS_FAT_UAT_006_003_D6");
+		dataSetID = excelDataAssetAllocDeAllocExecution.getTestdata("KUBS_FAT_UAT_006_002_03");
+		checkerTestData = excelDataForAssetAllocation.getTestdata(dataSetID.get("Data Set ID"));
 	}
 
 	@Given("^navigate to kubs url to approve the fixed asset ammendment record as a checker for deallocation$")
 	public void navigate_to_kubs_url_to_approve_the_fixed_asset_ammendment_record_as_a_checker_for_deallocation()
 			throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
-		kubsLogin.loginToAzentioAppAsChecker("Checker");
-		checkerTestData = excelDataForAssetAmmendment.getTestdata("KUBS_FAT_UAT_011_01_D7");
+		dataSetID = excelDataAssetAllocDeAllocExecution.getTestdata("KUBS_FAT_UAT_011_03_Allocation");
+		checkerTestData = excelDataForAssetAmmendment.getTestdata(dataSetID.get("Data Set ID"));
 	}
 
 	@Given("^navigate to kubs url to approve the asset ammenment record to de allocation as a checker$")
 	public void navigate_to_kubs_url_to_approve_the_asset_ammenment_record_to_de_allocation_as_a_checker()
 			throws Throwable {
+
 		driver.get(configFileReader.getApplicationUrl());
-		kubsLogin.loginToAzentioAppAsChecker("Checker");
-		checkerTestData = excelDataForAssetDeAllocation.getTestdata("KUBS_FAT_UAT_006_005_01_D6");
+		dataSetID = excelDataAssetAllocDeAllocExecution.getTestdata("KUBS_FAT_UAT_006_011_03");
+		checkerTestData = excelDataForAssetDeAllocation.getTestdata(dataSetID.get("Data Set ID"));
 	}
 
 	@Given("^navigate to kubs url to approve the fixed asset allocation from asset transfer record as a checker$")
 	public void navigate_to_kubs_url_to_approve_the_fixed_asset_allocation_from_asset_transfer_record_as_a_checker()
 			throws Throwable {
+
 		driver.get(configFileReader.getApplicationUrl());
-		kubsLogin.loginToAzentioAppAsChecker("Checker");
-		checkerTestData = excelDataForAssetAllocation.getTestdata("KUBS_FAT_UAT_006_003_D7");
+		dataSetID = excelDataAssetAllocDeAllocExecution.getTestdata("KUBS_FAT_UAT_006_012_03_AssetTransferAllocation");
+		checkerTestData = excelDataForAssetAllocation.getTestdata(dataSetID.get("Data Set ID"));
 	}
 
 	@Given("^navigate to kubs url to approve the asset transfer record to de allocation as a checker$")
 	public void navigate_to_kubs_url_to_approve_the_asset_transfer_record_to_de_allocation_as_a_checker()
 			throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
-		kubsLogin.loginToAzentioAppAsChecker("Checker");
-		checkerTestData = excelDataForAssetDeAllocation.getTestdata("KUBS_FAT_UAT_006_005_01_D7");
+		dataSetID = excelDataAssetAllocDeAllocExecution
+				.getTestdata("KUBS_FAT_UAT_006_012_03.1_AssetTransferDeAllocation");
+		checkerTestData = excelDataForAssetDeAllocation.getTestdata(dataSetID.get("Data Set ID"));
 	}
 
 	@Given("^navigate to kubs url to approve the fixed asset sale record as a checker$")
 	public void navigate_to_kubs_url_to_approve_the_fixed_asset_sale_record_as_a_checker() throws Throwable {
+
 		driver.get(configFileReader.getApplicationUrl());
-		kubsLogin.loginToAzentioAppAsChecker("Checker");
-		checkerTestData = excelDataForAssetSale.getTestdata("KUBS_FAT_UAT_004_003_01_D4");
+		dataSetID = excelDataAssetAllocDeAllocExecution.getTestdata("KUBS_FAT_UAT_004_001_03AssetSaleCreation");
+		checkerTestData = excelDataForAssetSale.getTestdata(dataSetID.get("Data Set ID"));
+
 	}
 
 	@Given("^navigate to kubs url to approve the fixed asset allocation from asset sale record as a checker$")
@@ -1256,9 +1359,10 @@ public class KUBS_ChekcerSteps extends BaseClass {
 
 	@Given("^navigate to kubs url to approve the fixed asset revaluation record in checker$")
 	public void navigate_to_kubs_url_to_approve_the_fixed_asset_revaluation_record_in_checker() throws Throwable {
+
 		driver.get(configFileReader.getApplicationUrl());
-		kubsLogin.loginToAzentioAppAsChecker("Checker");
-		checkerTestData = excelDataForAssetRevaluation.getTestdata("KUBS_FAT_UAT_012_01_D5");
+		dataSetID = excelDataAssetAllocDeAllocExecution.getTestdata("KUBS_FAT_UAT_006_004_03_PreReq");
+		checkerTestData = excelDataForAssetRevaluation.getTestdata(dataSetID.get("Data Set ID"));
 
 	}
 
@@ -1266,16 +1370,16 @@ public class KUBS_ChekcerSteps extends BaseClass {
 	public void navigate_to_kubs_url_to_approve_the_fixed_asset_allocation_from_asset_revalauation_record_as_a_checker()
 			throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
-		kubsLogin.loginToAzentioAppAsChecker("Checker");
-		checkerTestData = excelDataForAssetAllocation.getTestdata("KUBS_FAT_UAT_006_003_D9");
+		dataSetID = excelDataAssetAllocDeAllocExecution.getTestdata("KUBS_FAT_UAT_006_004_03");
+		checkerTestData = excelDataForAssetAllocation.getTestdata(dataSetID.get("Data Set ID"));
 	}
 
 	@Given("^navigate to kubs url to approve the asset revaluation record to de allocation as a checker$")
 	public void navigate_to_kubs_url_to_approve_the_asset_revaluation_record_to_de_allocation_as_a_checker()
 			throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
-		kubsLogin.loginToAzentioAppAsChecker("Checker");
-		checkerTestData = excelDataForAssetDeAllocation.getTestdata("KUBS_FAT_UAT_006_005_01_D9");
+		dataSetID = excelDataAssetAllocDeAllocExecution.getTestdata("KUBS_FAT_UAT_006_010_03");
+		checkerTestData = excelDataForAssetDeAllocation.getTestdata(dataSetID.get("Data Set ID"));
 	}
 
 	@And("^click on security management tool$")
@@ -1353,14 +1457,12 @@ public class KUBS_ChekcerSteps extends BaseClass {
 			} catch (Exception e) {
 				if (i == 1000) {
 					Assert.fail(e.getMessage());
-				} 
-				
-			}
-			catch(AssertionError e1)
-			{
+				}
+
+			} catch (AssertionError e1) {
 				if (i == 1000) {
 					Assert.fail(e1.getMessage());
-				} 
+				}
 			}
 		}
 		for (int i = 0; i <= 1000; i++) {

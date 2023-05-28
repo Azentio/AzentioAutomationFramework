@@ -7,14 +7,17 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
+import dataProvider.ConfigFileReader;
 import resources.ExcelData;
 import tests.ExcelTest;
 import utilities.ExtentManager;
 import utilities.ExtentTestManager;
 
 public class NewExcelTestRunner {
+	ConfigFileReader configFileReader= new ConfigFileReader();
+	
 	String path = System.getProperty("user.dir") + "\\Test-data\\KUBSTestData.xlsx";
-	ExcelData testExecution = new ExcelData(path, "AssetRevaluation_ExecutionTrack", "TestCaseID");
+	//ExcelData testExecution = new ExcelData(path, "AssetRevaluation_ExecutionTrack", "TestCaseID");
 	Map<String, String> testExecutionData;
 	ExcelTest excelTest = new ExcelTest(path, "AssetRevaluation_ExecutionTrack", "TestCaseID");
 	List<String> testCaseTagsFromExcel = excelTest.getTestCaseTagsfromExcel();
@@ -43,8 +46,9 @@ public class NewExcelTestRunner {
 
 	@Test()
 	public void test() {
+		
 		String path = System.getProperty("user.dir") + "\\Test-data\\KUBSTestData.xlsx";
-		ExcelTest excelTest = new ExcelTest(path, "AssetRevaluation_ExecutionTrack", "TestCaseID");
+		ExcelTest excelTest = new ExcelTest(path, configFileReader.getEXecutionTracker(), "TestCaseID");
 		testCaseTagsFromExcel = excelTest.getTestCaseTagsfromExcel();
 		NewExcelTestRunner newExcelTestRunner = new NewExcelTestRunner();
 		for (String string : testCaseTagsFromExcel) {
@@ -52,11 +56,11 @@ public class NewExcelTestRunner {
 		}
 		System.out.println("Tag size is "+testCaseTagsFromExcel.size());
 		for (String string : testCaseTagsFromExcel) {
-			ExcelTest excelTest2 = new ExcelTest(path, "AssetRevaluation_ExecutionTrack", "TestCaseID");
+			ExcelTest excelTest2 = new ExcelTest(path, configFileReader.getEXecutionTracker(), "TestCaseID");
 			testCaseTagsFromExcel = excelTest2.getTestCaseTagsfromExcel();
 			System.out.println(string);
 			currentExecutionTag = string;
-			ExcelData testExecution = new ExcelData(path, "AssetRevaluation_ExecutionTrack", "TestCaseID");
+			ExcelData testExecution = new ExcelData(path, configFileReader.getEXecutionTracker(), "TestCaseID");
 			testExecutionData = testExecution.getTestdata(string);
 			// run the scenarios based on tags from excel
 			

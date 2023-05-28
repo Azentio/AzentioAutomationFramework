@@ -61,6 +61,10 @@ public class FIXEDASSET_AssetReplacement extends BaseClass {
 	ExcelData excelDataForAssetAllocation = new ExcelData(path, "FixedAsset_AssetAllocation", "DataSet ID");
 	ExcelData excelDataForAssetImpairementExecution = new ExcelData(path, "AssetImpairement_ExecutionTracker", "TestCaseID");
 	ExcelData excelDataForAssetRevaluationExecution = new ExcelData(path, "AssetRevaluation_ExecutionTrack", "TestCaseID");
+	ExcelData excelDataAlocDeAllocExecution = new ExcelData(path, "AssetAllocDeAlloc_ExeTracker", "TestCaseID");
+	ExcelData excelDataAssetReturnExecution = new ExcelData(path, "AssetReturn_ExecutionTrack", "TestCaseID");
+	ExcelData excelDataAssetWriteOffExecution = new ExcelData(path, "WriteOff_ExecutionTrack", "TestCaseID");
+	ExcelData excelDataAssetCreationExecution = new ExcelData(path, "AssetCreation_ExecutionTrack", "TestCaseID");
 	Map<String, String> dataSetID = new HashMap<>();
 	Map<String, String> assetReplacementTestData = new HashMap<>();
 	Map<String, String> assetReplacementReportTestData = new HashMap<>();
@@ -130,19 +134,21 @@ public class FIXEDASSET_AssetReplacement extends BaseClass {
 //new Start
 	@And("^get the test data from asset replacement excel database$")
 	public void get_the_test_data_from_asset_replacement_excel_database() throws Throwable {
-		assetReplacementTestData = excelDataForAssetReplacement.getTestdata("KUBS_FAT_UAT_008_D1");
+		dataSetID=excelDataAssetCreationExecution.getTestdata("KUBS_FAT_UAT_008_001_01");
+		assetReplacementTestData = excelDataForAssetReplacement.getTestdata(dataSetID.get("Data Set ID"));
 	}
 
 	@And("^get the test data from asset replacement excel database for the prerequisite of asset writeoff$")
 	public void get_the_test_data_from_asset_replacement_excel_database_for_the_prerequisite_of_asset_writeoff()
 			throws Throwable {
-		assetReplacementTestData = excelDataForAssetReplacement.getTestdata("KUBS_FAT_UAT_008_D11");
+		dataSetID=excelDataAssetWriteOffExecution.getTestdata("KUBS_FAT_UAT_008_001_01_WriteOff");
+		assetReplacementTestData = excelDataForAssetReplacement.getTestdata(dataSetID.get("Data Set ID"));
 	}
 
 	@And("^get the test data from asset replacement excel database for asset return prerequsite$")
 	public void get_the_test_data_from_asset_replacement_excel_database_for_asset_return_prerequsite()
 			throws Throwable {
-	    dataSetID=excelDataForAssetImpairementExecution.getTestdata("KUBS_FAT_UAT_008_001_01_Impairment");
+	    dataSetID=excelDataAssetReturnExecution.getTestdata("KUBS_FAT_UAT_008_001_01_Return");
 		assetReplacementTestData = excelDataForAssetReplacement.getTestdata(dataSetID.get("Data Set ID"));
 	}
 
@@ -162,7 +168,8 @@ public class FIXEDASSET_AssetReplacement extends BaseClass {
 
 	@Then("^Get the data set id for asset replacement from asset replacement excel data base$")
 	public void get_the_data_set_id_for_asset_replacement_from_asset_replacement_excel_data_base() throws Throwable {
-		assetReplacementTestData = excelDataForAssetReplacement.getTestdata("KUBS_FAT_UAT_008_D6");
+		dataSetID=excelDataAlocDeAllocExecution.getTestdata("KUBS_FAT_UAT_006_012_01__AssetReplacementForDealloaction");
+		assetReplacementTestData = excelDataForAssetReplacement.getTestdata(dataSetID.get("Data Set ID"));
 	}
 
 	@And("^enter the asset reference number in asset replacement$")
@@ -337,9 +344,10 @@ public class FIXEDASSET_AssetReplacement extends BaseClass {
 	@And("^store the asset reference and item number of replacement should store in asset allocation excel database$")
 	public void store_the_asset_reference_and_item_number_of_replacement_should_store_in_asset_allocation_excel_database()
 			throws Throwable {
-		excelDataForAssetAllocation.updateTestData("KUBS_FAT_UAT_006_003_D5", "AssetReferenceNumber",
+		//Update Data Set 1
+		excelDataForAssetAllocation.updateTestData(assetReplacementTestData.get("Update Data Set 1"), "AssetReferenceNumber",
 				assetReplacementTestData.get("AssetReferenceNumber"));
-		excelDataForAssetAllocation.updateTestData("KUBS_FAT_UAT_006_003_D5", "AssetItemNumber",
+		excelDataForAssetAllocation.updateTestData(assetReplacementTestData.get("Update Data Set 1"), "AssetItemNumber",
 				assetReplacementTestData.get("UpdatedNewItemNumber"));
 	}
 
@@ -366,18 +374,21 @@ public class FIXEDASSET_AssetReplacement extends BaseClass {
 	@And("^store the asset reference and item number of replacement should store in asset return excel database$")
 	public void store_the_asset_reference_and_item_number_of_replacement_should_store_in_asset_return_excel_database()
 			throws Throwable {
-		excelDataForAssetReturn.updateTestData("KUBS_FAT_UAT_007_005_01_D1", "AssetReferenceNumber",
+		
+		//Update Data Set 1
+		excelDataForAssetReturn.updateTestData(assetReplacementTestData.get("Update Data Set 1"), "AssetReferenceNumber",
 				assetReplacementTestData.get("AssetReferenceNumber"));
-		excelDataForAssetReturn.updateTestData("KUBS_FAT_UAT_007_005_01_D1", "AssetItemNumber",
+		excelDataForAssetReturn.updateTestData(assetReplacementTestData.get("Update Data Set 1"), "AssetItemNumber",
 				assetReplacementTestData.get("UpdatedNewItemNumber"));
 	}
 
 	@And("^store the asset reference and item number of replacement should store in asset write off excel database$")
 	public void store_the_asset_reference_and_item_number_of_replacement_should_store_in_asset_write_off_excel_database()
 			throws Throwable {
-		excelDataForAssetWriteOff.updateTestData("KUBS_FAT_UAT_010_006_D1", "AssetReferenceNumber",
+		//Update Data Set 1
+		excelDataForAssetWriteOff.updateTestData(assetReplacementTestData.get("Update Data Set 1"), "AssetReferenceNumber",
 				assetReplacementTestData.get("AssetReferenceNumber"));
-		excelDataForAssetWriteOff.updateTestData("KUBS_FAT_UAT_010_006_D1", "AssetItemNumber",
+		excelDataForAssetWriteOff.updateTestData(assetReplacementTestData.get("Update Data Set 1"), "AssetItemNumber",
 				assetReplacementTestData.get("UpdatedNewItemNumber"));
 
 	}

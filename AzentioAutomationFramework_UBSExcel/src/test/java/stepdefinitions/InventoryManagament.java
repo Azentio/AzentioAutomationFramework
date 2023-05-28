@@ -1,6 +1,7 @@
 package stepdefinitions;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -71,7 +72,9 @@ public class InventoryManagament extends BaseClass {
 	ExcelData excelData = new ExcelData(path, "GRNTestData", "Data Set ID");
 	ExcelData excelDataForInvoiceBooking = new ExcelData(path, "BillBookingTestData", "Data Set ID");
 	ExcelData excelDataForAssetCreation = new ExcelData(path, "FixedAsset_AssetCreation", "Data Set ID");
+	ExcelData excelDataAssetConfigExecution = new ExcelData(path, "AssetConfig_ExecutionTrack", "TestCaseID");
 	Map<String, String> testData;
+	Map<String, String> dataSetID=new HashMap<>();
 	// ----KUBS_INV_MGMT_UAT_001_001-----
 
 	@Given("^Navigate to URL and user should login as a maker$")
@@ -521,9 +524,9 @@ public class InventoryManagament extends BaseClass {
 		String id = inventoryManagamentObj.AccountsPayableGRNNotificationFirstReferenceNumber().getText();
 
 		// jsonWriter.addReferanceData(id);
-		excelData.updateTestData("KUBS_FAT_UAT_001_004_02_D1", "Reference ID", id);
+		excelData.updateTestData(testData.get("Update Data Set 1"), "Reference ID", id);
 		// testData.get("KUBS_FAT_UAT_001_004_02_D1");
-		testData = excelData.getTestdata("KUBS_FAT_UAT_001_004_02_D1");
+		testData = excelData.getTestdata(testData.get("Update Data Set 1"));
 		System.out.println("Reference ID:" + id);
 		for (int i = 1; i <= 35; i++) {
 			try {
@@ -629,19 +632,20 @@ public class InventoryManagament extends BaseClass {
 		System.out.println(reviewerId);
 		jsonWriter = new JsonDataReaderWriter();
 		jsonWriter.addData(reviewerId);
-		excelData.updateTestData("KUBS_FAT_UAT_001_004_02_D1", "Reviewer ID", reviewerId);
+		excelData.updateTestData(testData.get("Update Data Set 1"), "Reviewer ID", reviewerId);
 
 	}
 
 	@And("^store the GRN Number and po number and bp name in invoice booking excel database$")
 	public void store_the_grn_number_and_po_number_and_bp_name_in_invoice_booking_excel_database() throws Throwable {
-		excelDataForInvoiceBooking.updateTestData("KUBS_FAT_UAT_001_005_01_D1", "BP_Name", testData.get("GRNbpName"));
-		excelDataForInvoiceBooking.updateTestData("KUBS_FAT_UAT_001_005_01_D1", "PONumber",
+		//Update Data Set 2
+		excelDataForInvoiceBooking.updateTestData(testData.get("Update Data Set 2"), "BP_Name", testData.get("GRNbpName"));
+		excelDataForInvoiceBooking.updateTestData(testData.get("Update Data Set 2"), "PONumber",
 				testData.get("GRNPoNumber"));
 		waithelper.waitForElementToVisibleWithFluentWait(driver, inventoryManagamentObj.approvedGRNNumber(), 20, 1);
 		String grnNumber = inventoryManagamentObj.approvedGRNNumber().getText();
-		excelDataForInvoiceBooking.updateTestData("KUBS_FAT_UAT_001_005_01_D1", "GRNNumber", grnNumber);
-		excelDataForAssetCreation.updateTestData("KUBS_FAT_UAT_002_007_D8", "GRNNumber", grnNumber);
+		excelDataForInvoiceBooking.updateTestData(testData.get("Update Data Set 2"), "GRNNumber", grnNumber);
+		excelDataForAssetCreation.updateTestData(testData.get("Update Data Set 3"), "GRNNumber", grnNumber);
 	}
 
 	@Then("^Clam record$")
@@ -1312,7 +1316,8 @@ public class InventoryManagament extends BaseClass {
 
 	@And("^update test data to create GRN for generated PO$")
 	public void update_test_data_to_create_grn_for_generated_po() throws Throwable {
-		testData = excelData.getTestdata("KUBS_FAT_UAT_001_004_01_D1");
+		dataSetID=excelDataAssetConfigExecution.getTestdata("KUBS_FAT_UAT_001_004_01");
+		testData = excelData.getTestdata(dataSetID.get("Data Set ID"));
 	}
 
 	@And("^Update test data to approve GRN record in reviewer$")

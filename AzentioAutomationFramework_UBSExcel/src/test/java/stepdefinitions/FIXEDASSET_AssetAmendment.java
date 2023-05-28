@@ -51,6 +51,10 @@ public class FIXEDASSET_AssetAmendment extends BaseClass {
 	ExcelData excelDataForAssetWriteOff = new ExcelData(path, "FixedAsset_WriteOff", "DataSet ID");
 	ExcelData excelDataForAssetImpairementExecution = new ExcelData(path, "AssetImpairement_ExecutionTrack", "TestCaseID");
 	ExcelData excelDataForAssetRevaluationExecution = new ExcelData(path, "AssetImpairement_ExecutionTrack", "TestCaseID");
+	ExcelData excelDataAlocDeAllocExecution = new ExcelData(path, "AssetAllocDeAlloc_ExeTracker", "TestCaseID");
+	ExcelData excelDataAssetReturnExecution = new ExcelData(path, "AssetReturn_ExecutionTrack", "TestCaseID");
+	ExcelData excelDataAssetAmendmentExecution = new ExcelData(path, "AssetAmendment_EXecutionTrack", "TestCaseID");
+	ExcelData excelDataAssetWriteOffExecution = new ExcelData(path, "WriteOff_ExecutionTrack", "TestCaseID");
 	DateIncrementDecrement dateIncrementDecrement = new DateIncrementDecrement();
 	BrowserHelper browserHelper = new BrowserHelper(driver);
 	Map<String, String> assetAmmendmentReportTestData = new HashMap<>();
@@ -79,13 +83,15 @@ public class FIXEDASSET_AssetAmendment extends BaseClass {
 //New Start
 	@And("^get the test data for asset ammendment from ammendment excel database$")
 	public void get_the_test_data_for_asset_ammendment_from_ammendment_excel_database() throws Throwable {
-		assetAmmendmentTestData = excelDataForAssetAmmendment.getTestdata("KUBS_FAT_UAT_011_01_D1");
+		dataSetID=excelDataAssetAmendmentExecution.getTestdata("KUBS_FAT_UAT_011_01");
+		assetAmmendmentTestData = excelDataForAssetAmmendment.getTestdata(dataSetID.get("Data Set ID"));
 	}
 
 	@And("^get the test data for asset ammendment from ammendment excel database for prerequisite of asset writeoff$")
 	public void get_the_test_data_for_asset_ammendment_from_ammendment_excel_database_for_prerequisite_of_asset_writeoff()
 			throws Throwable {
-		assetAmmendmentTestData = excelDataForAssetAmmendment.getTestdata("KUBS_FAT_UAT_011_01_D11");
+		dataSetID=excelDataAssetWriteOffExecution.getTestdata("KUBS_FAT_UAT_011_01_WriteOff");
+		assetAmmendmentTestData = excelDataForAssetAmmendment.getTestdata(dataSetID.get("Data Set ID"));
 	}
 
 	@And("^get the test data for asset ammendment from ammendment excel database for prerequisite asset revaluation$")
@@ -99,19 +105,22 @@ public class FIXEDASSET_AssetAmendment extends BaseClass {
 	@And("^get the test data for asset ammendment from ammendment excel database to change the asset life$")
 	public void get_the_test_data_for_asset_ammendment_from_ammendment_excel_database_to_change_the_asset_life()
 			throws Throwable {
-		assetAmmendmentTestData = excelDataForAssetAmmendment.getTestdata("KUBS_FAT_UAT_011_02_D1");
+		dataSetID=excelDataAssetAmendmentExecution.getTestdata("KUBS_FAT_UAT_011_02_01");
+		assetAmmendmentTestData = excelDataForAssetAmmendment.getTestdata(dataSetID.get("Data Set ID"));
 	}
 
 	@And("^get the test data for asset ammendment from ammendment excel database to change the asset life less than existing asset life$")
 	public void get_the_test_data_for_asset_ammendment_from_ammendment_excel_database_to_change_the_asset_life_less_than_existing_asset_life()
 			throws Throwable {
-		assetAmmendmentTestData = excelDataForAssetAmmendment.getTestdata("KUBS_FAT_UAT_011_03_D1");
+		dataSetID=excelDataAssetAmendmentExecution.getTestdata("KUBS_FAT_UAT_011_03_01");
+		assetAmmendmentTestData = excelDataForAssetAmmendment.getTestdata(dataSetID.get("Data Set ID"));
 	}
 
 	@And("^get the test data for asset ammendment from ammendment excel database to change the asset life greater than existing asset life$")
 	public void get_the_test_data_for_asset_ammendment_from_ammendment_excel_database_to_change_the_asset_life_greater_than_existing_asset_life()
 			throws Throwable {
-		assetAmmendmentTestData = excelDataForAssetAmmendment.getTestdata("KUBS_FAT_UAT_011_04_D1");
+		dataSetID=excelDataAssetAmendmentExecution.getTestdata("KUBS_FAT_UAT_011_04_01");
+		assetAmmendmentTestData = excelDataForAssetAmmendment.getTestdata(dataSetID.get("Data Set ID"));
 	}
 
 	@And("^get the test data for asset ammendment from ammendment excel database to make asset as used for asset allocation$")
@@ -130,12 +139,14 @@ public class FIXEDASSET_AssetAmendment extends BaseClass {
 	@And("^get the test data for asset ammendment from ammendment excel database for asset return prerequsite$")
 	public void get_the_test_data_for_asset_ammendment_from_ammendment_excel_database_for_asset_return_prerequsite()
 			throws Throwable {
-		assetAmmendmentTestData = excelDataForAssetAmmendment.getTestdata("KUBS_FAT_UAT_011_01_D4");
+		dataSetID=excelDataAssetReturnExecution.getTestdata("KUBS_FAT_UAT_011_01_AssetReturn");
+		assetAmmendmentTestData = excelDataForAssetAmmendment.getTestdata(dataSetID.get("Data Set ID"));
 	}
 
 	@And("^get the test data for asset ammendment from ammendment excel database to deallocate$")
 	public void get_the_test_data_for_asset_ammendment_from_ammendment_excel_database_to_deallocate() throws Throwable {
-		assetAmmendmentTestData = excelDataForAssetAmmendment.getTestdata("KUBS_FAT_UAT_011_01_D7");
+		dataSetID=excelDataAlocDeAllocExecution.getTestdata("KUBS_FAT_UAT_011_01_Allocation");
+		assetAmmendmentTestData = excelDataForAssetAmmendment.getTestdata(dataSetID.get("Data Set ID"));
 	}
 
 	@And("^enter the asset reference number in aset ammendment$")
@@ -638,18 +649,20 @@ public class FIXEDASSET_AssetAmendment extends BaseClass {
 	@And("^store the asset reference number and item number of ammendment asset in asset writeoff excel database$")
 	public void store_the_asset_reference_number_and_item_number_of_ammendment_asset_in_asset_writeoff_excel_database()
 			throws Throwable {
-		excelDataForAssetWriteOff.updateTestData("KUBS_FAT_UAT_010_004_D1", "AssetReferenceNumber",
+		//Update Data Set 1
+		excelDataForAssetWriteOff.updateTestData(assetAmmendmentTestData.get("Update Data Set 1"), "AssetReferenceNumber",
 				assetAmmendmentTestData.get("AssetReferenceNumber"));
-		excelDataForAssetWriteOff.updateTestData("KUBS_FAT_UAT_010_004_D1", "AssetItemNumber",
+		excelDataForAssetWriteOff.updateTestData(assetAmmendmentTestData.get("Update Data Set 1"), "AssetItemNumber",
 				assetAmmendmentTestData.get("AssetItemNumber"));
 	}
 
 	@Then("^Store the asset reference number and asset item number of asset ammenment in asset allocation excel data base$")
 	public void store_the_asset_reference_number_and_asset_item_number_of_asset_ammenment_in_asset_allocation_excel_data_base()
 			throws Throwable {
-		excelDataForAssetAllocation.updateTestData("KUBS_FAT_UAT_006_003_D6", "AssetReferenceNumber",
+		//Update Data Set 1
+		excelDataForAssetAllocation.updateTestData(assetAmmendmentTestData.get("Update Data Set 1"), "AssetReferenceNumber",
 				assetAmmendmentTestData.get("AssetReferenceNumber"));
-		excelDataForAssetAllocation.updateTestData("KUBS_FAT_UAT_006_003_D6", "AssetItemNumber",
+		excelDataForAssetAllocation.updateTestData(assetAmmendmentTestData.get("Update Data Set 1"), "AssetItemNumber",
 				assetAmmendmentTestData.get("AssetItemNumber"));
 	}
 
@@ -706,9 +719,10 @@ public class FIXEDASSET_AssetAmendment extends BaseClass {
 	@And("^store the asset reference number and item number of approved ammendment asset in asset return excel database$")
 	public void store_the_asset_reference_number_and_item_number_of_approved_ammendment_asset_in_asset_return_excel_database()
 			throws Throwable {
-		excelDataForAssetReturn.updateTestData("KUBS_FAT_UAT_007_003_01_D1", "AssetReferenceNumber",
+		//update1
+		excelDataForAssetReturn.updateTestData(assetAmmendmentTestData.get("Update Data Set 1"), "AssetReferenceNumber",
 				assetAmmendmentTestData.get("AssetReferenceNumber"));
-		excelDataForAssetReturn.updateTestData("KUBS_FAT_UAT_007_003_01_D1", "AssetItemNumber",
+		excelDataForAssetReturn.updateTestData(assetAmmendmentTestData.get("Update Data Set 1"), "AssetItemNumber",
 				assetAmmendmentTestData.get("AssetItemNumber"));
 	}
 

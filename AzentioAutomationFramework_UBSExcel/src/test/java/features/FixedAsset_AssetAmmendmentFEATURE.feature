@@ -264,7 +264,7 @@ And store the asset code in asset creation excel database for asset ammendment
 And click on user profile in maker
 And click on logout button
 Then verify user profile got logout
-@KUBS_FAT_UAT_002_007_01_AssetAmmendment
+@KUBS_FAT_UAT_002_007_01_AssetAmmendment01
 Scenario: Creation of the registered asset with full details
 Given Maker Navigate to UAT URL login
 And click on configuration section
@@ -301,7 +301,7 @@ Then validate the submit and store the reviewer ID of fixed asset creation with 
 And click on user profile in maker
 And click on logout button
 Then verify user profile got logout
-@KUBS_FAT_UAT_002_007_02_AssetAmmendment
+@KUBS_FAT_UAT_002_007_02_AssetAmmendment02
 Scenario: To verify reviewer user can able to approve the asset creation record with full details record
 Given navigate to kubs Url to approve the fixed asset creation record with full details in reviewer for pre requisite of asset ammendment
 And click on notification in reviewer stage
@@ -313,7 +313,7 @@ Then verify record got approved in reviewer stage
 And click on user profile in maker
 And click on logout button
 Then verify user profile got logout
-@KUBS_FAT_UAT_002_007_03_AssetAmmendment
+@KUBS_FAT_UAT_002_007_03_AssetAmmendment03
 Scenario: To verify checker user can able to approve the fixed asset creation with minimum details record
 Given navigate to kubs url to approve the fixed asset creation record with full details in checker for asset ammendment prerequisite
 And click on security management tool
@@ -329,7 +329,7 @@ Then verify record got approved in checker stage
 And click on user profile in maker
 And click on logout button
 Then verify user profile got logout
-@KUBS_FAT_UAT_002_007_04_AssetAmmendment
+@KUBS_FAT_UAT_002_007_04_AssetAmmendment04
 Scenario: To verify maker user can able to see the approved asset reference number in maker list view
 Given Maker Navigate to UAT URL login
 And click on configuration section
@@ -417,7 +417,7 @@ Then verify approved asset reference number of ammendment record should visible 
 And click on user profile in maker
 And click on logout button
 Then verify user profile got logout
-@KUBS_FAT_UAT_002_007_01_AssetAmmendment
+@KUBS_FAT_UAT_002_007_01_AssetAmmendment05
 Scenario: Creation of the registered asset with full details
 Given Maker Navigate to UAT URL login
 And click on configuration section
@@ -454,7 +454,7 @@ Then validate the submit and store the reviewer ID of fixed asset creation with 
 And click on user profile in maker
 And click on logout button
 Then verify user profile got logout
-@KUBS_FAT_UAT_002_007_02_AssetAmmendment
+@KUBS_FAT_UAT_002_007_02_AssetAmmendment06
 Scenario: To verify reviewer user can able to approve the asset creation record with full details record
 Given navigate to kubs Url to approve the fixed asset creation record with full details in reviewer for pre requisite of asset ammendment
 And click on notification in reviewer stage
@@ -466,7 +466,7 @@ Then verify record got approved in reviewer stage
 And click on user profile in maker
 And click on logout button
 Then verify user profile got logout
-@KUBS_FAT_UAT_002_007_03_AssetAmmendment
+@KUBS_FAT_UAT_002_007_03_AssetAmmendment07
 Scenario: To verify checker user can able to approve the fixed asset creation with minimum details record
 Given navigate to kubs url to approve the fixed asset creation record with full details in checker for asset ammendment prerequisite
 And click on security management tool
@@ -482,7 +482,7 @@ Then verify record got approved in checker stage
 And click on user profile in maker
 And click on logout button
 Then verify user profile got logout
-@KUBS_FAT_UAT_002_007_04_AssetAmmendment
+@KUBS_FAT_UAT_002_007_04_AssetAmmendment08
 Scenario: To verify maker user can able to see the approved asset reference number in maker list view
 Given Maker Navigate to UAT URL login
 And click on configuration section
@@ -570,7 +570,7 @@ Then verify approved asset reference number of ammendment record should visible 
 And click on user profile in maker
 And click on logout button
 Then verify user profile got logout
-@KUBS_FAT_UAT_002_007_01_AssetAmmendment
+@KUBS_FAT_UAT_002_007_01_AssetAmmendment09
 Scenario: Creation of the registered asset with full details
 Given Maker Navigate to UAT URL login
 And click on configuration section
@@ -607,7 +607,7 @@ Then validate the submit and store the reviewer ID of fixed asset creation with 
 And click on user profile in maker
 And click on logout button
 Then verify user profile got logout
-@KUBS_FAT_UAT_002_007_02_AssetAmmendment
+@KUBS_FAT_UAT_002_007_02_AssetAmmendment10
 Scenario: To verify reviewer user can able to approve the asset creation record with full details record
 Given navigate to kubs Url to approve the fixed asset creation record with full details in reviewer for pre requisite of asset ammendment
 And click on notification in reviewer stage
@@ -619,7 +619,7 @@ Then verify record got approved in reviewer stage
 And click on user profile in maker
 And click on logout button
 Then verify user profile got logout
-@KUBS_FAT_UAT_002_007_03_AssetAmmendment
+@KUBS_FAT_UAT_002_007_03_AssetAmmendment11
 Scenario: To verify checker user can able to approve the fixed asset creation with minimum details record
 Given navigate to kubs url to approve the fixed asset creation record with full details in checker for asset ammendment prerequisite
 And click on security management tool
@@ -635,7 +635,7 @@ Then verify record got approved in checker stage
 And click on user profile in maker
 And click on logout button
 Then verify user profile got logout
-@KUBS_FAT_UAT_002_007_04_AssetAmmendment
+@KUBS_FAT_UAT_002_007_04_AssetAmmendment12
 Scenario: To verify maker user can able to see the approved asset reference number in maker list view
 Given Maker Navigate to UAT URL login
 And click on configuration section
@@ -723,7 +723,7 @@ Then verify approved asset reference number of ammendment record should visible 
 And click on user profile in maker
 And click on logout button
 Then verify user profile got logout
-@KUBS_FAT_UAT_002_007_01_AssetAmmendment
+@KUBS_FAT_UAT_002_007_01_AssetAmmendment13
 Scenario: Creation of the registered asset with full details
 Given Maker Navigate to UAT URL login
 And click on configuration section
@@ -760,7 +760,7 @@ Then validate the submit and store the reviewer ID of fixed asset creation with 
 And click on user profile in maker
 And click on logout button
 Then verify user profile got logout
-@KUBS_FAT_UAT_002_007_02_AssetAmmendment
+@KUBS_FAT_UAT_002_007_02_AssetAmmendment14
 Scenario: To verify reviewer user can able to approve the asset creation record with full details record
 Given navigate to kubs Url to approve the fixed asset creation record with full details in reviewer for pre requisite of asset ammendment
 And click on notification in reviewer stage
@@ -772,7 +772,7 @@ Then verify record got approved in reviewer stage
 And click on user profile in maker
 And click on logout button
 Then verify user profile got logout
-@KUBS_FAT_UAT_002_007_03_AssetAmmendment
+@KUBS_FAT_UAT_002_007_03_AssetAmmendment15
 Scenario: To verify checker user can able to approve the fixed asset creation with minimum details record
 Given navigate to kubs url to approve the fixed asset creation record with full details in checker for asset ammendment prerequisite
 And click on security management tool
@@ -788,7 +788,7 @@ Then verify record got approved in checker stage
 And click on user profile in maker
 And click on logout button
 Then verify user profile got logout
-@KUBS_FAT_UAT_002_007_04_AssetAmmendment
+@KUBS_FAT_UAT_002_007_04_AssetAmmendment16
 Scenario: To verify maker user can able to see the approved asset reference number in maker list view
 Given Maker Navigate to UAT URL login
 And click on configuration section

@@ -58,25 +58,34 @@ public class KUBS_ReviewerUserSteps extends BaseClass {
 	ExcelData excelDataForGRN = new ExcelData(excelPath, "GRNTestData", "Data Set ID");
 	ExcelData excelDataAssetUndertakingExecution = new ExcelData(excelPath, "AssetUndertaking_ExecTracker",
 			"TestCaseID");
-
+	ExcelData excelDataAssetAllocDeAllocExecution = new ExcelData(excelPath, "AssetAllocDeAlloc_ExeTracker",
+			"TestCaseID");
+	ExcelData excelDataAssetReturnExecution = new ExcelData(excelPath, "AssetReturn_ExecutionTrack", "TestCaseID");
+	ExcelData excelDataAssetAmendmentExecution = new ExcelData(excelPath, "AssetAmendment_EXecutionTrack", "TestCaseID");
+	ExcelData excelDataAssetWriteOffExecution = new ExcelData(excelPath, "WriteOff_ExecutionTrack", "TestCaseID");
+	ExcelData excelDataAssetCreationExecution = new ExcelData(excelPath, "AssetCreation_ExecutionTrack", "TestCaseID");
+	ExcelData excelDataAssetConfigExecution = new ExcelData(excelPath, "AssetConfig_ExecutionTrack", "TestCaseID");
 	@Given("^navigate to kubs Url to approve the GRN record in reviewer$")
 	public void navigate_to_kubs_url_to_approve_the_grn_record_in_reviewer() throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
-		reviewerTestData = excelDataForGRN.getTestdata("KUBS_FAT_UAT_001_004_02_D1");
+		dataSetID=excelDataAssetConfigExecution.getTestdata("KUBS_FAT_UAT_001_004_02");
+		reviewerTestData = excelDataForGRN.getTestdata(dataSetID.get("Data Set ID"));
 		kubsLogin.logintoAzentioappReviewer("Reviewer", reviewerTestData.get("Reviewer ID"));
 	}
 
 	@Given("^navigate to kubs Url to approve the invoice against po record in reviewer$")
 	public void navigate_to_kubs_url_to_approve_the_invoice_against_po_record_in_reviewer() throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
-		reviewerTestData = excelDataForInvoiceBooking.getTestdata("KUBS_FAT_UAT_001_005_01_D1");
+		dataSetID=excelDataAssetConfigExecution.getTestdata("KUBS_FAT_UAT_001_005_02");
+		reviewerTestData = excelDataForInvoiceBooking.getTestdata(dataSetID.get("Data Set ID"));
 		kubsLogin.logintoAzentioappReviewer("Reviewer", reviewerTestData.get("Reviewer ID"));
 	}
 
 	@Given("^navigate to kubs url to approve the business partner setup record$")
 	public void navigate_to_kubs_url_to_approve_the_business_partner_setup_record() throws Throwable {
-		driver.get(configFileReader.getApplicationUrl()); // KUBS_FAT_UAT_001_01_D1
-		reviewerTestData = excelDataForBusinessPartner.getTestdata("KUBS_FAT_UAT_001_01_D1");
+		driver.get(configFileReader.getApplicationUrl());
+		dataSetID=excelDataAssetConfigExecution.getTestdata("KUBS_FAT_UAT_001_02");
+		reviewerTestData = excelDataForBusinessPartner.getTestdata(dataSetID.get("Data Set ID"));
 		kubsLogin.logintoAzentioappReviewer("Reviewer", reviewerTestData.get("Reviewer ID"));
 	}
 
@@ -261,15 +270,18 @@ public class KUBS_ReviewerUserSteps extends BaseClass {
 	@Given("^navigate to kubs Url to approve the fixed asset Replacement record as a reviewer$")
 	public void navigate_to_kubs_url_to_approve_the_fixed_asset_replacement_record_as_a_reviewer() throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
-		reviewerTestData = excelDataForAssetReplacement.getTestdata("KUBS_FAT_UAT_008_D1");
+		dataSetID=excelDataAssetCreationExecution.getTestdata("KUBS_FAT_UAT_008_001_02");
+		reviewerTestData = excelDataForAssetReplacement.getTestdata(dataSetID.get("Data Set ID"));
 		kubsLogin.logintoAzentioappReviewer("Reviewer", reviewerTestData.get("Reviewer ID"));
+		
 	}
 
 	@Given("^navigate to kubs Url to approve the fixed asset Replacement record in reviewer for prerequisite of asset write off$")
 	public void navigate_to_kubs_url_to_approve_the_fixed_asset_replacement_record_in_reviewer_for_prerequisite_of_asset_write_off()
 			throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
-		reviewerTestData = excelDataForAssetReplacement.getTestdata("KUBS_FAT_UAT_008_D11");
+		dataSetID=excelDataAssetWriteOffExecution.getTestdata("KUBS_FAT_UAT_008_001_02_WriteOff");
+		reviewerTestData = excelDataForAssetReplacement.getTestdata(dataSetID.get("Data Set ID"));
 		kubsLogin.logintoAzentioappReviewer("Reviewer", reviewerTestData.get("Reviewer ID"));
 	}
 
@@ -286,23 +298,28 @@ public class KUBS_ReviewerUserSteps extends BaseClass {
 	@Given("^navigate to kubs Url to approve the fixed asset Replacement record in reviewer for asset return prerequsite$")
 	public void navigate_to_kubs_url_to_approve_the_fixed_asset_replacement_record_in_reviewer_for_asset_return_prerequsite()
 			throws Throwable {
+		
 		driver.get(configFileReader.getApplicationUrl());
-		reviewerTestData = excelDataForAssetReplacement.getTestdata("KUBS_FAT_UAT_008_D3");
+		dataSetID=excelDataAssetReturnExecution.getTestdata("KUBS_FAT_UAT_008_001_02_Return");
+		reviewerTestData = excelDataForAssetReplacement.getTestdata(dataSetID.get("Data Set ID"));
 		kubsLogin.logintoAzentioappReviewer("Reviewer", reviewerTestData.get("Reviewer ID"));
 	}
 
 	@Given("^navigate to kubs Url to approve the fixed asset Ammendment as a reviewer$")
 	public void navigate_to_kubs_url_to_approve_the_fixed_asset_ammendment_as_a_reviewer() throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
-		reviewerTestData = excelDataForAssetAmmendment.getTestdata("KUBS_FAT_UAT_011_01_D1");
+		dataSetID=excelDataAssetAmendmentExecution .getTestdata("KUBS_FAT_UAT_011_02");
+		reviewerTestData = excelDataForAssetAmmendment.getTestdata(dataSetID.get("Data Set ID"));
 		kubsLogin.logintoAzentioappReviewer("Reviewer", reviewerTestData.get("Reviewer ID"));
+
 	}
 
 	@Given("^navigate to kubs Url to approve the fixed asset Ammendment in reviewer for prerequisite of asset writeoff$")
 	public void navigate_to_kubs_url_to_approve_the_fixed_asset_ammendment_in_reviewer_for_prerequisite_of_asset_writeoff()
 			throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
-		reviewerTestData = excelDataForAssetAmmendment.getTestdata("KUBS_FAT_UAT_011_01_D11");
+		dataSetID=excelDataAssetWriteOffExecution.getTestdata("KUBS_FAT_UAT_011_02_WriteOff");
+		reviewerTestData = excelDataForAssetAmmendment.getTestdata(dataSetID.get("Data Set ID"));
 		kubsLogin.logintoAzentioappReviewer("Reviewer", reviewerTestData.get("Reviewer ID"));
 	}
 
@@ -320,7 +337,8 @@ public class KUBS_ReviewerUserSteps extends BaseClass {
 	public void navigate_to_kubs_url_to_approve_the_fixed_asset_ammendment_in_reviewer_to_approve_the_asset_life_changes_ammendment_asset()
 			throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
-		reviewerTestData = excelDataForAssetAmmendment.getTestdata("KUBS_FAT_UAT_011_02_D1");
+		dataSetID=excelDataAssetAmendmentExecution .getTestdata("KUBS_FAT_UAT_011_02_02");
+		reviewerTestData = excelDataForAssetAmmendment.getTestdata(dataSetID.get("Data Set ID"));
 		kubsLogin.logintoAzentioappReviewer("Reviewer", reviewerTestData.get("Reviewer ID"));
 	}
 
@@ -328,7 +346,8 @@ public class KUBS_ReviewerUserSteps extends BaseClass {
 	public void navigate_to_kubs_url_to_approve_the_fixed_asset_ammendment_in_reviewer_to_approve_the_ammendment_asset_which_have_less_that_asset_life_which_earlier_exist()
 			throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
-		reviewerTestData = excelDataForAssetAmmendment.getTestdata("KUBS_FAT_UAT_011_03_D1");
+		dataSetID=excelDataAssetAmendmentExecution .getTestdata("KUBS_FAT_UAT_011_03_02");
+		reviewerTestData = excelDataForAssetAmmendment.getTestdata(dataSetID.get("Data Set ID"));
 		kubsLogin.logintoAzentioappReviewer("Reviewer", reviewerTestData.get("Reviewer ID"));
 	}
 
@@ -336,7 +355,8 @@ public class KUBS_ReviewerUserSteps extends BaseClass {
 	public void navigate_to_kubs_url_to_approve_the_fixed_asset_ammendment_in_reviewer_to_approve_the_ammendment_asset_which_have_greater_than_asset_life_which_earlier_exist()
 			throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
-		reviewerTestData = excelDataForAssetAmmendment.getTestdata("KUBS_FAT_UAT_011_04_D1");
+		dataSetID=excelDataAssetAmendmentExecution .getTestdata("KUBS_FAT_UAT_011_04_02");
+		reviewerTestData = excelDataForAssetAmmendment.getTestdata(dataSetID.get("Data Set ID"));
 		kubsLogin.logintoAzentioappReviewer("Reviewer", reviewerTestData.get("Reviewer ID"));
 	}
 
@@ -352,7 +372,8 @@ public class KUBS_ReviewerUserSteps extends BaseClass {
 	public void navigate_to_kubs_url_to_approve_the_fixed_asset_ammendment_in_reviewer_for_asset_retur_prerequsite()
 			throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
-		reviewerTestData = excelDataForAssetAmmendment.getTestdata("KUBS_FAT_UAT_011_01_D4");
+		dataSetID=excelDataAssetReturnExecution.getTestdata("KUBS_FAT_UAT_011_02_AssetReturn");
+		reviewerTestData = excelDataForAssetAmmendment.getTestdata(dataSetID.get("Data Set ID"));
 		kubsLogin.logintoAzentioappReviewer("Reviewer", reviewerTestData.get("Reviewer ID"));
 	}
 
@@ -377,7 +398,8 @@ public class KUBS_ReviewerUserSteps extends BaseClass {
 	public void navigate_to_kubs_url_to_approve_the_fixed_asset_revaluation_record_in_reviewer_for_prerequisite_of_asset_write_off()
 			throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
-		reviewerTestData = excelDataForAssetrevaluation.getTestdata("KUBS_FAT_UAT_012_01_D11");
+		dataSetID=excelDataAssetWriteOffExecution.getTestdata("KUBS_FAT_UAT_012_02_WriteOff");
+		reviewerTestData = excelDataForAssetrevaluation.getTestdata(dataSetID.get("Data Set ID"));
 		kubsLogin.logintoAzentioappReviewer("Reviewer", reviewerTestData.get("Reviewer ID"));
 	}
 
@@ -480,9 +502,10 @@ public class KUBS_ReviewerUserSteps extends BaseClass {
 	public void navigate_to_kubs_url_to_approve_the_fixed_asset_revaluation_record_in_reviewer_for_asset_return_prerequsite()
 			throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
-
-		reviewerTestData = excelDataForAssetrevaluation.getTestdata("KUBS_FAT_UAT_012_01_D3");
+		dataSetID=excelDataAssetReturnExecution.getTestdata("KUBS_FAT_UAT_012_02_AssetReturn");
+		reviewerTestData = excelDataForAssetrevaluation.getTestdata(dataSetID.get("Data Set ID"));
 		kubsLogin.logintoAzentioappReviewer("Reviewer", reviewerTestData.get("Reviewer ID"));
+
 	}
 
 	@Given("^navigate to kubs Url to approve the fixed asset Revaluation record in a reviewer for impairment asset prerequsite$")
@@ -506,14 +529,16 @@ public class KUBS_ReviewerUserSteps extends BaseClass {
 	public void navigate_to_kubs_url_to_approve_the_fixed_asset_impairment_record_in_reviewer_for_prerequisite_of_asset_write_off()
 			throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
-		reviewerTestData = excelDataForAssetImpairment.getTestdata("KUBS_FAT_UAT_009_001_01_D11");
+		dataSetID=excelDataAssetWriteOffExecution.getTestdata("KUBS_FAT_UAT_009_001_02_WriteOff");
+		reviewerTestData = excelDataForAssetImpairment.getTestdata(dataSetID.get("Data Set ID"));
 		kubsLogin.logintoAzentioappReviewer("Reviewer", reviewerTestData.get("Reviewer ID"));
 	}
 
 	@Given("^navigate to kubs Url to approve the fixed asset write off record in reviewer$")
 	public void navigate_to_kubs_url_to_approve_the_fixed_asset_write_off_record_in_reviewer() throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
-		reviewerTestData = excelDataForAssetWriteOff.getTestdata("KUBS_FAT_UAT_010_001_D1");
+		dataSetID=excelDataAssetWriteOffExecution.getTestdata("KUBS_FAT_UAT_010_001_02");
+		reviewerTestData = excelDataForAssetWriteOff.getTestdata(dataSetID.get("Data Set ID"));
 		kubsLogin.logintoAzentioappReviewer("Reviewer", reviewerTestData.get("Reviewer ID"));
 	}
 
@@ -521,7 +546,8 @@ public class KUBS_ReviewerUserSteps extends BaseClass {
 	public void navigate_to_kubs_url_to_approve_the_fixed_asset_write_off_record_in_reviewer_which_is_already_revlaued()
 			throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
-		reviewerTestData = excelDataForAssetWriteOff.getTestdata("KUBS_FAT_UAT_010_003_D1");
+		dataSetID=excelDataAssetWriteOffExecution.getTestdata("KUBS_FAT_UAT_010_003_02");
+		reviewerTestData = excelDataForAssetWriteOff.getTestdata(dataSetID.get("Data Set ID"));
 		kubsLogin.logintoAzentioappReviewer("Reviewer", reviewerTestData.get("Reviewer ID"));
 	}
 
@@ -529,7 +555,8 @@ public class KUBS_ReviewerUserSteps extends BaseClass {
 	public void navigate_to_kubs_url_to_approve_the_fixed_asset_write_off_record_in_reviewer_which_is_already_ammendment()
 			throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
-		reviewerTestData = excelDataForAssetWriteOff.getTestdata("KUBS_FAT_UAT_010_004_D1");
+		dataSetID=excelDataAssetWriteOffExecution.getTestdata("KUBS_FAT_UAT_010_004_02");
+		reviewerTestData = excelDataForAssetWriteOff.getTestdata(dataSetID.get("Data Set ID"));
 		kubsLogin.logintoAzentioappReviewer("Reviewer", reviewerTestData.get("Reviewer ID"));
 	}
 
@@ -537,7 +564,8 @@ public class KUBS_ReviewerUserSteps extends BaseClass {
 	public void navigate_to_kubs_url_to_approve_the_fixed_asset_write_off_record_in_reviewer_which_is_already_replaced()
 			throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
-		reviewerTestData = excelDataForAssetWriteOff.getTestdata("KUBS_FAT_UAT_010_006_D1");
+		dataSetID=excelDataAssetWriteOffExecution.getTestdata("KUBS_FAT_UAT_010_006_02");
+		reviewerTestData = excelDataForAssetWriteOff.getTestdata(dataSetID.get("Data Set ID"));
 		kubsLogin.logintoAzentioappReviewer("Reviewer", reviewerTestData.get("Reviewer ID"));
 	}
 
@@ -545,7 +573,8 @@ public class KUBS_ReviewerUserSteps extends BaseClass {
 	public void navigate_to_kubs_url_to_approve_the_fixed_asset_write_off_record_in_reviewer_which_is_already_allocated()
 			throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
-		reviewerTestData = excelDataForAssetWriteOff.getTestdata("KUBS_FAT_UAT_010_007_D1");
+		dataSetID=excelDataAssetWriteOffExecution.getTestdata("KUBS_FAT_UAT_010_007_02");
+		reviewerTestData = excelDataForAssetWriteOff.getTestdata(dataSetID.get("Data Set ID"));
 		kubsLogin.logintoAzentioappReviewer("Reviewer", reviewerTestData.get("Reviewer ID"));
 	}
 
@@ -553,7 +582,8 @@ public class KUBS_ReviewerUserSteps extends BaseClass {
 	public void navigate_to_kubs_url_to_approve_the_fixed_asset_write_off_record_in_reviewer_which_is_already_de_allocated()
 			throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
-		reviewerTestData = excelDataForAssetWriteOff.getTestdata("KUBS_FAT_UAT_010_008_D1");
+		dataSetID=excelDataAssetWriteOffExecution.getTestdata("KUBS_FAT_UAT_010_008_02");
+		reviewerTestData = excelDataForAssetWriteOff.getTestdata(dataSetID.get("Data Set ID"));
 		kubsLogin.logintoAzentioappReviewer("Reviewer", reviewerTestData.get("Reviewer ID"));
 	}
 
@@ -561,7 +591,8 @@ public class KUBS_ReviewerUserSteps extends BaseClass {
 	public void navigate_to_kubs_url_to_approve_the_fixed_asset_write_off_record_in_reviewer_which_is_already_undertaking()
 			throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
-		reviewerTestData = excelDataForAssetWriteOff.getTestdata("KUBS_FAT_UAT_010_009_D1");
+		dataSetID=excelDataAssetWriteOffExecution.getTestdata("KUBS_FAT_UAT_010_009_02");
+		reviewerTestData = excelDataForAssetWriteOff.getTestdata(dataSetID.get("Data Set ID"));
 		kubsLogin.logintoAzentioappReviewer("Reviewer", reviewerTestData.get("Reviewer ID"));
 	}
 
@@ -589,7 +620,8 @@ public class KUBS_ReviewerUserSteps extends BaseClass {
 	public void navigate_to_kubs_url_to_approve_the_fixed_asset_impairment_record_in_reviewer_for_the_prerequsite_of_asset_return()
 			throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
-		reviewerTestData = excelDataForAssetImpairment.getTestdata("KUBS_FAT_UAT_009_001_01_D2");
+		dataSetID=excelDataAssetReturnExecution.getTestdata("KUBS_FAT_UAT_009_001_02_AsetReturn");
+		reviewerTestData = excelDataForAssetImpairment.getTestdata(dataSetID.get("Data Set ID"));
 		kubsLogin.logintoAzentioappReviewer("Reviewer", reviewerTestData.get("Reviewer ID"));
 	}
 
@@ -670,8 +702,10 @@ public class KUBS_ReviewerUserSteps extends BaseClass {
 	@Given("^navigate to kubs url to approve the asset category record$")
 	public void navigate_to_kubs_url_to_approve_the_asset_category_record() throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
-		reviewerTestData = excelData.getTestdata("KUBS_FAT_UAT_002_002_D1");
+		dataSetID=excelDataAssetCreationExecution.getTestdata("KUBS_FAT_UAT_002_002_02");
+		reviewerTestData = excelData.getTestdata(dataSetID.get("Data Set ID"));
 		kubsLogin.logintoAzentioappReviewer("Reviewer", reviewerTestData.get("Reviewer ID"));
+		
 	}
 
 	@Given("^navigate to kubs url to approve the asset category record for asset impairment$")
@@ -684,8 +718,10 @@ public class KUBS_ReviewerUserSteps extends BaseClass {
 
 	@Given("^navigate to kubs url to approve the asset category record for asset allocation$")
 	public void navigate_to_kubs_url_to_approve_the_asset_category_record_for_asset_allocation() throws Throwable {
+		
 		driver.get(configFileReader.getApplicationUrl());
-		reviewerTestData = excelData.getTestdata("KUBS_FAT_UAT_002_002_D4");
+		dataSetID=excelDataAssetAllocDeAllocExecution.getTestdata("KUBS_FAT_UAT_002_002_02Allocation");
+		reviewerTestData = excelData.getTestdata(dataSetID.get("Data Set ID"));
 		kubsLogin.logintoAzentioappReviewer("Reviewer", reviewerTestData.get("Reviewer ID"));
 	}
 
@@ -709,21 +745,25 @@ public class KUBS_ReviewerUserSteps extends BaseClass {
 	@Given("^navigate to kubs url to approve the asset category record for asset amendment$")
 	public void navigate_to_kubs_url_to_approve_the_asset_category_record_for_asset_amendment() throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
-		reviewerTestData = excelData.getTestdata("KUBS_FAT_UAT_002_002_D5");
+		dataSetID=excelDataAssetAmendmentExecution.getTestdata("KUBS_FAT_UAT_002_002_02_Return");
+		reviewerTestData = excelData.getTestdata(dataSetID.get("Data Set ID"));
 		kubsLogin.logintoAzentioappReviewer("Reviewer", reviewerTestData.get("Reviewer ID"));
+		
 	}
 
 	@Given("^navigate to kubs url to approve the asset category record for asset return$")
 	public void navigate_to_kubs_url_to_approve_the_asset_category_record_for_asset_return() throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
-		reviewerTestData = excelData.getTestdata("KUBS_FAT_UAT_002_002_D3");
+		dataSetID=excelDataAssetReturnExecution.getTestdata("KUBS_FAT_UAT_002_002_02_Return");
+		reviewerTestData = excelData.getTestdata(dataSetID.get("Data Set ID"));
 		kubsLogin.logintoAzentioappReviewer("Reviewer", reviewerTestData.get("Reviewer ID"));
 	}
 
 	@Given("^navigate to kubs url to approve the asset code configuration record$")
 	public void navigate_to_kubs_url_to_approve_the_asset_code_configuration_record() throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
-		reviewerTestData = exceldatforAssetCodeConfig.getTestdata("KUBS_FAT_UAT_002_003_D1");
+		dataSetID=excelDataAssetCreationExecution.getTestdata("KUBS_FAT_UAT_002_003_02");
+		reviewerTestData = exceldatforAssetCodeConfig.getTestdata(dataSetID.get("Data Set ID"));
 		kubsLogin.logintoAzentioappReviewer("Reviewer", reviewerTestData.get("Reviewer ID"));
 	}
 
@@ -731,15 +771,18 @@ public class KUBS_ReviewerUserSteps extends BaseClass {
 	public void navigate_to_kubs_url_to_approve_the_asset_code_configuration_record_for_asset_return()
 			throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
-		reviewerTestData = exceldatforAssetCodeConfig.getTestdata("KUBS_FAT_UAT_002_003_D3");
+		dataSetID=excelDataAssetReturnExecution.getTestdata("KUBS_FAT_UAT_002_003_02_Return");
+		reviewerTestData = exceldatforAssetCodeConfig.getTestdata(dataSetID.get("Data Set ID"));
 		kubsLogin.logintoAzentioappReviewer("Reviewer", reviewerTestData.get("Reviewer ID"));
 	}
 
 	@Given("^navigate to kubs url to approve the asset code configuration record for asset allocation$")
 	public void navigate_to_kubs_url_to_approve_the_asset_code_configuration_record_for_asset_allocation()
 			throws Throwable {
+		
 		driver.get(configFileReader.getApplicationUrl());
-		reviewerTestData = exceldatforAssetCodeConfig.getTestdata("KUBS_FAT_UAT_002_003_D4");
+		dataSetID=excelDataAssetAllocDeAllocExecution.getTestdata("KUBS_FAT_UAT_002_003_02Allocation");
+		reviewerTestData = exceldatforAssetCodeConfig.getTestdata(dataSetID.get("Data Set ID"));
 		kubsLogin.logintoAzentioappReviewer("Reviewer", reviewerTestData.get("Reviewer ID"));
 	}
 
@@ -747,7 +790,8 @@ public class KUBS_ReviewerUserSteps extends BaseClass {
 	public void navigate_to_kubs_url_to_approve_the_asset_code_configuration_record_for_asset_ammendment()
 			throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
-		reviewerTestData = exceldatforAssetCodeConfig.getTestdata("KUBS_FAT_UAT_002_003_D5");
+		dataSetID=excelDataAssetAmendmentExecution.getTestdata("KUBS_FAT_UAT_002_003_02_AssetAmmendment");
+		reviewerTestData = exceldatforAssetCodeConfig.getTestdata(dataSetID.get("Data Set ID"));
 		kubsLogin.logintoAzentioappReviewer("Reviewer", reviewerTestData.get("Reviewer ID"));
 	}
 
@@ -782,16 +826,20 @@ public class KUBS_ReviewerUserSteps extends BaseClass {
 	@Given("^navigate to kubs url to approve the asset GL configuration record$")
 	public void navigate_to_kubs_url_to_approve_the_asset_gl_configuration_record() throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
-		reviewerTestData = exceldatforAssetGLConfig.getTestdata("KUBS_FAT_UAT_002_004_D1");
+		dataSetID=excelDataAssetCreationExecution.getTestdata("KUBS_FAT_UAT_002_004_02");
+		reviewerTestData = exceldatforAssetGLConfig.getTestdata(dataSetID.get("Data Set ID"));
 		kubsLogin.logintoAzentioappReviewer("Reviewer", reviewerTestData.get("Reviewer ID"));
+		
 	}
 
 	@Given("^navigate to kubs url to approve the asset GL configuration record for asset ammendment$")
 	public void navigate_to_kubs_url_to_approve_the_asset_gl_configuration_record_for_asset_ammendment()
 			throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
-		reviewerTestData = exceldatforAssetGLConfig.getTestdata("KUBS_FAT_UAT_002_004_D5");
+		dataSetID=excelDataAssetAmendmentExecution .getTestdata("KUBS_FAT_UAT_002_004_02_AssetAmmendment");
+		reviewerTestData = exceldatforAssetGLConfig.getTestdata(dataSetID.get("Data Set ID"));
 		kubsLogin.logintoAzentioappReviewer("Reviewer", reviewerTestData.get("Reviewer ID"));
+
 	}
 
 	@Given("^navigate to kubs url to approve the asset GL configuration record for asset revaluation$")
@@ -815,8 +863,10 @@ public class KUBS_ReviewerUserSteps extends BaseClass {
 	@Given("^navigate to kubs url to approve the asset GL configuration record for asset allocation$")
 	public void navigate_to_kubs_url_to_approve_the_asset_gl_configuration_record_for_asset_allocation()
 			throws Throwable {
+		
 		driver.get(configFileReader.getApplicationUrl());
-		reviewerTestData = exceldatforAssetGLConfig.getTestdata("KUBS_FAT_UAT_002_004_D4");
+		dataSetID=excelDataAssetAllocDeAllocExecution.getTestdata("KUBS_FAT_UAT_002_004_02Allocation");
+		reviewerTestData = exceldatforAssetGLConfig.getTestdata(dataSetID.get("Data Set ID"));
 		kubsLogin.logintoAzentioappReviewer("Reviewer", reviewerTestData.get("Reviewer ID"));
 	}
 
@@ -832,14 +882,16 @@ public class KUBS_ReviewerUserSteps extends BaseClass {
 	@Given("^navigate to kubs url to approve the asset GL configuration record for asset return$")
 	public void navigate_to_kubs_url_to_approve_the_asset_gl_configuration_record_for_asset_return() throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
-		reviewerTestData = exceldatforAssetGLConfig.getTestdata("KUBS_FAT_UAT_002_004_D3");
+		dataSetID=excelDataAssetReturnExecution.getTestdata("KUBS_FAT_UAT_002_004_02_Return");
+		reviewerTestData = exceldatforAssetGLConfig.getTestdata(dataSetID.get("Data Set ID"));
 		kubsLogin.logintoAzentioappReviewer("Reviewer", reviewerTestData.get("Reviewer ID"));
 	}
 
 	@Given("^navigate to kubs url to approve the fixed asset serial number setup record$")
 	public void navigate_to_kubs_url_to_approve_the_fixed_asset_serial_number_setup_record() throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
-		reviewerTestData = excelDataForSerialNumberSetUp.getTestdata("KUBS_FAT_UAT_002_005_D1");
+		dataSetID=excelDataAssetCreationExecution.getTestdata("KUBS_FAT_UAT_002_005_02");
+		reviewerTestData =excelDataForSerialNumberSetUp.getTestdata(dataSetID.get("Data Set ID"));
 		kubsLogin.logintoAzentioappReviewer("Reviewer", reviewerTestData.get("Reviewer ID"));
 
 	}
@@ -848,17 +900,22 @@ public class KUBS_ReviewerUserSteps extends BaseClass {
 	public void navigate_to_kubs_url_to_approve_the_fixed_asset_serial_number_setup_record_for_asset_ammendment()
 			throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
-		reviewerTestData = excelDataForSerialNumberSetUp.getTestdata("KUBS_FAT_UAT_002_005_D5");
+		dataSetID=excelDataAssetAmendmentExecution .getTestdata("KUBS_FAT_UAT_002_005_02_AssetAmmendment");
+		reviewerTestData =excelDataForSerialNumberSetUp.getTestdata(dataSetID.get("Data Set ID"));
 		kubsLogin.logintoAzentioappReviewer("Reviewer", reviewerTestData.get("Reviewer ID"));
+
 	}
 
 	@Given("^navigate to kubs url to approve the fixed asset serial number setup record for asset allocation$")
 	public void navigate_to_kubs_url_to_approve_the_fixed_asset_serial_number_setup_record_for_asset_allocation()
 			throws Throwable {
+	
 		driver.get(configFileReader.getApplicationUrl());
-		reviewerTestData = excelDataForSerialNumberSetUp.getTestdata("KUBS_FAT_UAT_002_005_D4");
+		dataSetID=excelDataAssetAllocDeAllocExecution.getTestdata("KUBS_FAT_UAT_002_005_02Allocation");
+		reviewerTestData = excelDataForSerialNumberSetUp.getTestdata(dataSetID.get("Data Set ID"));
 		kubsLogin.logintoAzentioappReviewer("Reviewer", reviewerTestData.get("Reviewer ID"));
 	}
+	
 
 	@Given("^navigate to kubs url to approve the fixed asset serial number setup record for asset revaluation$")
 	public void navigate_to_kubs_url_to_approve_the_fixed_asset_serial_number_setup_record_for_asset_revaluation()
@@ -882,7 +939,8 @@ public class KUBS_ReviewerUserSteps extends BaseClass {
 	public void navigate_to_kubs_url_to_approve_the_fixed_asset_serial_number_setup_record_for_asset_return()
 			throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
-		reviewerTestData = excelDataForSerialNumberSetUp.getTestdata("KUBS_FAT_UAT_002_005_D3");
+		dataSetID=excelDataAssetReturnExecution.getTestdata("KUBS_FAT_UAT_002_005_02_Return");
+		reviewerTestData = excelDataForSerialNumberSetUp.getTestdata(dataSetID.get("Data Set ID"));
 		kubsLogin.logintoAzentioappReviewer("Reviewer", reviewerTestData.get("Reviewer ID"));
 	}
 
@@ -898,16 +956,18 @@ public class KUBS_ReviewerUserSteps extends BaseClass {
 	@Given("^navigate to kubs url to approve the fixed asset creation record with minimum details as a reviewer$")
 	public void navigate_to_kubs_url_to_approve_the_fixed_asset_creation_record_with_minimum_details_as_a_reviewer()
 			throws Throwable {
-
 		driver.get(configFileReader.getApplicationUrl());
-		reviewerTestData = excelDataForAssetCreation.getTestdata("KUBS_FAT_UAT_002_006_D1");
+		dataSetID=excelDataAssetCreationExecution.getTestdata("KUBS_FAT_UAT_002_006_02");
+		reviewerTestData = excelDataForAssetCreation.getTestdata(dataSetID.get("Data Set ID"));
 		kubsLogin.logintoAzentioappReviewer("Reviewer", reviewerTestData.get("Reviewer ID"));
+		
 	}
 
 	@Given("^navigate to kubs url to approve the fixed asset creation record with GRN number$")
 	public void navigate_to_kubs_url_to_approve_the_fixed_asset_creation_record_with_grn_number() throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
-		reviewerTestData = excelDataForAssetCreation.getTestdata("KUBS_FAT_UAT_002_007_D8");
+		dataSetID=excelDataAssetCreationExecution.getTestdata("KUBS_FAT_UAT_002_008_02");
+		reviewerTestData = excelDataForAssetCreation.getTestdata(dataSetID.get("Data Set ID"));
 		kubsLogin.logintoAzentioappReviewer("Reviewer", reviewerTestData.get("Reviewer ID"));
 	}
 
@@ -915,8 +975,11 @@ public class KUBS_ReviewerUserSteps extends BaseClass {
 	public void navigate_to_kubs_url_to_approve_the_fixed_asset_creation_record_with_full_details_as_a_reviewer()
 			throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
-		reviewerTestData = excelDataForAssetCreation.getTestdata("KUBS_FAT_UAT_002_007_D1");
+		dataSetID=excelDataAssetCreationExecution.getTestdata("KUBS_FAT_UAT_002_007_02");
+		reviewerTestData = excelDataForAssetCreation.getTestdata(dataSetID.get("Data Set ID"));
 		kubsLogin.logintoAzentioappReviewer("Reviewer", reviewerTestData.get("Reviewer ID"));
+		
+		
 	}
 
 	@Given("^navigate to kubs Url to approve the fixed asset creation record with full details in reviewer for asset transfer$")
@@ -932,8 +995,11 @@ public class KUBS_ReviewerUserSteps extends BaseClass {
 	public void navigate_to_kubs_url_to_approve_the_fixed_asset_creation_record_with_full_details_in_reviewer_for_pre_requisite_of_asset_ammendment()
 			throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
-		reviewerTestData = excelDataForAssetCreation.getTestdata("KUBS_FAT_UAT_002_007_D5");
+		dataSetID=excelDataAssetAmendmentExecution .getTestdata("KUBS_FAT_UAT_002_007_02_AssetAmmendment02");
+		reviewerTestData = excelDataForAssetCreation.getTestdata(dataSetID.get("Data Set ID"));
 		kubsLogin.logintoAzentioappReviewer("Reviewer", reviewerTestData.get("Reviewer ID"));
+		
+		
 	}
 
 	@Given("^navigate to kubs Url to approve the fixed asset creation record with full details in reviewer for the pre requisite of asset revaluation$")
@@ -969,7 +1035,8 @@ public class KUBS_ReviewerUserSteps extends BaseClass {
 	public void navigate_to_kubs_url_to_approve_the_fixed_asset_transfer_record_in_stage1_for_prerequisite_of_asset_writeoff()
 			throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
-		reviewerTestData = excelDataForAssetTransfer.getTestdata("KUBS_FAT_UAT_005_001_D9");
+		dataSetID=excelDataAssetWriteOffExecution.getTestdata("KUBS_FAT_UAT_005_001_02_WriteOff");
+		reviewerTestData = excelDataForAssetTransfer.getTestdata(dataSetID.get("Data Set ID"));
 		kubsLogin.logintoAzentioappReviewer("Reviewer", reviewerTestData.get("Reviewer ID1"));
 	}
 
@@ -986,7 +1053,8 @@ public class KUBS_ReviewerUserSteps extends BaseClass {
 	public void navigate_to_kubs_url_to_approve_the_fixed_asset_transfer_undertaking_record_in_stage1_for_prerequisite_of_asset_return()
 			throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
-		reviewerTestData = excelDataForAssetTransfer.getTestdata("KUBS_FAT_UAT_005_001_D8");
+		dataSetID=excelDataAssetReturnExecution.getTestdata("KUBS_FAT_UAT_005_005_02_Return");
+		reviewerTestData = excelDataForAssetTransfer.getTestdata(dataSetID.get("Data Set ID"));
 		kubsLogin.logintoAzentioappReviewer("Reviewer", reviewerTestData.get("Reviewer ID1"));
 	}
 
@@ -1040,7 +1108,8 @@ public class KUBS_ReviewerUserSteps extends BaseClass {
 	public void navigate_to_kubs_url_to_approve_the_fixed_asset_transfer_record_in_stage2_for_prerequisite_of_asset_writeoff()
 			throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
-		reviewerTestData = excelDataForAssetTransfer.getTestdata("KUBS_FAT_UAT_005_001_D9");
+		dataSetID=excelDataAssetWriteOffExecution.getTestdata("KUBS_FAT_UAT_002_002_02_Return");
+		reviewerTestData = excelDataForAssetTransfer.getTestdata(dataSetID.get("Data Set ID"));
 		kubsLogin.logintoAzentioappReviewer("Reviewer", reviewerTestData.get("Reviewer ID2"));
 	}
 
@@ -1065,7 +1134,8 @@ public class KUBS_ReviewerUserSteps extends BaseClass {
 	public void navigate_to_kubs_url_to_approve_the_fixed_asset_transfer_undertaking_record_in_stage2_for_prerequisite_of_asset_return()
 			throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
-		reviewerTestData = excelDataForAssetTransfer.getTestdata("KUBS_FAT_UAT_005_001_D8");
+		dataSetID=excelDataAssetReturnExecution.getTestdata("KUBS_FAT_UAT_005_005_03_Return");
+		reviewerTestData = excelDataForAssetTransfer.getTestdata(dataSetID.get("Data Set ID"));
 		kubsLogin.logintoAzentioappReviewer("Reviewer", reviewerTestData.get("Reviewer ID2"));
 	}
 
@@ -1130,8 +1200,9 @@ public class KUBS_ReviewerUserSteps extends BaseClass {
 	public void navigate_to_kubs_url_to_approve_the_fixed_asset_transfer_record_in_stage3_for_prerequisite_for_prerequisite_of_asset_writeoff()
 			throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
-		reviewerTestData = excelDataForAssetTransfer.getTestdata("KUBS_FAT_UAT_005_001_D9");
-		kubsLogin.logintoAzentioappReviewer("Reviewer", reviewerTestData.get("Reviewer ID3"));
+		dataSetID=excelDataAssetWriteOffExecution.getTestdata("KUBS_FAT_UAT_005_001_04_WriteOff");
+		reviewerTestData = excelDataForAssetTransfer.getTestdata(dataSetID.get("Data Set ID"));
+		kubsLogin.logintoAzentioappReviewer("Reviewer", reviewerTestData.get("Reviewer ID"));
 	}
 
 	@Given("^navigate to kubs Url to approve the fixed asset transfer undertaking record in stage3$")
@@ -1147,8 +1218,10 @@ public class KUBS_ReviewerUserSteps extends BaseClass {
 	public void navigate_to_kubs_url_to_approve_the_fixed_asset_transfer_undertaking_record_in_stage3_for_prerequisite_of_asset_return()
 			throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
-		reviewerTestData = excelDataForAssetTransfer.getTestdata("KUBS_FAT_UAT_005_001_D8");
+		dataSetID=excelDataAssetReturnExecution.getTestdata("KUBS_FAT_UAT_005_005_04_Return");
+		reviewerTestData = excelDataForAssetTransfer.getTestdata(dataSetID.get("Data Set ID"));
 		kubsLogin.logintoAzentioappReviewer("Reviewer", reviewerTestData.get("Reviewer ID3"));
+		
 	}
 
 	@Given("^navigate to kubs Url to approve the fixed asset transfer record in stage3 which is already impaired$")
@@ -1190,8 +1263,10 @@ public class KUBS_ReviewerUserSteps extends BaseClass {
 	@Given("^navigate to kubs Url to approve the fixed asset creation record with full details in reviewer for asset allocation$")
 	public void navigate_to_kubs_url_to_approve_the_fixed_asset_creation_record_with_full_details_in_reviewer_for_asset_allocation()
 			throws Throwable {
+		
 		driver.get(configFileReader.getApplicationUrl());
-		reviewerTestData = excelDataForAssetCreation.getTestdata("KUBS_FAT_UAT_002_007_D4");
+		dataSetID=excelDataAssetAllocDeAllocExecution.getTestdata("KUBS_FAT_UAT_002_007_02Allocation02");
+		reviewerTestData = excelDataForAssetCreation.getTestdata(dataSetID.get("Data Set ID"));
 		kubsLogin.logintoAzentioappReviewer("Reviewer", reviewerTestData.get("Reviewer ID"));
 	}
 
@@ -1208,14 +1283,16 @@ public class KUBS_ReviewerUserSteps extends BaseClass {
 	public void navigate_to_kubs_url_to_approve_the_fixed_asset_creation_record_with_full_details_in_a_reviewer_for_asset_return()
 			throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
-		reviewerTestData = excelDataForAssetCreation.getTestdata("KUBS_FAT_UAT_002_007_D3");
+		dataSetID=excelDataAssetReturnExecution.getTestdata("KUBS_FAT_UAT_002_007_02_Return02");
+		reviewerTestData = excelDataForAssetCreation.getTestdata(dataSetID.get("Data Set ID"));
 		kubsLogin.logintoAzentioappReviewer("Reviewer", reviewerTestData.get("Reviewer ID"));
 	}
 
 	@Given("^navigate to kubs Url to approve the fixed asset return record reviewer$")
 	public void navigate_to_kubs_url_to_approve_the_fixed_asset_return_record_reviewer() throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
-		reviewerTestData = excelDataForAssetReturn.getTestdata("KUBS_FAT_UAT_007_001_01_D1");
+		dataSetID=excelDataAssetReturnExecution.getTestdata("KUBS_FAT_UAT_007_001_02");
+		reviewerTestData = excelDataForAssetReturn.getTestdata(dataSetID.get("Data Set ID"));
 		kubsLogin.logintoAzentioappReviewer("Reviewer", reviewerTestData.get("Reviewer ID"));
 	}
 
@@ -1223,7 +1300,8 @@ public class KUBS_ReviewerUserSteps extends BaseClass {
 	public void navigate_to_kubs_url_to_approve_the_fixed_asset_return_record_which_is_already_revalued_in_reviewer()
 			throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
-		reviewerTestData = excelDataForAssetReturn.getTestdata("KUBS_FAT_UAT_007_002_01_D1");
+		dataSetID=excelDataAssetReturnExecution.getTestdata("KUBS_FAT_UAT_007_002_02");
+		reviewerTestData = excelDataForAssetReturn.getTestdata(dataSetID.get("Data Set ID"));
 		kubsLogin.logintoAzentioappReviewer("Reviewer", reviewerTestData.get("Reviewer ID"));
 	}
 
@@ -1231,7 +1309,8 @@ public class KUBS_ReviewerUserSteps extends BaseClass {
 	public void navigate_to_kubs_url_to_approve_the_fixed_asset_return_record_which_is_already_undertaken_in_reviewer()
 			throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
-		reviewerTestData = excelDataForAssetReturn.getTestdata("KUBS_FAT_UAT_007_007_01_D1");
+		dataSetID=excelDataAssetReturnExecution.getTestdata("KUBS_FAT_UAT_007_007_02");
+		reviewerTestData = excelDataForAssetReturn.getTestdata(dataSetID.get("Data Set ID"));
 		kubsLogin.logintoAzentioappReviewer("Reviewer", reviewerTestData.get("Reviewer ID"));
 	}
 
@@ -1246,8 +1325,10 @@ public class KUBS_ReviewerUserSteps extends BaseClass {
 	@Given("^navigate to kubs Url to approve the fixed asset return record which is already repalced in reviewer$")
 	public void navigate_to_kubs_url_to_approve_the_fixed_asset_return_record_which_is_already_repalced_in_reviewer()
 			throws Throwable {
+		
 		driver.get(configFileReader.getApplicationUrl());
-		reviewerTestData = excelDataForAssetReturn.getTestdata("KUBS_FAT_UAT_007_005_01_D1");
+		dataSetID=excelDataAssetReturnExecution.getTestdata("KUBS_FAT_UAT_007_005_02");
+		reviewerTestData = excelDataForAssetReturn.getTestdata(dataSetID.get("Data Set ID"));
 		kubsLogin.logintoAzentioappReviewer("Reviewer", reviewerTestData.get("Reviewer ID"));
 	}
 
@@ -1255,7 +1336,8 @@ public class KUBS_ReviewerUserSteps extends BaseClass {
 	public void navigate_to_kubs_url_to_approve_the_fixed_asset_return_record_which_is_already_deallocated_in_reviewer()
 			throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
-		reviewerTestData = excelDataForAssetReturn.getTestdata("KUBS_FAT_UAT_007_006_01_D1");
+		dataSetID=excelDataAssetReturnExecution.getTestdata("KUBS_FAT_UAT_007_006_02");
+		reviewerTestData = excelDataForAssetReturn.getTestdata(dataSetID.get("Data Set ID"));
 		kubsLogin.logintoAzentioappReviewer("Reviewer", reviewerTestData.get("Reviewer ID"));
 	}
 
@@ -1263,14 +1345,16 @@ public class KUBS_ReviewerUserSteps extends BaseClass {
 	public void navigate_to_kubs_url_to_approve_the_fixed_asset_return_record_which_is_done_at_asset_ammendment_in_reviewer()
 			throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
-		reviewerTestData = excelDataForAssetReturn.getTestdata("KUBS_FAT_UAT_007_003_01_D1");
+		dataSetID=excelDataAssetReturnExecution.getTestdata("KUBS_FAT_UAT_007_003_02");
+		reviewerTestData = excelDataForAssetReturn.getTestdata(dataSetID.get("Data Set ID"));
 		kubsLogin.logintoAzentioappReviewer("Reviewer", reviewerTestData.get("Reviewer ID"));
 	}
 
 	@Given("^navigate to kubs Url to approve the fixed asset Allocation as a reviewer$")
 	public void navigate_to_kubs_url_to_approve_the_fixed_asset_allocation_as_a_reviewer() throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
-		reviewerTestData = excelDataForAssetAllocation.getTestdata("KUBS_FAT_UAT_006_001_D1");
+		dataSetID=excelDataAssetAllocDeAllocExecution.getTestdata("KUBS_FAT_UAT_006_001_02");
+		reviewerTestData =excelDataForAssetAllocation.getTestdata(dataSetID.get("Data Set ID"));
 		kubsLogin.logintoAzentioappReviewer("Reviewer", reviewerTestData.get("Reviewer ID"));
 	}
 
@@ -1278,7 +1362,8 @@ public class KUBS_ReviewerUserSteps extends BaseClass {
 	public void navigate_to_kubs_url_to_approve_the_fixed_asset_allocation_in_reviewer_for_asset_writeoff_prerequisite()
 			throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
-		reviewerTestData = excelDataForAssetAllocation.getTestdata("KUBS_FAT_UAT_006_003_D11");
+		dataSetID=excelDataAssetWriteOffExecution.getTestdata("KUBS_FAT_UAT_006_001_02_writeOff");
+		reviewerTestData = excelDataForAssetAllocation.getTestdata(dataSetID.get("Data Set ID"));
 		kubsLogin.logintoAzentioappReviewer("Reviewer", reviewerTestData.get("Reviewer ID"));
 	}
 
@@ -1286,7 +1371,8 @@ public class KUBS_ReviewerUserSteps extends BaseClass {
 	public void navigate_to_kubs_url_to_approve_the_fixed_asset_allocation_in_reviewer_for_asset_deallocation_writeoff_prerequisite()
 			throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
-		reviewerTestData = excelDataForAssetAllocation.getTestdata("KUBS_FAT_UAT_006_003_D12");
+		dataSetID=excelDataAssetWriteOffExecution.getTestdata("KUBS_FAT_UAT_006_001_01_WriteOff02");
+		reviewerTestData = excelDataForAssetAllocation.getTestdata(dataSetID.get("Data Set ID"));
 		kubsLogin.logintoAzentioappReviewer("Reviewer", reviewerTestData.get("Reviewer ID"));
 	}
 
@@ -1319,8 +1405,10 @@ public class KUBS_ReviewerUserSteps extends BaseClass {
 	public void navigate_to_kubs_url_to_approve_the_fixed_asset_allocation_in_reviewer_for_asset_return_prerequsite()
 			throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
-		reviewerTestData = excelDataForAssetAllocation.getTestdata("KUBS_FAT_UAT_006_003_D3");
+		dataSetID=excelDataAssetReturnExecution.getTestdata("KUBS_FAT_UAT_006_001_02_Return");
+		reviewerTestData = excelDataForAssetAllocation.getTestdata(dataSetID.get("Data Set ID"));
 		kubsLogin.logintoAzentioappReviewer("Reviewer", reviewerTestData.get("Reviewer ID"));
+
 	}
 
 	@Given("^navigate to kubs Url to approve the fixed asset Allocation to make the asset impaired in reviewer$")
@@ -1351,9 +1439,9 @@ public class KUBS_ReviewerUserSteps extends BaseClass {
 	@Given("^navigate to kubs Url to approve the fixed asset sale record which is sold at high price as a reviewer$")
 	public void navigate_to_kubs_url_to_approve_the_fixed_asset_sale_record_which_is_sold_at_high_price_as_a_reviewer()
 			throws Throwable {
-
 		driver.get(configFileReader.getApplicationUrl());
-		reviewerTestData = excelDataForAssetSale.getTestdata("KUBS_FAT_UAT_004_001_01_D1");
+		dataSetID=excelDataAssetCreationExecution.getTestdata("KUBS_FAT_UAT_004_001_02");
+		reviewerTestData = excelDataForAssetSale.getTestdata(dataSetID.get("Data Set ID"));
 		kubsLogin.logintoAzentioappReviewer("Reviewer", reviewerTestData.get("Reviewer ID"));
 	}
 
@@ -1361,14 +1449,16 @@ public class KUBS_ReviewerUserSteps extends BaseClass {
 	public void navigate_to_kubs_url_to_approve_the_fixed_asset_sale_record_which_is_sold_at_low_price_as_a_reviewer()
 			throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
-		reviewerTestData = excelDataForAssetSale.getTestdata("KUBS_FAT_UAT_004_003_01_D1");
-		kubsLogin.logintoAzentioappReviewer("Reviewer", reviewerTestData.get("Reviewer ID"));
+		dataSetID=excelDataAssetCreationExecution.getTestdata("KUBS_FAT_UAT_004_003_02");
+		reviewerTestData = excelDataForAssetSale.getTestdata(dataSetID.get("Data Set ID"));
+		kubsLogin.logintoAzentioappReviewer("Reviewer", reviewerTestData.get("Reviewer ID"));	
 	}
 
 	@Given("^navigate to kubs Url to approve the fixed asset de Allocation as a reviewer$")
 	public void navigate_to_kubs_url_to_approve_the_fixed_asset_de_allocation_as_a_reviewer() throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
-		reviewerTestData = excelDataForAssetDeAllocation.getTestdata("KUBS_FAT_UAT_006_005_01_D1");
+		dataSetID=excelDataAssetAllocDeAllocExecution.getTestdata("KUBS_FAT_UAT_006_005_02Prereq");
+		reviewerTestData = excelDataForAssetDeAllocation.getTestdata(dataSetID.get("Data Set ID"));
 		kubsLogin.logintoAzentioappReviewer("Reviewer", reviewerTestData.get("Reviewer ID"));
 	}
 
@@ -1376,7 +1466,8 @@ public class KUBS_ReviewerUserSteps extends BaseClass {
 	public void navigate_to_kubs_url_to_approve_the_fixed_asset_de_allocation_in_reviewer_for_prerequisite_of_asset_writeoff()
 			throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
-		reviewerTestData = excelDataForAssetDeAllocation.getTestdata("KUBS_FAT_UAT_006_005_01_D11");
+		dataSetID=excelDataAssetWriteOffExecution.getTestdata("KUBS_FAT_UAT_006_005_02");
+		reviewerTestData = excelDataForAssetDeAllocation.getTestdata(dataSetID.get("Data Set ID"));
 		kubsLogin.logintoAzentioappReviewer("Reviewer", reviewerTestData.get("Reviewer ID"));
 	}
 
@@ -1384,7 +1475,8 @@ public class KUBS_ReviewerUserSteps extends BaseClass {
 	public void navigate_to_kubs_url_to_approve_the_fixed_asset_de_allocation_as_a_reviewer_in_asset_return_prerequsite()
 			throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
-		reviewerTestData = excelDataForAssetDeAllocation.getTestdata("KUBS_FAT_UAT_006_005_01_D3");
+		dataSetID=excelDataAssetReturnExecution.getTestdata("KUBS_FAT_UAT_006_005_02_Return");
+		reviewerTestData = excelDataForAssetDeAllocation.getTestdata(dataSetID.get("Data Set ID"));
 		kubsLogin.logintoAzentioappReviewer("Reviewer", reviewerTestData.get("Reviewer ID"));
 	}
 
@@ -1411,24 +1503,30 @@ public class KUBS_ReviewerUserSteps extends BaseClass {
 	@Given("^navigate to kubs Url to approve the fixed asset Replacement record as a reviewer for deallocation$")
 	public void navigate_to_kubs_url_to_approve_the_fixed_asset_replacement_record_as_a_reviewer_for_deallocation()
 			throws Throwable {
+		
 		driver.get(configFileReader.getApplicationUrl());
-		reviewerTestData = excelDataForAssetReplacement.getTestdata("KUBS_FAT_UAT_008_D6");
+		dataSetID=excelDataAssetAllocDeAllocExecution.getTestdata("KUBS_FAT_UAT_006_012_02__AssetReplacementForDealloaction");
+		reviewerTestData = excelDataForAssetReplacement.getTestdata(dataSetID.get("Data Set ID"));
 		kubsLogin.logintoAzentioappReviewer("Reviewer", reviewerTestData.get("Reviewer ID"));
 	}
 
 	@Given("^navigate to kubs Url to approve the fixed asset Allocation from asset replacement data as a reviewer$")
 	public void navigate_to_kubs_url_to_approve_the_fixed_asset_allocation_from_asset_replacement_data_as_a_reviewer()
 			throws Throwable {
+		
 		driver.get(configFileReader.getApplicationUrl());
-		reviewerTestData = excelDataForAssetAllocation.getTestdata("KUBS_FAT_UAT_006_003_D5");
+		dataSetID=excelDataAssetAllocDeAllocExecution.getTestdata("KUBS_FAT_UAT_006_012_02_AssetReplacementAllocation");
+		reviewerTestData = excelDataForAssetAllocation.getTestdata(dataSetID.get("Data Set ID"));
 		kubsLogin.logintoAzentioappReviewer("Reviewer", reviewerTestData.get("Reviewer ID"));
 	}
 
 	@Given("^navigate to kubs Url to approve the asset replacement record to de Allocation as a reviewer$")
 	public void navigate_to_kubs_url_to_approve_the_asset_replacement_record_to_de_allocation_as_a_reviewer()
 			throws Throwable {
+		
 		driver.get(configFileReader.getApplicationUrl());
-		reviewerTestData = excelDataForAssetDeAllocation.getTestdata("KUBS_FAT_UAT_006_005_01_D5");
+		dataSetID=excelDataAssetAllocDeAllocExecution.getTestdata("KUBS_FAT_UAT_006_012_02");
+		reviewerTestData = excelDataForAssetDeAllocation.getTestdata(dataSetID.get("Data Set ID"));
 		kubsLogin.logintoAzentioappReviewer("Reviewer", reviewerTestData.get("Reviewer ID"));
 	}
 
@@ -1436,15 +1534,18 @@ public class KUBS_ReviewerUserSteps extends BaseClass {
 	public void navigate_to_kubs_url_to_approve_the_fixed_asset_ammendment_as_a_reviewer_for_deallocation()
 			throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
-		reviewerTestData = excelDataForAssetAmmendment.getTestdata("KUBS_FAT_UAT_011_01_D7");
+		dataSetID=excelDataAssetAllocDeAllocExecution.getTestdata("KUBS_FAT_UAT_011_02_Allocation");
+		reviewerTestData = excelDataForAssetAmmendment.getTestdata(dataSetID.get("Data Set ID"));
 		kubsLogin.logintoAzentioappReviewer("Reviewer", reviewerTestData.get("Reviewer ID"));
+		
 	}
 
 	@Given("^navigate to kubs Url to approve the fixed asset Allocation from asset ammenment data as a reviewer$")
 	public void navigate_to_kubs_url_to_approve_the_fixed_asset_allocation_from_asset_ammenment_data_as_a_reviewer()
 			throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
-		reviewerTestData = excelDataForAssetAllocation.getTestdata("KUBS_FAT_UAT_006_003_D6");
+		dataSetID=excelDataAssetAllocDeAllocExecution.getTestdata("KUBS_FAT_UAT_006_002_02");
+		reviewerTestData = excelDataForAssetAllocation.getTestdata(dataSetID.get("Data Set ID"));
 		kubsLogin.logintoAzentioappReviewer("Reviewer", reviewerTestData.get("Reviewer ID"));
 	}
 
@@ -1452,39 +1553,47 @@ public class KUBS_ReviewerUserSteps extends BaseClass {
 	public void navigate_to_kubs_url_to_approve_the_asset_ammenment_record_to_de_allocation_as_a_reviewer()
 			throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
-		reviewerTestData = excelDataForAssetDeAllocation.getTestdata("KUBS_FAT_UAT_006_005_01_D6");
+		dataSetID=excelDataAssetAllocDeAllocExecution.getTestdata("KUBS_FAT_UAT_006_011_02");
+		reviewerTestData = excelDataForAssetDeAllocation.getTestdata(dataSetID.get("Data Set ID"));
 		kubsLogin.logintoAzentioappReviewer("Reviewer", reviewerTestData.get("Reviewer ID"));
+		
 	}
 
 	@Given("^navigate to kubs Url to approve the fixed asset transfer record in stage1 prerequest for deallocation$")
 	public void navigate_to_kubs_url_to_approve_the_fixed_asset_transfer_record_in_stage1_prerequest_for_deallocation()
 			throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
-		reviewerTestData = excelDataForAssetTransfer.getTestdata("KUBS_FAT_UAT_005_001_D4");
-		kubsLogin.logintoAzentioappReviewer("Reviewer", reviewerTestData.get("Reviewer ID1"));
+		dataSetID=excelDataAssetAllocDeAllocExecution.getTestdata("KUBS_FAT_UAT_006_012_02_AssetTranferCreation");
+		reviewerTestData = excelDataForAssetTransfer.getTestdata(dataSetID.get("Data Set ID"));
+		kubsLogin.logintoAzentioappReviewer("Reviewer", reviewerTestData.get("Reviewer ID"));
 	}
 
 	@Given("^navigate to kubs Url to approve the fixed asset transfer record in stage2 prerequest for deallocation$")
 	public void navigate_to_kubs_url_to_approve_the_fixed_asset_transfer_record_in_stage2_prerequest_for_deallocation()
 			throws Throwable {
+		
 		driver.get(configFileReader.getApplicationUrl());
-		reviewerTestData = excelDataForAssetTransfer.getTestdata("KUBS_FAT_UAT_005_001_D4");
-		kubsLogin.logintoAzentioappReviewer("Reviewer", reviewerTestData.get("Reviewer ID2"));
+		dataSetID=excelDataAssetAllocDeAllocExecution.getTestdata("KUBS_FAT_UAT_006_012_03_assetTransferCreation");
+		reviewerTestData = excelDataForAssetTransfer.getTestdata(dataSetID.get("Data Set ID"));
+		kubsLogin.logintoAzentioappReviewer("Reviewer", reviewerTestData.get("Reviewer ID"));
 	}
 
 	@Given("^navigate to kubs Url to approve the fixed asset transfer record in stage3 prerequest for deallocation$")
 	public void navigate_to_kubs_url_to_approve_the_fixed_asset_transfer_record_in_stage3_prerequest_for_deallocation()
 			throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
-		reviewerTestData = excelDataForAssetTransfer.getTestdata("KUBS_FAT_UAT_005_001_D4");
-		kubsLogin.logintoAzentioappReviewer("Reviewer", reviewerTestData.get("Reviewer ID3"));
+		dataSetID=excelDataAssetAllocDeAllocExecution.getTestdata("KUBS_FAT_UAT_006_012_04_AssetTranferCreation");
+		reviewerTestData = excelDataForAssetTransfer.getTestdata(dataSetID.get("Data Set ID"));
+		kubsLogin.logintoAzentioappReviewer("Reviewer", reviewerTestData.get("Reviewer ID"));
 	}
 
 	@Given("^navigate to kubs Url to approve the fixed asset Allocation from asset transfer data as a reviewer$")
 	public void navigate_to_kubs_url_to_approve_the_fixed_asset_allocation_from_asset_transfer_data_as_a_reviewer()
 			throws Throwable {
+		
 		driver.get(configFileReader.getApplicationUrl());
-		reviewerTestData = excelDataForAssetAllocation.getTestdata("KUBS_FAT_UAT_006_003_D7");
+		dataSetID=excelDataAssetAllocDeAllocExecution.getTestdata("KUBS_FAT_UAT_006_012_02_AssetTransferAllocation");
+		reviewerTestData = excelDataForAssetAllocation.getTestdata(dataSetID.get("Data Set ID"));
 		kubsLogin.logintoAzentioappReviewer("Reviewer", reviewerTestData.get("Reviewer ID"));
 	}
 
@@ -1492,16 +1601,19 @@ public class KUBS_ReviewerUserSteps extends BaseClass {
 	public void navigate_to_kubs_url_to_approve_the_asset_transfer_record_to_de_allocation_as_a_reviewer()
 			throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
-		reviewerTestData = excelDataForAssetDeAllocation.getTestdata("KUBS_FAT_UAT_006_005_01_D7");
+		dataSetID=excelDataAssetAllocDeAllocExecution.getTestdata("KUBS_FAT_UAT_006_012_02.1_AssetTransferDeAllocation");
+		reviewerTestData = excelDataForAssetDeAllocation.getTestdata(dataSetID.get("Data Set ID"));
 		kubsLogin.logintoAzentioappReviewer("Reviewer", reviewerTestData.get("Reviewer ID"));
 	}
 
 	@Given("^navigate to kubs Url to approve the fixed asset sale record as a reviewer$")
 	public void navigate_to_kubs_url_to_approve_the_fixed_asset_sale_record_as_a_reviewer() throws Throwable {
+		
 		driver.get(configFileReader.getApplicationUrl());
-
-		reviewerTestData = excelDataForAssetSale.getTestdata("KUBS_FAT_UAT_004_003_01_D4");
+		dataSetID=excelDataAssetAllocDeAllocExecution.getTestdata("KUBS_FAT_UAT_004_001_02AssetSaleCreation");
+		reviewerTestData = excelDataForAssetSale.getTestdata(dataSetID.get("Data Set ID"));
 		kubsLogin.logintoAzentioappReviewer("Reviewer", reviewerTestData.get("Reviewer ID"));
+		
 	}
 
 	@Given("^navigate to kubs Url to approve the fixed asset Allocation from asset sale data as a reviewer$")
@@ -1522,18 +1634,20 @@ public class KUBS_ReviewerUserSteps extends BaseClass {
 
 	@Given("^navigate to kubs Url to approve the fixed asset Revaluation record in reviewer$")
 	public void navigate_to_kubs_url_to_approve_the_fixed_asset_revaluation_record_in_reviewer() throws Throwable {
+		
 		driver.get(configFileReader.getApplicationUrl());
-		reviewerTestData = excelDataForAssetrevaluation.getTestdata("KUBS_FAT_UAT_012_01_D5");
-
+		dataSetID=excelDataAssetAllocDeAllocExecution.getTestdata("KUBS_FAT_UAT_006_004_02_PreReq");
+		reviewerTestData = excelDataForAssetrevaluation.getTestdata(dataSetID.get("Data Set ID"));
 		kubsLogin.logintoAzentioappReviewer("Reviewer", reviewerTestData.get("Reviewer ID"));
 	}
 
 	@Given("^navigate to kubs Url to approve the fixed asset Allocation from asset revaluation data as a reviewer$")
 	public void navigate_to_kubs_url_to_approve_the_fixed_asset_allocation_from_asset_revaluation_data_as_a_reviewer()
 			throws Throwable {
+		
 		driver.get(configFileReader.getApplicationUrl());
-		reviewerTestData = excelDataForAssetAllocation.getTestdata("KUBS_FAT_UAT_006_003_D9");
-
+		dataSetID=excelDataAssetAllocDeAllocExecution.getTestdata("KUBS_FAT_UAT_006_004_02");
+		reviewerTestData = excelDataForAssetAllocation.getTestdata(dataSetID.get("Data Set ID"));
 		kubsLogin.logintoAzentioappReviewer("Reviewer", reviewerTestData.get("Reviewer ID"));
 	}
 
@@ -1541,8 +1655,8 @@ public class KUBS_ReviewerUserSteps extends BaseClass {
 	public void navigate_to_kubs_url_to_approve_the_asset_revaluation_record_to_de_allocation_as_a_reviewer()
 			throws Throwable {
 		driver.get(configFileReader.getApplicationUrl());
-		reviewerTestData = excelDataForAssetDeAllocation.getTestdata("KUBS_FAT_UAT_006_005_01_D9");
-
+		dataSetID=excelDataAssetAllocDeAllocExecution.getTestdata("KUBS_FAT_UAT_006_010_02");
+		reviewerTestData = excelDataForAssetDeAllocation.getTestdata(dataSetID.get("Data Set ID"));
 		kubsLogin.logintoAzentioappReviewer("Reviewer", reviewerTestData.get("Reviewer ID"));
 	}
 

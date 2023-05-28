@@ -502,7 +502,7 @@ And enter the submit button in asset allocation module
 And enter the alert remark in asset allocation module
 And click on alert submit in asset allocation module
 Then store the reviewer ID in asset allocation  excel database
-@KUBS_FAT_UAT_006_001_02
+@KUBS_FAT_UAT_006_001_02_writeOff
 Scenario: To verify reviewer user can able to approve the asset allocation record
 Given navigate to kubs Url to approve the fixed asset Allocation in reviewer for asset writeoff prerequisite
 And click on notification in reviewer stage
@@ -511,7 +511,7 @@ And click on approve button in reviewer stage
 And enter the alert remark in reviewer stage
 And click on submit in reviewer alert pop up
 Then verify record got approved in reviewer stage
-@KUBS_FAT_UAT_006_001_03
+@KUBS_FAT_UAT_006_001_03_writeOff
 Scenario: To verify checker user can able to approve the fixed asset allocation record
 Given navigate to kubs url to approve the fixed asset allocation record in checker for prerequisite of asset writeoff
 And click on security management tool
@@ -524,7 +524,7 @@ And click on approve button in checker
 And give approve alert remark in checker stage
 And click on submit button in checker stage
 Then verify record got approved in checker stage
-@KUBS_FAT_UAT_006_001_04
+@KUBS_FAT_UAT_006_001_04_writeOff
 Scenario: To verify approved asset allocation record should visible in maker approved list view
 Given Maker Navigate to UAT URL login
 And click on configuration section
@@ -595,7 +595,7 @@ And click on search button in list view of asset impairment module
 And search the asset reference number in asset impairment list view
 Then verify asset reference number should visisble along with item number in impairment list view
 
-@KUBS_FAT_UAT_006_001_01_WriteOff
+@KUBS_FAT_UAT_006_001_01_WriteOff01
 Scenario: To verify maker user can able to create the asset allocation record
 Given Maker Navigate to UAT URL login
 And click on configuration section
@@ -618,7 +618,7 @@ And enter the submit button in asset allocation module
 And enter the alert remark in asset allocation module
 And click on alert submit in asset allocation module
 Then store the reviewer ID in asset allocation  excel database
-@KUBS_FAT_UAT_006_001_02
+@KUBS_FAT_UAT_006_001_01_WriteOff02
 Scenario: To verify reviewer user can able to approve the asset allocation record
 Given navigate to kubs Url to approve the fixed asset Allocation in reviewer for asset deallocation writeoff prerequisite
 And click on notification in reviewer stage
@@ -627,7 +627,7 @@ And click on approve button in reviewer stage
 And enter the alert remark in reviewer stage
 And click on submit in reviewer alert pop up
 Then verify record got approved in reviewer stage
-@KUBS_FAT_UAT_006_001_03
+@KUBS_FAT_UAT_006_001_01_WriteOff03
 Scenario: To verify checker user can able to approve the fixed asset allocation record
 Given navigate to kubs url to approve the fixed asset allocation record in checker for prerequisite of asset deallocation writeoff
 And click on security management tool
@@ -640,7 +640,7 @@ And click on approve button in checker
 And give approve alert remark in checker stage
 And click on submit button in checker stage
 Then verify record got approved in checker stage
-@KUBS_FAT_UAT_006_001_04
+@KUBS_FAT_UAT_006_001_01_WriteOff04
 Scenario: To verify approved asset allocation record should visible in maker approved list view
 Given Maker Navigate to UAT URL login
 And click on configuration section

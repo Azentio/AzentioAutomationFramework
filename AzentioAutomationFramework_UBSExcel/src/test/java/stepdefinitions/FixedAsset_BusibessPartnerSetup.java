@@ -28,10 +28,13 @@ public class FixedAsset_BusibessPartnerSetup extends BaseClass {
 	String path = System.getProperty("user.dir") + "\\Test-data\\KUBSTestData.xlsx";
 	ExcelData excelData = new ExcelData(path, "BusinessPartnerTestData", "Data Set ID");
 	ExcelData excelVendorContract = new ExcelData(path, "ContractTestData", "Data Set ID");
+	ExcelData excelDataAssetConfigExecution = new ExcelData(path, "AssetConfig_ExecutionTrack", "TestCaseID");
 	KUBS_CommonWebElements kubsCommonObj = new KUBS_CommonWebElements(driver);
 	Map<String, String> busniessPartnerTestData = new HashMap<>();
+	Map<String, String> dataSetID = new HashMap<>();
 	JavascriptHelper javascriptHelper = new JavascriptHelper();
 	ClicksAndActionsHelper clicksAndActionsHelper = new ClicksAndActionsHelper(driver);
+	
 
 	@And("^click on business partner setup main menu$")
 	public void click_on_business_partner_setup_main_menu() throws Throwable {
@@ -48,7 +51,8 @@ public class FixedAsset_BusibessPartnerSetup extends BaseClass {
 
 	@And("^get the test data for creating the business partner record$")
 	public void get_the_test_data_for_creating_the_business_partner_record() throws Throwable {
-		busniessPartnerTestData = excelData.getTestdata("KUBS_FAT_UAT_001_01_D1");
+		dataSetID=excelDataAssetConfigExecution.getTestdata("KUBS_FAT_UAT_001_01");
+		busniessPartnerTestData = excelData.getTestdata(dataSetID.get("Data Set ID"));
 	}
 
 	@And("^click on add button in businesspartner setup$")
@@ -1096,7 +1100,7 @@ public class FixedAsset_BusibessPartnerSetup extends BaseClass {
 				}
 			}
 		}
-		excelVendorContract.updateTestData("KUBS_FAT_UAT_001_002_01_D1", "BP_Name",
+		excelVendorContract.updateTestData(busniessPartnerTestData.get("Update Data Set 1"), "BP_Name",
 				busniessPartnerTestData.get("UpdateBPName"));
 	}
 }

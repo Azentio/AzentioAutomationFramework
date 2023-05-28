@@ -241,18 +241,14 @@ Then Click on purchase order Eye Icon
 Then Click on purchase order Add button
 And User fill the accountsPayable_VendorPurchaseOrder_BPName
 And User fill the accountsPayable_VendorPurchaseOrder_ReferenceType
-
 And User get the test data for Contract creation Testcase4
 And User fill the accountsPayable_VendorPurchaseOrder_Contract
-
 And Get the test data for the po creation test case1
 And User fill the accountsPayable_VendorPurchaseOrder_CheckBoxPoItem
 And User fill the accountsPayable_VendorPurchaseOrder_PoQuantity
 And User save the accountsPayable_VendorPurchaseOrder_PoItemSave1
 And User fill the accountsPayable_VendorPurchaseOrder_POSubType1
 And User fill the accountsPayable_VendorPurchaseOrder_CostCenter1
-
-
 Then Click on Account Payable Save button
 Then Click on Item Details Record
 Then Edit the item details fields
@@ -282,7 +278,6 @@ And click on user profile icon
 And click on logout button
 Then verify user profile got logout
 @KUBS_FAT_UAT_001_003_04
-
 Scenario: Create a purchase order with Unique purchase order number1
 And Get the test data for the po creation test case1
 Given Navigate to kubs URL and user should login as a maker1

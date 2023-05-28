@@ -3,6 +3,7 @@ package stepdefinitions;
 import static org.testng.Assert.fail;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
@@ -54,8 +55,10 @@ public class ACCOUNTSPAYABLE_InvoiceBooking {
 	String path = System.getProperty("user.dir") + "\\Test-data\\KUBSTestData.xlsx";
 	ExcelData excelData = new ExcelData(path, "BillBookingTestData", "Data Set ID");
 	ExcelData excelDataForAssetCreation = new ExcelData(path, "FixedAsset_AssetCreation", "DataSet ID");
+	ExcelData excelDataForAssetConfig = new ExcelData(path, "AssetConfig_ExecutionTrack", "DataSet ID");
 	KUBS_CommonWebElements kubsCommonWebObj = new KUBS_CommonWebElements(driver);
 	private Map<String, String> testData;
+	Map<String, String> dataSetID= new HashMap<>();
 
 //--------    @KUBS_INV_MGMT_UAT_001_005  ------------
 
@@ -747,7 +750,7 @@ public class ACCOUNTSPAYABLE_InvoiceBooking {
 		String referenceNumber = aCCOUNTSPAYABLE_VendorContractsObj.accountPayableInvoiceBookingFirstReferenceId()
 				.getText();
 		System.out.println("Reference number is " + referenceNumber);
-		excelData.updateTestData("KUBS_FAT_UAT_001_005_01_D1", "Reference ID", referenceNumber);
+		excelData.updateTestData(testData.get("Data Set ID"), "Reference ID", referenceNumber);
 		waithelper.waitForElementToVisibleWithFluentWait(driver,
 				aCCOUNTSPAYABLE_VendorContractsObj.accountPayableInvoiceBookingFirstRecord(), 20, 1);
 		aCCOUNTSPAYABLE_VendorContractsObj.accountPayableInvoiceBookingFirstRecord().click();
@@ -797,7 +800,7 @@ public class ACCOUNTSPAYABLE_InvoiceBooking {
 		emptystring = ar[ar.length - 1];
 		String reviewerId = emptystring.replaceAll("[/.]", "");
 		System.out.println(reviewerId);
-		excelData.updateTestData("KUBS_FAT_UAT_001_005_01_D1", "Reviewer ID", reviewerId);
+		excelData.updateTestData(testData.get("Data Set ID"), "Reviewer ID", reviewerId);
 	}
 
 	@And("^approve the record by the reviewer user$")
@@ -1119,7 +1122,8 @@ public class ACCOUNTSPAYABLE_InvoiceBooking {
 
 	@And("^Update test data for bill booking create and submit from maker$")
 	public void update_test_data_for_bill_booking_create_and_submit_from_maker() throws Throwable {
-		testData = excelData.getTestdata("KUBS_FAT_UAT_001_005_01_D1");
+		dataSetID=excelDataForAssetConfig.getTestdata("KUBS_FAT_UAT_001_005_01");
+		testData = excelData.getTestdata(dataSetID.get("Data Set ID"));
 	}
 
 	@And("^Update test data for bill booking create and approve from reviewer$")

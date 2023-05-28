@@ -328,7 +328,7 @@ Then verify record got approved in checker stage
 And click on user profile icon
 And click on logout button
 Then verify user profile got logout
-@KUBS_FAT_UAT_002_007_04_DeAllocation
+@KUBS_FAT_UAT_002_007_04_DeAllocation04
 Scenario: To verify maker user can able to see the approved asset reference number in maker list view
 Given Maker Navigate to UAT URL login
 And click on configuration section
@@ -595,7 +595,7 @@ And click on logout button
 Then verify user profile got logout
 
 
-@KUBS_FAT_UAT_002_007_01Allocation
+@KUBS_FAT_UAT_002_007_01Allocation05
 Scenario: Creation of the registered asset with full details
 Given Maker Navigate to UAT URL login
 And click on configuration section
@@ -630,7 +630,7 @@ Then validate the submit and store the reviewer ID of fixed asset creation with 
 And click on user profile icon
 And click on logout button
 Then verify user profile got logout
-@KUBS_FAT_UAT_002_007_02Allocation
+@KUBS_FAT_UAT_002_007_02Allocation06
 Scenario: To verify reviewer user can able to approve the asset creation record with full details record
 Given navigate to kubs Url to approve the fixed asset creation record with full details in reviewer for asset allocation
 And click on notification in reviewer stage
@@ -642,7 +642,7 @@ Then verify record got approved in reviewer stage
 And click on user profile icon
 And click on logout button
 Then verify user profile got logout
-@KUBS_FAT_UAT_002_007_03Allocation
+@KUBS_FAT_UAT_002_007_03Allocation07
 Scenario: To verify checker user can able to approve the fixed asset creation with minimum details record
 Given navigate to kubs url to approve the fixed asset creation record with full details as a checker for asset allocation
 And click on security management tool
@@ -658,7 +658,7 @@ Then verify record got approved in checker stage
 And click on user profile icon
 And click on logout button
 Then verify user profile got logout
-@KUBS_FAT_UAT_002_007_04Allocation
+@KUBS_FAT_UAT_002_007_04Allocation08
 Scenario: To verify maker user can able to see the approved asset reference number in maker list view
 Given Maker Navigate to UAT URL login
 And click on configuration section
@@ -678,7 +678,7 @@ And click on user profile icon
 And click on logout button
 Then verify user profile got logout
 #AssetAmmenmentCreation
-@KUBS_FAT_UAT_006_002_01_PreReq
+@KUBS_FAT_UAT_011_01_Allocation
 Scenario: Create an amendment to modify an asset for capitalization date
 Given Maker Navigate to UAT URL login
 And click on configuration section
@@ -705,7 +705,7 @@ And valiadate teh ammendment record submittion and store the reviewer ID in amme
 And click on user profile icon
 And click on logout button
 Then verify user profile got logout
-@KUBS_FAT_UAT_006_002_02_PreReq
+@KUBS_FAT_UAT_011_02_Allocation
 Scenario: To verify reviewer user can able to approve the asset ammendment record
 Given navigate to kubs Url to approve the fixed asset Ammendment as a reviewer for deallocation
 And click on notification in reviewer stage
@@ -717,7 +717,7 @@ Then verify record got approved in reviewer stage
 And click on user profile icon
 And click on logout button
 Then verify user profile got logout
-@KUBS_FAT_UAT_006_002_03_PreReq
+@KUBS_FAT_UAT_011_03_Allocation
 Scenario: To verify checker user can able to approve the fixed asset Ammendment record
 Given navigate to kubs url to approve the fixed asset ammendment record as a checker for deallocation
 And click on security management tool
@@ -733,7 +733,7 @@ Then verify record got approved in checker stage
 And click on user profile icon
 And click on logout button
 Then verify user profile got logout
-@KUBS_FAT_UAT_006_002_04_PreReq
+@KUBS_FAT_UAT_011_04_Allocation
 Scenario: To verify maker can able to see the approved asset reference number of ammendment record in approved list view 
 Given Maker Navigate to UAT URL login
 And click on configuration section
@@ -886,7 +886,7 @@ And click on user profile icon
 And click on logout button
 Then verify user profile got logout
 
-@KUBS_FAT_UAT_002_007_01Allocation
+@KUBS_FAT_UAT_002_007_01Allocation09
 Scenario: Creation of the registered asset with full details
 Given Maker Navigate to UAT URL login
 And click on configuration section
@@ -921,7 +921,7 @@ Then validate the submit and store the reviewer ID of fixed asset creation with 
 And click on user profile icon
 And click on logout button
 Then verify user profile got logout
-@KUBS_FAT_UAT_002_007_02Allocation
+@KUBS_FAT_UAT_002_007_02Allocation10
 Scenario: To verify reviewer user can able to approve the asset creation record with full details record
 Given navigate to kubs Url to approve the fixed asset creation record with full details in reviewer for asset allocation
 And click on notification in reviewer stage
@@ -933,7 +933,7 @@ Then verify record got approved in reviewer stage
 And click on user profile icon
 And click on logout button
 Then verify user profile got logout
-@KUBS_FAT_UAT_002_007_03Allocation
+@KUBS_FAT_UAT_002_007_03Allocation11
 Scenario: To verify checker user can able to approve the fixed asset creation with minimum details record
 Given navigate to kubs url to approve the fixed asset creation record with full details as a checker for asset allocation
 And click on security management tool
@@ -949,7 +949,7 @@ Then verify record got approved in checker stage
 And click on user profile icon
 And click on logout button
 Then verify user profile got logout
-@KUBS_FAT_UAT_002_007_04Allocation
+@KUBS_FAT_UAT_002_007_04Allocation12
 Scenario: To verify maker user can able to see the approved asset reference number in maker list view
 Given Maker Navigate to UAT URL login
 And click on configuration section
@@ -1182,7 +1182,7 @@ Then verify user profile got logout
 
 #TransferEnd
 
-@KUBS_FAT_UAT_002_007_01Allocation
+@KUBS_FAT_UAT_002_007_01Allocation13
 Scenario: Creation of the registered asset with full details
 Given Maker Navigate to UAT URL login
 And click on configuration section
@@ -1217,7 +1217,7 @@ Then validate the submit and store the reviewer ID of fixed asset creation with 
 And click on user profile icon
 And click on logout button
 Then verify user profile got logout
-@KUBS_FAT_UAT_002_007_02Allocation
+@KUBS_FAT_UAT_002_007_02Allocation14
 Scenario: To verify reviewer user can able to approve the asset creation record with full details record
 Given navigate to kubs Url to approve the fixed asset creation record with full details in reviewer for asset allocation
 And click on notification in reviewer stage
@@ -1229,7 +1229,7 @@ Then verify record got approved in reviewer stage
 And click on user profile icon
 And click on logout button
 Then verify user profile got logout
-@KUBS_FAT_UAT_002_007_03Allocation
+@KUBS_FAT_UAT_002_007_03Allocation15
 Scenario: To verify checker user can able to approve the fixed asset creation with minimum details record
 Given navigate to kubs url to approve the fixed asset creation record with full details as a checker for asset allocation
 And click on security management tool
@@ -1245,7 +1245,7 @@ Then verify record got approved in checker stage
 And click on user profile icon
 And click on logout button
 Then verify user profile got logout
-@KUBS_FAT_UAT_002_007_04Allocation
+@KUBS_FAT_UAT_002_007_04Allocation16
 Scenario: To verify maker user can able to see the approved asset reference number in maker list view
 Given Maker Navigate to UAT URL login
 And click on configuration section
@@ -1349,7 +1349,7 @@ And click on user profile icon
 And click on logout button
 Then verify user profile got logout
 
-@KUBS_FAT_UAT_002_007_01Allocation
+@KUBS_FAT_UAT_002_007_01Allocation17
 Scenario: Creation of the registered asset with full details
 Given Maker Navigate to UAT URL login
 And click on configuration section
@@ -1384,7 +1384,7 @@ Then validate the submit and store the reviewer ID of fixed asset creation with 
 And click on user profile icon
 And click on logout button
 Then verify user profile got logout
-@KUBS_FAT_UAT_002_007_02Allocation
+@KUBS_FAT_UAT_002_007_02Allocation18
 Scenario: To verify reviewer user can able to approve the asset creation record with full details record
 Given navigate to kubs Url to approve the fixed asset creation record with full details in reviewer for asset allocation
 And click on notification in reviewer stage
@@ -1396,7 +1396,7 @@ Then verify record got approved in reviewer stage
 And click on user profile icon
 And click on logout button
 Then verify user profile got logout
-@KUBS_FAT_UAT_002_007_03Allocation
+@KUBS_FAT_UAT_002_007_03Allocation19
 Scenario: To verify checker user can able to approve the fixed asset creation with minimum details record
 Given navigate to kubs url to approve the fixed asset creation record with full details as a checker for asset allocation
 And click on security management tool
@@ -1412,7 +1412,7 @@ Then verify record got approved in checker stage
 And click on user profile icon
 And click on logout button
 Then verify user profile got logout
-@KUBS_FAT_UAT_002_007_04Allocation
+@KUBS_FAT_UAT_002_007_04Allocation20
 Scenario: To verify maker user can able to see the approved asset reference number in maker list view
 Given Maker Navigate to UAT URL login
 And click on configuration section
@@ -1640,7 +1640,7 @@ And click on user profile icon
 And click on logout button
 Then verify user profile got logout
 
-@KUBS_FAT_UAT_002_007_01Allocation
+@KUBS_FAT_UAT_002_007_01Allocation21
 Scenario: Creation of the registered asset with full details
 Given Maker Navigate to UAT URL login
 And click on configuration section
@@ -1675,7 +1675,7 @@ Then validate the submit and store the reviewer ID of fixed asset creation with 
 And click on user profile icon
 And click on logout button
 Then verify user profile got logout
-@KUBS_FAT_UAT_002_007_02Allocation
+@KUBS_FAT_UAT_002_007_02Allocation22
 Scenario: To verify reviewer user can able to approve the asset creation record with full details record
 Given navigate to kubs Url to approve the fixed asset creation record with full details in reviewer for asset allocation
 And click on notification in reviewer stage
@@ -1687,7 +1687,7 @@ Then verify record got approved in reviewer stage
 And click on user profile icon
 And click on logout button
 Then verify user profile got logout
-@KUBS_FAT_UAT_002_007_03Allocation
+@KUBS_FAT_UAT_002_007_03Allocation23
 Scenario: To verify checker user can able to approve the fixed asset creation with minimum details record
 Given navigate to kubs url to approve the fixed asset creation record with full details as a checker for asset allocation
 And click on security management tool
@@ -1703,7 +1703,7 @@ Then verify record got approved in checker stage
 And click on user profile icon
 And click on logout button
 Then verify user profile got logout
-@KUBS_FAT_UAT_002_007_04Allocation
+@KUBS_FAT_UAT_002_007_04Allocation24
 Scenario: To verify maker user can able to see the approved asset reference number in maker list view
 Given Maker Navigate to UAT URL login
 And click on configuration section
