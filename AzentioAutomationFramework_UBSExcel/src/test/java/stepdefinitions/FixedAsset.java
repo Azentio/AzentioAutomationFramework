@@ -632,7 +632,7 @@ public class FixedAsset {
 				}
 			}
 		}
-		excelDataForAssetImpairment.updateTestData("KUBS_FAT_UAT_009_001_01_D3", "AssetReferenceNumber",
+		excelDataForAssetImpairment.updateTestData(assetCreationTestData.get("Update Data Set 3"), "AssetReferenceNumber",
 				assetReferenceNumber);
 	}
 
@@ -653,7 +653,7 @@ public class FixedAsset {
 			}
 		}
 		
-		excelDataForAssetAmmendment.updateTestData(assetCreationTestData.get("Update Data Set 3"), "AssetReferenceNumber",
+		excelDataForAssetAmmendment.updateTestData(assetCreationTestData.get("Update Data Set 4"), "AssetReferenceNumber",
 				assetReferenceNumber);
 	}
 
@@ -696,7 +696,7 @@ public class FixedAsset {
 			}
 		}
 	
-		excelDataForAssetSale.updateTestData(assetCreationTestData.get("Update Data Set 4"), "AssetReferenceNumber",
+		excelDataForAssetSale.updateTestData(assetCreationTestData.get("Update Data Set 5"), "AssetReferenceNumber",
 				assetReferenceNumber);
 	}
 
@@ -754,7 +754,7 @@ public class FixedAsset {
 	public void store_the_asset_item_number_in_asset_sale_excel_database_for_prerequisite_of_asset_revaluation()
 			throws Throwable {
 		
-		excelDataForAssetSale.updateTestData(assetCreationTestData.get("Update Data Set 4"), "AssetItemNumber",
+		excelDataForAssetSale.updateTestData(assetCreationTestData.get("Update Data Set 5"), "AssetItemNumber",
 				assetCreationTestData.get("UpdatedItemNumber"));
 	}
 
@@ -789,14 +789,14 @@ public class FixedAsset {
 				}
 			}
 		}
-		excelDataForAssetAllocation.updateTestData(assetCreationTestData.get("Update Data Set 1"), "AssetReferenceNumber",
+		excelDataForAssetAllocation.updateTestData(assetCreationTestData.get("Update Data Set 2"), "AssetReferenceNumber",
 				assetReferenceNumber);
 	}
 
 	@And("^store the asset item number in asset allocation excel database for prerequisite of asset revaluation$")
 	public void store_the_asset_item_number_in_asset_allocation_excel_database_for_prerequisite_of_asset_revaluation()
 			throws Throwable {
-		excelDataForAssetAllocation.updateTestData(assetCreationTestData.get("Update Data Set 1"), "AssetItemNumber",
+		excelDataForAssetAllocation.updateTestData(assetCreationTestData.get("Update Data Set 2"), "AssetItemNumber",
 				assetCreationTestData.get("UpdatedItemNumber"));
 	}
 
@@ -809,14 +809,17 @@ public class FixedAsset {
 	@And("^store the asset item number in asset impairment excel database for prerequisite of asset revaluation$")
 	public void store_the_asset_item_number_in_asset_impairment_excel_database_for_prerequisite_of_asset_revaluation()
 			throws Throwable {
-		excelDataForAssetImpairment.updateTestData("KUBS_FAT_UAT_009_001_01_D3", "AssetItemNumber",
+		//Update Data Set 3
+		excelDataForAssetImpairment.updateTestData(assetCreationTestData.get("Update Data Set 3"), "AssetItemNumber",
 				assetCreationTestData.get("UpdatedItemNumber"));
 	}
 
 	@And("^store the asset item number in asset ammendment excel database for prerequisite of asset revaluation$")
 	public void store_the_asset_item_number_in_asset_ammendment_excel_database_for_prerequisite_of_asset_revaluation()
 			throws Throwable {
-		excelDataForAssetAmmendment.updateTestData(assetCreationTestData.get("Update Data Set 3"), "AssetItemNumber",
+		
+		//Update Data Set 4
+		excelDataForAssetAmmendment.updateTestData(assetCreationTestData.get("Update Data Set 4"), "AssetItemNumber",
 				assetCreationTestData.get("UpdatedItemNumber"));
 	}
 

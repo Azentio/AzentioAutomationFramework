@@ -46,9 +46,11 @@ public class FixedAsset_AssetCodeConfiguration extends BaseClass {
 			"TestCaseID");
 	ExcelData excelDataAssetCodeConfigForRevaluation = new ExcelData(excelPath, "AssetRevaluation_ExecutionTrack",
 			"TestCaseID");
-	ExcelData excelDataAssetCodeForAlocDeAllocExecution = new ExcelData(excelPath, "AssetAllocDeAlloc_ExeTracker", "TestCaseID");
+	ExcelData excelDataAssetCodeForAlocDeAllocExecution = new ExcelData(excelPath, "AssetAllocDeAlloc_ExeTracker",
+			"TestCaseID");
 	ExcelData excelDataAssetReturnExecution = new ExcelData(excelPath, "AssetReturn_ExecutionTrack", "TestCaseID");
-	ExcelData excelDataAssetAmendmentExecution = new ExcelData(excelPath, "AssetAmendment_EXecutionTrack", "TestCaseID");
+	ExcelData excelDataAssetAmendmentExecution = new ExcelData(excelPath, "AssetAmendment_EXecutionTrack",
+			"TestCaseID");
 	ExcelData excelDataAssetCreationExecution = new ExcelData(excelPath, "AssetCreation_ExecutionTrack", "TestCaseID");
 	Map<String, String> DataSetID = new HashMap<>();
 
@@ -75,19 +77,19 @@ public class FixedAsset_AssetCodeConfiguration extends BaseClass {
 	// New
 	@And("^get the test data for asset code configuration$")
 	public void get_the_test_data_for_asset_code_configuration() throws Throwable {
-		DataSetID=excelDataAssetCreationExecution.getTestdata("KUBS_FAT_UAT_002_003_01");
+		DataSetID = excelDataAssetCreationExecution.getTestdata("KUBS_FAT_UAT_002_003_01");
 		assetCodeConfigTestData = excelData.getTestdata(DataSetID.get("Data Set ID"));
 	}
 
 	@And("^get the test data for asset code configuration for asset ammendment$")
 	public void get_the_test_data_for_asset_code_configuration_for_asset_ammendment() throws Throwable {
-		DataSetID=excelDataAssetAmendmentExecution.getTestdata("KUBS_FAT_UAT_002_003_01_AssetAmmendment");
+		DataSetID = excelDataAssetAmendmentExecution.getTestdata("KUBS_FAT_UAT_002_003_01_AssetAmmendment");
 		assetCodeConfigTestData = excelData.getTestdata(DataSetID.get("Data Set ID"));
 	}
 
 	@And("^get the test data for asset code configuration for asset return$")
 	public void get_the_test_data_for_asset_code_configuration_for_asset_return() throws Throwable {
-		DataSetID=excelDataAssetReturnExecution.getTestdata("KUBS_FAT_UAT_002_003_01_Return");
+		DataSetID = excelDataAssetReturnExecution.getTestdata("KUBS_FAT_UAT_002_003_01_Return");
 		assetCodeConfigTestData = excelData.getTestdata(DataSetID.get("Data Set ID"));
 	}
 
@@ -100,7 +102,7 @@ public class FixedAsset_AssetCodeConfiguration extends BaseClass {
 
 	@And("^get the test data for asset code configuration for asset allocation$")
 	public void get_the_test_data_for_asset_code_configuration_for_asset_allocation() throws Throwable {
-		DataSetID=excelDataAssetCodeForAlocDeAllocExecution.getTestdata("KUBS_FAT_UAT_002_003_01Allocation");
+		DataSetID = excelDataAssetCodeForAlocDeAllocExecution.getTestdata("KUBS_FAT_UAT_002_003_01Allocation");
 		assetCodeConfigTestData = excelData.getTestdata(DataSetID.get("Data Set ID"));
 	}
 
@@ -237,7 +239,20 @@ public class FixedAsset_AssetCodeConfiguration extends BaseClass {
 	@And("^save the asset code configuration record$")
 	public void save_the_asset_code_configuration_record() throws Throwable {
 		waitHelper.waitForElementwithFluentwait(driver, kubsCommonWebObj.kubsSaveButton());
-		kubsCommonWebObj.kubsSaveButton().click();
+		for (int i = 0; i <= 300; i++) {
+			try {
+				clickAndActionsHelper.moveToElement(kubsCommonWebObj.kubsSaveButton());
+				clickAndActionsHelper.clickUsingActionClass(kubsCommonWebObj.kubsSaveButton(),
+						kubsCommonWebObj.kubsSaveButton());
+				break;
+			} catch (Exception e) {
+				if (i == 300) {
+					Assert.fail(e.getMessage());
+
+				}
+			}
+		}
+
 	}
 
 	@Then("^validate record got save in maker stage$")
@@ -353,14 +368,14 @@ public class FixedAsset_AssetCodeConfiguration extends BaseClass {
 	@And("^store the asset code in asset gl Configuration database$")
 	public void store_the_asset_code_in_asset_gl_configuration_database() throws Throwable {
 		ExcelData exceldataforGLConfig = new ExcelData(excelPath, "FixedAsset_GLConfig", "DataSet ID");
-		//Update Data Set 1
+		// Update Data Set 1
 		exceldataforGLConfig.updateTestData(assetCodeConfigTestData.get("Update Data Set 1"), "AssetCode",
 				assetCodeConfigTestData.get("AssetCode"));
 	}
 
 	@And("^store the asset code in asset gl Configuration database for asset ammendment$")
 	public void store_the_asset_code_in_asset_gl_configuration_database_for_asset_ammendment() throws Throwable {
-		//Update Data Set 1
+		// Update Data Set 1
 		ExcelData exceldataforGLConfig = new ExcelData(excelPath, "FixedAsset_GLConfig", "DataSet ID");
 		exceldataforGLConfig.updateTestData(assetCodeConfigTestData.get("Update Data Set 1"), "AssetCode",
 				assetCodeConfigTestData.get("AssetCode"));
@@ -385,7 +400,7 @@ public class FixedAsset_AssetCodeConfiguration extends BaseClass {
 	@And("^store the asset code in asset gl Configuration database for asset allocation$")
 	public void store_the_asset_code_in_asset_gl_configuration_database_for_asset_allocation() throws Throwable {
 		ExcelData exceldataforGLConfig = new ExcelData(excelPath, "FixedAsset_GLConfig", "DataSet ID");
-		//Update Data Set 1
+		// Update Data Set 1
 		exceldataforGLConfig.updateTestData(assetCodeConfigTestData.get("Update Data Set 1"), "AssetCode",
 				assetCodeConfigTestData.get("AssetCode"));
 	}
@@ -402,8 +417,7 @@ public class FixedAsset_AssetCodeConfiguration extends BaseClass {
 		ExcelData exceldataforGLConfig = new ExcelData(excelPath, "FixedAsset_GLConfig", "DataSet ID");
 		exceldataforGLConfig.updateTestData(assetCodeConfigTestData.get("Update Data Set 1"), "AssetCode",
 				assetCodeConfigTestData.get("AssetCode"));
-		
-		
+
 	}
 
 	@And("^get the asset code for report$")

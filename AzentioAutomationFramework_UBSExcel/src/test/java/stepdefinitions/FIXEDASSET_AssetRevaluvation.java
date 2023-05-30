@@ -59,7 +59,7 @@ public class FIXEDASSET_AssetRevaluvation extends BaseClass {
 	ExcelData excelDataForAssetWriteOff = new ExcelData(path, "FixedAsset_WriteOff", "DataSet ID");
 	ExcelData excelDataRevaluationAssetTransferExecution = new ExcelData(path, "AssetTransfer_ExecutionTracker", "TestCaseID");
 	ExcelData excelDataRevaluationAssetImpairementExecution = new ExcelData(path, "AssetImpairement_ExecutionTrack", "TestCaseID");
-	ExcelData excelDataRevaluationAssetRevaluationExecution = new ExcelData(path, "AssetImpairement_ExecutionTrack", "TestCaseID");
+	ExcelData excelDataRevaluationAssetRevaluationExecution = new ExcelData(path, "AssetRevaluation_ExecutionTrack", "TestCaseID");
 	ExcelData excelDataAlocDeAllocExecution = new ExcelData(path, "AssetAllocDeAlloc_ExeTracker", "TestCaseID");
 	ExcelData excelDataAssetWriteOffExecution = new ExcelData(path, "WriteOff_ExecutionTrack", "TestCaseID");
 	Map<String, String> DataSetID = new HashMap<>();
@@ -307,13 +307,13 @@ public class FIXEDASSET_AssetRevaluvation extends BaseClass {
 		assetRevaluvationObj.fixed_AssetItemCode().click();
 		assetRevaluvationObj.fixed_AssetItemCode().sendKeys(revaluationTestData.get("AssetItemNumber"));
 		String xpath = "//ng-dropdown-panel//div[text()='" + revaluationTestData.get("AssetItemNumber") + "']";
-		for (int i = 0; i <= 100; i++) {
+		for (int i = 0; i <= 300; i++) {
 			try {
 				clickAndActionHelper.moveToElement(driver.findElement(By.xpath(xpath)));
 				clickAndActionHelper.clickOnElement(driver.findElement(By.xpath(xpath)));
 				break;
 			} catch (Exception e) {
-				if (i == 100) {
+				if (i == 300) {
 					Assert.fail(e.getMessage());
 				}
 			}

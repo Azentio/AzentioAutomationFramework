@@ -397,9 +397,9 @@ public class FIXEDASSET_AssetReplacement extends BaseClass {
 	public void store_the_asset_reference_and_item_number_of_replacement_should_store_in_asset_revaluation_excel_database()
 			throws Throwable {
 		
-		excelDataForAssetRevaluation.updateTestData(assetReplacementTestData.get("Update Data Set 7"), "AssetReferenceNumber",
+		excelDataForAssetRevaluation.updateTestData(assetReplacementTestData.get("Update Data Set 1"), "AssetReferenceNumber",
 				assetReplacementTestData.get("AssetReferenceNumber"));
-		excelDataForAssetRevaluation.updateTestData(assetReplacementTestData.get("Update Data Set 7"), "AssetItemNumber",
+		excelDataForAssetRevaluation.updateTestData(assetReplacementTestData.get("Update Data Set 1"), "AssetItemNumber",
 				assetReplacementTestData.get("UpdatedNewItemNumber"));
 	}
 
