@@ -1,0 +1,22 @@
+[
+    {
+        "User" : "Maker",
+        
+        "FundRequisition_Date": "10",
+        "FundRequisition_Month": "Mar",
+        "FundRequisition_FullMonth": "March",
+        "FundRequisition_Year": "2022",
+        
+        "PettyCashReceipt_Date": "10",
+        "PettyCashReceipt_Month": "Mar",
+        "PettyCashReceipt_FullMonth": "March",
+        "PettyCashReceipt_Year": "2022",
+        
+        
+        "PettyCashRegister_Date": "4",
+        "PettyCashRegister_Month": "Mar",
+        "PettyCashRegister_FullMonth": "March",
+        "PettyCashRegister_Year": "2022"
+        
+    }
+]

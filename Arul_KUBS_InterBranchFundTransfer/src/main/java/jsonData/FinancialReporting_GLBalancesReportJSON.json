@@ -1,0 +1,47 @@
+[
+	{
+		"User" : "Maker", 
+
+		 
+
+		"BranchCode": "Azentio Main Branch", 
+
+		"GLCode": "IFRS-1000047-AS - Inter Branch GL", 
+
+		"GLMonth": "Dec", 
+
+		"GLDate": "5", 
+
+		"GLFullMonth": "December", 
+
+		"GLYear": "2022", 
+
+		 
+
+		"GLToMonth": "Jun", 
+
+		"GLToDate": "24", 
+
+		"GLFullToMonth": "June", 
+
+		"GLToYear": "2023", 
+
+		 
+
+		"Currency": "INR", 
+
+		 
+
+		"BranchCodeForMonthlyBalancesReport": "Azentio Main Branch", 
+
+		"GLCodeForMonthlyBalancesReport": "IFRS-LIAB-LI3000003 - Accounts Payable", 
+
+		"GLMonthForMonthlyBalancesReport": "Dec", 
+
+		"GLDateForMonthlyBalancesReport": "5", 
+
+		"GLFullMonthForMonthlyBalancesReport": "December", 
+
+		"GLYearForMonthlyBalancesReport": "2022" 
+	}
+]

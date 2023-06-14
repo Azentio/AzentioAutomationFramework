@@ -1,0 +1,38 @@
+[
+	{
+		"UserType"					: "Maker",
+		"branchCode"				: "Azentio Main Branch",
+		"gLCode"					: "HDFC",
+		"CurrencyType"				: "INR",
+		"statusactive"				: "ACTIVE",
+		"selectStatusinactive"		: "INACTIVE",
+		"Categorycode"				: "ASSET3",
+		"AccoutingCategory"			: "ASSETS",
+		"GlCodeGeneration"			: "Auto",
+		"AccountingBookname"		: "Testing_50282",
+		"Categorycode2"				: "Liability1",
+		"AccoutingCategory2"		: "LIABILITY1",
+		"Defaultcategorycode"		: "ASSETS",
+		"DefaultAccountingBookname" : "ASSETS",
+		"EventName"					: "Bank Clearing",
+		"SchemeName1"				: "Asset transfer",
+		"SchemeName2"				: "Credit Note",
+		"AccountingSchemeCode"		: "ASC126005",
+		"AccountingSchemeName"		: "AnnualScheme13005",
+		"ExpandIndicator"			: "Yes",
+		"TransactionType"			: "ASSET IMPAIRMENT",//CREDIT NOTE
+		"CrFlag"					: "Credit",
+		"DrFlag"					: "Debit",
+		"ParameterType"				: "Charges",
+		"ParameterInAccountingSchemeDetails": "Total Amount",
+		"selectGlSource"			: "Asset Reval",
+		"PaymentBank"				: "HDFC BANK",
+		"GlMonth"					: "Apr",
+		"GlFullMonth"				: "April",
+		"GlYear"					: "2022",
+		"GlDay"						: "20",
+		"GlToMonth"					: "Apr",
+		"GlFullToMonth"				: "April",
+		"GlToDate"					: "19"
+	}
+]

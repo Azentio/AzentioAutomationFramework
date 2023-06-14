@@ -1,0 +1,40 @@
+[
+	{
+		"UserType": "Maker",
+		"BudgetCode": "123132 - ASDFG",		
+		"BudgetName": "xxx",
+		"BudgetType": "xxx",
+		"BudgetYear": "2023-2024",
+		"BudgetYear1": "2024-2025",
+		"Branch": "CO",
+		"BudgetAmount": "100000000",
+		"BudgetAmounT1": "50000",
+		"Currency": "RUP",
+		"Remark": "OK",
+		"SearchCode": "BUD007",
+		"Searchamount": "5000",
+		"Budcode": "BC28112021",
+		"Amount": "100000000000",
+		"Multiplecode": "Agc12",
+		
+	// UAT VARIABLES	
+	
+		"BudgetCodeUat":"BUD8898",
+		"BudgetApprove":"BUD_01",
+		"Monthly": "BUD006",
+		"Quarterly": "BUD002",
+		"Halfyearly": "BDG0019",
+		"Yearly": "BUD003",
+		"Budgetcancel":"BUD111",
+		"BudgetAllocate":"BudgetQC",
+		"Budgettype" : "Half",
+		
+	// Date
+		"Month"				: "Oct",
+		"FullMonth"			: "October",
+		"Date"				: "31",
+		"Year"				: "2022"
+	
+		
+	}
+]

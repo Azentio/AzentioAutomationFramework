@@ -1,0 +1,11 @@
+[
+    {
+        "User" : "Maker",
+        
+        "PhysicalCashInHand": "1220.00",
+        "Currency": "INR",
+        "RemarkByMaker": "Submit by maker",
+        "ApprovedByChecker": "Approved"
+        
+    }
+]
