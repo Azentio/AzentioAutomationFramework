@@ -2053,7 +2053,7 @@ public class ARAP_AccountsReceivable_AccountsPayable extends BaseClass {
 	@Then("^Approve the record in Reviewer$")
 	public void approve_the_record_in_reviewer() throws Throwable {
 		// -----------------REVIEWER APPROVE---------------------//
-		readerData.addReferanceData(referance_id);
+		//readerData.addReferanceData(referance_id);
 		waitHelper.waitForElement(driver, 2000, reviewerObj.reviewerApproveButton());
 		reviewerObj.reviewerApproveButton().click();
 	}

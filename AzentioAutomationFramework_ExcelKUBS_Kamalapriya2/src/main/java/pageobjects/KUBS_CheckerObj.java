@@ -182,7 +182,7 @@ public class KUBS_CheckerObj {
     {
     	return checker_user_name;
     }
-    @FindBy(xpath="//ion-label[contains(text(),'Logout')]")
+    @FindBy(xpath="//span[text()='Logout']/preceding-sibling::ion-icon")
     private WebElement checker_logout_button;
     public WebElement checkerLogoutButton()
     {

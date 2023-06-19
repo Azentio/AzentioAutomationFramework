@@ -4,6 +4,7 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Random;
 
+import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.ElementClickInterceptedException;
 import org.openqa.selenium.Keys;
@@ -726,9 +727,19 @@ public void click_first_record_action_icon() throws Throwable {
 	javaScriptHelper.JavaScriptHelper(driver);
 	String befr_xpath = "//span[contains(text(),'";
 	String aftr_xpath = "')]/parent::div/parent::datatable-body-cell/preceding-sibling::datatable-body-cell[1]//div//ion-buttons//ion-button";
-	waitHelper.waitForElement(driver, 2000,
-			driver.findElement(By.xpath(befr_xpath + testData.get("Reference ID") + aftr_xpath)));
-	driver.findElement(By.xpath(befr_xpath + testData.get("Reference ID") + aftr_xpath)).click();
+//	waitHelper.waitForElement(driver, 2000,
+//			driver.findElement(By.xpath(befr_xpath + testData.get("Reference ID") + aftr_xpath)));
+	for (int i = 0; i <200; i++) {
+		try {
+			driver.findElement(By.xpath(befr_xpath +testData.get("Reference ID")+ aftr_xpath)).click(); 
+			break;
+		} catch (Exception e) {
+			if (i==199) {
+				Assert.fail(e.getMessage());
+			}
+		}
+	}
+	
 
 	// reviewerObj.reviewer_action_button().click();
 }

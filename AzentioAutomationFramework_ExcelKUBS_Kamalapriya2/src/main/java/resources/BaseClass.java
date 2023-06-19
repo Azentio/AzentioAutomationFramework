@@ -31,6 +31,7 @@ public class BaseClass {
 //		options. addArguments("--headless");
 		//WebDriverManager.chromedriver().setup();
 		ChromeOptions options = new ChromeOptions();
+		options.addArguments("--remote-allow-origins=*");
 		options.addArguments("--incognito");
 		//options.addArguments("--headless");
 		driver = new ChromeDriver(options);

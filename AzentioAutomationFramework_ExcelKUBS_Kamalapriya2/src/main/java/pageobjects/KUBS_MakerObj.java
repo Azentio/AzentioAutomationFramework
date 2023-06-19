@@ -14,18 +14,24 @@ public class KUBS_MakerObj {
 		PageFactory.initElements(driver, this);
 	}
 
-	@FindBy(xpath = "//custom-side-menu//ion-select[@aria-label='Amlock']")
+	@FindBy(xpath = "//custom-side-menu/ion-select[1]")
 	private WebElement maker_finance_option;
 
 	public WebElement kubsFinaceOption() {
 		return maker_finance_option;
 	}
-    @FindBy(xpath="//ion-label[text()='Finance']/following-sibling::ion-radio")
+    @FindBy(xpath="//div[text()='Finance']/preceding-sibling::div")
     private WebElement finance_option;
     public WebElement FinanceOption() {
-		return finance_option;
-    	
+		return finance_option;	
     }
+  
+    @FindBy(xpath="//span[text()='OK']/parent::button")
+    private WebElement okButtonInFinance_option;
+    public WebElement okButtonInFinance_option() {
+		return okButtonInFinance_option;	
+    }
+    
 	@FindBy(xpath = "//ion-segment/ion-segment-button[1]")
 	private WebElement maker_tool_icon;
 

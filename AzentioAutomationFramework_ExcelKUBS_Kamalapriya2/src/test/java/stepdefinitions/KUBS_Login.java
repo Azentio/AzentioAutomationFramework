@@ -64,7 +64,10 @@ public class KUBS_Login {
 				}
 			}
 		}
-
+		waithelper.waitForElementToVisibleWithFluentWait(driver, makerobj.okButtonInFinance_option(), 60, 1);
+		clicksAndActionsHelper.moveToElement(makerobj.okButtonInFinance_option());
+		clicksAndActionsHelper.clickOnElement(makerobj.okButtonInFinance_option());
+		
 	}
 
 	public void logintoAzentioappReviewer(String user, String id) {

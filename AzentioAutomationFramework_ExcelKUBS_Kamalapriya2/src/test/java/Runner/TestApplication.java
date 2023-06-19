@@ -14,11 +14,11 @@ import utilities.ExtentTestManager;
 		plugin = { "pretty", "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:",
 				"rerun:ReRunScenarios/FailedReRun.txt" }
 // dryRun = false
-, tags = "@KUBS_PC_UAT_005_002"
+//, tags = "@KUBS_PC_UAT_001_001_TC_04"
 )
 public class TestApplication extends AbstractTestNGCucumberTests {
 	/*
-	 * @Override
+	 * @Overrideern
 	 * 
 	 * @DataProvider(parallel = true) public Object[][] scenarios() { return
 	 * super.scenarios(); }

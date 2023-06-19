@@ -14,7 +14,7 @@ public class KUBS_ReviewerObj {
 		PageFactory.initElements(driver, this);
 	}
 
-	@FindBy(xpath = "//ion-header/ion-toolbar[1]/ion-buttons[2]/ion-button[2]")
+	@FindBy(xpath = "//ion-icon[@id='mail-unread']/parent::ion-button")
 	private WebElement reviewer_notification_icon;
 
 	public WebElement reviewerNotidicationIcon() {
@@ -40,8 +40,8 @@ public class KUBS_ReviewerObj {
 	public WebElement reviewerRejectButton() {
 		return reviewer_reject_button;
 	}
-
-	@FindBy(xpath = "//span/ion-button[1]")
+	
+	@FindBy(xpath = "//span[text()='Approve']/ancestor::ion-button")
 	private WebElement reviewer_approve_button;
 
 	public WebElement reviewerApproveButton() {
@@ -146,7 +146,7 @@ public class KUBS_ReviewerObj {
 	    {
 	    	return reviewer_user_name;
 	    }
-	    @FindBy(xpath="//ion-label[contains(text(),'Logout')]")
+	    @FindBy(xpath="//span[text()='Logout']/preceding-sibling::ion-icon")
 	    private WebElement reviewer_logout_button;
 	    public WebElement reviewerLogoutButton()
 	    {
