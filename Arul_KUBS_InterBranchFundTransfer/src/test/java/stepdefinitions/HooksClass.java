@@ -49,7 +49,7 @@ public class HooksClass extends BaseClass {
 	@After
 	public void TearDown(Scenario scenario) throws IOException {
 		driver = BaseClass.driver;
-		driver.close();
+		driver.quit();
 		System.out.println("Browser closed");
 		String name=scenario.getName();
 		System.out.println("Scenario : **"+ name + "** Stopped executing");

@@ -8,14 +8,14 @@ import io.cucumber.testng.CucumberOptions;
 import utilities.ExtentManager;
 import utilities.ExtentTestManager;
 
-@CucumberOptions(features = {"src/test/java/features/InterBranchFundTransfer.feature"},
+@CucumberOptions(features = {"src/test/java/features/TellerCashTransfer.feature"},
                  glue = "stepdefinitions",
 		         //monochrome=false, //to make steps in color
 		         plugin = { "pretty",
 				            "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:",
 				            "rerun:ReRunScenarios/FailedReRun.txt"},
 				dryRun = false//to check compilation errors
-		,tags="@KUBS_IBFT_013"
+			//,tags="@KUBS_TCT_004"
 )
 public class TestApplication extends AbstractTestNGCucumberTests {
 	/*

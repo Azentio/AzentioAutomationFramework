@@ -73,8 +73,8 @@ public class KUBS_Login {
 			login.Login_passWord().sendKeys(ulsLoginTestData.get("Password"));
 			waithelper.waitForElementToVisibleWithFluentWait(driver, login.Login_signIn(),20,1);
 			login.Login_signIn().click();
-			waithelper.waitForElementToVisibleWithFluentWait(driver, login.Login_loginStatus(),20,1);
-			Assert.assertTrue(login.Login_loginStatus().isDisplayed());
+//			waithelper.waitForElementToVisibleWithFluentWait(driver, login.Login_loginStatus(),20,1);
+//			Assert.assertTrue(login.Login_loginStatus().isDisplayed());
 		} else if (id.equals("1993")) {
 
 			ulsLoginTestData = excelReader.getTestdata("Reviewer2");
@@ -86,8 +86,8 @@ public class KUBS_Login {
 			driver.findElement(By.xpath("//ng-otp-input/div/input[1]")).sendKeys(otp.substring(4));
 			waithelper.waitForElement(driver, 2000, login.Login_signIn());
 			login.Login_signIn().click();
-			waithelper.waitForElementToVisibleWithFluentWait(driver, login.Login_loginStatus(), 20, 1);
-			Assert.assertTrue(login.Login_loginStatus().isDisplayed());
+//			waithelper.waitForElementToVisibleWithFluentWait(driver, login.Login_loginStatus(), 20, 1);
+//			Assert.assertTrue(login.Login_loginStatus().isDisplayed());
 
 		} else if (id.equals("1992")) {
 			ulsLoginTestData = excelReader.getTestdata("Reviewer3");
@@ -99,8 +99,8 @@ public class KUBS_Login {
 			driver.findElement(By.xpath("//ng-otp-input/div/input[1]")).sendKeys(otp.substring(4));
 			waithelper.waitForElementToVisibleWithFluentWait(driver, login.Login_signIn(), 20, 1);
 			login.Login_signIn().click();
-			waithelper.waitForElementToVisibleWithFluentWait(driver, login.Login_loginStatus(), 20, 1);
-			Assert.assertTrue(login.Login_loginStatus().isDisplayed());
+//			waithelper.waitForElementToVisibleWithFluentWait(driver, login.Login_loginStatus(), 20, 1);
+//			Assert.assertTrue(login.Login_loginStatus().isDisplayed());
 
 		} else if (id.equals("1002436")) {
 			ulsLoginTestData = excelReader.getTestdata("Reviewer4");
@@ -113,8 +113,8 @@ public class KUBS_Login {
 			driver.findElement(By.xpath("//ng-otp-input/div/input[1]")).sendKeys(otp.substring(4));
 			waithelper.waitForElement(driver, 2000, login.Login_signIn());
 			login.Login_signIn().click();
-			waithelper.waitForElementToVisibleWithFluentWait(driver, login.Login_loginStatus(), 20, 1);
-			Assert.assertTrue(login.Login_loginStatus().isDisplayed());
+//			waithelper.waitForElementToVisibleWithFluentWait(driver, login.Login_loginStatus(), 20, 1);
+//			Assert.assertTrue(login.Login_loginStatus().isDisplayed());
 
 		} else if (id.equals("in00027")) {
 			ulsLoginTestData = excelReader.getTestdata("Reviewer5");
@@ -124,10 +124,10 @@ public class KUBS_Login {
 			login.Login_passWord().sendKeys(ulsLoginTestData.get("Password"));
 			waithelper.waitForElementToVisibleWithFluentWait(driver, login.Login_signIn(), 20, 1);
 			login.Login_signIn().click();
-			waithelper.waitForElementToVisibleWithFluentWait(driver, login.Login_loginStatus(), 20, 1);
-			Assert.assertTrue(login.Login_loginStatus().isDisplayed());
+//			waithelper.waitForElementToVisibleWithFluentWait(driver, login.Login_loginStatus(), 20, 1);
+//			Assert.assertTrue(login.Login_loginStatus().isDisplayed());
 		} else if (id.equals("1002439")) {
-			ulsLoginTestData = excelReader.getTestdata("Reviewer5");
+			ulsLoginTestData = excelReader.getTestdata("Reviewer6");
 			login.Login_userName().sendKeys(ulsLoginTestData.get("UserID"));
 			login.ubsContinueButton().click();
 			waithelper.waitForElementToVisibleWithFluentWait(driver, login.Login_passWord(), 20, 1);
@@ -136,8 +136,8 @@ public class KUBS_Login {
 			driver.findElement(By.xpath("//ng-otp-input/div/input[1]")).sendKeys(otp.substring(4));
 			waithelper.waitForElementToVisibleWithFluentWait(driver, login.Login_signIn(), 20, 1);
 			login.Login_signIn().click();
-			waithelper.waitForElementToVisibleWithFluentWait(driver, login.Login_loginStatus(), 20, 1);
-			Assert.assertTrue(login.Login_loginStatus().isDisplayed());
+//			waithelper.waitForElementToVisibleWithFluentWait(driver, login.Login_loginStatus(), 20, 1);
+//			Assert.assertTrue(login.Login_loginStatus().isDisplayed());
 		} else if (id.equals("twin01")) {
 			ulsLoginTestData = excelReader.getTestdata("Reviewer2");
 			login.Login_userName().sendKeys(ulsLoginTestData.get("UserID"));

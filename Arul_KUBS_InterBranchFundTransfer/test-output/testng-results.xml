@@ -2,43 +2,43 @@
 <testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2023-06-14T15:19:53 IST" name="Default suite" finished-at="2023-06-14T15:21:32 IST" duration-ms="98871">
+  <suite started-at="2023-06-23T18:15:19 IST" name="Default suite" finished-at="2023-06-23T18:16:13 IST" duration-ms="54490">
     <groups>
       <group name="cucumber">
         <method signature="AbstractTestNGCucumberTests.runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:Runner.TestApplication@79e4c792]" name="runScenario" class="io.cucumber.testng.AbstractTestNGCucumberTests"/>
       </group> <!-- cucumber -->
     </groups>
-    <test started-at="2023-06-14T15:19:53 IST" name="Default test" finished-at="2023-06-14T15:21:32 IST" duration-ms="98871">
+    <test started-at="2023-06-23T18:15:19 IST" name="Default test" finished-at="2023-06-23T18:16:13 IST" duration-ms="54490">
       <class name="Runner.TestApplication">
-        <test-method is-config="true" signature="beforeExecution()[pri:0, instance:Runner.TestApplication@79e4c792]" started-at="2023-06-14T15:19:53 IST" name="beforeExecution" finished-at="2023-06-14T15:19:53 IST" duration-ms="17" status="PASS">
+        <test-method is-config="true" signature="beforeExecution()[pri:0, instance:Runner.TestApplication@79e4c792]" started-at="2023-06-23T18:15:19 IST" name="beforeExecution" finished-at="2023-06-23T18:15:19 IST" duration-ms="14" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeExecution -->
-        <test-method is-config="true" signature="setUpClass()[pri:0, instance:Runner.TestApplication@79e4c792]" started-at="2023-06-14T15:19:53 IST" name="setUpClass" finished-at="2023-06-14T15:19:55 IST" duration-ms="2253" status="PASS">
+        <test-method is-config="true" signature="setUpClass()[pri:0, instance:Runner.TestApplication@79e4c792]" started-at="2023-06-23T18:15:19 IST" name="setUpClass" finished-at="2023-06-23T18:15:20 IST" duration-ms="1242" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUpClass -->
-        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:Runner.TestApplication@79e4c792]" started-at="2023-06-14T15:19:55 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2023-06-14T15:21:14 IST" duration-ms="78826" status="PASS">
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:Runner.TestApplication@79e4c792]" started-at="2023-06-23T18:15:20 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2023-06-23T18:16:02 IST" duration-ms="42366" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA["Verify that Inter branch fund transfer view list validation"]]>
+                <![CDATA["Validate the approved teller cash transfer record is present in view list"]]>
               </value>
             </param>
             <param index="1">
               <value>
-                <![CDATA["Optional[Verify the functionality of Inter branch fund transfer]"]]>
+                <![CDATA["Optional[Verify the functionality of teller cash transfer]"]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- runScenario -->
-        <test-method is-config="true" signature="tearDownClass()[pri:0, instance:Runner.TestApplication@79e4c792]" started-at="2023-06-14T15:21:14 IST" name="tearDownClass" finished-at="2023-06-14T15:21:32 IST" duration-ms="17720" status="PASS">
+        <test-method is-config="true" signature="tearDownClass()[pri:0, instance:Runner.TestApplication@79e4c792]" started-at="2023-06-23T18:16:02 IST" name="tearDownClass" finished-at="2023-06-23T18:16:13 IST" duration-ms="10821" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDownClass -->
-        <test-method is-config="true" signature="afterExecution()[pri:0, instance:Runner.TestApplication@79e4c792]" started-at="2023-06-14T15:21:32 IST" name="afterExecution" finished-at="2023-06-14T15:21:32 IST" duration-ms="207" status="PASS">
+        <test-method is-config="true" signature="afterExecution()[pri:0, instance:Runner.TestApplication@79e4c792]" started-at="2023-06-23T18:16:13 IST" name="afterExecution" finished-at="2023-06-23T18:16:13 IST" duration-ms="179" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterExecution -->

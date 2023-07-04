@@ -231,6 +231,16 @@ public class GL_Accounting_Setup_Obj {
 		return interBranchFundTransfer_ActionButton;
 	}
 
+	@FindBy(xpath = "(//span[text()='TELLER_CASH_TRANSFER']/ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell[2]//ion-button)[1]")
+	private WebElement TellerCashTransfer_ActionButton;
+	public WebElement TellerCashTransfer_ActionButton() {
+		return TellerCashTransfer_ActionButton;
+	}
+	@FindBy(xpath = "(//span[text()='PTC_FUND_REQ']/ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell[2]//ion-button)[1]")
+	private WebElement FundRequest_ActionButton;
+	public WebElement FundRequest_ActionButton() {
+		return FundRequest_ActionButton;
+	}
 	// Journal Voucher
 	@FindBy(xpath = "(//span[text()='JV_EVENT']/ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell//ion-button)[1]")
 	private WebElement GL2JournalVoucher_ActionButton;
@@ -280,6 +290,16 @@ public class GL_Accounting_Setup_Obj {
 	public WebElement interBranchFundTransferReferanceId() {
 
 		return interBranchFundTransfer_ReferanceId;
+	}
+	@FindBy(xpath = "(//span[text()='TELLER_CASH_TRANSFER']/ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell[1]//span)[1]")
+	private WebElement TellerCashTransfer_ReferanceId;
+	public WebElement TellerCashTransfer_ReferanceId() {
+		return TellerCashTransfer_ReferanceId;
+	}
+	@FindBy(xpath = "(//span[text()='PTC_FUND_REQ']/ancestor::datatable-body-cell/preceding-sibling::datatable-body-cell[1]//span)[1]")
+	private WebElement FundTransfer_ReferanceId;
+	public WebElement FundTransfer_ReferanceId() {
+		return FundTransfer_ReferanceId;
 	}
 	// journal Voucher
 
