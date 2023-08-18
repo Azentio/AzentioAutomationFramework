@@ -2,7 +2,6 @@ package stepdefinitions;
 
 import java.util.List;
 
-import org.apache.hc.core5.util.Timeout;
 import org.openqa.selenium.By;
 import org.openqa.selenium.ElementClickInterceptedException;
 import org.openqa.selenium.Keys;
@@ -1426,7 +1425,7 @@ public class InventoryManagament extends BaseClass {
 				inventoryManagamentObj.StockConfirm_Notification_Close().click();
 			}
 
-			@And("^goto maker Notification Icon$")
+			@And("^goto maker Notification icon$")
 			public void goto_maker_notification_Icon() throws Throwable {
 				// ------------Maker Notification icon---------//
 //				Thread.sleep(2000);
@@ -1447,7 +1446,7 @@ public class InventoryManagament extends BaseClass {
 				inventoryManagamentObj.StockConfirm_Submit().click();
 			}
 
-			@And("^Give Remark and submit to Reviewer$")
+			@And("^Give Remark and submit to reviewer$")
 			public void give_remark_and_submit_to_Reviewer() throws Throwable {
 				// ----------ENTER THE REMARK AND SUBMIT THE RECORD-------------//
 				inventoryManagementTestDataType = jsonReader.getInventoryManagementByName("Maker");
@@ -1564,7 +1563,7 @@ public class InventoryManagament extends BaseClass {
 
 			}
 
-			@Then("^choose the To date in the calender$")
+			@Then("^choose To date in the calender$")
 			public void choose_the_to_date_in_the_calender() throws Throwable {
 				inventoryManagementTestDataType = jsonReader.getInventoryManagementByName("Maker");
 				Thread.sleep(1000);

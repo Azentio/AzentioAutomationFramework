@@ -22,7 +22,7 @@ public class LoginTest extends BaseClass {
 	@Given("^Launch the Azentio Url$")
 	public void launch_the_azentio_url() throws Throwable {
 		//driver = initializeDriver();
-		driver.get("http://10.1.56.122:8680/kubs");
+		driver.get("http://172.27.78.245:4080/kubs-qc/");
 	}
 
 	@And("^Enter the login creditintials$")

@@ -55,11 +55,11 @@ function toggleAllBoxes() {
 <body>
 <h2 align='center'>Default test</h2><table border='1' align="center">
 <tr>
-<td>Tests passed/Failed/Skipped:</td><td>1/0/0</td>
+<td>Tests passed/Failed/Skipped:</td><td>0/1/0</td>
 </tr><tr>
-<td>Started on:</td><td>Mon Mar 06 13:59:34 IST 2023</td>
+<td>Started on:</td><td>Fri Aug 18 15:50:13 IST 2023</td>
 </tr>
-<tr><td>Total time:</td><td>82 seconds (82160 ms)</td>
+<tr><td>Total time:</td><td>10 seconds (10867 ms)</td>
 </tr><tr>
 <td>Included groups:</td><td></td>
 </tr><tr>
@@ -67,18 +67,31 @@ function toggleAllBoxes() {
 </tr>
 </table><p/>
 <small><i>(Hover the method name to see the test class name)</i></small><p/>
-<table width='100%' border='1' class='invocation-passed'>
-<tr><td colspan='4' align='center'><b>PASSED TESTS</b></td></tr>
+<table width='100%' border='1' class='invocation-failed'>
+<tr><td colspan='4' align='center'><b>FAILED TESTS</b></td></tr>
 <tr><td><b>Test method</b></td>
 <td width="30%"><b>Exception</b></td>
 <td width="10%"><b>Time (seconds)</b></td>
 <td><b>Instance</b></td>
 </tr>
 <tr>
-<td title='Runner.TestApplication.runScenario()'><b>runScenario</b><br>Test class: Runner.TestApplication<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Verify the accounting book is deactivated", "Optional[Check the Functionality of the GL1 Module]"</td>
-<td></td>
-<td>69</td>
-<td>Runner.TestApplication@6e9a5ed8</td></tr>
+<td title='Runner.TestApplication.runScenario()'><b>runScenario</b><br>Test class: Runner.TestApplication<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Approve the Created accounting base templet record in reviewer", "Optional[Check the Functionality of the GL1 Module]"</td>
+<td><div><pre>java.lang.NullPointerException: Cannot invoke &quot;org.apache.poi.xssf.usermodel.XSSFWorkbook.getSheetIndex(String)&quot; because &quot;this.workbook&quot; is null
+	at resources.ExcelReader.isSheetExist(ExcelReader.java:412)
+	at resources.ExcelReader.getColumnCount(ExcelReader.java:426)
+	at resources.ExcelData.getTestdata(ExcelData.java:18)
+	at stepdefinitions.GL1_Accounting_Book_Definition.user_update_the_data_set_id_for_base_template_accounting_book_reviewer_submit(GL1_Accounting_Book_Definition.java:191)
+	at ✽.User Update the data set id for Base Template Accounting Book Reviewer submit(file:///C:/Users/ININDC00072/git/AzentioAutomationFramework_0025/Ajith_KUBS_CEN_GeneralLedger12/src/test/java/features/GL1.feature:24)
+</pre></div><a href='#' onClick='toggleBox("stack-trace145693769", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace145693769'><pre>java.lang.NullPointerException: Cannot invoke &quot;org.apache.poi.xssf.usermodel.XSSFWorkbook.getSheetIndex(String)&quot; because &quot;this.workbook&quot; is null
+	at resources.ExcelReader.isSheetExist(ExcelReader.java:412)
+	at resources.ExcelReader.getColumnCount(ExcelReader.java:426)
+	at resources.ExcelData.getTestdata(ExcelData.java:18)
+	at stepdefinitions.GL1_Accounting_Book_Definition.user_update_the_data_set_id_for_base_template_accounting_book_reviewer_submit(GL1_Accounting_Book_Definition.java:191)
+	at ✽.User Update the data set id for Base Template Accounting Book Reviewer submit(file:///C:/Users/ININDC00072/git/AzentioAutomationFramework_0025/Ajith_KUBS_CEN_GeneralLedger12/src/test/java/features/GL1.feature:24)
+</pre></div></td>
+<td>6</td>
+<td>Runner.TestApplication@4b29d1d2</td></tr>
 </table><p>
 </body>
 </html>

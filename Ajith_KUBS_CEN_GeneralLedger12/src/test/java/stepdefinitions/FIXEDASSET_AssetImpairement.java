@@ -1085,8 +1085,8 @@ public class FIXEDASSET_AssetImpairement extends BaseClass {
 
 		waitHelper.waitForElementVisible(kubsMakerObj.kubsFinaceOption(), 2000, 200);
 		kubsMakerObj.kubsFinaceOption().click();
-		waitHelper.waitForElementVisible(kubsMakerObj.FinanceOption(), 2000, 200);
-		kubsMakerObj.FinanceOption().click();
+		waitHelper.waitForElementVisible(kubsMakerObj.FinanceButtonGL(), 2000, 200);
+		kubsMakerObj.FinanceButtonGL().click();
 	}
 
 	@And("^click on fixed asset configuration$")

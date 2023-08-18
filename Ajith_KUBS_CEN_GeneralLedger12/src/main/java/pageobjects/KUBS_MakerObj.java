@@ -20,12 +20,11 @@ public class KUBS_MakerObj {
 	public WebElement kubsFinaceOption() {
 		return maker_finance_option;
 	}
-    @FindBy(xpath="//ion-label[text()='Finance']/following-sibling::ion-radio")
-    private WebElement finance_option;
-    public WebElement FinanceOption() {
-		return finance_option;
-    	
-    }
+	@FindBy(xpath = "//div[contains(text(),'Finance')]/preceding-sibling::div")
+    private WebElement FinanceButtonGL;
+    public WebElement FinanceButtonGL() {
+        return FinanceButtonGL;
+        }
 	@FindBy(xpath = "//ion-segment/ion-segment-button[1]")
 	private WebElement maker_tool_icon;
 

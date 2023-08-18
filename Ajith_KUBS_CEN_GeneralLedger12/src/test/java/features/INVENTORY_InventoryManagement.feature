@@ -50,7 +50,7 @@ And Click on First record eye icon
 Then Get the New Request Referance No
 Then Click on Inventory stock confirmation eye icon
 And Sub module Inventory stock confirmation click Add icon
-Then Enter Request Referance Number
+Then Enter the Request Referance Number
 And Enter Item code Number
 Then Accept the status in checkbox
 And click the save icon for StockConfirm
@@ -78,10 +78,10 @@ Then click on report button
 And click Enquiry menu
 Then click on Edit icon near by financial transaction
 And choose branch code Id
-Then choose Gl code Id
+Then choose the Gl code Id
 And click on transaction from date in calender icon
-Then choose from date in calender
+Then choose from date in the calender
 And click on the transaction to date in calender icon
-Then choose the To date in calender
+Then choose To date in the calender
 And click on view button to see the Record
 

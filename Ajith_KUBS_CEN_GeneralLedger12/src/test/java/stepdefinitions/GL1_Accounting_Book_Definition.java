@@ -77,7 +77,7 @@ public class GL1_Accounting_Book_Definition extends BaseClass {
 	GL_Accounting_Setup_Obj accSetupObj = new GL_Accounting_Setup_Obj(driver);
 	GL1_Accounting_Setup_Data acc_Setup_Data = jsonConfig.getAccsetupByName("Setup");
 	ARAP_ARandAPObj arapObj = new ARAP_ARandAPObj(driver);
-	String excelPath = System.getProperty("user.dir")+"\\Test-data\\KUBSTestData.xlsx";
+	String excelPath = System.getProperty("C:\\Users\\ININDC00072\\git\\AzentioAutomationFramework_0025\\Ajith_KUBS_CEN_GeneralLedger12")+"\\Test-data\\KUBSTestData.xlsx";
 	ExcelData excelData = new ExcelData(excelPath,"GLTestData","Data Set ID");
 	private Map<String, String> testdata;
 	KUBS_MakerObj kubsMakerObj = new KUBS_MakerObj(driver);
@@ -139,8 +139,9 @@ public class GL1_Accounting_Book_Definition extends BaseClass {
 	    public void click_on_finance_option_for_gl() throws Throwable {
 		 for (int i = 0; i <= 500; i++) {
 				try {
-					clicksAndActionHelper.moveToElement(makerobj.FinanceOption());
-					clicksAndActionHelper.clickUsingActionClass(makerobj.FinanceOption(), makerobj.FinanceOption());
+					
+					clicksAndActionHelper.moveToElement(makerobj.FinanceButtonGL());
+					clicksAndActionHelper.clickUsingActionClass(makerobj.FinanceButtonGL(), makerobj.FinanceButtonGL());
 					break;
 				} catch (Exception e) {
 					if (i == 500) {
