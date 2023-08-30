@@ -234,7 +234,7 @@ public class BUDGET_BudgetCreationObj {
     {
     	return budget_creation_user_name;
     }
-    @FindBy(xpath="//ion-label[contains(text(),'Logout')]")
+    @FindBy(xpath="//span[contains(text(),'Logout')]")
     private WebElement budget_creation_logout_button;
     public WebElement budgetCreationLogoutButton()
     {

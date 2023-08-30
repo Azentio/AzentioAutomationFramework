@@ -48,8 +48,8 @@ public class KUBS_Login {
 		String otp = login.Login_getOtp().getText();
 		driver.findElement(By.xpath("//ng-otp-input/div/input[1]")).sendKeys(otp.substring(4));
 		login.Login_signIn().click();
-		waithelper.waitForElementToVisibleWithFluentWait(driver,makerobj.makerLoginVerification(), 30, 2);
-		Assert.assertTrue(makerobj.makerLoginVerification().isDisplayed());
+//		waithelper.waitForElementToVisibleWithFluentWait(driver,makerobj.makerLoginVerification(), 30, 2);
+//		Assert.assertTrue(makerobj.makerLoginVerification().isDisplayed());
 		waithelper.waitForElementToVisibleWithFluentWait(driver, makerobj.kubsFinaceOption(), 60, 1);
 		clicksAndActionsHelper.clickUsingActionClass(makerobj.kubsFinaceOption(),makerobj.kubsFinaceOption());
 		

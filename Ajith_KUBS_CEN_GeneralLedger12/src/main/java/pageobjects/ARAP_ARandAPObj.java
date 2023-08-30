@@ -246,7 +246,7 @@ public class ARAP_ARandAPObj {
 		return ARAP_InvoiceSave;
 	}
 
-	@FindBy(xpath = "//ion-header/ion-toolbar[1]/ion-buttons[2]/ion-button[2]")
+	@FindBy(xpath = "//ion-button[@ng-reflect-text='Inbox']")
 	private WebElement ARAP_MakerNotification;
 
 	public WebElement ARAP_MakerNotification() {

@@ -14,7 +14,7 @@ public class KUBS_MakerObj {
 		PageFactory.initElements(driver, this);
 	}
 
-	@FindBy(xpath = "//ion-select[@aria-label='Amlock']")
+	@FindBy(xpath = "//ion-select[@ng-reflect-text='Module name']")
 	private WebElement maker_finance_option;
 
 	public WebElement kubsFinaceOption() {
@@ -24,6 +24,12 @@ public class KUBS_MakerObj {
     private WebElement FinanceButtonGL;
     public WebElement FinanceButtonGL() {
         return FinanceButtonGL;
+        }
+  
+    @FindBy(xpath = "//span[contains(text(),'OK')]")
+    private WebElement okButton;
+    public WebElement okButton() {
+        return okButton;
         }
 	@FindBy(xpath = "//ion-segment/ion-segment-button[1]")
 	private WebElement maker_tool_icon;
